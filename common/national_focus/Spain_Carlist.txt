@@ -1,0 +1,3052 @@
+### Carlist Spain Focus Tree
+focus_tree = {
+	id = CAR_focus
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CAR
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 2300 y = 700 }
+
+	### Mediterranean Bloc tree restored by the Lord of the Arctic, KRdevs GTFO ###
+
+
+	### Politics ###
+	focus = {# Restauración
+		id = CAR_restauracion
+		icon = GFX_goal_carlist
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = CAR_won_election
+					has_country_flag = election_success
+				}
+				custom_trigger_tooltip = {
+					tooltip = CAR_released_after_annexation
+					has_country_flag = released_after_annexation
+				}
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = SPR_civil_war_happened
+						has_global_flag = spanish_civil_war
+					}
+					NOT = { country_exists = SPR }
+					NOT = { country_exists = CNT }
+				}
+			}
+		}
+		cost = 10.00
+		x = 3
+		y = 0
+		ai_will_do = { factor = 100	}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_restauracion"
+			set_country_flag = CAR_carlist_restoration
+			if = {
+				limit = { has_global_flag = spanish_civil_war }
+				country_event = sprc.320
+				else = { set_cosmetic_tag = CAR_kingdom }
+			}
+			if = {
+				limit = { has_idea = CAR_black_monday }
+				swap_ideas = {
+					remove_idea = CAR_black_monday
+					add_idea = CAR_recovering_economy
+				}
+			}
+			if = {
+				limit = { has_idea = SPR_social_breakdown }
+				remove_ideas = SPR_social_breakdown
+			}
+			if = {
+				limit = { has_idea = SPR_social_breakdown_2 }
+				remove_ideas = SPR_social_breakdown_2
+			}
+			if = {
+				limit = { has_idea = SPR_social_breakdown_3 }
+				remove_ideas = SPR_social_breakdown_3
+			}
+			custom_effect_tooltip = CAR_remove_cores_SPR
+			custom_effect_tooltip = CAR_remove_cores_CNT
+			hidden_effect = {
+				every_state = {
+					limit = {
+						OR = {
+							is_core_of = SPR
+							is_core_of = CNT
+						}
+					}
+					if = {
+						limit = { is_claimed_by = CAR }
+						remove_claim_by = CAR
+					}
+					remove_core_of = SPR
+					remove_core_of = CNT
+					add_core_of = CAR
+				}
+				every_state = {
+					limit = { is_claimed_by = SPR }
+					remove_claim_by = SPR
+					if = {
+						limit = { is_not_claim_or_core_of_ROOT = yes }
+						add_claim_by = CAR
+					}
+				}
+				every_state = {
+					limit = { is_claimed_by = CNT }
+					remove_claim_by = CNT
+					if = {
+						limit = { is_not_claim_or_core_of_ROOT = yes }
+						add_claim_by = CAR
+					}
+				}
+				country_event = sprc.326
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Dios
+		id = CAR_dios
+		icon = GFX_BEL_Improve_Catholic_Relations
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_restauracion
+		}
+		relative_position_id = CAR_restauracion
+		x = -2
+		y = 1
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_dios"
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {# Patria
+		id = CAR_patria
+		icon = GFX_goal_monarchism_black
+		cost = 10.00
+		prerequisite = {
+			focus = CAR_dios
+		}
+		relative_position_id = CAR_restauracion
+		x = -2
+		y = 3
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_patria"
+			add_war_support = 0.03
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {# Mending the rift
+		id = CAR_mending_the_rift
+		icon = GFX_goal_generic_national_unity
+		cost = 7.00
+		bypass = {
+			NOT = {
+				has_idea = SPR_social_breakdown
+			}
+		}
+		prerequisite = {
+			focus = CAR_restauracion
+		}
+		relative_position_id = CAR_restauracion
+		x = 0
+		y = 1
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_mending_the_rift"
+			swap_ideas = {
+				remove_idea = SPR_social_breakdown
+				add_idea = SPR_social_breakdown_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {# Crush opposition
+		id = CAR_crush_opposition
+		icon = GFX_goal_generic_political_pressure
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_mending_the_rift
+		}
+		mutually_exclusive = {
+			focus = CAR_reconcilliation
+		}
+		relative_position_id = CAR_restauracion
+		x = -1
+		y = 2
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_crush_opposition"
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {# Reconciliation
+		id = CAR_reconcilliation
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_mending_the_rift
+		}
+		mutually_exclusive = {
+			focus = CAR_crush_opposition
+		}
+		relative_position_id = CAR_restauracion
+		x = 1
+		y = 2
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_reconcilliation"
+			add_stability = 0.03
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {# Royal Unity
+		id = CAR_call_for_unity
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_crush_opposition
+			focus = CAR_reconcilliation
+		}
+		bypass = {
+			NOT = {
+				has_idea = SPR_social_breakdown_2
+			}
+		}
+		relative_position_id = CAR_restauracion
+		x = 0
+		y = 3
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_call_for_unity"
+			swap_ideas = {
+				remove_idea = SPR_social_breakdown_2
+				add_idea = SPR_social_breakdown_3
+			}
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+	}
+	focus = {# Rey
+		id = CAR_rey
+		icon = GFX_focus_rom_royal_dictatorship
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_restauracion
+		}
+		relative_position_id = CAR_restauracion
+		x = 2
+		y = 1
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_rey"
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {# Fueros
+		id = CAR_furos
+		icon = GFX_goal_constitutional_guarantees
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_rey
+		}
+		relative_position_id = CAR_restauracion
+		x = 2
+		y = 3
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_furos"
+			add_war_support = 0.03
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	focus = {# National Catholicism
+		id = CAR_national_catholicism
+		icon = GFX_goal_faith_and_state
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_furos
+		}
+		prerequisite = {
+			focus = CAR_call_for_unity
+		}
+		prerequisite = {
+			focus = CAR_patria
+		}
+		relative_position_id = CAR_restauracion
+		x = -1
+		y = 4
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_national_catholicism"
+			add_stability = 0.03
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {# Cortes Españolas
+		id = CAR_cortes_espanolas
+		icon = GFX_goal_POR_royal_edicts
+		cost = 7.00
+		prerequisite = { focus = CAR_patria }
+		prerequisite = { focus = CAR_call_for_unity	}
+		prerequisite = { focus = CAR_furos }
+		relative_position_id = CAR_restauracion
+		x = 1
+		y = 4
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_cortes_espanolas"
+			add_stability = 0.03
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+	}
+	focus = {# Viva El Rey!
+		id = CAR_viva_el_rey
+		icon = GFX_focus_generic_home_defense
+		cost = 8.00
+		bypass = {
+			NOT = {
+				has_idea = SPR_social_breakdown_3
+			}
+		}
+		prerequisite = {
+			focus = CAR_national_catholicism
+		}
+		prerequisite = {
+			focus = CAR_cortes_espanolas
+		}
+		relative_position_id = CAR_restauracion
+		x = 0
+		y = 5
+		ai_will_do = { factor = 80  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_viva_el_rey"
+			remove_ideas = SPR_social_breakdown_3
+			add_stability = 0.03
+			add_war_support = 0.03
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY }
+	}
+### Economics ###
+	focus = {# Rebuilding the Economy
+		id = CAR_rebuilding_the_economy
+		icon = GFX_goal_generic_production2
+		cost = 7.00
+		available = { has_country_flag = CAR_carlist_restoration }
+		x = 13
+		y = 0
+		ai_will_do = { factor = 30  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_rebuilding_the_economy"
+			add_ideas = CAR_rebuilding_spain_idea
+			add_tech_bonus = {
+				name = CAR_rebuilding_the_economy
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Expand the Railroads
+		id = CAR_expand_railroads
+		icon = GFX_goal_generic_construct_infrastructure
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_rebuilding_the_economy
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = -4
+		y = 1
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_expand_railroads"
+			172 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			176 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			166 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Expand Air Ports
+		id = CAR_expand_air_ports
+		icon = GFX_goal_expand_the_luftwaffe
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_expand_railroads
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = -4
+		y = 3
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_expand_air_ports"
+			176 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			167 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			169 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Provincial Rebuilding
+		id = CAR_provincial_rebuilding
+		icon = GFX_goal_production
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_rebuilding_the_economy
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = -2
+		y = 1
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_provincial_rebuilding"
+			add_tech_bonus = {
+				name = CAR_provincial_rebuilding
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Military Investments
+		id = CAR_military_investements
+		icon = GFX_goal_national_arsenal
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_provincial_rebuilding
+		}
+		prerequisite = {
+			focus = CAR_provincial_rebuilding
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = -3
+		y = 2
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_military_investements"
+			171 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			174 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Commercial Investment
+		id = CAR_comercial_investment
+		icon = GFX_goal_construction_engineering
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_provincial_rebuilding
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = -1
+		y = 2
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_comercial_investment"
+			172 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			165 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			173 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Electrification Program
+		id = CAR_electrification_program
+		icon = GFX_goal_Schelle
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_military_investements
+		}
+		prerequisite = {
+			focus = CAR_comercial_investment
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = -2
+		y = 3
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_electrification_program"
+			add_tech_bonus = {
+				name = CAR_electrification_program
+				bonus = 1
+				uses = 2
+				category = electronics
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Ley General de Educación
+		id = CAR_ley_general_educacion
+		icon = GFX_BEL_Catholic_Education
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_rebuilding_the_economy
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 0
+		y = 1
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_ley_general_educacion"
+			add_research_slot = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Expand Real Academia
+		id = CAR_expand_real_academia
+		icon = GFX_goal_KTG_Bookstack
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_ley_general_educacion
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 0
+		y = 3
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_expand_real_academia"
+			add_ideas = CAR_real_academia_idea
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Instituto Nacional de Industria
+		id = CAR_create_ini
+		icon = GFX_IRE_heavy_industry
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_rebuilding_the_economy
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 2
+		y = 1
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_create_ini"
+			add_ideas = CAR_ini_idea
+		}
+	}
+	focus = {# Modern Agriculture
+		id = CAR_modern_agriculture
+		icon = GFX_focus_AUS_agriculture
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_create_ini
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 1
+		y = 2
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_modern_agriculture"
+			add_ideas = CAR_modern_agriculture_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
+	}
+	focus = {# Military Factories
+		id = CAR_military_factories
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_create_ini
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 3
+		y = 2
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_military_factories"
+			170 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			169 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Market Protections
+		id = CAR_market_protections
+		icon = GFX_goal_economic_control
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_modern_agriculture
+		}
+		prerequisite = {
+			focus = CAR_military_factories
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 2
+		y = 3
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_market_protections"
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {# Labour Charter
+		id = CAR_labour_charter
+		icon = GFX_goal_state_economy
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_rebuilding_the_economy
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 4
+		y = 1
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_labour_charter"
+			add_tech_bonus = {
+				name = CAR_labour_charter
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Catholic Trade Unions
+		id = CAR_catholic_trade_unions
+		icon = GFX_goal_tblra_union_agreement
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_labour_charter
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 4
+		y = 3
+		ai_will_do = { factor = 10  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_catholic_trade_unions"
+			add_ideas = CAR_catholic_trade_unions_idea
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Spanish Miracle
+		id = CAR_spanish_miracle
+		icon = GFX_goal_generic_positive_trade_relations_gold
+		cost = 8.00
+		available = {
+			has_idea = CAR_recovering_economy
+		}
+		prerequisite = {
+			focus = CAR_expand_air_ports
+		}
+		prerequisite = {
+			focus = CAR_electrification_program
+		}
+		prerequisite = {
+			focus = CAR_expand_real_academia
+		}
+		prerequisite = {
+			focus = CAR_market_protections
+		}
+		prerequisite = {
+			focus = CAR_catholic_trade_unions
+		}
+		relative_position_id = CAR_rebuilding_the_economy
+		x = 0
+		y = 4
+		ai_will_do = { factor = 80  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_spanish_miracle"
+			remove_ideas = CAR_recovering_economy
+		}
+	}
+### Foreign Policy ###
+	focus = {# Join the Entente
+		id = CAR_join_entente
+		icon = GFX_goal_USA_reconcile_canada
+		mutually_exclusive = { focus = CAR_foreign_focus }
+		available = {
+			has_country_flag = CAR_carlist_restoration
+			is_in_faction = no
+			is_subject = no
+			has_war = no
+			NOT = { has_socialist_government = yes }
+			OR = {
+				CAN = {
+					is_faction_leader = yes
+					NOT = { has_socialist_government = yes }
+				}
+				GBR = {
+					is_faction_leader = yes
+					NOT = { has_socialist_government = yes }
+				}
+			}
+		}
+		cost = 5.00
+		x = 53
+		y = 0
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = CAR_foreign_policy
+						option = CAR_MED_PACT
+					}
+					has_game_rule = {
+						rule = CAR_foreign_policy
+						option = CAR_MED_PACT_ILLYRIA
+					}
+					has_game_rule = {
+						rule = CAR_foreign_policy
+						option = CAR_MED_PACT_AUSTRIA
+					}
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_join_entente"
+			if = {
+				limit = {
+					CAN = {
+						is_faction_leader = yes
+						NOT = { has_socialist_government = yes }
+					}
+				}
+				CAN = {
+					country_event = sprd.31
+				}
+				else = {
+					GBR = {
+						country_event = sprd.31
+					}
+				}
+			}
+		}
+		}		
+	focus = {# Iberian Trade
+		id = CAR_iberian_trade
+		icon = GFX_goal_portugal
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_join_entente
+		}
+		relative_position_id = CAR_join_entente
+		x = -2
+		y = 1
+		ai_will_do = { factor = 20  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_iberian_trade"
+			add_political_power = 100
+			add_opinion_modifier = { target = POR modifier = KR_approves_of_govt }
+			reverse_add_opinion_modifier = { target = POR modifier = KR_approves_of_govt }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {# French Advisers
+		id = CAR_french_advisers
+		icon = GFX_NATFRA_flags2
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_join_entente
+		}
+		relative_position_id = CAR_join_entente
+		x = 0
+		y = 1
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_french_advisers"
+			add_ideas = CAR_french_advisers_idea
+		}
+	}
+	focus = {# Canadian Advisers
+		id = CAR_canadian_advisors
+		icon = GFX_goal_canada
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_join_entente
+		}
+		relative_position_id = CAR_join_entente
+		x = 2
+		y = 1
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_canadian_advisors"
+			add_ideas = CAR_canadian_advisors_idea
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Latin economic Union
+		id = CAR_latin_economic_union
+		icon = GFX_goal_generic_positive_trade_relations
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_french_advisers
+		}
+		prerequisite = {
+			focus = CAR_iberian_trade
+		}
+		relative_position_id = CAR_join_entente
+		x = -1
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_latin_economic_union"
+			add_political_power = 100
+			custom_effect_tooltip = CAR_economic_cooperation
+			hidden_effect = {
+				add_opinion_modifier = { target = POR modifier = mediterranean_economic_block }
+				reverse_add_opinion_modifier = { target = POR modifier = mediterranean_economic_block }
+				POR = { add_ideas = CAR_economic_cooperation_idea }
+
+				add_opinion_modifier = { target = NFA modifier = mediterranean_economic_block }
+				reverse_add_opinion_modifier = { target = NFA modifier = mediterranean_economic_block }
+				NFA = { add_ideas = CAR_economic_cooperation_idea }
+
+				if = {
+					limit = {SIC = { is_in_faction_with = CAN } }
+					add_opinion_modifier = { target = SIC modifier = mediterranean_economic_block }
+					reverse_add_opinion_modifier = { target = SIC modifier = mediterranean_economic_block }
+					SIC = { add_ideas = CAR_economic_cooperation_idea }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {# Joint Military Training
+		id = CAR_joint_military_training
+		icon = GFX_goal_POR_portugese_youth
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_french_advisers
+		}
+		prerequisite = {
+			focus = CAR_canadian_advisors
+		}
+		relative_position_id = CAR_join_entente
+		x = 1
+		y = 2
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_joint_military_training"
+			army_experience = 25
+			air_experience = 25
+			navy_experience = 25
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+
+### Army Policy ###
+	focus = {# Legión Española
+		id = CAR_legion_espanola
+		icon = GFX_focus_generic_strike_at_democracy1
+		available = { has_country_flag = CAR_carlist_restoration }
+		cost = 7.00
+		x = 24
+		y = 0
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_legion_espanola"
+			army_experience = 25
+			air_experience = 25
+			navy_experience = 25
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+	focus = {# Modern Tercio
+		id = CAR_modern_terrico
+		icon = GFX_goal_military_academy
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_legion_espanola
+		}
+		mutually_exclusive = {
+			focus = CAR_army_of_maneuver
+		}
+		relative_position_id = CAR_legion_espanola
+		x = -3
+		y = 1
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_SF = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_modern_terrico"
+			add_tech_bonus = {
+				name = CAR_modern_terrico
+				bonus = 1
+				uses = 2
+				category = cat_superior_firepower
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Requeté
+		id = CAR_requetes
+		icon = GFX_goal_authority
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_modern_terrico
+		}
+		relative_position_id = CAR_legion_espanola
+		x = -4
+		y = 2
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_requetes"
+			add_ideas = CAR_requetes_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {# Artillery Effort
+		id = CAR_artillery_effort
+		icon = GFX_goal_national_artillery
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_modern_terrico
+		}
+		relative_position_id = CAR_legion_espanola
+		x = -2
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_artillery_effort"
+			add_tech_bonus = {
+				name = CAR_artillery_effort
+				bonus = 0.5
+				uses = 2
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Civil Guard
+		id = CAR_guardia_civil
+		icon = GFX_goal_conscription
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_requetes
+		}
+		prerequisite = {
+			focus = CAR_artillery_effort
+		}
+		prerequisite = {
+			focus = CAR_requetes
+		}
+		prerequisite = {
+			focus = CAR_artillery_effort
+		}
+		relative_position_id = CAR_legion_espanola
+		x = -3
+		y = 3
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_guardia_civil"
+			add_ideas = CAR_guardia_civil_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {# devoted officers
+		id = CAR_devoted_officers
+		icon = GFX_focus_secret_rearmament
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_modern_terrico
+			focus = CAR_army_of_maneuver
+		}
+		relative_position_id = CAR_legion_espanola
+		x = 0
+		y = 2
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_devoted_officers"
+			add_ideas = CAR_devoted_officers_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
+	}
+	focus = {# word of God
+		id = CAR_word_of_god
+		icon = GFX_goal_generic_propaganda
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_devoted_officers
+		}
+		relative_position_id = CAR_legion_espanola
+		x = -1
+		y = 3
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_word_of_god"
+			add_tech_bonus = {
+				name = CAR_word_of_god
+				bonus = 1
+				uses = 2
+				technology = radio
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Mixed Brigades
+		id = CAR_mixed_brigades
+		icon = GFX_focus_RAJ_lions_of_the_great_war
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_devoted_officers
+		}
+		relative_position_id = CAR_legion_espanola
+		x = 1
+		y = 3
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_mixed_brigades"
+			add_tech_bonus = {
+				name = CAR_mixed_brigades
+				bonus = 1
+				uses = 3
+				category = support_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Army of Maneuver
+		id = CAR_army_of_maneuver
+		icon = GFX_goal_national_arsenal
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_legion_espanola
+		}
+		mutually_exclusive = {
+			focus = CAR_modern_terrico
+		}
+		relative_position_id = CAR_legion_espanola
+		x = 3
+		y = 1
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_MW = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_army_of_maneuver"
+			add_tech_bonus = {
+				name = CAR_army_of_maneuver
+				bonus = 1
+				uses = 2
+				category = cat_mobile_warfare
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Spanish Auto Industry
+		id = CAR_mechanized_effort
+		icon = GFX_goal_generic_army_motorized
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_army_of_maneuver
+		}
+		relative_position_id = CAR_legion_espanola
+		x = 2
+		y = 2
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_mechanized_effort"
+			add_ideas = CAR_spanish_auto_industry
+			add_tech_bonus = {
+				name = CAR_mechanized_effort
+				bonus = 1
+				uses = 1
+				category = cat_mechanized_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Armoured Cars
+		id = CAR_armored_cars
+		icon = GFX_goal_generic_army_artillery
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_army_of_maneuver
+		}
+		relative_position_id = CAR_legion_espanola
+		x = 4
+		y = 2
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_armored_cars"
+			add_ideas = CAR_armored_cars_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {# Navarran Lancers
+		id = CAR_navarran_lancers
+		icon = GFX_goal_generic_army_tanks
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_mechanized_effort
+		}
+		prerequisite = {
+			focus = CAR_armored_cars
+		}
+		relative_position_id = CAR_legion_espanola
+		x = 3
+		y = 3
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_navarran_lancers"
+			add_tech_bonus = {
+				name = CAR_navarran_lancers
+				bonus = 1
+				uses = 3
+				category = armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# A Catholic Army
+		id = CAR_a_catholic_army
+		icon = GFX_goal_generic_army_doctrines
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_guardia_civil
+			focus = CAR_navarran_lancers
+		}
+		prerequisite = {
+			focus = CAR_word_of_god
+		}
+		prerequisite = {
+			focus = CAR_mixed_brigades
+		}
+		relative_position_id = CAR_legion_espanola
+		x = 0
+		y = 4
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_a_catholic_army"
+			army_experience = 25
+			add_tech_bonus = {
+				name = CAR_a_catholic_army
+				bonus = 1
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESEARCH }
+	}
+### Navy ###
+	focus = {# Armada Española
+		id = CAR_armada_espanola
+		icon = GFX_goal_generic_build_navy
+		available = { has_country_flag = CAR_carlist_restoration }
+		cost = 7.00
+		x = 32
+		y = 0
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_armada_espanola"
+			navy_experience = 10
+			add_tech_bonus = {
+				name = CAR_armada_espanola
+				bonus = 1
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Merchant Marine
+		id = CAR_upgrade_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_armada_espanola
+		}
+		relative_position_id = CAR_armada_espanola
+		x = -2
+		y = 1
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_upgrade_dockyards"
+			add_ideas = ITA_merchant_marine_idea
+		}
+	}
+	focus = {# Devoted Captains
+		id = CAR_devoted_captains
+		icon = GFX_focus_generic_diplomatic_treaty
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_armada_espanola
+		}
+		relative_position_id = CAR_armada_espanola
+		x = 0
+		y = 1
+		ai_will_do = { factor = 30 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_devoted_captains"
+			navy_experience = 25
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS }
+	}
+	focus = {# Infantería de marina
+		id = CAR_infanteria_de_marina
+		icon = GFX_goal_generic_amphibious_assault
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_armada_espanola
+		}
+		relative_position_id = CAR_armada_espanola
+		x = 2
+		y = 1
+		ai_will_do = {	factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_infanteria_de_marina"
+			add_tech_bonus = {
+				name = CAR_infanteria_de_marina
+				bonus = 1
+				uses = 1
+				category = marine_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Grand Navy
+		id = CAR_grand_navy
+		icon = GFX_goal_generic_sea_focused_navy
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_upgrade_dockyards
+		}
+		prerequisite = {
+			focus = CAR_devoted_captains
+		}
+		prerequisite = {
+			focus = CAR_infanteria_de_marina
+		}
+		mutually_exclusive = {
+			focus = CAR_defend_the_coast
+		}
+		relative_position_id = CAR_armada_espanola
+		x = -1
+		y = 2
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_FIB = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_grand_navy"
+			add_tech_bonus = {
+				name = CAR_grand_navy
+				bonus = 1
+				uses = 2
+				category = cat_fleet_in_being
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Modern Galleons
+		id = CAR_modern_galleons
+		icon = GFX_goal_generic_navy_battleship
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_grand_navy
+		}
+		relative_position_id = CAR_armada_espanola
+		x = -1
+		y = 3
+		ai_will_do = {	factor = 10	}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_modern_galleons"
+			add_tech_bonus = {
+				name = CAR_modern_galleons
+				bonus = 1
+				uses = 1
+				category = ca_tech
+				category = bb_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Battle Cruiser Support
+		id = CAR_battle_cruisers_support
+		icon = GFX_goal_generic_navy_cruiser
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_modern_galleons
+		}
+		relative_position_id = CAR_armada_espanola
+		x = -2
+		y = 4
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_battle_cruisers_support"
+			add_tech_bonus = {
+				name = CAR_battle_cruisers_support
+				bonus = 1
+				uses = 2
+				category = ca_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Defend the Coast
+		id = CAR_defend_the_coast
+		icon = GFX_goal_generic_coastal_navy
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_infanteria_de_marina
+		}
+		prerequisite = {
+			focus = CAR_devoted_captains
+		}
+		prerequisite = {
+			focus = CAR_upgrade_dockyards
+		}
+		mutually_exclusive = {
+			focus = CAR_grand_navy
+		}
+		relative_position_id = CAR_armada_espanola
+		x = 1
+		y = 2
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_TI = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_defend_the_coast"
+			navy_experience = 10
+			add_tech_bonus = {
+				name = CAR_defend_the_coast
+				bonus = 1
+				uses = 2
+				category = cat_trade_interdiction
+			}
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Coast Guard
+		id = CAR_coast_guard
+		icon = GFX_goal_generic_navy_anti_submarine
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_defend_the_coast
+		}
+		relative_position_id = CAR_armada_espanola
+		x = 1
+		y = 3
+		ai_will_do = {	factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_coast_guard"
+			add_tech_bonus = {
+				name = CAR_coast_guard
+				bonus = 1
+				uses = 2
+				category = dd_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Cruiser Support
+		id = CAR_cruiser_support
+		icon = GFX_goal_EGY_sultan_fleet
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_coast_guard
+		}
+		relative_position_id = CAR_armada_espanola
+		x = 2
+		y = 4
+		ai_will_do = {	factor = 10	}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_cruiser_support"
+			add_tech_bonus = {
+				name = CAR_cruiser_support
+				bonus = 1
+				uses = 2
+				category = cl_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Protect our Colonies
+		id = CAR_protect_our_colonies
+		icon = GFX_goal_agrarian_reform
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_modern_galleons
+			focus = CAR_coast_guard
+		}
+		relative_position_id = CAR_armada_espanola
+		x = 0
+		y = 4
+		ai_will_do = {	factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_protect_our_colonies"
+			290 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					province = 9945
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					province = 12100
+					instant_build = yes
+				}
+			}
+			297 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					province = 1903
+					instant_build = yes
+				}
+			}
+			297 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 8244
+					instant_build = yes
+				}
+			}
+			699 = {
+				add_building_construction = {
+					type = bunker
+					level = 2
+					province = 12857
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Masters of the Sea
+		id = CAR_masters_of_the_sea
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_battle_cruisers_support
+			focus = CAR_cruiser_support
+		}
+		prerequisite = {
+			focus = CAR_protect_our_colonies
+		}
+		relative_position_id = CAR_armada_espanola
+		x = 0
+		y = 5
+		ai_will_do = {	factor = 30	}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_masters_of_the_sea"
+			navy_experience = 25
+			add_tech_bonus = {
+				name = CAR_masters_of_the_sea
+				bonus = 1
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH }
+	}
+### Air Force
+	focus = {# Aviación Legionaria
+		id = CAR_aviacion_legionaria
+		icon = GFX_goal_expand_the_luftwaffe
+		available = { has_country_flag = CAR_carlist_restoration }
+		cost = 7.00
+		x = 39
+		y = 0
+		ai_will_do = {	factor = 10	}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_aviacion_legionaria"
+			air_experience = 10
+			add_tech_bonus = {
+				name = CAR_aviacion_legionaria
+				bonus = 1
+				uses = 2
+				category = air_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+	focus = {# Upgrade Air Ports
+		id = CAR_upgrade_air_ports
+		icon = GFX_goal_generic_production2
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_aviacion_legionaria
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = -2
+		y = 1
+		ai_will_do = { factor = 10}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_upgrade_air_ports"
+			175 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			169 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# New Pilots
+		id = CAR_new_pilots
+		icon = GFX_goal_generic_cavalry
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_aviacion_legionaria
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = 0
+		y = 1
+		ai_will_do = {	factor = 10	}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_new_pilots"
+			air_experience = 25
+		}
+		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+	focus = {# Aviation Industry
+		id = CAR_aviation_industry
+		icon = GFX_goal_generic_air_production
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_aviacion_legionaria
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = 2
+		y = 1
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_aviation_industry"
+			add_ideas = CAR_aviation_industry_idea
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Air Supremacy
+		id = CAR_air_supremecy
+		icon = GFX_goal_poland_goal
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_upgrade_air_ports
+		}
+		prerequisite = {
+			focus = CAR_new_pilots
+		}
+		prerequisite = {
+			focus = CAR_aviation_industry
+		}
+		mutually_exclusive = {
+			focus = CAR_army_air_support
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = -1
+		y = 2
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_SD = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_air_supremecy"
+			add_tech_bonus = {
+				name = CAR_air_supremecy
+				bonus = 1
+				uses = 2
+				category = cat_strategic_destruction
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Fighter efforts
+		id = CAR_fighters
+		icon = GFX_goal_generic_air_fighter
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_air_supremecy
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = -1
+		y = 3
+		ai_will_do = {	factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_fighters"
+			add_tech_bonus = {
+				name = CAR_fighters
+				bonus = 0.5
+				uses = 2
+				category = fighter_techs
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Army Air Support
+		id = CAR_army_air_support
+		icon = GFX_goal_generic_occupy_start_war
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_aviation_industry
+		}
+		prerequisite = {
+			focus = CAR_new_pilots
+		}
+		prerequisite = {
+			focus = CAR_upgrade_air_ports
+		}
+		mutually_exclusive = {
+			focus = CAR_air_supremecy
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = 1
+		y = 2
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_BSP = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_army_air_support"
+			add_tech_bonus = {
+				name = CAR_army_air_support
+				bonus = 1
+				uses = 2
+				category = cat_battlefield_support
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Bomber Effort
+		id = CAR_bombers
+		icon = GFX_goal_generic_air_bomber
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_army_air_support
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = 1
+		y = 3
+		ai_will_do = { factor = 10	}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_bombers"
+			add_tech_bonus = {
+				name = CAR_bombers
+				bonus = 0.5
+				uses = 2
+				category = tactical_bomber
+				category = cat_strategic_bomber
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Voice of Heaven
+		id = CAR_voice_of_heaven
+		icon = GFX_goal_generic_propaganda
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_fighters
+			focus = CAR_bombers
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = -2
+		y = 4
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_voice_of_heaven"
+			add_tech_bonus = {
+				name = CAR_voice_of_heaven
+				bonus = 1
+				uses = 2
+				category = radar_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Paratroopers
+		id = CAR_paratroopers
+		icon = GFX_focus_generic_paratrooper
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_fighters
+			focus = CAR_bombers
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = 0
+		y = 4
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_paratroopers"
+			add_tech_bonus = {
+				name = CAR_paratroopers
+				bonus = 1
+				uses = 1
+				category = para_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {# Colonial Air Port
+		id = CAR_colonial_air_ports
+		icon = GFX_goal_generic_construction
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_fighters
+			focus = CAR_bombers
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = 2
+		y = 4
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_colonial_air_ports"
+			290 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			699 = {
+				if = {
+					limit = {
+						is_owned_by = CAR
+					}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			297 = {
+				if = {
+					limit = { is_owned_by = CAR	}
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	focus = {# Rule the Skies
+		id = CAR_rule_the_skies
+		icon = GFX_goal_generic_air_doctrine
+		cost = 6.00
+		prerequisite = {
+			focus = CAR_voice_of_heaven
+		}
+		prerequisite = {
+			focus = CAR_paratroopers
+		}
+		prerequisite = {
+			focus = CAR_colonial_air_ports
+		}
+		relative_position_id = CAR_aviacion_legionaria
+		x = 0
+		y = 5
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_rule_the_skies"
+			air_experience = 10
+			add_tech_bonus = {
+				name = CAR_rule_the_skies
+				bonus = 1
+				uses = 2
+				category = air_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+
+### Foreign Policies
+
+focus = {
+	id = CAR_foreign_focus
+	icon = GFX_goal_generic_join_faction
+	mutually_exclusive = { focus = CAR_join_entente }
+	x = 46
+	y = 0
+	cost = 5
+	available = { is_subject = no
+	has_country_flag = CAR_carlist_restoration
+	owns_state = 41
+	}
+	ai_will_do = {
+		factor = 50
+		modifier = {
+			factor = 0
+			has_game_rule = {
+				rule = CAR_foreign_policy
+				option = CAR_ENTENTE
+			}
+		}
+		modifier = {
+			factor = 100
+			OR = {
+				has_game_rule = {
+					rule = CAR_foreign_policy
+					option = CAR_MED_PACT
+				}
+				has_game_rule = {
+					rule = CAR_foreign_policy
+					option = CAR_MED_PACT_ILLYRIA
+				}
+				has_game_rule = {
+					rule = CAR_foreign_policy
+					option = CAR_MED_PACT_AUSTRIA
+				}
+			}
+		}
+	}
+	completion_reward = {
+		add_political_power = 40
+		create_faction =  "Mediterranean Bloc"
+	}
+}
+
+focus = {
+	id = CAR_invite_italy
+	icon = GFX_goal_italianfed
+	bypass = {
+		NOT = {
+			country_exists = ITA
+			country_exists = SIC
+		}
+	}
+	available = {
+		OR = {
+			country_exists = SIC
+			ITA = {
+				exists = yes
+				has_war = no
+				is_subject = no
+				NOT = { has_government = radical_socialist }
+			}
+			SRI = {
+				exists = yes
+				has_war = no
+				is_subject = no
+				has_country_flag = SRI_catholicisis
+			}
+		}
+	}
+	prerequisite = { focus = CAR_foreign_focus }
+	x = 47
+	y = 1
+	cost = 2
+	ai_will_do = {
+		factor = 25
+	}
+	completion_reward = {
+		if = {
+			limit = { NOT = { country_exists = SIC } }
+			country_event = { id = carfor.409 }
+		}
+		if = {
+			limit = { country_exists = SIC }
+			country_event = { id = carfor.509 }
+		}
+	}
+}
+
+focus = {
+	id = CAR_invite_austria
+	icon = GFX_goal_austria
+	mutually_exclusive = { focus = CAR_invite_croatia }
+	available = {
+		AUS = { 
+			has_war = no
+			is_subject = no
+			NOT = { has_socialist_government = yes }
+		}
+	}
+	prerequisite = { focus = CAR_foreign_focus }
+	x = 49
+	y = 2
+	cost = 2
+	ai_will_do = {
+		factor = 25
+		modifier = {
+			factor = 100
+			has_game_rule = {
+				rule = CAR_foreign_policy
+				option = CAR_MED_PACT_AUSTRIA
+			}
+		}
+		modifier = {
+			factor = 0.2
+			has_game_rule = {
+				rule = CAR_foreign_policy
+				option = CAR_MED_PACT_ILLYRIA
+			}
+		}
+	}
+	completion_reward = {
+		country_event = { id = carfor.424 }
+	}
+}
+
+focus = {
+	id = CAR_invite_croatia
+	icon = GFX_goal_illyria
+	mutually_exclusive = { focus = CAR_invite_austria }
+	bypass = {
+		CRO = {
+			OR = {
+				country_exists = no
+				has_socialist_government = yes
+			}
+		}
+		AUS = {
+			OR = {
+				country_exists = no
+				has_socialist_government = yes
+			}
+		}
+	}
+	available = {
+		CRO = { 
+			has_war = no
+			is_subject = no
+			NOT = { has_socialist_government = yes }
+		}
+	}
+	prerequisite = { focus = CAR_invite_italy }
+	x = 47
+	y = 2
+	cost = 2
+	ai_will_do = {
+		factor = 25
+		modifier = {
+			factor = 100
+			has_game_rule = {
+				rule = CAR_foreign_policy
+				option = CAR_MED_PACT_ILLYRIA
+			}
+		}
+		modifier = {
+			factor = 0.2
+			has_game_rule = {
+				rule = CAR_foreign_policy
+				option = CAR_MED_PACT_AUSTRIA
+			}
+		}
+	}
+	completion_reward = {
+		country_event = { id = carfor.420 }
+	}
+}
+
+focus = {
+	id = CAR_invite_portugal
+	icon = GFX_goal_portugal
+	bypass = {
+		NOT = {
+			country_exists = POR
+		}
+	}
+	available = {
+		POR = { 
+			has_war = no
+			is_subject = no
+			NOT = { has_government = radical_socialist has_government = syndicalist has_government = totalist }
+		}
+	}
+	prerequisite = { focus = CAR_foreign_focus }
+	x = 43
+	y = 2
+	cost = 2
+	ai_will_do = {
+		factor = 25
+	}
+	completion_reward = {
+		country_event = { id = carfor.430 }
+	}
+}
+
+focus = {
+	id = CAR_invite_brazil
+	icon = GFX_goal_AIB
+	available = {
+		BRA = { 
+			has_war = no
+			is_subject = no
+			has_government = national_populist
+		}
+	}
+	prerequisite = { focus = CAR_invite_portugal }
+	x = 43
+	y = 3
+	cost = 2
+	ai_will_do = {
+		factor = 25
+	}
+	completion_reward = {
+		country_event = { id = carfor.448 }
+	}
+}
+
+focus = {
+	id = CAR_invite_france
+	icon = GFX_goal_natfrance
+	bypass = {
+		NOT = {
+			country_exists = NFA
+		}
+	}
+	available = {
+		NFA = {
+			is_subject = no
+			NOT = { has_government = radical_socialist has_government = syndicalist has_government = totalist }
+		}
+	}
+	prerequisite = { focus = CAR_foreign_focus }
+	x = 45
+	y = 1
+	cost = 2
+	ai_will_do = {
+		factor = 25
+	}
+	completion_reward = {
+		country_event = { id = carfor.440 }
+	}
+}
+
+focus = {
+	id = CAR_french_restoration
+	icon = GFX_goal_CAR_reconquista
+	will_lead_to_war_with = FRA
+	bypass = {
+		NOT = {
+			country_exists = FRA
+		}
+	}
+	available = {
+	
+	}
+	prerequisite = { focus = CAR_invite_france }
+	x = 45
+	y = 2
+	cost = 5
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 2
+			is_in_faction_with = NFA
+		}
+	}
+	completion_reward = {
+		add_ideas = CAR_end_the_reds_idea
+		if = {
+			limit = {
+				is_in_faction_with = NFA
+			}
+			NFA = {
+				create_wargoal = { type = annex_everything target = FRA }
+			}
+		}
+		else = {
+			create_wargoal = {
+				type = annex_everything
+				target = FRA
+			}
+		}
+	}
+}
+
+focus = {
+	id = CAR_strike_german_scum
+	icon = GFX_goal_renewed_militarism
+		bypass = {
+			NOT = {
+				country_exists = GEA
+			}
+			NOT = {
+				country_exists = MOR
+			}
+		}
+	will_lead_to_war_with = GER
+	will_lead_to_war_with = MOR
+	will_lead_to_war_with = GEA
+	available = {
+		
+	}
+	prerequisite = {
+		focus = CAR_french_restoration
+	}
+	prerequisite = {
+		focus = CAR_invite_portugal
+	}
+	x = 45
+	y = 3
+	cost = 6
+	ai_will_do = {
+	factor = 10
+	}
+	completion_reward = {
+		create_wargoal = { type = annex_everything target = MOR }
+		add_state_claim	= 461
+		add_state_claim	= 462
+		add_state_claim = 684
+	}
+}	
+
+focus = {
+	id = CAR_help_pope
+	icon = GFX_BEL_Improve_Catholic_Relations
+	available = {
+		SRI = {
+			NOT = {
+				owns_state = 2
+			}
+		}
+	}
+	prerequisite = { 
+		focus = CAR_french_restoration
+	}
+	prerequisite = {
+		focus = CAR_invite_croatia
+		focus = CAR_invite_austria
+	}
+	x = 47
+	y = 3
+	cost = 5
+	ai_will_do = {
+	factor = 10
+	}
+	completion_reward = {
+		if = {
+			limit = { country_exists = PAP }
+			PAP = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_1
+					amount = 5000
+					producer = CAR
+				}
+			}
+		}
+		else = {
+			ITA = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_1
+					amount = 5000
+					producer = CAR
+				}
+			}
+		}
+	}
+}
+
+##################
+###Dank Focuses###
+##################
+	focus = {# Plus Ultra
+		id = CAR_plus_ultra
+		icon = GFX_CAR_plus_ultra
+		cost = 7
+		available = {
+			has_completed_focus = CAR_call_for_unity
+			OR = {
+				has_completed_focus = CAR_help_pope
+				has_completed_focus = CAR_latin_economic_union
+			}
+		}
+		x = 50
+		y = 4
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_plus_ultra"
+			add_political_power = 100
+			add_war_support = 0.05
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# The Cuban Gambit
+		id = CAR_cuban_gambit
+		icon = GFX_CAR_cuban_gambit
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_plus_ultra
+		}
+		relative_position_id = CAR_plus_ultra
+		x = 0
+		y = 1
+		
+		bypass = {
+			owns_state = 820
+			owns_state = 315
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_cuban_gambit"
+			add_political_power = 25
+			820 = { add_claim_by = CAR }
+			818 = { add_claim_by = CAR }
+			315 = { add_claim_by = CAR }
+			country_event = sprc.330
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Rosa Blanca
+		id = CAR_cuba_secured
+		icon = GFX_CAR_cuba_secured
+		cost = 5.00
+		prerequisite = {
+			focus = CAR_cuban_gambit
+		}
+		relative_position_id = CAR_cuban_gambit
+		x = 0
+		y = 1
+		
+		available = {
+			owns_state = 820
+			owns_state = 315
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_cuba_secured"
+			add_political_power = 100
+			820 = { add_core_of = CAR }
+			315 = { add_core_of = CAR }
+			IF = {
+				limit = {
+					owns_state = 818
+				}
+				818 = { add_core_of = CAR }
+			}
+			country_event = sprc.335
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# The French Connection
+		id = CAR_conquer_haiti
+		icon = GFX_CAR_conquer_haiti
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_cuba_secured
+		}
+		relative_position_id = CAR_cuba_secured
+		x = -2
+		y = 1
+		
+		bypass = {
+			owns_state = 318
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_haiti"
+			create_wargoal = {
+				type = annex_everything
+				target = HAI
+			}
+			318 = { add_claim_by = CAR }
+			add_war_support = 0.025
+			add_stability = 0.025
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Puerto Rico's Folly
+		id = CAR_conquer_puertorico
+		icon = GFX_CAR_conquer_puertorico
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_cuba_secured
+		}
+		relative_position_id = CAR_cuba_secured
+		x = 0
+		y = 1
+		
+		bypass = {
+			owns_state = 686
+		}
+		
+		available = {
+			686 = { #Puerto Rico
+				owner = {
+					NOT = {
+						tag = CAR
+						is_in_faction_with = CAR
+						is_subject_of = CAR
+					}
+				}
+			}
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_california"
+                owner = {
+                    create_wargoal = {
+                        type = annex_everything
+                        target = 686.owner
+                    }
+                }
+			686 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Santana's Legacy
+		id = CAR_conquer_dominicanrepublic
+		icon = GFX_CAR_conquer_dominicanrepublic
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_cuba_secured
+		}
+		relative_position_id = CAR_cuba_secured
+		x = 2
+		y = 1
+		
+		bypass = {
+			owns_state = 319
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_dominicanrepublic"
+			create_wargoal = {
+				type = annex_everything
+				target = DOM
+			}
+			319 = { add_claim_by = CAR }
+			add_war_support = 0.025
+			add_stability = 0.025
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# New World Reconquista
+		id = CAR_new_reconquista
+		icon = GFX_CAR_new_reconquista
+		cost = 7.00
+		available = {
+			CAR = {
+				owns_state = 315
+				owns_state = 319
+			}
+		}
+		prerequisite = {
+			focus = CAR_conquer_dominicanrepublic
+		}
+		prerequisite = {
+			focus = CAR_conquer_haiti
+		}
+		relative_position_id = CAR_conquer_puertorico
+		x = 0
+		y = 1
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_new_reconquista"
+			IF = {
+				limit = {
+					owns_state = 319
+				}
+				319 = { add_core_of = CAR }
+			}
+			IF = {
+				limit = {
+					owns_state = 686
+				}
+				686 = { add_core_of = CAR }
+			}
+			set_cosmetic_tag = CAR_empire
+			add_political_power = 200
+			news_event = { id = worldnews.500 days = 7 }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Heirs to Cortez
+		id = CAR_conquer_mexico
+		icon = GFX_CAR_conquer_mexico
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_new_reconquista
+		}
+		relative_position_id = CAR_new_reconquista
+		x = 1
+		y = 1
+		
+		bypass = {
+			owns_state = 277
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_mexico"
+			create_wargoal = {
+				type = annex_everything
+				target = MEX
+			}
+			474 = { add_claim_by = CAR }
+			475 = { add_claim_by = CAR }
+			476 = { add_claim_by = CAR }
+			485 = { add_claim_by = CAR }
+			477 = { add_claim_by = CAR }
+			277 = { add_claim_by = CAR }
+			478 = { add_claim_by = CAR }
+			479 = { add_claim_by = CAR }
+			481 = { add_claim_by = CAR }
+			480 = { add_claim_by = CAR }
+			482 = { add_claim_by = CAR }
+			483 = { add_claim_by = CAR }
+			484 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Pacify Centro
+		id = CAR_conquer_centro
+		icon = GFX_CAR_conquer_centro
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_new_reconquista
+		}
+		relative_position_id = CAR_new_reconquista
+		x = 3
+		y = 1
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_centro"
+			create_wargoal = {
+				type = annex_everything
+				target = PAN
+		}
+		create_wargoal = {
+				type = annex_everything
+				target = CEN
+		}
+		create_wargoal = {
+				type = annex_everything
+				target = COS
+		}
+		create_wargoal = {
+				type = annex_everything
+				target = NIC
+		}
+		create_wargoal = {
+				type = annex_everything
+				target = HON
+		}
+		create_wargoal = {
+				type = annex_everything
+				target = ELS
+		}
+		create_wargoal = {
+				type = annex_everything
+				target = GUA
+		}
+			set_country_flag = CAR_centro_wars_unlocked
+			316 = { add_claim_by = CAR }
+			317 = { add_claim_by = CAR }
+			1071 = { add_claim_by = CAR }
+			1070 = { add_claim_by = CAR }
+			685 = { add_claim_by = CAR }
+			842 = { add_claim_by = CAR }
+			312 = { add_claim_by = CAR }
+			314 = { add_claim_by = CAR }
+			313 = { add_claim_by = CAR }
+			311 = { add_claim_by = CAR }
+			854 = { add_claim_by = CAR }
+			304 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Smash Colombia
+		id = CAR_conquer_colombia
+		icon = GFX_CAR_conquer_colombia
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_new_reconquista
+		}
+		relative_position_id = CAR_new_reconquista
+		x = -3
+		y = 1
+		
+		bypass = {
+			owns_state = 306
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_colombia"
+			create_wargoal = {
+				type = annex_everything
+				target = COL
+			}
+			493 = { add_claim_by = CAR }
+			306 = { add_claim_by = CAR }
+			486 = { add_claim_by = CAR }
+			851 = { add_claim_by = CAR }
+			853 = { add_claim_by = CAR }
+			852 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Bolivarian Black Gold
+		id = CAR_conquer_venezuela
+		icon = GFX_CAR_conquer_venezuela
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_new_reconquista
+		}
+		relative_position_id = CAR_new_reconquista
+		x = -1
+		y = 1
+		
+		bypass = {
+			owns_state = 849
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_venezuela"
+			create_wargoal = {
+				type = annex_everything
+				target = VEN
+			}
+			489 = { add_claim_by = CAR }
+			849 = { add_claim_by = CAR }
+			307 = { add_claim_by = CAR }
+			850 = { add_claim_by = CAR }
+			912 = { add_claim_by = CAR }
+			1036 = { add_claim_by = CAR }
+			488 = { add_claim_by = CAR }
+			691 = { add_claim_by = CAR }
+			695 = { add_claim_by = CAR }
+			1078 = { add_claim_by = CAR }
+			1079 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Conquer Ecuador
+		id = CAR_conquer_ecuador
+		icon = GFX_CAR_conquer_ecuador
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_colombia
+		}
+		relative_position_id = CAR_conquer_colombia
+		x = 0
+		y = 1
+		
+		bypass = {
+			owns_state = 305
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_ecuador"
+			create_wargoal = {
+				type = annex_everything
+				target = ECU
+			}
+			305 = { add_claim_by = CAR }
+			490 = { add_claim_by = CAR }
+			649 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# Ode to Pizarro
+		id = CAR_conquer_peru
+		icon = GFX_CAR_conquer_peru
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_colombia
+		}
+		relative_position_id = CAR_conquer_venezuela
+		x = 0
+		y = 1
+		
+		bypass = {
+			owns_state = 303
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_ecuador"
+			create_wargoal = {
+				type = annex_everything
+				target = PRU
+			}
+			303 = { add_claim_by = CAR }
+			845 = { add_claim_by = CAR }
+			491 = { add_claim_by = CAR }
+			494 = { add_claim_by = CAR }
+			492 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# The Bounty of Cerro Potosi
+		id = CAR_conquer_bolivia
+		icon = GFX_CAR_conquer_bolivia
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_peru
+		}
+		relative_position_id = CAR_conquer_peru
+		x = -1
+		y = 1
+		
+		bypass = {
+			owns_state = 302
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_bolivia"
+			create_wargoal = {
+				type = annex_everything
+				target = BOL
+			}
+			302 = { add_claim_by = CAR }
+			847 = { add_claim_by = CAR }
+			487 = { add_claim_by = CAR }
+			847 = { add_claim_by = CAR }
+			848 = { add_claim_by = CAR }
+			1073 = { add_claim_by = CAR }
+			855 = { add_claim_by = CAR }
+			1040 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+	focus = {# alonch land
+		id = CAR_conquer_chile
+		icon = GFX_CAR_conquer_chile
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_peru
+		}
+		relative_position_id = CAR_conquer_peru
+		x = 1
+		y = 1
+		
+		bypass = {
+			owns_state = 279
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_chile"
+			create_wargoal = {
+				type = annex_everything
+				target = CHL
+			}
+			279 = { add_claim_by = CAR }
+			872 = { add_claim_by = CAR }
+			873 = { add_claim_by = CAR }
+			506 = { add_claim_by = CAR }
+			874 = { add_claim_by = CAR }
+			507 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+		focus = {# la plata
+		id = CAR_conquer_la_plata
+		icon = GFX_CAR_conquer_la_plata
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_chile
+			focus = CAR_conquer_bolivia
+		}
+		relative_position_id = CAR_conquer_peru
+		x = 0
+		y = 2
+		
+		bypass = {
+			owns_state = 278
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_la_plata"
+			create_wargoal = {
+				type = annex_everything
+				target = ARG
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = PAR
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = URG
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = FOP
+			}
+			1027 = { add_claim_by = CAR }
+			688 = { add_claim_by = CAR }
+			301 = { add_claim_by = CAR }
+			903 = { add_claim_by = CAR }
+			901 = { add_claim_by = CAR }
+			509 = { add_claim_by = CAR }
+			1074 = { add_claim_by = CAR }
+			902 = { add_claim_by = CAR }
+			278 = { add_claim_by = CAR }
+			449 = { add_claim_by = CAR }
+			511 = { add_claim_by = CAR }
+			579 = { add_claim_by = CAR }
+			512 = { add_claim_by = CAR }
+			1029 = { add_claim_by = CAR }
+			1028 = { add_claim_by = CAR }
+			299 = { add_claim_by = CAR }
+			720 = { add_claim_by = CAR }
+			300 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+		focus = {# yucatan
+		id = CAR_conquer_yucatan
+		icon = GFX_CAR_conquer_yucatan
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_centro
+		}
+		relative_position_id = CAR_conquer_centro
+		x = 0
+		y = 1
+		
+		bypass = {
+			owns_state = 474
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_yucatan"
+                owner = {
+                    create_wargoal = {
+                        type = annex_everything
+                        target = 474.owner
+                    }
+                }
+			474 = { add_claim_by = CAR }
+	}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+		focus = {# florida
+		id = CAR_conquer_florida
+		icon = GFX_CAR_conquer_florida
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_mexico
+		}
+		relative_position_id = CAR_conquer_mexico
+		x = 0
+		y = 1
+		
+		bypass = {
+			owns_state = 366
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_florida"
+                owner = {
+                    create_wargoal = {
+                        type = annex_everything
+                        target = 366.owner
+                    }
+                }
+			366 = { add_claim_by = CAR }
+			1171 = { add_claim_by = CAR }
+			1172 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+		focus = {# california
+		id = CAR_conquer_california
+		icon = GFX_CAR_conquer_california
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_florida
+			focus = CAR_conquer_yucatan
+		}
+		relative_position_id = CAR_conquer_florida
+		x = 1
+		y = 1
+		
+		bypass = {
+			owns_state = 798
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_california"
+                owner = {
+                    create_wargoal = {
+                        type = annex_everything
+                        target = 797.owner
+                    }
+                }
+			798 = { add_claim_by = CAR }
+			829 = { add_claim_by = CAR }
+			378 = { add_claim_by = CAR }
+			797 = { add_claim_by = CAR }
+			385 = { add_claim_by = CAR }
+			386 = { add_claim_by = CAR }
+			473 = { add_claim_by = CAR }
+			471 = { add_claim_by = CAR }
+			740 = { add_claim_by = CAR }
+			1165 = { add_claim_by = CAR }
+			387 = { add_claim_by = CAR }
+			379 = { add_claim_by = CAR }
+			380 = { add_claim_by = CAR }
+			377 = { add_claim_by = CAR }
+			376 = { add_claim_by = CAR }
+			1157 = { add_claim_by = CAR }
+			1164 = { add_claim_by = CAR }
+			1166 = { add_claim_by = CAR }
+			833 = { add_claim_by = CAR }
+			375 = { add_claim_by = CAR }
+			1174 = { add_claim_by = CAR }
+			1096 = { add_claim_by = CAR }
+			1161 = { add_claim_by = CAR }
+			371 = { add_claim_by = CAR }
+			372 = { add_claim_by = CAR }
+			1156 = { add_claim_by = CAR }
+			373 = { add_claim_by = CAR }
+			1163 = { add_claim_by = CAR }
+			392 = { add_claim_by = CAR }
+			391 = { add_claim_by = CAR }
+			390 = { add_claim_by = CAR }
+			389 = { add_claim_by = CAR }
+			388 = { add_claim_by = CAR }
+			381 = { add_claim_by = CAR }
+			382 = { add_claim_by = CAR }
+			1150 = { add_claim_by = CAR }
+			1175 = { add_claim_by = CAR }
+			374 = { add_claim_by = CAR }
+			383 = { add_claim_by = CAR }
+			384 = { add_claim_by = CAR }
+			463 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+		focus = {# philippines
+		id = CAR_conquer_the_philippines
+		icon = GFX_CAR_conquer_philippines
+		cost = 7.00
+		prerequisite = {
+			focus = CAR_conquer_california
+		}
+		relative_position_id = CAR_conquer_california
+		x = 0
+		y = 1
+		
+		bypass = {
+			owns_state = 327
+		}
+		
+		ai_will_do = { factor = 0 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CAR_conquer_philippines"
+			create_wargoal = {
+				type = annex_everything
+				target = PHI
+			}
+			327 = { add_claim_by = CAR }
+			623 = { add_claim_by = CAR }
+			624 = { add_claim_by = CAR }
+			628 = { add_claim_by = CAR }
+			627 = { add_claim_by = CAR }
+			625 = { add_claim_by = CAR }
+			626 = { add_claim_by = CAR }
+			638 = { add_claim_by = CAR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+}

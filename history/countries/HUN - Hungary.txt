@@ -1,0 +1,516 @@
+capital = 43
+
+oob = "HUN"
+
+country_event = { id = kr.hungary.1 days = 2 }
+
+set_research_slots = 3
+
+set_technology = {
+	gwtank = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_mountaineers = 1
+	tech_support = 1
+	tech_recon = 1
+	gw_artillery = 1
+	early_fighter = 1
+	CAS1 = 1
+	naval_bomber1 = 1
+	basic_light_tank = 1
+
+}
+
+### Navy - MtG ###
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		weltkrieg_light_ship_hull = 1
+		contact_mine = 1
+		light_ship_hull_1936 = 1
+		weltkrieg_cruiser_hull = 1
+		cruiser_hull_1936 = 1
+		weltkrieg_submarine_hull = 1
+		submarine_hull_1936 = 1
+		cruiser_submarine = 1
+		carrier_conversion = 1
+		ship_hull_revived_ac = 1
+		weltkrieg_heavy_ship_hull = 1
+		heavy_ship_hull_1936 = 1
+
+		## Modules##
+		early_torpedo = 1
+		weltkrieg_naval_gunnery = 1
+		naval_ammo_one = 1
+		light_battery_one = 1
+		improved_ship_torpedo_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		weltkrieg_naval_gunnery = 1
+		naval_ammo_one = 1
+		basic_heavy_armor_scheme = 1
+		capital_gunnery_one = 1
+		weltkrieg_naval_gunnery = 1
+		naval_ammo_one = 1
+	}
+}
+
+### Navy - Non MtG ###
+
+if = {
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		weltkrieg_destroyer_nonmtg = 1
+		interwar_destroyer_nonmtg = 1
+		weltkrieg_cruiser_nonmtg = 1
+		interwar_cruiser_nonmtg = 1
+		weltkrieg_submarine_nonmtg = 1
+		interwar_submarine_nonmtg = 1
+		weltkrieg_armored_cruiser_nonmtg = 1
+		interwar_armored_cruiser_nonmtg = 1
+		weltkrieg_fast_battleship_nonmtg = 1
+		interwar_fast_battleship_nonmtg = 1
+		weltkrieg_dreadnought_nonmtg = 1
+		super_heavy_dreadnought_nonmtg = 1
+	}
+}
+
+add_opinion_modifier = { target = FRA modifier = embargo }
+add_opinion_modifier = { target = ENG modifier = embargo }
+add_opinion_modifier = { target = SRI modifier = embargo }
+
+set_war_support = 0.20
+
+set_politics = {
+	ruling_party = paternal_autocrat
+	last_election = "1930.11.9"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+    totalist = 1
+    radical_socialist = 0
+    syndicalist = 1
+    social_democrat = 9
+    social_liberal = 3
+    market_liberal = 24
+    social_conservative = 12
+    authoritarian_democrat = 9
+    paternal_autocrat = 32
+    national_populist = 9
+}
+
+add_ideas = {
+	HUN_Miklos_Kallay_de_Nagykallo_hog_pau
+	HUN_Endre_Bajcsy_Zsilinszky_for_pau
+	HUN_Imre_Oltvanyi_eco_ade
+	HUN_Kalman_Daranyi_de_Pusztaszentgyoergyi_sec_pau
+
+	#AUS_k_u_k_armee_bonus
+	HUN_financial_ties_broken
+	AUS_part_of_the_Empire
+}
+
+create_country_leader = {
+	name = "IV. Károly"
+	desc = "POLITICS_KARL_DESC"
+	picture = "Portrait_HUN_Blessed_Karl.png"
+	expire = "1965.1.1"
+	ideology = paternal_autocrat_subtype
+	traits = {}
+}
+
+create_country_leader = {
+	name = "IV. Károly"
+	desc = "POLITICS_KARL_DESC"
+	picture = "Portrait_HUN_Blessed_Karl.png"
+	expire = "1965.1.1"
+	ideology = authoritarian_democrat_subtype
+	traits = {}
+}
+
+create_country_leader = {
+	name = "Gyula Gömbös"
+	desc = ""
+	picture = "Portrait_HUN_Gyula_Gombos.png"
+	expire = "1936.10.6"
+	ideology = national_populist_subtype
+	traits = {}
+}
+
+create_country_leader = {
+	name = "István Tisza"
+	desc = ""
+	picture = "Portrait_HUN_Istvan_Tisza.png"
+	expire = "1941.10.6"
+	ideology = market_liberal_subtype
+	traits = {}
+}
+		
+create_country_leader = {
+	name = "Mihály Károlyi"
+	desc = "POLITICS_MIHALY_KAROLYI_DESC"
+	picture = "Portrait_HUN_Mihaly_Karolyi.png"
+	expire = "1965.1.1"
+	ideology = social_liberal_subtype
+	traits = {}
+}
+
+###########################
+### Generals & Admirals ###
+###########################
+
+### Field Marshal
+create_field_marshal = {
+	name = "Hugó Sónyi"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Hugo_Sonyi.png"
+	traits = {
+		offensive_doctrine
+		old_guard
+	}
+	id = 4001
+	skill = 1
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+create_field_marshal = {
+	name = "Ferenc Szombathelyi"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Ferenc_Szombathelyi.png"
+	traits = {
+		defensive_doctrine
+		politically_connected
+	}
+	id = 4031
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 1
+}
+create_field_marshal = {
+	name = "Samu Hazai"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Samu_Hazai.png"
+	traits = {
+		old_guard
+		logistics_wizard
+	}
+	id = 4034
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+create_field_marshal = {
+	name = "Sándor Szurmay"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Sandor_Szurmay.png"
+	traits = {
+		old_guard
+		defensive_doctrine
+	}
+	id = 4017
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+### Corps Commander
+create_corps_commander = {
+	name = "Károly Beregfy"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Karoly_Beregfy.png"
+	traits = {}
+	id = 4002
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Vilmos Nagy de Nagybaczon"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Vilmos_Nagy_de_Nagybaczon.png"
+	traits = {
+		old_guard
+		fortress_buster
+	}
+	id = 4003
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Kocsárd Janky"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Janky_Kocsard.png"
+	traits = {
+		old_guard
+		cavalry_officer
+		cavalry_leader
+	}
+	id = 4004
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Béla Miklós"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Bela_Miklos.png"
+	traits = {
+		armor_officer
+		panzer_leader
+		trait_engineer
+	}
+	id = 4005
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Géza Lakatos"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Geza_Lakatos.png"
+	traits = {
+		infantry_officer
+		infantry_leader
+		ambusher
+		skilled_staffer
+	}
+	id = 4006
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Dezső László"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Dezso_Laszlo.png"
+	traits = {}
+	id = 4007
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Gusztáv Jány"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Jany_Gusztav.png"
+	traits = {
+		old_guard
+		trait_engineer
+		skilled_staffer
+	}
+	id = 4008
+	skill = 3
+	attack_skill = 2
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Lajos Veress"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Lajos_Veress.png"
+	traits = {
+		armor_officer
+	}
+	id = 4009
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Vilmos Rőder"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Vilmos_Roder.png"
+	traits = {
+		old_guard
+		infantry_leader
+	}
+	id = 4010
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Gusztáv Denk"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Gusztav_Denk.png"
+	traits = {
+		old_guard
+		cavalry_officer
+		cavalry_leader
+	}
+	id = 4011
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Döme Sztójay"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Dome_Sztojay.png"
+	traits = {
+		old_guard
+		commando
+		trait_mountaineer
+	}
+	id = 4012
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Szilárd Bakay"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Szilard_Bakay.png"
+	traits = {
+		brilliant_strategist
+		skilled_staffer
+		organizer
+	}
+	id = 4013
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Károly Bartha"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Karoly_Bartha.png"
+	traits = {
+		old_guard
+		trait_engineer
+	}
+	id = 4014
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Elemér Gorondy-Novák"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Elemer_Gorondy-Novak.png"
+	traits = {
+		old_guard
+		cavalry_officer
+	}
+	id = 4015
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Ferenc Farkas"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Ferenc_Farkas.png"
+	traits = {
+		career_officer
+		ranger
+		commando
+	}
+	id = 4016
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Károly Kratochvil"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Karoly_Kratochvil.png"
+	traits = {
+		old_guard
+		infantry_officer
+		hill_fighter
+		trait_mountaineer
+	}
+	id = 4028
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Ferenc Feketehalmy-Czeydner"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Ferenc_Feketehalmy-Czeydner.png"
+	traits = {
+		bearer_of_artillery
+		infantry_officer
+	}
+	id = 4032
+	skill = 2
+	attack_skill = 3
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Lajos Csatay de Csataj"
+	portrait_path = "gfx/leaders/HUN/Portrait_HUN_Lajos_Csatay_de_Csataj.png"
+	traits = {
+		panzer_leader
+		career_officer
+	}
+	id = 4033
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+### Navy Leader
+create_navy_leader = { #Auto-Generated
+	name = "Miklós Horthy"
+	portrait_path = "gfx/leaders/HUN/Miklos_Horthy.png"
+	traits = {
+		old_guard_navy
+	}
+	id = 4018
+	skill = 2
+	attack_skill = 1
+	defense_skill = 2
+	maneuvering_skill = 2
+	coordination_skill = 2
+}

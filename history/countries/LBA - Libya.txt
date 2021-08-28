@@ -1,0 +1,287 @@
+﻿capital = 451
+
+oob = "LBA"
+
+set_technology = {
+	### Infantry ###
+	infantry_weapons = 1
+	camelry = 1
+}
+### Navy - MtG ###
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+        weltkrieg_light_ship_hull = 1        
+        contact_mine = 1        
+        light_ship_hull_1936 = 1        
+        weltkrieg_cruiser_hull = 1        
+        cruiser_hull_1936 = 1        
+
+		## Modules##
+        weltkrieg_naval_gunnery = 1        
+        light_battery_one = 1  
+        smoke_generator = 1   
+	}
+}
+
+### Navy - Non MtG ###
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+        weltkrieg_destroyer_nonmtg = 1        
+        interwar_destroyer_nonmtg = 1        
+        weltkrieg_cruiser_nonmtg = 1        
+        interwar_cruiser_nonmtg = 1        
+	}
+}
+
+set_research_slots = 1
+set_convoys = 20
+
+add_ideas = {
+	LBA_Wahbi_Ahmed_El_Bouri_hog_ade
+	LBA_Mahmoud_al_Montaser_for_ade
+	LBA_Abdel_Mawla_Lanki_eco_ade
+	LBA_Nuri_Killigil_sec_ade
+}
+
+add_ideas = {
+	LBA_home_of_the_Senussi
+	LBA_ottoman_naval_penetration
+	isolation
+	limited_exports
+	extensive_conscription
+}
+
+1009 = {#Kufra
+	set_state_flag = lba_zawiya_1
+	set_state_flag = lba_zawiya_2
+}
+273 = {	#Murzuq
+	set_state_flag = lba_zawiya_1
+}
+448 = {	#Tripoli
+	set_state_flag = lba_zawiya_1
+}
+452 = {	#Mersa Matruh
+	set_state_flag = lba_zawiya_1
+}
+514 = {	#Algerian Desert
+	set_state_flag = lba_zawiya_1
+}
+910 = {	#Niger
+	set_state_flag = lba_zawiya_1
+}
+515 = {	#Wadai
+	set_state_flag = lba_zawiya_1
+	set_state_flag = blocked_caravan
+}
+556 = {	#Timbuktu
+	set_state_flag = blocked_caravan
+}
+
+add_dynamic_modifier = {
+	modifier = senussi_volunteers_dynamic_modifier
+}
+
+set_variable = {
+	waf_route = 50
+}
+set_variable = {
+	alg_route = 50
+}
+set_variable = {
+	nig_route = 50
+}
+set_variable = {
+	cam_route = 50
+}
+set_variable = {
+	con_route = 50
+}
+set_variable = {
+	siw_route = 20
+}
+
+activate_mission = LBA_waf_Timbuktu_Bilma_Caravan
+activate_mission = LBA_alg_Tuat_Murzuq_Caravan
+activate_mission = LBA_siw_Siwa_Benghazi_Caravan
+activate_mission = LBA_con_Congo_Wadai_Caravan
+activate_mission = LBA_cam_Cameroon_Wadai_Caravan
+activate_mission = LBA_nig_Nigeria_Wadai_Caravan
+
+lba_evaluate_volunteers = yes
+lba_recalculate_caravan_total = yes
+
+add_opinion_modifier = { target = NFA modifier = KR_hostile }
+reverse_add_opinion_modifier = { target = NFA modifier = KR_hostile }
+
+country_event = {
+	id = libya.1
+	hours = 10
+}
+country_event = {
+	id = libya.10
+	days = 1295
+}
+country_event = {
+	id = libya.15
+	days = 200
+}
+country_event = { 
+	id = ottfla.12 
+	days = 348 
+}
+country_event = {
+	id = libya.16
+	days = 400
+}
+country_event = {
+	id = libya.29
+	days = 450
+}
+country_event = {
+	id = libya.17
+	days = 500
+}
+country_event = {
+	id = libya.19
+	days = 600
+}
+country_event = {
+	id = libya.24
+	days = 700
+}
+country_event = {
+	id = libya.32
+	days = 800
+}
+
+set_politics = {
+	ruling_party = paternal_autocrat
+	last_election = "1930.11.9"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+    totalist = 0
+    radical_socialist = 0
+    syndicalist = 0
+    social_democrat = 0
+    social_liberal = 0
+    market_liberal = 0
+    social_conservative = 0
+    authoritarian_democrat = 19
+    paternal_autocrat = 58
+    national_populist = 23
+}
+
+create_country_leader = {
+	name = "az-Zubayr bin Ahmad as-Sharif"
+	desc = "POLITICS_ZUBAYR_SHARIF_DESC"
+	picture = "Portrait_LBA_Zubayr_Sharif.png"
+	expire = "1965.1.1"
+	ideology = paternal_autocrat_subtype
+}
+
+create_country_leader = {
+	name = "Idris I"
+	desc = "POLITICS_IDRIS_DESC"
+	picture = "Portrait_LBA_Idris.png"
+	expire = "1965.1.1"
+	ideology = authoritarian_democrat_subtype
+}
+
+create_country_leader = {
+	name = "az-Zubayr bin Ahmad as-Sharif"
+	desc = "POLITICS_ZUBAYR_SHARIF_DESC"
+	picture = "Portrait_LBA_Zubayr_Sharif.png"
+	expire = "1965.1.1"
+	ideology = national_populist_subtype
+}
+
+### Field Marshals ###
+create_field_marshal = {
+	name = "az-Zubayr bin Ahmad as-Sharif"
+	portrait_path = "gfx/leaders/LBA/Portrait_LBA_Zubayr_Sharif.png"
+	id = 613
+	traits = {
+		
+	}
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+### Corps Commanders ###
+create_corps_commander = {
+	name = "Omar Shegewi"
+	portrait_path = "gfx/leaders/LBA/Portrait_LBA_Omar_Shegewi.png"
+	traits = {
+	}
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Umar al-Mukhtār"
+	portrait_path = "gfx/leaders/LBA/Portrait_LBA_Omar_Mukhtar.png"
+	id = 610
+	traits = {
+		old_guard
+		war_hero
+		trickster
+		guerilla_fighter
+		commando
+		desert_fox
+	}
+	skill = 4
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 3
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Yousaf Borahil Al-Msmare"
+	portrait_path = "gfx/leaders/LBA/Portrait_LBA_Yousaf_Borahil_Al_Msmare.png"
+	traits = {
+		old_guard
+		war_hero
+		guerilla_fighter
+		desert_fox
+	}
+	skill = 3
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 1
+	logistics_skill = 3
+}
+
+### Admirals ###
+create_navy_leader = {
+	name = "Omar Faiek Shennib"
+	portrait_path = "gfx/leaders/LBA/Portrait_LBA_Omar_Faiek_Shennibi.png"
+	traits = {
+		spotter
+	}
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 1
+}

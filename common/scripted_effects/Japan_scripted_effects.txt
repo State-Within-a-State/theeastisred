@@ -1,0 +1,410 @@
+##############################
+### Japan Scripted Effects ###
+### By Zankoas and ~mw~    ###
+##############################
+
+JAP_fading_sun = {
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = { has_global_flag = JAP_Fading_Sun }
+			}
+			set_global_flag = JAP_Fading_Sun
+			set_global_flag = JAP_fading_sun_fired
+
+			# disable the Fading Sun missions
+			every_country = {
+				limit = { has_active_mission = JAP_fading_sun_mission }
+				remove_mission = JAP_fading_sun_mission
+			}
+
+			# fire country-specific events
+			TRM = { country_event = tram.106 }
+
+			# clear imperial ideas
+			JAP = {
+				remove_ideas = {
+					JAP_rising_sun_idea_1
+					JAP_rising_sun_idea_2
+					JAP_rising_sun_idea_3
+					japan_NSA_act
+					JAP_imperial_gov
+					Fund_Adjustment_Ordinance
+					National_Total_Mobilisation_Ordinance_1
+					National_Total_Mobilisation_Ordinance_2
+					National_Service_Draft_Ordinance_1
+					National_Service_Draft_Ordinance_2
+					JAP_yokuseiha_idea_1
+					JAP_yokuseiha_idea_2
+					JAP_yokuseiha_idea_3
+					JAP_yokuseiha_idea_4
+					JAP_kodoha_idea_1
+					JAP_kodoha_idea_2
+					JAP_kodoha_idea_3
+					JAP_Kakushinha_idea_1
+					JAP_Kakushinha_idea_1
+					JAP_Kakushinha_idea_2
+					JAP_Kakushinha_idea_3
+					JAP_Kakushinha_idea_4
+					JAP_chinese_manpower_idea
+					JAP_three_alls_idea
+					JAP_ichigo
+					JAP_MANTETSU_COLLAPSE
+				}
+
+				if = {
+					limit = { exists = yes }
+					every_country = {
+						limit = {
+							OR = {
+								is_guaranteed_by = PREV
+								is_subject_of = PREV
+								has_non_aggression_pact_with = PREV
+								has_military_access_to = PREV
+								gives_military_access_to = PREV
+							}
+						}
+						diplomatic_relation = {
+							country = JAP
+							relation = military_access
+							active = no
+						}
+						JAP = {
+							if = {
+								limit = { has_subject = PREV }
+								set_autonomy = {
+									target = PREV
+									autonomy_state = autonomy_free
+								}
+							}
+							diplomatic_relation = {
+								country = PREV
+								relation = guarantee
+								active = no
+							}
+							diplomatic_relation = {
+								country = PREV
+								relation = non_aggression_pact
+								active = no
+							}
+							diplomatic_relation = {
+								country = PREV
+								relation = military_access
+								active = no
+							}
+						}
+					}
+				}
+			}
+
+			# clear cores, claims and ambitions outside the Home Islands
+			every_state = {
+				limit = {
+					NOT = {
+						region = 154 #Home Islands
+						state = 526 #Okinawa
+						state = 537 #Sakhalin
+						state = 555 #Kurils
+						state = 645 #Iwo Jima
+						state = 648 #Marcus Island
+					}
+				}
+				remove_core_of = JAP
+				remove_claim_by = JAP
+				clear_variable = ambition_area_@JAP
+			}
+
+			# end the economic sphere
+			every_country = {
+				limit = { is_in_array = { global.asian_economic_sphere = THIS } }
+				country_event = japfor.404
+			}
+			if = {
+				limit = { has_dynamic_modifier = { modifier = JAP_asian_economic_sphere } }
+				remove_dynamic_modifier = { modifier = JAP_asian_economic_sphere }
+			}
+			clear_array = global.asian_economic_sphere
+			clear_variable = global.sphere_industry_boost
+			clear_variable = global.sphere_goods_boost
+			clear_variable = global.sphere_resources_boost_member
+			clear_variable = global.sphere_goods_boost_member
+
+			# end the research group
+			every_country = {
+				limit = { is_in_tech_sharing_group = japan_research }
+				remove_from_tech_sharing_group = japan_research
+			}
+		}
+	}
+}
+
+#####################################
+### Army / Navy Dominance effects ###
+#####################################
+
+JAP_increase_naval_bias = {
+	if = {
+		limit = {
+			check_variable = {
+				naval_bias > army_bias
+			}
+		}
+		custom_effect_tooltip = JAP_increase_naval_bias_loc
+	}
+
+	hidden_effect = {
+		if = {
+			limit = {
+				OR = {
+					has_idea = JAP_slight_naval_bias
+					has_idea = JAP_strong_naval_bias
+				}
+				check_variable = {
+					army_bias > 4
+				}
+			}
+			remove_ideas = {
+				JAP_slight_naval_bias
+				JAP_strong_naval_bias
+			}
+		}
+
+		else_if = {
+			limit = {
+				check_variable = {
+					naval_bias > 8
+				}
+			}
+			remove_ideas = {
+				JAP_slight_army_bias
+				JAP_strong_army_bias
+			}
+			else = {
+				add_to_variable = {
+					var = naval_bias
+					value = 1
+				}
+				set_variable = {
+					naval_bias_plus = naval_bias
+				}
+				add_to_variable = {
+					naval_bias_plus = 2
+				}
+
+				set_variable = {
+					army_bias_plus = army_bias
+				}
+				add_to_variable = {
+					army_bias_plus = 1
+				}
+
+				set_variable = {
+					army_bias_doubleplus = army_bias
+				}
+				add_to_variable = {
+					army_bias_doubleplus = 3
+				}
+
+				if = {
+					limit = {
+						has_idea = JAP_strong_army_bias
+						check_variable = {
+							army_bias < naval_bias_plus
+						}
+					}
+					JAP_remove_all_bias = yes
+					add_ideas = JAP_slight_army_bias
+				}
+
+				if = {
+					limit = {
+						check_variable = {
+							naval_bias > army_bias_doubleplus
+						}
+					}
+					JAP_remove_all_bias = yes
+					add_ideas = JAP_strong_naval_bias
+				}
+
+				else_if = {
+					limit = {
+						check_variable = {
+							naval_bias > army_bias_plus
+						}
+					}
+					JAP_remove_all_bias = yes
+					add_ideas = JAP_slight_naval_bias
+					country_event = japdom.236
+				}
+
+				else_if = {
+					limit = {
+						OR = {
+							check_variable = {
+								naval_bias = army_bias
+							}
+						}
+					}
+					JAP_remove_all_bias = yes
+					add_ideas = JAP_no_bias
+				}
+			}
+		}
+	}
+}
+
+JAP_increase_army_bias = {
+	if = {
+		limit = {
+			check_variable = {
+				army_bias > naval_bias
+			}
+		}
+		custom_effect_tooltip = JAP_increase_army_bias_loc
+	}
+
+	hidden_effect = {
+		if = {
+			limit = {
+				OR = {
+					has_idea = JAP_slight_army_bias
+					has_idea = JAP_strong_army_bias
+				}
+				check_variable = {
+					naval_bias > 8
+				}
+			}
+			remove_ideas = {
+				JAP_slight_army_bias
+				JAP_strong_army_bias
+			}
+		}
+
+		else_if = {
+			limit = {
+				check_variable = {
+					army_bias > 4
+				}
+			}
+			remove_ideas = {
+				JAP_slight_naval_bias
+				JAP_strong_naval_bias
+			}
+			else = {
+				add_to_variable = {
+					var = army_bias
+					value = 1
+				}
+				set_variable = {
+					army_bias_plus = army_bias
+				}
+				add_to_variable = {
+					army_bias_plus = 2
+				}
+
+				set_variable = {
+					naval_bias_plus = naval_bias
+				}
+				add_to_variable = {
+					naval_bias_plus = 1
+				}
+
+				set_variable = {
+					naval_bias_doubleplus = naval_bias
+				}
+				add_to_variable = {
+					naval_bias_doubleplus = 3
+				}
+
+				if = {
+					limit = {
+						has_idea = JAP_strong_naval_bias
+						check_variable = {
+							naval_bias < army_bias_plus
+						}
+					}
+					JAP_remove_all_bias = yes
+					add_ideas = JAP_slight_naval_bias
+				}
+
+				if = {
+					limit = {
+						check_variable = {
+							army_bias > naval_bias_doubleplus
+						}
+					}
+					JAP_remove_all_bias = yes
+					add_ideas = JAP_strong_army_bias
+				}
+
+				else_if = {
+					limit = {
+						check_variable = {
+							army_bias > naval_bias_plus
+						}
+					}
+					JAP_remove_all_bias = yes
+					add_ideas = JAP_slight_army_bias
+					country_event = japdom.237
+				}
+
+				else_if = {
+					limit = {
+						check_variable = {
+							naval_bias = army_bias
+						}
+					}
+					JAP_remove_all_bias = yes
+					add_ideas = JAP_no_bias
+				}
+			}
+		}
+	}
+}
+
+JAP_remove_all_bias = {
+	hidden_effect = {
+		remove_ideas = {
+			JAP_no_bias
+			JAP_slight_naval_bias
+			JAP_strong_naval_bias
+			JAP_slight_army_bias
+			JAP_strong_army_bias
+		}
+	}
+}
+
+JAP_recalculate_economic_integration = {
+	hidden_effect = {
+		set_variable = { global.var_sphere_factories = 0 }
+		for_each_scope_loop = {
+			array = global.asian_economic_sphere
+			add_to_variable = { global.var_sphere_factories = THIS.num_of_civilian_factories }
+		}
+
+		#Japan's industry boost
+		set_variable = { global.sphere_industry_boost = global.var_sphere_factories }
+		clamp_variable = { var = global.sphere_industry_boost max = 60 min = 0 }
+		multiply_variable = { global.sphere_industry_boost = 0.5 }
+		multiply_variable = { global.sphere_industry_boost = 0.01 }
+
+		#Japan's consumer goods boost
+		set_variable = { global.sphere_goods_boost = global.var_sphere_factories }
+		clamp_variable = { var = global.sphere_goods_boost max = 100 min = 0 }
+		multiply_variable = { global.sphere_goods_boost = 1.5 }
+		multiply_variable = { global.sphere_goods_boost = -0.001 }
+
+		#Member's consumer goods boost
+		set_variable = { global.sphere_goods_boost_member = global.var_sphere_factories }
+		add_to_variable = { global.sphere_goods_boost_member = JAP.num_of_civilian_factories }
+		clamp_variable = { var = global.sphere_goods_boost_member max = 100 min = 0 }
+		multiply_variable = { global.sphere_goods_boost_member = -0.001 }
+
+		#Member's resources boost
+		set_variable = { global.sphere_resources_boost_member = global.var_sphere_factories }
+		add_to_variable = { global.sphere_resources_boost_member = JAP.num_of_civilian_factories }
+		clamp_variable = { var = global.sphere_resources_boost_member max = 100 min = 0 }
+		multiply_variable = { global.sphere_resources_boost_member = 0.002 }
+	}
+}
+

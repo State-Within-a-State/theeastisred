@@ -1,0 +1,614 @@
+﻿capital = 965
+
+oob = "MAF"
+set_naval_oob= "MAF_naval"
+
+set_technology = {
+	### MOD ###
+
+	### General ###
+	electronic_mechanical_engineering = 1
+
+	### Tanks ###
+	gwtank = 1
+	basic_light_tank = 1
+	basic_heavy_tank = 1
+
+	### INF ###
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1
+	tech_recon = 1
+	tech_engineers = 1
+	tech_mountaineers = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+
+	### AIR ###
+	early_fighter = 1
+	naval_bomber1 = 1
+	early_bomber = 1
+	cv_early_fighter = 1
+	cv_CAS1 = 1
+	cv_naval_bomber1 = 1
+	fighter1 = 1
+	tactical_bomber1 = 1
+	CAS1 = 1
+}
+
+### Navy - MtG ###
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		weltkrieg_light_ship_hull = 1
+		contact_mine = 1
+		light_ship_hull_1936 = 1
+		weltkrieg_cruiser_hull = 1
+		cruiser_hull_1936 = 1
+		weltkrieg_submarine_hull = 1
+		submarine_hull_1936 = 1
+		cruiser_submarine = 1
+		carrier_conversion = 1
+		carrier_hull_1936 = 1
+		ship_hull_revived_ac = 1
+		weltkrieg_heavy_ship_hull = 1
+		heavy_ship_hull_1936 = 1
+
+		## Modules##
+		early_torpedo = 1
+		weltkrieg_naval_gunnery = 1
+		naval_ammo_one = 1
+		light_battery_one = 1
+		improved_ship_torpedo_launcher = 1
+		basic_cruiser_armor_scheme = 1
+		weltkrieg_naval_gunnery = 1
+		naval_ammo_one = 1
+		basic_heavy_armor_scheme = 1
+		capital_gunnery_one = 1
+		weltkrieg_naval_gunnery = 1
+		naval_ammo_one = 1
+		transport = 1
+	}
+}
+
+### Navy - Non MtG ###
+
+if = {
+	limit = {
+		not = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		weltkrieg_destroyer_nonmtg = 1
+		interwar_destroyer_nonmtg = 1
+		weltkrieg_cruiser_nonmtg = 1
+		interwar_cruiser_nonmtg = 1
+		weltkrieg_submarine_nonmtg = 1
+		interwar_submarine_nonmtg = 1
+		weltkrieg_armored_cruiser_nonmtg = 1
+		interwar_armored_cruiser_nonmtg = 1
+		weltkrieg_fast_battleship_nonmtg = 1
+		interwar_fast_battleship_nonmtg = 1
+		weltkrieg_dreadnought_nonmtg = 1
+		super_heavy_dreadnought_nonmtg = 1
+		heavy_carrier_nonmtg = 1
+		transport = 1
+	}
+}
+
+add_opinion_modifier = { target = FRA modifier = embargo }
+add_opinion_modifier = { target = ENG modifier = embargo }
+add_opinion_modifier = { target = SRI modifier = embargo }
+add_opinion_modifier = { target = GEO modifier = embargo }
+
+country_event = { id = mittel.167 days = 1 } #Intro event
+country_event = { id = mittelpolitic.7 days = 56 } #Schnee Resigns
+country_event = { id = mittel.1 days = 5 }
+GER = {
+	country_event = { id = mittel.43 days = 90 } #The Kenyatta-Solf Affair
+}
+
+set_research_slots = 3
+set_convoys = 50
+set_stability = 0.45
+set_war_support = 0.00
+add_political_power = -200
+
+set_politics = {
+	ruling_party = authoritarian_democrat
+	last_election = "1930.11.9"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+    totalist = 0
+    radical_socialist = 0
+    syndicalist = 0
+    social_democrat = 5
+    social_liberal = 10
+    market_liberal = 5
+    social_conservative = 15
+    authoritarian_democrat = 35
+    paternal_autocrat = 30
+    national_populist = 0
+}
+
+set_autonomy = {
+	target = KTG
+	autonomous_state = kx_freestate
+
+}
+
+set_autonomy = {
+	target = KEN
+	autonomous_state = kx_brit_protectorate
+
+}
+
+set_autonomy = {
+	target = NGR
+	autonomous_state = kx_brit_protectorate
+
+}
+
+set_autonomy = {
+	target = ZAM
+	autonomous_state = kx_brit_mil_protectorate
+
+}
+
+set_autonomy = {
+	target = CIV
+	autonomous_state = kx_tripartite_administration
+
+}
+"CIV" = {
+	set_popularities = {
+		totalist = 0
+		radical_socialist = 0
+		syndicalist = 0
+		social_democrat = 5 
+		social_liberal = 15
+		market_liberal = 15
+		social_conservative = 5
+		authoritarian_democrat = 50
+		paternal_autocrat = 5
+		national_populist = 5
+	}
+}
+"KEN" = {
+	set_popularities = {
+		totalist = 10
+		radical_socialist = 15
+		syndicalist = 0
+		social_democrat = 30
+		social_liberal = 15
+		market_liberal = 10
+		social_conservative = 13
+		authoritarian_democrat = 7
+		paternal_autocrat = 0
+		national_populist = 0
+	}
+}
+"KTG" = {
+	set_popularities = {
+		totalist = 0
+		radical_socialist = 0
+		syndicalist = 0
+		social_democrat = 10
+		social_liberal = 10
+		market_liberal = 10
+		social_conservative = 25
+		authoritarian_democrat = 5
+		paternal_autocrat = 40
+		national_populist = 0
+	}
+}
+"NGR" = {
+	set_popularities = {
+		totalist = 0
+		radical_socialist = 10
+		syndicalist = 0
+		social_democrat = 10
+		social_liberal = 10
+		market_liberal = 25
+		social_conservative = 13
+		authoritarian_democrat = 7
+		paternal_autocrat = 5
+		national_populist = 20
+	}
+}
+"MAG" = {
+	set_popularities = {
+		totalist = 0
+		radical_socialist = 0
+		syndicalist = 0
+		social_democrat = 10
+		social_liberal = 0
+		market_liberal = 10
+		social_conservative = 20
+		authoritarian_democrat = 40
+		paternal_autocrat = 10
+		national_populist = 10
+	}
+}
+"ZAM" = {
+	set_popularities = {
+		totalist = 0
+		radical_socialist = 0
+		syndicalist = 0
+		social_democrat = 0
+		social_liberal = 15
+		market_liberal = 15
+		social_conservative = 20
+		authoritarian_democrat = 30
+		paternal_autocrat = 10
+		national_populist = 10
+	}
+}
+
+set_autonomy = {
+	target = MAG
+	autonomous_state = kx_franco_german_administration
+
+}
+
+set_country_flag = Franz_Ritter_von_Epp_dead
+set_country_flag = Fritz_Thyssen_dead
+
+add_ideas = {
+	MAF_Colonial_Nation
+	MAF_French_Settlers
+	MAF_Belgian_Investors
+	MAF_British_Protectorates
+        MAF_Mercenary_Pilots
+        MAF_Mahiwa_1_0
+	free_trade
+	MAF_Hermann_von_Goering_hog_pau
+	MAF_Rudolf_Asmis_for_ade
+	MAF_August_Stauch_eco_ade
+	MAF_Heinrich_Kirchheim_sec_ade
+}
+
+### Country Leaders ###
+create_country_leader = {
+	name = "Heinrich Schnee"
+	desc = "POLITICS_SCHNEE_DESC"
+	picture = "MAF_Heinrich_Schnee.png"
+	expire = "1965.1.1"
+	ideology = authoritarian_democrat_subtype
+	traits = {}
+}
+create_country_leader = {
+	name = "Reinhard Heydrich"
+        desc = "POLITICS_HEYDRICH_MAF_DESC"
+	picture = "gfx/leaders/MAF/MAF_Reinhard_Heydrich2.png"
+	expire = "1965.1.1"
+	ideology = paternal_autocrat_subtype
+	traits = {}
+}
+create_country_leader = {
+	name = "Hermann von Göring"
+	desc = "POLITICS_GOERING_DESC"
+	picture = "gfx/leaders/MAF/MAF_Goering_Governor.png"
+	expire = "1965.1.1"
+	ideology = national_populist_subtype
+	traits = {}
+}
+
+create_country_leader = {
+	name = "Theodor von Hassel"
+	desc = "POLITICS_HASSEL_DESC"
+	picture = "Portrait_Mittelafrika_Theodor_von_Hassel.png"
+	expire = "1965.1.1"
+	ideology = social_conservative_subtype
+	traits = {}
+}
+
+create_country_leader = {
+	name = "Jules Cousin"
+	desc = "POLITICS_COUSIN_DESC"
+	picture = "Portrait_Mittelafrika_Jules_Cousin.png"
+	expire = "1965.1.1"
+	ideology = social_liberal_subtype
+	traits = {}
+}
+
+create_country_leader = {
+	name = "Nigel Leaky"
+	desc = "POLITICS_LEAKY_DESC"
+	picture = "Portrait_Mittelafrika_Nigel_Leaky.png"
+	expire = "1965.1.1"
+	ideology = market_liberal_subtype
+	traits = {}
+}
+
+create_country_leader = {
+	name = "Albert von Göring"
+	desc = "POLITICS_EPSTEIN_DESC"
+	picture = "Portrait_Mittelafrika_Albert_Goering.png"
+	expire = "1965.1.1"
+	ideology = social_democrat_subtype
+	traits = {}
+}
+
+### Field Marshals ###
+create_field_marshal = {
+	name = "Hermann von Göring"
+	portrait_path = "gfx/leaders/MAF/Portrait_Mittelafrika_Hermann_Goering_army.png"
+	traits = {
+		trait_reckless
+		politically_connected
+		media_personality
+		logistics_wizard
+	}
+	skill = 4
+	attack_skill = 4
+	defense_skill = 1
+	planning_skill = 3
+	logistics_skill = 4
+	id = 198
+}
+
+### Corps Commanders ###
+
+create_corps_commander = {
+	name = "Georg Kraut"
+	picture = "Portrait_Mittelafrika_Georg_Kraut.png"
+	traits = {
+		career_officer
+		war_hero
+	}
+	skill = 3
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Hans Schomburgk"
+	portrait_path = "gfx/leaders/GAB/Hans_Schomburgk.png"
+	traits = {
+		media_personality
+	}
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Karl Waldeck"
+	portrait_path = "gfx/leaders/NAM/NAM_Karl_Waldeck.png"
+	traits = {
+		trait_engineer
+		scavenger
+	}
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Theodor von Hippel"
+	picture = "Portrait_Mittelafrika_Theodor_von_Hippel.png"
+	traits = {
+		brilliant_strategist
+		war_hero
+		trickster
+		commando
+		camouflage_expert
+		guerilla_fighter
+	}
+	skill = 3
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Berthold von Deimling"
+	portrait_path = "gfx/leaders/NAM/NAM_Berthold_von_Deimling.png"
+	traits = {
+		old_guard
+		media_personality
+		infantry_expert
+	}
+	skill = 3
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+	id = 8794
+}
+
+create_corps_commander = {
+	name = "Kai-Uwe von Hassel"
+	picture = "Portrait_Mittelafrika_Kai_Uwe_von_Hassel.png"
+	traits = {
+		harsh_leader
+		armor_officer
+	}
+	skill = 3
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Heinrich Kirchheim"
+	portrait_path = "gfx/leaders/NMB/Portrait_NMB_Heinrich_Kircheim.png"
+	traits = {
+	    war_hero
+		old_guard
+	}
+	skill = 3
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Hermann Detzner"
+	portrait_path = "gfx/leaders/MAF/Portrait_Mittelafrika_Hermann_Detzner.png"
+	traits = {
+		war_hero
+		trait_engineer
+	}
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Ludwig Mbebe Mpessa"
+	portrait_path = "gfx/leaders/MAF/MAF_Ludwig_Mbebe_Mpessa.png"
+	traits = {
+		trickster
+	}
+	skill = 2
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Elo Sambo"
+	portrait_path = "gfx/leaders/MAF/MAF_Elo_Sambo.png"
+	traits = {
+		harsh_leader
+	}
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Abanda Banjo"
+	portrait_path = "gfx/leaders/MAF/MAF_Abanda_Banjo.png"
+	traits = {
+		camouflage_expert
+		guerilla_fighter
+	}
+	skill = 1
+	attack_skill = 1
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Karl Atangana"
+	portrait_path = "gfx/leaders/MAF/MAF_Karl_Atangana.png"
+	traits = {
+		career_officer
+	}
+	skill = 1
+	attack_skill = 2
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Franz von Stephani"
+	portrait_path = "gfx/leaders/MAF/MAF_Franz_von_Stephani.png"
+	traits = {
+		politically_connected
+	}
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Alexander Duala-Bell"
+	portrait_path = "gfx/leaders/MAF/MAF_Alexander_Douala_Manga_Bell.png"
+	traits = {
+		career_officer
+		war_hero
+	}
+	skill = 3
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Carl Heinrich Zimmermann"
+	portrait_path = "gfx/leaders/MAF/MAF_carl_heinrich_zimmerman.png"
+	traits = {
+		career_officer
+		inflexible_strategist
+	}
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Erwin Rommel"
+	picture = "Portrait_MAF_Erwin_Rommel_kr.png"
+	traits = { 
+		trickster 
+		war_hero 
+		trait_reckless
+		armor_officer
+	}
+	skill = 3
+	attack_skill = 4
+	defense_skill = 2
+	planning_skill = 4
+	logistics_skill = 1
+}
+
+
+### Navy Commanders ###
+create_navy_leader = {
+	name = "Max von Looff"
+	picture = "Portrait_Mittelafrika_Max_Looff.png"
+	traits = {
+		spotter
+	}
+	skill = 3
+	attack_skill = 2
+	defense_skill = 3
+	maneuvering_skill = 2
+	coordination_skill = 3
+}
+
+create_navy_leader = {
+				name = "Reinhard Heydrich"
+				picture = "Portrait_Mittelafrika_Reinhard_Heydrich.png"
+				traits = {}
+				skill = 2
+				attack_skill = 1
+				defense_skill = 2
+				maneuvering_skill = 2
+				coordination_skill = 2
+			}
+
+GER_start_naval_variant = yes
+

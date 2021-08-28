@@ -1,0 +1,518 @@
+guiTypes = {
+
+	containerWindowType = {
+		name ="frontend_background"
+		position = { x=0 y =0 }	
+		size = { 
+			width = 1920 
+			height = 1440 
+			min = { width = 100% height = 100% }
+			preserve_aspect_ratio = yes
+		}
+		Orientation = center
+		Origo = center
+		clipping = no 
+		
+		background = {
+			name = "Background"		
+			quadTextureSprite ="GFX_frontend_bg"
+			alwaystransparent = yes
+		}
+		
+		containerWindowType = {
+			name = "kx_logo_holder"
+			position = { x=-225 y =-1200 }	
+			orientation = center
+			origo = center
+			
+			show_position = { x = -230 y = -376 }
+			animation_type = decelerated
+			animation_time = 2000
+			iconType = {
+				name = "kx_logo"
+				quadTextureSprite ="GFX_kx_logo"
+				position = { x = -125 y = 50 } # vanilla is position = { x= 35 y = 22 }
+				Orientation = "CENTER"
+				alwaystransparent = yes
+			}
+			
+			iconType = {
+				name = "kx_banners"
+				quadTextureSprite ="GFX_blank"
+				position = { x = -746 y = -350 } # vanilla is position = { x= 35 y = 22 }
+				Orientation = "CENTER"
+				alwaystransparent = yes
+			}
+			
+			ButtonType = {
+				name ="cope"
+				spriteType = "GFX_cope"
+				position = { x= 1400 y = -330 }
+				clicksound = click_default
+				pdx_tooltip = "Click here to go to the Coop"
+				web_link = "https://ia600605.us.archive.org/8/items/NeverGonnaGiveYouUp/jocofullinterview41.mp3"
+			}
+		}
+		
+	}
+
+	### MAIN MENU PANEL (upperleft)
+	containerWindowType = {
+		name  ="mainmenu_panel_upperleft"
+		position = { x=0 y = 1200 }
+		show_position = { x=0 y =-1 }
+		animation_type = decelerated
+		animation_time = 1000
+		size = { width = 256 height = 768}
+		orientation = lower_left
+		
+        ButtonType = {
+            name ="frontend_game_logo"
+            spriteType = "GFX_blank"
+            position = { x= 20 y = 1200 }
+            clicksound = click_default
+            pdx_tooltip = "LOGO_MAIN_MENU_LINK"
+            web_link = "https://discord.gg/BuwGK5j"
+        }
+		
+	}
+
+	#containerWindowType = {
+	#	name  ="frontend_alpha_stamp"
+	#	position = { x=100 y =-100  }
+	#	size = { width = 131 height = 132}
+	#	orientation = lower_left
+	#	origo = lower_left
+	#	
+	#	iconType =
+	#	{
+	#		name ="frontend_alpha_stamp"
+	#		spriteType = "GFX_alpha_stamp"
+	#		position = { x= 0 y = 20 }
+	#	}		
+	#	
+	#}	
+	
+	### MAIN MENU PANEL (upperright)
+	containerWindowType = {
+		name ="mainmenu_panel_upperright"
+		position = { x=-5 y =0 }
+		show_position = { x=-261 y =0 }
+		animation_type = decelerated
+		animation_time = 1000					
+		size = { width = 400 height = 800}
+		Orientation = upper_right
+		
+		ButtonType = {
+			name = "achievements_button"
+			position = { x = -50 y = 25 }
+			quadTextureSprite ="achievements"
+			pdx_tooltip = "MENU_ACHIEVEMENTS"
+		}
+		### KR Logo Button ###
+       
+		### KX LIVES AND MARCHES ON ###
+        	
+		
+	}		
+
+	### SINGLE PLAYER MENU
+	containerWindowType = {
+		name = "mainmenu_single_player"
+		position = { x=0 y =0}
+		size = { width = 320 height = 395}
+		Orientation = CENTER
+		Origo = center	
+				
+		background = {
+			name = "Background"		
+			quadTextureSprite ="GFX_tiled_window"
+		}
+		
+		ButtonType = {
+			name = "sp_continue_button"
+			position = { x = 16 y = 18 }
+			quadTextureSprite ="GFX_main_lobby_button"	
+			buttonText = "FE_CONTINUE"
+			buttonFont = "hoi_24header"
+			clicksound = click_default
+			oversound = ui_menu_over
+		}
+		
+		iconType = {
+			name = "sp_continue_flag_left"
+			quadTextureSprite ="GFX_flag_small2_not_masked"
+			position = { x= 10000 y = 10000 } # vanilla is position = { x= 35 y = 22 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}
+		
+		iconType = {
+			name = "sp_continue_flag_left_overlay"
+			quadTextureSprite ="GFX_flag_small2_not_masked"
+			position = { x= 10000 y = 10000 } # vanilla is position = { x= 35 y = 22 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}
+		
+		iconType = {
+			name = "sp_continue_flag_right"
+			quadTextureSprite ="GFX_flag_small2_not_masked"
+			position = { x= 10000 y = 10000 } # vanilla is position = { x= 245 y = 22 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}
+		
+		iconType = {
+			name = "sp_continue_flag_right_overlay"
+			quadTextureSprite ="GFX_flag_small2_not_masked"
+			position = { x= 10000 y = 10000 } # vanilla is position = { x= 245 y = 22 }
+			Orientation = "UPPER_LEFT"
+			alwaystransparent = yes
+		}
+		
+		ButtonType = {
+			name = "sp_new_button"
+			position = { x = 16 y = 58 }
+			quadTextureSprite ="GFX_main_lobby_button"	
+			buttonText = "FE_NEW"
+			buttonFont = "hoi_24header"
+			clicksound = click_default
+			oversound = ui_menu_over
+		}
+		
+		ButtonType = {
+			name = "sp_load_button"
+			position = {  x = 16 y = 98 }
+			quadTextureSprite ="GFX_main_lobby_button"	
+			buttonText = "MENU_BAR_LOAD"
+			buttonFont = "hoi_24header"
+			clicksound = click_default
+			oversound = ui_menu_over
+		}
+		
+		## jank solution, should be completely offscreen but not throw an error
+		ButtonType = {
+			name = "sp_tutorial_button"
+			position = { x = 10000 y = 10000}
+			quadTextureSprite ="GFX_exiled_unit_icon"
+		}
+		
+		ButtonType = {
+			name = "sp_back_button"
+			position = { x = 16 y = 218 }
+			quadTextureSprite ="GFX_main_lobby_button"	
+			buttonText = "BACK"
+			buttonFont = "hoi_24header"
+			clicksound = click_close
+			oversound = ui_menu_over
+			shortcut = "ESCAPE"
+		}
+	}
+
+	#actual window for buttons
+	#width = 938 height = 75
+	containerWindowType = {
+		name ="mainmenu_panel_bottom"
+		position = { x=0 y =-32}
+		size = { width = 1100 height = 800 }
+		Orientation = CENTER_DOWN
+		Origo = center
+
+		#Pretty, pretty pictures
+		iconType = {
+			name ="GFX_blank"
+			spriteType = "GFX_blank"
+			position = { x= 83 y = -4 }
+		}
+
+		#ghost window used for buttons background
+		containerWindowType = {
+			name ="mainmenu_panel_bottom_ghost"
+			position = { x= 0 y= -150 }
+			size = { width = 938 height = 400 }
+			Orientation = CENTER
+			Origo = center
+
+			background = {
+				name = "Background"
+				quadTextureSprite ="GFX_tiled_paper_w_frame_bg"
+			}
+		}
+
+		######################################### Buttons at the bottom
+		ButtonType = {
+			name = "single_player_button"
+			position = { x = 409 y = 100 }
+			quadTextureSprite ="GFX_main_lobby_button"
+			font = "vt323_24_glow"
+			text = "FE_SINGLE_PLAYER"
+			clicksound = click_default
+			oversound = ui_menu_over
+		}
+
+		ButtonType = {
+			name = "multi_player_button"
+			position = { x = 409 y = 160}
+			quadTextureSprite ="GFX_main_lobby_button"
+			font = "vt323_24_glow"
+			text = "FE_MULTI_PLAYER"
+			clicksound = click_default
+			oversound = ui_menu_over
+		}
+		
+		@warn_icon_x = 378
+		iconType = {
+			name = "single_player_button_warn"
+			position = { x = @warn_icon_x y = 8 }
+			spriteType = "GFX_missing_dlc_warning_sign"
+		}
+
+		instantTextBoxType = {
+			name ="version_label"
+			position = { x = 426 y = 390 }
+			textureFile = ""
+			font = "hoi_26mbs"
+			borderSize = {x = 0 y = 0}
+			text = "ALPHA"
+			format = centre
+			maxWidth = 250
+			maxHeight = 20
+		}
+
+		############################################## buttons on the side
+		ButtonType = {
+			name = "settings_button"
+			position = { x = 409 y = 220 }
+			quadTextureSprite ="GFX_main_lobby_button"
+			buttonFont = "vt323_24_glow"
+			clicksound = click_default
+			oversound = ui_menu_over
+			text = "Settings"
+		}
+
+		ButtonType = {
+			name = "credits_button"
+			position = {  x = 25 y = 34 }
+			quadTextureSprite ="GFX_blank"
+			buttonFont = "vt323_24_glow"
+			clicksound = click_default
+			oversound = ui_menu_over
+		}
+		ButtonType = {
+			name = "nudge_button"
+			position = { x = 409 y = 280 }
+			quadTextureSprite ="GFX_main_lobby_button"
+			buttonFont = "vt323_24_glow"
+			text = "Nudge Tool!"
+		}
+		
+		#################################
+		#ButtonType = {
+		#	name = "credits_button"
+		#	position = {  x = 32 y = 320 }
+		#	quadTextureSprite ="GFX_main_lobby_button"
+		#	buttonText = "FE_CREDITS"
+		#	buttonFont = "vt323_24_glow"
+		#	clicksound = click_default
+		#	oversound = ui_menu_over
+		#}
+	
+		#ButtonType = {
+		#	name = "nudge_button"
+		#	position = { x = 16 y = 420 }
+		#	quadTextureSprite ="GFX_nudge_icon"
+		#	buttonText = "Nudge!"
+		#	buttonFont = "vt323_24_glow"
+		#}
+	
+		ButtonType = {
+			name = "privacy_policy_button"
+			#position = { x = 219 y = 309 }
+			position = { x = -5000 y = 309 }
+			quadTextureSprite ="privacy"
+			#clicksound = click_default
+			pdx_tooltip = "MENU_PRIVACY_POLICY"
+		}
+
+		ButtonType = {
+			name = "exit_button"
+			position = { x = 409 y = 340 }
+			quadTextureSprite ="GFX_main_lobby_button"
+			font = "vt323_24_glow"
+			text = "FE_EXIT"
+			clicksound = click_default
+			oversound = ui_menu_over
+		}
+		
+		
+		instantTextBoxType = {
+			name ="recent_changes"
+			position = { x = 100 y = 100 }
+			font = "hoi_36header"
+			borderSize = {x = 0 y = 0}
+			text = "Recent Changes:"
+			format = centre
+			maxWidth = 300
+			maxHeight = 20
+		}
+		
+		containerWindowType = {
+			name = "recent_changes_lmaoooo"
+			position = { x = 120 y = 150 }
+			size = { width = 250 height = 235 } 
+			margin = { top = 10 bottom = 10 }
+			Orientation = upper_left
+			clipping = yes
+			
+			verticalScrollbar = "right_vertical_slider"
+			
+			background = {
+				name = "emptybg"
+				quadTextureSprite = "GFX_tiled_window_transparent"
+			}
+			
+			instantTextBoxType = {
+				name ="recent_changes_text"
+				position = { x = 20 y = 0 }
+				font = "hoi_26mbs"
+				borderSize = {x = 0 y = 0}
+				text = "RECENT_CHANGES_TEXT"
+				format = center
+				maxWidth = 200
+				maxHeight = 160
+			}
+		}
+		
+		ButtonType = {
+            name ="pdx_int_logo"
+            spriteType = "GFX_pdx_int_logo"
+            position = { x= 800 y = 85 }
+            clicksound = click_default
+            pdx_tooltip = "COOP_MAIN_MENU_LINK"
+            web_link = "https://www.reddit.com/r/kaiserredux/"
+        }
+		
+		ButtonType = {
+            name ="frontend_dev_logo"
+            spriteType = "GFX_frontend_dev_logo"
+            position = { x= 800 y = 250 }
+            clicksound = click_default
+            pdx_tooltip = "KR_MAIN_MENU_LINK"
+            web_link = "https://discord.gg/BuwGK5j"
+        }
+	}
+		
+		### DEFAULT KAISERREICH STUFF ###
+		### Discord, Forum, Steam and Twitter links
+		#ButtonType = { #Actually Discord
+		#	name = "homepage_button"
+		#	position = { x = 79 y = 269 }
+		#	quadTextureSprite ="homepage"
+		#	clicksound = click_default
+		#	pdx_tooltip = "MENU_HOMEPAGE"
+		#	web_link = "https://discord.gg/013cqzfpWMRLqnvHr"
+		#}
+		#ButtonType = { #Actually Forum
+		#	name = "forum_button"
+		#	position = { x = 119 y = 269 }
+		#	quadTextureSprite ="forum"
+		#	clicksound = click_default
+		#	pdx_tooltip = "MENU_FORUM"
+		#	web_link = "http://forum.paradoxplaza.com/forum/forumdisplay.php?844-Hearts-of-Iron-IV"
+		#}
+		#ButtonType = { #Actually Steam
+		#	name = "facebook_button"
+		#	position = { x = 159 y = 269 }
+		#	quadTextureSprite ="facebook"
+		#	clicksound = click_default
+		#	pdx_tooltip = "MENU_FACEBOOK"
+		#	web_link = "https://steamcommunity.com/sharedfiles/filedetails/?id=1521695605"
+		#}	
+		#ButtonType = { #Actually Twitter
+		#	name = "twitter_button"
+		#	position = { x = 199 y = 269 }
+		#	quadTextureSprite ="twitter"
+		#	clicksound = click_default
+		#	pdx_tooltip = "MENU_TWITTER"
+		#	web_link = "https://twitter.com/kaisermod"
+		#}
+		#ButtonType = { #Sent far far away because we don't want you
+		#	name = "privacy_policy_button"
+		#	position = { x = 10000 y = 10000 }
+		#	quadTextureSprite ="privacy"
+		#	#clicksound = click_default
+		#	pdx_tooltip = "MENU_PRIVACY_POLICY"
+		#}
+	
+	### Copied from vanilla w/ new launcher probably gonna break at some point ###
+	containerWindowType = {
+		name = "mainmenu_social_buttons"
+		position = { x=-50 y=25 }	
+		size = { width = 240 height = 90 }
+		Orientation = center	
+		origo = center
+		
+		positionType = {
+			name = "position_without_social_gui"
+			position = { x = 0 y = 155 }
+		}
+		
+		containerWindowType = {
+			name = "social_view_interface_window"
+			position = { x = 250 y = 0  }
+			size = { width = 60 height = 40 }
+			
+			buttonType = {
+				name = "toggle_button"
+				quadTextureSprite = "GFX_sort_button_83x29" ## Orig: 60x29
+				position = { x=0 y=0  }
+				buttonFont = "hoi_16mbs"
+			}
+				
+			iconType = {
+				name = "button_toggle_socialview_icon"
+				spriteType = "GFX_socialview_icon"
+				position = { x=0 y=0 }
+				alwaystransparent = yes
+			}
+				
+			instantTextBoxType={
+				name = "friends_online"
+				font = "cg_16b"
+				position = { x=20 y=15 }
+				text = "0"
+				maxWidth = 30
+				maxHeight = 16
+				alwaysTransparent = yes
+				format = center
+			}
+				
+			iconType = {
+				name = "new_message"
+				position = { x=42 y =5 }
+				spriteType = "GFX_new_message_icon"
+				pdx_tooltip = "SOCIAL_NEW_MESSAGE"
+			}
+				
+			iconType = {
+				name = "new_friend"
+				position = { x=42 y=17 }
+				spriteType = "GFX_new_friend_icon"
+				pdx_tooltip = "SOCIAL_NEW_FRIEND"
+			}
+		}
+			
+		ButtonType = { #GTFO
+			name = "homepage_button"
+			position = { x = 10000 y = 10000 }
+			quadTextureSprite ="homepage"
+		}
+			
+		ButtonType = { #GTFO MK II
+			name = "privacy_policy_button"
+			position = { x = 10000 y = 10000 }
+			quadTextureSprite ="privacy"
+		}
+	}
+}

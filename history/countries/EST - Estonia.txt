@@ -1,0 +1,238 @@
+﻿capital = 13
+set_research_slots = 3
+
+BAT_start_naval_variant = yes
+
+## Init tech here, just in case it got released by other tags later on
+set_technology = {
+	### Tanks ###
+	gwtank = 1
+	basic_light_tank = 1
+
+	### Infantry ###
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1
+	tech_recon = 1
+	tech_engineers = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+
+	### Air ###
+	early_fighter = 1
+	early_bomber = 1
+}
+
+### Navy - MtG ###
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		weltkrieg_light_ship_hull = 1
+		contact_mine = 1
+		light_ship_hull_1936 = 1
+		weltkrieg_cruiser_hull = 1
+		cruiser_hull_1936 = 1
+
+		## Modules##
+		weltkrieg_naval_gunnery = 1
+		light_battery_one = 1
+		smoke_generator = 1
+	}
+}
+
+### Navy - Non MtG ###
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		weltkrieg_destroyer_nonmtg = 1
+		interwar_destroyer_nonmtg = 1
+		weltkrieg_cruiser_nonmtg = 1
+		interwar_cruiser_nonmtg = 1
+	}
+}
+
+set_politics = {
+	ruling_party = paternal_autocrat
+	last_election = "1888.6.15"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalist = 0
+	radical_socialist = 2
+	syndicalist = 0
+	social_democrat = 11
+	social_liberal = 4
+	market_liberal = 6
+	social_conservative = 17
+	authoritarian_democrat = 21
+	paternal_autocrat = 38
+	national_populist = 1
+}
+
+add_ideas = {
+	LAT_EST_roads_to_riga_1
+	EST_agrarian_issue_1
+
+	limited_conscription
+	EST_Konstantin_Paets_hog_ade
+	EST_Hjalmar_Maee_for_npo
+	EST_Karl_Selter_eco_ade
+	EST_Julius_Seljamaa_sec_ade
+}
+
+country_event = { id = KREST.1 days = 2 } #Welcome to Estonia
+
+create_country_leader = {
+	name = "Hengo Tulnola"
+	picture = "Portrait_EST_Hengo_Tulnola.png"
+	expire = "1965.1.1"
+	ideology = national_populist_subtype
+}
+
+create_country_leader = {
+	name = "Artur Sirk"
+	desc = "POLITICS_ARTUR_SIRK_DESC"
+	picture = "Portrait_EST_Artur_Sirk.png"
+	expire = "1965.1.1"
+	ideology = paternal_autocrat_subtype
+	traits = {
+		EST_era_of_silence_1
+	}
+}
+
+create_country_leader = {
+	name = "Jüri Uluots"
+	picture = "Portrait_EST_Juri_Uluots.png"
+	expire = "1965.1.1"
+	ideology = authoritarian_democrat_subtype
+}
+
+create_country_leader = {
+	name = "Jaan Tõnisson"
+	picture = "Portrait_EST_Jaan_Tonisson.png"
+	expire = "1965.1.1"
+	ideology = social_conservative_subtype
+}
+
+create_country_leader = {
+	name = "Jaan Tõnisson"
+	picture = "Portrait_EST_Jaan_Tonisson.png"
+	expire = "1965.1.1"
+	ideology = market_liberal_subtype
+}
+
+create_country_leader = {
+	name = "Otto Strandman"
+	picture = "Portrait_EST_Otto_Strandman.png"
+	expire = "1965.1.1"
+	ideology = social_liberal_subtype
+}
+
+create_country_leader = {
+	name = "August Rei"
+	picture = "Portrait_EST_August_Rei.png"
+	expire = "1965.1.1"
+	ideology = social_democrat_subtype
+}
+
+create_country_leader = {
+	name = "Arnold Sommerling"
+	picture = "Portrait_EST_Arnold_Sommerling.png"
+	expire = "1965.1.1"
+	ideology = radical_socialist_subtype
+}
+
+create_country_leader = {
+	name = "Arnold Sommerling"
+	picture = "Portrait_EST_Arnold_Sommerling.png"
+	expire = "1965.1.1"
+	ideology = syndicalist_subtype
+}
+
+create_country_leader = {
+	name = "Jaan Anvelt"
+	picture = "Portrait_EST_Jaan_Anvelt.png"
+	expire = "1965.1.1"
+	ideology = totalist_subtype
+}
+
+### Field Marshals ###
+### Corps Commanders ###
+create_field_marshal = {
+	name = "Aleksander Tõnisson"
+	portrait_path = "gfx/leaders/EST/Portrait_EST_Aleksander_Tonisson.png"
+	traits = {
+		career_officer
+		trickster
+		brilliant_strategist
+		aggressive_assaulter
+	}
+	skill = 2
+	attack_skill = 3
+	defense_skill = 1
+	planning_skill = 2
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Jaan Kruus"
+	portrait_path = "gfx/leaders/EST/Portrait_EST_Jaan_Kruus.png"
+	traits = {
+		trait_reckless
+		commando
+	}
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Andres Larka"
+	portrait_path = "gfx/leaders/EST/Portrait_EST_Andres_Larka.png"
+	traits = {
+		career_officer
+	}
+	skill = 2
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Johan Laidoner"
+	portrait_path = "gfx/leaders/EST/Portrait_EST_Johan_Laidoner.png"
+	traits = {
+		infantry_officer
+		panzer_leader
+	}
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 1
+}
+
+### Admirals ###
+create_navy_leader = {
+	name = "Johan Pitka"
+	portrait_path = "gfx/leaders/EST/Portrait_EST_Johan_Pitka.png"
+	traits = { }
+	skill = 1
+	attack_skill = 1
+	defense_skill = 1
+	maneuvering_skill = 1
+	coordination_skill = 1
+}
