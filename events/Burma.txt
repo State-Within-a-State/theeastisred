@@ -65,7 +65,7 @@ country_event = { # Introduction
 
 country_event = { # Introduction
 	id = burma.3
-	immediate = { log = "[GetDateText]: [Root.GetName]: event burma.3" }
+	immediate = { log = "[GetDateText]: [Root.GetName]: event burma.7" }
 	title = burma.3.t
 	desc = burma.3.d
 	picture = GFX_report_event_BRM_army
@@ -82,6 +82,16 @@ country_event = { # Introduction
 	option = {
 		name = burma.3.b
 		complete_national_focus = BRM_longlivetherevolution
+		create_country_leader = {
+				name = "Revolutionary Council of Burma"
+				desc = "-"
+				picture = "Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
+				expire = "1965.1.1"
+				ideology = authoritarian_democrat
+				traits = {
+					
+				}
+			}
 	}
 }
 
@@ -100,6 +110,8 @@ country_event = { # Introduction
 	option = {
 		name = burma.4.a
 		complete_national_focus = BRM_the_rule_of_royalty
+		set_politics = { ruling_party = paternal_autocrat
+		}
 				set_political_party = {
 			ideology = paternal_autocrat
 			popularity = 50
@@ -109,19 +121,124 @@ country_event = { # Introduction
 	option = {
 		name = burma.4.b
 		complete_national_focus = BRM_democracy_restored
+		set_politics = { ruling_party = market_liberal
+		}
 					set_political_party = {
 			ideology = market_liberal
 			popularity = 50
+		}
+		country_event = {
+		id =
+		day = 1
 		}
 	}
 	
 	option = {
 		name = burma.4.b
 		complete_national_focus = BRM_the_syndicalist_revolution
+		set_politics = { ruling_party = radical_socialist
+		}
 				set_political_party = {
 			ideology = radical_socialist
+			popularity = 50
+		}
+		country_event = {
+		id =
+		day = 1
+		}
+	}
+}
+
+country_event = { # Introduction
+	id = burma.5
+	immediate = { log = "[GetDateText]: [Root.GetName]: event burma.2" }
+	title = burma.5.t
+	desc = burma.5.d
+	picture = GFX_report_event_BRM_army
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = burma.5.a
+		set_country_leader_ideology = social_conservative
+		set_politics = { ruling_party = social_conservative
+		}
+		unlock_national_focus = BRM_favour_companies
+			set_political_party = {
+			ideology = social_conservative_subtype
+			popularity = 50
+		}
+	}
+	option = {
+		name = burma.5.b
+		unlock_national_focus = BRM_burmese_welfare
+		set_politics = { ruling_party = social_democrat
+		}
+			set_political_party = {
+			ideology = social_democrat
 			popularity = 50
 		}
 	}
 }
 
+country_event = { # Introduction
+	id = burma.6
+	immediate = { log = "[GetDateText]: [Root.GetName]: event burma.2" }
+	title = burma.6.t
+	desc = burma.6.d
+	picture = GFX_report_event_BRM_army
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = burma.6.a
+		set_politics = { ruling_party = radical_socialist
+		}
+		unlock_national_focus = BRM_favour_companies
+			set_political_party = {
+			ideology = radical_socialist
+			popularity = 50
+		}
+	}
+	option = {
+		name = burma.6.b
+		set_politics = { ruling_party = totalist
+		}
+		unlock_national_focus = BRM_burmese_welfare
+			set_political_party = {
+			ideology = totalist
+			popularity = 50
+		}
+	}
+	option = {
+		name = burma.6.c
+		set_politics = { ruling_party = totalist
+		}
+		kill_country_leader = totalist
+
+				set_cosmetic_tag = BRM_ingsoc
+								set_party_name = { 
+					ideology = totalist
+					long_name = BRM_ingsoc_party_long 
+					name = BRM_ingsoc_party
+				}
+			set_political_party = {
+			ideology = totalist
+			popularity = 50
+			
+		}
+		
+		create_country_leader = {
+			name = "Eric Blair"
+					desc = "-"
+					picture = "Portrait_England_Eric_Blair.png"
+					expire = "1965.1.1"
+					ideology = totalist_subtype
+					
+				}
+	}
+}
