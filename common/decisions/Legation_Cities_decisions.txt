@@ -5512,7 +5512,7 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	CHI_dec_2nd_northern_expedition = {
+	LEC_dec_2nd_northern_expedition = {
 		icon = generic_ignite_civil_war
 		
 		available = {
@@ -5526,7 +5526,7 @@ LEC_military_expeditions_category = {
 			OR = {
 				AND = {
 					FROM = { tag = QIE }
-					has_completed_focus = CHI_northern_expedition
+					has_completed_focus = LEC_spread_of_revolution
 				}
 				AND = {
 					FROM = { tag = FNG }
@@ -5539,21 +5539,14 @@ LEC_military_expeditions_category = {
 			}
 		}
 		
-		targets = { QIE FNG }
+		targets = { QIE  }
 		target_trigger = {
 			OR = {
 				AND = {
 					FROM = { tag = QIE }
-					has_completed_focus = CHI_northern_expedition
+					has_completed_focus = LEC_spread_of_revolution
 				}
-				AND = {
-					FROM = { tag = FNG }
-					OR = {
-						has_completed_focus = CHI_invade_FNG
-						has_country_flag = CHI_FNG_Refuses
-						NOT = { has_country_flag = CHI_Solo_War }
-					}
-				}
+				
 			}
 		}
 
@@ -5566,7 +5559,9 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 14 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.0 }
+			
+				}
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
