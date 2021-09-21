@@ -5531,19 +5531,23 @@ LEC_military_expeditions_category = {
 				AND = {
 					FROM = { tag = FNG }
 					OR = {
-						has_completed_focus = CHI_invade_FNG
-						has_country_flag = CHI_FNG_Refuses
-						NOT = { has_country_flag = CHI_Solo_War }
+						has_completed_focus = LEC_spread_of_revolution
+						
 					}
 				}
 			}
 		}
 		
-		targets = { QIE  }
+		targets = { QIE FNG }
 		target_trigger = {
 			OR = {
 				AND = {
 					FROM = { tag = QIE }
+					has_completed_focus = LEC_spread_of_revolution
+				}
+				
+				AND = {
+					FROM = { tag = FNG }
 					has_completed_focus = LEC_spread_of_revolution
 				}
 				
@@ -5559,17 +5563,25 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 14 value = 1 }
-			FROM = { country_event = chineserevolt.0 }
-			
+			FROM = { country_event = chineserevolt.0 days = 3 }
+			QCN = { add_state_core = 1063 }
+			QCN = { add_state_core = 1062 }
+			QCN = { add_state_core = 1061 }
+			QCN = { add_state_core = 1060 }
+			QCN = { add_state_core = 615 }
+			QCN = { add_state_core = 611 }
 				}
-		}
+		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
 			declare_war_on = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.2 }
+				QNG = { add_state_core = 884 }
+			QNG = { add_state_core = 883 }
+			QNG = { add_state_core = 714 }
 		}
 		ai_will_do = {
 			factor = 20
