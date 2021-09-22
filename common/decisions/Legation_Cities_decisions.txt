@@ -5322,8 +5322,8 @@ LEC_triads_category = {
 	}	
 	
 	
-CHI_alignment_integration_category = {
-	CHI_dec_integrate = {
+LEC_alignment_integration_category = {
+	LEC_dec_integrate = {
 		icon = generic_industry
 		visible = {
 			FROM = {
@@ -5568,18 +5568,20 @@ LEC_military_expeditions_category = {
 			QCN = { add_state_core = 1062 }
 			QCN = { add_state_core = 1061 }
 			QCN = { add_state_core = 1060 }
-			QCN = { add_state_core = 615 }
+			LEC = { add_state_core = 615 }
 			QCN = { add_state_core = 611 }
 				}
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			declare_war_on = {
+			FROM = {declare_war_on = {
 				type = annex_everything
-				target = FROM
+						target = LEC
+				}
+			
 			}
 			FROM = { country_event = chineserevolt.2 }
-				QNG = { add_state_core = 884 }
+			QNG = { add_state_core = 884 }
 			QNG = { add_state_core = 883 }
 			QNG = { add_state_core = 714 }
 		}
@@ -6915,3 +6917,643 @@ LEC_chinese_revolt_category = {
 	}
 }
 
+
+LEC_warlord_diplomacy_category = {
+	
+	CHI_dec_negotiate_with_SHX = {
+		icon = generic_agreement
+		visible = {
+			has_completed_focus = CHI_deal_with_north_warlords
+			SHX = {
+				has_government = paternal_autocrat
+				has_war_with = ROOT
+				is_neighbor_of = ROOT
+				is_subject = no
+				exists = yes
+			}
+		}
+
+		available = {
+			SHX = {
+				surrender_progress > 0.65
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_SHX"
+			SHX = { country_event = { id = chi_for.62 days = 3 } }
+
+		}
+
+		ai_will_do = {
+			factor = 150
+		}
+	}
+
+	
+
+	LEC_dec_unite_the_country = {
+		icon = generic_agreement
+		visible = {
+
+			QIE = { exists = no }
+
+			FNG = { is_stronger_than_ROOT = no }
+
+			has_country_flag = CHI_Solo_War
+
+			owns_state = 608
+
+			NOT = {
+				has_war_with = FNG
+			}
+		}
+
+		available = {
+
+			country_exists = FNG
+
+			NOT = { has_war_with = FNG }
+
+		}
+
+		cost = 25
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_unite_the_country"
+			country_event = { id = chi_fng.19 }
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	LEC_dec_negotiate_with_HNN = {
+		icon = generic_agreement
+		targets = { HNN }
+		target_trigger = {
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_neighbor_of = ROOT
+				is_ruled_by_chinese_communists = yes
+			}
+		}
+		target_root_trigger = {
+			OR = {
+				has_completed_focus = LEC_liberate_the_rest_of_east_china
+			}
+			
+		}
+		visible = {
+			OR = {
+				has_completed_focus = LEC_liberate_the_rest_of_east_china
+			}
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_neighbor_of = ROOT
+				is_ruled_by_chinese_communists = yes
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_HNN target: [From.GetName]"
+			FROM = { country_event = { id = chi_for.23 days = 7 } }
+			custom_effect_tooltip = effect_after_they_agree
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						has_war_with = HNN
+						NOT = { has_war_with = ROOT }
+					}
+					ROOT = {
+						add_to_war = {
+							targeted_alliance = HNN
+							enemy = PREV
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				if = {
+					limit = { HNN = { is_ruled_by_chinese_communists = yes } }
+					annex_country = {
+						target = HNN
+						transfer_troops = yes
+					}
+					HNN = {
+						every_unit_leader = {
+							limit = {
+								OR = {
+									has_id = 1408
+									has_id = 2202
+								}
+							}
+							set_nationality = LEC
+						}
+						every_navy_leader = {
+							set_nationality = LEC
+						}
+					}
+				}
+				else = {
+					annex_country = {
+						target = HNN
+						transfer_troops = no
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0.2
+				has_socialist_government = yes
+			}
+		}
+	}
+	LEC_dec_negotiate_with_GXC = {
+		icon = generic_agreement
+		targets = { GXC }
+		target_trigger = {
+			FROM = {
+				is_ruled_by_chinese_communists = yes
+			}
+		}
+		target_root_trigger = {
+			has_completed_focus = LEC_liberate_the_rest_of_east_china
+		}
+		visible = {
+			has_completed_focus = LEC_liberate_the_rest_of_east_china
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_neighbor_of = ROOT
+				is_ruled_by_chinese_communists = yes
+			}
+		}
+		
+		available = {
+			FROM = {
+				has_government = totalist
+				has_government = syndicalist
+				is_in_faction = no
+				is_subject = no
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_GXC target: [From.GetName]"
+			FROM = { country_event = { id = chi_for.24 days = 7 } }
+			custom_effect_tooltip = effect_after_they_agree
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						has_war_with = GXC
+						NOT = { has_war_with = ROOT }
+					}
+					ROOT = {
+						add_to_war = {
+							targeted_alliance = GXC
+							enemy = PREV
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				if = {
+					limit = { GXC = { is_ruled_by_kmt = yes } }
+					annex_country = {
+						target = GXC
+						transfer_troops = yes
+					}
+					GXC = {
+						every_unit_leader = {
+							limit = {
+								OR = {
+									has_id = 1120
+									has_id = 1209
+								}
+							}
+							set_nationality = LEC
+						}
+						every_navy_leader = {
+							set_nationality = LEC
+						}
+					}
+				}
+				else = {
+					annex_country = {
+						target = GXC
+						transfer_troops = no
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				has_socialist_government = yes
+			}
+			
+		}
+		puppet = GXC
+	}
+	LEC_dec_negotiate_with_SZC = {
+		icon = generic_agreement
+		targets = { SZC }
+		target_trigger = {
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_neighbor_of = ROOT
+				is_ruled_by_chinese_communists = yes
+			}
+		}
+		target_root_trigger = {
+			OR = {
+				has_completed_focus = LEC_liberate_the_rest_of_east_china
+			}
+			
+		}
+		visible = {
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_neighbor_of = ROOT
+				is_ruled_by_chinese_communists = yes
+			}
+		}
+		
+		available = {
+			FROM = {
+				has_government = totalist
+				has_government = syndicalist
+				is_in_faction = no
+				is_subject = no
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_SZC target: [From.GetName]"
+			FROM = { country_event = { id = chi_for.29 days = 7 } }
+			custom_effect_tooltip = effect_after_they_agree
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						has_war_with = SZC
+						NOT = { has_war_with = ROOT }
+					}
+					ROOT = {
+						add_to_war = {
+							targeted_alliance = SZC
+							enemy = PREV
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				if = {
+					limit = { SZC = { is_ruled_by_chinese_communists = yes } }
+					annex_country = {
+						target = SZC
+						transfer_troops = yes
+					}
+					SZC = {
+						every_navy_leader = {
+							set_nationality = LEC
+						}
+					}
+				}
+				else = {
+					annex_country = {
+						target = SZC
+						transfer_troops = no
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				has_socialist_government = yes
+			}
+		}
+		puppet = SZC
+	}
+	LEC_dec_negotiate_with_YUN = {
+		icon = generic_agreement
+		targets = { YUN }
+		target_trigger = {
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_neighbor_of = ROOT
+				is_ruled_by_chinese_communists = yes
+			}
+		}
+		target_root_trigger = {
+			OR = {
+				has_completed_focus = LEC_liberate_the_rest_of_east_china
+			}
+			
+		}
+		visible = {
+			OR = {
+				has_completed_focus = LEC_liberate_the_rest_of_east_china
+			}
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				is_neighbor_of = ROOT
+				is_ruled_by_chinese_communists = yes
+			}
+		}
+		
+		available = {
+			FROM = {
+				has_government = totalist
+				has_government = syndicalist
+				is_in_faction = no
+				is_subject = no
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_YUN target: [From.GetName]"
+			FROM = { country_event = { id = chi_for.30 days = 7 } }
+			custom_effect_tooltip = effect_after_they_agree
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						has_war_with = YUN
+						NOT = { has_war_with = ROOT }
+					}
+					ROOT = {
+						add_to_war = {
+							targeted_alliance = YUN
+							enemy = PREV
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				puppet = YUN
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				has_socialist_government = yes
+			}
+		}
+	}
+
+	LEC_dec_negotiate_with_XSM = {
+		icon = generic_agreement
+		targets = { XSM }
+		target_root_trigger = {
+			has_completed_focus = LEC_liberate_the_rest_of_east_china
+		}
+		visible = {
+			has_completed_focus = LEC_liberate_the_rest_of_east_china
+			FROM = {
+				exists = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		available = {
+			FROM = {
+				has_government = totalist
+				has_government = syndicalist
+				is_in_faction = no
+				is_subject = no
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_XSM target: [From.GetName]"
+			FROM = { country_event = { id = chi_for.35 days = 7 } }
+			custom_effect_tooltip = effect_after_they_agree
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						has_war_with = XSM
+						NOT = { has_war_with = ROOT }
+					}
+					ROOT = {
+						add_to_war = {
+							targeted_alliance = XSM
+							enemy = PREV
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				if = {
+					limit = { XSM = { is_ruled_by_kmt = yes } }
+					annex_country = {
+						target = XSM
+						transfer_troops = yes
+					}
+					XSM = {
+						every_army_leader = {
+							set_nationality = LEC
+						}
+					}
+				}
+				
+			}
+			puppet = XSM
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				has_socialist_government = yes
+			}
+		}
+	}
+	LEC_dec_negotiate_with_SIK = {
+		icon = generic_agreement
+		targets = { SIK }
+		target_root_trigger = {
+			has_completed_focus = CHI_secure_northwest
+		}
+		visible = {
+			has_completed_focus = CHI_secure_northwest
+			FROM = {
+				exists = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		available = {
+			FROM = {
+				NOT = { has_country_leader = { name = "Ma Shaowu" ruling_only = yes } }
+				is_in_faction = no
+				is_subject = no
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_SIK target: [From.GetName]"
+			FROM = { country_event = { id = chi_for.38 days = 7 } }
+			custom_effect_tooltip = effect_after_they_agree
+			effect_tooltip = {
+				every_other_country = {
+					limit = {
+						has_war_with = SIK
+						NOT = { has_war_with = ROOT }
+					}
+					ROOT = {
+						add_to_war = {
+							targeted_alliance = SIK
+							enemy = PREV
+							hostility_reason = asked_to_join
+						}
+					}
+				}
+				if = {
+					limit = { SIK = { is_ruled_by_chinese_communists = yes } }
+					annex_country = {
+						target = SIK
+						transfer_troops = yes
+					}
+					SIK = {
+						every_army_leader = {
+							set_nationality = LEC
+						}
+					}
+				}
+				else = {
+					annex_country = {
+						target = SIK
+						transfer_troops = no
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0.1
+				has_socialist_government = yes
+			}
+		}
+	}
+	LEC_offer_autonomy_TIB = {
+		icon = generic_ignite_civil_war
+
+		available = {
+			is_neighbor_of = FROM
+		}
+
+		visible = {
+			has_completed_focus = CHI_authority_TIB
+			FROM = {
+				is_subject = no
+				is_in_faction = no
+				has_war = no
+			}
+		}
+
+		targets = { TIB }
+		target_root_trigger = {
+			has_completed_focus = CHI_authority_TIB
+		}
+		target_trigger = {
+			FROM = {
+				is_subject = no
+				is_in_faction = no
+				has_war = no
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_offer_autonomy_TIB target: [From.GetName]"
+			FROM = {
+				country_event = chi_for.51
+			}
+			custom_effect_tooltip = effect_after_they_agree
+			effect_tooltip = {
+				set_autonomy = {
+					target = FROM
+					autonomy_state = kr_autonomous_puppet
+				}
+			}
+		}
+	}
+	LEC_offer_autonomy_MON = {
+		icon = generic_ignite_civil_war
+
+		available = {
+			is_neighbor_of = FROM
+		}
+
+		visible = {
+			has_completed_focus = CHI_retake_MON
+			FROM = {
+				is_subject = no
+				is_in_faction = no
+				has_war = no
+			}
+		}
+
+		targets = { MON }
+		target_root_trigger = {
+			has_completed_focus = CHI_retake_MON
+		}
+		target_trigger = {
+			FROM = {
+				is_subject = no
+				is_in_faction = no
+				has_war = no
+			}
+		}
+
+		cost = 40
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+
+		ai_will_do = {
+			factor = 20
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_offer_autonomy_MON target: [From.GetName]"
+			FROM = {
+				country_event = chi_for.51
+			}
+			custom_effect_tooltip = effect_after_they_agree
+			effect_tooltip = {
+				set_autonomy = {
+					target = FROM
+					autonomy_state = kr_autonomous_puppet
+				}
+			}
+		}
+	}
+}
