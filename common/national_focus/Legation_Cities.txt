@@ -14,29 +14,30 @@ focus_tree = {
 		cost = 10.00
 		x = 7
 		y = 0
-			available = {
-					has_country_flag = LEC_new_high_commissioner
-					NOT = {
-						has_country_flag = LEC_Triad_Power
-					}
-				}
-			allow_branch = {
-				NOT = {
-					has_government = social_democrat
-					has_government = social_liberal
-					has_government = authoritarian_democrat
+		available = {
+			has_country_flag = LEC_new_high_commissioner
+			NOT = {
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
+			}
+			NOT = {
+				has_government = social_democrat
+				has_government = social_liberal
+				has_government = authoritarian_democrat
+				custom_trigger_tooltip = {
+					tooltip = LEC_shanghai_formed
 					has_cosmetic_tag = LEC_japanese_shanghai_tag
 				}
 			}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_new_status_quo"
-					add_stability = 0.1
-				}
-			search_filters = { FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 400
-				}
-
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_new_status_quo"
+			add_stability = 0.1
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 400
+		}
 	}
 	focus = {
 		id = LEC_jardines
@@ -44,57 +45,57 @@ focus_tree = {
 		cost = 7.20
 		x = 18
 		y = 0
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							add = 30
-							currency_reserves_high = yes
-						}
-					modifier = {
-							add = 15
-							currency_reserves_medium = yes
-						}
-					modifier = {
-							add = -10
-							currency_reserves_low = yes
-						}
-					modifier = {
-							add = -20
-							currency_reserves_critical = yes
-						}
-					modifier = {
-							factor = 1000
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				add = 30
+				currency_reserves_high = yes
+			}
+			modifier = {
+				add = 15
+				currency_reserves_medium = yes
+			}
+			modifier = {
+				add = -10
+				currency_reserves_low = yes
+			}
+			modifier = {
+				add = -20
+				currency_reserves_critical = yes
+			}
+			modifier = {
+				factor = 1000
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			bypass = {
-					OR = {
-							has_country_flag = LEC_bankrupt
-							NOT = {
-									owns_state = 326
-								}
-						}
+			}
+		}
+		bypass = {
+			OR = {
+				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
+				NOT = {
+					owns_state = 326
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_jardines"
-					decrease_currency_reserve = yes
-					add_equipment_to_stockpile = {
-							type = convoy_1
-							amount = 200
-							producer = GBR
-						}
-					add_tech_bonus = {
-							name = LEC_jardines
-							bonus = 1
-							uses = 1
-							category = naval_doctrine
-						}
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_jardines"
+			decrease_currency_reserve = yes
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 200
+				producer = GBR
+			}
+			add_tech_bonus = {
+				name = LEC_jardines
+				bonus = 1
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
 	focus = {
 		id = LEC_HSBC
@@ -103,63 +104,63 @@ focus_tree = {
 		x = 2
 		y = 0
 		relative_position_id = LEC_jardines
-			available = {
-					has_country_flag = {
-							flag = LEC_currency_reserves
-							value < 10
-						}
+		available = {
+			has_country_flag = {
+				flag = LEC_currency_reserves
+				value < 10
+			}
+		}
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				add = -30
+				currency_reserves_high = yes
+			}
+			modifier = {
+				add = -10
+				currency_reserves_medium = yes
+			}
+			modifier = {
+				add = 10
+				currency_reserves_low = yes
+			}
+			modifier = {
+				add = 20
+				currency_reserves_critical = yes
+			}
+			modifier = {
+				factor = 0.1
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			ai_will_do = {
-					factor = 70
-					modifier = {
-							add = -30
-							currency_reserves_high = yes
-						}
-					modifier = {
-							add = -10
-							currency_reserves_medium = yes
-						}
-					modifier = {
-							add = 10
-							currency_reserves_low = yes
-						}
-					modifier = {
-							add = 20
-							currency_reserves_critical = yes
-						}
-					modifier = {
-							factor = 0.1
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
-					modifier = {
-							factor = 0.1
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
+			}
+			modifier = {
+				factor = 0.1
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			bypass = {
-					OR = {
-							has_country_flag = LEC_bankrupt
-							NOT = {
-									owns_state = 326
-								}
-						}
+			}
+		}
+		bypass = {
+			OR = {
+				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
+				NOT = {
+					owns_state = 326
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_HSBC"
-					increase_currency_reserve = yes
-					add_timed_idea = {
-							idea = LEC_british_up
-							days = 50
-						}
-					set_country_flag = british_loan
-				}
-
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_HSBC"
+			increase_currency_reserve = yes
+			add_timed_idea = {
+				idea = LEC_british_up
+				days = 50
+			}
+			set_country_flag = british_loan
+		}
 	}
 	focus = {
 		id = LEC_deutsch_asiatische_bank
@@ -204,6 +205,7 @@ focus_tree = {
 			OR = {
 				has_global_flag = dab_bank_collapse
 				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		completion_reward = {
@@ -223,50 +225,49 @@ focus_tree = {
 		x = 4
 		y = 0
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_wheelock_and_marden"
-					decrease_currency_reserve = yes
-					navy_experience = 50
-					add_equipment_to_stockpile = {
-							type = convoy_1
-							amount = 200
-							producer = GBR
-						}
-					add_tech_bonus = {
-							name = LEC_wheelock_and_marden
-							bonus = 1
-							uses = 1
-							category = naval_equipment
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_wheelock_and_marden"
+			decrease_currency_reserve = yes
+			navy_experience = 50
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 200
+				producer = GBR
+			}
+			add_tech_bonus = {
+				name = LEC_wheelock_and_marden
+				bonus = 1
+				uses = 1
+				category = naval_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS  FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 65
+			modifier = {
+				add = 30
+				currency_reserves_high = yes
+			}
+			modifier = {
+				add = 15
+				currency_reserves_medium = yes
+			}
+			modifier = {
+				add = -10
+				currency_reserves_low = yes
+			}
+			modifier = {
+				add = -20
+				currency_reserves_critical = yes
+			}
+			modifier = {
+				factor = 1000
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			search_filters = { FOCUS_FILTER_NAVY_BONUS  FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 65
-					modifier = {
-							add = 30
-							currency_reserves_high = yes
-						}
-					modifier = {
-							add = 15
-							currency_reserves_medium = yes
-						}
-					modifier = {
-							add = -10
-							currency_reserves_low = yes
-						}
-					modifier = {
-							add = -20
-							currency_reserves_critical = yes
-						}
-					modifier = {
-							factor = 1000
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_green_island_cement
@@ -275,44 +276,43 @@ focus_tree = {
 		x = 8
 		y = 0
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_green_island_cement"
-					decrease_currency_reserve = yes
-					add_tech_bonus = {
-							name = LEC_green_island_cement
-							bonus = 1
-							uses = 2
-							category = industry
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_green_island_cement"
+			decrease_currency_reserve = yes
+			add_tech_bonus = {
+				name = LEC_green_island_cement
+				bonus = 1
+				uses = 2
+				category = industry
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				add = 30
+				currency_reserves_high = yes
+			}
+			modifier = {
+				add = 15
+				currency_reserves_medium = yes
+			}
+			modifier = {
+				add = -10
+				currency_reserves_low = yes
+			}
+			modifier = {
+				add = -20
+				currency_reserves_critical = yes
+			}
+			modifier = {
+				factor = 1000
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							add = 30
-							currency_reserves_high = yes
-						}
-					modifier = {
-							add = 15
-							currency_reserves_medium = yes
-						}
-					modifier = {
-							add = -10
-							currency_reserves_low = yes
-						}
-					modifier = {
-							add = -20
-							currency_reserves_critical = yes
-						}
-					modifier = {
-							factor = 1000
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_china_light_and_power
@@ -321,28 +321,27 @@ focus_tree = {
 		x = 10
 		y = 0
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_china_light_and_power"
-					decrease_currency_reserve = yes
-					add_tech_bonus = {
-							name = LEC_china_light_and_power
-							bonus = 1
-							uses = 2
-							category = electronics
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_china_light_and_power"
+			decrease_currency_reserve = yes
+			add_tech_bonus = {
+				name = LEC_china_light_and_power
+				bonus = 1
+				uses = 2
+				category = electronics
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 75
+			modifier = {
+				factor = 1000
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 75
-					modifier = {
-							factor = 1000
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_in_defence_of_commerce
@@ -413,6 +412,7 @@ focus_tree = {
 		bypass = {
 			OR = {
 				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
 				has_country_flag = LEC_Triad_Power # Wasn't sure if you wanted the Triads also but here they are
 			}
 		}
@@ -458,18 +458,20 @@ focus_tree = {
 		x = 1
 		y = 2
 		bypass = {
-			has_country_flag = LEC_Triad_Power
+			OR = {
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
+			}
 		}
 		relative_position_id = LEC_jardines
-			ai_will_do = {
-					factor = 70
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_turn_a_blind_eye"
-					add_ideas = { LEC_vladisostok_smuggling }
-				}
-			search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_INDUSTRY }
-
+		ai_will_do = {
+			factor = 70
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_turn_a_blind_eye"
+			add_ideas = { LEC_vladisostok_smuggling }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_INDUSTRY }
 	}
 	focus = {
 		id = LEC_russo_asiatic_bank
@@ -479,51 +481,56 @@ focus_tree = {
 			focus = LEC_turn_a_blind_eye
 		}
 		bypass = {
-			has_country_flag = LEC_Triad_Power
+			OR = {
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
+			}
 		}
 		x = 1
 		y = 3
 		relative_position_id = LEC_jardines
-			available = {
-					has_country_flag = {
-							flag = LEC_currency_reserves
-							value < 10
-						}
+		available = {
+			has_country_flag = {
+				flag = LEC_currency_reserves
+				value < 10
+			}
+		}
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				add = -30
+				currency_reserves_high = yes
+			}
+			modifier = {
+				add = -30
+				currency_reserves_medium = yes
+			}
+			modifier = {
+				add = 10
+				currency_reserves_low = yes
+			}
+			modifier = {
+				add = 20
+				currency_reserves_critical = yes
+			}
+			modifier = {
+				factor = 0.1
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			ai_will_do = {
-					factor = 70
-					modifier = {
-							add = -30
-							currency_reserves_high = yes
-						}
-					modifier = {
-							add = -30
-							currency_reserves_medium = yes
-						}
-					modifier = {
-							add = 10
-							currency_reserves_low = yes
-						}
-					modifier = {
-							add = 20
-							currency_reserves_critical = yes
-						}
-					modifier = {
-							factor = 0.1
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
-				}
-			bypass = {
-					has_country_flag = LEC_bankrupt
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_russo_asiatic_bank"
-					increase_currency_reserve = yes
-				}
-
+			}
+		}
+		bypass = {
+			OR = {
+				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_russo_asiatic_bank"
+			increase_currency_reserve = yes
+		}
 	}
 	focus = {
 		id = LEC_star_ferry_tax
@@ -535,26 +542,25 @@ focus_tree = {
 		x = 3
 		y = 2
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_star_ferry_tax"
-					if = {
-							limit = {
-									has_idea = LEC_black_monday3
-								}
-							remove_ideas = LEC_black_monday3
-						}
-					else = {
-							swap_ideas = {
-									remove_idea = LEC_black_monday2
-									add_idea = LEC_black_monday3
-								}
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_star_ferry_tax"
+			if = {
+				limit = {
+					has_idea = LEC_black_monday3
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 76
+				remove_ideas = LEC_black_monday3
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = LEC_black_monday2
+					add_idea = LEC_black_monday3
 				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 76
+		}
 	}
 	focus = {
 		id = LEC_improving_port_facilities
@@ -569,22 +575,21 @@ focus_tree = {
 		x = 5
 		y = 1
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_improving_port_facilities"
-					743 = {
-							add_building_construction = {
-									type = naval_base
-									level = 2
-									instant_build = yes
-									province = 10068
-								}
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_improving_port_facilities"
+			743 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 10068
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 80
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 80
+		}
 	}
 	focus = {
 		id = LEC_gateway_to_the_east
@@ -596,20 +601,19 @@ focus_tree = {
 		x = 7
 		y = 1
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = national_populist
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_gateway_to_the_east"
-					custom_effect_tooltip = LEC_japanese_path
-				}
-			bypass = {
-					has_government = national_populist
-				}
-			ai_will_do = {
-					factor = 1000
-				}
-
+		available = {
+			has_government = national_populist
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_gateway_to_the_east"
+			custom_effect_tooltip = LEC_japanese_path
+		}
+		bypass = {
+			has_government = national_populist
+		}
+		ai_will_do = {
+			factor = 1000
+		}
 	}
 	focus = {
 		id = LEC_compromised_neutrality
@@ -624,26 +628,25 @@ focus_tree = {
 		x = 5
 		y = 2
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = national_populist
+		available = {
+			has_government = national_populist
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_compromised_neutrality"
+			add_stability = 0.05
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LEC_faction_path
+					option = LEC_FAC_YES
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_compromised_neutrality"
-					add_stability = 0.05
-					add_political_power = 100
-				}
-			search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 75
-					modifier = {
-							factor = 0
-							has_game_rule = {
-									rule = LEC_faction_path
-									option = LEC_FAC_YES
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_supply_lines
@@ -655,23 +658,22 @@ focus_tree = {
 		x = 4
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = national_populist
+		available = {
+			has_government = national_populist
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_supply_lines"
+			add_ideas = { LEC_supply_lines_idea }
+		}
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				JAP = {
+					has_war = yes
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_supply_lines"
-					add_ideas = { LEC_supply_lines_idea }
-				}
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							JAP = {
-									has_war = yes
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_weapons_smuggling
@@ -683,28 +685,27 @@ focus_tree = {
 		x = 6
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = national_populist
+		available = {
+			has_government = national_populist
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_weapons_smuggling"
+			increase_ruling_party_popularity_by_5 = yes
+			JAP = {
+				country_event = {
+					id = lectianjap.32
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_weapons_smuggling"
-					increase_ruling_party_popularity_by_5 = yes
-					JAP = {
-							country_event = {
-									id = lectianjap.32
-								}
-						}
+			}
+		}
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				JAP = {
+					has_war = yes
 				}
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							JAP = {
-									has_war = yes
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_improving_infrastructure
@@ -719,70 +720,69 @@ focus_tree = {
 		x = 9
 		y = 1
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_improving_infrastructure"
-					random_owned_state = {
-							limit = {
-									free_building_slots = {
-											building = infrastructure
-											size > 2
-											include_locked = no
-										}
-								}
-							add_building_construction = {
-									type = infrastructure
-									level = 2
-									instant_build = yes
-								}
-						}
-					if = {
-							limit = {
-									check_variable = {
-											num_owned_states > 1
-										}
-								}
-							random_owned_state = {
-									limit = {
-											free_building_slots = {
-													building = infrastructure
-													size > 2
-													include_locked = no
-												}
-										}
-									add_building_construction = {
-											type = infrastructure
-											level = 2
-											instant_build = yes
-										}
-								}
-						}
-					if = {
-							limit = {
-									check_variable = {
-											num_owned_states > 2
-										}
-								}
-							random_owned_state = {
-									limit = {
-											free_building_slots = {
-													building = infrastructure
-													size > 2
-													include_locked = no
-												}
-										}
-									add_building_construction = {
-											type = infrastructure
-											level = 2
-											instant_build = yes
-										}
-								}
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_improving_infrastructure"
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = no
+					}
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 70
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
 				}
-
+			}
+			if = {
+				limit = {
+					check_variable = {
+						num_owned_states > 1
+					}
+				}
+				random_owned_state = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size > 2
+							include_locked = no
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						num_owned_states > 2
+					}
+				}
+				random_owned_state = {
+					limit = {
+						free_building_slots = {
+							building = infrastructure
+							size > 2
+							include_locked = no
+						}
+					}
+					add_building_construction = {
+						type = infrastructure
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_railway_profiteering
@@ -794,15 +794,14 @@ focus_tree = {
 		x = 7
 		y = 2
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_railway_profiteering"
-					add_ideas = { LEC_railway_dividend }
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 60
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_railway_profiteering"
+			add_ideas = { LEC_railway_dividend }
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 60
+		}
 	}
 	focus = {
 		id = LEC_standardise_rates
@@ -814,18 +813,17 @@ focus_tree = {
 		x = 7
 		y = 3
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_standardise_rates"
-					swap_ideas = {
-							remove_idea = LEC_railway_dividend
-							add_idea = LEC_railway_land_tax
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 70
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_standardise_rates"
+			swap_ideas = {
+				remove_idea = LEC_railway_dividend
+				add_idea = LEC_railway_land_tax
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_pressure_westerners
@@ -840,35 +838,34 @@ focus_tree = {
 		x = 9
 		y = 2
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = national_populist
+		available = {
+			has_government = national_populist
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_pressure_westerners"
+			add_timed_idea = {
+				idea = LEC_british_down
+				days = 250
+			}
+			add_timed_idea = {
+				idea = LEC_american_down
+				days = 250
+			}
+			add_timed_idea = {
+				idea = LEC_german_down
+				days = 250
+			}
+		}
+		ai_will_do = {
+			factor = 80
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LEC_faction_path
+					option = LEC_FAC_NO
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_pressure_westerners"
-					add_timed_idea = {
-							idea = LEC_british_down
-							days = 250
-						}
-					add_timed_idea = {
-							idea = LEC_american_down
-							days = 250
-						}
-					add_timed_idea = {
-							idea = LEC_german_down
-							days = 250
-						}
-				}
-			ai_will_do = {
-					factor = 80
-					modifier = {
-							factor = 0
-							has_game_rule = {
-									rule = LEC_faction_path
-									option = LEC_FAC_NO
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_TMKKD
@@ -880,27 +877,26 @@ focus_tree = {
 		x = 8
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = national_populist
+		available = {
+			has_government = national_populist
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_TMKKD"
+			add_ideas = { LEC_TMKKD_idea }
+		}
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				set_temp_variable = {
+					LEC_help_japan_desire = party_popularity@national_populist
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_TMKKD"
-					add_ideas = { LEC_TMKKD_idea }
+				multiply_temp_variable = {
+					LEC_help_japan_desire = 100
 				}
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							set_temp_variable = {
-									LEC_help_japan_desire = party_popularity@national_populist
-								}
-							multiply_temp_variable = {
-									LEC_help_japan_desire = 100
-								}
-							add = LEC_help_japan_desire
-							always = yes
-						}
-				}
-
+				add = LEC_help_japan_desire
+				always = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_yokohama_specie_bank
@@ -912,59 +908,65 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		bypass = {
-			has_country_flag = LEC_Triad_Power
+			OR = {
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
+			}
 		}
 		x = 10
 		y = 2
 		relative_position_id = LEC_jardines
-			available = {
-					has_country_flag = {
-							flag = LEC_currency_reserves
-							value < 10
-						}
+		available = {
+			has_country_flag = {
+				flag = LEC_currency_reserves
+				value < 10
+			}
+		}
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				add = -30
+				currency_reserves_high = yes
+			}
+			modifier = {
+				add = -30
+				currency_reserves_medium = yes
+			}
+			modifier = {
+				add = 10
+				currency_reserves_low = yes
+			}
+			modifier = {
+				add = 20
+				currency_reserves_critical = yes
+			}
+			modifier = {
+				factor = 0.1
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							add = -30
-							currency_reserves_high = yes
-						}
-					modifier = {
-							add = -30
-							currency_reserves_medium = yes
-						}
-					modifier = {
-							add = 10
-							currency_reserves_low = yes
-						}
-					modifier = {
-							add = 20
-							currency_reserves_critical = yes
-						}
-					modifier = {
-							factor = 0.1
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
-				}
-			bypass = {
-					has_country_flag = LEC_bankrupt
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_yokohama_specie_bank"
-					increase_currency_reserve = yes
-					add_timed_idea = {
-							idea = LEC_japanese_up
-							days = 50
-						}
-					set_country_flag = japanese_loan
-				}
-
+			}
+		}
+		bypass = {
+			OR = {
+				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_yokohama_specie_bank"
+			increase_currency_reserve = yes
+			add_timed_idea = {
+				idea = LEC_japanese_up
+				days = 50
+			}
+			set_country_flag = japanese_loan
+		}
 	}
 	focus = {
 		id = LEC_manchus_in_tianjin
@@ -976,43 +978,42 @@ focus_tree = {
 		x = 10
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = national_populist
-					controls_state = 609
+		available = {
+			has_government = national_populist
+			controls_state = 609
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_manchus_in_tianjin"
+			FNG = {
+				country_event = {
+					id = lectianjap.30
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_manchus_in_tianjin"
+			}
+		}
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				set_temp_variable = {
+					LEC_help_japan_desire = party_popularity@national_populist
+				}
+				multiply_temp_variable = {
+					LEC_help_japan_desire = 100
+				}
+				add = LEC_help_japan_desire
+				always = yes
+			}
+			modifier = {
+				factor = 2
+				OR = {
 					FNG = {
-							country_event = {
-									id = lectianjap.30
-								}
-						}
+						has_war = yes
+					}
+					JAP = {
+						has_war = yes
+					}
 				}
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							set_temp_variable = {
-									LEC_help_japan_desire = party_popularity@national_populist
-								}
-							multiply_temp_variable = {
-									LEC_help_japan_desire = 100
-								}
-							add = LEC_help_japan_desire
-							always = yes
-						}
-					modifier = {
-							factor = 2
-							OR = {
-									FNG = {
-											has_war = yes
-										}
-									JAP = {
-											has_war = yes
-										}
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_deal_with_zhang
@@ -1029,19 +1030,18 @@ focus_tree = {
 		x = 7
 		y = 4
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = national_populist
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_deal_with_zhang"
-					country_event = {
-							id = lec.80
-						}
-				}
-			ai_will_do = {
-					factor = 70
-				}
-
+		available = {
+			has_government = national_populist
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_deal_with_zhang"
+			country_event = {
+				id = lec.80
+			}
+		}
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_string_of_pearls_scheme
@@ -1059,21 +1059,20 @@ focus_tree = {
 		x = 10
 		y = 4
 		relative_position_id = LEC_jardines
-			available = {
-					OR = {
-							controls_state = 609# Tianjin
-							controls_state = 326# Hong Kong
-						}
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_string_of_pearls_scheme"
-					add_ideas = { LEC_cities_plan }
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 70
-				}
-
+		available = {
+			OR = {
+				controls_state = 609# Tianjin
+				controls_state = 326# Hong Kong
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_string_of_pearls_scheme"
+			add_ideas = { LEC_cities_plan }
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_hong_kong_land
@@ -1090,7 +1089,10 @@ focus_tree = {
 			increase_currency_reserve = yes
 		}
 		bypass = {
-			has_country_flag = LEC_bankrupt
+			OR = {
+				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
+			}
 			NOT = {
 				owns_state = 326
 			}
@@ -1138,18 +1140,17 @@ focus_tree = {
 		}
 		x = 20
 		y = 4
-			available = {
-					controls_state = 743
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_greater_shanghai_plan"
-					add_ideas = { LEC_shanghai_plan }
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 80
-				}
-
+		available = {
+			controls_state = 743
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_greater_shanghai_plan"
+			add_ideas = { LEC_shanghai_plan }
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 80
+		}
 	}
 	focus = {
 		id = LEC_social_provisioning
@@ -1181,23 +1182,23 @@ focus_tree = {
 		x = -7
 		y = 1
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = authoritarian_democrat
-					NOT = {
-						has_country_flag = LEC_Triad_Power
-					}
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_german_tool"
-					custom_effect_tooltip = LEC_german_path
-				}
-			bypass = {
-					has_government = authoritarian_democrat
-				}
-			ai_will_do = {
-					factor = 1000
-				}
-
+		available = {
+			has_government = authoritarian_democrat
+			NOT = {
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_german_tool"
+			custom_effect_tooltip = LEC_german_path
+		}
+		bypass = {
+			has_government = authoritarian_democrat
+		}
+		ai_will_do = {
+			factor = 1000
+		}
 	}
 	focus = {
 		id = LEC_german_military_investors
@@ -1209,42 +1210,43 @@ focus_tree = {
 		x = -9
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = paternal_autocrat
-					NOT = {
-						has_country_flag = LEC_Triad_Power
+		available = {
+			has_government = paternal_autocrat
+			NOT = {
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_german_military_investors"
+			add_tech_bonus = {
+				name = LEC_german_military_investors
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
 					}
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_german_military_investors"
-					add_tech_bonus = {
-							name = LEC_german_military_investors
-							bonus = 1
-							uses = 1
-							category = industry
-						}
-					random_owned_controlled_state = {
-							limit = {
-									free_building_slots = {
-											building = arms_factory
-											size > 0
-											include_locked = yes
-										}
-								}
-							add_extra_state_shared_building_slots = 1
-							add_building_construction = {
-									type = arms_factory
-									level = 1
-									instant_build = yes
-								}
-						}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 85
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 85
+		}
 	}
+	
 	focus = {
 		id = LEC_zhili_in_cities
 		icon = GFX_goal_china_split_helmet
@@ -1258,61 +1260,61 @@ focus_tree = {
 		x = -8
 		y = 2
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_global_flag = LEP_victory
-					has_government = paternal_autocrat
-					NOT = {
-						has_country_flag = LEC_Triad_Power
-					}
-					LEP = {
-							exists = yes
-							has_capitulated = no
-							NOT = {
-									has_war_with = LEC
-								}
-						}
+		available = {
+			has_global_flag = LEP_victory
+			has_government = paternal_autocrat
+			NOT = {
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
+			}
+			LEP = {
+				exists = yes
+				has_capitulated = no
+				NOT = {
+					has_war_with = LEC
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_zhili_in_cities"
-					add_popularity = {
-							ideology = paternal_autocrat
-							popularity = 0.1
-						}
-					add_popularity = {
-							ideology = social_liberal
-							popularity = 0.025
-						}
-					give_military_access = LEP
-					LEP = {
-							give_military_access = LEC
-						}
-					diplomatic_relation = {
-							country = LEP
-							relation = non_aggression_pact
-						}
-					give_guarantee = LEP
-					LEP = {
-							give_guarantee = LEC
-						}
-					add_opinion_modifier = {
-							target = LEP
-							modifier = KR_approves_of_govt
-						}
-					reverse_add_opinion_modifier = {
-							target = LEP
-							modifier = KR_approves_of_govt
-						}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_zhili_in_cities"
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.025
+			}
+			give_military_access = LEP
+			LEP = {
+				give_military_access = LEC
+			}
+			diplomatic_relation = {
+				country = LEP
+				relation = non_aggression_pact
+			}
+			give_guarantee = LEP
+			LEP = {
+				give_guarantee = LEC
+			}
+			add_opinion_modifier = {
+				target = LEP
+				modifier = KR_approves_of_govt
+			}
+			reverse_add_opinion_modifier = {
+				target = LEP
+				modifier = KR_approves_of_govt
+			}
+		}
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				JAP = {
+					has_war = yes
 				}
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							JAP = {
-									has_war = yes
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_GEA_cooperation
@@ -1327,34 +1329,34 @@ focus_tree = {
 		x = -6
 		y = 2
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = paternal_autocrat
-					GEA = {
-							exists = yes
-							has_capitulated = no
-						}
-						NOT = {
-						has_country_flag = LEC_Triad_Power
-					}
+		available = {
+			has_government = paternal_autocrat
+			GEA = {
+				exists = yes
+				has_capitulated = no
+			}
+			NOT = {
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_GEA_cooperation"
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = -0.05
+			}
+			add_ideas = { LEC_german_aid_idea }
+		}
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				JAP = {
+					has_war = yes
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_GEA_cooperation"
-					add_popularity = {
-							ideology = paternal_autocrat
-							popularity = -0.05
-						}
-					add_ideas = { LEC_german_aid_idea }
-				}
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							JAP = {
-									has_war = yes
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_fight_jap_influence
@@ -1366,29 +1368,29 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		x = -5
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = paternal_autocrat
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_fight_jap_influence"
-					add_popularity = {
-							ideology = national_populist
-							popularity = -0.0125
-						}
-					modify_country_flag = {
-							flag = xiaolin_suspect
-							value = 1
-						}
-				}
-			ai_will_do = {
-					factor = 85
-				}
-
+		available = {
+			has_government = paternal_autocrat
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_fight_jap_influence"
+			add_popularity = {
+				ideology = national_populist
+				popularity = -0.0125
+			}
+			modify_country_flag = {
+				flag = xiaolin_suspect
+				value = 1
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
 	}
 	focus = {
 		id = LEC_coastal_defence
@@ -1401,6 +1403,7 @@ focus_tree = {
 	    available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		prerequisite = {
@@ -1412,102 +1415,101 @@ focus_tree = {
 		x = -7
 		y = 4
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = paternal_autocrat
+		available = {
+			has_government = paternal_autocrat
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_coastal_defence"
+			country_event = {
+				id = lec.34
+				days = 10
+			}
+			if = {
+				limit = {
+					743 = {
+						is_controlled_by = LEC
+					}
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_coastal_defence"
-					country_event = {
-							id = lec.34
-							days = 10
-						}
-					if = {
-							limit = {
-									743 = {
-											is_controlled_by = LEC
-										}
-								}
-							743 = {
-									add_building_construction = {
-											type = coastal_bunker
-											level = 2
-											province = 12076
-											instant_build = yes
-										}
-									add_building_construction = {
-											type = coastal_bunker
-											level = 1
-											province = 7014
-											instant_build = yes
-										}
-									add_building_construction = {
-											type = coastal_bunker
-											level = 2
-											province = 12052
-											instant_build = yes
-										}
-								}
-						}
-					if = {
-							limit = {
-									746 = {
-											is_controlled_by = LEC
-										}
-								}
-							746 = {
-									add_building_construction = {
-											type = coastal_bunker
-											level = 2
-											province = 9974
-											instant_build = yes
-										}
-								}
-						}
-					if = {
-							limit = {
-									747 = {
-											is_controlled_by = LEC
-										}
-								}
-							747 = {
-									add_building_construction = {
-											type = coastal_bunker
-											level = 2
-											province = 4196
-											instant_build = yes
-										}
-								}
-						}
-					if = {
-							limit = {
-									801 = {
-											is_controlled_by = LEC
-										}
-								}
-							801 = {
-									add_building_construction = {
-											type = coastal_bunker
-											level = 2
-											province = 9938
-											instant_build = yes
-										}
-								}
-						}
+				743 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 12076
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 1
+						province = 7014
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 12052
+						instant_build = yes
+					}
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							OR = {
-									JAP = {
-											has_war = yes
-										}
-									has_war = yes
-								}
-						}
+			}
+			if = {
+				limit = {
+					746 = {
+						is_controlled_by = LEC
+					}
 				}
-
+				746 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 9974
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					747 = {
+						is_controlled_by = LEC
+					}
+				}
+				747 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 4196
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = {
+					801 = {
+						is_controlled_by = LEC
+					}
+				}
+				801 = {
+					add_building_construction = {
+						type = coastal_bunker
+						level = 2
+						province = 9938
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				OR = {
+					JAP = {
+						has_war = yes
+					}
+					has_war = yes
+				}
+			}
+		}
 	}
 	focus = {
 		id = LEC_free_trade_in_china
@@ -1520,28 +1522,27 @@ focus_tree = {
 		x = 0
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
-					OR = {
-							has_government = market_liberal
-							has_government = social_conservative
-						}
+		available = {
+			OR = {
+				has_government = market_liberal
+				has_government = social_conservative
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_free_trade_in_china"
+			add_ideas = { LEC_legation_cities_open_door }
+			every_country = {
+				limit = {
+					has_idea = LEC_generic_open_door
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_free_trade_in_china"
-					add_ideas = { LEC_legation_cities_open_door }
-					every_country = {
-							limit = {
-									has_idea = LEC_generic_open_door
-								}
-							country_event = {
-									id = lec.31
-								}
-						}
+				country_event = {
+					id = lec.31
 				}
-			ai_will_do = {
-					factor = 85
-				}
-
+			}
+		}
+		ai_will_do = {
+			factor = 85
+		}
 	}
 	focus = {
 		id = LEC_forum_of_peace
@@ -1556,20 +1557,19 @@ focus_tree = {
 		x = -2
 		y = 2
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = market_liberal
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_forum_of_peace"
-					lec_japanese_rise = yes
-					lec_german_rise = yes
-					lec_american_rise = yes
-					increase_ruling_party_popularity_by_5 = yes
-				}
-			ai_will_do = {
-					factor = 75
-				}
-
+		available = {
+			has_government = market_liberal
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_forum_of_peace"
+			lec_japanese_rise = yes
+			lec_german_rise = yes
+			lec_american_rise = yes
+			increase_ruling_party_popularity_by_5 = yes
+		}
+		ai_will_do = {
+			factor = 75
+		}
 	}
 	focus = {
 		id = LEC_encourage_cooperation
@@ -1581,18 +1581,17 @@ focus_tree = {
 		x = -2
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
-					has_government = market_liberal
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_encourage_cooperation"
-					add_ideas = LEC_legit_neutrality
-				}
-			search_filters = { FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_POLITICAL }
-			ai_will_do = {
-					factor = 70
-				}
-
+		available = {
+			has_government = market_liberal
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_encourage_cooperation"
+			add_ideas = LEC_legit_neutrality
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_multipolar_mandate
@@ -1607,40 +1606,39 @@ focus_tree = {
 		x = 2
 		y = 2
 		relative_position_id = LEC_new_status_quo
-			available = {
-					OR = {
-							has_government = market_liberal
-							has_government = social_conservative
-						}
+		available = {
+			OR = {
+				has_government = market_liberal
+				has_government = social_conservative
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_multipolar_mandate"
+			add_popularity = {
+				ideology = national_populist
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = -0.05
+			}
+			add_political_power = -25
+			add_stability = 0.025
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				set_temp_variable = {
+					LEC_help_britain_desire = party_popularity@social_conservative
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_multipolar_mandate"
-					add_popularity = {
-							ideology = national_populist
-							popularity = -0.05
-						}
-					add_popularity = {
-							ideology = paternal_autocrat
-							popularity = -0.05
-						}
-					add_political_power = -25
-					add_stability = 0.025
+				multiply_temp_variable = {
+					LEC_help_britain_desire = 100
 				}
-			search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							set_temp_variable = {
-									LEC_help_britain_desire = party_popularity@social_conservative
-								}
-							multiply_temp_variable = {
-									LEC_help_britain_desire = 100
-								}
-							add = LEC_help_britain_desire
-							always = yes
-						}
-				}
-
+				add = LEC_help_britain_desire
+				always = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_bring_back_the_brits
@@ -1652,61 +1650,60 @@ focus_tree = {
 		x = 2
 		y = 3
 		relative_position_id = LEC_new_status_quo
-			available = {
+		available = {
+			OR = {
+				has_government = market_liberal
+				has_government = social_conservative
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_bring_back_the_brits"
+			country_event = {
+				id = lecbrits.41
+			}
+		}
+		bypass = {
+			OR = {
+				has_country_flag = LEC_brits_vote
+				AND = {
 					OR = {
-							has_government = market_liberal
-							has_government = social_conservative
+						CAN = {
+							exists = no
 						}
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_bring_back_the_brits"
-					country_event = {
-							id = lecbrits.41
+						CAN = {
+							is_subject = yes
 						}
-				}
-			bypass = {
+					}
 					OR = {
-							has_country_flag = LEC_brits_vote
-							AND = {
-									OR = {
-											CAN = {
-													exists = no
-												}
-											CAN = {
-													is_subject = yes
-												}
-										}
-									OR = {
-											AST = {
-													exists = no
-												}
-											AST = {
-													is_subject = yes
-												}
-											AST = {
-													has_socialist_government = yes
-												}
-											AST = {
-													has_government = paternal_autocrat
-												}
-										}
-								}
+						AST = {
+							exists = no
 						}
-				}
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							set_temp_variable = {
-									LEC_help_britain_desire = party_popularity@social_conservative
-								}
-							multiply_temp_variable = {
-									LEC_help_britain_desire = 100
-								}
-							add = LEC_help_britain_desire
-							always = yes
+						AST = {
+							is_subject = yes
 						}
+						AST = {
+							has_socialist_government = yes
+						}
+						AST = {
+							has_government = paternal_autocrat
+						}
+					}
 				}
-
+			}
+		}
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				set_temp_variable = {
+						LEC_help_britain_desire = party_popularity@social_conservative
+					}
+				multiply_temp_variable = {
+						LEC_help_britain_desire = 100
+					}
+				add = LEC_help_britain_desire
+				always = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_seek_third_parties
@@ -1719,21 +1716,20 @@ focus_tree = {
 		x = 0
 		y = 4
 		relative_position_id = LEC_new_status_quo
-			available = {
-					OR = {
-							has_government = market_liberal
-							has_government = social_conservative
-						}
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_seek_third_parties"
-					add_stability = 0.05
-				}
-			search_filters = { FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 70
-				}
-
+		available = {
+			OR = {
+				has_government = market_liberal
+				has_government = social_conservative
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_seek_third_parties"
+			add_stability = 0.05
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_neutral_zone_crackdown
@@ -1747,27 +1743,26 @@ focus_tree = {
 		x = 0
 		y = 5
 		relative_position_id = LEC_new_status_quo
-			available = {
-					controls_state = 743
-					threat > 0.25
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_neutral_zone_crackdown"
-					add_stability = -0.05
-					lec_chinese_fall = yes
-					743 = {
-							add_extra_state_shared_building_slots = 2
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 75
-					modifier = {
-							factor = 2
-							threat > 0.5
-						}
-				}
-
+		available = {
+			controls_state = 743
+			threat > 0.25
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_neutral_zone_crackdown"
+			add_stability = -0.05
+			lec_chinese_fall = yes
+			743 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 75
+			modifier = {
+				factor = 2
+				threat > 0.5
+			}
+		}
 	}
 	focus = {
 		id = LEC_remove_japanese
@@ -1780,42 +1775,41 @@ focus_tree = {
 		x = -4
 		y = 5
 		relative_position_id = LEC_new_status_quo
-			available = {
-					JAP = {
-							exists = yes
-							is_subject = no
-						}
-					custom_trigger_tooltip = {
-							tooltip = LEC_japanese_influence_too_high
-							national_populist < 0.11
-						}
-					NOT = {
-							has_completed_focus = LEC_forum_of_peace
-						}
+		available = {
+		JAP = {
+				exists = yes
+				is_subject = no
+			}
+			custom_trigger_tooltip = {
+				tooltip = LEC_japanese_influence_too_high
+				national_populist < 0.11
+			}
+			NOT = {
+				has_completed_focus = LEC_forum_of_peace
+			}
+		}
+		will_lead_to_war_with = JAP
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_remove_japanese"
+			add_political_power = 50
+			country_event = {
+				id = lec.51
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 65
+			modifier = {
+				factor = 2
+				JAP = {
+					has_war = yes
 				}
-			will_lead_to_war_with = JAP
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_remove_japanese"
-					add_political_power = 50
-					country_event = {
-							id = lec.51
-						}
-				}
-			search_filters = { FOCUS_FILTER_POLITICAL }
-			ai_will_do = {
-					factor = 65
-					modifier = {
-							factor = 2
-							JAP = {
-									has_war = yes
-								}
-						}
-					modifier = {
-							factor = 0.5
-							is_in_faction = no
-						}
-				}
-
+			}
+			modifier = {
+				factor = 0.5
+				is_in_faction = no
+			}
+		}
 	}
 	focus = {
 		id = LEC_remove_germans
@@ -1828,42 +1822,41 @@ focus_tree = {
 		x = 4
 		y = 5
 		relative_position_id = LEC_new_status_quo
-			available = {
-					GER = {
-							exists = yes
-							is_subject = no
-						}
-					custom_trigger_tooltip = {
-							tooltip = LEC_german_influence_too_high
-							paternal_autocrat < 0.11
-						}
-					NOT = {
-							has_completed_focus = LEC_pressure_westerners
-						}
+		available = {
+			GER = {
+				exists = yes
+				is_subject = no
+			}
+			custom_trigger_tooltip = {
+				tooltip = LEC_german_influence_too_high
+				paternal_autocrat < 0.11
+			}
+			NOT = {
+				has_completed_focus = LEC_pressure_westerners
+			}
+		}
+		will_lead_to_war_with = GER
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_remove_germans"
+			add_political_power = 50
+			country_event = {
+				id = lec.81
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 40
+			modifier = {
+				factor = 2
+				GEA = {
+					surrender_progress > 0.40
 				}
-			will_lead_to_war_with = GER
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_remove_germans"
-					add_political_power = 50
-					country_event = {
-							id = lec.81
-						}
-				}
-			search_filters = { FOCUS_FILTER_POLITICAL }
-			ai_will_do = {
-					factor = 40
-					modifier = {
-							factor = 2
-							GEA = {
-									surrender_progress > 0.40
-								}
-						}
-					modifier = {
-							factor = 0.5
-							is_in_faction = no
-						}
-				}
-
+			}
+			modifier = {
+				factor = 0.5
+				is_in_faction = no
+			}
+		}
 	}
 	focus = {
 		id = LEC_stable_markets
@@ -1879,18 +1872,17 @@ focus_tree = {
 		y = 6
 		relative_position_id = LEC_new_status_quo
 			available = {
-					NOT = {
-							has_war = yes
-						}
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_stable_markets"
-					custom_effect_tooltip = LEC_prevent_collapse
-				}
-			ai_will_do = {
-					factor = 60
-				}
-
+			NOT = {
+				has_war = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_stable_markets"
+			custom_effect_tooltip = LEC_prevent_collapse
+		}
+		ai_will_do = {
+			factor = 60
+		}
 	}
 	focus = {
 		id = LEC_war_industrialists
@@ -1905,47 +1897,43 @@ focus_tree = {
 		x = -2
 		y = 6
 		relative_position_id = LEC_new_status_quo
-			available = {
-
-}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_war_industrialists"
-					random_owned_state = {
-							limit = {
-									free_building_slots = {
-											building = arms_factory
-											size > 0
-											include_locked = yes
-										}
-								}
-							add_extra_state_shared_building_slots = 1
-							add_building_construction = {
-									type = arms_factory
-									level = 1
-									instant_build = yes
-								}
-						}
-					random_owned_state = {
-							limit = {
-									free_building_slots = {
-											building = arms_factory
-											size > 0
-											include_locked = yes
-										}
-								}
-							add_extra_state_shared_building_slots = 1
-							add_building_construction = {
-									type = arms_factory
-									level = 1
-									instant_build = yes
-								}
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_war_industrialists"
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 55
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
 				}
-
+			}
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 55
+		}
 	}
 	focus = {
 		id = LEC_they_made_ready
@@ -1958,32 +1946,31 @@ focus_tree = {
 		x = 0
 		y = 7
 		relative_position_id = LEC_new_status_quo
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_they_made_ready"
-					if = {
-							limit = {
-									OR = {
-											has_completed_focus = LEC_forum_of_peace
-											has_completed_focus = LEC_compromised_neutrality
-										}
-								}
-							add_stability = 0.1
-						}
-					if = {
-							limit = {
-									NOT = {
-											has_completed_focus = LEC_forum_of_peace
-											has_completed_focus = LEC_compromised_neutrality
-										}
-								}
-							custom_effect_tooltip = LEC_faction_joining_decisions
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_they_made_ready"
+			if = {
+				limit = {
+					OR = {
+						has_completed_focus = LEC_forum_of_peace
+						has_completed_focus = LEC_compromised_neutrality
+					}
 				}
-			search_filters = { FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 100
+				add_stability = 0.1
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_completed_focus = LEC_forum_of_peace
+						has_completed_focus = LEC_compromised_neutrality
+					}
 				}
-
+				custom_effect_tooltip = LEC_faction_joining_decisions
+			}
+		}
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 100
+		}
 	}
 	focus = {
 		id = LEC_arnold_and_karlberg
@@ -1998,50 +1985,49 @@ focus_tree = {
 		x = 5
 		y = 2
 		relative_position_id = LEC_jardines
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_arnold_and_karlberg"
-					if = {
-							limit = {
-									has_idea = LEC_black_monday3
-								}
-							remove_ideas = LEC_black_monday3
-						}
-					else = {
-							swap_ideas = {
-									remove_idea = LEC_black_monday2
-									add_idea = LEC_black_monday3
-								}
-						}
-					decrease_currency_reserve = yes
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_arnold_and_karlberg"
+			if = {
+				limit = {
+					has_idea = LEC_black_monday3
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							add = 20
-							currency_reserves_high = yes
-						}
-					modifier = {
-							add = 15
-							currency_reserves_medium = yes
-						}
-					modifier = {
-							add = -10
-							currency_reserves_low = yes
-						}
-					modifier = {
-							add = -20
-							currency_reserves_critical = yes
-						}
-					modifier = {
-							factor = 1000
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
+				remove_ideas = LEC_black_monday3
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = LEC_black_monday2
+					add_idea = LEC_black_monday3
 				}
-
+			}
+			decrease_currency_reserve = yes
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				add = 20
+				currency_reserves_high = yes
+			}
+			modifier = {
+				add = 15
+				currency_reserves_medium = yes
+			}
+			modifier = {
+				add = -10
+				currency_reserves_low = yes
+			}
+			modifier = {
+				add = -20
+				currency_reserves_critical = yes
+			}
+			modifier = {
+				factor = 1000
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
+				}
+			}
+		}
 	}
 	focus = {
 		id = LEC_to_the_coal_fields
@@ -2056,27 +2042,26 @@ focus_tree = {
 		x = 3
 		y = 3
 		relative_position_id = LEC_jardines
-			available = {
-					controls_state = 609
-				}
-			bypass = {
-					NOT = {
-							owns_state = 609
-						}
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_to_the_coal_fields"
-					add_resource = {
-							type = steel
-							amount = 8
-							state = 609
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 80
-				}
-
+		available = {
+			controls_state = 609
+		}
+		bypass = {
+			NOT = {
+				owns_state = 609
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_to_the_coal_fields"
+			add_resource = {
+				type = steel
+				amount = 8
+				state = 609
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 80
+		}
 	}
 	focus = {
 		id = LEC_tianjin_rail_hub
@@ -2088,29 +2073,28 @@ focus_tree = {
 		x = -2
 		y = 1
 		relative_position_id = LEC_string_of_pearls_scheme
-			available = {
-					controls_state = 609
+		available = {
+			controls_state = 609
+		}
+		bypass = {
+			NOT = {
+				owns_state = 609
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_tianjin_rail_hub"
+			609 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
 				}
-			bypass = {
-					NOT = {
-							owns_state = 609
-						}
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_tianjin_rail_hub"
-					609 = {
-							add_building_construction = {
-									type = infrastructure
-									level = 2
-									instant_build = yes
-								}
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 60
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 60
+		}
 	}
 	focus = {
 		id = LEC_the_small_cities
@@ -2122,48 +2106,47 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = LEC_string_of_pearls_scheme
-			bypass = {
-					NOT = {
-							owns_state = 801
-						}
-					NOT = {
-							owns_state = 747
-						}
-					NOT = {
-							owns_state = 746
-						}
+		bypass = {
+			NOT = {
+				owns_state = 801
+			}
+			NOT = {
+				owns_state = 747
+			}
+			NOT = {
+				owns_state = 746
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_the_small_cities"
+			if = {
+				limit = {
+					controls_state = 801
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_the_small_cities"
-					if = {
-						limit = {
-							controls_state = 801
-						}
-						801 = {
-							set_state_category = nine
-						}
-					}
-					if = {
-						limit = {
-							controls_state = 747
-						}
-						747 = {
-							set_state_category = nine
-						}
-					}
-					if = {
-						limit = {
-							controls_state = 746
-						}
-						746 = {
-							set_state_category = nine
-						}
-					}
+				801 = {
+					set_state_category = nine
 				}
-			ai_will_do = {
-					factor = 75
+			}
+			if = {
+				limit = {
+					controls_state = 747
 				}
-
+				747 = {
+					set_state_category = nine
+				}
+			}
+			if = {
+				limit = {
+					controls_state = 746
+				}
+				746 = {
+					set_state_category = nine
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 75
+		}
 	}
 	focus = {
 		id = LEC_electrifying_china
@@ -2178,49 +2161,48 @@ focus_tree = {
 		x = -2
 		y = 2
 		relative_position_id = LEC_string_of_pearls_scheme
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_electrifying_china"
-					743 = {
-							add_building_construction = {
-									type = infrastructure
-									level = 1
-									instant_build = yes
-								}
-						}
-					598 = {
-							add_building_construction = {
-									type = infrastructure
-									level = 1
-									instant_build = yes
-								}
-						}
-					613 = {
-							add_building_construction = {
-									type = infrastructure
-									level = 1
-									instant_build = yes
-								}
-						}
-					1014 = {
-							add_building_construction = {
-									type = infrastructure
-									level = 1
-									instant_build = yes
-								}
-						}
-					606 = {
-							add_building_construction = {
-									type = infrastructure
-									level = 1
-									instant_build = yes
-								}
-						}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_electrifying_china"
+			743 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 75
+			}
+			598 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
 				}
-
+			}
+			613 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1014 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			606 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 75
+		}
 	}
 	focus = {
 		id = LEC_shantou_docks
@@ -2232,36 +2214,35 @@ focus_tree = {
 		x = 0
 		y = 2
 		relative_position_id = LEC_string_of_pearls_scheme
-			available = {
-					controls_state = 801
+		available = {
+			controls_state = 801
+		}
+		bypass = {
+			NOT = {
+					owns_state = 801
 				}
-			bypass = {
-					NOT = {
-							owns_state = 801
-						}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_shantou_docks"
+			801 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_shantou_docks"
-					801 = {
-							add_extra_state_shared_building_slots = 1
-							add_building_construction = {
-									type = dockyard
-									level = 1
-									instant_build = yes
-								}
-							add_building_construction = {
-									type = naval_base
-									level = 2
-									province = 9938
-									instant_build = yes
-								}
-						}
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					province = 9938
+					instant_build = yes
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 60
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 60
+		}
 	}
 	focus = {
 		id = LEC_bypass_the_aog
@@ -2276,58 +2257,57 @@ focus_tree = {
 		x = 2
 		y = 3
 		relative_position_id = LEC_string_of_pearls_scheme
-			bypass = {
-					NOT = {
-							owns_state = 747
-						}
-					NOT = {
-							owns_state = 746
-						}
+		bypass = {
+			NOT = {
+				owns_state = 747
+			}
+			NOT = {
+				owns_state = 746
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_bypass_the_aog"
+			if = {
+				limit = {
+					owns_state = 746
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_bypass_the_aog"
-					if = {
-							limit = {
-									owns_state = 746
-								}
-							746 = {
-									add_extra_state_shared_building_slots = 1
-									add_building_construction = {
-											type = naval_base
-											level = 2
-											instant_build = yes
-										}
-									add_building_construction = {
-											type = industrial_complex
-											level = 1
-											instant_build = yes
-										}
-								}
-						}
-					if = {
-							limit = {
-									owns_state = 747
-								}
-							747 = {
-									add_extra_state_shared_building_slots = 1
-									add_building_construction = {
-											type = dockyard
-											level = 1
-											instant_build = yes
-										}
-									add_building_construction = {
-											type = naval_base
-											level = 2
-											instant_build = yes
-										}
-								}
-						}
+				746 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = naval_base
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 80
+			}
+			if = {
+				limit = {
+					owns_state = 747
 				}
-
+				747 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = dockyard
+						level = 1
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = naval_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 80
+		}
 	}
 	focus = {
 		id = LEC_the_legation_yuan
@@ -2342,15 +2322,14 @@ focus_tree = {
 		x = 0
 		y = 3
 		relative_position_id = LEC_string_of_pearls_scheme
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_the_legation_yuan"
-					add_ideas = { LEC_legation_dollar }
-				}
-			search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 75
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_the_legation_yuan"
+			add_ideas = { LEC_legation_dollar }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 75
+		}
 	}
 	focus = {
 		id = LEC_pieces_of_a_puzzle
@@ -2362,70 +2341,69 @@ focus_tree = {
 		x = -2
 		y = 3
 		relative_position_id = LEC_string_of_pearls_scheme
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_pieces_of_a_puzzle"
-					random_owned_state = {
-							limit = {
-									free_building_slots = {
-											building = dockyard
-											size > 1
-											include_locked = no
-										}
-								}
-							add_building_construction = {
-									type = dockyard
-									level = 1
-									instant_build = yes
-								}
-						}
-					if = {
-							limit = {
-									check_variable = {
-											num_owned_states > 1
-										}
-								}
-							random_owned_state = {
-									limit = {
-											free_building_slots = {
-													building = arms_factory
-													size > 1
-													include_locked = no
-												}
-										}
-									add_building_construction = {
-											type = arms_factory
-											level = 1
-											instant_build = yes
-										}
-								}
-						}
-					if = {
-							limit = {
-									check_variable = {
-											num_owned_states > 2
-										}
-								}
-							random_owned_state = {
-									limit = {
-											free_building_slots = {
-													building = industrial_complex
-													size > 1
-													include_locked = no
-												}
-										}
-									add_building_construction = {
-											type = industrial_complex
-											level = 1
-											instant_build = yes
-										}
-								}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_pieces_of_a_puzzle"
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = dockyard
+						size > 1
+						include_locked = no
+					}
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+							num_owned_states > 1
 						}
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 75
+				random_owned_state = {
+					limit = {
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = no
+						}
+					}
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
 				}
-
+			}
+			if = {
+				limit = {
+					check_variable = {
+						num_owned_states > 2
+					}
+				}
+				random_owned_state = {
+					limit = {
+						free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = no
+						}
+					}
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 75
+		}
 	}
 	focus = {
 		id = LEC_all_china_university
@@ -2439,15 +2417,14 @@ focus_tree = {
 		x = 0
 		y = 4
 		relative_position_id = LEC_string_of_pearls_scheme
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_all_china_university"
-					add_research_slot = 1
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 100
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_all_china_university"
+			add_research_slot = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 100
+		}
 	}
 	focus = {
 		id = LEC_renovate_the_bund
@@ -2459,25 +2436,24 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = LEC_greater_shanghai_plan
-			available = {
-					controls_state = 743
+		available = {
+			controls_state = 743
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_renovate_the_bund"
+			743 = {
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+					province = 7014
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_renovate_the_bund"
-					743 = {
-							add_building_construction = {
-									type = naval_base
-									level = 2
-									instant_build = yes
-									province = 7014
-								}
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 70
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_invest_in_mannufactures
@@ -2492,25 +2468,24 @@ focus_tree = {
 		x = 1
 		y = 2
 		relative_position_id = LEC_greater_shanghai_plan
-			available = {
-					controls_state = 743
+		available = {
+			controls_state = 743
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_invest_in_mannufactures"
+			743 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_invest_in_mannufactures"
-					743 = {
-							add_extra_state_shared_building_slots = 2
-							add_building_construction = {
-									type = industrial_complex
-									level = 2
-									instant_build = yes
-								}
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 80
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 80
+		}
 	}
 	focus = {
 		id = LEC_land_spec_in_neutral_zone
@@ -2522,40 +2497,42 @@ focus_tree = {
 		x = -3
 		y = 2
 		relative_position_id = LEC_greater_shanghai_plan
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_land_spec_in_neutral_zone"
-					increase_currency_reserve = yes
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_land_spec_in_neutral_zone"
+			increase_currency_reserve = yes
+		}
+		bypass = {
+			OR = {
+				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
+			}
+		}
+		ai_will_do = {
+			factor = 60
+			modifier = {
+				add = -30
+				currency_reserves_high = yes
+			}
+			modifier = {
+				add = -30
+				currency_reserves_medium = yes
+			}
+			modifier = {
+				add = 10
+				currency_reserves_low = yes
+			}
+			modifier = {
+				add = 20
+				currency_reserves_critical = yes
+			}
+			modifier = {
+				factor = 0.1
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_COLLAPSE
 				}
-			bypass = {
-					has_country_flag = LEC_bankrupt
-				}
-			ai_will_do = {
-					factor = 60
-					modifier = {
-							add = -30
-							currency_reserves_high = yes
-						}
-					modifier = {
-							add = -30
-							currency_reserves_medium = yes
-						}
-					modifier = {
-							add = 10
-							currency_reserves_low = yes
-						}
-					modifier = {
-							add = 20
-							currency_reserves_critical = yes
-						}
-					modifier = {
-							factor = 0.1
-							has_game_rule = {
-									rule = LEC_path
-									option = LEC_COLLAPSE
-								}
-						}
-				}
-
+			}
+		}
 	}
 	focus = {
 		id = LEC_invest_in_naval_mannufactures
@@ -2570,25 +2547,24 @@ focus_tree = {
 		x = -1
 		y = 2
 		relative_position_id = LEC_greater_shanghai_plan
-			available = {
-					controls_state = 743
+		available = {
+			controls_state = 743
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_invest_in_naval_mannufactures"
+			743 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_invest_in_naval_mannufactures"
-					743 = {
-						add_extra_state_shared_building_slots = 1
-						add_building_construction = {
-								type = dockyard
-								level = 1
-								instant_build = yes
-							}
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 75
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 75
+		}
 	}
 	focus = {
 		id = LEC_invest_in_heavy_mannufactures
@@ -2600,25 +2576,24 @@ focus_tree = {
 		x = 1
 		y = 1
 		relative_position_id = LEC_greater_shanghai_plan
-			available = {
-					controls_state = 743
+		available = {
+			controls_state = 743
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_invest_in_heavy_mannufactures"
+			743 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_invest_in_heavy_mannufactures"
-					743 = {
-							add_extra_state_shared_building_slots = 1
-							add_building_construction = {
-									type = arms_factory
-									level = 1
-									instant_build = yes
-								}
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 76
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 76
+		}
 	}
 	focus = {
 		id = LEC_expand_shanghai_university
@@ -2630,18 +2605,17 @@ focus_tree = {
 		x = 3
 		y = 2
 		relative_position_id = LEC_greater_shanghai_plan
-			available = {
-					controls_state = 743
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_expand_shanghai_university"
-					add_research_slot = 1
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 100
-				}
-
+		available = {
+			controls_state = 743
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_expand_shanghai_university"
+			add_research_slot = 1
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 100
+		}
 	}
 	focus = {
 		id = LEC_consolidate_stock_exchanges
@@ -2656,22 +2630,21 @@ focus_tree = {
 		x = -2
 		y = 3
 		relative_position_id = LEC_greater_shanghai_plan
-			available = {
-					social_conservative < 0.15
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_consolidate_stock_exchanges"
-					add_political_power = 150
-					add_timed_idea = {
-							idea = LEC_british_down
-							days = 50
-						}
-				}
-			search_filters = { FOCUS_FILTER_POLITICAL }
-			ai_will_do = {
-					factor = 60
-				}
-
+		available = {
+			social_conservative < 0.15
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_consolidate_stock_exchanges"
+			add_political_power = 150
+			add_timed_idea = {
+				idea = LEC_british_down
+				days = 50
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 60
+		}
 	}
 	focus = {
 		id = LEC_new_council_building
@@ -2686,15 +2659,14 @@ focus_tree = {
 		x = 0
 		y = 3
 		relative_position_id = LEC_greater_shanghai_plan
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_new_council_building"
-					add_ideas = { LEC_new_council_building }
-				}
-			search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 70
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_new_council_building"
+			add_ideas = { LEC_new_council_building }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL  FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_the_shanghai_yuan
@@ -2709,16 +2681,15 @@ focus_tree = {
 		x = 2
 		y = 3
 		relative_position_id = LEC_greater_shanghai_plan
-			dynamic = yes
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_the_shanghai_yuan"
-					add_ideas = { LEC_shanghai_yuan }
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_STABILITY }
-			ai_will_do = {
-					factor = 75
-				}
-
+		dynamic = yes
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_the_shanghai_yuan"
+			add_ideas = { LEC_shanghai_yuan }
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY  FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 75
+		}
 	}
 	focus = {
 		id = LEC_defending_shanghai
@@ -2730,50 +2701,49 @@ focus_tree = {
 		x = -1
 		y = 1
 		relative_position_id = LEC_in_defence_of_commerce
-			available = {
-					controls_state = 743
-					has_equipment = {
-							artillery_equipment > 249
-						}
+		available = {
+			controls_state = 743
+			has_equipment = {
+				artillery_equipment > 249
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_defending_shanghai"
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = -250
+			}
+			743 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 7014
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_defending_shanghai"
-					add_equipment_to_stockpile = {
-							type = artillery_equipment
-							amount = -250
-						}
-					743 = {
-							add_building_construction = {
-									type = coastal_bunker
-									level = 3
-									instant_build = yes
-									province = 7014
-								}
-							add_building_construction = {
-									type = coastal_bunker
-									level = 3
-									instant_build = yes
-									province = 12076
-								}
-							add_building_construction = {
-									type = bunker
-									level = 3
-									instant_build = yes
-									province = 12052
-								}
-							add_building_construction = {
-									type = bunker
-									level = 3
-									instant_build = yes
-									province = 10034
-								}
-						}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 12076
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 75
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 12052
 				}
-
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 10034
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 75
+		}
 	}
 	focus = {
 		id = LEC_renovate_wei
@@ -2785,36 +2755,35 @@ focus_tree = {
 		x = -2
 		y = 1
 		relative_position_id = LEC_defending_shanghai
-			available = {
-					controls_state = 609
-					has_equipment = {
-							anti_tank_equipment > 49
-						}
+		available = {
+			controls_state = 609
+			has_equipment = {
+				anti_tank_equipment > 49
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_renovate_wei"
+			609 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 10068
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_renovate_wei"
-					609 = {
-							add_building_construction = {
-									type = bunker
-									level = 3
-									instant_build = yes
-									province = 10068
-								}
-						}
-					add_equipment_to_stockpile = {
-							type = anti_tank_equipment
-							amount = -50
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment
+				amount = -50
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_renovate_hai
@@ -2826,35 +2795,35 @@ focus_tree = {
 		x = -2
 		y = 3
 		relative_position_id = LEC_defending_shanghai
-			available = {
-					controls_state = 609
-					has_equipment = {
-							artillery_equipment > 49
-						}
+		available = {
+			controls_state = 609
+			has_equipment = {
+				artillery_equipment > 49
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_renovate_hai"
+			609 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 10068
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_renovate_hai"
-					609 = {
-							add_building_construction = {
-									type = coastal_bunker
-									level = 3
-									instant_build = yes
-									province = 10068
-								}
-						}
-					add_equipment_to_stockpile = {
-							type = artillery_equipment
-							amount = -50
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = -50
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 
 	}
 	focus = {
@@ -2867,32 +2836,31 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = LEC_defending_shanghai
-			available = {
-					controls_state = 326
-					has_equipment = {
-							artillery_equipment > 49
-						}
+		available = {
+			controls_state = 326
+			has_equipment = {
+				artillery_equipment > 49
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_the_kowloon_redoubt"
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = -50
+			}
+			326 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 10062
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_the_kowloon_redoubt"
-					add_equipment_to_stockpile = {
-							type = artillery_equipment
-							amount = -50
-						}
-					326 = {
-							add_building_construction = {
-									type = bunker
-									level = 3
-									instant_build = yes
-									province = 10062
-								}
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 65
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 65
+		}
 	}
 	focus = {
 		id = LEC_reactivate_gin_drinkers_line
@@ -2904,36 +2872,35 @@ focus_tree = {
 		x = -1
 		y = 2
 		relative_position_id = LEC_defending_shanghai
-			available = {
-					controls_state = 326
-					has_equipment = {
-							anti_air_equipment > 49
-						}
+		available = {
+			controls_state = 326
+			has_equipment = {
+				anti_air_equipment > 49
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_reactivate_gin_drinkers_line"
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment
+				amount = -50
+			}
+			326 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 10062
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_reactivate_gin_drinkers_line"
-					add_equipment_to_stockpile = {
-							type = anti_air_equipment
-							amount = -50
-						}
-					326 = {
-							add_building_construction = {
-									type = coastal_bunker
-									level = 3
-									instant_build = yes
-									province = 10062
-								}
-						}
-				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_fortify_minor_cities
@@ -2948,54 +2915,53 @@ focus_tree = {
 		x = -1
 		y = 4
 		relative_position_id = LEC_defending_shanghai
-			available = {
-					controls_state = 746
-					controls_state = 747
-					controls_state = 801
-					has_equipment = {
-							anti_air_equipment > 59
-						}
+		available = {
+			controls_state = 746
+			controls_state = 747
+			controls_state = 801
+			has_equipment = {
+				anti_air_equipment > 59
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_fortify_minor_cities"
+			add_equipment_to_stockpile = {
+				type = anti_air_equipment
+				amount = -60
+			}
+			746 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 9974
 				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_fortify_minor_cities"
-					add_equipment_to_stockpile = {
-							type = anti_air_equipment
-							amount = -60
-						}
-					746 = {
-							add_building_construction = {
-									type = coastal_bunker
-									level = 3
-									instant_build = yes
-									province = 9974
-								}
-						}
-					747 = {
-							add_building_construction = {
-									type = coastal_bunker
-									level = 3
-									instant_build = yes
-									province = 4196
-								}
-						}
-					801 = {
-							add_building_construction = {
-									type = coastal_bunker
-									level = 3
-									instant_build = yes
-									province = 9938
-								}
-						}
+			}
+			747 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 4196
 				}
-			search_filters = { FOCUS_FILTER_INDUSTRY }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
+			}
+			801 = {
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 9938
 				}
-
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_settle_enlistment_debate
@@ -3007,15 +2973,14 @@ focus_tree = {
 		x = 2
 		y = 1
 		relative_position_id = LEC_in_defence_of_commerce
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_settle_enlistment_debate"
-					army_experience = 50
-				}
-			search_filters = { FOCUS_FILTER_ARMY_BONUS }
-			ai_will_do = {
-					factor = 100
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_settle_enlistment_debate"
+			army_experience = 50
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+		ai_will_do = {
+			factor = 100
+		}
 	}
 	focus = {
 		id = lef_deft1 # Incorporate the 49er's
@@ -3100,23 +3065,23 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		x = 1
 		y = 1
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_expanding_the_volunteers"
-					swap_ideas = {
-							add_idea = LEC_volunteer_force_expanded
-							remove_idea = LEC_volunteer_force
-						}
-				}
-			search_filters = { FOCUS_FILTER_ARMY_BONUS  FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_MANPOWER }
-			ai_will_do = {
-					factor = 70
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_expanding_the_volunteers"
+			swap_ideas = {
+				add_idea = LEC_volunteer_force_expanded
+				remove_idea = LEC_volunteer_force
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS  FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_MANPOWER }
+		ai_will_do = {
+			factor = 70
+		}
 	}
 	focus = {
 		id = LEC_care_for_the_wounded
@@ -3130,27 +3095,27 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_care_for_the_wounded"
-					add_tech_bonus = {
-							name = LEC_care_for_the_wounded
-							bonus = 1
-							uses = 1
-							category = hospital_tech
-						}
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_care_for_the_wounded"
+			add_tech_bonus = {
+				name = LEC_care_for_the_wounded
+				bonus = 1
+				uses = 1
+				category = hospital_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_weltkrieg_lessons
@@ -3162,29 +3127,29 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		x = 1
 		y = 3
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_weltkrieg_lessons"
-					add_tech_bonus = {
-							name = LEC_weltkrieg_lessons
-							bonus = 1
-							uses = 1
-							category = infantry_weapons
-						}
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_weltkrieg_lessons"
+			add_tech_bonus = {
+				name = LEC_weltkrieg_lessons
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_pomp_and_circumstance
@@ -3196,27 +3161,27 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		x = 3
 		y = 3
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_pomp_and_circumstance"
-					swap_ideas = {
-							add_idea = LEC_volunteer_force_glorious
-							remove_idea = LEC_volunteer_force_expanded
-						}
-				}
-			search_filters = { FOCUS_FILTER_ARMY_BONUS  FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_MANPOWER }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_pomp_and_circumstance"
+			swap_ideas = {
+				add_idea = LEC_volunteer_force_glorious
+				remove_idea = LEC_volunteer_force_expanded
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS  FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_MANPOWER }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_establish_chinese_militia
@@ -3231,23 +3196,23 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		x = -1
 		y = 1
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_establish_chinese_militia"
-					swap_ideas = {
-							add_idea = LEC_volunteer_force_natives
-							remove_idea = LEC_volunteer_force
-						}
-				}
-			search_filters = { FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_MANPOWER }
-			ai_will_do = {
-					factor = 65
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_establish_chinese_militia"
+			swap_ideas = {
+				add_idea = LEC_volunteer_force_natives
+				remove_idea = LEC_volunteer_force
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_MANPOWER }
+		ai_will_do = {
+			factor = 65
+		}
 	}
 	focus = {
 		id = LEC_special_squads
@@ -3259,31 +3224,31 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		x = -2
 		y = 2
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_special_squads"
-					add_tech_bonus = {
-							name = LEC_special_squads
-							bonus = 1
-							uses = 2
-							category = mountaineers_tech
-							category = marine_tech
-							category = para_tech
-						}
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_special_squads"
+			add_tech_bonus = {
+				name = LEC_special_squads
+				bonus = 1
+				uses = 2
+				category = mountaineers_tech
+				category = marine_tech
+				category = para_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_sinified_officers
@@ -3295,29 +3260,29 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		x = 0
 		y = 2
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_sinified_officers"
-					add_tech_bonus = {
-							name = LEC_sinified_officers
-							bonus = 1
-							uses = 1
-							category = land_doctrine
-						}
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_sinified_officers"
+			add_tech_bonus = {
+				name = LEC_sinified_officers
+				bonus = 1
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_urban_combat
@@ -3329,6 +3294,7 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		prerequisite = {
@@ -3337,21 +3303,20 @@ focus_tree = {
 		x = -1
 		y = 3
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_urban_combat"
-					set_technology = {
-							asymmetrical_warfare = 1
-						}
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_urban_combat"
+			set_technology = {
+				asymmetrical_warfare = 1
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_tank_experiments
@@ -3363,27 +3328,27 @@ focus_tree = {
 		available = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		x = -3
 		y = 3
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_tank_experiments"
-					swap_ideas = {
-							add_idea = LEC_volunteer_force_mechanised
-							remove_idea = LEC_volunteer_force_natives
-						}
-				}
-			search_filters = { FOCUS_FILTER_ARMY_BONUS  FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_MANPOWER }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_tank_experiments"
+			swap_ideas = {
+				add_idea = LEC_volunteer_force_mechanised
+				remove_idea = LEC_volunteer_force_natives
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS  FOCUS_FILTER_ANNEXATION  FOCUS_FILTER_MANPOWER }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_preemptive_planning
@@ -3397,20 +3362,19 @@ focus_tree = {
 		x = 2
 		y = 4
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_preemptive_planning"
-					add_tech_bonus = {
-							name = LEC_preemptive_planning
-							bonus = 1
-							uses = 1
-							category = land_doctrine
-						}
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 50
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_preemptive_planning"
+			add_tech_bonus = {
+				name = LEC_preemptive_planning
+				bonus = 1
+				uses = 1
+				category = land_doctrine
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 50
+		}
 	}
 	focus = {
 		id = LEC_a_legation_navy
@@ -3424,24 +3388,24 @@ focus_tree = {
 		x = 0
 		y = 4
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_a_legation_navy"
-					country_event = {
-							id = lec.4
-						}
-					custom_effect_tooltip = lec_vote_required
-					set_global_flag = LEC_legation_navy_vote
-				}
-			bypass = {
-					OR = {
-						has_country_flag = LEC_bankrupt
-						has_country_flag = LEC_Triad_Power
-					}
-				}
-			ai_will_do = {
-					factor = 100
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_a_legation_navy"
+			country_event = {
+				id = lec.4
+			}
+			custom_effect_tooltip = lec_vote_required
+			set_global_flag = LEC_legation_navy_vote
+		}
+		bypass = {
+			OR = {
+				has_country_flag = LEC_bankrupt
+				has_country_flag = LEC_revolution_succeeded
+				has_country_flag = LEC_Triad_Power
+			}
+		}
+		ai_will_do = {
+			factor = 100
+		}
 	}
 	focus = {
 		id = LEC_modern_dockyards
@@ -3453,23 +3417,22 @@ focus_tree = {
 		x = -1
 		y = 5
 		relative_position_id = LEC_settle_enlistment_debate
-			available = {
-					has_country_flag = LEC_navy_approved
-				}
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_modern_dockyards"
-					navy_experience = 35
-					add_ideas = { LEC_naval_research }
-				}
-			search_filters = { FOCUS_FILTER_NAVY_BONUS }
-			ai_will_do = {
-					factor = 45
-					modifier = {
-							factor = 2
-							has_war = yes
-						}
-				}
-
+		available = {
+			has_country_flag = LEC_navy_approved
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_modern_dockyards"
+			navy_experience = 35
+			add_ideas = { LEC_naval_research }
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS }
+		ai_will_do = {
+			factor = 45
+			modifier = {
+				factor = 2
+				has_war = yes
+			}
+		}
 	}
 	focus = {
 		id = LEC_volunteer_flying_corps
@@ -3484,20 +3447,19 @@ focus_tree = {
 		x = 1
 		y = 5
 		relative_position_id = LEC_settle_enlistment_debate
-			completion_reward = {
-					log = "[GetDateText]: [Root.GetName]: Focus LEC_volunteer_flying_corps"
-					add_tech_bonus = {
-							name = LEC_volunteer_flying_corps
-							bonus = 1
-							uses = 1
-							category = air_equipment
-						}
-				}
-			search_filters = { FOCUS_FILTER_RESEARCH }
-			ai_will_do = {
-					factor = 100
-				}
-
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus LEC_volunteer_flying_corps"
+			add_tech_bonus = {
+				name = LEC_volunteer_flying_corps
+				bonus = 1
+				uses = 1
+				category = air_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 100
+		}
 	}
 	
 	### Shanghai tree ###
@@ -3506,27 +3468,24 @@ focus_tree = {
 		id = LEC_stabilize_shanghai
 		icon = GFX_goal_lec_seal
 		cost = 6
-		x = 4
-		y = -2
+		x = 22
+		y = 9
 		available = {
 			is_subject = yes
-		}
-		allow_branch = {
 			OR = {
 				has_government = social_democrat
 				has_government = social_liberal
 				has_government = authoritarian_democrat
-				has_cosmetic_tag = LEC_japanese_shanghai_tag
+				custom_trigger_tooltip = {
+					tooltip = LEC_shanghai_formed
+					has_cosmetic_tag = LEC_japanese_shanghai_tag
+				}
 			}
 		}
-		
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus LEC_stabilize_shanghai"
 			increase_ruling_party_popularity_by_5 = yes
 			add_stability = 0.05
-		}
-		bypass = {
-			is_subject = no
 		}
 		search_filters = { FOCUS_FILTER_STABILITY }
 		ai_will_do = {
@@ -4861,6 +4820,557 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 100
+		}
+	}
+	
+	#The Red Revolt
+	focus = {
+		id = LEC_the_red_revolt
+		icon = GFX_LEC_the_red_revolt-61193
+		x = 36
+		y = 8
+		cost = 1
+		available = {
+			has_country_flag = LEC_revolution_succeeded
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			remove_decision = LEC_vote_yes
+			remove_decision = LEC_vote_no
+			unlock_decision_category_tooltip = integrate_china
+		}
+	}
+
+	#Securing the Shanghai Revolutionary Basin
+	focus = {
+		id = LEC_securing_the_shanghai_revolutionary_basin
+		icon = GFX_LEC_securing_the_shanghai_revolutionary_basin-61816
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_the_red_revolt  }
+		completion_reward = {
+			add_state_core = 609
+			add_state_core = 743
+			add_state_core = 801
+		}
+	}
+
+	#Secure Hong Kong
+	focus = {
+		id = LEC_secure_hong_kong
+		icon = GFX_LEC_secure_hong_kong-61820
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = LEC_the_red_revolt  }
+		completion_reward = {
+			add_state_core = 747
+			add_state_core = 746
+			add_state_core = 326
+		}
+	}
+
+	#Our Red Militia's
+	focus = {
+		id = LEC_ourredmilitias
+		icon = GFX_LEC_ourredmilitias-61824
+		relative_position_id = LEC_the_red_revolt
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_securing_the_shanghai_revolutionary_basin  } prerequisite = { focus = LEC_secure_hong_kong  }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LEC_chaos_of_revolution
+				add_idea = LEC_chaos_of_revolution_2
+			}
+		}
+	}
+
+	#Sailing the Yangtze River Delta
+	focus = {
+		id = LEC_sailing_the_yangtze_river_delta
+		icon = GFX_LEC_sailing_the_yangtze_river_delta-61826
+		relative_position_id = LEC_the_red_revolt
+		x = 0
+		y = 3
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_ourredmilitias  }
+		completion_reward = {
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+				province = 7014
+			}
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+				province = 4196
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 5
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 5
+				instant_build = yes
+			}				
+		}
+	}
+
+	#Reactionary Question
+	focus = {
+		id = LEC_reactionary_question
+		icon = GFX_LEC_reactionary_question-61825
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 4
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_sailing_the_yangtze_river_delta  }
+		completion_reward = {
+			country_event = {
+				id = legcities.312
+			}
+		}
+	}
+	
+	#Question of the Treasury
+	focus = {
+		id = LEC_question_of_the_treasury
+		icon = GFX_LEC_question_of_the_treasury-61807
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 5
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_reactionary_question  }
+	}
+
+	#The Economic Question
+	focus = {
+		id = LEC_the_economic_question
+		icon = GFX_LEC_the_economic_question-61801
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 4
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_sailing_the_yangtze_river_delta  }
+		completion_reward = {
+			country_event = {
+				id = legcities.313
+			}
+		}
+	}
+
+	#Question with the KMT
+	focus = {
+		id = LEC_question_with_the_kmt
+		icon = GFX_LEC_question_with_the_kmt-61829
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 5
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_the_economic_question  }
+		completion_reward = {
+			country_event = {
+				id = legcities.314
+			}
+		}
+	}
+
+	#Liberate the Rest of East China
+	focus = {
+		id = LEC_liberate_the_rest_of_east_china
+		icon = GFX_LEC_liberate_the_rest_of_east_china-61812
+		relative_position_id = LEC_the_red_revolt
+		x = 0
+		y = 6
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_question_with_the_kmt  } prerequisite = { focus = LEC_question_of_the_treasury  }
+		completion_reward = {
+			unlock_decision_category_tooltip = LEC_military_expeditions_category 
+			unlock_decision_category_tooltip = LEC_chinese_revolt_category
+			unlock_decision_tooltip = LEC_dec_SQI_expedition
+			unlock_decision_category_tooltip = LEC_warlord_diplomacy_category
+			unlock_decision_tooltip = LEC_dec_negotiate_with_YUN
+			unlock_decision_tooltip = LEC_dec_negotiate_with_SZC
+			unlock_decision_tooltip = LEC_dec_negotiate_with_GXC
+			unlock_decision_tooltip = LEC_dec_negotiate_with_HNN
+		}
+	}
+	
+	#3 Rules 8 Disciplines
+	focus = {
+		id = LEC_3_rules_8_disciplines
+		icon = GFX_LEC_3_rules_8_disciplines-61830
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_liberate_the_rest_of_east_china  }
+		completion_reward = {
+			unlock_decision_tooltip = LEC_dec_2nd_northern_expedition
+		}
+	}
+	
+	#Land Reform
+	focus = {
+		id = LEC_land_reform
+		icon = GFX_LEC_land_reform-61802
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_3_rules_8_disciplines  }
+	}
+
+	#Spread of Revolution
+	focus = {
+		id = LEC_spread_of_revolution
+		icon = GFX_LEC_spread_of_revolution-61841
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_liberate_the_rest_of_east_china  }
+	}
+
+	#The Opium Discussion
+	focus = {
+		id = LEC_the_opium_discussion
+		icon = GFX_LEC_the_opium_discussion-61808
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_spread_of_revolution  }
+	}
+
+	#Calling for the Party Congress
+	focus = {
+		id = LEC_calling_for_the_party_congress
+		icon = GFX_LEC_calling_for_the_party_congress-61843
+		relative_position_id = LEC_the_red_revolt
+		x = 0
+		y = 9
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_the_opium_discussion  } prerequisite = { focus = LEC_land_reform  }
+		completion_reward = {
+			load_focus_tree = china_socialist_tree
+		}
+	}
+	
+	#The New Revolutionary Army
+	focus = {
+		id = LEC_the_new_revolutionary_army
+		icon = GFX_LEC_the_new_revolutionary_army-61853
+		relative_position_id = LEC_the_red_revolt
+		x = 8
+		y = 4
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_ourredmilitias  }
+		completion_reward = {
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 10068
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 7014
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 10062
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 9974
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 4196
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 9938
+				}
+			}
+		}
+	}
+
+	#Keep the Red Militia's
+	focus = {
+		id = LEC_keeptheredmilitias
+		icon = GFX_LEC_keeptheredmilitias-61836
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = -2
+		y = 1
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = LEC_the_new_revolutionary_army  }
+		mutually_exclusive = { focus = LEC_founding_of_an_army  }
+	}
+	
+	#Guerrilla Warfare
+	focus = {
+		id = LEC_guerrilla_warfare
+		icon = GFX_LEC_guerrilla_warfare-61806
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = -2
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_keeptheredmilitias  }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = cat_mobile_warfare
+			}
+		}
+	}
+	
+	#Hidden Factories
+	focus = {
+		id = LEC_hidden_factories
+		icon = GFX_LEC_hidden_factories-61809
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = -2
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_guerrilla_warfare  }
+	}
+	
+	#Calvary Improvement
+	focus = {
+		id = LEC_calvary_improvement
+		icon = GFX_goal_generic_army_motorized
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = -2
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = LEC_hidden_factories  }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+	
+	#First Red Women's Detachment
+	focus = {
+		id = LEC_firstredwomensdetachment
+		icon = GFX_LEC_firstredwomensdetachment-61846
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 0
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_founding_of_an_army  focus = LEC_keeptheredmilitias  }
+		completion_reward = {
+			add_manpower = 10000
+			army_experience = 5
+		}
+	}
+	
+	#Socialist Research
+	focus = {
+		id = LEC_socialist_research
+		icon = GFX_LEC_socialist_research-61810
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 0
+		y = 3
+		cost = 7
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = LEC_firstredwomensdetachment  }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	#High Above the Sky
+	focus = {
+		id = LEC_high_above_the_sky
+		icon = GFX_LEC_high_above_the_sky-61814
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 0
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_socialist_research  }
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+			}
+		}
+	}
+
+	#Founding of an Army
+	focus = {
+		id = LEC_founding_of_an_army
+		icon = GFX_LEC_founding_of_an_army-61805
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 2
+		y = 1
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_the_new_revolutionary_army  }
+		mutually_exclusive = { focus = LEC_keeptheredmilitias  }
+	}
+
+	#Stolen Arms
+	focus = {
+		id = LEC_stolen_arms
+		icon = GFX_LEC_stolen_arms-61834
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 2
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = LEC_founding_of_an_army  }
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = LEC
+			}
+			add_equipment_to_stockpile = {
+				type = cat_light_armor
+				amount = 20
+				producer = LEC
+			}
+			add_equipment_to_stockpile = {
+				type = artillery
+				amount = 500
+				producer = LEC
+			}
+		}
+	}
+
+	#Tactics of the Great War
+	focus = {
+		id = LEC_tactics_of_the_great_war
+		icon = GFX_LEC_tactics_of_the_great_war-61835
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 2
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_stolen_arms  }
+			completion_reward = {
+				add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+
+	#Tank Research
+	focus = {
+		id = LEC_tank_research
+		icon = GFX_LEC_tank_research-61803
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 2
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = LEC_tactics_of_the_great_war  }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = cat_light_armor
+			}
 		}
 	}
 }

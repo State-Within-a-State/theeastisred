@@ -691,10 +691,9 @@ country_event = { #Russian voting rights restored
 	picture = GFX_report_event_generic_diplomacy4
 	is_triggered_only = yes
 	trigger = {
-			NOT = {
-					has_completed_focus = LEC_red_revolt
-					
-				}
+		NOT = {
+			has_completed_focus = LEC_red_revolt
+		}
 	}
 	option = {	# yay!
 		name = lec.15.a
@@ -13544,7 +13543,7 @@ country_event = {
 
 	option = {
 		name = legcities.99.a
-       add_political_power = 20
+		add_political_power = 20
 	}
 }
 
@@ -13564,8 +13563,8 @@ country_event = {
 
 	option = {
 		name = legcities.100.a
-       add_political_power = 20
-	   hidden_effect = {
+		add_political_power = 20
+		hidden_effect = {
 			country_event = {
 				id = legcities.101
 				days = 10
@@ -13576,8 +13575,6 @@ country_event = {
 				}
 			}		
 		}
-		
-			
 	}
 }
 
@@ -13592,7 +13589,7 @@ country_event = {
 
 	option = {
 		name = legcities.101.a
-       add_political_power = 20
+		add_political_power = 20
 	}
 	
 	option = {
@@ -13631,12 +13628,10 @@ country_event = {
 			ideology = syndicalist
 			popularity = -0.5
 		}
-		
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = -0.5
 		}
-		
 		add_popularity = {
 			ideology = totalist
 			popularity = -0.5
@@ -13646,7 +13641,7 @@ country_event = {
 	
 	option = {
 		name = legcities.309.b
-		 add_stability = -0.5
+		add_stability = -0.5
 		add_war_support = -0.8
 		country_event = {
 			id = legcities.310
@@ -13672,81 +13667,65 @@ country_event = {
 			ideology = syndicalist
 			popularity = -0.5
 		}
-		
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = -0.5
 		}
-		
 		add_popularity = {
 			ideology = totalist
 			popularity = -0.5
 		}
-		
 	}
 	
 	option = {
 		name = legcities.310.b
-		 add_stability = 0.3
+		add_stability = 0.3
 		add_war_support = 0.4
-		load_focus_tree = shanghai-peoples-commune
-		set_political_party = {
-			ideology = radical_socialist
-			
-			}
-			set_popularities = {
-				totalist = 30
-				radical_socialist = 30
-				syndicalist = 30
-				social_democrat = 10
-				social_liberal = 0
-				market_liberal = 0
-				social_conservative = 0
-				authoritarian_democrat = 0
-				paternal_autocrat = 0
-				national_populist = 0
-			}
-			
-			set_politics = { ruling_party = radical_socialist
+		set_country_flag = LEC_revolution_succeeded
+		set_political_party = { ideology = radical_socialist }
+		set_popularities = {
+			totalist = 30
+			radical_socialist = 30
+			syndicalist = 30
+			social_democrat = 10
+			social_liberal = 0
+			market_liberal = 0
+			social_conservative = 0
+			authoritarian_democrat = 0
+			paternal_autocrat = 0
+			national_populist = 0
 		}
-		
-			remove_state_core = 747
-			remove_state_core = 746
-			remove_state_core = 609
-			remove_state_core = 801
-			remove_state_core = 326
-			remove_state_core = 743
-			
-			add_resistance = 30 
-			
-			damage_building = {
-				type = infrastructure
-				damage = 4.00
-			}
-			
-			damage_building = {
-				type = infrastructure
-				damage = 4.00
-			}
-			
-			create_unit = {
-					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
-					owner = LEC
-					prioritize_location = 10068
-				}
-			create_unit = {
-					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
-					owner = LEC
-					prioritize_location = 10068
-				}
-		
+		set_politics = { ruling_party = radical_socialist }
+		remove_state_core = 747
+		remove_state_core = 746
+		remove_state_core = 609
+		remove_state_core = 801
+		remove_state_core = 326
+		remove_state_core = 743
+		add_resistance = 30 
+		damage_building = {
+			type = infrastructure
+			damage = 4.00
+		}
+		damage_building = {
+			type = infrastructure
+			damage = 4.00
+		}
+		create_unit = {
+			division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+			owner = LEC
+			prioritize_location = 10068
+		}
+		create_unit = {
+			division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+			owner = LEC
+			prioritize_location = 10068
+		}
 		hidden_effect = { 
-					news_event = {
+			news_event = {
 				id = legcities.311
 				days = 1
 			}
-			
-			
 			division_template = {
 				name = "People's Militia"
 				is_locked = no
@@ -13759,49 +13738,29 @@ country_event = {
 					infantry = { x = 0 y = 2 }
 					infantry = { x = 0 y = 0 }
 				}
-				support = { 
-					
-				} 
 			}
-			
 			delete_unit_template_and_units = {
 				division_template = "Legation Volunteer Force"
 				disband = yes #will refund equipment and manpower
 			}
-			
 			delete_unit_template_and_units = {
 				division_template = "Hong Kong Defence Force"
 				disband = yes #will refund equipment and manpower
 			}
-			
 			delete_unit_template_and_units = {
 				division_template = "Tianjin Volunteer Force"
 				disband = yes #will refund equipment and manpower
 			}
-			
 			delete_unit_template_and_units = {
 				division_template = "Shanghai Volunteer Corps"
 				disband = yes #will refund equipment and manpower
 			}
-			
-			
-			
 			delete_unit_template_and_units = { division_template = "Volunteer Force" }
-			
-			remove_ideas = {
-			LEC_black_monday
-			}
-			
-			add_ideas = { 
-			LEC_chaos_of_revolution
-			}
-			
-		
+			remove_ideas = { LEC_black_monday }
+			add_ideas = { LEC_chaos_of_revolution }
 		}
 		set_cosmetic_tag = LEC_shanghai_peoples_commune
-		
 	}
-
 }
 news_event = {
 	id = legcities.311
@@ -13814,9 +13773,7 @@ news_event = {
 
 	option = {
 		name = legcities.311.a
-		
 	}
-	
 }
 
 country_event = {
@@ -13853,8 +13810,6 @@ country_event = {
 		}
 		add_manpower = -20000
 	}
-	
-	
 }
 
 country_event = {
@@ -13868,7 +13823,6 @@ country_event = {
 
 	option = {
 		name = legcities.313.a
-		
 		add_popularity = {
 			ideology = social_democrat
 			popularity = 0.05
@@ -13878,12 +13832,10 @@ country_event = {
 	
 	option = {
 		name = legcities.313.b
-		
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.05
 		}
-		
 	}
 	
 	option = {
@@ -13892,8 +13844,6 @@ country_event = {
 			ideology = syndicalist
 			popularity = 0.05
 		}
-		
-		
 	}
 	
 	option = {
@@ -13902,10 +13852,7 @@ country_event = {
 			ideology = totalist
 			popularity = 0.05
 		}
-		
-		
 	}
-	
 }
 
 country_event = {
@@ -13933,26 +13880,20 @@ country_event = {
 	option = {
 		name = legcities.312.b
 		create_wargoal = {
-					target = CHI
-					type = take_state_focus
-					expire = 0
-					generator = { 610 716 328 715 714 717 }
-				}
-				
-				add_popularity = {
+			target = CHI
+			type = take_state_focus
+			expire = 0
+			generator = { 610 716 328 715 714 717 }
+		}
+		add_popularity = {
 			ideology = syndicalist
 			popularity = 0.05
 		}
-		
 		add_popularity = {
 			ideology = social_democrat
 			popularity = 0.05
 		}
-		
-		
 	}
-	
-	
 }
 country_event = {
 	id = legcities.315
@@ -13972,7 +13913,6 @@ country_event = {
 		name = legcities.315.b
 		LEC = { country_event = { id = legcities.317 days = 1 } }
 	}
-	
 }
 
 country_event = {
@@ -13991,7 +13931,6 @@ country_event = {
 			transfer_troops = yes
 		}
 	}
-	
 }
 
 country_event = {
@@ -14005,9 +13944,7 @@ country_event = {
 
 	option = {
 		name = legcities.317.a
-		
 	}
-	
 }
 
 country_event = {
@@ -14021,9 +13958,8 @@ country_event = {
 
 	option = {
 		name = legcities.318.a
-		
-		
-			CNH = { division_template = {
+		CNH = {
+			division_template = {
 				name = "Red Army Unit"
 				is_locked = no
 				division_names_group = CNH_INF_02
@@ -14035,12 +13971,8 @@ country_event = {
 					infantry = { x = 0 y = 2 }
 					infantry = { x = 3 y = 3 }
 				}
-				support = { 
-					
-				} 
 			}
 		}
-		
 		CNH = { add_state_core = 1044 }
 		CNH = { add_state_core = 1045 }
 		CNH = { add_state_core = 1047 }
@@ -14052,11 +13984,11 @@ country_event = {
 		LEC = { add_state_core = 1068 }
 		LEC = { add_state_core = 1069 }
 		LEC = { add_state_core = 596 }
-		
-				country_event = {
+		country_event = {
 			id = lepaog.59
 			days = 1
 		}
+	}
 }
 
 country_event = {
@@ -14069,57 +14001,42 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
-	name = legcities.320.a 
-	set_politics = { ruling_party = social_democrat
-		}
-	add_popularity = {
+		name = legcities.320.a 
+		set_politics = { ruling_party = social_democrat }
+		add_popularity = {
 			ideology = social_democrat
 			popularity = 0.6
 		}
-	
-	
 	}
 	
 	option = {
 	name = legcities.320.b
-	load_focus_tree = china_socialist_tree
-	set_politics = { ruling_party = radical_socialist
-		}
-	load_focus_tree = china_socialist_tree
-	add_popularity = {
+		load_focus_tree = china_socialist_tree
+		set_politics = { ruling_party = radical_socialist }
+		load_focus_tree = china_socialist_tree
+		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.6
 		}
-	
-	
 	}
 	
 	option = {
-	name = legcities.320.c
-	load_focus_tree = china_socialist_tree
-	set_politics = { ruling_party = syndicalist
-		}
-	add_popularity = {
+		name = legcities.320.c
+		load_focus_tree = china_socialist_tree
+		set_politics = { ruling_party = syndicalist }
+		add_popularity = {
 			ideology = syndicalist
 			popularity = 0.6
 		}
-	
-	
 	}
 	
 	option = {
-	name = legcities.320.d
-	load_focus_tree = china_socialist_tree
-	set_politics = { ruling_party = totalist
-		}
-	add_popularity = {
+		name = legcities.320.d
+		load_focus_tree = china_socialist_tree
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
 			ideology = totalist
 			popularity = 0.6
 		}
-	
-	
 	}
-	
-
-
 }
