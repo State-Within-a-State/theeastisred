@@ -1,4 +1,5 @@
 add_namespace = chineserevolt
+add_namespace = redelection
 
 
 
@@ -118,7 +119,7 @@ country_event = {
 		desc = chineserevolt.2.d
 		picture ="-"
 
-		fire_only_once = yes
+		fire_only_once = no
 
 			is_triggered_only = yes
 
@@ -128,6 +129,15 @@ country_event = {
 		QNG = { add_state_core = 884 }
 		QNG = { add_state_core = 883 }
 		QNG = { add_state_core = 714 }
+		
+		QNG = {
+		load_oob = QNG_communist_units
+		
+		}
+		
+		LEC = {
+		puppet = QNG
+		}
 		
 		
 		
@@ -151,7 +161,12 @@ country_event = {
 		
 		hidden_effect = {
 			
+			country_event = {
+			id = chineserevolt.2
+			day = 1
 			
+			
+			}
 			
 			}
 		
@@ -191,3 +206,1230 @@ country_event = {
 
 
 	}
+	
+	country_event = {
+
+		id = chineserevolt.4
+		title = chineserevolt.4.t
+		desc = chineserevolt.4.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+
+		option = {
+
+		name = chineserevolt.4.a
+		set_politics = { ruling_party = totalist
+		}
+		LEC = {
+		puppet = HNN
+		}
+
+
+
+		}
+		
+		option = {
+
+		name = chineserevolt.4.b
+		FROM = {
+		declare_war_on = {
+				target = LEC
+				type = annex_everything
+			}
+		
+		}
+
+
+
+		}
+
+
+
+	}
+	
+	
+	country_event = {
+
+		id = chineserevolt.5
+		title = chineserevolt.5.t
+		desc = chineserevolt.5.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+
+		option = {
+
+		name = chineserevolt.5.a
+		set_politics = { ruling_party = totalist
+		}
+		LEC = {
+		puppet = GXC
+		}
+
+
+
+		}
+		
+		option = {
+
+		name = chineserevolt.5.b
+		FROM = {
+		declare_war_on = {
+				target = LEC
+				type = annex_everything
+			}
+		
+		}
+
+
+
+		}
+
+
+
+	}
+	
+	
+	
+	country_event = {
+
+		id = chineserevolt.6
+		title = chineserevolt.6.t
+		desc = chineserevolt.6.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+
+		option = {
+
+		name = chineserevolt.6.a
+		set_politics = { ruling_party = totalist
+		}
+		LEC = {
+		puppet = SZC
+		}
+
+
+
+		}
+		
+		option = {
+
+		name = chineserevolt.6.b
+		FROM = {
+		declare_war_on = {
+				target = LEC
+				type = annex_everything
+			}
+		
+		}
+
+
+
+		}
+
+
+
+	}
+	
+	
+	
+country_event = {
+
+id = redelection.1
+title = redelection.1.t
+desc = redelection.1.d
+picture = "-"
+
+fire_only_once = yes
+is_triggered_only = yes
+
+option = {
+ name  = redelection.1.a
+			set_country_flag = {
+			flag = KMT_RED
+			value = 0
+			}	
+			set_country_flag = {
+			flag = SHA_RED
+			value = 0
+			}	
+			set_country_flag = {
+			flag = SYN_RED
+			value = 0
+			}	
+			set_country_flag = {
+			flag = RED_RED
+			value = 0
+			}	
+		
+		hidden_effect = {
+			country_event = {
+				days = 7
+				id = redelection.2
+			}
+		}
+}
+
+
+
+}
+
+country_event = {
+    id = redelection.2
+    title = redelection.2.t
+    desc = redelection.2.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.2.a
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = redelection.3
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = KMT_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.2.b
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = redelection.3
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SHA_RED
+			value = 1
+		}
+     }
+	 option = {
+		name = redelection.2.c
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = redelection.3
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SYN_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.2.e
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = redelection.3
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = RED_RED
+			value = 1
+		}
+     }
+
+}
+
+country_event = {
+    id = redelection.3
+    title = redelection.3.t
+    desc = redelection.3.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.3.a
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = redelection.4
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = KMT_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.3.b
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = redelection.4
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SHA_RED
+			value = 1
+		}
+     }
+	 option = {
+		name = redelection.3.c
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = redelection.4
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SYN_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.3.e
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 3
+				id = redelection.4
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = RED_RED
+			value = 1
+		}
+     }
+
+}
+
+country_event = {
+    id = redelection.4
+    title = redelection.4.t
+    desc = redelection.4.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.4.a
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 4
+				id = redelection.5
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = KMT_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.4.b
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 4
+				id = redelection.5
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SHA_RED
+			value = 1
+		}
+     }
+	 option = {
+		name = redelection.4.c
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 4
+				id = redelection.5
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SYN_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.4.e
+		ai_chance = {
+			factor = 45
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 4
+				id = redelection.5
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = RED_RED
+			value = 1
+		}
+     }
+
+}
+
+
+country_event = {
+    id = redelection.5
+    title = redelection.5.t
+    desc = redelection.5.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.5.a
+		ai_chance = {
+			factor = 55
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 5
+				id = redelection.6
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = KMT_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.5.b
+		ai_chance = {
+			factor = 55
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 5
+				id = redelection.6
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SHA_RED
+			value = 1
+		}
+     }
+	 option = {
+		name = redelection.5.c
+		ai_chance = {
+			factor = 55
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 5
+				id = redelection.6
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SYN_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.5.e
+		ai_chance = {
+			factor = 55
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 5
+				id = redelection.6
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = RED_RED
+			value = 1
+		}
+     }
+
+}
+
+country_event = {
+    id = redelection.6
+    title = redelection.6.t
+    desc = redelection.6.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.6.a
+		ai_chance = {
+			factor = 66
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 6
+				id = redelection.200
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.06
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = KMT_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.6.b
+		ai_chance = {
+			factor = 66
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 6
+				id = redelection.200
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.06
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SHA_RED
+			value = 1
+		}
+     }
+	 option = {
+		name = redelection.6.c
+		ai_chance = {
+			factor = 66
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 6
+				id = redelection.200
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.06
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = SYN_RED
+			value = 1
+		}
+     }
+	 
+	 option = {
+		name = redelection.6.e
+		ai_chance = {
+			factor = 66
+			modifier = {
+		    factor = 0
+		    OR = {
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SOCIAL_DEMOCRAT_KMT
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_RADICAL_SOCIALIST_SPC
+					}
+				  has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_SYNDICALIST_CSP
+					}
+				has_game_rule = {
+						rule = LEC_start_election
+						option = LEC_START_TOTALIST_RED_GUARD
+					}
+				}
+		  }
+		}
+		hidden_effect = {
+			country_event = {
+				days = 6
+				id = redelection.200
+			}
+		}
+		add_stability = -0.1
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.06
+		}
+		set_country_flag = LECRED_ARMY
+		modify_country_flag = {
+			flag = RED_RED
+			value = 1
+		}
+     }
+
+}
+
+country_event = {
+    id = redelection.7.a
+    title = redelection.7.t
+    desc = redelection.7.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.7
+		set_politics = { ruling_party = social_democrat }
+		CHI = {
+		annex_country = {
+			target = LEC
+			transfer_troops = yes
+		}
+		
+		}
+		CHI = { change_tag_from = LEC }
+		
+		}
+     }
+
+
+
+country_event = {
+    id = redelection.8
+    title = redelection.8.t
+    desc = redelection.8.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.8.a
+		set_politics = { ruling_party = radical_socialist }
+		load_focus_tree = china-socialist-tree
+		
+		
+		
+		}
+     }
+
+country_event = {
+    id = redelection.9
+    title = redelection.9.t
+    desc = redelection.9.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.9.a
+		set_politics = { ruling_party = syndicalist }
+		load_focus_tree = china-socialist-tree
+		
+		
+		
+		}
+     }
+
+country_event = {
+    id = redelection.10
+    title = redelection.10.t
+    desc = redelection.10.d
+    picture = "-" 
+    fire_only_once = yes
+    is_triggered_only  = yes
+
+    option = {
+		name = redelection.10.a
+		load_focus_tree = china-socialist-tree
+		set_politics = { ruling_party = totalist }
+		
+		
+		
+		}
+     }
+
+country_event = {
+	id = redelection.200
+	immediate = {log = "[GetDateText]: [Root.GetName]: event redelection."}
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = RED_RED
+					value > 2
+				}
+			}
+			country_event = redelection.10
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = SHA_RED
+					value > 2
+				}
+			}
+			country_event = redelection.9
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = KMT_RED
+					value > 2
+				}
+			}
+			country_event = redelection.8
+		}
+		if = {
+			limit = {
+				has_country_flag = {
+					flag = SYN_RED
+					value > 2
+				}
+			}
+			country_event = redelection.7
+		}
+		
+	}
+}

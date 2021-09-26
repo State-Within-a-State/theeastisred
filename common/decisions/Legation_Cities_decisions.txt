@@ -5535,10 +5535,11 @@ LEC_military_expeditions_category = {
 						
 					}
 				}
+				
 			}
 		}
 		
-		targets = { QIE FNG }
+		targets = { QIE FNG HNN GXC SZC}
 		target_trigger = {
 			OR = {
 				AND = {
@@ -5550,6 +5551,7 @@ LEC_military_expeditions_category = {
 					FROM = { tag = FNG }
 					has_completed_focus = LEC_spread_of_revolution
 				}
+				
 				
 			}
 		}
@@ -5628,28 +5630,23 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	CHI_dec_south_warlord_expedition = {
+	LEC_dec_south_warlord_expedition = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
-		targets = { GXC HNN }
+		targets = { GXC HNN SZC }
 		target_trigger = {
 			FROM = {
 				kmt_success = no
 			}
 		}
 		target_root_trigger = {
-			has_completed_focus = CHI_plan_southern
+			has_completed_focus = LEC_spread_of_revolution
 		}
 		visible = {
-			has_completed_focus = CHI_plan_southern
+			has_completed_focus = LEC_spread_of_revolution
 			is_subject = no
 			can_declare_war_on = FROM
-			NOT = {
-				has_country_flag = CHI_mingshu_lkmt
-			}
-			FROM = {
-				kmt_success = no
-			}
+			
 		}
 		available = {
 			is_neighbor_of = FROM
@@ -5664,7 +5661,7 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_south_warlord_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 14 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.4 }
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_south_warlord_expedition target: [From.GetName]"
@@ -5672,7 +5669,8 @@ LEC_military_expeditions_category = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.5 }
+			FROM = { country_event = chineserevolt.6 }
 		}
 		ai_will_do = {
 			factor = 5
