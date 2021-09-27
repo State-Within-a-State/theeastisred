@@ -79,6 +79,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		completion_reward = {
+		add_stability = -0.1
+		add_war_support = -0.1
+		
+		}
 	}
 
 	#Strengthening Control
@@ -92,6 +97,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_ubapesterm  }
+		completion_reward = {
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = -0.03
+		}
+		
+		}
 	}
 
 	#The  Plot
@@ -105,6 +117,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_strengthening_control  } prerequisite = { focus = BRM_cracking_down_on_minorities  }
+		add_stability = -0.1
 	}
 
 	#The 1936 Election
@@ -118,6 +131,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_theplot  }
+		completion_reward = {
+		add_stability = -0.5
+		country_event = {  id = burma.2 }
+		}
 	}
 
 	#The Rule of Royalty
@@ -302,6 +319,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_glory_to_u_ba_pe  }
 		mutually_exclusive = { focus = BRM_integration  }
+		completion_reward = {	add_manpower = -300000 }
 	}
 
 	#Black Monday Recovery
@@ -331,6 +349,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_glory_to_u_ba_pe  }
 		mutually_exclusive = { focus = BRM_ethnic_crackdown  }
+		completion_reward = { add_manpower = 20000 }
 	}
 
 	#New Civilian Projects
@@ -357,6 +376,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_integration  }
+		completion_reward = {	add_stability = 0.25}
 	}
 
 	#Maw's Coup
@@ -370,6 +390,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_ethnic_crackdown  }
+		completion_reward = {	add_popularity = {
+			ideology = national_populist
+			popularity = 0.5
+			}
+		 }
 	}
 
 	#The Armed Factories
@@ -396,6 +421,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_mawscoup  }
+		completion_reward = { add_popularity = {
+			ideology = radical_socialist
+			popularity = -0.5
+			}
+			
+			add_popularity = {
+				ideology = totalist
+				popularity = -0.5
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.5
+			}
+		}
 	}
 
 	#Crushing the Ultra Nationalists
@@ -409,6 +448,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_burmese_glory  }
+		completion_reward = {
+			add_popularity = {
+				ideology = national_populist
+				popularity = -0.5
+			}
+		
+		}
 	}
 
 	#Political Crackdown
@@ -422,6 +468,23 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_crushing_the_ultra_nationalists  }
+		completion_reward = {
+		add_popularity = {
+				ideology = social_democrat
+				popularity = -0.5
+			}
+			
+			add_popularity = {
+				ideology = social_conservative
+				popularity = -0.5
+			}
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = -0.5
+			}
+		
+		
+		}
 	}
 
 	#Crush Democracy
@@ -435,6 +498,18 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_crushing_the_left  }
+		completion_reward = {
+		add_popularity = {
+				ideology = social_democrat
+				popularity = -0.5
+			}
+			
+			add_popularity = {
+				ideology = social_conservative
+				popularity = -0.5
+			}
+		
+		}
 	}
 
 	#The Burmese Empire
@@ -447,7 +522,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = BRM_crush_democracy  focus = BRM_political_crackdown  focus = BRM_destroy_democratic_opponents  } prerequisite = { focus = BRM_crush_the_ultra_nationalists  }
+		prerequisite = { focus = BRM_crush_democracy  focus = BRM_political_crackdown  focus = BRM_destroy_democratic_opponents  } 
+		completion_reward = {
+		add_stability = 0.3
+		
+		
+		}
 	}
 
 	#Claiming Bengal
@@ -461,6 +541,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_crush_democracy  } prerequisite = { focus = BRM_the_burmese_empire  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BHC
+		}
+		
+		}
 	}
 
 	#Dealing with Yunnan
@@ -474,6 +561,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_the_burmese_empire  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = YUN
+		}
+		
+		}
 	}
 
 	#Reclaiming our Siamese Lands
@@ -487,6 +581,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_the_burmese_empire  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SIA
+		}
+		
+		}
 	}
 
 	#Claiming Bhutanese Hegemony
@@ -526,6 +627,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_dealing_with_yunnan  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SZC
+		}
+		
+		}
 	}
 
 	#Agriculture Reform
@@ -786,6 +894,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_thequeensreturn  }
+		completion_reward = {
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = 0.15
+			}
+		
+		} 
 	}
 
 	#Enforcing Hierarchy
@@ -799,6 +914,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_rebuilding_the_economy  }
+		completion_reward = {
+			add_war_support = -0.13
+		}
 	}
 
 	#Same Dictatorship
@@ -812,6 +930,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = BRM_new_government  }
+		completion_reward = {
+		add_stability = -0.21
+		}
 	}
 
 	#Royal Parades
@@ -825,6 +946,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_enforcing_hierarchy  }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.01
+		}
 	}
 
 	#Limit the Press
@@ -838,6 +963,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_enforcing_hierarchy  }
+		completion_reward = {
+		add_stability = -0.01
+		
+		}
 	}
 
 	#Crush Leftist Opposition
@@ -864,6 +993,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_royal_parades  } prerequisite = { focus = BRM_limit_the_press  }
+		completion_reward {
+		add_popularity = {
+				ideology = social_democrat
+				popularity = -0.5
+			}
+			
+			add_popularity = {
+				ideology = social_conservative
+				popularity = -0.5
+			}
+		
+		
+		
+		}
 	}
 
 	#Crush the Ultra Nationalists
