@@ -19,6 +19,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_the_sun_amongst_the_stars  }
+		completion_reward = { add_opinion_modifier = {
+				target = USA
+				modifier = IMPROVE_RELA_PHI_USA
+			}
+			
+			add_opinion_modifier = {
+				target = JAP
+				modifier = PHI_expelled_japs
+			}
+		}
 	}
 
 	#The Sun Amongst the Stars
@@ -30,6 +40,11 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.2
 		}
 	}
 
@@ -44,6 +59,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_the_sun_amongst_the_stars  }
+		completion_reward = {
+		add_stability = -0.32
+		}
+		
+		
 	}
 
 	#Uphold American Loyalism
@@ -57,6 +77,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_the_sun_amongst_the_stars  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = USA
+				modifier = IMPROVE_RELA_PHI_USA
+			}
+		}
 	}
 
 	#Cracking on Ganap
@@ -70,7 +96,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_uphold_american_loyalism  } prerequisite = { focus = PHI_defence_against_asian_imperialism  }
+		completion_reward = {
+		add_popularity = {
+			ideology = national_populist
+			popularity = -1
+		}
+		}
+	
 	}
+	
 
 	#The Huk Menace
 	focus = {
@@ -83,6 +117,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_uphold_american_loyalism  }
+		completion_reward = {
+		add_popularity = {
+			ideology = totalist
+			popularity = -1
+		}
+		completion_reward = {
+		add_popularity = {
+			ideology = syndicalist
+			popularity = -1
+		}
+		}
+	
+		}
+	
 	}
 
 	#Requesting Further Aid
@@ -96,6 +144,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_limit_the_press  } prerequisite = { focus = PHI_defence_against_asian_imperialism  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = USA
+				modifier = IMPROVE_RELA_PHI_USA
+			}
+		add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = USA
+			}
+		}
 	}
 
 	#Rule of a General
@@ -109,6 +168,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_limit_the_press  }
+		completion_reward = {
+		add_war_support = 0.4
+		add_command_power = 15
+		}
 	}
 
 	#Rule of a General
@@ -122,6 +185,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_limit_the_press  }
+		completion_reward = {
+		add_war_support = 0.4
+		add_command_power = 15
+		}
 	}
 
 	#Increasing Instability?
@@ -135,6 +202,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_requesting_further_aid  } prerequisite = { focus = PHI_rule_of_a_general  }
+		completion_reward = {
+		add_stability = -1
+		}
 	}
 
 	#The Chains Are Melting
@@ -148,6 +218,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_cracking_on_ganap  } prerequisite = { focus = PHI_the_huk_menace  }
+		completion_reward = {
+		add_stability = -0.15
+		add_war_support = -0.5
+		}
 	}
 
 	#Right on the Edge
@@ -161,6 +235,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_increasinginstability  } prerequisite = { focus = PHI_the_chains_are_melting  }
+		
 	}
 
 	#Collapse of an Empire
@@ -172,6 +247,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -191,6 +269,9 @@ focus_tree = {
 		has_government = paternal_autocrat
 		
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#The Syndicalist Revolution
@@ -207,6 +288,9 @@ focus_tree = {
 		available = {
 		has_government = syndicalist
 		has_government = totalist
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -226,6 +310,9 @@ focus_tree = {
 		has_government = social_liberal
 		
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#Crisanto's Syndicalists
@@ -239,6 +326,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_the_syndicalist_revolution  }
+		available = {
+		has_government = syndicalist
+		}
 	}
 
 	#Hukalap Victory
@@ -252,7 +342,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_the_syndicalist_revolution  }
+		available = {
+		has_government = totalist
+		}
 	}
+	
 
 	#The Ideas of Liberalism
 	focus = {
@@ -265,6 +359,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_democracy_restored  }
+		available = {
+		has_government = social_liberal
+		}
 	}
 
 	#Traditional Society
@@ -278,6 +375,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_democracy_restored  }
+		available = {
+		has_government = social_conservative
+		}
 	}
 
 	#The Militarist Future
@@ -291,6 +391,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_nationalists_secure_the_realm  }
+		available = {
+		has_government = paternal_autocrat
+		}
 	}
 
 	#Philippines For Filipino's
@@ -304,6 +407,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_nationalists_secure_the_realm  }
+		available = {
+		has_government = national_populist
+		}
 	}
 
 	#The Red Island
@@ -317,6 +423,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_crisantossyndicalists  }
+		completion_reward = {
+		add_stability = 0.5
+		}
 	}
 
 	#The Union's Factory
@@ -330,6 +439,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_crisantossyndicalists  }
+		completion_reward = {
+		add_offsite_building = { type = arms_factory level = 2 }
+		}
 	}
 
 	#Communal Housing
@@ -343,6 +455,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_crisantossyndicalists  }
+		completion_reward = {
+		add_extra_state_shared_building_slots = 3
+		}
 	}
 
 	#Every Worker For Every Factory
@@ -356,6 +471,13 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PHI_hukalap_victory  }
+		completion_reward = {
+		add_building_construction = {
+				type = arms_factory
+				level = 5
+				instant_build = yes
+			}
+		}
 	}
 
 	#An International Declaration
@@ -369,6 +491,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_hukalap_victory  }
+		add_opinion_modifier = {
+				target = BHC
+				modifier = PHI_synrev_FRA
+			}
+			
+			add_opinion_modifier = {
+			target = FRA
+			modifier = PHI_synrev_FRA
+		}
+		
+				add_opinion_modifier = {
+			target = ENG
+			modifier = PHI_synrev_FRA
+		}
 	}
 
 	#Following the Red Guards
@@ -382,6 +518,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_hukalap_victory  }
+		completion_reward = {
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.05
+			}
+		}
 	}
 
 	#The New Power
@@ -395,6 +537,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_philippinesforfilipinos  }
+		completion_reward = {
+		add_political_power = 10
+		add_stability = 0.35
+		}
+		
 	}
 
 	#Democracy At its Worst
@@ -408,6 +555,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_the_militarist_future  }
+		completion_reward = {
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = 0.05
+			}
+		}
 	}
 
 	#Manila Industrial Program
@@ -421,6 +574,20 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PHI_the_militarist_future  focus = PHI_philippinesforfilipinos  }
+		completion_reward = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			
+			
+		}
 	}
 
 	#Enforcing Tagalog
