@@ -6157,6 +6157,8 @@ country_event = {
 		custom_effect_tooltip = QIE_wu_republic_open_tt
 		complete_national_focus = QIE_unrest
 	}
+	
+	
 }
 
 country_event = {
@@ -6556,6 +6558,67 @@ country_event = {
 			}
 		}
 	}
+	
+	option = {
+	name = qiecoup.22.b
+	set_politics = { ruling_party = totalist }
+	
+	set_country_flag = Jiang_Baili_dead
+			set_country_flag = Wu_Peifu_dead
+			every_owned_state = {
+				limit = {
+					NOT = {
+						state = 608 #Beijing
+						state = 1062 #Baoding
+					}
+				}
+				set_demilitarized_zone = yes
+			}
+			
+			set_country_flag = QIE_manchu_restoration
+			random_army_leader = {
+				limit = { has_id = 1174 }
+				promote_leader = yes
+	}
+	add_political_power = 30
+			set_country_flag = zhili_manchu_war
+			add_ideas = QIE_zhili_manchu_war_idea
+			delete_unit_template_and_units = { division_template = "Zhili Infantry Division" }
+			random_other_country = {
+				limit = { is_ai = yes }
+				news_event = { id = worldnews.231 hours = 2 }
+			}
+			load_focus_tree = monbol-qing
+			set_cosmetic_tag = QIE_RED
+			set_popularities = {
+				totalist = 90
+				radical_socialist = 5
+				syndicalist = 5
+				social_democrat = 0
+				social_liberal = 0
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 0
+				paternal_autocrat = 0
+				national_populist = 0
+			}
+			
+			
+							set_party_name = { 
+					ideology = totalist
+					long_name = QIE_totalist_party_red_long 
+					name = QIE_totalist_party_red
+				}
+				
+				set_country_leader_portrait = {
+					ideology = totalist
+					portrait = "Portrait_QIE_Puyi_Uniform.png"
+				}
+				
+				set_country_leader_name = {
+				ideology = totalist
+				name = LOC_QED
+			}
 }
 
 country_event = {
