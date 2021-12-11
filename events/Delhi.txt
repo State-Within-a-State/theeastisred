@@ -118,12 +118,11 @@ country_event = {
 
 	option = {
 		name = delhi.3.a
-		kill_country_leader = yes
 
 		create_country_leader = {
 			name = "Chamber of Princes"
 			desc = "POLITICS_CHAMBER_OF_PRINCES_DESC"
-			picture = "chamberofprinces.png"
+			picture = "gfx/leaders/DEH/chamberofprinces.png"
 			expire = "1965.1.1"
 			ideology = social_conservative_subtype
 			traits = {
@@ -174,7 +173,18 @@ country_event = {
 
 	option = { #Edward VIII as figurehead
 		name = delhi.7.a
-		trigger = { is_ai = no }
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0		
+				NOT = {
+					has_game_rule = {
+						rule = DEH_durbar
+						option = DEH_PATH_EDDY
+					}
+				}
+			}
+		}
 		set_country_flag = DEH_no_gov_general
 		retire_country_leader = yes
 		DEH_create_monarchy = yes
@@ -190,12 +200,28 @@ country_event = {
 
 	option = { #Ganga Singh as viceroy
 		name = delhi.7.b
+		ai_chance = {
+			factor = 90
+			modifier = {
+				factor = 0		
+				OR = {
+					has_game_rule = {
+						rule = DEH_durbar
+						option = DEH_PATH_EDDY
+					}
+					has_game_rule = {
+						rule = DEH_durbar
+						option = DEH_PATH_CHURCHILL
+					}
+				}
+			}
+		}
 		set_country_flag = DEH_gov_general_singh
 		retire_country_leader = yes
 		create_country_leader = {
 			name = "Ganga Singh"
 			desc = "POLITICS_GANGA_SINGH_DESC"
-			picture = "Portrait_DEH_Maharaja_Ganga_Singh.png"
+			picture = "gfx/leaders/DEH/Portrait_DEH_Maharaja_Ganga_Singh.png"
 			expire = "1965.1.1"
 			ideology = social_conservative_subtype
 		}
@@ -210,6 +236,22 @@ country_event = {
 	}
 	option = { #Churchill
 		name = delhi.7.c
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0		
+				OR = {
+					has_game_rule = {
+						rule = DEH_durbar
+						option = DEH_PATH_EDDY
+					}
+					has_game_rule = {
+						rule = DEH_durbar
+						option = DEH_PATH_GANGA
+					}
+				}
+			}
+		}
 		set_country_flag = DEH_gov_churchill
 		retire_country_leader = no
 		set_politics = { ruling_party = paternal_autocrat elections_allowed = no }
@@ -295,12 +337,14 @@ country_event = {
 		AFG = {
 			remove_state_core = 442 #Peshawar
 			remove_state_core = 445 #Quetta
+			remove_state_core = 1219
 			remove_state_claim = 444 #Baluchistan
 			white_peace_with_ROOT = yes
 		}
 		DEH = {
 			transfer_state = 442 #Peshawar
 			transfer_state = 445 #Quetta
+			transfer_state = 1219
 		}
 		hidden_effect = {
 			AFG = {
@@ -326,11 +370,13 @@ country_event = {
 		AFG = {
 			remove_state_core = 442 #Peshawar
 			remove_state_core = 445 #Quetta
+			remove_state_core = 1219
 			white_peace_with_ROOT = yes
 		}
 		DEH = {
 			transfer_state = 442 #Peshawar
 			transfer_state = 445 #Quetta
+			transfer_state = 1219
 			puppet = AFG
 		}
 		hidden_effect = {
@@ -365,41 +411,14 @@ country_event = {
 
 	option = {
 		name = delhi.6.a
-		ai_chance = {
-			factor = 50
-		}
 		AFG = {
-			hidden_effect = {
-				retire_country_leader = yes
-			}
 			create_country_leader = {
-				name = "Amanullah Khan"
-				desc = "POLITICS_AMANULLAH_KHAN_DESC"
-				picture = "Portrait_Afghan_Amanullah_Khan.png"
+				name = "Henry Page Croft"
+				desc = "POLITICS_HP_CROFT_DESC"
+				picture = "gfx/leaders/Afg/Portrait_Afghan_Henry_Croft.png"
 				expire = "1965.1.1"
 				ideology = social_conservative_subtype
-			}
-			set_politics = {
-				ruling_party = social_conservative
-				elections_allowed = no
-			}
-		}
-	}
-
-	option = {
-		name = delhi.6.b
-		ai_chance = {
-			factor = 50
-		}
-		AFG = {
-			hidden_effect = {
-				retire_country_leader = yes
-			}
-			create_country_leader = {
-				name = "Mohammed Nadir Shah"
-				picture = "Portrait_Afghan_Mohammed_Zahir.png"
-				expire = "1965.1.1"
-				ideology = social_conservative_subtype
+				traits = { viceroy_afghanistan }
 			}
 			set_politics = {
 				ruling_party = social_conservative
@@ -439,6 +458,23 @@ country_event = {
 		name = delhi.8.a #Liberal Party
 		ai_chance = {
 			factor = 35
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCDEM
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCCON	
+					}
+				}
+			}
 		}
 		DEH_election_liberal = yes
 		add_ideas = {
@@ -452,6 +488,23 @@ country_event = {
 		name = delhi.8.b #Swaraj Party
 		ai_chance = {
 			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_MARLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCDEM
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCCON	
+					}
+				}
+			}
 		}
 		DEH_election_swaraj = yes
 		add_ideas = {
@@ -465,6 +518,23 @@ country_event = {
 		name = delhi.8.c #Jinnah Party
 		ai_chance = {
 			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_MARLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCCON	
+					}
+				}
+			}
 		}
 		DEH_election_jinnah = yes
 		add_ideas = {
@@ -478,6 +548,23 @@ country_event = {
 		name = delhi.8.e #Unionist Party
 		ai_chance = {
 			factor = 30
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_MARLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCDEM
+					}
+				}
+			}
 		}
 		DEH_election_unionist = yes
 		add_ideas = {
@@ -515,6 +602,23 @@ country_event = {
 		name = delhi.9.a #Liberal Party
 		ai_chance = {
 			factor = 35
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCDEM
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCCON	
+					}
+				}
+			}
 		}
 		DEH_election_liberal = yes
 		add_ideas = {
@@ -528,6 +632,23 @@ country_event = {
 		name = delhi.9.b #Swaraj Party
 		ai_chance = {
 			factor = 10
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_MARLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCDEM
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCCON	
+					}
+				}
+			}
 		}
 		DEH_election_swaraj = yes
 		add_ideas = {
@@ -541,6 +662,23 @@ country_event = {
 		name = delhi.9.c #Jinnah Party
 		ai_chance = {
 			factor = 25
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_MARLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCCON	
+					}
+				}
+			}
 		}
 		DEH_election_jinnah = yes
 		add_ideas = {
@@ -554,6 +692,23 @@ country_event = {
 		name = delhi.9.e #Unionist Party
 		ai_chance = {
 			factor = 30
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_MARLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCLIB
+					}
+					has_game_rule = {
+						rule = DEH_path
+						option = DEH_PATH_SOCDEM
+					}
+				}
+			}
 		}
 		DEH_election_unionist = yes
 		add_ideas = {
@@ -2778,7 +2933,10 @@ country_event = {
 				limit = {
 					has_unit_leader = 1221
 				}
-				remove_unit_leader = 1221
+				random_unit_leader = {
+					limit = { has_id = 1221 }			
+					remove_unit_leader = yes
+				}
 			}
 		}
 	}
@@ -2813,7 +2971,7 @@ country_event = {
 			create_country_leader = {
 				name = "Ratanji Dadabhoy Tata"
 				desc = "POLITICS_RATANJI_DADABHOY_TATA_DESC"
-				picture = "Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
+				picture = "gfx/leaders/DEH/Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
 				expire = "1965.1.1"
 				ideology = market_liberal_subtype
 			}
@@ -2825,7 +2983,7 @@ country_event = {
 			create_country_leader = {
 				name = "Ratanji Dadabhoy Tata"
 				desc = "POLITICS_RATANJI_DADABHOY_TATA_DESC"
-				picture = "Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
+				picture = "gfx/leaders/DEH/Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
 				expire = "1965.1.1"
 				ideology = social_liberal_subtype
 			}
@@ -2837,7 +2995,7 @@ country_event = {
 			create_country_leader = {
 				name = "Ratanji Dadabhoy Tata"
 				desc = "POLITICS_RATANJI_DADABHOY_TATA_DESC"
-				picture = "Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
+				picture = "gfx/leaders/DEH/Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
 				expire = "1965.1.1"
 				ideology = social_democrat_subtype
 			}
@@ -2849,7 +3007,7 @@ country_event = {
 			create_country_leader = {
 				name = "Ratanji Dadabhoy Tata"
 				desc = "POLITICS_RATANJI_DADABHOY_TATA_DESC"
-				picture = "Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
+				picture = "gfx/leaders/DEH/Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
 				expire = "1965.1.1"
 				ideology = social_conservative_subtype
 			}
@@ -2872,7 +3030,7 @@ country_event = {
 			create_country_leader = {
 				name = "Atul Chandra Chatterjee"
 				desc = "POLITICS_ATUL_CHANDRA_CHATTERJEE_DESC"
-				picture = "Portrait_DEH_Sir_Atul_Chandra_Chatterjee.png"
+				picture = "gfx/leaders/DEH/Portrait_DEH_Sir_Atul_Chandra_Chatterjee.png"
 				expire = "1965.1.1"
 				ideology = market_liberal_subtype
 			}
@@ -2884,7 +3042,7 @@ country_event = {
 			create_country_leader = {
 				name = "Atul Chandra Chatterjee"
 				desc = "POLITICS_ATUL_CHANDRA_CHATTERJEE_DESC"
-				picture = "Portrait_DEH_Sir_Atul_Chandra_Chatterjee.png"
+				picture = "gfx/leaders/DEH/Portrait_DEH_Sir_Atul_Chandra_Chatterjee.png"
 				expire = "1965.1.1"
 				ideology = social_liberal_subtype
 			}
@@ -2896,7 +3054,7 @@ country_event = {
 			create_country_leader = {
 				name = "Atul Chandra Chatterjee"
 				desc = "POLITICS_ATUL_CHANDRA_CHATTERJEE_DESC"
-				picture = "Portrait_DEH_Sir_Atul_Chandra_Chatterjee.png"
+				picture = "gfx/leaders/DEH/Portrait_DEH_Sir_Atul_Chandra_Chatterjee.png"
 				expire = "1965.1.1"
 				ideology = social_democrat_subtype
 			}
@@ -2908,7 +3066,7 @@ country_event = {
 			create_country_leader = {
 				name = "Atul Chandra Chatterjee"
 				desc = "POLITICS_ATUL_CHANDRA_CHATTERJEE_DESC"
-				picture = "Portrait_DEH_Sir_Atul_Chandra_Chatterjee.png"
+				picture = "gfx/leaders/DEH/Portrait_DEH_Sir_Atul_Chandra_Chatterjee.png"
 				expire = "1965.1.1"
 				ideology = social_conservative_subtype
 			}
@@ -3038,7 +3196,10 @@ country_event = {
 			limit = {
 				has_unit_leader = 1223
 			}
-			remove_unit_leader = 1223
+			random_unit_leader = {
+				limit = { has_id = 1223 }			
+				remove_unit_leader = yes
+			}
 		}
 		if = {
 			limit = {
@@ -4213,27 +4374,46 @@ country_event = {
 			has_war_with = PRF
 		}
 	}
-
+	
 	option = {
-		name = delhi.325.a
-		random_list = {
-			15 = {
-				custom_effect_tooltip = DEH_jinnah_wins
-			}
-			35 = {
-				custom_effect_tooltip = DEH_socialist_wins
-			}
-			50 = {
-				custom_effect_tooltip = DEH_unionist_wins
+		name = delhi.325.a #Jinnah wins
+		ai_chance = {
+			factor = 15
+		}
+		custom_effect_tooltip = DEH_jinnah_wins
+		hidden_effect = {
+			set_country_flag = DEH_jinnah_win
+			country_event = {
+				id = delhi.326
+				days = 3
 			}
 		}
-		# Bounce event - to bypass random_list, which appears unreliable
+	}
+	option = {
+		name = delhi.325.b #Socialists win
+		ai_chance = {
+			factor = 35
+		}
+		custom_effect_tooltip = DEH_socialist_wins
 		hidden_effect = {
-			random_country = {
-				limit = {
-					is_ai = yes
-				}
-				country_event = delhi.332
+			set_country_flag = DEH_socialist_win
+			country_event = {
+				id = delhi.326
+				days = 3
+			}
+		}
+	}
+	option = {
+		name = delhi.325.c #Unionists win
+		ai_chance = {
+			factor = 50
+		}
+		custom_effect_tooltip = DEH_unionist_wins
+		hidden_effect = {
+			set_country_flag = DEH_unionist_win
+			country_event = {
+				id = delhi.327
+				days = 3
 			}
 		}
 	}

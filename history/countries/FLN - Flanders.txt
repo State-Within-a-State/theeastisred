@@ -6,12 +6,26 @@ set_research_slots = 3
 set_stability = 0.55
 set_war_support = 0.50
 
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
 set_technology = {
 	electronic_mechanical_engineering = 1
 
-	### Tanks ###
-	gwtank = 1
-
+	
 	### Infantry ###
 	infantry_weapons = 1
 	infantry_weapons1 = 1
@@ -29,36 +43,35 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		carrier_conversion = 1
-		carrier_hull_1936 = 1
-		ship_hull_revived_ac = 1
-		weltkrieg_heavy_ship_hull = 1
-		heavy_ship_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		basic_heavy_armor_scheme = 1
-		capital_gunnery_one = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 
 		### Transport ###
-		transport = 1
+		mtg_transport = 1
 	}
 }
 
@@ -71,17 +84,19 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
 
 		### Transport ###
-		transport_n = 1
+		transport = 1
 	}
 }
 
@@ -120,7 +135,7 @@ country_event = { id = flnrev.1 days = 2 }
 
 create_country_leader = {
 	name = "Staf De Clercq"
-	picture = "Portrait_Belgium_Staf_De_Clercq.png"
+	picture = "gfx/leaders/FLN/Portrait_Belgium_Staf_De_Clercq.png"
 	expire = "1965.1.1"
 	ideology = national_populist_subtype
 }
@@ -135,14 +150,14 @@ create_country_leader = {
 
 create_country_leader = {
 	name = "Raad van Vlaanderen"
-	picture = "Portrait_Belgium_Flemish_Council.png"
+	picture = "gfx/leaders/FLN/Portrait_Belgium_Flemish_Council.png"
 	expire = "1965.1.1"
 	ideology = authoritarian_democrat_subtype
 }
 
 create_country_leader = {
 	name = "Frans van Cauwelaert"
-	picture = "Portrait_Belgium_Frans_Van_Cauwelaert.png"
+	picture = "gfx/leaders/FLN/Portrait_Belgium_Frans_Van_Cauwelaert.png"
 	expire = "1965.1.1"
 	ideology = social_conservative_subtype
 }
@@ -150,21 +165,21 @@ create_country_leader = {
 create_country_leader = {
 	name = "Paul-Henri Spaak"
 	desc = "POLITICS_PAUL_HENRI_SPAAK_DESC"
-	picture = "gfx/leaders/BEL/Portrait_Belgium_Paul_Henri_Spaak.png"
+	picture = "gfx/leaders/FLN/Portrait_Belgium_Paul_Henri_Spaak.png"
 	expire = "1965.1.1"
 	ideology = social_liberal_subtype
 }
 
 create_country_leader = {
 	name = "Camille Huysmans"
-	picture = "Portrait_Belgium_Camille_Huysmans.png"
+	picture = "gfx/leaders/FLN/Portrait_Belgium_Camille_Huysmans.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
 }
 
 create_country_leader = {
 	name = "Louis Paul Boon"
-	picture = "Portrait_Belgium_Louis_Paul_Boon.png"
+	picture = "gfx/leaders/FLN/Portrait_Belgium_Louis_Paul_Boon.png"
 	expire = "1965.1.1"
 	ideology = syndicalist_subtype
 }

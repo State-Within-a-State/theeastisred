@@ -1,11 +1,31 @@
 ﻿capital = 371
 OOB = "empty"
+starting_train_buffer = 2.0
 
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+		engine_tech_1 = 1
+	}
+}
 set_technology = {
-	### Tanks ###
-	gwtank = 1
-	basic_light_tank = 1
-	basic_heavy_tank = 1
+	basic_train = 1
 	### Infantry ###
 	infantry_weapons = 1
 	infantry_weapons1 = 1
@@ -31,34 +51,63 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		carrier_conversion = 1
-		carrier_hull_1936 = 1
-		ship_hull_revived_ac = 1
-		weltkrieg_heavy_ship_hull = 1
-		heavy_ship_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
 		ship_hull_super_heavy = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 		basic_heavy_armor_scheme = 1
-		capital_gunnery_one = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
+
+		### Transport ###
+		mtg_transport = 1
+	}
+}
+
+### Navy - Non MtG ###
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "Man the Guns"
+		}
+	}
+	set_technology = {
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battlecruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		heavy_battleship = 1
+		early_carrier = 1
+		basic_carrier = 1
 
 		### Transport ###
 		transport = 1
@@ -74,7 +123,8 @@ add_opinion_modifier = { target = CAL modifier = embargo }
 add_opinion_modifier = { target = CSA modifier = embargo }
 add_opinion_modifier = { target = USA modifier = embargo }
 add_opinion_modifier = { target = NEE modifier = embargo }
-add_opinion_modifier = { target = SOV modifier = embargo }
+
+country_event = { id = unionstate.3001 days = 120 }
 
 set_country_flag = {
 	flag = AFP_leftism
@@ -103,17 +153,17 @@ set_popularities = {
 create_country_leader = {
 	name = "Huey Long"
 	desc = "POLITICS_HUEY_LONG_DESC"
-	picture = "Portrait_TEX_Huey_Long.png"
+	picture = "gfx/leaders/TEX/Portrait_TEX_Huey_Long.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = longism_subtype
 	traits = { the_kingfish }
 }
 create_country_leader = {
 	name = "William Dudley Pelley"
 	desc = "POLITICS_WILLIAM_DUDLEY_PELLEY"
-	picture = "Portrait_TEX_William_Dudley_Pelley.png"
+	picture = "gfx/leaders/TEX/Portrait_TEX_William_Dudley_Pelley.png"
 	expire = "1965.1.1"
-	ideology = social_conservative_subtype
+	ideology = christian_democracy_subtype
 	traits = { authoritarian_tendencies }
 }
 create_country_leader = {
@@ -135,7 +185,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Tom Pendergast"
 	desc = "POLITICS_TOM_PENDERGAST_DESC"
-	picture = "Portrait_Tom_Pendergast.png"
+	picture = "gfx/leaders/TEX/Portrait_Tom_Pendergast.png"
 	expire = "1965.1.1"
 	ideology = paternal_autocrat_subtype
 	traits = { political_boss }

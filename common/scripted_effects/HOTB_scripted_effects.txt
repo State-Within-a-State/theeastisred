@@ -28,7 +28,7 @@ change_to_socdem_popularity = {
 				desc = "POLITICS_HUEY_LONG_DESC"
 				picture = "gfx/leaders/USA/Portrait_TEX_Huey_Long.png"
 				expire = "1970.1.1"
-				ideology = social_democrat_subtype
+				ideology = socdem_longism_subtype
 				traits = {the_kingfish}
 			}
 		}
@@ -69,7 +69,7 @@ change_to_soclib_popularity = {
 				desc = "POLITICS_HUEY_LONG_DESC"
 				picture = "gfx/leaders/USA/Portrait_TEX_Huey_Long.png"
 				expire = "1970.1.1"
-				ideology = social_liberal_subtype
+				ideology = soclib_longism_subtype
 				traits = {the_kingfish}
 			}
 		}
@@ -110,7 +110,7 @@ change_to_soccon_popularity = {
 				desc = "POLITICS_HUEY_LONG_DESC"
 				picture = "gfx/leaders/USA/Portrait_TEX_Huey_Long.png"
 				expire = "1970.1.1"
-				ideology = social_conservative_subtype
+				ideology = soccon_longism_subtype
 				traits = {the_kingfish}
 			}
 		}
@@ -151,7 +151,7 @@ change_to_pataut_popularity = {
 				desc = "POLITICS_HUEY_LONG_DESC"
 				picture = "gfx/leaders/USA/Portrait_TEX_Huey_Long.png"
 				expire = "1970.1.1"
-				ideology = paternal_autocrat_subtype
+				ideology = pataut_longism_subtype
 				traits = {the_kingfish}
 			}
 		}
@@ -208,5 +208,22 @@ demilitarized_zones_disappear = {
 		934 = { set_demilitarized_zone = no }
 		357 = { set_demilitarized_zone = no }
 		796 = { set_demilitarized_zone = no}
+	}
+}
+
+TEX_heal_afp_divide = {
+	if = {
+		limit = { has_idea = TEX_political_chaos_idea }
+		swap_ideas = {
+			remove_idea = TEX_political_chaos_idea
+			add_idea = TEX_political_chaos_two_idea
+		}
+		set_country_flag = TEX_reconcile_half_done
+	}
+	else_if = {
+		limit = { has_idea = TEX_political_chaos_two_idea }
+		remove_ideas = TEX_political_chaos_two_idea
+		country_event = { id = unionstate.5128 days = 7 }
+		set_country_flag = TEX_reconcile_fully_done
 	}
 }

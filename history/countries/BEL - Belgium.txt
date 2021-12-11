@@ -6,12 +6,33 @@ set_research_slots = 3
 
 set_stability = 0.40
 set_war_support = 0.20
+starting_train_buffer = 1.5
 
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		### Tanks ###
+		gwtank = 1
+		basic_light_tank = 1
+		basic_light_td = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		engine_tech_1 = 1
+	}
+}
 set_technology = {
-	### Tanks ###
-	gwtank = 1
-	basic_light_tank = 1
-	basic_light_td = 1
+	basic_train = 1
+	
 
 	### Infantry ###
 	infantry_weapons = 1
@@ -36,36 +57,35 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		carrier_conversion = 1
-		carrier_hull_1936 = 1
-		ship_hull_revived_ac = 1
-		weltkrieg_heavy_ship_hull = 1
-		heavy_ship_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		
+        basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		basic_heavy_armor_scheme = 1
-		capital_gunnery_one = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 
 		### Transport ###
-		transport = 1
+		mtg_transport = 1
 	}
 }
 
@@ -78,17 +98,19 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
 
 		### Transport ###
-		transport_n = 1
+		transport = 1
 	}
 }
 
@@ -183,7 +205,7 @@ add_opinion_modifier = { target = LEC modifier = LEC_member }
 
 create_country_leader = {
 	name = "Léon Degrelle"
-	picture = "Portrait_Belgium_LEON_DEGRELLE.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_LEON_DEGRELLE.png"
 	expire = "1965.1.1"
 	ideology = national_populist_subtype
 }
@@ -191,7 +213,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Joris Van Severen"
 	desc = "POLITICS_JORIS_SEVEREN_DESC"
-	picture = "Portrait_Belgium_Joris_Van_Severen.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Joris_Van_Severen.png"
 	expire = "1965.1.1"
 	ideology = paternal_autocrat_subtype
 }
@@ -199,23 +221,23 @@ create_country_leader = {
 create_country_leader = {
 	name = "Adelbert"
 	desc = "POLITICS_ADALBERT_I_DESC"
-	picture = "Portrait_Belgium_Adalbert_I.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Adalbert_I.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = prussian_constitutionalism_subtype
 }
 
 create_country_leader = {
 	name = "Paul Van Zeeland"
 	desc = "POLITICS_PAUL_ZEELAND_DESC"
-	picture = "Portrait_Belgium_Paul_van_Zeeland.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Paul_van_Zeeland.png"
 	expire = "1965.1.1"
-	ideology = social_conservative_subtype
+	ideology = christian_democracy_subtype
 }
 
 create_country_leader = {
 	name = "Paul-Emile Janson"
 	desc = "POLITICS_PAUL_EMILE_JANSON_DESC"
-	picture = "Portrait_Belgium_Paul_Emile_Janson.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Paul_Emile_Janson.png"
 	expire = "1965.1.1"
 	ideology = market_liberal_subtype
 }
@@ -223,7 +245,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Paul-Henri Spaak"
 	desc = "POLITICS_PAUL_HENRI_SPAAK_DESC"
-	picture = "Portrait_Belgium_Paul_Henri_Spaak.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Paul_Henri_Spaak.png"
 	expire = "1965.1.1"
 	ideology = social_liberal_subtype
 }
@@ -231,14 +253,14 @@ create_country_leader = {
 create_country_leader = {
 	name = "Hendrik De Man"
 	desc = "POLITICS_HENRIK_MAN_DESC"
-	picture = "Portrait_Belgium_Hendrik_De_Man.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Hendrik_De_Man.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
 }
 
 create_country_leader = {
 	name = "Xavier Relecom"
-	picture = "Portrait_Belgium_Xavier_Relecom.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Xavier_Relecom.png"
 	expire = "1965.1.1"
 	ideology = radical_socialist_subtype
 }
@@ -246,21 +268,21 @@ create_country_leader = {
 create_country_leader = {
 	name = "Joseph Jacquemotte"
 	desc = "POLITICS_JOSEPH_JACQUEMOTTE_DESC"
-	picture = "Portrait_Belgium_Joseph_Jacquemotte.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Joseph_Jacquemotte.png"
 	expire = "1965.1.1"
 	ideology = syndicalist_subtype
 }
 
 create_country_leader = {
 	name = "Julien Lahaut"
-	picture = "Portrait_Belgium_Julien_Lahaut.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Julien_Lahaut.png"
 	expire = "1965.1.1"
 	ideology = totalist_subtype
 }
 
 create_field_marshal = {
 	name = "Adelbert"
-	picture = "Portrait_Belgium_Adalbert_I.png"
+	portrait_path = "gfx/leaders/BEL/Portrait_Belgium_Adalbert_I.png"
 	traits = { harsh_leader politically_connected old_guard }
 	skill = 1
 	attack_skill = 1
@@ -273,7 +295,7 @@ create_field_marshal = {
 
 create_corps_commander = {
 	name = "Édouard van den Bergen"
-	picture = "Portrait_Belgium_Edouard_van_den_Bergen.png"
+	portrait_path = "gfx/leaders/BEL/Portrait_Belgium_Edouard_van_den_Bergen.png"
 	traits = { artillery_officer }
 	skill = 2
 	attack_skill = 1
@@ -284,7 +306,7 @@ create_corps_commander = {
 
 create_corps_commander = {
 	name = "Jean Baptiste Piron"
-	picture = "Portrait_Belgium_Jean_Baptiste_Piron.png"
+	portrait_path = "gfx/leaders/BEL/Portrait_Belgium_Jean_Baptiste_Piron.png"
 	traits = { trickster infantry_officer hidden_sympathies }
 	skill = 3
 	attack_skill = 3
@@ -295,7 +317,7 @@ create_corps_commander = {
 
 create_corps_commander = {
 	name = "Victor van Strydonck de Burkel"
-	picture = "Portrait_Belgium_Victor_van_Strydonck_de_Burkel.png"
+	portrait_path = "gfx/leaders/BEL/Portrait_Belgium_Victor_van_Strydonck_de_Burkel.png"
 	traits = { cavalry_officer war_hero }
 	skill = 2
 	attack_skill = 1
@@ -306,7 +328,7 @@ create_corps_commander = {
 
 create_corps_commander = {
 	name = "Maurice Keyaerts"
-	picture = "Portrait_Belgium_MCL_Keyaerts.png"
+	portrait_path = "gfx/leaders/BEL/Portrait_Belgium_MCL_Keyaerts.png"
 	traits = { ranger hill_fighter }
 	skill = 3
 	attack_skill = 2
@@ -317,7 +339,7 @@ create_corps_commander = {
 
 create_corps_commander = {
 	name = "Georges Deffontaine"
-	picture = "Portrait_Belgium_Georges_Deffontaine.png"
+	portrait_path = "gfx/leaders/BEL/Portrait_Belgium_Georges_Deffontaine.png"
 	traits = { organizer }
 	skill = 2
 	attack_skill = 1
@@ -328,7 +350,7 @@ create_corps_commander = {
 
 create_corps_commander = {
 	name = "Maximilien de Nève de Roden"
-	picture = "Portrait_Belgium_de_Neve_de_Roden.png"
+	portrait_path = "gfx/leaders/BEL/Portrait_Belgium_de_Neve_de_Roden.png"
 	traits = { politically_connected }
 	skill = 2
 	attack_skill = 1
@@ -339,7 +361,7 @@ create_corps_commander = {
 
 create_corps_commander = {
 	name = "Alexis Vander Veken"
-	picture = "Portrait_Belgium_Alexis_Vander_Veken.png"
+	portrait_path = "gfx/leaders/BEL/Portrait_Belgium_Alexis_Vander_Veken.png"
 	traits = { }
 	skill = 2
 	attack_skill = 1
@@ -350,7 +372,7 @@ create_corps_commander = {
 
 create_navy_leader = {
 	name = "Fritz Conrad"
-	picture = "Portrait_Belgium_Fritz_Conrad.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Fritz_Conrad.png"
 	traits = { spotter }
 	skill = 3
 	id = 199
@@ -361,7 +383,7 @@ create_navy_leader = {
 }
 create_navy_leader = {
 	name = "Georges Timmermans"
-	picture = "Portrait_Belgium_Georges_Timmermans.png"
+	picture = "gfx/leaders/BEL/Portrait_Belgium_Georges_Timmermans.png"
 	traits = { seawolf }
 	skill = 2
 	attack_skill = 2
@@ -369,5 +391,6 @@ create_navy_leader = {
 	maneuvering_skill = 2
 	coordination_skill = 2
 }
+
 
 BEL_start_naval_variant = yes

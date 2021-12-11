@@ -12,6 +12,8 @@ focus_tree = {
 			tag = GEA
 		}
 	}
+	shared_focus = GEX_war_in_the_east
+	shared_focus = GEX_darkest_hour
 	default = no
 	continuous_focus_position = { x = 0 y = 1000 }
 
@@ -19,6 +21,12 @@ focus_tree = {
 	focus = {
 		id = GEA_mission1 # Status of the Admiralty
 		icon = GFX_GEA_admirality
+		available = {
+			has_country_leader = {
+				name = "Hellmuth von Mücke"
+			}
+		}
+
 		cost = 4
 		x = 13
 		y = 0
@@ -28,6 +36,10 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEA_mission1"
 			add_stability = 0.05
+			country_event = {
+				id = Ostasien.301
+				days = 4
+			}
 		}
 		search_filters = { FOCUS_FILTER_STABILITY }
 	}
@@ -36,7 +48,7 @@ focus_tree = {
 	focus = {
 		id = GEA_army1 # The Ostasien Force
 		icon = GFX_GEA_Ostasiatische_Heer
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_mission1
 		}
@@ -65,9 +77,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEA_army1"
 			army_experience = 20
-			add_tech_bonus = {
-				name = GEA_army1
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -210,7 +222,7 @@ focus_tree = {
 	focus = {
 		id = GEA_germantroops1 # A German Force
 		icon = GFX_goal_German_Staff
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_army1
 		}
@@ -249,7 +261,7 @@ focus_tree = {
 	focus = {
 		id = GEA_germantroops2 # Prussian Discipline
 		icon = GFX_focus_ger_return_of_the_kaiser
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_germantroops1
 		}
@@ -273,9 +285,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEA_germantroops2"
-			add_tech_bonus = {
-				name = GEA_germantroops2
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -287,7 +299,7 @@ focus_tree = {
 	focus = {
 		id = GEA_germantroops3 # Enlist the Military Police
 		icon = GFX_goal_LEC_police3
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_germantroops2
 		}
@@ -323,7 +335,7 @@ focus_tree = {
 	focus = {
 		id = GEA_germantroops4 # Request Prussian Guards from Germany
 		icon = GFX_goal_no_compromises
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_germantroops3
 		}
@@ -354,9 +366,9 @@ focus_tree = {
 			hidden_effect = {
 				load_oob = GEA_Prussian_Guard
 			}
-			add_tech_bonus = {
-				name = GEA_germantroops4
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -368,7 +380,7 @@ focus_tree = {
 	focus = {
 		id = GEA_localtroops1 # Use the Locals
 		icon = GFX_goal_generic_join_faction
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_army1
 		}
@@ -407,7 +419,7 @@ focus_tree = {
 	focus = {
 		id = GEA_localtroops2 # Native Garrisons
 		icon = GFX_goal_JAP_target_gea
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_localtroops1
 		}
@@ -443,7 +455,7 @@ focus_tree = {
 	focus = {
 		id = GEA_localtroops3 # Breach the Language Barrier
 		icon = GFX_goal_LEP_patronize_xiangshen
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_localtroops2
 		}
@@ -479,7 +491,7 @@ focus_tree = {
 	focus = {
 		id = GEA_localtroops4 # Formal Rights of Service
 		icon = GFX_goal_rights_for_service
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_localtroops3
 		}
@@ -507,9 +519,9 @@ focus_tree = {
 			hidden_effect = {
 				load_oob = GEA_Native_Rights
 			}
-			add_tech_bonus = {
-				name = GEA_localtroops4
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -558,7 +570,7 @@ focus_tree = {
 	focus = {
 		id = GEA_air2 # Tsingtau Airbase
 		icon = GFX_goal_generic_build_airforce
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_air1
 		}
@@ -621,10 +633,10 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEA_air3"
 			air_experience = 25
-			add_tech_bonus = {
-				name = GEA_air3
-				bonus = 1
-				uses = 2
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
 				category = air_doctrine
 			}
 		}
@@ -634,7 +646,7 @@ focus_tree = {
 	focus = {
 		id = GEA_air4 # Focke-Wulfe East Asian Subsidiary
 		icon = GFX_goal_generic_production
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_air3
 		}
@@ -1168,7 +1180,7 @@ focus_tree = {
 	focus = {
 		id = GEA_navy3 # Expand naval facilities
 		icon = GFX_goal_generic_navy_cruiser
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_battlecruiser2
 			focus = GEA_fleet3
@@ -1217,7 +1229,7 @@ focus_tree = {
 	focus = {
 		id = GEA_navy4 # Expand our Local Dockyards
 		icon = GFX_goal_generic_shipyard
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_navy3
 		}
@@ -1356,7 +1368,7 @@ focus_tree = {
 	focus = {
 		id = GEA_navyfort1 # Coastal Fortification Program
 		icon = GFX_goal_generic_fortify_city
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_navy3
 		}
@@ -1444,7 +1456,7 @@ focus_tree = {
 	focus = {
 		id = GEA_navyfort2 # Anti-Invasion Plan
 		icon = GFX_goal_continuous_def_against_influence
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_navyfort1
 		}
@@ -1508,7 +1520,7 @@ focus_tree = {
 	focus = {
 		id = GEA_navyfort3 # Absolute Defense Sphere - Yeah, the Japanese one
 		icon = GFX_focus_generic_coastal_fort
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_navyfort2
 		}
@@ -1584,7 +1596,7 @@ focus_tree = {
 	focus = {
 		id = GEA_marine2 # Expand the Singaour Detatchment
 		icon = GFX_goal_continuous_reduce_training_time
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_marine1
 		}
@@ -1648,7 +1660,7 @@ focus_tree = {
 	focus = {
 		id = GEA_marine3 # Jungle Warfare
 		icon = GFX_SIA_jungletraining
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_marine2
 		}
@@ -1719,7 +1731,7 @@ focus_tree = {
 	focus = {
 		id = GEA_naval_air1 # Our Naval Aerial Corps
 		icon = GFX_GEA_Fliegerabteilung
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_strikegroup4
 		}
@@ -1757,7 +1769,7 @@ focus_tree = {
 	focus = {
 		id = GEA_naval_air2 # Reinforce Air-Defense
 		icon = GFX_focus_generic_cryptologic_bomb
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_naval_air1
 		}
@@ -1815,7 +1827,7 @@ focus_tree = {
 	focus = {
 		id = GEA_navy6 # New shipbuilding Methods
 		icon = GFX_goal_AST_upgrade_reserves
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_fleet4
 		}
@@ -1849,7 +1861,7 @@ focus_tree = {
 	focus = {
 		id = GEA_navy7 # Rule the Pacific
 		icon = GFX_goal_continuous_naval_production
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_navy6
 		}
@@ -1900,6 +1912,7 @@ focus_tree = {
 		}
 		available = {
 			has_idea = GEA_black_monday_idea
+			has_country_flag = GEA_Heye_Appointed
 		}
 		ai_will_do = {
 			factor = 20
@@ -1925,7 +1938,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget2 # Colonial Mark
 		icon = GFX_goal_generic_deals
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget1
 		}
@@ -1973,7 +1986,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget5 # Cochinchina Pacification
 		icon = GFX_goal_JAP_target_indochina
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget2
 		}
@@ -2105,7 +2118,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget8 #Saigon Investments
 		icon = GFX_goal_generic_construct_civ_factory
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget5
 		}
@@ -2176,7 +2189,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget7 #Malaya Pacification
 		icon = GFX_goal_JAP_target_indonesia
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget2
 		}
@@ -2261,7 +2274,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget6 #Singapur Investments
 		icon = GFX_goal_generic_construct_civ_factory
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget7
 		}
@@ -2307,7 +2320,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget4  #Reinforce Colonial Bureaucracy
 		icon = GFX_goal_GER_colonial_administration
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget6
 		}
@@ -2345,7 +2358,13 @@ focus_tree = {
 			focus = GEA_johor3
 			focus = GEA_budget4
 		}
-
+		available = {
+			OR = {
+				has_country_flag = GEA_Indochina_Uprising_got_cancelled
+				has_country_flag = GEA_Defeated_Uprising
+				has_country_flag = GEA_Lost_Uprising
+			}
+		}
 		x = 9
 		y = 6
 		relative_position_id = GEA_mission1
@@ -2358,14 +2377,55 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEA_internal4"
-			country_event = Ostasien.51
+			if = {
+				limit = {
+					has_government = social_conservative
+				}
+				country_event = {
+					id = Ostasien.51
+					days = 2
+				}
+			}
+			if = {
+				limit = {
+					has_government = authoritarian_democrat
+				}
+				country_event = {
+					id = Ostasien.510
+					days = 2
+				}
+			}
+			if = {
+				limit = {
+					AND = {
+						has_government = paternal_autocrat
+						has_country_flag = GEA_Defeated_Uprising
+					}
+				}
+				country_event = {
+					id = Ostasien.511
+					days = 2
+				}
+			}
+			if = {
+				limit = {
+					AND = {
+						has_government = paternal_autocrat
+						has_country_flag = GEA_Lost_Uprising
+					}
+				}
+				country_event = {
+					id = Ostasien.512
+					days = 2
+				}
+			}
 		}
 	}
 
 	focus = {
 		id = GEA_vong2 #Education Reform
 		icon = GFX_focus_generic_concessions
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_internal4
 		}
@@ -2390,7 +2450,7 @@ focus_tree = {
 	focus = {
 		id = GEA_vong3 #Reserch Institutes
 		icon = GFX_focus_research
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_vong2
 		}
@@ -2427,6 +2487,12 @@ focus_tree = {
 		select_effect = {
 			hidden_effect = { country_event = { id = Ostasien.9 days = 3 } }
 		}
+		available = {
+			OR = {
+				has_country_flag = GEA_Mucke_Appointed
+				has_country_flag = GEA_Pyrmont_Appointed
+			}
+		}
 		x = 11
 		y = 1
 		relative_position_id = GEA_mission1
@@ -2450,7 +2516,7 @@ focus_tree = {
 	focus = {
 		id = GEA_johor1  # Malaya Solution
 		icon = GFX_goal_continuous_restrict_freedom
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_internal1
 		}
@@ -2474,7 +2540,7 @@ focus_tree = {
 	focus = {
 		id = GEA_bao1  # Bao Dai Solution
 		icon = GFX_focus_rom_handle_king
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_internal1
 		}
@@ -2527,7 +2593,7 @@ focus_tree = {
 	focus = {
 		id = GEA_internal3 # Help small business
 		icon = GFX_goal_generic_neutrality_focus
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_internal2
 		}
@@ -2560,7 +2626,7 @@ focus_tree = {
 	focus = {
 		id = GEA_johor2 # Collaboration with Monopolizers
 		icon = GFX_goal_constitutional_guarantees
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_internal2
 		}
@@ -2634,9 +2700,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus GEA_budget15"
-			add_tech_bonus = {
-				name = GEA_budget15
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -2675,7 +2741,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget17  # Valkyrie of the Battlefield
 		icon = GFX_goal_healthcare
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget15
 		}
@@ -2735,7 +2801,7 @@ focus_tree = {
 			focus = GEA_internal3
 		}
 
-		cost = 10
+		cost = 8
 		x = 11
 		y = 5
 		relative_position_id = GEA_mission1
@@ -2825,7 +2891,7 @@ focus_tree = {
 	focus = {
 		id = GEA_bao2 # German Advisory Group
 		icon = GFX_goal_rights_for_service
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_bao3
 		}
@@ -2863,7 +2929,7 @@ focus_tree = {
 	focus = {
 		id = GEA_bao3 # Deploy Local Guards
 		icon = GFX_goal_LEC_police3
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_internal2
 		}
@@ -2888,7 +2954,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget9  # Local Arm Foundries
 		icon = GFX_goal_generic_construct_mil_factory
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget11
 		}
@@ -2953,7 +3019,7 @@ focus_tree = {
 	focus = {
 		id = GEA_budget12 # Siamese Border Fortification
 		icon = GFX_goal_generic_construct_military
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_budget9
 		}
@@ -3150,7 +3216,7 @@ focus_tree = {
 	focus = {
 		id = GEA_railway #Transindochina railway
 		icon = GFX_goal_generic_railroad
-		cost = 10
+		cost = 8
 		available = {
 			OR = {
 				GEA = {
@@ -3213,7 +3279,7 @@ focus_tree = {
 	focus = {
 		id = GEA_railway2 #Tonkin Gulf Steel Corporation
 		icon = GFX_focus_generic_steel
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_railway
 		}
@@ -3277,7 +3343,7 @@ focus_tree = {
 	focus = {
 		id = GEA_railway3 #Infrastructural Effort
 		icon = GFX_goal_generic_industry_reallocation
-		cost = 10
+		cost = 8
 		prerequisite = {
 			focus = GEA_railway2
 		}
@@ -3561,7 +3627,7 @@ focus_tree = {
 	focus = {
 		id = GEA_pimp_the_concessions #make tsingtau dummy thicc
 		icon = GFX_goal_foreign_diplomacy
-		cost = 10
+		cost = 8
 
 		available = {
 			if = {
@@ -3624,7 +3690,7 @@ focus_tree = {
 	focus = {
 		id = GEA_become_pals_with_qing #make tsingtau dummy thicc
 		icon = GFX_goal_QIE_glory
-		cost = 10
+		cost = 8
 		available = {
 			country_exists = QIE
 			QIE = {

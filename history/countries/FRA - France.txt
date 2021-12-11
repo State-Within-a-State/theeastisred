@@ -2,20 +2,40 @@
 
 oob = "FRA"
 set_naval_oob = "FRA_naval"
+starting_train_buffer = 2.5
 
 set_research_slots = 4
 
 # Starting tech
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+		engine_tech_1 = 1
+	}
+}
 set_technology = {
+	basic_train = 1
 	### MOD ###
 	electronic_mechanical_engineering = 1
 	fuel_silos = 1
 	synth_oil_experiments = 1
 	fuel_refining = 1
-	### Tanks ###
-	gwtank = 1
-	basic_light_tank = 1
-	basic_heavy_tank = 1
 	### INF ###
 	infantry_weapons = 1
 	infantry_weapons1 = 1
@@ -42,40 +62,36 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		carrier_conversion = 1
-		carrier_hull_1936 = 1
-		ship_hull_revived_ac = 1
-		weltkrieg_heavy_ship_hull = 1
-		heavy_ship_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 		basic_heavy_armor_scheme = 1
-		capital_gunnery_one = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 
-
-
-
-
-
-		transport = 1
+		### Transport ###
+		mtg_transport = 1
 	}
 }
 
@@ -83,30 +99,25 @@ if = {
 
 if = {
 	limit = {
-		not = {
+		NOT = {
 			has_dlc = "Man the Guns"
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
-		weltkrieg_fast_battleship_nonmtg = 1
-		interwar_fast_battleship_nonmtg = 1
-		weltkrieg_dreadnought_nonmtg = 1
-		super_heavy_dreadnought_nonmtg = 1
-		heavy_carrier_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battlecruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		heavy_battleship = 1
 
-
-
-
-
-
+		### Transport ###
 		transport = 1
 	}
 }
@@ -185,9 +196,9 @@ add_ideas = {
 create_country_leader = {
 	name = "Sébastien Faure"
 	desc = "POLITICS_SEBASTIEN_FAURE_DESC"
-	picture = "Portrait_France_Sebastien_Faure.png"
+	picture = "gfx/leaders/FRA/Portrait_France_Sebastien_Faure.png"
 	expire = "1965.1.1"
-	ideology = syndicalist_subtype
+	ideology = anarcho_syndicalist_subtype
 	traits = {
 		#faure
 	}
@@ -196,7 +207,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Sébastien Faure"
 	desc = "POLITICS_SEBASTIEN_FAURE_DESC"
-	picture = "Portrait_France_Sebastien_Faure.png"
+	picture = "gfx/leaders/FRA/Portrait_France_Sebastien_Faure.png"
 	expire = "1965.1.1"
 	ideology = totalist_subtype
 	traits = {
@@ -207,7 +218,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Sébastien Faure"
 	desc = "POLITICS_SEBASTIEN_FAURE_DESC"
-	picture = "Portrait_France_Sebastien_Faure.png"
+	picture = "gfx/leaders/FRA/Portrait_France_Sebastien_Faure.png"
 	expire = "1965.1.1"
 	ideology = radical_socialist_subtype
 	traits = {
@@ -218,7 +229,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Felix Gouin"
 	desc = "POLITICS_FELIX_GOUIN_DESC"
-	picture = ""
+	picture = "gfx/leaders/FRA/Portrait_FRA_Leon_Blum_KX.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
 	traits = {}
@@ -226,6 +237,24 @@ create_country_leader = {
 
 ### Field Marshal
 ### Corps Commander
+
+create_field_marshal = {
+	name = "Mikhail Tukhachevskiy"
+	portrait_path = "gfx/leaders/RUS/Portrait_RUS_Mikhail_Tukhachevskiy.png"
+	traits = { 
+		offensive_doctrine
+		brilliant_strategist 
+		infantry_officer 
+		trait_reckless
+		SOV_bolshevik_officer 
+	}
+	id = 1954
+	skill = 4
+	attack_skill = 3
+	defense_skill = 4
+	planning_skill = 4
+	logistics_skill = 2
+}
 
 create_field_marshal = {
 	name = "Jacques Duclos"
@@ -261,7 +290,7 @@ create_field_marshal = {
 }
 
 create_field_marshal = {
-	name = "Jacques Doriot"
+	name = "Jacques Doriot "
 	portrait_path = "gfx/leaders/FRA/Portrait_France_Jacques_Doriot.png"
 	traits = {
 		politically_connected
@@ -292,9 +321,98 @@ create_field_marshal = {
 	planning_skill = 4
 	logistics_skill = 2
 }
+create_field_marshal = {
+	name = "Kliment Voroshilov"
+	id = 605
+	portrait_path = "gfx/leaders/UKR/Portrait_UKR_Kliment_Voroshilov.png"
+	traits = { old_guard inflexible_strategist SOV_bolshevik_officer }
+	skill = 2
+	attack_skill = 1
+	defense_skill = 1
+	planning_skill = 1
+	logistics_skill = 1
+}
+
+create_corps_commander = {
+	name = "Semyon Budyonny"
+	id = 1956	
+	portrait_path = "gfx/leaders/SOV/Semyon_Budyonny.png"
+	traits = { inspirational_leader media_personality cavalry_officer cavalry_expert skilled_staffer SOV_bolshevik_officer }
+	skill = 3
+	attack_skill = 4
+	defense_skill = 1
+	planning_skill = 3
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Vitaly Primakov"
+	id = 1962	
+	portrait_path = "gfx/leaders/SOV/Vitaly_Primakov.png"
+	traits = { cavalry_officer ranger SOV_bolshevik_officer }
+	skill = 3
+	attack_skill = 2
+	defense_skill = 4
+	planning_skill = 1
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Ieronim Uborevich"
+	id = 1960
+	portrait_path = "gfx/leaders/SOV/Ieronim_Uborevich.png"
+	traits = { harsh_leader infantry_expert SOV_bolshevik_officer }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 2
+}
+create_corps_commander = {
+	name = "Iona Yakir"
+	id = 1961	
+	portrait_path = "gfx/leaders/SOV/Iona_Yakir.png"
+	traits = { skilled_staffer inspirational_leader SOV_bolshevik_officer }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 3
+}
+create_corps_commander = {
+	name = "Yan Gamarnik"
+	id = 1957	
+	portrait_path = "gfx/leaders/SOV/Yan_Gamarnik.png"
+	traits = { politically_connected harsh_leader organizer SOV_bolshevik_officer }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+create_corps_commander = {
+	name = "Ivan Konev"
+	id = 608
+	portrait_path = "gfx/leaders/RUS/Portrait_RUS_Ivan_Konev.png"
+	traits = { panzer_leader harsh_leader winter_specialist SOV_bolshevik_officer }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 2
+}
 
 
-
+create_corps_commander = {
+	name = "Semyon Timoshenko"
+	id = 604
+	portrait_path = "gfx/leaders/RUS/Portrait_RUS_Semyon_Timoshenko.png"
+	traits = { cavalry_officer politically_connected SOV_bolshevik_officer }
+	skill = 2
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 2
+	logistics_skill = 1
+}
 create_corps_commander = {
 	name = "Alphonse Georges"
 	portrait_path = "gfx/leaders/FRA/Portrait_France_Alphonse_Georges.png"
@@ -441,6 +559,11 @@ create_corps_commander = {
 	defense_skill = 2
 	planning_skill = 1
 	logistics_skill = 2
+	id = 47589
+}
+random_army_leader = {
+	limit = { has_id = 47589 }
+	save_global_event_target_as = FRA_Henri_Tanguy
 }
 
 create_corps_commander = {

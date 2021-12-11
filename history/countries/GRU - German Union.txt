@@ -1,15 +1,34 @@
 ﻿capital = 64
 
 oob = "empty"
+starting_train_buffer = 2.0
 ### Starting Technologies ###
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+		engine_tech_1 = 1
+	}
+}
 set_technology = {
+	basic_train = 1
 	### General ###
 	electronic_mechanical_engineering = 1
-
-	### Tanks ###
-	gwtank = 1
-	basic_light_tank = 1
-	basic_heavy_tank = 1
 
 	### Infantry ###
 	infantry_weapons = 1
@@ -41,42 +60,43 @@ if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
+
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		carrier_conversion = 1
-		carrier_hull_1936 = 1
-		ship_hull_revived_ac = 1
-		weltkrieg_heavy_ship_hull = 1
-		heavy_ship_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		ship_hull_super_heavy = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 		basic_heavy_armor_scheme = 1
-		capital_gunnery_one = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 
 		### Transport ###
-		transport = 1
+		mtg_transport = 1
 	}
 }
 
 ### Navy - Non MtG ###
-
 if = {
 	limit = {
 		NOT = {
@@ -84,22 +104,23 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
-		weltkrieg_fast_battleship_nonmtg = 1
-		interwar_fast_battleship_nonmtg = 1
-		weltkrieg_dreadnought_nonmtg = 1
-		super_heavy_dreadnought_nonmtg = 1
-		weltkrieg_carrier_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battlecruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		heavy_battleship = 1
+		early_carrier = 1
+		basic_carrier = 1
 
 		### Transport ###
-		transport_n = 1
+		transport = 1
 	}
 }
 
@@ -130,7 +151,7 @@ create_country_leader = {
 	name = "Wilhelm Pieck"
 	picture = "gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck_I.png"
 	expire = "1965.1.1"
-	ideology = totalist_subtype
+	ideology = authcom_subtype
 }
 
 create_country_leader = { #totalist fits well too
@@ -144,12 +165,12 @@ create_country_leader = {
 	name = "Rudolf Rocker"
 	picture = "gfx/leaders/GER/Portrait_Germany_Rudolf_Rocker_I.png"
 	expire = "1965.1.1"
-	ideology = radical_socialist_subtype
+	ideology = anarchism_subtype
 }
 
 create_country_leader = {
 	name = "Rudolf Hilferding"
-	picture = "Portrait_GRU_Rudolf_Hilferding.png"
+	picture = "gfx/leaders/GRU/Portrait_GRU_Rudolf_Hilferding.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
 }
@@ -163,7 +184,7 @@ create_country_leader = {
 
 create_country_leader = {
 	name = "Gustav Krupp"
-	picture = "Portrait_GRU_Gustav_Krupp.png"
+	picture = "gfx/leaders/GRU/Portrait_GRU_Gustav_Krupp.png"
 	expire = "1965.1.1"
 	ideology = market_liberal_subtype
 }
@@ -186,7 +207,7 @@ create_country_leader = {
 	name = "Erwin von Witzleben"
 	picture = "gfx/leaders/GER/Portrait_Germany_Erwin_von_Witzleben_kr.png"
 	expire = "1965.1.1"
-	ideology = paternal_autocrat_subtype
+	ideology = junta_subtype
 }
 
 create_country_leader = {
@@ -207,3 +228,5 @@ create_navy_leader = {
 	maneuvering_skill = 3
 	coordination_skill = 4
 }
+
+GRU_start_naval_variant = yes

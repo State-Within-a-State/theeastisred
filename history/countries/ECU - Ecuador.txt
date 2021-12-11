@@ -21,32 +21,34 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		ship_hull_revived_ac = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
-		sonar = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
+		sonar = 1
 
 		### Transport ###
-		transport = 1
+		mtg_transport = 1
 	}
 }
 
 ### Navy - Non MtG ###
-
 if = {
 	limit = {
 		NOT = {
@@ -54,26 +56,31 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
 
 		### Transport ###
-		transport_n = 1
+		transport = 1
 	}
 }
 
 set_war_support = 0.1
 
 country_event = { id = ecu.0 days = 1 }
+country_event = { id = ecu.18 days = 540 random_days = 15 } #The coastal Argolla
 country_event = { id = ecu.25 days = 500 random_days = 15 }
 country_event = { id = ecu.30 days = 500 }
+country_event = { id = ecu.32 days = 90 random_days = 45 } #Peruvian incursion in Pastaza
+country_event = { id = ecu.34 days = 300 random_days = 30 } #River boats from Iquitos
+country_event = { id = ecu.37 days = 450 random_days = 45 } #Garrisons face in Pastaza
 country_event = { id = ecu.38 days = 1164 }
+
 
 set_politics = {
 	ruling_party = social_conservative
@@ -107,7 +114,7 @@ add_ideas = {
 create_country_leader = {
 	name = "Carlos Mancheno Cajas"
 	desc = "POLITICS_CARLOS_CAJAS_DESC"
-	picture = "Portrait_Ecuador_Carlos_Cajas.png"
+	picture = "gfx/leaders/ECU/Portrait_Ecuador_Carlos_Cajas.png"
 	expire = "1965.1.1"
 	ideology = national_populist_subtype
 }
@@ -115,15 +122,15 @@ create_country_leader = {
 create_country_leader = {
 	name = "Alberto Enríquez Gallo"
 	desc = "POLITICS_Alberto_GALLO_DESC"
-	picture = "Portrait_Ecuador_Alberto_Gallo.png"
+	picture = "gfx/leaders/ECU/Portrait_Ecuador_Alberto_Gallo.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = authdem_junta_subtype
 }
 
 create_country_leader = {
 	name = "José María Velasco Ibarra"
 	desc = "POLITICS_JOSE_IBARRA_DESC"
-	picture = "Portrait_ECU_Jose_Ibarra.png"
+	picture = "gfx/leaders/ECU/Portrait_ECU_Jose_Ibarra.png"
 	expire = "1965.1.1"
 	ideology = social_conservative_subtype
 }
@@ -131,7 +138,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Isidro Ayora"
 	desc = "POLITICS_ISIDORO_AYORA_DESC"
-	picture = "Portrait_Ecuador_Isidoro_Ayora.png"
+	picture = "gfx/leaders/ECU/Portrait_Ecuador_Isidoro_Ayora.png"
 	expire = "1965.1.1"
 	ideology = market_liberal_subtype
 }
@@ -139,7 +146,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Alfredo Baquerizo Moreno"
 	desc = "POLITICS_ALFREDO_MORENO_DESC"
-	picture = "Portrait_Ecuador_Alfredo_Baquerizo_Moreno.png"
+	picture = "gfx/leaders/ECU/Portrait_Ecuador_Alfredo_Baquerizo_Moreno.png"
 	expire = "1965.1.1"
 	ideology = social_liberal_subtype
 }
@@ -147,7 +154,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Federico Páez Chiriboaga"
 	desc = "POLITICS_FREDERICO_PAEZ_CHIRBOGA_DESC"
-	picture = "Portrait_Ecuador_Fedrerico_Chiriboaga.png"
+	picture = "gfx/leaders/ECU/Portrait_Ecuador_Fedrerico_Chiriboaga.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
 }
@@ -155,7 +162,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Nela Martínez Espinosa"
 	desc = "POLITICS_NELA_MARTINEZ_DESC"
-	picture = "Portrait_Ecuador_Nela_Martinez.png"
+	picture = "gfx/leaders/ECU/Portrait_Ecuador_Nela_Martinez.png"
 	expire = "1965.1.1"
 	ideology = radical_socialist_subtype
 	female = yes
@@ -164,7 +171,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Ricardo Paredes Romero"
 	desc = "POLITICS_RICARDO_PAREDES_DESC"
-	picture = "Portrait_Ecuador_Ricardo_Paredes.png"
+	picture = "gfx/leaders/ECU/Portrait_Ecuador_Ricardo_Paredes.png"
 	expire = "1965.1.1"
 	ideology = syndicalist_subtype
 }
@@ -172,7 +179,7 @@ create_country_leader = {
 create_country_leader = {
 	name = "Dolores Cacuango"
 	desc = "POLITICS_DOLORES_CACUANGO_DESC"
-	picture = "Portrait_Ecuador_Dolores_Caucango.png"
+	picture = "gfx/leaders/ECU/Portrait_Ecuador_Dolores_Caucango.png"
 	expire = "1965.1.1"
 	ideology = totalist_subtype
 	female = yes

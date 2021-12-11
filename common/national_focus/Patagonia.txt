@@ -927,9 +927,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FOP_military_research"
-			add_tech_bonus = {
-				name = FOP_military_research
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -1416,7 +1416,7 @@ focus_tree = {
 
 	focus = {
 		id = FOP_the_anarchist_radicals
-		icon = GFX_goal_NOR_syndicalist
+		icon = GFX_syndicalism
 		cost = 1.00
 		relative_position_id = FOP_first_national_TUC
 		x = -13
@@ -2837,11 +2837,11 @@ focus_tree = {
 		relative_position_id = FOP_modernise_the_army
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FOP_keep_the_militias"
-			add_tech_bonus = {
-				name = FOP_keep_the_militias
-				bonus = 1
-				uses = 2
-				category = cat_mass_assault
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_mass_assault
 				category = cat_mobile_warfare
 			}
 			add_war_support = 0.05
@@ -2948,11 +2948,11 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FOP_a_red_army"
 			custom_effect_tooltip = FOP_army_modernisation
-			add_tech_bonus = {
-				name = FOP_a_red_army
-				bonus = 1
-				uses = 2
-				category = cat_superior_firepower
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_superior_firepower
 				category = cat_grand_battle_plan
 			}
 			hidden_effect = {
@@ -3103,10 +3103,10 @@ focus_tree = {
 		relative_position_id = FOP_the_status_of_fma
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FOP_revive_military_academies"
-			add_tech_bonus = {
-				name = FOP_revive_military_academies
-				bonus = 1
-				uses = 2
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
 				category = land_doctrine
 			}
 		}
@@ -3360,9 +3360,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FOP_foreign_naval_research"
-			add_tech_bonus = {
-				name = naval_doctrine
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = naval_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = naval_doctrine
 			}
@@ -3405,9 +3405,9 @@ focus_tree = {
 				limit = { has_dlc = "Man the Guns" }
 				if = {
 					limit = {
-						NOT = { has_tech = weltkrieg_light_ship_hull }
+						NOT = { has_tech = early_ship_hull_light }
 					}
-					set_technology = { weltkrieg_light_ship_hull = 1 }
+					set_technology = { early_ship_hull_light = 1 }
 				}
 				else = {
 					add_tech_bonus = {
@@ -3419,9 +3419,9 @@ focus_tree = {
 				}
 				if = {
 					limit = {
-						NOT = { has_tech = weltkrieg_cruiser_hull }
+						NOT = { has_tech = early_ship_hull_cruiser }
 					}
-					set_technology = { weltkrieg_cruiser_hull = 1 }
+					set_technology = { early_ship_hull_cruiser = 1 }
 				}
 				else = {
 					add_tech_bonus = {
@@ -3433,11 +3433,11 @@ focus_tree = {
 				}
 				if = {
 					limit = {
-						NOT = { has_tech = submarine_hull_1936 }
+						NOT = { has_tech = basic_ship_hull_submarine }
 					}
 					set_technology = {
-						weltkrieg_submarine_hull = 1
-						submarine_hull_1936 = 1
+						early_ship_hull_submarine = 1
+						basic_ship_hull_submarine = 1
 					}
 				}
 				else = {
@@ -3452,9 +3452,9 @@ focus_tree = {
 			else = {
 				if = {
 					limit = {
-						NOT = { has_tech = weltkrieg_destroyer_nonmtg }
+						NOT = { has_tech = early_destroyer }
 					}
-					set_technology = { weltkrieg_destroyer_nonmtg = 1 }
+					set_technology = { early_destroyer = 1 }
 				}
 				else = {
 					add_tech_bonus = {
@@ -3466,9 +3466,9 @@ focus_tree = {
 				}
 				if = {
 					limit = {
-						NOT = { has_tech = weltkrieg_cruiser_nonmtg }
+						NOT = { has_tech = early_light_cruiser }
 					}
-					set_technology = { weltkrieg_cruiser_nonmtg = 1 }
+					set_technology = { early_light_cruiser = 1 }
 				}
 				else = {
 					add_tech_bonus = {
@@ -3480,11 +3480,11 @@ focus_tree = {
 				}
 				if = {
 					limit = {
-						NOT = { has_tech = interwar_submarine_nonmtg }
+						NOT = { has_tech = basic_submarine }
 					}
 					set_technology = {
-						weltkrieg_submarine_nonmtg = 1
-						interwar_submarine_nonmtg = 1
+						early_submarine = 1
+						basic_submarine = 1
 					}
 				}
 				else = {
@@ -3841,10 +3841,10 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FOP_naval_bombers"
-			add_tech_bonus = {
-				name = FOP_naval_bombers
-				bonus = 1
-				uses = 2
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
 				category = air_doctrine
 			}
 		}
@@ -4008,8 +4008,8 @@ focus_tree = {
 			custom_effect_tooltip = FOP_request_syndie_countries_design
 			hidden_effect = {
 				set_technology = {
-					weltkrieg_submarine_hull = 1
-					submarine_hull_1936 = 1
+					early_ship_hull_submarine = 1
+					basic_ship_hull_submarine = 1
 				}
 				ENG = { country_event = { id = fop.356 days = 1 }}
 			}
@@ -4227,9 +4227,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FOP_military_research2"
-			add_tech_bonus = {
-				name = FOP_military_research2
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -4488,7 +4488,7 @@ focus_tree = {
 
 	focus = {
 		id = FOP_radical_anarchist_development_scheme
-		icon = GFX_goal_NOR_syndicalist
+		icon = GFX_syndicalism
 		cost = 2.00
 		prerequisite = {
 			focus = FOP_rural_development
@@ -4698,9 +4698,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: FOP_request_french_military_mission"
 			army_experience = 10
-			add_tech_bonus = {
-				name = FOP_request_french_military_mission
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -5134,13 +5134,11 @@ focus_tree = {
 				add_idea = FOP_king_idea2
 			}
 			hidden_effect = {
-				create_country_leader = {
-					name = "Alfredo Fonte"
-					desc = "POLITICS_FONTE_FOP_DESC"
-					picture = "Portrait_FOP_Fonte_Supreme_Leader.png"
-					expire = "1965.1.1"
-					ideology = totalist_subtype
-					traits = {}
+				if = {	
+					limit = { has_country_leader = { name = "Alfredo Fonte" ruling_only = yes } }
+					set_country_leader_portrait = {
+						portrait = "gfx/leaders/FOP/Portrait_FOP_Fonte_Supreme_Leader.png"
+					}
 				}
 			}
 		}

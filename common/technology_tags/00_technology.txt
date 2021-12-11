@@ -1,27 +1,22 @@
-technology_categories = {
+# Do not change tags in here without changing every other reference to them.
+# If adding new technology, make sure they are uniquely named.
 
-	efficiency_tech
-	cat_light_spg
-	cat_medium_spg
-	cat_heavy_spg
-	fighter_techs
-	cat_anti_air
+technology_categories = {
 	light_air
 	medium_air
 	heavy_air
 	armor
-	tank_destroyer_tech
 	cat_light_armor
 	cat_medium_armor
 	cat_heavy_armor
 	artillery
-	cat_line_artillery
 	cat_anti_tank
-	cat_towed_rockets
+	cat_anti_air
 	naval_air
 	infantry_weapons
 	motorized_equipment
 	cat_mechanized_equipment
+	naval_equipment
 	rocketry
 	nuclear
 	industry
@@ -35,15 +30,24 @@ technology_categories = {
 	jet_technology
 	trade_interdiction_tree
 	convoy_defense_tree
-	capital_ship_tree
-	carrier_ship_tree
 	light_fighter
 	cat_heavy_fighter
 	tactical_bomber
 	cat_strategic_bomber
 	naval_bomber
 	cas_bomber
+	ship_modules_tech
+	dd_tech
+	cl_tech
+	ca_tech
+	cv_tech
+	bc_tech
+	bb_tech
+	shbb_tech
+	ss_tech
+	tp_tech
 	synth_resources
+	fleet_in_being_tree
 	encryption_tech
 	decryption_tech
 	computing_tech
@@ -52,6 +56,7 @@ technology_categories = {
 	marine_tech
 	construction_tech
 	excavation_tech
+	submarine_doctrine
 	air_equipment
 	cat_mobile_warfare
 	cat_superior_firepower
@@ -64,6 +69,7 @@ technology_categories = {
 	cat_battlefield_support
 	cat_operational_integrity
 	night_vision
+	base_strike_main
 	mot_rockets
 	support_tech
 	para_tech
@@ -75,37 +81,34 @@ technology_categories = {
 	logistics_tech
 	signal_company_tech
 	maintenance_company_tech
+	naval_mines
 	concentrated_industry_tech
 	dispersed_industry_tech
-	cat_special_units
-
-	### Naval Categories ###
+	asw_tech
 	naval_minesweeping
 	naval_minelaying
-	asw_tech
-	naval_mines
-	submarine_doctrine
-	base_strike_main
-	fleet_in_being_tree
-	dd_tech
-	cl_tech
-	ca_tech
-	cr_tech
-	cv_tech
-	bc_tech
-	bb_tech
-	shbb_tech
-	ss_tech
-	tp_tech
-	naval_equipment
-	acr_tech
-	cat_torpedo
-	cat_gunnery
-	cat_targeting
-
-	###LaR
 	cat_scout_plane
+	### Added by KR ###
 	cat_armored_car
+	efficiency_tech
+	cat_light_spg
+	cat_medium_spg
+	cat_heavy_spg
+	fighter_techs
+	cat_anti_air
+	tank_destroyer_tech
+	cat_line_artillery
+	cat_towed_rockets
+	capital_ship_tree
+	carrier_ship_tree
+	cat_special_units
+	cat_targeting
+	cat_gunnery
+	cat_torpedo
+	train_tech
+	cat_production
+	cat_synth_rubber
+	cat_synth_oil
 }
 
 technology_folders = {
@@ -117,6 +120,17 @@ technology_folders = {
 	}
 	armour_folder = {
 		ledger = army
+		available = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+	}
+	nsb_armour_folder = {
+		ledger = army
+		available = {
+			has_dlc = "No Step Back"
+		}
 	}
 	artillery_folder = {
 		ledger = army
@@ -124,15 +138,15 @@ technology_folders = {
 	air_techs_folder = {
 		ledger = air
 	}
-	escort_ships_folder = {
+	naval_folder = {
 		available = {
-			has_dlc = "Man the Guns"
+			not = { has_dlc = "Man the Guns" }
 		}
 		ledger = navy
 	}
-	escort_ships_nonmtg_folder = {
+	mtgnavalfolder = {
 		available = {
-			NOT = { has_dlc = "Man the Guns" }
+			has_dlc = "Man the Guns"
 		}
 		ledger = navy
 	}
@@ -154,5 +168,7 @@ technology_folders = {
 	electronics_folder = {
 		ledger = civilian
 	}
+	#secret_weapons_folder
 }
 
+ 

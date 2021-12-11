@@ -13,44 +13,61 @@ set_technology = {
 	tech_engineers = 1
 	motorised_infantry = 1
 	gw_artillery = 1
-	gwtank = 1
-	basic_light_tank = 1
 	early_fighter = 1
 	early_bomber = 1
 	naval_bomber1 = 1
 	CAS1 = 1
 
 }
-
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
 ### Navy - MtG ###
 if = {
 	limit = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		ship_hull_revived_ac = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
-		light_battery_two = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		weltkrieg_naval_gunnery = 1
 
 		### Transport ###
-		transport = 1
+		mtg_transport = 1
 	}
 }
 
@@ -62,18 +79,18 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
-		weltkrieg_dreadnought_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
 
 		### Transport ###
-		transport_n = 1
+		transport = 1
 	}
 }
 
@@ -114,7 +131,7 @@ add_ideas = {
 
 create_country_leader = {# King Amedeo I
 	name = "Amedeo I"
-	picture = "Portrait_SRD_King_Amedeo.png"
+	picture = "gfx/leaders/SRD/Portrait_SRD_King_Amedeo.png"
 	desc = "POLITICS_AMADEO_SAVOY_DESC"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
@@ -122,7 +139,7 @@ create_country_leader = {# King Amedeo I
 }
 create_country_leader = {# King Amedeo I
 	name = "Amedeo I"
-	picture = "Portrait_SRD_King_Amedeo.png"
+	picture = "gfx/leaders/SRD/Portrait_SRD_King_Amedeo.png"
 	desc = "POLITICS_AMADEO_SAVOY_DESC"
 	expire = "1965.1.1"
 	ideology = social_liberal_subtype
@@ -130,7 +147,7 @@ create_country_leader = {# King Amedeo I
 }
 create_country_leader = {# King Amedeo I
 	name = "Amedeo I"
-	picture = "Portrait_SRD_King_Amedeo.png"
+	picture = "gfx/leaders/SRD/Portrait_SRD_King_Amedeo.png"
 	desc = "POLITICS_AMADEO_SAVOY_DESC"
 	expire = "1965.1.1"
 	ideology = market_liberal_subtype
@@ -138,7 +155,7 @@ create_country_leader = {# King Amedeo I
 }
 create_country_leader = {# King Amedeo I
 	name = "Amedeo I"
-	picture = "Portrait_SRD_King_Amedeo.png"
+	picture = "gfx/leaders/SRD/Portrait_SRD_King_Amedeo.png"
 	desc = "POLITICS_AMADEO_SAVOY_DESC"
 	expire = "1965.1.1"
 	ideology = social_conservative_subtype
@@ -146,7 +163,7 @@ create_country_leader = {# King Amedeo I
 }
 create_country_leader = {# King Amedeo I
 	name = "Amedeo I"
-	picture = "Portrait_SRD_King_Amedeo.png"
+	picture = "gfx/leaders/SRD/Portrait_SRD_King_Amedeo.png"
 	desc = "POLITICS_AMADEO_SAVOY_DESC"
 	expire = "1965.1.1"
 	ideology = authoritarian_democrat_subtype
@@ -154,7 +171,7 @@ create_country_leader = {# King Amedeo I
 }
 create_country_leader = {# King Amedeo I
 	name = "Amedeo I"
-	picture = "Portrait_SRD_King_Amedeo.png"
+	picture = "gfx/leaders/SRD/Portrait_SRD_King_Amedeo.png"
 	desc = "POLITICS_AMADEO_SAVOY_DESC"
 	expire = "1965.1.1"
 	ideology = paternal_autocrat_subtype
@@ -162,7 +179,7 @@ create_country_leader = {# King Amedeo I
 }
 create_country_leader = {# King Amedeo I
 	name = "Amedeo I"
-	picture = "Portrait_SRD_King_Amedeo.png"
+	picture = "gfx/leaders/SRD/Portrait_SRD_King_Amedeo.png"
 	desc = "POLITICS_AMADEO_SAVOY_DESC"
 	expire = "1965.1.1"
 	ideology = national_populist_subtype
@@ -217,7 +234,7 @@ create_corps_commander = {# Giuseppe Valle
 }
 create_corps_commander = {
 	name = "Pietro Pintor"
-	picture = "Portrait_SRD_Pietro_Pintor.png"
+	portrait_path = "gfx/leaders/SRD/Portrait_SRD_Pietro_Pintor.png"
 	traits = {trait_engineer}
 	id = 503
 	skill = 2
@@ -228,7 +245,7 @@ create_corps_commander = {
 }
 create_corps_commander = {
 	name = "Prince Umberto"
-	picture = "Portrait_SRD_Prince_Umberto.png"
+	portrait_path = "gfx/leaders/SRD/Portrait_SRD_Prince_Umberto.png"
 	traits = {
 		politically_connected
 		inflexible_strategist

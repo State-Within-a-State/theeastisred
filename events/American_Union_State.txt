@@ -9,7 +9,15 @@ add_namespace = cathdeath
 
 country_event = {###Our Flag
 	id = unionstate.205
-	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.205"}
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event unionstate.205"
+		hidden_effect = {
+			country_event = {
+				id = unionstate.206
+				days = 2
+			}
+		}
+	}
 	title = unionstate.205.t
 	desc = unionstate.205.d
 	picture = GFX_event_TEX_flags_event
@@ -71,13 +79,7 @@ country_event = {###Our Flag
 
 	fire_only_once = yes
 	
-	trigger = {
-		tag = TEX
-	}
-
-	mean_time_to_happen = {
-		days = 3
-	}
+	is_triggered_only = yes
 
 	option = {
 		
@@ -104,10 +106,6 @@ country_event = { # The American Legion Appointment
 	trigger = {
 		tag = TEX
 		has_global_flag = USA_civil_war_over_flag
-	}
-
-	mean_time_to_happen = {
-		days = 10
 	}
 
 	immediate = {
@@ -207,10 +205,6 @@ country_event = { # Capital of America
 		}
 	}
 
-	mean_time_to_happen = {
-		months = 1
-	}
-
 	option = { # Washington DC
 		name = unionstate.7.a
 		trigger = {
@@ -219,7 +213,7 @@ country_event = { # Capital of America
 		ai_chance = {
 			factor = 50
 		}
-		set_capital = 361
+		set_capital = { state = 361 }
 	}
 	option = { # New Orleans
 		name = unionstate.7.b
@@ -229,7 +223,7 @@ country_event = { # Capital of America
 		ai_chance = {
 			factor = 15
 		}
-		set_capital = 371
+		set_capital = { state = 371 }
 	}
 	option = { # Houston
 		name = unionstate.7.c
@@ -239,7 +233,7 @@ country_event = { # Capital of America
 		ai_chance = {
 			factor = 15
 		}
-		set_capital = 375
+		set_capital = { state = 375 }
 	}
 	option = { # Topeka
 		name = unionstate.7.e
@@ -249,7 +243,7 @@ country_event = { # Capital of America
 		ai_chance = {
 			factor = 15
 		}
-		set_capital = 383
+		set_capital = { state = 383 }
 	}
 }
 
@@ -275,10 +269,6 @@ country_event = { # All Hail the Kingfish - if Long didn't make the deal with Pe
 
 	fire_only_once = yes
 
-	mean_time_to_happen = {
-		months = 1
-	}
-
 	option = { # Long is victorious
 		name = unionstate.8.a
 		add_popularity = {
@@ -302,10 +292,6 @@ country_event = { # Elections of the president
 	trigger = {
 		tag = TEX
 		has_government = paternal_autocrat
-	}
-
-	mean_time_to_happen = {
-	days = 400
 	}
 	
 	option = { # re-elect Long
@@ -1001,9 +987,9 @@ country_event = { # AUS Election
 		create_country_leader = {
 		name = "W. Lee O'Daniel"
 		desc = "POLITICS_PAPPY_O_DANIEL_DESC"
-		picture = "Portrait_TEX_W_Lee_ODaniel.png"
+		picture = "gfx/leaders/TEX/Portrait_TEX_W_Lee_ODaniel.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = christian_democracy_subtype
 		traits = { pappy_odaniel }
 		}
 		set_politics = {
@@ -1030,8 +1016,8 @@ country_event = { # AUS Election
 				news_event = { id = worldnews.2040 days = 1 }
 			}
 			country_event = {
-				id = unionstate.5102
-				days = 1420
+				id = unionstate.25
+				days = 1460
 				random = 10
 			}
 		}
@@ -1244,9 +1230,9 @@ country_event = { # New Election
 			create_country_leader = {
 				name = "William Dudley Pelley"
 				desc = "POLITICS_WILLIAM_DUDLEY_PELLEY"
-				picture = "Portrait_TEX_William_Dudley_Pelley.png"
+				picture = "gfx/leaders/TEX/Portrait_TEX_William_Dudley_Pelley.png"
 				expire = "1965.1.1"
-				ideology = authoritarian_democrat_subtype
+				ideology = autdem_christian_democracy_subtype
 				traits = { authoritarian_tendencies }
 				}
 		}
@@ -1578,16 +1564,13 @@ country_event = { #Second Great Migration
 	picture = GFX_report_event_generic_books
 
 	fire_only_once = yes
+	is_triggered_only = yes
 	
 	trigger = {
-	COR = {
-	exists = yes
+		COR = {
+			exists = yes
 		}
 		tag = TEX
-	}
-	
-	mean_time_to_happen = {
-	days = 120
 	}
 
 	option = { #Let them in
@@ -2003,16 +1986,8 @@ country_event = { #New Film: My First 100 Days
 
 	fire_only_once = yes
 	
-	trigger = {
-	OR = {
-	has_completed_focus = TEX_perfect_democracy
-	has_completed_focus = TEX_imperial_presidency
-		}
-	}
-
-	mean_time_to_happen = {
-	days = 120
-	}
+	is_triggered_only = yes
+	
 	option = { #Very Good
 		name = unionstate.44.a
 		add_political_power = 30
@@ -2176,9 +2151,13 @@ country_event = { #Minutemen Want to Cancel Speech
 	OR = {
 		has_completed_focus = TEX_imperial_presidency
 		has_completed_focus = TEX_perfect_democracy
-		}
+	}
+	has_country_leader = {
+		ruling_only = yes
+		name = "Huey Long"
+	}
 	has_completed_focus = TEX_employment_expansion
-	date > 1944.8.5
+	date > 1939.8.5
 	}
 	
 	desc = {
@@ -2192,6 +2171,13 @@ country_event = { #Minutemen Want to Cancel Speech
 	text = unionstate.51.d.right
 	trigger = {
 		has_completed_focus = TEX_reconcile_the_right
+		}
+	}
+
+	desc = {
+	text = unionstate.51.d.alone
+	trigger = {
+		has_completed_focus = TEX_afp_alone
 		}
 	}
 
@@ -2242,6 +2228,7 @@ country_event = { #Huey Long Shot
 	
 	option = { #May God Help Us
 		name = unionstate.5100.a
+		set_country_flag = TEX_huey_assassinated
 		add_political_power = -50
 		add_stability = -0.1
 		add_war_support = 0.1
@@ -2264,6 +2251,43 @@ country_event = { #Long Dead
 	
 	is_triggered_only = yes
 	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = unionstate.5105
+				days = 7
+			}
+			country_event = {
+				id = unionstate.5106
+				days = 14
+			}
+			country_event = {
+				id = unionstate.5107
+				days = 21
+			}
+			country_event = {
+				id = unionstate.5108
+				days = 28
+			}
+			set_country_flag = {
+			flag = AFP_smith_power
+			value = 0
+			}
+			set_country_flag = {
+			flag = AFP_coughlin_power
+			value = 0
+			}
+			set_country_flag = {
+			flag = AFP_long_power
+			value = 0
+			}
+			set_country_flag = {
+			flag = AFP_bingham_power
+			value = 0
+			}
+		}
+	}
+	
 	option = { #Gerald L.K. Smith
 		trigger = {
 		tag = TEX
@@ -2274,14 +2298,20 @@ country_event = { #Long Dead
 		}
 		name = unionstate.5101.a
 		set_cosmetic_tag = TEX_smith
+		hidden_effect = {
+		add_ideas = TEX_John_Overton_hog_pau
+		add_ideas = TEX_W_A_Criswell_for_pau
+		add_ideas = TEX_Orval_Faubus_eco_ade
+		add_ideas = TEX_Meade_McClanahan_sec_pau
+		}
 		if = {
 		limit = { has_government = paternal_autocrat }
 		create_country_leader = {
 		name = "Gerald L.K. Smith"
 		desc = "POLITICS_GERALD_LK_SMITH_DESC"
-		picture = "Portrait_TEX_gearld_k_smith.png"
+		picture = "gfx/leaders/TEX/Portrait_TEX_gearld_k_smith.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { propaganda_expert }
 			}
 		set_politics = {
@@ -2298,9 +2328,9 @@ country_event = { #Long Dead
 		create_country_leader = {
 		name = "Gerald L.K. Smith"
 		desc = "POLITICS_GERALD_LK_SMITH_DESC"
-		picture = "Portrait_TEX_gearld_k_smith.png"
+		picture = "gfx/leaders/TEX/Portrait_TEX_gearld_k_smith.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { propaganda_expert }
 			}
 		set_politics = {
@@ -2309,11 +2339,28 @@ country_event = { #Long Dead
 			elections_allowed = yes
 			}
 		}
+		set_country_flag = {
+		flag = AFP_smith_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_coughlin_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_long_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_bingham_power
+		value = 0
+		}
 	}
 	option = { #Charles Coughlin
 		name = unionstate.5101.b
 		trigger = {
 		tag = TEX
+		has_country_flag = TEX_coughlin_allowed
 		OR = {
 		has_completed_focus = TEX_reconcile_the_right
 		has_completed_focus = TEX_afp_alone
@@ -2324,6 +2371,12 @@ country_event = { #Long Dead
 		has_government = social_conservative
 			}
 		}
+		hidden_effect = {
+		add_ideas = TEX_Michael_Gallagher_hog_pau
+		add_ideas = TEX_John_Ryan_for_sde
+		add_ideas = TEX_Thomas_Molloy_eco_ade
+		add_ideas = TEX_Frank_Murphy_sec_ade
+		}
 		if = {
 		limit = { has_government = authoritarian_democrat }
 		create_country_leader = {
@@ -2331,7 +2384,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -2347,7 +2400,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -2363,7 +2416,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = christian_democracy_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -2371,6 +2424,22 @@ country_event = { #Long Dead
 			election_frequency = 48
 			elections_allowed = yes
 			}
+		}
+		set_country_flag = {
+		flag = AFP_smith_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_coughlin_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_long_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_bingham_power
+		value = 0
 		}
 	}
 	option = { #Paul H. Maloney
@@ -2391,14 +2460,9 @@ country_event = { #Long Dead
 		desc = "POLITICS_PAUL_H_MALONEY_DESC"
 		picture = "gfx/leaders/TEX/TEX_Paul_H_maloney.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { staunch_constitutionalist }
 			}
-		set_politics = {
-			ruling_party = authoritarian_democrat
-			election_frequency = 48
-			elections_allowed = yes
-		}
 		}
 		else_if = {
 		limit = { has_completed_focus = TEX_perfect_democracy }
@@ -2407,14 +2471,30 @@ country_event = { #Long Dead
 		desc = "POLITICS_PAUL_H_MALONEY_DESC"
 		picture = "gfx/leaders/TEX/TEX_Paul_H_maloney.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = soccon_longism_subtype
 		traits = { staunch_constitutionalist }
 			}
+		}
 		set_politics = {
 			ruling_party = social_conservative
 			election_frequency = 48
 			elections_allowed = yes
-			}
+		}
+		set_country_flag = {
+		flag = AFP_smith_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_coughlin_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_long_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_bingham_power
+		value = 0
 		}
 	}
 	option = { #Big Jim Folsom
@@ -2440,13 +2520,8 @@ country_event = { #Long Dead
 		desc = "POLITICS_JIM_FOLSOM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Big_Jim_Folsom.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { big_jim }
-			}
-		set_politics = {
-			ruling_party = authoritarian_democrat
-			election_frequency = 48
-			elections_allowed = yes
 			}
 		}
 		else_if = {
@@ -2456,14 +2531,30 @@ country_event = { #Long Dead
 		desc = "POLITICS_JIM_FOLSOM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Big_Jim_Folsom.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { big_jim }
 			}
+		}
 		set_politics = {
 			ruling_party = social_liberal
 			election_frequency = 48
 			elections_allowed = yes
-			}
+		}
+		set_country_flag = {
+		flag = AFP_smith_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_coughlin_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_long_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_bingham_power
+		value = 0
 		}
 	}
 	option = { #Sid McMath
@@ -2488,7 +2579,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_SID_MCMATH_DESC"
 		picture = "gfx/leaders/TEX/TEX_Seth_McMath.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { economic_reformer }
 			}
 		set_politics = {
@@ -2504,7 +2595,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_SID_MCMATH_DESC"
 		picture = "gfx/leaders/TEX/TEX_Seth_McMath.png"
 		expire = "1965.1.1"
-		ideology = social_democrat_subtype
+		ideology = soclib_longism_subtype
 		traits = { economic_reformer }
 			}
 		set_politics = {
@@ -2512,6 +2603,22 @@ country_event = { #Long Dead
 			election_frequency = 48
 			elections_allowed = yes
 			}
+		}
+		set_country_flag = {
+		flag = AFP_smith_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_coughlin_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_long_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_bingham_power
+		value = 0
 		}
 	}
 	option = { #Bronson M. Cutting
@@ -2537,7 +2644,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -2555,7 +2662,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -2571,7 +2678,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = social_democrat_subtype
+		ideology = socdem_longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -2579,6 +2686,22 @@ country_event = { #Long Dead
 			election_frequency = 48
 			elections_allowed = yes
 			}
+		}
+		set_country_flag = {
+		flag = AFP_smith_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_coughlin_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_long_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_bingham_power
+		value = 0
 		}
 	}
 	option = { #Alfred Mitchell Bingham
@@ -2592,6 +2715,12 @@ country_event = { #Long Dead
 		has_completed_focus = TEX_reconcile_the_left
 		has_country_flag = TEX_afp_progressive_alliance
 		}
+		hidden_effect = {
+		add_ideas = TEX_Thomas_Amlie_hog_rso
+		add_ideas = TEX_Gerald_Nye_for_rso
+		add_ideas = TEX_Howard_Williams_eco_rso
+		add_ideas = TEX_Paul_Douglas_sec_rso
+		}
 		if = {
 		limit = { has_government = paternal_autocrat }
 		create_country_leader = {
@@ -2599,7 +2728,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -2615,7 +2744,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -2632,7 +2761,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = radical_socialist_subtype
+		ideology = radical_progressivism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -2641,11 +2770,33 @@ country_event = { #Long Dead
 			elections_allowed = yes
 			}
 		}
+		set_country_flag = {
+		flag = AFP_smith_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_coughlin_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_long_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_bingham_power
+		value = 0
+		}
 	}
 	option = { #Earl Long
 		name = unionstate.5101.i
 		trigger = {
 		tag = TEX
+		}
+		hidden_effect = {
+		add_ideas = TEX_James_Noe_hog_ade
+		add_ideas = TEX_J_William_Fulbright_for_ade
+		add_ideas = TEX_George_Smathers_eco_sco
+		add_ideas = TEX_Rose_Long_sec_ade
 		}
 		if = {
 		limit = { has_government = paternal_autocrat }
@@ -2654,7 +2805,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -2670,7 +2821,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -2686,7 +2837,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = soccon_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -2702,7 +2853,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -2718,7 +2869,7 @@ country_event = { #Long Dead
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_democrat_subtype
+		ideology = socdem_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -2726,6 +2877,22 @@ country_event = { #Long Dead
 			election_frequency = 48
 			elections_allowed = yes
 			}
+		}
+		set_country_flag = {
+		flag = AFP_smith_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_coughlin_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_long_power
+		value = 0
+		}
+		set_country_flag = {
+		flag = AFP_bingham_power
+		value = 0
 		}
 	}
 }
@@ -2740,7 +2907,6 @@ country_event = { # AFP Primary
 	
 	trigger = {
 	tag = TEX
-	NOT = { has_country_flag = TEX_catholic_monarchy_declared }
 	}
 	
 	is_triggered_only = yes
@@ -2760,9 +2926,9 @@ country_event = { # AFP Primary
 		create_country_leader = {
 		name = "Gerald L.K. Smith"
 		desc = "POLITICS_GERALD_LK_SMITH_DESC"
-		picture = "Portrait_TEX_gearld_k_smith.png"
+		picture = "gfx/leaders/TEX/Portrait_TEX_gearld_k_smith.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { propaganda_expert }
 			}
 		set_politics = {
@@ -2779,9 +2945,9 @@ country_event = { # AFP Primary
 		create_country_leader = {
 		name = "Gerald L.K. Smith"
 		desc = "POLITICS_GERALD_LK_SMITH_DESC"
-		picture = "Portrait_TEX_gearld_k_smith.png"
+		picture = "gfx/leaders/TEX/Portrait_TEX_gearld_k_smith.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { propaganda_expert }
 			}
 		set_politics = {
@@ -2795,6 +2961,7 @@ country_event = { # AFP Primary
 		name = unionstate.5102.b
 		trigger = {
 		tag = TEX
+		has_country_flag = TEX_coughlin_allowed
 		OR = {
 		has_completed_focus = TEX_reconcile_the_right
 		has_completed_focus = TEX_afp_alone
@@ -2812,7 +2979,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -2828,7 +2995,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -2844,7 +3011,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = soccon_longism_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -2872,7 +3039,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_PAUL_H_MALONEY_DESC"
 		picture = "gfx/leaders/TEX/TEX_Paul_H_maloney.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { staunch_constitutionalist }
 			}
 		}
@@ -2883,7 +3050,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_PAUL_H_MALONEY_DESC"
 		picture = "gfx/leaders/TEX/TEX_Paul_H_maloney.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = soccon_longism_subtype
 		traits = { staunch_constitutionalist }
 			}
 		}
@@ -2916,7 +3083,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_JIM_FOLSOM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Big_Jim_Folsom.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { big_jim }
 			}
 		}
@@ -2927,7 +3094,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_JIM_FOLSOM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Big_Jim_Folsom.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { big_jim }
 			}
 		}
@@ -2959,7 +3126,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_SID_MCMATH_DESC"
 		picture = "gfx/leaders/TEX/TEX_Seth_McMath.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { economic_reformer }
 			}
 		set_politics = {
@@ -2975,7 +3142,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_SID_MCMATH_DESC"
 		picture = "gfx/leaders/TEX/TEX_Seth_McMath.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { economic_reformer }
 			}
 		set_politics = {
@@ -3008,7 +3175,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -3026,7 +3193,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -3042,7 +3209,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = social_democrat_subtype
+		ideology = socdem_longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -3070,7 +3237,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -3086,7 +3253,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -3103,7 +3270,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = radical_socialist_subtype
+		ideology = radical_progressivism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -3125,7 +3292,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3141,7 +3308,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3157,7 +3324,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = soccon_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3173,7 +3340,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3189,7 +3356,7 @@ country_event = { # AFP Primary
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_democrat_subtype
+		ideology = socdem_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3201,6 +3368,11 @@ country_event = { # AFP Primary
 	}
 	option = { #Huey Long
 		name = unionstate.5102.j
+		trigger = {
+			NOT = {
+				has_country_flag = TEX_huey_assassinated
+			}
+		}
 		increase_ruling_party_popularity_by_5 = yes
 		}
 	}
@@ -3233,9 +3405,9 @@ country_event = { # Second AFP Primary
 		create_country_leader = {
 		name = "Gerald L.K. Smith"
 		desc = "POLITICS_GERALD_LK_SMITH_DESC"
-		picture = "Portrait_TEX_gearld_k_smith.png"
+		picture = "gfx/leaders/TEX/Portrait_TEX_gearld_k_smith.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { propaganda_expert }
 			}
 		set_politics = {
@@ -3252,9 +3424,9 @@ country_event = { # Second AFP Primary
 		create_country_leader = {
 		name = "Gerald L.K. Smith"
 		desc = "POLITICS_GERALD_LK_SMITH_DESC"
-		picture = "Portrait_TEX_gearld_k_smith.png"
+		picture = "gfx/leaders/TEX/Portrait_TEX_gearld_k_smith.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { propaganda_expert }
 			}
 		set_politics = {
@@ -3284,7 +3456,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -3300,7 +3472,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -3331,7 +3503,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_PAUL_H_MALONEY_DESC"
 		picture = "gfx/leaders/TEX/TEX_Paul_H_maloney.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { staunch_constitutionalist }
 			}
 		}
@@ -3362,7 +3534,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_JIM_FOLSOM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Big_Jim_Folsom.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { big_jim }
 			}
 		}
@@ -3392,7 +3564,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_SID_MCMATH_DESC"
 		picture = "gfx/leaders/TEX/TEX_Seth_McMath.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { economic_reformer }
 			}
 		set_politics = {
@@ -3408,7 +3580,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_SID_MCMATH_DESC"
 		picture = "gfx/leaders/TEX/TEX_Seth_McMath.png"
 		expire = "1965.1.1"
-		ideology = social_democrat_subtype
+		ideology = socdem_longism_subtype
 		traits = { economic_reformer }
 			}
 		set_politics = {
@@ -3440,7 +3612,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -3462,7 +3634,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = social_democrat_subtype
+		ideology = socdem_longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -3489,7 +3661,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = paternal_autocrat_subtype
+		ideology = pataut_longism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -3505,7 +3677,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -3522,7 +3694,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
 		expire = "1965.1.1"
-		ideology = radical_socialist_subtype
+		ideology = radical_progressivism_subtype
 		traits = { educator }
 			}
 		set_politics = {
@@ -3541,7 +3713,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3557,7 +3729,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = authoritarian_democrat_subtype
+		ideology = longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3581,7 +3753,7 @@ country_event = { # Second AFP Primary
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_democrat_subtype
+		ideology = socdem_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3597,6 +3769,11 @@ country_event = { # Second AFP Primary
 	}
 	option = { #Huey Again
 		name = unionstate.5103.k
+		trigger = {
+			NOT = {
+				has_country_flag = TEX_huey_assassinated
+			}
+		}
 		decrease_ruling_party_popularity_by_5 = yes
 		}
 	}
@@ -3635,7 +3812,7 @@ country_event = { # AUS Election
 		desc = "POLITICS_JIM_FOLSOM_DESC"
 		picture = "gfx/leaders/TEX/TEX_Big_Jim_Folsom.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { big_jim }
 			}
 		set_politics = {
@@ -3655,7 +3832,7 @@ country_event = { # AUS Election
 		desc = "POLITICS_BRONSON_M_CUTTING_DESC"
 		picture = "gfx/leaders/TEX/TEX_Bronson_M_Cutting.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { editor }
 			}
 		set_politics = {
@@ -3675,7 +3852,7 @@ country_event = { # AUS Election
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_liberal_subtype
+		ideology = soclib_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3695,7 +3872,7 @@ country_event = { # AUS Election
 		desc = "POLITICS_CHARLES_COUGHLIN_DESC"
 		picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = soccon_longism_subtype
 		traits = { radio_preist }
 			}
 		set_politics = {
@@ -3715,7 +3892,7 @@ country_event = { # AUS Election
 		desc = "POLITICS_PAUL_H_MALONEY_DESC"
 		picture = "gfx/leaders/TEX/TEX_Paul_H_maloney.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = soccon_longism_subtype
 		traits = { staunch_constitutionalist }
 			}
 		set_politics = {
@@ -3735,7 +3912,7 @@ country_event = { # AUS Election
 		desc = "POLITICS_EARL_LONG_DESC"
 		picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 		expire = "1965.1.1"
-		ideology = social_conservative_subtype
+		ideology = soccon_longism_subtype
 		traits = { hog_political_protege }
 			}
 		set_politics = {
@@ -3764,15 +3941,14 @@ country_event = { # AUS Election
 			ideology = social_liberal
 			long_name = TEX_social_liberal_party_long
 			name = TEX_social_liberal_party }
+		add_ideas = TEX_Philip_La_Follette_hog_sli
+		add_ideas = TEX_robert_la_follette_jr_for_sli
+		add_ideas = TEX_gladys_pyle_eco_sli
+		add_ideas = TEX_herman_ekern_sec_sli
 		hidden_effect = {
 		set_country_flag = AUS_second_election_occured
 		set_country_flag = NPP_Victory_two
-		if = {
-			limit = {
-				NOT = {	has_cosmetic_tag = NEE_america }
-			}
-			set_cosmetic_tag = TEX_not_nazis
-		}
+		set_cosmetic_tag = TEX_not_nazis
 		}
 	}
 	option = { # Christian Party
@@ -3795,14 +3971,8 @@ country_event = { # AUS Election
 		}
 		set_cosmetic_tag = TEX_commonwealth
 	}
-	
 	option = { # The Texas-Democrats
 		name = unionstate.2300.f
-		trigger = {
-			NOT = {
-				country_exists = TXS
-			}
-		}
 		add_political_power = 50
 		add_popularity = { ideology = social_conservative popularity = 0.1 }
 		
@@ -3819,6 +3989,1316 @@ country_event = { # AUS Election
 		set_country_flag = AUS_second_election_occured
 		set_country_flag = TEX_texas_takeover_flag
 		}
+	}
+}
+
+country_event = { #Huey Long's Funeral: Who Shall Preside?
+	id = unionstate.5105
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5105"}
+	title = unionstate.5105.t
+	desc = unionstate.5105.d
+	
+	picture = GFX_event_TEX_Silver_Legion_grows
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Gerald K. Smith
+		name = unionstate.5105.a
+		if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Gerald L.K. Smith" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			increase_ruling_party_popularity_by_5 = yes
+			add_political_power = 25
+			add_stability = -0.02
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_smith_tooltip
+			add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
+			add_political_power = -10
+			add_stability = 0.03
+			modify_country_flag = {
+			flag = AFP_smith_power
+			value = 2
+			}
+		}
+	}
+	option = { #Earl Long
+		name = unionstate.5105.b
+		if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Earl Long" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			increase_ruling_party_popularity_by_5 = yes
+			add_political_power = -5
+			add_stability = 0.04
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_long_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.05 }
+			add_political_power = 10
+			add_stability = 0.01
+			modify_country_flag = {
+			flag = AFP_long_power
+			value = 2
+			}
+		}
+	}
+	option = { #Charles Coughlin
+		name = unionstate.5105.c
+		if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Charles Coughlin" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			increase_ruling_party_popularity_by_5 = yes
+			add_political_power = -15
+			add_stability = -0.02
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_coughlin_tooltip
+			add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
+			add_political_power = 20
+			add_stability = 0.02
+			modify_country_flag = {
+			flag = AFP_coughlin_power
+			value = 2
+			}
+		}
+	}
+	option = { #Bronson M. Cutting 
+		name = unionstate.5105.e
+		if = {
+			limit = {
+				OR = {
+				has_country_leader = { ruling_only = yes name = "Alfred Mitchell Bingham" }
+				has_country_leader = { ruling_only = yes name = "Bronson M. Cutting" }
+				}
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			increase_ruling_party_popularity_by_5 = yes
+			add_political_power = 15
+			add_stability = 0.02
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_bingham_tooltip
+			add_popularity = { ideology = radical_socialist popularity = 0.05 }
+			add_political_power = -20
+			add_stability = -0.01
+			modify_country_flag = {
+			flag = AFP_bingham_power
+			value = 2
+			}
+		}
+	}
+	option = { #Russell B. Long
+		name = unionstate.5105.f
+		custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+		increase_ruling_party_popularity_by_10 = yes
+		add_political_power = 35
+		add_stability = 0.05
+	}
+}
+
+country_event = { #Huey Long's Statue
+	id = unionstate.5106
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5106"}
+	title = unionstate.5106.t
+	desc = unionstate.5106.d
+	
+	picture = GFX_event_TEX_Silver_Legion_grows
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Standing Tall and Proud
+		name = unionstate.5106.a
+		if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Gerald L.K. Smith" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			custom_effect_tooltip = TEX_strengthen_long_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.02 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.03 }
+			add_political_power = 25
+			add_stability = 0.01
+			modify_country_flag = {
+			flag = AFP_long_power
+			value = 2
+			}
+		}
+		else_if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Earl Long" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			custom_effect_tooltip = TEX_strengthen_smith_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.03 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.02 }
+			add_political_power = 15
+			add_stability = 0.02
+			modify_country_flag = {
+			flag = AFP_smith_power
+			value = 2
+			}
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_smith_tooltip
+			custom_effect_tooltip = TEX_strengthen_long_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.04 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.04 }
+			add_political_power = -10
+			add_stability = -0.01
+			modify_country_flag = {
+			flag = AFP_smith_power
+			value = 2
+			}
+			modify_country_flag = {
+			flag = AFP_long_power
+			value = 2
+			}
+		}
+	}
+	option = { #Sitting like Lincoln
+		name = unionstate.5106.b
+		if = {
+			limit = {
+				OR = {
+				has_country_leader = { ruling_only = yes name = "Alfred Mitchell Bingham" }
+				has_country_leader = { ruling_only = yes name = "Bronson M. Cutting" }
+				}
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			add_popularity = { ideology = radical_socialist popularity = 0.03 }
+			add_political_power = 20
+			add_stability = 0.02
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_bingham_tooltip
+			add_popularity = { ideology = radical_socialist popularity = 0.02 }
+			add_political_power = 15
+			add_stability = 0.01
+			modify_country_flag = {
+			flag = AFP_bingham_power
+			value = 2
+			}
+		}
+	}
+	option = { #Humble Statue 
+		name = unionstate.5106.c
+		if = {
+			limit = {
+				has_country_leader = { ruling_only = yes name = "Charles Coughlin" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.02 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.02 }
+			add_political_power = 5
+			add_stability = 0.03
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_coughlin_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.02 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.03 }
+			add_political_power = -5
+			add_stability = 0.02
+			modify_country_flag = {
+			flag = AFP_coughlin_power
+			value = 2
+			}
+		}
+	}
+}
+
+country_event = { #Huey Long's Assassination Inquest: Who to Investigate?
+	id = unionstate.5107
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5107"}
+	title = unionstate.5107.t
+	desc = unionstate.5107.d
+	
+	picture = GFX_event_TEX_Silver_Legion_grows
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Ties to Earl Long, Jealous Brother
+		name = unionstate.5107.a
+		if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Gerald L.K. Smith" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			custom_effect_tooltip = TEX_strengthen_coughlin_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.03 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.03 }
+			add_political_power = -15
+			add_stability = 0.01
+			modify_country_flag = {
+			flag = AFP_coughlin_power
+			value = 2
+			}
+		}
+		else_if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Charles Coughlin" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			custom_effect_tooltip = TEX_strengthen_smith_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.03 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.03 }
+			add_political_power = -15
+			add_stability = 0.01
+			modify_country_flag = {
+			flag = AFP_smith_power
+			value = 2
+			}
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_smith_tooltip
+			custom_effect_tooltip = TEX_strengthen_coughlin_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.05 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
+			add_political_power = -10
+			add_stability = 0.03
+			modify_country_flag = {
+			flag = AFP_smith_power
+			value = 2
+			}
+			modify_country_flag = {
+			flag = AFP_coughlin_power
+			value = 2
+			}
+		}
+	}
+	option = { #Ties to Smith and Coughlin, who were never loyal
+		name = unionstate.5107.b
+		if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Earl Long" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			custom_effect_tooltip = TEX_strengthen_bingham_tooltip
+			increase_ruling_party_popularity_by_5 = yes
+			add_popularity = { ideology = radical_socialist popularity = 0.03 }
+			add_political_power = 5
+			add_stability = -0.02
+			modify_country_flag = {
+			flag = AFP_bingham_power
+			value = 2
+			}
+		}
+		else_if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Alfred Mitchell Bingham" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			custom_effect_tooltip = TEX_strengthen_long_tooltip
+			add_popularity = { ideology = radical_socialist popularity = 0.05 }
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.03 }
+			add_political_power = -5
+			add_stability = 0.03
+			modify_country_flag = {
+			flag = AFP_long_power
+			value = 2
+			}
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_long_tooltip
+			custom_effect_tooltip = TEX_strengthen_bingham_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.05 }
+			add_popularity = { ideology = radical_socialist popularity = 0.05 }
+			add_political_power = -10
+			add_stability = 0.02
+			modify_country_flag = {
+			flag = AFP_long_power
+			value = 2
+			}
+			modify_country_flag = {
+			flag = AFP_bingham_power
+			value = 2
+			}
+		}
+	}
+	option = { #Ties to IL (Bellamyists)
+		name = unionstate.5107.c
+		if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Gerald L.K. Smith" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			increase_ruling_party_popularity_by_5 = yes
+			add_political_power = 20
+			add_stability = -0.01
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_smith_tooltip
+			add_popularity = { ideology = authoritarian_democrat popularity = 0.02 }
+			add_popularity = { ideology = paternal_autocrat popularity = 0.02 }
+			add_political_power = -5
+			add_stability = -0.01
+			modify_country_flag = {
+			flag = AFP_smith_power
+			value = 2
+			}
+		}
+	}
+	option = { #Ties to Outsiders
+		name = unionstate.5107.e
+		if = {
+			limit = {
+			has_country_leader = { ruling_only = yes name = "Alfred Mitchell Bingham" }
+			}
+			custom_effect_tooltip = TEX_strengthen_ourselves_tooltip
+			increase_ruling_party_popularity_by_5 = yes
+			add_political_power = 20
+			add_stability = -0.01
+		}
+		else = {
+			custom_effect_tooltip = TEX_strengthen_bingham_tooltip
+			add_popularity = { ideology = radical_socialist popularity = 0.04 }
+			add_political_power = -5
+			add_stability = -0.01
+			modify_country_flag = {
+			flag = AFP_bingham_power
+			value = 2
+			}
+		}
+	}
+}
+
+country_event = { #Huey Long's Trial of Assassins
+	id = unionstate.5108
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5108"}
+	title = unionstate.5108.t
+	
+	desc = { ###Smith Coup in the Capitol###
+	text = unionstate.5108.d.coupsmith
+	trigger = {
+		NOT = {
+		has_country_leader = { ruling_only = yes name = "Gerald L.K. Smith" }
+		}
+		has_country_flag = {
+			flag = AFP_smith_power
+			value > 4
+			}
+		}
+	}
+	
+	desc = { ###Coughlin Coup in the Capitol###
+	text = unionstate.5108.d.coupcoughlin
+	trigger = {
+		NOT = {
+		has_country_leader = { ruling_only = yes name = "Charles Coughlin" }
+		}
+		has_country_flag = {
+			flag = AFP_coughlin_power
+			value > 4
+			}
+		}
+	}
+	
+	desc = { ###Long Coup in the Capitol###
+	text = unionstate.5108.d.couplong
+	trigger = {
+		NOT = {
+		has_country_leader = { ruling_only = yes name = "Earl Long" }
+		}
+		has_country_flag = {
+			flag = AFP_long_power
+			value > 4
+			}
+		}
+	}
+	
+	desc = { ###Bingham Coup in the Capitol###
+	text = unionstate.5108.d.coupbingham
+	trigger = {
+		NOT = {
+		has_country_leader = { ruling_only = yes name = "Alfred Mitchell Bingham" }
+		}
+		has_country_flag = {
+			flag = AFP_bingham_power
+			value > 4
+			}
+		}
+	}
+	
+	desc = { ###Trial Proceeds as Planned###
+	text = unionstate.5108.d.generic
+	trigger = {
+		AND = {
+			has_country_flag = {
+				flag = AFP_smith_power
+				value < 5
+				}
+			has_country_flag = {
+				flag = AFP_coughlin_power
+				value < 5
+				}
+			has_country_flag = {
+				flag = AFP_long_power
+				value < 5
+				}
+			has_country_flag = {
+				flag = AFP_bingham_power
+				value < 5
+				}
+			}
+		}
+	}
+	
+	picture = GFX_event_TEX_Silver_Legion_grows
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Coup
+		name = unionstate.5108.a
+		trigger = {
+			OR = {
+				AND = {
+					NOT = {
+					has_country_leader = { ruling_only = yes name = "Gerald L.K. Smith" }
+					}
+					has_country_flag = {
+					flag = AFP_smith_power
+					value > 4
+					}
+				}
+				AND = {
+					NOT = {
+					has_country_leader = { ruling_only = yes name = "Charles Coughlin" }
+					}
+					has_country_flag = {
+					flag = AFP_coughlin_power
+					value > 4
+					}
+				}
+				AND = {
+					NOT = {
+					has_country_leader = { ruling_only = yes name = "Earl Long" }
+					}
+					has_country_flag = {
+					flag = AFP_long_power
+					value > 4
+					}
+				}
+				AND = {
+					NOT = {
+					has_country_leader = { ruling_only = yes name = "Alfred Mitchell Bingham" }
+					}
+					has_country_flag = {
+					flag = AFP_bingham_power
+					value > 4
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+				has_country_leader = { ruling_only = yes name = "Gerald L.K. Smith" }
+				}
+				has_country_flag = {
+				flag = AFP_smith_power
+				value > 4
+				}
+			}
+			create_country_leader = {
+				name = "Gerald L.K. Smith"
+				desc = "POLITICS_GERALD_LK_SMITH_DESC"
+				picture = "gfx/leaders/TEX/Portrait_TEX_gearld_k_smith.png"
+				expire = "1965.1.1"
+				ideology = pataut_longism_subtype
+				traits = { propaganda_expert }
+			}
+			set_politics = {
+				ruling_party = paternal_autocrat
+				election_frequency = 48
+				elections_allowed = yes
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+				has_country_leader = { ruling_only = yes name = "Charles Coughlin" }
+				}
+				has_country_flag = {
+				flag = AFP_coughlin_power
+				value > 4
+				}
+			}
+			create_country_leader = {
+				name = "Charles Coughlin"
+				desc = "POLITICS_CHARLES_COUGHLIN_DESC"
+				picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
+				expire = "1965.1.1"
+				ideology = pataut_longism_subtype
+				traits = { radio_preist }
+			}
+			set_politics = {
+				ruling_party = paternal_autocrat
+				election_frequency = 48
+				elections_allowed = yes
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+				has_country_leader = { ruling_only = yes name = "Earl Long" }
+				}
+				has_country_flag = {
+				flag = AFP_long_power
+				value > 4
+				}
+			}
+			create_country_leader = {
+				name = "Earl Long"
+				desc = "POLITICS_EARL_LONG_DESC"
+				picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
+				expire = "1965.1.1"
+				ideology = longism_subtype
+				traits = { hog_political_protege }
+			}
+			set_politics = {
+				ruling_party = authoritarian_democrat
+				election_frequency = 48
+				elections_allowed = yes
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+				has_country_leader = { ruling_only = yes name = "Alfred Mitchell Bingham" }
+				}
+				has_country_flag = {
+				flag = AFP_bingham_power
+				value > 4
+				}
+			}
+			create_country_leader = {
+				name = "Alfred Mitchell Bingham"
+				desc = "POLITICS_ALFRED_MITCHELL_BINGHAM_DESC"
+				picture = "gfx/leaders/TEX/TEX_Alfred_Bingham.png"
+				expire = "1965.1.1"
+				ideology = radical_progressivism_subtype
+				traits = { educator }
+			}
+			set_politics = {
+				ruling_party = radical_socialist
+				election_frequency = 48
+				elections_allowed = yes
+			}
+		}
+	}
+	option = { #Normal Trial
+		name = unionstate.5108.b
+		trigger = {
+		AND = {
+			has_country_flag = {
+				flag = AFP_smith_power
+				value < 5
+				}
+			has_country_flag = {
+				flag = AFP_coughlin_power
+				value < 5
+				}
+			has_country_flag = {
+				flag = AFP_long_power
+				value < 5
+				}
+			has_country_flag = {
+				flag = AFP_bingham_power
+				value < 5
+				}
+			}
+		}
+		increase_ruling_party_popularity_by_5 = yes
+		add_political_power = 25
+		add_stability = 0.05
+	}
+}
+
+country_event = { #Rehabilitating Sinclair and EPIC
+	id = unionstate.5109
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5109"}
+	title = unionstate.5109.t
+	desc = unionstate.5109.d
+	
+	picture = GFX_sinclair_event
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #We welcome him into the government!
+		name = unionstate.5109.a
+		set_country_flag = TEX_sinclair_rehabilitation
+		add_ideas = TEX_Upton_Sinclair_eco_rso
+		increase_ruling_party_popularity_by_5 = yes
+		add_political_power = -10
+	}
+	option = { #Adopt part of his economic plan!
+		name = unionstate.5109.b
+		add_popularity = { ideology = radical_socialist popularity = 0.03 }
+		add_political_power = 5
+		add_stability = 0.02
+		random_owned_state = {
+				limit = {
+					is_core_of = TEX
+					is_controlled_by = TEX
+					arms_factory > 0
+				}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+			}
+		}
+		random_owned_state = {
+				limit = {
+					is_core_of = TEX
+					is_controlled_by = TEX
+					arms_factory > 0
+				}
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+			}
+		}
+	}
+	option = { #Lets reconsider...
+		name = unionstate.5109.c
+		add_political_power = 25
+		add_command_power = 5
+		add_stability = -0.02
+	}
+}
+
+country_event = { #Rehabilitating Dewey and the Bellamyists
+	id = unionstate.5110
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5110"}
+	title = unionstate.5110.t
+	desc = unionstate.5110.d
+	
+	picture = GFX_event_TEX_Dewey
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Ask for help in the Red Belt
+		name = unionstate.5110.a
+		modify_country_flag = {
+			flag = ACW_socialist_resistance
+			value = -2
+		}
+		393 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		261 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		increase_ruling_party_popularity_by_5 = yes
+		add_political_power = -10
+	}
+	option = { #Adopt part of his educational plan
+		name = unionstate.5110.b
+		add_ideas = TEX_dewey_plan_idea
+		add_political_power = 10
+		add_stability = -0.01
+	}
+	option = { #Lets reconsider...
+		name = unionstate.5110.c
+		add_political_power = 25
+		add_command_power = 10
+		add_stability = -0.02
+	}
+}
+
+country_event = { #A Democratic Transition?
+	id = unionstate.5111
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5111"}
+	title = unionstate.5111.t
+	desc = unionstate.5111.d
+	
+	picture = GFX_report_event_election_vote
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Hold Elections Soon
+		name = unionstate.5111.a
+		custom_effect_tooltip = TEX_soon_elections_tooltip
+		add_political_power = 25
+		add_stability = -0.02
+		hidden_effect = {
+			country_event = {
+				id = unionstate.5102
+				days = 14
+			}
+			country_event = {
+				id = unionstate.25
+				days = 14
+			}
+		}
+	}
+	option = { #Elections after the term is up/some time, should fire from 2300 but doesnt matter
+		name = unionstate.5111.b
+		custom_effect_tooltip = TEX_later_elections_tooltip
+		add_political_power = -20
+		add_stability = 0.03
+		hidden_effect = {
+			country_event = {
+				id = unionstate.5102
+				days = 150
+			}
+			country_event = {
+				id = unionstate.25
+				days = 168
+			}
+		}
+	}
+}
+
+country_event = { #Solidifying Our Position
+	id = unionstate.5112
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5112"}
+	title = unionstate.5112.t
+	desc = unionstate.5112.d
+	
+	picture = GFX_report_event_generic_diplomacy3
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Promise "Elections"
+		name = unionstate.5112.a
+		custom_effect_tooltip = TEX_subtle_power_tooltip
+		add_political_power = -10
+		add_stability = 0.03
+		hidden_effect = {
+			country_event = {
+				id = unionstate.5113
+				days = 30
+			}
+		}
+	}
+	option = { #Time is Needed to Finish Huey's Legacy
+		name = unionstate.5112.b
+		custom_effect_tooltip = TEX_brazen_power_tooltip
+		add_political_power = 20
+		add_stability = -0.05
+	}
+}
+
+country_event = { #A Mock Election
+	id = unionstate.5113
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5113"}
+	title = unionstate.5113.t
+	desc = unionstate.5113.d
+	
+	picture = GFX_report_event_generic_diplomacy3
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Promise "Elections"
+		name = unionstate.5113.a
+		custom_effect_tooltip = TEX_easy_victory_tooltip
+		add_political_power = 5
+		add_stability = 0.02
+	}
+}
+
+country_event = { #A Brother's Vision
+	id = unionstate.5114
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5114"}
+	title = unionstate.5114.t
+	desc = unionstate.5114.d
+	
+	picture = GFX_report_event_USA_huey_long
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #We will fight on!
+		name = unionstate.5114.a
+		custom_effect_tooltip = TEX_brother_vision_tooltip
+		set_country_flag = TEX_huey_legacy
+		increase_ruling_party_popularity_by_5 = yes
+		add_political_power = 15
+		add_stability = 0.02
+		add_command_power = 10
+	}
+}
+
+country_event = { #A New Vision
+	id = unionstate.5115
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5115"}
+	title = unionstate.5115.t
+	desc = unionstate.5115.d
+	
+	picture = GFX_event_TEX_earl_long_pic
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #We will fight for a new country!
+		name = unionstate.5115.a
+		custom_effect_tooltip = TEX_earl_vision_tooltip
+		set_country_flag = TEX_earl_legacy
+		increase_ruling_party_popularity_by_5 = yes
+		add_political_power = 10
+		add_stability = 0.03
+		add_command_power = 5
+	}
+}
+
+country_event = { #Plenty of Snap Left
+	id = unionstate.5116
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5116"}
+	title = unionstate.5116.t
+	desc = unionstate.5116.d
+	
+	picture = GFX_event_TEX_earl_speech
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Active, Popular President
+		name = unionstate.5116.a
+		swap_ideas = {
+		remove_idea = TEX_earl_machine_idea
+		add_idea = TEX_earl_machine_idea_2
+		}
+		increase_ruling_party_popularity_by_5 = yes
+	}
+}
+
+country_event = { #The True Enemy
+	id = unionstate.5117
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5117"}
+	title = unionstate.5117.t
+	desc = unionstate.5117.d
+	
+	picture = GFX_event_TEX_smith_long
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #I will finish what you started
+		name = unionstate.5117.a
+		add_stability = 0.03
+		add_political_power = -25
+		add_manpower = -500
+	}
+}
+
+country_event = { #Cast Down the Wicked
+	id = unionstate.5118
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5118"}
+	title = unionstate.5118.t
+	desc = unionstate.5118.d
+	
+	picture = GFX_event_TEX_smith_long
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Get them out of here...
+		name = unionstate.5118.a
+		increase_ruling_party_popularity_by_5 = yes
+		add_stability = -0.02
+		add_political_power = 5
+		add_manpower = -2000
+	}
+}
+
+country_event = { #Pursuing the Financiers
+	id = unionstate.5119
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5119"}
+	title = unionstate.5119.t
+	desc = unionstate.5119.d
+	
+	picture = GFX_event_TEX_coughlin_speech
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #In major industries
+		name = unionstate.5119.a
+		increase_ruling_party_popularity_by_5 = yes
+		add_stability = -0.05
+		add_political_power = 10
+	}
+	
+	option = { #In entertainment
+		name = unionstate.5119.b
+		increase_ruling_party_popularity_by_5 = yes
+		add_stability = -0.03
+		add_political_power = -15
+	}
+}
+
+country_event = { #Can Coughlin Hold Office?
+	id = unionstate.5120
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5120"}
+	title = unionstate.5120.t
+	desc = unionstate.5120.d
+	
+	picture = GFX_event_TEX_coughlin_speech
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { #Pass the Bill
+		name = unionstate.5120.a
+		increase_ruling_party_popularity_by_5 = yes
+		add_stability = -0.03
+		add_political_power = -20
+	}
+
+	option = { #Make an Exception
+		name = unionstate.5120.b
+		add_stability = -0.01
+		add_political_power = 10
+	}
+	
+	option = { #No, he is foreign!
+		name = unionstate.5120.c
+		add_stability = 0.03
+		add_political_power = 25
+	}
+}
+
+country_event = { #Bingham Decides the Fate of The Flying Senator
+	id = unionstate.5121
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5121"}
+	title = unionstate.5121.t
+	desc = unionstate.5121.d
+	
+	picture = GFX_event_TEX_Hiram_Bingham
+	
+	trigger = {
+	tag = TEX
+	has_country_leader = { ruling_only = yes name = "Alfred Mitchell Bingham" }
+	owns_state = 931 #Connecticut
+	owns_state = 935 #Rhode Island
+	owns_state = 357 #Maine
+	owns_state = 932 #Massachusetts
+	NOT = {
+		country_exists = NEE
+		}
+	}
+
+	fire_only_once = yes
+	
+	option = { #Arrest Him
+		name = unionstate.5121.a
+		increase_ruling_party_popularity_by_5 = yes
+		add_stability = 0.02
+		add_political_power = -20
+	}
+
+	option = { #Better Relations with Peru
+		name = unionstate.5121.b
+		PRU = {
+			add_opinion_modifier = {
+				target = TEX
+				modifier = TEX_explorer_dad
+			}
+		}
+		add_stability = 0.01
+		add_political_power = 5
+	}
+	
+	option = { #Leave Him Alone
+		name = unionstate.5121.c
+		add_stability = -0.03
+		add_political_power = 15
+	}
+}
+
+country_event = { #Smith Creates the Long Museum
+	id = unionstate.5122
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5122"}
+	title = unionstate.5122.t
+	desc = unionstate.5122.d
+	
+	picture = GFX_event_TEX_smith_donors
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #Taxes
+		name = unionstate.5122.a
+		decrease_ruling_party_popularity_by_5 = yes
+		add_stability = 0.02
+		add_political_power = -15
+	}
+	option = { #Long Family
+		name = unionstate.5122.b
+		increase_ruling_party_popularity_by_5 = yes
+	}
+	option = { #Smith and the AFP
+		name = unionstate.5122.c
+		add_political_power = 20
+		add_stability = 0.02
+	}
+	option = { #Long's murderers
+		name = unionstate.5122.e
+		add_popularity = { ideology = paternal_autocrat popularity = 0.02 }
+		add_political_power = 25
+		add_stability = -0.03
+	}
+}
+
+country_event = { #Smith Deals with Seymour Weiss
+	id = unionstate.5123
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5123"}
+	title = unionstate.5123.t
+	desc = unionstate.5123.d
+	
+	picture = GFX_event_TEX_smith_long
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #How the Tables Turn
+		name = unionstate.5123.a
+		add_stability = 0.02
+		add_command_power = 5
+	}
+}
+
+country_event = { #Bingham and Hu Shih
+	id = unionstate.5124
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5124"}
+	title = unionstate.5124.t
+	desc = unionstate.5124.d
+	
+	picture = GFX_report_event_generic_diplomacy3
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #A good deal!
+		name = unionstate.5124.a
+		add_political_power = 15
+	}
+}
+
+country_event = { #Coughlin and his Church
+	id = unionstate.5125
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5125"}
+	title = unionstate.5125.t
+	desc = unionstate.5125.d
+	
+	picture = GFX_event_TEX_Little_Flower
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #Excellent!
+		name = unionstate.5125.a
+		increase_ruling_party_popularity_by_5 = yes
+		add_stability = 0.01
+	}
+}
+
+country_event = { #Coughlin Purges Lefty AFP
+	id = unionstate.5126
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5126"}
+	title = unionstate.5126.t
+	desc = unionstate.5126.d
+	
+	picture = GFX_report_event_generic_trial_big
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #Jail them!
+		name = unionstate.5126.a
+		add_popularity = { ideology = radical_socialist popularity = -0.02 }
+		add_popularity = { ideology = syndicalist popularity = -0.02 }
+		add_popularity = { ideology = totalist popularity = -0.02 }
+		add_political_power = -10
+		add_stability = 0.03
+	}
+	option = { #Kick them out of government!
+		name = unionstate.5126.b
+		increase_ruling_party_popularity_by_5 = yes
+		add_command_power = 10
+		add_stability = -0.01
+	}
+}
+
+country_event = { #Earl Long and the Old Regulars
+	id = unionstate.5127
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5127"}
+	title = unionstate.5127.t
+	desc = unionstate.5127.d
+	
+	picture = GFX_report_event_generic_trial_big
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #Keep them in Louisiana
+		name = unionstate.5127.a
+		add_political_power = 20
+		add_stability = 0.03
+	}
+	option = { #Have similar organizations founded in other states
+		name = unionstate.5127.b
+		increase_ruling_party_popularity_by_5 = yes
+		add_political_power = -35
+		add_command_power = 15
+		add_stability = 0.05
+	}
+}
+
+country_event = { #Reaching Out to Minor AFP Figures
+	id = unionstate.5128
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5128"}
+	title = unionstate.5128.t
+	desc = unionstate.5128.d
+	
+	picture = GFX_report_event_generic_diplomacy3
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #Paul Maloney
+		name = unionstate.5128.a
+		add_popularity = { ideology = social_conservative popularity = 0.05 }
+		add_ideas = TEX_minor_support_idea
+	}
+	option = { #Big Jim Folsom
+		name = unionstate.5128.b
+		add_popularity = { ideology = social_liberal popularity = 0.05 }
+		add_ideas = TEX_minor_support_idea
+	}
+	option = { #Sid McMath
+		name = unionstate.5128.c
+		add_popularity = { ideology = social_democrat popularity = 0.05 }
+		add_ideas = TEX_minor_support_idea
+	}
+	option = { #Bronson Cutting
+		name = unionstate.5128.e
+		add_popularity = { ideology = social_democrat popularity = 0.03 }
+		add_popularity = { ideology = social_liberal popularity = 0.02 }
+		add_ideas = TEX_minor_support_idea
+	}
+}
+
+country_event = { #New Jerusalem
+	id = unionstate.5129
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5129"}
+	title = unionstate.5129.t
+	desc = unionstate.5129.d
+	
+	picture = GFX_event_TEX_smith_donors
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #Christian Values Prevail!
+		name = unionstate.5129.a
+		increase_ruling_party_popularity_by_5 = yes
+		add_political_power = 5
+	}
+}
+
+country_event = { #Dealing with Sweeney
+	id = unionstate.5130
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5130"}
+	title = unionstate.5130.t
+	desc = unionstate.5130.d
+	
+	picture = GFX_event_TEX_coughlin_speech
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #How annoying
+		name = unionstate.5130.a
+		add_popularity = { ideology = paternal_autocrat popularity = -0.02 }
+		add_stability = -0.01
+		hidden_effect = {
+			country_event = {
+			id = unionstate.5131
+			days = 7
+			}
+		}
+	}
+}
+
+country_event = { #Dealing with Sweeney Two
+	id = unionstate.5131
+	immediate = {log = "[GetDateText]: [Root.GetName]: event unionstate.5131"}
+	title = unionstate.5131.t
+	desc = unionstate.5131.d
+	
+	picture = GFX_report_event_generic_trial_big
+	
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = { #Out of my way!
+		name = unionstate.5131.a
+		add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
+		add_political_power = 15
 	}
 }
 
@@ -4076,13 +5556,11 @@ country_event = { #Assasin Strikes at Pelley!
 		name = unionstate.59033.b
 		add_political_power = 10
 		hidden_effect = {
-			create_country_leader = {
-				name = "William Dudley Pelley"
-				desc = "POLITICS_WILLIAM_DUDLEY_PELLEY"
-				picture = "Portrait_TEX_William_Dudley_Pelley_I_Lived_Bitch.png"
-				expire = "1965.1.1"
-				ideology = social_conservative_subtype
-				traits = { authoritarian_tendencies }
+			if = {	
+				limit = { has_country_leader = { name = "William Dudley Pelley" ruling_only = yes } }
+				set_country_leader_portrait = {
+					portrait = "gfx/leaders/TEX/Portrait_TEX_William_Dudley_Pelley_I_Lived_Bitch.png"
+				}
 			}
 		}
 	}
@@ -4139,6 +5617,12 @@ country_event = { #O'Daniel Five Point Plan
 	option = { #Cut the Deficit Spending Ban
 		name = unionstate.5904.a
 		set_country_flag = TEX_four_points
+		hidden_effect = {
+			country_event = {
+				id = unionstate.5910
+				months = 16
+			}
+		}
 		add_ideas = TEX_four_point_plan_deficit
 		add_popularity = { ideology = social_conservative popularity = 0.03 }
 		add_popularity = { ideology = social_liberal popularity = -0.02 }
@@ -4148,6 +5632,12 @@ country_event = { #O'Daniel Five Point Plan
 	option = { #Compromise
 		name = unionstate.5904.b
 		set_country_flag = TEX_four_points
+		hidden_effect = {
+			country_event = {
+				id = unionstate.5910
+				months = 16
+			}
+		}
 		add_ideas = TEX_four_point_plan_revenue
 		add_popularity = { ideology = social_conservative popularity = 0.05 }
 		add_political_power = 10
@@ -4156,6 +5646,12 @@ country_event = { #O'Daniel Five Point Plan
 	option = { #Get Rid of Capital Punishment
 		name = unionstate.5904.c
 		set_country_flag = TEX_four_points
+		hidden_effect = {
+			country_event = {
+				id = unionstate.5910
+				months = 16
+			}
+		}
 		add_ideas = TEX_four_point_plan_punishment
 		add_popularity = { ideology = social_conservative popularity = 0.03 }
 		add_popularity = { ideology = authoritarian_democrat popularity = -0.02 }
@@ -4335,16 +5831,7 @@ country_event = { #An Opportunity Rises
 
 	fire_only_once = yes
 	
-	trigger = {
-	tag = TEX
-	has_country_flag = TEX_four_points
-	has_global_flag = USA_civil_war_over_flag
-	}
-	
-	mean_time_to_happen = {
-		months = 16
-	}
-	
+	is_triggered_only = yes
 	
 	option = { #Push for five
 		name = unionstate.5910.a
@@ -4397,10 +5884,6 @@ country_event = {###Our Flag
 			}
 	}
 
-	mean_time_to_happen = {
-		days = 30
-	}
-
 	option = {	
 		
 		name = unionstate.5911.a
@@ -4433,18 +5916,11 @@ country_event = {# R E H
 	desc = unionstate.5912.d
 	picture =  GFX_report_event_generic_diplomacy1
 
-	trigger = {
-	tag = TEX
-	has_completed_focus = TEX_texas_values
-	}
-
+	is_triggered_only = yes
 	fire_only_once = yes
 
-	mean_time_to_happen = {
-	days = 10
-	}
 
-       	option = {# Yes 
+    option = {# Yes 
 		name = unionstate.5912.a 
 		add_political_power = 15
 		add_popularity = { ideology = social_conservative popularity = 0.03 }
@@ -4457,16 +5933,9 @@ country_event = {# Unions
 	desc = unionstate.5913.d
 	picture =  GFX_report_event_generic_diplomacy1
 
-	trigger = {
-	tag = TEX
-	has_completed_focus = TEX_labor_agitators
-	}
-
 	fire_only_once = yes
 
-	mean_time_to_happen = {
-	days = 10
-	}
+	is_triggered_only = yes
 
        	option = {#Compulsory racial segregation 
 		name = unionstate.5913.a 
@@ -4505,16 +5974,9 @@ country_event = {# University
 	desc = unionstate.5914.d
 	picture =  GFX_report_event_generic_diplomacy1
 
-	trigger = {
-	tag = TEX
-	has_completed_focus = TEX_obligations_to_our_children
-	}
+	is_triggered_only = yes
 
 	fire_only_once = yes
-
-	mean_time_to_happen = {
-	days = 10
-	}
 
        	option = {#C
 		name = unionstate.5914.a  
@@ -4942,16 +6404,7 @@ country_event = { # The Future of Warfare
 
 	fire_only_once = yes
 
-	trigger = {
-		tag = TEX
-		has_global_flag = USA_civil_war_over_flag
-		has_country_flag = AUS_america_united
-		has_completed_focus = TEX_reconstruction_is_over
-	}
-
-	mean_time_to_happen = {
-		months = 24
-	}
+	is_triggered_only = yes
 
 	option = { # Goddard's Rocket
 		name = unionstate.101.a
@@ -5040,10 +6493,6 @@ country_event = { # America is reunited
 		controls_all_owned_states = yes
 	}
 
-	mean_time_to_happen = {
-		months = 1
-	}
-
 	immediate = {
 		hidden_effect = {
 			set_country_flag = AUS_america_united
@@ -5086,14 +6535,7 @@ country_event = { # Trial of the Weapons companies
 
 	fire_only_once = yes
 
-	trigger = {
-		tag = TEX
-		has_completed_focus = TEX_begin_reconstruction
-	}
-
-	mean_time_to_happen = {
-		months = 6
-	}
+	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
@@ -5817,6 +7259,18 @@ country_event = { #
 				defense_skill = 2
 				planning_skill = 1
 				logistics_skill = 1
+			}   
+			create_navy_leader = { #Auto-Generated
+				name = "Francis P. Matthews"
+				portrait_path = "gfx/leaders/TEX/Portrait_TEX_KOC_Francis_P_Matthews.png"
+				traits = {
+					politically_connected
+				}
+				skill = 2
+				attack_skill = 1
+				defense_skill = 2
+				maneuvering_skill = 2
+				coordination_skill = 2
 			}
 			hidden_effect = {
 				country_event = {
@@ -6021,16 +7475,16 @@ country_event = { # Hahaha Huey goes BOOM
 			create_country_leader = {
 				name = "Earl Kemp Long"
 				desc = "POLITICS_EARL_KEMP_LONG_DESC"
-				picture = "Portrait_TEX_Earl_Kemp_Long.png"
+				picture = "gfx/leaders/TEX/Portrait_TEX_Earl_Kemp_Long.png"
 				expire = "1965.1.1"
-				ideology = authoritarian_democrat_subtype
+				ideology = longism_subtype
 			}
             create_country_leader = {
 				name = "Philip Carroll"
 				desc = "POLITICS_CARROLL_DESC"
-				picture = "Portrait_TEX_Philip_gen.png"
+				picture = "gfx/leaders/TEX/Portrait_TEX_Philip_gen.png"
 				expire = "1965.1.1"
-				ideology = national_populist_subtype
+				ideology = integralism_subtype
 			}
 			#news event
 			random_other_country = {
@@ -6401,9 +7855,9 @@ country_event = { # AMERICAE SANCTUS
 		create_country_leader = {
 			name = "Regent Philip Carroll"
 			desc = "POLITICS_PHILIP_THE_FIRST"
-			picture = "Portrait_TEX_philip_the_first.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_philip_the_first.png"
 			expire = "1965.1.1"
-			ideology = national_populist_subtype
+			ideology = integralism_subtype
 			traits = {
 				TEX_new_charlemagne
 			}
@@ -6457,9 +7911,9 @@ country_event = { # HOUSE STUART
 		create_country_leader = {
 			name = "James III"
 			desc = "POLITICS_JACOBO_F_J_STUART"
-			picture = "Portrait_TEX_jacobo_fitz_james_stuart.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_jacobo_fitz_james_stuart.png"
 			expire = "1965.1.1"
-			ideology = national_populist_subtype
+			ideology = integralism_subtype
 			traits = {
 				TEX_new_bonnie_prince
 			}
@@ -6638,9 +8092,9 @@ country_event = { # inaguartaion of Phillp
             create_country_leader = {
 				name = "Philip Carroll"
 				desc = "POLITICS_CARROLL_DESC"
-				picture = "Portrait_TEX_Philip_gen.png"
+				picture = "gfx/leaders/TEX/Portrait_TEX_Philip_gen.png"
 				expire = "1965.1.1"
-				ideology = national_populist_subtype
+				ideology = integralism_subtype
 			}
 			#news event
 			random_other_country = {
@@ -6725,20 +8179,19 @@ country_event = { #death of ArchRegent Phillip F in the chat bois
 		
 	}
 
-	mean_time_to_happen = {
-		days = 10
-	}
-
 	option = { # the nation morns
 		name = cathdeath.1.a
 		kill_ideology_leader = national_populist
-		remove_unit_leader = 4589
+		random_unit_leader = {
+			limit = { has_id = 4589 }
+			remove_unit_leader = yes
+		}
 		set_country_flag = TEX_dead_phil
 		create_country_leader = {
 			name = "Holy American League Regency Council"
-			picture = "TEX_holy_america.png"
+			picture = "gfx/leaders/TEX/TEX_holy_america.png"
 			expire = "1965.1.1"
-			ideology = national_populist_subtype
+			ideology = integralism_subtype
 		}
 		set_party_name = {
 				ideology = national_populist
@@ -7203,10 +8656,10 @@ country_event = { # Reformist Victory
 		add_stability = 0.05
 		create_country_leader = {
 			name = "Dorothy Day"
-			picture = "Portrait_TEX_Dorothy_Day.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_Dorothy_Day.png"
 			desc = "POLITICS_CATHOLIC_DAY_DESC"
 			expire = "1965.1.1"
-			ideology = radical_socialist_subtype
+			ideology = christian_socialism_subtype
 			female = yes
 			traits = { TEX_catholic_anarchist }
 		}
@@ -7234,7 +8687,7 @@ country_event = { # Reformist Victory
 		add_stability = 0.05
 		create_country_leader = {
 			name = "Al Smith"
-			picture = "Portrait_TEX_Al_Smith.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_Al_Smith.png"
 			desc = "POLITICS_CATHOLIC_SMITH_DESC"
 			expire = "1965.1.1"
 			ideology = market_liberal_subtype
@@ -7279,10 +8732,10 @@ country_event = { #moderate victory
 		add_stability = 0.05
 		create_country_leader = {
 			name = "Fulton J Sheen"
-			picture = "TEX_Fulton_J_Sheen.png"
+			picture = "gfx/leaders/TEX/TEX_Fulton_J_Sheen.png"
 			desc = "POLITICS_FULTON_SHEEN_DESC"
 			expire = "1965.1.1"
-			ideology = social_conservative_subtype
+			ideology = christian_democracy_subtype
 			traits = { TEX_peoples_bishop }
 		}
 		set_politics = {
@@ -7306,10 +8759,10 @@ country_event = { #moderate victory
 		add_stability = 0.05
 		create_country_leader = {
 			name = "Charles Coughlin"
-			picture = "TEX_Charles_Coughlin.png"
+			picture = "gfx/leaders/TEX/TEX_Charles_Coughlin.png"
 			desc = "POLITICS_CATHOLIC_CHARLES_DESC"
 			expire = "1965.1.1"
-			ideology = authoritarian_democrat_subtype
+			ideology = longism_subtype
 			traits = { radio_preist }
 		}
 		set_politics = {
@@ -7351,14 +8804,14 @@ country_event = { # hardliner victory
 		add_stability = 0.05
 		create_country_leader = {
 			name = "Leonard Feeney"
-			picture = "Portrait_TEX_Leonard_Feeney.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_Leonard_Feeney.png"
 			desc = "POLITICS_FEENEY_DESC"
 			expire = "1965.1.1"
-			ideology = national_populist_subtype
+			ideology = integralism_subtype
 			traits = { TEX_high_inquestor }
 		}
 		set_politics = {
-			ruling_party = national_populist
+			ruling_party = fundementalism_subtype
 			elections_allowed = no
 		}
 		hidden_effect = {
@@ -7378,10 +8831,10 @@ country_event = { # hardliner victory
 		add_stability = 0.05
 		create_country_leader = {
 			name = "Martin H. Carmody"
-			picture = "Portrait_TEX_Martin_Carmody.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_Martin_Carmody.png"
 			desc = "POLITICS_CHAD_KOC_DESC"
 			expire = "1965.1.1"
-			ideology = paternal_autocrat_subtype
+			ideology = absolute_monarchy_subtype
 			traits = { TEX_super_knight }
 		}
 		set_politics = {
@@ -7443,10 +8896,10 @@ country_event = { # deadlock
 		add_stability = 0.05
 		create_country_leader = {
 			name = "Joseph Kennedy"
-			picture = "Portrait_TEX_Regent_Joe.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_Regent_Joe.png"
 			desc = "POLITICS_REGENT_JOE_DESC"
 			expire = "1965.1.1"
-			ideology = authoritarian_democrat_subtype
+			ideology = authdem_junta_subtype
 			traits = { TEX_ideal_caliver }
 		}
 		set_party_name = {
@@ -7598,9 +9051,9 @@ country_event = { # oh shit the king is dead
 		create_country_leader = {
 			name = "Mary II"
 			desc = "POLITICS_MARY_STUART"
-			picture = "Portrait_TEX_mary_stuart.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_mary_stuart.png"
 			expire = "1965.1.1"
-			ideology = national_populist_subtype
+			ideology = integralism_subtype
 			traits = {
 				TEX_new_bonnie_prince
 			}
@@ -7614,7 +9067,7 @@ country_event = { # oh shit the king is dead
 			desc = "POLITICS_ROBERT_STUART"
 			picture = "gfx/leaders/SCT/Portrait_Wales_Rupprecht_I.png"
 			expire = "1965.1.1"
-			ideology = national_populist_subtype
+			ideology = integralism_subtype
 			traits = {
 				TEX_new_bonnie_prince
 			}
@@ -7627,9 +9080,9 @@ country_event = { # oh shit the king is dead
 		create_country_leader = {
 			name = "Holy American League Regency Council"
 			desc = "POLITICS_STUART_REGENCY"
-			picture = "TEX_holy_america.png"
+			picture = "gfx/leaders/TEX/TEX_holy_america.png"
 			expire = "1965.1.1"
-			ideology = national_populist_subtype
+			ideology = integralism_subtype
 		}
 	}
 }
@@ -7889,10 +9342,10 @@ country_event = { # King of America?
 		add_political_power = -200
 		create_country_leader = {
 			name = "Martin I"
-			picture = "Portrait_TEX_King_Martin.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_King_Martin.png"
 			desc = "POLITICS_CHAD_KOC_KING_DESC"
 			expire = "1965.1.1"
-			ideology = paternal_autocrat_subtype
+			ideology = absolute_monarchy_subtype
 			traits = { TEX_king_america }
 		}
 	}
@@ -8105,7 +9558,7 @@ country_event = { # formation of the Red Legion of America
 		}
 		create_country_leader = {
 			name = "Bernard Sheil"
-			picture = "Portrait_TEX_Bernard_Sheil.png"
+			picture = "gfx/leaders/TEX/Portrait_TEX_Bernard_Sheil.png"
 			expire = "1965.1.1"
 			ideology = totalist_subtype
 			traits = { TEX_socialism_for_white_man }

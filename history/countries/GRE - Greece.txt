@@ -4,10 +4,26 @@ oob = "GRE"
 set_naval_oob= "GRE_naval"
 
 set_research_slots = 3
+starting_train_buffer = 1
 
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
 set_technology = {
-	### Tanks ###
-	gwtank = 1
+	basic_train = 1
 	### Infantry ###
 	infantry_weapons = 1
 	gw_artillery = 1
@@ -24,27 +40,28 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		ship_hull_revived_ac = 1
-		weltkrieg_heavy_ship_hull = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		early_ship_hull_heavy = 1
+		
+        basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
-		light_battery_two = 1
+        basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		weltkrieg_naval_gunnery = 1
 	}
 }
 
@@ -56,15 +73,15 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
-		weltkrieg_dreadnought_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
 	}
 }
 
@@ -114,72 +131,72 @@ set_popularities = {
 create_country_leader = {
 	name = "Aris Velouchiotis"
 	desc = "POLITICS_ARIS_VELOUCHIOTIS_DESC"
-	picture = "Portrait_GRE_Athanasios_Klaras.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Athanasios_Klaras.png"
 	expire = "1965.1.1"
 	ideology = totalist_subtype
 }
 create_country_leader = {
 	name = "Nikos Zachariadis"
 	desc = "POLITICS_NIKOS_ZACHARIADIS_DESC"
-	picture = "Portrait_GRE_Nikos_Zachariadis.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Nikos_Zachariadis.png"
 	expire = "1965.1.1"
 	ideology = syndicalist_subtype
 }
 create_country_leader = {
 	name = "Kostas Gavriilides"
 	desc = "POLITICS_KOSTAS_GAVRIILIDES_DESC"
-	picture = "Portrait_GRE_Kostas_Gavriilides.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Kostas_Gavriilides.png"
 	expire = "1965.1.1"
 	ideology = radical_socialist_subtype
 }
 create_country_leader = {
 	name = "Alexandros Papanastasiou"
 	desc = "POLITICS_ALEXANDROS_PAPANASTASIOU_DESC"
-	picture = "Portrait_GRE_Alexandros_Papanastasiou.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Alexandros_Papanastasiou.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
 }
 create_country_leader = {
 	name = "Geórgios Papandreou"
 	desc = "POLITICS_GEORGIOS_PAPANDREOU_DESC"
-	picture = "Portrait_GRE_Georgios_Papandreou.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Georgios_Papandreou.png"
 	expire = "1965.1.1"
 	ideology = social_liberal_subtype
 }
 create_country_leader = {
 	name = "Themistoklis Sofoulis"
 	desc = "POLITICS_THEMISTOKLIS_SOFOULIS_DESC"
-	picture = "Portrait_GRE_Themistoklis_Sofoulis.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Themistoklis_Sofoulis.png"
 	expire = "1965.1.1"
 	ideology = market_liberal_subtype
 }
 create_country_leader = {
 	name = "Panagis Tsaldaris"
 	desc = "POLITICS_PANAGIS_TSALDARIS_DESC"
-	picture = "Portrait_GRE_Pangalis_Tsaldaris.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Pangalis_Tsaldaris.png"
 	expire = "1965.1.1"
 	ideology = social_conservative_subtype
 }
 create_country_leader = {
 	name = "Ioannis Metaxas"
 	desc = "POLITICS_IOANNIS_METAXAS_DESC"
-	picture = "Portrait_GRE_Ioannis_Metaxas_KR.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Ioannis_Metaxas_KR.png"
 	expire = "1965.1.1"
 	ideology = paternal_autocrat_subtype
 }
 create_country_leader = {
 	name = "Georgios Kondylis"
 	desc = "POLITICS_KONDYLIS_DESC"
-	picture = "Portrait_GRE_Georgios_Kondylis.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Georgios_Kondylis.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = authdem_junta_subtype
 	traits = {
 	}
 }
 create_country_leader = {
 	name = "Georgios Mercouris"
 	desc = "POLITICS_GEORGIOS_MERCOURIS_DESC"
-	picture = "Portrait_GRE_Georgios_Mercouris.png"
+	picture = "gfx/leaders/GRE/Portrait_GRE_Georgios_Mercouris.png"
 	expire = "1965.1.1"
 	ideology = national_populist_subtype
 }

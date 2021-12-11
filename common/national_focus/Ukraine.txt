@@ -45,7 +45,7 @@ focus_tree = {
                         has_completed_focus = UKR_True_People_King
 		}
 		}
-		bypass = { has_completed_focus = UKR_True_People_King }
+		bypass = { has_completed_focus = UKR_Rebirth_Ukrainian_Revolution }
 		ai_will_do = {
 			factor = 10
 		}
@@ -205,6 +205,10 @@ focus_tree = {
 						rule = UKR_FUTURE
 						option = UKR_FUTURE_DISSOLVE_RADA
 					}
+                                        has_game_rule = {
+					        rule = UKR_FUTURE
+					        option = UKR_FUTURE_ROYAL_REVOLUTION
+				        }
 				}
 			}
 		}
@@ -256,11 +260,11 @@ focus_tree = {
 				}
 			completion_reward = {
 					log = "[GetDateText]: [Root.GetName]: Focus UKR_Firepower"
-					add_tech_bonus = {
-							name = UKR_Firepower
-							bonus = 1
-							uses = 2
-							category = cat_superior_firepower
+					add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_superior_firepower
 						}
 				}
 
@@ -289,11 +293,11 @@ focus_tree = {
 				}
 			completion_reward = {
 					log = "[GetDateText]: [Root.GetName]: Focus UKR_Grand_Battle"
-					add_tech_bonus = {
-							name = UKR_Grand_Battle
-							bonus = 1
-							uses = 2
-							category = cat_grand_battle_plan
+					add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_grand_battle_plan
 						}
 				}
 
@@ -440,7 +444,7 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = UKR_First_Loan
 		}
-                bypass = { has_completed_focus = UKR_True_People_King }
+                bypass = { has_completed_focus = UKR_Rebirth_Ukrainian_Revolution }
 		x = 2
 		y = 1
 		relative_position_id = UKR_Ukrainian_Recovery
@@ -470,7 +474,7 @@ focus_tree = {
 		prerequisite = {
 			focus = UKR_First_TaxHike
 		}
-                bypass = { has_completed_focus = UKR_True_People_King }
+                bypass = { has_completed_focus = UKR_Rebirth_Ukrainian_Revolution }
 		x = 2
 		y = 2
 		relative_position_id = UKR_Ukrainian_Recovery
@@ -521,11 +525,11 @@ focus_tree = {
 				}
 			completion_reward = {
 					log = "[GetDateText]: [Root.GetName]: Focus UKR_Massive"
-					add_tech_bonus = {
-							name = UKR_Massive
-							bonus = 1
-							uses = 2
-							category = cat_mass_assault
+					add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_mass_assault
 						}
 				}
 
@@ -696,11 +700,11 @@ focus_tree = {
 				}
 			completion_reward = {
 					log = "[GetDateText]: [Root.GetName]: Focus UKR_Massive_doct"
-					add_tech_bonus = {
-							name = UKR_Massive_doct
-							bonus = 1
-							uses = 1
-							category = land_doctrine
+					add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
 						}
 				}
 
@@ -758,6 +762,10 @@ focus_tree = {
 						rule = UKR_FUTURE
 						option = UKR_FUTURE_BROAD_COALITION_NATIONALIST_OUN
 					}
+                                        has_game_rule = {
+					        rule = UKR_FUTURE
+					        option = UKR_FUTURE_ROYAL_REVOLUTION
+				        }
 				}
 			}
 		}
@@ -936,11 +944,11 @@ focus_tree = {
 										}
 								}
 						}
-					add_tech_bonus = {
-							name = UKR_aviation_effort
-							bonus = 1
-							uses = 1
-							category = air_doctrine
+					add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
 						}
 				}
 			ai_will_do = {
@@ -1073,11 +1081,11 @@ focus_tree = {
 										}
 								}
 						}
-					add_tech_bonus = {
-							name = UKR_aviation_effort_2
-							bonus = 1
-							uses = 1
-							category = air_doctrine
+					add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
 						}
 				}
 			ai_will_do = {
@@ -1337,6 +1345,9 @@ focus_tree = {
 		x = -5
 		y = 3
 		relative_position_id = UKR_Our_Future
+                        available = {
+                                        NOT = { has_country_flag = UKR_Chekhivsky_Invited }
+			}
 			ai_will_do = {
 					factor = 10
 				}
@@ -1359,6 +1370,9 @@ focus_tree = {
 		x = -6
 		y = 4
 		relative_position_id = UKR_Our_Future
+                        available = {
+                                        NOT = { has_country_flag = UKR_Chekhivsky_Invited }
+			}
 			ai_will_do = {
 					factor = 10
 				}
@@ -1390,6 +1404,9 @@ focus_tree = {
 		x = -4
 		y = 4
 		relative_position_id = UKR_Our_Future
+                        available = {
+                                        NOT = { has_country_flag = UKR_Chekhivsky_Invited }
+			}
 			ai_will_do = {
 					factor = 10
 				}
@@ -1416,6 +1433,7 @@ focus_tree = {
 		relative_position_id = UKR_Our_Future
 			available = {
 					has_country_flag = UKR_Taxation_fail
+                                        NOT = { has_country_flag = UKR_Chekhivsky_Invited }
 				}
 			ai_will_do = {
 					factor = 10
@@ -1466,7 +1484,7 @@ focus_tree = {
 		}
 		x = -6
 		y = 6
-		relative_position_id = UKR_Our_Future
+		relative_position_id = UKR_Our_Future 
 			available = {
 					has_socialist_government = yes
 					has_country_flag = UKR_Kruschev_won
@@ -1650,7 +1668,7 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_Crisis_Coalition
-		icon = GFX_focus_rom_parties_end
+		icon = GFX_goal_UKR_stabilise_west
 		cost = 7
 		prerequisite = {
 			focus = UKR_Resettlement
@@ -2047,7 +2065,7 @@ focus_tree = {
 
 	focus = {
 		id = UKR_First_Loan
-		icon = GFX_goal_generic_loans
+		icon = GFX_focus_generic_electricity
 		cost = 8
 		prerequisite = {
 			focus = UKR_Ukrainian_Recovery
@@ -2087,7 +2105,7 @@ focus_tree = {
 	}
 	focus = {
 		id = UKR_Second_Loan
-		icon = GFX_goal_generic_intelligence_exchange
+		icon = GFX_goal_generic_german_construction
 		cost = 8
 		prerequisite = {
 			focus = UKR_First_Loan
@@ -2149,7 +2167,7 @@ focus_tree = {
 			focus = UKR_Second_TaxHike
 			focus = UKR_Second_Loan
 		}
-                bypass = { has_completed_focus = UKR_True_People_King }
+                bypass = { has_completed_focus = UKR_Rebirth_Ukrainian_Revolution }
 		x = 1
 		y = 3
 		relative_position_id = UKR_Ukrainian_Recovery
@@ -2230,7 +2248,7 @@ focus_tree = {
 		prerequisite = {
 			focus = UKR_Donbass_Industry
 		}
-                bypass = { has_completed_focus = UKR_True_People_King }
+                bypass = { has_completed_focus = UKR_Rebirth_Ukrainian_Revolution }
 		x = 0
 		y = 5
 		relative_position_id = UKR_Ukrainian_Recovery
@@ -2269,11 +2287,11 @@ focus_tree = {
 			completion_reward = {
 					log = "[GetDateText]: [Root.GetName]: Focus UKR_Mobile"
 					add_stability = 0.02
-					add_tech_bonus = {
-							name = UKR_Mobile
-							bonus = 1
-							uses = 2
-							category = cat_mobile_warfare
+					add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_mobile_warfare
 						}
 				}
 
@@ -2367,11 +2385,11 @@ focus_tree = {
 				}
 			completion_reward = {
 					log = "[GetDateText]: [Root.GetName]: Focus UKR_Doct1"
-					add_tech_bonus = {
-							name = UKR_Doct1
-							bonus = 1
-							uses = 1
-							category = land_doctrine
+					add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
 						}
 				}
 
@@ -2385,7 +2403,7 @@ focus_tree = {
 			focus = UKR_Tank_Forces
 			focus = UKR_Doct1
 		}
-                bypass = { has_completed_focus = UKR_True_People_King }
+                bypass = { has_completed_focus = UKR_Rebirth_Ukrainian_Revolution }
 		x = 0
 		y = 4
 		relative_position_id = UKR_Reorg_army
@@ -2551,6 +2569,15 @@ focus_tree = {
 			clr_country_flag = UKR_loan_declined_2
 			clr_country_flag = UKR_no_help_1
 			clr_country_flag = UKR_no_help_2
+			if = {
+				limit = {
+					country_exists = CRM
+				}
+				create_wargoal = {
+			        type = annex_everything
+			        target = CRM
+		        }
+			}
 		}
 	}
 	focus = {
@@ -2582,6 +2609,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus UKR_Bessarabia_claim"
 			add_political_power = 60
 			add_state_core = 78
+			add_state_core = 1222
 			UKR = {
 				country_event = {
 					days = 3
@@ -2647,7 +2675,7 @@ focus_tree = {
 					NOT = {
 							has_country_flag = UKR_OUN_POWER
 							country_exists = SIB
-							country_exists = SOV
+							soviets_exist = yes
 							has_war_with = RUS
 						}
 				}
@@ -2684,6 +2712,17 @@ focus_tree = {
 							clr_country_flag = UKR_no_help_1
 							clr_country_flag = UKR_no_help_2
 						}
+					if = {
+						limit = {
+							country_exists = CRM
+							CRM = { NOT = { is_in_faction_with = RUS } }
+							CRM = { NOT = { is_subject_of = RUS } }
+						}
+						create_wargoal = {
+							type = annex_everything
+							target = CRM
+						}
+					}
 				}
 
 	}
@@ -2841,7 +2880,8 @@ focus_tree = {
 					add_state_core = 89
 					add_state_core = 80
 					add_state_core = 78
-                                        add_state_core = 1140
+					add_state_core = 1222
+                    add_state_core = 1140
 				}
 
 	}
@@ -2906,7 +2946,7 @@ focus_tree = {
 		y = 1
 		relative_position_id = UKR_naval_effort
 			available = {
-					137 = {
+					1221 = {
 							is_owned_and_controlled_by = ROOT
 						}
 				}
@@ -2916,7 +2956,7 @@ focus_tree = {
 			completion_reward = {
 					log = "[GetDateText]: [Root.GetName]: Focus UKR_Crimea_Naval"
 					add_political_power = 25
-					137 = {
+					1221 = {
 							add_building_construction = {
 									type = coastal_bunker
 									level = 1
@@ -3155,7 +3195,7 @@ focus_tree = {
 		cost = 0
                 bypass = { has_country_flag = UKR_Chekhivsky_Invited }
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus UKR_Rebirth_Ukrainian_Revolution"
@@ -3179,7 +3219,7 @@ focus_tree = {
 		y = 1
 		cost = 5
 		ai_will_do = {
-			factor = 1
+			factor = 1000
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus UKR_True_People_King"
@@ -3207,7 +3247,7 @@ focus_tree = {
 		y = 1
 		cost = 7.4
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus UKR_Royal_Nationalization_Commission"
@@ -3393,7 +3433,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus UKR_Purge_Radical_Nationalists"
 		        create_country_leader = {
 		               name = "Yevhen Konovalets"
-		               picture = "Portrait_Ukraine_Yevhen_Konovalets.png"
+		               picture = "gfx/leaders/UKR/Portrait_Ukraine_Yevhen_Konovalets.png"
 		               expire = "1965.1.1"
 		               ideology = national_populist_subtype
 	                }
@@ -3632,6 +3672,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus UKR_Set_Sail_Akerman"
                         add_state_core = 78
+						add_state_core = 1222
                         ROM = {
 				country_event = {
 					days = 4
@@ -3743,6 +3784,10 @@ focus_tree = {
                         create_wargoal = {
 			        type = annex_everything
 			        target = DKB
+		        }
+				create_wargoal = {
+			        type = annex_everything
+			        target = CRM
 		        }
                         add_state_core = 220
 			add_state_core = 224

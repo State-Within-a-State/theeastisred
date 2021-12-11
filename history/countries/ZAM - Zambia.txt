@@ -6,9 +6,24 @@ set_technology = {
 	### INF ###
 	infantry_weapons = 1
 	motorised_infantry = 1
-	### Tanks ###
-	gwtank = 1
 }
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+#set_country_flag = KX_no_naval_tech_decision_enable
 
 set_politics = {
 	ruling_party = authoritarian_democrat
@@ -51,7 +66,7 @@ create_country_leader = {
 			desc = "POLITICS_HUTTIG_DESC"
 			picture = "gfx/leaders/MAF/MAF_Hans_Huttig.png"
 			expire = "1965.1.1"
-			ideology = authoritarian_democrat_subtype
+			ideology = colonial_govt_subtype
 			traits = {}
 		}
 		
@@ -87,6 +102,11 @@ create_corps_commander = {
 	defense_skill = 3
 	planning_skill = 2
 	logistics_skill = 3
+}
+
+random_unit_leader = {
+	limit = { has_id = 67709 }
+	set_unit_leader_flag = ZAM_germ_leader_flag
 }
 
 create_corps_commander = {
@@ -127,11 +147,17 @@ create_corps_commander = {
 		harsh_leader
 		trickster
 	}
+	id = 63709
 	skill = 3
 	attack_skill = 3
 	defense_skill = 2
 	planning_skill = 2
 	logistics_skill = 2
+}
+
+random_unit_leader = {
+	limit = { has_id = 63709 }
+	set_unit_leader_flag = ZAM_germ_leader_flag
 }
 
 create_corps_commander = {
@@ -142,11 +168,17 @@ create_corps_commander = {
 		infantry_officer
 		fortress_buster
 	}
+	id = 66709
 	skill = 3
 	attack_skill = 3
 	defense_skill = 2
 	planning_skill = 2
 	logistics_skill = 3
+}
+
+random_unit_leader = {
+	limit = { has_id = 66709 }
+	set_unit_leader_flag = ZAM_germ_leader_flag
 }
 
 create_corps_commander = {
@@ -156,9 +188,42 @@ create_corps_commander = {
 		career_officer
 		war_hero
 	}
+	id = 65709
 	skill = 3
 	attack_skill = 2
 	defense_skill = 2
 	planning_skill = 3
+	logistics_skill = 3
+}
+
+random_unit_leader = {
+	limit = { has_id = 65709 }
+	set_unit_leader_flag = ZAM_germ_leader_flag
+}
+
+create_corps_commander = {
+	name = "Michael Grigg"
+	portrait_path = "gfx/leaders/ZAM/Portrait_Zambia_Michael_Grigg.png"
+	traits = {
+		career_officer
+	}
+	skill = 3
+	attack_skill = 2
+	defense_skill = 2
+	planning_skill = 3
+	logistics_skill = 3
+}
+
+create_corps_commander = {
+	name = "Lawrence Aubrey Wallace"
+	portrait_path = "gfx/leaders/Generic/Portrait_Britain_Generic_land_1.png"
+	traits = {
+		career_officer
+		politically_connected
+	}
+	skill = 2
+	attack_skill = 3
+	defense_skill = 2
+	planning_skill = 1
 	logistics_skill = 3
 }

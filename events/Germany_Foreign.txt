@@ -2469,6 +2469,14 @@ country_event = {
 
 	option = {
 		name = gerfor.67.b #Allow them into the Entente with concessions.
+		trigger = {
+			GEX = {
+				OR = {
+					tag = MAF
+					is_in_faction_with = MAF
+				}
+			}
+		}
 		ai_chance = {
 			factor = 65
 		}
@@ -2535,6 +2543,14 @@ country_event = {
 
 	option = {
 		name = gerfor.68.b #Demand Alsace-Lorraine and part of their colonies!
+		trigger = {
+			GEX = {
+				OR = {
+					tag = MAF
+					is_in_faction_with = MAF
+				}
+			}
+		}
 		add_political_power = 100
 		set_global_flag = VIC_COLONIES
 		add_state_claim = 779
@@ -2575,7 +2591,17 @@ country_event = {
 		ai_chance = {
 			factor = 100
 		}
-		dismantle_faction = yes
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GEX
+			}
+			set_country_flag = GEX_reichspakt_remnant_flag
+			leave_faction = yes
+			ENT = {
+				add_to_faction = PREV
+			}
+		}
 
 		every_country = {
 			limit = {
@@ -2654,7 +2680,18 @@ country_event = {
 		ai_chance = {
 			factor = 90
 		}
-		dismantle_faction = yes
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GEX
+			}
+			set_country_flag = GEX_reichspakt_remnant_flag
+			leave_faction = yes
+			ENT = {
+				add_to_faction = PREV
+			}
+		}
+		
 		every_country = {
 			limit = {
 				has_country_flag = IS_IN_MITTEL
@@ -2727,7 +2764,18 @@ country_event = {
 		ai_chance = {
 			factor = 95
 		}
-		dismantle_faction = yes
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GEX
+			}
+			set_country_flag = GEX_reichspakt_remnant_flag
+			leave_faction = yes
+			ENT = {
+				add_to_faction = PREV
+			}
+		}
+		
 		every_country = {
 			limit = {
 				has_country_flag = IS_IN_MITTEL
@@ -2805,7 +2853,17 @@ country_event = {
 		ai_chance = {
 			factor = 85
 		}
-		dismantle_faction = yes
+		
+		every_country = {
+			limit = {
+				is_in_faction_with = GEX
+			}
+			set_country_flag = GEX_reichspakt_remnant_flag
+			leave_faction = yes
+			ENT = {
+				add_to_faction = PREV
+			}
+		}
 
 		every_country = {
 			limit = {
@@ -2884,7 +2942,16 @@ country_event = {
 		ai_chance = {
 			factor = 90
 		}
-		dismantle_faction = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = GEX
+			}
+			set_country_flag = GEX_reichspakt_remnant_flag
+			leave_faction = yes
+			ENT = {
+				add_to_faction = PREV
+			}
+		}
 
 		every_country = {
 			limit = {
@@ -2963,7 +3030,16 @@ country_event = {
 		ai_chance = {
 			factor = 75
 		}
-		dismantle_faction = yes
+		every_country = {
+			limit = {
+				is_in_faction_with = GEX
+			}
+			set_country_flag = GEX_reichspakt_remnant_flag
+			leave_faction = yes
+			ENT = {
+				add_to_faction = PREV
+			}
+		}
 
 		every_country = {
 			limit = {
@@ -3059,15 +3135,6 @@ country_event = {
 
 	option = {
 		name = gerfor.76.a #Great!
-		add_to_faction = GEX
-		every_country = {
-			limit = {
-				has_country_flag = IS_IN_MITTEL
-			}
-			ROOT = {
-				add_to_faction = PREV
-			}
-		}
 		every_country = {
 			limit = {
 				has_country_flag = IS_IN_MITTEL
@@ -3976,7 +4043,7 @@ country_event = { #The Baku conference
 					}
 				}
 				AND = {
-					country_exists = SOV
+					soviets_exist = yes
 					NOT = {
 						SOV = {
 							is_subject_of = GER
@@ -5310,3 +5377,33 @@ country_event = { #Germany refuses cooperation
 		add_political_power = -40
 	}
 }
+
+country_event = { #the fate of russia aka the retvrn of sovl
+	id = gerfor.190
+	immediate = { log = "[GetDateText]: [Root.GetName]: event gerfor.190" }
+	title = gerfor.190.t
+	desc = gerfor.190.d
+
+	trigger = {
+		tag = GER
+		RUS = {
+			is_subject_of = GER
+		}
+	}
+	fire_only_once = yes
+
+	option = { #they're fine to do what they want
+		name = gerfor.190.a
+		add_political_power = 25
+	}
+
+	option = { #ivan vii time
+		name = gerfor.190.b
+		RUS = {
+		set_country_flag = RUS_monarchy_restored
+		set_cosmetic_tag = RTS
+		RUS_setup_tsar_ivan_ger = yes
+		}
+	}
+}
+

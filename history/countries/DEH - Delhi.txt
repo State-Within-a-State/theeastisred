@@ -3,10 +3,23 @@
 oob = "DEH"
 set_naval_oob= "DEH_naval"
 
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
 set_technology = {
-	### Tanks ###
-	gwtank = 1
-
 	### Infantry ###
 	infantry_weapons = 1
 	tech_support = 1
@@ -28,35 +41,36 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		carrier_conversion = 1
-		ship_hull_revived_ac = 1
-		weltkrieg_heavy_ship_hull = 1
-		heavy_ship_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_carrier = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		ship_hull_super_heavy = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
-		sonar = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 		basic_heavy_armor_scheme = 1
-		capital_gunnery_one = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
+		sonar = 1
 
 		### Transport ###
-		transport = 1
+		mtg_transport = 1
 	}
 }
 
@@ -69,21 +83,21 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
-		weltkrieg_fast_battleship_nonmtg = 1
-		interwar_fast_battleship_nonmtg = 1
-		weltkrieg_dreadnought_nonmtg = 1
-		super_heavy_dreadnought_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battlecruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		heavy_battleship = 1
 
 		### Transport ###
-		transport_n = 1
+		transport = 1
 	}
 }
 
@@ -149,7 +163,7 @@ create_country_leader = {
 
 create_country_leader = {
 	name = "Maharaja Ganga Singh"
-	picture = "Portrait_DEH_Maharaja_Ganga_Singh.png"
+	picture = "gfx/leaders/DEH/Portrait_DEH_Maharaja_Ganga_Singh.png"
 	expire = "1965.1.1"
 	ideology = authoritarian_democrat_subtype
 }
@@ -159,19 +173,19 @@ create_country_leader = {
 	picture = "gfx/leaders/DEH/DEH_Churchill.png"
 	desc = "POLITICS_CHURCHILL_DESC"
 	expire = "1965.1.1"
-	ideology = paternal_autocrat_subtype
+	ideology = autocratic_colonial_govt_subtype
 }
 
 create_country_leader = {
 	name = "Muhammad Ali Jinnah"
-	picture = "Portrait_DEH_Muhammad_Ali_Jinnah.png"
+	picture = "gfx/leaders/DEH/Portrait_DEH_Muhammad_Ali_Jinnah.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
 }
 
 create_country_leader = {
 	name = "Jehangir Ratanji Dadabhoy Tata"
-	picture = "Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
+	picture = "gfx/leaders/DEH/Portrait_DEH_Jehangir_Ratanji_Dadabhoy_Tata.png"
 	expire = "1965.1.1"
 	ideology = market_liberal_subtype
 }
@@ -211,7 +225,7 @@ create_field_marshal = {
 
 create_field_marshal = {
 	name = "Maharaja Ganga Singh"
-	picture = "Portrait_DEH_Maharaja_Ganga_Singh_army.png"
+	portrait_path = "gfx/leaders/DEH/Portrait_DEH_Maharaja_Ganga_Singh_army.png"
 	traits = {
 		cavalry_officer
 		war_hero
@@ -229,7 +243,7 @@ create_field_marshal = {
 
 create_corps_commander = {
 	name = "Philip Walhouse Chetwode"
-	picture = "Portrait_DEH_Philip_Walhouse_Chetwode.png"
+	portrait_path = "gfx/leaders/DEH/Portrait_DEH_Philip_Walhouse_Chetwode.png"
 	traits = {
 		old_guard
 	}
@@ -426,21 +440,6 @@ create_corps_commander = {
 }
 
 create_corps_commander = {
-	name = "Archibald Wavell"
-	portrait_path = "gfx/leaders/DEH/Portrait_DEH_Archibald_Wavell.png"
-	traits = {
-		old_guard
-		infantry_leader
-	}
-	skill = 3
-	attack_skill = 2
-	defense_skill = 3
-	planning_skill = 3
-	logistics_skill = 3
-	id = 1222
-}
-
-create_corps_commander = {
 	name = "Hastings Ismay"
 	portrait_path = "gfx/leaders/DEH/Portrait_DEH_Hastings_Ismay_army.png"
 	traits = {
@@ -481,7 +480,7 @@ create_corps_commander = {
 	defense_skill = 1
 	planning_skill = 2
 	logistics_skill = 1
-	id = 1229
+	id = 1239
 }
 
 create_corps_commander = {
@@ -495,7 +494,7 @@ create_corps_commander = {
 	defense_skill = 2
 	planning_skill = 2
 	logistics_skill = 1
-	id = 1235
+	id = 1240
 }
 
 create_corps_commander = {
@@ -567,7 +566,7 @@ create_corps_commander = {
 	defense_skill = 2
 	planning_skill = 2
 	logistics_skill = 1
-	id = 1227
+	id = 1241
 }
 
 create_corps_commander = {
@@ -581,7 +580,7 @@ create_corps_commander = {
 	defense_skill = 3
 	planning_skill = 1
 	logistics_skill = 1
-	id = 1230
+	id = 1242
 }
 
 create_corps_commander = {
@@ -596,7 +595,7 @@ create_corps_commander = {
 	defense_skill = 3
 	planning_skill = 2
 	logistics_skill = 1
-	id = 1233
+	id = 1243
 }
 
 create_corps_commander = {

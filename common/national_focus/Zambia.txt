@@ -539,8 +539,14 @@ focus_tree = {
 				ideology = national_populist
 				popularity = -0.5
 			}
-			remove_unit_leader = 67708
-			remove_unit_leader = 67707
+			random_unit_leader = {
+						limit = { has_id = 67708 }	
+						remove_unit_leader = yes
+					}
+			random_unit_leader = {
+						limit = { has_id = 67707 }	
+						remove_unit_leader = yes
+					}
 			hidden_effect = {
 				ZIM = {
 					create_corps_commander = {
@@ -590,7 +596,11 @@ focus_tree = {
 					days = 23
 				}
 			}
-			add_autonomy_ratio = { value = 0.5 localization = ZAM_support_from_ostafrika }
+			MAF = {
+				add_to_variable = { MAF_nordrhodesia_centralized_var = 1 }
+			}
+			custom_effect_tooltip = MAF_increase_ZAM_centralization_1
+			add_autonomy_ratio = { value = -0.5 localization = ZAM_support_from_ostafrika }
 		}
 	}
 	
@@ -615,6 +625,10 @@ focus_tree = {
 				ideology = paternal_autocrat
 				popularity = 0.12
 			}
+			MAF = {
+				add_to_variable = { MAF_nordrhodesia_centralized_var = 1 }
+			}
+			custom_effect_tooltip = MAF_increase_ZAM_centralization_1
 		}
 	}
 	
@@ -1116,7 +1130,7 @@ focus_tree = {
 	
 	focus = {
 		id = ZAM_expel_the_germans
-		icon = GFX_goal_ZAM_expel_germans
+		icon = GFX_goal_ZAM_expel_german_soldiers
 		x = 1
 		y = 2
 		prerequisite = {
@@ -1130,6 +1144,18 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus ZAM_expel_the_germans"
+			every_unit_leader = {
+				limit = {
+					has_id = 67709
+				}
+				set_nationality = MAF
+			}
+			every_unit_leader = {
+				limit = {
+					has_id = 65709
+				}
+				set_nationality = MAF
+			}
 			add_popularity = {
 				ideology = national_populist
 				popularity = 0.04
@@ -1882,6 +1908,7 @@ focus_tree = {
 
 			if = {
 				limit = {
+					is_in_faction_with = GER					
 					GER = {
 						has_tech = infantry_weapons1
 						NOT = { has_tech = improved_infantry_weapons  }
@@ -1899,6 +1926,7 @@ focus_tree = {
 			}
 			if = {
 				limit = {
+					is_in_faction_with = GER
 					GER = {
 						has_tech = improved_infantry_weapons
 						NOT = { has_tech = advanced_infantry_weapons  }
@@ -1916,11 +1944,66 @@ focus_tree = {
 			}
 			if = {
 				limit = {
+					is_in_faction_with = GER
 					GER = {
 						has_tech = advanced_infantry_weapons
 					}
 				}
 				GER = {
+					create_production_license = {
+						target = ZAM
+						equipment = {
+							type = infantry_equipment_3
+						}
+						cost_factor = 0
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					is_in_faction_with = CAN
+					CAN = {
+						has_tech = infantry_weapons1
+						NOT = { has_tech = improved_infantry_weapons  }
+					}
+				}
+				CAN = {
+					create_production_license = {
+						target = ZAM
+						equipment = {
+							type = infantry_equipment_1
+						}
+						cost_factor = 0
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_in_faction_with = CAN
+					CAN = {
+						has_tech = improved_infantry_weapons
+						NOT = { has_tech = advanced_infantry_weapons  }
+					}
+				}
+				CAN = {
+					create_production_license = {
+						target = ZAM
+						equipment = {
+							type = infantry_equipment_2
+						}
+						cost_factor = 0
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_in_faction_with = CAN
+					CAN = {
+						has_tech = advanced_infantry_weapons
+					}
+				}
+				CAN = {
 					create_production_license = {
 						target = ZAM
 						equipment = {
@@ -1974,6 +2057,7 @@ focus_tree = {
 
 			if = {
 				limit = {
+					is_in_faction_with = SAF
 					SAF = {
 						has_tech = gw_artillery
 						NOT = { has_tech = artillery1 }
@@ -1991,6 +2075,7 @@ focus_tree = {
 			}
 			if = {
 				limit = {
+					is_in_faction_with = SAF
 					SAF = {
 						has_tech = artillery1
 						NOT = { has_tech = artillery4 }
@@ -2008,11 +2093,66 @@ focus_tree = {
 			}
 			if = {
 				limit = {
+					is_in_faction_with = SAF
 					SAF = {
 						has_tech = artillery4
 					}
 				}
 				SAF = {
+					create_production_license = {
+						target = ZAM
+						equipment = {
+							type = artillery_equipment_3
+						}
+						cost_factor = 0
+					}
+				}
+			}
+			
+			if = {
+				limit = {
+					is_in_faction_with = MAF
+					MAF = {
+						has_tech = gw_artillery
+						NOT = { has_tech = artillery1 }
+					}
+				}
+				MAF = {
+					create_production_license = {
+						target = ZAM
+						equipment = {
+							type = artillery_equipment_1
+						}
+						cost_factor = 0
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_in_faction_with = MAF
+					MAF = {
+						has_tech = artillery1
+						NOT = { has_tech = artillery4 }
+					}
+				}
+				MAF = {
+					create_production_license = {
+						target = ZAM
+						equipment = {
+							type = artillery_equipment_2
+						}
+						cost_factor = 0
+					}
+				}
+			}
+			if = {
+				limit = {
+					is_in_faction_with = MAF
+					MAF = {
+						has_tech = artillery4
+					}
+				}
+				MAF = {
 					create_production_license = {
 						target = ZAM
 						equipment = {
@@ -2198,11 +2338,11 @@ focus_tree = {
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus KTG_Learn_From_The_Past"
-			add_tech_bonus = {
-				name = land_doc_bonus
-				bonus = 1
-				uses = 2
-				category = cat_grand_battle_plan
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_grand_battle_plan
 			}
 		}
 	}

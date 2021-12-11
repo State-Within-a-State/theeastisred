@@ -7,11 +7,25 @@ set_convoys = 20
 set_stability = 0.5
 set_war_support = 0.20
 
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
 set_technology = {
-	### Tanks ###
-	gwtank = 1
-	basic_light_tank = 1
-
 	### Infantry ###
 	infantry_weapons = 1
 	infantry_weapons1 = 1
@@ -39,37 +53,36 @@ if = {
 	}
 
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
-		weltkrieg_submarine_hull = 1
-		submarine_hull_1936 = 1
-		cruiser_submarine = 1
-		carrier_conversion = 1
-		carrier_hull_1936 = 1
-		ship_hull_revived_ac = 1
-		weltkrieg_heavy_ship_hull = 1
-		heavy_ship_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		panzerschiffe = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		cruiser_submarines = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		early_torpedo = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		light_battery_one = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
 		improved_ship_torpedo_launcher = 1
 		basic_cruiser_armor_scheme = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
 		basic_heavy_armor_scheme = 1
-		capital_gunnery_one = 1
-		weltkrieg_naval_gunnery = 1
-		naval_ammo_one = 1
-		naval_ammo_two = 1
 
 		### Transport ###
-		transport = 1
+		mtg_transport = 1
 	}
 }
 
@@ -81,25 +94,39 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
-		weltkrieg_submarine_nonmtg = 1
-		interwar_submarine_nonmtg = 1
-		weltkrieg_armored_cruiser_nonmtg = 1
-		interwar_armored_cruiser_nonmtg = 1
-		weltkrieg_dreadnought_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battlecruiser = 1
+		early_battleship = 1
 
 		### Transport ###
-		transport_n = 1
+		transport = 1
 	}
 }
 
-set_country_flag = soc_dems_are_socialists
+create_intelligence_agency = {
+					name = "Eyes of the New Sons"
+					icon = GFX_intelligence_agency_logo_KX_pap_3
+				}
+
 
 add_ideas = {
 	limited_conscription
+	MLT_sons_of_malta_base
+	MLT_langaune_question
+	MLT_republicanismonrise
+	MLT_commie_cells
+	MLT_blind_garrison
+	MLT_Enrico_Mizzi_hog_sco
+	MLT_Giorgio_Borg_Olivier_for_sco
+	MLT_Giovanni_Felice_eco_sco
+	MLT_Ugo_Pasquale_Mifsud_sec_sco
 }
 
 set_popularities = {
@@ -110,38 +137,84 @@ set_popularities = {
 	social_liberal = 6
 	market_liberal = 4
 	social_conservative = 22
-	authoritarian_democrat = 35
-	paternal_autocrat = 4
+	authoritarian_democrat = 15
+	paternal_autocrat = 24
 	national_populist = 8
 }
 
 set_cosmetic_tag = MLT_GER
 
+country_event = { id = mlt.8 days = 1 } #Intro Event
+
 set_politics = {
-	ruling_party = authoritarian_democrat
-	last_election = "1932.6.21"
+	ruling_party = paternal_autocrat
+	last_election = "1930.6.21"
 	election_frequency = 48
 	elections_allowed = no
 }
 
 create_country_leader = {
 	name = "Ludovico Chigi della Rovere-Albani"
-	picture = "Portrait_Grandmaster_Ludovico.png"
+	picture = "gfx/leaders/MLT/Portrait_Grandmaster_Ludovico.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = neo_feudalism_subtype
 	traits = {}
 }
 
 create_country_leader = {
 	name = "Paul Boffa"
-	picture = "Portrait_MLT_Paul_Boffa.png"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Paul_Boffa.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
+}
+create_country_leader = {
+	name = "Dominic Mintoff"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Dominic_Mintoff.png"
+	expire = "1965.1.1"
+	ideology = christian_socialism_subtype
+}
+create_country_leader = {
+	name = "Dominic Mintoff"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Dominic_Mintoff.png"
+	expire = "1965.1.1"
+	ideology = syndicalist_subtype
+}
+create_country_leader = {
+	name = "Carmelo Borg Pisani"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Carmelo_Borg_Pisani.png"
+	expire = "1965.1.1"
+	ideology = natsynd_subtype
+}
+
+create_country_leader = {
+	name = "Gerald Strickland"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Gerald_Strickland.png"
+	expire = "1965.1.1"
+	ideology = liberal_conservative_subtype
+}
+
+create_country_leader = {
+	name = "Gerald Strickland"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Gerald_Strickland.png"
+	expire = "1965.1.1"
+	ideology = centrist_subtype
 }
 
 create_country_leader = {
 	name = "Enrico Mizzi"
-	picture = "Portrait_MLT_Enrico_Mizzi.png"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Enrico_Mizzi.png"
 	expire = "1965.1.1"
-	ideology = paternal_autocrat_subtype
+	ideology = christian_democracy_subtype
+}
+create_country_leader = {
+	name = "Enrico Mizzi"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Enrico_Mizzi.png"
+	expire = "1965.1.1"
+	ideology = oligarchy_subtype
+}
+create_country_leader = {
+	name = "Enrico Mizzi"
+	picture = "gfx/leaders/MLT/Portrait_MLT_Enrico_Mizzi.png"
+	expire = "1965.1.1"
+	ideology = fundementalism_subtype
 }

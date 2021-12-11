@@ -1,9 +1,25 @@
 ﻿capital = 592
 OOB = "GXC"
 set_research_slots = 2
+starting_train_buffer = 0.5
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
 set_technology = {
-	### Tanks ###
-	gwtank = 1
+	basic_train = 1
 	### Infantry ###
 	infantry_weapons = 1
 	tech_support = 1
@@ -33,15 +49,16 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		weltkrieg_naval_gunnery = 1
-		light_battery_one = 1
+		basic_battery = 1
+		basic_light_battery = 1
 		smoke_generator = 1
 	}
 }
@@ -55,10 +72,10 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
 	}
 }
 
@@ -114,21 +131,21 @@ add_ideas = {
 create_country_leader = {
 	name = "Chen Jiongming"
 	desc = "POLITICS_GXC_CHEN_JIONGMING_DESC"
-	picture = "Portrait_GXC_Chen_Jiongming.png"
+	picture = "gfx/leaders/GXC/Portrait_GXC_Chen_Jiongming.png"
 	expire = "1965.1.1"
 	ideology = social_democrat_subtype
 }
 create_country_leader = {
 	name = "Chen Jiongming"
 	desc = "POLITICS_GXC_CHEN_JIONGMING_DESC"
-	picture = "Portrait_GXC_Chen_Jiongming.png"
+	picture = "gfx/leaders/GXC/Portrait_GXC_Chen_Jiongming.png"
 	expire = "1965.1.1"
 	ideology = social_liberal_subtype
 }
 create_country_leader = {
 	name = "Chen Lianbo"
 	desc = "POLITICS_GXC_CHEN_LIANBO_DESC"
-	picture = "Portrait_GXC_Chen_Lianbo.png"
+	picture = "gfx/leaders/GXC/Portrait_GXC_Chen_Lianbo.png"
 	expire = "1965.1.1"
 	ideology = market_liberal_subtype
 }
@@ -137,14 +154,14 @@ create_country_leader = {
 	desc = "POLITICS_GXC_LI_ZONGREN_DESC"
 	picture = "gfx/leaders/YUN/Portrait_Yunnan_Li_Zongren.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = authdem_warlordism_subtype
 }
 create_country_leader = {
 	name = "Ma Ji"
 	desc = "POLITICS_GXC_MA_JI_DESC"
-	picture = "Portrait_GXC_Ma_Ji.png"
+	picture = "gfx/leaders/GXC/Portrait_GXC_Ma_Ji.png"
 	expire = "1965.1.1"
-	ideology = paternal_autocrat_subtype
+	ideology = pataut_warlordism_subtype
 }
 create_country_leader = {
 	name = "Zhang Tianran"
@@ -158,7 +175,7 @@ create_country_leader = {
 create_field_marshal = { #Guangdong
 	name = "Chen Jiongming"
 	desc = "POLITICS_GXC_CHEN_JIONGMING_ARMY_DESC"
-	picture = "Portrait_GXC_Chen_Jiongming.png"
+	portrait_path = "gfx/leaders/GXC/Portrait_GXC_Chen_Jiongming.png"
 	traits = {
 		GXC_guangdong_clique_officer
 		old_guard

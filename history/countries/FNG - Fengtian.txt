@@ -2,10 +2,26 @@
 OOB = "FNG"
 set_naval_oob= "FNG_naval"
 set_research_slots = 3
+starting_train_buffer = 1
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
 set_technology = {
 	#### MOD ####
-	#### Tanks ####
-	gwtank = 1
+	basic_train = 1
 	#### INF ####
 	infantry_weapons = 1
 	tech_support = 1
@@ -36,16 +52,24 @@ if = {
 		has_dlc = "Man the Guns"
 	}
 	set_technology = {
-		weltkrieg_light_ship_hull = 1
-		contact_mine = 1
-		light_ship_hull_1936 = 1
-		weltkrieg_cruiser_hull = 1
-		cruiser_hull_1936 = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		
+		basic_naval_mines = 1
 
 		## Modules##
-		weltkrieg_naval_gunnery = 1
-		light_battery_one = 1
-		smoke_generator = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_secondary_battery = 1
+		improved_secondary_battery = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
+		improved_ship_torpedo_launcher = 1
+		basic_cruiser_armor_scheme = 1
 	}
 }
 
@@ -58,10 +82,12 @@ if = {
 		}
 	}
 	set_technology = {
-		weltkrieg_destroyer_nonmtg = 1
-		interwar_destroyer_nonmtg = 1
-		weltkrieg_cruiser_nonmtg = 1
-		interwar_cruiser_nonmtg = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_submarine = 1
+		basic_submarine = 1
 	}
 }
 
@@ -220,21 +246,21 @@ create_country_leader = {
 create_country_leader = {
 	name = "Zhang Zuolin"
 	desc = "POLITICS_ZHANG_ZUOLIN_DESC"
-	picture = "Portrait_FNG_Zhang_Zuolin.png"
+	picture = "gfx/leaders/FNG/Portrait_FNG_Zhang_Zuolin.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = authdem_warlordism_subtype
 }
 create_country_leader = {
 	name = "Zhang Xueliang"
 	desc = "POLITICS_ZHANG_XUELIANG_DESC"
-	picture = "Portrait_FNG_Zhang_Xueliang.png"
+	picture = "gfx/leaders/FNG/Portrait_FNG_Zhang_Xueliang.png"
 	expire = "1965.1.1"
-	ideology = paternal_autocrat_subtype
+	ideology = pataut_warlordism_subtype
 }
 create_country_leader = {
 	name = "Hóngwu"
 	desc = "POLITICS_HONGWU_DESC"
-	picture = "Portrait_LEC_Hongwu.png"
+	picture = "gfx/leaders/LEC/Portrait_LEC_Hongwu.png"
 	expire = "1965.1.1"
 	ideology = national_populist_subtype
 }
@@ -259,7 +285,7 @@ set_convoys = 30
 create_field_marshal = {
 	name = "Zhang Zuolin"
 	desc = "POLITICS_ZHANG_ZUOLIN_ARMY_DESC"
-	picture = "Portrait_FNG_Zhang_Zuolin.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Zhang_Zuolin.png"
 	traits = {
 		old_guard
 		organizer
@@ -279,9 +305,9 @@ create_field_marshal = {
 ### Corps Commanders ###
 
 create_corps_commander = {
-	name = "Zhang Xueliang"
+	name = "Zhang Xueliang "
 	desc = "POLITICS_ZHANG_XUELIANG_ARMY_DESC"
-	picture = "Portrait_FNG_Zhang_Xueliang_Army.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Zhang_Xueliang_Army.png"
 	traits = {
 		trait_engineer
 		politically_connected
@@ -299,7 +325,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Wu Junsheng"
 	desc = "POLITICS_WU_JUNSHENG_ARMY_DESC"
-	picture = "Portrait_FNG_Wu_Junsheng.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Wu_Junsheng.png"
 	traits = {
 		old_guard
 		cavalry_officer
@@ -315,7 +341,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Zhang Zuoxiang"
 	desc = "POLITICS_ZHANG_ZUOXIANG_ARMY_DESC"
-	picture = "Portrait_FNG_Zhang_Zuoxiang.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Zhang_Zuoxiang.png"
 	traits = {
 		old_guard
 		career_officer
@@ -332,7 +358,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Yang Yuting"
 	desc = "POLITICS_YANG_YUTING_ARMY_DESC"
-	picture = "Portrait_FNG_Yang_Yuting.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Yang_Yuting.png"
 	traits = {
 		career_officer
 		politically_connected
@@ -349,7 +375,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Wang Shuchang"
 	desc = "POLITICS_WANG_SHUCHANG_ARMY_DESC"
-	picture = "Portrait_FNG_Wang_Shuchang.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Wang_Shuchang.png"
 	traits = {
 		career_officer
 	}
@@ -365,7 +391,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Ma Zhanshan"
 	desc = "POLITICS_MA_ZHANSHAN_ARMY_DESC"
-	picture = "Portrait_FNG_Ma_Zhanshan.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Ma_Zhanshan.png"
 	traits = {
 		trickster
 		trait_reckless
@@ -381,7 +407,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Wan Fulin"
 	desc = "POLITICS_WAN_FULIN_ARMY_DESC"
-	picture = "Portrait_FNG_Wan_Fulin.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Wan_Fulin.png"
 	traits = {
 		infantry_officer
 	}
@@ -397,7 +423,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Zang Shiyi"
 	desc = "POLITICS_ZANG_SHIYI_ARMY_DESC"
-	picture = "Portrait_FNG_Zang_Shiyi.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Zang_Shiyi.png"
 	traits = {
 		career_officer
 		cavalry_officer
@@ -414,7 +440,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Zhang Haipeng"
 	desc = "POLITICS_ZHANG_HAIPENG_ARMY_DESC"
-	picture = "Portrait_FNG_Zhang_Haipeng.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Zhang_Haipeng.png"
 	traits = {
 		old_guard
 		cavalry_officer
@@ -431,7 +457,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Tang Yulin"
 	desc = "POLITICS_TANG_YULIN_ARMY_DESC"
-	picture = "Portrait_FNG_Tang_Yulin.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Tang_Yulin.png"
 	traits = {
 		politically_connected
 	}
@@ -447,7 +473,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Bao Wenyue"
 	desc = "POLITICS_BAO_WENYUE_ARMY_DESC"
-	picture = "Portrait_FNG_Bao_Wenyue.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Bao_Wenyue.png"
 	traits = {
 		politically_connected
 	}
@@ -461,7 +487,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Zhang Jinghui"
 	desc = "POLITICS_ZHANG_JINGHUI_ARMY_DESC"
-	picture = "Portrait_FNG_Zhang_Jinghui.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Zhang_Jinghui.png"
 	traits = {
 		old_guard
 		politically_connected
@@ -477,7 +503,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Feng Zhanhai"
 	desc = "POLITICS_FENG_ZHANHAI_ARMY_DESC"
-	picture = "Portrait_FNG_Feng_Zhanhai.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Feng_Zhanhai.png"
 	traits = {
 		infantry_officer
 		career_officer
@@ -492,7 +518,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Su Bingwen"
 	desc = "POLITICS_SU_BINGWEN_ARMY_DESC"
-	picture = "Portrait_FNG_Su_Bingwen.png"
+	portrait_path = "gfx/leaders/FNG/Portrait_FNG_Su_Bingwen.png"
 	traits = {
 		infantry_officer
 		career_officer
@@ -509,7 +535,7 @@ create_corps_commander = {
 create_navy_leader = {
 	name = "Shen Honglie"
 	desc = "POLITICS_SHEN_HONGLIE_NAVY_DESC"
-	picture = "Portrait_FNG_Shen_Honglie.png"
+	picture = "gfx/leaders/FNG/Portrait_FNG_Shen_Honglie.png"
 	traits = {
 		old_guard_navy
 		navy_career_officer

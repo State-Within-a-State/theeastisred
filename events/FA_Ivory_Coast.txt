@@ -40,12 +40,11 @@ country_event = { # Yeet on DWA GARBAGE LEGACY EVENT REWORK LATER
 			}
 			every_unit_leader = {
 				limit = {
-					has_id = 12433 
+					has_id = 12733 
 				}
 				promote_leader = yes
 			}
 
-			remove_unit_leader = 12435
 			GHA = { 
 				transfer_state = 274		
 			}
@@ -150,13 +149,12 @@ country_event = {
 	option = {
 		name = civ.3.a
 		add_stability = -0.10
-		kill_country_leader = yes
 		create_country_leader = {
 	name = "Duke Nicholaus von Oldenburg"
 	desc = "POLITICS_FELIX_CIV_BOIGNY_DESC"
 	picture = "gfx/leaders/CIV/CIV_Nikolaus_von_Oldenburg.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = colonial_govt_subtype
 	traits = {}
 }
 	}
@@ -182,7 +180,7 @@ country_event = {
 	desc = "POLITICS_FELIX_CIV_BOIGNY_DESC"
 	picture = "gfx/leaders/CIV/CIV_Arnold_Hodson.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = colonial_govt_subtype
 	traits = {}
 }
 hidden_effect = {
@@ -200,7 +198,7 @@ add_popularity = {
 	desc = "POLITICS_FELIX_CIV_BOIGNY_DESC"
 	picture = "gfx/leaders/CIV/CIV_Jules_Brevie.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = colonial_govt_subtype
 	traits = {}
 }
 hidden_effect = {
@@ -591,7 +589,7 @@ country_event = { #Olympio wants to buy the entire fucking colony
 			}
 			every_unit_leader = {
 				limit = {
-					has_id = 12433 
+					has_id = 12733 
 				}
 				promote_leader = yes
 			}
@@ -608,6 +606,9 @@ country_event = { #Olympio wants to buy the entire fucking colony
 	
 	option = {
 		name = civ.25.a
+		ai_chance = {
+			factor = 40
+		}
 		set_cosmetic_tag = TOG_FED
 		
 		create_country_leader = {
@@ -659,6 +660,9 @@ country_event = { #Olympio wants to buy the entire fucking colony
 	}
 	
 	option = {
+		ai_chance = {
+			factor = 60
+		}
 		name = civ.25.b
 		set_country_flag = CIV_bout_to_explode
 	}
@@ -795,6 +799,47 @@ country_event = { #Adolf Fredrich Flees
 		}
 	}
 }
+
+country_event = { #Kwassi Bruce flavour
+	id = civ.30
+	immediate = {log = "[GetDateText]: [Root.GetName]: event civ.30"}
+	title = civ.30.t
+	desc = civ.30.d
+	picture = GFX_event_BBR_Jazz
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = {
+		name = civ.30.a
+		hidden_effect = {
+			country_event = {
+				id = civ.31
+				days = 45
+			}
+		}
+	}
+}
+
+country_event = { #Disko flavour
+	id = civ.31
+	immediate = {log = "[GetDateText]: [Root.GetName]: event civ.31"}
+	title = civ.31.t
+	desc = civ.31.d
+	picture = GFX_report_event_CIV_disko
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	option = {
+		name = civ.31.a
+		add_stability = 0.02
+		add_war_support = 0.02
+	}
+}
+
 country_event = {#bush war gang
 	id = civrodie.1
 	immediate = {log = "[GetDateText]: [Root.GetName]: event civrodie.1"}

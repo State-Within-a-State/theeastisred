@@ -12,7 +12,7 @@ focus_tree = {
 	
 	focus = {
 		id = FRA_eco_direction
-		icon = GFX_DAH_FR_Prod
+		icon = GFX_goal_FRA_syndicate_of_production
 		cost = 8.00
 		x = 5
 		y = 0
@@ -27,7 +27,7 @@ focus_tree = {
 	
 	focus = {
 		id = FRA_socialist_education
-		icon = GFX_goal_brain
+		icon = GFX_goal_FRA_union_education
 		cost = 8.00
 		x = 13
 		y = 0
@@ -42,7 +42,7 @@ focus_tree = {
 	
 	focus = {
 		id = FRA_road_to_war
-		icon = GFX_goal_USA_sabotabby
+		icon = GFX_goal_FRA_germanophobia
 		cost = 8.00
 		x = 13
 		y = 0
@@ -291,7 +291,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_orth_syndicalism
-		icon = GFX_goal_generic_workers_democracy
+		icon = GFX_goal_FRA_cgt_loyalty
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_eco_direction
@@ -648,7 +648,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_decentralized_industry
-		icon = GFX_goal_workers_for_business
+		icon = GFX_goal_FRA_develop
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_cooperatives
@@ -1039,7 +1039,7 @@ focus_tree = {
 	
 	focus = {
 		id = FRA_dedication
-		icon = GFX_goal_syndicalist_workers
+		icon = GFX_goal_FRA_prol_econ
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_Industrialisation
@@ -1077,7 +1077,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_chemins_de_fer
-		icon = GFX_goal_agency
+		icon = GFX_goal_FRA_communal_statistical_commission
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_plan_prost
@@ -1171,7 +1171,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_reduce_unemploy
-		icon = GFX_BBR_full_employement
+		icon = GFX_goal_FRA_communal_work_obligations
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_improve_manage
@@ -1292,7 +1292,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_inter_coop
-		icon = GFX_focus_generic_socialist_science
+		icon = GFX_focus_focus_fra_liberte_egalite_solidarite
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_Industrialisation
@@ -1325,7 +1325,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_modern_farms
-		icon = GFX_goal_generic_mechanisation
+		icon = GFX_goal_FRA_farm_outreach
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_war_eco_agri
@@ -1388,7 +1388,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_mass_production
-		icon = GFX_goal_CSA_department_of_production
+		icon = GFX_goal_FRA_syndicate_of_consumption
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_war_eco_agri
@@ -1456,7 +1456,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_market_socialism
-		icon = GFX_Socialist_Law
+		icon = GFX_goal_FRA_social_free_market
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_decentralized_industry
@@ -1932,6 +1932,9 @@ focus_tree = {
 				}
 			}
 		}
+		mutually_exclusive = {
+			focus = FRA_peace_with_germany
+		}
 		will_lead_to_war_with = GER
 		bypass = {
 			OR = {
@@ -1947,6 +1950,55 @@ focus_tree = {
 				type = annex_everything
 				target = GER
 			}
+		}
+	}
+	focus = {
+		id = FRA_peace_with_germany
+		icon = GFX_goal_BAN_peaceful_state
+		cost = 8.00
+		prerequisite = {
+			focus = FRA_Demand_Alsace_Lorraine
+		}
+		mutually_exclusive = {
+			focus = FRA_War_with_germany
+		}
+		x = 2
+		y = 1
+		relative_position_id = FRA_Demand_Alsace_Lorraine
+		available = {
+			has_country_flag = GER_little_bitch
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				NOT = {
+					has_government = totalist
+					is_in_faction_with = RUS
+				}
+				GER = {
+					has_government = social_democrat
+					has_completed_focus = GER_embrace_faud
+				}
+
+			}
+		}
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus FRA_War_with_germany"
+			add_war_support = -0.25
+			remove_ideas = THINT_exact_vengeance
+			diplomatic_relation = { 
+    		country = GER 
+    		relation = non_aggression_pact 
+				}
+				GER = {
+					diplomatic_relation = { 
+    		country = FRA 
+    		relation = non_aggression_pact 
+				}
+				}
+				
+
 		}
 	}
 	focus = {
@@ -2529,7 +2581,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_special_forces
-		icon = GFX_goal_yanshan
+		icon = GFX_goal_generic_mountain_warfare
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_German_borders
@@ -2644,9 +2696,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FRA_principe_concentration"
-			add_tech_bonus = {
-				name = FRA_principe_concentration
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -2775,7 +2827,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_analysing_wki
-		icon = GFX_goal_planning_bonus
+		icon = GFX_goal_NFA_Verdun_memories
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_centralized_hc
@@ -2788,9 +2840,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FRA_analysing_wki"
-			add_tech_bonus = {
-				name = FRA_analysing_wki
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -2832,9 +2884,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FRA_military_academy"
-			add_tech_bonus = {
-				name = FRA_military_academy
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -2888,7 +2940,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_mission_type
-		icon = GFX_goal_army_guy_2
+		icon = GFX_goal_FRA_arms_of_the_people
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_officers_initiative
@@ -2901,9 +2953,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FRA_mission_type"
-			add_tech_bonus = {
-				name = FRA_mission_type
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -2979,9 +3031,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FRA_global_organization"
-			add_tech_bonus = {
-				name = FRA_global_organization
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -3030,7 +3082,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_grand_army_reform
-		icon = GFX_goal_reform_socialist_army
+		icon = GFX_goal_FRA_warrior_ethics
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_tank_assembly_line
@@ -3048,9 +3100,9 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FRA_grand_army_reform"
 			add_ideas = FRA_Red_Army
-			add_tech_bonus = {
-				name = FRA_grand_army_reform
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -3261,9 +3313,9 @@ focus_tree = {
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus FRA_st_exp_doctrine"
-			add_tech_bonus = {
-				name = FRA_st_exp_doctrine
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = air_doctrine
 			}
@@ -3298,7 +3350,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_bombers
-		icon = GFX_focus_usa_escort_fighters
+		icon = GFX_goal_generic_air_tactical_bomber_new
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_st_exp_doctrine
@@ -3371,7 +3423,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_rocket_development
-		icon = GFX_goal_rocket
+		icon = GFX_focus_rocketry
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_fighters
@@ -3532,7 +3584,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_colonnes_neptune
-		icon = GFX_goal_generic_marines2
+		icon = GFX_goal_NFA_Troupes_de_Marine_Focus
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_waves_of_syndicalism
@@ -3755,7 +3807,7 @@ focus_tree = {
 	}
 	focus = {
 		id = FRA_naval_bombers
-		icon = GFX_goal_generic_air_naval_bomber
+		icon = GFX_goal_generic_air_naval_bomber_new
 		cost = 8.00
 		prerequisite = {
 			focus = FRA_navy_focus
@@ -4294,10 +4346,11 @@ focus_tree = {
 				uses = 1
 				category = infantry_tech
 			}
-			add_tech_bonus = {
-				bonus = 1
-				uses = 1
-				category = land_doctrine
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = land_doctrine
 			}
 		}
 	}
@@ -5078,7 +5131,10 @@ focus_tree = {
 			custom_effect_tooltip = FRA_great_purge_tooltip
 			remove_ideas = FRA_Sorelian_Division
 			remove_ideas = FRA_black_guard_insurgency_idea
-			remove_unit_leader = 5770
+			random_unit_leader = {
+					limit = { has_id = 5770 }			
+					remove_unit_leader = yes
+				}
 		}
 	}
 	
