@@ -1,6 +1,6 @@
 focus_tree = {
-	id = new-commie-2
-	continuous_focus_position = { x = 0 y = 2000 } 
+	id = new-commie-1
+	continuous_focus_position = { x = 0 y = 3000 } 
 	country = {
 		factor = 0
 		modifier = {
@@ -32,6 +32,15 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_declaring_the_chinese_revolution  }
+		
+		completion_reward = {
+			declare_war_on = {
+			target = AOG
+			type = annex_everything
+				}
+				
+		
+		}
 	}
 
 	#Thrash Japanese Aggression
@@ -45,6 +54,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_a_national_awakening  }
+		completion_reward = {
+			declare_war_on = {
+			target = JAP
+			type = annex_everything
+				}
+				
+		
+		}
 	}
 
 	#New Infrastructure Projects
@@ -60,6 +77,22 @@ focus_tree = {
 		prerequisite = { focus = PRC_shanghai_red_ports  }
 	}
 
+	#The  3 Disciplines
+	focus = {
+		id = PRC_the3disciplines
+		icon = GFX_goal_generic_army_doctrines
+		x = 21
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = PRC_form_the_pla  focus = PRC_keeptheredmilitias  }
+		completion_reward = {
+		add_war_support = 0.07
+		}
+	}
+
 	#Forming The Collective Communes
 	focus = {
 		id = PRC_forming_the_collective_communes
@@ -71,6 +104,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_comrade_liu  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Empowering Moderates
@@ -84,6 +120,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_secular_government  } prerequisite = { focus = PRC_purge_the_rebel_factions  }
+		completion_reward = {
+		add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.05
+			}
+			
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.075
+			}
+		}
 	}
 
 	#Calling for the National Liberation Congress
@@ -109,6 +156,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_calling_for_the_national_liberation_congress  }
+		available = {
+		always = no
+		}
+		completion_reward = {
+		
+		add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.1
+			}
+		}
 	}
 
 	#Comrades in Arms
@@ -122,6 +179,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_calling_for_the_national_liberation_congress  }
+		available = {
+		always = no
+		}
+		completion_reward = {
+		add_popularity = {
+				ideology = syndicalist
+				popularity = 0.1
+			}
+		}
 	}
 
 	#Leninist Revival
@@ -135,6 +201,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_calling_for_the_national_liberation_congress  }
+		available = {
+		always = no
+		}
+		completion_reward = {
+		add_popularity = {
+				ideology = totalist
+				popularity = 0.1
+			}
+		}
 	}
 
 	#Red Guards Seize Power
@@ -148,6 +223,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_calling_for_the_national_liberation_congress  }
+		available = {
+		always = no
+		}
+		completion_reward = {
+		add_popularity = {
+				ideology = totalist
+				popularity = 0.1
+			}
+		}
 	}
 
 	#The Socialist Silk Road
@@ -161,6 +245,23 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_open_the_ministry_of_railways  } prerequisite = { focus = PRC_time_for_an_alliance  focus = PRC_a_new_alliance  } prerequisite = { focus = PRC_open_the_ministry_of_railways  focus = PRC_join_france  } prerequisite = { focus = PRC_open_the_ministry_of_railways  }
+		completion_reward = {
+		
+		add_building_construction = {
+				type = industrial_complex
+				level = 5
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 5
+				instant_build = yes
+			}
+		
+		
+		
+		}
+	
 	}
 
 	#From Minister to Vice Premier
@@ -187,6 +288,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_a_revolutionary_bureaucracy  }
+		completion_reward = {
+		add_stability = 0.25
+		add_political_power = 20
+		add_war_support = 0.1
+		}
 	}
 
 	#Ties to the KMT
@@ -200,6 +306,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_a_revolutionary_bureaucracy  }
+		completion_reward = {
+		add_popularity = {
+		
+		ideology = social_democrat
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Limited Markets
@@ -226,6 +339,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_a_new_era_of_confucian_thought  }
+		completion_reward = {
+		add_stability = 0.13
+		
+		}
 	}
 
 	#Forming New Communes
@@ -239,6 +356,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_a_new_era_of_confucian_thought  } prerequisite = { focus = PRC_ties_to_the_kmt  }
+		completion_reward = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 5
+				instant_build = yes
+			}
+			
+			add_building_construction = {
+				type = infrastructure
+				level = 5
+				instant_build = yes
+			}
+		
+		}
 	}
 
 	#A Call For Unification
@@ -252,6 +383,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_ties_to_the_kmt  }
+		add_idea = LEC_national_unification
 	}
 
 	#Alliance With Mao
@@ -265,6 +397,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_a_new_era_of_confucian_thought  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#The Mongolian Question
@@ -291,6 +429,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_ties_to_the_kmt  } prerequisite = { focus = PRC_limited_markets  }
+		completion_reward = {
+		add_idea = LEC_world_for_china
+		}
 	}
 
 	#All Eyes in Asia
@@ -330,6 +471,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_limited_markets  }
+		completion_reward = {
+		add_stability = -0.3
+		}
 	}
 
 	#Release the Red News Papers
@@ -343,6 +487,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_democratisation  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.3
+			}
+			add_stability = 0.05
+		}
 	}
 
 	#Secular Government
@@ -356,6 +507,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_release_the_red_news_papers  }
+		completion_reward = {
+		add_stability = -0.05
+		add_political_power = 25
+		}
 	}
 
 	#Integrate The Red Guards
@@ -369,6 +524,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_alliance_with_mao  }
+		completion_reward = {
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+			}
+			add_stability = -0.1
+		
+		}
 	}
 
 	#Socialist Confucianism
@@ -580,6 +743,133 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_influence_tibetan_communes  } prerequisite = { focus = PRC_liberate_the_northern_nomads  }
+		available = {
+        
+            OR = {
+                NOT = {
+                country_exists = CNH
+            
+                }
+                CNH = { is_subject_of = LEC }    
+        
+        
+        }
+        
+        AND = {
+        
+            OR = {
+            NOT = {
+                country_exists = QCN
+                
+                }
+            QCN = { is_subject_of = LEC }
+            }
+        
+        
+        }
+        
+        
+        AND = {
+        
+            OR = {
+            NOT = {
+                country_exists = QNG
+                
+                }
+            QNG = { is_subject_of = LEC }
+            }
+        
+        
+        } 
+ 
+AND = {
+        
+            OR = {
+            NOT = {
+                country_exists = HNN
+                
+                }
+            HNN = { is_subject_of = LEC }
+            }
+        
+        
+        } 
+        
+        AND = {
+        
+            OR = {
+            NOT = {
+                country_exists = GXC
+                
+                }
+            GXC = { is_subject_of = LEC }
+            }
+        
+        
+        } 
+        AND = {
+        
+            OR = {
+            NOT = {
+                country_exists = SZC
+                
+                }
+            SZC = { is_subject_of = LEC }
+            }
+        
+        
+        } 
+        AND = {
+        
+            OR = {
+            NOT = {
+                country_exists = YUN
+                
+                }
+            YUN = { is_subject_of = LEC }
+            }
+        
+        
+        } 
+        
+        
+        
+        }
+		
+		 completion_reward = {
+        
+        annex_country = {
+            target = CNH
+            transfer_troops = yes
+        }
+        annex_country = {
+            target = QCN
+            transfer_troops = yes
+        }
+        annex_country = {
+            target = QNG
+            transfer_troops = no
+        }
+        annex_country = {
+            target = HNN
+            transfer_troops = yes
+        }
+        annex_country = {
+            target = GXC
+            transfer_troops = yes
+        }
+        annex_country = {
+            target = YUN
+            transfer_troops = yes
+        }
+        annex_country = {
+            target = SZC
+            transfer_troops = yes
+        }
+        
+        
+        
+        }
 	}
 
 	#Freedom for Asia
@@ -944,6 +1234,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_comrades_in_arms  }
+		available = {
+		always = no
+		}
 	}
 
 	#Union Run Factories
@@ -983,6 +1276,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_comrades_in_arms  }
+		available = {
+		always = no
+		}
 	}
 
 	#Permanent Revolution
@@ -1193,6 +1489,19 @@ focus_tree = {
 		prerequisite = { focus = PRC_a_land_of_opportunity  } prerequisite = { focus = PRC_the_chinese_trotsky  }
 	}
 
+	#Floating Airbases
+	focus = {
+		id = PRC_floating_airbases
+		icon = GFX_goal_generic_navy_carrier
+		x = 32
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_begin_naval_aviation  }
+	}
+
 	#Supporting Orthodox Marxists
 	focus = {
 		id = PRC_supporting_orthodox_marxists
@@ -1204,6 +1513,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_leninist_revival  }
+		available = {
+		always = no
+		}
 	}
 
 	#Align with Zinovites
@@ -1243,6 +1555,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_leninist_revival  }
+		available = {
+		always = no
+		}
 	}
 
 	#Aspiration to Molotov
@@ -2144,6 +2459,19 @@ focus_tree = {
 		prerequisite = { focus = PRC_isolatefrominternationalrevisionists  }
 	}
 
+	#Further Than Before
+	focus = {
+		id = PRC_further_than_before
+		icon = GFX_PRC_further_than_before-78484
+		x = 8
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = PRC_the_true_successor  }
+	}
+
 	#Ban the Opium Trade
 	focus = {
 		id = PRC_ban_the_opium_trade
@@ -2363,6 +2691,688 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_founding_maoism  } prerequisite = { focus = PRC_a_red_youth  }
+	}
+
+	#The True Successor
+	focus = {
+		id = PRC_the_true_successor
+		icon = GFX_PRC_the_true_successor-66845
+		x = 8
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_the_day_after  }
+		mutually_exclusive = { focus = PRC_kang_shang_secures_power  }
+		available = {
+		always = no
+		}
+	}
+
+	#The Day After
+	focus = {
+		id = PRC_the_day_after
+		icon = GFX_PRC_the_day_after-81044
+		x = 10
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+	}
+
+	#Kang Shang Secures Power
+	focus = {
+		id = PRC_kang_shang_secures_power
+		icon = GFX_PRC_kang_shang_secures_power-134809
+		x = 12
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_the_day_after  }
+		mutually_exclusive = { focus = PRC_the_true_successor  }
+		available = {
+		always = no
+		}
+	}
+
+	#Guerrilla Warfare
+	focus = {
+		id = PRC_guerrilla_warfare
+		icon = GFX_PRC_guerrilla_warfare-133671
+		x = 19
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_keeptheredmilitias  }
+	}
+
+	#Under Ground Factories
+	focus = {
+		id = PRC_under_ground_factories
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 17
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_keeptheredmilitias  }
+	}
+
+	#Continuing the Grand Leap
+	focus = {
+		id = PRC_continuing_the_grand_leap
+		icon = GFX_PRC_continuing_the_grand_leap-64101
+		x = 10
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_kang_shang_secures_power  focus = PRC_the_true_successor  }
+	}
+
+	#Support Red Guard Radicals
+	focus = {
+		id = PRC_support_red_guard_radicals
+		icon = GFX_PRC_support_red_guard_radicals-78445
+		x = 6
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = PRC_the_true_successor  }
+	}
+
+	#Staying on Course
+	focus = {
+		id = PRC_staying_on_course
+		icon = GFX_PRC_staying_on_course-96741
+		x = 12
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = PRC_kang_shang_secures_power  }
+	}
+
+	#Securing the Masses
+	focus = {
+		id = PRC_securing_the_masses
+		icon = GFX_PRC_securing_the_masses-64089
+		x = 14
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = PRC_kang_shang_secures_power  }
+	}
+
+	#Execute the Plotters
+	focus = {
+		id = PRC_execute_the_plotters
+		icon = GFX_PRC_execute_the_plotters-78447
+		x = 8
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = PRC_further_than_before  }
+	}
+
+	#A New Grand Hall of the People
+	focus = {
+		id = PRC_a_new_grand_hall_of_the_people
+		icon = GFX_PRC_a_new_grand_hall_of_the_people-73568
+		x = 6
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_support_red_guard_radicals  }
+	}
+
+	#Red Guard Study Clubs
+	focus = {
+		id = PRC_red_guard_study_clubs
+		icon = GFX_PRC_red_guard_study_clubs-82737
+		x = 10
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_continuing_the_grand_leap  }
+	}
+
+	#Stop Lin Biao
+	focus = {
+		id = PRC_stop_lin_biao
+		icon = GFX_PRC_stop_lin_biao-78822
+		x = 12
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = PRC_staying_on_course  }
+	}
+
+	#Recruits For State Security
+	focus = {
+		id = PRC_recruits_for_state_security
+		icon = GFX_PRC_recruits_for_state_security-78446
+		x = 14
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = PRC_securing_the_masses  }
+	}
+
+	#Our Hope is Place on You
+	focus = {
+		id = PRC_our_hope_is_place_on_you
+		icon = GFX_PRC_our_hope_is_place_on_you-134807
+		x = 6
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_a_new_grand_hall_of_the_people  }
+	}
+
+	#Arming the Guards
+	focus = {
+		id = PRC_arming_the_guards
+		icon = GFX_PRC_arming_the_guards-78459
+		x = 8
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = PRC_execute_the_plotters  }
+	}
+
+	#Hydro Revolution
+	focus = {
+		id = PRC_hydro_revolution
+		icon = GFX_PRC_hydro_revolution-82732
+		x = 10
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = PRC_red_guard_study_clubs  }
+	}
+
+	#Be Resolute, Fear No Sacrifice
+	focus = {
+		id = PRC_beresolutefearnosacrifice
+		icon = GFX_PRC_beresolutefearnosacrifice-82745
+		x = 12
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_stop_lin_biao  }
+	}
+
+	#Praising Mango's
+	focus = {
+		id = PRC_praisingmangos
+		icon = GFX_PRC_praisingmangos-96731
+		x = 14
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_recruits_for_state_security  }
+	}
+
+	#A Secure China
+	focus = {
+		id = PRC_a_secure_china
+		icon = GFX_PRC_a_secure_china-96814
+		x = 12
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_hydro_revolution  } prerequisite = { focus = PRC_beresolutefearnosacrifice  } prerequisite = { focus = PRC_praisingmangos  }
+	}
+
+	#A New Red State
+	focus = {
+		id = PRC_a_new_red_state
+		icon = GFX_PRC_a_new_red_state-78442
+		x = 8
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_our_hope_is_place_on_you  } prerequisite = { focus = PRC_arming_the_guards  } prerequisite = { focus = PRC_hydro_revolution  }
+	}
+
+	#Form the PLA
+	focus = {
+		id = PRC_form_the_pla
+		icon = GFX_PRC_form_the_pla-78963
+		x = 23
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		mutually_exclusive = { focus = PRC_keeptheredmilitias  }
+	}
+
+	#Keep the Red Militia's
+	focus = {
+		id = PRC_keeptheredmilitias
+		icon = GFX_PRC_keeptheredmilitias-61824
+		x = 19
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		mutually_exclusive = { focus = PRC_form_the_pla  }
+	}
+
+	#Motorising The Field
+	focus = {
+		id = PRC_motorising_the_field
+		icon = GFX_PRC_motorising_the_field-78456
+		x = 23
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_form_the_pla  }
+	}
+
+	#Build Up the Yangtze Line
+	focus = {
+		id = PRC_build_up_the_yangtze_line
+		icon = GFX_goal_generic_fortify_city
+		x = 25
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = PRC_form_the_pla  }
+	}
+
+	#New Workshops
+	focus = {
+		id = PRC_new_workshops
+		icon = GFX_focus_generic_industry_1
+		x = 17
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = PRC_under_ground_factories  }
+	}
+
+	#Rebuild Calvary Units
+	focus = {
+		id = PRC_rebuild_calvary_units
+		icon = GFX_goal_generic_cavalry
+		x = 19
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_guerrilla_warfare  }
+	}
+
+	#8 Guidelines
+	focus = {
+		id = PRC_8_guidelines
+		icon = GFX_focus_chi_army_reform
+		x = 21
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = PRC_the3disciplines  }
+	}
+
+	#New Tanks
+	focus = {
+		id = PRC_new_tanks
+		icon = GFX_focus_generic_army_tanks2
+		x = 23
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_motorising_the_field  }
+	}
+
+	#Arsenal of Socialism
+	focus = {
+		id = PRC_arsenal_of_socialism
+		icon = GFX_PRC_arsenal_of_socialism-135117
+		x = 25
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = PRC_build_up_the_yangtze_line  }
+	}
+
+	#The Red Militia
+	focus = {
+		id = PRC_the_red_militia
+		icon = GFX_PRC_the_red_militia-135116
+		x = 19
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_8_guidelines  } prerequisite = { focus = PRC_rebuild_calvary_units  } prerequisite = { focus = PRC_new_workshops  }
+	}
+
+	#A New Army
+	focus = {
+		id = PRC_a_new_army
+		icon = GFX_PRC_a_new_army-78958
+		x = 23
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = PRC_arsenal_of_socialism  } prerequisite = { focus = PRC_new_tanks  } prerequisite = { focus = PRC_8_guidelines  }
+	}
+
+	#Begin Naval Aviation
+	focus = {
+		id = PRC_begin_naval_aviation
+		icon = GFX_goal_generic_air_naval_bomber
+		x = 32
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_form_the_plaan  } prerequisite = { focus = PRC_start_the_plaaf  }
+	}
+
+	#Start the PLAAF
+	focus = {
+		id = PRC_start_the_plaaf
+		icon = GFX_PRC_start_the_plaaf-78954
+		x = 33
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+	}
+
+	#Form the PLAAN
+	focus = {
+		id = PRC_form_the_plaan
+		icon = GFX_PRC_form_the_plaan-78961
+		x = 31
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+	}
+
+	#Red Dragons
+	focus = {
+		id = PRC_red_dragons
+		icon = GFX_PRC_red_dragons-78957
+		x = 30
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_form_the_plaan  }
+	}
+
+	#Our Red Skies
+	focus = {
+		id = PRC_our_red_skies
+		icon = GFX_PRC_our_red_skies-135139
+		x = 34
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_start_the_plaaf  }
+	}
+
+	#Revolutionary Dreadnaughts
+	focus = {
+		id = PRC_revolutionary_dreadnaughts
+		icon = GFX_PRC_revolutionary_dreadnaughts-135141
+		x = 30
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_red_dragons  }
+	}
+
+	#Flying Bombs
+	focus = {
+		id = PRC_flying_bombs
+		icon = GFX_goal_generic_air_bomber
+		x = 34
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_our_red_skies  }
+	}
+
+	#Faster Than Ever
+	focus = {
+		id = PRC_faster_than_ever
+		icon = GFX_focus_rocketry
+		x = 31
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_revolutionary_dreadnaughts  } prerequisite = { focus = PRC_floating_airbases  }
+	}
+
+	#Splitting the Atom
+	focus = {
+		id = PRC_splitting_the_atom
+		icon = GFX_PRC_splitting_the_atom-135137
+		x = 33
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = PRC_floating_airbases  } prerequisite = { focus = PRC_flying_bombs  }
+	}
+
+	#The New Coup
+	focus = {
+		id = PRC_the_new_coup
+		icon = GFX_PRC_the_new_coup-66345
+		x = 39
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#Economic Reform
+	focus = {
+		id = PRC_economic_reform
+		icon = GFX_PRC_economic_reform-128725
+		x = 37
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = PRC_the_new_coup  }
+	}
+
+	#Restricting the Press
+	focus = {
+		id = PRC_restricting_the_press
+		icon = GFX_PRC_restricting_the_press-78974
+		x = 39
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = PRC_the_new_coup  }
+	}
+
+	#Purge the Radicals
+	focus = {
+		id = PRC_purge_the_radicals
+		icon = GFX_PRC_purge_the_radicals-82772
+		x = 41
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+	}
+
+	#Empowering Business
+	focus = {
+		id = PRC_empowering_business
+		icon = GFX_PRC_empowering_business-121100
+		x = 37
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = PRC_economic_reform  }
+	}
+
+	#Crazy Inflation
+	focus = {
+		id = PRC_crazy_inflation
+		icon = GFX_PRC_crazy_inflation-66827
+		x = 39
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = PRC_restricting_the_press  }
+	}
+
+	#Crush Opposition
+	focus = {
+		id = PRC_crush_opposition
+		icon = GFX_PRC_crush_opposition-298
+		x = 41
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = PRC_purge_the_radicals  }
+	}
+
+	#Nothing Happened in Tiananmen Sqaure
+	focus = {
+		id = PRC_nothing_happened_in_tiananmen_sqaure
+		icon = GFX_PRC_nothing_happened_in_tiananmen_sqaure-135153
+		x = 39
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = PRC_empowering_business  } prerequisite = { focus = PRC_crazy_inflation  } prerequisite = { focus = PRC_crush_opposition  }
+	}
+
+	#Military State
+	focus = {
+		id = PRC_military_state
+		icon = GFX_PRC_military_state-149
+		x = 38
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = PRC_nothing_happened_in_tiananmen_sqaure  }
+	}
+
+	#Socialism With Chinese Characteristics
+	focus = {
+		id = PRC_socialism_with_chinese_characteristics
+		icon = GFX_PRC_socialism_with_chinese_characteristics-135155
+		x = 40
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_nothing_happened_in_tiananmen_sqaure  }
+	}
+
+	#Wo Ai Beijing Tiananmen
+	focus = {
+		id = PRC_wo_ai_beijing_tiananmen
+		icon = GFX_PRC_wo_ai_beijing_tiananmen-135154
+		x = 39
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_military_state  } prerequisite = { focus = PRC_socialism_with_chinese_characteristics  }
 	}
 
 }
