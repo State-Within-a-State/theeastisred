@@ -84,29 +84,37 @@ country_event = {
 		 
 		option = {
 		name = chineserevolt.1.a
-		create_unit = {
-					division = "division_template = \"Red Guard Unit\" start_experience_factor = 0.1"
-					owner = QCN
-					prioritize_location = 12432
-						
-				}
-				add_state_core = 614
-				add_state_core = 607
-				add_state_core = 608
-				add_state_core = 620
-				add_state_core = 799
-				add_state_core = 1048
-				add_state_core = 1058
-				add_state_core = 1059
-				add_state_core = 622
-				add_state_core = 1072
-				add_state_core = 1015
+		
 				
-				
-			load_oob = "CNH_revolution_units"
-		LEC = {
-		puppet = QCN
+				FROM = {
+		declare_war_on = {
+				target = LEC
+				type = annex_everything
+			}
+		
 		}
+				
+				start_civil_war = {
+				ruling_party = radical_socialist
+				ideology = ROOT
+				size = 0.8
+				only_own_territory = no
+				capital = 614
+				states = { 
+					614 607 608 620 799 1048 1058 1059 622 1072 1015
+				}
+				keep_unit_leaders = {
+					
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
+			}
+			LEC = {
+		puppet = QIE
+		}
+				
+			
+		
 
 		}
 
@@ -128,50 +136,32 @@ country_event = {
 
 		option = {
 				name = chineserevolt.2.a
-				release = QNG
-		QNG = { add_state_core = 884 }
-		QNG = { add_state_core = 883 }
-		QNG = { add_state_core = 714 }
-		
-		QNG = {
-		load_oob = QNG_communist_units
+				
+		FROM = {
+		declare_war_on = {
+				target = LEC
+				type = annex_everything
+			}
 		
 		}
-		
-		LEC = {
-		puppet = QNG
-		}
-		
-		
-		
-		QNG = { division_template = {
-				name = "Red Guard Unit"
-				is_locked = no
-				division_names_group = QNG_INF_01
-				priority = 0
-				template_counter = 0
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 0 y = 0 }
+		start_civil_war = {
+				ruling_party = radical_socialist
+				ideology = ROOT
+				size = 0.8
+				only_own_territory = no
+				capital = 884
+				states = { 
+					884 883 714
 				}
-				support = { 
-					
-				} 
+				keep_unit_leaders = {
+					750 751 752
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
 			}
+			LEC = {
+		puppet = FNG
 		}
-		
-		hidden_effect = {
-			
-			country_event = {
-			id = chineserevolt.2
-			day = 1
-			
-			
-			}
-			
-			}
 		
 		
 		
@@ -226,9 +216,7 @@ country_event = {
 		name = chineserevolt.4.a
 		set_politics = { ruling_party = totalist
 		}
-		LEC = {
-		puppet = HNN
-		}
+		
 
 
 
@@ -244,7 +232,24 @@ country_event = {
 			}
 		
 		}
-
+					start_civil_war = {
+				ruling_party = radical_socialist
+				ideology = ROOT
+				size = 0.8
+				only_own_territory = no
+				capital = 1013
+				states = { 
+					1013
+				}
+				keep_unit_leaders = {
+					
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
+			}
+			LEC = {
+		puppet = HNN
+		}
 
 
 		}
@@ -270,9 +275,7 @@ country_event = {
 		name = chineserevolt.5.a
 		set_politics = { ruling_party = totalist
 		}
-		LEC = {
-		puppet = GXC
-		}
+		
 
 
 
@@ -288,6 +291,26 @@ country_event = {
 			}
 		
 		}
+		
+		start_civil_war = {
+				ruling_party = syndicalist
+				ideology = ROOT
+				size = 0.8
+				only_own_territory = no
+				capital = 1054
+				states = { 
+					1054 594 1053 1056 591 
+				}
+				keep_unit_leaders = {
+					
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
+			}
+		LEC = {
+		puppet = GXC
+		}
+		
 
 
 
@@ -315,9 +338,7 @@ country_event = {
 		name = chineserevolt.6.a
 		set_politics = { ruling_party = totalist
 		}
-		LEC = {
-		puppet = SZC
-		}
+		
 
 
 
@@ -333,12 +354,123 @@ country_event = {
 			}
 		
 		}
-
+					start_civil_war = {
+				ruling_party = radical_socialist
+				ideology = ROOT
+				size = 0.8
+				only_own_territory = no
+				capital = 650
+				states = { 
+					650 788
+				}
+				keep_unit_leaders = {
+					
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
+			}
+			LEC = {
+		puppet = SZC
+		}
 
 
 		}
 
 
+
+	}
+	
+	country_event = {
+
+		id = chineserevolt.7
+		title = chineserevolt.7.t
+		desc = chineserevolt.7.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+
+		option = {
+
+		name = chineserevolt.7.a
+		set_politics = { ruling_party = totalist
+		}
+		LEC = {
+		puppet = YUN
+		}
+
+
+
+		}
+		
+		option = {
+
+		name = chineserevolt.7.b
+		FROM = {
+		declare_war_on = {
+				target = LEC
+				type = annex_everything
+			}
+		
+		}
+					start_civil_war = {
+				ruling_party = radical_socialist
+				ideology = ROOT
+				size = 0.8
+				only_own_territory = no
+				capital = 603
+				states = { 
+					603 1051
+				}
+				keep_unit_leaders = {
+					
+				}
+				keep_political_leader = yes
+				keep_political_party_members = yes
+			}
+
+		LEC = {
+		puppet = YUN
+		}
+		}
+		
+
+
+	}
+	
+	country_event = {
+
+		id = chineserevolt.8
+		title = chineserevolt.8.t
+		desc = chineserevolt.8.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+
+		option = {
+
+		name = chineserevolt.8.a
+		LEC = {annex_country = {
+				target = SOV
+				transfer_troops = yes
+			}
+			}
+
+
+
+		}
+		option = {
+		name = chineserevolt.8.b
+		 LEC = {create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SOV
+			}
+		}
+
+		}
 
 	}
 	

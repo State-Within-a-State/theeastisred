@@ -416,6 +416,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_forming_new_communes  } prerequisite = { focus = PRC_a_call_for_unification  }
+		completion_reward = {
+		
+		unlock_decision_tooltip = LEC_dec_MON_expedition 
+		}
 	}
 
 	#A World For China
@@ -545,6 +549,14 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_forming_new_communes  }
+		completion_reward = {
+		add_political_power = 100
+		add_stability = 0.1
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.2
+		}
+		}
 	}
 
 	#New Agricultural Reform
@@ -558,6 +570,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_allowing_the_opium_trade  }
+		completion_reward = {
+		add_ideas = LEC_agricultural_reform
+		
+		}
 	}
 
 	#3 Year Plans
@@ -571,6 +587,22 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_appoint_xiannian  }
+		completion_reward = {
+		
+		add_building_construction = {
+				type = industrial_complex
+				level = 5
+				instant_build = yes
+			}
+			
+		add_building_construction = {
+				type = industrial_complex
+				level = 5
+				instant_build = yes
+			}
+		
+		
+		}
 	}
 
 	#Visiting India
@@ -584,6 +616,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_a_world_for_china  }
+		completion_reward = {
+		
+		
+		
+		}
 	}
 
 	#Pivoting toward Washington
@@ -610,6 +647,10 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_integrate_the_red_guards  }
+		completion_reward = {
+		add_manpower = -50000
+		
+		}
 	}
 
 	#Influence Tibetan Communes
@@ -623,6 +664,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_socialist_confucianism  } prerequisite = { focus = PRC_the_mongolian_question  }
+		completion_reward = {
+		unlock_decision_tooltip = LEC_dec_TIB_expedition
+		}
 	}
 
 	#Liberate the Northern Nomads
@@ -636,6 +680,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_the_mongolian_question  }
+		completion_reward = {
+		unlock_decision_tooltip = LEC_dec_XSM_expedition
+		unlock_decision_tooltip = LEC_dec_xinjiang_expedition
+		}
 	}
 
 	#A New Alliance
@@ -650,6 +698,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_pivoting_toward_washington  focus = PRC_all_eyes_in_asia  focus = PRC_visiting_india  }
 		mutually_exclusive = { focus = PRC_join_france  } mutually_exclusive = { focus = PRC_time_for_an_alliance  }
+		completion_reward = {
+		
+		create_faction = "East Asian Liberation Alliance"
+		
+		}
 	}
 
 	#Join France
@@ -663,7 +716,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_all_eyes_in_asia  focus = PRC_visiting_india  focus = PRC_pivoting_toward_washington  }
+		available = {
+		FRA = {
+		is_faction_leader = yes
+		}
+		
+		
+		}
 		mutually_exclusive = { focus = PRC_a_new_alliance  } mutually_exclusive = { focus = PRC_time_for_an_alliance  }
+		completion_reward = {
+		FRA = { add_to_faction = LEC }
+		}
 	}
 
 	#Time For An Alliance
@@ -678,6 +741,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_pivoting_toward_washington  focus = PRC_visiting_india  focus = PRC_all_eyes_in_asia  }
 		mutually_exclusive = { focus = PRC_a_new_alliance  } mutually_exclusive = { focus = PRC_join_france  }
+		available = {
+		
+		BHC = {
+		
+		is_faction_leader = yes
+		
+		}
+		}
+		completion_reward = {
+		BHC = { add_to_faction = LEC }
+		
+		
+		}
 	}
 
 	#Open the Ministry of Railways
@@ -691,6 +767,37 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_3_year_plans  }
+		completion_reward = {
+		
+		add_building_construction = {
+				type = infrastructure
+				level = 5
+				instant_build = yes
+			}
+		build_railway = {
+			  level = 1
+			  build_only_on_allied = yes
+			  controller_priority = {
+				base = 1
+			   
+				modifier = {
+				  tag = LEC
+				  add = 2
+				}
+			  }
+			  fallback = yes
+			  path = { 1069 11913 }
+			  start_province = 9843
+			  target_province = 7014
+			}
+		
+		
+		
+		
+		
+		
+		
+		}
 	}
 
 	#Fund the Cooperatives
@@ -704,6 +811,20 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_new_agricultural_reform  }
+		completion_reward = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 5
+				instant_build = yes
+			}
+			add_building_construction = {
+			type = infrastructure
+			level = 5
+			instant_build = yes
+		}
+		
+		
+		}
 	}
 
 	#A Voice Against Imperialism
@@ -717,6 +838,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_time_for_an_alliance  focus = PRC_join_france  focus = PRC_a_new_alliance  }
+		completion_reward = {
+		add_war_support = 0.25
+		add_political_power = 100
+		add_stability = 0.03
+		
+		}
 	}
 
 	#Anti-Unitarianism
@@ -730,6 +857,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_purge_the_rebel_factions  } prerequisite = { focus = PRC_influence_tibetan_communes  } prerequisite = { focus = PRC_liberate_the_northern_nomads  }
+		completion_reward = {
+		add_war_support = 0.2
+		add_manpower = 10000
+		
+		
+		}
 	}
 
 	#The Birth of a Federation
@@ -850,6 +983,14 @@ AND = {
             target = QNG
             transfer_troops = no
         }
+		annex_country = {
+            target = QIE
+            transfer_troops = no
+        }
+		annex_country = {
+            target = FNG
+            transfer_troops = no
+        }
         annex_country = {
             target = HNN
             transfer_troops = yes
@@ -883,6 +1024,10 @@ AND = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_a_new_alliance  focus = PRC_join_france  focus = PRC_time_for_an_alliance  }
+		completion_reward = {
+		add_stability = 0.4
+		add_political_power = 200
+		}
 	}
 
 	#Dismantle the Treaty Ports
@@ -896,6 +1041,8 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_liberate_the_northern_nomads  } prerequisite = { focus = PRC_influence_tibetan_communes  } prerequisite = { focus = PRC_open_the_ministry_of_railways  }
+		
+	
 	}
 
 	#Zhou's Writings
@@ -909,6 +1056,13 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_empowering_moderates  } prerequisite = { focus = PRC_antiunitarianism  } prerequisite = { focus = PRC_the_birth_of_a_federation  }
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.3
+			}
+		}
 	}
 
 	#Our New Place in the World
@@ -922,6 +1076,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_a_voice_against_imperialism  } prerequisite = { focus = PRC_freedom_for_asia  } prerequisite = { focus = PRC_dismantle_the_treaty_ports  }
+		completion_reward = {
+		add_political_power = 175
+		
+		}
 	}
 
 	#The Red Fruits of Labour
@@ -935,6 +1093,20 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_the_socialist_silk_road  } prerequisite = { focus = PRC_from_minister_to_vice_premier  } prerequisite = { focus = PRC_a_voice_against_imperialism  }
+		completion_reward = {
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+	
 	}
 
 	#Red Flags Wave High
@@ -948,6 +1120,17 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_zhouswritings  } prerequisite = { focus = PRC_our_new_place_in_the_world  } prerequisite = { focus = PRC_the_red_fruits_of_labour  }
+		completion_reward = {
+		add_manpower = 100000
+		add_political_power = 300
+		add_stability = 0.1
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.5
+		
+		}
+		add_war_support = 0.3
+		}
 	}
 
 	#French Economics
@@ -961,6 +1144,20 @@ AND = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PRC_local_autonomous_rail_unions  }
+		
+	completion_reward = {
+	add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+	add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+	
+		}
 	}
 
 	#Host the Landlord Trials
@@ -974,6 +1171,10 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_crush_the_landlords  }
+		completion_reward = {
+		add_manpower = -10000
+		
+		}
 	}
 
 	#Beware of Radicals
@@ -987,6 +1188,11 @@ AND = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_crush_the_landlords  }
+		completion_reward = {
+		
+		add_stability = -0.1
+		
+		}
 	}
 
 	#A Syndicalist Democracy
@@ -1000,6 +1206,10 @@ AND = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_coalition_with_zhou_enlai  }
+		completion_reward = {
+		add_stability = 0.2
+		
+		}
 	}
 
 	#Communal Schooling
@@ -1013,6 +1223,10 @@ AND = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PRC_coalition_with_zhou_enlai  }
+		completion_reward = {
+		add_research_slot = 1
+		
+		}
 	}
 
 	#The Great Leap Forward
@@ -1026,6 +1240,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_local_autonomous_rail_unions  }
+		completion_reward = {
+		add_ideas = LEC_great_leap_forward
+		
+		}
 	}
 
 	#Form the Syndical Guards
@@ -1039,6 +1257,14 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_reviewingtrotskysworks  }
+		completion_reward = {
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.1
+			}
+			
+			add_manpower = 100000
+		}
 	}
 
 	#Purge the Red Guards
@@ -1052,6 +1278,11 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_reviewingtrotskysworks  }
+		completion_reward = {
+		add_manpower = -200000
+		add_stability = 0.3
+		
+		}
 	}
 
 	#Secure the Northwest
@@ -1065,6 +1296,12 @@ AND = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_the_mongolian_issue  }
+		completion_reward = {
+		unlock_decision_tooltip = LEC_dec_XSM_expedition
+		unlock_decision_tooltip = LEC_dec_xinjiang_expedition
+		
+		
+		}
 	}
 
 	#Prepare For the Final Struggle
@@ -1078,6 +1315,13 @@ AND = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_the_mongolian_issue  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = JAP
+			}
+		
+		}
 	}
 
 	#A New Culture Movement
@@ -1091,6 +1335,15 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_expanding_universities  }
+		completion_reward = {
+		add_political_power = 100
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.35
+		
+		}
+		
+		}
 	}
 
 	#Welcoming International Travellers
@@ -1104,6 +1357,9 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_expanding_universities  }
+		completion_reward = {
+		add_manpower = 4000
+		}
 	}
 
 	#Local Autonomous Rail Unions
@@ -1117,6 +1373,16 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_union_run_factories  }
+		completion_reward = {
+		add_building_construction = {
+				type = infrastructure
+				level = 3
+				instant_build = yes
+			}
+		
+		}
+		
+		
 	}
 
 	#Crush the Landlords
@@ -1130,6 +1396,10 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_forming_the_collective_communes  }
+		completion_reward = {
+		add_manpower = -250000
+		
+		}
 	}
 
 	#Coalition With Zhou Enlai
@@ -1143,6 +1413,13 @@ AND = {
 			FOCUS_FILTER_USA_CONGRESS
 		}
 		prerequisite = { focus = PRC_liberation_of_politics  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		
+		}
 	}
 
 	#Expanding Universities
@@ -1156,6 +1433,9 @@ AND = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PRC_a_syndicalist_dictatorship  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Reviewing Trotsky's Works
@@ -1169,6 +1449,11 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_memories_of_the_revolution  }
+		completion_reward = {
+		add_political_power = 175
+		add_stability = 0.05
+		}
+		
 	}
 
 	#The Mongolian Issue
@@ -1182,6 +1467,9 @@ AND = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_our_international_comrades  }
+		completion_reward = {
+		unlock_decision_tooltip = LEC_dec_MON_expedition
+		}
 	}
 
 	#A Syndicalist Dictatorship
@@ -1195,6 +1483,13 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_thepartyshelmsman  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.05
+		}
+		
+		}
 	}
 
 	#Liberation of Politics
@@ -1208,6 +1503,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_comrade_liu  }
+		completion_reward = {
+		add_political_power = 25
+		add_stability = 0.2
+		}
 	}
 
 	#Our International Comrades
@@ -1221,6 +1520,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_comrade_liu  focus = PRC_thepartyshelmsman  }
+		completion_reward = {
+		FRA = { add_to_faction = LEC }
+		
+		}
 	}
 
 	#Comrade Liu
@@ -1250,6 +1553,19 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_thepartyshelmsman  focus = PRC_comrade_liu  }
+		completion_reward = {
+		add_building_construction = {
+				type = arms_factory
+				level = 5
+				instant_build = yes
+			}
+		add_building_construction = {
+			type = industrial_complex
+			level = 5
+			instant_build = yes
+		}
+				
+		}
 	}
 
 	#Memories of the Revolution
@@ -1263,6 +1579,9 @@ AND = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = PRC_thepartyshelmsman  }
+		completion_reward = {
+		add_war_support = 0.3
+		}
 	}
 
 	#The Party's Helmsman
@@ -1292,6 +1611,9 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_purge_the_red_guards  }
+		completion_reward = {
+		add_ideas = LEC_permanent_revolution
+		}
 	}
 
 	#Invite Li De
@@ -1305,6 +1627,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_welcoming_international_travellers  }
+		completion_reward = {
+		add_political_power = 100
+		add_manpower = 1
+		}
 	}
 
 	#Join our European Comrades
@@ -1318,6 +1644,12 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_prepare_for_the_final_struggle  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GER
+			}
+		}
 	}
 
 	#Secure Tibet
@@ -1331,6 +1663,11 @@ AND = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_secure_the_northwest  }
+		completion_reward = {
+		unlock_decision_tooltip = LEC_dec_TIB_expedition
+		
+		
+		}
 	}
 
 	#Reactionary Hunts
@@ -1344,6 +1681,9 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_form_the_syndical_guards  }
+		completion_reward = {
+		add_manpower -30000
+		}
 	}
 
 	#The Asian Avant Guard
@@ -1357,6 +1697,9 @@ AND = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_a_new_culture_movement  }
+		completion_reward = {
+		add_stability = 0.08
+		}
 	}
 
 	#Fixing The GLF Problems
@@ -1370,6 +1713,11 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_the_great_leap_forward  }
+		completion_reward = {
+		remove_ideas = LEC_great_leap_forward
+		add_ideas = LEC_great_leap_forward_recovery 
+		
+		}
 	}
 
 	#Technology Beyond Us
@@ -1383,6 +1731,9 @@ AND = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PRC_french_economics  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Syndicalist Culture
@@ -1396,6 +1747,12 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_host_the_landlord_trials  }
+		completion_reward = {
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.1
+			}
+		}
 	}
 
 	#Alliance with Moderates
@@ -1409,6 +1766,17 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_beware_of_radicals  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.05
+		}
+		
+		}
 	}
 
 	#Legacy of Moderate Radicalism
@@ -1422,6 +1790,9 @@ AND = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = PRC_a_syndicalist_democracy  }
+		completion_reward = {
+		add_stability = 0.25
+		}
 	}
 
 	#Legacy of the May 4th Movement
@@ -1435,6 +1806,9 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_communal_schooling  }
+		completion_reward = {
+		add_war_support = 0.23
+		}
 	}
 
 	#The New Chinese Revolution
@@ -1448,6 +1822,11 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_syndicalist_culture  } prerequisite = { focus = PRC_alliance_with_moderates  } prerequisite = { focus = PRC_legacy_of_moderate_radicalism  } prerequisite = { focus = PRC_legacy_of_the_may_4th_movement  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.3
+		
+		}
 	}
 
 	#A Land of Opportunity
@@ -1461,6 +1840,11 @@ AND = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = PRC_secure_tibet  } prerequisite = { focus = PRC_join_our_european_comrades  } prerequisite = { focus = PRC_fixing_the_glf_problems  } prerequisite = { focus = PRC_technology_beyond_us  }
+		completion_reward = {
+		add_stability = 0.5
+		add_manpower = 3903
+		
+		}
 	}
 
 	#The Chinese Trotsky
@@ -1474,6 +1858,12 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_the_asian_avant_guard  } prerequisite = { focus = PRC_invite_li_de  } prerequisite = { focus = PRC_reactionary_hunts  } prerequisite = { focus = PRC_permanent_revolution  }
+		completion_reward = {
+		add_political_power = 200
+		add_manpower = 500
+		add_stability = 0.02
+		add_war_support = 0.09
+		}
 	}
 
 	#The Red Torch
@@ -1487,6 +1877,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_a_land_of_opportunity  } prerequisite = { focus = PRC_the_chinese_trotsky  }
+		completion_reward = {
+		add_political_power = 300
+		
+		}
 	}
 
 	#Floating Airbases
@@ -1500,6 +1894,15 @@ AND = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PRC_begin_naval_aviation  }
+		completion_reward = {
+					add_tech_bonus = {
+					bonus = 0.5
+					uses = 1
+					category = naval_bomber
+				}
+						
+		
+		}
 	}
 
 	#Supporting Orthodox Marxists
@@ -1516,6 +1919,13 @@ AND = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		
+		}
 	}
 
 	#Align with Zinovites
@@ -1529,6 +1939,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_supporting_orthodox_marxists  }
+		completion_reward = {
+		add_political_power = 100
+		
+		}
 	}
 
 	#The Revolution Awakens
@@ -1542,6 +1956,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_supporting_orthodox_marxists  focus = PRC_kaifengsclique  }
+		completion_reward = {
+		add_ideas = LEC_revolution_awakens
+		
+		}
 	}
 
 	#Kai Feng's Clique
@@ -1571,6 +1989,13 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_kaifengsclique  }
+		completion_reward = {
+		add_popularity = {
+		
+		ideology = totalist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Begin 5 Year Plans
@@ -1584,7 +2009,29 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_kaifengsclique  }
-	}
+		completion_reward = {
+		
+		add_building_construction = {
+			type = industrial_complex
+			level = 5
+			instant_build = yes
+		
+		}
+		
+		add_building_construction = {
+			type = industrial_complex
+			level = 5
+			instant_build = yes
+		}	
+			add_building_construction = {
+			type = industrial_complex
+			level = 5
+		
+
+			instant_build = yes
+			}
+		}
+	}	
 
 	#Integrate the Zhongteju
 	focus = {
@@ -1597,6 +2044,14 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_kaifengsclique  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.2
+		}
+		add_manpower = 10000
+		
+		}
 	}
 
 	#The Chinese NEP
@@ -1610,6 +2065,10 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_supporting_orthodox_marxists  }
+		
+		completion_reward = {
+		add_ideas = LEC_nep
+		}
 	}
 
 	#The People's Congress
@@ -1623,6 +2082,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_supporting_orthodox_marxists  }
+		completion_reward = {
+		add_political_power = 300
+		add_stability = 0.25
+		}
 	}
 
 	#GOSPLAN
@@ -1636,6 +2099,10 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_begin_5_year_plans  }
+		completion_reward = {
+		add_ideas = LEC_gosplan
+		
+		}
 	}
 
 	#Hold Central Military Elections
@@ -1663,6 +2130,23 @@ AND = {
 		}
 		prerequisite = { focus = PRC_the_revolution_awakens  }
 		mutually_exclusive = { focus = PRC_denounceleninsenemies  }
+		available = {
+		
+		SOV = {
+		exists = yes
+		has_government = totalist
+		}
+		
+		
+		
+		}
+		
+		completion_reward = {
+		give_guarantee = SOV
+		
+		SOV = { give_guarantee = LEC }
+		
+		}
 	}
 
 	#Denounce Lenin's Enemies
@@ -1677,6 +2161,21 @@ AND = {
 		}
 		prerequisite = { focus = PRC_the_revolution_awakens  }
 		mutually_exclusive = { focus = PRC_increase_soviet_relations  }
+		available = {
+		
+		
+		SOV = { exists = no }
+		
+		
+		
+		}
+		completion_reward = {
+		
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = RUS
+		}
+		}
 	}
 
 	#Purge Fake Leftists
@@ -1690,6 +2189,11 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_aspiration_to_molotov  }
+		completion_reward = {
+		add_manpower = -10000
+		
+		
+		}
 	}
 
 	#Purging the Socdems
@@ -1703,6 +2207,13 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_align_with_zinovites  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		
+		}
 	}
 
 	#Read the Works of Marx
@@ -1716,6 +2227,10 @@ AND = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PRC_thepeoplescongress  }
+		completion_reward = {
+		add_research_slot = 1
+		
+		}
 	}
 
 	#Cult of the Red Marshal
@@ -1729,6 +2244,11 @@ AND = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = PRC_hold_central_military_elections  }
+		completion_reward = {
+		add_war_support = 0.3
+		add_political_power = 200
+		add_stability = 0.2
+		}
 	}
 
 	#Cult of Lenin
@@ -1742,6 +2262,14 @@ AND = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = PRC_purging_the_socdems  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.3
+		}
+		add_stability = 0.25
+		
+		}
 	}
 
 	#Embracing Soviet Culture
@@ -1755,6 +2283,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_read_the_works_of_marx  }
+		completion_reward = {
+		add_political_power = 100
+		
+		}
 	}
 
 	#A New Red Guards
@@ -1768,6 +2300,13 @@ AND = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = PRC_purge_fake_leftists  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.05
+		}
+		add_stability = -0.25
+		}
 	}
 
 	#Rebuild Sun Yat Sen University
@@ -1781,6 +2320,9 @@ AND = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PRC_gosplan  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Dam The Yangtze
@@ -1794,6 +2336,14 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_the_chinese_nep  }
+		completion_reward = {
+		add_building_construction = {
+				type = infrastructure
+				level = 5
+				instant_build = yes
+			}
+		
+		}
 	}
 
 	#Socialist Progress Cult
@@ -1807,6 +2357,9 @@ AND = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PRC_dam_the_yangtze  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#United The West
@@ -1820,6 +2373,13 @@ AND = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_denounceleninsenemies  focus = PRC_increase_soviet_relations  }
+		completion_reward = {
+		unlock_decision_tooltip = LEC_dec_MON_expedition
+		unlock_decision_tooltip = LEC_dec_TIB_expedition
+		unlock_decision_tooltip = LEC_dec_xinjiang_expedition
+		unlock_decision_tooltip = LEC_dec_XSM_expedition
+		
+		}
 	}
 
 	#Form the Komsomol
@@ -1833,6 +2393,10 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_cult_of_lenin  } prerequisite = { focus = PRC_embracing_soviet_culture  }
+		completion_reward = {
+		add_manpower = 200000
+		
+		}
 	}
 
 	#Attack Mao
@@ -1846,6 +2410,10 @@ AND = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = PRC_socialist_progress_cult  } prerequisite = { focus = PRC_embracing_soviet_culture  }
+		completion_reward = {
+		add_manpower = -1000
+		add_stability = -0.3
+		}
 	}
 
 	#Found the Young Soviets
@@ -1859,6 +2427,11 @@ AND = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = PRC_rebuild_sun_yat_sen_university  } prerequisite = { focus = PRC_cult_of_the_red_marshal  }
+		completion_reward = {
+		add_manpower = 1000
+		add_war_support = 0.4
+		}
+	
 	}
 
 	#Nationalism With Socialism
@@ -1872,6 +2445,13 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_a_new_red_guards  } prerequisite = { focus = PRC_cult_of_the_red_marshal  }
+		completion_reward = {
+		add_popularity ={
+		ideology = totalist
+		popularity = 0.3
+		}
+		
+		}
 	}
 
 	#Retake Outer Manchuria
@@ -1885,6 +2465,13 @@ AND = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = PRC_a_new_red_guards  } prerequisite = { focus = PRC_united_the_west  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TRM
+			}
+		
+		}
 	}
 
 	#Liberate Russia
@@ -1897,7 +2484,18 @@ AND = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		SOV = { exists = no}
+		
+		}
 		prerequisite = { focus = PRC_united_the_west  } prerequisite = { focus = PRC_cult_of_lenin  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = RUS
+			}
+		
+		}
 	}
 
 	#Forming the Sino Soviet Union
@@ -1911,6 +2509,10 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_form_the_komsomol  } prerequisite = { focus = PRC_attack_mao  } prerequisite = { focus = PRC_liberate_russia  }
+		completion_reward = {
+		unlock_decision_tooltip = LEC_dec_SOV_union
+		
+		}
 	}
 
 	#A Red Future
@@ -1924,6 +2526,11 @@ AND = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PRC_nationalism_with_socialism  } prerequisite = { focus = PRC_found_the_young_soviets  } prerequisite = { focus = PRC_retake_outer_manchuria  }
+		completion_reward = {
+		add_war_support = 0.3
+		add_manpower = 34020
+		add_political_power = 150
+		}
 	}
 
 	#Defend the Tibetan Masses

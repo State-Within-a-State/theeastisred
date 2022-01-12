@@ -5512,7 +5512,7 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	LEC_dec_2nd_northern_expedition = {
+	LEC_dec_smash_the_qing = {
 		icon = generic_ignite_civil_war
 		
 		available = {
@@ -5524,36 +5524,26 @@ LEC_military_expeditions_category = {
 			can_declare_war_on = FROM
 			NOT = { has_country_flag = united_front_member }
 			OR = {
-				AND = {
+				
 					FROM = { tag = QIE }
 					has_completed_focus = LEC_spread_of_revolution
-				}
-				AND = {
-					FROM = { tag = FNG }
-					OR = {
-						has_completed_focus = LEC_spread_of_revolution
-						
-					}
-				}
+				
 				
 			}
 		}
 		
-		targets = { QIE FNG HNN GXC SZC}
+		targets = { QIE }
 		target_trigger = {
-			OR = {
-				AND = {
+			
+				
 					FROM = { tag = QIE }
 					has_completed_focus = LEC_spread_of_revolution
-				}
-				
-				AND = {
-					FROM = { tag = FNG }
-					has_completed_focus = LEC_spread_of_revolution
-				}
 				
 				
-			}
+				
+				
+				
+			
 		}
 
 		cost = 40
@@ -5565,13 +5555,8 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 14 value = 1 }
-			FROM = { country_event = chineserevolt.0 days = 3 }
-			QCN = { add_state_core = 1063 }
-			QCN = { add_state_core = 1062 }
-			QCN = { add_state_core = 1061 }
-			QCN = { add_state_core = 1060 }
-			LEC = { add_state_core = 615 }
-			QCN = { add_state_core = 611 }
+			FROM = { country_event = chineserevolt.1 days = 3 }
+			
 				}
 		
 		remove_effect = {
@@ -5582,10 +5567,8 @@ LEC_military_expeditions_category = {
 				}
 			
 			}
-			FROM = { country_event = chineserevolt.2 }
-			QNG = { add_state_core = 884 }
-			QNG = { add_state_core = 883 }
-			QNG = { add_state_core = 714 }
+			FROM = { country_event = chineserevolt.1 }
+			
 		}
 		ai_will_do = {
 			factor = 20
@@ -5630,10 +5613,112 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	LEC_dec_south_warlord_expedition = {
+	
+	LEC_dec_secure_the_north_west = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			is_neighbor_of = FROM
+		}
+		
+		visible = {
+			is_subject = no
+			can_declare_war_on = FROM
+			NOT = { has_country_flag = united_front_member }
+			OR = {
+				
+					FROM = { tag = FNG }
+					has_completed_focus = LEC_spread_of_revolution
+				
+				
+			}
+		}
+		
+		targets = { FNG }
+		target_trigger = {
+			
+				
+					FROM = { tag = FNG }
+					has_completed_focus = LEC_spread_of_revolution
+				
+				
+				
+				
+				
+			
+		}
+
+		cost = 40
+		days_remove = 7
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = { country_event = chineserevolt.2 days = 3 }
+			
+				}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			FROM = {declare_war_on = {
+				type = annex_everything
+						target = LEC
+				}
+			
+			}
+			FROM = { country_event = chineserevolt.2 }
+			
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_in_faction = yes
+					var:faction_leader = {
+						strength_ratio = {
+							tag = ROOT
+							ratio > 0.7
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_subject = yes
+					overlord = {
+						strength_ratio = {
+							tag = ROOT
+							ratio > 0.7
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = imminent_war
+			}
+		}
+	}
+	LEC_dec_secure_hunan = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
-		targets = { GXC HNN }
+		targets = { HNN }
 		target_trigger = {
 			FROM = {
 				kmt_success = no
@@ -5662,6 +5747,92 @@ LEC_military_expeditions_category = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_south_warlord_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 14 value = 1 }
 			FROM = { country_event = chineserevolt.4 }
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_south_warlord_expedition target: [From.GetName]"
+			declare_war_on = {
+				type = annex_everything
+				target = FROM
+			}
+			FROM = { country_event = chineserevolt.4 }
+		
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_in_faction = yes
+					var:faction_leader = {
+						strength_ratio = {
+							tag = ROOT
+							ratio > 0.7
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_subject = yes
+					overlord = {
+						strength_ratio = {
+							tag = ROOT
+							ratio > 0.7
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = imminent_war
+			}
+		}
+	}
+	
+	LEC_dec_secure_guangxi = {
+		war_with_target_on_remove = yes
+		icon = generic_ignite_civil_war
+		targets = { GXC }
+		target_trigger = {
+			FROM = {
+				kmt_success = no
+			}
+		}
+		target_root_trigger = {
+			has_completed_focus = LEC_spread_of_revolution
+		}
+		visible = {
+			has_completed_focus = LEC_spread_of_revolution
+			is_subject = no
+			can_declare_war_on = FROM
+			
+		}
+		available = {
+			is_neighbor_of = FROM
+		}
+
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		cost = 40
+		days_remove = 7
+		days_re_enable = 30
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_south_warlord_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_south_warlord_expedition target: [From.GetName]"
@@ -5715,10 +5886,10 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	LEC_dec_west_warlord_expedition = {
+	LEC_dec_secure_sichuan = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
-		targets = { YUN SZC }
+		targets = { SZC }
 		target_trigger = {
 			FROM = {
 				kmt_success = no
@@ -5751,7 +5922,7 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_west_warlord_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 14 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.6}
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_west_warlord_expedition target: [From.GetName]"
@@ -5759,7 +5930,7 @@ LEC_military_expeditions_category = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chineserevolt.5  }
+			FROM = { country_event = chineserevolt.6  }
 		}
 		ai_will_do = {
 			factor = 5
@@ -5804,20 +5975,29 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-
-	CHI_dec_eastern_warlord_expedition = {
+	
+	
+	LEC_dec_secure_yunnan = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
-		targets = { ANQ LEP SQI }
+		targets = { YUN }
+		target_trigger = {
+			FROM = {
+				kmt_success = no
+			}
+		}
 		target_root_trigger = {
-			has_completed_focus = CHI_plan_east
+			has_completed_focus = LEC_spread_of_revolution
 		}
 		visible = {
-			has_completed_focus = LEC_liberate_the_rest_of_east_china
+			has_completed_focus = LEC_spread_of_revolution
 			is_subject = no
 			can_declare_war_on = FROM
-			CHI = {
+			NOT = {
 				has_country_flag = CHI_mingshu_lkmt
+			}
+			FROM = {
+				kmt_success = no
 			}
 		}
 		available = {
@@ -5831,17 +6011,17 @@ LEC_military_expeditions_category = {
 		days_re_enable = 30
 
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_eastern_warlord_expedition target: [From.GetName]"
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_west_warlord_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 14 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.7}
 		}
 		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_eastern_warlord_expedition target: [From.GetName]"
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_west_warlord_expedition target: [From.GetName]"
 			declare_war_on = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.7  }
 		}
 		ai_will_do = {
 			factor = 5
@@ -5886,6 +6066,7 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
+	
 	LEC_dec_western_warlord_expedition = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
@@ -5930,7 +6111,7 @@ LEC_military_expeditions_category = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		ai_will_do = {
 			factor = 5
@@ -5976,23 +6157,20 @@ LEC_military_expeditions_category = {
 		}
 	}
 
-	CHI_dec_SHX_expedition = {
+	LEC_dec_SHX_expedition = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
 		targets = { SHX }
 		target_root_trigger = {
-			has_completed_focus = CHI_deal_with_north_warlords
+			has_completed_focus = LEC_spread_of_revolution
 		}
 		visible = {
-			has_completed_focus = CHI_deal_with_north_warlords
-			is_subject = no
-			can_declare_war_on = FROM
-			NOT = {
-				has_country_flag = CHI_Working_with_SHX
-			}
+			has_completed_focus = LEC_spread_of_revolution
+			
 		}
 		available = {
 			is_neighbor_of = FROM
+			has_completed_focus = LEC_spread_of_revolution
 		}
 
 		fire_only_once = no
@@ -6004,7 +6182,7 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_SHX_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 21 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_SHX_expedition target: [From.GetName]"
@@ -6012,7 +6190,7 @@ LEC_military_expeditions_category = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		ai_will_do = {
 			factor = 10
@@ -6057,29 +6235,52 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	CHI_dec_XSM_expedition = {
+	LEC_dec_XSM_expedition = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
 		targets = { XSM }
 		target_root_trigger = {
-			has_completed_focus = CHI_secure_northwest
+			has_completed_focus = PRC_liberate_the_northern_nomads
+			OR = {
+			has_completed_focus = PRC_secure_the_northwest
+			
+			
+			}
+			OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
 		}
 		target_trigger = {
 			OR = {
-				has_completed_focus = CHI_unitary_state
-				has_country_flag = XSM_kmt_refuse
-				FROM = {
-					has_country_leader = {
-						name = "Ma Hongkui"
-						ruling_only = yes
-					}
+				has_completed_focus = PRC_liberate_the_northern_nomads
+				
+
+			}
+			OR = {
+				has_completed_focus = PRC_united_the_west
+				
 				}
+			OR = {
+			has_completed_focus = PRC_secure_the_northwest
+			
+			
 			}
 		}
 		visible = {
-			has_completed_focus = CHI_secure_northwest
+			has_completed_focus = PRC_liberate_the_northern_nomads
 			is_subject = no
 			can_declare_war_on = FROM
+			
+			OR = {
+			has_completed_focus = PRC_secure_the_northwest
+			
+			
+			}
+			OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
 		}
 		available = {
 			is_neighbor_of = FROM
@@ -6094,7 +6295,7 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_XSM_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 21 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_XSM_expedition target: [From.GetName]"
@@ -6102,7 +6303,7 @@ LEC_military_expeditions_category = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.5}
 		}
 		ai_will_do = {
 			factor = 5
@@ -6147,23 +6348,49 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	CHI_dec_xinjiang_expedition = {
+	LEC_dec_xinjiang_expedition = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
 		targets = { SIK TAN ETS }
 		target_trigger = {
 			OR = {
 				NOT = { tag = SIK }
-				has_completed_focus = CHI_unitary_state
+				has_completed_focus = PRC_liberate_the_northern_nomads
 			}
+			OR = {
+			has_completed_focus = PRC_secure_the_northwest
+			
+			
+			}
+			OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
 		}
 		target_root_trigger = {
-			has_completed_focus = CHI_secure_northwest
+			has_completed_focus = PRC_liberate_the_northern_nomads
+			OR = {
+			has_completed_focus = PRC_secure_the_northwest
+			
+			
+			}
+			OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
 		}
 		visible = {
-			has_completed_focus = CHI_secure_northwest
-			is_subject = no
-			can_declare_war_on = FROM
+			has_completed_focus = PRC_liberate_the_northern_nomads
+			OR = {
+			has_completed_focus = PRC_secure_the_northwest
+			
+			
+			}
+			OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
+			
 		}
 		available = {
 			is_neighbor_of = FROM
@@ -6178,7 +6405,7 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_xinjiang_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 21 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_xinjiang_expedition target: [From.GetName]"
@@ -6186,7 +6413,7 @@ LEC_military_expeditions_category = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		ai_will_do = {
 			factor = 5
@@ -6231,25 +6458,49 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	CHI_dec_TIB_expedition = {
+	LEC_dec_TIB_expedition = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
 		targets = { TIB }
+		
+		target_trigger = {
+		
+				has_completed_focus = PRC_influence_tibetan_communes
+				OR = {
+				has_completed_focus = PRC_secure_tibet
+				
+				}
+				
+				OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
+			
+		}
 		target_root_trigger = {
-			has_completed_focus = CHI_authority_TIB
+			has_completed_focus = PRC_influence_tibetan_communes
 			OR = {
-				has_completed_focus = CHI_unitary_state
-				has_country_flag = CHI_refused_autonomy_TIB
-			}
+				has_completed_focus = PRC_secure_tibet
+				
+				}
+				OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
+			
 		}
 		visible = {
-			has_completed_focus = CHI_authority_TIB
+			has_completed_focus = PRC_influence_tibetan_communes
 			OR = {
-				has_completed_focus = CHI_unitary_state
-				has_country_flag = CHI_refused_autonomy_TIB
-			}
-			is_subject = no
-			can_declare_war_on = FROM
+				has_completed_focus = PRC_secure_tibet
+				
+				}
+				OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
+			
+			
 		}
 		available = {
 			is_neighbor_of = FROM
@@ -6264,7 +6515,7 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_TIB_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 21 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_TIB_expedition target: [From.GetName]"
@@ -6272,7 +6523,7 @@ LEC_military_expeditions_category = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		ai_will_do = {
 			factor = 5
@@ -6317,25 +6568,51 @@ LEC_military_expeditions_category = {
 			}
 		}
 	}
-	CHI_dec_MON_expedition = {
+	LEC_dec_MON_expedition = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
 		targets = { MON }
+		target_trigger = {
+		
+				has_completed_focus = PRC_the_mongolian_question 
+				OR = {
+				
+				has_completed_focus = PRC_the_mongolian_issue
+				
+				}
+				OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
+			
+		}
 		target_root_trigger = {
-			has_completed_focus = CHI_retake_MON
+			has_completed_focus = PRC_the_mongolian_question 
 			OR = {
-				has_completed_focus = CHI_unitary_state
-				has_country_flag = CHI_refused_autonomy_MON
-			}
+				
+				has_completed_focus = PRC_the_mongolian_issue
+				
+				}
+				OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
+			
 		}
 		visible = {
-			has_completed_focus = CHI_retake_MON
-			OR = {
-				has_completed_focus = CHI_unitary_state
-				has_country_flag = CHI_refused_autonomy_MON
-			}
+			has_completed_focus = PRC_the_mongolian_question 
+			
 			is_subject = no
 			can_declare_war_on = FROM
+			OR = {
+				
+				has_completed_focus = PRC_the_mongolian_issue
+				
+				}
+				OR = {
+				has_completed_focus = PRC_united_the_west
+				
+				}
 		}
 		available = {
 			is_neighbor_of = FROM
@@ -6350,7 +6627,7 @@ LEC_military_expeditions_category = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_MON_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 21 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_MON_expedition target: [From.GetName]"
@@ -6358,7 +6635,7 @@ LEC_military_expeditions_category = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.5 }
 		}
 		ai_will_do = {
 			factor = 5
@@ -6408,33 +6685,31 @@ LEC_military_expeditions_category = {
 		}
 	}
 
-	CHI_dec_BHC_expedition = {
+	
+	LEC_dec_SOV_union = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
-		targets = { BHC DEH PRF BHU NEP }
+		targets = { SOV }
 		target_trigger = {
-			FROM = {
-				owns_state = 858
-			}
+		
+				has_completed_focus = PRC_forming_the_sino_soviet_union 
+				
+			
 		}
 		target_root_trigger = {
-			has_completed_focus = CHI_renounce_mcmahon
+			has_completed_focus = PRC_forming_the_sino_soviet_union
+			
+			
 		}
 		visible = {
-			has_completed_focus = CHI_renounce_mcmahon
+			has_completed_focus = PRC_forming_the_sino_soviet_union
+			
 			is_subject = no
 			can_declare_war_on = FROM
-			FROM = {
-				owns_state = 858
-			}
+			
 		}
 		available = {
-			OR = {
-				is_neighbor_of = FROM
-				FROM = {
-					any_neighbor_country = { is_ally_with = ROOT }
-				}
-			}
+			is_neighbor_of = FROM
 		}
 
 		fire_only_once = no
@@ -6444,17 +6719,17 @@ LEC_military_expeditions_category = {
 		days_re_enable = 30
 
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_BHC_expedition target: [From.GetName]"
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_MON_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 21 value = 1 }
-			FROM = { country_event = chi_for.6 }
+			FROM = { country_event = chineserevolt.8 }
 		}
 		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_BHC_expedition target: [From.GetName]"
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_MON_expedition target: [From.GetName]"
 			declare_war_on = {
 				type = annex_everything
 				target = FROM
 			}
-			FROM = { country_event = chi_for.7 }
+			FROM = { country_event = chineserevolt.8}
 		}
 		ai_will_do = {
 			factor = 5
@@ -6497,1060 +6772,17 @@ LEC_military_expeditions_category = {
 				factor = 0
 				has_country_flag = imminent_war
 			}
-		}
-	}
-	CHI_dec_RUS_expedition = {
-		war_with_target_on_remove = yes
-		icon = generic_ignite_civil_war
-		targets = { RUS }
-		target_root_trigger = {
-			has_completed_focus = CHI_neutralize_RUS
-		}
-		visible = {
-			has_completed_focus = CHI_neutralize_RUS
-			is_subject = no
-			can_declare_war_on = FROM
-		}
-		available = {
-			is_neighbor_of = FROM
-		}
-
-		fire_only_once = no
-		cancel_if_not_visible = yes
-		cost = 40
-		days_remove = 14
-		days_re_enable = 30
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_RUS_expedition target: [From.GetName]"
-			set_country_flag = { flag = imminent_war days = 21 value = 1 }
-			FROM = { country_event = chi_for.6 }
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_RUS_expedition target: [From.GetName]"
-			declare_war_on = {
-				type = annex_everything
-				target = FROM
-			}
-			FROM = { country_event = chi_for.7 }
-		}
-		ai_will_do = {
-			factor = 5
 			modifier = {
 				factor = 0
-				has_war = yes
-			}
-			modifier = {
-				factor = 0
-				strength_ratio = {
-					tag = FROM
-					ratio < 1.2
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					is_in_faction = yes
-					var:faction_leader = {
-						strength_ratio = {
-							tag = ROOT
-							ratio > 0.7
-						}
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					is_subject = yes
-					overlord = {
-						strength_ratio = {
-							tag = ROOT
-							ratio > 0.7
-						}
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				has_country_flag = imminent_war
+				MON_protected_by_russia_FROM = yes
 			}
 		}
 	}
-
-	CHI_dec_mobilize_jiangxi = {
-		icon = generic_prepare_civil_war
-		visible = {
-			has_completed_focus = LEC_ourredmilitias
-			NOT = { has_country_flag = CHI_mingshu_lkmt }
-		}
-		available = {
-			controls_state = 1044
-			controls_state = 1045
-		}
-		highlight_state_targets = {
-			state = 1044
-		}
-
-		fire_only_once = yes
-		cost = 50
-		days_remove = 15
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_mobilize_jiangxi"
-			add_war_support = 0.01
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_mobilize_jiangxi"
-			custom_effect_tooltip = CHI_mobilize_2_units_tt
-			hidden_effect = { load_oob = "CHI_jiangxi_units" }
-		}
-		ai_will_do = {
-			factor = 75
-		}
-	}
-	CHI_dec_mobilize_zhejiang = {
-		icon = generic_prepare_civil_war
-		visible = {
-			has_completed_focus = LEC_ourredmilitias
-			NOT = { has_country_flag = CHI_mingshu_lkmt }
-		}
-		available = {
-			controls_state = 596
-			controls_state = 1067
-			controls_state = 1068
-			controls_state = 1069
-		}
-		highlight_state_targets = {
-			state = 596
-		}
-
-		fire_only_once = yes
-		cost = 50
-		days_remove = 15
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_mobilize_zhejiang"
-			add_war_support = 0.01
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_mobilize_zhejiang"
-			custom_effect_tooltip = CHI_mobilize_3_special_units_tt
-			hidden_effect = { load_oob = "CHI_zhejiang_units" }
-		}
-		ai_will_do = {
-			factor = 70
-		}
-	}
-	CHI_dec_mobilize_jiangsu = {
-		icon = generic_prepare_civil_war
-		visible = {
-			has_completed_focus = LEC_ourredmilitias
-			NOT = { has_country_flag = CHI_mingshu_lkmt }
-		}
-		available = {
-			controls_state = 613
-		}
-		highlight_state_targets = {
-			state = 613
-		}
-
-		fire_only_once = yes
-		cost = 50
-		days_remove = 15
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_mobilize_jiangsu"
-			add_war_support = 0.01
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_mobilize_jiangsu"
-			custom_effect_tooltip = CHI_mobilize_3_special_units_tt
-			hidden_effect = { load_oob = "CHI_jiangsu_units" }
-		}
-		ai_will_do = {
-			factor = 70
-		}
-	}
-	CHI_dec_mobilize_anhui = {
-		icon = generic_prepare_civil_war
-		visible = {
-			has_idea = KR_CHI_start_army
-			NOT = { has_country_flag = CHI_mingshu_lkmt }
-		}
-		available = {
-			controls_state = 606
-			controls_state = 1014
-			controls_state = 1050
-		}
-		highlight_state_targets = {
-			state = 606
-		}
-
-		fire_only_once = yes
-		cost = 50
-		days_remove = 15
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_mobilize_anhui"
-			add_war_support = 0.01
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_mobilize_anhui"
-			custom_effect_tooltip = CHI_mobilize_2_units_tt
-			hidden_effect = { load_oob = "CHI_anhui_units" }
-		}
-		ai_will_do = {
-			factor = 70
-		}
-	}
-
 	
-	LEC_dec_recall_Xue_and_Zhang = {
-		icon = generic_operation
-		visible = {
-			NOT = { has_war_with = BHC }
-			FROM = {
-				OR = {
-					has_unit_leader = 2203 # Xue Yue
-					has_unit_leader = 2204 # Zhang Fakui
-				}
-			}
-		}
-		targets = { BHC }
-		target_trigger = {
-			FROM = {
-				OR = {
-					has_unit_leader = 2203 # Xue Yue
-					has_unit_leader = 2204 # Zhang Fakui
-				}
-			}
-		}
-		target_root_trigger = {
-			NOT = { has_war_with = BHC }
-		}
-		cancel_trigger = {
-			hidden_trigger = { has_war_with = BHC }
-		}
-
-		cost = 15
-		fire_only_once = yes
-		days_remove = 7
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_recall_Xue_and_Zhang target: [From.GetName]"
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_recall_Xue_and_Zhang target: [From.GetName]"
-			country_event = chi_for.15
-		}
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				factor = 0
-				LEP = { exists = yes }
-			}
-			modifier = {
-				factor = 2
-				has_socialist_government = no
-			}
-		}
-	}
-
-	CHI_dec_hui_brigades = {
-		icon = GFX_decision_cavalry
-		visible = {
-			OR = {
-				283 = {
-					is_owned_by = ROOT
-					is_core_of = ROOT
-				}
-				617 = {
-					is_owned_by = ROOT
-					is_core_of = ROOT
-				}
-				XSM = {
-					NOT = { has_war_with = ROOT }
-					is_neighbor_of = ROOT
-				}
-				SIK = {
-					NOT = { has_war_with = ROOT }
-					is_neighbor_of = ROOT
-				}
-			}
-		}
-		available = {
-			OR = {
-				283 = {
-					is_owned_by = ROOT
-					is_core_of = ROOT
-				}
-				617 = {
-					is_owned_by = ROOT
-					is_core_of = ROOT
-				}
-				XSM = {
-					OR = {
-						is_subject_of = ROOT
-						is_in_faction_with = ROOT
-					}
-				}
-				SIK = {
-					OR = {
-						is_subject_of = ROOT
-						is_in_faction_with = ROOT
-					}
-				}
-			}
-		}
-
-		cost = 30
-		fire_only_once = yes
-		days_remove = 15
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_hui_brigades"
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_hui_brigades"
-			add_manpower = 500
-			custom_effect_tooltip = CHI_NRA_hui_brigades_tt
-			add_to_variable = { CHI_NRA_cavalry_attack_factor = 0.05 }
-			add_to_variable = { CHI_NRA_cavalry_defence_factor = 0.05 }
-		}
-		ai_will_do = {
-			factor = 5
-			modifier = {
-				factor = 2
-				OR = {
-					has_war_with = MON
-					has_war_with = ALO
-					has_war_with = TRK
-				}
-			}
-		}
-	}
-}
-
-LEC_chinese_revolt_category = {
-	LEC_dec_LEP_revolution = {
-		war_with_target_on_remove = yes
-		icon = generic_ignite_civil_war
-		targets = { ANQ LEP }
-		target_root_trigger = {
-			has_completed_focus = LEC_liberate_the_rest_of_east_china
-		}
-		visible = {
-			has_completed_focus = LEC_liberate_the_rest_of_east_china
-			is_subject = no
-			can_declare_war_on = FROM
-			
-		}
-		available = {
-			is_neighbor_of = FROM
-		}
-
-		fire_only_once = no
-		cancel_if_not_visible = yes
-		cost = 20
-		days_remove = 7
-		days_re_enable = 30
-		
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_LEP_expedition target: [From.GetName]"
-			set_country_flag = { flag = imminent_war days = 14 value = 1 }
-			FROM = { country_event = chi_for.6 }
-		}
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_LEP_expedition target: [From.GetName]"
-			declare_war_on = {
-				type = annex_everything
-				target = FROM
-			}
-			FROM = { country_event = chi_for.7 }
-		}
-		ai_will_do = {
-			factor = 50
-			modifier = {
-				factor = 0
-				has_war = yes
-			}
-			modifier = {
-				factor = 0
-				strength_ratio = {
-					tag = FROM
-					ratio < 0.8
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					is_in_faction = yes
-					var:faction_leader = {
-						strength_ratio = {
-							tag = ROOT
-							ratio > 0.7
-						}
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				FROM = {
-					is_subject = yes
-					overlord = {
-						strength_ratio = {
-							tag = ROOT
-							ratio > 0.7
-						}
-					}
-				}
-			}
-			modifier = {
-				factor = 0
-				has_country_flag = imminent_war
-			}
-		}
 	
-	}
 }
 
 
-LEC_warlord_diplomacy_category = {
-	
-	CHI_dec_negotiate_with_SHX = {
-		icon = generic_agreement
-		visible = {
-			has_completed_focus = CHI_deal_with_north_warlords
-			SHX = {
-				has_government = paternal_autocrat
-				has_war_with = ROOT
-				is_neighbor_of = ROOT
-				is_subject = no
-				exists = yes
-			}
-		}
 
-		available = {
-			SHX = {
-				surrender_progress > 0.65
-			}
-		}
 
-		cost = 40
-		fire_only_once = yes
 
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_SHX"
-			SHX = { country_event = { id = chi_for.62 days = 3 } }
-
-		}
-
-		ai_will_do = {
-			factor = 150
-		}
-	}
-
-	
-
-	LEC_dec_unite_the_country = {
-		icon = generic_agreement
-		visible = {
-
-			QIE = { exists = no }
-
-			FNG = { is_stronger_than_ROOT = no }
-
-			has_country_flag = CHI_Solo_War
-
-			owns_state = 608
-
-			NOT = {
-				has_war_with = FNG
-			}
-		}
-
-		available = {
-
-			country_exists = FNG
-
-			NOT = { has_war_with = FNG }
-
-		}
-
-		cost = 25
-		fire_only_once = yes
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_unite_the_country"
-			country_event = { id = chi_fng.19 }
-		}
-
-		ai_will_do = {
-			factor = 200
-		}
-	}
-
-	LEC_dec_negotiate_with_HNN = {
-		icon = generic_agreement
-		targets = { HNN }
-		target_trigger = {
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_neighbor_of = ROOT
-				is_ruled_by_chinese_communists = yes
-			}
-		}
-		target_root_trigger = {
-			OR = {
-				
-			}
-			
-		}
-		visible = {
-			OR = {
-				has_completed_focus = LEC_liberate_the_rest_of_east_china
-			}
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_neighbor_of = ROOT
-				is_ruled_by_chinese_communists = yes
-			}
-		}
-
-		cost = 40
-		fire_only_once = yes
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_HNN target: [From.GetName]"
-			FROM = { country_event = { id = chineserevolt.3 day = 3 }}
-			custom_effect_tooltip = effect_after_they_agree
-			effect_tooltip = {
-				every_other_country = {
-					limit = {
-						has_war_with = HNN
-						NOT = { has_war_with = ROOT }
-					}
-					ROOT = {
-						add_to_war = {
-							targeted_alliance = HNN
-							enemy = PREV
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				if = {
-					limit = { HNN = { is_ruled_by_chinese_communists = yes } }
-					annex_country = {
-						target = HNN
-						transfer_troops = yes
-					}
-					HNN = {
-						every_unit_leader = {
-							limit = {
-								OR = {
-									has_id = 1408
-									has_id = 2202
-								}
-							}
-							set_nationality = LEC
-						}
-						every_navy_leader = {
-							set_nationality = LEC
-						}
-					}
-				}
-				else = {
-					annex_country = {
-						target = HNN
-						transfer_troops = no
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 50
-			modifier = {
-				factor = 0.2
-				has_socialist_government = yes
-			}
-		}
-	}
-	LEC_dec_negotiate_with_GXC = {
-		icon = generic_agreement
-		targets = { GXC }
-		target_trigger = {
-			FROM = {
-				is_ruled_by_chinese_communists = yes
-			}
-		}
-		target_root_trigger = {
-			
-		}
-		visible = {
-			has_completed_focus = LEC_liberate_the_rest_of_east_china
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_neighbor_of = ROOT
-				is_ruled_by_chinese_communists = yes
-			}
-		}
-		
-		available = {
-			FROM = {
-				has_government = totalist
-				has_government = syndicalist
-				
-			}
-		}
-
-		cost = 40
-		fire_only_once = yes
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_GXC target: [From.GetName]"
-			FROM = { country_event = { id = chi_for.24 days = 7 } }
-			custom_effect_tooltip = effect_after_they_agree
-			effect_tooltip = {
-				every_other_country = {
-					limit = {
-						has_war_with = GXC
-						NOT = { has_war_with = ROOT }
-					}
-					ROOT = {
-						add_to_war = {
-							targeted_alliance = GXC
-							enemy = PREV
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				if = {
-					limit = { GXC = { is_ruled_by_kmt = yes } }
-					annex_country = {
-						target = GXC
-						transfer_troops = yes
-					}
-					GXC = {
-						every_unit_leader = {
-							limit = {
-								OR = {
-									has_id = 1120
-									has_id = 1209
-								}
-							}
-							set_nationality = LEC
-						}
-						every_navy_leader = {
-							set_nationality = LEC
-						}
-					}
-				}
-				else = {
-					annex_country = {
-						target = GXC
-						transfer_troops = no
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 50
-			modifier = {
-				factor = 0.1
-				has_socialist_government = yes
-			}
-			
-		}
-		puppet = GXC
-	}
-	LEC_dec_negotiate_with_SZC = {
-		icon = generic_agreement
-		targets = { SZC }
-		target_trigger = {
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_neighbor_of = ROOT
-				is_ruled_by_chinese_communists = yes
-			}
-		}
-		target_root_trigger = {
-			OR = {
-				
-			}
-			
-		}
-		visible = {
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_neighbor_of = ROOT
-				is_ruled_by_chinese_communists = yes
-			}
-		}
-		
-		available = {
-			FROM = {
-				has_government = totalist
-				has_government = syndicalist
-				is_in_faction = no
-				is_subject = no
-			}
-		}
-
-		cost = 40
-		fire_only_once = yes
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_SZC target: [From.GetName]"
-			FROM = { country_event = { id = chi_for.29 days = 7 } }
-			custom_effect_tooltip = effect_after_they_agree
-			effect_tooltip = {
-				every_other_country = {
-					limit = {
-						has_war_with = SZC
-						NOT = { has_war_with = ROOT }
-					}
-					ROOT = {
-						add_to_war = {
-							targeted_alliance = SZC
-							enemy = PREV
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				if = {
-					limit = { SZC = { is_ruled_by_chinese_communists = yes } }
-					annex_country = {
-						target = SZC
-						transfer_troops = yes
-					}
-					SZC = {
-						every_navy_leader = {
-							set_nationality = LEC
-						}
-					}
-				}
-				else = {
-					annex_country = {
-						target = SZC
-						transfer_troops = no
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 50
-			modifier = {
-				factor = 0.1
-				has_socialist_government = yes
-			}
-		}
-		puppet = SZC
-	}
-	LEC_dec_negotiate_with_YUN = {
-		icon = generic_agreement
-		targets = { YUN }
-		target_trigger = {
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_neighbor_of = ROOT
-				is_ruled_by_chinese_communists = yes
-			}
-		}
-		target_root_trigger = {
-			OR = {
-				has_completed_focus = LEC_liberate_the_rest_of_east_china
-			}
-			
-		}
-		visible = {
-			OR = {
-				has_completed_focus = LEC_liberate_the_rest_of_east_china
-			}
-			FROM = {
-				NOT = { has_war_with = ROOT }
-				is_neighbor_of = ROOT
-				is_ruled_by_chinese_communists = yes
-			}
-		}
-		
-		available = {
-			FROM = {
-				has_government = totalist
-				has_government = syndicalist
-				is_in_faction = no
-				is_subject = no
-			}
-		}
-
-		cost = 40
-		fire_only_once = yes
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_YUN target: [From.GetName]"
-			FROM = { country_event = { id = chi_for.30 days = 7 } }
-			custom_effect_tooltip = effect_after_they_agree
-			effect_tooltip = {
-				every_other_country = {
-					limit = {
-						has_war_with = YUN
-						NOT = { has_war_with = ROOT }
-					}
-					ROOT = {
-						add_to_war = {
-							targeted_alliance = YUN
-							enemy = PREV
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				puppet = YUN
-			}
-		}
-		ai_will_do = {
-			factor = 50
-			modifier = {
-				factor = 0.1
-				has_socialist_government = yes
-			}
-		}
-	}
-
-	LEC_dec_negotiate_with_XSM = {
-		icon = generic_agreement
-		targets = { XSM }
-		target_root_trigger = {
-			has_completed_focus = LEC_liberate_the_rest_of_east_china
-		}
-		visible = {
-			has_completed_focus = LEC_liberate_the_rest_of_east_china
-			FROM = {
-				exists = yes
-				NOT = { has_war_with = ROOT }
-			}
-		}
-		available = {
-			FROM = {
-				has_government = totalist
-				has_government = syndicalist
-				is_in_faction = no
-				is_subject = no
-			}
-		}
-
-		cost = 40
-		fire_only_once = yes
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_XSM target: [From.GetName]"
-			FROM = { country_event = { id = chi_for.35 days = 7 } }
-			custom_effect_tooltip = effect_after_they_agree
-			effect_tooltip = {
-				every_other_country = {
-					limit = {
-						has_war_with = XSM
-						NOT = { has_war_with = ROOT }
-					}
-					ROOT = {
-						add_to_war = {
-							targeted_alliance = XSM
-							enemy = PREV
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				if = {
-					limit = { XSM = { is_ruled_by_kmt = yes } }
-					annex_country = {
-						target = XSM
-						transfer_troops = yes
-					}
-					XSM = {
-						every_army_leader = {
-							set_nationality = LEC
-						}
-					}
-				}
-				
-			}
-			puppet = XSM
-		}
-		ai_will_do = {
-			factor = 50
-			modifier = {
-				factor = 0.1
-				has_socialist_government = yes
-			}
-		}
-	}
-	LEC_dec_negotiate_with_SIK = {
-		icon = generic_agreement
-		targets = { SIK }
-		target_root_trigger = {
-			has_completed_focus = CHI_secure_northwest
-		}
-		visible = {
-			has_completed_focus = CHI_secure_northwest
-			FROM = {
-				exists = yes
-				NOT = { has_war_with = ROOT }
-			}
-		}
-		available = {
-			FROM = {
-				NOT = { has_country_leader = { name = "Ma Shaowu" ruling_only = yes } }
-				is_in_faction = no
-				is_subject = no
-			}
-		}
-
-		cost = 40
-		fire_only_once = yes
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_SIK target: [From.GetName]"
-			FROM = { country_event = { id = chi_for.38 days = 7 } }
-			custom_effect_tooltip = effect_after_they_agree
-			effect_tooltip = {
-				every_other_country = {
-					limit = {
-						has_war_with = SIK
-						NOT = { has_war_with = ROOT }
-					}
-					ROOT = {
-						add_to_war = {
-							targeted_alliance = SIK
-							enemy = PREV
-							hostility_reason = asked_to_join
-						}
-					}
-				}
-				if = {
-					limit = { SIK = { is_ruled_by_chinese_communists = yes } }
-					annex_country = {
-						target = SIK
-						transfer_troops = yes
-					}
-					SIK = {
-						every_army_leader = {
-							set_nationality = LEC
-						}
-					}
-				}
-				else = {
-					annex_country = {
-						target = SIK
-						transfer_troops = no
-					}
-				}
-			}
-		}
-		ai_will_do = {
-			factor = 50
-			modifier = {
-				factor = 0.1
-				has_socialist_government = yes
-			}
-		}
-	}
-	LEC_offer_autonomy_TIB = {
-		icon = generic_ignite_civil_war
-
-		available = {
-			is_neighbor_of = FROM
-		}
-
-		visible = {
-			has_completed_focus = CHI_authority_TIB
-			FROM = {
-				is_subject = no
-				is_in_faction = no
-				has_war = no
-			}
-		}
-
-		targets = { TIB }
-		target_root_trigger = {
-			has_completed_focus = CHI_authority_TIB
-		}
-		target_trigger = {
-			FROM = {
-				is_subject = no
-				is_in_faction = no
-				has_war = no
-			}
-		}
-
-		cost = 40
-		fire_only_once = yes
-		cancel_if_not_visible = yes
-
-		ai_will_do = {
-			factor = 5
-		}
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_offer_autonomy_TIB target: [From.GetName]"
-			FROM = {
-				country_event = chi_for.51
-			}
-			custom_effect_tooltip = effect_after_they_agree
-			effect_tooltip = {
-				set_autonomy = {
-					target = FROM
-					autonomy_state = kr_autonomous_puppet
-				}
-			}
-		}
-	}
-	LEC_offer_autonomy_MON = {
-		icon = generic_ignite_civil_war
-
-		available = {
-			is_neighbor_of = FROM
-		}
-
-		visible = {
-			has_completed_focus = CHI_retake_MON
-			FROM = {
-				is_subject = no
-				is_in_faction = no
-				has_war = no
-			}
-		}
-
-		targets = { MON }
-		target_root_trigger = {
-			has_completed_focus = CHI_retake_MON
-		}
-		target_trigger = {
-			FROM = {
-				is_subject = no
-				is_in_faction = no
-				has_war = no
-			}
-		}
-
-		cost = 40
-		fire_only_once = yes
-		cancel_if_not_visible = yes
-
-		ai_will_do = {
-			factor = 20
-		}
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_offer_autonomy_MON target: [From.GetName]"
-			FROM = {
-				country_event = chi_for.51
-			}
-			custom_effect_tooltip = effect_after_they_agree
-			effect_tooltip = {
-				set_autonomy = {
-					target = FROM
-					autonomy_state = kr_autonomous_puppet
-				}
-			}
-		}
-	}
-}
