@@ -34,6 +34,74 @@ country_event = { #Nomination of the Republican Candidate
 }
 
 
+
+country_event = { #Nomination of the Republican Candidate
+	id = taiwan.2
+	title = taiwan.2.t
+	desc = taiwan.2.desc
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event taiwan.2"
+		hidden_effect = {
+			
+		}
+	}
+
+	option = { #Cortes
+	name = taiwan.2.a
+		ai_chance = {
+			factor = 75
+		}
+		
+		set_politics = { ruling_party = national_populist }
+		
+		
+	}
+	
+	option = { #Cortes
+	name = taiwan.2.b
+		ai_chance = {
+			factor = 75
+		}
+		set_politics = { ruling_party = social_democrat }
+		
+	}
+	
+	option = { #Cortes
+	name = taiwan.2.c
+		ai_chance = {
+			factor = 75
+		}
+		set_politics = { ruling_party = radical_socialist }
+		
+	}
+	option = { #Cortes
+	name = taiwan.2.d
+		ai_chance = {
+			factor = 75
+		}
+		set_politics = { ruling_party = syndicalist }
+		
+	}
+	
+	option = { #Cortes
+	name = taiwan.2.e
+		ai_chance = {
+			factor = 75
+		}
+		country_event = {
+		id = taiwanjap.1
+		days = 1
+		}
+		set_politics = { ruling_party = paternal_autocrat }
+	}
+
+	
+}
+
+
 country_event = { #Nomination of the Republican Candidate
 	id = taiwanjap.1
 	title = taiwanjap.1.t
@@ -53,13 +121,14 @@ country_event = { #Nomination of the Republican Candidate
 		event = {
 		id = taiwanjap.2
 		}
+		unlock_national_focus = TWI_return_of_the_exiles
 		
 	}
 	option = { #Cortes
 	name = taiwanjap.1.b
 		set_country_leader_portrait = {
 				ideology = paternal_autocrat
-				portrait = "Portrait_Jiro.png"
+				portrait = "gfx/leaders/TWI/Portrait_Jiro.png"
 			}
 			set_country_leader_name = {
 				ideology = paternal_autocrat
@@ -71,7 +140,7 @@ country_event = { #Nomination of the Republican Candidate
 	name = taiwanjap.1.c
 		set_country_leader_portrait = {
 				ideology = paternal_autocrat
-				portrait = "Portrait_Yoshisuke_Aikawa.png"
+				portrait = "gfx/leaders/TWI/Portrait_Yoshisuke_Aikawa.png"
 			}
 			set_country_leader_name = {
 				ideology = paternal_autocrat
@@ -100,18 +169,15 @@ country_event = { #Nomination of the Republican Candidate
 	option = { #Cortes
 	name = taiwanjap.2.a
 		set_cosmetic_tag = TWI_AN
-		event = {
-		id = taiwanjap.3
-		}
+		
+		unlock_national_focus = TWI_a_new_dynasty
 		
 	}
 	option = { #Cortes
 	name = taiwanjap.2.b
 		set_cosmetic_tag = TWI_JP
-		event = {
-		id = taiwanjap.4
-		}
 		
+		unlock_national_focus = TWI_return_of_the_yamato_dynasty
 	}
 
 	
@@ -134,11 +200,12 @@ country_event = { #Nomination of the Republican Candidate
 	option = { #Cortes
 	name = taiwanjap.3.a
 		set_cosmetic_tag = TWI_SH
+		unlock_national_focus = TWI_a_new_shogunate
 		
 	}
 	option = { #Cortes
 	name = taiwanjap.3.b
-		
+		unlock_national_focus = TWI_a_new_emperor
 		
 		
 	}
@@ -163,12 +230,29 @@ country_event = { #Nomination of the Republican Candidate
 	option = { #Cortes
 	name = taiwanjap.4.a
 		set_cosmetic_tag = TWI_JP
+		unlock_national_focus = TWI_hirohitosreturn
+		set_country_leader_portrait = {
+				ideology = paternal_autocrat
+				portrait = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			}
+			set_country_leader_name = {
+				ideology = paternal_autocrat
+				name = LOC_HIR
+			}
 		
 	}
 	option = { #Cortes
 	name = taiwanjap.4.b
 		set_cosmetic_tag = TWI_JA
-		
+		unlock_national_focus = TWI_a_new_successor
+		set_country_leader_portrait = {
+				ideology = paternal_autocrat
+				portrait = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+			}
+			set_country_leader_name = {
+				ideology = paternal_autocrat
+				name = LOC_YAS
+			}
 		
 	}
 
@@ -191,15 +275,49 @@ country_event = { #Nomination of the Republican Candidate
 
 	option = { #Cortes
 	name = taiwanjap.5.a
-		
-		
+		set_cosmetic_tag = TWI_SH
+		unlock_national_focus = TWI_birth_of_a_new_empire
 	}
 	option = { #Cortes
 	name = taiwanjap.5.b
 		set_cosmetic_tag = TWI_EM
-		
+		unlock_national_focus = TWI_birth_of_a_new_empire
 		
 	}
+	option = { #Cortes
+	name = taiwanjap.5.c
+		set_cosmetic_tag = TWI_JA
+		unlock_national_focus = TWI_rebuilding_the_empire
+		
+	}
+	
+}
 
+country_event = { #Nomination of the Republican Candidate
+	id = taiwanjap.6
+	title = taiwanjap.6.t
+	desc = taiwanjap.6.d
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event taiwanjap.6"
+		hidden_effect = {
+			
+		}
+	}
+
+	option = { #Cortes
+	name = taiwanjap.6.a
+		set_cosmetic_tag = TWI_EM
+		unlock_national_focus = TWI_birth_of_a_new_empire
+	}
+	option = { #Cortes
+	name = taiwanjap.6.b
+		set_cosmetic_tag = TWI_JA
+		unlock_national_focus = TWI_rebuilding_the_empire
+		
+	}
+	
 	
 }
