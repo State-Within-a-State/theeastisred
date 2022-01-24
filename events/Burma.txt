@@ -7,6 +7,35 @@
 add_namespace = burma
 add_namespace = burmarevolt
 
+
+
+country_event = { 
+	id = burmarevolt.1
+	title = burmarevolt.1.t
+	desc = burmarevolt.1.d
+	picture = "GFX_report_event_BRM_army"
+
+	
+
+	is_triggered_only = yes
+
+	option = {
+		name = burmarevolt.1.a
+		complete_national_focus = BRM_glory_to_u_ba_pe
+	}
+	
+	option = {
+		name = burmarevolt.1.b
+		complete_national_focus = BRM_longlivetherevolution
+		set_politics = { ideology = social_liberal }
+		country_event = {
+		id = burma.4
+		days = 1
+		}
+	}
+}
+
+
 country_event = { # Introduction
 	id = burma.0
 	immediate = { log = "[GetDateText]: [Root.GetName]: event burma.0" }
@@ -58,19 +87,22 @@ country_event = { # Introduction
 	option = {
 		name = burma.2.a
 		country_event { 
-		id = burma.3
+		id = burmarevolt.1
 		day = 1 
 		}
 	}
 }
 
+
+
+
 country_event = { 
 	id = burmarevolt.1
 	title = burmarevolt.1.t
 	desc = burmarevolt.1.d
-	picture = GFX_report_event_BRM_army
+	picture = "GFX_report_event_BRM_army"
 
-	fire_only_once = yes
+	
 
 	is_triggered_only = yes
 
@@ -82,14 +114,7 @@ country_event = {
 	option = {
 		name = burmarevolt.1.b
 		complete_national_focus = BRM_longlivetherevolution
-		create_country_leader = {
-				name = "Revolutionary Council of Burma"
-				desc = "-"
-				picture = "Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
-				expire = "1965.1.1"
-				ideology = authoritarian_democrat
-				
-			}
+		
 	}
 }
 
@@ -99,7 +124,7 @@ country_event = { # Introduction
 	immediate = { log = "[GetDateText]: [Root.GetName]: event burma.4" }
 	title = burma.4.t
 	desc = burma.4.d
-	picture = GFX_report_event_BRM_army
+	picture = "GFX_report_event_BRM_army"
 
 	fire_only_once = yes
 
