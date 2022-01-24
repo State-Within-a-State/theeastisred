@@ -25,6 +25,34 @@ focus_tree = {
 	########################
 
 	focus = {
+		id = JAP_seiyukai_1936
+		icon = GFX_goal_KR_ideology_social_conservative
+		available = { always = no }
+		ai_will_do = { factor = 0 }
+		allow_branch = { has_country_flag = JAP_seiyukai_won_in_1936 }
+		x = 10
+		y = 0
+		cost = 0
+		cancelable = no
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = JAP_deadlock_1936
+		icon = GFX_ITA_poor
+		available = { always = no }
+		ai_will_do = { factor = 0 }
+		allow_branch = { has_country_flag = JAP_deadlock_in_1936 }
+		x = 10
+		y = 0
+		cost = 0
+		cancelable = no
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
 		id = JAP_NSA_focus
 		icon = GFX_goal_National_Security_Act
 		available = {
@@ -51,11 +79,14 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = JAP_NSA_focus
+			focus = JAP_seiyukai_1936
+			focus = JAP_deadlock_1936
 		}
 		available = {
 			has_country_flag = JAP_May_Trial
 			has_country_flag = JAP_NSA
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -68,7 +99,7 @@ focus_tree = {
 			hidden_effect = {
 				if = {
 					limit = {
-						has_country_flag = JAP_WEAK_SEIYUKAI
+						has_country_flag = JAP_deadlock_in_1936
 					}
 					random_list = {
 						50 = {
@@ -93,11 +124,14 @@ focus_tree = {
 			has_country_flag = JAP_longest_winter
 			has_country_flag = JAP_NO_NSA
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		mutually_exclusive = {
 			focus = JAP_democratic_path
 		}
 		prerequisite = {
 			focus = JAP_NSA_focus
+			focus = JAP_seiyukai_1936
+			focus = JAP_deadlock_1936
 		}
 		ai_will_do = {
 			factor = 100
@@ -132,11 +166,12 @@ focus_tree = {
 		}
 		available = {
 			OR = {
-				has_country_flag = JAP_STRONG_SEIYUKAI
+				has_country_flag = JAP_seiyukai_won_in_1936
 				has_country_flag = emperor_support_agree
 				has_country_flag = emperor_no_support_disagree
 			}
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -162,6 +197,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_elec_reform
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -182,6 +218,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_fem_reform
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -202,6 +239,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_DEM_SCI
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -225,6 +263,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_DEM_EDU
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -252,6 +291,7 @@ focus_tree = {
 				has_country_flag = emperor_no_support_agree
 			}
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		prerequisite = {
 			focus = JAP_democratic_path
 		}
@@ -281,6 +321,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_chuou
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -300,6 +341,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_chuou_start
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		available = {
 			is_subject = no
 			JAP = {
@@ -326,6 +368,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_chuou_mob
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		available = {
 			is_subject = no
 			JAP = {
@@ -355,6 +398,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_chuou_start
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -375,6 +419,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_chuou_fund
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -395,6 +440,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_chuou_draft
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -418,10 +464,11 @@ focus_tree = {
 
 	focus = {
 		id = JAP_ishinha
-		icon = GFX_focus_jap_showa_restoration
+		icon = GFX_goal_JAP_Hirohito
 		prerequisite = {
 			focus = JAP_imperialist_path
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -445,6 +492,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_ishinha
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		mutually_exclusive = {
 			focus = JAP_kakushinha
 			focus = JAP_kodoha
@@ -470,6 +518,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_yokuseiha
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -493,6 +542,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_yokuseiha_POL
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -516,6 +566,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_yokuseiha_ECO
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -539,6 +590,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_ishinha
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		mutually_exclusive = {
 			focus = JAP_kakushinha
 			focus = JAP_yokuseiha
@@ -564,6 +616,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_kodoha
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -584,6 +637,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_kodoha_POL
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -607,6 +661,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_kodoha_ECO
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -630,6 +685,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_ishinha
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		mutually_exclusive = {
 			focus = JAP_kodoha
 			focus = JAP_yokuseiha
@@ -655,6 +711,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_kakushinha
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -679,6 +736,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_kakushinha_POL
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -702,6 +760,7 @@ focus_tree = {
 		prerequisite = {
 			focus = JAP_kakushinha_ECO
 		}
+		bypass = { has_country_flag = JAP_something_unexpected_happened }
 		ai_will_do = {
 			factor = 100
 		}
@@ -1787,9 +1846,9 @@ focus_tree = {
 			}
 			army_experience = 50
 			air_experience = 25
-			add_tech_bonus = {
-				name = JAP_MIL_army_start
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -1814,9 +1873,9 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_MIL_naval_start"
 			navy_experience = 50
 			air_experience = 25
-			add_tech_bonus = {
-				name = JAP_MIL_naval_start
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = naval_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = naval_doctrine
 			}
@@ -1846,7 +1905,7 @@ focus_tree = {
 			focus = JAP_MIL_TECH
 		}
 		ai_will_do = {
-			factor = 0
+			factor = 30
 		}
 		x = -3
 		y = 1
@@ -1854,15 +1913,15 @@ focus_tree = {
 		cost = 8
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_MIL_AIR"
-			add_tech_bonus = {
-				name = JAP_MIL_AIR
-				bonus = 1
-				uses =2
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
 				category = land_doctrine
 			}
-			add_tech_bonus = {
-				name = JAP_MIL_AIR
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = air_doctrine
 			}
@@ -1888,7 +1947,7 @@ focus_tree = {
 			focus = JAP_MIL_TECH
 		}
 		ai_will_do = {
-			factor = 0
+			factor = 40
 		}
 		x = -1
 		y = 1
@@ -1896,9 +1955,9 @@ focus_tree = {
 		cost = 8
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_MIL_WILL"
-			add_tech_bonus = {
-				name = JAP_MIL_WILL
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -1924,7 +1983,7 @@ focus_tree = {
 			focus = JAP_MIL_TECH
 		}
 		ai_will_do = {
-			factor = 100
+			factor = 15
 		}
 		x = 1
 		y = 1
@@ -1932,9 +1991,9 @@ focus_tree = {
 		cost = 8
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_MIL_MASS"
-			add_tech_bonus = {
-				name = JAP_MIL_MASS
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -1960,7 +2019,7 @@ focus_tree = {
 			focus = JAP_MIL_AIR
 		}
 		ai_will_do = {
-			factor = 0
+			factor = 15
 		}
 		x = 3
 		y = 1
@@ -1968,9 +2027,9 @@ focus_tree = {
 		cost = 8
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_MIL_TECH"
-			add_tech_bonus = {
-				name = JAP_MIL_TECH
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -2328,9 +2387,9 @@ focus_tree = {
 		cost = 7
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_MIL_land_doc"
-			add_tech_bonus = {
-				name = JAP_MIL_land_doc
-				bonus = 1
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
 			}
@@ -2427,10 +2486,10 @@ focus_tree = {
 		cost = 7
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_MIL_air_doc"
-			add_tech_bonus = {
-				name = JAP_MIL_air_doc
-				bonus = 1
-				uses = 2
+			add_doctrine_cost_reduction = {
+				name = air_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
 				category = air_doctrine
 			}
 			if = {
@@ -3371,7 +3430,7 @@ focus_tree = {
 		}
 		x = 37
 		y = 0
-		cost = 15
+		cost = 8
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_rising_sun"
 			swap_ideas = {

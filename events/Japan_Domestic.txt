@@ -64,18 +64,52 @@ country_event = { #General Election Feb. 1936, triggered early 1936, important f
 	title = japdom.3.t
 	desc = japdom.3.d
 	picture = GFX_report_event_JAP_voting
-
 	fire_only_once = yes
 	is_triggered_only = yes
-
-	trigger = {
-		has_socialist_government = no
+	trigger = { has_socialist_government = no }
+	option = { #Showakai
+		name = OPTION_SHOWAKAI
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_DEMOCRACY
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_AUTHORITARIAN_DEMOCRAT_NATIONAL
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_PATERNAL_AUTOCRAT_ARMY
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Maeda_Yonezo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_country_flag = JAP_showakai_won_in_1936
+		mark_focus_tree_layout_dirty = yes
 	}
-
 	option = { #The Seiyukai have defended their absolute majority!
-		name = japdom.3.a
-		add_political_power = 50
-		set_country_flag = JAP_STRONG_SEIYUKAI
+		name = OPTION_SEIYUKAI
 		ai_chance = {
 			factor = 50
 			modifier = {
@@ -86,13 +120,226 @@ country_event = { #General Election Feb. 1936, triggered early 1936, important f
 				}
 			}
 		}
+		add_political_power = 50
+		set_country_flag = JAP_seiyukai_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+		complete_national_focus = JAP_seiyukai_1936
+	}
+	option = { #Minseito
+		name = OPTION_MINSEITO
+		trigger = { NOT = { has_government = authoritarian_democrat } }
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_DEMOCRACY
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_AUTHORITARIAN_DEMOCRAT_NATIONAL
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_PATERNAL_AUTOCRAT_ARMY
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hamaguchi_Osachi_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Kawasaki_Takukichi_sec_mli
+		}
+		set_country_flag = JAP_minseito_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Kakushinto
+		name = OPTION_KAKUSHINTO
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_DEMOCRACY
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_AUTHORITARIAN_DEMOCRAT_NATIONAL
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_PATERNAL_AUTOCRAT_ARMY
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = social_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ozaki_Yukio_hog_sli
+			JAP_Kiyose_Ichiro_for_sli
+			JAP_Otake_Kanichi_eco_sli
+			JAP_Seki_Naohiko_sec_sli
+		}
+		set_country_flag = JAP_kakushinto_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Kakushinto and Shakai Taishuto
+		name = japdom.3.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_DEMOCRACY
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_AUTHORITARIAN_DEMOCRAT_NATIONAL
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_PATERNAL_AUTOCRAT_ARMY
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = social_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.3
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ozaki_Yukio_hog_sli
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Mizutani_Chozaburo_eco_sde
+			JAP_Seki_Naohiko_sec_sli
+		}
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		set_country_flag = JAP_kakushinto_won_but_narrow_victory_in_1936
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Shakai-Taishuto
+		name = OPTION_SHAKAI-TAISHUTO
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_DEMOCRACY
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_AUTHORITARIAN_DEMOCRAT_NATIONAL
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_PATERNAL_AUTOCRAT_ARMY
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Abe_Iso_hog_sde
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Mizutani_Chozaburo_eco_sde
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Rodo-Nominto
+		name = OPTION_RODO-NOMINTO
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_DEMOCRACY
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_REFORM_AUTHORITARIAN_DEMOCRAT_NATIONAL
+					}
+					has_game_rule = {
+						rule = JAP_start_nsa
+						option = JAP_START_NSA_YES_PATERNAL_AUTOCRAT_ARMY
+					}
+				}
+			}
+		}
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_syn
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Aso_Hisashi_sec_syn
+			JAP_emperor_hirohito
+		}
+		set_country_flag = JAP_rodo_nominto_won_in_1936
+		mark_focus_tree_layout_dirty = yes
 	}
 	option = { #The Seiyukai have lost their absolute majority!
-		name = japdom.3.b
-		add_political_power = -50
-		set_temp_variable = { ideology_change_var = -0.15 }
-		change_ruling_party_popularity = yes
-		set_country_flag = JAP_WEAK_SEIYUKAI
+		name = OPTION_DEADLOCK
 		ai_chance = {
 			factor = 50
 			modifier = {
@@ -109,6 +356,12 @@ country_event = { #General Election Feb. 1936, triggered early 1936, important f
 				}
 			}
 		}
+		add_political_power = -50
+		set_temp_variable = { ideology_change_var = -0.15 }
+		change_ruling_party_popularity = yes
+		set_country_flag = JAP_deadlock_in_1936
+		mark_focus_tree_layout_dirty = yes
+		complete_national_focus = JAP_deadlock_1936
 	}
 }
 
@@ -164,6 +417,13 @@ country_event = { #The May 15 Incident, triggered mid 1936
 
 	fire_only_once = yes
 	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 
 	option = {
 		name = japdom.6.a
@@ -198,6 +458,13 @@ country_event = { #The NSA debate begins
 
 	fire_only_once = yes
 	is_triggered_only = yes
+	
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 
 	option = {
 		name = japdom.8.a
@@ -215,6 +482,13 @@ country_event = { #The National Security Act, triggered by focus end of 1936, ve
 
 	is_triggered_only = yes
 	fire_only_once = yes
+	
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 
 	option = { #The Act is forced through
 		name = japdom.9.a
@@ -289,6 +563,13 @@ country_event = { #The Trial of the May 15 Incident, triggered by the NSA passin
 
 	is_triggered_only = yes
 	fire_only_once = yes
+	
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 
 	option = {
 		name = japdom.10.a
@@ -313,7 +594,12 @@ country_event = { #The Assassination of Suzuki Kisaburo, triggered by the NSA pa
 
 	is_triggered_only = yes
 	fire_only_once = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.11.a
 		add_stability = -0.02
@@ -333,7 +619,12 @@ country_event = { #Government Under Fire
 
 	is_triggered_only = yes
 	fire_only_once = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.12.a
 		add_stability = -0.01
@@ -355,7 +646,12 @@ country_event = { #Resignation of Suzuki Kisaburo, triggered by the NSA not pass
 
 	is_triggered_only = yes
 	fire_only_once = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.13.a
 		add_stability = -0.05
@@ -390,7 +686,12 @@ country_event = { #The Election of Mizuno Rentaro
 
 	fire_only_once = yes
 	is_triggered_only = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.14.a
 		add_stability = 0.05
@@ -426,7 +727,12 @@ country_event = { #Japan's Longest Winter, triggered by no NSA after 1936, impor
 	picture = GFX_report_event_japanese_officers
 	is_triggered_only = yes
 	fire_only_once = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.15.a
 		add_stability = -0.05
@@ -443,6 +749,12 @@ country_event = { #Japan's longest day - army coup successful, triggered by focu
 	picture = GFX_report_event_japanese_soldiers_02
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.16.a
 		set_politics = {
@@ -465,10 +777,10 @@ country_event = { #Japan's longest day - army coup successful, triggered by focu
 				id = japdom.18
 				days = 5
 			}
+			mark_focus_tree_layout_dirty = yes
 		}
 	}
 }
-
 country_event = { #Army coups fails, triggered by disagreeing with emperor when he doesn't support the government
 	id = japdom.17
 	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.17" }
@@ -476,7 +788,12 @@ country_event = { #Army coups fails, triggered by disagreeing with emperor when 
 	desc = japdom.17.d
 	picture = GFX_report_event_JAP_barricade
 	is_triggered_only = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.17.a
 		add_stability = -0.10
@@ -486,8 +803,6 @@ country_event = { #Army coups fails, triggered by disagreeing with emperor when 
 		set_country_flag = Nagata_Tetsuzan_dead
 		set_country_flag = Sugiyama_Hajime_dead
 		set_country_flag = Ninomiya_Harushige_dead
-		set_country_flag = Muto_Akira_dead
-		set_country_flag = Hattori_Takushiro_dead
 		hidden_effect = {
 			news_event = {
 				id = worldnews.176
@@ -495,7 +810,6 @@ country_event = { #Army coups fails, triggered by disagreeing with emperor when 
 		}
 	}
 }
-
 country_event = { #The Power Struggle
 	id = japdom.18
 	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.18" }
@@ -504,6 +818,12 @@ country_event = { #The Power Struggle
 	picture = GFX_report_event_JAP_restorationist_centralist
 	is_triggered_only = yes
 	fire_only_once = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.18.a
 		add_political_power = -25
@@ -517,6 +837,12 @@ country_event = { #The restorationist counter-coup, triggered by focus "The Show
 	picture = GFX_report_event_JAP_coup
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.19.a
 		add_stability = 0.05
@@ -526,8 +852,6 @@ country_event = { #The restorationist counter-coup, triggered by focus "The Show
 		set_country_flag = Nagata_Tetsuzan_dead
 		set_country_flag = Sugiyama_Hajime_dead
 		set_country_flag = Ninomiya_Harushige_dead
-		set_country_flag = Muto_Akira_dead
-		set_country_flag = Hattori_Takushiro_dead
 		set_country_flag = Masaki_Jinzaburo_dead
 		set_country_flag = Yamashita_Tomoyuki_dead
 		set_country_flag = Obata_Hideyoshi_dead
@@ -539,6 +863,11 @@ country_event = { #The restorationist counter-coup, triggered by focus "The Show
 			ideology = national_populist
 			popularity = 0.5
 		}
+		set_party_name = { 
+			ideology = national_populist
+			long_name = JAP_party_military_junta_long
+			name = JAP_party_military_junta
+		}
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Hiranuma_Kiichiro_hog_pau
@@ -546,6 +875,7 @@ country_event = { #The restorationist counter-coup, triggered by focus "The Show
 			JAP_Okawa_Shumei_for_npo
 			JAP_Suzuki_Teiichi_eco_npo
 		}
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 country_event = { #Army coup fails, centralist incoming, triggered by focus "Military Centralism"
@@ -556,7 +886,12 @@ country_event = { #Army coup fails, centralist incoming, triggered by focus "Mil
 	picture = GFX_report_event_JAP_revolt
 	fire_only_once = yes
 	is_triggered_only = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.20.a
 		add_stability = -0.05
@@ -576,6 +911,12 @@ country_event = { #The Centralists counter-coup is successful, triggered by prev
 	picture = GFX_report_event_JAP_coup
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = { #new ministers
 		name = japdom.21.a
 		ai_chance = {
@@ -590,6 +931,11 @@ country_event = { #The Centralists counter-coup is successful, triggered by prev
 			ideology = paternal_autocrat
 			popularity = 0.35
 		}
+		set_party_name = { 
+			ideology = paternal_autocrat
+			long_name = JAP_party_military_junta_long
+			name = JAP_party_military_junta
+		}
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Hayashi_Senjuro_hog_pau
@@ -597,6 +943,7 @@ country_event = { #The Centralists counter-coup is successful, triggered by prev
 			JAP_Fujie_Keisuke_sec_pau
 			JAP_Godo_Takuo_eco_pau
 		}
+		mark_focus_tree_layout_dirty = yes
 	}
 	option = { #keep ministers
 		name = japdom.21.b
@@ -613,16 +960,20 @@ country_event = { #The Centralists counter-coup is successful, triggered by prev
 			ideology = paternal_autocrat
 			popularity = 0.3
 		}
+		set_party_name = { 
+			ideology = paternal_autocrat
+			long_name = JAP_party_military_junta_long
+			name = JAP_party_military_junta
+		}
 		remove_all_ministers_but_hog = yes
 		add_ideas = {
 			JAP_Tatekawa_Yoshitsugu_for_pau
 			JAP_Fujie_Keisuke_sec_pau
 			JAP_Godo_Takuo_eco_pau
 		}
+		mark_focus_tree_layout_dirty = yes
 	}
 }
-
-
 country_event = { #The Government of National Unity, triggered by having focus Electorate Reform
 	id = japdom.22
 	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.22" }
@@ -631,7 +982,12 @@ country_event = { #The Government of National Unity, triggered by having focus E
 	picture = GFX_report_event_JAP_politician
 	fire_only_once = yes
 	is_triggered_only = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = { #national government
 		name = japdom.22.a
 		ai_chance = {
@@ -662,6 +1018,7 @@ country_event = { #The Government of National Unity, triggered by having focus E
 			JAP_Nakajima_Chikuhei_eco_ade
 			JAP_Mochizuki_Keisuke_sec_ade
 		}
+		mark_focus_tree_layout_dirty = yes
 	}
 	option = { #no need
 		name = japdom.22.b
@@ -679,14 +1036,13 @@ country_event = { #The Government of National Unity, triggered by having focus E
 		add_political_power = 25
 		hidden_effect = {
 			country_event = { id = japdom.31 days = 30 }
+			mark_focus_tree_layout_dirty = yes
 		}
 	}
 }
-
 ###########################
 # 1937 ~ 1939 - Centralist Event Chain : Gearing Up for War
 ###########################
-
 country_event = { #On the Basic Principles of National Defence, triggered by having focus Military Centralism
 	id = japdom.23
 	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.23" }
@@ -695,13 +1051,17 @@ country_event = { #On the Basic Principles of National Defence, triggered by hav
 	picture = GFX_report_event_generic_diplomacy1
 	fire_only_once = yes
 	is_triggered_only = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.23.a
 		add_war_support = 0.05
 	}
 }
-
 country_event = { #On The Fundamental Principles of the National Structure, triggered by having focus A Political Blueprint
 	id = japdom.24
 	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.24" }
@@ -710,7 +1070,12 @@ country_event = { #On The Fundamental Principles of the National Structure, trig
 	picture = GFX_report_event_JAP_politician
 	fire_only_once = yes
 	is_triggered_only = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.24.a
 		add_stability = 0.05
@@ -724,6 +1089,12 @@ country_event = { #The New System Movement
 	picture = GFX_report_event_japanese_reply
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.25.a
 		add_political_power = 25
@@ -739,6 +1110,12 @@ country_event = { #The First Convention of the Taisei Yokusankai
 	title = japdom.26.t
 	desc = japdom.26.d
 	picture = GFX_report_event_JAP_meeting
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	is_triggered_only = yes
 	option = {
 		name = japdom.26.a
@@ -753,11 +1130,71 @@ country_event = { #Konoe Fumimaro Secures Support Kakushinha
 	picture = GFX_report_event_japanese_reply
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.27.a
-		remove_ideas_with_trait = head_of_government
-		add_ideas = JAP_Konoe_Fumimaro_hog_npo
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Konoe_Fumimaro_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Kaya_Okinori_eco_npo
+			JAP_Kido_Koichi_sec_npo
+		}
 		add_political_power = 25
+		set_party_name = { 
+			ideology = totalist
+			long_name = JAP_yokusankai_party_saha_long
+			name = JAP_yokusankai_party_saha
+		}
+		set_party_name = { 
+			ideology = social_democrat
+			long_name = JAP_yokusankai_party_saha_long
+			name = JAP_yokusankai_party_saha
+		}
+		set_party_name = { 
+			ideology = social_liberal
+			long_name = JAP_yokusankai_party_long
+			name = JAP_yokusankai_party
+		}
+		set_party_name = { 
+			ideology = market_liberal
+			long_name = JAP_yokusankai_party_long
+			name = JAP_yokusankai_party
+		}
+		set_party_name = { 
+			ideology = social_conservative
+			long_name = JAP_yokusankai_party_long
+			name = JAP_yokusankai_party
+		}
+		set_party_name = { 
+			ideology = authoritarian_democrat
+			long_name = JAP_yokusankai_party_long
+			name = JAP_yokusankai_party
+		}
+		set_party_name = { 
+			ideology = paternal_autocrat
+			long_name = JAP_yokusankai_party_kakushinha_long
+			name = JAP_yokusankai_party_kakushinha
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_yokusankai_party_kakushinha_long
+			name = JAP_yokusankai_party_kakushinha
+		}
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -769,11 +1206,24 @@ country_event = { #Araki Sadao Secures Support
 	picture = GFX_report_event_japanese_officers
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.28.a
 		remove_ideas_with_trait = head_of_government
 		add_ideas = JAP_Araki_Sadao_hog_npo
 		add_political_power = 25
+		hidden_effect = {
+			country_event = {
+				id = rework_japan.0
+				days = 10
+			}
+			mark_focus_tree_layout_dirty = yes
+		}
 	}
 }
 country_event = { #Kuhara Fusanosuke Secures Support
@@ -784,16 +1234,73 @@ country_event = { #Kuhara Fusanosuke Secures Support
 	picture = GFX_report_event_JAP_meeting
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.28.a
-		remove_ideas_with_trait = head_of_government
-		add_ideas = JAP_Kuhara_Fusanosuke_hog_npo
+		set_politics = {
+			ruling_party = social_conservative
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kuhara_Fusanosuke_hog_sco
+			JAP_Yoshida_Shigeru_for_sco
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Hatoyama_Ichiro_sec_sco
+		}
 		add_political_power = 25
+		set_party_name = { 
+			ideology = totalist
+			long_name = JAP_yokusankai_party_saha_long
+			name = JAP_yokusankai_party_saha
+		}
+		set_party_name = { 
+			ideology = social_democrat
+			long_name = JAP_yokusankai_party_saha_long
+			name = JAP_yokusankai_party_saha
+		}
+		set_party_name = { 
+			ideology = social_liberal
+			long_name = JAP_yokusankai_party_long
+			name = JAP_yokusankai_party
+		}
+		set_party_name = { 
+			ideology = market_liberal
+			long_name = JAP_yokusankai_party_long
+			name = JAP_yokusankai_party
+		}
+		set_party_name = { 
+			ideology = social_conservative
+			long_name = JAP_yokusankai_party_long
+			name = JAP_yokusankai_party
+		}
+		set_party_name = { 
+			ideology = authoritarian_democrat
+			long_name = JAP_yokusankai_party_long
+			name = JAP_yokusankai_party
+		}
+		set_party_name = { 
+			ideology = paternal_autocrat
+			long_name = JAP_yokusankai_party_kakushinha_long
+			name = JAP_yokusankai_party_kakushinha
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_yokusankai_party_kakushinha_long
+			name = JAP_yokusankai_party_kakushinha
+		}
+		mark_focus_tree_layout_dirty = yes
 	}
 }
-
-#japdom.30 removed
-
 ###########################
 # General Election, in theory in 1937
 ###########################
@@ -804,7 +1311,12 @@ country_event = {
 	picture = GFX_report_event_JAP_voting
 	fire_only_once = yes
 	is_triggered_only = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	immediate = {
 		log = "[GetDateText]: [Root.GetName]: event japdom.31"
 		hidden_effect = {
@@ -812,14 +1324,35 @@ country_event = {
 				id = japdom.32
 				days = 30
 			}
+			delete_all_coalitions = yes
 		}
 	}
-
-	option = { #Conservatives
-		name = japdom.31.a
-		trigger = {
-			NOT = { has_government = authoritarian_democrat }
+	option = { #Showakai
+		name = OPTION_SHOWAKAI
+		trigger = { NOT = { has_government = authoritarian_democrat } }
+		ai_chance = { factor = 50 }
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
 		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Maeda_Yonezo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_country_flag = JAP_showakai_won_in_1937
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Conservatives
+		name = OPTION_SEIYUKAI
+		trigger = { NOT = { has_government = authoritarian_democrat } }
 		ai_chance = {
 			factor = 50
 		}
@@ -839,12 +1372,12 @@ country_event = {
 			JAP_Oguchi_Kiroku_eco_sco
 			JAP_Matsuno_Tsuruhei_sec_sco
 		}
+		set_country_flag = JAP_seiyukai_won_in_1937
+		mark_focus_tree_layout_dirty = yes
 	}
-	option = { #Liberals
-		name = japdom.31.b
-		trigger = {
-			NOT = { has_government = authoritarian_democrat }
-		}
+	option = { #Market Liberals
+		name = OPTION_MINSEITO
+		trigger = { NOT = { has_government = authoritarian_democrat } }
 		ai_chance = {
 			factor = 50
 		}
@@ -864,12 +1397,86 @@ country_event = {
 			JAP_Inoue_Junnosuke_eco_mli
 			JAP_Kawasaki_Takukichi_sec_mli
 		}
+		set_country_flag = JAP_minseito_won_in_1937
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Social Liberals
+		name = OPTION_KAKUSHINTO
+		trigger = { NOT = { has_government = authoritarian_democrat } }
+		ai_chance = { factor = 50 }
+		set_politics = {
+			ruling_party = social_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ozaki_Yukio_hog_sli
+			JAP_Kiyose_Ichiro_for_sli
+			JAP_Otake_Kanichi_eco_sli
+			JAP_Seki_Naohiko_sec_sli
+		}
+		set_country_flag = JAP_kakushinto_won_in_1937
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Social Democrats
+		name = OPTION_SHAKAI-TAISHUTO
+		trigger = { NOT = { has_government = authoritarian_democrat } }
+		ai_chance = { factor = 50 }
+		set_politics = {
+			ruling_party = social_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Abe_Iso_hog_sde
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Mizutani_Chozaburo_eco_sde
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1937
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Rodo-Nominto
+		name = OPTION_RODO-NOMINTO
+		trigger = { NOT = { has_government = authoritarian_democrat } }
+		ai_chance = { factor = 50 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_syn
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Aso_Hisashi_sec_syn
+		}
+		if = {
+			limit = { has_country_flag = JAP_yasuhito }
+			add_ideas = JAP_emperor_yasuhito
+		}
+		else = { add_ideas = JAP_emperor_hirohito }
+		set_country_flag = JAP_rodo_nominto_won_in_1937
+		mark_focus_tree_layout_dirty = yes
 	}
 	option = { #maintain coalition
-		name = japdom.31.c
-		trigger = {
-			has_government = authoritarian_democrat
-		}
+		name = OPTION_COALITION
+		trigger = { has_government = authoritarian_democrat }
 		set_politics = {
 			ruling_party = authoritarian_democrat
 			election_frequency = 48
@@ -886,6 +1493,10 @@ country_event = {
 			JAP_Nakajima_Chikuhei_eco_ade
 			JAP_Mochizuki_Keisuke_sec_ade
 		}
+		set_country_flag = JAP_coaliton_won_in_1937
+		set_temp_variable = { coalition_partner_var = token:social_conservative }
+		add_to_coalition = yes
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -901,7 +1512,12 @@ country_event = {
 	picture = GFX_report_event_JAP_politician
 	fire_only_once = yes
 	is_triggered_only = yes
-
+	trigger = {
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
+	}
 	option = {
 		name = japdom.32.a
 		add_stability = -0.05
@@ -926,6 +1542,10 @@ country_event = { #Formation of the Kokumin Domei
 			has_completed_focus = JAP_imperialist_path
 			has_completed_focus = JAP_chuou
 		}
+		OR = {
+			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
 	}
 
 	option = {
@@ -933,79 +1553,6 @@ country_event = { #Formation of the Kokumin Domei
 		add_stability = 0.05
 	}
 }
-###########################
-# 1937 - Replacing cabinet
-###########################
-
-# country_event = { #The Cabinet Resigns WHAT THE SHIT IS THIS
-#	id = japdom.34
-#	title = japdom.34.t
-#	desc = japdom.34.d
-#	fire_only_once = yes
-#	trigger = {
-#		tag = JAP
-#		OR = {
-#			has_country_flag = JAP_CON
-#			has_country_flag = JAP_LIB
-#			has_country_flag = JAP_NAT
-#			AND = {
-#				has_completed_focus = JAP_chuou
-#				has_idea = JAP_Hiranuma_Kiichiro_hog_pau
-#			}
-#		}
-#		date > 1937.10.1
-#	}
-#	mean_time_to_happen = {
-#		days = 15
-#	}
-#	option = { #Appoint Mitsuchi Chujo
-#		name = japdom.34.a
-#		trigger = {
-#			has_country_flag = JAP_CON
-#		}
-#		remove_all_ministers = yes
-#		add_ideas = JAP_Mitsuchi_Chuzo_hog_sco
-#		add_ideas = JAP_Yoshida_Shigeru_for_sco
-#		add_ideas = JAP_Matsuno_Tsuruhei_eco_sco
-#		add_ideas = JAP_Kawamura_Takeji_sec_sco
-#	}
-#	option = { #Appoint Machida Chuji
-#		name = japdom.34.b
-#		trigger = {
-#			has_country_flag = JAP_LIB
-#		}
-#		remove_all_ministers = yes
-#		add_ideas = JAP_Machida_Chuji_hog_mli
-#		add_ideas = JAP_Hirota_Koki_for_mli
-#		add_ideas = JAP_Inoue_Junnosuke_eco_mli
-#		add_ideas = JAP_Saito_Takao_sec_mli
-#	}
-#	option = { #Appoint Nakajima
-#		name = japdom.34.c
-#		trigger = {
-#			has_country_flag = JAP_NAT
-#		}
-#		remove_all_ministers = yes
-#		add_ideas = JAP_Nakajima_Chikuhei_hog_ade
-#		add_ideas = JAP_Ogawa_Gotaro_for_ade
-#		add_ideas = JAP_Maeda_Yonezo_eco_ade
-#		add_ideas = JAP_Nagai_Ryutaro_sec_ade
-#	}
-#	option = { #Appoint Shoda
-#		name = japdom.34.e
-#		trigger = {
-#			has_country_flag = JAP_NAT
-#		}
-#		remove_all_ministers = yes
-#		add_ideas = JAP_Shoda_Kazue_hog_pau
-#		add_ideas = JAP_Komai_Tokuzo_for_pau
-#		add_ideas = JAP_Godo_Takuo_eco_pau
-#		add_ideas = JAP_Shiono_Suehiko_sec_pau
-#	}
-#}
-###########################
-# 1937 - The MITI
-###########################
 
 country_event = { #The Cabinet Planning Board
 	id = japdom.35
@@ -1015,7 +1562,6 @@ country_event = { #The Cabinet Planning Board
 	picture = GFX_report_event_JAP_foreign_minister_2
 	fire_only_once = yes
 	is_triggered_only = yes
-
 	option = {
 		name = japdom.35.a
 		add_political_power = 25
@@ -1030,7 +1576,6 @@ country_event = { #Zaibatsu Corruption Scandal
 	picture = GFX_report_event_JAP_ultimatum
 	fire_only_once = yes
 	is_triggered_only = yes
-
 	option = {
 		name = japdom.36.a
 		swap_ideas = {
@@ -1239,10 +1784,6 @@ country_event = { #The Popular Front Incident
 			ideology = syndicalist
 			popularity = -0.02
 		}
-		add_popularity = {
-			ideology = totalist
-			popularity = -0.02
-		}
 		hidden_effect = {
 			country_event = {
 				id = japdom.46
@@ -1276,10 +1817,6 @@ country_event = { #The Second Popular Front Incident
 		}
 		add_popularity = {
 			ideology = syndicalist
-			popularity = -0.02
-		}
-		add_popularity = {
-			ideology = totalist
 			popularity = -0.02
 		}
 		hidden_effect = {
@@ -1404,38 +1941,6 @@ country_event = { #Tokyo Officers Accused of Torture
 		add_stability = -0.05
 	}
 }
-
-# Currently disabled as it screws with early code
-#country_event = { #The Repeal of the National Security Act
-#	id = japdom.52
-#	title = japdom.52.t
-#	desc = japdom.52.d
-#	fire_only_once = yes
-#	trigger = {
-#		tag = JAP
-#		has_country_flag = JAP_NSA
-#		OR = {
-#			has_government = social_conservative
-#			has_government = market_liberal
-#			has_government = social_liberal
-#			has_government = authoritarian_democrat
-#			has_government = social_democrat
-#
-#		}
-#		date > 1939.1.1
-#
-#	}
-#	mean_time_to_happen = {
-#		days = 150
-#	}
-#	option = {
-#		name = japdom.52.a
-#		clr_country_flag = JAP_NSA
-#		set_country_flag = JAP_NO_NSA
-#		remove_ideas = japan_NSA_act
-#
-#	}
-#}
 
 ###########################
 # 1939 - The Great Drought
@@ -1662,7 +2167,15 @@ country_event = { #Fengtian provides food
 
 country_event = { #General Election 1940
 	id = japdom.54
-	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.54" }
+	immediate = {
+		hidden_effect = {
+			remove_ideas = {
+				JAP_emperor_hirohito
+				JAP_emperor_yasuhito
+			}
+			delete_all_coalitions = yes
+		}
+	}
 	title = japdom.54.t
 	desc = japdom.54.d
 	picture = GFX_report_event_JAP_voting
@@ -1671,55 +2184,15 @@ country_event = { #General Election 1940
 	trigger = {
 		date > 1939.1.1
 		date < 1941.1.1
-		has_socialist_government = no
-	}
-
-	option = { #Elect Rikken Seiyukai (Conservatives)
-		name = japdom.54.a
-		ai_chance = {
-			factor = 25
+		OR = {
+			has_socialist_government = no
+			has_country_flag = allowed_elections
 		}
-		set_politics = {
-			ruling_party = social_conservative
-			election_frequency = 48
-			elections_allowed = yes
-		}
-		add_popularity = {
-			ideology = social_conservative
-			popularity = 0.3
-		}
-		remove_all_ministers = yes
-		add_ideas = {
-			JAP_Yoshizawa_Kenkichi_hog_sco
-			JAP_Yoshida_Shigeru_for_sco
-			JAP_Ikeda_Shigeaki_eco_sco
-			JAP_Hatoyama_Ichiro_sec_sco
-		}
-	}
-	option = { #Elect Minseito (Liberals)
-		name = japdom.54.b
-		ai_chance = {
-			factor = 25
-		}
-		set_politics = {
-			ruling_party = market_liberal
-			election_frequency = 48
-			elections_allowed = yes
-		}
-		add_popularity = {
-			ideology = market_liberal
-			popularity = 0.3
-		}
-		remove_all_ministers = yes
-		add_ideas = {
-			JAP_Ugaki_Kazushige_hog_mli
-			JAP_Inoue_Junnosuke_eco_mli
-			JAP_Miki_Bukichi_eco_mli
-			JAP_Kawasaki_Katsu_sec_mli
-		}
+		has_completed_focus = JAP_elec_reform
+		NOT = { has_country_flag = ban_the_elections }
 	}
 	option = { #Elect Kokumin Domei (Nationalists)
-		name = japdom.54.c
+		name = OPTION_SHOWAKAI
 		ai_chance = {
 			factor = 25
 		}
@@ -1739,9 +2212,81 @@ country_event = { #General Election 1940
 			JAP_Horikiri_Zenbee_eco_ade
 			JAP_Akita_Kiyoshi_sec_ade
 		}
+		set_country_flag = JAP_showakai_won_in_1940
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Elect Rikken Seiyukai (Conservatives)
+		name = OPTION_SEIYUKAI
+		ai_chance = {
+			factor = 25
+		}
+		set_politics = {
+			ruling_party = social_conservative
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yoshizawa_Kenkichi_hog_sco
+			JAP_Yoshida_Shigeru_for_sco
+			JAP_Ikeda_Shigeaki_eco_sco
+			JAP_Hatoyama_Ichiro_sec_sco
+		}
+		set_country_flag = JAP_seiyukai_won_in_1940
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Elect Minseito (Liberals)
+		name = OPTION_MINSEITO
+		ai_chance = {
+			factor = 25
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ugaki_Kazushige_hog_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Miki_Bukichi_eco_mli
+			JAP_Kawasaki_Katsu_sec_mli
+		}
+		set_country_flag = JAP_minseito_won_in_1940
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Kakushinto
+		name = OPTION_KAKUSHINTO
+		ai_chance = { factor = 25 }
+		set_politics = {
+			ruling_party = social_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ozaki_Yukio_hog_sli
+			JAP_Kiyose_Ichiro_for_sli
+			JAP_Otake_Kanichi_eco_sli
+			JAP_Seki_Naohiko_sec_sli
+		}
+		set_country_flag = JAP_kakushinto_won_in_1940
+		mark_focus_tree_layout_dirty = yes
 	}
 	option = { #Elect Shakai Taishuto (Socialists)
-		name = japdom.54.e
+		name = OPTION_SHAKAI-TAISHUTO
 		ai_chance = {
 			factor = 25
 		}
@@ -1761,12 +2306,50 @@ country_event = { #General Election 1940
 			JAP_Mizutani_Chozaburo_eco_sde
 			JAP_Matsuoka_Komakichi_sec_sde
 		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1940
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Rodo-Nominto
+		name = OPTION_RODO-NOMINTO
+		ai_chance = { factor = 25 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_syn
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Aso_Hisashi_sec_syn
+		}
+		if = {
+			limit = { has_country_flag = JAP_yasuhito }
+			add_ideas = JAP_emperor_yasuhito
+		}
+		else = { add_ideas = JAP_emperor_hirohito }
+		set_country_flag = JAP_rodo_nominto_won_in_1940
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
 country_event = { #General Election 1944
 	id = japdom.55
-	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.55" }
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event japdom.55"
+		hidden_effect = {
+			remove_ideas = {
+				JAP_emperor_hirohito
+				JAP_emperor_yasuhito
+			}
+			delete_all_coalitions = yes
+		}
+	}
 	title = japdom.55.t
 	desc = japdom.54.d
 	picture = GFX_report_event_JAP_voting
@@ -1775,55 +2358,15 @@ country_event = { #General Election 1944
 	trigger = {
 		date > 1943.1.1
 		date < 1946.1.1
-		has_socialist_government = no
-	}
-
-	option = { #Elect Rikken Seiyukai (Conservatives)
-		name = japdom.54.a
-		ai_chance = {
-			factor = 25
+		OR = {
+			has_socialist_government = no
+			has_country_flag = allowed_elections
 		}
-		set_politics = {
-			ruling_party = social_conservative
-			election_frequency = 48
-			elections_allowed = yes
-		}
-		add_popularity = {
-			ideology = social_conservative
-			popularity = 0.3
-		}
-		remove_all_ministers = yes
-		add_ideas = {
-			JAP_Hatoyama_Ichiro_hog_sco
-			JAP_Ashida_Hitoshi_for_sco
-			JAP_Tsushima_Juichi_eco_sco
-			JAP_Hatoyama_Ichiro_sec_sco
-		}
-	}
-	option = { #Elect Minseito (Liberals)
-		name = japdom.54.b
-		ai_chance = {
-			factor = 25
-		}
-		set_politics = {
-			ruling_party = market_liberal
-			election_frequency = 48
-			elections_allowed = yes
-		}
-		add_popularity = {
-			ideology = market_liberal
-			popularity = 0.3
-		}
-		remove_all_ministers = yes
-		add_ideas = {
-			JAP_Machida_Chuji_hog_mli
-			JAP_Shidehara_Kijuro_for_mli
-			JAP_Matsumura_Kenzo_eco_mli
-			JAP_Kawasaki_Katsu_sec_mli
-		}
+		has_completed_focus = JAP_elec_reform
+		NOT = { has_country_flag = ban_the_elections }
 	}
 	option = { #Elect Kokumin Domei (Nationalists)
-		name = japdom.54.c
+		name = OPTION_SHOWAKAI
 		ai_chance = {
 			factor = 25
 		}
@@ -1843,9 +2386,81 @@ country_event = { #General Election 1944
 			JAP_Horikiri_Zenbee_eco_ade
 			JAP_Oasa_Tadao_sec_ade
 		}
+		set_country_flag = JAP_showakai_won_in_1944
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Elect Rikken Seiyukai (Conservatives)
+		name = OPTION_SEIYUKAI
+		ai_chance = {
+			factor = 25
+		}
+		set_politics = {
+			ruling_party = social_conservative
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hatoyama_Ichiro_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Tsushima_Juichi_eco_sco
+			JAP_Hatoyama_Ichiro_sec_sco
+		}
+		set_country_flag = JAP_seiyukai_won_in_1944
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Elect Minseito (Liberals)
+		name = OPTION_MINSEITO
+		ai_chance = {
+			factor = 25
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Machida_Chuji_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Matsumura_Kenzo_eco_mli
+			JAP_Kawasaki_Katsu_sec_mli
+		}
+		set_country_flag = JAP_minseito_won_in_1944
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Kakushinto
+		name = OPTION_KAKUSHINTO
+		ai_chance = { factor = 25 }
+		set_politics = {
+			ruling_party = social_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ozaki_Yukio_hog_sli
+			JAP_Kiyose_Ichiro_for_sli
+			JAP_Otake_Kanichi_eco_sli
+			JAP_Seki_Naohiko_sec_sli
+		}
+		set_country_flag = JAP_kakushinto_won_in_1944
+		mark_focus_tree_layout_dirty = yes
 	}
 	option = { #Elect Shakai Taishuto (Socialists)
-		name = japdom.54.e
+		name = OPTION_SHAKAI-TAISHUTO
 		ai_chance = {
 			factor = 25
 		}
@@ -1865,6 +2480,35 @@ country_event = { #General Election 1944
 			JAP_Mizutani_Chozaburo_eco_sde
 			JAP_Matsuoka_Komakichi_sec_sde
 		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1944
+		mark_focus_tree_layout_dirty = yes
+	}
+	option = { #Rodo-Nominto
+		name = OPTION_RODO-NOMINTO
+		ai_chance = { factor = 25 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_syn
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Tanahashi_Kotora_sec_syn
+		}
+		if = {
+			limit = { has_country_flag = JAP_yasuhito }
+			add_ideas = JAP_emperor_yasuhito
+		}
+		else = { add_ideas = JAP_emperor_hirohito }
+		set_country_flag = JAP_rodo_nominto_won_in_1944
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -1883,78 +2527,111 @@ country_event = { #The Emperor has been shot!
 
 	trigger = {
 		has_completed_focus = JAP_imperialist_path
+		OR = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Hirohito"
+			}
+			has_idea = JAP_emperor_hirohito
+		}
 	}
-
 	option = { #He survives
 		name = japdom.56.a
-		ai_chance = {
-			factor = 75
-		}
+		ai_chance = { factor = 75 }
 		add_stability = 0.05
 	}
 
 	option = { #His Majesty is dead, Prince Chichibu will become regent.
 		name = japdom.56.b
-		ai_chance = {
-			factor = 25
-		}
+		ai_chance = { factor = 25 }
 		add_stability = -0.05
-		hidden_effect = {
-			kill_ideology_leader = social_democrat
-			kill_ideology_leader = social_liberal
-			kill_ideology_leader = market_liberal
-			kill_ideology_leader = social_conservative
-			kill_ideology_leader = authoritarian_democrat
-			kill_ideology_leader = paternal_autocrat
-			kill_ideology_leader = national_populist
+		if = {
+			limit = {
+				has_country_leader = {
+					ruling_only = yes
+					name = "Hirohito"
+				}
+			}
+			dismiss_all_leaders = yes
+			create_country_leader = {
+				name = "Yasuhito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = nazbol_subtype
+			}
+			create_country_leader = {
+				name = "Yasuhito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = social_democrat_subtype
+			}
+			create_country_leader = {
+				name = "Yasuhito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = social_liberal_subtype
+			}
+			create_country_leader = {
+				name = "Yasuhito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = market_liberal_subtype
+			}
+			create_country_leader = {
+				name = "Yasuhito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = social_conservative_subtype
+			}
+			create_country_leader = {
+				name = "Yasuhito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = authoritarian_democrat_subtype
+			}
+			create_country_leader = {
+				name = "Yasuhito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = junta_subtype
+			}
+			create_country_leader = {
+				name = "Yasuhito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = militarism_subtype
+			}
+			hidden_effect = {
+				create_country_leader = {
+					name = "Yamamoto Kenzo"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Yamamoto_Kenzo.png"
+					expire = "1981.3.6"
+					ideology = syndicalist_subtype
+				}
+				create_country_leader = {
+					name = "Arahata Kanson"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Kanson_Arahata.png"
+					expire = "1981.3.6"
+					ideology = radical_socialist_subtype
+				}
+			}
 		}
-		create_country_leader = {
-			name = "Yasuhito"
-			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
-			ideology = social_democrat_subtype
-		}
-		create_country_leader = {
-			name = "Yasuhito"
-			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
-			ideology = social_liberal_subtype
-		}
-		create_country_leader = {
-			name = "Yasuhito"
-			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
-			ideology = market_liberal_subtype
-		}
-		create_country_leader = {
-			name = "Yasuhito"
-			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
-			ideology = social_conservative_subtype
-		}
-		create_country_leader = {
-			name = "Yasuhito"
-			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
-			ideology = authoritarian_democrat_subtype
-		}
-		create_country_leader = {
-			name = "Yasuhito"
-			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
-			ideology = junta_subtype
-		}
-		create_country_leader = {
-			name = "Yasuhito"
-			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
-			ideology = militarism_subtype
+		else = {
+			if = {
+				limit = { has_idea = JAP_emperor_hirohito }
+				remove_ideas = JAP_emperor_hirohito
+			}
+			if = {
+				limit = { NOT = { has_idea = JAP_emperor_yasuhito } }
+				add_ideas = JAP_emperor_yasuhito
+			}
 		}
 		set_country_flag = JAP_yasuhito
 		news_event = {
 			id = worldnews.417
 			days = 1
 		}
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -2006,6 +2683,7 @@ country_event = { #Hayashi Senjuro is dead!
 		}
 		remove_ideas_with_trait = head_of_government
 		add_ideas = JAP_Tojo_Hideki_hog_pau
+		mark_focus_tree_layout_dirty = yes
 	}
 	option = { #Nagata Tetsuzan
 		name = japdom.58.b
@@ -2017,6 +2695,7 @@ country_event = { #Hayashi Senjuro is dead!
 		}
 		remove_ideas_with_trait = head_of_government
 		add_ideas = JAP_Nagata_Tetsuzan_hog_pau
+		mark_focus_tree_layout_dirty = yes
 	}
 	option = { #Gomeifuku wo inorimasu
 		name = japdom.58.c
@@ -2025,6 +2704,7 @@ country_event = { #Hayashi Senjuro is dead!
 				has_idea = JAP_Hayashi_Senjuro_hog_pau
 			}
 		}
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -2372,6 +3052,18 @@ country_event = { #Dissolution of the Diet
 	trigger = {
 		is_subject = yes
 		has_socialist_government = yes
+		NOT = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Hirohito"
+			}
+			has_country_leader = {
+				ruling_only = yes
+				name = "Yasuhito"
+			}
+			has_idea = JAP_emperor_hirohito
+			has_idea = JAP_emperor_yasuhito
+		}
 	}
 
 	option = {
@@ -2384,6 +3076,7 @@ country_event = { #Dissolution of the Diet
 			JAP_Sakisaka_Itsuro_sec_rso
 		}
 		set_cosmetic_tag = JAP_RED
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -2399,6 +3092,18 @@ country_event = { #Syndie HoS
 	trigger = {
 		is_subject = yes
 		has_socialist_government = yes
+		NOT = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Hirohito"
+			}
+			has_country_leader = {
+				ruling_only = yes
+				name = "Yasuhito"
+			}
+			has_idea = JAP_emperor_hirohito
+			has_idea = JAP_emperor_yasuhito
+		}
 	}
 
 	option = {
@@ -2424,6 +3129,18 @@ country_event = { #Chaos in the Imperial Family
 
 	trigger = {
 		has_socialist_government = yes
+		NOT = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Hirohito"
+			}
+			has_country_leader = {
+				ruling_only = yes
+				name = "Yasuhito"
+			}
+			has_idea = JAP_emperor_hirohito
+			has_idea = JAP_emperor_yasuhito
+		}
 	}
 
 	option = {
@@ -2449,6 +3166,18 @@ country_event = { #Fate of the Imperial Family
 
 	trigger = {
 		has_socialist_government = yes
+		NOT = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Hirohito"
+			}
+			has_country_leader = {
+				ruling_only = yes
+				name = "Yasuhito"
+			}
+			has_idea = JAP_emperor_hirohito
+			has_idea = JAP_emperor_yasuhito
+		}
 	}
 
 	option = {
@@ -2514,15 +3243,11 @@ country_event = { #Black Monday
 	title = japdom.242.t
 	desc = japdom.242.d
 	picture = GFX_report_event_JAP_economy_building
-
 	fire_only_once = yes
 	is_triggered_only = yes
-
 	option = {
 		name = japdom.242.a
-		ai_chance = {
-			factor = 100
-		}
+		ai_chance = { factor = 100 }
 		add_stability = -0.03
 	}
 }
