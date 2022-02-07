@@ -1,4 +1,4 @@
-name="Kaiserredux"
+
 replace_path="common/abilities"
 replace_path="common/ai_areas"
 replace_path="common/ai_equipment"
@@ -75,5 +75,5 @@ tags={
 	"National Focuses"
 }
 supported_version="1.11.*"
-path="C:/Users/User/Documents/Paradox Interactive/Hearts of Iron IV/mod/kx"
+path="C:/Users/User/Documents/Paradox Interactive/Hearts of Iron IV/mod/jol"
 remote_file_id="2206134307"
