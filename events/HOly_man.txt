@@ -248,32 +248,68 @@ country_event = { # Introduction
 		name = holythai.9.a
 		THM = {
 		add_state_core = 756
-		add_state_core = 822
+		
 		add_state_core = 882
-		add_state_core = 823
+		
 		add_state_core = 831
 		add_state_core = 289
 		add_state_core = 830
 		add_state_core = 824
-		add_state_core = 825
-		add_state_core = 750
+		
 		add_state_core = 749
 		add_state_core = 724
 		add_state_core = 999
 		add_state_core = 751
+		
+		
+		set_state_owner = 756
+		
+		set_state_owner = 882
+		
+		set_state_owner = 831
+		set_state_owner = 289
+		set_state_owner = 830
+		set_state_owner = 824
+		
+		set_state_owner = 749
+		set_state_owner = 724
+		set_state_owner = 999
+		set_state_owner = 751
 		annex_country = {
 				target = SIA
 				transfer_troops = yes
 			}
 			
 		}
+		release = CAM
+		SIA = {
+		release = CAM
+		set_state_controller = 822
+		set_state_controller = 823
+		declare_war_on = {
+			target = THM
+			type = annex_everything
+		}
+		
+		}
+		
+		
 		
 		THM = { change_tag_from = SIA }
+		country_event = {
+		id = holythai.11
+		days = 0
+		}
 	}
 	
 	option = {
 		name = holythai.9.b
-		
+		THM = {
+		set_state_controller = 822
+		set_state_controller = 823
+		load_oob = "SIA_revolt"
+		}
+		release = CAM
 	}
 	
 	
@@ -303,6 +339,35 @@ country_event = { # Introduction
 	
 }
 
+country_event = { # Introduction
+	id = holythai.11
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.11.t
+	desc = holythai.11.d
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = holythai.11.a
+		
+		SIA = {
+		set_state_owner = 822
+		set_state_owner = 823
+		load_oob = "SIA_revolt"
+		declare_war_on = {
+			target = THM
+			type = annex_everything
+		}
+		}
+		release = CAM
+	}
+	
+	
+}
 
 
 
