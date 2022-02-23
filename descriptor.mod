@@ -1,4 +1,4 @@
-
+name="Kaiserredux - A Rising Dragon"
 replace_path="common/abilities"
 replace_path="common/ai_areas"
 replace_path="common/ai_equipment"
@@ -75,4 +75,4 @@ tags={
 	"National Focuses"
 }
 supported_version="1.11.*"
-
+path="D:/User/andre/andrew/Paradox Interactive/Hearts of Iron IV/mod/theeastisred"
