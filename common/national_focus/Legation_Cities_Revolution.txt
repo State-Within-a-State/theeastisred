@@ -1,0 +1,714 @@
+
+	shared_focus = {
+		id = LEC_the_red_revolt
+		icon = GFX_LEC_the_red_revolt-61193
+		x = 36
+		y = 8
+		offset = {
+			x = 0
+			y = 6
+			trigger = {
+				has_focus_tree = new-commie-1
+			}
+		}
+		cost = 1
+		available = {
+			has_country_flag = LEC_revolution_succeeded
+		}
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+			remove_decision = LEC_vote_yes
+			remove_decision = LEC_vote_no
+			unlock_decision_category_tooltip = integrate_china
+		}
+	}
+
+	#Securing the Shanghai Revolutionary Basin
+	shared_focus = {
+		id = LEC_securing_the_shanghai_revolutionary_basin
+		icon = GFX_LEC_securing_the_shanghai_revolutionary_basin-61816
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_the_red_revolt  }
+		completion_reward = {
+			add_state_core = 609
+			add_state_core = 743
+			add_state_core = 801
+		}
+	}
+
+	#Secure Hong Kong
+	shared_focus = {
+		id = LEC_secure_hong_kong
+		icon = GFX_LEC_secure_hong_kong-61820
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = LEC_the_red_revolt  }
+		completion_reward = {
+			add_state_core = 747
+			add_state_core = 746
+			add_state_core = 326
+		}
+	}
+
+	#Our Red Militia's
+	shared_focus = {
+		id = LEC_ourredmilitias
+		icon = GFX_LEC_ourredmilitias-61824
+		relative_position_id = LEC_the_red_revolt
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_securing_the_shanghai_revolutionary_basin  } prerequisite = { focus = LEC_secure_hong_kong  }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = LEC_chaos_of_revolution
+				add_idea = LEC_chaos_of_revolution_2
+			}
+		}
+	}
+
+	#Sailing the Yangtze River Delta
+	shared_focus = {
+		id = LEC_sailing_the_yangtze_river_delta
+		icon = GFX_LEC_sailing_the_yangtze_river_delta-61826
+		relative_position_id = LEC_the_red_revolt
+		x = 0
+		y = 3
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_ourredmilitias  }
+		completion_reward = {
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+				province = 7014
+			}
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+				province = 4196
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 5
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 5
+				instant_build = yes
+			}				
+		}
+	}
+
+	#Reactionary Question
+	shared_focus = {
+		id = LEC_reactionary_question
+		icon = GFX_LEC_reactionary_question-61825
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 4
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_sailing_the_yangtze_river_delta  }
+		completion_reward = {
+			country_event = {
+				id = legcities.312
+			}
+		}
+	}
+	
+	#Question of the Treasury
+	shared_focus = {
+		id = LEC_question_of_the_treasury
+		icon = GFX_LEC_question_of_the_treasury-61807
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 5
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_reactionary_question  }
+	}
+
+	#The Economic Question
+	shared_focus = {
+		id = LEC_the_economic_question
+		icon = GFX_LEC_the_economic_question-61801
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 4
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_sailing_the_yangtze_river_delta  }
+		completion_reward = {
+			country_event = {
+				id = legcities.313
+			}
+		}
+	}
+
+	#Question with the KMT
+	shared_focus = {
+		id = LEC_question_with_the_kmt
+		icon = GFX_LEC_question_with_the_kmt-61829
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 5
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_the_economic_question  }
+		completion_reward = {
+			country_event = {
+				id = legcities.314
+			}
+		}
+	}
+
+	#Liberate the Rest of East China
+	shared_focus = {
+		id = LEC_liberate_the_rest_of_east_china
+		icon = GFX_LEC_liberate_the_rest_of_east_china-61812
+		relative_position_id = LEC_the_red_revolt
+		x = 0
+		y = 6
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_question_with_the_kmt  } prerequisite = { focus = LEC_question_of_the_treasury  }
+		completion_reward = {
+			unlock_decision_category_tooltip = LEC_military_expeditions_category 
+			unlock_decision_category_tooltip = LEC_chinese_revolt_category
+			unlock_decision_tooltip = LEC_dec_SQI_expedition
+			
+		}
+	}
+	
+	#First Red Women's Detachment
+	shared_focus = {
+		id = LEC_firstredwomensdetachment
+		icon = GFX_LEC_firstredwomensdetachment-61846
+		relative_position_id = LEC_liberate_the_rest_of_east_china
+		x = -1
+		y = 1
+		cost = 8
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		prerequisite = { focus = LEC_liberate_the_rest_of_east_china }
+		completion_reward = {
+			add_manpower = 10000
+			army_experience = 5
+			set_rule = { can_generate_female_aces = yes }
+		}
+	}
+	
+	#Land Reform
+	shared_focus = {
+		id = LEC_land_reform
+		icon = GFX_LEC_land_reform-61802
+		relative_position_id = LEC_the_red_revolt
+		x = -1
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_firstredwomensdetachment  }
+	}
+
+	#Spread of Revolution
+	shared_focus = {
+		id = LEC_spread_of_revolution
+		icon = GFX_LEC_spread_of_revolution-61841
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 7
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_liberate_the_rest_of_east_china  }
+		completion_reward = {
+			unlock_decision_tooltip = LEC_dec_smash_the_qing
+			unlock_decision_tooltip = LEC_dec_secure_the_north_west
+			unlock_decision_tooltip = LEC_dec_secure_sichuan
+			unlock_decision_tooltip = LEC_dec_secure_hunan
+			unlock_decision_tooltip = LEC_dec_SHX_expedition
+			unlock_decision_tooltip = LEC_dec_secure_guangxi
+			unlock_decision_tooltip = LEC_dec_secure_yunnan
+		}
+	}
+
+	#The Opium Discussion
+	shared_focus = {
+		id = LEC_the_opium_discussion
+		icon = GFX_LEC_the_opium_discussion-61808
+		relative_position_id = LEC_the_red_revolt
+		x = 1
+		y = 8
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_spread_of_revolution  }
+	}
+
+	#Calling for the Party Congress
+	shared_focus = {
+		id = LEC_calling_for_the_party_congress
+		icon = GFX_LEC_calling_for_the_party_congress-61843
+		relative_position_id = LEC_the_red_revolt
+		x = 0
+		y = 9
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_the_opium_discussion  } prerequisite = { focus = LEC_land_reform  }
+		completion_reward = {
+			country_event ={
+			id = redelection.1
+			day = 1
+			}
+		}
+	}
+	
+	#The New Revolutionary Army
+	shared_focus = {
+		id = LEC_the_new_revolutionary_army
+		icon = GFX_LEC_the_new_revolutionary_army-61853
+		relative_position_id = LEC_the_red_revolt
+		x = 8
+		y = 4
+		cost = 4
+		prerequisite = { focus = LEC_ourredmilitias  }
+		completion_reward = {
+			random_owned_controlled_state = {
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 10068
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 7014
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 10062
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 9974
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 4196
+				}
+				create_unit = {
+					division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
+					owner = LEC
+					prioritize_location = 9938
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	
+	#Implement The People's War
+	shared_focus = {
+		id = PRC_implement_peoples_war
+		icon = GFX_goal_generic_army_doctrines
+		cost = 5
+		prerequisite = { focus = LEC_the_new_revolutionary_army }
+		x = 0
+		y = 1
+		relative_position_id = LEC_the_new_revolutionary_army
+		completion_reward = { add_ideas = PRC_peoples_war }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	
+	#The 3 Disciplines
+	shared_focus = {
+		id = PRC_the3disciplines
+		icon = GFX_goal_generic_army_doctrines
+		cost = 5
+		prerequisite = { focus = PRC_implement_peoples_war }
+		x = 0
+		y = 1
+		relative_position_id = PRC_implement_peoples_war
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_peoples_war
+				add_idea = PRC_peoples_war2
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	
+	#8 Guidelines
+	shared_focus = {
+		id = PRC_8_guidelines
+		icon = GFX_focus_chi_army_reform
+		cost = 5
+		prerequisite = { focus = PRC_the3disciplines }
+		x = 0
+		y = 1
+		relative_position_id = PRC_the3disciplines
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = PRC_peoples_war2
+				add_idea = PRC_peoples_war3
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+	}
+	
+	#Guerrilla Warfare
+	shared_focus = {
+		id = LEC_guerrilla_warfare
+		icon = GFX_LEC_guerrilla_warfare-61806
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = -2
+		y = 1
+		cost = 8
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+		prerequisite = { focus = LEC_the_new_revolutionary_army  }
+		completion_reward = {
+			army_experience = 15
+			custom_effect_tooltip = SRI_asymmetrical_warfare_effect
+			hidden_effect = { set_technology = { asymmetrical_warfare = 1 } }
+		}
+	}
+	
+	#Hidden Factories
+	shared_focus = {
+		id = LEC_hidden_factories
+		icon = GFX_LEC_hidden_factories-61809
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = -2
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_guerrilla_warfare  }
+	}
+	
+	#Socialist Research
+	shared_focus = {
+		id = LEC_socialist_research
+		icon = GFX_LEC_socialist_research-61810
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 0
+		y = 4
+		cost = 7
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = LEC_firstredwomensdetachment  }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	#High Above the Sky
+	shared_focus = {
+		id = LEC_high_above_the_sky
+		icon = GFX_LEC_high_above_the_sky-61814
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 0
+		y = 5
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_socialist_research  }
+		
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = light_fighter
+			}
+		}
+	}
+
+	#Stolen Arms
+	shared_focus = {
+		id = LEC_stolen_arms
+		icon = GFX_LEC_stolen_arms-61834
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 2
+		y = 1
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = LEC_the_new_revolutionary_army  }
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = LEC
+			}
+			add_equipment_to_stockpile = {
+				type = cat_light_armor
+				amount = 20
+				producer = LEC
+			}
+			add_equipment_to_stockpile = {
+				type = artillery
+				amount = 500
+				producer = LEC
+			}
+		}
+	}
+	
+	#Rebuild Calvary Units
+	shared_focus = {
+		id = PRC_rebuild_calvary_units
+		icon = GFX_goal_generic_cavalry
+		cost = 5
+		prerequisite = { focus = LEC_the_new_revolutionary_army }
+		x = 4
+		y = 1
+		relative_position_id = LEC_the_new_revolutionary_army
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = cat_mechanized_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	#Tactics of the Great War
+	shared_focus = {
+		id = LEC_tactics_of_the_great_war
+		icon = GFX_LEC_tactics_of_the_great_war-61835
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 2
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = LEC_stolen_arms  }
+			completion_reward = {
+				add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = cat_grand_battle_plan
+			}
+		}
+	}
+
+	#Tank Research
+	shared_focus = {
+		id = LEC_tank_research
+		icon = GFX_LEC_tank_research-61803
+		relative_position_id = LEC_the_new_revolutionary_army
+		x = 2
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = LEC_tactics_of_the_great_war  }
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = cat_light_armor
+			}
+		}
+	}
+	
+	#Form the PLA
+	shared_focus = {
+		id = PRC_form_the_pla
+		icon = GFX_PRC_form_the_pla-78963
+		cost = 5
+		prerequisite = { focus = LEC_ourredmilitias }
+		mutually_exclusive = { focus = PRC_keeptheredmilitias }
+		x = 4
+		y = 0
+		relative_position_id = PRC_keeptheredmilitias
+		completion_reward = { army_experience = 10 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	#Keep the Red Militia's
+	shared_focus = {
+		id = PRC_keeptheredmilitias
+		icon = GFX_PRC_keeptheredmilitias-61824
+		cost = 5
+		prerequisite = { focus = LEC_ourredmilitias }
+		mutually_exclusive = { focus = PRC_form_the_pla }
+		x = 19
+		y = 2
+		relative_position_id = LEC_ourredmilitias
+		completion_reward = { add_command_power = 10 }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	
+	#Under Ground Factories
+	shared_focus = {
+		id = PRC_under_ground_factories
+		icon = GFX_goal_generic_construct_mil_factory
+		cost = 5
+		prerequisite = { focus = PRC_keeptheredmilitias }
+		x = -2
+		y = 1
+		relative_position_id = PRC_keeptheredmilitias
+		completion_reward = {
+			add_building_construction = {
+				type = arms_factory
+				level = 5
+				instant_build = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+
+	#New Workshops
+	shared_focus = {
+		id = PRC_new_workshops
+		icon = GFX_focus_generic_industry_1
+		cost = 5
+		prerequisite = { focus = PRC_under_ground_factories }
+		x = 0
+		y = 1
+		relative_position_id = PRC_under_ground_factories
+		completion_reward = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	
+	#The Red Militia
+	shared_focus = {
+		id = PRC_the_red_militia
+		icon = GFX_PRC_the_red_militia-135116
+		cost = 5
+		prerequisite = { focus = PRC_new_workshops }
+		x = 0
+		y = 1
+		relative_position_id = PRC_new_workshops
+		completion_reward = {
+			add_command_power = 35
+			army_experience = 75
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	
+	#Arsenal of Socialism
+	shared_focus = {
+		id = PRC_arsenal_of_socialism
+		icon = GFX_PRC_arsenal_of_socialism-135117
+		cost = 5
+		prerequisite = { focus = PRC_form_the_pla  }
+		x = 2
+		y = 2
+		relative_position_id = PRC_form_the_pla
+		completion_reward = {
+			add_building_construction = {
+				type = arms_factory
+				level = 3
+				instant_build = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+	}
+	
+	#Motorising The Field
+	shared_focus = {
+		id = PRC_motorising_the_field
+		icon = GFX_PRC_motorising_the_field-78456
+		cost = 5
+		prerequisite = { focus = PRC_form_the_pla }
+		x = 0
+		y = 1
+		relative_position_id = PRC_form_the_pla
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	#New Tanks
+	shared_focus = {
+		id = PRC_new_tanks
+		icon = GFX_focus_generic_army_tanks2
+		cost = 5
+		prerequisite = { focus = PRC_motorising_the_field }
+		x = 0
+		y = 1
+		relative_position_id = PRC_motorising_the_field
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	
+	#A New Army
+	shared_focus = {
+		id = PRC_a_new_army
+		icon = GFX_PRC_a_new_army-78958
+		cost = 5
+		prerequisite = { focus = PRC_arsenal_of_socialism }
+		prerequisite = { focus = PRC_new_tanks }
+		x = 0
+		y = 1
+		relative_position_id = PRC_new_tanks
+		completion_reward = {
+			add_command_power = 75
+			army_experience = 35
+		}
+		search_filters = { FOCUS_FILTER_MANPOWER }
+	}
