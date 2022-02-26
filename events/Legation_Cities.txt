@@ -13655,6 +13655,10 @@ country_event = {
 			ideology = totalist
 			popularity = -0.5
 		}
+		set_division_template_lock = {
+			division_template = "Legation Volunteer Force"
+			is_locked = no
+		}
 	}
 	
 	option = {
@@ -13662,19 +13666,6 @@ country_event = {
 		add_stability = 0.3
 		add_war_support = 0.4
 		set_country_flag = LEC_revolution_succeeded
-		set_political_party = { ideology = radical_socialist }
-		set_popularities = {
-			totalist = 30
-			radical_socialist = 30
-			syndicalist = 30
-			social_democrat = 10
-			social_liberal = 0
-			market_liberal = 0
-			social_conservative = 0
-			authoritarian_democrat = 0
-			paternal_autocrat = 0
-			national_populist = 0
-		}
 		set_politics = { ruling_party = radical_socialist }
 		remove_state_core = 747
 		remove_state_core = 746
@@ -13682,64 +13673,33 @@ country_event = {
 		remove_state_core = 801
 		remove_state_core = 326
 		remove_state_core = 743
-		add_resistance = 30 
-		damage_building = {
-			type = infrastructure
-			damage = 4.00
+		custom_effect_tooltip = LEC_revolution_oob_tooltip
+		delete_unit_template_and_units = {
+			division_template = "Legation Volunteer Force"
+			disband = yes
 		}
-		damage_building = {
-			type = infrastructure
-			damage = 4.00
-		}
-		create_unit = {
-			division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
-			owner = LEC
-			prioritize_location = 10068
-		}
-		create_unit = {
-			division = "division_template = \"People's Militia\" start_experience_factor = 0.1"
-			owner = LEC
-			prioritize_location = 10068
-		}
-		hidden_effect = { 
+		hidden_effect = {
+			set_popularities = {
+				totalist = 30
+				radical_socialist = 30
+				syndicalist = 30
+				social_democrat = 10
+				social_liberal = 0
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 0
+				paternal_autocrat = 0
+				national_populist = 0
+			}
 			news_event = {
 				id = legcities.311
 				days = 1
 			}
-			division_template = {
-				name = "People's Militia"
-				is_locked = no
-				division_names_group = LEC_INF_02
-				priority = 0
-				template_counter = 0
-				regiments = {
-					infantry = { x = 0 y = 0 }
-					infantry = { x = 0 y = 1 }
-					infantry = { x = 0 y = 2 }
-					infantry = { x = 0 y = 0 }
-				}
-			}
-			delete_unit_template_and_units = {
-				division_template = "Legation Volunteer Force"
-				disband = yes #will refund equipment and manpower
-			}
-			delete_unit_template_and_units = {
-				division_template = "Hong Kong Defence Force"
-				disband = yes #will refund equipment and manpower
-			}
-			delete_unit_template_and_units = {
-				division_template = "Tianjin Volunteer Force"
-				disband = yes #will refund equipment and manpower
-			}
-			delete_unit_template_and_units = {
-				division_template = "Shanghai Volunteer Corps"
-				disband = yes #will refund equipment and manpower
-			}
-			delete_unit_template_and_units = { division_template = "Volunteer Force" }
 			remove_ideas = { LEC_black_monday }
 			add_ideas = { LEC_chaos_of_revolution }
+			load_oob = "LEC - Revolution"
+			set_cosmetic_tag = LEC_shanghai_peoples_commune
 		}
-		set_cosmetic_tag = LEC_shanghai_peoples_commune
 	}
 }
 news_event = {
