@@ -18,40 +18,42 @@ focus_tree = {
 	}
 	default = no
 
-	continuous_focus_position = { x = 2500 y = 1300 }
+	continuous_focus_position = { x = 2800 y = 1300 }
 
 	########################
 	### Political - Base ###
 	########################
 
-	focus = {
-		id = JAP_seiyukai_1936
-		icon = GFX_goal_KR_ideology_social_conservative
-		available = { always = no }
-		ai_will_do = { factor = 0 }
-		allow_branch = { has_country_flag = JAP_seiyukai_won_in_1936 }
-		x = 10
-		y = 0
-		cost = 0
-		cancelable = no
-		completion_reward = {
-			custom_effect_tooltip = unlock_focuses
-		}
-	}
-	focus = {
-		id = JAP_deadlock_1936
-		icon = GFX_ITA_poor
-		available = { always = no }
-		ai_will_do = { factor = 0 }
-		allow_branch = { has_country_flag = JAP_deadlock_in_1936 }
-		x = 10
-		y = 0
-		cost = 0
-		cancelable = no
-		completion_reward = {
-			custom_effect_tooltip = unlock_focuses
-		}
-	}
+	#focus = {
+	#	id = JAP_seiyukai_1936
+	#	icon = GFX_goal_KR_ideology_social_conservative
+	#	available = { always = no }
+	#	ai_will_do = { factor = 0 }
+	#	allow_branch = { has_country_flag = JAP_seiyukai_won_in_1936 }
+	#	x = 10
+	#	y = 0
+	#	cost = 0
+	#	cancelable = no
+	#	completion_reward = {
+	#		custom_effect_tooltip = unlock_focuses
+	#	}
+	#	search_filters = { FOCUS_FILTER_POLITICAL }
+	#}
+	#focus = {
+	#	id = JAP_deadlock_1936
+	#	icon = GFX_ITA_poor
+	#	available = { always = no }
+	#	ai_will_do = { factor = 0 }
+	#	allow_branch = { has_country_flag = JAP_deadlock_in_1936 }
+	#	x = 10
+	#	y = 0
+	#	cost = 0
+	#	cancelable = no
+	#	completion_reward = {
+	#		custom_effect_tooltip = unlock_focuses
+	#	}
+	#	search_filters = { FOCUS_FILTER_POLITICAL }
+	#}
 	focus = {
 		id = JAP_NSA_focus
 		icon = GFX_goal_National_Security_Act
@@ -69,6 +71,7 @@ focus_tree = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_NSA_focus"
 			country_event = japdom.9	#The National Security Act, triggered by focus end of 1936, very important flags set
 		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
 
 	focus = {
@@ -79,8 +82,8 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = JAP_NSA_focus
-			focus = JAP_seiyukai_1936
-			focus = JAP_deadlock_1936
+			#focus = JAP_seiyukai_1936
+			#focus = JAP_deadlock_1936
 		}
 		available = {
 			has_country_flag = JAP_May_Trial
@@ -130,8 +133,8 @@ focus_tree = {
 		}
 		prerequisite = {
 			focus = JAP_NSA_focus
-			focus = JAP_seiyukai_1936
-			focus = JAP_deadlock_1936
+			#focus = JAP_seiyukai_1936
+			#focus = JAP_deadlock_1936
 		}
 		ai_will_do = {
 			factor = 100
@@ -274,6 +277,12 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_DEM_CUL"
 			add_ideas = JAP_DEM_CUL_idea
+			hidden_effect = {
+				country_event = {
+					id = rework_japan.4
+					days = 7
+				}
+			}
 		}
 		search_filters = { FOCUS_FILTER_RESISTANCE }
 	}
@@ -793,6 +802,12 @@ focus_tree = {
 			focus = JAP_kodoha_AGR
 			focus = JAP_kakushinha_AGR
 		}
+		available = {
+			if = {
+				limit = { has_completed_focus = JAP_coup_of_national_socialists }
+				has_completed_focus = JAP_red_rising_sun
+			}
+		}
 		ai_will_do = {
 			factor = 100
 		}
@@ -822,6 +837,10 @@ focus_tree = {
 				controls_state = 531
 				controls_state = 528
 				controls_state = 533
+			}
+			if = {
+				limit = { has_completed_focus = JAP_coup_of_national_socialists }
+				has_completed_focus = JAP_red_rising_sun
 			}
 		}
 		ai_will_do = {
@@ -919,6 +938,12 @@ focus_tree = {
 			focus = JAP_yokuseiha_AGR
 			focus = JAP_kodoha_AGR
 			focus = JAP_kakushinha_AGR
+		}
+		available = {
+			if = {
+				limit = { has_completed_focus = JAP_coup_of_national_socialists }
+				has_completed_focus = JAP_red_rising_sun
+			}
 		}
 		ai_will_do = {
 			factor = 100
@@ -3406,10 +3431,6 @@ focus_tree = {
 				has_global_flag = JAP_Fading_Sun
 			}
 		}
-		allow_branch = {
-			is_subject = no
-			NOT = { has_global_flag = JAP_Fading_Sun }
-		}
 		ai_will_do = {
 			factor = 1000
 			modifier = {
@@ -4416,6 +4437,7 @@ focus_tree = {
 		id = JAP_mantetsu_projects
 		icon = GFX_goal_mantetsu_collaboration
 		available = {
+			has_dlc = "Waking the Tiger"
 			is_subject = no
 			NOT = {
 				has_global_flag = JAP_Fading_Sun
@@ -4423,9 +4445,6 @@ focus_tree = {
 		}
 		ai_will_do = {
 			factor = 50
-		}
-		allow_branch = {
-			has_dlc = "Waking the Tiger"
 		}
 		x = -3
 		y = 1
@@ -4903,5 +4922,489 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
 	}
+	################
+	##### KXRS #####
+	################
+	focus = {
+		id = JAP_coup_of_national_socialists
+		icon = GFX_goal_KR_ideology_totalist
+		available = { always = no }
+		ai_will_do = { factor = 0 }
+		x = 21
+		y = 7
+		cost = 0
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_1
+		icon = GFX_goal_JAP_Kodoha
+		prerequisite = { focus = JAP_coup_of_national_socialists }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = -3
+		y = 1
+		relative_position_id = JAP_coup_of_national_socialists
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_2
+		icon = GFX_goal_MEX_grant_them_none
+		prerequisite = { focus = JAP_KITA_1 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = -2
+		y = 1
+		relative_position_id = JAP_KITA_1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_3
+		icon = GFX_goal_ZIM_RLP
+		prerequisite = { focus = JAP_KITA_1 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = JAP_KITA_1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_4
+		icon = GFX_focus_rus_chairman
+		prerequisite = { focus = JAP_KITA_1 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = 2
+		y = 1
+		relative_position_id = JAP_KITA_1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_5
+		icon = GFX_goal_FOP_fonte_north
+		prerequisite = { focus = JAP_KITA_2 }
+		prerequisite = { focus = JAP_KITA_3 }
+		prerequisite = { focus = JAP_KITA_4 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = -1
+		y = 1
+		relative_position_id = JAP_KITA_3
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_6
+		icon = GFX_goals_FRA_awake
+		prerequisite = { focus = JAP_KITA_2 }
+		prerequisite = { focus = JAP_KITA_3 }
+		prerequisite = { focus = JAP_KITA_4 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = JAP_KITA_3
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_7
+		icon = GFX_goals_FRA_destory_reactionary_thought
+		prerequisite = { focus = JAP_KITA_5 }
+		prerequisite = { focus = JAP_KITA_6 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = -3
+		y = 1
+		relative_position_id = JAP_KITA_6
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_8
+		icon = GFX_goal_CSA_revolutionary_army
+		prerequisite = { focus = JAP_KITA_5 }
+		prerequisite = { focus = JAP_KITA_6 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = -1
+		y = 1
+		relative_position_id = JAP_KITA_6
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_9
+		icon = GFX_goal_CSA_great_sprint
+		prerequisite = { focus = JAP_KITA_5 }
+		prerequisite = { focus = JAP_KITA_6 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = JAP_KITA_6
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_KITA_10
+		icon = GFX_SOV_A_Great_Leap_Forward
+		prerequisite = { focus = JAP_KITA_7 }
+		prerequisite = { focus = JAP_KITA_8 }
+		prerequisite = { focus = JAP_KITA_9 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Kita Ikki"
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = JAP_KITA_8
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_1
+		icon = GFX_goal_JAP_Yokuseiha
+		prerequisite = { focus = JAP_coup_of_national_socialists }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = 3
+		y = 1
+		relative_position_id = JAP_coup_of_national_socialists
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_2
+		icon = GFX_goals_Legacy_of_the_French_Revolution
+		prerequisite = { focus = JAP_NAKANO_1 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = -2
+		y = 1
+		relative_position_id = JAP_NAKANO_1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_3
+		icon = GFX_goals_And_so_begins_the_revolution
+		prerequisite = { focus = JAP_NAKANO_1 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = JAP_NAKANO_1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_4
+		icon = GFX_goal_BAN_rational_vanguard
+		prerequisite = { focus = JAP_NAKANO_1 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = 2
+		y = 1
+		relative_position_id = JAP_NAKANO_1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_5
+		icon = GFX_BBR_de_leonist_elections
+		prerequisite = { focus = JAP_NAKANO_2 }
+		prerequisite = { focus = JAP_NAKANO_3 }
+		prerequisite = { focus = JAP_NAKANO_4 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = -1
+		y = 1
+		relative_position_id = JAP_NAKANO_3
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_6
+		icon = GFX_BBR_urbanization
+		prerequisite = { focus = JAP_NAKANO_2 }
+		prerequisite = { focus = JAP_NAKANO_3 }
+		prerequisite = { focus = JAP_NAKANO_4 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = JAP_NAKANO_3
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_7
+		icon = GFX_CAL_redshirt_plot
+		prerequisite = { focus = JAP_NAKANO_5 }
+		prerequisite = { focus = JAP_NAKANO_6 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = -3
+		y = 1
+		relative_position_id = JAP_NAKANO_6
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_8
+		icon = GFX_goal_commune_politics
+		prerequisite = { focus = JAP_NAKANO_5 }
+		prerequisite = { focus = JAP_NAKANO_6 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = -1
+		y = 1
+		relative_position_id = JAP_NAKANO_6
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_9
+		icon = GFX_goal_CSA_socialist_defence_doctrine
+		prerequisite = { focus = JAP_NAKANO_5 }
+		prerequisite = { focus = JAP_NAKANO_6 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = JAP_NAKANO_6
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_NAKANO_10
+		icon = GFX_goal_MEX_Hell_Hath_No_Fury
+		prerequisite = { focus = JAP_NAKANO_7 }
+		prerequisite = { focus = JAP_NAKANO_8 }
+		prerequisite = { focus = JAP_NAKANO_9 }
+		available = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Nakano Seigo"
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = JAP_NAKANO_8
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+	focus = {
+		id = JAP_red_rising_sun
+		icon = GFX_SOV_A_Great_Leap_Forward
+		prerequisite = {
+			focus = JAP_KITA_10
+			focus = JAP_NAKANO_10
+		}
+		available = {
+			OR = {
+				has_country_leader = {
+					ruling_only = yes
+					name = "Kita Ikki"
+				}
+				has_country_leader = {
+					ruling_only = yes
+					name = "Nakano Seigo"
+				}
+			}
+		}
+		x = 3
+		y = 1
+		relative_position_id = JAP_KITA_10
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = { factor = 100 }
+		completion_reward = {
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
 }
-

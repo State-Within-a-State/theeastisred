@@ -1,4 +1,4 @@
-add_namespace = rework_japan
+﻿add_namespace = rework_japan
 country_event = { #The March of the Kita Ikki
 	id = rework_japan.0
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.0"}
@@ -140,69 +140,151 @@ country_event = { #National Socialists Take Over in Japan
 			}
 			if = {
 				limit = { NOT = { has_global_flag = KX_superevent_sounds_off } }
-				sound_effect = "superev_rusjap"
+				sound_effect = SE_coup_of_kita_ikki_sounds
 			}
+			complete_national_focus = JAP_coup_of_national_socialists
 		}
 	}
 }
-
-country_event = { #
+country_event = { #New Order Movement
 	id = rework_japan.4
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.4"}
 	title = rework_japan.4.title
 	desc = rework_japan.4.desc
-	#picture = 
-	
+	picture = GFX_report_event_JAP_politician
 	is_triggered_only = yes
-	option = { #
+	option = { #Let me go home!
 		name = rework_japan.4.a
-		ai_chance = { base = 100 }
-		
+		ai_chance = { base = 50 }
+		add_political_power = 50
+	}
+	option = { #It's an interesting proposal.
+		name = rework_japan.4.b
+		ai_chance = { base = 50 }
+		custom_effect_tooltip = JAP_influence_will_increase_nakano_seigo_tt
+		add_political_power = -20
+		add_stability = -0.05
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+		}
+		hidden_effect = {
+			country_event = {
+				id = rework_japan.5
+				days = 5
+			}
+		}
 	}
 }
-
-country_event = { #
+country_event = { #A Speech of Nakano Seigō
 	id = rework_japan.5
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.5"}
 	title = rework_japan.5.title
 	desc = rework_japan.5.desc
-	#picture = 
-	
+	picture = GFX_report_event_YUN_intellectuals
 	is_triggered_only = yes
-	option = { #
+	option = { #Look at the reality.
 		name = rework_japan.5.a
-		ai_chance = { base = 100 }
-		
+		ai_chance = { base = 25 }
+		add_stability = 0.03
+	}
+	option = { #He loves Japan more than anyone else.
+		name = rework_japan.5.b
+		ai_chance = { base = 75 }
+		custom_effect_tooltip = JAP_influence_will_increase_nakano_seigo_tt
+		add_stability = -0.12
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.1
+		}
+		hidden_effect = {
+			country_event = {
+				id = rework_japan.6
+				days = 7
+			}
+		}
 	}
 }
-
-country_event = { #
+country_event = { #Ishin-ha generals support Nakano Seigō
 	id = rework_japan.6
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.6"}
 	title = rework_japan.6.title
 	desc = rework_japan.6.desc
-	#picture = 
-	
+	picture = GFX_report_event_JAP_revolt
 	is_triggered_only = yes
-	option = { #
+	option = { #Arrest them.
 		name = rework_japan.6.a
-		ai_chance = { base = 100 }
-		
+		ai_chance = { base = 25 }
+		add_stability = -0.15
+	}
+	option = { #Rebuild the rotten Japan!
+		name = rework_japan.6.b
+		ai_chance = { base = 75 }
+		custom_effect_tooltip = JAP_influence_will_increase_nakano_seigo_tt
+		add_stability = -0.3
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.2
+		}
+		hidden_effect = {
+			country_event = {
+				id = rework_japan.7
+				days = 15
+			}
+		}
 	}
 }
-
-country_event = { #
+country_event = { #Tōhōkai Take Over in Japan
 	id = rework_japan.7
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.7"}
 	title = rework_japan.7.title
 	desc = rework_japan.7.desc
-	#picture = 
-	
+	picture = GFX_report_event_JAP_coup
 	is_triggered_only = yes
-	option = { #
+	option = { #Japan will make a name for itself in the world.
 		name = rework_japan.7.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		retire_ideology_leader = totalist
+		create_country_leader = {
+			name = "Nakano Seigō"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Nakano_Seigo.png"
+			expire = "1965.1.1"
+			ideology = fascism_subtype
+		}
+		hidden_effect = {
+			remove_ideas = JAP_DEM_GOV
+			set_country_flag = JAP_something_unexpected_happened
+			remove_all_ministers = yes
+			add_ideas = {
+				JAP_Nakano_Seigo_hog_tot
+				JAP_Hirota_Koki_for_npo
+				JAP_Suzuki_Teiichi_eco_sco
+				JAP_Shiono_Suehiko_sec_pau
+			}
+			if = {
+				limit = { has_country_flag = JAP_yasuhito }
+				add_ideas = JAP_emperor_yasuhito
+			}
+			else = { add_ideas = JAP_emperor_hirohito }
+			mark_focus_tree_layout_dirty = yes
+			every_country = {
+				limit = { is_ai = no }
+				set_variable = { superevents_numbers = 2 }
+			}
+			if = {
+				limit = { NOT = { has_global_flag = KX_superevent_sounds_off } }
+				sound_effect = superev_rusjap
+			}
+			complete_national_focus = JAP_coup_of_national_socialists
+		}
 	}
 }
 
