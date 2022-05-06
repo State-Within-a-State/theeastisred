@@ -126,7 +126,7 @@ focus_tree = {
 	focus = {
 		id = PRC_comrades_in_arms
 		icon = GFX_PRC_comrades_in_arms-127876
-		x = 29
+		x = 30
 		y = 1
 		cost = 5
 		search_filters = {
@@ -213,15 +213,20 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_startthegreatleapforward
 		completion_reward = {
-			add_building_construction = {
-				type = naval_base
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = dockyard
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
-			add_building_construction = {
-				type = dockyard
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = naval_base
+					level = 5
+					instant_build = yes
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -236,11 +241,34 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = PRC_shanghai_red_ports
-		completion_reward = {
-			add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
+		completion_reward = { 
+			random_owned_state = { #split in two, because states only have 5 max infrastructure now
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -256,15 +284,23 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_startthegreatleapforward
 		completion_reward = {
-			add_building_construction = {
-				type = arms_factory
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
-			add_building_construction = {
-				type = naval_base
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 5
+					instant_build = yes
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -280,10 +316,19 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_form_the_work_teams
 		completion_reward = {
-			add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -584,158 +629,119 @@ focus_tree = {
 		relative_position_id = PRC_declaring_the_chinese_revolution
 		
 		available = {
-        
-            OR = {
-                NOT = {
-                country_exists = CNH
-            
-                }
-                CNH = { is_subject_of = LEC }    
-        
-        
-        }
-        
-        AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = FNG
-                
-                }
-            FNG = { is_subject_of = LEC }
-            }
-        
-        
-        }
-        
-        
-        AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = QIE
-                
-                }
-            QIE = { is_subject_of = LEC }
-            }
-        
-        
-        } 
- 
-AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = HNN
-                
-                }
-            HNN = { is_subject_of = LEC }
-            }
-        
-        
-        } 
-        
-        AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = GXC
-                
-                }
-            GXC = { is_subject_of = LEC }
-            }
-        
-        
-        } 
-        AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = SZC
-                
-                }
-            SZC = { is_subject_of = LEC }
-            }
-        
-        
-        } 
-        AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = YUN
-                
-                }
-            YUN = { is_subject_of = LEC }
-            }
-        
-        
-        } 
-        AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = SIK
-                
-                }
-            SIK = { is_subject_of = LEC }
-            }
-        
-        
-        }
-AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = TIB
-                
-                }
-            TIB = { is_subject_of = LEC }
-            }
-        
-        
-        } 	
-
-			AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = XSM
-                
-                }
-            XSM = { is_subject_of = LEC }
-            }
-        
-        
-        } 
-		
-		AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = ETS
-                
-                }
-            ETS = { is_subject_of = LEC }
-            }
-        
-        
-        } 
-		
-		AND = {
-        
-            OR = {
-            NOT = {
-                country_exists = MON
-                
-                }
-            MON = { is_subject_of = LEC }
-            }
-        
-        
-        }
-        
-        
+			hidden_trigger = {
+				OR = {
+					NOT = {
+						country_exists = TAN
+					}
+					TAN = { is_subject_of = LEC }    	
+				}
+				OR = {
+					NOT = {
+						country_exists = CHI
+					}
+					CHI = { is_subject_of = LEC }    	
+				}
+				OR = {
+					NOT = {
+						country_exists = ANQ
+					}
+					ANQ = { is_subject_of = LEC }    	
+				}
+				OR = {
+					NOT = {
+						country_exists = SQI
+					}
+					SQI = { is_subject_of = LEC }    	
+				}
+				OR = {
+					NOT = {
+						country_exists = CNH
+					}
+					CNH = { is_subject_of = LEC }    	
+				}
+				OR = {
+					NOT = {
+						country_exists = FNG
+						}
+					FNG = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = QIE
+					}
+					QIE = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = HNN
+						}
+					HNN = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = GXC
+						}
+					GXC = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = SZC
+						}
+					SZC = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = YUN
+						}
+					YUN = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = SIK
+					}
+					SIK = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = TIB
+					}
+					TIB = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = XSM
+					}
+					XSM = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = ETS
+					}
+					ETS = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = MON
+					}
+					MON = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = PRC
+					}
+					PRC = { is_subject_of = LEC }
+				}
+				OR = {
+					NOT = {
+						country_exists = MON
+					}
+					MON = { is_subject_of = LEC }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = LEC_own_all_china
+			}
         }
 		
 		 
@@ -746,55 +752,182 @@ AND = {
 				popularity = 0.4
 			}
 			
-        
-        annex_country = {
-            target = CNH
-            transfer_troops = yes
-        }
-        annex_country = {
-            target = SIK
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = ETS
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = TAN
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = MON
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = XSM
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = QIE
-            transfer_troops = no
-        }
-		annex_country = {
-            target = FNG
-            transfer_troops = no
-        }
-        annex_country = {
-            target = HNN
-            transfer_troops = yes
-        }
-        annex_country = {
-            target = GXC
-            transfer_troops = yes
-        }
-        annex_country = {
-            target = YUN
-            transfer_troops = yes
-        }
-        annex_country = {
-            target = SZC
-            transfer_troops = yes
-        }
+       		if = {
+				limit = {
+					CNH = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = CNH
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					SIK = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = SIK
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					ETS = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = ETS
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					TAN = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = TAN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					MON = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = MON
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					XSM = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = XSM
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					QIE = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = QIE
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					FNG = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = FNG
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					HNN = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = HNN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					GXC = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = GXC
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					YUN = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = YUN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					SZC = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = SZC
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					CHI = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = CHI
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					PRC = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = PRC
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					SQI = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = CHI
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					ANQ = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = ANQ
+					transfer_troops = yes
+				}
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -847,20 +980,22 @@ AND = {
 		}
 		prerequisite = { focus = PRC_open_the_ministry_of_railways  } prerequisite = { focus = PRC_time_for_an_alliance  focus = PRC_a_new_alliance  } prerequisite = { focus = PRC_open_the_ministry_of_railways  focus = PRC_join_france  } prerequisite = { focus = PRC_open_the_ministry_of_railways  }
 		completion_reward = {
-		
-		add_building_construction = {
-				type = industrial_complex
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
-			add_building_construction = {
-				type = industrial_complex
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
-		
-		
-		
 		}
 	
 	}
@@ -958,16 +1093,42 @@ AND = {
 		}
 		prerequisite = { focus = PRC_a_new_era_of_confucian_thought  } prerequisite = { focus = PRC_ties_to_the_kmt  }
 		completion_reward = {
-		add_building_construction = {
-				type = industrial_complex
-				level = 5
-				instant_build = yes
+			random_owned_state = { #split in two, because states only have 5 max infrastructure now
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
 			
-			add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
 			}
 		
 		}
@@ -1189,20 +1350,22 @@ AND = {
 		}
 		prerequisite = { focus = PRC_appoint_xiannian  }
 		completion_reward = {
-		
-		add_building_construction = {
-				type = industrial_complex
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
-			
-		add_building_construction = {
-				type = industrial_complex
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
-		
-		
 		}
 	}
 
@@ -1369,35 +1532,48 @@ AND = {
 		}
 		prerequisite = { focus = PRC_3_year_plans  }
 		completion_reward = {
-		
-		add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
-			}
-		build_railway = {
-			  level = 1
-			  build_only_on_allied = yes
-			  controller_priority = {
-				base = 1
-			   
-				modifier = {
-				  tag = LEC
-				  add = 2
+			random_owned_state = { #split in two, because states only have 5 max infrastructure now
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
 				}
-			  }
-			  fallback = yes
-			  path = { 1069 11913 }
-			  start_province = 9843
-			  target_province = 7014
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
-		
-		
-		
-		
-		
-		
-		
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
+			build_railway = {
+				level = 1
+				build_only_on_allied = yes
+				controller_priority = {
+					base = 1
+					modifier = {
+						tag = LEC
+						add = 2
+					}
+				}
+				fallback = yes
+				start_province = 9843
+				target_province = 7014
+			}
 		}
 	}
 
@@ -1413,18 +1589,42 @@ AND = {
 		}
 		prerequisite = { focus = PRC_new_agricultural_reform  }
 		completion_reward = {
-		add_building_construction = {
-				type = industrial_complex
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
-			add_building_construction = {
-			type = infrastructure
-			level = 5
-			instant_build = yes
-		}
-		
-		
+			random_owned_state = { #split in two, because states only have 5 max infrastructure now
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -1632,62 +1832,143 @@ AND = {
         
         }
 		
-		 completion_reward = {
-        
-        annex_country = {
-            target = CNH
-            transfer_troops = yes
-        }
-        annex_country = {
-            target = SIK
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = ETS
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = TAN
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = MON
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = XSM
-            transfer_troops = yes
-        }
-		annex_country = {
-            target = QIE
-            transfer_troops = no
-        }
-		annex_country = {
-            target = FNG
-            transfer_troops = no
-        }
-        annex_country = {
-            target = HNN
-            transfer_troops = yes
-        }
-        annex_country = {
-            target = GXC
-            transfer_troops = yes
-        }
-        annex_country = {
-            target = YUN
-            transfer_troops = yes
-        }
-        annex_country = {
-            target = SZC
-            transfer_troops = yes
-        }
-        country_event = {
-		id = redfed.1
-		days = 0
-		}
-        
-        
+		completion_reward = {
+			if = {
+				limit = {
+					CNH = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = CNH
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					SIK = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = SIK
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					ETS = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = ETS
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					TAN = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = TAN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					MON = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = MON
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					XSM = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = XSM
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					QIE = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = QIE
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					FNG = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = FNG
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					HNN = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = HNN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					GXC = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = GXC
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					YUN = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = YUN
+					transfer_troops = yes
+				}
+			}
+			if = {
+				limit = {
+					SZC = {
+						is_subject_of = PREV
+					}
+				}
+				annex_country = {
+					target = SZC
+					transfer_troops = yes
+				}
+			}
+			country_event = {
+				id = redfed.1
+				days = 0
+			}
         }
 	}
 
@@ -1772,16 +2053,28 @@ AND = {
 		}
 		prerequisite = { focus = PRC_the_socialist_silk_road  } prerequisite = { focus = PRC_from_minister_to_vice_premier  } prerequisite = { focus = PRC_a_voice_against_imperialism  }
 		completion_reward = {
-		add_building_construction = {
-				type = arms_factory
-				level = 2
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
 			}
 			
-		add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
+			random_owned_state = { 
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
 		}
 	
@@ -1823,16 +2116,34 @@ AND = {
 		}
 		prerequisite = { focus = PRC_local_autonomous_rail_unions  }
 		
-	completion_reward = {
-	add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
+		completion_reward = {
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
-	add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
 	
 		}
@@ -2052,10 +2363,19 @@ AND = {
 		}
 		prerequisite = { focus = PRC_union_run_factories  }
 		completion_reward = {
-		add_building_construction = {
-				type = infrastructure
-				level = 3
-				instant_build = yes
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
 			}
 		
 		}
@@ -2199,7 +2519,7 @@ AND = {
 		}
 		prerequisite = { focus = PRC_comrade_liu  focus = PRC_thepartyshelmsman  }
 		completion_reward = {
-		FRA = { add_to_faction = LEC }
+			FRA = { add_to_faction = LEC }
 		
 		}
 	}
@@ -2232,16 +2552,22 @@ AND = {
 		}
 		prerequisite = { focus = PRC_thepartyshelmsman  focus = PRC_comrade_liu  }
 		completion_reward = {
-		add_building_construction = {
-				type = arms_factory
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
-		add_building_construction = {
-			type = industrial_complex
-			level = 5
-			instant_build = yes
-		}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
+			}
 				
 		}
 	}
@@ -2343,8 +2669,6 @@ AND = {
 		prerequisite = { focus = PRC_secure_the_northwest  }
 		completion_reward = {
 		unlock_decision_tooltip = LEC_dec_TIB_expedition
-		
-		
 		}
 	}
 
@@ -2360,7 +2684,7 @@ AND = {
 		}
 		prerequisite = { focus = PRC_form_the_syndical_guards  }
 		completion_reward = {
-		add_manpower -30000
+			add_manpower -30000
 		}
 	}
 
@@ -2392,9 +2716,10 @@ AND = {
 		}
 		prerequisite = { focus = PRC_the_great_leap_forward  }
 		completion_reward = {
-		remove_ideas = LEC_great_leap_forward
-		add_ideas = LEC_great_leap_forward_recovery 
-		
+			swap_ideas = {
+				remove_idea = LEC_great_leap_forward
+				add_idea = LEC_great_leap_forward_recovery 
+			}
 		}
 	}
 
@@ -2666,25 +2991,29 @@ AND = {
 		}
 		prerequisite = { focus = PRC_kaifengsclique  }
 		completion_reward = {
-		
-		add_building_construction = {
-			type = industrial_complex
-			level = 5
-			instant_build = yes
-		
-		}
-		
-		add_building_construction = {
-			type = industrial_complex
-			level = 5
-			instant_build = yes
-		}	
-			add_building_construction = {
-			type = industrial_complex
-			level = 5
-		
-
-			instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
+			}
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
 		}
 	}	
@@ -2993,10 +3322,61 @@ AND = {
 		}
 		prerequisite = { focus = PRC_the_chinese_nep  }
 		completion_reward = {
-		add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
+			1014 = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			606 = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			613 = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1050 = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
 			}
 		
 		}
@@ -3140,13 +3520,11 @@ AND = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		available = {
-		SOV = { exists = no}
-		
+		available = {#SOV tag does not exist anymore
 		}
 		prerequisite = { focus = PRC_united_the_west  } prerequisite = { focus = PRC_cult_of_lenin  }
 		completion_reward = {
-		create_wargoal = {
+			create_wargoal = {
 				type = puppet_wargoal_focus
 				target = RUS
 			}
@@ -3270,20 +3648,29 @@ AND = {
 		}
 		prerequisite = { focus = PRC_start_the_grand_leap_forward  }
 		completion_reward = {
-		add_building_construction = {
-				type = dockyard
-				level = 1
-				instant_build = yes
+			random_owned_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
 			}
-			
-			add_building_construction = {
-				type = dockyard
-				level = 1
-				instant_build = yes
+			random_owned_state = { #else just build on whatever coastal state we have
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
 			}
-		
 		}
-	
 	}
 
 	#Anti Landlordism
@@ -3353,12 +3740,14 @@ AND = {
 		}
 		prerequisite = { focus = PRC_start_the_grand_leap_forward  }
 		completion_reward = {
-		add_building_construction = {
-				type = industrial_complex
-				level = 3
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
-		
 		}
 	}
 
@@ -3520,17 +3909,14 @@ AND = {
 		}
 		prerequisite = { focus = PRC_power_the_collectives  }
 		completion_reward = {
-		completion_reward = {
-		add_building_construction = {
-				type = synthetic_refinery
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
-		
-		
-		}
-		
-		
 		}
 	}
 
@@ -3640,13 +4026,62 @@ AND = {
 		}
 		prerequisite = { focus = PRC_start_the_daqing_oil_fields  }
 		completion_reward = {
-		
-		add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
+			1014 = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
-		
+			606 = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			613 = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			1050 = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -3681,13 +4116,35 @@ AND = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PRC_ban_the_opium_trade  }
-		completion_reward = {
-		add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
+		completion_reward = { 
+			random_owned_state = { #split in two, because states only have 5 max infrastructure now
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
-		
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -3754,6 +4211,7 @@ AND = {
 				controller = {
 					OR = { 
 						is_subject_of = FROM
+						is_in_faction_with = FROM
 						tag = FROM
 					}
 				}
@@ -3974,16 +4432,41 @@ AND = {
 		}
 		prerequisite = { focus = PRC_kang_shang_secures_power  focus = PRC_the_true_successor  }
 		completion_reward = {
-		add_building_construction = {
-				type = industrial_complex
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
-			
-			add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
+			random_owned_state = { #split in two, because states only have 5 max infrastructure now
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 2
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 3
+					instant_build = yes
+				}
 			}
 		
 		}
@@ -4172,12 +4655,14 @@ AND = {
 		}
 		prerequisite = { focus = PRC_red_guard_study_clubs  }
 		completion_reward = {
-		add_building_construction = {
-			type = industrial_complex
-			level = 5
-			instant_build = yes
-		}
-		
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
+			}
 		}
 	}
 
@@ -4259,8 +4744,8 @@ AND = {
 		id = PRC_the_new_coup
 		icon = GFX_PRC_the_new_coup-66345
 		cost = 5
-		x = 45
-		y = 11
+		x = 50
+		y = 10
 		available = { always = no }
 		completion_reward = { add_stability = -0.4 }
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -4289,10 +4774,13 @@ AND = {
 		y = 1
 		relative_position_id = PRC_economic_reform
 		completion_reward = {
-			add_building_construction = {
-				type = industrial_complex
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }

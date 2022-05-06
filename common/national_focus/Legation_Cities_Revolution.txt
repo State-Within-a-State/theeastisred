@@ -72,28 +72,38 @@
 		prerequisite = { focus = LEC_securing_the_shanghai_revolutionary_basin }
 		prerequisite = { focus = LEC_secure_hong_kong }
 		completion_reward = {
-			add_building_construction = {
-				type = dockyard
-				level = 2
-				instant_build = yes
-				province = 7014
+			743 = {
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
 			}
-			add_building_construction = {
-				type = dockyard
-				level = 2
-				instant_build = yes
-				province = 4196
+			747 = {
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
 			}
-			add_building_construction = {
-				type = arms_factory
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
-			add_building_construction = {
-				type = arms_factory
-				level = 5
-				instant_build = yes
-			}				
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
+			}			
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 	}
@@ -160,6 +170,14 @@
 		cost = 4
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			country_exists = CHI
+		}
+		bypass = {
+			NOT = {
+				country_exists = CHI
+			}
 		}
 		prerequisite = { focus = LEC_the_economic_question  }
 		completion_reward = {
@@ -284,7 +302,10 @@
 		cost = 5
 		prerequisite = { focus = LEC_securing_the_shanghai_revolutionary_basin }
 		prerequisite = { focus = LEC_secure_hong_kong }
-		completion_reward = { hidden_effect = { load_oob = "LEC - Revolution2" } }
+		completion_reward = { 
+			hidden_effect = { load_oob = "LEC - Revolution2" } 
+			custom_effect_tooltip = LEC_load_revolution_oob_tt
+		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS }
 	}
 	
@@ -560,10 +581,13 @@
 		y = 1
 		relative_position_id = PRC_keeptheredmilitias
 		completion_reward = {
-			add_building_construction = {
-				type = arms_factory
-				level = 5
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -579,10 +603,13 @@
 		y = 1
 		relative_position_id = PRC_under_ground_factories
 		completion_reward = {
-			add_building_construction = {
-				type = arms_factory
-				level = 2
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -630,10 +657,13 @@
 		y = 2
 		relative_position_id = PRC_form_the_pla
 		completion_reward = {
-			add_building_construction = {
-				type = arms_factory
-				level = 3
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 3
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -744,15 +774,59 @@
 		y = 1
 		relative_position_id = LEC_high_above_the_sky
 		completion_reward = {
-			add_building_construction = {
-				type = naval_base
-				level = 2
-				instant_build = yes
+			if = {
+				limit = { #checks if capital is coastal, and if yes build there
+					capital_scope = {
+						is_coastal = yes
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = naval_base
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
 			}
-			add_building_construction = {
-				type = dockyard
-				level = 2
-				instant_build = yes
+			else_if = {
+				limit = { #if not build in shanghai, if controlled
+					743 = {
+						is_owned_and_controlled_by = ROOT
+					}
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+					add_extra_state_shared_building_slots = 2
+				}
+			}
+			else = {
+				random_owned_state = { #else just build on whatever coastal state we have
+					limit = {
+						is_coastal = yes
+					}
+					add_building_construction = {
+						type = naval_base
+						level = 2
+						instant_build = yes
+					}
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -845,15 +919,20 @@
 		y = 1
 		relative_position_id = LEC_high_above_the_sky
 		completion_reward = {
-			add_building_construction = {
-				type = air_base
-				level = 2
-				instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
 			}
-			add_building_construction = {
-				type = air_base
-				level = 2
-				instant_build = yes
+			random_owned_state = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 5
 			}
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
