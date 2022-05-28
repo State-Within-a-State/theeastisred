@@ -1,0 +1,54 @@
+BRM_asia_conquest_decision_category = { #dont forget to add a category
+	BRM_conquer_asia = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = BRM
+			has_completed_focus = BRM_uniting_asian_countries
+		}
+		cost = 10
+		targets = {  ALQ ANQ BHU BOR CAM CHI ETS FNG GEA GXC PRC HNN INC INS JAP KAC KOR KYR LAO LEC LEP MAN MLY MON QIE PHI PNG SAR SHA SHX SIA SIK SIR SQI SZC TAJ TAN TIB UZB VIN XSM BHC CEY INR MAD MYS NEP SKM PRF RAJ TRV }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			hidden_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = FROM
+					is_on_continent = asia
+				}
+				add_claim_by = ROOT
+				}
+			}
+		}
+	}
+}
