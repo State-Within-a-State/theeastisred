@@ -449,7 +449,7 @@ LEC_votes_category = {
 	LEC_vote_abstain = {
 		icon = GFX_decision_generic_political_discourse
 		allowed = {
-		NOT = {
+			NOT = {
 				has_government = syndicalist
 				has_government = totalist
 				has_government = radical_socialist
@@ -4598,9 +4598,9 @@ LEC_triads_category = {
 			add_to_variable = {
 				var = LEC_Human_Traffic_Supply
 				value = 1
-				}
 			}
 		}
+	}
 	
 	LEC_Kindnap_Japanese = {
 		icon = GFX_decision_cat_annexation
@@ -5283,7 +5283,7 @@ LEC_alignment_integration_category = {
 			is_neighbor_of = FROM
 		}
 
-		targets = { YUN SZC SHX XSM SIK FNG HNN }
+		targets = { YUN SZC SHX XSM SIK FNG HNN PRC QIE SQI TAN TIB GXC}
 		target_trigger = {
 			FROM = {
 				is_subject_of = ROOT
@@ -5305,13 +5305,13 @@ LEC_alignment_integration_category = {
 					set_nationality = ROOT
 				}
 				every_owned_state = {
-					limit = { is_core_of = PREV }
+					limit = { is_core_of = THIS }
 					add_core_of = ROOT
 				}
 			}
 			annex_country = {
 				target = FROM
-				transfer_troops = no
+				transfer_troops = yes
 			}
 		}
 	}
@@ -5751,7 +5751,7 @@ LEC_military_expeditions_category = {
 	LEC_dec_secure_guangxi = {
 		war_with_target_on_remove = yes
 		icon = generic_ignite_civil_war
-		targets = { GXC }
+		targets = { GXC PRC }
 		target_trigger = {
 			FROM = {
 				kmt_success = no
@@ -6190,7 +6190,7 @@ LEC_military_expeditions_category = {
 		
 		
 			OR = {
-			has_completed_focus = PRC_secure_the_northwest
+				has_completed_focus = PRC_secure_the_northwest
 				has_completed_focus = PRC_united_the_west
 				has_completed_focus = PRC_secure_the_hui_minority
 				has_completed_focus = PRC_liberate_the_northern_nomads
@@ -6199,28 +6199,29 @@ LEC_military_expeditions_category = {
 		target_trigger = {
 			
 				
-				OR = {
-			has_completed_focus = PRC_secure_the_northwest
+			OR = {
+				has_completed_focus = PRC_secure_the_northwest
 				has_completed_focus = PRC_united_the_west
 				has_completed_focus = PRC_secure_the_hui_minority
 				has_completed_focus = PRC_liberate_the_northern_nomads
-				}
+			}
 		}
 		visible = {
 			
 			is_subject = no
-			can_declare_war_on = FROM
+			
 			
 			OR = {
-			has_completed_focus = PRC_secure_the_northwest
+				has_completed_focus = PRC_secure_the_northwest
 				has_completed_focus = PRC_united_the_west
 				has_completed_focus = PRC_secure_the_hui_minority
 				has_completed_focus = PRC_liberate_the_northern_nomads
-				}
+			}
 			
 		}
 		available = {
 			is_neighbor_of = FROM
+			can_declare_war_on = FROM
 		}
 
 		fire_only_once = no
@@ -6612,7 +6613,6 @@ LEC_military_expeditions_category = {
 		
 				has_completed_focus = PRC_forming_the_sino_soviet_union 
 				
-			
 		}
 		target_root_trigger = {
 			has_completed_focus = PRC_forming_the_sino_soviet_union
