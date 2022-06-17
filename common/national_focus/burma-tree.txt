@@ -19,8 +19,19 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-            always = no
-        }
+		OR = {
+		has_government = radical_socialist
+		has_government = syndicalist
+		has_government = totalist
+		}
+		NOT = {
+				has_country_leader = {
+				name = "Eric Blair"
+				ruling_only = yes
+						}
+					has_completed_focus = BRM_the_benevolent_governor
+			}
+		}
 		mutually_exclusive = { focus = BRM_the_true_socialists  }
 		completion_reward = {
 		FRA = { add_to_faction = BRM }
@@ -39,8 +50,19 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-            always = no
-        }
+		OR = {
+		has_government = radical_socialist
+		has_government = syndicalist
+		has_government = totalist
+		}
+		NOT = {
+				has_country_leader = {
+				name = "Eric Blair"
+				ruling_only = yes
+						}
+					has_completed_focus = BRM_the_benevolent_governor
+			}
+		}
 		mutually_exclusive = { focus = BRM_the_internationale_focus  }
 		completion_reward = {
 		add_war_support = 0.1
@@ -2253,6 +2275,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_under_our_belt  }
+		completion_reward = {
+		add_political_power = 100
+		add_stability = 1
+		add_war_support = 0.5
+		set_cosmetic_tag = BRM_ING
+		}
 	}
 
 	#Which Side Are You On?
@@ -2281,11 +2309,13 @@ focus_tree = {
 			FOCUS_FILTER_POLlITICAL
 		}
 		available = {
+		OR = {
 		has_government = paternal_autocrat
 		has_government = social_conservative
 		has_government = market_liberal
 		has_government = social_liberal
 		has_government = social_democrat
+			}
 		}
 		prerequisite = { focus = BRM_whichsideareyouon  }
 		mutually_exclusive = { focus = BRM_german_support  } mutually_exclusive = { focus = BRM_our_own_way  } mutually_exclusive = { focus = BRM_looking_to_the_east  }
@@ -2306,11 +2336,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
+		OR = {
 		has_government = paternal_autocrat
 		has_government = social_conservative
 		has_government = market_liberal
 		has_government = social_liberal
 		has_government = social_democrat
+			}
 		}
 		prerequisite = { focus = BRM_whichsideareyouon  }
 		mutually_exclusive = { focus = BRM_our_british_allies  } mutually_exclusive = { focus = BRM_our_own_way  } mutually_exclusive = { focus = BRM_looking_to_the_east  }
@@ -2356,10 +2388,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = {
+		available = {	
+		OR = {
 		has_government = paternal_autocrat
 		has_government = national_populist
 		has_government = authoritarian_democrat
+			}
 		}
 		prerequisite = { focus = BRM_whichsideareyouon  }
 		mutually_exclusive = { focus = BRM_our_british_allies  } mutually_exclusive = { focus = BRM_german_support  } mutually_exclusive = { focus = BRM_our_own_way  }
