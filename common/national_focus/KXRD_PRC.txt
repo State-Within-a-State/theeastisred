@@ -525,6 +525,10 @@ focus_tree = {
 		completion_reward = {
 			add_manpower = 20000
 			add_war_support = 0.05
+			annex_country = {
+					target = CNH
+					transfer_troops = yes
+				}
 		}
 	}
 
@@ -590,10 +594,10 @@ focus_tree = {
 		y = 1
 		relative_position_id = PRC_declaring_the_chinese_revolution
 		completion_reward = {
-			declare_war_on = {
-				target = AOG
-				type = annex_everything
-			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GEA
+			}	
 		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 	}
@@ -1679,15 +1683,11 @@ focus_tree = {
 		prerequisite = { focus = PRC_influence_tibetan_communes  } prerequisite = { focus = PRC_liberate_the_northern_nomads  }
 		available = {
         
-            OR = {
-                NOT = {
-                country_exists = CNH
             
-                }
                 CNH = { is_subject_of = LEC }    
         
         
-        }
+        
         
         AND = {
         
@@ -1964,11 +1964,16 @@ AND = {
 					target = SZC
 					transfer_troops = yes
 				}
+				
 			}
 			country_event = {
 				id = redfed.1
 				days = 0
 			}
+			annex_country = {
+					target = CNH
+					transfer_troops = yes
+				}
         }
 	}
 
@@ -2846,7 +2851,10 @@ AND = {
 		completion_reward = {
 		add_stability = 0.5
 		add_manpower = 3903
-		
+		annex_country = {
+					target = CNH
+					transfer_troops = yes
+				}
 		}
 	}
 
@@ -3148,9 +3156,9 @@ AND = {
 		mutually_exclusive = { focus = PRC_increase_soviet_relations  }
 		available = {
 		
-		
-		SOV = { exists = no }
-		
+		NOT = {
+		SOV = { exists = yes }
+		}
 		
 		
 		}
@@ -3414,6 +3422,10 @@ AND = {
 		unlock_decision_tooltip = LEC_dec_TIB_expedition
 		unlock_decision_tooltip = LEC_dec_xinjiang_expedition
 		unlock_decision_tooltip = LEC_dec_XSM_expedition
+		annex_country = {
+					target = CNH
+					transfer_troops = yes
+				}
 		
 		}
 	}
