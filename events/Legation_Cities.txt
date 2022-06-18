@@ -413,9 +413,8 @@ country_event = { #Black Monday arrives
 		add_ideas = LEC_black_monday
 		
 		country_event = {
-		 id = legcities.309
-		 days = 2
-		
+		 	id = legcities.309
+		 	days = 2
 		}
 		
 	}
@@ -8433,11 +8432,21 @@ country_event = { # Australasia Democratacizes
 
 	option = {	# Very cool
 		name = lecbrits.25.a
+		trigger = {
+			NOT = { has_country_flag = LEC_revolution_succeeded }
+		}
 		add_popularity = {
 			ideology = social_conservative
 			popularity = 0.01
 		}
 		add_political_power = 5
+	}
+
+	option = {	# not the best outcome
+		name = lecbrits.25.b
+		trigger = {
+			has_country_flag = LEC_revolution_succeeded
+		}
 	}
 }
 
@@ -8466,11 +8475,33 @@ country_event = { # Australasia falls to radicals - LEC
 
 	option = {	# Rip
 		name = lecbrits.26.a
+		trigger = {
+			OR = {
+				NOT = { has_country_flag = LEC_revolution_succeeded }
+				AST = {
+					has_government = paternal_autocrat
+				}
+			}
+		}
 		add_popularity = {
 			ideology = social_conservative
 			popularity = -0.05
 		}
 		add_political_power = -5
+	}
+
+	option = {	# Another country falls to the revolution
+		name = lecbrits.26.b
+		trigger = {
+			NOT = { has_country_flag = LEC_revolution_succeeded }
+			AST = {
+				has_socialist_government = yes
+			}
+		}
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
 	}
 }
 
@@ -13606,48 +13637,48 @@ country_event = {
 		add_war_support = -0.4
 		add_popularity = {
 			ideology = syndicalist
-			popularity = -0.5
+			popularity = -0.25
 		}
 		add_popularity = {
 			ideology = radical_socialist
-			popularity = -0.5
+			popularity = -0.25
 		}
 		add_popularity = {
 			ideology = totalist
-			popularity = -0.5
+			popularity = -0.25
 		}
-		
 	}
 	
 	option = {
 		name = legcities.309.b
-		add_stability = -0.5
-		add_war_support = -0.8
+		add_stability = -0.25
+		add_war_support = -0.3
 		country_event = {
 			id = legcities.310
 			days = 2
 		}
-		
-		country_event = {
-	id = lec.107
-	days = 404
-}
-country_event = {
-	id = lecgreengangclash.1
-	days = 60
-}
-country_event = {
-	id = lecbrits.1
-	days = 210
-}
-country_event = {
-	id = lechotung.1
-	days = 815
-}
-country_event = {
-	id = lecfuzhou.1
-	days = 560
-}
+		hidden_effect = { #these take so long, so the player would probably forget anyways by the time they arrive
+			country_event = {
+				id = lec.107
+				days = 404
+			}
+			country_event = {
+				id = lecgreengangclash.1
+				days = 60
+			}
+			country_event = {
+				id = lecbrits.1
+				days = 210
+			}
+			country_event = {
+				id = lechotung.1
+				days = 815
+			}
+			country_event = {
+				id = lecfuzhou.1
+				days = 560
+			}
+		}
 	}
 }
 
@@ -13662,43 +13693,23 @@ country_event = {
 
 	option = {
 		name = legcities.310.a
-        add_stability = 0.4
+        add_stability = 0.15
 		add_war_support = 0.2
 		add_popularity = {
 			ideology = syndicalist
-			popularity = -0.5
+			popularity = -0.15
 		}
 		add_popularity = {
 			ideology = radical_socialist
-			popularity = -0.5
+			popularity = -0.15
 		}
 		add_popularity = {
 			ideology = totalist
-			popularity = -0.5
+			popularity = -0.15
 		}
 		set_division_template_lock = {
 			division_template = "Legation Volunteer Force"
 			is_locked = no
-		}
-		country_event = {
-			id = lec.107
-			days = 404
-		}
-		country_event = {
-			id = lecgreengangclash.1
-			days = 60
-		}
-		country_event = {
-			id = lecbrits.1
-			days = 210
-		}
-		country_event = {
-			id = lechotung.1
-			days = 815
-		}
-		country_event = {
-			id = lecfuzhou.1
-			days = 560
 		}
 	}
 	
@@ -13740,6 +13751,17 @@ country_event = {
 			add_ideas = { LEC_chaos_of_revolution }
 			load_oob = "LEC - Revolution"
 			set_cosmetic_tag = LEC_shanghai_peoples_commune
+			
+			every_other_country = {
+				limit = {
+					has_guaranteed = ROOT
+				}
+				diplomatic_relation = {
+					country = ROOT
+					relation = guarantee
+					active = no
+				}
+			}
 			
 			create_corps_commander = {
 				name = "Mao Zedong"
@@ -13971,6 +13993,15 @@ country_event = {
 
 	option = {
 		name = legcities.316.a
+		every_other_country = {
+			limit = {
+				has_war_with = CHI
+			}
+			declare_war_on = {
+				target = ROOT
+				type = annex_everything
+			}
+		}
 		annex_country = {
 			target = CHI
 			transfer_troops = yes
@@ -14050,18 +14081,17 @@ country_event = {
 		set_politics = { ruling_party = social_democrat }
 		add_popularity = {
 			ideology = social_democrat
-			popularity = 0.6
+			popularity = 0.15
 		}
 	}
 	
 	option = {
 	name = legcities.320.b
-		load_focus_tree = china_socialist_tree
 		set_politics = { ruling_party = radical_socialist }
 		load_focus_tree = china_socialist_tree
 		add_popularity = {
 			ideology = radical_socialist
-			popularity = 0.6
+			popularity = 0.15
 		}
 	}
 	
@@ -14071,7 +14101,7 @@ country_event = {
 		set_politics = { ruling_party = syndicalist }
 		add_popularity = {
 			ideology = syndicalist
-			popularity = 0.6
+			popularity = 0.15
 		}
 	}
 	
@@ -14081,7 +14111,7 @@ country_event = {
 		set_politics = { ruling_party = totalist }
 		add_popularity = {
 			ideology = totalist
-			popularity = 0.6
+			popularity = 0.15
 		}
 	}
 }

@@ -30,7 +30,6 @@ LEC_votes_category = {
 		LEC = {
 			NOT = {
 				has_country_flag = LEC_Triad_Power
-				has_completed_focus = LEC_red_revolt
 			}
 		}
 	}
@@ -39,13 +38,13 @@ LEC_votes_category = {
 			NOT = {
 				has_country_flag = LEC_bankrupt
 				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_revolution_succeeded
 			}
 		}
 		OR = {
 			has_country_flag = legation_council_vote
 			has_country_flag = legation_council_member
 			tag = LEC
-			has_completed_focus = LEC_red_revolt
 		}
 	}
 }
@@ -53,8 +52,8 @@ LEC_votes_category = {
 LEC_military_aid_category = {
 	icon = GFX_decision_category_military_operation
 	allowed = {	original_tag = LEC }
-	available = { LEC = { NOT = { has_country_flag = LEC_Triad_Power has_completed_focus = LEC_red_revolt } } }
-	visible = { LEC = { NOT = { has_country_flag = LEC_Triad_Power has_completed_focus = LEC_red_revolt } } }
+	available = { LEC = { NOT = { has_country_flag = LEC_Triad_Power has_country_flag = LEC_revolution_succeeded} } }
+	visible = { LEC = { NOT = { has_country_flag = LEC_Triad_Power has_country_flag = LEC_revolution_succeeded } } }
 }
 
 LEC_influence_category = {
@@ -76,7 +75,14 @@ LEC_influence_category = {
 		}
 	}
 	available = { LEC = { NOT = { has_country_flag = LEC_Triad_Power has_completed_focus = LEC_red_revolt } } }
-	visible = { LEC = { NOT = { has_country_flag = LEC_Triad_Power has_completed_focus = LEC_red_revolt } } }
+	visible = { 
+		LEC = { 
+			NOT = { 
+				has_country_flag = LEC_Triad_Power 
+				has_country_flag = LEC_revolution_succeeded
+			} 
+		} 
+	}
 }
 
 LEC_france_fate_of_lec_category = {
