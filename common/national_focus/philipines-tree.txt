@@ -1028,6 +1028,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
 	}
 
 	#The Manila Fleet
@@ -1041,6 +1048,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PHI_the_new_army  }
+		completion_reward = {
+		add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		
+		}
 	}
 
 	#Lessons of the Great War
@@ -1054,6 +1069,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PHI_the_new_army  }
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = infantry_tech
+			}
+		
+		}
 	}
 
 	#Up In the Sky
@@ -1067,6 +1090,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = PHI_the_new_army  }
+		completion_reward = {
+		add_building_construction = {
+				type = air_base
+				level = 2
+				instant_build = yes
+			}
+		
+		}
 	}
 
 	#New Subs
@@ -1080,6 +1111,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PHI_the_manila_fleet  }
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = submarine_doctrine
+			}
+		
+		}
 	}
 
 	#Jungle Calvary
@@ -1093,6 +1132,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PHI_lessons_of_the_great_war  }
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = motorized_equipment
+			}
+		
+		}
 	}
 
 	#Fighter Focus
@@ -1106,6 +1153,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PHI_up_in_the_sky  }
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = air_equipment
+			}
+		
+		}
 	}
 
 	#The Filo Marines
@@ -1119,6 +1174,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PHI_new_subs  }
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = marine_tech
+			}
+		
+		}
 	}
 
 	#Climbing To the Sky
@@ -1132,6 +1195,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PHI_jungle_calvary  }
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = cas_bomber
+			}
+		
+		}
 	}
 
 	#Its Raining Men
@@ -1145,6 +1216,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = PHI_fighter_focus  }
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = para_tech
+			}
+		
+		}
 	}
 
 	#A New Sun
@@ -1182,23 +1261,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  }
-	}
-
-	#Back With the Old
-	focus = {
-		id = PHI_back_with_the_old
-		icon = GFX_focus_usa_recruit_the_free_corps
-		x = 29
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
+		available = {
+		JAP = {
+		is_faction_leader = yes
+		}
+		OR = {
+		has_government = national_populist
+		has_government = paternal_autocrat
+			}
+			is_puppet = no
 		}
 		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  }
+		mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  }
+		completion_reward = {
+		JAP = { add_to_faction = PHI }
+		}
 	}
+
+	
 
 	#Looking to Canada
 	focus = {
@@ -1210,8 +1290,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		CAN = {
+		is_faction_leader = yes
+		}
+		OR = {
+		has_government = national_populist
+		has_government = paternal_autocrat
+		has_government social_conservative
+		has_government = social_liberal
+		has_government = market_liberal
+			}
+			is_puppet = no
+		}
 		prerequisite = { focus = PHI_the_new_world  }
 		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  }
+		completion_reward = {
+		CAN = { add_to_faction = PHI }
+		}
 	}
 
 	#German Relations
@@ -1224,8 +1320,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		GER = {
+		is_faction_leader = yes
+		}
+		OR = {
+		has_government = national_populist
+		has_government = paternal_autocrat
+		has_government social_conservative
+		has_government = social_liberal
+		has_government = market_liberal
+			}
+			is_puppet = no
+		}
 		prerequisite = { focus = PHI_the_new_world  }
 		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  }
+		completion_reward = {
+		GER = { add_to_faction = PHI }
+		}
 	}
 
 	#The Internationale
@@ -1238,23 +1350,26 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  }
-	}
-
-	#Chinese Alignment
-	focus = {
-		id = PHI_chinese_alignment
-		icon = GFX_focus_chi_cooperation_with_the_nationalists
-		x = 35
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
+		available = {
+		FRA = {
+			is_faction_leader = yes
+		
+		}
+		OR = {
+		has_government = syndicalist
+		has_government = totalist
+		has_government = radical_socialist
+		}
+		is_puppet = no
 		}
 		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_indian_comrades  }
+		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  }
+		completion_reward = {
+		FRA = { add_to_faction = PHI }
+		}
 	}
+
+	
 
 	#Indian Comrades
 	focus = {
@@ -1266,8 +1381,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		BHC = {
+			is_faction_leader = yes
+		
+		}
+		OR = {
+		has_government = syndicalist
+		has_government = totalist
+		has_government = radical_socialist
+		}
+		is_puppet = no
+		}
 		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  }
+		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } 
+		completion_reward = {
+		BHC = { add_to_faction = PHI }
+		
+		}
 	}
 
 }

@@ -825,6 +825,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		NOT = {
+			SIA = {
+				exists = yes
+				}
+			}
+		}
         completion_reward = {
 			add_political_power = 75
             add_stability = 0.15
@@ -1314,10 +1321,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+		has_government = social_democrat
+		has_government = national_populist
+			}
+		}
 		prerequisite = { focus = SIA_the_final_struggle  }
 		mutually_exclusive = { focus = SIA_thenationcriesout  } mutually_exclusive = { focus = SIA_thepeoplecryout  }
 		completion_reward = {
 			add_war_support = 0.15
+			create_faction = "Buddhist Peace Fellowship"
 		}
 	}
 
@@ -1330,6 +1344,13 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			OR = {
+		has_government = paternal_autocrat
+		has_government = national_populist
+		has_government = authoritarian_democrat
+			}
 		}
 		prerequisite = { focus = SIA_the_final_struggle  }
 		mutually_exclusive = { focus = SIA_thescripturescryout  } mutually_exclusive = { focus = SIA_thepeoplecryout  }
@@ -1347,6 +1368,12 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			
+		has_government = radical_socialist
+		has_government = social_democrat
+			
 		}
 		prerequisite = { focus = SIA_the_final_struggle  }
 		mutually_exclusive = { focus = SIA_thescripturescryout  } mutually_exclusive = { focus = SIA_thenationcriesout  }
@@ -1518,10 +1545,12 @@ focus_tree = {
 		prerequisite = { focus = SIA_integrate_commercial_elites  }
 		completion_reward = {
 			add_building_construction = {
-    type = infrastructure
-    level = 5
-    instant_build = yes
+				type = infrastructure
+				level = 5
+				instant_build = yes
 		}
+	}
+	
 	}
 
 	#Declare Solidarity With Japan
@@ -1535,7 +1564,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_fuse_thailao_identity  }
-		completion_reward = 
+		completion_reward = {
+		JAP = { add_to_faction = THM }
+		}
 	}
 
 	#Secure Thai-Laos!
