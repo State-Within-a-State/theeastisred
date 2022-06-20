@@ -13762,7 +13762,16 @@ country_event = {
 					active = no
 				}
 			}
-			
+			every_other_country = {
+				limit = {
+					has_military_access_to = ROOT
+				}
+				diplomatic_relation = {
+					country = ROOT
+					relation = military_access
+					active = no
+				}
+			}
 			create_corps_commander = {
 				name = "Mao Zedong"
 				picture = "gfx/leaders/CHI/Portrait_Mao_Zedong.png"
@@ -14113,5 +14122,50 @@ country_event = {
 			ideology = totalist
 			popularity = 0.15
 		}
+	}
+}
+
+country_event = { #Land Reform
+	id = legcities.321
+	title = legcities.321.t
+	immediate = {log = "[GetDateText]: [Root.GetName]: event legcities.321"}
+	desc = legcities.321.desc
+	picture = "GFX_report_event_LEG_red_revolt"
+	
+	is_triggered_only = yes
+	
+	option = { #A great day for the peasants
+		name = legcities.321.a
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+		}
+		add_political_power = 75
+		add_stability = 0.05
+	}
+}
+
+country_event = { #The opium discussion
+	id = legcities.322
+	title = legcities.322.t
+	immediate = {log = "[GetDateText]: [Root.GetName]: event legcities.322"}
+	desc = legcities.322.desc
+	picture = "GFX_report_event_LEG_red_revolt"
+	
+	is_triggered_only = yes
+	
+	option = { #Ban opium
+		name = legcities.322.a
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		add_political_power = -50
+	}
+
+	option = { #Allow opium selling
+		name = legcities.322.b
+		add_political_power = 50
+		add_ideas = LEC_opium_sale_allowed
 	}
 }
