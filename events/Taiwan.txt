@@ -2,7 +2,64 @@
 add_namespace = taiwan
 add_namespace = taiwanjap
 
+country_event = { #Nomination of the Republican Candidate
+	id = taiwan.0
+	title = "Taiwan Declares Independence"
+	desc = "After the defeat of our glorious empire we now lose our most pirzed colony Taiwan."
 
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event taiwan.0"
+		hidden_effect = {
+			
+		}
+	}
+
+	option = { #Cortes
+	name = "Who Cares?"
+		ai_chance = {
+			factor = 75
+		}
+		TWI = {
+		 add_ideas = natural_isolation
+		 add_ideas = economic_hardship
+		}
+		TWI = {
+			
+			country_event = {
+			id = taiwan.1
+			days = 10
+			}
+			
+			}
+		
+	}
+	
+	option = { #Cortes
+	name = "Taiwan Forever!"
+		ai_chance = {
+			factor = 75
+		}
+		
+		TWI = { change_tag_from = JAP }
+		TWI = {
+		 add_ideas = natural_isolation
+		 add_ideas = economic_hardship
+		}
+		TWI = {
+			
+			country_event = {
+			id = taiwan.1
+			days = 10
+			}
+			
+			}
+		
+	}
+
+	
+}
 
 country_event = { #Nomination of the Republican Candidate
 	id = taiwan.1
