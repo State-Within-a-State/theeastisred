@@ -1,6 +1,7 @@
 add_namespace = communistrevolt
 add_namespace = postcommierevolt
 add_namespace = leagueleftwing
+add_namespace = syndicalistchina
 
 country_event = {
 
@@ -103,7 +104,10 @@ country_event = {
 		id = communistrevolt.4
 		days = 3
 		}
+		HKP = {
+		add_state_core = 326
 		
+		}
 		326 = {
 		set_demilitarized_zone = yes
 			}
@@ -138,7 +142,10 @@ country_event = {
 		id = communistrevolt.5
 		days = 3
 		}
+		TIA = {
+		add_state_core = 609
 		
+		}
 		609 = {
 		set_demilitarized_zone = yes
 			}
@@ -194,9 +201,96 @@ country_event = {
 
 	}
 	
+	
 	country_event = {
 
 		id = communistrevolt.6
+		title = "Tianjin and Hong Kong Break Away"
+		desc = communistrevolt.7.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		immediate = {
+		hidden_effect = {
+		release = HKP
+		release = TIA
+		
+		}
+		
+		}
+		
+		
+		option = {
+
+		name = "Support our Hong Kong Comrades(Play as Hong Kong)"
+			HKP = {
+		change_tag_from = LEC
+		
+		}
+		HKP = {
+		326 = {
+		set_demilitarized_zone = no
+			}
+		
+		}
+		LEC = {
+		country_event = {
+		id = communistrevolt.7
+		days = 3
+		}
+		
+		}
+		
+		}
+		
+		option = {
+
+		name = "For Tianjin!(Play as Tianjin)"
+			TIA = {
+		change_tag_from = LEC
+		
+		}
+		TIA = {
+		609 = {
+		set_demilitarized_zone = no
+			}
+		
+		}
+		LEC = {
+		country_event = {
+		id = communistrevolt.7
+		days = 3
+		}
+		
+		}
+		
+		}
+		
+		
+		option = {
+
+		name = "The Revolution Steams On"
+		custom_effect_tooltip = legations_collapse_tt
+		hidden_effect = {
+			add_stability = -0.5
+		country_event = {
+		id = communistrevolt.7
+		days = 3
+		}
+		
+		
+		}
+		
+		}
+
+
+	}
+	
+	country_event = {
+
+		id = communistrevolt.7
 		title = "A Revolution Successful"
 		desc = communistrevolt.6.d
 		picture = "-"
@@ -212,6 +306,7 @@ country_event = {
 		name = "The Pearl of Yangtze Shines Brighter Than Ever"
 		custom_effect_tooltip = legations_collapse_success_tt
 		hidden_effect = {
+		
 		CNH = {
 		set_cosmetic_tag = LEC_COS
 		}
@@ -832,6 +927,110 @@ country_event = {
 
 		}
 
+		
+
+
+
+	}
+	
+	
+	####Deng's Syndicalists
+	
+	
+	country_event = {
+
+		id = syndicalistchina.1
+		title = "Deng Xiaoping Secure's the CSP Congress"
+		desc = syndicalistchina.1.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+
+		option = {
+
+		name = "For A Socialist Market"
+		custom_effect_tooltip = deng_gains_power_tt
+		hidden_effect = {
+		set_cosmetic_tag = CNH_DSY
+		
+		set_politics = { ruling_party = syndicalist }
+		load_focus_tree = deng-syndie-china
+		set_country_leader_name = {
+				ideology = syndicalist
+				name = "Deng Xiaoping"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = syndicalist
+				portrait = "gfx/leaders/CNH/Portrait_Deng_Xiaoping.png"
+			}
+			
+			set_party_name = { 
+				ideology = syndicalist
+				name = CNH_syndicalist_nation_party
+				long_name =	CNH_syndicalist_nation_party_long			
+			}
+			
+		set_country_leader_ideology = market_socialist_subtype
+		}
+
+		}
+		
+		
+
+
+
+	}
+	
+	
+	country_event = {
+
+		id = syndicalistchina.2
+		title = "Deng Xiaoping's Economic Decision"
+		desc = syndicalistchina.2.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+
+		option = {
+
+		name = "Our Reforms Shall Benefit China"
+		custom_effect_tooltip = deng_cpaitalism_tt
+		hidden_effect = {
+		set_cosmetic_tag = CNH_DSY
+		
+		set_politics = { ruling_party = authoritarian_democrat }
+		load_focus_tree = deng-syndie-china
+		set_country_leader_name = {
+				ideology = authoritarian_democrat
+				name = "Deng Xiaoping"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = authoritarian_democrat
+				portrait = "gfx/leaders/CNH/Portrait_Deng_Xiaoping.png"
+			}
+			
+			set_party_name = { 
+				ideology = authoritarian_democrat
+				name = CNH_syndicalist_nation_party
+				long_name =	CNH_syndicalist_nation_party_long			
+			}
+			
+		set_country_leader_ideology = authdem_warlordism_subtype
+		}
+
+		}
+		
+		option = {
+		name = "We Shall Continue Our Course"
+		
+		}
+		
 		
 
 
