@@ -25,7 +25,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DSY_encourage_state_enterprise  } prerequisite = { focus = DSY_four_modernizations  }
-		completetion_reward = {
+		completion_reward = {
 		add_ideas = CNH_open_to_west
 		}
 	}
@@ -39,6 +39,9 @@ focus_tree = {
 		cost = 3
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = DSY_decision_of_the_economy  }
 		mutually_exclusive = { focus = DSY_ideal_pragmatism  }
@@ -55,7 +58,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DSY_a_revolutionary_syndicalist  }
-		completetion_reward = {
+		completion_reward = {
 		add_ideas = {
 		CNH_three_world_theory
 		}
@@ -85,7 +88,7 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DSY_a_revolutionary_syndicalist  }
-		completetion_reward = {
+		completion_reward = {
 		add_ideas = {
 		CNH_market_syndicalism
 		}
@@ -103,7 +106,7 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DSY_market_syndicalism  }
-		completetion_reward = {
+		completion_reward = {
 		add_ideas = {
 		CNH_enterpirse_built
 		}
@@ -121,7 +124,7 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DSY_market_syndicalism  } prerequisite = { focus = DSY_3_worlds_theory  }
-		completetion_reward = {
+		completion_reward = {
 		add_research_slot = 1
 		}
 	}
@@ -137,7 +140,7 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = DSY_3_worlds_theory  }
-		completetion_reward = {
+		completion_reward = {
 		add_ideas = {
 		CNH_peoples_movement
 		}
@@ -155,7 +158,7 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = DSY_encourage_state_enterprise  }
-		completetion_reward = {
+		completion_reward = {
 		add_stability = -0.5
 		}
 	}
@@ -171,7 +174,7 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = DSY_four_modernizations  } prerequisite = { focus = DSY_thepeoplesmovement  }
-	completetion_reward = {
+	completion_reward = {
 		add_manpower = -40000
 		}
 	
@@ -188,6 +191,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DSY_thepeoplesmovement  }
+		completion_reward = {
+		add_stability = 0.15
+		add_war_support = 0.05
+		add_political_power = 50
+		}
 	}
 
 	#Decision of the Economy
@@ -201,6 +209,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DSY_opening_to_western_culture  } prerequisite = { focus = DSY_growing_unrest  } prerequisite = { focus = DSY_denounce_counter_revolutionaries  } prerequisite = { focus = DSY_boluan_fanzheng  }
+	`	completion_reward = {
+	country_event = {
+	id = syndicalistchina.2
+	days = 1
+	}
+	
+	
+	}
 	}
 
 	#Ideal Pragmatism
@@ -213,8 +229,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = DSY_decision_of_the_economy  }
 		mutually_exclusive = { focus = DSY_sticking_with_socialism  }
+		
 	}
 
 	#Encourage Foreign Enterprise
@@ -228,6 +248,31 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DSY_ideal_pragmatism  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = GER
+				modifier = cap_enterpirse_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = CAN
+				modifier = cap_enterpirse_CNH
+			}
+		add_opinion_modifier = {
+				target = JAP
+				modifier = cap_enterpirse_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = RUS
+				modifier = cap_enterpirse_CNH
+			}
+			add_opinion_modifier = {
+				target = USA
+				modifier = cap_enterpirse_CNH
+			}
+		
+		}
 	}
 
 	#Crackdown on Radicals
@@ -241,6 +286,20 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = DSY_ideal_pragmatism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		}
 	}
 
 	#Trial of Counter Revolutionaries
@@ -254,6 +313,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = DSY_crackdown_on_radicals  }
+		completion_reward = {
+		add_manpower = -103873
+		}
 	}
 
 	#Special Economic Zones
@@ -267,6 +329,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DSY_encourage_foreign_enterprise  }
+		completion_reward = {
+		add_ideas = {
+		CNH_special_economic_zones
+		}
+		}
 	}
 
 	#The Iron Rice Bowl
@@ -280,6 +347,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DSY_trial_of_counter_revolutionaries  } prerequisite = { focus = DSY_special_economic_zones  }
+		completion_reward = {
+		add_stability = 0.25
+		add_ideas = {
+		CNH_iron_rice_bowl
+		}
+		
+		}	
+	
 	}
 
 	#Cooperate With Liu Shaoqi
@@ -293,6 +368,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DSY_sticking_with_socialism  }
+		completion_reward = {
+		remove_ideas = {
+		CNH_chen_yi_for_syn
+		}
+		add_ideas = {
+		CNH_liu_shaoqi_for_syn
+		}
+		}
 	}
 
 	#Confucian  Reforms
@@ -306,6 +389,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = DSY_sticking_with_socialism  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.2
+		add_stability = -0.05
+		}
 	}
 
 	#Limited Private Enterprise
@@ -319,6 +407,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DSY_cooperate_with_liu_shaoqi  }
+		completion_reward = {
+		add_ideas = {
+		CNH_limited_market_syndicalism
+		}
+		}
 	}
 
 	#Red Nationalism
@@ -332,6 +425,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DSY_confucianreforms  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.2
+		}
+		}
 	}
 
 	#A Red Future
