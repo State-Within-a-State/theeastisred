@@ -191,6 +191,14 @@
 # 1083 Kumul
 # 1085 Taklamakan Desert
 
+### Outer Manchuria
+# 1246 Primorye
+# 408 Vladivostok
+# 409 Khabarovsk
+# 657 Blagoveshchensk
+# 560 Nikolayevsk
+# 561 Amur
+
 ### South Tibet
 # 858 Tawang
 
@@ -1249,6 +1257,55 @@ integrate_china = {
 			factor = 1
 		}
 	}
+	
+	kr_integrate_outer_manchuria_province = {
+		icon = infiltrate_state
+		highlight_state_targets = { state = 714 }
+		allowed = {
+		tag = LEC
+			is_han_chinese_tag = yes
+			NOT = { tag = TRM }
+		}
+		visible = {
+		tag = LEC
+			can_integration_chinese_provinces = yes
+			OR = {
+				408 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				1246 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				409 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				657 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				560 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				561 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+			}
+		}
+		available = {
+			has_full_control_of_state = 408
+			has_full_control_of_state = 409
+			has_full_control_of_state = 657
+			has_full_control_of_state = 560
+			has_full_control_of_state = 561
+			has_full_control_of_state = 1246
+		}
+		cost = kr_china_provinceintegration_cost_small?50
+		fire_only_once = yes
+		modifier = {
+			political_power_gain = -0.20
+		}
+		days_remove = kr_china_provinceintegration_speed?90
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove kr_integrate_heilongjiang_province"
+			409 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			408 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			657 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			560 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			561 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			1246 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			remove_cores_of_dead_tags = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
 
 	##### TAIWAN INTEGRATION #####
 
@@ -1407,6 +1464,8 @@ integrate_china = {
 			factor = 1
 		}
 	}
+	
+	
 
 	################################################
 	##### KR CHINA STATE INTEGRATION DECISIONS #####
