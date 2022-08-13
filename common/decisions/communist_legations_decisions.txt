@@ -274,6 +274,163 @@ CNH_deal_with_the_feds = {
 }
 
 
+CNH_liberate_hunan = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			is_neighbor_of = FROM
+			
+			NOT = {
+			has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			has_idea = CNH_alliance_with_feds
+			FROM = {
+			is_in_faction_with = CNH
+			}
+			}
+		}
+		
+		visible = {
+			is_subject = no
+			can_declare_war_on = FROM
+			has_completed_focus = LEC_secure_the_foreign_quarters
+			has_completed_focus = LEC_secure_the_east
+			NOT = {
+			has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			
+			}
+		}
+		
+		targets = { HNN }
+		target_root_trigger = {
+		has_completed_focus = LEC_secure_the_foreign_quarters
+		has_completed_focus = LEC_secure_the_east
+			NOT = {
+			has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			FROM = {
+			is_in_faction_with = CNH
+			}
+			}
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {declare_war_on = {
+				type = annex_everything
+						target = CNH
+				}
+			
+				}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+			
+		}
+		
+	}
+}
+
+CNH_destroy_yunan = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			is_neighbor_of = FROM
+		}
+		
+		visible = {
+			is_subject = no
+			can_declare_war_on = FROM
+			has_completed_focus = LEC_secure_the_foreign_quarters
+			has_completed_focus = LEC_secure_the_east
+		}
+		
+		targets = { YUN }
+		target_root_trigger = {
+		has_completed_focus = LEC_secure_the_foreign_quarters
+		has_completed_focus = LEC_secure_the_east		
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {declare_war_on = {
+				type = annex_everything
+						target = CNH
+				}
+			
+				}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+			
+		}
+		
+	}
+}
+
+
+CNH_secure_sichuan = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			is_neighbor_of = FROM
+		}
+		
+		visible = {
+			is_subject = no
+			can_declare_war_on = FROM
+			has_completed_focus = LEC_secure_the_foreign_quarters
+			has_completed_focus = LEC_secure_the_east
+		}
+		
+		targets = { SZC }
+		target_root_trigger = {
+		has_completed_focus = LEC_secure_the_foreign_quarters
+		has_completed_focus = LEC_secure_the_east		
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {declare_war_on = {
+				type = annex_everything
+						target = CNH
+				}
+			
+				}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+			
+		}
+		
+	}
+}
+
 
 
 CNH_liberation_of_the_german_colonies = {
@@ -327,8 +484,152 @@ CNH_liberation_of_the_german_colonies = {
 }
 
 
+CNH_liberation_of_the_japanese_colonies = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			is_neighbor_of = FROM
+			has_completed_focus = LEC_denounce_the_japanese_concessions
+			NOT = {
+			has_government = totalist
+			}
+			
+		}
+		
+		visible = {
+			is_subject = no
+			can_declare_war_on = FROM
+			has_completed_focus = LEC_denounce_the_japanese_concessions
+			
+		}
+		
+		targets = { TIA }
+		target_root_trigger = {
+		has_completed_focus = LEC_denounce_the_japanese_concessions
+		
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {
+			country_event = {
+			id = communistrevolt.8
+			days = 1
+			}
+			
+			
+			}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+			
+		}
+		
+	}
+}
 
 
+CNH_smash_the_qing = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			is_neighbor_of = FROM
+		}
+		
+		visible = {
+			is_subject = no
+			can_declare_war_on = FROM
+			has_completed_focus = LEC_secure_the_foreign_quarters
+			has_completed_focus = LEC_secure_the_northwest
+		}
+		
+		targets = { QIE}
+		target_root_trigger = {
+		has_completed_focus = LEC_secure_the_foreign_quarters
+		has_completed_focus = LEC_secure_the_northwest		
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {declare_war_on = {
+				type = annex_everything
+						target = CNH
+				}
+			
+				}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+			
+		}
+		
+	}
+}
+
+
+CNH_stop_the_bandits_up_north = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			is_neighbor_of = FROM
+		}
+		
+		visible = {
+			is_subject = no
+			can_declare_war_on = FROM
+			has_completed_focus = LEC_secure_the_foreign_quarters
+			has_completed_focus = LEC_secure_the_northwest
+		}
+		
+		targets = { FNG }
+		target_root_trigger = {
+		has_completed_focus = LEC_secure_the_foreign_quarters
+		has_completed_focus = LEC_secure_the_northwest		
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {declare_war_on = {
+				type = annex_everything
+						target = CNH
+				}
+			
+				}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+			
+		}
+		
+	}
+}
 
 
 
@@ -438,6 +739,157 @@ CNH_alliance_with_the_guangxi_revolutionaries = {
 }
 
 
+CNH_alliance_with_the_red_qing = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			QIE = {
+			has_government = totalist
+			has_completed_focus = QIE_integration_with_the_csp
+			}
+			
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			
+		}
+		
+		targets = { QIE }
+		target_root_trigger = {
+		has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {
+			country_event = {
+			id = communistrevolt.8
+			days = 1
+			}
+			
+			
+			}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+			
+		}
+		
+	}
+}
+
+
+CNH_dec_negotiate_with_FNG = {
+		icon = generic_agreement
+		visible = {
+			has_completed_focus = LEC_secure_the_northwest
+
+			country_exists = FNG
+
+			country_exists = QIE
+
+			NOT = {
+				FNG = {
+					has_war_with = QIE
+					has_war_with = ROOT
+				}
+			}
+		}
+
+		available = {
+
+			country_exists = FNG
+			country_exists = QIE
+
+			country_exists = QIE
+
+			NOT = {
+				FNG = {
+					has_war_with = QIE
+					has_war_with = ROOT
+				}
+			}
+		}
+
+		cost = 10
+		fire_only_once = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_negotiate_with_FNG"
+			country_event = { id = cnh_fng.1 }
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+
+CNH_secure_hunan_revolutionaies = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			HNN = {
+			OR = {
+			has_completed_focus = HEL_the_red_warlord
+			has_completed_focus = HNN_a_revolutionary_family
+			}
+			}
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			
+		}
+		
+		targets = { HNN }
+		target_root_trigger = {
+		has_completed_focus = LEC_negotiate_with_revolutionary_parties
+			
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {
+			country_event = {
+			id = communistrevolt.8
+			days = 1
+			}
+			
+			
+			}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+			
+		}
+		
+	}
+}
 
 
 }

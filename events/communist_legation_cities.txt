@@ -1,5 +1,6 @@
 add_namespace = communistrevolt
 add_namespace = postcommierevolt
+add_namespace = cnh_fng
 add_namespace = leagueleftwing
 add_namespace = syndicalistchina
 
@@ -206,7 +207,7 @@ country_event = {
 
 		id = communistrevolt.6
 		title = "Tianjin and Hong Kong Break Away"
-		desc = communistrevolt.7.d
+		desc = communistrevolt.6.d
 		picture = "-"
 
 		fire_only_once = yes
@@ -357,6 +358,718 @@ country_event = {
 
 
 	}
+	
+	
+	country_event = { ##Conference to team with FNG against QIE begins
+	id = cnh_fng.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.1" }
+
+	title = cnh_fng.1.t
+	desc = cnh_fng.1.d
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = { # Let's hope Marshal Zhang will put China before himself
+		name = cnh_fng.1.a
+
+		set_global_flag = CHI_Negotiation_FNG
+
+		FNG = {
+			country_event = { id = cnh_fng.2 days = 1 }
+		}
+
+	}
+}
+
+country_event = { ##CNH invites us to negotiate
+	id = cnh_fng.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.2" }
+
+	title = cnh_fng.2.t
+	desc = cnh_fng.2.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # We will hear them out
+		name = cnh_fng.2.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = 50
+				CNH = { is_stronger_than_ROOT = yes }
+			}
+		}
+
+		hidden_effect = {
+			CNH = {
+				country_event = { id = cnh_fng.4 days = 2 }
+			}
+		}
+	}
+
+	option = { # We won't cooperate with no good syndicalists
+		name = cnh_fng.2.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				add = -50
+				CNH = { is_stronger_than_ROOT = yes }
+			}
+		}
+
+		hidden_effect = {
+			CNH = {
+				country_event = { id = cnh_fng.3 days = 2 }
+			}
+		}
+
+
+	}
+}
+
+country_event = { #Negotiatians break down, keep this vague as this event will be used if FNG refuse any ket part of the negotiations not just the initial setup
+	id = cnh_fng.3
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.3" }
+
+	title = cnh_fng.3.t
+	desc = cnh_fng.3.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # They aren't real republicans!
+		name = cnh_fng.3.a
+
+		set_country_flag = CHI_FNG_Refuses
+
+		clr_global_flag = CHI_Negotiation_FNG
+
+		clr_country_flag = CHI_Solo_War
+
+		clr_country_flag = CHI_Joint_War
+
+	}
+}
+
+country_event = { #FNG accepts
+	id = cnh_fng.4
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.4" }
+
+	title = cnh_fng.4.t
+	desc = cnh_fng.4.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # He has seen reason,let's begin.
+		name = cnh_fng.4.a
+
+		set_country_flag = CHI_FNG_Refuses
+
+		hidden_effect = {
+
+			country_event = { id = cnh_fng.5 days = 5 }
+
+			country_event = { id = cnh_fng.6 days = 8 }
+
+			FNG = {
+				country_event = { id = cnh_fng.5 days = 5 }
+			}
+		}
+	}
+}
+
+country_event = { #Negotians continue
+	id = cnh_fng.5
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.5" }
+
+	title = cnh_fng.5.t
+	desc = cnh_fng.5.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # These things take time
+		name = cnh_fng.5.a
+
+	}
+}
+
+country_event = { #Fate of the Qing
+	id = cnh_fng.6
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.6" }
+
+	title = cnh_fng.6.t
+	desc = cnh_fng.6.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # Propose the Kuomintang and Fengtian organise a joint invasion of QIE
+		name = cnh_fng.6.a
+		ai_chance = {
+			factor = 50
+		}
+
+		FNG = {
+			country_event = { id = cnh_fng.7 days = 2 }
+		}
+
+		set_country_flag = CHI_Joint_War
+
+	}
+
+	option = { # Propose a Non-Intervention pact with FNG staying out of the war, they will be less likely to accept, maybe 25%
+		name = cnh_fng.6.b
+		ai_chance = {
+			factor = 50
+		}
+
+		FNG = {
+			country_event = { id = cnh_fng.8 days = 2 }
+		}
+
+		set_country_flag = CHI_Solo_War
+
+	}
+}
+
+country_event = { #FNG - Fate of the Qing - Joint Invade
+	id = cnh_fng.7
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.7" }
+
+	title = cnh_fng.7.t
+	desc = cnh_fng.7.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { #
+		name = cnh_fng.7.a
+		ai_chance = {
+			factor = 80
+		}
+
+		CNH = {
+			country_event = { id = cnh_fng.9 days = 2 }
+		}
+
+		set_country_flag = CHI_FNG_Joint_War
+
+	}
+
+	option = { #
+		name = cnh_fng.7.b
+		ai_chance = {
+			factor = 20
+		}
+
+		hidden_effect = {
+			CNH = {
+				country_event = { id = cnh_fng.3 days = 2 }
+			}
+		}
+
+
+	}
+}
+
+country_event = { #FNG - Fate of the Qing - Solo Invade
+	id = cnh_fng.8
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.8" }
+
+	title = cnh_fng.8.t
+	desc = cnh_fng.8.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # They are the strongest power in China, we accept
+		name = cnh_fng.8.a
+		ai_chance = {
+			factor = 0
+			modifier = {
+				add = 50
+				CNH = { is_stronger_than_ROOT = yes }
+			}
+		}
+
+		CNH = {
+			country_event = { id = cnh_fng.9 days = 2 }
+		}
+
+		set_country_flag = CHI_FNG_Solo_War
+
+	}
+
+	option = { # You have to be joking
+		name = cnh_fng.8.b
+		ai_chance = {
+			factor = 100
+			modifier = {
+				add = -50
+				CNH = { is_stronger_than_ROOT = yes }
+			}
+		}
+
+		hidden_effect = {
+			CNH = {
+				country_event = { id = cnh_fng.3 days = 3 }
+			}
+		}
+
+
+	}
+}
+
+country_event = { #FNG Agrees to the plan
+	id = cnh_fng.9
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.9" }
+
+	title = cnh_fng.9.t
+	desc = cnh_fng.9.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # A surprise to be sure, but a welcome one
+		name = cnh_fng.9.a
+
+		hidden_effect = {
+			CNH = {
+				country_event = { id = cnh_fng.10 days = 1 }
+			}
+
+			FNG = {
+				country_event = { id = cnh_fng.10 days = 1 }
+			}
+		}
+
+	}
+}
+
+country_event = { #End of the negotiations
+	id = cnh_fng.10
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.10" }
+
+	title = cnh_fng.10.t
+	desc = cnh_fng.10.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # China will remain Republican
+		name = cnh_fng.10.a
+
+		add_political_power = 50
+
+		add_war_support = 0.03
+
+		clr_global_flag = CHI_Negotiation_FNG
+	}
+}
+
+## Dealing with FNG and CNH teaming
+
+country_event = { #CNH joining the war that Fengtian started
+	id = cnh_fng.11
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.11" }
+
+	title = cnh_fng.11.t
+	desc = cnh_fng.11.d
+
+	trigger = {
+		tag = CNH
+
+		FNG = { has_war_with = QIE }
+
+		has_country_flag = CHI_Joint_War
+	}
+
+	fire_only_once = yes
+
+	option = { # The time has come
+		name = cnh_fng.11.a
+
+		declare_war_on = { target = QIE type = annex_everything }
+
+		hidden_effect = {
+
+			add_state_claim = 1048
+
+			add_state_claim = 620
+
+			add_state_claim = 799
+
+			add_state_claim = 1058
+
+			add_state_claim = 607
+
+			add_state_claim = 1059
+
+			QIE = {
+				country_event = { id = cnh_fng.13 days = 1 }
+			}
+
+		}
+
+	}
+}
+
+country_event = { #FNG joining the war that the LKMT started
+	id = cnh_fng.12
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.12" }
+
+	title = cnh_fng.12.t
+	desc = cnh_fng.12.d
+
+	trigger = {
+		tag = FNG
+
+		CNH = { has_war_with = QIE }
+
+		has_country_flag = CHI_FNG_Joint_War
+	}
+
+	fire_only_once = yes
+
+	option = { # The time has come
+		name = cnh_fng.12.a
+
+		declare_war_on = { target = QIE type = annex_everything }
+
+		hidden_effect = {
+
+			QIE = {
+				country_event = { id = cnh_fng.14 days = 1 }
+			}
+
+		}
+
+	}
+}
+
+country_event = { # QIE reaction to CNH joining
+	id = cnh_fng.13
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.13" }
+
+	title = cnh_fng.13.t
+	desc = cnh_fng.13.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # Damn traitors
+		name = cnh_fng.13.a
+
+	}
+}
+
+country_event = { # QIE reaction to FNG joining
+	id = cnh_fng.14
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.14" }
+
+	title = cnh_fng.14.t
+	desc = cnh_fng.14.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # Damn traitors
+		name = cnh_fng.14.a
+
+	}
+}
+
+country_event = { #CNH - Land Transfer
+	id = cnh_fng.15
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.15" }
+
+	title = cnh_fng.15.t
+	desc = cnh_fng.15.d
+
+	trigger = {
+		tag = CNH
+		is_subject = no
+		country_exists = FNG
+		has_country_flag = CHI_Joint_War
+		NOT = {
+			country_exists = QIE
+			has_war_with = FNG
+		}
+		OR = {
+			owns_state = 1060
+			owns_state = 1061
+			owns_state = 615
+			owns_state = 1063
+			owns_state = 1062
+			owns_state = 608
+			owns_state = 611
+			owns_state = 614
+		}
+	}
+
+	fire_only_once = yes
+
+	option = { # We will honour the deal
+		name = cnh_fng.15.a
+		ai_chance = {
+			factor = 100
+			modifier = {
+				add = -50
+				CNH = {owns_state = 608 }
+			}
+		}
+
+		hidden_effect = {
+
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 1060
+
+						state = 1061
+
+						state = 615
+
+						state = 1063
+
+						state = 1062
+
+						state = 608
+
+						state = 611
+
+						state = 614
+					}
+				}
+				FNG = { transfer_state = PREV }
+			}
+
+			set_global_flag = CHI_FNG_Post_Victory
+
+		}
+	}
+
+	option = { # There is only one China!
+		name = cnh_fng.15.b
+		ai_chance = {
+			factor = 0
+			modifier = {
+				add = 50
+				CNH = {owns_state = 608 }
+			}
+		}
+
+		custom_effect_tooltip = CHI_FNG_Declare_War_tt
+
+		hidden_effect = {
+
+			FNG = {
+				country_event = { id = cnh_fng.16 days = 3 }
+			}
+
+		}
+
+	}
+}
+
+country_event = { # FNG reaction to CNH refusing to give up land
+	id = cnh_fng.16
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.16" }
+
+	title = cnh_fng.16.t
+	desc = cnh_fng.16.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # Of course they did...
+		name = cnh_fng.16.a
+		ai_chance = {
+			factor = 100
+			modifier = {
+				add = -30
+				CNH = { is_stronger_than_ROOT = yes }
+			}
+		}
+
+		declare_war_on = { target = CNH type = annex_everything }
+
+	}
+
+	option = { # They can play Central Government for now...
+		name = cnh_fng.16.b
+
+		add_political_power = -50
+
+	}
+}
+
+country_event = { #FNG - Land Transfer
+	id = cnh_fng.17
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.17" }
+
+	title = cnh_fng.17.t
+	desc = cnh_fng.17.d
+
+	trigger = {
+		tag = FNG
+		is_subject = no
+		country_exists = CNH
+		NOT = {
+			country_exists = QIE
+			has_war_with = CNH
+		}
+		has_country_flag = CHI_FNG_Joint_War
+		OR = {
+			owns_state = 799
+			owns_state = 607
+			owns_state = 1059
+			owns_state = 1058
+			owns_state = 620
+			owns_state = 1048
+		}
+	}
+
+	fire_only_once = yes
+
+	option = { # We will honour the deal
+		name = cnh_fng.17.a
+		ai_chance = {
+			factor = 75
+			modifier = {
+				add = -25
+				CNH = { is_stronger_than_ROOT = no }
+			}
+		}
+
+		hidden_effect = {
+
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 799
+
+						state = 607
+
+						state = 1059
+
+						state = 1058
+
+						state = 620
+
+						state = 1048
+					}
+				}
+				CNH = { transfer_state = PREV }
+			}
+
+		}
+	}
+
+	option = { # There is only one China!
+		name = cnh_fng.17.b
+		ai_chance = {
+			factor = 25
+			modifier = {
+				add = 25
+				CNH = { is_stronger_than_ROOT = no }
+			}
+		}
+
+		custom_effect_tooltip = FNG_CHI_Declare_War_tt
+
+		hidden_effect = {
+
+			CNH = {
+				country_event = { id = cnh_fng.18 days = 5 }
+			}
+
+		}
+
+	}
+}
+
+country_event = { # CNH reaction to FNG refusing to give up land
+	id = cnh_fng.18
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.18" }
+
+	title = cnh_fng.18.t
+	desc = cnh_fng.18.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # Of course they did...
+		name = cnh_fng.18.a
+		ai_chance = {
+			factor = 75
+			modifier = {
+				add = -50
+				FNG = { is_stronger_than_ROOT = yes }
+			}
+		}
+
+		declare_war_on = { target = FNG type = annex_everything }
+
+	}
+
+	option = { # They can play Central Government for now...
+		name = cnh_fng.18.b
+		ai_chance = {
+			factor = 25
+			modifier = {
+				add = 50
+				FNG = { is_stronger_than_ROOT = yes }
+			}
+		}
+
+		add_political_power = -50
+
+	}
+}
+
+## Non Intervention
+
+country_event = { #Uniting the country
+	id = cnh_fng.19
+	immediate = { log = "[GetDateText]: [Root.GetName]: event cnh_fng.19" }
+
+	title = cnh_fng.19.t
+	desc = cnh_fng.19.d
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	option = { # We must unite the country
+		name = cnh_fng.19.a
+
+		set_global_flag = CHI_Uniting_Country
+
+		FNG = {
+			country_event = { id = cnh_fng.20 days = 1 }
+		}
+	}
+
+}
 	
 	
 	country_event = {
