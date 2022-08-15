@@ -1,0 +1,82 @@
+MAN_socialist_holdout_category = {
+
+MAN_socialist_holdout_mission = {
+		name = MAN_socialist_holdout
+		icon = revolt
+		priority = 1
+
+		allowed = {
+		
+			OR = {
+				tag = MAN
+				tag = FNG
+			}
+		}
+
+		available = {
+			NOT = { MAN = { exists = yes } }
+		}
+
+		activation = {
+			
+			if = {
+				limit = { tag = FNG }
+				has_war = yes
+			}
+			else = {
+				is_ai = no
+				has_war_with = FNG
+			}
+			
+		}
+
+		days_mission_timeout = 30
+		is_good = no
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_fading_sun_mission"
+			
+			
+			hidden_effect = { FNG = { country_event = man.2 } }
+			
+			FNG = { change_tag_from = MAN }
+		
+		
+		FNG = {
+		set_politics = { ruling_party = totalist }
+		set_country_leader_ideology = juche_subtype
+		set_country_leader_name = {
+				ideology = totalist
+				name = "Zhu Dehai"
+			}
+		set_country_leader_portrait = {
+			ideology = totalist
+			portrait = "gfx/leaders/MAN/Portrait_MAN_Zhu_Dehai.png"
+		}
+		}
+
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancelled JAP_fading_sun_mission"
+			FNG = {
+			
+			annex_country = {
+					target = MAN
+					transfer_troops = no
+				}
+			
+			
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+}

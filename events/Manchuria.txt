@@ -15,17 +15,57 @@ country_event = {	#juchist revolt
 	is_triggered_only = yes
 
 	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	MAN = {
+	add_state_core = 714
+	add_state_core = 717
+	add_state_core = 883
+	add_state_core = 885
+	}
+	
+	
+	
+	}
+	
+	
+	}
 
 	option = {
 		name = man.1.a
 		MAN = {
 		set_cosmetic_tag = MAN_JUC
 		}
+		MAN = {
+		
+		set_politics = { ruling_party = totalist }
+		set_country_leader_ideology = juche_subtype
+		set_country_leader_name = {
+				ideology = totalist
+				name = "Zhu Dehai"
+			}
+		set_country_leader_portrait = {
+			ideology = totalist
+			portrait = "gfx/leaders/MAN/Portrait_MAN_Zhu_Dehai.png"
+		}
+	
+		}
 		release = MAN
+		activate_mission = MAN_socialist_holdout_mission
+		declare_war_on = {
+			target = MAN
+			type = annex_everything
+		}
 	}
 	
 	option = {
 		name = man.1.b
+		
+		declare_war_on = {
+				target = MAN
+				type = annex_everything
+			}
 		MAN = {
 		set_cosmetic_tag = MAN_JUC
 		}
@@ -45,7 +85,7 @@ country_event = {	#juchist revolt
 			ideology = totalist
 			portrait = "gfx/leaders/MAN/Portrait_MAN_Zhu_Dehai.png"
 		}
-		
+		activate_mission = MAN_socialist_holdout_mission
 		
 		
 		
@@ -71,19 +111,15 @@ country_event = {	#juchist revolt
 	option = {
 		name = man.2.a
 		
-		FNG = { change_tag_from = MAN }
 		
 		
 		FNG = {
-		set_politics = { ruling_party = totalist }
-		set_country_leader_ideology = juche_subtype
-		set_country_leader_name = {
-				ideology = totalist
-				name = "Zhu Dehai"
-			}
-		set_country_leader_portrait = {
-			ideology = totalist
-			portrait = "gfx/leaders/MAN/Portrait_MAN_Zhu_Dehai.png"
+		annex_country = {
+					target = MAN
+					transfer_troops = yes
+				}
+		
+		
 		}
 		
 		
