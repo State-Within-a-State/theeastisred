@@ -19,49 +19,17 @@ focus_tree = {
 	continuous_focus_position = { x = 300 y = 1700 }
 
 	focus = {
-		id = INS_merdeka
-		icon = GFX_goal_INS_focus_merdeka
-		cost = 8.00
-		available = {
-			NOT = {
-				has_idea = INS_idea_insulindian_national_revolution
-			}
-		}
-		ai_will_do = {
-			factor = 200
-		}
-		x = 17
-		y = 0
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus INS_merdeka"
-			add_political_power = 50
-			#remove_ideas = INS_idea_insulindian_national_revolution
-			hidden_effect = {
-				country_event = ins.5
-			}
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-	}
-
-	focus = {
-		id = INS_political_crossroad
+		id = INS_the_national_revolution
 		icon = GFX_goal_volunteer_alliance
 		cost = 8.00
-		prerequisite = {
-			focus = INS_merdeka
-		}
 		available = {
-			NOT = {
-				is_subject = yes
-			}
+			has_idea = INS_idea_insulindian_national_revolution
 		}
 		ai_will_do = {
 			factor = 120
 		}
-		x = -8
-		y = 1
-		relative_position_id = INS_merdeka
+		x = 5
+		y = 0
 		select_effect = {
 			country_event = { id = ins.1 days = 30 random = 20 }
 		}
@@ -73,18 +41,331 @@ focus_tree = {
 	}
 
 	focus = {
-		id = INS_economy_of_insulindia
-		icon = GFX_focus_generic_self_management
+		id = INS_political_crossroad
+		icon = GFX_goal_volunteer_alliance
 		cost = 8.00
-		prerequisite = {
-			focus = INS_merdeka
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			NOT = {
+				has_idea = INS_idea_insulindian_national_revolution
+			}
 		}
+		ai_will_do = {
+			factor = 120
+		}
+		x = 15
+		y = 0
+		select_effect = {
+			country_event = { id = ins.1 days = 30 random = 20 }
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_strengthen_sukarnos_power
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = -4
+		y = 1
+		relative_position_id = INS_political_crossroad
+		prerequisite = {
+			focus = INS_political_crossroad
+		}
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			has_country_flag = sukarno_survived
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_state_visit_to_france
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = 1
+		y = 1
+		relative_position_id = INS_strengthen_sukarnos_power
+		prerequisite = {
+			focus = INS_strengthen_sukarnos_power
+		}
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			has_country_flag = sukarno_survived
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_emergency_meeting
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = 4
+		y = 1
+		relative_position_id = INS_political_crossroad
+		prerequisite = {
+			focus = INS_political_crossroad
+		}
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			has_country_flag = Sukarno_dead
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+			hidden_effect = {
+				country_event = {
+					id = ins.6
+				}
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+			if = {
+				limit = {
+					has_idea = INS_power_struggle
+				}
+				remove_ideas = INS_power_struggle
+			}
+			else_if = {
+				limit = {
+					has_ideas = INS_political_unrest
+				}
+				remove_ideas = INS_political_unrest
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_the_duumvirate
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = -3
+		y = 1
+		relative_position_id = INS_emergency_meeting
+		prerequisite = {
+			focus = INS_emergency_meeting
+		}
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			has_country_flag = INS_duumvirate_holds_out
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_strengthen_tan_malakas_group
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = 1
+		y = 1
+		relative_position_id = INS_the_duumvirate
+		prerequisite = {
+			focus = INS_the_duumvirate
+		}
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			has_country_flag = INS_duumvirate_holds_out
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_strengthen_sutan_sjahrirs_group
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = -1
+		y = 1
+		relative_position_id = INS_the_duumvirate
+		prerequisite = {
+			focus = INS_the_duumvirate
+		}
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			has_country_flag = INS_duumvirate_holds_out
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_a_third_option
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = 0
+		y = 1
+		relative_position_id = INS_emergency_meeting
+		prerequisite = {
+			focus = INS_emergency_meeting
+		}
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			has_country_flag = INS_duumvirate_holds_out
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_the_true_successor
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = 3
+		y = 1
+		relative_position_id = INS_emergency_meeting
+		prerequisite = {
+			focus = INS_emergency_meeting
+		}
+		available = {
+			NOT = {
+				is_subject = yes
+			}
+			has_country_flag = INS_hatta_holds_out
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_transition_to_communism
+		icon = GFX_goal_volunteer_alliance
+		cost = 8.00
+		x = 10
+		y = 10
+		available = {
+			has_socialist_government = yes
+		}
+		ai_will_do = {
+			factor = 120
+		}
+		select_effect = {
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_political_crossroad"
+			add_political_power = 50
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
+		id = INS_reorganize_the_new_nation
+		icon = GFX_focus_generic_self_management
+		cost = 5.00
 		ai_will_do = {
 			factor = 150
 		}
-		x = 25
-		y = 1
+		available = {
+			NOT = {
+				has_idea = INS_idea_insulindian_national_revolution
+			}
+		}
+		x = 50
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_economy_of_insulindia"
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
 
+	focus = {
+		id = INS_economy_of_insulindia
+		icon = GFX_focus_generic_self_management
+		cost = 8.00
+		ai_will_do = {
+			factor = 150
+		}
+		available = {
+			NOT = {
+				has_idea = INS_idea_insulindian_national_revolution
+			}
+		}
+		prerequisite = { focus = INS_reorganize_the_new_nation}
+		x = 5
+		y = 1
+		relative_position_id = INS_reorganize_the_new_nation
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_economy_of_insulindia"
 			add_political_power = 100
@@ -457,6 +738,29 @@ focus_tree = {
 	}
 
 	focus = {
+		id = INS_new_armed_forces
+		icon = GFX_focus_generic_self_management
+		cost = 5.00
+		ai_will_do = {
+			factor = 150
+		}
+		available = {
+			NOT = {
+				has_idea = INS_idea_insulindian_national_revolution
+			}
+		}
+		prerequisite = { focus = INS_reorganize_the_new_nation}
+		x = -5
+		y = 1
+		relative_position_id = INS_reorganize_the_new_nation
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INS_economy_of_insulindia"
+			add_political_power = 100
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+	}
+
+	focus = {
 		id = INS_new_army_for_insulindia
 		icon = GFX_goal_INS_army
 		cost = 8.00
@@ -467,9 +771,10 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 31
-		y = 0
-
+		prerequisite = { focus = INS_new_armed_forces}
+		x = -4
+		y = 1
+		relative_position_id = INS_new_armed_forces
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_new_army_for_insulindia"
 			army_experience = 10
@@ -494,8 +799,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 30
+		x = -1
 		y = 1
+		relative_position_id = INS_new_army_for_insulindia
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_guerilla_force"
@@ -523,8 +829,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 32
+		x = 1
 		y = 1
+		relative_position_id = INS_new_army_for_insulindia
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_inspiration_from_knil"
@@ -548,8 +855,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 31
-		y = 2
+		x = 1
+		y = 1
+		relative_position_id = INS_guerilla_force
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_picking_a_doctrine_for_our_army"
@@ -580,8 +888,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 29
-		y = 3
+		x = -2
+		y = 1
+		relative_position_id = INS_picking_a_doctrine_for_our_army
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_artillery_corps"
@@ -612,8 +921,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 31
-		y = 3
+		x = 0
+		y = 1
+		relative_position_id = INS_picking_a_doctrine_for_our_army
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_light_armor_divisions"
@@ -642,8 +952,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 31
-		y = 4
+		x = 0
+		y = 1
+		relative_position_id = INS_light_armor_divisions
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_better_guns"
@@ -671,8 +982,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 32
-		y = 5
+		x = 1
+		y = 1
+		relative_position_id = INS_better_guns
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_insulindian_mountaineers"
@@ -700,9 +1012,10 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 35
-		y = 0
-
+		prerequisite = { focus = INS_new_armed_forces}
+		x = 0
+		y = 1
+		relative_position_id = INS_new_armed_forces
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_keeping_our_waters_independent"
 			navy_experience = 10
@@ -724,8 +1037,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 35
+		x = 0
 		y = 1
+		relative_position_id = INS_keeping_our_waters_independent
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_buy_foreign_warships"
@@ -751,8 +1065,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 34
-		y = 2
+		x = -1
+		y = 1
+		relative_position_id = INS_buy_foreign_warships
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_conventional_navy"
@@ -783,8 +1098,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 36
-		y = 2
+		x = 1
+		y = 1
+		relative_position_id = INS_buy_foreign_warships
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_submarine_navy"
@@ -813,8 +1129,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 35
-		y = 3
+		x = -1
+		y = 1
+		relative_position_id = INS_submarine_navy
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_sudarso_doctrine"
@@ -837,8 +1154,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 35
-		y = 4
+		x = 0
+		y = 1
+		relative_position_id = INS_sudarso_doctrine
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_each_island_a_destroyer"
@@ -860,8 +1178,10 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 39
-		y = 0
+		prerequisite = { focus = INS_new_armed_forces}
+		x = 4
+		y = 1
+		relative_position_id = INS_new_armed_forces
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_creating_an_insulindian_airforce"
@@ -892,8 +1212,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 38
+		x = -1
 		y = 1
+		relative_position_id = INS_creating_an_insulindian_airforce
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_purchase_japanese_aircraft"
@@ -920,8 +1241,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 40
+		x = 1
 		y = 1
+		relative_position_id = INS_creating_an_insulindian_airforce
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_salvage_knil_junk"
@@ -944,8 +1266,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 39
-		y = 2
+		x = -1
+		y = 1
+		relative_position_id = INS_salvage_knil_junk
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_air_doctrine_studies"
@@ -976,8 +1299,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 39
-		y = 3
+		x = 0
+		y = 1
+		relative_position_id = INS_air_doctrine_studies
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_bomber_focus"
@@ -1008,8 +1332,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 41
-		y = 3
+		x = 2
+		y = 1
+		relative_position_id = INS_air_doctrine_studies
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_fighter_focus"
@@ -1038,8 +1363,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 39
-		y = 4
+		x = 0
+		y = 1
+		relative_position_id = INS_bomber_focus
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_close_air_support"
@@ -1067,8 +1393,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 38
-		y = 5
+		x = -1
+		y = 1
+		relative_position_id = INS_close_air_support
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_insulindian_paratroopers"
@@ -1102,8 +1429,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 35
-		y = 5
+		x = 0
+		y = 1
+		relative_position_id = INS_each_island_a_destroyer
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_insulindian_marines"
@@ -1133,8 +1461,9 @@ focus_tree = {
 		ai_will_do = {
 			factor = 150
 		}
-		x = 35
-		y = 6
+		x = 0
+		y = 1
+		relative_position_id = INS_insulindian_marines
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_a_modern_military"
@@ -1162,8 +1491,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 33
-		y = 3
+		x = -1
+		y = 1
+		relative_position_id = INS_conventional_navy
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_inherit_design_1047"
@@ -1194,8 +1524,9 @@ focus_tree = {
 				has_war = yes
 			}
 		}
-		x = 37
-		y = 3
+		x = 1
+		y = 1
+		relative_position_id = INS_submarine_navy
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INS_japanese_carrier_designs"
