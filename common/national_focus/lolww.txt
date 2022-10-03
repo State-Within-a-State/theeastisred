@@ -26,6 +26,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = CNH_socialist_victory  focus = CNH_a_student_of_lu_xun  }
 		mutually_exclusive = { focus = CNH_restart_nahan  }
+		completion_reward = {
+		add_ideas = {
+		CNH_socialist_nationalism
+		}
+		}
 	}
 
 	#Marxist Humanism
@@ -39,6 +44,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CNH_legacy_of_tolstoy  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Denouncing Imperialist Culture
@@ -52,6 +60,37 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CNH_communist_future  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = CAN
+				modifier = anti_imperial_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = JAP
+				modifier = anti_imperial_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = RUS
+				modifier = anti_imperial_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = OTT
+				modifier = anti_imperial_CNH
+			}
+			add_opinion_modifier = {
+				target = GER
+				modifier = anti_imperial_CNH
+			}
+			add_opinion_modifier = {
+				target = AUS
+				modifier = anti_imperial_CNH
+			}
+			add_stability = 0.05
+		
+		}
 	}
 
 	#Marxist Philosophy
@@ -65,6 +104,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CNH_socialist_victory  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Victory of the Pen
@@ -89,6 +134,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+						has_country_leader = {
+					name = "Zhou Yang"
+					ruling_only = yes
+				}
+		
+		}
 		prerequisite = { focus = CNH_victory_of_the_pen  }
 	}
 
@@ -102,7 +154,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = CNH_marxist_philosophy  }
+		completion_reward = {
+		add_ideas = {
+		CNH_communist_future
+		}
+		
+		}
 	}
 
 	#A Cultural Reformation
@@ -116,6 +175,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CNH_denouncing_imperialist_culture  }
+		completion_reward = {
+		add_ideas = {
+		CNH_cultural_reformation
+		}
+		
+		}
 	}
 
 	#Legacy of Tolstoy
@@ -129,6 +194,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CNH_denouncing_imperialist_culture  }
+		completion_reward = {
+		add_political_power = 100
+		
+		}
 	}
 
 	#Denounce Old Culture
@@ -142,6 +211,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CNH_a_cultural_reformation  }
+		completion_reward = {
+		swap_ideas = {
+				remove_idea = CNH_cultural_reformation
+				add_idea = CNH_cultural_reformation_2
+			}
+		
+		}
 	}
 
 	#Radical Theory
@@ -155,6 +231,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CNH_denounce_old_culture  } prerequisite = { focus = CNH_marxist_humanism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.15
+		}
+		add_war_support = 0.1
+		add_stability = 0.25
+		
+		}
 	}
 
 	#Restart Nahan
@@ -169,6 +254,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = CNH_socialist_victory  focus = CNH_shanghai_communalism  }
 		mutually_exclusive = { focus = CNH_socialist_nationalism  }
+		completion_reward = {
+		add_ideas = {
+		CNH_restart_nahan
+		}
+		}
 	}
 
 	#Denounce Warlordism
@@ -182,6 +272,42 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CNH_restart_nahan  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = MON
+				modifier = anti_warlordism_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = SHX
+				modifier = anti_warlordism_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = XSM
+				modifier = anti_warlordism_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = ETS
+				modifier = anti_warlordism_CNH
+			}
+			add_opinion_modifier = {
+				target = SIK
+				modifier = anti_warlordism_CNH
+			}
+			add_opinion_modifier = {
+				target = TAN
+				modifier = anti_warlordism_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = TIB
+				modifier = anti_warlordism_CNH
+			}
+		
+		
+		}
 	}
 
 	#Communal Construction
@@ -195,6 +321,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CNH_denounce_warlordism  }
+		completion_reward = {
+		unlock_decision_category_tooltip = CNH_commune_builing
+		}
 	}
 
 	#Denounce the Monopolies
@@ -208,6 +337,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = CNH_communal_construction  }
+		completion_reward = {
+		add_stability = 0.25
+		add_manpower = -10833
+		
+		}
 	}
 
 	#Formalise Collectivism
@@ -221,6 +355,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CNH_denounce_the_monopolies  }
+		completion_reward = {
+		add_ideas = {
+		CNH_formalise_collectivism
+		}
+		}
 	}
 
 	#The Red Coast
@@ -234,6 +373,27 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CNH_formalise_collectivism  }
+		completion_reward = {
+		add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+				}
+				
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+		
+		
+		}
 	}
 
 	#Local Supplies
@@ -258,6 +418,13 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+						has_country_leader = {
+					name = "Ding Ling"
+					ruling_only = yes
+				}
+		
 		}
 		prerequisite = { focus = CNH_victory_of_the_pen  }
 	}
@@ -453,6 +620,13 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+						has_country_leader = {
+					name = "Ruo Shi"
+					ruling_only = yes
+				}
+		
 		}
 		prerequisite = { focus = CNH_victory_of_the_pen  }
 	}
