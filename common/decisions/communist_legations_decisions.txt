@@ -1882,7 +1882,7 @@ CNH_africa_liberation = {
 			FROM = { exists = yes }
 		}
 		
-		targets = { capital_scope = { is_on_continent = africa } }
+		targets = { ANG BFA BOT BRD CEA CMR IVO COG CVG DAH ERI ETH GAB GHA GNA HAU KBR KEN KIK KIV COG LIB MAG MAL MLW MRT MZB NMB NER NGR RWA SEN SIE SOM SUD TKE TZN TOG TUA UGA WAD ZAM ZIM ZZB MSF LPD UMN KAS CIV DJI }
 		target_root_trigger = {
 		has_completed_focus = LEC_supporting_our_african_comrades
 			
@@ -1930,7 +1930,7 @@ CNH_north_america_liberation = {
 			FROM = { exists = yes }
 		}
 		
-		targets = { capital_scope = { is_on_continent = north_america } }
+		targets = { PAN COS NIC HON ELS GUA DOM HAI CAF CUB MEX COR USA PSA CSA CAN ALA TEX NEE }
 		target_root_trigger = {
 		has_completed_focus = LEC_aid_the_american_revolution
 			
@@ -1978,7 +1978,7 @@ CNH_europe_liberation = {
 			FROM = { exists = yes }
 		}
 		
-		targets = { capital_scope = { is_on_continent = europe } }
+		targets = { POR SPR FRA ENG IRE ITA SRI NFA SWI BEL HOL GER DEN AUS CZE NOR SWE FIN CRO HUN ALB GRE MLT CRE SER BUL ROM GAL POL LIT BAT WHR UKR ICE DKB KUB MTR RUS }
 		target_root_trigger = {
 		has_completed_focus = LEC_european_revolution
 			
@@ -2027,9 +2027,252 @@ CNH_south_america_liberation = {
 			FROM = { exists = yes }
 		}
 		
-		targets = { capital_scope = { is_on_continent = south_america } }
+		targets = { VEN COL ECU PRU BRA BOL PAR URG CHL ARG FOP }
 		target_root_trigger = {
 		has_completed_focus = LEC_for_south_american_liberation
+			
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+		declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}	
+			
+			
+		}
+		
+	}
+}
+
+
+CNH_oceacianisn_liberation = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			has_completed_focus = LEC_support_oceanian_socialism
+			FROM = {
+				NOT = {
+			is_in_faction_with = CNH
+				}
+			}
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = LEC_support_oceanian_socialism
+			FROM = { exists = yes }
+		}
+		
+		targets = { AST NZL }
+		target_root_trigger = {
+		has_completed_focus = LEC_support_oceanian_socialism
+			
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+		declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}	
+			
+			
+		}
+		
+	}
+}
+
+CNH_middle_east_liberation = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			has_completed_focus = LEC_middle_eastern_revolution
+			FROM = {
+				NOT = {
+			is_in_faction_with = CNH
+				}
+			}
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = LEC_middle_eastern_revolution
+			FROM = { exists = yes }
+		}
+		
+		targets = { PAL YEM OMA IRQ KUR HEJ SYR CYR TRU }
+		target_root_trigger = {
+		has_completed_focus = LEC_middle_eastern_revolution
+			
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+		declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}	
+			
+			
+		}
+		
+	}
+}
+
+
+CNH_arabian_liberation = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			has_completed_focus = LEC_unify_arabia
+			FROM = {
+				NOT = {
+			is_in_faction_with = CNH
+				}
+			}
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = LEC_unify_arabia
+			FROM = { exists = yes }
+		}
+		
+		targets = { JBS SAU }
+		target_root_trigger = {
+		has_completed_focus = LEC_unify_arabia
+			
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+		declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}	
+			
+			
+		}
+		
+	}
+}
+
+
+CNH_caucasus_liberation = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			has_completed_focus = LEC_unify_arabia
+			FROM = {
+				NOT = {
+			is_in_faction_with = CNH
+				}
+			}
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = LEC_unify_arabia
+			FROM = { exists = yes }
+		}
+		
+		targets = { GEO ARM AZE }
+		target_root_trigger = {
+		has_completed_focus = LEC_unify_arabia
+			
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+		declare_war_on = {
+				target = FROM
+				type = annex_everything
+			}	
+			
+			
+		}
+		
+	}
+}
+
+CNH_ottoman_liberation = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			has_completed_focus = LEC_unify_arabia
+			FROM = {
+				NOT = {
+			is_in_faction_with = CNH
+				}
+			}
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = LEC_unify_arabia
+			FROM = { exists = yes }
+		}
+		
+		targets = { TUR OTT }
+		target_root_trigger = {
+		has_completed_focus = LEC_unify_arabia
 			
 		}
 
