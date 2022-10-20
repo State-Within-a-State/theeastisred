@@ -1,0 +1,133 @@
+﻿
+add_namespace = man
+
+
+
+
+country_event = {	#juchist revolt
+	id = man.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event man.1" }
+	title = man.1.t
+	desc = man.1.d
+
+	picture = GFX_report_event_GRE_athens
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+	
+	immediate = {
+	hidden_effect = {
+	MAN = {
+	add_state_core = 714
+	add_state_core = 717
+	add_state_core = 883
+	add_state_core = 885
+	}
+	
+	
+	
+	}
+	
+	
+	}
+
+	option = {
+		name = man.1.a
+		MAN = {
+		set_cosmetic_tag = MAN_JUC
+		}
+		MAN = {
+		
+		set_politics = { ruling_party = totalist }
+		set_country_leader_ideology = juche_subtype
+		set_country_leader_name = {
+				ideology = totalist
+				name = "Zhu Dehai"
+			}
+		set_country_leader_portrait = {
+			ideology = totalist
+			portrait = "gfx/leaders/MAN/Portrait_MAN_Zhu_Dehai.png"
+		}
+	
+		}
+		release = MAN
+		activate_mission = MAN_socialist_holdout_mission
+		declare_war_on = {
+			target = MAN
+			type = annex_everything
+		}
+	}
+	
+	option = {
+		name = man.1.b
+		
+		declare_war_on = {
+				target = MAN
+				type = annex_everything
+			}
+		MAN = {
+		set_cosmetic_tag = MAN_JUC
+		}
+		release = MAN
+		
+		MAN = { change_tag_from = FNG }
+		
+		
+		MAN = {
+		set_politics = { ruling_party = totalist }
+		set_country_leader_ideology = juche_subtype
+		set_country_leader_name = {
+				ideology = totalist
+				name = "Zhu Dehai"
+			}
+		set_country_leader_portrait = {
+			ideology = totalist
+			portrait = "gfx/leaders/MAN/Portrait_MAN_Zhu_Dehai.png"
+		}
+		activate_mission = MAN_socialist_holdout_mission
+		
+		
+		
+		}
+	}
+}
+
+
+country_event = {	#juchist revolt
+	id = man.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event man.1" }
+	title = "A Revolutionary Success"
+	desc = man.2.d
+
+	picture = GFX_report_event_GRE_athens
+
+	is_triggered_only = yes
+
+	fire_only_once = yes
+
+	
+	
+	option = {
+		name = man.2.a
+		
+		
+		
+		FNG = {
+		annex_country = {
+					target = MAN
+					transfer_troops = yes
+				}
+		
+		
+		}
+		
+		
+		
+		
+		}
+	}
+}
+
+
+
