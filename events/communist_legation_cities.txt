@@ -2274,7 +2274,7 @@ country_event = {
 		id = syndicalistchina.14
 		title = "Power Struggle Between the United Front and Chen"
 		desc = syndicalistchina.14.d
-		picture = "-"
+		picture = "GFX_report_event_CNH_united_front"
 
 		fire_only_once = yes
 
@@ -2282,12 +2282,9 @@ country_event = {
 
 		option = {
 
-		name = "For A New Syndicalism"
+		name = "The Struggle Starts"
 		custom_effect_tooltip = power_struggle_csp_kmt_tt
-		add_timed_idea = {
-				idea = CNH_fractured_united_front
-				days = 60
-			}
+		
 		hidden_effect = {
 		
 			unlock_decision_category_tooltip = CNH_csp_kmt_balance_of_power_category
@@ -2302,7 +2299,13 @@ country_event = {
 				left_side = csp_left_side
 				right_side = csp_kmt_right_side
 			}
-		
+		add_ideas = {
+		CNH_fractured_united_front
+		}
+		add_timed_idea = {
+				idea = CNH_fractured_united_front
+				days = 60
+			}
 		}
 
 		}
@@ -2319,13 +2322,58 @@ country_event = {
 		id = syndicalistchina.15
 		title = "Purging the KMT"
 		desc = syndicalistchina.15.d
-		picture = "-"
+		picture = "GFX_report_event_CNH_china_civilwar"
 
 		fire_only_once = yes
 
 		is_triggered_only = yes
 		immediate = {
 		hidden_effect = {
+		CHI = {
+		set_state_controller = 802
+		set_state_controller = 1046
+		set_state_controller = 1066
+		set_state_controller = 595
+		set_state_controller = 600
+		set_state_controller = 1012
+		set_state_controller = 801
+		set_state_controller = 800
+		set_state_controller = 593
+		set_state_controller = 592
+		set_state_controller = 594
+		set_state_controller = 591
+		set_state_controller = 1056
+		set_state_controller = 599
+		set_state_controller = 1055
+		set_state_controller = 1054
+		set_state_controller = 602
+		set_state_controller = 1013
+		set_state_controller = 1052
+		set_state_controller = 1049
+		}
+		}
+		}
+		option = {
+
+		name = "Nothing Good Ever Comes From Wuhan"
+		CHI = {
+		load_oob = "CHI_civilwar_csp"
+		set_politics = { ruling_party = radical_socialist }
+		set_country_leader_name = {
+				ideology = radical_socialist
+				name = "Chen Gongbo"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = radical_socialist
+				portrait = "gfx/leaders/CHI/Portrait_CHI_Chen_Gongbo.png"
+			}
+			
+			
+			
+		set_country_leader_ideology = radsoc_tridemism_subtype
+		
+		}
 		CHI = {
 		set_state_owner = 802
 		set_state_owner = 1046
@@ -2347,29 +2395,6 @@ country_event = {
 		set_state_owner = 1013
 		set_state_owner = 1052
 		set_state_owner = 1049
-		}
-		}
-		}
-		option = {
-
-		name = "Stop Their Party!"
-		CHI = {
-		load_oob = "CHI_civilwar_csp"
-		set_politics = { ruling_party = radical_socialist }
-		set_country_leader_name = {
-				ideology = radical_socialist
-				name = "Chen Gongbo"
-			}
-			
-		set_country_leader_portrait = {
-				ideology = radical_socialist
-				portrait = "gfx/leaders/CHI/Portrait_CHI_Chen_Gongbo.png"
-			}
-			
-			
-			
-		set_country_leader_ideology = radsoc_tridemism_subtype
-		
 		}
 		declare_war_on = {
 				target = CHI
@@ -2390,13 +2415,42 @@ country_event = {
 		id = syndicalistchina.16
 		title = "Gongbo's Coup"
 		desc = syndicalistchina.16.d
-		picture = "-"
+		picture = "GFX_report_event_CNH_china_civilwar"
 
 		fire_only_once = yes
 
 		is_triggered_only = yes
 		immediate = {
 		hidden_effect = {
+		PRC = {
+		set_state_controller = 802
+		set_state_controller = 1046
+		set_state_controller = 1066
+		set_state_controller = 595
+		set_state_controller = 600
+		set_state_controller = 1012
+		set_state_controller = 801
+		set_state_controller = 800
+		set_state_controller = 593
+		set_state_controller = 592
+		set_state_controller = 594
+		set_state_controller = 591
+		set_state_controller = 1056
+		set_state_controller = 599
+		set_state_controller = 1055
+		set_state_controller = 1054
+		set_state_controller = 602
+		set_state_controller = 1013
+		set_state_controller = 1052
+		set_state_controller = 1049
+		}
+		}
+		}
+		option = {
+
+		name = "For A New Republic!"
+		hidden_effect = {
+		
 		PRC = {
 		set_state_owner = 802
 		set_state_owner = 1046
@@ -2419,12 +2473,50 @@ country_event = {
 		set_state_owner = 1052
 		set_state_owner = 1049
 		}
-		}
-		}
-		option = {
-
-		name = "For A New Republic!"
+		set_cosmetic_tag = CNH_CHIROC
+		set_popularities = {
+				totalist = 25
+				syndicalist = 12
+				radical_socialist = 25
+				social_democrat = 25
+				social_liberal = 13
+			}
+			
+			set_politics = { ruling_party = radical_socialist }
+		set_country_leader_name = {
+				ideology = radical_socialist
+				name = "Chen Gongbo"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = radical_socialist
+				portrait = "gfx/leaders/CHI/Portrait_CHI_Chen_Gongbo.png"
+			}
+			set_country_leader_ideology = radsoc_tridemism_subtype
+			set_party_name = {
+				ideology = totalist
+				name = "Kuomintang(NBIS)"
+			}
+			
+			set_party_name = {
+				ideology = syndicalist
+				name = "Kuomintang(Minhseng)"
+			}
+			set_party_name = {
+				ideology = radical_socialist
+				name = "Kuomintang(Minsheng)"
+			}
+			set_party_name = {
+				ideology = social_democrat
+				name = "Kuomintang(Minquan)"
+			}
+			
+			set_party_name = {
+				ideology = social_liberal
+				name = "Kuomintang(Minquan)"
+			}
 		PRC = {
+		set_cosmetic_tag = CNH_DUX
 		load_oob = "CHI_civilwar_csp"
 		set_politics = { ruling_party = syndicalist }
 		set_country_leader_name = {
@@ -2434,7 +2526,7 @@ country_event = {
 			
 		set_country_leader_portrait = {
 				ideology = syndicalist
-				portrait = "gfx/leaders/CHI/Portrait_CHI_Chen_Gongbo.png"
+				portrait = "gfx/leaders/CNH/Portrait_CHI_Chen_Duxiu.png"
 			}
 			
 			
@@ -2446,7 +2538,9 @@ country_event = {
 				target = PRC
 				type = annex_everything
 			}
-
+			
+			
+		}
 		}
 		
 		
@@ -2725,6 +2819,7 @@ country_event = {
 		option = {
 
 		name = "Onwards To a New Era"
+		set_cosmetic_tag = CNH_TECH
 		set_party_name = { 
 				ideology = syndicalist
 				name = CNH_totalist_nation_party
@@ -2827,7 +2922,7 @@ country_event = {
 		option = {
 
 		name = "Ganchang's Vision Beyond the Stars"
-	
+		set_cosmetic_tag = CNH_TECHWANG
 		set_politics = { ruling_party = totalist }
 		
 		set_country_leader_name = {
@@ -2848,7 +2943,7 @@ country_event = {
 		option = {
 
 		name = "Rightists Takeover"
-	
+		set_cosmetic_tag = CNH_TECHJUI
 		set_politics = { ruling_party = paternal_autocrat }
 		
 		set_country_leader_name = {
@@ -2866,6 +2961,134 @@ country_event = {
 		set_country_leader_ideology = right_technocracy_subtype
 		}
 		}
+		
+		country_event = {
+
+		id = technocraticchina.6
+		title = "Formation of the Sub Technates"
+		desc = technocraticchina.1.d
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+
+		option = {
+
+		name = "Form Our Puppets"
+		puppet = JAP
+		puppet = INC
+		JAP = {
+		set_cosmetic_tag = CNH_TECHJAP
+		set_politics = { ruling_party = totalist }
+		
+		set_country_leader_name = {
+				ideology = totalist
+				name = "Yoshio Hishina"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = totalist
+				portrait = "gfx/leaders/CNH/Portrait_JAP_Yoshio_Nishina.png"
+			}
+			
+			
+			
+		set_country_leader_ideology = technocracy_subtype
+		}
+		
+		INC = {
+		set_state_owner = 882
+		set_state_owner = 670
+		set_state_owner = 827
+		set_state_owner = 826
+		set_state_owner = 286
+		set_state_owner = 856
+		set_state_owner = 750
+		set_state_owner = 825
+		
+		}
+		INC = {
+		set_cosmetic_tag = CNH_TECHINC
+		set_politics = { ruling_party = totalist }
+		
+		set_country_leader_name = {
+				ideology = totalist
+				name = "Pham Ngoc Thach"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = totalist
+				portrait = "gfx/leaders/CNH/Portrait_CNH_pham.png"
+			}
+			
+			
+			
+		set_country_leader_ideology = technocracy_subtype
+		}
+		}
+		
+		option = {
+
+		name = "Form Our Puppets"
+		puppet = JAP
+		puppet = INC
+		JAP = {
+		set_cosmetic_tag = CNH_TECHJAPPAT
+		set_politics = { ruling_party = paternal_autocrat }
+		
+		set_country_leader_name = {
+				ideology = paternal_autocrat
+				name = "Nobesuka Kishi"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = paternal_autocrat
+				portrait = "gfx/leaders/JAP/Portrait_JAP_Kishi_Nobusuke.png"
+			}
+			
+			
+			
+		set_country_leader_ideology = right_technocracy_subtype
+		}
+		
+		INC = {
+		set_state_owner = 882
+		set_state_owner = 670
+		set_state_owner = 827
+		set_state_owner = 826
+		set_state_owner = 286
+		set_state_owner = 856
+		set_state_owner = 750
+		set_state_owner = 825
+		
+		}
+		INC = {
+		set_cosmetic_tag = CNH_TECHINC
+		set_politics = { ruling_party = radical_socialist }
+		
+		set_country_leader_name = {
+				ideology = radical_socialist
+				name = "Nguyen Binh"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = radical_socialist
+				portrait = "gfx/leaders/CNH/Portrait_CNH_BINH.png"
+			}
+			
+			
+			
+		set_country_leader_ideology = utopian_technocracy_subtype
+		}
+		}
+		
+		
+		
+		}
+		
+		
+		
 
 
 	
