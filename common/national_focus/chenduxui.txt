@@ -121,6 +121,7 @@ focus_tree = {
 		prerequisite = { focus = DUX_syndicalist_economics  }
 		completion_reward = {
 		unlock_decision_category_tooltip = CNH_five_year_plan_chen
+		activate_mission = CNH_The_First_Five_Year_Plan_chen
 		}
 	}
 
@@ -171,6 +172,17 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = DUX_powertotheunions  } prerequisite = { focus = DUX_the_red_lanterns  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = FRA
+				modifier = syndicalist_support_CNH
+			}
+			add_opinion_modifier = {
+				target = ENG
+				modifier = syndicalist_support_CNH
+			}
+		
+		}
 	}
 
 	#Invite Comrade Li De
@@ -184,6 +196,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DUX_powertotheunions  }
+		completion_reward = {
+		remove_ideas = {
+		CNH_ai_ziwen_eco_syn
+		}
+		add_ideas = {
+		CNH_li_de_eco_syn
+		}
+		}
+	
 	}
 
 	#The Banner of the Party
@@ -197,6 +218,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = DUX_invite_comrade_li_de  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Freedom For Females
@@ -210,6 +234,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = DUX_supporting_syndicalist_revolution  } prerequisite = { focus = DUX_invite_comrade_li_de  }
+		completion_reward = {
+		add_manpower = 102923
+		add_stability = 0.25
+		add_political_power = 50
+		}
 	}
 
 	#Military Communes
@@ -223,6 +252,10 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DUX_communal_workhouses  } prerequisite = { focus = DUX_supporting_syndicalist_revolution  }
+		completion_reward = {
+		unlock_decision_tooltip = CNH_build_up_beijing_military_complex
+		
+		}
 	}
 
 	#Civilian Communes
@@ -236,6 +269,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DUX_peasant_syndicates  } prerequisite = { focus = DUX_communal_workhouses  }
+		completion_reward = {
+		unlock_decision_tooltip = CNH_build_up_beijing_civilian_complex
+		}
 	}
 
 	#Crush the Landlords
@@ -249,6 +285,10 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = DUX_peasant_syndicates  }
+		completion_reward = {
+		add_manpower = -189222
+		add_stability = 0.15
+		}
 	}
 
 	#Red Laboratories
@@ -262,6 +302,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = DUX_civilian_communes  } prerequisite = { focus = DUX_crush_the_landlords  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Denounce the Rightists
@@ -275,6 +318,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = DUX_freedom_for_females  } prerequisite = { focus = DUX_military_communes  }
+		completion_reward = {
+		add_ideas = {
+		CNH_anti_rightist_campaign
+		}
+		}
 	}
 
 	#On the Revolutionary Frontier
@@ -288,6 +336,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DUX_the_banner_of_the_party  } prerequisite = { focus = DUX_freedom_for_females  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Anti Opium Campaign
@@ -301,6 +352,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = DUX_denounce_the_rightists  } prerequisite = { focus = DUX_on_the_revolutionary_frontier  }
+		completion_reward = {
+		add_stability = 0.025
+		}
 	}
 
 	#Trains of the Revolution
@@ -314,6 +368,28 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = DUX_the_merchant_unions  } prerequisite = { focus = DUX_denounce_the_rightists  }
+		completion_reward = {
+		add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+		}
 	}
 
 	#We Are Marching on the Great Road
@@ -327,6 +403,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = DUX_red_laboratories  } prerequisite = { focus = DUX_the_merchant_unions  }
+		completion_reward = {
+		country_event = {
+		id = syndicalistchina_flavor.2
+		days = 1
+		}
+		
+		}
 	}
 
 	#True Syndicalism
@@ -340,6 +423,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DUX_anti_opium_campaign  } prerequisite = { focus = DUX_trains_of_the_revolution  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#The Chinese Communard
@@ -353,6 +442,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = DUX_trains_of_the_revolution  } prerequisite = { focus = DUX_we_are_marching_on_the_great_road  }
+		completion_reward = {
+		add_political_power = 100
+		add_stability = 0.25
+		}
 	}
 
 	#The Father of Chinese Syndicalism
