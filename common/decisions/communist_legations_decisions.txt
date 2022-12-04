@@ -4958,18 +4958,428 @@ CNH_secure_sov_territories = {
 
 }
 
-CNH_national_unification_congress = {
+CNH_technocracy_research = {
+
+CNH_build_civis = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_military_construction
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = TEH_military_construction
+			
+		}
+		
+		
+
+		cost = 50
+		days_remove = 120
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				
+			
+			
+		}
+		
+	}
+}
 
 
+CNH_build_arms = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_military_construction
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = TEH_military_construction
+			
+		}
+		
+		
 
+		cost = 50
+		days_remove = 120
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
 
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+				
+			
+			
+		}
+		
+	}
+}
 
+CNH_research_nuke = {
+		icon = eng_trade_unions_demand
 
+		allowed = { always = no } #manually activated
 
+		available = {
+			has_tech = atomic_research
+			has_tech = nuclear_reactor
+		}
 
+		is_good = yes
+		selectable_mission = yes
+		days_mission_timeout = 1500
 
+		ai_will_do = { factor = 1000 }
 
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOV_The_First_Five_Year_Plan"
+			set_technology = {
+				nukes = 1
+			}
+		}
 
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout SOV_The_First_Five_Year_Plan"
+			add_political_power = -100
+			add_stability = -0.30
+			add_war_support = -0.4
+		}
+	}
+
+CNH_nuke_bomb_part_1 = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_splitting_the_atom
+		}
+		
+		visible = {
+		is_subject = no
+			has_completed_focus = TEH_splitting_the_atom
+			
+		}
+		
+		
+
+		cost = 1000
+		days_remove = 500
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+					set_technology = {
+				atomic_research = 1
+			}	
+		
+		
+		
+	}
+}
+
+CNH_nuke_bomb_part_2 = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_splitting_the_atom
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = TEH_splitting_the_atom
+			
+		}
+		
+		
+
+		cost = 2000
+		days_remove = 500
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+					set_technology = {
+				nuclear_reactor = 1
+			}	
+		
+		
+		
+	}
+}
+
+CNH_research_rocket = {
+		icon = eng_trade_unions_demand
+
+		allowed = { always = no } #manually activated
+
+		available = {
+			has_tech = rocket_engines
+			has_tech = experimental_rockets
+			has_tech = improved_rocket_engines
+		}
+
+		is_good = yes
+		selectable_mission = yes
+		days_mission_timeout = 1500
+
+		ai_will_do = { factor = 1000 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision SOV_The_First_Five_Year_Plan"
+			set_technology = {
+				advanced_rocket_engines = 1
+			}
+		}
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout SOV_The_First_Five_Year_Plan"
+			add_political_power = -100
+			add_stability = -0.30
+			add_war_support = -0.4
+		}
+	}
+
+CNH_rock_part_1 = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_launching_to_the_stars
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = TEH_launching_to_the_stars
+			
+		}
+		
+		
+
+		cost = 500
+		days_remove = 250
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+					set_technology = {
+				rocket_engines = 1
+			}	
+		
+		
+		
+	}
+}
+
+CNH_rock_part_2 = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_launching_to_the_stars
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = TEH_launching_to_the_stars
+			
+		}
+		
+		
+
+		cost = 1000
+		days_remove = 250
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+					set_technology = {
+				experimental_rockets = 1
+			}	
+		
+		
+		
+	}
+}
+
+CNH_rock_part_3 = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_launching_to_the_stars
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = TEH_launching_to_the_stars
+			
+		}
+		
+		
+
+		cost = 1500
+		days_remove = 250
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+					set_technology = {
+				improved_rocket_engines = 1
+			}	
+		
+		
+		
+	}
+}
+
+CNH_atom_bomb = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TECHNATECHINA_improving_nuclear_efficiency
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = TECHNATECHINA_improving_nuclear_efficiency
+			
+		}
+		
+		
+
+		cost = 1000
+		days_remove = 50
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			add_building_construction = {
+			type = nuclear_reactor
+			level = 1
+			instant_build = yes
+		}
+		
+		
+		
+	}
+}
+
+CNH_nuke_bomb_part_1 = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_splitting_the_atom
+		}
+		
+		visible = {
+		is_subject = no
+			has_completed_focus = TEH_splitting_the_atom
+			
+		}
+		
+		
+
+		cost = 1000
+		days_remove = 500
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+					set_technology = {
+				atomic_research = 1
+			}	
+		
+		
+		
+	}
+}
+
+CNH_nuke_bomb_part_2 = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = TEH_splitting_the_atom
+		}
+		
+		visible = {
+			is_subject = no
+			has_completed_focus = TEH_splitting_the_atom
+			
+		}
+		
+		
+
+		cost = 1900
+		days_remove = 500
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+					set_technology = {
+				nuclear_reactor = 1
+			}	
+		
+		
+		
+	}
+}
 
 
 }
