@@ -680,7 +680,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has = {
+		has_country_leader = {
 		name = Guo Moruo
 		ruling_only = yes
 		}
@@ -1470,7 +1470,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = TECHNATECHINA_embracing_a_new_atomic_era  }
 		completion_reward = {
-		
+		add_stability = 1
 		}
 	}
 
@@ -1485,6 +1485,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TECHNATECHINA_new_age_politics  }
+		completion_reward = {
+		add_ideas = {
+		CNH_attack_the_cap
+		}
+		
+		}
 	}
 
 	#A Genius Meritocracy
@@ -1498,6 +1504,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TECHNATECHINA_improving_nuclear_efficiency  } prerequisite = { focus = TECHNATECHINA_new_age_politics  }
+		completion_reward = {
+		add_ideas = {
+		CNH_atomic_era_2
+		}
+		}
 	}
 
 	#Chemical Units
@@ -1511,6 +1522,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TECHNATECHINA_improving_nuclear_efficiency  }
+		completion_reward = {
+		add_ideas = {
+		CNH_chem_unit
+		}
+		}
 	}
 
 	#According to Ability And Need
@@ -1524,6 +1540,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TECHNATECHINA_a_genius_meritocracy  } prerequisite = { focus = TECHNATECHINA_chemical_units  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Banning Non-Technocratic Parties
@@ -1537,6 +1556,44 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TECHNATECHINA_attacking_capitalist_remnants  } prerequisite = { focus = TECHNATECHINA_a_genius_meritocracy  }
+		completion_reward = {
+		custom_effect_tooltip = techno_new_political_parties_tt
+		hidden_effect = {
+			set_party_name = {
+				ideology = syndicalist
+				name = CNH_BANNED
+			}
+			set_party_name = {
+				ideology = social_liberal
+				name = CNH_BANNED
+			}
+			set_party_name = {
+				ideology = market_liberal
+				name = CNH_BANNED
+			}
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = CNH_BANNED
+			}
+			set_party_name = {
+				ideology = national_populist
+				name = CNH_BANNED
+			}
+			set_party_name = {
+				ideology = radical_socialist
+				name = CNH_radical_socialist_technocrats
+			}
+			set_party_name = {
+				ideology = social_democrat
+				name = CNH_social_demcrat_technocrats
+			}
+			set_party_name = {
+				ideology = patneral_autocrat
+				name = CNH_patneral_autocrat_technocrats
+			}
+		
+		}
+		}
 	}
 
 	#A Greater Future
@@ -1550,6 +1607,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TECHNATECHINA_according_to_ability_and_need  } prerequisite = { focus = TECHNATECHINA_banning_nontechnocratic_parties  }
+		completion_reward = {
+		custom_effect_tooltip = techno_future_china_tt
+		hidden_effect = {
+		country_event = {
+		id = technocraticchina.5
+		days = 3
+		}
+		
+		}
+		
+		}
 	}
 
 }
