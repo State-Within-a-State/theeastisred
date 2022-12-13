@@ -1822,3 +1822,65 @@ china_second_sino_japanese_war_japan_decisions = {
 		}
 	}
 }
+china_unite_china = {
+
+save_free_china = {
+		icon = generic_ignite_civil_war
+		
+		available = {
+			is_neighbor_of = FROM
+		}
+		
+		visible = {
+			is_subject = no
+			can_declare_war_on = FROM
+			AND = {
+			OR = {
+			has_idea = unite_china_justification_idea
+			has_idea = SZC_sichuan_rep_china
+			has_completed_focus = SZC_the_question_of_sichuan
+			}
+			}
+		}
+		
+		targets = { LEP ANQ SQI LEC CNH CHI QIE SHX FNG MAN MON XSM TIB SIK TAN ETS YUN HNN GXC GEA TIA HKP }
+		target_root_trigger = {
+		has_completed_focus = LEC_secure_the_foreign_quarters
+		has_completed_focus = LEC_secure_the_east		
+		}
+
+		cost = 20
+		days_remove = 1
+		fire_only_once = yes
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 14 value = 1 }
+			FROM = {declare_war_on = {
+				type = annex_everything
+						target = CNH
+				}
+			
+				}
+				
+				
+			
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+		}
+		
+	}
+}
+
+
+
+
+
+
+
+
+}
