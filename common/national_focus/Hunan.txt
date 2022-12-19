@@ -2918,8 +2918,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		always = no
-		
+		has_country_leader = {
+			name = "Mao Zetan"
+			ruling_only = yes
+		}
 		}
 		prerequisite = { focus = HNN_a_revolutionary_family  }
 		mutually_exclusive = { focus = HNN_zejiansrevolution  }
@@ -2936,8 +2938,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		always = no
-		
+		has_country_leader = {
+			name = "Mao Zejian"
+			ruling_only = yes
+		}
 		}
 		prerequisite = { focus = HNN_a_revolutionary_family  }
 		mutually_exclusive = { focus = HNN_zetanswin  }
@@ -2954,8 +2958,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		always = no
-		
+		has_country_leader = {
+			name = "Mao Zemin"
+			ruling_only = yes
+		}
 		}
 		prerequisite = { focus = HNN_a_revolutionary_family  }
 	}
@@ -2971,8 +2977,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		always = no
-		
+		has_country_leader = {
+			name = "Mao Zedong"
+			ruling_only = yes
+		}
 		}
 		prerequisite = { focus = HNN_a_revolutionary_family  }
 	}
@@ -3650,6 +3658,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HEL_the_red_warlord  }
+		completion_reward = {
+		add_political_power = 100
+		add_stability = -0.05
+		}
 	}
 
 	#The Robinhood of Hunan
@@ -3663,6 +3675,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HEL_the_red_warlord  }
+		completion_reward = {
+		add_ideas = {
+		HNN_robinhood
+		}
+		}
 	}
 
 	#The Red Warlord
@@ -3674,6 +3691,12 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+			name = "He Long"
+			ruling_only = yes
+		}
 		}
 	}
 
@@ -3688,6 +3711,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HEL_the_red_warlord  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		}
+		add_war_support = 0.1
+		}
 	}
 
 	#Formalise Red Education
@@ -3701,6 +3731,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HEL_disassociate_with_the_kmt  } prerequisite = { focus = HEL_the_robinhood_of_hunan  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Collectivise the Countryside
@@ -3714,6 +3747,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HEL_the_robinhood_of_hunan  } prerequisite = { focus = HEL_reconcile_with_the_socialist_buddhists  }
+		completion_reward = {
+		add_ideas = {
+		HNN_collectivse
+		}
+		}
 	}
 
 	#Alliance With Local Revolutionaries
@@ -3727,6 +3765,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HEL_formalise_red_education  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#A Nation of Strength
@@ -3740,6 +3781,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HEL_collectivise_the_countryside  }
+		completion_reward = {
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+		}
 	}
 
 	#Realizing the Greater Dream
@@ -3754,6 +3807,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = HEL_alliance_with_local_revolutionaries  }
 		mutually_exclusive = { focus = HEL_isolating_from_the_world  }
+		completion_reward = {
+		custom_effect_tooltip = hunan_unite_mao_china_tt
+		}
 	}
 
 	#Isolating From the World
@@ -3768,6 +3824,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = HEL_alliance_with_local_revolutionaries  }
 		mutually_exclusive = { focus = HEL_realizing_the_greater_dream  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Down With Landlords!
@@ -3781,6 +3840,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HEL_a_nation_of_strength  }
+		completion_reward = {
+		add_manpower = -17323
+		add_stability = 0.3
+		add_war_support = 0.45
+		}
 	}
 
 	#Era of New Hunanese Democracy
@@ -3794,6 +3858,16 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HEL_realizing_the_greater_dream  focus = HEL_isolating_from_the_world  }
+		completion_reward = {
+		set_politics = {
+			ruling_party = radical_socialist
+			elections_allowed = yes
+			last_election = "1935.12.17"
+			election_frequency = 48
+			long_name = "Hunnan Peasants Party"
+			name = "HPP"
+		}
+		}
 	}
 
 	#The Nation Awaits
@@ -3806,6 +3880,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_idea = unite_china_justification_idea
+		}
 		prerequisite = { focus = HEL_downwithlandlords  } prerequisite = { focus = HEL_era_of_new_hunanese_democracy  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 }
