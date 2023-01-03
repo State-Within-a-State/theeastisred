@@ -33,7 +33,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
-		prerequisite = { focus = GXC_organize_a_communal_conference  }
+		prerequisite = { focus = GXC_organize_a_communal_conference  } 
+		completion_reward = {
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 1 }
+		add_stability = 0.1
+		}
 	}
 
 	#University-Rural Networks
@@ -48,6 +53,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_rural_schooling_reform  }
 		mutually_exclusive = { focus = GXC_communal_experiments  }
+		completion_reward = {
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 2 }
+		add_ideas = {
+		GXC_uni_rural_networks
+		}
+		}
 	}
 
 	#Communal Experiments
@@ -62,6 +74,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_rural_schooling_reform  }
 		mutually_exclusive = { focus = GXC_universityrural_networks  }
+		completion_reward = {
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 1 }
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 1 }
+		add_ideas = {
+		GXC_communal_experiments
+		}
+		}
 	}
 
 	#Reified Morality
@@ -76,6 +97,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_universityrural_networks  focus = GXC_communal_experiments  }
 		mutually_exclusive = { focus = GXC_reinterpret_labour  }
+		completion_reward = {
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 2 }
+		add_stability = 0.1
+		}
 	}
 
 	#Reinterpret Labour
@@ -90,6 +116,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_communal_experiments  focus = GXC_universityrural_networks  }
 		mutually_exclusive = { focus = GXC_reified_morality  }
+		completion_reward = {
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 1 }
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 2 }
+		remmove_ideas = {
+		GXC_communal_experiments
+		}
+		add_ideas = {
+		GXC_communal_experiments_2
+		}
+		}
 	}
 
 	#Revolutionary Inroads
@@ -103,6 +141,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = GXC_reified_morality  focus = GXC_reinterpret_labour  }
+		completion_reward = {
+		add_manpower = 20000
+		}
 	}
 
 	#Land Reform Attempts
@@ -116,6 +157,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = GXC_organize_a_communal_conference  }
+		completion_reward = {
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 1 }
+		add_war_support = 0.15
+		}
 	}
 
 	#Peasants At The Helm
@@ -130,6 +176,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_land_reform_attempts  }
 		mutually_exclusive = { focus = GXC_integrate_private_charities  }
+		completion_reward = {
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 2 }
+		
+		add_ideas = {
+		GXC_peasant_at_helm
+		}
+		}
 	}
 
 	#Integrate Private Charities
@@ -144,6 +198,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_land_reform_attempts  }
 		mutually_exclusive = { focus = GXC_peasants_at_the_helm  }
+		completion_reward = {
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 2 }
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 1 }
+		
+		add_ideas = {
+		GXC_integrate_charities
+		}
+		}
 	}
 
 	#Direction from Guangzhou
@@ -158,6 +222,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_peasants_at_the_helm  focus = GXC_integrate_private_charities  }
 		mutually_exclusive = { focus = GXC_communal_independence  }
+		completion_reward = {
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 2 }
+		
+		add_ideas = {
+		GXC_direction_from_guangzhou_idea
+		}
+		}
 	}
 
 	#Communal Independence
@@ -172,6 +244,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_integrate_private_charities  focus = GXC_peasants_at_the_helm  }
 		mutually_exclusive = { focus = GXC_direction_from_guangzhou  }
+		completion_reward = {
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 1 }
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 1 }
+		add_stability = 0.1
+		}
 	}
 
 	#Communal Consolidation
@@ -185,6 +264,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_communal_independence  focus = GXC_direction_from_guangzhou  }
+		completion_reward = {
+		add_ideas = {
+		GXC_communal_consolidation
+		}
+		}
 	}
 
 	#Reforming Guangzhou University
@@ -198,6 +282,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_organize_a_communal_conference  }
+		completion_reward = {
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 1 }
+		add_manpower = 500
+		}
 	}
 
 	#Study-Group Dominance
@@ -212,6 +301,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_reforming_guangzhou_university  }
 		mutually_exclusive = { focus = GXC_utopian_professors  }
+		completion_reward = {
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 1 }
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 1 }
+		add_political_power = 30
+		}
 	}
 
 	#Utopian Professors
@@ -226,6 +322,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_reforming_guangzhou_university  }
 		mutually_exclusive = { focus = GXC_studygroup_dominance  }
+		completion_reward = {
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 2 }
+		add_ideas = {
+		GXC_utopian_professors
+		}
+		}
 	}
 
 	#National Conditions
@@ -240,6 +343,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_studygroup_dominance  focus = GXC_utopian_professors  }
 		mutually_exclusive = { focus = GXC_international_connections  }
+		completion_reward = {
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 1 }
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 2 }
+		add_ideas = {
+		GXC_national_conditions
+		}
+		}
 	}
 
 	#International Connections
@@ -254,6 +366,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_studygroup_dominance  focus = GXC_utopian_professors  }
 		mutually_exclusive = { focus = GXC_national_conditions  }
+		completion_reward = {
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 2 }
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 5000
+			producer = GXC
+		}
+		}
 	}
 
 	#Practical Education
@@ -267,6 +388,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_national_conditions  focus = GXC_international_connections  }
+		completion_reward = {
+		add_ideas = {
+		GXC_practical_education
+		}
+		}
 	}
 
 	#Building of An Army
@@ -280,6 +406,28 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = GXC_revolutionary_inroads  } prerequisite = { focus = GXC_communal_consolidation  } prerequisite = { focus = GXC_practical_education  }
+		completion_reward = {
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 4000
+			producer = GXC
+		}
+		
+		division_template = {
+    name = "Guangxi Communal Army"
+    is_locked = no 
+    division_names_group = GXC_INF_05
+    priority = 0
+    template_counter = 0
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 0 y = 3 }
+    }
+    
+		}
+		}
 	}
 
 	#Peasant Appeals
