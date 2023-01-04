@@ -166,7 +166,7 @@ country_event = { #Nomination of the Republican Candidate
 		set_variable = { JIN_ANA = 0 }
 		hidden_effect = {
 		set_country_flag = guangxi_anarchist_conference_start
-		unlock_decision_category_tooltip = GXC_anarchist_conference_category
+		
 		}
 	}
 	
@@ -175,3 +175,168 @@ country_event = { #Nomination of the Republican Candidate
 	
 }
 
+country_event = {
+	id = anarcho_china.6
+	immediate = {log = "[GetDateText]: [Root.GetName]: event redelection."}
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { JIN_ANA > 10 }
+			}
+			country_event = anarcho_china.7
+		}
+		
+		if = {
+			limit = {
+				check_variable = { CAI_ANA > 10 }
+			}
+			country_event = postcommierevolt.9
+		}
+		
+		if = {
+			limit = {
+				check_variable = { SHI_ANA > 10 }
+			}
+			country_event = postcommierevolt.11
+		}
+		
+		
+		
+		
+	}
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.7
+	title = "Ba Jin Win's the Conference"
+	picture = "GFX_report_event_GXC_anarchist_succeed"
+	desc = anarcho_china.4.desc
+
+	is_triggered_only = yes
+
+	
+
+	
+	
+	option = { #Cortes
+	name = "Wansui!"
+	
+	
+	
+		
+		set_politics = { ruling_party = authoritarian_democrat }
+		set_country_leader_ideology = authdem_anarchism_subtype
+		set_country_leader_name = {
+				ideology = authoritarian_democrat
+				name = "Ba Jin"
+			}
+		set_country_leader_portrait = {
+			ideology = authoritarian_democrat
+			portrait = "gfx/leaders/GXCA/Portrait_GXC_Li_Shizeng.png"
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+				long_name = "Mutual Aid Society"
+				name = "Hùzhùhuì"
+			}
+		
+	}
+	
+	
+
+	
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.8
+	title = "Cai Yuanpai Win's the Conference"
+	picture = "GFX_report_event_GXC_anarchist_succeed"
+	desc = anarcho_china.4.desc
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event taiwan.0"
+		hidden_effect = {
+			
+		}
+	}
+
+	
+	
+	option = { #Cortes
+	name = "Wansui!"
+	
+	
+	
+		
+		set_politics = { ruling_party = syndicalist }
+		set_country_leader_ideology = anarcho_syndicalist_subtype
+		set_country_leader_name = {
+				ideology = syndicalist
+				name = "Cai Yuanpai"
+			}
+		set_country_leader_portrait = {
+			ideology = syndicalist
+			portrait = "gfx/leaders/GXCA/Portrait_GXC_Li_Shizeng.png"
+		}
+		set_party_name = {
+			ideology = syndicalist
+				long_name = "Mutual Aid Society"
+				name = "Hùzhùhuì"
+			}
+		
+	}
+	
+	
+
+	
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.9
+	title = "Cai Yuanpai Win's the Conference"
+	picture = "GFX_report_event_GXC_anarchist_succeed"
+	desc = anarcho_china.4.desc
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event taiwan.0"
+		hidden_effect = {
+			
+		}
+	}
+	option = {
+	name = "Stick With Shizeng"
+	set_country_leader_ideology = anarcho_buddhism_subtype
+	}
+	
+	
+	option = { #Cortes
+	name = "Lets Got With Comrade Shifu"
+	
+	
+	
+		
+		
+		set_country_leader_ideology = anarcho_buddhism_subtype
+		set_country_leader_name = {
+				ideology = radical_socialist
+				name = "Liu Shifu"
+			}
+		set_country_leader_portrait = {
+			ideology = radical_socialist
+			portrait = "gfx/leaders/GXCA/Portrait_GXC_Li_Shizeng.png"
+		}
+		
+		
+	}
+	
+	
+
+	
+}

@@ -442,6 +442,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_building_of_an_army  }
 		mutually_exclusive = { focus = GXC_student_radicals  }
+		completion_reward = {
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 1 }
+		swap_ideas = {
+				remove_idea = GXC_communal_consolidation
+				add_idea = GXC_communal_consolidation_1
+			}
+		}
 	}
 
 	#Student Radicals
@@ -456,6 +464,17 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_building_of_an_army  }
 		mutually_exclusive = { focus = GXC_peasant_appeals  }
+		completion_reward = {
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 1 }
+		
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 1 }
+		swap_ideas = {
+				remove_idea = GXC_communal_consolidation
+				add_idea = GXC_communal_consolidation_2
+			}
+		}
 	}
 
 	#An Army For The Datong
@@ -470,6 +489,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_peasant_appeals  }
 		mutually_exclusive = { focus = GXC_an_army_for_the_new_man  } mutually_exclusive = { focus = GXC_an_army_for_the_self  }
+		completion_reward = {
+		custom_effect_tooltip = SHI_ANA_tt
+		add_to_variable = { SHI_ANA = 2 }
+		add_ideas = {
+		GXC_datong_army
+		}
+		add_manpower = 2000
+		}
 	}
 
 	#An Army For the New Man
@@ -484,6 +511,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_peasant_appeals  focus = GXC_student_radicals  }
 		mutually_exclusive = { focus = GXC_an_army_for_the_datong  } mutually_exclusive = { focus = GXC_an_army_for_the_self  }
+		completion_reward = {
+		custom_effect_tooltip = CAI_ANA_tt
+		add_to_variable = { CAI_ANA = 2 }
+		add_ideas = {
+		GXC_new_army_of_men
+		}
+		add_manpower = 7000
+		}
 	}
 
 	#An Army For The Self
@@ -498,6 +533,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_student_radicals  }
 		mutually_exclusive = { focus = GXC_an_army_for_the_datong  } mutually_exclusive = { focus = GXC_an_army_for_the_new_man  }
+		completion_reward = {
+		custom_effect_tooltip = JIN_ANA_tt
+		add_to_variable = { JIN_ANA = 2 }
+		add_ideas = {
+		GXC_new_army_of_self
+		}
+		add_manpower = 5000
+		}
 	}
 
 	#The Gun, The Pen, The Hoe
@@ -511,6 +554,35 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = GXC_an_army_for_the_self  }
+		completion_reward = {
+		add_ideas = {
+		GXC_gun_pen_hoe
+		}
+		division_template = {
+				name = "Selfmade Army"
+				is_locked = no
+				division_names_group = GXC_INF_06
+				priority = 0
+				template_counter = 0
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 0 y = 4 }
+				}
+				support = {
+					artilery = { x = 0 y = 0 }
+				}
+			}
+		add_tech_bonus = {
+			bonus = 1
+			uses = 2
+			category = strategic_destruction_tree
+		}	
+			
+		
+		}
 	}
 
 	#Revolutionary Pamphleteering
@@ -524,6 +596,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_an_army_for_the_new_man  }
+		completion_reward = {
+		add_ideas = {
+		GXC_communal_consolidation_3
+		}
+		}
 	}
 
 	#Communes Into Units
@@ -537,6 +614,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_an_army_for_the_new_man  }
+		completion_reward {
+		add_stability = 0.1
+		}
 	}
 
 	#Traditionalist Overtures
@@ -550,6 +630,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_an_army_for_the_new_man  }
+		completion_reward = {
+		add_war_support = -0.05
+		add_stability = 0.03
+		}
 	}
 
 	#Draw on Kang's Ideas
@@ -563,6 +647,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = GXC_an_army_for_the_datong  }
+		completion_reward = {
+		add_stability = 0.05
+		}
 	}
 
 	#Redefine Patriotism
@@ -576,6 +663,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = GXC_drawonkangsideas  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Emphasize Moralism
@@ -589,6 +679,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = GXC_drawonkangsideas  focus = GXC_traditionalist_overtures  }
+		completion_reward = {
+		custom_effect_tooltip = SHI_ANA_tt
+        add_to_variable = { SHI_ANA = 2 }
+		add_stability = 0.1
+		}
 	}
 
 	#Work, Study, Fight!
@@ -602,6 +697,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_communes_into_units  }
+		completion_reward = {
+		add_ideas = {
+		GXC_up_mount
+		}
+		}
 	}
 
 	#Propagandize Idealism
@@ -615,6 +715,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = GXC_revolutionary_pamphleteering  focus = GXC_thegunthepenthehoe  }
+		completion_reward = {
+		custom_effect_tooltip = SHI_ANA_tt
+        add_to_variable = { SHI_ANA = 2 }
+		add_stability = 0.1
+		}
 	}
 
 	#Civil-Military Societies
@@ -628,6 +733,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = GXC_thegunthepenthehoe  }
+		completion_reward = {
+		add_ideas = {
+		GXC_mili_civil
+		}
+		}
 	}
 
 	#Reconcile Federalist Militias
@@ -641,6 +751,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = GXC_redefine_patriotism  } prerequisite = { focus = GXC_emphasize_moralism  }
+		completion_reward = {
+		add_ideas = {
+		GXC_integrate_army
+		}
+		}
 	}
 
 	#Cultural Struggle Units
@@ -654,6 +769,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = GXC_propagandize_idealism  } prerequisite = { focus = GXC_civilmilitary_societies  }
+		completion_reward = {
+		add_ideas = {
+		GXC_cultrev
+		}
+		}
 	}
 
 	#The Power Struggle
@@ -667,6 +787,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_cultural_struggle_units  focus = GXC_reconcile_federalist_militias  focus = GXC_workstudyfight  }
+		completion_reward = {
+		add_ideas = {
+		GXC_power_struggle
+		}
+		}
 	}
 
 	#A Matter of Consensus
@@ -675,9 +800,12 @@ focus_tree = {
 		icon = GFX_GXC_a_matter_of_consensus-248360
 		x = 45
 		y = 0
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -1498,7 +1626,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = GXC_acountercoup  } prerequisite = { focus = GXC_independent_arms_development  focus = GXC_anewyearsdream  } prerequisite = { focus = GXC_independent_arms_development  }
+		prerequisite = { focus = GXC_independent_arms_development  focus = GXC_anewyearsdream  } prerequisite = { focus = GXC_independent_arms_development  }
 	}
 
 	#Integrate University Structures
