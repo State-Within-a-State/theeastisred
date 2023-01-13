@@ -1799,6 +1799,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#Neutral Political View
@@ -1812,6 +1815,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SQI_the_shandong_takeover  }
+		completion_reward = {
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Denounce the Manchu Overlords
@@ -1825,6 +1834,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = SQI_neutral_political_view  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Taoist Revival
@@ -1838,6 +1850,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SQI_neutral_political_view  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Abstention From Western Politics
@@ -1851,6 +1866,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = SQI_taoist_revival  }
+		completion_reward = {
+		add_political_power = 100
+		add_stability = 0.1
+		}
 	}
 
 	#Soup Kitchens For the Poor
@@ -1864,6 +1883,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = SQI_denounce_the_manchu_overlords  }
+		completion_reward = {
+		add_ideas = {
+		SQI_soup_kitchen
+		}
+		}
 	}
 
 	#A Republic Worthy Under Heaven
@@ -1877,6 +1901,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = SQI_soup_kitchens_for_the_poor  }
+		completion_reward = {
+		add_ideas = {
+		SQI_republic_under_heaven
+		}
+		}
 	}
 
 	#Developing the Education of the People
@@ -1890,6 +1919,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = SQI_abstention_from_western_politics  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Disaster Relief Squads
@@ -1903,6 +1935,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = SQI_developing_the_education_of_the_people  }
+		completion_reward = {
+		add_ideas = {
+		SQI_disaster_relief
+		}
+		}
 	}
 
 	#Uphold Confucian Values
@@ -1916,6 +1953,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SQI_a_republic_worthy_under_heaven  } prerequisite = { focus = SQI_developing_the_education_of_the_people  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Han Revival
@@ -1929,6 +1969,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = SQI_a_republic_worthy_under_heaven  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Fate of Two Dragons
@@ -1942,6 +1985,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SQI_disaster_relief_squads  } prerequisite = { focus = SQI_uphold_confucian_values  } prerequisite = { focus = SQI_han_revival  }
+		completion_reward = {
+		country_event = {
+		id = shandong.470
+		days = 1
+		}
+		}
 	}
 
 	#Stick With Xiling
@@ -1954,8 +2003,22 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Xiong Xiling"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = SQI_fate_of_two_dragons  }
 		mutually_exclusive = { focus = SQI_align_with_shili  }
+		completion_reward = {
+		hidden_effect = {
+		country_event = {
+		id = shandong.472
+		days = 75
+		}
+		}
+		}
 	}
 
 	#Align With Shili
@@ -1968,8 +2031,21 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Xiong Shili"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = SQI_fate_of_two_dragons  }
 		mutually_exclusive = { focus = SQI_stick_with_xiling  }
+		completion_reward = {
+		country_event = {
+		id = shandong.471
+		days = 30
+		}
+		
+		}
 	}
 
 	#The Ying Verse the Yang
@@ -1983,6 +2059,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SQI_stick_with_xiling  focus = SQI_align_with_shili  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Retaining a Nationalist Outlook
