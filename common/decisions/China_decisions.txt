@@ -1842,56 +1842,35 @@ save_free_china = {
 		visible = {
 			is_subject = no
 			can_declare_war_on = FROM
-			AND = {
 			OR = {
-			has_idea = unite_china_justification_idea
-			has_idea = SZC_sichuan_rep_china
-			has_completed_focus = SZC_the_question_of_sichuan
-			has_completed_focus = HNN_seeking_reunification
-			has_completed_focus = HEL_realizing_the_greater_dream
-			has_completed_focus = HKP_demand_warlord_submission
-			}
+				has_idea = unite_china_justification_idea
+				has_idea = SZC_sichuan_rep_china
+				has_completed_focus = SZC_the_question_of_sichuan
+				has_completed_focus = HNN_seeking_reunification
+				has_completed_focus = HEL_realizing_the_greater_dream
+				has_completed_focus = HKP_demand_warlord_submission
 			}
 		}
 		
 		targets = { LEP ANQ SQI LEC CNH CHI QIE SHX FNG MAN MON XSM TIB SIK TAN ETS YUN HNN GXC GEA TIA HKP }
-		target_root_trigger = {
-		has_completed_focus = LEC_secure_the_foreign_quarters
-		has_completed_focus = LEC_secure_the_east		
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				has_war_with = PREV
+			}
 		}
-
 		cost = 20
 		days_remove = 1
-		fire_only_once = yes
-		cancel_if_not_visible = yes
+		days_re_enable = 0
+		fire_only_once = no
 		war_with_target_on_remove = yes
 
-		complete_effect = {
+		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
 			set_country_flag = { flag = imminent_war days = 14 value = 1 }
-			FROM = {declare_war_on = {
-				type = annex_everything
-						target = CNH
-				}
-			
-				}
-				
-				
-			
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			
-			
+			declare_war_on = {	type = annex_everything	target = FROM }
 		}
 		
-	}
 }
-
-
-
-
-
-
-
 
 }
