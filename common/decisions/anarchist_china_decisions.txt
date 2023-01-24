@@ -549,6 +549,108 @@ GXC_expand_support_ba_jin = {
 }
 
 
+GXC_europe_inverention_category = {
+GXC_conquer_europe = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = GXC_appeal_to_the_old_world OR = { has_completed_focus = GXC_tohellwitheurope }
+		}
+		
+		visible = {
+			tag = GXC
+			has_completed_focus = GXC_appeal_to_the_old_world OR = { has_completed_focus = GXC_tohellwitheurope }
+		}
+		cost = 10
+		targets = { europe }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			
+		}
+	}
+	
+	GXC_conquer_europe_2 = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = GXC_tohellwitheurope 
+		}
+		
+		visible = {
+			tag = GXC
+			has_completed_focus = GXC_tohellwitheurope 
+		}
+		cost = 10
+		targets = { europe }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			hidden_effect = {
+            every_state = {
+                limit = {
+                    is_owned_by = FROM
+                    is_on_continent = europe
+                }
+                add_core_by = ROOT
+                }
+            }
+		}
+	}
+
+}
+
+
 
 
 

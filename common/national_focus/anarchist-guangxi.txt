@@ -121,7 +121,7 @@ focus_tree = {
 		add_to_variable = { JIN_ANA = 1 }
 		custom_effect_tooltip = CAI_ANA_tt
 		add_to_variable = { CAI_ANA = 2 }
-		remmove_ideas = {
+		remove_ideas = {
 		GXC_communal_experiments
 		}
 		add_ideas = {
@@ -1277,7 +1277,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_oldidealsnewscience  } prerequisite = { focus = GXC_monasteries_into_communes  }
 		completion_reward = {
-		remmove_ideas = {
+		remove_ideas = {
 		GXC_power_turmoil
 		
 		}
@@ -1472,6 +1472,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_break_the_yoke_of_the_family  } prerequisite = { focus = GXC_encourage_labour_collectivism  }
+		completion_reward = {
+		remove_ideas = {
+		GXC_iconosatics
+		}
+		add_ideas = {
+		GXC_iconosatics_2
+		}
+		}
 	}
 
 	#Decentralize NOW!
@@ -1486,6 +1494,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_reenvision_the_west_frontiers  }
 		mutually_exclusive = { focus = GXC_govern_from_centre  }
+		completion_reward = {
+		add_ideas = {
+		GXC_decentralized_admin
+		}
+		}
 	}
 
 	#Govern from Centre
@@ -1500,6 +1513,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_reenvision_the_west_frontiers  }
 		mutually_exclusive = { focus = GXC_decentralizenow  }
+		completion_reward = {
+		add_ideas = {
+		GXC_centralized_admin
+		}
+		}
 	}
 
 	#A Struggle With The Impure
@@ -1514,6 +1532,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_a_universal_education  }
 		mutually_exclusive = { focus = GXC_anewyearsdream  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_stability = -0.05
+		}
 	}
 
 	#A New Year's Dream
@@ -1528,6 +1550,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_a_universal_education  } prerequisite = { focus = GXC_enshrine_constant_evolution  }
 		mutually_exclusive = { focus = GXC_a_struggle_with_the_impure  }
+		completion_reward = {
+		add_political_power = 50
+		}
 	}
 
 	#Independent Arms Development
@@ -1541,6 +1566,13 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = GXC_largescale_communal_industries  } prerequisite = { focus = GXC_commit_to_new_village_communes  }
+		completion_reward = {
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 5000
+			producer = GXC
+		}
+		}
 	}
 
 	#Impose Practical Limits
@@ -1553,8 +1585,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = GXC_commit_to_new_village_communes  }
 		mutually_exclusive = { focus = GXC_enshrine_idealism  }
+		completion_reward = {
+		add_ideas = {
+		GXC_practical_limits
+		}
+		}
 	}
 
 	#Enshrine Idealism
@@ -1569,6 +1607,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_commit_to_new_village_communes  }
 		mutually_exclusive = { focus = GXC_impose_practical_limits  }
+		completion_reward = {
+		add_ideas = {
+		GXC_idealism
+		}
+		}
 	}
 
 	#Build Communal Research Facilities
@@ -1582,6 +1625,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_mutualaidisconfucian  }
+		completion_reward = {
+		remove_ideas = {
+		GXC_communal_state
+		}
+		add_ideas = {
+		GXC_communal_state_2
+		}
+		}
 	}
 
 	#Reach Unto Utopia
@@ -1595,6 +1646,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_infuse_traditionalism_with_kropotkin  }
+		completion_reward = {
+		remove_ideas = {
+		GXC_communal_state
+		}
+		add_ideas = {
+		GXC_communal_state_3
+		}
+		}
 	}
 
 	#The Sangha Takes Over...
@@ -1607,6 +1666,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = GXC_reach_unto_utopia  }
 		mutually_exclusive = { focus = GXC_anewoldanarchism  } mutually_exclusive = { focus = GXC_valorise_watermargin_militias  }
 	}
@@ -1623,6 +1683,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_build_communal_research_facilities  } prerequisite = { focus = GXC_reach_unto_utopia  }
 		mutually_exclusive = { focus = GXC_thesanghatakesover  }
+		completion_reward = {
+		remove_ideas = {
+		GXC_power_turmoil
+		GXC_power_turmoil_1
+		GXC_power_turmoil_2
+		GXC_power_turmoil_3
+		GXC_power_turmoil_5
+		}
+		add_ideas = {
+		GXC_common_revolution
+		}
+		}
 	}
 
 	#Valorise Water-Margin Militias
@@ -1635,8 +1707,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_MANPOWER
 		}
+		available = {
+		NOT = {
+		has_country_leader = {
+				name = "Taixu"
+				ruling_only = yes
+			}
+		
+		}
+		}
 		prerequisite = { focus = GXC_build_communal_research_facilities  } prerequisite = { focus = GXC_reach_unto_utopia  }
 		mutually_exclusive = { focus = GXC_thesanghatakesover  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#A Peach Garden Outside the World
@@ -1649,7 +1733,22 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		NOT = {
+		has_country_leader = {
+				name = "Taixu"
+				ruling_only = yes
+			}
+		
+		}
+		}
 		prerequisite = { focus = GXC_enshrine_idealism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Incremental Movement To Communalism
@@ -1662,7 +1761,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		NOT = {
+		has_country_leader = {
+				name = "Taixu"
+				ruling_only = yes
+			}
+		
+		}
+		}
 		prerequisite = { focus = GXC_impose_practical_limits  }
+		completion_reward = {
+		add_political_power = 30
+		}
 	}
 
 	#Experiments in Collective Discipline
@@ -1676,6 +1787,42 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_anewyearsdream  } prerequisite = { focus = GXC_independent_arms_development  }
+		completion_reward = {
+		add_ideas = {
+		GXC_communal_defence
+		}
+			create_corps_commander = {
+				name = "Zhang Renjie"
+				picture = "Portrait_France_Jean_de_Lattre_de_Tassigny.dds"
+				traits = { trickster brilliant_strategist }
+				skill = 4
+				attack_skill = 4
+				defense_skill = 2
+				planning_skill = 3
+				logistics_skill = 2
+			}
+			create_corps_commander = {
+				name = "Wu Zhihui"
+				picture = "Portrait_France_Jean_de_Lattre_de_Tassigny.dds"
+				traits = { trickster brilliant_strategist }
+				skill = 3
+				attack_skill = 2
+				defense_skill = 4
+				planning_skill = 1
+				logistics_skill = 2
+			}
+			create_corps_commander = {
+				name = "Liang Shuming"
+				picture = "Portrait_France_Jean_de_Lattre_de_Tassigny.dds"
+				traits = { trickster brilliant_strategist }
+				skill = 2
+				attack_skill = 4
+				defense_skill = 2
+				planning_skill = 4
+				logistics_skill = 3
+			}
+			
+		}
 	}
 
 	#Prepare for the Datong...
@@ -1689,6 +1836,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_anewyearsdream  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#A Counter-Coup...
@@ -1702,6 +1852,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_a_struggle_with_the_impure  }
+		completion_reward = {
+		country_event = {
+		id = anarcho_china.11
+		days = 3
+		}
+		}
 	}
 
 	#Guided Development
@@ -1715,6 +1871,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = GXC_govern_from_centre  }
+		completion_reward = {
+		remove_ideas = {
+		GXC_centralized_admin
+		}
+		add_ideas = {
+		GXC_centralized_admin_2
+		}
+		}
 	}
 
 	#An Unfettered Freedom
@@ -1728,6 +1892,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_decentralizenow  }
+		completion_reward = {
+		remove_ideas = {
+		GXC_decentralized_admin
+		}
+		add_ideas = {
+		GXC_decentralized_admin_2
+		}
+		}
 	}
 
 	#Intellectualize Collectives
@@ -1741,6 +1913,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_mypenalightmybodyaflame  } prerequisite = { focus = GXC_decentralizenow  }
+		completion_reward = {
+		add_ideas = {
+		GXC_intellectual_communes
+		}
+		}
 	}
 
 	#An Appeal to International Youth
@@ -1755,6 +1932,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_decentralizenow  } prerequisite = { focus = GXC_mypenalightmybodyaflame  }
 		mutually_exclusive = { focus = GXC_go_it_alone  }
+		completion_reward = {
+		remove_ideas = {
+		GXC_power_turmoil
+		GXC_power_turmoil_1
+		GXC_power_turmoil_2
+		GXC_power_turmoil_3
+		GXC_power_turmoil_5
+		}
+		add_ideas = {
+		GXC_radical_republicanism
+		}
+		}
 	}
 
 	#Go It Alone
@@ -1769,6 +1958,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_mypenalightmybodyaflame  } prerequisite = { focus = GXC_decentralizenow  }
 		mutually_exclusive = { focus = GXC_an_appeal_to_international_youth  }
+		completion_reward = {
+		remove_ideas = {
+		GXC_power_turmoil
+		GXC_power_turmoil_1
+		GXC_power_turmoil_2
+		GXC_power_turmoil_3
+		GXC_power_turmoil_5
+		}
+		add_ideas = {
+		GXC_go_it_alone
+		}
+		}
 	}
 
 	#Turn On All Tradition!
@@ -1782,6 +1983,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_go_it_alone  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_stability = -0.15
+		}
 	}
 
 	#Accelerate the Glorious Transition
@@ -1795,6 +2000,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_go_it_alone  }
+		completion_reward = {
+		add_political_power = -50
+		}
 	}
 
 	#Infiltrate Worldwide Literary Circles
@@ -1808,6 +2016,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_go_it_alone  focus = GXC_an_appeal_to_international_youth  }
+		completion_reward = {
+		add_ideas = {
+		GXC_international_study_circle
+		}
+		}
 	}
 
 	#Begin The Universal Revolution
@@ -1821,6 +2034,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_an_appeal_to_international_youth  } prerequisite = { focus = GXC_intellectualize_collectives  }
+		completion_reward = {
+		add_political_power = 100
+		
+		}
 	}
 
 	#Integrate Art and Industry
@@ -1834,6 +2051,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = GXC_intellectualize_collectives  }
+		completion_reward = {
+		add_ideas = {
+		GXC_art_integration
+		}
+		}
 	}
 
 	#China Stands Free!
@@ -1847,6 +2069,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_an_unfettered_freedom  focus = GXC_guided_development  }
+		completion_reward = {
+		custom_effect_tooltip = china_free_tt
+		}
 	}
 
 	#A Great Hall For the People
@@ -1859,7 +2084,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_country_leader = {
+				name = "Cai Yuanpai"
+				ruling_only = yes
+			}
+		}
 		prerequisite = { focus = GXC_guided_development  }
+		completion_reward = {
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 
 	#Revamp Our Factories
@@ -1872,7 +2110,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+				name = "Cai Yuanpai"
+				ruling_only = yes
+			}
+		}
 		prerequisite = { focus = GXC_independent_arms_development  focus = GXC_anewyearsdream  } prerequisite = { focus = GXC_independent_arms_development  }
+		completion_reward = {
+		add_ideas = {
+		GXC_factory_revamp
+		}
+		}
 	}
 
 	#Integrate University Structures
@@ -1885,7 +2134,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_country_leader = {
+				name = "Cai Yuanpai"
+				ruling_only = yes
+			}
+		}
 		prerequisite = { focus = GXC_independent_arms_development  } prerequisite = { focus = GXC_anewyearsdream  focus = GXC_a_struggle_with_the_impure  } prerequisite = { focus = GXC_independent_arms_development  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Rebuild Cities For The Common
@@ -1900,6 +2158,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_incremental_movement_to_communalism  } prerequisite = { focus = GXC_valorise_watermargin_militias  }
 		mutually_exclusive = { focus = GXC_classicalanarchistmilitarycities  }
+		completion_reward = {
+		add_offsite_building = { type = industrial_complexlevel = 1 }
+		add_offsite_building = { type = industrial_complex level = 1 }
+		add_offsite_building = { type = industrial_complex level = 1 }
+		}
 	}
 
 	#Classical, Anarchist Military Cities
@@ -1914,6 +2177,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_a_peach_garden_outside_the_world  } prerequisite = { focus = GXC_valorise_watermargin_militias  }
 		mutually_exclusive = { focus = GXC_rebuild_cities_for_the_common  }
+		completion_reward = {
+		add_offsite_building = { type = industrial_complexlevel = 1 }
+		add_offsite_building = { type = industrial_complex level = 1 }
+		add_offsite_building = { type = infrastructure level = 1 }
+		}
 	}
 
 	#The People's Modernizations
@@ -1926,7 +2194,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
+		available = {
+		has_country_leader = {
+			name = "Liu Shifu"
+			ruling_only = yes
+		}
+		OR = {
+		has_country_leader = {
+			name = "Li Shizeng"
+			ruling_only = yes
+		}
+		
+		}
+		}
 		prerequisite = { focus = GXC_anewoldanarchism  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Create the Anarchist Gentry
@@ -1939,7 +2223,25 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+			name = "Liu Shifu"
+			ruling_only = yes
+		}
+		OR = {
+		has_country_leader = {
+			name = "Li Shizeng"
+			ruling_only = yes
+		}
+		
+		}
+		}
 		prerequisite = { focus = GXC_anewoldanarchism  }
+		completion_reward = {
+		add_ideas = {
+		GXC_anarchist_gentry
+		}
+		}
 	}
 
 	#Reach to the Sinosphere
@@ -1952,7 +2254,26 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+			name = "Liu Shifu"
+			ruling_only = yes
+		}
+		OR = {
+		has_country_leader = {
+			name = "Li Shizeng"
+			ruling_only = yes
+		}
+		
+		}
+		}
 		prerequisite = { focus = GXC_anewoldanarchism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Anarchism with Classical Chinese Characteristics
@@ -1966,6 +2287,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_thepeoplesmodernizations  } prerequisite = { focus = GXC_create_the_anarchist_gentry  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Integrate Esperanto
@@ -1979,6 +2303,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_integrate_university_structures  } prerequisite = { focus = GXC_revamp_our_factories  }
+		completion_reward = {
+		custom_effect_tooltip = esperanto_china_tt
+		hidden_effect = {
+		set_country_leader_ideology = esperanto_syndicalism_subtype
+		}
+		}
 	}
 
 	#Fully Merge Students and Workers
@@ -1992,6 +2322,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_revamp_our_factories  } prerequisite = { focus = GXC_a_great_hall_for_the_people  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Chaos Under Heaven
@@ -2005,6 +2341,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_accelerate_the_glorious_transition  } prerequisite = { focus = GXC_turnonalltradition  }
+		completion_reward = {
+		country_event = {
+		id = anarcho_china.12
+		days = 3
+		}
+		}
 	}
 
 	#Retreat from the Radical Moment
@@ -2013,7 +2355,7 @@ focus_tree = {
 		icon = GFX_GXC_retreat_from_the_radical_moment-248360
 		x = 34
 		y = 10
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -2029,6 +2371,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+			name = "Taixu"
+			ruling_only = yes
+		}
+		}
 		prerequisite = { focus = GXC_retreat_from_the_radical_moment  }
 		mutually_exclusive = { focus = GXC_shicuntongsrevisedlaborism  } mutually_exclusive = { focus = GXC_themoderatewritersprogressivism  }
 	}
@@ -2043,6 +2391,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+			name = "Shi Cuntong"
+			ruling_only = yes
+		}
+		}
 		prerequisite = { focus = GXC_retreat_from_the_radical_moment  }
 		mutually_exclusive = { focus = GXC_taixusrevisedmoralism  } mutually_exclusive = { focus = GXC_themoderatewritersprogressivism  }
 	}
@@ -2056,6 +2410,12 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+			name = "Mao Dun"
+			ruling_only = yes
+		}
 		}
 		prerequisite = { focus = GXC_retreat_from_the_radical_moment  }
 		mutually_exclusive = { focus = GXC_taixusrevisedmoralism  } mutually_exclusive = { focus = GXC_shicuntongsrevisedlaborism  }
@@ -2072,6 +2432,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_themoderatewritersprogressivism  }
+		completion_reward = {
+		add_ideas = {
+		GXC_mass_democracy
+		}
+		}
 	}
 
 	#Establish clear chains of command
@@ -2085,6 +2450,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_shicuntongsrevisedlaborism  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = -200
+		}
 	}
 
 	#A Centralist Anarchist State
@@ -2098,6 +2467,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_shicuntongsrevisedlaborism  }
+		completion_reward = {
+		add_ideas = {
+		GXC_centralized_admin_3
+		}
+		}
 	}
 
 	#Empower the Labor Guilds
@@ -2111,6 +2485,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_shicuntongsrevisedlaborism  }
+		completion_reward = {
+		add_ideas = {
+		GXC_empowering_labor
+		}
+		}
 	}
 
 	#Enshrine Humanist Buddhism
@@ -2124,6 +2503,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_taixusrevisedmoralism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Re-Dedicate Communes to the Pure Land
@@ -2137,6 +2522,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_enshrine_humanist_buddhism  }
+		completion_reward = {
+		add_ideas = {
+		GXC_empowering_labor_2
+		}
+		}
 	}
 
 	#Internationale Integration
@@ -2150,6 +2540,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = GXC_a_centralist_anarchist_state  }
+		completion_reward = {
+		add_war_support = 0.25
+		}
 	}
 
 	#Disenfranchise Rural Dissenters
@@ -2163,6 +2556,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = GXC_eliteled_mass_democracy  }
+		completion_reward = {
+		add_manpower = -39323
+		}
 	}
 
 	#A Writers' Republic
@@ -2176,6 +2572,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = GXC_disenfranchise_rural_dissenters  }
+		completion_reward = {
+		add_stability = 0.25
+		}
 	}
 
 	#Fully Break With Ba Jin Thought
@@ -2189,6 +2588,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_disenfranchise_rural_dissenters  }
+		completion_reward = {
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = -1
+		}
+		}
 	}
 
 	#Consolidate Party Control
@@ -2202,6 +2607,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_internationale_integration  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.3
+		}
+		}
 	}
 
 	#Consolidate Moderate Sanghas
@@ -2215,6 +2626,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_rededicate_communes_to_the_pure_land  }
+		completion_reward = {
+		add_stability = 0.05
+		add_political_power = 200
+		}
 	}
 
 	#A Progressive-Buddhist State
@@ -2228,6 +2643,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = GXC_rededicate_communes_to_the_pure_land  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Organize the Buddhist Realm
@@ -2241,6 +2659,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = GXC_consolidate_moderate_sanghas  } prerequisite = { focus = GXC_a_progressivebuddhist_state  }
+		completion_reward = {
+		add_ideas = {
+		GXC_organise_buddhist_realm
+		}
+		}
 	}
 
 	#The Legacy of the Predecessors
@@ -2254,6 +2677,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_consolidate_party_control  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.12
+		}
 	}
 
 	#Pragmatic Isolationism
@@ -2267,6 +2694,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_awritersrepublic  } prerequisite = { focus = GXC_fully_break_with_ba_jin_thought  }
+		completion_reward = {
+		add_political_power = 200
+		add_stability = 0.12
+		}
 	}
 
 	#Now Is The Hour!
@@ -2279,6 +2710,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_completed_focus = GXC_chinastandsfree
+		OR = {
+		has_completed_focus = GXC_begin_the_universal_revolution
+		has_completed_focus = GXC_prepareforthedatong
+		has_completed_focus = GXC_anarchism_with_classical_chinese_characteristics
+		}
+		}
+		
 	}
 
 	#A Sinitic Anarchist Theory
@@ -2291,8 +2731,49 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = GXC_nowisthehour  }
 		mutually_exclusive = { focus = GXC_an_internationalist_focus  } mutually_exclusive = { focus = GXC_a_revolt_by_scythe_and_pen  }
+		completion_reward = {
+		custom_effect_tooltip = united_asia_gxc_tt
+		hidden_effect = {
+		add_state_core = 527
+		add_state_core = 525
+		add_state_core = 408
+		add_state_core = 1246
+		add_state_core = 409
+		add_state_core = 560
+		add_state_core = 561
+		add_state_core = 657
+		add_state_core = 563
+		add_state_core = 564
+		add_state_core = 565
+		add_state_core = 574
+		add_state_core = 562
+		add_state_core = 637
+		add_state_core = 537
+		add_state_core = 555
+		add_state_core = 536
+		add_state_core = 533
+		add_state_core = 534
+		add_state_core = 535
+		add_state_core = 532
+		add_state_core = 531
+		add_state_core = 529
+		add_state_core = 530
+		add_state_core = 528
+		add_state_core = 526
+		}
+		}
 	}
 
 	#An Internationalist Focus
@@ -2307,6 +2788,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_nowisthehour  }
 		mutually_exclusive = { focus = GXC_a_sinitic_anarchist_theory  } mutually_exclusive = { focus = GXC_a_revolt_by_scythe_and_pen  }
+		completion_reward = {
+		every_state = { add_core_of = GXC }
+		}
 	}
 
 	#A Revolt By Scythe and Pen
@@ -2321,6 +2805,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_nowisthehour  }
 		mutually_exclusive = { focus = GXC_a_sinitic_anarchist_theory  } mutually_exclusive = { focus = GXC_an_internationalist_focus  }
+		completion_reward = {
+		every_state = { add_core_of = GXC }
+		}
 	}
 
 	#Mass Artillery Movement
@@ -2425,6 +2912,53 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		completion_reward = {
+		custom_effect_tooltip = spread_gxc_middle_east
+		hidden_effect = {
+		add_state_core = 1217
+		add_state_core = 267
+		add_state_core = 1218
+		add_state_core = 415
+		add_state_core = 1211
+		add_state_core = 586
+		add_state_core = 1042
+		add_state_core = 589
+		add_state_core = 404
+		add_state_core = 810
+		add_state_core = 590
+		add_state_core = 1203
+		add_state_core = 1279
+		add_state_core = 407
+		add_state_core = 1209
+		add_state_core = 732
+		add_state_core = 1210
+		add_state_core = 1277
+		add_state_core = 1276
+		add_state_core = 405
+		add_state_core = 585
+		add_state_core = 712
+		add_state_core = 1212
+		add_state_core = 402
+		add_state_core = 1278
+		add_state_core = 1275
+		add_state_core = 1281
+		add_state_core = 587
+		add_state_core = 406
+		add_state_core = 410
+		add_state_core = 416
+		add_state_core = 804
+		add_state_core = 418
+		add_state_core = 412
+		add_state_core = 414
+		add_state_core = 266
+		add_state_core = 411
+		add_state_core = 420
+		add_state_core = 413
+		add_state_core = 421
+		add_state_core = 419
+		add_state_core = 417
+		}
+		}
 	}
 
 	#Break the Back of Japan
@@ -2438,6 +2972,13 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = JAP
+		}
+		
+		}
 	}
 
 	#Push Into Australasia
@@ -2451,6 +2992,32 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = AST
+		}
+		hidden_effect = {
+		add_state_core = 522
+		add_state_core = 988
+		add_state_core = 674
+		add_state_core = 987
+		add_state_core = 520
+		add_state_core = 519
+		add_state_core = 517
+		add_state_core = 985
+		add_state_core = 285
+		add_state_core = 521
+		add_state_core = 986
+		add_state_core = 518
+		add_state_core = 284
+		add_state_core = 723
+		add_state_core = 523
+		add_state_core = 757
+		add_state_core = 669
+		add_state_core = 843
+		}
+		}
 	}
 
 	#Union with Japanese and Korean Anarchists
@@ -2464,6 +3031,13 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = GXC_a_sinitic_anarchist_theory  focus = GXC_an_internationalist_focus  focus = GXC_a_revolt_by_scythe_and_pen  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = KOR
+		}
+		}
+	
 	}
 
 	#Break the Shackles of India
@@ -2477,6 +3051,80 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BHC
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PRF
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = DEI
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = NEP
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BHU
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SKM
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = MAD
+		}
+		hidden_effect = {
+		add_state_core = 432
+		add_state_core = 434
+		add_state_core = 430
+		add_state_core = 324
+		add_state_core = 887
+		add_state_core = 888
+		add_state_core = 431
+		add_state_core = 435
+		add_state_core = 426
+		add_state_core = 436
+		add_state_core = 1093
+		add_state_core = 323
+		add_state_core = 438
+		add_state_core = 1057
+		add_state_core = 437
+		add_state_core = 1092
+		add_state_core = 439
+		add_state_core = 814
+		add_state_core = 889
+		add_state_core = 893
+		add_state_core = 427
+		add_state_core = 424
+		add_state_core = 320
+		add_state_core = 425
+		add_state_core = 423
+		add_state_core = 867
+		add_state_core = 1034
+		add_state_core = 868
+		add_state_core = 429
+		add_state_core = 422
+		add_state_core = 321
+		add_state_core = 1094
+		add_state_core = 428
+		add_state_core = 433
+		add_state_core = 815
+		add_state_core = 440
+		add_state_core = 890
+		add_state_core = 441
+		add_state_core = 891
+		add_state_core = 443
+		add_state_core = 444
+		}
+		
+		}
 	}
 
 	#Southeast Asia Beckons!
@@ -2490,6 +3138,64 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+		completion_reward = {
+		custom_effect_tooltip = south_e_asia_gxc_tt
+		hidden_effect = {
+		add_state_core = 857
+		add_state_core = 671
+		add_state_core = 670
+		add_state_core = 827
+		add_state_core = 826
+		add_state_core = 286
+		add_state_core = 856
+		add_state_core = 750
+		add_state_core = 825
+		add_state_core = 823
+		add_state_core = 882
+		add_state_core = 756
+		add_state_core = 822
+		add_state_core = 824
+		add_state_core = 289
+		add_state_core = 831
+		add_state_core = 749
+		add_state_core = 724
+		add_state_core = 999
+		add_state_core = 830
+		add_state_core = 751
+		add_state_core = 846
+		add_state_core = 336
+		add_state_core = 288
+		add_state_core = 790
+		add_state_core = 640
+		add_state_core = 72
+		add_state_core = 701
+		add_state_core = 1023
+		add_state_core = 672
+		add_state_core = 1022
+		add_state_core = 1021
+		add_state_core = 335
+		add_state_core = 1020
+		add_state_core = 1019
+		add_state_core = 667
+		add_state_core = 1018
+		add_state_core = 1017
+		add_state_core = 972
+		add_state_core = 721
+		add_state_core = 673
+		add_state_core = 1016
+		add_state_core = 334
+		add_state_core = 333
+		add_state_core = 828
+		add_state_core = 668
+		add_state_core = 626
+		add_state_core = 627
+		add_state_core = 628
+		add_state_core = 625
+		add_state_core = 624
+		add_state_core = 327
+		add_state_core = 623
+		}
+		}
 	}
 
 	#Appeal to the Old World
@@ -2504,6 +3210,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_tohellwitheurope  }
+		completion_reward = {
+		unlock_decision_tooltip = GXC_conquer_europe
+		}
 	}
 
 	#To Hell With Europe!
@@ -2518,6 +3227,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_appeal_to_the_old_world  }
+		completion_reward = {
+		unlock_decision_tooltip = GXC_conquer_europe_2
+		}
 	}
 
 	#Challenge America
@@ -2544,8 +3256,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		country_exists = CSA
+		CSA = {
+		has_government = syndicalist
+		}
+		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_challenge_america  }
+		completion_reward = {
+		
+		}
 	}
 
 	#Find Military Collaborators
