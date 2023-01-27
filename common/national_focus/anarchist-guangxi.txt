@@ -2711,11 +2711,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_completed_focus = GXC_chinastandsfree
+		
 		OR = {
 		has_completed_focus = GXC_begin_the_universal_revolution
 		has_completed_focus = GXC_prepareforthedatong
 		has_completed_focus = GXC_anarchism_with_classical_chinese_characteristics
+		has_completed_focus = GXC_chinastandsfree
 		}
 		}
 		
@@ -2731,7 +2732,8 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = {
+		available = {3
+		OR = {
 		has_country_leader = {
 		name = "Li Shizeng"
 		ruling_only = yes
@@ -2739,6 +2741,7 @@ focus_tree = {
 		has_country_leader = {
 		name = "Liu Shifu"
 		ruling_only = yes
+		}
 		}
 		}
 		prerequisite = { focus = GXC_nowisthehour  }
@@ -3208,6 +3211,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_tohellwitheurope  }
 		completion_reward = {
@@ -3224,6 +3239,18 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
 		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_appeal_to_the_old_world  }
@@ -3242,8 +3269,39 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_our_american_allies  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CAL
+		}
+				create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CSA
+		}
+		
+				create_wargoal = {
+			type = puppet_wargoal_focus
+			target = USA
+		}
+				create_wargoal = {
+			type = puppet_wargoal_focus
+			target = COR
+		}
+		}
 	}
 
 	#Our American Allies
@@ -3261,11 +3319,22 @@ focus_tree = {
 		CSA = {
 		has_government = syndicalist
 		}
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
 		}
 		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_challenge_america  }
 		completion_reward = {
-		
+		create_faction = "Sino American Guild"
+		GXC = { add_to_faction = CSA }
 		}
 	}
 
@@ -3280,6 +3349,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_voluntarist_shipyards  } prerequisite = { focus = GXC_reach_directly_into_the_west  }
+		completion_reward = {
+		add_political_power = 300
+		}
 	}
 
 	#Defensive Naval Aviation
@@ -3293,6 +3365,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_voluntarist_shipyards  } prerequisite = { focus = GXC_reach_directly_into_the_west  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = naval_air
+		}
+		}
 	}
 
 	#Stealth is our Ally
@@ -3306,6 +3385,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_voluntarist_shipyards  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = encryption_tech
+		}
+		}
 	}
 
 	#Strength is our Salvation
@@ -3319,6 +3405,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_sailors_as_masters  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.15
+		}
 	}
 
 	#Offensive Carriers and Cruisers
@@ -3332,6 +3422,18 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_sailors_as_masters  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = cv_tech
+		}
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = bc_tech
+		}
+		}
 	}
 
 	#Naval Landing On Mass
@@ -3345,6 +3447,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_strength_is_our_salvation  } prerequisite = { focus = GXC_offensive_carriers_and_cruisers  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = naval_doctrine
+		}
+		}
 	}
 
 	#Develop Full Academies
@@ -3358,6 +3467,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_stealth_is_our_ally  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#A Spirit of Common Liberty
@@ -3370,8 +3482,31 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		CSA = {
+		is_subject_of = GXC
+		}
+		}
+		
 		prerequisite = { focus = GXC_our_american_allies  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		
+		CSA = {
+		add_political_power = 100
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.15
+		}
+		}
+		}
 	}
+	}	
 
 	#Destroy the False Prophets
 	focus = {
@@ -3384,6 +3519,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = GXC_tohellwitheurope  }
+		completion_reward = {
+		add_manpower = -20000
+		}
 	}
 
 	#A Great Intervention
@@ -3397,6 +3535,11 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = GXC_appeal_to_the_old_world  }
+		completion_reward = {
+		add_ideas = {
+		GXC_great_intervetion
+		}
+		}
 	}
 
 	#Form a Great Asian Union
@@ -3409,8 +3552,27 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		owns_state = 527
+		owns_state = 282
+		AND = {
+		OR = {
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		}
+		}
+		}
 		prerequisite = { focus = GXC_break_the_shackles_of_india  } prerequisite = { focus = GXC_southeastasiabeckons  }
 		mutually_exclusive = { focus = GXC_fulfil_the_datong_dream  }
+		completion_reward = {
+		set_cosmetic_tag = GXC_ASIAUNION
+		}
 	}
 
 	#Fulfil the Datong Dream
@@ -3423,8 +3585,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		}
+		}
 		prerequisite = { focus = GXC_break_the_shackles_of_india  } prerequisite = { focus = GXC_southeastasiabeckons  }
 		mutually_exclusive = { focus = GXC_form_a_great_asian_union  }
+		completion_reward = {
+		set_cosmetic_tag = GXC_DATONG
+		}
 	}
 
 	#Writers of the World, Unite!
@@ -3437,7 +3614,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = GXC_challenge_america  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Establish Sino-American Guilds
@@ -3450,7 +3636,29 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		CSA = {
+		is_subject_of = GXC
+		}
+		}
 		prerequisite = { focus = GXC_a_spirit_of_common_liberty  }
+		completion_reward = {
+		CSA = {
+		set_cosmetic_tag = CSA_GXCANA
+		set_country_leader_name = {
+			ideology = radical_socialist
+			name = "Lu Jianbo"
+		}
+		set_politics = {
+				ruling_party = radical_socialist
+			}
+			
+			set_party_name = {
+			ideology = radical_socialist
+			name = "Sino American Guild Association"
+		}
+		}
+		}
 	}
 
 	#A Great Leap Into The Pacific
@@ -3464,6 +3672,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_develop_full_academies  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = fleet_in_being_tree
+		}
+		}
 	}
 
 	#Researching Special Forces
@@ -3477,6 +3692,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_naval_landing_on_mass  } prerequisite = { focus = GXC_develop_full_academies  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = mountaineers_tech
+		}
+		}
 	}
 
 	#The People's Marines
@@ -3490,6 +3712,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = GXC_naval_landing_on_mass  } prerequisite = { focus = GXC_develop_full_academies  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = marine_tech
+		}
+		}
 	}
 
 	#Return to Kropotkin's Birthplace
@@ -3503,6 +3732,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_destroy_the_false_prophets  } prerequisite = { focus = GXC_a_great_intervention  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = RUS
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = TRM
+		}
+		}
 	}
 
 	#Bring True Liberation to Africa
@@ -3515,7 +3754,10 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_writersoftheworldunite  }
+		prerequisite = { focus = GXC_writersoftheworldunite focus = GXC_establish_sinoamerican_guilds } 
+		completion_reward = {
+		unlock_decision_tooltip = GXC_conquer_africa
+		}
 	}
 
 	#The Abolution of the Nation Itself
@@ -3527,6 +3769,12 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = GXC_returntokropotkinsbirthplace  } prerequisite = { focus = GXC_bring_true_liberation_to_africa  }
 		mutually_exclusive = { focus = GXC_the_world_is_my_alma_mater  } mutually_exclusive = { focus = GXC_consolidate_asian_anarchism  }
@@ -3542,6 +3790,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = GXC_returntokropotkinsbirthplace  } prerequisite = { focus = GXC_bring_true_liberation_to_africa  }
 		mutually_exclusive = { focus = GXC_the_abolution_of_the_nation_itself  } mutually_exclusive = { focus = GXC_consolidate_asian_anarchism  }
 	}
@@ -3555,6 +3809,18 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		}
 		}
 		prerequisite = { focus = GXC_returntokropotkinsbirthplace  } prerequisite = { focus = GXC_bring_true_liberation_to_africa  }
 		mutually_exclusive = { focus = GXC_the_abolution_of_the_nation_itself  } mutually_exclusive = { focus = GXC_the_world_is_my_alma_mater  }
