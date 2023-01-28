@@ -915,6 +915,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TIA_nationalization_of_the_foreign_legations  } prerequisite = { focus = TIA_preparing_for_battle  }
+		completion_reward = {
+		load_oob = "LEC - Revolution2"
+		}
 	}
 
 	#In Memory of the Martyr
@@ -928,6 +931,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TIA_attacking_syndicalist_revisionists  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Alliance With the Red Spear Society
@@ -941,6 +947,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TIA_in_memory_of_the_martyr  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Building the People's Militia
@@ -954,6 +966,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TIA_underground_uprisings  } prerequisite = { focus = TIA_in_memory_of_the_martyr  }
+		completion_reward = {
+		add_ideas = {
+		CNH_attack_the_cap
+		}
+		}
 	}
 
 	#Alliance With the Shanghai Leftists
@@ -968,6 +985,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = TIA_underground_uprisings  }
 		mutually_exclusive = { focus = TIA_denounce_the_faux_socialists  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Denounce the Faux Socialists
@@ -982,6 +1005,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = TIA_underground_uprisings  }
 		mutually_exclusive = { focus = TIA_alliance_with_the_shanghai_leftists  }
+		completion_reward = {
+		add_manpower = -1022
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		}
 	}
 
 	#Starting the National Revolution!
@@ -995,6 +1025,89 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TIA_alliance_with_the_red_spear_society  } prerequisite = { focus = TIA_buildingthepeoplesmilitia  } prerequisite = { focus = TIA_alliance_with_the_shanghai_leftists  focus = TIA_alliance_with_the_red_spear_society  } prerequisite = { focus = TIA_buildingthepeoplesmilitia  } prerequisite = { focus = TIA_denounce_the_faux_socialists  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = QIE
+		}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FNG
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = MON
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = XSM
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SHX
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ETS
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SIK
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TAN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TIB
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SQI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SZC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = YUN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HNN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GXC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CHI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ANQ
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HKP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CNH
+			}
+			set_country_flag = not_china_republic
+		}
 	}
 
 	#Declaring In His Name
@@ -1007,7 +1120,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		owns_state = 608
+		}
 		prerequisite = { focus = TIA_startingthenationalrevolution  }
+		completion_reward = {
+		set_cosmetic_tag = TIA_SOCREP
+		}
 	}
 
 	#The Sand Spreads Across the City
@@ -1019,6 +1138,9 @@ focus_tree = {
 		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_government = paternal_autocrat
 		}
 		prerequisite = { focus = TIA_a_state_of_independence  }
 	}
@@ -1034,6 +1156,21 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TIA_the_sand_spreads_across_the_city  }
+		completion_reward = {
+		add_manpower = -1022
+		add_popularity = {
+		ideology = totalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		}
 	}
 
 	#Restoring the Yellow Mandate
@@ -1047,6 +1184,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TIA_split_from_the_red_spears  }
+		completion_reward = {
+		add_ideas = {
+		TIA_syellow_mandate
+		}
+		}
 	}
 
 	#Rebirth of Feudal Society
@@ -1060,6 +1202,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TIA_split_from_the_red_spears  }
+		completion_reward = {
+		add_stability = 0.15
+		}
 	}
 
 	#Denounce the Foreign Posers
@@ -1073,6 +1218,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TIA_rebirth_of_feudal_society  }
+		completion_reward = {
+		add_war_support = 0.25
+		}
 	}
 
 	#Preparing For the National Reclamation
@@ -1086,6 +1234,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TIA_restoring_the_yellow_mandate  } prerequisite = { focus = TIA_rebirth_of_feudal_society  }
+		completion_reward = {
+		load_oob = "LEC - Revolution2"
+		}
 	}
 
 	#Expand the Rice Farms
@@ -1099,6 +1250,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TIA_restoring_the_yellow_mandate  }
+		completion_reward = {
+		add_ideas = {
+		TIA_rice_farm_expansion
+		}
+		}
 	}
 
 	#Win Over the Peasants
@@ -1112,6 +1268,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TIA_preparing_for_the_national_reclamation  } prerequisite = { focus = TIA_expand_the_rice_farms  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_stability = 0.1
+		}
 	}
 
 	#Loot the Legation Quarters
@@ -1125,6 +1285,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TIA_denounce_the_foreign_posers  }
+		completion_reward = {
+		add_stability = -0.25
+		add_ideas = {
+		TIA_red_corporatism_4
+		}
+		}
 	}
 
 	#Start the Anti Manchu Revolution!
@@ -1138,6 +1304,12 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TIA_win_over_the_peasants  } prerequisite = { focus = TIA_loot_the_legation_quarters  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = QIE
+		}
+		}
 	}
 
 	#Secret Landlord Negotiations
@@ -1151,6 +1323,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TIA_win_over_the_peasants  } prerequisite = { focus = TIA_loot_the_legation_quarters  }
+		completion_reward = {
+		add_stability = 0.1
+		add_war_support = -0.1
+		}
 	}
 
 	#The Dragon Crushes the Devils!
@@ -1164,6 +1340,85 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TIA_starttheantimanchurevolution  } prerequisite = { focus = TIA_secret_landlord_negotiations  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FNG
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = MON
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = XSM
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SHX
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ETS
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SIK
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TAN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TIB
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SQI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SZC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = YUN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HNN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GXC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CHI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ANQ
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HKP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CNH
+			}
+			set_country_flag = not_china_republic
+		}
 	}
 
 	#Claiming Divinity Under Heaven
@@ -1176,7 +1431,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		owns_state = 608
+		}
 		prerequisite = { focus = TIA_thedragoncrushesthedevils  }
+		completion_reward = {
+		set_cosmetic_tag = TIA_MING
+		}
 	}
 
 }
