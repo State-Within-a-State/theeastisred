@@ -800,12 +800,21 @@ focus_tree = {
 		icon = GFX_GXC_a_matter_of_consensus-248360
 		x = 45
 		y = 0
-		cost = 0
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		always = no
+		has_completed_focus = GXC_the_power_struggle
+		}
+		completion_reward = {
+		custom_effect_tooltip = in_the_end_tt
+		hidden_effect = {
+		country_event = {
+		id = anarcho_china.6
+		days = 3
+		}
+		}
 		}
 	}
 
@@ -1669,6 +1678,15 @@ focus_tree = {
 		
 		prerequisite = { focus = GXC_reach_unto_utopia  }
 		mutually_exclusive = { focus = GXC_anewoldanarchism  } mutually_exclusive = { focus = GXC_valorise_watermargin_militias  }
+		completion_reward = {
+		custom_effect_tooltip = sganhai_gxc_tt
+		hidden_effect = {
+		country_event = {
+		id = anarcho_china.10
+		days = 3
+		}
+		}
+		}
 	}
 
 	#A New, Old Anarchism
@@ -1853,9 +1871,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_a_struggle_with_the_impure  }
 		completion_reward = {
+		custom_effect_tooltip = shitong_tt
+		hidden_effect = {
 		country_event = {
 		id = anarcho_china.11
 		days = 3
+		}
 		}
 		}
 	}
@@ -2067,6 +2088,12 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = GXC_an_unfettered_freedom  focus = GXC_guided_development  }
 		completion_reward = {
@@ -2342,9 +2369,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_accelerate_the_glorious_transition  } prerequisite = { focus = GXC_turnonalltradition  }
 		completion_reward = {
+		custom_effect_tooltip = moderate_gxc_tt
+		hidden_effect = {
 		country_event = {
 		id = anarcho_china.12
 		days = 3
+		}
 		}
 		}
 	}
@@ -2355,9 +2385,25 @@ focus_tree = {
 		icon = GFX_GXC_retreat_from_the_radical_moment-248360
 		x = 34
 		y = 10
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Taixu"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Shi Cuntong"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Mao Dun"
+		ruling_only = yes
+		}
+		}
 		}
 	}
 
