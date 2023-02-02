@@ -1,0 +1,155 @@
+focus_tree = {
+	id = cambodia
+	continuous_focus_position = { x = -40 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CAM
+		}
+	}
+	#New State of Independence
+	focus = {
+		id = CAM_new_state_of_independence
+		icon = GFX_CAM_new_state_of_independence-248360
+		x = 4
+		y = 0
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#Fighting For Survival
+	focus = {
+		id = CAM_fighting_for_survival
+		icon = GFX_CAM_fighting_for_survival-248360
+		x = 4
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CAM_new_state_of_independence  }
+	}
+
+	#Support Local Democrats
+	focus = {
+		id = CAM_support_local_democrats
+		icon = GFX_CAM_support_local_democrats-248360
+		x = 3
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CAM_fighting_for_survival  }
+	}
+
+	#Listen To Lon Nol
+	focus = {
+		id = CAM_listen_to_lon_nol
+		icon = GFX_CAM_listen_to_lon_nol-248360
+		x = 5
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CAM_fighting_for_survival  }
+	}
+
+	#Honour the Late King
+	focus = {
+		id = CAM_honour_the_late_king
+		icon = GFX_CAM_honour_the_late_king-248360
+		x = 4
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = CAM_support_local_democrats  } prerequisite = { focus = CAM_listen_to_lon_nol  }
+	}
+
+	#Siege of Phnom Penn
+	focus = {
+		id = CAM_siege_of_phnom_penn
+		icon = GFX_CAM_siege_of_phnom_penn-248360
+		x = 4
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CAM_honour_the_late_king  }
+	}
+
+	#We Can Take Them
+	focus = {
+		id = CAM_we_can_take_them
+		icon = GFX_CAM_we_can_take_them-248360
+		x = 3
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CAM_siege_of_phnom_penn  }
+		mutually_exclusive = { focus = CAM_extend_an_olive_branch  }
+	}
+
+	#Extend An Olive Branch
+	focus = {
+		id = CAM_extend_an_olive_branch
+		icon = GFX_CAM_extend_an_olive_branch-248360
+		x = 5
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CAM_siege_of_phnom_penn  }
+		mutually_exclusive = { focus = CAM_we_can_take_them  }
+	}
+
+	#The Fight Continues
+	focus = {
+		id = CAM_the_fight_continues
+		icon = GFX_CAM_the_fight_continues-248360
+		x = 3
+		y = 6
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CAM_we_can_take_them  focus = CAM_extend_an_olive_branch  }
+	}
+
+	#The Treaty of Phnom Penn
+	focus = {
+		id = CAM_the_treaty_of_phnom_penn
+		icon = GFX_CAM_the_treaty_of_phnom_penn-248360
+		x = 5
+		y = 6
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = CAM_we_can_take_them  focus = CAM_extend_an_olive_branch  }
+	}
+
+	#Angkor Wat Shines the Colours Of Victory!
+	focus = {
+		id = CAM_angkorwatshinesthecoloursofvictory
+		icon = GFX_CAM_angkorwatshinesthecoloursofvictory-248360
+		x = 4
+		y = 7
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CAM_the_fight_continues  focus = CAM_the_treaty_of_phnom_penn  }
+	}
+
+}
