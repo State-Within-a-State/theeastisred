@@ -1,11 +1,68 @@
 ﻿add_namespace = viet_civil_war
+add_namespace = viet_event_flavor
+
+country_event = {
+
+		id = viet_event_flavor.1
+		title = "Shots in Saigon"
+		desc = viet_event_flavor.1_desc
+		picture = "GFX_report_event_HCM_shot"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+
+		option = {
+		name = "He Shall Continue"
+		
+		} 
+		option = {
+		name = "Force His Retirement"
+		hidden_effect = {
+		set_country_flag = vietnam_deadlock
+		country_event = { id = viet.6 days = 3 }	
+		}
+		}
+		
+		
+
+
+	}
+	
+	country_event = {
+
+		id = viet_civil_war.0
+		title = "The Deadlock"
+		desc = viet_civil_war.0.desc
+		picture = "GFX_report_event_viet_protest"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+
+		option = {
+
+		name = "This is not good..."
+		custom_effect_tooltip = viet_civil_war_tt
+		hidden_effect = {
+		
+		country_event = { id = viet_civil_war.1 days = 3 }	
+			}
+		} 
+		
+		
+
+
+	}
 
 country_event = {
 
 		id = viet_civil_war.1
 		title = "A Break Down in Law and Order"
-		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
-		picture = "-"
+		desc = viet_civil_war.1.desc
+		picture = "GFX_report_event_vite_coup"
 
 		fire_only_once = yes
 
@@ -14,6 +71,7 @@ country_event = {
 		hidden_effect = {
 		VNQ = { add_state_core = 857 add_state_core = 671 }
 		VIN = { remove_state_core = 286 remove_state_core = 856 }
+		
 		}
 		}
 
@@ -178,6 +236,50 @@ country_event = {
 		declare_war_on = { target = VNQ type = annex_everything }
 		declare_war_on = { target = CAM type = annex_everything }
 			}
+		}
+		
+		
+
+
+	}
+	
+	
+	country_event = {
+
+		id = viet_civil_war.5
+		title = "Future of Indochina"
+		desc = viet_civil_war.1.desc
+		picture = "GFX_report_event_vite_coup"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+
+		option = {
+
+		name = "For Tran Phu and the Soviets"
+		
+		
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		set_country_leader_name = { ideology = totalist name = "Tran Phu" }
+		set_country_leader_portrait = { ideology = totalist portrait = "gfx/leaders/INC/Portrait_INC_Tran_Phu.png" }
+		set_country_leader_ideology = authcom_subtype	
+			
+		} 
+		
+		option = {
+
+		name = "For The Red Kingdom"
+		
+		
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = { ideology = totalist popularity = -0.75 }
+		set_country_leader_name = { ideology = radical_socialist name = "Souphanouvong" }
+		set_country_leader_portrait = { ideology = radical_socialist portrait = "gfx/leaders/LAO/Portrait_Laos_Souphanouvong.png" }
+		set_country_leader_ideology = monsoc_subtype
+			
 		}
 		
 		
