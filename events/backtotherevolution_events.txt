@@ -1,0 +1,175 @@
+﻿###########################
+# Philippines Events
+###########################
+# By PPsyrius
+###########################
+
+add_namespace = wanghongwen
+
+
+
+
+country_event = { # Introduction
+	id = wanghongwen.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "A Mysitical Object Found In the Shanghai Ports"
+	desc = "Just a normal day in the legations quarter, when out of now where people start screaming. A flash of light is spotted above the 3rd dock near the 35th ship in the harbour. Soldiers and police are quickly called to the seen. They are hesitant to fire."
+	picture = "GFX_report_event_holy_one"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = "Blow It up"
+		
+		
+		
+	}
+	
+	option = {
+		name = "Wait There is Something Inside, Hold Your Fire!"
+		country_event = {
+		id = wanghongwen.2
+		days = 0
+		}
+		
+		
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = wanghongwen.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "A Man Walks Out"
+	desc = wanghongwen.2.desc
+	picture = "GFX_report_event_holy_one"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = wanghongwen.2.a
+		set_cosmetic_tag = CNH_WANGHONGWEN
+		set_politics = { ruling_party = totalist }
+		
+		set_country_leader_name = {
+				ideology = totalist
+				name = "Wang Hongwen"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = totalist
+				portrait = "gfx/leaders/CNH/Portrait_CNH_Wang_Hongwen.png"
+			}
+			set_party_name = { 
+				ideology = totalist
+				name = CNH_totalist_wang_party
+				long_name =	CNH_totalist_wang_party_long			
+			}
+			load_focus_tree = wanghongwen-meme
+			
+			
+		set_country_leader_ideology = mao_zedong_thought_subtype
+		add_ideas = {
+		CNH_mao_zedong_hog_tot
+		
+		}
+		
+	}
+	
+	
+	
+	
+}
+
+country_event = { # Introduction
+	id = wanghongwen.3
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "An Introduction To Jiang Qing"
+	desc = "Whilst raiding a small apartment suspected of reactionary activity. The figure who is seen as Mao's wife(to Hongwen) is found. Who was this person? It was Jiang Qing. Jiang Qing was caught liasing with Kang Sheng, another socialist figure in which had caught the eye of Hongwen. After the negotiation and deliberation, Jiang agreed to join the Red Guard Party."
+	picture = "GFX_report_event_holy_one"
+
+	is_triggered_only = yes
+
+	
+	
+	option = {
+		name = "Welcome Comrade"
+		add_ideas = {
+		CNH_jiang_qiang_return
+		}
+		country_event = {
+		id = wanghongwen.4
+		days = 0
+		}
+		
+		
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = wanghongwen.4
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Shaking Hands With the Militarists"
+	desc = "When going through his usual routine, a guard walks in as tell Hongwen that two people are here to see him. Recognizing these people Wang let's them in. These two people were Lin Biao and Chen Boda. By this point both were revolutionary agrarians who had listen to Mao Zedong's writings, but hadn't actually been apart of Hongwen new China. As the discussion progresses, the more and do these comrades group closer together. Finally ending with Lin Biao and Chen Bda agreeing to serve as some of the main heads of Hongwen and Mao's cultural revolution group."
+	picture = "GFX_report_event_holy_one"
+
+	is_triggered_only = yes
+
+	
+	
+	option = {
+		name = "Welcome Comrade"
+		add_ideas = {
+		CNH_lin_boda_return
+		}
+		
+		country_event = {
+		id = wanghongwen.5
+		days = 0
+		}
+		
+		
+		
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = wanghongwen.5
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Red Guard Factionalism"
+	desc = "The cultural revolution group espouses debates amongst themselves in which seek to decide on how certain elements of revolutionary argrianism should be run. On one hand you have Lin Biao's Rebels Faction, Wang Hongwen's Center Faction and Jiang Qing's May 16th Elements."
+	picture = "GFX_report_event_holy_one"
+
+	is_triggered_only = yes
+
+	
+	
+	option = {
+		name = "The Red Storm Rages On"
+		
+		set_power_balance = {
+				id = wang_h_balance
+				left_side = wang_h_l_left_side
+				right_side = wang_h_q_right_side
+			}
+		
+		
+		
+		
+	}
+	
+	
+}

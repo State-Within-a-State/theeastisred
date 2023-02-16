@@ -1,0 +1,265 @@
+﻿###########################
+# Philippines Events
+###########################
+# By PPsyrius
+###########################
+
+add_namespace = tianjin
+
+
+
+country_event = { # Introduction
+	id = tianjin.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Chaos in Tianjin"
+	desc = "After the Collapse of the legations cities, Tianjin administration declares independence but afterwards the government falls into disarray with financial issues on the rise. Japan now worried about this ends up sending a small detachment of troops to the city, as a result of this news, independence activists  form their own militias to defend against Japanese aggression. Now that the fog has gone, the darkest days of the city are occurring."
+	picture = "-"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = "May the Struggle Commence"
+				custom_effect_tooltip = independence_rise_tt
+				set_variable = { TIA_IND = 0 }
+				custom_effect_tooltip = japanese_rise_tt
+				set_variable = { TIA_JAP = 0 }
+				country_event = {
+				id = tianjin.4
+				days = 3
+				}
+	}
+	
+	
+}
+
+
+country_event = { # Introduction
+	id = tianjin.4
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Battle of the Ports"
+	desc = "At first light Japanese troops landed at the ports to establish a base of supply and cut off the independence activists. Seeing this, the independent forces push into the harbor hoping to prevent a Japanese advance into more regions of the city. The Japanese commander now has to make a decision on whether to further secure the coast or just head straight into the tigers den."
+	picture = "-"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = "Secure the Harbor"
+				
+				custom_effect_tooltip = japanese_rise_tt
+				add_to_variable = { TIA_JAP = 1 }
+				country_event = {
+				id = tianjin.5
+				days = 3
+				}
+	}
+	
+	option = {
+		name = "Continue to Push"
+				custom_effect_tooltip = independence_rise_tt
+				add_to_variable = { TIA_IND = 1 }
+				
+				country_event = {
+				id = tianjin.5
+				days = 3
+				}
+	}
+	
+	
+	
+}
+
+country_event = { # Introduction
+	id = tianjin.5
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Battle of the Industrial Center"
+	desc = "In Tianjin there is a large quarter which is an industrial powerhouse that stores both weapons and food. Seeing this, both sides head in for a major push to make sure that they get the supplies to bolster their own forces. Japanese push from the East, and the independents from the west. Japanese troops prepare to encircle the city but pause to rethink their strategy."
+	picture = "-"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = "Encircle Them"
+				
+				custom_effect_tooltip = japanese_rise_tt
+				add_to_variable = { TIA_JAP = 1 }
+				country_event = {
+				id = tianjin.6
+				days = 3
+				}
+	}
+	
+	option = {
+		name = "Go Right In There"
+				custom_effect_tooltip = independence_rise_tt
+				add_to_variable = { TIA_IND = 1 }
+				
+				country_event = {
+				id = tianjin.6
+				days = 3
+				}
+	}
+	
+	
+	
+}
+
+country_event = { # Introduction
+	id = tianjin.6
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Advance Into the Administration"
+	desc = "Now is the final battle to see who wins or loses. Japan sits idle and prepares for another offensive on the government administration offices, which are helped by the independents. Now a siege may begin with Japanese troops sending in what seems to be siege equipment, tho this could change as the Japanese detachment is on a time limit. "
+	picture = "GFX_report_event_CNH_lushan"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = "Besiege the Buildings"
+				
+				custom_effect_tooltip = japanese_rise_tt
+				add_to_variable = { TIA_JAP = 1 }
+				country_event = {
+				id = tianjin.500
+				days = 3
+				}
+	}
+	
+	option = {
+		name = "Strike Fast!"
+				custom_effect_tooltip = independence_rise_tt
+				add_to_variable = { TIA_IND = 1 }
+				
+				country_event = {
+				id = tianjin.500
+				days = 3
+				}
+	}
+	
+	
+	
+}
+
+country_event = {
+	id = tianjin.500
+	immediate = {log = "[GetDateText]: [Root.GetName]: event redelection."}
+	is_triggered_only = yes
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { TIA_IND > 2 }	
+			}
+			country_event = {
+			id = tianjin.2
+			days = 0
+		}
+		}
+		
+		if = {
+			limit = {
+				check_variable = { TIA_JAP > 2 }
+			}
+			country_event = {
+			id = tianjin.3
+			days = 0
+		}
+	}	
+		
+		
+	}
+}
+
+country_event = { # Introduction
+	id = tianjin.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Japanese Troops Warded Off"
+	desc = "In a miraculous display, the people of Tianjin have fought and defeated the Japanese forces invading the City of Tianjin, thanks to an unlikely alliance between the Ming restorationist Yellow Sand Society and Communist forces inside Tianjin. However, in recent days following the pyrrhic victory against the invading power, frictions have begun to mount between the two factions, ultimately spilling out and resulting in a war within the confines of Tianjin. "
+	picture = "GFX_report_event_CNH_lushan"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = "Under Our Red Banner"
+		set_politics = { ruling_party = totalist }
+		set_cosmetic_tag = TIA_RED
+	}
+	option = {
+		name = "We Shall Rise to a New Heaven"
+		set_politics = { ruling_party = paternal_autocrat }
+		set_cosmetic_tag = TIA_MON
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = tianjin.3
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Japanese Troops Secure the City"
+	desc = "After the fall of the legation cities, the "
+	picture = "GFX_report_event_CNH_lushan"
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+	}
+
+	option = {
+		name = "Under the New Left"
+		set_politics = { ruling_party = radical_socialist }
+	}
+	option = {
+		name = "The Corporations Take Over"
+		set_politics = { ruling_party = authoritarian_democrat }
+		set_country_leader_name = {
+				ideology = authoritarian_democrat
+				name = "Shigeru Yoshida"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = authoritarian_democrat
+				portrait = "gfx/leaders/TIA/Portrait_TIA_shigeru_yoshia.png"
+			}
+			set_country_leader_ideology = corporatocracy_subtype
+	}
+	
+	option = {
+		name = "Republican Collaborators Take Over"
+		complete_national_focus = TIA_organize_with_the_yunting_collaborators
+		set_politics = { ruling_party = authoritarian_democrat }
+		set_country_leader_name = {
+				ideology = authoritarian_democrat
+				name = "Yin Ju-Keng"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = authoritarian_democrat
+				portrait = "gfx/leaders/TIA/Portrait_TIA_Yin_Ju_Keng.png"
+			}
+			set_country_leader_ideology = authdem_warlordism_subtype
+	}
+	
+	
+}
+

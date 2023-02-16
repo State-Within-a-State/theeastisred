@@ -1,0 +1,905 @@
+focus_tree = {
+	id = lolww
+	continuous_focus_position = { x = -40 y = 5050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CNH
+		}
+		
+	}
+	
+	shared_focus = LEC_a_flame_above_china
+	shared_focus = LEC_call_for_final_unification
+	shared_focus = LEC_foundingthepeoplesarmy
+	
+	#Socialist Nationalism
+	focus = {
+		id = CNH_socialist_nationalism
+		icon = GFX_CNH_socialist_nationalism-248360
+		x = 22
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CNH_socialist_victory  focus = CNH_a_student_of_lu_xun  }
+		mutually_exclusive = { focus = CNH_restart_nahan  }
+		completion_reward = {
+		add_ideas = {
+		CNH_socialist_nationalism
+		}
+		}
+	}
+
+	#Marxist Humanism
+	focus = {
+		id = CNH_marxist_humanism
+		icon = GFX_CNH_marxist_humanism-248360
+		x = 26
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_legacy_of_tolstoy  }
+		completion_reward = {
+		add_political_power = 100
+		}
+	}
+
+	#Denouncing Imperialist Culture
+	focus = {
+		id = CNH_denouncing_imperialist_culture
+		icon = GFX_CNH_denouncing_imperialist_culture-248360
+		x = 25
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_communist_future  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = CAN
+				modifier = anti_imperial_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = JAP
+				modifier = anti_imperial_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = RUS
+				modifier = anti_imperial_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = OTT
+				modifier = anti_imperial_CNH
+			}
+			add_opinion_modifier = {
+				target = GER
+				modifier = anti_imperial_CNH
+			}
+			add_opinion_modifier = {
+				target = AUS
+				modifier = anti_imperial_CNH
+			}
+			add_stability = 0.05
+		
+		}
+	}
+
+	#Marxist Philosophy
+	focus = {
+		id = CNH_marxist_philosophy
+		icon = GFX_CNH_marxist_philosophy-248360
+		x = 25
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_socialist_victory  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		}
+	}
+
+	#Victory of the Pen
+	focus = {
+		id = CNH_victory_of_the_pen
+		icon = GFX_CNH_victory_of_the_pen-248360
+		x = 25
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#Socialist Victory
+	focus = {
+		id = CNH_socialist_victory
+		icon = GFX_CNH_socialist_victory-248360
+		x = 25
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+						has_country_leader = {
+					name = "Zhou Yang"
+					ruling_only = yes
+				}
+		
+		}
+		prerequisite = { focus = CNH_victory_of_the_pen  }
+	}
+
+	#Communist Future
+	focus = {
+		id = CNH_communist_future
+		icon = GFX_CNH_communist_future-248360
+		x = 25
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = CNH_marxist_philosophy  }
+		completion_reward = {
+		add_ideas = {
+		CNH_communist_future
+		}
+		
+		}
+	}
+
+	#A Cultural Reformation
+	focus = {
+		id = CNH_a_cultural_reformation
+		icon = GFX_CNH_a_cultural_reformation-248360
+		x = 24
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_denouncing_imperialist_culture  }
+		completion_reward = {
+		add_ideas = {
+		CNH_cultural_reformation
+		}
+		
+		}
+	}
+
+	#Legacy of Tolstoy
+	focus = {
+		id = CNH_legacy_of_tolstoy
+		icon = GFX_CNH_legacy_of_tolstoy-248360
+		x = 26
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_denouncing_imperialist_culture  }
+		completion_reward = {
+		add_political_power = 100
+		
+		}
+	}
+
+	#Denounce Old Culture
+	focus = {
+		id = CNH_denounce_old_culture
+		icon = GFX_CNH_denounce_old_culture-248360
+		x = 24
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_a_cultural_reformation  }
+		completion_reward = {
+		swap_ideas = {
+				remove_idea = CNH_cultural_reformation
+				add_idea = CNH_cultural_reformation_2
+			}
+		
+		}
+	}
+
+	#Radical Theory
+	focus = {
+		id = CNH_radical_theory
+		icon = GFX_CNH_radical_theory-248360
+		x = 25
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_denounce_old_culture  } prerequisite = { focus = CNH_marxist_humanism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.15
+		}
+		add_war_support = 0.1
+		add_stability = 0.25
+		
+		}
+	}
+
+	#Restart Nahan
+	focus = {
+		id = CNH_restart_nahan
+		icon = GFX_CNH_restart_nahan-248360
+		x = 28
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_socialist_victory  focus = CNH_shanghai_communalism  }
+		mutually_exclusive = { focus = CNH_socialist_nationalism  }
+		completion_reward = {
+		add_ideas = {
+		CNH_restart_nahan
+		}
+		}
+	}
+
+	#Denounce Warlordism
+	focus = {
+		id = CNH_denounce_warlordism
+		icon = GFX_CNH_denounce_warlordism-248360
+		x = 28
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CNH_restart_nahan  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = MON
+				modifier = anti_warlordism_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = SHX
+				modifier = anti_warlordism_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = XSM
+				modifier = anti_warlordism_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = ETS
+				modifier = anti_warlordism_CNH
+			}
+			add_opinion_modifier = {
+				target = SIK
+				modifier = anti_warlordism_CNH
+			}
+			add_opinion_modifier = {
+				target = TAN
+				modifier = anti_warlordism_CNH
+			}
+			
+			add_opinion_modifier = {
+				target = TIB
+				modifier = anti_warlordism_CNH
+			}
+		
+		
+		}
+	}
+
+	#Communal Construction
+	focus = {
+		id = CNH_communal_construction
+		icon = GFX_CNH_communal_construction-248360
+		x = 28
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CNH_denounce_warlordism  }
+		completion_reward = {
+		unlock_decision_category_tooltip = CNH_commune_builing
+		}
+	}
+
+	#Denounce the Monopolies
+	focus = {
+		id = CNH_denounce_the_monopolies
+		icon = GFX_CNH_denounce_the_monopolies-248360
+		x = 28
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = CNH_communal_construction  }
+		completion_reward = {
+		add_stability = 0.25
+		add_manpower = -10833
+		
+		}
+	}
+
+	#Formalise Collectivism
+	focus = {
+		id = CNH_formalise_collectivism
+		icon = GFX_CNH_formalise_collectivism-248360
+		x = 28
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CNH_denounce_the_monopolies  }
+		completion_reward = {
+		add_ideas = {
+		CNH_formalise_collectivism
+		}
+		}
+	}
+
+	#The Red Coast
+	focus = {
+		id = CNH_the_red_coast
+		icon = GFX_CNH_the_red_coast-248360
+		x = 28
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CNH_formalise_collectivism  }
+		completion_reward = {
+		add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				
+				add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+				}
+				
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+		
+		
+		}
+	}
+
+	#Local Supplies
+	focus = {
+		id = CNH_local_supplies
+		icon = GFX_CNH_local_supplies-248360
+		x = 28
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CNH_the_red_coast  }
+		completion_reward = {
+		add_ideas = {
+		CNH_local_supply
+		}
+		
+		}
+	}
+
+	#Shanghai Communalism
+	focus = {
+		id = CNH_shanghai_communalism
+		icon = GFX_CNH_shanghai_communalism-248360
+		x = 31
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+						has_country_leader = {
+					name = "Ding Ling"
+					ruling_only = yes
+				}
+		
+		}
+		prerequisite = { focus = CNH_victory_of_the_pen  }
+	}
+
+	#Legacy of May 4th
+	focus = {
+		id = CNH_legacy_of_may_4th
+		icon = GFX_CNH_legacy_of_may_4th-248360
+		x = 31
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = CNH_shanghai_communalism  }
+		completion_reward = {
+		add_ideas = {
+		CNH_legacy_of_may_4th
+		}
+		}
+	}
+
+	#Upholding the League
+	focus = {
+		id = CNH_upholding_the_league
+		icon = GFX_CNH_upholding_the_league-248360
+		x = 31
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = CNH_legacy_of_may_4th  }
+		completion_reward = {
+		add_stability = 0.05
+		add_political_power = 50
+		}
+	}
+
+	#Denounce Western Literature
+	focus = {
+		id = CNH_denounce_western_literature
+		icon = GFX_CNH_denounce_western_literature-248360
+		x = 31
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_upholding_the_league  }
+		completion_reward = {
+		add_stability = 0.1
+		}
+	}
+
+	#A Communal Society
+	focus = {
+		id = CNH_a_communal_society
+		icon = GFX_CNH_a_communal_society-248360
+		x = 30
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CNH_denounce_western_literature  }
+		completion_reward = {
+		add_ideas = {
+		CNH_communal_society
+		}
+		}
+	}
+
+	#Feminist Power
+	focus = {
+		id = CNH_feminist_power
+		icon = GFX_CNH_feminist_power-248360
+		x = 32
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = CNH_denounce_western_literature  }
+		completion_reward = {
+		add_ideas = {
+		CNH_reaching_out_to_the_opressed
+		}
+		}
+	}
+
+	#Chinese Art and Literature Association
+	focus = {
+		id = CNH_chinese_art_and_literature_association
+		icon = GFX_CNH_chinese_art_and_literature_association-248360
+		x = 30
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CNH_a_communal_society  }
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+	#Racial Equality
+	focus = {
+		id = CNH_racial_equality
+		icon = GFX_CNH_racial_equality-248360
+		x = 32
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CNH_feminist_power  }
+		completion_reward = {
+		remove_idea = {
+		CNH_reaching_out_to_the_opressed
+		}
+		add_ideas = {
+		CNH_reaching_out_to_the_opressed_2
+		}
+		}
+	}
+
+	#Expand Societal Communalism
+	focus = {
+		id = CNH_expand_societal_communalism
+		icon = GFX_CNH_expand_societal_communalism-248360
+		x = 31
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CNH_chinese_art_and_literature_association  } prerequisite = { focus = CNH_racial_equality  }
+		completion_reward = {
+		add_ideas = {
+		CNH_communal_society_2
+		}
+		}
+	}
+
+	#New Culture Movement
+	focus = {
+		id = CNH_new_culture_movement
+		icon = GFX_CNH_new_culture_movement-248360
+		x = 22
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_socialist_nationalism  }
+		completion_reward = {
+		add_ideas = {
+		CNH_new_culute_movement
+		}
+		
+		}
+	}
+
+	#Urban Marxism
+	focus = {
+		id = CNH_urban_marxism
+		icon = GFX_CNH_urban_marxism-248360
+		x = 22
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_new_culture_movement  }
+		completion_reward = {
+		add_ideas = {
+		CNH_urban_marxism
+		}
+		}
+	}
+
+	#Countryside Reformation
+	focus = {
+		id = CNH_countryside_reformation
+		icon = GFX_CNH_countryside_reformation-248360
+		x = 22
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_urban_marxism  }
+		completion_reward = {
+		add_ideas = {
+		CNH_agrarian_reform
+		}
+		}
+	}
+
+	#Red Cinema
+	focus = {
+		id = CNH_red_cinema
+		icon = GFX_CNH_red_cinema-248360
+		x = 22
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_countryside_reformation  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		
+		}
+	}
+
+	#Socialist Literature
+	focus = {
+		id = CNH_socialist_literature
+		icon = GFX_CNH_socialist_literature-248360
+		x = 22
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CNH_red_cinema  }
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+	#Red News Papers
+	focus = {
+		id = CNH_red_news_papers
+		icon = GFX_CNH_red_news_papers-248360
+		x = 22
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_socialist_literature  }
+		completion_reward = {
+		add_political_power = 100
+		}
+	}
+
+	#A Student of Lu Xun
+	focus = {
+		id = CNH_a_student_of_lu_xun
+		icon = GFX_CNH_a_student_of_lu_xun-248360
+		x = 19
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+						has_country_leader = {
+					name = "Ruo Shi"
+					ruling_only = yes
+				}
+		
+		}
+		prerequisite = { focus = CNH_victory_of_the_pen  }
+	}
+
+	#True Marxism
+	focus = {
+		id = CNH_true_marxism
+		icon = GFX_CNH_true_marxism-248360
+		x = 19
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = CNH_a_student_of_lu_xun  }
+		completion_reward = {
+		add_political_power = 10
+		}
+	}
+
+	#Legacy of the "Willing Ox"
+	focus = {
+		id = CNH_legacyofthewillingox
+		icon = GFX_CNH_legacyofthewillingox-248360
+		x = 19
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_true_marxism  }
+		completion_reward = {
+		add_ideas = {
+		CNH_willing_ox
+		
+		}
+		}
+	}
+
+	#A Dairy of a Madman
+	focus = {
+		id = CNH_a_dairy_of_a_madman
+		icon = GFX_CNH_a_dairy_of_a_madman-248360
+		x = 19
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CNH_legacyofthewillingox  }
+		completion_reward = {
+		add_ideas = {
+		CNH_mad_man
+		}
+		}
+	}
+
+	#Create the Left-wing Little League
+	focus = {
+		id = CNH_create_the_leftwing_little_league
+		icon = GFX_CNH_create_the_leftwing_little_league-248360
+		x = 18
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CNH_a_dairy_of_a_madman  }
+		completion_reward = {
+		add_manpower = 39202
+		}
+	}
+
+	#Translate Foreign Writings
+	focus = {
+		id = CNH_translate_foreign_writings
+		icon = GFX_CNH_translate_foreign_writings-248360
+		x = 20
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_a_dairy_of_a_madman  }
+		completion_reward = {
+		add_political_power = 100
+		}
+	}
+
+	#Progressive Society
+	focus = {
+		id = CNH_progressive_society
+		icon = GFX_CNH_progressive_society-248360
+		x = 18
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_create_the_leftwing_little_league  }
+		completion_reward = {
+		add_ideas = {
+		CNH_egalitariamism
+		}
+		}
+	}
+
+	#Lu Xun's Legacy
+	focus = {
+		id = CNH_luxunslegacy
+		icon = GFX_CNH_luxunslegacy-248360
+		x = 20
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_translate_foreign_writings  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		}
+	}
+
+	#Popular Marxism
+	focus = {
+		id = CNH_popular_marxism
+		icon = GFX_CNH_popular_marxism-248360
+		x = 19
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_progressive_society  } prerequisite = { focus = CNH_luxunslegacy  }
+		completion_reward = {
+		add_political_power = 125
+		add_stability = 0.1
+		}
+	}
+
+	#New Socialist Society
+	focus = {
+		id = CNH_new_socialist_society
+		icon = GFX_CNH_new_socialist_society-248360
+		x = 20
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_red_news_papers  } prerequisite = { focus = CNH_popular_marxism  }
+		completion_reward = {
+		add_ideas = {
+		CNH_new_ss_society
+		}
+		}
+	}
+
+	#New Culture, New China
+	focus = {
+		id = CNH_newculturenewchina
+		icon = GFX_CNH_newculturenewchina-248360
+		x = 25
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_radical_theory  } prerequisite = { focus = CNH_red_news_papers  focus = CNH_radical_theory  } prerequisite = { focus = CNH_local_supplies  }
+		completion_reward = {
+		add_ideas = {
+		CNH_cultural_reformation_3
+		}
+		}
+	}
+
+	#An Avant Guard Society
+	focus = {
+		id = CNH_an_avant_guard_society
+		icon = GFX_CNH_an_avant_guard_society-248360
+		x = 30
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CNH_local_supplies  } prerequisite = { focus = CNH_expand_societal_communalism  }
+		completion_reward = {
+		remove_idea = {
+		CNH_reaching_out_to_the_opressed_2
+		}
+		add_ideas = {
+		CNH_reaching_out_to_the_opressed_3
+		}
+		
+		}
+	
+	}
+
+}

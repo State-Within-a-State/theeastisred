@@ -5366,10 +5366,12 @@ QIE_zhili_manchu_war_decisions_category = {
 	QIE_assault_luoyang = { #607 heluo
 		icon = generic_prepare_civil_war
 		available = {
-			1063 = { is_demilitarized_zone = no }
-			1061 = { is_demilitarized_zone = no }
-			615 = { is_demilitarized_zone = no }
-			1060 = { is_demilitarized_zone = no }
+			hidden_trigger = {
+				1063 = { is_demilitarized_zone = no }
+				1061 = { is_demilitarized_zone = no }
+				615 = { is_demilitarized_zone = no }
+				1060 = { is_demilitarized_zone = no }
+			}
 		}
 
 		highlight_states = {
@@ -5405,7 +5407,9 @@ QIE_zhili_manchu_war_decisions_category = {
 		icon = generic_prepare_civil_war
 
 		available = {
-			607 = { is_demilitarized_zone = no }
+			hidden_trigger = {
+				607 = { is_demilitarized_zone = no }
+			}
 		}
 		highlight_states = {
 			highlight_provinces = {
@@ -5434,6 +5438,49 @@ QIE_zhili_manchu_war_decisions_category = {
 			620 = { set_demilitarized_zone = no }
 			1058 = { set_demilitarized_zone = no }
 			1059 = { set_demilitarized_zone = no }
+			add_political_power = 25
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = -0.10
+			}
+			hidden_effect = {
+				country_event = { id = qiecoup.27 }
+			}
+		}
+	}
+	QIE_secure_the_north = {
+		icon = generic_prepare_civil_war
+
+		available = {
+			hidden_trigger = {
+				799 = { is_demilitarized_zone = no }
+				620 = { is_demilitarized_zone = no }
+				1058 = { is_demilitarized_zone = no }
+				1059 = { is_demilitarized_zone = no }
+			}
+		}
+		highlight_states = {
+			highlight_provinces = {
+				611 #Chahar
+				614 #Tangshan
+			}
+		}
+		fire_only_once = yes
+		days_remove = 14
+
+		modifier = {
+			weekly_manpower = -55000
+			command_power_gain = -0.25
+		}
+
+		ai_will_do = {
+			factor = 640
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove QIE_secure_the_north"
+			611 = { set_demilitarized_zone = no }
+			614 = { set_demilitarized_zone = no }
 			add_political_power = 25
 			add_popularity = {
 				ideology = authoritarian_democrat

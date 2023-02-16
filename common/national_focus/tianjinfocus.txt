@@ -1,0 +1,1443 @@
+focus_tree = {
+	id = tianjinfocus
+	continuous_focus_position = { x = -40 y = 1570 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = TIA
+		}
+	}
+	#The  Corporate Colony
+	focus = {
+		id = TIA_thecorporatecolony
+		icon = GFX_TIA_thecorporatecolony-248360
+		x = 23
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_seize_qing_assets  } prerequisite = { focus = TIA_an_economic_recovery  }
+	}
+
+	#Two Occupying Sides
+	focus = {
+		id = TIA_two_occupying_sides
+		icon = GFX_TIA_two_occupying_sides-248360
+		x = 15
+		y = 1
+		cost = 7
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_collapse_of_the_legations  }
+		completion_reward = {
+		country_event = {
+		id = tianjin.1
+		days = 1
+		}
+		activate_mission = TIA_jap_ind_balance
+		}
+	}
+
+	#Collapse of the Legations
+	focus = {
+		id = TIA_collapse_of_the_legations
+		icon = GFX_TIA_collapse_of_the_legations-248360
+		x = 15
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		add_stability = -0.3
+		}
+	}
+
+	#Corporatism Rising
+	focus = {
+		id = TIA_corporatism_rising
+		icon = GFX_TIA_corporatism_rising-248360
+		x = 23
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_deciding_the_governor  }
+		mutually_exclusive = { focus = TIA_organize_with_the_yunting_collaborators  } mutually_exclusive = { focus = TIA_red_panasianism  }
+	}
+
+	#Japanese Occupation
+	focus = {
+		id = TIA_japanese_occupation
+		icon = GFX_TIA_japanese_occupation-248360
+		x = 20
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = TIA_two_occupying_sides  }
+	}
+
+	#Red Pan-Asianism
+	focus = {
+		id = TIA_red_panasianism
+		icon = GFX_TIA_red_panasianism-248360
+		x = 30
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_deciding_the_governor  }
+		mutually_exclusive = { focus = TIA_organize_with_the_yunting_collaborators  } mutually_exclusive = { focus = TIA_corporatism_rising  }
+	}
+
+	#Deciding the Governor
+	focus = {
+		id = TIA_deciding_the_governor
+		icon = GFX_TIA_deciding_the_governor-248360
+		x = 20
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		
+		prerequisite = { focus = TIA_japanese_occupation  }
+		completion_reward = {
+		country_event = {
+		id = tianjin.3
+		days = 1
+		}
+		}
+	}
+
+	#Organize With the Yunting Collaborators
+	focus = {
+		id = TIA_organize_with_the_yunting_collaborators
+		icon = GFX_TIA_organize_with_the_yunting_collaborators-248360
+		x = 19
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = TIA_deciding_the_governor  }
+		mutually_exclusive = { focus = TIA_corporatism_rising  } mutually_exclusive = { focus = TIA_red_panasianism  }
+	}
+
+	#Invite The Kwantung Army
+	focus = {
+		id = TIA_invite_the_kwantung_army
+		icon = GFX_TIA_invite_the_kwantung_army-248360
+		x = 17
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_organize_with_the_yunting_collaborators  }
+		completion_reward = {
+		add_stability = 0.15
+		add_war_support = -0.5
+		add_manpower = 1000
+		}
+	}
+
+	#Promote Asian Unity
+	focus = {
+		id = TIA_promote_asian_unity
+		icon = GFX_TIA_promote_asian_unity-248360
+		x = 19
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TIA_organize_with_the_yunting_collaborators  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
+	}
+
+	#Build Up Japanese Hotels
+	focus = {
+		id = TIA_build_up_japanese_hotels
+		icon = GFX_TIA_build_up_japanese_hotels-248360
+		x = 21
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_organize_with_the_yunting_collaborators  focus = TIA_corporatism_rising  }
+		completion_reward = {
+		add_building_construction = {
+			type = infrastructure
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+		}
+	}
+
+	#Controlling the Executive Yuan
+	focus = {
+		id = TIA_controlling_the_executive_yuan
+		icon = GFX_TIA_controlling_the_executive_yuan-248360
+		x = 23
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TIA_corporatism_rising  }
+		completion_reward = {
+		add_stability = 0.1
+		add_war_support = -0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.2
+		}
+		}
+	}
+
+	#Hire Union Busters
+	focus = {
+		id = TIA_hire_union_busters
+		icon = GFX_TIA_hire_union_busters-248360
+		x = 25
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_corporatism_rising  }
+		completion_reward = {
+		add_manpower = -1012
+		add_stability = -0.1
+		}
+	}
+
+	#The Brother of the Famous Writer
+	focus = {
+		id = TIA_the_brother_of_the_famous_writer
+		icon = GFX_TIA_the_brother_of_the_famous_writer-248360
+		x = 29
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_red_panasianism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		}
+	}
+
+	#Placing Forward a Chinese Tokohai
+	focus = {
+		id = TIA_placing_forward_a_chinese_tokohai
+		icon = GFX_TIA_placing_forward_a_chinese_tokohai-248360
+		x = 31
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_red_panasianism  }
+		completion_reward = {
+		set_party_name = {
+			ideology = totalist
+			name = "Dōngfāng Shèhuì"
+		}
+		}
+	}
+
+	#Hunt Down Communist Cells
+	focus = {
+		id = TIA_hunt_down_communist_cells
+		icon = GFX_TIA_hunt_down_communist_cells-248360
+		x = 31
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TIA_placing_forward_a_chinese_tokohai  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		}
+	}
+
+	#Red Corporatism
+	focus = {
+		id = TIA_red_corporatism
+		icon = GFX_TIA_red_corporatism-248360
+		x = 29
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_the_brother_of_the_famous_writer  }
+		completion_reward = {
+		add_ideas = {
+		TIA_red_corporatism
+		}
+		}
+	}
+
+	#Hunt Down Union Organisers
+	focus = {
+		id = TIA_hunt_down_union_organisers
+		icon = GFX_TIA_hunt_down_union_organisers-248360
+		x = 25
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_hire_union_busters  }
+		completion_reward = {
+		add_stability = 0.1
+		add_manpower = -1932
+		}
+	}
+
+	#Invite the Zaibatsu
+	focus = {
+		id = TIA_invite_the_zaibatsu
+		icon = GFX_TIA_invite_the_zaibatsu-248360
+		x = 23
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_controlling_the_executive_yuan  }
+		completion_reward = {
+		add_ideas = {
+		TIA_red_corporatism_2
+		}
+		}
+	}
+
+	#Establish the First Reserve Bank
+	focus = {
+		id = TIA_establish_the_first_reserve_bank
+		icon = GFX_TIA_establish_the_first_reserve_bank-248360
+		x = 21
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_build_up_japanese_hotels  }
+		completion_reward = {
+		add_ideas = {
+		TIA_first_bank
+		}
+		}
+	}
+
+	#Form the North China Transportation Company
+	focus = {
+		id = TIA_form_the_north_china_transportation_company
+		icon = GFX_TIA_form_the_north_china_transportation_company-248360
+		x = 19
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_promote_asian_unity  }
+		completion_reward = {
+		add_building_construction = {
+			type = infrastructure
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
+		}
+	}
+
+	#Anti Socialist Crackdown
+	focus = {
+		id = TIA_anti_socialist_crackdown
+		icon = GFX_TIA_anti_socialist_crackdown-248360
+		x = 17
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_invite_the_kwantung_army  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		}
+	}
+
+	#Legacy of the Tanggu Agreement
+	focus = {
+		id = TIA_legacy_of_the_tanggu_agreement
+		icon = GFX_TIA_legacy_of_the_tanggu_agreement-248360
+		x = 18
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_form_the_north_china_transportation_company  } prerequisite = { focus = TIA_anti_socialist_crackdown  }
+		completion_reward = {
+		add_political_power = -200
+		add_stability = -0.1
+		add_war_support = -0.1
+		}
+	}
+
+	#The Hebei Railway Company
+	focus = {
+		id = TIA_the_hebei_railway_company
+		icon = GFX_TIA_the_hebei_railway_company-248360
+		x = 20
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_establish_the_first_reserve_bank  }
+		completion_reward = {
+		add_building_construction = {
+			type = infrastructure
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = infrastructure
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = infrastructure
+			level = 2
+			instant_build = yes
+		}
+		}
+	}
+
+	#Invite Japanese Intellectuals
+	focus = {
+		id = TIA_invite_japanese_intellectuals
+		icon = GFX_TIA_invite_japanese_intellectuals-248360
+		x = 22
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TIA_establish_the_first_reserve_bank  }
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+	#21 Articles of Economic Prosperity
+	focus = {
+		id = TIA_21_articles_of_economic_prosperity
+		icon = GFX_TIA_21_articles_of_economic_prosperity-248360
+		x = 24
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_hunt_down_union_organisers  } prerequisite = { focus = TIA_invite_the_zaibatsu  }
+		completion_reward = {
+		add_political_power = 100
+		add_ideas = {
+		TIA_red_corporatism_3
+		}
+		}
+	}
+
+	#Dongfang Hui
+	focus = {
+		id = TIA_dongfang_hui
+		icon = GFX_TIA_dongfang_hui-248360
+		x = 30
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_hunt_down_communist_cells  } prerequisite = { focus = TIA_red_corporatism  }
+		completion_reward = {
+		add_political_power = 100
+		}
+	}
+
+	#Establish a Provisional Republic
+	focus = {
+		id = TIA_establish_a_provisional_republic
+		icon = GFX_TIA_establish_a_provisional_republic-248360
+		x = 19
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_idea = unite_china_justification_idea
+		}
+		prerequisite = { focus = TIA_an_economic_recovery  } prerequisite = { focus = TIA_entering_zhili  }
+	}
+
+	#Nakano's Socialist Theory
+	focus = {
+		id = TIA_nakanossocialisttheory
+		icon = GFX_TIA_nakanossocialisttheory-248360
+		x = 28
+		y = 8
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_dongfang_hui  }
+		mutually_exclusive = { focus = TIA_align_with_kmt_ultras  } mutually_exclusive = { focus = TIA_submittokitaspanasianism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.25
+		}
+		}
+	}
+
+	#Align With KMT Ultras
+	focus = {
+		id = TIA_align_with_kmt_ultras
+		icon = GFX_TIA_align_with_kmt_ultras-248360
+		x = 30
+		y = 8
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_dongfang_hui  }
+		mutually_exclusive = { focus = TIA_nakanossocialisttheory  } mutually_exclusive = { focus = TIA_submittokitaspanasianism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.25
+		}
+		set_politics = {
+		ruling_party = totalist
+		}
+		set_country_leader_name = {
+				ideology = totalist
+				name = "Zhou Zuoren"
+			}
+		set_country_leader_portrait = {
+			ideology = totalist
+			portrait = "gfx/leaders/TIA/Portrait_TIA_Zhou_Zouren.png"
+		}
+		}
+	}
+
+	#Submit to Kita's Pan-Asianism
+	focus = {
+		id = TIA_submittokitaspanasianism
+		icon = GFX_TIA_submittokitaspanasianism-248360
+		x = 32
+		y = 8
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_dongfang_hui  }
+		mutually_exclusive = { focus = TIA_nakanossocialisttheory  } mutually_exclusive = { focus = TIA_align_with_kmt_ultras  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.1
+		}
+	}
+
+	#Seize Qing Assets
+	focus = {
+		id = TIA_seize_qing_assets
+		icon = GFX_TIA_seize_qing_assets-248360
+		x = 24
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TIA_21_articles_of_economic_prosperity  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIE
+			}
+		}
+	}
+
+	#An Economic Recovery
+	focus = {
+		id = TIA_an_economic_recovery
+		icon = GFX_TIA_an_economic_recovery-248360
+		x = 21
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_the_hebei_railway_company  } prerequisite = { focus = TIA_invite_japanese_intellectuals  }
+		completion_reward = {
+		add_stability = 0.25
+		}
+	}
+
+	#Entering Zhili
+	focus = {
+		id = TIA_entering_zhili
+		icon = GFX_TIA_entering_zhili-248360
+		x = 18
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TIA_legacy_of_the_tanggu_agreement  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIE
+			}
+		}
+	}
+
+	#Uniting China
+	focus = {
+		id = TIA_uniting_china
+		icon = GFX_TIA_uniting_china-248360
+		x = 29
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TIA_align_with_kmt_ultras  focus = TIA_nakanossocialisttheory  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIE
+			}
+		}
+	}
+
+	#Securing the North China Plain
+	focus = {
+		id = TIA_securing_the_north_china_plain
+		icon = GFX_TIA_securing_the_north_china_plain-248360
+		x = 32
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TIA_submittokitaspanasianism  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIE
+			}
+		}
+	}
+
+	#A State of Independence
+	focus = {
+		id = TIA_a_state_of_independence
+		icon = GFX_TIA_a_state_of_independence-248360
+		x = 8
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = TIA_two_occupying_sides  }
+	}
+
+	#The Son of the Father
+	focus = {
+		id = TIA_the_son_of_the_father
+		icon = GFX_TIA_the_son_of_the_father-248360
+		x = 12
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_government = totalist
+		}
+		prerequisite = { focus = TIA_a_state_of_independence  }
+		completion_reward = {
+		add_political_power = 100
+		}
+	}
+
+	#Following the Chinese Lenin
+	focus = {
+		id = TIA_following_the_chinese_lenin
+		icon = GFX_TIA_following_the_chinese_lenin-248360
+		x = 12
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TIA_the_son_of_the_father  }
+		completion_reward = {
+		add_ideas = {
+		TIA_son_china_lenin
+		}
+		}
+	}
+
+	#Killing Reactionaries
+	focus = {
+		id = TIA_killing_reactionaries
+		icon = GFX_TIA_killing_reactionaries-248360
+		x = 11
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_following_the_chinese_lenin  }
+		completion_reward = {
+		add_manpower = -5000
+		}
+	}
+
+	#Forming a New Culture
+	focus = {
+		id = TIA_forming_a_new_culture
+		icon = GFX_TIA_forming_a_new_culture-248360
+		x = 14
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TIA_following_the_chinese_lenin  }
+		completion_reward = {
+		add_ideas = {
+		CNH_cultural_reformation_2
+		}
+		}
+	}
+
+	#Policy on the Land
+	focus = {
+		id = TIA_policy_on_the_land
+		icon = GFX_TIA_policy_on_the_land-248360
+		x = 15
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_forming_a_new_culture  }
+		completion_reward = {
+		add_ideas = {
+		CNH_agrarian_reform
+		}
+		}
+	}
+
+	#Inter-revolutionary Capitalism
+	focus = {
+		id = TIA_interrevolutionary_capitalism
+		icon = GFX_TIA_interrevolutionary_capitalism-248360
+		x = 12
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_killing_reactionaries  } prerequisite = { focus = TIA_forming_a_new_culture  }
+		completion_reward = {
+		add_ideas = {
+		CNH_limited_market_syndicalism
+		}
+		}
+	}
+
+	#The Chinese October
+	focus = {
+		id = TIA_the_chinese_october
+		icon = GFX_TIA_the_chinese_october-248360
+		x = 15
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TIA_policy_on_the_land  }
+		completion_reward = {
+		add_stability = 0.1
+		}
+	}
+
+	#Presenting New Education Opportunities
+	focus = {
+		id = TIA_presenting_new_education_opportunities
+		icon = GFX_TIA_presenting_new_education_opportunities-248360
+		x = 13
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TIA_interrevolutionary_capitalism  }
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+	#Attacking Syndicalist Revisionists
+	focus = {
+		id = TIA_attacking_syndicalist_revisionists
+		icon = GFX_TIA_attacking_syndicalist_revisionists-248360
+		x = 11
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_killing_reactionaries  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_manpower = -3000
+		}
+	}
+
+	#Nationalization of the Foreign Legations
+	focus = {
+		id = TIA_nationalization_of_the_foreign_legations
+		icon = GFX_TIA_nationalization_of_the_foreign_legations-248360
+		x = 13
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_presenting_new_education_opportunities  }
+		completion_reward = {
+		add_ideas = {
+		CNH_communal_society
+		}
+		}
+	}
+
+	#Preparing For Battle
+	focus = {
+		id = TIA_preparing_for_battle
+		icon = GFX_TIA_preparing_for_battle-248360
+		x = 15
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_OCCUPATION_COST
+		}
+		prerequisite = { focus = TIA_the_chinese_october  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
+	}
+
+	#Underground Uprisings
+	focus = {
+		id = TIA_underground_uprisings
+		icon = GFX_TIA_underground_uprisings-248360
+		x = 15
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_nationalization_of_the_foreign_legations  } prerequisite = { focus = TIA_preparing_for_battle  }
+		completion_reward = {
+		load_oob = "LEC - Revolution2"
+		}
+	}
+
+	#In Memory of the Martyr
+	focus = {
+		id = TIA_in_memory_of_the_martyr
+		icon = GFX_TIA_in_memory_of_the_martyr-248360
+		x = 11
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TIA_attacking_syndicalist_revisionists  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
+	}
+
+	#Alliance With the Red Spear Society
+	focus = {
+		id = TIA_alliance_with_the_red_spear_society
+		icon = GFX_TIA_alliance_with_the_red_spear_society-248360
+		x = 10
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_in_memory_of_the_martyr  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		}
+	}
+
+	#Building the People's Militia
+	focus = {
+		id = TIA_buildingthepeoplesmilitia
+		icon = GFX_TIA_buildingthepeoplesmilitia-248360
+		x = 12
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_underground_uprisings  } prerequisite = { focus = TIA_in_memory_of_the_martyr  }
+		completion_reward = {
+		add_ideas = {
+		CNH_attack_the_cap
+		}
+		}
+	}
+
+	#Alliance With the Shanghai Leftists
+	focus = {
+		id = TIA_alliance_with_the_shanghai_leftists
+		icon = GFX_TIA_alliance_with_the_shanghai_leftists-248360
+		x = 14
+		y = 10
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_underground_uprisings  }
+		mutually_exclusive = { focus = TIA_denounce_the_faux_socialists  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		}
+	}
+
+	#Denounce the Faux Socialists
+	focus = {
+		id = TIA_denounce_the_faux_socialists
+		icon = GFX_TIA_denounce_the_faux_socialists-248360
+		x = 16
+		y = 10
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIA_underground_uprisings  }
+		mutually_exclusive = { focus = TIA_alliance_with_the_shanghai_leftists  }
+		completion_reward = {
+		add_manpower = -1022
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		}
+	}
+
+	#Starting the National Revolution!
+	focus = {
+		id = TIA_startingthenationalrevolution
+		icon = GFX_TIA_startingthenationalrevolution-248360
+		x = 13
+		y = 11
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TIA_alliance_with_the_red_spear_society  } prerequisite = { focus = TIA_buildingthepeoplesmilitia  } prerequisite = { focus = TIA_alliance_with_the_shanghai_leftists  focus = TIA_alliance_with_the_red_spear_society  } prerequisite = { focus = TIA_buildingthepeoplesmilitia  } prerequisite = { focus = TIA_denounce_the_faux_socialists  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = QIE
+		}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FNG
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = MON
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = XSM
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SHX
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ETS
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SIK
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TAN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TIB
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SQI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SZC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = YUN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HNN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GXC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CHI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ANQ
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HKP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CNH
+			}
+			set_country_flag = not_china_republic
+		}
+	}
+
+	#Declaring In His Name
+	focus = {
+		id = TIA_declaring_in_his_name
+		icon = GFX_TIA_declaring_in_his_name-248360
+		x = 13
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		owns_state = 608
+		}
+		prerequisite = { focus = TIA_startingthenationalrevolution  }
+		completion_reward = {
+		set_cosmetic_tag = TIA_SOCREP
+		}
+	}
+
+	#The Sand Spreads Across the City
+	focus = {
+		id = TIA_the_sand_spreads_across_the_city
+		icon = GFX_TIA_the_sand_spreads_across_the_city-248360
+		x = 5
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_government = paternal_autocrat
+		}
+		prerequisite = { focus = TIA_a_state_of_independence  }
+	}
+
+	#Split From the Red Spears
+	focus = {
+		id = TIA_split_from_the_red_spears
+		icon = GFX_TIA_split_from_the_red_spears-248360
+		x = 5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_the_sand_spreads_across_the_city  }
+		completion_reward = {
+		add_manpower = -1022
+		add_popularity = {
+		ideology = totalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		}
+	}
+
+	#Restoring the Yellow Mandate
+	focus = {
+		id = TIA_restoring_the_yellow_mandate
+		icon = GFX_TIA_restoring_the_yellow_mandate-248360
+		x = 4
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TIA_split_from_the_red_spears  }
+		completion_reward = {
+		add_ideas = {
+		TIA_syellow_mandate
+		}
+		}
+	}
+
+	#Rebirth of Feudal Society
+	focus = {
+		id = TIA_rebirth_of_feudal_society
+		icon = GFX_TIA_rebirth_of_feudal_society-248360
+		x = 6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TIA_split_from_the_red_spears  }
+		completion_reward = {
+		add_stability = 0.15
+		}
+	}
+
+	#Denounce the Foreign Posers
+	focus = {
+		id = TIA_denounce_the_foreign_posers
+		icon = GFX_TIA_denounce_the_foreign_posers-248360
+		x = 7
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TIA_rebirth_of_feudal_society  }
+		completion_reward = {
+		add_war_support = 0.25
+		}
+	}
+
+	#Preparing For the National Reclamation
+	focus = {
+		id = TIA_preparing_for_the_national_reclamation
+		icon = GFX_TIA_preparing_for_the_national_reclamation-248360
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIA_restoring_the_yellow_mandate  } prerequisite = { focus = TIA_rebirth_of_feudal_society  }
+		completion_reward = {
+		load_oob = "LEC - Revolution2"
+		}
+	}
+
+	#Expand the Rice Farms
+	focus = {
+		id = TIA_expand_the_rice_farms
+		icon = GFX_TIA_expand_the_rice_farms-248360
+		x = 3
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_restoring_the_yellow_mandate  }
+		completion_reward = {
+		add_ideas = {
+		TIA_rice_farm_expansion
+		}
+		}
+	}
+
+	#Win Over the Peasants
+	focus = {
+		id = TIA_win_over_the_peasants
+		icon = GFX_TIA_win_over_the_peasants-248360
+		x = 4
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TIA_preparing_for_the_national_reclamation  } prerequisite = { focus = TIA_expand_the_rice_farms  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_stability = 0.1
+		}
+	}
+
+	#Loot the Legation Quarters
+	focus = {
+		id = TIA_loot_the_legation_quarters
+		icon = GFX_TIA_loot_the_legation_quarters-248360
+		x = 7
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIA_denounce_the_foreign_posers  }
+		completion_reward = {
+		add_stability = -0.25
+		add_ideas = {
+		TIA_red_corporatism_4
+		}
+		}
+	}
+
+	#Start the Anti Manchu Revolution!
+	focus = {
+		id = TIA_starttheantimanchurevolution
+		icon = GFX_TIA_starttheantimanchurevolution-248360
+		x = 6
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TIA_win_over_the_peasants  } prerequisite = { focus = TIA_loot_the_legation_quarters  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = QIE
+		}
+		}
+	}
+
+	#Secret Landlord Negotiations
+	focus = {
+		id = TIA_secret_landlord_negotiations
+		icon = GFX_TIA_secret_landlord_negotiations-248360
+		x = 4
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TIA_win_over_the_peasants  } prerequisite = { focus = TIA_loot_the_legation_quarters  }
+		completion_reward = {
+		add_stability = 0.1
+		add_war_support = -0.1
+		}
+	}
+
+	#The Dragon Crushes the Devils!
+	focus = {
+		id = TIA_thedragoncrushesthedevils
+		icon = GFX_TIA_thedragoncrushesthedevils-248360
+		x = 5
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TIA_starttheantimanchurevolution  } prerequisite = { focus = TIA_secret_landlord_negotiations  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FNG
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = MON
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = XSM
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SHX
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ETS
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SIK
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TAN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TIB
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SQI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SZC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = YUN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HNN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GXC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEC
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CHI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ANQ
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HKP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CNH
+			}
+			set_country_flag = not_china_republic
+		}
+	}
+
+	#Claiming Divinity Under Heaven
+	focus = {
+		id = TIA_claiming_divinity_under_heaven
+		icon = GFX_TIA_claiming_divinity_under_heaven-248360
+		x = 5
+		y = 10
+		cost = 18
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		owns_state = 608
+		}
+		prerequisite = { focus = TIA_thedragoncrushesthedevils  }
+		completion_reward = {
+		set_cosmetic_tag = TIA_MING
+		}
+	}
+
+}

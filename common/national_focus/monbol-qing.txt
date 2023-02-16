@@ -81,10 +81,8 @@ focus_tree = {
 		prerequisite = { focus = QIE_the_red_court  } prerequisite = { focus = QIE_the_league_of_yellow_dragons  }
 		completion_reward = {
 		add_popularity = {
-		ideology = totalist
-		popularity = 0.2
-		
-	
+			ideology = totalist
+			popularity = 0.2
 			}
 		}
 	}
@@ -123,19 +121,28 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIE_the_red_court  }
 		completion_reward = {
-		
-		add_building_construction = {
-			type = arms_factory
-			level = 2
-			instant_build = yes
-		}
-		add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
 			}
-		
-		
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 
@@ -207,25 +214,48 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIE_new_five_year_plans  } prerequisite = { focus = QIE_the_royal_education  }
 		completion_reward = {
-		
-		add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
-			
-			add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
-			add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = infrastructure
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
 			}
-		
-		
 		}
 	}
 
@@ -239,7 +269,8 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = QIE_integration_with_the_csp  } prerequisite = { focus = QIE_follow_the_mladrossi_idea  focus = QIE_follow_the_mladrossi_idea  } prerequisite = { focus = QIE_attacking_revisionism  }
+		prerequisite = { focus = QIE_integration_with_the_csp focus = QIE_attacking_revisionism} 
+		prerequisite = { focus = QIE_follow_the_mladrossi_idea }
 		completion_reward = {
 		add_political_power = 100
 		
