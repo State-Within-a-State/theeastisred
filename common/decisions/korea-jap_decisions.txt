@@ -1,0 +1,159 @@
+################################
+# Japan Decisions
+################################
+# By Zankoas and The Alpha Dog
+################################
+
+KOR_uprising_category = {
+	KOR_the_greater_uprising_mission = {
+		name = KOR_the_greater_uprising
+		icon = revolt
+		priority = 1000
+
+		visible = {
+	KOR = {
+			has_idea = KOR_japanese_lapdogs
+			
+			}
+	
+	}
+		
+		allowed = {
+			OR = {
+				tag = KOR
+				tag = JAP
+			}
+		}
+
+		available = {
+			KOR = {
+			has_idea = {
+			KOR_japanese_lapdogs
+			}
+			}
+		}
+
+		activation = {
+		
+			
+			KOR = {
+			is_puppet_of = JAP
+			has_idea = KOR_japanese_lapdogs
+			
+			}
+		}
+
+		days_mission_timeout = 500
+		is_good = no
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_fading_sun_mission"
+			country_event = {
+			id = koreauprising.0
+			days = 1
+			}
+		}
+
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancelled JAP_fading_sun_mission"
+			clr_global_flag = JAP_speed_up_collapse
+		}
+	}
+	
+	KOR_secret_rebel_funding = {
+		allowed = {
+			original_tag = KOR
+		}
+		available = {
+			has_idea = KOR_japanese_lapdogs
+			has_country_leader = {
+				ruling_only = yes
+				name = "Park Chunghee"
+			}
+		}
+		visible = {
+			has_idea = KOR_japanese_lapdogs
+			
+		}
+		days_remove = 10
+		fire_only_once = no
+		cost = 100
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision AOG_give_guns_to_lep"
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -100
+				producer = JAP
+			}
+			add_days_mission_timeout = {
+					mission = KOR_the_greater_uprising_mission
+					days = -20
+				}
+		}
+	}
+	
+	KOR_use_the_kempeitai = {
+		allowed = {
+			original_tag = KOR
+		}
+		available = {
+			has_idea = KOR_japanese_lapdogs
+			has_country_leader = {
+				ruling_only = yes
+				name = "Jiro Minami"
+			}
+		}
+		visible = {
+			has_idea = KOR_japanese_lapdogs
+			
+		}
+		days_remove = 10
+		fire_only_once = no
+		cost = 100
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision AOG_give_guns_to_lep"
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 10
+				producer = JAP
+			}
+			add_days_mission_timeout = {
+					mission = KOR_the_greater_uprising_mission
+					days = 20
+				}
+		}
+	}
+	
+	
+	KOR_encourage_national_integration = {
+		allowed = {
+			original_tag = KOR
+		}
+		available = {
+			has_idea = KOR_japanese_lapdogs
+			has_country_leader = {
+				ruling_only = yes
+				name = "Hong Sa-Ik"
+			}
+		}
+		visible = {
+			has_idea = KOR_japanese_lapdogs
+			
+		}
+		days_remove = 10
+		fire_only_once = no
+		cost = 100
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision AOG_give_guns_to_lep"
+			add_stability = 0.1
+			add_days_mission_timeout = {
+					mission = KOR_the_greater_uprising_mission
+					days = 10
+				}
+		}
+	}
+}
+
+
+
+
