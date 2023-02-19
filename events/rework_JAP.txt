@@ -292,33 +292,55 @@ country_event = { #Tōhōkai Take Over in Japan
 	}
 }
 
-country_event = { #
+country_event = { #Minseito May 15th Incident
 	id = rework_japan.8
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.8"}
-	title = rework_japan.8.title
+	title = "The May 15th Incident"
 	desc = rework_japan.8.desc
-	#picture = 
+	picture = "GFX_report_event_JAP_coup"
 	
 	is_triggered_only = yes
+	trigger = {
+		OR = {
+			has_country_flag = JAP_minseito_won_in_1936
+		}
+	}
 	option = { #
 		name = rework_japan.8.a
 		ai_chance = { base = 100 }
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_Hamaguchi_Osachi_hog_mli
 		
 	}
 }
 
-country_event = { #
+country_event = { #Syndicalist Socdem
 	id = rework_japan.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.9"}
-	title = rework_japan.9.title
+	title = "A Nation On Strike"
 	desc = rework_japan.9.desc
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	trigger = {
+		OR = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936
+			has_country_flag = JAP_rodo_nominto_won_in_1936
+		}
+	}
+	option = { #Revolution!
 		name = rework_japan.9.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			has_country_flag = JAP_rodo_nominto_won_in_1936		
+			}
+	}
+	option = { #Stop the Strikes
+		name = rework_japan.9.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936		
+			}
 	}
 }
 
