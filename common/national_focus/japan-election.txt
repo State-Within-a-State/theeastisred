@@ -1,0 +1,460 @@
+focus_tree = {
+	id = japan-election
+	continuous_focus_position = { x = -40 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = JAP
+		}
+	}
+	#1936 Elections
+	focus = {
+		id = JAP_ELECTION_1936_elections
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		x = 15
+		y = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#Machida's Victory
+	focus = {
+		id = JAP_ELECTION_machidasvictory
+		icon = GFX_JAP_ELECTION_machidasvictory-248360
+		x = 13
+		y = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_1936_elections  }
+	}
+
+	#Status Quo
+	focus = {
+		id = JAP_ELECTION_status_quo
+		icon = GFX_JAP_ELECTION_status_quo-248360
+		x = 17
+		y = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_1936_elections  }
+	}
+
+	#Iso's Win
+	focus = {
+		id = JAP_ELECTION_isoswin
+		icon = GFX_JAP_ELECTION_isoswin-248360
+		x = 21
+		y = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_1936_elections  }
+	}
+
+	#Ronoto Victory
+	focus = {
+		id = JAP_ELECTION_ronoto_victory
+		icon = GFX_JAP_ELECTION_ronoto_victory-248360
+		x = 27
+		y = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_1936_elections  }
+	}
+
+	#Kenzo's Victory
+	focus = {
+		id = JAP_ELECTION_kenzosvictory
+		icon = GFX_JAP_ELECTION_kenzosvictory-248360
+		x = 9
+		y = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_1936_elections  }
+	}
+
+	#Tokohai Victory
+	focus = {
+		id = JAP_ELECTION_tokohai_victory
+		icon = GFX_JAP_ELECTION_tokohai_victory-248360
+		x = 4
+		y = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_1936_elections  }
+	}
+
+	#A Nation of Equals
+	focus = {
+		id = JAP_ELECTION_a_nation_of_equals
+		icon = GFX_JAP_ELECTION_a_nation_of_equals-248360
+		x = 3
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_tokohai_victory  }
+	}
+
+	#Invite the Social Democracts
+	focus = {
+		id = JAP_ELECTION_invite_the_social_democracts
+		icon = GFX_JAP_ELECTION_invite_the_social_democracts-248360
+		x = 5
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_tokohai_victory  }
+	}
+
+	#Embrace Dirigism
+	focus = {
+		id = JAP_ELECTION_embrace_dirigism
+		icon = GFX_JAP_ELECTION_embrace_dirigism-248360
+		x = 9
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_kenzosvictory  }
+	}
+
+	#Embrace Democratization
+	focus = {
+		id = JAP_ELECTION_embrace_democratization
+		icon = GFX_JAP_ELECTION_embrace_democratization-248360
+		x = 13
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAP_ELECTION_machidasvictory  }
+		mutually_exclusive = { focus = JAP_ELECTION_continue_militarist_expansion  }
+	}
+
+	#Continue Militarist Expansion
+	focus = {
+		id = JAP_ELECTION_continue_militarist_expansion
+		icon = GFX_JAP_ELECTION_continue_militarist_expansion-248360
+		x = 15
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_status_quo  focus = JAP_ELECTION_machidasvictory  }
+		mutually_exclusive = { focus = JAP_ELECTION_embrace_democratization  } mutually_exclusive = { focus = JAP_ELECTION_reaffirm_zaibatsu_ties  }
+	}
+
+	#Re-Affirm Zaibatsu Ties
+	focus = {
+		id = JAP_ELECTION_reaffirm_zaibatsu_ties
+		icon = GFX_JAP_ELECTION_reaffirm_zaibatsu_ties-248360
+		x = 17
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = JAP_ELECTION_status_quo  }
+		mutually_exclusive = { focus = JAP_ELECTION_continue_militarist_expansion  }
+	}
+
+	#Propose Electoral Reform
+	focus = {
+		id = JAP_ELECTION_propose_electoral_reform
+		icon = GFX_JAP_ELECTION_propose_electoral_reform-248360
+		x = 20
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_isoswin  }
+	}
+
+	#Support Universal Suffrage
+	focus = {
+		id = JAP_ELECTION_support_universal_suffrage
+		icon = GFX_JAP_ELECTION_support_universal_suffrage-248360
+		x = 22
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAP_ELECTION_isoswin  focus = JAP_ELECTION_ronoto_victory  }
+	}
+
+	#Denounce Militarist Aggression
+	focus = {
+		id = JAP_ELECTION_denounce_militarist_aggression
+		icon = GFX_JAP_ELECTION_denounce_militarist_aggression-248360
+		x = 24
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAP_ELECTION_isoswin  focus = JAP_ELECTION_ronoto_victory  }
+	}
+
+	#Reach Out to the Unions
+	focus = {
+		id = JAP_ELECTION_reach_out_to_the_unions
+		icon = GFX_JAP_ELECTION_reach_out_to_the_unions-248360
+		x = 26
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAP_ELECTION_ronoto_victory  focus = JAP_ELECTION_isoswin  }
+	}
+
+	#Educate the Peasants
+	focus = {
+		id = JAP_ELECTION_educate_the_peasants
+		icon = GFX_JAP_ELECTION_educate_the_peasants-248360
+		x = 28
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = JAP_ELECTION_ronoto_victory  }
+	}
+
+	#Strike For Katayama
+	focus = {
+		id = JAP_ELECTION_strike_for_katayama
+		icon = GFX_JAP_ELECTION_strike_for_katayama-248360
+		x = 27
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_support_universal_suffrage  } prerequisite = { focus = JAP_ELECTION_denounce_militarist_aggression  } prerequisite = { focus = JAP_ELECTION_reach_out_to_the_unions  } prerequisite = { focus = JAP_ELECTION_educate_the_peasants  }
+	}
+
+	#Denounce Katayama Radicalism
+	focus = {
+		id = JAP_ELECTION_denounce_katayama_radicalism
+		icon = GFX_JAP_ELECTION_denounce_katayama_radicalism-248360
+		x = 21
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_propose_electoral_reform  } prerequisite = { focus = JAP_ELECTION_support_universal_suffrage  } prerequisite = { focus = JAP_ELECTION_denounce_militarist_aggression  } prerequisite = { focus = JAP_ELECTION_reach_out_to_the_unions  }
+	}
+
+	#Unite the Party
+	focus = {
+		id = JAP_ELECTION_unite_the_party
+		icon = GFX_JAP_ELECTION_unite_the_party-248360
+		x = 18
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_reaffirm_zaibatsu_ties  focus = JAP_ELECTION_continue_militarist_expansion  }
+	}
+
+	#Denounce the Liberals
+	focus = {
+		id = JAP_ELECTION_denounce_the_liberals
+		icon = GFX_JAP_ELECTION_denounce_the_liberals-248360
+		x = 16
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_continue_militarist_expansion  focus = JAP_ELECTION_reaffirm_zaibatsu_ties  }
+	}
+
+	#Anti Seiyukai Squabbles
+	focus = {
+		id = JAP_ELECTION_anti_seiyukai_squabbles
+		icon = GFX_JAP_ELECTION_anti_seiyukai_squabbles-248360
+		x = 14
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_embrace_democratization  focus = JAP_ELECTION_continue_militarist_expansion  }
+	}
+
+	#Regulate the Zaibatsu
+	focus = {
+		id = JAP_ELECTION_regulate_the_zaibatsu
+		icon = GFX_JAP_ELECTION_regulate_the_zaibatsu-248360
+		x = 12
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = JAP_ELECTION_continue_militarist_expansion  focus = JAP_ELECTION_embrace_democratization  }
+	}
+
+	#The Hand of the Tokohai
+	focus = {
+		id = JAP_ELECTION_the_hand_of_the_tokohai
+		icon = GFX_JAP_ELECTION_the_hand_of_the_tokohai-248360
+		x = 10
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_embrace_dirigism  }
+	}
+
+	#Support the Military Expansionism
+	focus = {
+		id = JAP_ELECTION_support_the_military_expansionism
+		icon = GFX_JAP_ELECTION_support_the_military_expansionism-248360
+		x = 8
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAP_ELECTION_embrace_dirigism  }
+	}
+
+	#Procure Statist Economics
+	focus = {
+		id = JAP_ELECTION_procure_statist_economics
+		icon = GFX_JAP_ELECTION_procure_statist_economics-248360
+		x = 6
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = JAP_ELECTION_a_nation_of_equals  } prerequisite = { focus = JAP_ELECTION_invite_the_social_democracts  }
+	}
+
+	#Align With Kita
+	focus = {
+		id = JAP_ELECTION_align_with_kita
+		icon = GFX_JAP_ELECTION_align_with_kita-248360
+		x = 4
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_a_nation_of_equals  } prerequisite = { focus = JAP_ELECTION_invite_the_social_democracts  }
+	}
+
+	#Anti-European Superiority
+	focus = {
+		id = JAP_ELECTION_antieuropean_superiority
+		icon = GFX_JAP_ELECTION_antieuropean_superiority-248360
+		x = 2
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAP_ELECTION_a_nation_of_equals  } prerequisite = { focus = JAP_ELECTION_invite_the_social_democracts  }
+	}
+
+	#Looking Forward on Japanese Democracy
+	focus = {
+		id = JAP_ELECTION_looking_forward_on_japanese_democracy
+		icon = GFX_JAP_ELECTION_looking_forward_on_japanese_democracy-248360
+		x = 4
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_procure_statist_economics  } prerequisite = { focus = JAP_ELECTION_align_with_kita  } prerequisite = { focus = JAP_ELECTION_antieuropean_superiority  }
+	}
+
+	#The Sun Rises For His Glory
+	focus = {
+		id = JAP_ELECTION_the_sun_rises_for_his_glory
+		icon = GFX_JAP_ELECTION_the_sun_rises_for_his_glory-248360
+		x = 9
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_the_hand_of_the_tokohai  } prerequisite = { focus = JAP_ELECTION_support_the_military_expansionism  }
+	}
+
+	#The Union Hunt Down
+	focus = {
+		id = JAP_ELECTION_the_union_hunt_down
+		icon = GFX_JAP_ELECTION_the_union_hunt_down-248360
+		x = 15
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_anti_seiyukai_squabbles  } prerequisite = { focus = JAP_ELECTION_regulate_the_zaibatsu  } prerequisite = { focus = JAP_ELECTION_continue_militarist_expansion  focus = JAP_ELECTION_unite_the_party  } prerequisite = { focus = JAP_ELECTION_denounce_the_liberals  } prerequisite = { focus = JAP_ELECTION_continue_militarist_expansion  }
+	}
+
+	#Question of the Revolution
+	focus = {
+		id = JAP_ELECTION_question_of_the_revolution
+		icon = GFX_JAP_ELECTION_question_of_the_revolution-248360
+		x = 24
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_denounce_militarist_aggression  }
+	}
+
+	#Lets Do Our Best!
+	focus = {
+		id = JAP_ELECTION_letsdoourbest
+		icon = GFX_JAP_ELECTION_letsdoourbest-248360
+		x = 24
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_strike_for_katayama  } prerequisite = { focus = JAP_ELECTION_question_of_the_revolution  focus = JAP_ELECTION_denounce_katayama_radicalism  } prerequisite = { focus = JAP_ELECTION_question_of_the_revolution  }
+	}
+
+	#May 15th Incident
+	focus = {
+		id = JAP_ELECTION_may_15th_incident
+		icon = GFX_JAP_ELECTION_may_15th_incident-248360
+		x = 15
+		y = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_ELECTION_letsdoourbest  focus = JAP_ELECTION_the_union_hunt_down  focus = JAP_ELECTION_the_sun_rises_for_his_glory  focus = JAP_ELECTION_looking_forward_on_japanese_democracy  }
+	}
+
+}
