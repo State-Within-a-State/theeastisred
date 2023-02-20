@@ -310,6 +310,12 @@ country_event = { #Minseito May 15th Incident
 		ai_chance = { base = 100 }
 		remove_ideas_with_trait = head_of_government
 		add_ideas = JAP_Hamaguchi_Osachi_hog_mli
+		create_country_leader = {
+				name = "Hamaguchi Osachi"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hamaguchi_Osachi.png"
+				expire = "1965.1.1"
+				ideology = liberal_conservative_subtype
+			}
 		
 	}
 }
@@ -347,13 +353,18 @@ country_event = { #Syndicalist Socdem
 country_event = { #
 	id = rework_japan.10
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.10"}
-	title = rework_japan.10.title
+	title = "May 15th Incident"
 	desc = rework_japan.10.desc
 	#picture = 
-	
+	trigger = {
+		OR = {
+			has_country_flag = JAP_showakai_won_in_1936
+			has_country_flag = JAP_tokohai_won_in_1936
+		}
+	}
 	is_triggered_only = yes
 	option = { #
-		name = rework_japan.10.a
+		name = rework_japan.8.a
 		ai_chance = { base = 100 }
 		
 	}
