@@ -325,7 +325,7 @@ country_event = { #Syndicalist Socdem
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.9"}
 	title = "A Nation On Strike"
 	desc = rework_japan.9.desc
-	#picture = 
+	picture = "GFX_report_event_JAP_revolution_strike_1"
 	
 	is_triggered_only = yes
 	trigger = {
@@ -340,6 +340,20 @@ country_event = { #Syndicalist Socdem
 		trigger = {
 			has_country_flag = JAP_rodo_nominto_won_in_1936		
 			}
+		custom_effect_tooltip = japan_civil_war_tt
+		hidden_effect = {
+		country_event = {
+		id = rework_japan.11
+		days = 3
+		}
+		JSR = {
+		add_state_core = 533
+		add_state_core = 534
+		add_state_core = 535
+		add_state_core = 536
+		set_cosmetic_tag = JSR_Kodoha_army
+		}
+		}
 	}
 	option = { #Stop the Strikes
 		name = rework_japan.9.b
@@ -355,7 +369,7 @@ country_event = { #
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.10"}
 	title = "May 15th Incident"
 	desc = rework_japan.10.desc
-	#picture = 
+	picture = "GFX_report_event_JAP_coup"
 	trigger = {
 		OR = {
 			has_country_flag = JAP_showakai_won_in_1936
@@ -373,13 +387,18 @@ country_event = { #
 country_event = { #
 	id = rework_japan.11
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.11"}
-	title = rework_japan.11.title
+	title = "Strikes Turn Violent"
 	desc = rework_japan.11.desc
-	#picture = 
+	picture = "GFX_report_event_JAP_revolution_strike_1"
 	
 	is_triggered_only = yes
 	option = { #
 		name = rework_japan.11.a
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = rework_japan.11.b
 		ai_chance = { base = 100 }
 		
 	}
