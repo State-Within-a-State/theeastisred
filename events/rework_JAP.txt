@@ -346,18 +346,50 @@ country_event = { #Syndicalist Socdem
 		id = rework_japan.11
 		days = 3
 		}
+		remove_ideas = {
+		JAP_rising_sun_idea_1
+		JAP_narrow_rail
+		JAP_bad_land
+		JAP_no_army_focus
+		FNG_mantetsu_profits
+		JAP_naval_army_comp
+		JAP_emperor_hirohito
+		}
 		set_politics = {
 			ruling_party = syndicalist
 			last_election = "1932.2.20"
 			election_frequency = 48
 			elections_allowed = no
 		}
+		set_cosmetic_tag = JAP_RED
 		JSR = {
 		add_state_core = 533
 		add_state_core = 534
 		add_state_core = 535
 		add_state_core = 536
 		set_cosmetic_tag = JSR_Kodoha_army
+		}
+		KYU = {
+		add_state_core = 528
+		set_cosmetic_tag = KYU_control_army
+		create_country_leader = {
+			name = "Seigo Nakano"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Seigo_Nakano_2.png"
+			expire = "1965.1.1"
+			ideology = natsynd_subtype
+			}
+		create_country_leader = {
+			name = "Tetsuzan Nagata"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Nagata_Tetsuzan.png"
+			expire = "1965.1.1"
+			ideology = junta_subtype
+			}
+		create_country_leader = {
+			name = "Hideki Tojo"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hideki_Tojo.png"
+			expire = "1965.1.1"
+			ideology = militarism_subtype
+			}
 		}
 		}
 	}
@@ -394,7 +426,30 @@ country_event = { #
 	id = rework_japan.11
 	immediate = {
 	log = "[GetDateText]: [Root.GetName]: event rework_japan.11"
+	hidden_effect = {
 	release = JSR
+	release = KYU
+	KYU = {
+	set_politics = {
+			ruling_party = paternal_autocrat
+			last_election = "1930.11.9"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			totalist = 20
+			radical_socialist = 5
+			syndicalist = 0
+			social_democrat = 5
+			social_liberal = 0
+			market_liberal = 0
+			social_conservative = 5
+			authoritarian_democrat = 5
+			paternal_autocrat = 30
+			national_populist = 30
+		}
+	}
+	}
 	}
 	title = "Strikes Turn Violent"
 	desc = rework_japan.11.desc
@@ -408,6 +463,11 @@ country_event = { #
 	}
 	option = { #
 		name = rework_japan.11.b
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = rework_japan.11.c
 		ai_chance = { base = 100 }
 		
 	}
