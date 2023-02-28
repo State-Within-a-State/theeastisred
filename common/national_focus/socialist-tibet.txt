@@ -1,0 +1,366 @@
+focus_tree = {
+	id = socialist-tibet
+	continuous_focus_position = { x = -40 y = 1570 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = TIB
+		}
+	}
+	#The Red Sun Shines Over Tibet
+	focus = {
+		id = TIB_the_red_sun_shines_over_tibet
+		icon = GFX_TIB_the_red_sun_shines_over_tibet-248360
+		x = 5
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#Question of the Monasteries
+	focus = {
+		id = TIB_question_of_the_monasteries
+		icon = GFX_TIB_question_of_the_monasteries-248360
+		x = 3
+		y = 1
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIB_the_red_sun_shines_over_tibet  }
+	}
+
+	#Freeing the Surfs
+	focus = {
+		id = TIB_freeing_the_surfs
+		icon = GFX_TIB_freeing_the_surfs-248360
+		x = 7
+		y = 1
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIB_the_red_sun_shines_over_tibet  }
+	}
+
+	#Reforming the Lands
+	focus = {
+		id = TIB_reforming_the_lands
+		icon = GFX_TIB_reforming_the_lands-248360
+		x = 9
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIB_freeing_the_surfs  }
+	}
+
+	#Collectivize the Lands
+	focus = {
+		id = TIB_collectivize_the_lands
+		icon = GFX_TIB_collectivize_the_lands-248360
+		x = 7
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIB_freeing_the_surfs  }
+	}
+
+	#Crush the Reactionary Tribes
+	focus = {
+		id = TIB_crush_the_reactionary_tribes
+		icon = GFX_TIB_crush_the_reactionary_tribes-248360
+		x = 5
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TIB_the_red_sun_shines_over_tibet  } prerequisite = { focus = TIB_question_of_the_monasteries  } prerequisite = { focus = TIB_freeing_the_surfs  }
+	}
+
+	#Swear In the Red Monastries
+	focus = {
+		id = TIB_swear_in_the_red_monastries
+		icon = GFX_TIB_swear_in_the_red_monastries-248360
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIB_question_of_the_monasteries  }
+		mutually_exclusive = { focus = TIB_burnthemonksaswemust  }
+	}
+
+	#Burn The Monks, As We Must
+	focus = {
+		id = TIB_burnthemonksaswemust
+		icon = GFX_TIB_burnthemonksaswemust-248360
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIB_question_of_the_monasteries  }
+		mutually_exclusive = { focus = TIB_swear_in_the_red_monastries  }
+	}
+
+	#Raise The Militias
+	focus = {
+		id = TIB_raise_the_militias
+		icon = GFX_TIB_raise_the_militias-248360
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TIB_swear_in_the_red_monastries  focus = TIB_burnthemonksaswemust  }
+	}
+
+	#Banners From the Palace
+	focus = {
+		id = TIB_banners_from_the_palace
+		icon = GFX_TIB_banners_from_the_palace-248360
+		x = 5
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TIB_crush_the_reactionary_tribes  }
+	}
+
+	#Embrace the Revolutionary Intellectuals
+	focus = {
+		id = TIB_embrace_the_revolutionary_intellectuals
+		icon = GFX_TIB_embrace_the_revolutionary_intellectuals-248360
+		x = 7
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TIB_reforming_the_lands  } prerequisite = { focus = TIB_collectivize_the_lands  }
+	}
+
+	#Birth of the Revolutionary Committee
+	focus = {
+		id = TIB_birth_of_the_revolutionary_committee
+		icon = GFX_TIB_birth_of_the_revolutionary_committee-248360
+		x = 8
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIB_raise_the_militias  } prerequisite = { focus = TIB_banners_from_the_palace  } prerequisite = { focus = TIB_embrace_the_revolutionary_intellectuals  }
+		mutually_exclusive = { focus = TIB_bazhaheitocomradeyuexi  } mutually_exclusive = { focus = TIB_takeover_of_the_red_militia  }
+	}
+
+	#Bazhahei! To Comrade Yuexi!
+	focus = {
+		id = TIB_bazhaheitocomradeyuexi
+		icon = GFX_TIB_bazhaheitocomradeyuexi-248360
+		x = 5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIB_raise_the_militias  } prerequisite = { focus = TIB_banners_from_the_palace  } prerequisite = { focus = TIB_embrace_the_revolutionary_intellectuals  }
+		mutually_exclusive = { focus = TIB_birth_of_the_revolutionary_committee  } mutually_exclusive = { focus = TIB_takeover_of_the_red_militia  }
+	}
+
+	#Takeover of the Red Militia
+	focus = {
+		id = TIB_takeover_of_the_red_militia
+		icon = GFX_TIB_takeover_of_the_red_militia-248360
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIB_raise_the_militias  } prerequisite = { focus = TIB_banners_from_the_palace  } prerequisite = { focus = TIB_embrace_the_revolutionary_intellectuals  }
+		mutually_exclusive = { focus = TIB_birth_of_the_revolutionary_committee  } mutually_exclusive = { focus = TIB_bazhaheitocomradeyuexi  }
+	}
+
+	#Our Five Fingers Extend Across the Realm
+	focus = {
+		id = TIB_our_five_fingers_extend_across_the_realm
+		icon = GFX_TIB_our_five_fingers_extend_across_the_realm-248360
+		x = 1
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TIB_takeover_of_the_red_militia  }
+	}
+
+	#Leaping To Industrial Success
+	focus = {
+		id = TIB_leaping_to_industrial_success
+		icon = GFX_TIB_leaping_to_industrial_success-248360
+		x = 3
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIB_bazhaheitocomradeyuexi  focus = TIB_takeover_of_the_red_militia  }
+	}
+
+	#The Sun's Reach On the Horizon
+	focus = {
+		id = TIB_thesunsreachonthehorizon
+		icon = GFX_TIB_thesunsreachonthehorizon-248360
+		x = 5
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TIB_bazhaheitocomradeyuexi  }
+	}
+
+	#Proclaim 5 Year Plans
+	focus = {
+		id = TIB_proclaim_5_year_plans
+		icon = GFX_TIB_proclaim_5_year_plans-248360
+		x = 7
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIB_bazhaheitocomradeyuexi  focus = TIB_birth_of_the_revolutionary_committee  }
+	}
+
+	#Reading Mao's Works
+	focus = {
+		id = TIB_readingmaosworks
+		icon = GFX_TIB_readingmaosworks-248360
+		x = 9
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TIB_birth_of_the_revolutionary_committee  }
+	}
+
+	#Cultural Revolution of the Ages
+	focus = {
+		id = TIB_cultural_revolution_of_the_ages
+		icon = GFX_TIB_cultural_revolution_of_the_ages-248360
+		x = 9
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIB_readingmaosworks  }
+	}
+
+	#Connection Is Vital
+	focus = {
+		id = TIB_connection_is_vital
+		icon = GFX_TIB_connection_is_vital-248360
+		x = 7
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIB_proclaim_5_year_plans  }
+	}
+
+	#Continue a Secular Teaching
+	focus = {
+		id = TIB_continue_a_secular_teaching
+		icon = GFX_TIB_continue_a_secular_teaching-248360
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TIB_thesunsreachonthehorizon  }
+	}
+
+	#Trains Shall Steam Ahead
+	focus = {
+		id = TIB_trains_shall_steam_ahead
+		icon = GFX_TIB_trains_shall_steam_ahead-248360
+		x = 3
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TIB_leaping_to_industrial_success  }
+	}
+
+	#Junmin Tuanjie Ru Yiren
+	focus = {
+		id = TIB_junmin_tuanjie_ru_yiren
+		icon = GFX_TIB_junmin_tuanjie_ru_yiren-248360
+		x = 1
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TIB_our_five_fingers_extend_across_the_realm  }
+	}
+
+	#Guns of Socialism
+	focus = {
+		id = TIB_guns_of_socialism
+		icon = GFX_TIB_guns_of_socialism-248360
+		x = 2
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIB_trains_shall_steam_ahead  } prerequisite = { focus = TIB_junmin_tuanjie_ru_yiren  }
+	}
+
+	#Communism Over Lhasa
+	focus = {
+		id = TIB_communism_over_lhasa
+		icon = GFX_TIB_communism_over_lhasa-248360
+		x = 5
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIB_continue_a_secular_teaching  } prerequisite = { focus = TIB_trains_shall_steam_ahead  focus = TIB_connection_is_vital  } prerequisite = { focus = TIB_continue_a_secular_teaching  }
+	}
+
+	#The Revolution Never Stops
+	focus = {
+		id = TIB_the_revolution_never_stops
+		icon = GFX_TIB_the_revolution_never_stops-248360
+		x = 8
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TIB_cultural_revolution_of_the_ages  } prerequisite = { focus = TIB_connection_is_vital  }
+	}
+
+}
