@@ -14,7 +14,7 @@ focus_tree = {
 		icon = GFX_VIN_an_imperial_return-248360
 		x = 7
 		y = 0
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -790,5 +790,559 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIN_JAP_TREE_ilovebureaucracy  }
 	}
-
+	focus = {
+		id = VIN_Independent_Policy
+		icon = GFX_goal_VIN_independent_policy
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_The_End_Of_War
+		}
+		available = {
+		NOT = {
+		has_completed_focus = VIN_Pro-Germany_Policy
+		}
+		NOT = {
+		OR = {
+		is_in_faction_with = GER
+		is_subject_of = GEA
+		is_subject_of = GER
+		is_subject = yes
+				}
+			}
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 10
+		y = 1
+		completion_reward = {
+		custom_effect_tooltip = independent.tt
+		increase_ruling_party_popularity_by_5 = yes
+		add_war_support = 0.075
+		add_political_power = 75
+		JAP = { add_opinion_modifier = { target = VIN modifier = medium_increase } }
+		QIE = { add_opinion_modifier = { target = VIN modifier = medium_increase } }
+		CHI = { add_opinion_modifier = { target = VIN modifier = medium_increase } }
+		MON = { add_opinion_modifier = { target = VIN modifier = medium_increase } }
+		RUS = { add_opinion_modifier = { target = VIN modifier = small_increase } }
+		USA = { add_opinion_modifier = { target = VIN modifier = small_increase } }
+		ENT = { add_opinion_modifier = { target = VIN modifier = small_increase } }
+		NFA = { add_opinion_modifier = { target = VIN modifier = small_increase } }
+		}
+	}
+	
+	focus = {
+		id = VIN_Southern_Revolt
+		icon = GFX_goal_VIN_incite_southern_insurgents
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Independent_Policy
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 10
+		y = 2
+		completion_reward = {
+		GEA = {
+		country_event = vietnam.29
+			}
+		add_state_core = 286
+		add_state_core = 856
+		hidden_effect = {
+		country_event = {
+					days = 15
+					id = vietnam.38
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = VIN_Imperial_Ambition
+		icon = GFX_goal_VIN_ambitions_state
+		cost = 3.00
+		prerequisite = {
+			focus = VIN_Southern_Revolt
+			focus = VIN_Request_Cochinchina
+		}
+		available = {
+		OR = {
+		NOT = {
+		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
+		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Ba Cut" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = VIN_Asia_for_Asian
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 8
+		y = 3
+		completion_reward = {
+		custom_effect_tooltip = foreign.tt
+		add_political_power = 100
+		}
+	}
+	
+		focus = {
+		id = VIN_Reclaim_Indochina
+		icon = GFX_MON_claim_the_german_colonies
+		cost = 5.00
+		available = {
+		NOT = {
+		has_completed_focus = VIN_Asia_for_Asian
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
+		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Ba Cut" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+				}
+			}
+		}
+		prerequisite = {
+			focus = VIN_Imperial_Ambition
+			focus = VIN_Asia_for_Asian
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 8
+		y = 4
+		completion_reward = {
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 670.owner
+					}
+				}
+			670 = { add_claim_by = VIN }
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 826.owner
+					}
+				}
+			826 = { add_claim_by = VIN }
+		}
+	}
+	
+	focus = {
+		id = VIN_Fate_Of_Siam
+		icon = YUN_GFX_Goal_The_Siamese_Threat
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Reclaim_Indochina
+		}
+		available = {
+		OR = {
+		VIN = {
+			owns_state = 670
+			}	
+		VIN = {
+			owns_state = 826
+				}
+			}
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 6
+		y = 5
+		completion_reward = {
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = SIA
+					}
+					create_wargoal = {
+						type = annex_everything
+						target = SIR
+					}
+				}
+			882 = { add_claim_by = VIN }
+			825 = { add_claim_by = VIN }
+			750 = { add_claim_by = VIN }
+		}
+	}
+	
+	focus = {
+		id = VIN_Pluck_The_Peacock
+		icon = YUN_GFX_Goal_Exploit_Burma
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Fate_Of_Siam
+		}
+		available = {
+		OR = {
+		VIN = {
+			owns_state = 289
+			}
+		SIA = { is_subject_of = VIN }		
+			}
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 6
+		y = 6
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = BRM
+			}
+		}
+	}
+	
+	focus = {
+		id = VIN_Our_Eastern_Shore
+		icon = GFX_focus_HKG_Perimeter
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Reclaim_Indochina
+		}
+		mutually_exclusive = {
+			focus = VIN_Greater_Vietnam
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 8
+		y = 5
+		completion_reward = {
+		create_wargoal = {
+				type = annex_everything
+				target = 592.owner
+		}
+		1053 = { add_claim_by = VIN }
+		1056 = { add_claim_by = VIN }
+		594 = { add_claim_by = VIN }
+		591 = { add_claim_by = VIN }
+		1054 = { add_claim_by = VIN }
+		1055 = { add_claim_by = VIN }
+		728 = { add_claim_by = VIN }
+		593 = { add_claim_by = VIN }
+		599 = { add_claim_by = VIN }
+		800 = { add_claim_by = VIN }
+		1012 = { add_claim_by = VIN }
+		1046 = { add_claim_by = VIN }
+		802 = { add_claim_by = VIN }
+		801 = { add_claim_by = VIN }
+		592 = { add_claim_by = VIN }
+		729 = { add_claim_by = VIN }
+		326 = { add_claim_by = VIN }
+		}
+	}
+	
+	focus = {
+		id = VIN_Greater_Vietnam
+		icon = GFX_goal_USA_vietnam_yesterday
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Reclaim_Indochina
+		}
+		mutually_exclusive = {
+			focus = VIN_Our_Eastern_Shore
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 10
+		y = 5
+		completion_reward = {
+		add_ideas = VIN_Greater_Vietnam
+		}
+	}
+	
+	focus = {
+		id = VIN_Southern_Kingdom_Rises
+		icon = GFX_goal_YUN_this_is_acutally_art
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Our_Eastern_Shore
+		}
+		available = {
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
+		has_country_leader = { ruling_only = yes name = "Bao Dai" }
+		has_country_leader = { ruling_only = yes name = "Duy Tan" }
+		has_country_leader = { ruling_only = yes name = "Thanh Thai" }
+		}
+		VIN = {
+			owns_state = 592
+			}
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 8
+		y = 6
+		completion_reward = {
+		custom_effect_tooltip = mandate.tt
+		every_state = {
+                limit = {
+					is_claims_china = yes
+					}
+				add_claim_by = VIN
+		}
+		create_wargoal = {
+				type = annex_everything
+				target = 608.owner
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = QIE
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = GXC
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = YUN
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = HNN
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = LEP
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = ANQ
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = SQI
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = SZC
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = CHI
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = SHX
+			}
+		}
+	}
+	
+	focus = {
+		id = VIN_Asia_for_Asian
+		icon = GFX_goal_VIN_rule_faith
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Southern_Revolt
+		}
+		available = {
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
+		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Ba Cut" }
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+			}
+		}
+		mutually_exclusive = {
+			focus = VIN_Imperial_Ambition
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 12
+		y = 3
+		completion_reward = {
+		custom_effect_tooltip = foreign.tt
+		add_political_power = 100
+		}
+	}
+	
+	focus = {
+		id = VIN_Situation_in_East_Asia
+		icon = GFX_goal_VIN_consecrating_pious_indochina
+		cost = 5.00
+		available = {
+		NOT = {
+		has_completed_focus = VIN_Imperial_Ambition
+		}
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
+		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Ba Cut" }
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+			}
+		}
+		prerequisite = {
+			focus = VIN_Asia_for_Asian
+			focus = VIN_Imperial_Ambition
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 12
+		y = 4
+		completion_reward = {
+		every_state = {
+                limit = {
+                    OR = {
+                        is_core_of = CAM
+                        is_core_of = LAO
+						is_core_of = SIA
+						is_core_of = BRM
+                    }
+                }
+                add_claim_by = VIN
+            }
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 670.owner
+					}
+				}
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 826.owner
+				}
+			}
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 289.owner
+					}
+				}
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 288.owner
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = VIN_Expand_Into_Asia
+		icon = GFX_goal_VIN_uniting_asia_under_heaven
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Situation_in_East_Asia
+		}
+		available = {
+		VIN = {
+			owns_state = 288
+			owns_state = 289
+			owns_state = 670
+			owns_state = 750
+			}
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 12
+		y = 5
+		completion_reward = {
+		country_event = vietnam.10
+		}
+	}
+	
+	focus = {
+		id = VIN_Seek_New_Allies
+		icon = GFX_goal_ATH_diplomats
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Asia_for_Asian
+			focus = VIN_Imperial_Ambition
+		}
+		available = {
+		NOT = {
+		is_in_faction = yes
+		is_subject = yes
+			}
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 10
+		y = 4
+		completion_reward = {
+		custom_effect_tooltip = factions.tt
+		}
+	}
+	
+	focus = {
+		id = VIN_Unlock_The_Heavens
+		icon = GFX_goal_VIN_unlock_heaven_heart
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Expand_Into_Asia
+		}
+		available = {
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Ba Cut" }
+		}
+		VIN = {
+			owns_state = 427
+			owns_state = 608
+			owns_state = 322
+			owns_state = 330
+			}
+		}
+		mutually_exclusive = {
+			focus = VIN_Third_Universal_Redemption
+			focus = VIN_Coconut_Domain
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 10
+		y = 6
+		completion_reward = {
+		country_event = vietnam.42
+		}
+	}
+	
+	focus = {
+		id = VIN_Third_Universal_Redemption
+		icon = GFX_goal_VIN_guide_humanity_third_amnesty
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Expand_Into_Asia
+		}
+		available = {
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+		}
+		VIN = {
+			owns_state = 427
+			owns_state = 608
+			owns_state = 322
+			owns_state = 330
+			}
+		}
+		mutually_exclusive = {
+			focus = VIN_Coconut_Domain
+			focus = VIN_Unlock_The_Heavens
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 12
+		y = 6
+		completion_reward = {
+		country_event = vietnam.23
+		}
+	}
+	
+	focus = {
+		id = VIN_Coconut_Domain
+		icon = GFX_goal_VIN_court_coconut_king
+		cost = 5.00
+		prerequisite = {
+			focus = VIN_Expand_Into_Asia
+		}
+		available = {
+		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
+		VIN = {
+			owns_state = 427
+			owns_state = 608
+			owns_state = 322
+			owns_state = 330
+			}
+		}
+		mutually_exclusive = {
+			focus = VIN_Third_Universal_Redemption
+			focus = VIN_Unlock_The_Heavens
+		}
+		completion_reward = {
+		}
+		relative_position_id = VIN_The_End_Of_War
+		x = 14
+		y = 6
+		completion_reward = {
+		country_event = vietnam.24
+		}
+	}
 }
