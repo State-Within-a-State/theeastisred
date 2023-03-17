@@ -8,7 +8,7 @@
 add_namespace = cambodia
 add_namespace = cambodia_power
 add_namespace = cambodia_republic
-
+add_namespace = cambodia_revolution
 
 country_event = {
 
@@ -431,6 +431,317 @@ country_event = {
 			expire = "2012.10.15"
 			ideology = monsoc_subtype
 		}
+		}
+		
+		
+		
+		
+
+
+	}
+	
+	
+	country_event = {
+
+		id = cambodia_revolution.0
+		title = "Issarak Make Their Move"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+
+		
+		
+		option = {
+		name = "It Truly Begins"
+		set_variable = {
+		name = CAM_REV
+		value = 0
+		}
+		set_variable = {
+		name = CAM_ANTICOM
+		value = 0
+		}
+		country_event = {
+		id = cambodia_revolution.1
+		days = 3
+		}
+		}
+		
+		
+		
+		
+		
+		
+
+
+	}
+	
+	
+	country_event = {
+
+		id = cambodia_revolution.1
+		title = "Battle of Mondulkiri"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+
+		
+		
+		option = {
+		name = "Circle Them"
+		add_to_variable = {
+		name = CAM_REV
+		value = 1
+		}
+		
+		country_event = {
+		id = cambodia_revolution.2
+		days = 3
+		}
+		}
+		option = {
+		name = "Hold Our Positions"
+		
+		add_to_variable = {
+		name = CAM_ANTICOM
+		value = 1
+		}
+		country_event = {
+		id = cambodia_revolution.2
+		days = 3
+		}
+		}
+		
+		
+		
+		
+		
+
+
+	}
+	
+	country_event = {
+
+		id = cambodia_revolution.2
+		title = "Issarak Rise in the West"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+
+		
+		
+		option = {
+		name = "Concentrate on the Stronger East Force"
+		add_to_variable = {
+		name = CAM_REV
+		value = 1
+		}
+		
+		country_event = {
+		id = cambodia_revolution.3
+		days = 3
+		}
+		}
+		option = {
+		name = "Concentrate on the West Force"
+		
+		add_to_variable = {
+		name = CAM_ANTICOM
+		value = 1
+		}
+		country_event = {
+		id = cambodia_revolution.3
+		days = 3
+		}
+		}
+		
+		
+		
+		
+		
+
+
+	}
+	
+	country_event = {
+
+		id = cambodia_revolution.3
+		title = "Battle For Phenom Penn"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+
+		
+		
+		option = {
+		name = "Set Our Death Trap"
+		add_to_variable = {
+		name = CAM_REV
+		value = 1
+		}
+		
+		country_event = {
+		id = cambodia_revolution.4
+		days = 3
+		}
+		}
+		option = {
+		name = "Push Now!"
+		
+		add_to_variable = {
+		name = CAM_ANTICOM
+		value = 1
+		}
+		country_event = {
+		id = cambodia_revolution.4
+		days = 3
+		}
+		}
+		
+		
+		
+		
+		
+
+
+	}
+	
+	country_event = {
+	id = cambodia_revolution.4
+	immediate = {log = "[GetDateText]: [Root.GetName]: event redelection."}
+	is_triggered_only = yes
+	hidden = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				check_variable = { CAM_REV > 2 }
+			}
+			country_event = cambodia_revolution.5
+		}
+		
+		if = {
+			limit = {
+				check_variable = { CAM_ANTICOM > 2 }
+			}
+			country_event = cambodia_revolution.6
+		}
+		
+		
+	}
+}
+
+
+country_event = {
+
+		id = cambodia_revolution.5
+		title = "Issarak Coup Succeeds"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+		
+
+		is_triggered_only = yes
+		
+
+		
+		
+		
+		
+		
+		option = {
+		name = "The Revolution Forever!"
+		set_politics = { ruling_party = totalist }
+		create_country_leader = { 
+			name = "Tou Samouth"
+			desc = "-"
+			picture = "gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.png"
+			expire = "2012.10.15"
+			ideology = authcom_subtype
+		}
+		set_cosmetic_tag = CAM_khmer_rouge
+		}
+		
+		
+		
+		
+
+
+	}
+	
+	country_event = {
+
+		id = cambodia_revolution.6
+		title = "Issarak Coup Fails"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+		
+
+		is_triggered_only = yes
+		
+
+		
+		
+		
+		
+		
+		option = {
+		name = "At Last We Can Be At Peace"
+		}
+		
+		
+		
+		
+
+
+	}
+	
+	
+	country_event = {
+
+		id = cambodia_revolution.7
+		title = "Issarak Coup Succeeds"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+		
+
+		is_triggered_only = yes
+		
+
+		
+		
+		
+		
+		
+		option = {
+		name = "The Revolution Forever!"
+		set_politics = { ruling_party = totalist }
+		create_country_leader = { 
+			name = "Khieu Ponnary"
+			desc = "-"
+			picture = "gfx/leaders/CAM/Portrait_CAM_Khieu_Ponnary.png"
+			expire = "2012.10.15"
+			ideology = revolutionary_khmerism_subtype
+		}
+		set_cosmetic_tag = CAM_khmer_rouge
 		}
 		
 		
