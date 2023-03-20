@@ -547,8 +547,8 @@ country_event = { #The Trial of the May 15 Incident, triggered by the NSA passin
 country_event = { #The Assassination of Suzuki Kisaburo, triggered by the NSA passing
 	id = japdom.11
 	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.11" }
-	title = japdom.11.t
-	desc = japdom.11.d
+	title = "League of Blood Incident"
+	desc = japdom.11.desc
 	picture = GFX_report_event_POL_assassination
 
 	is_triggered_only = yes
@@ -565,6 +565,39 @@ country_event = { #The Assassination of Suzuki Kisaburo, triggered by the NSA pa
 		set_country_flag = Suzuki_Kisaburo_dead
 		hidden_effect = {
 			country_event = japdom.14
+		}
+	}
+	option = {
+		name = japdom.11.b
+		add_stability = -0.5
+		set_country_flag = Suzuki_Kisaburo_dead
+		set_country_flag = League_of_blood_coup
+		hidden_effect = {
+			country_event = rework_japan.12
+			create_country_leader = {
+			name = "Kanji Ishiwara"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kanji_Ishiwara.png"
+			expire = "1965.1.1"
+			ideology = natpop_nichiren_buddhism_subtype
+			}
+			create_country_leader = {
+			name = "Giro Senoo"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hideki_Tojo.png"
+			expire = "1965.1.1"
+			ideology = radsoc_nichiren_buddhism_subtype
+			
+			}
+			
+			set_party_name = {
+				ideology = radical_socialist
+				long_name = "Kokuchūkai"
+				name = "Kokuchūkai"
+			}
+			set_party_name = {
+				ideology = national_populist
+				long_name = "Kokuchūkai"
+				name = "Kokuchūkai"
+			}
 		}
 	}
 }
@@ -676,6 +709,8 @@ country_event = { #The Election of Mizuno Rentaro
 			}
 		}
 	}
+	
+	
 }
 
 country_event = { #Japan's Longest Winter, triggered by no NSA after 1936, important flag set
