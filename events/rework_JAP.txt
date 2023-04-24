@@ -429,6 +429,9 @@ country_event = { #
 	hidden_effect = {
 	release = JSR
 	release = KYU
+	JSI = {
+	add_state_core = 526
+	}
 	KYU = {
 	set_politics = {
 			ruling_party = paternal_autocrat
@@ -564,8 +567,12 @@ country_event = { #
 
 country_event = { #
 	id = rework_japan.14
-	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.14"}
-	title = rework_japan.14.title
+	immediate = {
+	hidden_effect = {
+	release = JSI
+	}
+	}
+	title = "Okinawa Declares Independence"
 	desc = rework_japan.14.desc
 	#picture = 
 	
@@ -573,7 +580,83 @@ country_event = { #
 	option = { #
 		name = rework_japan.14.a
 		ai_chance = { base = 100 }
+		JSI = {
+		set_cosmetic_tag = JSI_Okinawa
+		set_politics = {
+			ruling_party = paternal_autocrat
+			last_election = "1930.11.9"
+			election_frequency = 48
+			elections_allowed = no
+		}
+		set_popularities = {
+			totalist = 0
+			radical_socialist = 10
+			syndicalist = 0
+			social_democrat = 10
+			social_liberal = 10
+			market_liberal = 0
+			social_conservative = 10
+			authoritarian_democrat = 10
+			paternal_autocrat = 50
+			national_populist = 0
+		}
+		create_country_leader = {
+			name = "Saneatsu Mushanokōji"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hideki_Tojo.png"
+			expire = "1965.1.1"
+			ideology = radsoc_new_village_movement_subtype
+			}
+		create_country_leader = {
+			name = "Kamejiro Senaga"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hideki_Tojo.png"
+			expire = "1965.1.1"
+			ideology = socdem_left_nationalism_subtype
+			}
+			create_country_leader = {
+			name = "Ogimi Chotoku"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hideki_Tojo.png"
+			expire = "1965.1.1"
+			ideology = soclib_tridemism_subtype
+			}
+		create_country_leader = {
+			name = "Hiroshi Sho"
+			picture = "gfx/leaders/JSI/Portrait_JSI_Hiroshi_Sho.png"
+			expire = "1965.1.1"
+			desc = HIROSHI_LEADER_DESC
+			ideology = absolute_monarchy_subtype
+			}
+			
+		add_ideas = {
+		JSI_isolated_by_water
+		JSI_ijn_defectors
+		JSI_republican_strife
+		JSI_new_village_movement
+		}
 		
+		set_party_name = {
+				ideology = radical_socialist
+				long_name = "Atarashiki-mura"
+				name = "Atarashiki-mura"
+			}
+			
+		set_party_name = {
+				ideology = social_democrat
+				long_name = "Okinawa Shakai Taishū-tō"
+				name = "Okinawa Shakai Taishū-tō"
+			}
+			set_party_name = {
+				ideology = social_liberal
+				long_name = "Ryukyu Guomindang"
+				name = "Ryukyu Guomindang"
+			}
+			
+			set_party_name = {
+				ideology = paternal_autocrat
+				long_name = "Second Shō dynasty"
+				name = "Second Shō dynasty"
+			}
+		
+		}
 	}
 }
 
