@@ -430,14 +430,16 @@ focus_tree = {
 		icon = GFX_INC_first_national_assembly-76544
 		x = 20
 		y = 2
-		cost = 8
+		cost = 10
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_a_nation_in_ruin  }
+		completion_reward = {
 		country_event = {
 		id = inc_rework.1
 		days = 7
+		}
 		}
 	}
 
@@ -452,6 +454,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_revolution_triump  }
+		completion_reward = {
+		add_ideas = {
+		INC_rebuilding_our_nation
+		}
+		}
 	}
 
 	#Education Reform
@@ -460,11 +467,16 @@ focus_tree = {
 		icon = GFX_INC_education_reform-252745
 		x = 23
 		y = 3
-		cost = 4
+		cost = 1.7
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_first_national_assembly  }
+		completion_reward = {
+		add_ideas = {
+		INC_education_reform_0
+		}
+		}
 	}
 
 	#Popular Education Program
@@ -473,11 +485,17 @@ focus_tree = {
 		icon = GFX_INC_popular_education_program-181785
 		x = 23
 		y = 4
-		cost = 5
+		cost = 6
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_education_reform  }
+		completion_reward = {
+		remove_ideas = {
+		INC_illiteracy
+		}
+		add_research_slot = 1
+		}
 	}
 
 	#The Second Party Congress
@@ -486,7 +504,7 @@ focus_tree = {
 		icon = GFX_INC_the_second_party_congress-126067
 		x = 20
 		y = 8
-		cost = 5
+		cost = 6
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -504,6 +522,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_first_national_assembly  }
+		completion_reward = {
+		add_manpower = -10000
+		}
 	}
 
 	#Royal Family Question
@@ -517,6 +538,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_purge_the_traitors  }
+		completion_reward = {
+		country_event = {
+		id = inc_rework.2
+		days = 3
+		}
+		}
 	}
 
 	#European Settlers Problem
@@ -530,6 +557,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_purge_the_traitors  }
+		completion_reward = {
+		country_event = {
+		id = viet.12
+		days = 7
+		}
+		}
 	}
 
 	#Invite Foreign Experts
@@ -543,6 +576,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_popular_education_program  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Land Reform
@@ -556,6 +592,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_first_national_assembly  }
+		completion_reward = {
+		
+		custom_effect_tooltip = we_shall_start_land_reform
+		}
 	}
 
 	#Land To The Tiller
@@ -569,6 +609,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_arrest_the_landlords  }
+		completion_reward = {
+		
+		custom_effect_tooltip = add_10_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 10 }
+		}
 	}
 
 	#Land Rent Reduction Campaign
@@ -582,6 +627,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_land_reform  }
+		completion_reward = {
+		
+		custom_effect_tooltip = add_5_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 5 }
+		}
 	}
 
 	#Arrest the Landlords
@@ -595,6 +645,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_land_reform  }
+		completion_reward = {
+		add_stability = -0.05
+		custom_effect_tooltip = add_10_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 10 }
+		}
 	}
 
 	#Chairman Ho Chi Minh
