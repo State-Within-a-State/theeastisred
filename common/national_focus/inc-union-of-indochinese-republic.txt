@@ -19,6 +19,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = INC_decentralised_industry  }
+		completion_reward = {
+		add_ideas = {
+		INC_peoples_plan_campaign
+		}
+		}
 	}
 
 	#Declaration of Independence
@@ -32,6 +37,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_revolution_has_begun  }
+		completion_reward = {
+		country_event = viet.1
+		}
 	}
 
 	#Learn From October Revolution
@@ -45,6 +53,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_war_of_resistance  }
+		completion_reward = {
+		add_political_power = 120
+		}
 	}
 
 	#The War of Resistance
@@ -58,6 +69,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_declaration_of_independence  }
+		completion_reward = {
+		country_event = inc_rework.0
+		}
 	}
 
 	#Communal Economy
@@ -70,8 +84,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		OR = {
+		has_government = syndicalist
+		has_government = radical_socialist
+		}
+		}
 		prerequisite = { focus = INC_direction_of_the_economy  }
 		mutually_exclusive = { focus = INC_3_years_plan  }
+		completion_reward = {
+		add_ideas = {
+		INC_communal_economy
+		}
+		}
 	}
 
 	#Direction of the Economy
@@ -84,6 +109,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_idea = {
+		INC_congress_over
+		}
+		}
+		
 	}
 
 	#Reorganize The Army
@@ -97,6 +128,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_guerrila_tactics  }
+		completion_reward = {
+		remove_ideas = {
+		INC_poor_army_idea_1
+		}
+		}
 	}
 
 	#The Revolution Has Begun
@@ -105,7 +141,7 @@ focus_tree = {
 		icon = GFX_INC_the_revolution_has_begun-76220
 		x = 3
 		y = 0
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -122,6 +158,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_learn_from_october_revolution  }
+		completion_reward = {
+		add_war_support = 0.25
+		add_manpower = 10000
+		}
 	}
 
 	#Intenational Suppot
@@ -135,6 +175,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_war_of_resistance  }
+		completion_reward = {
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 2500
+			producer = FRA
+		}
+		}
 	}
 
 	#Our Laotian Comrades...
@@ -143,11 +190,14 @@ focus_tree = {
 		icon = GFX_INC_ourlaotiancomrades-90835
 		x = 4
 		y = 5
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_indochina_liberation_front  }
+		completion_reward = {
+		load_oob = "INC_siam_uprising"
+		}
 	}
 
 	#...Your Time Has Come!
@@ -161,6 +211,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_ourlaotiancomrades  } prerequisite = { focus = INC_ourcambodiancomrades  }
+		completion_reward = {
+		add_manpower = 20000
+		}
 	}
 
 	#Indochina Liberation Front
@@ -174,6 +227,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_war_of_resistance  }
+		completion_reward = {
+		add_war_support = 0.05
+		}
 	}
 
 	#Death To German Imperialist!
@@ -187,6 +243,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_breakthechain  } prerequisite = { focus = INC_peopleswar  } prerequisite = { focus = INC_wediesothefatherlandmightlive  }
+		completion_reward = {
+		add_ideas = {
+		INC_indepen_war_0
+		}
+		}
 	}
 
 	#Our Cambodian Comrades...
@@ -200,6 +261,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_indochina_liberation_front  }
+		completion_reward = {
+		load_oob = "INC_siam_uprising"
+		}
 	}
 
 	#David and Goliath
@@ -213,6 +277,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_war_of_resistance  }
+		completion_reward = {
+		army_experience = 50
+		}
 	}
 
 	#Guerrila Tactics
@@ -226,6 +293,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_david_and_goliath  }
+		completion_reward = {
+		
+			remove_ideas = INC_poor_army_idea_1
+			
+		
+		}
 	}
 
 	#People's War
@@ -239,6 +312,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_reorganize_the_army  }
+		completion_reward = {
+		GEA = {
+		add_ideas = {
+		INC_german_abush
+		}
+		}
+		}
 	}
 
 	#Request Advisor
@@ -252,6 +332,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_intenational_suppot  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#The First General Election
@@ -265,6 +348,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_declaration_of_independence  }
+		completion_reward = {
+		country_event = {
+		id = inc_rework.1
+		days = 7
+		}
+		}
 	}
 
 	#Proganda Front
@@ -278,6 +367,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_rally_the_people  }
+		completion_reward = {
+		GEA = {
+		add_stability = -0.1
+		add_war_support = -0.2
+		}
+		}
 	}
 
 	#Break The Chain!
@@ -291,6 +386,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_yourtimehascome  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#We die so the Fatherland might live!
@@ -304,6 +402,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_rally_the_people  }
+		completion_reward = {
+		remove_ideas = INC_Tank_Pannick_idea
+		}
 	}
 
 	#Revolution Triump
@@ -316,6 +417,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		NOT = {
+		has_war_with = GEA
+		}
+		}
 	}
 
 	#First National Assembly
@@ -324,11 +430,17 @@ focus_tree = {
 		icon = GFX_INC_first_national_assembly-76544
 		x = 20
 		y = 2
-		cost = 8
+		cost = 10
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_a_nation_in_ruin  }
+		completion_reward = {
+		country_event = {
+		id = inc_rework.1
+		days = 7
+		}
+		}
 	}
 
 	#A Nation In Ruin
@@ -342,6 +454,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_revolution_triump  }
+		completion_reward = {
+		add_ideas = {
+		INC_rebuilding_our_nation
+		}
+		}
 	}
 
 	#Education Reform
@@ -350,11 +467,16 @@ focus_tree = {
 		icon = GFX_INC_education_reform-252745
 		x = 23
 		y = 3
-		cost = 4
+		cost = 1.7
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_first_national_assembly  }
+		completion_reward = {
+		add_ideas = {
+		INC_education_reform_0
+		}
+		}
 	}
 
 	#Popular Education Program
@@ -363,11 +485,17 @@ focus_tree = {
 		icon = GFX_INC_popular_education_program-181785
 		x = 23
 		y = 4
-		cost = 5
+		cost = 6
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_education_reform  }
+		completion_reward = {
+		remove_ideas = {
+		INC_illiteracy
+		}
+		add_research_slot = 1
+		}
 	}
 
 	#The Second Party Congress
@@ -376,7 +504,7 @@ focus_tree = {
 		icon = GFX_INC_the_second_party_congress-126067
 		x = 20
 		y = 8
-		cost = 5
+		cost = 6
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -394,6 +522,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_first_national_assembly  }
+		completion_reward = {
+		add_manpower = -10000
+		}
 	}
 
 	#Royal Family Question
@@ -407,6 +538,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_purge_the_traitors  }
+		completion_reward = {
+		country_event = {
+		id = inc_rework.2
+		days = 3
+		}
+		}
 	}
 
 	#European Settlers Problem
@@ -420,6 +557,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_purge_the_traitors  }
+		completion_reward = {
+		country_event = {
+		id = viet.12
+		days = 7
+		}
+		}
 	}
 
 	#Invite Foreign Experts
@@ -433,6 +576,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_popular_education_program  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Land Reform
@@ -446,6 +592,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_first_national_assembly  }
+		completion_reward = {
+		
+		custom_effect_tooltip = we_shall_start_land_reform
+		}
 	}
 
 	#Land To The Tiller
@@ -459,6 +609,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_arrest_the_landlords  }
+		completion_reward = {
+		
+		custom_effect_tooltip = add_10_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 10 }
+		}
 	}
 
 	#Land Rent Reduction Campaign
@@ -472,6 +627,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_land_reform  }
+		completion_reward = {
+		
+		custom_effect_tooltip = add_5_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 5 }
+		}
 	}
 
 	#Arrest the Landlords
@@ -485,6 +645,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_land_reform  }
+		completion_reward = {
+		add_stability = -0.05
+		custom_effect_tooltip = add_10_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 10 }
+		}
 	}
 
 	#Chairman Ho Chi Minh

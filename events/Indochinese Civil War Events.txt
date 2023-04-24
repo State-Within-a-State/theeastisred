@@ -1,5 +1,111 @@
 ﻿add_namespace = viet_civil_war
 add_namespace = viet_event_flavor
+add_namespace = inc_rework
+
+country_event = {
+
+		id = inc_rework.0
+		title = "An appeal to Indochinese People"
+		desc = inc_rework.0.desc
+		picture = "GFX_report_event_HCM_shot"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+
+		option = {
+		name = " Nothing is precious the independence and liberty"
+		add_manpower = 80000
+		} 
+		
+		
+		
+
+
+	}
+	
+	country_event = {
+
+		id = inc_rework.1
+		title = "First national Elections"
+		desc = inc_rework.0.desc
+		picture = "GFX_report_event_HCM_shot"
+
+		fire_only_once = yes
+
+		is_triggered_only = yes
+		
+		immediate = {
+		hidden_effect = {
+		add_ideas = {
+		INC_illiteracy
+		}
+		}
+		hidden_effect = {
+		add_to_variable = {
+				var = radsoc_inc
+				value = 1
+			}
+		add_to_variable = {
+				var = syndie_inc
+				value = 1
+			}
+		add_to_variable = {
+				var = vandong_inc
+				value = 1
+			}
+		add_to_variable = {
+				var = hcm_inc
+				value = 1
+			}
+		}
+		}
+		#option = {
+		#name = "For Uncle Ho"
+		#add_ideas = {
+		#VIN_hcm_hog_tot
+		#}
+		#} 
+		option = {
+		name = "Elect Pham van Dong"
+		add_ideas = {
+		INC_Pham_Van_Dong_hog_tot
+		}
+		} 
+		option = {
+		name = "Elect Hoang Quoc Viet"
+		add_ideas = {
+		VIN_Hoang_Quoc_Viet_hog_tot
+		}
+		} 
+		
+		
+		
+
+
+	}
+	
+	country_event = { #Citizen Vinh Thuy
+	id = inc_rework.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event viet.85" }
+	title = viet.85.t
+	desc = viet.85.d
+	picture = GFX_report_event_VIN_royalfamily
+	
+	option = {
+		name = viet.84.a # Emperor yesterday, citizen today
+		add_political_power = 50
+		add_stability = -0.05
+	}
+	option = {
+		name = "Execute Them!"
+		add_political_power = 50
+		add_stability = 0.05
+		add_manpower = -5
+	}
+}
+
 
 country_event = {
 
