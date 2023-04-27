@@ -632,7 +632,7 @@ country_event = { # National Assembly
 		}
 		set_country_flag = INC_Syndicalist_Revolution
 		trigger = {
-			syndicalist > 0.3
+			check_variable = { syndie_inc > 5 }
 		}
 		country_event = viet.22
 	}
@@ -655,7 +655,35 @@ country_event = { # National Assembly
 		}
 		set_country_flag = INC_Totalist_Revolution
 		trigger = {
-			totalist > 0.3
+			check_variable = { vandong_inc > 5 }
+			NOT = {
+				has_country_flag = Pham_Van_Dong_dead
+				has_country_flag = vietnam_deadlock
+			}
+		}
+		country_event = viet.23
+	}
+	
+	option = {
+		name = "Ho Chi Minh Secure's a Victory"
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 3
+				has_country_flag = INC_Full_Vanguardist
+				has_country_flag = vietnam_deadlock
+			}
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.1
+		}
+		set_politics = {
+			ruling_party = totalist
+		}
+		set_country_flag = INC_Totalist_Revolution
+		trigger = {
+			check_variable = { hcm_inc > 5 }
 			NOT = {
 				has_country_flag = Pham_Van_Dong_dead
 				has_country_flag = vietnam_deadlock

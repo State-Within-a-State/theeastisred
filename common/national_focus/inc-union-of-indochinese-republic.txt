@@ -508,7 +508,26 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		NOT = {
+		has_country_flag = vietnam_deadlock
+		}
+		}
+		immediate = {
+		hidden_effect = {
+		country_event = {
+		id = viet_event_flavor.1
+		days = 5
+		}
+		}
+		}
 		prerequisite = { focus = INC_royal_family_question  } prerequisite = { focus = INC_european_settlers_problem  }
+		completion_reward = {
+		country_event = {
+		id = viet.6
+		days = 5
+		}
+		}
 	}
 
 	#Purge The Traitors
@@ -658,11 +677,18 @@ focus_tree = {
 		icon = GFX_INC_chairman_ho_chi_minh-181773
 		x = 23
 		y = 9
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+				name = "Ho Chi Minh"
+				ruling_only = yes
+			}
+		}
 		prerequisite = { focus = INC_the_second_party_congress  }
+		
 	}
 
 	#3 Years Plan
@@ -728,6 +754,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_chairman_ho_chi_minh  }
+		completion_reward = {
+		add_ideas = {
+		INC_father_of_nation
+		}
+		}
 	}
 
 	#Fund Agricultural Development
@@ -767,6 +798,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_father_of_the_nation  }
+		completion_reward = {
+		add_ideas = {
+		INC_hcmt_0
+		}
+		}
 	}
 
 	#Entrench The Party Constitution
@@ -779,7 +815,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_ideas = {
+		INC_hcmt_0
+		}
+		}
 		prerequisite = { focus = INC_ho_chi_minh_thought  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_hcmt_0
+		add_idea = INC_hcmt_1
+		}
+		}
 	}
 
 	#Improve Revolutionary Morality
@@ -792,7 +839,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_ideas = {
+		INC_hcmt_1
+		}
+		}
 		prerequisite = { focus = INC_entrench_the_party_constitution  } prerequisite = { focus = INC_strengthen_the_party  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_hcmt_1
+		add_idea = INC_hcmt_2
+		}
+		}
+	
 	}
 
 	#Socialist People
@@ -805,7 +864,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_ideas = {
+		INC_hcmt_2
+		}
+		}
 		prerequisite = { focus = INC_entrench_the_party_constitution  } prerequisite = { focus = INC_strengthen_the_party  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_hcmt_2
+		add_idea = INC_hcmt_3
+		}
+		}
 	}
 
 	#Wipe Out Individualism
@@ -819,6 +889,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_improve_revolutionary_morality  } prerequisite = { focus = INC_socialist_people  }
+		completion_reward = {
+		add_war_support = 0.05
+		}
 	}
 
 	#Strengthen The Party
@@ -832,6 +905,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_ho_chi_minh_thought  }
+		completion_reward = {
+		add_ideas = {
+		INC_part_strength_0
+		}
+		}
 	}
 
 	#People's National Defense
@@ -844,7 +922,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_ideas = {
+		INC_hcmt_3
+		}
+		}
 		prerequisite = { focus = INC_entrench_the_party_constitution  } prerequisite = { focus = INC_strengthen_the_party  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_hcmt_3
+		add_idea = INC_hcmt_4
+		}
+		}
 	}
 
 	#Develop Campuchia
