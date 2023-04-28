@@ -613,7 +613,7 @@ focus_tree = {
 		prerequisite = { focus = INC_first_national_assembly  }
 		completion_reward = {
 		
-		custom_effect_tooltip = we_shall_start_land_reform
+		custom_effect_tooltip = we_shall_start_land_reform_tt
 		}
 	}
 
@@ -816,9 +816,8 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_ideas = {
-		INC_hcmt_0
-		}
+		has_idea = INC_hcmt_0
+	
 		}
 		prerequisite = { focus = INC_ho_chi_minh_thought  }
 		completion_reward = {
@@ -840,9 +839,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_ideas = {
-		INC_hcmt_1
-		}
+		has_idea = INC_hcmt_1
 		}
 		prerequisite = { focus = INC_entrench_the_party_constitution  } prerequisite = { focus = INC_strengthen_the_party  }
 		completion_reward = {
@@ -865,9 +862,8 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_ideas = {
-		INC_hcmt_2
-		}
+		has_idea = INC_hcmt_2
+		
 		}
 		prerequisite = { focus = INC_entrench_the_party_constitution  } prerequisite = { focus = INC_strengthen_the_party  }
 		completion_reward = {
@@ -923,9 +919,8 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_ideas = {
-		INC_hcmt_3
-		}
+		has_idea = INC_hcmt_3
+		
 		}
 		prerequisite = { focus = INC_entrench_the_party_constitution  } prerequisite = { focus = INC_strengthen_the_party  }
 		completion_reward = {
@@ -1091,6 +1086,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_peoplesnationaldefense  } prerequisite = { focus = INC_improve_revolutionary_morality  }
+		completion_reward = {
+		add_stability = 0.15
+		}
 	}
 
 	#Adopt Ordinance No. 57
@@ -1104,6 +1102,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_cooperation_with_landlords  }
+		completion_reward = {
+		add_stability = -0.05
+		custom_effect_tooltip = add_5_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 5 }
+		}
 	}
 
 	#Deal with the Peasant Protest
@@ -1116,7 +1119,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_ideas = INC_peasant_portest_0
+		
+		}
 		prerequisite = { focus = INC_adopt_ordinance_no_57  }
+		completion_reward = {
+		remove_idea = INC_peasant_portest_0
+		}
 	}
 
 	#Indochinese Way to Socialism
@@ -1129,7 +1139,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_idea = INC_hcmt_4
+		
+		}
 		prerequisite = { focus = INC_wipe_out_individualism  } prerequisite = { focus = INC_unbreakable_union_of_free_republics  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_hcmt_4
+		add_idea = INC_hcmt_5
+		}
+		}
 	}
 
 	#Great President Ho Chi Minh lives forever in our cause!
@@ -1356,7 +1376,7 @@ focus_tree = {
 	focus = {
 		id = INC_left_kmt
 		icon = GFX_focus_chi_cooperation_with_the_nationalists
-		x = 31
+		x = 32
 		y = 3
 		cost = 5
 		search_filters = {
@@ -1366,19 +1386,7 @@ focus_tree = {
 		mutually_exclusive = { focus = INC_left_kmt  }
 	}
 
-	#Red Guard Club
-	focus = {
-		id = INC_red_guard_club
-		icon = GFX_INC_red_guard_club-90485
-		x = 33
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = INC_our_comrades_in_china  }
-		mutually_exclusive = { focus = INC_left_kmt  }
-	}
+	
 
 	#Chairman Pham Van Dong
 	focus = {
@@ -1386,9 +1394,15 @@ focus_tree = {
 		icon = GFX_INC_chairman_pham_van_dong-181775
 		x = 34
 		y = 9
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Pham Van Dong"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = INC_the_second_party_congress  }
 	}
@@ -1404,6 +1418,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_parallel_adminstration  }
+		completion_reward = {
+		add_ideas = {
+		INC_great_purge_army_0
+		INC_great_purge_party_0
+		}
+		}
 	}
 
 	#Parallel Adminstration
@@ -1417,6 +1437,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_chairman_pham_van_dong  }
+		completion_reward = {
+		add_idea = INC_Partys_Soviet_idea_2_lar
+		}
 	}
 
 	#In The Party
@@ -1430,6 +1453,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_great_purge  }
+		completion_reward = {
+		add_ideas = {
+		INC_great_purge_party_0
+		}
+		}
 	}
 
 	#A Vanguard Party
@@ -1443,6 +1471,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_in_the_party  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 50
+		swap_ideas = {
+		remove_idea = INC_great_purge_party_0
+		add_idea = INC_great_purge_party_1
+		}
+		}
 	}
 
 	#In The Army
@@ -1456,6 +1492,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_great_purge  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_great_purge_army_0
+		add_idea = INC_great_purge_army_1
+		}
+		}
 	}
 
 	#Purge the Ultranationalist
@@ -1469,6 +1511,45 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_great_purge  }
+		completion_reward = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = market_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_manpower = -10000
+		}
 	}
 
 	#Professional Army
@@ -1482,6 +1563,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_in_the_army  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_great_purge_army_1
+		add_idea = INC_great_purge_army_2
+		}
+		}
 	}
 
 	#Loyal to the Party. Loyal to the Union
@@ -1494,7 +1581,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		AND = {
+		has_idea = INC_great_purge_army_2
+		has_idea = INC_great_purge_party_1
+		}
+		}
 		prerequisite = { focus = INC_purge_the_ultranationalist  }
+		completion_reward = {
+		add_ideas = {
+		INC_loyalty_to_party_0
+		}
+		}
 	}
 
 	#Follow Uncle Ho's Idea
@@ -1508,6 +1606,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_parallel_adminstration  }
+		completion_reward = {
+		add_ideas = {
+		INC_hcmt_3
+		}
+		}
 	}
 
 	#Democratic Centralism
@@ -1521,9 +1624,18 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_followunclehosidea  }
+		completion_reward = {
+		add_popularity = {
+				ideology = totalist
+				popularity = 0.2
+			}
+			set_party_name = { ideology = totalist long_name = INC_Bolshie name = INC_Bolshie }
+			set_country_flag = INC_democractic_centralist_assembly
+			add_ideas = INC_Democratic_Centralism_idea
+		}
 	}
 
-	#Poletarian Culture
+	#Proletarian Culture
 	focus = {
 		id = INC_poletarian_culture
 		icon = GFX_INC_poletarian_culture-185694
@@ -1534,6 +1646,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_democratic_centralism  }
+		completion_reward = {
+		if = {
+				limit = { NOT = { has_country_flag = INC_research_slot_2} }
+				add_research_slot = 1
+				else = {
+					add_political_power = 50
+				}
+			}
+			add_ideas = INC_Peoples_Soviet_idea_1
+			set_country_flag = INC_research_slot_2
+		}
 	}
 
 	#Paradise Of The Working Class
@@ -1546,7 +1669,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_idea = INC_hcmt_3
+		
+		}
 		prerequisite = { focus = INC_urbanisation_effort  } prerequisite = { focus = INC_dictatorship_of_the_proletariat  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_hcmt_3
+		add_idea = INC_hcmt_5
+		}
+		}
 	}
 
 	#Worker Council
@@ -1560,6 +1693,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_expand_civilian_industry  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 10
+		add_ideas = {
+		INC_peoples_council_0
+		}
+		}
 	}
 
 	#Improve The People's Livelihood
@@ -1572,7 +1712,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_idea = INC_peoples_council_0
+		
+		}
 		prerequisite = { focus = INC_worker_council  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_peoples_council_0
+		add_idea = INC_peoples_council_1
+		}
+		}
 	}
 
 	#Syndicalist Question
@@ -1586,6 +1736,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_improvethepeopleslivelihood  }
+		completion_reward = {
+		custom_effect_tooltip = inc_purge_syndie_tt
+		hidden_effect = {
+		country_event = inc_rework.4
+		}
+		}
 	}
 
 	#Establish Fatherland Front
@@ -1599,6 +1755,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_syndicalist_question  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_peoples_council_1
+		add_idea = INC_peoples_council_2
+		}
+		}
 	}
 
 	#Chairman  Nguyen An Ninh
@@ -1610,6 +1772,12 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Nguyen An Ninh"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = INC_the_second_party_congress  }
 	}
@@ -1625,6 +1793,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_chairmannguyenanninh  }
+		completion_reward = {
+		add_political_power = 100
+			add_stability = 0.05
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.1
+			}
+		}
 	}
 
 	#Revolutionary Spontaneity
@@ -1638,6 +1814,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_expand_the_societies  }
+		completion_reward = {
+		if = {
+				limit = { NOT = { has_country_flag = INC_research_slot_2} }
+				add_research_slot = 1
+				else = {
+					add_political_power = 50
+				}
+			}
+			set_country_flag = INC_research_slot_2
+			add_ideas = INC_rev_spontaneity_idea
+		}
 	}
 
 	#Freedom of Thought
@@ -1651,6 +1838,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_free_from_religious  }
+		completion_reward = {
+			
+			add_ideas = INC_secret_societies_idea_B_1
+		}
 	}
 
 	#Ruralism
@@ -1664,6 +1855,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_revolutionary_spontaneity  }
+		completion_reward = {
+		swap_ideas = {
+				remove_idea = INC_secret_societies_idea_B_1
+				add_idea = INC_secret_societies_idea_B_2
+			}
+		}
 	}
 
 	#Break the Patriachy
@@ -1677,6 +1874,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_put_an_end_to_confucianism  }
+		completion_reward = {
+			
+
+			custom_effect_tooltip = INC_Women_Liberation
+			set_country_flag = INC_Women_Liberation
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = -0.1
+			}
+			swap_ideas = {
+				remove_idea = INC_secret_societies_idea_A_1
+				add_idea = INC_secret_societies_idea_A_2
+			}
+		}
 	}
 
 	#Revolution of Personality
@@ -1690,6 +1901,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_butnotultranationalist  }
+		completion_reward = {
+			
+			swap_ideas = {
+				remove_idea = INC_rev_spontaneity_idea
+				add_idea = INC_rev_spontaneity_idea_2
+			}
+		}
 	}
 
 	#Free from Religious
@@ -1742,6 +1960,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_revolutionary_spontaneity  }
+		completion_reward = {
+			
+			add_ideas = INC_secret_societies_idea_A_1
+		}
 	}
 
 	#Freedom for Everyone
@@ -1945,10 +2167,19 @@ focus_tree = {
 		icon = GFX_INC_expand_civilian_industry-94322
 		x = 21
 		y = 11
+		cost = 5
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = INC_father_of_the_nation  }
+		completion_reward = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+		type = industrial_complex
+		level = 1
+		instant_build = yes
+	}
+		}
 	}
 
 	#Seize The Means of Production
