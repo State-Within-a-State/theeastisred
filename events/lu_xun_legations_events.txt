@@ -1,0 +1,103 @@
+﻿###########################
+# Philippines Events
+###########################
+# By PPsyrius
+###########################
+
+add_namespace = lu_xun
+
+
+country_event = { # Introduction
+	id = lu_xun.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Lu Xun Takes Power in Shanghai"
+	desc = lu_xun.1.desc
+	picture = "GFX_report_event_picture_ku_xun_league"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Huzzah For the Revolution!"
+		custom_effect_tooltip = shanghai_revolution_tt
+		hidden_effect = {
+		remove_ideas_with_trait = head_of_government
+		remove_ideas_with_trait = foreign_minister
+		remove_ideas_with_trait = economy_minister
+		remove_ideas_with_trait = security_minister
+		remove_ideas = {
+		LEC_currency_6
+		LEC_volunteer_force
+		}
+		remove_all_ministers = yes
+		set_politics = { ruling_party = radical_socialist }
+		create_country_leader = {
+			name = "Lu Xun"
+			desc = "LU_XUN_DESC"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Lu_Xun.png"
+			expire = "1936.11.19"
+			ideology = lu_xun_thought_subtype
+			}
+		set_country_flag = shanghai_chaos
+		set_country_flag = LEC_Triad_Power
+		set_cosmetic_tag = LEC_LUXUN
+		load_focus_tree = luxun-tree
+		add_ideas = {
+		LEC_support_from_unions_0
+		LEC_raise_the_militias
+		LEC_local_study_groups_0
+		LEC_lu_xun_hog_rso
+		LEC_yin_fu_eco_rso
+		LEC_chen_jue_for_rso
+		LEC_zhan_dabei_sec_rso
+		}
+		set_popularities = {
+		totalist = 40
+		syndicalist = 10
+		radical_socialist = 40
+		social_democrat = 10
+		social_liberal = 0
+		market_liberal = 0
+		social_conservative = 0
+		authoritarian_democrat = 0
+		paternal_autocrat = 0
+		national_populist = 0
+	}
+		every_other_country = {
+			limit = {
+				OR = {
+					has_guaranteed = LEC
+					has_non_aggression_pact_with = LEC
+					has_military_access_to = LEC
+					gives_military_access_to = LEC
+				}
+			}
+			diplomatic_relation = {
+				country = FROM
+				relation = guarantee
+				active = no
+			}
+			diplomatic_relation = {
+				country = FROM
+				relation = non_aggression_pact
+				active = no
+			}
+			diplomatic_relation = {
+				country = FROM
+				relation = military_access
+				active = no
+			}
+			LEC = {
+				diplomatic_relation = {
+					country = PREV
+					relation = military_access
+					active = no
+				}
+			}
+		}
+		}
+	}
+	
+	
+}
