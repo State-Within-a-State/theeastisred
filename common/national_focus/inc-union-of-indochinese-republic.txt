@@ -702,6 +702,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_direction_of_the_economy  }
+		completion_reward = {
+		custom_effect_tooltip = 3_year_plann_INC_tt
+		hidden_effect = {
+		set_variable = {
+				var = inc_three_plan
+				value = 0
+			}
+		set_country_flag = INC_3_plan	
+		}
+		}
 	}
 
 	#Nationalize The Railroads
@@ -715,6 +725,18 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_3_years_plan  }
+		completion_reward = {
+		add_building_construction = {
+			type = infrastructure
+			level = 2
+			instant_build = yes
+		}
+		set_variable = {
+			var = inc_three_plan
+			value = 1
+		}
+		
+		}
 	}
 
 	#Expand The Railroads
@@ -728,6 +750,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_nationalize_the_railroads  }
+		completion_reward = {
+		add_ideas = {
+		INC_rail_way_expansion
+		}
+		add_to_variable = {
+			var = inc_three_plan
+			value = 1
+		}
+		}
 	}
 
 	#First 5 Years Plan
@@ -740,7 +771,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = INC_3_plan_finished
+		}
 		prerequisite = { focus = INC_hydraulic_ambition  } prerequisite = { focus = INC_class_struggle  }
+		completion_reward = {
+		custom_effect_tooltip = 5_year_plann_INC_tt
+		hidden_effect = {
+		set_variable = {
+				var = inc_five_plan
+				value = 0
+			}
+		set_country_flag = INC_5_plan	
+		}
+		}
 	}
 
 	#Father Of The Nation
@@ -772,6 +816,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_3_years_plan  }
+		completion_reward = {
+		add_to_variable = {
+			var = inc_three_plan
+			value = 1
+		}
+		add_ideas = {
+		INC_agricultural_funding
+		}
+		}
 	}
 
 	#Agricultural Cooperatives
@@ -785,6 +838,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_fund_agricultural_development  }
+		completion_reward = {
+		add_to_variable = {
+			var = inc_three_plan
+			value = 1
+		}
+		swap_ideas = {
+		remove_idea = INC_agricultural_funding
+		add_idea = INC_agricultural_coops
+		}
+		}
 	}
 
 	#Ho Chi Minh Thought
@@ -937,11 +1000,58 @@ focus_tree = {
 		icon = GFX_INC_develop_campuchia-81068
 		x = 54
 		y = 11
-		cost = 5
+		cost = 15
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			owns_state = 750
+			custom_trigger_tooltip = {
+				tooltip = INC_can_core_Cambodia_tooltip
+				has_country_flag = INC_can_core_Cambodia
+			}
+		}
 		prerequisite = { focus = INC_focus_on_light_industry  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Develop_Cambodia"
+			add_state_core  = 750
+			add_state_core  = 825
+			add_state_core  = 826
+			add_resource = {
+				type = rubber
+				amount = 12
+				state = 750
+			}
+			750 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			826 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			825 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Develop Laos
@@ -954,7 +1064,35 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			controls_state = 670
+			custom_trigger_tooltip = {
+				tooltip = INC_can_core_Laos_tooltip
+				has_country_flag = INC_can_core_Laos
+			}
+		}
 		prerequisite = { focus = INC_focus_on_light_industry  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Develops_Laos"
+			add_state_core = 670
+			670 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = { # Control Chaiyaburi/Xaignabouli
+				limit = { INC = { controls_state = 882 } } # Chaiyaburi
+				add_state_core = 882
+			}
+		}
 	}
 
 	#Focus On Light Industry
@@ -968,6 +1106,21 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_communal_economy  } prerequisite = { focus = INC_3_years_plan  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Light_Industry_Development"
+			swap_ideas = {
+				remove_idea = INC_International_Devision_of_Labor_idea
+				add_idea = INC_International_Devision_of_Labor_idea_2
+			}
+			286 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Improve National Defense Industry
@@ -981,6 +1134,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_develop_campuchia  } prerequisite = { focus = INC_develop_laos  }
+		completion_reward = {
+		add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+		}
 	}
 
 	#Hydraulic Ambition
@@ -993,7 +1153,35 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			controls_state = 670
+			custom_trigger_tooltip = {
+				tooltip = INC_can_core_Laos_tooltip
+				has_country_flag = INC_can_core_Laos
+			}
+		}
 		prerequisite = { focus = INC_agricultural_cooperatives  } prerequisite = { focus = INC_expand_the_railroads  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Develops_Laos"
+			add_state_core = 670
+			670 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = { # Control Chaiyaburi/Xaignabouli
+				limit = { INC = { controls_state = 882 } } # Chaiyaburi
+				add_state_core = 882
+			}
+		}
 	}
 
 	#Learn from the Meiji Restoration
@@ -1007,6 +1195,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_modernist_culture  }
+		completion_reward = {
+		add_ideas = {
+		INC_learn_from_past_0
+		}
+		}
 	}
 
 	#Country of Labour
@@ -1020,6 +1213,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_socialist_education  }
+		completion_reward = {
+		add_ideas = {
+		INC_nation_of_labour_0
+		}
+		}
 	}
 
 	#Coal And Steel
@@ -1033,6 +1231,22 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_focus_on_light_industry  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Coal_and_Steel"
+			add_resource = {
+				type = steel
+				amount = 14
+				state = 671
+			}
+			671 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Rubber and Rice
@@ -1046,6 +1260,32 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_coal_and_steel  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Rice_and_Rubber"
+			add_resource = {
+				type = rubber
+				amount = 19
+				state = 856
+			}
+			add_resource = {
+				type = rubber
+				amount = 8
+				state = 286
+			}
+			add_resource = {
+				type = rubber
+				amount = 12
+				state = 827
+			}
+			856 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Cooperation with Landlords
@@ -1060,6 +1300,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC_land_reform  }
 		mutually_exclusive = { focus = INC_arrest_the_landlords  }
+		completion_reward = {
+		completion_reward = {
+		add_stability = -0.05
+		custom_effect_tooltip = add_5_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 5 }
+		}
+		}
 	}
 
 	#Rectification of Errors
@@ -1073,6 +1320,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_land_to_the_tiller  }
+		completion_reward = {
+		completion_reward = {
+		add_stability = -0.05
+		custom_effect_tooltip = add_10_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 10 }
+		}
+		}
 	}
 
 	#Unbreakable union of free republics
@@ -1126,6 +1380,7 @@ focus_tree = {
 		prerequisite = { focus = INC_adopt_ordinance_no_57  }
 		completion_reward = {
 		remove_idea = INC_peasant_portest_0
+		add_stability = 0.15
 		}
 	}
 
@@ -1163,6 +1418,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_indochinese_way_to_socialism  } prerequisite = { focus = INC_establish_fatherland_front  }
+		completion_reward = {
+		country_event = inc_rework.7
+		}
 	}
 
 	#Nationalize Economic Enterperises
@@ -1176,6 +1434,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_planned_economy  }
+		completion_reward = {
+		add_ideas = {
+		INC_nationalization_0
+		}
+		add_to_variable = {
+			var = inc_three_plan
+			value = 1
+		}
+		}
 	}
 
 	#Class Struggle
@@ -1189,6 +1456,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_seize_the_means_of_production  } prerequisite = { focus = INC_nationalize_economic_enterperises  }
+		completion_reward = {
+		add_stability = 0.05
+		custom_effect_tooltip = add_10_land_reform_tooltip
+			add_to_variable = { var = land_reform value = 10 }
+		}
 	}
 
 	#Planned Economy
@@ -1201,7 +1473,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_government = totalist
+		}
 		prerequisite = { focus = INC_3_years_plan  }
+		completion_reward = {
+		add_ideas = {
+		INC_planned_economy_0
+		}
+		add_to_variable = {
+			var = inc_three_plan
+			value = 1
+		}
+		}
 	}
 
 	#Industrialization
@@ -1215,6 +1499,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_first_5_years_plan  } prerequisite = { focus = INC_miracle_on_the_red_river  }
+		completion_reward = {
+		add_ideas = {
+		INC_industrialization
+		}
+		}
 	}
 
 	#Our Place in the World
@@ -1226,6 +1515,9 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		add_political_power = 50
 		}
 	}
 
@@ -1240,6 +1532,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_our_place_in_the_world  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Support Cambodian Revolutionaries
@@ -1252,7 +1547,62 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+				has_socialist_government = yes
+				has_completed_focus = INC_Embrace_Indochina
+			}
+			is_subject = no
+		}
+		bypass = {
+			has_country_flag = INC_can_core_Cambodia
+		}
 		prerequisite = { focus = INC_destabilise_siam  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Training_Cambodian_Revolutionaries"
+			custom_effect_tooltip = INC_help_core_Cambodia_tooltip
+			set_country_flag = INC_can_core_Cambodia
+		# Laotian and Cambodians are prepared
+			custom_effect_tooltip = INC_Cambodian_revolutionary_tooltip
+			clr_country_flag = Tou_Samouth_dead
+			clr_country_flag = Sisowath_Monipong_dead
+			clr_country_flag = Boun_Oum_dead
+			clr_country_flag = Sisowath_Youtevong_dead
+			clr_country_flag = Sisowath_Monireth_dead
+			if = {
+				limit = { has_country_flag = INC_form_khmer_issarak }
+				delete_unit_template_and_units = { division_template = "Khmer Issarak" }
+				division_template = {
+					name = "Khmer Issarak"
+					priority = 2
+					division_names_group = INC_INF_02
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+					}
+				}
+				random_owned_state = {
+					prioritize = { 826 }
+					create_unit = {
+						division = "name = \"Khmer Issarak 1st Division'\" division_template = \"Khmer Issarak\"  start_experience_factor = 0.4"
+						owner = INC
+					}
+					create_unit = {
+						division = "name = \"Khmer Issarak 2nd Division'\" division_template = \"Khmer Issarak\"  start_experience_factor = 0.4"
+						owner = INC
+					}
+				}
+				clr_country_flag = INC_form_khmer_issarak
+			}
+		}
 	}
 
 	#Support Laotian Revolutionaries
@@ -1265,7 +1615,58 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+				has_socialist_government = yes
+				has_completed_focus = INC_Embrace_Indochina
+			}
+			is_subject = no
+		}
+		bypass = {
+			has_country_flag = INC_can_core_Laos
+		}
 		prerequisite = { focus = INC_destabilise_siam  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Training_Laoitian_Revolutionaries"
+			custom_effect_tooltip = INC_help_core_Laos_tooltip
+			set_country_flag = INC_can_core_Laos
+			custom_effect_tooltip = INC_Laos_revolutionary_tooltip
+			clr_country_flag = Souphanou_Von_dead
+			clr_country_flag = Phomvihanh_Kayson_dead
+			if = {
+				limit = { has_country_flag = INC_form_pathet_lao }
+				delete_unit_template_and_units = { division_template = "Pathet Lao" }
+				division_template = {
+					name = "Pathet Lao"
+					priority = 2
+					division_names_group = INC_INF_03
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+						infantry = { x = 1 y = 0 }
+						infantry = { x = 1 y = 1 }
+						infantry = { x = 1 y = 2 }
+						infantry = { x = 2 y = 0 }
+						infantry = { x = 2 y = 1 }
+						infantry = { x = 2 y = 2 }
+					}
+				}
+				random_owned_state = {
+					prioritize =  { 670 }
+					create_unit = {
+						division = "name = \"Pathet Lao 1st Division'\" division_template = \"Pathet Lao\"  start_experience_factor = 0.4"
+						owner = INC
+					}
+					create_unit = {
+						division = "name = \"Pathet Lao 2nd Division'\" division_template = \"Pathet Lao\"  start_experience_factor = 0.4"
+						owner = INC
+					}
+				}
+				clr_country_flag = INC_form_pathet_lao
+			}
+		}
 	}
 
 	#Destabilise Siam
@@ -1279,6 +1680,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_peninsular_direction  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Destabilize_Siam"
+			custom_effect_tooltip = INC_Siam_Uprising_tooltip
+			SIA = {
+				country_event = { id = viet.154 days = 2 }
+			}
+		}
 	}
 
 	#Challenge Siamese Hegemony
@@ -1291,7 +1699,42 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			country_exists = SIA
+			is_subject = no
+			can_declare_war_on = SIA
+			SIA = {
+				has_civil_war = no
+				has_socialist_government = no
+			}
+		}
+		select_effect = {
+			hidden_effect = {
+				add_ai_strategy = {
+					type = antagonize
+					id = "SIA"
+					value = 300
+				}
+			}
+		}
+		bypass = {
+			OR = {
+				NOT = {	country_exists = SIA }
+				SIA = {
+					has_socialist_government = yes
+				}
+			}
+		}
+		will_lead_to_war_with = SIA
+
 		prerequisite = { focus = INC_support_cambodian_revolutionaries  } prerequisite = { focus = INC_support_laotian_revolutionaries  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Challenge_Siamese_Hegemony"
+			create_wargoal = {
+				type = annex_everything
+				target = SIA
+			}
+		}
 	}
 
 	#Beyond Indochina
@@ -1304,7 +1747,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			is_subject = no
+		}
 		prerequisite = { focus = INC_our_place_in_the_world  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Beyond_Indochina"
+			add_political_power = 25
+		}
 	}
 
 	#Ask For Phalanstère Membership
@@ -1317,7 +1767,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_completed_focus = INC_An_International_Revolutionary_Outpost
+			has_socialist_government = yes
+			is_subject = no
+			country_exists = FRA
+			NOT = {
+				has_war_with = FRA
+			}
+			FRA = {
+				has_socialist_government = yes
+			}
+		}
 		prerequisite = { focus = INC_beyond_indochina  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Ask_For_Membership"
+			add_to_tech_sharing_group = phalanstere_research
+		}
 	}
 
 	#Join Third Internationale
@@ -1330,7 +1796,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_completed_focus = INC_An_International_Revolutionary_Outpost
+			has_socialist_government = yes
+			is_subject = no
+			country_exists = FRA
+			NOT = {
+				has_war_with = FRA
+			}
+			FRA = {
+				has_socialist_government = yes
+			}
+		}
 		prerequisite = { focus = INC_askforphalansteremembership  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Special_Relationship_With_France"
+			FRA = { country_event = viet.156 }
+		}
 	}
 
 	#Streghthen Ties With Calcutta
@@ -1343,7 +1825,28 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			country_exists = BHC
+			is_subject = no
+			NOT = {
+				has_war_with = BHC
+			}
+			BHC = {
+				has_socialist_government = yes
+			}
+		}
 		prerequisite = { focus = INC_beyond_indochina  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Strengthen_Our_Tie_with_Calcutta"
+			BHC = { country_event = viet.162 }
+			hidden_effect = {
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = BHC
+					value = -500
+				}
+			}
+		}
 	}
 
 	#Join East Syndicalist Faction
@@ -1356,7 +1859,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			country_exists = BHC
+			threat > 0.5
+			is_in_faction = no
+			is_subject = no
+			has_war = no
+			NOT = { has_war_with = BHC }
+			NOT = { any_owned_state = { is_core_of = BHC } }
+			BHC = {
+				is_faction_leader = yes
+			}
+		}
 		prerequisite = { focus = INC_streghthen_ties_with_calcutta  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Join_East_Syndicalist_Faction"
+			BHC = { country_event = viet.150 }
+		}
 	}
 
 	#Our Comrades in China
@@ -2506,7 +3025,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			is_subject = no
+			country_exists = SIA
+			SIA = {
+				is_subject = no
+				has_socialist_government = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
 		prerequisite = { focus = INC_streghthen_worker_party_of_siam  } prerequisite = { focus = INC_peoplesarmyofsiam  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Cooperate_with_Siam"
+			SIA = { country_event = viet.152 }
+		}
 	}
 
 	#Admit Siam to the Union
@@ -2518,6 +3050,11 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		SIA = {
+		is_puppet_of = INC
+		}
 		}
 		prerequisite = { focus = INC_challenge_siamese_hegemony  }
 		mutually_exclusive = { focus = INC_peoplesrepublicofsiam  }
@@ -2534,6 +3071,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_admit_siam_to_the_union  }
+		completion_reward = {
+		add_ideas = {
+		INC_garrison_siam
+		}
+		}
 	}
 
 	#What remains of the RSA
@@ -2547,6 +3089,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_admit_siam_to_the_union  }
+		completion_reward = {
+		add_ideas = {
+		INC_rsa_integration
+		}
+		}
 	}
 
 	#Return Burmese Territory
@@ -2558,6 +3105,15 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			is_subject = no
+			country_exists = BRM
+			BRM = {
+				
+				has_socialist_government = yes
+				NOT = { has_war_with = ROOT }
+			}
 		}
 		prerequisite = { focus = INC_what_remains_of_the_rsa  } prerequisite = { focus = INC_deploy_garrison_troops  }
 	}
@@ -2598,6 +3154,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			country_exists = RUS
+			is_subject = no
+			NOT = {
+				has_war_with = RUS
+			}
+			RUS = {
+				has_socialist_government = yes
+			}
+		}
 		prerequisite = { focus = INC_beyond_indochina  }
 	}
 
@@ -2611,7 +3177,22 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			country_exists = RUS
+			threat > 0.5
+			is_in_faction = no
+			is_subject = no
+			has_war = no
+			NOT = { has_war_with = RUS }
+			NOT = { any_owned_state = { is_core_of = RUS } }
+			RUS = {
+				is_faction_leader = yes
+			}
+		}
 		prerequisite = { focus = INC_the_true_home_of_the_revolution  }
+		completion_reward = {
+		RUS = { add_to_faction = INC }
+		}
 	}
 
 	#The Final Step
@@ -2624,6 +3205,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_greatpresidenthochiminhlivesforeverinourcause  } prerequisite = { focus = INC_paradise_of_the_working_class  }
+		completion_reward = {
+		custom_effect_tooltip = indochina_final_stepp_tt
+		hidden_effect = {
+		country_event = inc_rework.8
+		}
+		}
 	}
 
 	#The Union Forever
@@ -2637,6 +3224,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_declare_socialist_victory_in_indochina  } prerequisite = { focus = INC_revolution_of_personality  }
+		completion_reward = {
+		add_ideas = {
+		INC_uinited_union
+		}
+		}
 	}
 	
 	#Execute The Royals
