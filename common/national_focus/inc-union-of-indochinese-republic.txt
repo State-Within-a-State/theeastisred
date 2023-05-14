@@ -1881,28 +1881,58 @@ focus_tree = {
 	#Our Comrades in China
 	focus = {
 		id = INC_our_comrades_in_china
-		icon = GFX_focus_chi_one_china_policy
+		icon = GFX_ICONONE_china_inc_2-248360
 		x = 32
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			country_exists = CHI
+			is_in_faction = no
+			is_subject = no
+			NOT = {
+				has_war_with = CHI
+				any_owned_state = { is_core_of = CHI }
+				has_country_flag = INC_CHI_refuse
+			}
+		}
 		prerequisite = { focus = INC_beyond_indochina  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Commit_to_Chinese_Revolution"
+			CHI = { country_event = viet.168 }
+		}
 	}
 
 	#Left KMT
 	focus = {
 		id = INC_left_kmt
-		icon = GFX_focus_chi_cooperation_with_the_nationalists
+		icon = GFX_ICONONE_china_inc_1-248360
 		x = 32
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			country_exists = CHI
+			threat > 0.5
+			is_in_faction = no
+			is_subject = no
+			has_war = no
+			NOT = { has_war_with = CHI }
+			NOT = { any_owned_state = { is_core_of = CHI } }
+			CHI = {
+				is_faction_leader = yes
+			}
+		}
 		prerequisite = { focus = INC_our_comrades_in_china  }
 		mutually_exclusive = { focus = INC_left_kmt  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Comrade_Plus_Brother"
+			CHI = { country_event = viet.150 }
+		}
 	}
 
 	
@@ -2803,6 +2833,29 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_export_oriented_industrialisation  } prerequisite = { focus = INC_establish_department_of_local_selfgovernment  } prerequisite = { focus = INC_local_intiative  } prerequisite = { focus = INC_export_focus  }
+		completion_reward = {
+		
+		if = {
+			limit = {
+			has_idea = INC_market_syndicalism
+			}
+			swap_ideas = {
+			remove_idea = INC_market_syndicalism
+			add_idea = 
+			}
+		}
+		elseif = {
+		limit = {
+		has_idea = INC_decentralised_industry
+		}
+		swap_ideas = {
+			remove_idea = INC_decentralised_industry
+			add_idea = 
+			}
+		}
+		
+		
+		}
 	}
 
 	#Socialist Education
@@ -2816,6 +2869,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_industrial_enlightenment  }
+		completion_reward = {
+		add_ideas = {
+		INC_socialist_education
+		}
+		}
 	}
 
 	#Improve Magnagement of Unions
@@ -2829,6 +2887,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_deal_with_the_totalists  }
+		completion_reward = {
+		add_political_power = 50
+		add_stability = 0.05
+		}
 	}
 
 	#Declare Socialist Victory in Indochina
@@ -2842,6 +2904,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_country_of_labour  } prerequisite = { focus = INC_united_we_stand  }
+		completion_reward = {
+		add_stability = 0.1
+		add_ideas = {
+		INC_socialist_victory
+		}
+		}
 	}
 
 	#Demand Cambodian and Laotian Land
@@ -2854,8 +2922,26 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			is_subject = no
+			country_exists = SIA
+			SIA = {
+				is_subject = no
+				has_socialist_government = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
 		prerequisite = { focus = INC_peninsular_direction  }
 		mutually_exclusive = { focus = INC_destabilise_siam  }
+		completion_reward = {
+		SIA = {
+		country_event = {
+		id = inc_rework.9
+		days = 3
+		}
+		}
+		}
+		
 	}
 
 	#Economic cooperation with Siam
@@ -2868,7 +2954,27 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = INC_SIA_treaty
+			is_subject = no
+			country_exists = SIA
+			SIA = {
+				is_subject = no
+				has_socialist_government = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
 		prerequisite = { focus = INC_demand_cambodian_and_laotian_land  }
+		completion_reward = {
+			SIA = {
+			add_ideas = {
+			INC_SIA_economic_cooperation
+			}
+			}
+			add_ideas = {
+			INC_SIA_economic_cooperation
+			}
+		}
 	}
 
 	#Mutual Defense Treaty
@@ -2881,7 +2987,32 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			is_subject = no
+			country_exists = SIA
+			SIA = {
+				is_subject = no
+				has_socialist_government = yes
+				NOT = { has_war_with = ROOT }
+			}
+		}
 		prerequisite = { focus = INC_economic_cooperation_with_siam  }
+		completion_reward = {
+		if = {
+			limit = {
+				country_exists = INC
+			}
+			diplomatic_relation = {
+				country = INC
+				relation = non_aggression_pact
+			}
+			give_guarantee = INC
+			INC = {
+				give_guarantee = SIA
+			}
+		}
+		
+		}
 	}
 
 	#Decentralised Industry
@@ -2894,7 +3025,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_government = radical_socialist
+		}
 		prerequisite = { focus = INC_communal_economy  }
+		completion_reward = {
+		add_ideas = {
+		INC_decentralised_industry
+		}
+		}
 	}
 
 	#Market Socialism
@@ -2907,8 +3046,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_government = syndicalist
+		}
 		prerequisite = { focus = INC_communal_economy  }
 		mutually_exclusive = { focus = INC_decentralised_industry  }
+		completion_reward = {
+		add_ideas = {
+		INC_market_syndicalism
+		}
+		}
 	}
 
 	#People's Republic of Siam
@@ -2917,11 +3064,14 @@ focus_tree = {
 		icon = GFX_INC_peoplesrepublicofsiam-98191
 		x = 39
 		y = 5
-		cost = 5
+		cost = 0.5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_challenge_siamese_hegemony  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Express de la Réunification
@@ -2935,6 +3085,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = INC_communal_economy  }
+		completion_reward = {
+		add_ideas = {
+		INC_expressdelareunification_train
+		}
+		
+		}
 	}
 
 	#investment from Third Internationale
@@ -2948,6 +3104,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = INC_market_socialism  }
+		completion_reward = {
+		add_ideas = {
+		INC_international_aid
+		}
+		}
 	}
 
 	#Labour Mobility
@@ -2961,6 +3122,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_market_socialism  }
+		completion_reward = {
+		add_ideas = {
+		INC_labor_mobility
+		}
+		}
 	}
 
 	#Export Focus
@@ -2974,6 +3140,33 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = INC_investment_from_third_internationale  } prerequisite = { focus = INC_labour_mobility  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Export_Oriented_Industrialization"
+			286 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			856 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			671 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Dockyard Expansion
@@ -2987,6 +3180,23 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_improve_national_defense_industry  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Port_Expansion"
+			671 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 3
+					province = 4119
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#People's Army of Siam
@@ -3000,6 +3210,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_peoplesrepublicofsiam  }
+		completion_reward = {
+		add_ideas = {
+		SIA_siam_revolutionary_army_INC
+		}
+		}
 	}
 
 	#Streghthen Worker Party of Siam
@@ -3013,6 +3228,37 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_peoplesrepublicofsiam  }
+		completion_reward = {
+		SIA = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.3
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.3
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.4
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = "Workers Party of Siam"
+			name = "WPS"
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = "Workers Party of Siam"
+			name = "WPS"
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = "Workers Party of Siam"
+			name = "WPS"
+		}
+		}
+		}
 	}
 
 	#Economic cooperation with Siam
@@ -3058,6 +3304,24 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC_challenge_siamese_hegemony  }
 		mutually_exclusive = { focus = INC_peoplesrepublicofsiam  }
+		completion_reward = {
+		annex_country = {
+			target = SIA
+			transfer_troops = yes
+		}
+		
+		add_state_core  = 751
+		add_state_core  = 830
+		add_state_core  = 999
+		add_state_core  = 724
+		add_state_core  = 749
+		add_state_core  = 831
+		add_state_core  = 822
+		add_state_core  = 756
+		add_state_core  = 823
+		add_state_core  = 289
+		add_state_core  = 824
+		}
 	}
 
 	#Deploy Garrison Troops
@@ -3116,6 +3380,13 @@ focus_tree = {
 			}
 		}
 		prerequisite = { focus = INC_what_remains_of_the_rsa  } prerequisite = { focus = INC_deploy_garrison_troops  }
+		completion_reward = {
+		BRM = {
+		set_state_owner = 756
+		set_state_owner = 831
+		set_state_owner = 749
+		}
+		}
 	}
 
 	#Liberate Siamese Workers
@@ -3129,6 +3400,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_peoplesrepublicofsiam  focus = INC_admit_siam_to_the_union  }
+		completion_reward = {
+		SIA = {
+		add_stability = 0.25
+		
+		}
+		
+		add_political_power = 100
+		}
 	}
 
 	#Land Reform in Siam
@@ -3142,12 +3421,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_liberate_siamese_workers  }
+		completion_reward = {
+		add_ideas = {
+		INC_peoples_plan_campaign
+		}
+		}
 	}
 
 	#The true Home of the Revolution
 	focus = {
 		id = INC_the_true_home_of_the_revolution
-		icon = GFX_focus_chi_mission_to_the_soviet_union
+		icon = GFX_ICONONE_sov_inc-248360
 		x = 25
 		y = 2
 		cost = 5
@@ -3165,6 +3449,9 @@ focus_tree = {
 			}
 		}
 		prerequisite = { focus = INC_beyond_indochina  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Join Soviet Faction
