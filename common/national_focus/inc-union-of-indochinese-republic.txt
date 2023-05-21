@@ -614,6 +614,9 @@ focus_tree = {
 		completion_reward = {
 		
 		custom_effect_tooltip = we_shall_start_land_reform_tt
+		hidden_effect = {
+		unlock_decision_category_tooltip = INC_land_reform_decisions
+		}
 		}
 	}
 
@@ -3744,6 +3747,14 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = INC-GIAP_dump_the_traitors_ashes  focus = INC-GIAP_rehabilitate_vnqdd_members  }
+		completion_reward = {
+		add_manpower = -25
+		add_stability = 0.05
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Crush Reactionary Foes
@@ -3757,6 +3768,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = INC-GIAP_fight_for_his_ideas  }
+		completion_reward = {
+		add_war_support = 0.15
+		add_manpower = -1000
+		}
 	}
 
 	#Fight For His Ideas
@@ -3770,6 +3785,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = INC-GIAP_collapse  }
+		completion_reward = {
+		add_ideas = {
+		INC_for_hcmt_0
+		}
+		}
 	}
 
 	#Dump the Traitors Ashes
@@ -3784,6 +3804,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC-GIAP_build_up_the_communes  }
 		mutually_exclusive = { focus = INC-GIAP_rehabilitate_vnqdd_members  }
+		completion_reward = {
+		add_ideas = {
+		INC_inter_purge
+		}
+		}
 	}
 
 	#Collapse
@@ -3815,6 +3840,16 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = INC-GIAP_fight_for_his_ideas  }
+		completion_reward = {
+		 add_popularity = {
+		 ideology = social_democrat
+		 popularity = -1
+		 }
+		 add_popularity = {
+		 ideology = social_liberal
+		 popularity = -1
+		 }
+		}
 	}
 
 	#Safe Guard Phan Boi Chau
@@ -3828,6 +3863,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC-GIAP_hunt_down_vnqdd_devils  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Raise Popular Peasant Support
@@ -3841,6 +3879,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = INC-GIAP_crush_reactionary_foes  } prerequisite = { focus = INC-GIAP_hunt_down_vnqdd_devils  }
+		completion_reward = {
+		add_ideas = {
+		INC_peasant_support
+		}
+		}
 	}
 
 	#Support Anti Monarchist Sympathizers
@@ -3854,6 +3897,21 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = INC-GIAP_crush_reactionary_foes  }
+		completion_reward = {
+		add_stability = 0.05
+		 add_popularity = {
+		 ideology = authoritarian_democrat
+		 popularity = -1
+		 }
+		 add_popularity = {
+		 ideology = paternal_autocrat
+		 popularity = -1
+		 }
+		 add_popularity = {
+		 ideology = national_populist
+		 popularity = -1
+		 }
+		}
 	}
 
 	#Strengthen the Ho Chi Minh Trail
@@ -3867,6 +3925,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = INC-GIAP_support_anti_monarchist_sympathizers  } prerequisite = { focus = INC-GIAP_raise_popular_peasant_support  }
+		completion_reward = {
+		add_ideas = {
+		INC_HCM_trail_formed_0
+		}
+		}
 	}
 
 	#Liberate the North
@@ -3880,6 +3943,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = INC-GIAP_raise_popular_peasant_support  } prerequisite = { focus = INC-GIAP_support_anti_monarchist_sympathizers  }
+		completion_reward = {
+		add_ideas = {
+		INC_northern_liberation
+		}
+		}
 	}
 
 	#Save Our Laotian Allies
@@ -3893,6 +3961,10 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = INC-GIAP_safe_guard_phan_boi_chau  } prerequisite = { focus = INC-GIAP_raise_popular_peasant_support  }
+		completion_reward = {
+		add_political_power = 25
+		add_war_support = 0.01
+		}
 	}
 
 	#Siege of Phnom Penh
@@ -3901,9 +3973,15 @@ focus_tree = {
 		icon = GFX_INC-GIAP_siege_of_phnom_penh-248360
 		x = 55
 		y = 4
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_war_with = CAM
+		CAM = {
+		exists = yes
+		}
 		}
 		prerequisite = { focus = INC-GIAP_safe_guard_phan_boi_chau  } prerequisite = { focus = INC-GIAP_raise_popular_peasant_support  }
 	}
@@ -3919,6 +3997,13 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = INC-GIAP_siege_of_phnom_penh  }
+		completion_reward = {
+		CAM = {
+		add_ideas = {
+		CAM_issarak_issue
+		}
+		}
+		}
 	}
 
 	#The Red Prince
@@ -3931,7 +4016,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = INC-GIAP_save_our_laotian_allies  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.25
+		}
+		}
 	}
 
 	#Poke Out Social Reationaries
@@ -3945,6 +4037,13 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = INC-GIAP_liberate_the_north  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		add_manpower = -1000
+		}
 	}
 
 	#Bomb Enemy Ports
@@ -3958,6 +4057,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = INC-GIAP_strengthen_the_ho_chi_minh_trail  }
+		completion_reward = {
+		custom_effect_tooltip = bomb_viet_vnq_tt
+		hidden_effect = {
+		set_country_flag = bomb_ports_INC
+		}
+		}
 	}
 
 	#Choking the Snakes and Dragons
@@ -3971,6 +4076,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC-GIAP_poke_out_social_reationaries  } prerequisite = { focus = INC-GIAP_bomb_enemy_ports  }
+		completion_reward = {
+		add_political_power = 25
+		add_war_support = 0.1
+		}
 	}
 
 	#The Cambodian Question
@@ -3983,7 +4092,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		CAM = {
+		exists = no
+		}
+		}
+		bypass = {
+		NOT = {
+		has_war_with = CAM
+		}
+		}
 		prerequisite = { focus = INC-GIAP_support_the_issarak  } prerequisite = { focus = INC-GIAP_the_red_prince  }
+		completion_reward = {
+		add_stability = 0.15
+		}
 	}
 
 	#Hanoi's Freedom!
@@ -3996,7 +4118,25 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		VIN = {
+		has_capitulated = yes
+		}
+		VNQ = {
+		has_capitulated = yes
+		}
+		}
 		prerequisite = { focus = INC-GIAP_choking_the_snakes_and_dragons  } prerequisite = { focus = INC-GIAP_the_cambodian_question  }
+		completion_reward = {
+		add_ideas = {
+		INC_post_war_woes_0
+		}
+		clr_country_flag = indochina_civil_war
+		country_event = {
+		id = viet_civil_war.5
+		days = 3
+		}
+		}
 	}
 
 	#Giap's Revolutionary Course
@@ -4005,9 +4145,15 @@ focus_tree = {
 		icon = GFX_INC-GIAP_giapsrevolutionarycourse-248360
 		x = 60
 		y = 0
-		cost = 3
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Vo Nguyen Giap"
+		ruling_only = yes
+		}
 		}
 	}
 
