@@ -15,7 +15,7 @@ country_event = {
 		set_politics = { ruling_party = paternal_autocrat }
 		create_country_leader = {
 				name = "Boum Oum"
-				picture = "gfx/leaders/VIN/Portrait_Vietnam_Tran_Trong_Kim.png"
+				picture = "gfx/leaders/LAO/Portrait_LAO_Boun_Oum.png"
 				expire = "1980.03.17"
 				ideology = natpop_neo_feudalism_subtype
 			}	
@@ -30,11 +30,11 @@ country_event = {
 				name = "Phetsarath Ratanavongsa"
 				picture = "gfx/leaders/LAO/Portrait_Laos_Phetsarath_Ratanavongsa.png"
 				expire = "1959.10.29"
-				ideology = authdem_pan_asianism_subtype
+				ideology = social_nationalism_subtype
 			}
 		create_country_leader = {
 				name = "Souvanna Phouma"
-				picture = "gfx/leaders/LAO/Portrait_Laos_Phetsarath_Ratanavongsa.png"
+				picture = "gfx/leaders/LAO/Portrait_LAO_Souvanna_Phouma.png"
 				expire = "1959.10.29"
 				ideology = moderate_authoritarianism_subtype
 			}	
@@ -103,7 +103,18 @@ country_event = {
 				planning_skill = 1
 				logistics_skill = 2
 			}
-		
+		custom_effect_tooltip = laos_commie_tt
+		custom_effect_tooltip = laos_hmong_tt
+		hidden_effect = {
+		set_variable = {
+				var = lao_pathet
+				value = 0
+			}
+		set_variable = {
+				var = lao_hmong
+				value = 0
+			}
+		}
 		} 
 		
 		 
@@ -114,4 +125,116 @@ country_event = {
 
 	}
 	
+	
+	country_event = {
+
+		id = laos.2
+		title = "Vientiane Incident"
+		desc = laos.2.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		option = {
+		name = "Empower the Privy Council"
+		set_politics = { ruling_party = paternal_autocrat }
+		create_country_leader = {
+				name = "Privy Council"
+				picture = "gfx/leaders/LAO/Portrait_LAO_Privy_Council.png"
+				desc = "POLITICS_SISAVANG_DESC"
+				expire = "1959.10.29"
+				ideology = neo_feudalism_subtype
+			}
+		custom_effect_tooltip = laos_commie_tt
+		custom_effect_tooltip = laos_hmong_tt
+		hidden_effect = {
+		add_to_variable = {
+				var = lao_pathet
+				value = 1
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = 1
+			}
+		}
+		} 
+		
+	}
+	
+	
+	country_event = {
+
+		id = laos.3
+		title = "Decision of the Privy Council"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		option = {
+		name = "Support the Rightists"
+		set_politics = { ruling_party = national_populist }
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.5
+		}
+		custom_effect_tooltip = laos_commie_decrease_tt
+		custom_effect_tooltip = laos_hmong_decrease_tt
+		hidden_effect = {
+		add_to_variable = {
+				var = lao_pathet
+				value = -1
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = -1
+			}
+		}
+		
+		} 
+		
+		option = {
+		name = "Support the Neutralists"
+		set_politics = { ruling_party = social_conservative }
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.5
+		}
+		custom_effect_tooltip = laos_commie_tt
+		custom_effect_tooltip = laos_hmong_decrease_tt
+		hidden_effect = {
+		add_to_variable = {
+				var = lao_pathet
+				value = 2
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = -1
+			}
+		}
+		
+		}
+		option = {
+		name = "Support the Lao Issara"
+		set_politics = { ruling_party = authoritarian_democrat }
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.5
+		}
+		custom_effect_tooltip = laos_commie_tt
+		custom_effect_tooltip = laos_hmong_tt
+		hidden_effect = {
+		add_to_variable = {
+				var = lao_pathet
+				value = 5
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = 2
+			}
+		}
+		
+		}
+		
+	}
 	
