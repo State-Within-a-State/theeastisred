@@ -1,5 +1,6 @@
 ﻿add_namespace = laos
-
+add_namespace = pathet_lao
+add_namespace = hmong
 
 country_event = {
 
@@ -58,9 +59,9 @@ country_event = {
 			}
 		create_country_leader = {
 				name = "Paj Cai Vwj"
-				picture = "gfx/leaders/LAO/Portrait_Laos_Souphanouvong.png"
+				picture = "gfx/leaders/LAO/Portrait_LAO_Vue_Pa_Vwj.png"
 				expire = "1959.10.29"
-				ideology = left_nationalism_subtype
+				ideology = radsoc_indigenous_communitarianism_subtype
 			}
 		create_country_leader = {
 				name = "Nouhak Phoumsavanh"
@@ -173,6 +174,7 @@ country_event = {
 	
 		option = {
 		name = "Support the Rightists"
+		set_cosmetic_tag = LAO_OUM
 		set_politics = { ruling_party = national_populist }
 		add_popularity = {
 		ideology = ROOT
@@ -237,4 +239,242 @@ country_event = {
 		}
 		
 	}
+	
+	
+	country_event = {
+
+		id = laos.4
+		title = "Battle of Luang Namtha"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "Attack the Road!"
+		
+		custom_effect_tooltip = laos_commie_decrease_tt
+		custom_effect_tooltip = laos_hmong_decrease_tt
+		hidden_effect = {
+		country_event = {
+		id = laos.5
+		days = 7
+		}
+		add_to_variable = {
+				var = lao_pathet
+				value = -1
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = -1
+			}
+		}
+		
+		}
+		option = {
+		name = "Encircle the Pincer the Road"
+		
+		custom_effect_tooltip = laos_commie_tt
+		custom_effect_tooltip = laos_hmong_tt
+		hidden_effect = {
+		country_event = {
+		id = laos.5
+		days = 7
+		}
+		
+		add_to_variable = {
+				var = lao_pathet
+				value = 1
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = 1
+			}
+		}
+		
+		}
+		
+	}
+	
+	country_event = {
+
+		id = laos.5
+		title = "Battle of Lak Sao"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "Defend the Nakay Plateau"
+		
+		custom_effect_tooltip = laos_commie_decrease_tt
+		custom_effect_tooltip = laos_hmong_decrease_tt
+		hidden_effect = {
+		country_event = {
+		id = laos.6
+		days = 7
+		}
+		add_to_variable = {
+				var = lao_pathet
+				value = -5
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = -5
+			}
+		}
+		
+		}
+		option = {
+		name = "Flank Them"
+		
+		custom_effect_tooltip = laos_commie_tt
+		custom_effect_tooltip = laos_hmong_tt
+		hidden_effect = {
+		country_event = {
+		id = laos.6
+		days = 7
+		}
+		
+		add_to_variable = {
+				var = lao_pathet
+				value = 1
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = 1
+			}
+		}
+		
+		}
+		
+	}
+	
+	country_event = {
+
+		id = laos.6
+		title = "Battle of Vientiane"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "Deploy Everything For One Final Battle"
+		
+		custom_effect_tooltip = laos_commie_decrease_tt
+		custom_effect_tooltip = laos_hmong_decrease_tt
+		hidden_effect = {
+		country_event = {
+		id = laos.7
+		days = 7
+		}
+		add_to_variable = {
+				var = lao_pathet
+				value = -15
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = -15
+			}
+		}
+		
+		}
+		option = {
+		name = "Secure the City Center"
+		
+		custom_effect_tooltip = laos_commie_tt
+		custom_effect_tooltip = laos_hmong_tt
+		hidden_effect = {
+		country_event = {
+		id = laos.7
+		days = 7
+		}
+		
+		add_to_variable = {
+				var = lao_pathet
+				value = 10
+			}
+		add_to_variable = {
+				var = lao_hmong
+				value = 10
+			}
+		}
+		
+		}
+		
+	}
+	
+	country_event = {
+
+		id = laos.7
+		title = "The Result"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "Huzzah! The Syndies Have Been Dispersed!"
+		trigger = {
+		check_variable = { lao_pathet < 10 }
+		check_variable = { lao_hmong < 10 }
+		}
+		
+		
+		}
+		
+		option = {
+		name = "The Pathet Lao and Hmong Nationalists Secure the Country"
+		trigger = {
+		check_variable = { lao_pathet > 10 }
+		check_variable = { lao_hmong > 10 }
+		}
+		country_event = {
+		id = laos.8
+		days = 1
+		}
+		
+		
+		}
+		
+		
+	}
+	
+	country_event = {
+
+		id = laos.8
+		title = "The Result"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "Go With the Pathet Lao"
+		
+		}
+		
+		option = {
+		name = "The Hmong Nationalists Secure Vientiane"
+		set_politics = { ruling_party = radical_socialist }
+		set_cosmetic_tag = LAO_HMONG
+		}
+		
+		
+		
+	}
+	
+	
 	
