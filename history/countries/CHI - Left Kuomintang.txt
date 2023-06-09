@@ -24,12 +24,31 @@ set_technology = {
 	### Infantry ###
 	infantry_weapons = 1
 	tech_support = 1
-	tech_recon = 1
 	tech_engineers = 1
 	gw_artillery = 1
-	### Air ###
-	early_fighter = 1
-	early_bomber = 1
+	motorised_infantry = 1
+	tech_recon = 1
+	gw_artillery = 1
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "CHI_air_bba"
+		set_technology = {
+			aa_lmg = 1
+			early_bombs = 1
+			engines_1 = 1
+			aircraft_construction = 1
+			iw_small_airframe = 1
+			iw_medium_airframe = 1
+		}
+	else = {
+		set_air_oob = "CHI_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+		}
+	}
 }
 
 ### Navy - MtG ###
@@ -79,7 +98,7 @@ add_opinion_modifier = { target = GEA modifier = embargo }
 add_opinion_modifier = { target = MAF modifier = embargo }
 add_opinion_modifier = { target = JAP modifier = embargo }
 
-set_research_slots = 2
+set_research_slots = 3
 set_convoys = 0 # gotta get that merchant marine together
 
 set_cosmetic_tag = CHI_rebel
@@ -89,6 +108,10 @@ set_variable = { kr_china_provinceintegration_cost_large = 110 }
 set_variable = { kr_china_concessionintegration_cost = 15 }
 set_variable = { kr_china_provinceintegration_speed = 90 }
 set_variable = { kr_china_concessionintegration_speed = 60 }
+set_variable = { kmt_minsheng = 50 }
+set_variable = { kmt_minquan = 50 }
+set_variable = { kmt_nbis = 10 }
+set_variable = { kmt_syndies = 10 }
 
 set_country_flag = can_assume_national_leadership
 set_country_flag = china_integration_unlocked
@@ -99,7 +122,8 @@ add_ideas = {
 	partial_economic_mobilisation
 	KR_CHI_popular_support_1
 	KR_CHI_start_army
-
+	CHI_NBIS_power_0
+	
 	CHI_Liao_Zhongkai_hog_rso
 	CHI_Zhou_Enlai_for_rso
 	CHI_Zeng_Zhongming_eco_rso
@@ -125,6 +149,7 @@ add_to_variable = { CHI_NRA_command_power_gain_mult = -0.75 }
 add_to_variable = { CHI_NRA_army_leader_cost_factor = 0.5 }
 add_to_variable = { CHI_NRA_training_time_factor = 0.1 }
 
+
 set_politics = {
 	ruling_party = radical_socialist
 	last_election = "1925.10.10"
@@ -134,15 +159,15 @@ set_politics = {
 
 set_popularities = {
 	totalist = 5
-	radical_socialist = 48
-	syndicalist = 0
-	social_democrat = 37
+	radical_socialist = 43
+	syndicalist = 5
+	social_democrat = 32
 	social_liberal = 10
 	market_liberal = 0
 	social_conservative = 0
 	authoritarian_democrat = 0
 	paternal_autocrat = 0
-	national_populist = 0
+	national_populist = 5
 }
 set_country_flag = Mao_Renfeng_dead
 set_country_flag = Wei_Daming_dead
@@ -164,6 +189,16 @@ set_country_flag = Huang_Guangrui_dead
 set_country_flag = Zhou_Zhirou_dead
 set_country_flag = Chih_Ping_Chen_dead
 
+set_country_flag = CHI_power_struggle_issue
+set_country_flag = CHI_csp_kmt_unions
+
+set_power_balance = {
+				id = csp_kmt_balance
+				left_side = csp_left_side
+				right_side = csp_kmt_right_side
+			}
+
+
 ### ToT Ministers ###
 
 set_country_flag = Chiang_Kai_Shek_dead
@@ -183,35 +218,43 @@ create_country_leader = {
 	desc = "POLITICS_CHI_DAI_CHUNFENG_DESC"
 	picture = "gfx/leaders/CHI/Portrait_CHI_Dai_Chunfeng.png"
 	expire = "1965.1.1"
-	ideology = autocratic_socialist_subtype
+	ideology = socialist_security_state_subtype
 }
 create_country_leader = {
 	name = "Chen Duxiu"
 	desc = "POLITICS_CHI_CHEN_DUXIU_DESC"
 	picture = "gfx/leaders/CHI/Portrait_CHI_Chen_Duxiu.png"
 	expire = "1965.1.1"
-	ideology = syndicalist_subtype
+	ideology = syn_internationalism_subtype
 }
 create_country_leader = {
-	name = "Wang Jingwei"
-	desc = "POLITICS_CHI_WANG_JINGWEI_DESC"
-	picture = "gfx/leaders/CHI/Portrait_CHI_Wang_Jingwei_KX.png"
+	name = "Liao Zhongkai"
+	desc = "POLITICS_CHI_LIAO_ZHONGKAI_DESC"
+	picture = "gfx/leaders/CHI/Portrait_CHI_Liao_Zhongkai.png"
 	expire = "1965.1.1"
-	ideology = radical_socialist_subtype
+	ideology = radsoc_tridemism_subtype
 }
+
+#create_country_leader = {
+#	name = "Wang Jingwei"
+#	desc = "POLITICS_CHI_WANG_JINGWEI_DESC"
+#	picture = "gfx/leaders/CHI/Portrait_CHI_Wang_Jingwei_KX.png"
+#	expire = "1965.1.1"
+#	ideology = radsoc_tridemism_subtype
+#}
 create_country_leader = {
-	name = "Song Qingling"
-	desc = "POLITICS_CHI_SONG_QINGLING_DESC"
-	picture = "gfx/leaders/CHI/Portrait_CHI_Song_Qingling.png"
+	name = "Sun Fo"
+	desc = "POLITICS_CHI_SUN_FO_DESC"
+	picture = "gfx/leaders/CHI/Portrait_CHI_Sun_Fo.png"
 	expire = "1965.1.1"
-	ideology = social_democrat_subtype
+	ideology = socdem_tridemism_subtype
 }
 create_country_leader = {
 	name = "Sun Fo"
 	desc = "POLITICS_CHI_SUN_FO_DESC"
 	picture = "gfx/leaders/CHI/Portrait_CHI_Sun_Fo.png"
 	expire = "1965.1.1"
-	ideology = social_liberal_subtype
+	ideology = soclib_tridemism_subtype
 }
 create_country_leader = {
 	name = "Chen Lifu"
@@ -306,7 +349,7 @@ create_corps_commander = {
 create_corps_commander = {
 	name = "Wang Yaowu"
 	desc = "POLITICS_CHI_WANG_YAOWU_ARMY_DESC"
-	portrait_path = "gfx/leaders/CHI/Portrait_CHI_Wang_Yaowu.png"
+	portrait_path = "gfx/leaders/CHI/Portrait_CHI_Wang_Yaowu_KR.png"
 	traits = {
 		career_officer
 		infantry_officer
@@ -393,4 +436,20 @@ create_navy_leader = {
 	defense_skill = 1
 	maneuvering_skill = 3
 	coordination_skill = 2
+}
+
+
+if = {
+	limit = { has_dlc = "La Resistance" }
+	create_operative_leader = {
+		name = "Xiong Xianghui"
+		GFX = GFX_Portrait_CHI_Xiong_Xianghui
+		traits = {
+			operative_infiltrator
+			operative_well_groomed
+		}
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		nationalities = { CHI YUN GXC }
+	}
 }
