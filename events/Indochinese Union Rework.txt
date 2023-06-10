@@ -617,7 +617,12 @@ country_event = { # Assembly election - Gerrymendering in Saigon
 
 country_event = { # National Assembly
 	id = indochina_rework.6
-	immediate = { log = "[GetDateText]: [Root.GetName]: event viet.6" }
+	immediate = { log = "[GetDateText]: [Root.GetName]: event viet.6"
+	hidden_effect = {
+	add_idea = INC_congress_over
+	}
+ 
+		}
 	title = viet.6.t
 	desc = viet.6.d
 	picture = GFX_report_event_VIN_vote
@@ -791,6 +796,23 @@ country_event = { # Deal with Saigon European settlers
 	}
 	
 }
+country_event = { # Deal with Saigon European settlers
+	id = indochina_rework.9
+	immediate = { log = "[GetDateText]: [Root.GetName]: event viet.12" }
+	title = "Legacy Of Uncle Ho"
+	desc = indochina_rework.8.desc
+	picture = "GFX_report_event_HCM_shot"
+
+	is_triggered_only = yes
+
+	option = {
+		add_war_support = 0.1
+	}
+
+	
+	
+}
+
 
 
 country_event = { # Deal with Saigon European settlers
@@ -818,6 +840,125 @@ country_event = { # Deal with Saigon European settlers
                 var = hcm_inc
                 value = 3
             }
+	}
+
+	
+	
+}
+
+country_event = { # Deal with Saigon European settlers
+	id = indochina_rework.10
+	immediate = { log = "[GetDateText]: [Root.GetName]: event viet.12" }
+	title = "Future of the Indochina"
+	desc = indochina_rework.8.desc
+	picture = "GFX_report_event_HCM_shot"
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Long Live Comrade Phu!"
+		
+	}	
+
+
+	option = {
+		name = "We Shall Unite the South Seas under Socialism!"
+		trigger = {
+		OR = {
+		has_completed_focus = VININC_GIAP_a_unitary_state
+		is_debug = yes
+		}
+		}
+		set_cosmetic_tag = INC_south_seas
+		every_state = {
+					limit = {
+				is_core_of = INC
+				NOT = {
+				is_controlled_by = INC
+				is_owned_by = INC
+				}
+					}
+					INC = { 
+						add_state_core = PREV 
+						create_wargoal = {
+					type = puppet_wargoal_focus
+					target = PREV
+				}
+		
+				}
+			}
+		
+		hidden_effect = {
+		add_state_core = 756
+		add_state_core = 822
+		add_state_core = 823
+		add_state_core = 831
+		add_state_core = 749
+		add_state_core = 289
+		add_state_core = 824
+		add_state_core = 724
+		add_state_core = 999
+		add_state_core = 830
+		add_state_core = 751
+		add_state_core = 846
+		add_state_core = 336
+		add_state_core = 1053
+		add_state_core = 1056
+		add_state_core = 594
+		add_state_core = 591
+		add_state_core = 728
+		add_state_core = 593
+		add_state_core = 592
+		add_state_core = 729
+		add_state_core = 326
+		add_state_core = 1012
+		add_state_core = 801
+		add_state_core = 623
+		add_state_core = 327
+		add_state_core = 624
+		add_state_core = 626
+		add_state_core = 628
+		add_state_core = 625
+		add_state_core = 627
+		add_state_core = 828
+		add_state_core = 333
+		add_state_core = 334
+		add_state_core = 1016
+		add_state_core = 673
+		add_state_core = 668
+		add_state_core = 1023
+		add_state_core = 672
+		add_state_core = 1021
+		add_state_core = 1020
+		add_state_core = 1022
+		add_state_core = 335
+		add_state_core = 1019
+		add_state_core = 667
+		add_state_core = 1018
+		add_state_core = 1017
+		add_state_core = 721
+		add_state_core = 972
+		add_state_core = 1046
+		add_state_core = 802
+		add_state_core = 524
+		}
+	}
+
+	
+	
+}
+
+country_event = { # Deal with Saigon European settlers
+	id = indochina_rework.9
+	immediate = { log = "[GetDateText]: [Root.GetName]: event viet.12" }
+	title = "Legacy Of Uncle Ho"
+	desc = indochina_rework.8.desc
+	picture = "GFX_report_event_HCM_shot"
+
+	is_triggered_only = yes
+
+	option = {
+		add_war_support = 0.1
 	}
 
 	
