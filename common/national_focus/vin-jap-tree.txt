@@ -15,7 +15,7 @@ focus_tree = {
 		icon = GFX_VIN_an_imperial_return-248360
 		x = 47
 		y = 0
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -32,6 +32,19 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VIN_an_imperial_return  }
+		completion_reward = {
+			add_manpower = 2500
+			add_war_support = 0.06
+					country_event = {
+							id = vietnam.1
+						}
+					hidden_effect = {
+					country_event = {
+							days = 15
+							id = vietnam.40
+						}
+					}
+				}
 	}
 
 	#2nd Can Vong Movement
@@ -45,6 +58,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VIN_birth_of_the_royal_army  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Stuck In the Middle
@@ -58,6 +74,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VIN_2nd_can_vong_movement  }
+		completion_reward = {
+		add_ideas = {
+		VIN_surrounded_by_middle
+		}
+		}
 	}
 
 	#The Emperor Makes a Call
@@ -71,6 +92,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIN_2nd_can_vong_movement  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Serve For You Emperor!
@@ -84,6 +108,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VIN_2nd_can_vong_movement  }
+		completion_reward = {
+		add_ideas = {
+		VIN_serve_empire_0
+		}
+		}
 	}
 
 	#The Reclamation War
@@ -97,6 +126,11 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VIN_2nd_can_vong_movement  }
+		completion_reward = {
+		add_ideas = {
+		VIN_reclaim_war
+		}
+		}
 	}
 
 	#Receive Japanese Equipment
@@ -110,6 +144,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VIN_the_reclamation_war  }
+		completion_reward = {
+		add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 3500
+				producer = JAP
+			}
+		add_to_variable = {
+			var = viet_jap
+			value = 10
+			tooltip = increases_japanese_influence_by_10_tt
+		}
+		}
 	}
 
 	#The Japanese Volunteer Division
@@ -123,6 +169,14 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VIN_serveforyouemperor  }
+		completion_reward = {
+		add_to_variable = {
+			var = viet_jap
+			value = 10
+			tooltip = increases_japanese_influence_by_10_tt
+		}
+		add_manpower = 1000
+		}
 	}
 
 	#And We Shall Answer
@@ -136,6 +190,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VIN_the_emperor_makes_a_call  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_political_power = 25
+		}
 	}
 
 	#Crush the Nationalists
@@ -150,6 +208,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIN_stuck_in_the_middle  }
 		mutually_exclusive = { focus = VIN_focus_on_the_syndie_menace  }
+		completion_reward = {
+		add_stability = 0.075
+		add_popularity = {
+					ideology = social_democrat
+					popularity = -0.085
+			}
+		add_manpower = -1250
+		add_equipment_to_stockpile = {
+							type = infantry_equipment_1
+							amount = 1000
+							producer = FRA
+					}
+				}
 	}
 
 	#Focus On the Syndie Menace
@@ -164,6 +235,27 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIN_stuck_in_the_middle  }
 		mutually_exclusive = { focus = VIN_crush_the_nationalists  }
+		completion_reward = {
+		add_stability = 0.075
+		add_popularity = {
+					ideology = radical_socialist
+					popularity = -0.085
+			}
+		add_popularity = {
+					ideology = syndicalist
+					popularity = -0.085
+			}
+			add_popularity = {
+					ideology = totalist
+					popularity = -0.085
+			}
+		add_manpower = -1250
+		add_equipment_to_stockpile = {
+							type = infantry_equipment_1
+							amount = 1000
+							producer = FRA
+					}
+				}
 	}
 
 	#Holding the Line
@@ -178,6 +270,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIN_crush_the_nationalists  focus = VIN_focus_on_the_syndie_menace  }
 		mutually_exclusive = { focus = VIN_mass_attack  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = VIN_surrounded_by_middle
+		add_idea = VIN_surrounded_by_middle_1
+		}
+		}
 	}
 
 	#Mass Attack
@@ -192,6 +290,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIN_crush_the_nationalists  focus = VIN_focus_on_the_syndie_menace  }
 		mutually_exclusive = { focus = VIN_holding_the_line  }
+		completion_reward = {
+		add_doctrine_cost_reduction = {
+						name = land_doc_bonus
+						cost_reduction = 0.25
+						uses = 1
+						category = cat_grand_battle_plan
+					}
+		}
 	}
 
 	#Embrace Pan-Asianism
@@ -205,6 +311,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIN_the_japanese_volunteer_division  } prerequisite = { focus = VIN_and_we_shall_answer  }
+		completion_reward = {
+		add_popularity = {
+					ideology = ROOT
+					popularity = 0.15
+			}
+		}
 	}
 
 	#A Vietnamese Commander
@@ -219,6 +331,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIN_receive_japanese_equipment  }
 		mutually_exclusive = { focus = VIN_a_japanese_commander  }
+		completion_reward = {
+		add_to_variable = {
+			var = viet_jap
+			value = -10
+			tooltip = decreases_japanese_influence_by_10_tt
+		}
+		add_stability = 0.05
+		}
 	}
 
 	#A Japanese Commander
@@ -233,6 +353,29 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIN_receive_japanese_equipment  }
 		mutually_exclusive = { focus = VIN_a_vietnamese_commander  }
+		completion_reward = {
+		add_to_variable = {
+			var = viet_jap
+			value = 10
+			tooltip = increases_japanese_influence_by_10_tt
+		}
+		create_corps_commander = {
+				name = "Yuitsu Tsuchi"
+				desc = "-"
+				portrait_path = "gfx/leaders/VIN/Portrait_VIN_Yuitsu_Tsuchi.png"
+				traits = {
+					commando
+					urban_assault_specialist
+				}
+				skill = 3
+				attack_skill = 3
+				defense_skill = 2
+				planning_skill = 3
+				logistics_skill = 2
+
+				id = 13507
+			}
+		}
 	}
 
 	#Long Live the Empire!
@@ -245,7 +388,10 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
-		prerequisite = { focus = VIN_holding_the_line  } prerequisite = { focus = VIN_embrace_panasianism  } prerequisite = { focus = VIN_a_japanese_commander  focus = VIN_mass_attack  } prerequisite = { focus = VIN_embrace_panasianism  } prerequisite = { focus = VIN_a_japanese_commander  focus = VIN_mass_attack  } prerequisite = { focus = VIN_embrace_panasianism  } prerequisite = { focus = VIN_a_vietnamese_commander  focus = VIN_holding_the_line  } prerequisite = { focus = VIN_embrace_panasianism  } prerequisite = { focus = VIN_a_vietnamese_commander  }
+		prerequisite = { focus = VIN_embrace_panasianism  } prerequisite = { focus = VIN_a_japanese_commander  focus = VIN_mass_attack focus = VIN_holding_the_line  } prerequisite = { focus = VIN_embrace_panasianism  } prerequisite = { focus = VIN_a_japanese_commander  focus = VIN_mass_attack  } prerequisite = { focus = VIN_embrace_panasianism  } prerequisite = { focus = VIN_a_vietnamese_commander  focus = VIN_holding_the_line  } prerequisite = { focus = VIN_embrace_panasianism  } prerequisite = { focus = VIN_a_vietnamese_commander  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 	
 	#Embrace Corporatocracy
