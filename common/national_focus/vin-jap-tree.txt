@@ -1,6 +1,6 @@
 focus_tree = {
 	id = vin-jap-tree
-	continuous_focus_position = { x = -40 y = 1440 } 
+	continuous_focus_position = { x = -40 y = 5440 } 
 	country = {
 		factor = 0
 		modifier = {
@@ -417,6 +417,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		NOT = {
+		has_war_with = VNQD
+		has_war_with = INC
+		}
+		}
+		completion_reward = {
+		country_event = {
+		id = viet-empire.1
+		days = 0
+		}
+		}
 	}
 
 	#Cuong De Arises
@@ -425,9 +437,15 @@ focus_tree = {
 		icon = GFX_VIETJAP_cuong_de_arises-248360
 		x = 7
 		y = 1
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Cuong De"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = VIETJAP_deliberation_on_the_liberation_committee  }
 	}
@@ -438,9 +456,12 @@ focus_tree = {
 		icon = GFX_VIETJAP_the_cao_dai_joins_the_government-248360
 		x = 3
 		y = 2
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = VIETJAP_cuong_de_arises  }
 	}
@@ -451,9 +472,12 @@ focus_tree = {
 		icon = GFX_VIETJAP_absolute_power_at_the_helm-248360
 		x = 7
 		y = 2
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = VIETJAP_cuong_de_arises  }
 	}
@@ -464,9 +488,12 @@ focus_tree = {
 		icon = GFX_VIETJAP_the_constitutional_monarchy-248360
 		x = 11
 		y = 2
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = VIETJAP_cuong_de_arises  }
 	}
@@ -482,6 +509,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VIETJAP_the_constitutional_monarchy  }
+		completion_reward = {
+		add_ideas = VIN_Draft_Constitution_idea
+		}
 	}
 
 	#Centralize the Rural Councils
@@ -495,6 +525,15 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VIETJAP_absolute_power_at_the_helm  focus = VIETJAP_the_constitutional_monarchy  }
+		completion_reward = {
+		add_ideas = VIN_Village_Autonomy_idea
+		hidden_effect = {
+		country_event = {
+		id = vietnam.50
+		days = 30
+				}
+			}
+		}
 	}
 
 	#The Imperial Restoration
@@ -508,6 +547,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VIETJAP_absolute_power_at_the_helm  }
+		completion_reward = {
+		add_ideas = { 
+		VIN_Absolutist_Emperor_idea
+		}
+		}
 	}
 
 	#Pan-Asianist Appeals
@@ -521,6 +565,18 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VIETJAP_the_cao_dai_joins_the_government  focus = VIETJAP_absolute_power_at_the_helm  }
+		completion_reward = {
+			add_ideas = VIN_Nationalist_Rhetoric_idea
+			add_manpower = 3500
+			set_party_name = { ideology = national_populist long_name = VIN_vietnam_restoration_society name = VIN_vietnam_restoration_society } 
+			set_country_leader_ideology = natpop_pan_asianism_subtype
+			hidden_effect = {
+			country_event = {
+					days = 7
+					id = vietnam.86
+				}
+			}
+		}
 	}
 
 	#Under the Divine Eye
@@ -534,6 +590,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VIETJAP_the_cao_dai_joins_the_government  }
+		completion_reward = {
+			add_ideas = VIN_caodaism_spread_idea
+			country_event = {
+			id = vietnam.17
+			}
+		}
 	}
 
 	#Honour the Great Faith
@@ -547,6 +609,15 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VIETJAP_under_the_divine_eye  }
+		completion_reward = {
+		hidden_effect = {
+		country_event = {
+					days = 7
+					id = vietnam.85
+			}
+		}
+			add_ideas = VIN_church_state_idea
+		}
 	}
 
 	#For the Rightful Prince
@@ -560,6 +631,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_under_the_divine_eye  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Reach Out to the Black Dragon
@@ -573,6 +647,13 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VIETJAP_panasianist_appeals  } prerequisite = { focus = VIETJAP_under_the_divine_eye  focus = VIETJAP_the_imperial_restoration  } prerequisite = { focus = VIETJAP_panasianist_appeals  }
+		completion_reward = {
+		add_to_variable = {
+			var = viet_jap
+			value = 10
+			tooltip = increases_japanese_influence_by_10_tt
+		}
+		}
 	}
 
 	#Rule By Decree
@@ -586,6 +667,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_centralize_the_rural_councils  } prerequisite = { focus = VIETJAP_the_imperial_restoration  }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			increase_ruling_party_popularity_by_5 = yes
+		}
 	}
 
 	#Neo-Confucian Constitution
@@ -599,6 +685,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VIETJAP_codify_the_imperial_constitution  } prerequisite = { focus = VIETJAP_centralize_the_rural_councils  }
+		completion_reward = {
+			add_ideas = VIN_moral_monarchy_idea
+		}
 	}
 
 	#Question of Our History
@@ -612,6 +701,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_codify_the_imperial_constitution  } prerequisite = { focus = VIETJAP_neoconfucian_constitution  }
+		completion_reward = {
+		add_ideas =	VIN_Traditional_Values_idea
+			}
 	}
 
 	#Crush the Vietcong
@@ -625,6 +717,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VIETJAP_centralize_the_rural_councils  }
+		completion_reward = {
+		remove_ideas = {
+		VIN_veitcong_resistance 
+		}
+		}
 	}
 
 	#Honour Phan Boi Chau
@@ -638,6 +735,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_the_imperial_restoration  } prerequisite = { focus = VIETJAP_rule_by_decree  }
+		completion_reward = {
+		add_stability = 0.05
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Question of Zaibatsu Investment
@@ -651,6 +755,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VIETJAP_reach_out_to_the_black_dragon  }
+		completion_reward = {
+		country_event = {
+		id = viet-empire.4
+		days = 1
+		}
+		}
 	}
 
 	#Wipe Them Out!
@@ -665,6 +775,22 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIETJAP_honour_the_great_faith  } prerequisite = { focus = VIETJAP_for_the_rightful_prince  }
 		mutually_exclusive = { focus = VIETJAP_amnesty_to_the_former_rebels  }
+		completion_reward = {
+			add_stability = 0.075
+			827 = { 
+				add_extra_state_shared_building_slots = 1
+			}
+			add_equipment_to_stockpile = {
+							type = infantry_equipment_1
+							amount = 1500
+							producer = FRA
+			}
+			remove_ideas = VIN_veitcong_resistance
+			add_manpower = -1500
+			add_popularity = { ideology = radical_socialist popularity = -0.15 }
+			add_popularity = { ideology = syndicalist popularity = -0.15 }
+			add_popularity = { ideology = totalist popularity = -0.15 }
+		}
 	}
 
 	#Amnesty To the Former Rebels
@@ -679,6 +805,22 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIETJAP_honour_the_great_faith  } prerequisite = { focus = VIETJAP_for_the_rightful_prince  }
 		mutually_exclusive = { focus = VIETJAP_wipethemout  }
+		completion_reward = {
+			add_popularity = { ideology = radical_socialist popularity = 0.05 }
+			remove_ideas = VIN_veitcong_resistance
+			add_ideas = VIN_Caodai_welfare_state_idea
+		hidden_effect = {
+		if = {
+		limit = {
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+		}
+		country_event = {
+		id = vietnam.44
+		days = 30
+					}
+				}
+			}
+		}
 	}
 
 	#Social Harmony Under the Emperor
@@ -692,6 +834,21 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VIETJAP_question_of_zaibatsu_investment  } prerequisite = { focus = VIETJAP_wipethemout  focus = VIETJAP_question_of_zaibatsu_investment  } prerequisite = { focus = VIETJAP_amnesty_to_the_former_rebels  }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = VIN_Caodaism_Spread_idea
+				add_idea = VIN_harmonious_society_idea
+			}
+		set_rule = {
+				can_use_kamikaze_pilots = yes
+		}
+		hidden_effect = {
+		country_event = {
+					days = 14
+					id = vietnam.90
+				}
+			}
+		}
 	}
 
 	#The Question of the Japanese Garrison
@@ -705,6 +862,9 @@ focus_tree = {
 			FOCUS_FILTER_FRA_OCCUPATION_COST
 		}
 		prerequisite = { focus = VIETJAP_question_of_zaibatsu_investment  }
+		completion_reward = {
+		country_event = viet-empire.5
+		}
 	}
 
 	#Imperial Legacy
@@ -718,6 +878,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_honour_phan_boi_chau  } prerequisite = { focus = VIETJAP_question_of_zaibatsu_investment  }
+		completion_reward = {
+		add_ideas = VIN_Civic_Action_idea
+		}
 	}
 
 	#The Dragon Rises
@@ -731,7 +894,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_embrace_religious_fervour  focus = VIETJAP_ouremperorsbenevolence  focus = VIETJAP_educate_the_nation  }
-	}
+		completion_reward = {
+		country_event = {
+					days = 15
+					id = vietnam.91
+			}
+		
+		add_ideas = VIN_Rising_Dragon_idea
+		}
+	} 
 
 	#Follow the Kaiser Model
 	focus = {
@@ -745,6 +916,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIETJAP_question_of_our_history  } prerequisite = { focus = VIETJAP_crush_the_vietcong  }
 		mutually_exclusive = { focus = VIETJAP_a_new_era_of_greatness  }
+		completion_reward = {
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = "Royalist Party"
+			name = "Royalist Party"
+			}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = "Royalist Party"
+			name = "Royalist Party"
+			}
+		}
 	}
 
 	#A New Era of Greatness
@@ -759,6 +942,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIETJAP_question_of_our_history  } prerequisite = { focus = VIETJAP_crush_the_vietcong  }
 		mutually_exclusive = { focus = VIETJAP_follow_the_kaiser_model  }
+		completion_reward = {
+			add_ideas = VIN_Absolutist_Emperor_idea
+			add_popularity = { ideology = paternal_autocrat popularity = 0.1 }
+			}
 	}
 
 	#Educate the Nation
@@ -772,6 +959,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = VIETJAP_a_new_era_of_greatness  focus = VIETJAP_follow_the_kaiser_model  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Our Emperor's Benevolence
@@ -785,6 +975,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_imperial_legacy  } prerequisite = { focus = VIETJAP_the_mandarin_mandate  }
+		completion_reward = {
+			add_political_power = 100
+			increase_ruling_party_popularity_by_5 = yes
+		}
 	}
 
 	#The Mandarin Mandate
@@ -798,6 +992,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_crush_the_vietcong  } prerequisite = { focus = VIETJAP_honour_phan_boi_chau  }
+		completion_reward = {
+		add_ideas = VIN_Mandarins_idea
+		increase_ruling_party_popularity_by_10 = yes
+			}
 	}
 
 	#Embrace Religious Fervour
@@ -811,6 +1009,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VIETJAP_social_harmony_under_the_emperor  } prerequisite = { focus = VIETJAP_the_question_of_the_japanese_garrison  }
+		completion_reward = {
+			add_political_power = 100
+			increase_ruling_party_popularity_by_5 = yes
+		}
 	}
 
 	#Economic Reconstruction
@@ -1507,5 +1709,673 @@ focus_tree = {
 		}
 		prerequisite = { focus = VIETJAP_secure_our_sovereignty  } prerequisite = { focus = VIETJAP_the_intellectual_republic  }
 	}
+	
+	#Japanese Volunteers Coup the Administration
+	focus = {
+		id = JAPVINJAP_japanese_volunteers_coup_the_administration
+		icon = GFX_JAPVINJAP_japanese_volunteers_coup_the_administration-248360
+		x = 7
+		y = 13
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#A Puppet With Invisible Strings
+	focus = {
+		id = JAPVINJAP_a_puppet_with_invisible_strings
+		icon = GFX_JAPVINJAP_a_puppet_with_invisible_strings-248360
+		x = 5
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAPVINJAP_japanese_volunteers_coup_the_administration  }
+	}
+
+	#Arrest Cuong De
+	focus = {
+		id = JAPVINJAP_arrest_cuong_de
+		icon = GFX_JAPVINJAP_arrest_cuong_de-248360
+		x = 8
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAPVINJAP_japanese_volunteers_coup_the_administration  }
+	}
+
+	#Socialist Witch Hunts
+	focus = {
+		id = JAPVINJAP_socialist_witch_hunts
+		icon = GFX_JAPVINJAP_socialist_witch_hunts-248360
+		x = 9
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = JAPVINJAP_arrest_cuong_de  }
+	}
+
+	#Hunt Down Independence Activists
+	focus = {
+		id = JAPVINJAP_hunt_down_independence_activists
+		icon = GFX_JAPVINJAP_hunt_down_independence_activists-248360
+		x = 7
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAPVINJAP_a_puppet_with_invisible_strings  } prerequisite = { focus = JAPVINJAP_arrest_cuong_de  }
+	}
+
+	#Teaching Dualinguoism
+	focus = {
+		id = JAPVINJAP_teaching_dualinguoism
+		icon = GFX_JAPVINJAP_teaching_dualinguoism-248360
+		x = 4
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = JAPVINJAP_a_puppet_with_invisible_strings  }
+	}
+
+	#The National Youth Councils
+	focus = {
+		id = JAPVINJAP_the_national_youth_councils
+		icon = GFX_JAPVINJAP_the_national_youth_councils-248360
+		x = 4
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = JAPVINJAP_teaching_dualinguoism  }
+	}
+
+	#South Asia's Taiwan
+	focus = {
+		id = JAPVINJAP_southasiastaiwan
+		icon = GFX_JAPVINJAP_southasiastaiwan-248360
+		x = 6
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPVINJAP_teaching_dualinguoism  }
+	}
+
+	#Expand the 38th Army
+	focus = {
+		id = JAPVINJAP_expand_the_38th_army
+		icon = GFX_JAPVINJAP_expand_the_38th_army-248360
+		x = 8
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = JAPVINJAP_socialist_witch_hunts  } prerequisite = { focus = JAPVINJAP_hunt_down_independence_activists  }
+	}
+
+	#Extra Kempeitai Presence
+	focus = {
+		id = JAPVINJAP_extra_kempeitai_presence
+		icon = GFX_JAPVINJAP_extra_kempeitai_presence-248360
+		x = 8
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAPVINJAP_expand_the_38th_army  }
+	}
+
+	#Squeeze the Papers
+	focus = {
+		id = JAPVINJAP_squeeze_the_papers
+		icon = GFX_JAPVINJAP_squeeze_the_papers-248360
+		x = 5
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAPVINJAP_southasiastaiwan  } prerequisite = { focus = JAPVINJAP_the_national_youth_councils  }
+	}
+
+	#Expressing Solidarity for Pan-Asian Unity
+	focus = {
+		id = JAPVINJAP_expressing_solidarity_for_panasian_unity
+		icon = GFX_JAPVINJAP_expressing_solidarity_for_panasian_unity-248360
+		x = 7
+		y = 18
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPVINJAP_extra_kempeitai_presence  } prerequisite = { focus = JAPVINJAP_squeeze_the_papers  }
+	}
+
+	#Future of the Colony?
+	focus = {
+		id = JAPVINJAP_futureofthecolony
+		icon = GFX_JAPVINJAP_futureofthecolony-248360
+		x = 7
+		y = 19
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPVINJAP_expressing_solidarity_for_panasian_unity  }
+	}
+	
+	
+	
+	
+	
+	focus = {
+		id = VIETJAPFOR_Independent_Policy
+		icon = GFX_goal_VIN_independent_policy
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_The_End_Of_War
+		}
+		available = {
+		NOT = {
+		has_completed_focus = VIETJAPFOR_Pro-Germany_Policy
+		}
+		NOT = {
+		OR = {
+		is_in_faction_with = GER
+		is_subject_of = GEA
+		is_subject_of = GER
+		is_subject = yes
+				}
+			}
+		}
+		
+		x = 50
+		y = 10
+		completion_reward = {
+		custom_effect_tooltip = independent.tt
+		increase_ruling_party_popularity_by_5 = yes
+		add_war_support = 0.075
+		add_political_power = 75
+		JAP = { add_opinion_modifier = { target = VIN modifier = medium_increase } }
+		QIE = { add_opinion_modifier = { target = VIN modifier = medium_increase } }
+		CHI = { add_opinion_modifier = { target = VIN modifier = medium_increase } }
+		MON = { add_opinion_modifier = { target = VIN modifier = medium_increase } }
+		RUS = { add_opinion_modifier = { target = VIN modifier = small_increase } }
+		USA = { add_opinion_modifier = { target = VIN modifier = small_increase } }
+		ENT = { add_opinion_modifier = { target = VIN modifier = small_increase } }
+		NFA = { add_opinion_modifier = { target = VIN modifier = small_increase } }
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Southern_Revolt
+		icon = GFX_goal_VIN_incite_southern_insurgents
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Independent_Policy
+		}
+		
+		x = 50
+		y = 11
+		completion_reward = {
+		GEA = {
+		country_event = vietnam.29
+			}
+		add_state_core = 286
+		add_state_core = 856
+		hidden_effect = {
+		country_event = {
+					days = 15
+					id = vietnam.38
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Imperial_Ambition
+		icon = GFX_goal_VIN_ambitions_state
+		cost = 3.00
+		prerequisite = {
+			focus = VIETJAPFOR_Southern_Revolt
+			focus = VIETJAPFOR_Request_Cochinchina
+		}
+		available = {
+		OR = {
+		NOT = {
+		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
+		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Ba Cut" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+				}
+			}
+		}
+		mutually_exclusive = {
+			focus = VIETJAPFOR_Asia_for_Asian
+		}
+		
+		x = 48
+		y = 12
+		completion_reward = {
+		custom_effect_tooltip = foreign.tt
+		add_political_power = 100
+		}
+	}
+	
+		focus = {
+		id = VIETJAPFOR_Reclaim_Indochina
+		icon = GFX_MON_claim_the_german_colonies
+		cost = 5.00
+		available = {
+		NOT = {
+		has_completed_focus = VIETJAPFOR_Asia_for_Asian
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
+		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Ba Cut" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+				}
+			}
+		}
+		prerequisite = {
+			focus = VIETJAPFOR_Imperial_Ambition
+			focus = VIETJAPFOR_Asia_for_Asian
+		}
+		
+		x = 48
+		y = 13
+		completion_reward = {
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 670.owner
+					}
+				}
+			670 = { add_claim_by = VIN }
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 826.owner
+					}
+				}
+			826 = { add_claim_by = VIN }
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Fate_Of_Siam
+		icon = YUN_GFX_Goal_The_Siamese_Threat
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Reclaim_Indochina
+		}
+		available = {
+		OR = {
+		VIN = {
+			owns_state = 670
+			}	
+		VIN = {
+			owns_state = 826
+				}
+			}
+		}
+		
+		x = 46
+		y = 14
+		completion_reward = {
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = SIA
+					}
+					create_wargoal = {
+						type = annex_everything
+						target = SIR
+					}
+				}
+			882 = { add_claim_by = VIN }
+			825 = { add_claim_by = VIN }
+			750 = { add_claim_by = VIN }
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Pluck_The_Peacock
+		icon = YUN_GFX_Goal_Exploit_Burma
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Fate_Of_Siam
+		}
+		available = {
+		OR = {
+		VIN = {
+			owns_state = 289
+			}
+		SIA = { is_subject_of = VIN }		
+			}
+		}
+		
+		x = 46
+		y = 15
+		completion_reward = {
+			create_wargoal = {
+				type = annex_everything
+				target = BRM
+			}
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Our_Eastern_Shore
+		icon = GFX_focus_HKG_Perimeter
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Reclaim_Indochina
+		}
+		mutually_exclusive = {
+			focus = VIETJAPFOR_Greater_Vietnam
+		}
+		
+		x = 48
+		y = 14
+		completion_reward = {
+		create_wargoal = {
+				type = annex_everything
+				target = 592.owner
+		}
+		1053 = { add_claim_by = VIN }
+		1056 = { add_claim_by = VIN }
+		594 = { add_claim_by = VIN }
+		591 = { add_claim_by = VIN }
+		1054 = { add_claim_by = VIN }
+		1055 = { add_claim_by = VIN }
+		728 = { add_claim_by = VIN }
+		593 = { add_claim_by = VIN }
+		599 = { add_claim_by = VIN }
+		800 = { add_claim_by = VIN }
+		1012 = { add_claim_by = VIN }
+		1046 = { add_claim_by = VIN }
+		802 = { add_claim_by = VIN }
+		801 = { add_claim_by = VIN }
+		592 = { add_claim_by = VIN }
+		729 = { add_claim_by = VIN }
+		326 = { add_claim_by = VIN }
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Greater_Vietnam
+		icon = GFX_goal_USA_vietnam_yesterday
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Reclaim_Indochina
+		}
+		mutually_exclusive = {
+			focus = VIETJAPFOR_Our_Eastern_Shore
+		}
+		
+		x = 50
+		y = 14
+		completion_reward = {
+		add_ideas = VIN_Greater_Vietnam
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Southern_Kingdom_Rises
+		icon = GFX_goal_YUN_this_is_acutally_art
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Our_Eastern_Shore
+		}
+		available = {
+		NOT = {
+		has_completed_focus = VIETJAPFOR_Righteous_Yang
+		}
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
+		has_country_leader = { ruling_only = yes name = "Bao Dai" }
+		has_country_leader = { ruling_only = yes name = "Duy Tan" }
+		has_country_leader = { ruling_only = yes name = "Thanh Thai" }
+		}
+		VIN = {
+			owns_state = 592
+			}
+		}
+		
+		x = 48
+		y = 15
+		completion_reward = {
+		custom_effect_tooltip = mandate.tt
+		every_state = {
+				limit = {
+					is_claims_china = yes
+					}
+				add_claim_by = VIN
+		}
+		create_wargoal = {
+				type = annex_everything
+				target = 608.owner
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = QIE
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = GXC
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = YUN
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = HNN
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = LEP
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = ANQ
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = SQI
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = SZC
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = CHI
+		}
+		create_wargoal = {
+			type = annex_everything
+			target = SHX
+			}
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Asia_for_Asian
+		icon = GFX_goal_VIN_rule_faith
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Southern_Revolt
+		}
+		available = {
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+			}
+		}
+		mutually_exclusive = {
+			focus = VIETJAPFOR_Imperial_Ambition
+		}
+		
+		x = 52
+		y = 12
+		completion_reward = {
+		custom_effect_tooltip = foreign.tt
+		add_political_power = 100
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Situation_in_East_Asia
+		icon = GFX_goal_VIN_consecrating_pious_indochina
+		cost = 5.00
+		available = {
+		NOT = {
+		has_completed_focus = VIETJAPFOR_Imperial_Ambition
+		}
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
+		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Ba Cut" }
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+			}
+		}
+		prerequisite = {
+			focus = VIETJAPFOR_Asia_for_Asian
+			focus = VIETJAPFOR_Imperial_Ambition
+		}
+		
+		x = 52
+		y = 13
+		completion_reward = {
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = CAM
+						is_core_of = LAO
+						is_core_of = SIA
+						is_core_of = BRM
+					}
+				}
+				add_claim_by = VIN
+			}
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 670.owner
+					}
+				}
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 826.owner
+				}
+			}
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 289.owner
+					}
+				}
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 288.owner
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Expand_Into_Asia
+		icon = GFX_goal_VIN_uniting_asia_under_heaven
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Situation_in_East_Asia
+		}
+		available = {
+		VIN = {
+			owns_state = 288
+			owns_state = 289
+			owns_state = 670
+			owns_state = 750
+			}
+		}
+		
+		x = 52
+		y = 14
+		completion_reward = {
+		country_event = vietnam.10
+		}
+	}
+	
+	focus = {
+		id = VIETJAPFOR_Seek_New_Allies
+		icon = GFX_goal_ATH_diplomats
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Asia_for_Asian
+			focus = VIETJAPFOR_Imperial_Ambition
+		}
+		available = {
+		NOT = {
+		is_in_faction = yes
+		is_subject = yes
+			}
+		}
+		
+		x = 50
+		y = 13
+		completion_reward = {
+		custom_effect_tooltip = factions.tt
+		}
+	}
+	
+	
+	
+	focus = {
+		id = VIETJAPFOR_Third_Universal_Redemption
+		icon = GFX_goal_VIN_guide_humanity_third_amnesty
+		cost = 5.00
+		prerequisite = {
+			focus = VIETJAPFOR_Expand_Into_Asia
+		}
+		available = {
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
+		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
+		}
+		VIN = {
+			owns_state = 427
+			owns_state = 608
+			owns_state = 322
+			owns_state = 330
+			}
+		}
+		
+		
+		x = 52
+		y = 15
+		completion_reward = {
+		country_event = vietnam.23
+		}
+	}
+	
+	
 
 }
