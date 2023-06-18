@@ -14,7 +14,7 @@ focus_tree = {
 		icon = GFX_VNQ_white_sun_over_vietnam-248360
 		x = 7
 		y = 0
-		cost = 5
+		cost = 0.1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -31,6 +31,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_white_terror  } prerequisite = { focus = VNQ_vietnam_for_vietnamese  } prerequisite = { focus = VNQ_finding_anything_we_can  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Finding Anything We Can
@@ -44,6 +47,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_the_economics_of_war  } prerequisite = { focus = VNQ_request_international_aid  }
+		completion_reward = {
+		add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = GEA
+			}
+		add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 100
+				producer = INC
+			}
+		}
 	}
 
 	#Following the Hero's of the Yen Bai Mutinies
@@ -57,6 +72,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_raising_the_republican_flag  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 10
+		}
 	}
 
 	#Mass Recruitment Campaign
@@ -70,6 +89,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_raising_the_republican_flag  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_mas_recruitment
+		}
+		}
 	}
 
 	#National Salvation War
@@ -83,6 +107,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_raising_the_republican_flag  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_national_salvation_war_0
+		}
+		}
 	}
 
 	#The Economics of War
@@ -96,6 +125,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_national_salvation_war  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_war_economics
+		war_economy
+		}
+		}
 	}
 
 	#Chinese Volunteer Division
@@ -109,6 +144,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_mass_recruitment_campaign  }
+		completion_reward = {
+		add_manpower = 10345
+		}
 	}
 
 	#Syndie Scums in Saigon
@@ -122,6 +160,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_the_great_southern_push  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_syndie_scum
+		}
+		}
 	}
 
 	#Imperial Dog House in Hue
@@ -135,6 +178,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_the_great_southern_push  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_monarchist_dogs
+		}
+		}
 	}
 
 	#Vietnam For Vietnamese
@@ -148,6 +196,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_imperial_dog_house_in_hue  } prerequisite = { focus = VNQ_syndie_scums_in_saigon  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		
+		}
+		}
 	}
 
 	#White Terror
@@ -161,6 +216,17 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_chinese_volunteer_division  } prerequisite = { focus = VNQ_drsunstrueheirs  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		
+		}
+		add_ideas = {
+		VNQ_whie_terror
+		}
+		
+		}
 	}
 
 	#The Great Southern Push
@@ -174,6 +240,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_raising_the_republican_flag  }
+		completion_reward = {
+		unlock_decision_tooltip = VNQ_southern_push_1
+		unlock_decision_tooltip = VNQ_southern_push_2
+		}
 	}
 
 	#Raising the Republican Flag
@@ -187,6 +257,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_foundation_of_the_national_revolutionary_army  }
+		completion_reward = {
+		add_war_support = 0.15
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Request International Aid
@@ -200,6 +277,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_national_salvation_war  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_world_aid
+		}
+		}
 	}
 
 	#Foundation of the National Revolutionary Army
@@ -213,6 +295,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_white_sun_over_vietnam  }
+		completion_reward = {
+		unlock_decision_tooltip = VNQ_recuitment
+		}
 	}
 
 	#Dr. Sun's True Heirs
@@ -226,6 +311,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_followingtheherosoftheyenbaimutinies  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		add_war_support = 0.01
+		add_political_power = 75
+		}
 	}
 	
 	#Promote Nationalist Clubs
