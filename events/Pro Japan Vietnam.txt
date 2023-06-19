@@ -1,6 +1,45 @@
 ﻿add_namespace = viet-empire
 
 
+
+country_event = {
+
+		id = viet-empire.0
+		title = "Post War Recovery"
+		desc = viet_civil_war.1.desc
+		picture = "GFX_report_event_vite_coup"
+
+	
+
+		is_triggered_only = yes
+		
+
+		 
+		
+		
+		
+		option = {
+		name = "We Shall Rebuild!"
+		add_ideas = {
+		VIN_Economic_Devastation_idea
+		VIN_vnqdd_resistance
+		VIN_veitcong_resistance
+		VIN_Illiteracy_idea
+		VIN_army_factionalism
+		}
+		} 
+		
+		 
+		
+		
+		
+
+
+	}
+
+
+
+
 country_event = {
 
 		id = viet-empire.1
@@ -59,10 +98,10 @@ country_event = {
 	country_event = {
 
 		id = viet-empire.2
-		title = "Deliberation on the Committee"
+		title = "Question of the New Imperial Government"
 		desc = viet_civil_war.1.desc
 		picture = "GFX_report_event_vite_coup"
-
+		
 		
 
 		is_triggered_only = yes
@@ -70,6 +109,7 @@ country_event = {
 
 		 option = {
 		name = "For Constitutionalism"
+		set_cosmetic_tag = VIN_EMP
 		remove_ideas = {
 		VIN_Duong_Van_Duong_hog_pau
 		
@@ -78,6 +118,7 @@ country_event = {
 		VIN_Pham_Qhuyn_hog_sco
 		
 		}
+		complete_national_focus = VIETJAP_the_constitutional_monarchy
 		set_politics = { ruling_party = authoritarian_democrat }
 		create_country_leader = {
 				name = "Cuong De"
@@ -91,11 +132,13 @@ country_event = {
 		
 		option = {
 		name = "The Divine Eye Watches Over Us"
+		set_cosmetic_tag = VIN_EMP
 		remove_ideas = {
 		VIN_Duong_Van_Duong_hog_pau
 		VIN_Tran_Van_Huu_for_sco
 		
 		}
+		complete_national_focus = VIETJAP_the_cao_dai_joins_the_government
 		add_ideas = {
 		VIN_Huynh_Phu_So_hog_npo
 		VIN_Nguyen_Cao_Ky_eco_pau
@@ -113,6 +156,8 @@ country_event = {
 		
 		option = {
 		name = "Strengthen the Monarchy!"
+		set_cosmetic_tag = VIN_EMP
+		complete_national_focus = VIETJAP_absolute_power_at_the_helm
 		remove_ideas = {
 		VIN_Duong_Van_Duong_hog_pau
 		VIN_Tran_Van_Huu_for_sco
@@ -151,7 +196,8 @@ country_event = {
 		
 		
 		option = {
-		name = "For our Republic"
+		name = "Trong Kim Secure's the Leadership"
+		set_cosmetic_tag = VIN_TRAN
 		set_politics = { ruling_party = national_populist }
 		create_country_leader = {
 				name = "Tran Trong Kim"
@@ -159,23 +205,36 @@ country_event = {
 				expire = "1990.10.13"
 				ideology = national_populist_subtype
 			}	
+			
+		set_party_name = {
+				ideology = national_populist
+				long_name = "Dai Viet Quoc gia Xa hoi Dang (Dai Viet National Socialist Party)"
+				name = "DVQXD"
+			}
 		
 		} 
 		
 		option = {
 		name = "Personalism Shall Guide Us"
+		set_cosmetic_tag = VIN_NHU
 		set_politics = { ruling_party = paternal_autocrat }
 		create_country_leader = {
-				name = "Ngo Dinh Diem"
-				picture = "gfx/leaders/VIN/Portrait_Vietnam_Ngo_Din_Diem.png"
+				name = "Ngo Dinh Nhu"
+				picture = "gfx/leaders/VIN/Portrait_VIN_Ngo_Dinh_Nhu.png"
 				expire = "1990.10.13"
 				ideology = pataut_diemism_subtype
-			}	
+			}
+		set_party_name = {
+				ideology = paternal_autocrat
+				long_name = "Dang Can lao Nhan vi (Vietnam Humanitarian Labor Party)"
+				name = "DCN"
+			}		
 		
 		} 
 		
 		option = {
 		name = "Caravelle Group Rises"
+		set_cosmetic_tag = VIN_HUY
 		set_politics = { ruling_party = social_conservative }
 		create_country_leader = {
 				name = "Phan Huy Quat"
@@ -183,7 +242,11 @@ country_event = {
 				expire = "1990.10.13"
 				ideology = paternal_socialism_subtype
 			}	
-		
+		set_party_name = {
+				ideology = social_conservative
+				long_name = "Dai Viet Quoc Dang (Dai Viet Nationalist Party)"
+				name = "DVQD"
+			}
 		} 
 		
 		
@@ -195,5 +258,242 @@ country_event = {
 	}
 	
 	
+	country_event = {
+
+		id = viet-empire.4
+		title = "Zaibtasu Investment?"
+		desc = viet_civil_war.1.desc
+		picture = "GFX_report_event_vite_coup"
+
+		
+
+		is_triggered_only = yes
+		
+
+		 
+		
+		
+		
+		option = {
+		name = "Allow Their Investment"
+		add_to_variable = {
+			var = viet_jap
+			value = 10
+			tooltip = increases_japanese_influence_by_10_tt
+		}
+		add_ideas = {
+		VIN_japanese_investment
+		}
+		
+		} 
+		
+		option = {
+		name = "We Are Not Puppets"
+		add_to_variable = {
+			var = viet_jap
+			value = -10
+			tooltip = decreases_japanese_influence_by_10_tt
+		}
+		add_ideas = {
+		VIN_indpendent_investment
+		}
+		} 
+		
+		
+		
+		
+
+
+	}
+	
+	
+	
+	country_event = {
+
+		id = viet-empire.5
+		title = "Question of the Garrison"
+		desc = viet_civil_war.1.desc
+		picture = "GFX_report_event_vite_coup"
+
+		
+
+		is_triggered_only = yes
+		
+
+		 
+		
+		
+		
+		option = {
+		name = "Allow More Troops"
+		add_to_variable = {
+			var = viet_jap
+			value = 10
+			tooltip = increases_japanese_influence_by_10_tt
+		}
+		add_stability = -0.5
+		
+		} 
+		
+		option = {
+		name = "We Are Not Puppets"
+		add_to_variable = {
+			var = viet_jap
+			value = -10
+			tooltip = decreases_japanese_influence_by_10_tt
+		}
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.2
+		}
+		} 
+	
+	}
+	
+	country_event = {
+
+		id = viet-empire.6
+		title = "Coup of the IJA 38th Division"
+		desc = viet_civil_war.1.desc
+		picture = "GFX_report_event_vite_coup"
+
+		
+
+		is_triggered_only = yes
+		
+
+		 
+		
+		
+		
+		option = {
+		name = "Oh No Here they Come."
+		custom_effect_tooltip = japan_viet_coup_tt
+		hidden_effect = {
+		set_politics = { ruling_party = national_populist }
+		set_cosmetic_tag = VIN_JAP
+		set_popularities = {
+				totalist = 0
+				syndicalist = 0
+				radical_socialist = 0
+				social_democrat = 0
+				social_liberal = 0
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 10
+				paternal_autocrat = 15
+				national_populist = 75
+			}
+		create_country_leader = {
+				name = "Yuitsu Tsuchihashi"
+				picture = "gfx/leaders/VIN/Portrait_VIN_Yuitsu_Tsuchi.png"
+				expire = "1990.10.13"
+				ideology = natpop_pan_asianism_subtype
+			}
+			
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = "Dai Viet Quoc gia Lien minh (National Dai Viet Alliance)"
+				name = "DVQL"
+			}
+			set_party_name = {
+				ideology = paternal_autocrat
+				long_name = "Dai Viet Quoc gia Lien minh (National Dai Viet Alliance)"
+				name = "DVQL"
+			}
+			set_party_name = {
+				ideology = national_populist
+				long_name = "Dai Viet Quoc gia Lien minh (National Dai Viet Alliance)"
+				name = "DVQL"
+			}
+		}
+		} 
+		
+		option = {
+		name = "The Coup Has Been Stopped. Expel These Japanese Bandits!"
+		
+		} 
+	
+	}
+	
+	
+	country_event = {
+
+		id = viet-empire.7
+		title = "Colonial Future"
+		desc = viet_civil_war.1.desc
+		picture = "GFX_report_event_vite_coup"
+
+		
+
+		is_triggered_only = yes
+		
+		immediate = {
+		hidden_effect = {
+		release = LAO
+		release = CAM
+		
+		LAO = {
+		set_politics = { ruling_party = national_populist }
+		set_cosmetic_tag = LAO_JAP
+		set_popularities = {
+				totalist = 0
+				syndicalist = 0
+				radical_socialist = 0
+				social_democrat = 0
+				social_liberal = 0
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 10
+				paternal_autocrat = 15
+				national_populist = 75
+			}
+		create_country_leader = {
+				name = "Phetsarath Ratanavongsa"
+				picture = "gfx/leaders/LAO/Portrait_Laos_Phetsarath_Ratanavongsa.png"
+				expire = "1959.10.29"
+				ideology = natpop_pan_asianism_subtype
+			}
+		}
+		
+		CAM = {
+		set_politics = { ruling_party = national_populist }
+		set_cosmetic_tag = CAM_JAP
+		set_popularities = {
+				totalist = 0
+				syndicalist = 0
+				radical_socialist = 0
+				social_democrat = 0
+				social_liberal = 0
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 10
+				paternal_autocrat = 15
+				national_populist = 75
+			}
+		create_country_leader = { 
+			name = "Son Ngoc Thanh"
+			desc = "-"
+			picture = "gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Thanh.png"
+			expire = "2012.10.15"
+			ideology = natpop_pan_asianism_subtype
+		}
+		}
+		
+		}
+		}
+		 
+		
+		
+		
+		option = {
+		name = "For the new Era"
+		puppet = LAO
+		puppet = CAM
+		}
+		
+		
+	
+	}
 	
 
