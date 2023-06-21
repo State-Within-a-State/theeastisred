@@ -1,0 +1,113 @@
+CAM_civil_war_decision_category = {
+CAM_issarak_offensives = {
+		activation = {
+			
+		}
+		available = {
+			always = no
+		}
+		cancel_trigger = {
+			has_completed_focus = CAM_angkorwatshinesthecoloursofvictory
+		}
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 15
+		selectable_mission = no
+		complete_effect = {
+			
+		}
+		timeout_effect = {
+			add_to_variable = {
+				var = cam_issarak
+				value = 5
+				tooltip = issarak_forces_increase_their_strength_tt
+			}
+			activate_mission = CAM_issarak_offensives
+		}
+	}
+	
+	CAM_momentum = {
+		activation = {
+			
+		}
+		available = {
+			check_variable = { cam_issarak < -20 }
+		}
+		cancel_trigger = {
+			has_completed_focus = CAM_angkorwatshinesthecoloursofvictory
+		}
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 100
+		selectable_mission = no
+		complete_effect = {
+			
+		}
+		timeout_effect = {
+			country_event = cambodia_revolution.5
+		}
+	}
+	CAM_launch_counter_offensives = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = CAM
+			
+		}
+		cost = 7
+		
+		days_remove = 10
+		days_re_enable = 3
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = cam_issarak
+				value = -2
+				tooltip = issarak_forces_decrease_their_strength_tt
+			}
+		}
+	}
+	CAM_build_up_defences = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = CAM_honour_the_late_king
+		}
+		
+		visible = {
+			tag = CAM
+			
+		}
+		cost = 7
+		
+		days_remove = 5
+		days_re_enable = 2
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = cam_issarak
+				value = -2
+				tooltip = issarak_forces_decrease_their_strength_tt
+			}
+			add_to_variable = {
+				var = cam_capital_defence
+				value = 10
+				tooltip = we_shall_defend_the_capital_tt
+			}
+		}
+	}
+}

@@ -9,6 +9,104 @@ add_namespace = cambodia
 add_namespace = cambodia_power
 add_namespace = cambodia_republic
 add_namespace = cambodia_revolution
+add_namespace = cambodia_civilwar
+
+country_event = {
+
+		id = cambodia_civilwar.0
+		title = "On the Verge of Collapse"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+		immediate = {
+		hidden_effect = {
+		set_variable = {
+				var = cam_issarak
+				value = 10
+				tooltip = issarak_forces_increase_their_strength_tt
+			}
+		}
+		}
+
+		is_triggered_only = yes
+		
+
+		option = {
+		name = "Cambodia Shall Cry Blood!"
+		complete_national_focus = CAM_new_state_of_independence
+		set_country_flag = cambodian_civilwar
+		activate_mission = CAM_issarak_offensives
+		add_to_variable = {
+				var = cam_issarak
+				value = 5
+				tooltip = issarak_forces_increase_their_strength_tt
+			}
+		add_ideas = {
+		CAM_champa_revolts
+		CAM_economic_woes_0
+		}
+		} 
+		
+		
+
+
+	}
+	
+	country_event = {
+
+		id = cambodia_civilwar.1
+		title = "Finish Them!"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+
+		is_triggered_only = yes
+		
+
+		option = {
+		name = "Concentrate on the Issarak"
+		add_manpower = -2173
+		} 
+		
+		option = {
+		name = "Crush the Vietnamese Invaders"
+		add_manpower = -2173
+		declare_war_on = {
+				target = INC
+				type = annex_everything
+			}
+		trigger = {
+		INC = {
+		exists = yes
+		}
+		}
+		} 
+
+
+	}
+	
+	country_event = {
+
+		id = cambodia_civilwar.2
+		title = "Treaty With the Issarak Leaders"
+		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
+		picture = "-"
+
+
+		is_triggered_only = yes
+		
+
+		option = {
+		name = "A Toast For Peace"
+		add_stability = 0.25
+		} 
+		
+		
+
+
+	}
+
+
 
 country_event = {
 
@@ -17,7 +115,7 @@ country_event = {
 		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
 		picture = "-"
 
-		fire_only_once = yes
+		
 
 		is_triggered_only = yes
 		
@@ -31,7 +129,11 @@ country_event = {
 		set_country_leader_ideology = pataut_popular_patriotism_subtype
 		set_country_leader_name = { ideology = paternal_autocrat name = "Norodom Sihanouk" }
 		set_country_leader_portrait = { ideology = paternal_autocratt portrait = "gfx/leaders/CAM/Portrait_Cambodia_Norodom_Sihanouk.png" }
-		
+		set_variable = {
+				var = cam_capital_defence
+				value = 10
+				tooltip = we_shall_defend_the_capital_tt
+			}
 			}
 		} 
 		
@@ -90,7 +192,7 @@ country_event = {
 
 		name = "Long Live Nol!"
 		set_cosmetic_tag = CAM_NOL
-		
+		complete_national_focus = CAMMON_declaration_of_a_republic
 		set_politics = { ruling_party = national_populist }
 		
 		} 
@@ -98,6 +200,7 @@ country_event = {
 		option = {
 		name = "Revolutionary Sangkum"
 		set_politics = { ruling_party = totalist }
+		complete_national_focus = CAMMON_sihanouk_arrests_nol
 		create_country_leader = { 
 			name = "Norodom Sihanouk"
 			desc = "POLITICS_NORODOM_SIHANOUK_DESC"
@@ -109,6 +212,7 @@ country_event = {
 		option = {
 		name = "Moderate Sangkum"
 		set_politics = { ruling_party = authoritarian_democrat }
+		complete_national_focus = CAMMON_sihanouk_arrests_nol
 		create_country_leader = { 
 			name = "Norodom Sihanouk"
 			desc = "POLITICS_NORODOM_SIHANOUK_DESC"
@@ -262,7 +366,7 @@ country_event = {
 		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
 		picture = "-"
 
-		fire_only_once = yes
+		
 
 		is_triggered_only = yes
 		
@@ -272,8 +376,9 @@ country_event = {
 		trigger = {
 		check_variable = { CAM_REP > 2 }
 		}
+		set_country_flag = cambodian_republic_democracy
 		country_event = {
-		id = cambodia_power.2
+		id = cambodia_republic.0
 		days = 3
 		}
 		} 
@@ -303,11 +408,14 @@ country_event = {
 		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
 		picture = "-"
 
-		fire_only_once = yes
 
 		is_triggered_only = yes
 		
-
+		immediate = {
+		hidden_effect = {
+		set_cosmetic_tag = CAM_REPUBLIC
+		}
+		}
 		
 		
 		option = {
@@ -320,6 +428,8 @@ country_event = {
 			expire = "2012.10.15"
 			ideology = social_liberal_subtype
 		}
+		country_event = cambodia_republic.1
+		complete_national_focus = CAM_SOCDEM_election_of_the_kpnlf
 		}
 		option = {
 		name = "Son Ngoc Thanh Wins"
@@ -343,6 +453,7 @@ country_event = {
 			expire = "2012.10.15"
 			ideology = moderate_socialist_subtype
 		}
+		country_event = cambodia_republic.2
 		}
 		
 		
@@ -368,7 +479,7 @@ country_event = {
 		
 		option = {
 		name = "Liberal's Hold"
-		
+		complete_national_focus = CAM_SOCDEM_liberal_faction_secures_national_leadership
 		}
 		option = {
 		name = "Social Buddhists Win Over Sann"
@@ -380,6 +491,8 @@ country_event = {
 			expire = "2012.10.15"
 			ideology = socdem_buddhist_socialism_subtype
 		}
+		complete_national_focus = CAM_SOCDEM_reach_out_to_the_sangkum
+		complete_national_focus = CAM_SOCDEM_son_sann_leads_the_way
 		}
 		
 		option = {
@@ -392,6 +505,8 @@ country_event = {
 			expire = "2012.10.15"
 			ideology = socdem_sangkum_subtype
 		}
+		complete_national_focus = CAM_SOCDEM_reach_out_to_the_sangkum
+		complete_national_focus = CAM_SOCDEM_nouthsleadership
 		}
 		
 		
@@ -431,6 +546,7 @@ country_event = {
 			expire = "2012.10.15"
 			ideology = monsoc_subtype
 		}
+		set_cosmetic_tag = CAM_REPUBLICMONBOL
 		}
 		
 		
@@ -624,34 +740,39 @@ country_event = {
 	
 	country_event = {
 	id = cambodia_revolution.4
+	title = "Results of the Seige"
+	desc = "-"
 	immediate = {log = "[GetDateText]: [Root.GetName]: event redelection."}
 	is_triggered_only = yes
-	hidden = yes
 	
-	immediate = {
-		if = {
-			limit = {
-				check_variable = { CAM_REV > 2 }
-			}
-			country_event = cambodia_revolution.5
-		}
-		
-		if = {
-			limit = {
-				check_variable = { CAM_ANTICOM > 2 }
-			}
-			country_event = cambodia_revolution.6
-		}
-		
-		
+	
+	
+	option = {
+	name = "The Socialists Take the Capital"
+	country_event = {
+	id = cambodia_revolution.5
+	days = 3
 	}
+	
+	}
+	option = {
+	name = "We Fend Them Off"
+	country_event = {
+	id = cambodia_revolution.6
+	days = 3
+	}
+	
+	}
+	
+		
+	
 }
 
 
 country_event = {
 
 		id = cambodia_revolution.5
-		title = "Issarak Coup Succeeds"
+		title = "Issarak Capture the Capital"
 		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
 		picture = "-"
 
@@ -688,22 +809,27 @@ country_event = {
 	country_event = {
 
 		id = cambodia_revolution.6
-		title = "Issarak Coup Fails"
+		title = "Issarak Are Pushed Back"
 		desc = "Due to discontent with Tang's policies, trusted general of Tang, He Long, revolted and is marching toward the capital. Tang prepares a force to defend the provincial capital of Changsha. Bth sides meet and both put up a tough fight, the result is...."
 		picture = "-"
 
-		
-
 		is_triggered_only = yes
 		
-
-		
-		
-		
-		
+		option = {
+		name = "We Must Finish Them"
+		complete_national_focus = CAM_we_can_take_them
+		add_to_variable = {
+				var = cam_issarak
+				value = -40
+				tooltip = issarak_forces_decrease_their_strength_tt
+			}
+		}
 		
 		option = {
-		name = "At Last We Can Be At Peace"
+		name = "Reach a Comprimise"
+		clear_variable = cam_issarak
+		complete_national_focus = CAM_extend_an_olive_branch
+		set_global_flag = cambodia_civilwar_cover
 		}
 		
 		
