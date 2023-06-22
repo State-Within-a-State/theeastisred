@@ -2753,7 +2753,7 @@ focus_tree = {
 		}
 		available = {
 		has_country_leader = {
-		name "Khieu Ponnary"
+		name = "Khieu Ponnary"
 		ruling_only = yes
 		}
 		}
@@ -2775,7 +2775,7 @@ focus_tree = {
 		}
 		available = {
 		has_country_leader = {
-		name "Lon Nol"
+		name = "Lon Nol"
 		ruling_only = yes
 		}
 		}
@@ -2795,6 +2795,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_completed_focus = CAM_angkorwatshinesthecoloursofvictory
+		}
+		completion_reward = {
+		add_ideas = {
+		CAM_new_army
+		}
+		}
 		
 	}
 
@@ -2810,11 +2818,14 @@ focus_tree = {
 		}
 		available = {
 		has_country_leader = {
-		name "Lon Nol"
+		name = "Lon Nol"
 		ruling_only = yes
 		}
 		}
 		prerequisite = { focus = CAMMIL_khmer_national_army  }
+		completion_reward = {
+		custom_effect_tooltip = lon_nol_tt
+		}
 	}
 
 	#Under the New Khmer Army
@@ -2830,12 +2841,15 @@ focus_tree = {
 		available = {
 		NOT = {
 		has_country_leader = {
-		name "Lon Nol"
+		name = "Lon Nol"
 		ruling_only = yes
 		}
 		}
 		}
 		prerequisite = { focus = CAMMIL_khmer_national_army  }
+		completion_reward = {
+		custom_effect_tooltip = not_lon_nol_tt
+		}
 	}
 
 	#The Jungle is Our Friend
@@ -2849,6 +2863,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = CAMMIL_under_the_new_khmer_army  }
+		completion_reward = {
+		add_ideas = {
+		INC_Guerilla_Tradition
+		}
+		}
 	}
 
 	#Defence For the Nation
@@ -2862,6 +2881,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMMIL_nolsarmy  focus = CAMMIL_under_the_new_khmer_army  }
+		completion_reward = {
+		add_ideas = {
+		CAM_defending_ourselves
+		}
+		}
 	}
 
 	#Strict Dscipline
@@ -2875,6 +2899,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMMIL_nolsarmy  }
+		completion_reward = {
+		add_ideas = {
+		CAM_army_discipline
+		}
+		}
 	}
 
 	#Secure Foreign Aid
@@ -2884,9 +2913,12 @@ focus_tree = {
 		x = 28
 		y = 3
 		search_filters = {
-			FOCUS_FILTER_RESEARCH
+			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CAMMIL_strict_dscipline  }
+		completion_reward = {
+		add_war_support = 0.05
+		}
 	}
 
 	#Trucks Along the Mekong
@@ -2900,6 +2932,15 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = CAMMIL_defence_for_the_nation  } prerequisite = { focus = CAMMIL_strict_dscipline  }
+		completion_reward = {
+		add_tech_bonus = {
+				name = CAM_Motorized_Assault
+				bonus = 1
+				uses = 1
+				category = motorized_equipment
+				category = cat_mechanized_equipment
+			}
+		}
 	}
 
 	#Steal German Supplies
@@ -2913,6 +2954,13 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMMIL_defence_for_the_nation  }
+		completion_reward = {
+		add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = GEA
+			}
+		}
 	}
 
 	#Integrate Former Vietminh Troops
@@ -2926,6 +2974,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = CAMMIL_defence_for_the_nation  } prerequisite = { focus = CAMMIL_the_jungle_is_our_friend  }
+		completion_reward = {
+		add_manpower = 10283
+		}
 	}
 
 	#Hidden In Plane Sight
@@ -2939,6 +2990,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = CAMMIL_the_jungle_is_our_friend  }
+		completion_reward = {
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.5
+			uses = 1
+			category = cat_grand_battle_plan
+			}
+		}
 	}
 
 	#An Army of the People
@@ -2952,6 +3011,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CAMMIL_integrate_former_vietminh_troops  } prerequisite = { focus = CAMMIL_hidden_in_plane_sight  }
+		completion_reward = {
+		add_ideas = {
+		CAM_peoples_army
+		}
+		}
 	}
 
 	#Night Raids
@@ -2965,6 +3029,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = CAMMIL_steal_german_supplies  }
+		completion_reward = {
+		add_ideas = {
+		INC_The_Night_Belongs_to_Charlie_idea
+		}
+		}
 	}
 
 	#Tanks Rush Through the Rice Fields
@@ -2978,6 +3047,15 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = CAMMIL_secure_foreign_aid  } prerequisite = { focus = CAMMIL_trucks_along_the_mekong  }
+		completion_reward = {
+		add_tech_bonus = {
+				name = CAM_Armored_unit_Experiment
+				bonus = 1
+				uses = 1
+				category = cat_light_armor
+				category = cat_medium_armor
+			}
+		}
 	}
 
 	#Our Shinny New Rifles
@@ -2991,6 +3069,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMMIL_night_raids  } prerequisite = { focus = CAMMIL_tanks_rush_through_the_rice_fields  }
+		completion_reward = {
+		add_tech_bonus = {
+				name = INC_Rifle_Standardization
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+		}
 	}
 
 	#The Revolution Marches Forward
@@ -3004,6 +3090,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = CAMMIL_an_army_of_the_people  } prerequisite = { focus = CAMMIL_night_raids  }
+		completion_reward = {
+		add_manpower = 10328
+		}
 	}
 
 	#Cambodia's International Start
@@ -3012,9 +3101,16 @@ focus_tree = {
 		icon = GFX_CAMMIL_cambodiasinternationalstart-248360
 		x = 44
 		y = 0
-		cost = 2
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		OR = {
+		has_completed_focus = CAM_angkorwatshinesthecoloursofvictory
+		has_completed_focus = CAMCOMUNIE_coup_of_the_issarak_front
+		has_completed_focus = CAMCOMUNIE_the_hand_turns_the_page
+		}
 		}
 	}
 
@@ -3029,6 +3125,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = CAMMIL_cambodiasinternationalstart  }
+		completion_reward = {
+		set_state_owner = 750
+		set_state_owner = 825
+		}
 	}
 
 	#Liberation
@@ -3041,8 +3141,39 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		AND = {
+		NOT = {
+		OR = {
+		has_country_leader = {
+		name = "Norodom Sihanouk"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Lon Nol"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Son Ngoc Thanh"
+		ruling_only = yes
+		}
+		}
+		}
+		OR = {
+		has_government = totalist
+		has_government = radical_socialist
+		has_government = social_democrat
+		has_government = social_liberal
+		}
+		}
+		}
 		prerequisite = { focus = CAMMIL_seize_siamese_lands  }
 		mutually_exclusive = { focus = CAMMIL_expansionism  }
+		completion_reward = {
+		add_ideas = {
+		CAM_beyond_our_borders
+		}
+		}
 	}
 
 	#Expansionism
@@ -3055,8 +3186,33 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Norodom Sihanouk"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Lon Nol"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Khieu Ponnary"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Son Ngoc Thanh"
+		ruling_only = yes
+		}
+		}
+		}
 		prerequisite = { focus = CAMMIL_seize_siamese_lands  }
 		mutually_exclusive = { focus = CAMMIL_liberation  }
+		completion_reward = {
+		add_ideas = {
+		CAM_beyond_our_borders
+		}
+		}
 	}
 
 	#Indochina Shall Be Ours
@@ -3070,6 +3226,27 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = CAMMIL_expansionism  }
+		completion_reward = {
+		add_state_core = 856
+		add_state_core = 286
+		add_state_core = 827
+		add_state_core = 670
+		add_state_core = 671
+		add_state_core = 857
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = VIN
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = VNQ
+			}
+			
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LAO
+			}
+		}
 	}
 
 	#Question of Siam
@@ -3083,6 +3260,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = CAMMIL_liberation  focus = CAMMIL_expansionism  }
+		completion_reward = {
+		country_event = cambodia_civilwar.3
+		}
 	}
 
 	#Liberate the Penninsula
@@ -3096,6 +3276,21 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = CAMMIL_liberation  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = VIN
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = VNQ
+			}
+			
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LAO
+			}
+		}
 	}
 
 	#Asia In Need of Liberation
@@ -3122,6 +3317,20 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = CAMMIL_indochina_shall_be_ours  } prerequisite = { focus = CAMMIL_question_of_siam  }
+		completion_reward = {
+		every_state = {
+					limit = {
+						is_on_continent = asia
+					}
+					CAM = { 
+						
+						create_wargoal = {
+							type = puppet_wargoal_focus
+							target = PREV
+						}
+				}
+			}
+		}
 	}
 
 	#A New Empire Awaits
@@ -3134,7 +3343,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		has_country_leader = {
+		name = "Norodom Sihanouk"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMMIL_honouring_a_national_legacy  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 
