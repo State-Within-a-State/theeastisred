@@ -1433,6 +1433,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = CAMJAP_control_the_assembly  } prerequisite = { focus = CAMJAP_integratesonsannsliberals  }
+		completion_reward = {
+		add_ideas = {
+		CAM_union_crackdown
+		}
+		}
 	}
 
 	#Khmer Serei Victory
@@ -1444,6 +1449,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -1458,6 +1466,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CAMJAP_khmer_serei_victory  }
+		completion_reward = {
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Invite Zaibatsu Investment
@@ -1471,6 +1485,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMJAP_khmer_serei_victory  }
+		completion_reward = {
+		add_ideas = {
+		CAM_japanese_investment
+		}
+		}
 	}
 
 	#Stop the Rural Disruption
@@ -1484,6 +1503,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = CAMJAP_invite_zaibatsu_investment  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_issarak_issue_0
+		add_idea = CAM_issarak_issue_1
+		}
+		}
 	}
 
 	#Construct Khmer Industry
@@ -1497,6 +1522,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMJAP_invite_zaibatsu_investment  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_economic_woes_0
+		add_idea = CAM_economic_woes_1
+		}
+		}
 	}
 
 	#Reach Out to the Buddhists
@@ -1510,6 +1541,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMJAP_pro_japanese_rule  } prerequisite = { focus = CAMJAP_invite_zaibatsu_investment  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Undo-Democratization
@@ -1523,6 +1557,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMJAP_pro_japanese_rule  }
+		completion_reward = {
+		add_stability = -0.1
+		}
 	}
 
 	#Control the Assembly
@@ -1536,6 +1573,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = CAMJAP_reach_out_to_the_buddhists  } prerequisite = { focus = CAMJAP_undodemocratization  }
+		completion_reward = {
+		add_ideas = {
+		CAM_controling_assembly
+		}
+		}
 	}
 
 	#Integrate Son Sann's Liberals
@@ -1546,9 +1588,15 @@ focus_tree = {
 		y = 12
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMJAP_reach_out_to_the_buddhists  } prerequisite = { focus = CAMJAP_undodemocratization  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Encourage Joint Enterprise
@@ -1562,6 +1610,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMJAP_stop_the_rural_disruption  } prerequisite = { focus = CAMJAP_construct_khmer_industry  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_japanese_investment
+		add_idea = CAM_japanese_investment_1
+		}
+		}
 	}
 
 	#Military Industrialism
@@ -1575,6 +1629,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMJAP_encourage_joint_enterprise  }
+		completion_reward = {
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 
 	#Build Up Phnom Penn University
@@ -1588,6 +1654,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = CAMJAP_encourage_joint_enterprise  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Embrace the Lunar Calendar
@@ -1601,6 +1670,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMJAP_control_the_assembly  } prerequisite = { focus = CAMJAP_integratesonsannsliberals  }
+		completion_reward = {
+		add_political_power = 50
+		}
 	}
 
 	#Purge the Country
@@ -1614,6 +1686,15 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = CAMJAP_control_the_assembly  } prerequisite = { focus = CAMJAP_integratesonsannsliberals  }
+		completion_reward = {
+		remove_ideas = {
+		CAM_champa_revolts
+		}
+		swap_ideas = {
+		remove_idea = CAM_issarak_issue_1
+		add_idea = CAM_issarak_issue_2
+		}
+		}
 	}
 
 	#Question Sihanouk
@@ -1627,6 +1708,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMJAP_purge_the_country  } prerequisite = { focus = CAMJAP_crackdown_on_unionism  }
+		completion_reward = {
+		country_event = cambodia_republic.3
+		}
 	}
 
 	#Faithful Allies
@@ -1640,6 +1724,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMJAP_embrace_the_lunar_calendar  } prerequisite = { focus = CAMJAP_purge_the_country  }
+		completion_reward = {
+		JAP = {
+		send_equipment = {
+				equipment = infantry_equipment
+				amount = 2500
+				target = CAM
+			}
+		
+		}
+		}
 	}
 
 	#Economy Saved!
@@ -1653,6 +1747,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMJAP_military_industrialism  } prerequisite = { focus = CAMJAP_build_up_phnom_penn_university  }
+		completion_reward = {
+		add_ideas = {
+		CAM_economic_woes_2
+		}
+		}
 	}
 
 	#Cambodia's New Freedom
@@ -1666,7 +1765,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMJAP_question_sihanouk  } prerequisite = { focus = CAMJAP_faithful_allies  } prerequisite = { focus = CAMJAP_economysaved  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
+	
+### Democratic Socialists
+
+
 	#Democratic Party Victory
 	focus = {
 		id = CAMDEMSOC_democratic_party_victory
@@ -1676,6 +1782,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -1690,6 +1799,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMDEMSOC_democratic_party_victory  }
+		completion_reward = {
+		country_event = cambodia_republic.2
+		}
 	}
 
 	#Cambodia's Red Prince
@@ -1701,6 +1813,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = CAMDEMSOC_a_split_in_the_party  }
 		mutually_exclusive = { focus = CAMDEMSOC_following_the_marxist_line  }
@@ -1716,7 +1831,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		
 		prerequisite = { focus = CAMDEMSOC_cambodiasredprince  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.25
+		}
+		}
 	}
 
 	#Denounce the Sangkum
@@ -1730,6 +1852,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMDEMSOC_following_the_red_banner  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -0.25
+		}
+		}
 	}
 
 	#Negotiate With the Issarak
@@ -1743,6 +1871,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = CAMDEMSOC_following_the_red_banner  }
+		completion_reward = {
+		country_event = cambodia_republic.4
+		}
 	}
 
 	#The Red King of Angkor
@@ -1756,6 +1887,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMDEMSOC_following_the_red_banner  }
+		completion_reward = {
+		add_ideas = {
+		CAM_red_kingdom
+		}
+		}
 	}
 
 	#Crackdown on the Champa Reactionaries
@@ -1769,6 +1905,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = CAMDEMSOC_negotiate_with_the_issarak  } prerequisite = { focus = CAMDEMSOC_the_red_king_of_angkor  }
+		completion_reward = {
+		remove_ideas = {
+		CAM_champa_revolts
+		}
+		}
 	}
 
 	#Crush SFIO Ties
@@ -1782,6 +1923,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMDEMSOC_denounce_the_sangkum  } prerequisite = { focus = CAMDEMSOC_negotiate_with_the_issarak  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Cambodia Red and Free
@@ -1795,6 +1939,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMDEMSOC_crackdown_on_the_champa_reactionaries  } prerequisite = { focus = CAMDEMSOC_crush_sfio_ties  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_red_kingdom
+		add_idea = CAM_red_kingdom_1
+		}
+		}
 	}
 
 	#Social Economic Reforms
@@ -1808,6 +1958,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMDEMSOC_a_split_in_the_party  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_economic_woes_0
+		add_idea = CAM_economic_woes_1
+		}
+		}
 	}
 
 	#Building the Planned Economy
@@ -1821,6 +1977,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMDEMSOC_social_economic_reforms  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_economic_woes_1
+		add_idea = CAM_planned_economy
+		}
+		}
 	}
 
 	#The Land Belongs to the Masses
@@ -1834,6 +1996,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMDEMSOC_social_economic_reforms  }
+		completion_reward = {
+		add_ideas = {
+		CAM_socialist_land_reform
+		}
+		}
 	}
 
 	#Increase Resource Extraction
@@ -1847,6 +2014,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMDEMSOC_building_the_planned_economy  } prerequisite = { focus = CAMDEMSOC_the_land_belongs_to_the_masses  }
+		completion_reward = {
+		add_ideas = {
+		CAM_resource_extraction
+		}
+		
+		}
 	}
 
 	#Communalized Farming
@@ -1860,6 +2033,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMDEMSOC_building_the_planned_economy  } prerequisite = { focus = CAMDEMSOC_the_land_belongs_to_the_masses  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_socialist_land_reform
+		add_idea = CAM_socialist_land_reform_1
+		}
+		}
 	}
 
 	#Remove Foreign Exploitation
@@ -1873,6 +2052,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CAMDEMSOC_building_the_planned_economy  } prerequisite = { focus = CAMDEMSOC_the_land_belongs_to_the_masses  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#The Red Economy
@@ -1886,6 +2068,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMDEMSOC_increase_resource_extraction  } prerequisite = { focus = CAMDEMSOC_communalized_farming  } prerequisite = { focus = CAMDEMSOC_remove_foreign_exploitation  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_planned_economy
+		add_idea = CAM_planned_economy_1
+		}
+		}
 	}
 
 	#Following the Marxist Line
@@ -1897,6 +2085,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = CAMDEMSOC_a_split_in_the_party  }
 		mutually_exclusive = { focus = CAMDEMSOC_cambodiasredprince  }
@@ -1913,6 +2104,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = CAMDEMSOC_following_the_marxist_line  }
+		completion_reward = {
+		add_stability = 0.15
+		}
 	}
 
 	#Deal With the Issarak
@@ -1926,6 +2120,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = CAMDEMSOC_formationofapeoplesdemocracy  }
+		completion_reward = {
+		country_event = cambodia_republic.4
+		}
 	}
 
 	#Workers Shall Unite!
@@ -1939,6 +2136,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMDEMSOC_formationofapeoplesdemocracy  }
+		completion_reward = {
+		add_ideas = {
+		CAM_workers_unite
+		}
+		}
 	}
 
 	#Propose Education Reform
@@ -1952,6 +2154,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = CAMDEMSOC_deal_with_the_issarak  } prerequisite = { focus = CAMDEMSOC_workersshallunite  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Marx's Revolution
@@ -1965,6 +2170,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CAMDEMSOC_deal_with_the_issarak  } prerequisite = { focus = CAMDEMSOC_workersshallunite  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.05
+		}
+		add_political_power = 25
+		}
 	}
 
 	#The National Union Movement
@@ -1978,6 +2190,15 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = CAMDEMSOC_deal_with_the_issarak  } prerequisite = { focus = CAMDEMSOC_workersshallunite  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		add_ideas = {
+		CAM_union_nationale
+		}
+		}
 	}
 
 	#Koeus' Socialism
@@ -1991,7 +2212,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMDEMSOC_propose_education_reform  } prerequisite = { focus = CAMDEMSOC_marxsrevolution  } prerequisite = { focus = CAMDEMSOC_the_national_union_movement  }
+		completion_reward = {
+		add_ideas = {
+		CAM_koeus_socialism
+		}
+		}
 	}
+	
+	#### Issarak Coup
+	
 	#Coup of the Issarak Front
 	focus = {
 		id = CAMCOMUNIE_coup_of_the_issarak_front
@@ -2001,6 +2230,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -2014,7 +2246,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_coup_of_the_issarak_front  }
+		completion_reward = {
+		add_ideas = {
+		CAM_sammouth_socialism_0
+		}
+		}
 	}
 
 	#Our Bright Scarlet Blood
@@ -2027,7 +2270,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_comradesamouthscambodia  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		}
 	}
 
 	#Men and Women of the Revolution
@@ -2040,7 +2295,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_MANPOWER
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_comradesamouthscambodia  }
+		completion_reward = {
+		add_ideas = {
+		CAM_men_and_women
+		}
+		}
 	}
 
 	#Democratic, Egalitarian And Just
@@ -2052,6 +2318,12 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_STABILITY
+		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = CAMCOMUNIE_our_bright_scarlet_blood  } prerequisite = { focus = CAMCOMUNIE_men_and_women_of_the_revolution  }
 	}
@@ -2066,7 +2338,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_democraticegalitarianandjust  }
+		completion_reward = {
+		add_ideas = {
+		CAM_socialist_land_reform
+		}
+		}
 	}
 
 	#We Raise and Praise Our Red Banners
@@ -2079,7 +2362,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_democraticegalitarianandjust  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Soldiers of the People and Revolution
@@ -2092,7 +2387,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_democraticegalitarianandjust  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Kampuchea Free Once and For All!
@@ -2105,7 +2409,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_reach_out_to_the_peasants  } prerequisite = { focus = CAMCOMUNIE_we_raise_and_praise_our_red_banners  } prerequisite = { focus = CAMCOMUNIE_soldiers_of_the_people_and_revolution  } prerequisite = { focus = CAMCOMUNIE_children_of_the_revolution  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CAM_sammouth_socialism_0
+		add_idea = CAM_sammouth_socialism_1
+		}
+		}
 	}
 
 	#Expand Salt Extraction Operations
@@ -2118,7 +2434,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_coup_of_the_issarak_front  }
+		completion_reward = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 
 	#Start the 3 Year Plan
@@ -2131,7 +2460,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_expand_salt_extraction_operations  }
+		completion_reward = {
+		add_ideas = {
+		CAM_planned_economy_2
+		}
+		}
 	}
 
 	#Bolster The Rice Bowl
@@ -2144,7 +2484,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_expand_salt_extraction_operations  }
+		completion_reward = {
+		add_ideas = {
+		VIN_Rice_Bowl_idea
+		}
+		}
 	}
 
 	#National Redistribution
@@ -2157,7 +2508,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_start_the_3_year_plan  } prerequisite = { focus = CAMCOMUNIE_bolster_the_rice_bowl  }
+		completion_reward = {
+		add_ideas = {
+		CAM_socialist_land_reform
+		}
+		}
 	}
 
 	#Children of the Revolution
@@ -2170,8 +2532,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
+		available = {
+		has_country_leader = {
+		name = "Tou Sammouth"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = CAMCOMUNIE_national_redistribution  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
+
+###Khmer Rouge
+
 
 	#The Hand Turns the Page
 	focus = {
@@ -2179,9 +2553,17 @@ focus_tree = {
 		icon = GFX_CAMCOMUNIE_the_hand_turns_the_page-248360
 		x = 21
 		y = 0
-		cost = 5
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Khieu Ponnary"
+		}
+		}
+		completion_reward = {
+		country_event = cambodia_revolution.8
 		}
 	}
 
@@ -2196,6 +2578,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CAMCOMUNIE_the_hand_turns_the_page  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 1
+		}
+		}
 	}
 
 	#Euy Srey No!
@@ -2209,6 +2597,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CAMCOMUNIE_revolution_a_new  }
+		completion_reward = {
+		add_ideas = {
+		CAM_no_to_imperialism
+		}
+		}
 	}
 
 	#Revolution of Khmer Traditions
@@ -2222,6 +2615,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = CAMCOMUNIE_revolution_a_new  }
+		completion_reward = {
+		add_stability = -0.05
+		}
 	}
 
 	#Sat Tee Touy
@@ -2235,6 +2631,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMCOMUNIE_revolution_a_new  }
+		completion_reward = {
+		add_ideas = {
+		CAM_look_at_owl
+		}
+		}
 	}
 
 	#Crush the Reactionary Degenerates
@@ -2248,6 +2649,9 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = CAMCOMUNIE_sat_tee_touy  }
+		completion_reward = {
+		country_event = cambodia_revolution.9
+		}
 	}
 
 	#Vietnamese Everywhere!?
@@ -2261,6 +2665,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = CAMCOMUNIE_revolution_of_khmer_traditions  }
+		completion_reward = {
+		country_event = cambodia_revolution.10
+		}
 	}
 
 	#Koma!
@@ -2274,6 +2681,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = CAMCOMUNIE_euysreyno  }
+		completion_reward = {
+		add_research_slot = 1
+		add_ideas = {
+		CAM_koma
+		}
+		}
 	}
 
 	#Our Blood For the Revolution
@@ -2287,6 +2700,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = CAMCOMUNIE_vietnameseeverywhere  } prerequisite = { focus = CAMCOMUNIE_koma  }
+		completion_reward = {
+		add_ideas = {
+		CAM_new_revolution
+		}
+		}
 	}
 
 	#Phenom Penn's Makeover
@@ -2300,6 +2718,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = CAMCOMUNIE_crush_the_reactionary_degenerates  } prerequisite = { focus = CAMCOMUNIE_vietnameseeverywhere  }
+		completion_reward = {
+		country_event = cambodia_revolution.11
+		}
 	}
 
 	#Angkor Wat's Crimson Path
@@ -2313,6 +2734,407 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = CAMCOMUNIE_our_blood_for_the_revolution  } prerequisite = { focus = CAMCOMUNIE_phenompennsmakeover  }
+		completion_reward = {
+		country_event = cambodia_revolution.12
+		}
+	}
+	
+	### Military and Foreign Policy[It looks shit i know but I was too lazy to actually make it super detailed]#######
+	
+	#Red Angkar Spreads
+	focus = {
+		id = CAMMIL_red_angkar_spreads
+		icon = GFX_CAMMIL_red_angkar_spreads-248360
+		x = 44
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		has_country_leader = {
+		name "Khieu Ponnary"
+		ruling_only = yes
+		}
+		}
+		prerequisite = { focus = CAMMIL_honouring_a_national_legacy  }
+		completion_reward = {
+		country_event = cambodia_revolution.13
+		}
+	}
+
+	#Greater Kampuchea
+	focus = {
+		id = CAMMIL_greater_kampuchea
+		icon = GFX_CAMMIL_greater_kampuchea-248360
+		x = 42
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		has_country_leader = {
+		name "Lon Nol"
+		ruling_only = yes
+		}
+		}
+		prerequisite = { focus = CAMMIL_honouring_a_national_legacy  }
+		completion_reward = {
+		country_event = cambodia_revolution.13
+		}
+	}
+
+	#Khmer National Army
+	focus = {
+		id = CAMMIL_khmer_national_army
+		icon = GFX_CAMMIL_khmer_national_army-248360
+		x = 32
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		
+	}
+
+	#Nol's Army
+	focus = {
+		id = CAMMIL_nolsarmy
+		icon = GFX_CAMMIL_nolsarmy-248360
+		x = 31
+		y = 1
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		available = {
+		has_country_leader = {
+		name "Lon Nol"
+		ruling_only = yes
+		}
+		}
+		prerequisite = { focus = CAMMIL_khmer_national_army  }
+	}
+
+	#Under the New Khmer Army
+	focus = {
+		id = CAMMIL_under_the_new_khmer_army
+		icon = GFX_CAMMIL_under_the_new_khmer_army-248360
+		x = 33
+		y = 1
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		available = {
+		NOT = {
+		has_country_leader = {
+		name "Lon Nol"
+		ruling_only = yes
+		}
+		}
+		}
+		prerequisite = { focus = CAMMIL_khmer_national_army  }
+	}
+
+	#The Jungle is Our Friend
+	focus = {
+		id = CAMMIL_the_jungle_is_our_friend
+		icon = GFX_CAMMIL_the_jungle_is_our_friend-248360
+		x = 36
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CAMMIL_under_the_new_khmer_army  }
+	}
+
+	#Defence For the Nation
+	focus = {
+		id = CAMMIL_defence_for_the_nation
+		icon = GFX_CAMMIL_defence_for_the_nation-248360
+		x = 32
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CAMMIL_nolsarmy  focus = CAMMIL_under_the_new_khmer_army  }
+	}
+
+	#Strict Dscipline
+	focus = {
+		id = CAMMIL_strict_dscipline
+		icon = GFX_CAMMIL_strict_dscipline-248360
+		x = 28
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CAMMIL_nolsarmy  }
+	}
+
+	#Secure Foreign Aid
+	focus = {
+		id = CAMMIL_secure_foreign_aid
+		icon = GFX_CAMMIL_secure_foreign_aid-248360
+		x = 28
+		y = 3
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CAMMIL_strict_dscipline  }
+	}
+
+	#Trucks Along the Mekong
+	focus = {
+		id = CAMMIL_trucks_along_the_mekong
+		icon = GFX_CAMMIL_trucks_along_the_mekong-248360
+		x = 30
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CAMMIL_defence_for_the_nation  } prerequisite = { focus = CAMMIL_strict_dscipline  }
+	}
+
+	#Steal German Supplies
+	focus = {
+		id = CAMMIL_steal_german_supplies
+		icon = GFX_CAMMIL_steal_german_supplies-248360
+		x = 32
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = CAMMIL_defence_for_the_nation  }
+	}
+
+	#Integrate Former Vietminh Troops
+	focus = {
+		id = CAMMIL_integrate_former_vietminh_troops
+		icon = GFX_CAMMIL_integrate_former_vietminh_troops-248360
+		x = 34
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CAMMIL_defence_for_the_nation  } prerequisite = { focus = CAMMIL_the_jungle_is_our_friend  }
+	}
+
+	#Hidden In Plane Sight
+	focus = {
+		id = CAMMIL_hidden_in_plane_sight
+		icon = GFX_CAMMIL_hidden_in_plane_sight-248360
+		x = 36
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CAMMIL_the_jungle_is_our_friend  }
+	}
+
+	#An Army of the People
+	focus = {
+		id = CAMMIL_an_army_of_the_people
+		icon = GFX_CAMMIL_an_army_of_the_people-248360
+		x = 34
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = CAMMIL_integrate_former_vietminh_troops  } prerequisite = { focus = CAMMIL_hidden_in_plane_sight  }
+	}
+
+	#Night Raids
+	focus = {
+		id = CAMMIL_night_raids
+		icon = GFX_CAMMIL_night_raids-248360
+		x = 32
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CAMMIL_steal_german_supplies  }
+	}
+
+	#Tanks Rush Through the Rice Fields
+	focus = {
+		id = CAMMIL_tanks_rush_through_the_rice_fields
+		icon = GFX_CAMMIL_tanks_rush_through_the_rice_fields-248360
+		x = 30
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = CAMMIL_secure_foreign_aid  } prerequisite = { focus = CAMMIL_trucks_along_the_mekong  }
+	}
+
+	#Our Shinny New Rifles
+	focus = {
+		id = CAMMIL_our_shinny_new_rifles
+		icon = GFX_CAMMIL_our_shinny_new_rifles-248360
+		x = 31
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = CAMMIL_night_raids  } prerequisite = { focus = CAMMIL_tanks_rush_through_the_rice_fields  }
+	}
+
+	#The Revolution Marches Forward
+	focus = {
+		id = CAMMIL_the_revolution_marches_forward
+		icon = GFX_CAMMIL_the_revolution_marches_forward-248360
+		x = 33
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = CAMMIL_an_army_of_the_people  } prerequisite = { focus = CAMMIL_night_raids  }
+	}
+
+	#Cambodia's International Start
+	focus = {
+		id = CAMMIL_cambodiasinternationalstart
+		icon = GFX_CAMMIL_cambodiasinternationalstart-248360
+		x = 44
+		y = 0
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#Seize Siamese Lands
+	focus = {
+		id = CAMMIL_seize_siamese_lands
+		icon = GFX_CAMMIL_seize_siamese_lands-248360
+		x = 44
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_cambodiasinternationalstart  }
+	}
+
+	#Liberation
+	focus = {
+		id = CAMMIL_liberation
+		icon = GFX_CAMMIL_liberation-248360
+		x = 46
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_seize_siamese_lands  }
+		mutually_exclusive = { focus = CAMMIL_expansionism  }
+	}
+
+	#Expansionism
+	focus = {
+		id = CAMMIL_expansionism
+		icon = GFX_CAMMIL_expansionism-248360
+		x = 42
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_seize_siamese_lands  }
+		mutually_exclusive = { focus = CAMMIL_liberation  }
+	}
+
+	#Indochina Shall Be Ours
+	focus = {
+		id = CAMMIL_indochina_shall_be_ours
+		icon = GFX_CAMMIL_indochina_shall_be_ours-248360
+		x = 42
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_expansionism  }
+	}
+
+	#Question of Siam
+	focus = {
+		id = CAMMIL_question_of_siam
+		icon = GFX_CAMMIL_question_of_siam-248360
+		x = 44
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_liberation  focus = CAMMIL_expansionism  }
+	}
+
+	#Liberate the Penninsula
+	focus = {
+		id = CAMMIL_liberate_the_penninsula
+		icon = GFX_CAMMIL_liberate_the_penninsula-248360
+		x = 46
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_liberation  }
+	}
+
+	#Asia In Need of Liberation
+	focus = {
+		id = CAMMIL_asia_in_need_of_liberation
+		icon = GFX_CAMMIL_asia_in_need_of_liberation-248360
+		x = 46
+		y = 4
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_question_of_siam  } prerequisite = { focus = CAMMIL_liberate_the_penninsula  }
+	}
+
+	#Honouring a National Legacy
+	focus = {
+		id = CAMMIL_honouring_a_national_legacy
+		icon = GFX_CAMMIL_honouring_a_national_legacy-248360
+		x = 42
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_indochina_shall_be_ours  } prerequisite = { focus = CAMMIL_question_of_siam  }
+	}
+
+	#A New Empire Awaits
+	focus = {
+		id = CAMMIL_a_new_empire_awaits
+		icon = GFX_CAMMIL_a_new_empire_awaits-248360
+		x = 40
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = CAMMIL_honouring_a_national_legacy  }
 	}
 
 
