@@ -14,7 +14,7 @@ focus_tree = {
 		icon = GFX_VNQ_white_sun_over_vietnam-248360
 		x = 7
 		y = 0
-		cost = 5
+		cost = 0.1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -31,6 +31,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_white_terror  } prerequisite = { focus = VNQ_vietnam_for_vietnamese  } prerequisite = { focus = VNQ_finding_anything_we_can  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Finding Anything We Can
@@ -44,6 +47,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_the_economics_of_war  } prerequisite = { focus = VNQ_request_international_aid  }
+		completion_reward = {
+		add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = GEA
+			}
+		add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 100
+				producer = INC
+			}
+		}
 	}
 
 	#Following the Hero's of the Yen Bai Mutinies
@@ -57,6 +72,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_raising_the_republican_flag  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 10
+		}
 	}
 
 	#Mass Recruitment Campaign
@@ -70,6 +89,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_raising_the_republican_flag  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_mas_recruitment
+		}
+		}
 	}
 
 	#National Salvation War
@@ -83,6 +107,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_raising_the_republican_flag  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_national_salvation_war_0
+		}
+		}
 	}
 
 	#The Economics of War
@@ -96,6 +125,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_national_salvation_war  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_war_economics
+		war_economy
+		}
+		}
 	}
 
 	#Chinese Volunteer Division
@@ -109,6 +144,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_mass_recruitment_campaign  }
+		completion_reward = {
+		add_manpower = 10345
+		}
 	}
 
 	#Syndie Scums in Saigon
@@ -122,6 +160,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_the_great_southern_push  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_syndie_scum
+		}
+		}
 	}
 
 	#Imperial Dog House in Hue
@@ -135,6 +178,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_the_great_southern_push  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_monarchist_dogs
+		}
+		}
 	}
 
 	#Vietnam For Vietnamese
@@ -148,6 +196,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_imperial_dog_house_in_hue  } prerequisite = { focus = VNQ_syndie_scums_in_saigon  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		
+		}
+		}
 	}
 
 	#White Terror
@@ -161,6 +216,17 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_chinese_volunteer_division  } prerequisite = { focus = VNQ_drsunstrueheirs  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		
+		}
+		add_ideas = {
+		VNQ_whie_terror
+		}
+		
+		}
 	}
 
 	#The Great Southern Push
@@ -174,6 +240,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_raising_the_republican_flag  }
+		completion_reward = {
+		unlock_decision_tooltip = VNQ_southern_push_1
+		unlock_decision_tooltip = VNQ_southern_push_2
+		}
 	}
 
 	#Raising the Republican Flag
@@ -187,6 +257,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_foundation_of_the_national_revolutionary_army  }
+		completion_reward = {
+		add_war_support = 0.15
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Request International Aid
@@ -200,6 +277,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_national_salvation_war  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_world_aid
+		}
+		}
 	}
 
 	#Foundation of the National Revolutionary Army
@@ -213,6 +295,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_white_sun_over_vietnam  }
+		completion_reward = {
+		unlock_decision_tooltip = VNQ_recuitment
+		}
 	}
 
 	#Dr. Sun's True Heirs
@@ -226,6 +311,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_followingtheherosoftheyenbaimutinies  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		add_war_support = 0.01
+		add_political_power = 75
+		}
 	}
 	
 	#Promote Nationalist Clubs
@@ -239,6 +332,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_reforming_the_party  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_promote_nationalist_clubs
+		}
+		}
 	}
 
 	#Paternalist Outlook
@@ -252,6 +350,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_national_heroism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Vietnam's Chiang
@@ -260,9 +368,15 @@ focus_tree = {
 		icon = GFX_VNQ_2_vietnamschiang-248360
 		x = 25
 		y = 1
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Nguyen Hai Than"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = VNQ_2_meeting_of_the_national_congress  }
 	}
@@ -277,7 +391,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		
 		prerequisite = { focus = VNQ_2_the_human_spirit_of_revolution  }
+		completion_reward = {
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = industrial_complex
+			level = 5
+			instant_build = yes
+		}
+		}
 	}
 
 	#An Economic Consensus
@@ -291,6 +418,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_meeting_of_the_national_congress  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = VIN_Economic_Devastation_idea
+		add_idea = VNQ_interim_econonmy 
+		}
+		}
 	}
 
 	#Strengthen the NVBIS
@@ -304,6 +437,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_organize_the_viet_duy_dan_dang  } prerequisite = { focus = VNQ_2_promote_nationalist_clubs  }
+		completion_reward = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.05
+		}
+		}
 	}
 
 	#The Human Spirit of Revolution
@@ -317,6 +460,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_loyalty_to_vietnam  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Organize the Viet Duy Dan Dang
@@ -330,6 +476,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_reforming_the_party  }
+		completion_reward = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.05
+		}
+		add_political_power = 25
+		}
 	}
 
 	#Thai Hoc Holds
@@ -338,9 +491,15 @@ focus_tree = {
 		icon = GFX_VNQ_2_thai_hoc_holds-248360
 		x = 39
 		y = 1
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Nguyen Thai Hoc"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = VNQ_2_meeting_of_the_national_congress  }
 	}
@@ -356,6 +515,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_thai_hoc_holds  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_ideas = {
+		VNQ_grassroot_consolidation
+		}
+		}
 	}
 
 	#Anti Vietminh Campaigns
@@ -369,6 +534,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_vietnamschiang  }
+		completion_reward = {
+		remove_ideas = {
+		VNQ_monarchist_resistance
+		VNQ_socialist_resistance
+		}
+		}
 	}
 
 	#A New Manifesto
@@ -382,6 +553,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_2_vietnamschiang  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#The Socialist Market Economy
@@ -394,8 +568,22 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		OR = {
+		has_government = totalist
+		has_government = radical_socialist
+		has_government = social_democrat
+		}
+		}
 		prerequisite = { focus = VNQ_2_an_economic_consensus  }
 		mutually_exclusive = { focus = VNQ_2_pragmatism  }
+		completion_reward = {
+		
+		swap_ideas = {
+		remove_idea = VNQ_interim_econonmy 
+		add_idea = VIN_Tridemist_Economy_idea
+		}
+		}
 	}
 
 	#Pragmatism
@@ -408,8 +596,21 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		OR = {
+		has_government = national_populist
+		has_government = authoritarian_democrat
+		}
+		
+		}
 		prerequisite = { focus = VNQ_2_an_economic_consensus  }
 		mutually_exclusive = { focus = VNQ_2_the_socialist_market_economy  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = VNQ_interim_econonmy 
+		add_idea = VNQ_pragmatic_economy_0
+		}
+		} 
 	}
 
 	#Victory of the Jingwei Faction
@@ -418,9 +619,15 @@ focus_tree = {
 		icon = GFX_VNQ_2_victory_of_the_jingwei_faction-248360
 		x = 46
 		y = 1
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Nguyen Tuong Tam"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = VNQ_2_meeting_of_the_national_congress  }
 	}
@@ -436,6 +643,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_victory_of_the_jingwei_faction  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_peasant_support
+		}
+		}
 	}
 
 	#Welfare For All
@@ -449,6 +661,10 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = VNQ_2_victory_of_the_jingwei_faction  }
+		completion_reward = {
+		add_stability = 0.05
+		add_political_power = 25
+		}
 	}
 
 	#Abolish Monopolies
@@ -462,6 +678,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_the_socialist_market_economy  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_socialist_economy_0
+		}
+		}
 	}
 
 	#Political Tutelage
@@ -475,6 +696,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_destroy_the_old_elites  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.25
+		}
+		}
 	}
 
 	#Tear Down the Syndicates
@@ -488,6 +715,17 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_anti_vietminh_campaigns  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		add_manpower = -19032
+		}
 	}
 
 	#Take Some; Leave Some
@@ -501,6 +739,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_pragmatism  }
+		completion_reward = {
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 
 	#Loyalty to Vietnam
@@ -514,7 +764,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_the_basics_of_humanity  }
-	}
+		completion_reward = {
+		add_war_support = 0.15
+		}
+	} 
 
 	#The Basics of Humanity
 	focus = {
@@ -527,6 +780,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_ultra_nationalist_victory  }
+		completion_reward = {
+		country_event = vnqdd.4
+		}
 	}
 
 	#Build the Collective Strength
@@ -540,6 +796,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_ultra_nationalist_victory  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_collective_build_support
+		}
+		}
 	}
 
 	#Reforming the Party
@@ -553,6 +814,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_2_build_the_collective_strength  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Destroy the Old Elites
@@ -566,6 +830,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_vietnamschiang  }
+		completion_reward = {
+		remove_ideas = {
+		VNQ_monarchist_resistance
+		}
+		}
 	}
 
 	#Promote Land Reform
@@ -579,6 +848,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_pragmatism  focus = VNQ_2_the_socialist_market_economy  }
+		completion_reward = {
+		add_ideas = VIN_Tillers_idea
+		}
 	}
 
 	#Legacy of the Nam Dong Commune
@@ -592,6 +864,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_thai_hoc_holds  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_nam_dong_commune
+		}
+		}
 	}
 
 	#National Heroism
@@ -605,6 +882,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_consolidate_grassroots_policies  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = VNQ_grassroot_consolidation
+		add_idea = VNQ_grassroot_consolidation_1
+		}
+		}
 	}
 
 	#Unify Nationalist Organizations
@@ -618,6 +901,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_legacy_of_the_nam_dong_commune  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.5
+		}
+		}
 	}
 
 	#NRAV Supremacy
@@ -631,6 +920,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_a_new_manifesto  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_army_government
+		}
+		}
 	}
 
 	#Social Realism
@@ -644,6 +938,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_welfare_for_all  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Transform Agricultural Communes
@@ -657,6 +954,39 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_reach_out_to_the_peasants  } prerequisite = { focus = VNQ_2_welfare_for_all  }
+		completion_reward = {
+					random_owned_state = {
+							limit = {
+									free_building_slots = {
+											building = industrial_complex
+											size > 0
+											include_locked = yes
+										}
+									OR = {
+											is_in_home_area = yes
+											NOT = {
+													owner = {
+															any_owned_state = {
+																	free_building_slots = {
+																			building = arms_factory
+																			size > 0
+																			include_locked = yes
+																		}
+																	is_in_home_area = yes
+																}
+														}
+												}
+										}
+								}
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = industrial_complex
+									level = 1
+									instant_build = yes
+								}
+						}
+					add_political_power = 25
+				}
 	}
 
 	#Expand  Tu Luc Van Doan
@@ -670,6 +1000,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_reach_out_to_radicals_in_shanghai  }
+		completion_reward = {
+		add_research_slot = 1
+		country_event = vnqdd.3
+		}
 	}
 
 	#Learn From Chau's Republicanism
@@ -683,6 +1017,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_transform_agricultural_communes  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Uphold The Caravelle Manifesto
@@ -696,6 +1036,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_national_heroism  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_uphold_caravelle
+		}
+		}
 	}
 
 	#Promotion of Equality
@@ -709,6 +1054,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_2_unify_nationalist_organizations  }
+		completion_reward = {
+		add_stability = 0.1
+		add_manpower = 48324
+		}
 	}
 
 	#Unity is Our Strength
@@ -722,6 +1071,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_loyalty_to_vietnam  }
+		completion_reward = {
+		add_stability = 0.15
+		}
 	}
 
 	#Cut Out Tu Anh
@@ -735,6 +1087,13 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_political_tutelage  } prerequisite = { focus = VNQ_2_nrav_supremacy  }
+		completion_reward = {
+		add_manpower = -1
+		add_popularity = {
+		ideology = national_populist
+		popularity = -1
+		}
+		}
 	}
 
 	#In Honour of Phan Boi Chau
@@ -748,6 +1107,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_unify_nationalist_organizations  }
+		completion_reward = {
+		add_ideas = {
+		VIN_Social_Nationalism_idea
+		}
+		}
 	}
 
 	#Treasury Bonds
@@ -761,6 +1125,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_abolish_monopolies  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_bonds
+		}
+		}
 	}
 
 	#Food Surplus
@@ -774,6 +1143,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_promote_land_reform  }
+		completion_reward = {
+		add_ideas = {
+		VIN_Rice_Bowl_idea
+		}
+		}
 	}
 
 	#Encourage Commercialism
@@ -787,6 +1161,21 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_takesomeleavesome  }
+		completion_reward = {
+					add_resource = {
+							type = steel
+							amount = 14
+							state = 671
+						}
+					671 = {
+							add_extra_state_shared_building_slots = 1
+							add_building_construction = {
+									type = arms_factory
+									level = 1
+									instant_build = yes
+								}
+						}
+				}
 	}
 
 	#'Revolutionary' Oligarchy
@@ -800,6 +1189,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_tear_down_the_syndicates  } prerequisite = { focus = VNQ_2_nrav_supremacy  }
+		completion_reward = {
+		add_stability = 0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		}
 	}
 
 	#The Star and the Sun
@@ -813,6 +1209,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_social_realism  }
+		completion_reward = {
+		add_stability = 0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Reach Out To Radicals in Shanghai
@@ -826,6 +1229,13 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_reach_out_to_the_peasants  }
+		completion_reward = {
+		add_stability = 0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Meeting of the National Congress
@@ -838,6 +1248,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		NOT = {
+		has_global_flag = indochina_civil_war
+		}
+		}
+		completion_reward = {
+		country_event = vnqdd.1
+		}
 	}
 
 	#Ultra Nationalist Victory
@@ -846,9 +1264,15 @@ focus_tree = {
 		icon = GFX_VNQ_2_ultra_nationalist_victory-248360
 		x = 18
 		y = 1
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Truong Tu Anh"
+		ruling_only = yes
+		}
 		}
 		prerequisite = { focus = VNQ_2_meeting_of_the_national_congress  }
 	}
@@ -864,6 +1288,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_unity_is_our_strength  }
+		completion_reward = {
+		add_ideas = {
+		VNQ_pureity
+		}
+		}
 	}
 
 	#The Question of Tutelage
@@ -872,11 +1301,14 @@ focus_tree = {
 		icon = GFX_VNQ_2_the_question_of_tutelage-248360
 		x = 25
 		y = 5
-		cost = 5
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_revolutionaryoligarchy  } prerequisite = { focus = VNQ_2_cut_out_tu_anh  }
+		completion_reward = {
+		country_event = vnqdd.2
+		}
 	}
 
 	#Expropriate the Landlords
@@ -890,6 +1322,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_treasury_bonds  }
+		completion_reward = {
+		add_ideas = VIN_Tillers_idea
+		}
 	}
 
 	#Continue the Democracy Express
@@ -902,8 +1337,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		NOT = {
+		has_government = totalist
+		}
+		}
 		prerequisite = { focus = VNQ_2_expandtulucvandoan  } prerequisite = { focus = VNQ_2_learnfromchausrepublicanism  }
 		mutually_exclusive = { focus = VNQ_2_join_our_nvbis  }
+		completion_reward = {
+		add_stability = 0.05
+		}
 	}
 
 	#Corporatist Controls
@@ -917,6 +1360,13 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_encourage_commercialism  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = VNQ_pragmatic_economy_0
+		add_idea = VNQ_pragmatic_economy_1
+		
+		}
+		}
 	}
 
 	#Secure Rubber Resources
@@ -930,6 +1380,16 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_encourage_commercialism  } prerequisite = { focus = VNQ_2_food_surplus  }
+		completion_reward = {
+					every_owned_state = {
+							add_extra_state_shared_building_slots = 1
+						}
+						add_resource = {
+							type = rubber
+							amount = 15
+							state = 827
+						}
+				}
 	}
 
 	#Ports on the Mekong
@@ -943,6 +1403,79 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_food_surplus  } prerequisite = { focus = VNQ_2_treasury_bonds  }
+		completion_reward = {
+			random_owned_state = {
+			prioritize = { 286 } #Saigon, if possible
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Tam's Benevolence
@@ -956,6 +1489,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_join_our_nvbis  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.75
+		}
+		}
 	}
 
 	#Unemployment Reduction
@@ -969,6 +1508,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_corporatist_controls  } prerequisite = { focus = VNQ_2_secure_rubber_resources  }
+		completion_reward = {
+		add_manpower = 84278
+		add_ideas = {
+		VNQ_reducing_jobs
+		}
+		}
 	}
 
 	#Slay the Russian Beast
@@ -982,6 +1527,16 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_defend_against_japanese_imperialism  } prerequisite = { focus = VNQ_2_strangle_the_burmese_python  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = RUS
+			}
+					create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TRM
+			}
+		}
 	}
 
 	#United and Free!
@@ -995,6 +1550,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_slay_the_russian_beast  }
+		completion_reward = {
+		add_stability = 0.1
+		add_war_support = 0.1
+		country_event = vnqdd.6
+		}
 	}
 
 	#Greater Dai Viet
@@ -1008,6 +1568,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_destroy_the_asian_syndicalists  } prerequisite = { focus = VNQ_2_vietnamesepeopleunite  }
+		completion_reward = {
+		set_cosmetic_tag = VNQ_greater_vietnam
+		country_event = vnqdd.6
+		}
 	}
 
 	#Call Upon the Youth
@@ -1021,6 +1585,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_promotion_of_equality  } prerequisite = { focus = VNQ_2_in_honour_of_phan_boi_chau  }
+		completion_reward = {
+		add_manpower = 3994
+		}
 	}
 
 	#Intellectual Patriotism
@@ -1034,6 +1601,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = VNQ_2_paternalist_outlook  } prerequisite = { focus = VNQ_2_uphold_the_caravelle_manifesto  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#New Phung Hoa
@@ -1047,6 +1617,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_the_star_and_the_sun  } prerequisite = { focus = VNQ_2_learnfromchausrepublicanism  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Join Our NVBIS
@@ -1055,9 +1628,12 @@ focus_tree = {
 		icon = GFX_VNQ_2_join_our_nvbis-248360
 		x = 49
 		y = 5
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_government = totalist
 		}
 		prerequisite = { focus = VNQ_2_expandtulucvandoan  } prerequisite = { focus = VNQ_2_learnfromchausrepublicanism  }
 		mutually_exclusive = { focus = VNQ_2_continue_the_democracy_express  }
@@ -1074,6 +1650,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_continue_the_democracy_express  } prerequisite = { focus = VNQ_2_new_phung_hoa  }
+		completion_reward = {
+		add_political_power = 25
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Push Back Against Syndicalism
@@ -1082,11 +1665,15 @@ focus_tree = {
 		icon = GFX_VNQ_2_push_back_against_syndicalism-248360
 		x = 39
 		y = 6
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = VNQ_2_call_upon_the_youth  } prerequisite = { focus = VNQ_2_intellectual_patriotism  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Exploitation Begone!
@@ -1100,6 +1687,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_2_ports_on_the_mekong  } prerequisite = { focus = VNQ_2_expropriate_the_landlords  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Let It End!
@@ -1111,6 +1701,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_government = market_liberal
 		}
 		prerequisite = { focus = VNQ_2_the_question_of_tutelage  }
 		mutually_exclusive = { focus = VNQ_2_it_has_only_begun  }
@@ -1125,6 +1718,11 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		NOT  = {
+		has_government = market_liberal
+		}
 		}
 		prerequisite = { focus = VNQ_2_the_question_of_tutelage  }
 		mutually_exclusive = { focus = VNQ_2_letitend  }
@@ -1141,6 +1739,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_pragmatic_economics  } prerequisite = { focus = VNQ_2_purist_of_the_purist  }
+		completion_reward = {
+		add_war_support = 0.01
+		}
 	}
 
 	#Align With The National Socialists
@@ -1154,6 +1755,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_strengthen_the_nvbis  }
+		completion_reward = {
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Vietnam's New Era
@@ -1167,6 +1778,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_antigerman_propaganda  } prerequisite = { focus = VNQ_2_align_with_the_national_socialists  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = VNQ_pureity
+		add_idea = VNQ_pureity_1
+		}
+		
+		}
 	}
 
 	#The Fist Smashes Our Enemies
@@ -1180,6 +1798,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VNQ_2_it_has_only_begun  }
+		completion_reward = {
+		add_manpower = -29487
+		}
 	}
 
 	#Encourage Class Collaboration
@@ -1193,6 +1814,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VNQ_2_letitend  focus = VNQ_2_it_has_only_begun  }
+		completion_reward = {
+		add_stability  = 0.05
+		add_manpower = 9833
+		}
 	}
 
 	#Vietnam's Democratic Era
@@ -1206,6 +1831,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_letitend  }
+		completion_reward = {
+		add_political_power = 75
+		}
 	}
 
 	#A Land of Riches
@@ -1219,6 +1847,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_exploitationbegone  } prerequisite = { focus = VNQ_2_unemployment_reduction  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = VNQ_reducing_jobs
+		add_idea = VNQ_reducing_jobs_1
+		}
+		}
 	}
 
 	#The Revolution Is Ours
@@ -1232,6 +1866,15 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_push_back_against_syndicalism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.25
+		}
+		add_ideas = {
+		VNQ_revolution_is_ours
+		}
+		}
 	}
 
 	#Economic Miracle
@@ -1245,6 +1888,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VNQ_2_a_land_of_riches  }
+		completion_reward = {
+		add_ideas = {
+		VIN_Rice_Bowl_idea
+		}
+		}
 	}
 
 	#The Republic Shall Live On
@@ -1258,6 +1906,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_vietnamsdemocraticera  } prerequisite = { focus = VNQ_2_encourage_class_collaboration  }
+		completion_reward = {
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = -1
+		}
+		}
 	}
 
 	#Hai Than's Legacy
@@ -1271,6 +1925,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_encourage_class_collaboration  } prerequisite = { focus = VNQ_2_the_fist_smashes_our_enemies  }
+		completion_reward = {
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.55
+		}
+		}
 	}
 
 	#Our First Election
@@ -1279,11 +1939,14 @@ focus_tree = {
 		icon = GFX_VNQ_2_our_first_election-248360
 		x = 31
 		y = 9
-		cost = 5
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_economic_miracle  } prerequisite = { focus = VNQ_2_the_republic_shall_live_on  focus = VNQ_2_economic_miracle  } prerequisite = { focus = VNQ_2_the_revolution_is_ours  focus = VNQ_2_economic_miracle  } prerequisite = { focus = VNQ_2_thenationunited  }
+		completion_reward = {
+		country_event = vnqdd.5
+		}
 	}
 
 	#Vietnam on the World Stage
@@ -1295,6 +1958,11 @@ focus_tree = {
 		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		NOT = {
+		has_global_flag  = indochina_civil_war
+		}
 		}
 	}
 
@@ -1309,6 +1977,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VNQ_2_vietnam_on_the_world_stage  }
+		completion_reward = {
+		custom_effect_tooltip = vnq_foreign_alliance_tt
+		}
 	}
 
 	#Uniting Indochina
@@ -1321,8 +1992,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = VNQ_2_seeking_friends  }
 		mutually_exclusive = { focus = VNQ_2_ultranationalist_expansion  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LAO
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CAM
+			}
+		add_state_core = 826
+		add_state_core = 750
+		add_state_core = 825
+		add_state_core = 670
+		add_state_core = 882
+		}
 	}
 
 	#Saving Asia From Imperialism and Syndicalism
@@ -1337,6 +2024,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = VNQ_2_seeking_friends  }
 		mutually_exclusive = { focus = VNQ_2_ultranationalist_expansion  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = BHC
+			}
+		}
 	}
 
 	#Ultra-Nationalist Expansion
@@ -1348,6 +2041,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_government = national_populist
 		}
 		prerequisite = { focus = VNQ_2_seeking_friends  }
 		mutually_exclusive = { focus = VNQ_2_saving_asia_from_imperialism_and_syndicalism  } mutually_exclusive = { focus = VNQ_2_uniting_indochina  }
@@ -1364,6 +2060,21 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_ultranationalist_expansion  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LAO
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CAM
+			}
+		add_state_core = 826
+		add_state_core = 750
+		add_state_core = 825
+		add_state_core = 670
+		add_state_core = 882
+		}
 	}
 
 	#Saving the Chinese Revolution
@@ -1377,6 +2088,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_saving_asia_from_imperialism_and_syndicalism  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Defend Against Japanese Imperialism
@@ -1390,6 +2104,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_saving_the_chinese_revolution  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Burn Bangkok
@@ -1403,6 +2120,24 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_uniting_indochina  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SIA
+			}
+		
+		add_state_core = 823
+		add_state_core = 824
+		add_state_core = 822
+		add_state_core = 756
+		add_state_core = 831
+		add_state_core = 289
+		add_state_core = 749
+		add_state_core = 724
+		add_state_core = 999
+		add_state_core = 830
+		add_state_core = 751
+		}
 	}
 
 	#Strangle the Burmese Python
@@ -1416,6 +2151,18 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_burn_bangkok  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = BRM
+			}
+		
+		add_state_core = 288
+		add_state_core = 72
+		add_state_core = 640
+		add_state_core = 701
+		add_state_core = 790
+		}
 	}
 
 	#Our Chinese Claims
@@ -1429,6 +2176,18 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_secure_the_peninsula  }
+		completion_reward = {
+		add_state_core = 1053
+		add_state_core = 594
+		add_state_core = 1056
+		add_state_core = 1054
+		add_state_core = 1055
+		add_state_core = 599
+		add_state_core = 593
+		add_state_core = 591
+		add_state_core = 592
+		add_state_core = 1012
+		}
 	}
 
 	#South East Asia Shall Fall
@@ -1442,6 +2201,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_secure_the_peninsula  }
+		completion_reward = {
+		add_state_core = 846
+		add_state_core = 336
+		}
 	}
 
 	#Vietnamese People Unite!
@@ -1455,6 +2218,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VNQ_2_south_east_asia_shall_fall  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Destroy the Asian Syndicalists
@@ -1468,6 +2234,12 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = VNQ_2_our_chinese_claims  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = BHC
+			}
+		}
 	}
 
 }

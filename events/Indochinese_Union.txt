@@ -81,13 +81,14 @@ country_event = { # A New Indochina! -Indochina Introduction
 			add_state_claim = 825
 		}
 		hidden_effect = {
+			set_country_flag = inc_congress
 			country_event = {
-				id = viet.84
-				days = 17
+				id = indochina_rework.3
+				days = 65
 			}
 			country_event = {
-				id = viet.13
-				days = 65
+				id = indochina_rework.1
+				days = 14
 			}
 			country_event = {
 				id = viet.83
@@ -97,6 +98,8 @@ country_event = { # A New Indochina! -Indochina Introduction
 					id = viet.110
 					days = 7
 				}
+				
+				
 		}
 		if = {
 			limit = {
@@ -632,7 +635,7 @@ country_event = { # National Assembly
 		}
 		set_country_flag = INC_Syndicalist_Revolution
 		trigger = {
-			check_variable = { syndie_inc > 5 }
+			check_variable = { syndie_inc > 3 }
 		}
 		country_event = viet.22
 	}
@@ -655,7 +658,7 @@ country_event = { # National Assembly
 		}
 		set_country_flag = INC_Totalist_Revolution
 		trigger = {
-			check_variable = { vandong_inc > 5 }
+			check_variable = { vandong_inc > 3 }
 			NOT = {
 				has_country_flag = Pham_Van_Dong_dead
 				has_country_flag = vietnam_deadlock
@@ -683,7 +686,7 @@ country_event = { # National Assembly
 		}
 		set_country_flag = INC_Totalist_Revolution
 		trigger = {
-			check_variable = { hcm_inc > 5 }
+			check_variable = { hcm_inc > 3 }
 			NOT = {
 				has_country_flag = Pham_Van_Dong_dead
 				has_country_flag = vietnam_deadlock
@@ -1189,24 +1192,24 @@ country_event = { # Deal with Saigon European settlers
 			}
 		}
 	}
-	option = {
-		name = viet.12.c # put them into jail and nationalization
-		add_popularity = {
-			ideology = social_democrat
-			popularity = 0.05
-		}
-		add_political_power = -50
-		add_timed_idea = {
-			idea = INC_Economic_Chaos_idea
-			days = 150
-		}
-		hidden_effect = {
-			modify_country_flag = {
-				flag = INC_nationalism_inclination
-				value = 1
-			}
-		}
-	}
+	#option = {
+	#	name = viet.12.c # put them into jail and nationalization
+	#	add_popularity = {
+	#		ideology = social_democrat
+	#		popularity = 0.05
+	#	}
+	#	add_political_power = -50
+	#	add_timed_idea = {
+	#		idea = INC_Economic_Chaos_idea
+	#		days = 150
+	#	}
+	#	hidden_effect = {
+	#		modify_country_flag = {
+	#			flag = INC_nationalism_inclination
+	#			value = 1
+	##		}
+	#	}
+	#}
 }
 
 
@@ -1242,29 +1245,29 @@ country_event = { # Our Attitude towards religion
 	}
 
 
-	option = {
-		name = viet.13.b # Collaborate with them
-		add_popularity = {
-			ideology = social_democrat
-			popularity = 0.05
-		}
-		add_popularity = {
-			ideology = authoritarian_democrat
-			popularity = 0.025
-		} # Catholics
-		add_popularity = {
-			ideology = national_populist
-			popularity = 0.025
-		} # Cao Dai
-		set_country_flag = INC_religion_collaboration
-		add_war_support = 0.05
-		hidden_effect = {
-			modify_country_flag = {
-				flag = INC_nationalism_inclination
-				value = 1
-			}
-		}
-	}
+	#option = {
+	#	name = viet.13.b # Collaborate with them
+	#	add_popularity = {
+	#		ideology = social_democrat
+	#		popularity = 0.05
+	#	}
+	#	add_popularity = {
+	#		ideology = authoritarian_democrat
+	#		popularity = 0.025
+	#	} # Catholics
+	#	add_popularity = {
+	#		ideology = national_populist
+	#		popularity = 0.025
+	#	} # Cao Dai
+	#	set_country_flag = INC_religion_collaboration
+	#	add_war_support = 0.05
+	#	hidden_effect = {
+	#		modify_country_flag = {
+	#			flag = INC_nationalism_inclination
+	#			value = 1
+	#		}
+	#	}
+	#}
 
 	option = {
 		name = viet.13.c # Transform and Integrate
