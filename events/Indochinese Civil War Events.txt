@@ -353,7 +353,6 @@ country_event = {
 		desc = viet_event_flavor.1_desc
 		picture = "GFX_report_event_HCM_shot"
 
-		fire_only_once = yes
 
 		is_triggered_only = yes
 		
@@ -495,6 +494,11 @@ country_event = {
 		hidden_effect = {
 		country_event = { id = viet_civil_war.4 days = 3 }	
 		VIN = {
+		set_variable = {
+				var = viet_jap
+				value = 0
+			}
+		
 		load_oob = "VIN_civil_war"
 		set_politics = { ruling_party = authoritarian_democrat }
 		load_focus_tree = vin-jap-tree
@@ -540,10 +544,16 @@ country_event = {
 		hidden_effect = {
 		set_global_flag = indochina_civil_war
 		VNQ = { add_state_core = 857 add_state_core = 671 add_state_core = 856 add_state_core = 286 add_state_core = 827 }
-		VIN = { add_state_core = 286 add_state_core = 856 }
+		VIN = { 
+		declare_war_on = { target = VNQ type = annex_everything }
+		add_state_core = 286 add_state_core = 856 
+		}
 		declare_war_on = { target = VIN type = annex_everything }
 		declare_war_on = { target = VNQ type = annex_everything }
-		declare_war_on = { target = CAM type = annex_everything }
+		custom_effect_tooltip = cambodia_will_chaos_tt
+		CAM = {
+		country_event = cambodia_civilwar.0
+		}
 			}
 		} 
 		
@@ -557,10 +567,16 @@ country_event = {
 		hidden_effect = {
 		set_global_flag = indochina_civil_war
 		VNQ = { add_state_core = 857 add_state_core = 671 add_state_core = 856 add_state_core = 286 add_state_core = 827 }
-		VIN = { add_state_core = 286 add_state_core = 856 }
+		VIN = { 
+		declare_war_on = { target = VNQ type = annex_everything }
+		add_state_core = 286 add_state_core = 856 
+		}
 		declare_war_on = { target = VIN type = annex_everything }
 		declare_war_on = { target = VNQ type = annex_everything }
-		declare_war_on = { target = CAM type = annex_everything }
+		custom_effect_tooltip = cambodia_will_chaos_tt
+		CAM = {
+		country_event = cambodia_civilwar.0
+		}
 			}
 		}
 		
@@ -574,10 +590,16 @@ country_event = {
 		hidden_effect = {
 		set_global_flag = indochina_civil_war
 		VNQ = { add_state_core = 857 add_state_core = 671 add_state_core = 856 add_state_core = 286 add_state_core = 827 }
-		VIN = { add_state_core = 286 add_state_core = 856 }
+		VIN = { 
+		declare_war_on = { target = VNQ type = annex_everything }
+		add_state_core = 286 add_state_core = 856 
+		}
 		declare_war_on = { target = VIN type = annex_everything }
 		declare_war_on = { target = VNQ type = annex_everything }
-		declare_war_on = { target = CAM type = annex_everything }
+		custom_effect_tooltip = cambodia_will_chaos_tt
+		CAM = {
+		country_event = cambodia_civilwar.0
+		}
 			}
 		}
 		
@@ -591,10 +613,16 @@ country_event = {
 		hidden_effect = {
 		set_global_flag = indochina_civil_war
 		VNQ = { add_state_core = 857 add_state_core = 671 add_state_core = 856 add_state_core = 286 add_state_core = 827 }
-		VIN = { add_state_core = 286 add_state_core = 856 }
+		VIN = { 
+		declare_war_on = { target = VNQ type = annex_everything }
+		add_state_core = 286 add_state_core = 856 
+		}
 		declare_war_on = { target = VIN type = annex_everything }
 		declare_war_on = { target = VNQ type = annex_everything }
-		declare_war_on = { target = CAM type = annex_everything }
+		custom_effect_tooltip = cambodia_will_chaos_tt
+		CAM = {
+		country_event = cambodia_civilwar.0
+		}
 			}
 		}
 		
@@ -611,7 +639,13 @@ country_event = {
 		desc = viet_civil_war.1.desc
 		picture = "GFX_report_event_vite_coup"
 
-		fire_only_once = yes
+		immediate = {
+		hidden_effect = {
+		add_ideas = {
+		INC_congress_over
+		}
+		}
+		}
 
 		is_triggered_only = yes
 		

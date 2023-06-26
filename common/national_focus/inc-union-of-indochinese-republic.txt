@@ -110,9 +110,8 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_idea = {
-		INC_congress_over
-		}
+		has_idea = INC_congress_over
+		
 		}
 		
 	}
@@ -294,9 +293,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC_david_and_goliath  }
 		completion_reward = {
-		
-			remove_ideas = INC_poor_army_idea_1
-			
+		add_doctrine_cost_reduction = {
+			name = land_doc_bonus
+			cost_reduction = 0.5
+			uses = 1
+			category = cat_mass_assault
+					}
 		
 		}
 	}
@@ -719,6 +721,9 @@ focus_tree = {
 		cost = 6
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_government = totalist
 		}
 		prerequisite = { focus = INC_direction_of_the_economy  }
 		completion_reward = {
@@ -1517,7 +1522,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = INC_first_5_years_plan  } prerequisite = { focus = INC_miracle_on_the_red_river  }
+		prerequisite = { focus = INC_first_5_years_plan focus = INC_miracle_on_the_red_river }
 		completion_reward = {
 		add_ideas = {
 		INC_industrialization
@@ -1534,6 +1539,12 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_idea = INC_congress_over
+		NOT = {
+		has_country_flag = indochina_civil_war
+		}
 		}
 		completion_reward = {
 		add_political_power = 50
@@ -1787,7 +1798,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-			has_completed_focus = INC_An_International_Revolutionary_Outpost
+			
 			has_socialist_government = yes
 			is_subject = no
 			country_exists = FRA
@@ -1816,7 +1827,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-			has_completed_focus = INC_An_International_Revolutionary_Outpost
+			
 			has_socialist_government = yes
 			is_subject = no
 			country_exists = FRA
@@ -3302,6 +3313,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		SIA = {
+		is_puppet_of = INC
+		}
+		}
 		prerequisite = { focus = INC_challenge_siamese_hegemony  }
 		completion_reward = {
 		add_political_power = 25
@@ -3725,7 +3741,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = INC_greatpresidenthochiminhlivesforeverinourcause  } prerequisite = { focus = INC_paradise_of_the_working_class  }
+		prerequisite = { focus = INC_greatpresidenthochiminhlivesforeverinourcause focus = INC_paradise_of_the_working_class  } 
 		completion_reward = {
 		custom_effect_tooltip = indochina_final_stepp_tt
 		hidden_effect = {
@@ -3744,8 +3760,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = INC_declare_socialist_victory_in_indochina  } prerequisite = { focus = INC_revolution_of_personality  }
+		prerequisite = { focus = INC_declare_socialist_victory_in_indochina focus = INC_revolution_of_personality } 
 		completion_reward = {
+		add_state_core = 670
+		add_state_core = 882
+		add_state_core = 826
+		add_state_core = 750
+		add_state_core = 825
 		add_ideas = {
 		INC_uinited_union
 		}
@@ -3842,6 +3863,9 @@ focus_tree = {
 				tooltip = we_collapse_tt		
 				always = no
 			}
+		hidden_effect = {
+		has_global_flag = indochina_civil_war
+		}	
 		}
 	}
 
@@ -4405,7 +4429,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC-GIAP_consolidate_indochina  } prerequisite = { focus = INC-GIAP_revolutionary_loyalty  }
 		completion_reward = {
-		
+		add_political_power = 25
 		}
 	}
 
@@ -4420,6 +4444,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC-GIAP_execute_the_royals  } prerequisite = { focus = INC-GIAP_under_the_yellow_star  }
+		completion_reward = {
+		country_event = {
+		id = indochina_rework.9
+		days = 1
+		}
+		}
 	}
 
 	#Lao, Viet, Khmer Samaki!
@@ -4433,6 +4463,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VININC_GIAP_sideline_giap  } prerequisite = { focus = VININC_GIAP_win_back_peasant_support  }
+		completion_reward = {
+		add_ideas = {
+		INC_lao_kamasaki
+		}
+		}
 	}
 
 	#The Red Prince Rises
@@ -4441,9 +4476,15 @@ focus_tree = {
 		icon = GFX_VININC_GIAP_the_red_prince_rises-248360
 		x = 67
 		y = 0
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Souphanouvong"
+		ruling_only = yes
+		}
 		}
 	}
 
@@ -4458,6 +4499,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VININC_GIAP_the_red_prince_rises  }
+		completion_reward = {
+		add_war_support = 0.15
+		add_stability = 0.15
+		}
 	}
 
 	#As the Cannon Moves
@@ -4471,6 +4516,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VININC_GIAP_a_nation_of_equals  }
+		completion_reward = {
+		add_ideas = {
+		INC_cannon_moves
+		}
+		}
 	}
 
 	#Hunt Down the Rightist Dogs!
@@ -4484,6 +4534,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VININC_GIAP_a_nation_of_equals  }
+		completion_reward = {
+		add_manpower = -10000
+		}
 	}
 
 	#Under the Revolutionary Banner
@@ -4497,6 +4550,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = VININC_GIAP_a_nation_of_equals  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Sideline Giap
@@ -4510,6 +4569,13 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VININC_GIAP_under_the_revolutionary_banner  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.5
+		}
+		add_manpower = -1
+		}
 	}
 
 	#Win Back Peasant Support
@@ -4523,6 +4589,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VININC_GIAP_huntdowntherightistdogs  }
+		completion_reward = {
+		add_ideas = {
+		INC_agricultural_coops
+		}
+		}
 	}
 
 	#Negotiate With Social Buddhists
@@ -4536,6 +4607,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VININC_GIAP_as_the_cannon_moves  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Follow the Royal Red
@@ -4549,6 +4626,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = VININC_GIAP_win_back_peasant_support  } prerequisite = { focus = VININC_GIAP_negotiate_with_social_buddhists  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#The Red Elephant Rises
@@ -4562,6 +4642,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VININC_GIAP_follow_the_royal_red  } prerequisite = { focus = VININC_GIAP_laovietkhmersamaki  }
+		completion_reward = {
+		add_ideas = {
+		INC_red_elephant
+		}
+		}
 	}
 
 	#Tran Phu's Victory
@@ -4573,6 +4658,12 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Tran Phu"
+		ruling_only = yes
+		}
 		}
 	}
 
@@ -4587,6 +4678,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = VININC_GIAP_tranphusvictory  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = INC_post_war_woes_0
+		add_idea = INC_post_war_woes_1
+		}
+		}
 	}
 
 	#Revive the ICP
@@ -4600,6 +4697,28 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VININC_GIAP_tranphusvictory  }
+		completion_reward = {
+		set_party_name = {
+				ideology = totalist
+				long_name = "Indochinese Communist Party"
+				name = "ICP"
+			}
+		set_party_name = {
+				ideology = syndicalist
+				long_name = "Indochinese Communist Party"
+				name = "ICP"
+			}
+		set_party_name = {
+				ideology = radical_socialist
+				long_name = "Indochinese Communist Party"
+				name = "ICP"
+			}
+		set_party_name = {
+				ideology = social_democrat
+				long_name = "Indochinese Communist Party"
+				name = "ICP"
+			}
+		}
 	}
 
 	#Denounce The Syndicalists
@@ -4613,6 +4732,16 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = VININC_GIAP_establish_the_nghe_tinh_soviet  } prerequisite = { focus = VININC_GIAP_revive_the_icp  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		}
 	}
 
 	#Establish the SR's
@@ -4625,8 +4754,28 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_TFV_AUTONOMY
 		}
+		available = {
+		owns_state = 826
+		owns_state = 670
+		}
 		prerequisite = { focus = VININC_GIAP_establish_the_nghe_tinh_soviet  }
 		mutually_exclusive = { focus = VININC_GIAP_a_unitary_state  }
+		completion_reward = {
+		release = LAO
+		release = CAM
+		puppet = LAO
+		puppet = CAM
+		LAO = {
+		set_cosmetic_tag = INC_ssr_lao
+		
+		}
+		
+		CAM = {
+		set_cosmetic_tag = INC_ssr_cam
+		
+		}
+		set_cosmetic_tag = INC_ssr_viet
+		}
 	}
 
 	#A Unitary State
@@ -4639,8 +4788,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_TFV_AUTONOMY
 		}
+		available = {
+		owns_state = 826
+		owns_state = 670
+		}
 		prerequisite = { focus = VININC_GIAP_establish_the_nghe_tinh_soviet  }
 		mutually_exclusive = { focus = VININC_GIAP_establishthesrs  }
+		completion_reward = {
+		add_state_core = 826
+		add_state_core = 670
+		add_state_core = 750
+		add_state_core = 825
+		add_state_core = 882
+		}
 	}
 
 	#Honour Comrade Ho
@@ -4654,6 +4814,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = VININC_GIAP_establishthesrs  focus = VININC_GIAP_a_unitary_state  }
+		completion_reward = {
+		add_ideas = {
+		INC_for_hcmt_0
+		}
+		}
 	}
 
 	#Socialist Science
@@ -4667,6 +4832,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = VININC_GIAP_denounce_the_syndicalists  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Struggle Against Reactionarism
@@ -4680,6 +4848,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = VININC_GIAP_denounce_the_syndicalists  }
+		completion_reward = {
+		add_manpower = -1930
+		}
 	}
 
 	#The Revolution Has Arrived
@@ -4693,6 +4864,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = VININC_GIAP_honour_comrade_ho  } prerequisite = { focus = VININC_GIAP_socialist_science  } prerequisite = { focus = VININC_GIAP_struggle_against_reactionarism  }
+		completion_reward = {
+		country_event = {
+		id = indochina_rework.10
+		days = 0
+		}
+		}
+	
 	}
 
 }
