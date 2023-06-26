@@ -1437,46 +1437,46 @@ country_event = { #Uniting the country
 	}
 	
 	
-	country_event = {
-	id = postcommierevolt.7
-	immediate = {log = "[GetDateText]: [Root.GetName]: event redelection."}
-	is_triggered_only = yes
-	hidden = yes
 	
-	
-	immediate = {
-	set_global_flag = socialist_china_united
-		if = {
-			limit = {
-				check_variable = { CNH_league > 5 }
-			}
-			country_event = postcommierevolt.8
+
+country_event = {
+
+		id = postcommierevolt.7
+		title = "The League Wins"
+		desc = postcommierevolt.7.d
+		picture = "GFX_report_event_lolw_1"
+
+		
+
+		is_triggered_only = yes
+
+		option = {
+		name = "The League Secure Victory"
+		trigger = {
+		check_variable = { CNH_league > 5 }
+		}	
+		country_event = postcommierevolt.8
 		}
 		
-		if = {
-			limit = {
-				check_variable = { CNH_CSP > 5 }
-			}
-			country_event = postcommierevolt.9
+		option = {
+		name = "A Syndicalist Victory"
+		trigger = {
+		check_variable = { CNH_CSP > 5 }
+		}	
+		country_event = postcommierevolt.9
 		}
-		
-		if = {
-			limit = {
-				check_variable = { CNH_TEC > 5 }
-			}
-			country_event = postcommierevolt.11
+		option = {
+		name = "Technocratic-Bolshevick Coalition Secure the Congress"
+		trigger = {
+		OR = {
+		check_variable = { CNH_TEC > 5 }
+		check_variable = { CNH_BOL > 5 }
 		}
-		
-		if = {
-			limit = {
-				check_variable = { CNH_BOL > 5 }
-			}
-			country_event = postcommierevolt.11
+		}	
+		country_event = postcommierevolt.11
 		}
-		
 		
 	}
-}
 
 
 country_event = {
@@ -1486,7 +1486,7 @@ country_event = {
 		desc = postcommierevolt.8.d
 		picture = "GFX_report_event_lolw_1"
 
-		fire_only_once = yes
+		
 
 		is_triggered_only = yes
 
