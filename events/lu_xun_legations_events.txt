@@ -123,7 +123,11 @@ country_event = { # Introduction
 		name = "Huzzah For the Revolution!"
 		custom_effect_tooltip = shanghai_revolution_tt
 		hidden_effect = {
-		
+		set_global_flag = shanghai_revolution
+		country_event = {
+		id = lu_xun.2
+		days = 100
+		}
 		remove_ideas = {
 		LEC_currency_6
 		LEC_volunteer_force
@@ -203,6 +207,14 @@ country_event = { # Introduction
 				}
 			}
 		}
+		set_variable = {
+				var = control_tianjin
+				value = 25
+			}
+		set_variable = {
+				var = control_hongkong
+				value = 25
+			}
 		}
 	}
 	
@@ -214,16 +226,50 @@ country_event = { # Introduction
 	id = lu_xun.2
 	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
 	title = "Loss of a Hero"
-	desc = lu_xun.1.desc
-	picture = "GFX_report_event_picture_ku_xun_league"
+	desc = lu_xun.2.desc
+	picture = "GFX_report_event_LEC_lu_xun_dead"
 
 	is_triggered_only = yes
-
+	immediate  = {
+	hidden_effect = {
+	kill_country_leader = yes
+	}
+	}
 	
 
 	option = {
 		name = "The Struggle Shall Begin"
-		
+		custom_effect_tooltip = power_struggle_after_lu_xun_tt
+		hidden_effect = {
+		add_ideas = {
+		LEC_death_of_a_comrade
+		}
+		set_variable = {
+				var = quibai_faction
+				value = 0
+			}
+		set_variable = {
+				var = creation_faction
+				value = 0
+			}
+		set_variable = {
+				var = agrarian_faction
+				value = 0
+			}
+		set_variable = {
+				var = student_faction
+				value = 0
+			}
+		create_country_leader = {
+					name = "Shanghai Communal Council"
+					desc = "POLITICS_SHANGHAI_COUNCIL_DESC"
+					picture = "gfx/leaders/CNH/Portrait_CNH_League of_Leftwing_Writers.png"
+					expire = "1965.1.1"
+					ideology = lu_xun_thought_subtype
+					traits = {
+					}
+				}
+		}
 	}
 	
 	
