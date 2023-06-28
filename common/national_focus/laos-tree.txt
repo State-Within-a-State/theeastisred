@@ -1291,6 +1291,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LAOCOM_theredprincestays  }
+		completion_reward = {
+		country_event = {
+		id = laos.15
+		days = 1
+		}
+		}
 	}
 
 	#The Pathet Lao March Into the Capital
@@ -1303,6 +1309,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		country_event = {
+		id = laos.9
+		days = 1
+		}
+		}
 	}
 
 	#From Prince to Premier
@@ -1314,6 +1329,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = LAOCOM_the_pathet_lao_march_into_the_capital  }
 		mutually_exclusive = { focus = LAOCOM_the_father_of_laotian_socialism  }
@@ -1328,6 +1346,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = LAOCOM_the_pathet_lao_march_into_the_capital  }
 		mutually_exclusive = { focus = LAOCOM_from_prince_to_premier  }
@@ -1344,6 +1365,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LAOCOM_the_father_of_laotian_socialism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Globalised Economic Socialism
@@ -1357,6 +1384,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_the_syndicalist_comradery  }
+		completion_reward = {
+		add_ideas = {
+		LAO_gobal_economic_socialism
+		}
+		}
 	}
 
 	#Promote a Revolutionary Education
@@ -1370,6 +1402,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LAOCOM_the_syndicalist_comradery  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Outlook on Pragmatism
@@ -1383,6 +1418,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LAOCOM_globalised_economic_socialism  } prerequisite = { focus = LAOCOM_promote_a_revolutionary_education  }
+		completion_reward = {
+		add_war_support = 0.05
+		}
 	}
 
 	#Starting Reconstruction
@@ -1396,6 +1434,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_from_prince_to_premier  focus = LAOCOM_the_father_of_laotian_socialism  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LAO_post_war_woes
+		add_idea = LAO_post_war_woes_1
+		}
+		}
 	}
 
 	#Rapid Industrialization
@@ -1409,6 +1453,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_starting_reconstruction  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LAO_post_war_woes_1
+		add_idea = LAO_post_war_woes_2
+		}
+		}
 	}
 
 	#Promote Land Reformation
@@ -1422,6 +1472,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_starting_reconstruction  }
+		completion_reward = {
+		add_ideas = {
+		LAO_land_reform_big
+		}
+		}
 	}
 
 	#Reviewing the Economic Future
@@ -1435,6 +1490,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_rapid_industrialization  } prerequisite = { focus = LAOCOM_promote_land_reformation  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LAO_post_war_woes_2
+		add_idea = LAO_post_war_woes_3
+		}
+		}
 	}
 
 	#Uphold Leninist Principles
@@ -1448,6 +1509,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LAOCOM_from_prince_to_premier  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Support Democratic Centralism
@@ -1461,6 +1528,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LAOCOM_uphold_leninist_principles  }
+		completion_reward = {
+		add_war_support = 0.05
+		}
 	}
 
 	#Autonomy to the Hmong
@@ -1474,6 +1544,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LAOCOM_uphold_leninist_principles  }
+		completion_reward = {
+		add_ideas = {
+		LAO_integrate_hmong
+		}
+		}
 	}
 
 	#Amnesty to Former Royalty
@@ -1487,6 +1562,10 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LAOCOM_support_democratic_centralism  } prerequisite = { focus = LAOCOM_autonomy_to_the_hmong  }
+		completion_reward = {
+		add_manpower = 1000
+		add_stability = -0.02
+		}
 	}
 
 	#Founding the LPRP
@@ -1500,6 +1579,28 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LAOCOM_reviewing_the_economic_future  } prerequisite = { focus = LAOCOM_amnesty_to_former_royalty  focus = LAOCOM_outlook_on_pragmatism  } prerequisite = { focus = LAOCOM_reviewing_the_economic_future  }
+		completion_reward = {
+		country_event = {
+		id = laos.10
+		days = 2
+		
+		}
+		set_party_name = {
+				ideology = totalist
+				long_name = "Lao People's Revolutionary Party"
+				name = "LPRP"
+			}
+			set_party_name = {
+				ideology = syndicalist
+				long_name = "Lao People's Revolutionary Party"
+				name = "LPRP"
+			}
+			set_party_name = {
+				ideology = radical_socialist
+				long_name = "Lao People's Revolutionary Party"
+				name = "LPRP"
+			}
+		}
 	}
 
 	#The Red 'Prince' Stays
@@ -1511,6 +1612,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = LAOCOM_founding_the_lprp  }
 		mutually_exclusive = { focus = LAOCOM_kaysonesrevolution  }
@@ -1527,6 +1631,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_theredprincestays  }
+		completion_reward = {
+		add_ideas = {
+		LAO_planned_econony
+		}
+		}
 	}
 
 	#Honour the Revolution's Martyrs
@@ -1540,6 +1649,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LAOCOM_question_of_the_former_princes  }
+		completion_reward = {
+		add_war_support = 0.05
+		}
 	}
 
 	#Speed Up Collectivisation
@@ -1553,6 +1665,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_start_the_planned_economy  }
+		completion_reward = {
+		add_ideas = {
+		LAO_collectivsation
+		}
+		}
 	}
 
 	#Create the National Development Front
@@ -1566,6 +1683,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LAOCOM_speed_up_collectivisation  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Urbanization
@@ -1579,6 +1699,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_speed_up_collectivisation  }
+		completion_reward = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 
 	#Uphold a Marxist Doctrine
@@ -1592,6 +1724,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LAOCOM_honourtherevolutionsmartyrs  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Is He A President or A Prince?
@@ -1605,6 +1740,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LAOCOM_uphold_a_marxist_doctrine  }
+		completion_reward = {
+		country_event = {
+		id = laos.11
+		days = 1
+		}
+		}
 	}
 
 	#Asia's Red Economy
@@ -1618,6 +1759,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_create_the_national_development_front  } prerequisite = { focus = LAOCOM_urbanization  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LAO_planned_econony
+		add_idea = LAO_planned_econony_1
+		}
+		}
 	}
 
 	#But He is a Prince!
@@ -1630,8 +1777,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = LAOCOM_isheapresidentoraprince  }
 		mutually_exclusive = { focus = LAOCOM_noheisapresident  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.25
+		}
+		}
 	}
 
 	#No! He Is A President!
@@ -1644,8 +1800,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = LAOCOM_isheapresidentoraprince  }
 		mutually_exclusive = { focus = LAOCOM_butheisaprince  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.25
+		}
+		}
 	}
 
 	#Kaysone's Revolution
@@ -1657,6 +1822,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = LAOCOM_founding_the_lprp  }
 		mutually_exclusive = { focus = LAOCOM_theredprincestays  }
@@ -1673,6 +1841,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_kaysonesrevolution  }
+		completion_reward = {
+		add_ideas = {
+		LAO_market_syndicalism
+		}
+		}
 	}
 
 	#Purge the Princes
@@ -1686,6 +1859,10 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LAOCOM_kaysonesrevolution  }
+		completion_reward = {
+		add_stability = 0.05
+		add_manpower = -100
+		}
 	}
 
 	#Socialist Economic Accounting
@@ -1699,6 +1876,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_rural_cooperatives  }
+		completion_reward = {
+		add_ideas = {
+		LAO_socialist_accounting
+		}
+		}
 	}
 
 	#Rural Cooperatives
@@ -1712,6 +1894,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_the_nep_for_laos  }
+		completion_reward = {
+		add_ideas = {
+		LAO_coops
+		}
+		}
 	}
 
 	#Allow Foreign Investment
@@ -1725,6 +1912,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_rural_cooperatives  }
+		completion_reward = {
+		add_ideas = {
+		LAO_foreign_investmebt
+		}
+		}
 	}
 
 	#Expand the LPRYU
@@ -1738,6 +1930,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LAOCOM_purge_the_princes  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#A Laotian Strongman
@@ -1751,6 +1946,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LAOCOM_expand_the_lpryu  }
+		completion_reward = {
+		add_stability = 0.05
+		}
 	}
 
 	#New Revolutionary Constitution
@@ -1764,6 +1962,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LAOCOM_a_laotian_strongman  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.25
+		}
+		}
 	}
 
 	#Small Scale Privatisation
@@ -1777,6 +1981,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LAOCOM_socialist_economic_accounting  } prerequisite = { focus = LAOCOM_allow_foreign_investment  }
+		completion_reward = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 
 	#Kaysone Leads the Way
@@ -1790,6 +2006,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LAOCOM_new_revolutionary_constitution  } prerequisite = { focus = LAOCOM_small_scale_privatisation  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 }
 
