@@ -331,3 +331,222 @@ LEC_increase_the_mayakovskyite_faction = {
 	}
 
 }
+
+LEC_spread_revolution_decision_category = {
+LEC_prepare_uprising_in_nanjiang = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 613 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 613 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			
+			check_variable = {
+			revolt_nanjing_nanjing < 10
+			}
+			
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_nanjing_nanjing < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_nanjing_nanjing
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+LEC_prepare_uprising_in_huaisi = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 1050 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 1050 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			
+			check_variable = {
+			revolt_nanjing_huaisi < 10
+			}
+			
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_nanjing_huaisi < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_nanjing_huaisi
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+	LEC_prepare_uprising_in_jinhua = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 1067 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 1067 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			
+			check_variable = {
+			revolt_nanjing_jinhua < 10
+			}
+			
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_nanjing_jinhua < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_nanjing_jinhua
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+
+	
+	LEC_nanjing_revolt = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			check_variable = { revolt_nanjing_nanjing > 3 }
+			check_variable = { revolt_nanjing_jinhua > 3 }
+			check_variable = { revolt_nanjing_huaisi > 3 }
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 10
+		targets = {  ANQ LEP }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			country_event = {
+			id = shanghai_uprisings.0
+			days = 0
+			}
+		}
+	}
+}

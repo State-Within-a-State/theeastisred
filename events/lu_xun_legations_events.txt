@@ -6,7 +6,7 @@
 
 add_namespace = lu_xun
 add_namespace = shanghai_revolution
-
+add_namespace = shanghai_uprisings
 
 country_event = { # Introduction
 	id = shanghai_revolution.0
@@ -124,6 +124,7 @@ country_event = { # Introduction
 		custom_effect_tooltip = shanghai_revolution_tt
 		hidden_effect = {
 		set_global_flag = shanghai_revolution
+		set_country_flag = peasant_revolution
 		country_event = {
 		id = lu_xun.2
 		days = 100
@@ -155,7 +156,7 @@ country_event = { # Introduction
 		LEC_support_from_unions_0
 		LEC_raise_the_militias
 		LEC_local_study_groups_0
-		
+		LEC_economic_recovery_0
 		}
 		add_ideas = {
 		LEC_lu_xun_hog_rso
@@ -215,6 +216,19 @@ country_event = { # Introduction
 				var = control_hongkong
 				value = 25
 			}
+		set_variable = {
+				var = revolt_nanjing_nanjing
+				value = 0
+			}
+		set_variable = {
+				var = revolt_nanjing_jinhua
+				value = 0
+			}
+		set_variable = {
+				var = revolt_nanjing_huaisi
+				value = 0
+			}
+		
 		}
 	}
 	
@@ -269,6 +283,64 @@ country_event = { # Introduction
 					traits = {
 					}
 				}
+		}
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_uprisings.0
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Uprising in Nanjing"
+	desc = shanghai_uprisings.0.desc
+	picture = "GFX_report_event_LEC_shanghai_commune_uprising"
+
+	is_triggered_only = yes
+	
+	
+
+	option = {
+		name = "The Thunder of Revolution Shall be Followed By the Lightning of Victory!"
+		custom_effect_tooltip = units_will_launch_in_nanjing_tt
+		hidden_effect = {
+		if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_nanjing_nanjing > 3 }
+			check_variable = { revolt_nanjing_jinhua > 3 }
+			check_variable = { revolt_nanjing_huaisi > 3 }
+			check_variable = { revolt_nanjing_nanjing < 6 }
+			check_variable = { revolt_nanjing_jinhua < 6 }
+			check_variable = { revolt_nanjing_huaisi < 6 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Nanjing 1"
+		
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_nanjing_nanjing > 6 }
+			check_variable = { revolt_nanjing_jinhua > 6 }
+			check_variable = { revolt_nanjing_huaisi > 6 }
+			check_variable = { revolt_nanjing_nanjing < 9 }
+			check_variable = { revolt_nanjing_jinhua < 9 }
+			check_variable = { revolt_nanjing_huaisi < 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Nanjing 2"
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_nanjing_nanjing > 9 }
+			check_variable = { revolt_nanjing_jinhua > 9 }
+			check_variable = { revolt_nanjing_huaisi > 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Nanjing 3"
+		}
 		}
 	}
 	
