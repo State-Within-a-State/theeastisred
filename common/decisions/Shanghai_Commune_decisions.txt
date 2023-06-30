@@ -4,7 +4,10 @@ LEC_secure_tianjin_luxun = {
 			has_global_flag = shanghai_revolution
 		}
 		available = {
-			always = no
+			AND = {
+			check_variable = { control_tianjin > 75 }
+			check_variable = { control_hongkong > 75 }
+			}
 		}
 		cancel_trigger = {
 			
@@ -15,7 +18,10 @@ LEC_secure_tianjin_luxun = {
 		days_mission_timeout = 100
 		selectable_mission = no
 		complete_effect = {
-			
+		custom_effect_tooltip = we_got_shanghai_tt
+			hidden_effect = {
+			set_country_flag = shanghai_revolution_secured
+			}
 		}
 		timeout_effect = {
 			
@@ -345,8 +351,11 @@ LEC_prepare_uprising_in_nanjiang = {
 		
 		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
 			
+			AND = {
 			check_variable = {
 			revolt_nanjing_nanjing < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
 			}
 			
 		}
@@ -402,11 +411,12 @@ LEC_prepare_uprising_in_huaisi = {
 		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
 		
 		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
-			
+			AND = {
 			check_variable = {
 			revolt_nanjing_huaisi < 10
 			}
-			
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
 		}
 		
 		fire_only_once = no
@@ -460,11 +470,12 @@ LEC_prepare_uprising_in_huaisi = {
 		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
 		
 		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
-			
+			AND = {
 			check_variable = {
 			revolt_nanjing_jinhua < 10
 			}
-			
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
 		}
 		
 		fire_only_once = no
@@ -507,7 +518,654 @@ LEC_prepare_uprising_in_huaisi = {
 	
 	}
 	
+	LEC_prepare_uprising_in_nanning = {
 
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 594 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 594 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_guangxi_nanning < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_guangxi_nanning < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_guangxi_nanning
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+	
+	LEC_prepare_uprising_in_hainan = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 591 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 591 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_guangxi_hainan < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_guangxi_hainan < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_guangxi_hainan
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+	LEC_prepare_uprising_in_chengdu = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 605 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 605 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_sichuan_chengdu < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_sichuan_chengdu < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_sichuan_chengdu
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+	LEC_prepare_uprising_in_chongqing = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 650 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 650 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_sichuan_chongqing < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_sichuan_chongqing < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_sichuan_chongqing
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+
+
+	LEC_prepare_uprising_in_xian = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 799 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 799 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_qing_xian < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_qing_xian < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_qing_xian
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+	LEC_prepare_uprising_in_hankuo = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 1048 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 1048 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_qing_hankuo < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_qing_hankuo < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_qing_hankuo
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+	LEC_prepare_uprising_in_kaifeng = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 1059 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 1059 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_qing_kaifeng < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_qing_kaifeng < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_qing_kaifeng
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+	LEC_prepare_uprising_in_tangshan = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 614 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 614 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_qing_tangshan < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_qing_tangshan < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_qing_tangshan
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	
+	LEC_prepare_uprising_xingan = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 884 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 884 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_manchu_xingan < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_manchu_xingan < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_manchu_xingan
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	LEC_prepare_uprising_nenjiang = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 714 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 714 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_manchu_nenjiang < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_manchu_nenjiang < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_manchu_nenjiang
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
+	LEC_prepare_uprising_hejiang = {
+
+		icon = GFX_decision_socialist_uprising_shanghai_icon		
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 717 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 717 } 
+		}
+		# CONDITIONS TO MAKE THIS DECISION/MISSION APPEAR AND EXECUTE
+		
+		available = {		#Conditions that will allow the player/AI to click the decision and execute its effect.
+			AND = {
+			check_variable = {
+			revolt_manchu_hejiang < 10
+			}
+			has_completed_focus = LECFOR_spreading_our_revolution
+			}
+		}
+		
+		fire_only_once = no
+
+		visible = {		
+			
+			AND = {
+			check_variable = {
+			revolt_manchu_hejiang < 10
+			}
+			
+			OR = {
+			LEP = {
+			exists = yes
+			}
+			ANQ = {
+			exists = yes
+			}
+			CHI = {
+			exists = yes
+			}
+			}
+			}
+			
+		}		
+
+		cost = 15		
+
+		
+
+		complete_effect = {		
+		add_to_variable = {
+				var = revolt_manchu_hejiang
+				value = 2
+				tooltip = uprising_strength_grows_tt
+			}
+		}
+		
+		
+	
+	}
 	
 	LEC_nanjing_revolt = {
 		icon = socialist_uprising_shanghai_icon
@@ -522,7 +1180,7 @@ LEC_prepare_uprising_in_huaisi = {
 		
 		visible = {
 			tag = LEC
-			
+			has_completed_focus = LECFOR_the_thunder_clap_of_peasant_up_roar_in_nanjing
 		}
 		cost = 10
 		targets = {  ANQ LEP }
@@ -549,4 +1207,327 @@ LEC_prepare_uprising_in_huaisi = {
 			}
 		}
 	}
+	
+	LEC_southern_revolt_part_1 = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			check_variable = { revolt_guangxi_nanning > 3 }
+			check_variable = { revolt_guangxi_hainan > 3 }
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_arise_in_south
+		}
+		cost = 10
+		targets = {  GXC HNN }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			country_event = {
+			id = shanghai_uprisings.1
+			days = 0
+			}
+		}
+	}
+	
+	LEC_southern_revolt_part_2 = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			check_variable = { revolt_sichuan_chengdu > 3 }
+			check_variable = { revolt_sichuan_chongqing > 3 }
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_arise_in_south
+		}
+		cost = 10
+		targets = {  SZC YUN }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			country_event = {
+			id = shanghai_uprisings.2
+			days = 0
+			}
+		}
+	}
+	
+	LEC_qing_revolt = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			check_variable = { revolt_qing_xian > 3 }
+			check_variable = { revolt_qing_hankuo > 3 }
+			check_variable = { revolt_qing_kaifeng > 3 }
+			check_variable = { revolt_qing_tangshan > 3 }
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_arisecomradesinthenorth
+		}
+		cost = 10
+		targets = {  QIE SHX }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			country_event = {
+			id = shanghai_uprisings.3
+			days = 0
+			}
+		}
+	}
+	
+	
+	LEC_fengtian_revolt = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			check_variable = { revolt_manchu_xingan > 3 }
+			check_variable = { revolt_manchu_nenjiang > 3 }
+			check_variable = { revolt_manchu_hejiang > 3 }
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_arisecomradesinthenorth
+		}
+		cost = 10
+		targets = {  FNG MAN }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			country_event = {
+			id = shanghai_uprisings.4
+			days = 0
+			}
+		}
+	}
+	
+	LEC_attack_kmt = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			has_completed_focus = LECFOR_spreading_our_revolution
+			has_completed_focus = LECFOR_the_thunder_clap_of_peasant_up_roar_in_nanjing
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_the_thunder_clap_of_peasant_up_roar_in_nanjing
+		}
+		cost = 10
+		targets = {  CHI }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			
+		}
+	}
+	
+	LEC_attack_shandong = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			has_completed_focus = LECFOR_deal_with_the_shandong_devils
+			has_completed_focus = LECFOR_the_thunder_clap_of_peasant_up_roar_in_nanjing
+			SQI = {
+			OR = {
+			NOT = {
+			has_governemnt = totalist
+			}
+			NOT = {
+			has_governemnt = syndicalist
+			}
+			NOT = {
+			has_governemnt = radical_socialist
+			}
+			}
+			}
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_deal_with_the_shandong_devils
+		}
+		cost = 10
+		targets = {  SQI }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			
+		}
+	}
+	
+	LEC_secure_western_china = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			has_completed_focus = LECFOR_the_west_china_debate
+			has_completed_focus = LECFOR_the_thunder_clap_of_peasant_up_roar_in_nanjing
+			
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_the_west_china_debate
+		}
+		cost = 10
+		targets = {  XSM ETS SIK TAN TIB }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			
+		}
+	}
+}
+LEC_smuggling_weapons_decision_category = { 
+LEC_smuggling_rifles = {
+		icon = megaphone_icon
+		
+		available = {
+			has_completed_focus = LECFOR_weapon_smuggling_operations
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_weapon_smuggling_operations
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 100
+					producer = GEA
+				}
+		}
+	}
+
+
+
+
 }

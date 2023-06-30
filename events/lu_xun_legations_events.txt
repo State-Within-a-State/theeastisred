@@ -228,7 +228,50 @@ country_event = { # Introduction
 				var = revolt_nanjing_huaisi
 				value = 0
 			}
-		
+		set_variable = {
+				var = revolt_guangxi_nanning
+				value = 0
+			}
+		set_variable = {
+				var = revolt_guangxi_hainan
+				value = 0
+			}
+		set_variable = {
+				var = revolt_sichuan_chengdu
+				value = 0
+			}
+		set_variable = {
+				var = revolt_sichuan_chongqing
+				value = 0
+			}	
+		set_variable = {
+				var = revolt_qing_xian
+				value = 0
+			}	
+		set_variable = {
+				var = revolt_qing_hankuo
+				value = 0
+			}
+		set_variable = {
+				var = revolt_qing_kaifeng
+				value = 0
+			}
+		set_variable = {
+				var = revolt_qing_tangshan
+				value = 0
+			}
+		set_variable = {
+				var = revolt_manchu_xingan
+				value = 0
+			}
+		set_variable = {
+				var = revolt_manchu_nenjiang
+				value = 0
+			}
+		set_variable = {
+				var = revolt_manchu_hejiang
+				value = 0
+			}
 		}
 	}
 	
@@ -255,6 +298,7 @@ country_event = { # Introduction
 		name = "The Struggle Shall Begin"
 		custom_effect_tooltip = power_struggle_after_lu_xun_tt
 		hidden_effect = {
+		unlock_national_focus = LUXUN_in_memory_of_fallen_our_comrade
 		add_ideas = {
 		LEC_death_of_a_comrade
 		}
@@ -337,6 +381,238 @@ country_event = { # Introduction
 			check_variable = { revolt_nanjing_nanjing > 9 }
 			check_variable = { revolt_nanjing_jinhua > 9 }
 			check_variable = { revolt_nanjing_huaisi > 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Nanjing 3"
+		}
+		}
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_uprisings.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Uprising in Guangxi"
+	desc = shanghai_uprisings.0.desc
+	picture = "GFX_report_event_LEC_shanghai_commune_uprising"
+
+	is_triggered_only = yes
+	
+	
+
+	option = {
+		name = "The Thunder of Revolution Shall be Followed By the Lightning of Victory!"
+		custom_effect_tooltip = units_will_launch_in_nanjing_tt
+		hidden_effect = {
+		if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_guangxi_nanning > 3 }
+			check_variable = { revolt_guangxi_hainan > 3 }
+			check_variable = { revolt_guangxi_nanning < 6 }
+			check_variable = { revolt_guangxi_hainan < 6 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Guangxi 1"
+		
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_guangxi_nanning > 6 }
+			check_variable = { revolt_guangxi_hainan > 6 }
+			check_variable = { revolt_nanjing_huaisi > 6 }
+			check_variable = { revolt_guangxi_nanning < 9 }
+			check_variable = { revolt_guangxi_hainan < 9 }
+			check_variable = { revolt_nanjing_huaisi < 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Guangxi 2"
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_guangxi_nanning > 9 }
+			check_variable = { revolt_guangxi_hainan > 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Guangxi 3"
+		}
+		}
+	}
+	
+	
+}
+
+
+country_event = { # Introduction
+	id = shanghai_uprisings.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Uprising in Sichuan"
+	desc = shanghai_uprisings.0.desc
+	picture = "GFX_report_event_LEC_shanghai_commune_uprising"
+
+	is_triggered_only = yes
+	
+	
+
+	option = {
+		name = "The Thunder of Revolution Shall be Followed By the Lightning of Victory!"
+		custom_effect_tooltip = units_will_launch_in_nanjing_tt
+		hidden_effect = {
+		if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_sichuan_chengdu > 3 }
+			check_variable = { revolt_sichuan_chongqing > 3 }
+			check_variable = { revolt_sichuan_chengdu < 6 }
+			check_variable = { revolt_sichuan_chongqing < 6 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Sichuan 1"
+		
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_sichuan_chengdu > 6 }
+			check_variable = { revolt_sichuan_chongqing > 6 }
+			check_variable = { revolt_nanjing_huaisi > 6 }
+			check_variable = { revolt_sichuan_chengdu < 9 }
+			check_variable = { revolt_sichuan_chongqing < 9 }
+			check_variable = { revolt_nanjing_huaisi < 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Sichuan 2"
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_sichuan_chengdu > 9 }
+			check_variable = { revolt_sichuan_chongqing > 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Sichuan 3"
+		}
+		}
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_uprisings.3
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "The Anti-Qing Revolution!"
+	desc = shanghai_uprisings.0.desc
+	picture = "GFX_report_event_LEC_shanghai_commune_uprising"
+
+	is_triggered_only = yes
+	
+	
+
+	option = {
+		name = "The Thunder of Revolution Shall be Followed By the Lightning of Victory!"
+		custom_effect_tooltip = units_will_launch_in_nanjing_tt
+		hidden_effect = {
+		if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_qing_xian > 3 }
+			check_variable = { revolt_qing_hankuo > 3 }
+			check_variable = { revolt_qing_kaifeng > 3 }
+			check_variable = { revolt_qing_tangshan > 3 }
+			check_variable = { revolt_qing_xian < 6 }
+			check_variable = { revolt_qing_hankuo < 6 }
+			check_variable = { revolt_qing_kaifeng < 6 }
+			check_variable = { revolt_qing_tangshan < 6 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Beijing 1"
+		
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_qing_xian > 6 }
+			check_variable = { revolt_qing_hankuo > 6 }
+			check_variable = { revolt_qing_kaifeng > 6 }
+			check_variable = { revolt_qing_tangshan > 6 }
+			check_variable = { revolt_qing_xian < 9 }
+			check_variable = { revolt_qing_hankuo < 9 }
+			check_variable = { revolt_qing_kaifeng < 9 }
+			check_variable = { revolt_qing_tangshan < 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Beijing 2"
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_qing_xian > 9 }
+			check_variable = { revolt_qing_hankuo > 9 }
+			check_variable = { revolt_qing_kaifeng > 9 }
+			check_variable = { revolt_qing_tangshan > 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Beijing 3"
+		}
+		}
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_uprisings.4
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "The Anti-Fengtian Revolt"
+	desc = shanghai_uprisings.0.desc
+	picture = "GFX_report_event_LEC_shanghai_commune_uprising"
+
+	is_triggered_only = yes
+	
+	
+
+	option = {
+		name = "The Thunder of Revolution Shall be Followed By the Lightning of Victory!"
+		custom_effect_tooltip = units_will_launch_in_nanjing_tt
+		hidden_effect = {
+		if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_manchu_xingan > 3 }
+			check_variable = { revolt_manchu_nenjiang > 3 }
+			check_variable = { revolt_manchu_hejiang > 3 }
+			check_variable = { revolt_manchu_xingan < 6 }
+			check_variable = { revolt_manchu_nenjiang < 6 }
+			check_variable = { revolt_manchu_hejiang < 6 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Nanjing 1"
+		
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_manchu_xingan > 6 }
+			check_variable = { revolt_manchu_nenjiang > 6 }
+			check_variable = { revolt_manchu_hejiang > 6 }
+			check_variable = { revolt_manchu_xingan < 9 }
+			check_variable = { revolt_manchu_nenjiang < 9 }
+			check_variable = { revolt_manchu_hejiang < 9 }
+			}
+		}
+		load_oob = "LEC - Shanghai Revolution Nanjing 2"
+		}
+		else_if = {
+		limit = {
+		AND = {
+			check_variable = { revolt_manchu_xingan > 9 }
+			check_variable = { revolt_manchu_nenjiang > 9 }
+			check_variable = { revolt_manchu_hejiang > 9 }
 			}
 		}
 		load_oob = "LEC - Shanghai Revolution Nanjing 3"
