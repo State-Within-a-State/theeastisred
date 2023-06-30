@@ -4,6 +4,35 @@ add_namespace = hmong
 
 country_event = {
 
+		id = laos.0
+		title = "Play as Laos?"
+		desc = "Come and Join Laos for some Fun"
+		picture = "GFX_report_event_vite_coup"
+		trigger = {
+		is_ai = no
+		}
+		is_triggered_only = yes
+	
+		option = {
+		name = "Long Live Laos!"
+		LAO = {
+		change_tag_from = ROOT
+		}
+		} 
+		
+		option = {
+		name = "Who Cares About Laos?"
+		} 
+		 
+		
+		
+		
+
+
+	}
+
+country_event = {
+
 		id = laos.1
 		title = "Free At Last"
 		desc = viet_civil_war.1.desc
@@ -179,6 +208,10 @@ country_event = {
 		add_popularity = {
 		ideology = ROOT
 		popularity = 0.5
+		}
+		country_event = {
+		id = laos.4
+		days = 1
 		}
 		custom_effect_tooltip = laos_commie_decrease_tt
 		custom_effect_tooltip = laos_hmong_decrease_tt
@@ -429,6 +462,9 @@ country_event = {
 		check_variable = { lao_pathet < 10 }
 		check_variable = { lao_hmong < 10 }
 		}
+		add_ideas = {
+		LAO_pathet_lao_issue_1
+		}
 		
 		
 		}
@@ -453,7 +489,7 @@ country_event = {
 	country_event = {
 
 		id = laos.8
-		title = "The Result"
+		title = "Leftist Victory"
 		desc = laos.3.desc
 		picture = "GFX_report_event_vite_coup"
 
@@ -463,13 +499,16 @@ country_event = {
 		
 		option = {
 		name = "Go With the Pathet Lao"
-		
+		add_ideas = {
+		LAO_post_war_woes
+		}
 		}
 		
 		option = {
 		name = "The Hmong Nationalists Secure Vientiane"
 		set_politics = { ruling_party = radical_socialist }
 		set_cosmetic_tag = LAO_HMONG
+		complete_national_focus = LAOREB_the_hmong_rebels_secure_vientiane
 		}
 		
 		
@@ -492,6 +531,7 @@ country_event = {
 		set_politics = {
 		ruling_party = radical_socialist
 		}
+		complete_national_focus = LAOCOM_the_father_of_laotian_socialism 
 		create_country_leader = {
 				name = "Kaysone Phomvihane"
 				picture = "gfx/leaders/LAO/Portrait_LAO_Kaysone_Phomvihane.png"
@@ -505,6 +545,7 @@ country_event = {
 		set_politics = {
 		ruling_party = totalist
 		}
+		complete_national_focus = LAOCOM_from_prince_to_premier
 		create_country_leader = {
 				name = "Souphanouvong"
 				picture = "gfx/leaders/LAO/Portrait_Laos_Souphanouvong.png"
@@ -533,10 +574,12 @@ country_event = {
 		set_politics = {
 		ruling_party = radical_socialist
 		}
+		complete_national_focus = LAOCOM_kaysonesrevolution
 		}
 		
 		option = {
 		name = "Go With Souphanouvong"
+		complete_national_focus = LAOCOM_theredprincestays
 		set_politics = {
 		ruling_party = totalist
 		}
@@ -565,6 +608,7 @@ country_event = {
 		
 		option = {
 		name = "But He is a Prince!"
+		complete_national_focus = LAOCOM_butheisaprince
 		create_country_leader = {
 				name = "Souphanouvong"
 				picture = "gfx/leaders/LAO/Portrait_Laos_Souphanouvong.png"
@@ -576,7 +620,7 @@ country_event = {
 		
 		option = {
 		name = "No! He is a President!"
-		
+		complete_national_focus = LAOCOM_noheisapresident
 		create_country_leader = {
 				name = "Souphanouvong"
 				picture = "gfx/leaders/LAO/Portrait_Laos_Souphanouvong.png"
@@ -589,5 +633,115 @@ country_event = {
 		
 	}
 	
+	country_event = {
+
+		id = laos.12
+		title = "Question of Dealing with Internal Terrorists"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "We Do Negotiate With Terrorists"
+		unlock_national_focus = LAO_the_path_of_internal_peace
+		}
+		
+		
+		option = {
+		name = "We Don't Negotiate With Terrorists"
+		unlock_national_focus = LAO_none_shall_be_left_alive
+		}
+		
+		
+		
+	}
+	country_event = {
+
+		id = laos.13
+		title = "Legacy of the Hemp Flag"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "For National Liberation!"
+		}
+		
+		
+		
+		
+		
+	}
 	
 	
+	country_event = {
+
+		id = laos.14
+		title = "We Shall Go Forth and Claim our Rightfull Lands"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "For National Liberation!"
+		every_country = {
+		limit = {
+		AND = {
+		is_core_of = YUN
+		is_core_of = GXC
+		is_core_of = VIN
+		is_core_of = VNQ
+		is_core_of = INC
+		is_core_of = CAM
+		is_core_of = SIA
+		is_core_of = BRM
+		}
+		}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PREV
+			}
+		}
+		}
+		
+		
+		
+		
+		
+	}
+	
+	country_event = {
+
+		id = laos.15
+		title = "Question of the Reactionary Princes"
+		desc = laos.3.desc
+		picture = "GFX_report_event_vite_coup"
+
+		is_triggered_only = yes
+	
+		 
+		
+		option = {
+		name = "Kill Them. Kill Them Now."
+		add_stability = 0.05
+		add_manpower = -100
+		}
+		option = {
+		name = "Integrate Them"
+		add_stability = -0.05
+		add_manpower = 100
+		}
+		
+		
+		
+		
+	}
