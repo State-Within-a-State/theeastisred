@@ -893,7 +893,7 @@ country_event = { #
 		add_stability = -0.02
 		set_country_flag = Adachi_Kenzo_not_dead
 		hidden_effect = {
-			country_event = rework_japan.23
+			country_event = rework_japan.24
 		}
 	}
 	option = {
@@ -953,7 +953,7 @@ country_event = { #
 		add_stability = -0.02
 		set_country_flag = Seigo_Nakano_not_dead
 		hidden_effect = {
-			country_event = rework_japan.22
+			country_event = rework_japan.23
 		}
 	}
 	option = {
@@ -1117,10 +1117,34 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	trigger = {
+		OR = {
+			has_country_flag = JAP_tokohai_won_in_1936
+			
+		}
+	}
+	option = {
 		name = rework_japan.23.a
-		ai_chance = { base = 100 }
+		add_stability = 0.05
+		if = {
+			limit = {
+				has_idea = JAP_Shiono_Suehiko_sec_pau
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Miwa_Juso_sec_npo
+		}
 		
+		if = {
+			limit = {
+				has_country_flag = JAP_NO_NSA
+			}
+			hidden_effect = {
+				country_event = {
+					id = japdom.15
+					days = 10
+				}
+			}
+		}
 	}
 }
 
@@ -1132,10 +1156,34 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	trigger = {
+		OR = {
+			has_country_flag = JAP_showakai_won_in_1936
+			
+		}
+	}
+	option = {
 		name = rework_japan.24.a
-		ai_chance = { base = 100 }
+		add_stability = 0.05
+		if = {
+			limit = {
+				has_idea = JAP_Akita_Kiyoshi_sec_ade
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Kido_Koichi_sec_npo
+		}
 		
+		if = {
+			limit = {
+				has_country_flag = JAP_NO_NSA
+			}
+			hidden_effect = {
+				country_event = {
+					id = japdom.15
+					days = 10
+				}
+			}
+		}
 	}
 }
 
