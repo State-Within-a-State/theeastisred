@@ -46,13 +46,13 @@ country_event = { #Dissolution of the Diet, triggered soon after start
 		hidden_effect = {
 			country_event = {
 				id = japdom.3
-				days = 30
+				days = 35
 			}
 		}
 		hidden_effect = {
 			country_event = {
 				id = japdom.4
-				days = 35
+				days = 25
 			}
 		}
 	}
@@ -281,8 +281,8 @@ country_event = { #General Election Feb. 1936, triggered early 1936, important f
 			popularity = 0.3
 		}
 		create_country_leader = {
-				name = "Yamamoto Kenzo"
-				picture = "gfx/leaders/JAP/Portrait_JAP_Yamamoto_Kenzo.png"
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 				expire = "1981.3.6"
 				ideology = syndie_social_democrat_subtype
 			}
@@ -421,7 +421,11 @@ country_event = { #The NSA debate begins
 	trigger = {
 		OR = {
 			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_minseito_won_in_1936
 			has_country_flag = JAP_deadlock_in_1936
+			has_country_flag = JAP_showakai_won_in_1936
+			has_country_flag = JAP_tokohai_won_in_1936
+			has_country_flag = JAP_shakai_taishuto_won_in_1936
 		}
 	}
 
@@ -429,6 +433,10 @@ country_event = { #The NSA debate begins
 		name = japdom.8.a
 		add_political_power = 25
 		set_country_flag = JAP_security_debate
+		country_event = {
+		id = japdom.9
+		days = 15
+		}
 	}
 }
 
@@ -445,7 +453,12 @@ country_event = { #The National Security Act, triggered by focus end of 1936, ve
 	trigger = {
 		OR = {
 			has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_minseito_won_in_1936
 			has_country_flag = JAP_deadlock_in_1936
+			has_country_flag = JAP_showakai_won_in_1936
+			has_country_flag = JAP_tokohai_won_in_1936
+			has_country_flag = JAP_shakai_taishuto_won_in_1936
+			
 		}
 	}
 
@@ -527,11 +540,20 @@ country_event = { #The Trial of the May 15 Incident, triggered by the NSA passin
 		OR = {
 			has_country_flag = JAP_seiyukai_won_in_1936
 			has_country_flag = JAP_deadlock_in_1936
+			has_country_flag = JAP_minseito_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+			has_country_flag = JAP_showakai_won_in_1936
+			has_country_flag = JAP_tokohai_won_in_1936
+			has_country_flag = JAP_shakai_taishuto_won_in_1936
 		}
 	}
 
 	option = {
 		name = japdom.10.a
+		trigger = {
+		has_country_flag = JAP_seiyukai_won_in_1936
+			has_country_flag = JAP_deadlock_in_1936
+		}
 		add_stability = -0.02
 		add_political_power = -25
 		set_country_flag = JAP_May_Trial
@@ -540,6 +562,75 @@ country_event = { #The Trial of the May 15 Incident, triggered by the NSA passin
 				id = japdom.11
 				days = 20
 			}
+			
+		}
+	}
+	
+	option = {
+		name = japdom.10.a
+		trigger = {
+		has_country_flag = JAP_minseito_won_in_1936
+		}
+		add_stability = -0.02
+		add_political_power = -25
+		set_country_flag = JAP_May_Trial
+		hidden_effect = {
+			country_event = {
+				id = rework_japan.17
+				days = 20
+			}
+			
+		}
+	}
+	
+	option = {
+		name = japdom.10.a
+		trigger = {
+		has_country_flag = JAP_shakai_taishuto_won_in_1936
+		}
+		add_stability = -0.02
+		add_political_power = -25
+		set_country_flag = JAP_May_Trial
+		hidden_effect = {
+			country_event = {
+				id = rework_japan.18
+				days = 20
+			}
+			
+		}
+	}
+	
+	option = {
+		name = japdom.10.a
+		trigger = {
+		has_country_flag = JAP_showakai_won_in_1936
+		}
+		add_stability = -0.02
+		add_political_power = -25
+		set_country_flag = JAP_May_Trial
+		hidden_effect = {
+			country_event = {
+				id = rework_japan.19
+				days = 20
+			}
+			
+		}
+	}
+	
+	option = {
+		name = japdom.10.a
+		trigger = {
+		has_country_flag = JAP_tokohai_won_in_1936
+		}
+		add_stability = -0.02
+		add_political_power = -25
+		set_country_flag = JAP_May_Trial
+		hidden_effect = {
+			country_event = {
+				id = rework_japan.20
+				days = 20
+			}
+			
 		}
 	}
 }
