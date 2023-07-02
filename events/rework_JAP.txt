@@ -758,7 +758,7 @@ country_event = { #
 country_event = { #League of Blood Coup (Minseito)
 	id = rework_japan.17
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.17"}
-	title = rework_japan.17.title
+	title = "League of Blood Incident"
 	desc = rework_japan.17.desc
 	#picture = 
 	
@@ -878,7 +878,7 @@ country_event = { # Shakai Taishū-tō - League of Blood
 country_event = { #
 	id = rework_japan.19
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.19"}
-	title = rework_japan.19.title
+	title = "Breaking News From Kawagoe!"
 	desc = rework_japan.19.desc
 	#picture = 
 	
@@ -889,7 +889,7 @@ country_event = { #
 		}
 	}
 	option = {
-		name = japdom.11.a
+		name = "Arrest Them At Once!"
 		add_stability = -0.02
 		set_country_flag = Adachi_Kenzo_not_dead
 		hidden_effect = {
@@ -938,7 +938,7 @@ country_event = { #
 country_event = { #
 	id = rework_japan.20
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.20"}
-	title = rework_japan.20.title
+	title = "Breaking News From Kawagoe!"
 	desc = rework_japan.20.desc
 	#picture = 
 	
@@ -949,7 +949,7 @@ country_event = { #
 		}
 	}
 	option = {
-		name = japdom.11.a
+		name = "Destroy The Traitors!"
 		add_stability = -0.02
 		set_country_flag = Seigo_Nakano_not_dead
 		hidden_effect = {
@@ -1055,7 +1055,7 @@ country_event = { #Replace  Chuji
 country_event = { #
 	id = rework_japan.22
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.22"}
-	title = rework_japan.22.title
+	title = "Issue of Factionalism"
 	desc = rework_japan.22.desc
 	#picture = 
 	
@@ -1094,6 +1094,45 @@ country_event = { #
 		}
 		remove_ideas_with_trait = head_of_government
 		add_ideas = JAP_Katayama_Tetsu_hog_sde
+		clr_country_flag = jotaro_kawakami_dead
+		if = {
+			limit = {
+				has_country_flag = JAP_NO_NSA
+			}
+			hidden_effect = {
+				country_event = {
+					id = japdom.15
+					days = 10
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = rework_japan.22.b
+		add_stability = 0.05
+		if = {
+			limit = {
+				has_idea = JAP_Matsuoka_Komakichi_sec_sde
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Aso_Hisashi_sec_syn
+		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_inejiro_asanuma_hog_rso
+		set_politics = {
+		ruling_party = radical_socialist
+		}
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.3
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = moderate_socialist_subtype
+			}
 		clr_country_flag = jotaro_kawakami_dead
 		if = {
 			limit = {
@@ -1220,15 +1259,80 @@ country_event = { #
 country_event = { #
 	id = rework_japan.27
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rework_japan.27"}
-	title = rework_japan.27.title
+	title = "The Shakai Taishuto Hold On"
 	desc = rework_japan.27.desc
 	#picture = 
 	
+	immediate = {
+	hidden_effect = {
+	load_focus_tree = socdem-japan
+	}
+	}
+	
 	is_triggered_only = yes
 	option = { #
-		name = rework_japan.27.a
+		name = "Asanuma Leads us Down the Totalitarian Path"
 		ai_chance = { base = 100 }
+		set_politics = {
+		ruling_party = totalist
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		add_ideas = {
+		JAP_inejiro_asanuma_hog_rso
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = totalist_subtype
+			}
 		
+	}
+	
+	option = { #
+		name = "Asanuma Leads us Down the Democratic Path"
+		ai_chance = { base = 100 }
+		set_politics = {
+		ruling_party = radical_socialist
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.5
+		}
+		add_ideas = {
+		JAP_inejiro_asanuma_hog_rso
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = moderate_socialist_subtype
+			}
+		
+	}
+	
+	option = { #
+		name = "Katayama Guides us To Democracy"
+		ai_chance = { base = 100 }
+		set_politics = {
+		ruling_party = social_democrat
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.5
+		}
+		add_ideas = {
+		JAP_Katayama_Tetsu_hog_sde
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = socdem_paternal_socialism_subtype
+			}
 	}
 }
 
@@ -1242,6 +1346,27 @@ country_event = { #
 	is_triggered_only = yes
 	option = { #
 		name = rework_japan.28.a
+		ai_chance = { base = 100 }
+		set_politics = {
+		ruling_party = totalist
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		add_ideas = {
+		JAP_Katsumaro_Akamatsu_hog_tot
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = tot_national_socialism_subtype
+			}
+	}
+	
+	option = { #
+		name = "We Must Remain Our Current Path"
 		ai_chance = { base = 100 }
 		
 	}
