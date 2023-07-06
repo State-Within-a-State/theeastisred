@@ -1740,6 +1740,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LECQUIBAI_therevolutionsnewsuccessor  }
+		completion_reward = {
+		add_ideas = {
+		LEC_observance_to_practise
+		}
+		}
 	}
 
 	#Nationalize the Legations Quarter
@@ -1753,6 +1758,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LECQUIBAI_from_observance_to_practise  }
+		completion_reward = {
+		add_ideas = {
+		LEC_nationalization_legations
+		}
+		}
 	}
 
 	#Work With the Peasantry
@@ -1766,6 +1776,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LECQUIBAI_nationalize_the_legations_quarter  }
+		completion_reward = {
+		add_ideas = {
+		LEC_working_with_peasantry
+		}
+		}
 	}
 
 	#Applying Marxist Economics
@@ -1779,6 +1794,46 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LECQUIBAI_nationalize_the_legations_quarter  }
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = LEC_economic_recovery_0
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_0
+		add_idea = LEC_qiubai_economy_1
+		}
+		}
+		else_if = {
+		limit = {
+		has_idea = LEC_economic_recovery_1
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_1
+		add_idea = LEC_qiubai_economy_1
+		}
+		}
+		
+		else = {
+		limit = {
+		has_idea = LEC_economic_recovery_2
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_2
+		add_idea = LEC_qiubai_economy_1
+		}
+		}
+		
+		if = {
+		limit = {
+		has_idea = LEC_economic_recovery_3
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_3
+		add_idea = LEC_qiubai_economy_1
+		}
+		}
+		}
 	}
 
 	#Our Time Of Industrial Strengthening
