@@ -272,6 +272,10 @@ country_event = { # Introduction
 				var = revolt_manchu_hejiang
 				value = 0
 			}
+		set_variable = {
+				var = legation_commie_land_reform
+				value = 0
+			}
 		}
 	}
 	
@@ -651,13 +655,13 @@ country_event = { # Introduction
 	
 	option = {
 		name = "The Agrarian Faction Announce Their Success"
-		
+		country_event = lu_xun.10
 		
 	}
 	
 	option = {
 		name = "The Creation Society Announce Their Win"
-		
+		country_event = lu_xun.11
 		
 	}
 	
@@ -752,6 +756,147 @@ country_event = { # Introduction
 			ideology = lu_xun_thought_subtype
 			}
 	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = lu_xun.10
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Leader of the Agrarian Faction"
+	desc = lu_xun.9.desc
+	picture = "GFX_report_event_LEC_lu_xun_dead"
+
+	is_triggered_only = yes
+	
+	
+
+	option = {
+		name = "The Youth Shall Guide Us"
+		set_cosmetic_tag = LEC_MAO
+		remove_ideas = {
+		LEC_communal_council_hog_rso
+		LEC_communal_council_eco_rso
+		LEC_communal_council_for_rso
+		LEC_communal_council_sec_tot
+		
+		}
+		add_ideas = {
+		LEC_zhang_chunqiao_hog_tot
+		LEC_chen_boda_eco_rso
+		LEC_ke_qingshi_for_tot
+		LEC_wang_dongxing_sec_tot
+		}
+		create_country_leader = {
+			name = "Zhang Chunqiao"
+			desc = "ZHOU_YANG_DESC"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Zhang_Chunqiao.png"
+			expire = "1988.11.19"
+			ideology = mao_zedong_thought_subtype
+			}
+	}
+	
+	
+	
+	option = {
+		name = "Kang Sheng Secures the Commune"
+		set_cosmetic_tag = LEC_MAO
+		remove_ideas = {
+		LEC_communal_council_hog_rso
+		LEC_communal_council_eco_rso
+		LEC_communal_council_for_rso
+		LEC_communal_council_sec_tot
+		
+		}
+		add_ideas = {
+		LEC_kang_sheng_hog_tot
+		LEC_li_qiushi_eco_rso
+		LEC_ke_qingshi_for_tot
+		LEC_kang_sheng_sec_tot
+		}
+		set_politics = { ruling_party = totalist }
+		create_country_leader = {
+			name = "Kang Sheng"
+			desc = "DING_LING_DESC"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Kang_Sheng.png"
+			expire = "1988.11.19"
+			ideology = socialist_security_state_subtype
+			}
+		
+	}
+	
+	
+	
+	
+}
+
+country_event = { # Introduction
+	id = lu_xun.11
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Leader of the Creation Society"
+	desc = lu_xun.9.desc
+	picture = "GFX_report_event_LEC_lu_xun_dead"
+
+	is_triggered_only = yes
+	
+	
+
+	option = {
+		name = "Guo Moruo Shall Guide Us"
+		set_cosmetic_tag = LEC_MAO
+		remove_ideas = {
+		LEC_communal_council_hog_rso
+		LEC_communal_council_eco_rso
+		LEC_communal_council_for_rso
+		LEC_communal_council_sec_tot
+		
+		}
+		add_ideas = {
+		LEC_guo_moruo_hog_tot
+		LEC_cheng_fangwu_eco_tot
+		LEC_zheng_boqi_for_rso
+		LEC_zhang_zhiping_for_tot
+		}
+		set_politics = { ruling_party = totalist }
+		create_country_leader = {
+			name = "Guo Moruo"
+			desc = "ZHOU_YANG_DESC"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Guo_Moruo.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+	}
+	
+	
+	
+	option = {
+		name = "Yu Dafu Proclaims Leadership"
+		set_cosmetic_tag = LEC_DAFU
+		remove_ideas = {
+		LEC_communal_council_hog_rso
+		LEC_communal_council_eco_rso
+		LEC_communal_council_for_rso
+		LEC_communal_council_sec_tot
+		
+		}
+		add_ideas = {
+		LEC_yu_dafu_hog_tot
+		LEC_chen_boda_eco_rso
+		LEC_li_chuli_for_rso
+		LEC_pan_hannian_sec_rso
+		}
+		set_politics = { ruling_party = totalist }
+		create_country_leader = {
+			name = "Yu Dafu"
+			desc = "DING_LING_DESC"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Yu_Dafu.png"
+			expire = "1988.11.19"
+			ideology = social_futurism_subtype
+			}
+		
+	}
+	
+	
 	
 	
 }
