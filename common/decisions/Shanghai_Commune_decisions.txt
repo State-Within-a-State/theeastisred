@@ -1557,12 +1557,13 @@ LEC_land_reform_mission = {
 			add_ideas = {
 			LEC_land_reform_success
 			}
+			set_country_flag = land_reform_complete
 		}
 		timeout_effect = {
 			add_ideas = {
 			LEC_land_reform_failiure
 			}
-			
+			set_country_flag = land_reform_failed
 		}
 	}
 
@@ -1718,4 +1719,336 @@ LEC_seizing_landlord_assets = {
 				}
 		}
 	}
+}
+
+
+LEC_criticize_confucius_decision_category = {
+
+LEC_remove_confucian_literature_from_the_shelves = {
+		icon = confucius_fire
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 50
+		
+		days_remove = 100
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_ideas = {
+			LEC_criticize_literature_confucius
+			}
+			set_country_flag = remove_confucius_literature
+		}
+	}
+LEC_criticize_the_back_door = {
+		icon = confucius_fire
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 50
+		
+		days_remove = 100
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = -0.25
+			
+			set_country_flag = backdoor_criticism
+		}
+	}
+
+LEC_criticize_duke_of_zhou = {
+		icon = guo_moruo_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 50
+		
+		days_remove = 100
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = -0.05
+			add_popularity = {
+			ideology = totalist
+			popularity = -0.25
+			}
+			set_country_flag = moruo_criticism
+		}
+	}
+	
+	LEC_honor_lu_xun = {
+		icon = lu_xun_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 50
+		
+		days_remove = 100
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.1
+			add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+			}
+			set_country_flag = support_lu_xun
+		}
+	}
+	
+	LEC_work_with_agrarianists = {
+		icon = chunqiao_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 50
+		
+		days_remove = 100
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+			}
+			set_country_flag = work_with_agrarianists
+		}
+	}
+	LEC_end_campaign = {
+		icon = confucius_fire
+		
+		available = {
+			AND = {
+			has_country_flag = work_with_agrarianists
+			has_country_flag = support_lu_xun
+			has_country_flag = moruo_criticism
+			has_country_flag = backdoor_criticism
+			has_country_flag = remove_confucius_literature         
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 50
+		
+		days_remove = 100
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.5
+			swap_ideas = {
+			remove_idea = LEC_criticize_literature_confucius
+			add_idea = LEC_criticize_literature_confucius_1
+			}
+			set_country_flag = finished_confucius_campaign
+		}
+	}
+}
+
+LEC_chinese_prolekult_decision_category = { 
+
+LEC_promoting_revolutionary_cinema = {
+		icon = red_film_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 120
+		
+		days_remove = 150
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_war_support = 0.1
+		}
+	}
+LEC_embrace_proletarian_art = {
+		icon = proletarian_art_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 120
+		
+		days_remove = 150
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_political_power = 100
+		}
+	}
+	
+LEC_with_draw_from_sects = {
+		icon = no_religion_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 120
+		
+		days_remove = 150
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_ideas = {
+			LEC_withdraw_from_religion
+			}
+		}
+	}
+LEC_national_health_campaigns = {
+		icon = health_goals_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 120
+		
+		days_remove = 150
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_ideas = {
+			LEC_health_national
+			}
+		}
+	}
+	
+	LEC_new_socialist_things = {
+		icon = new_socialist_thing_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 120
+		
+		days_remove = 150
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_ideas = {
+			LEC_socialism_things
+			}
+		}
+	}
+	
+	LEC_china_avant_garde = {
+		icon = avante_icon
+		
+		available = {
+			has_completed_focus = LECQUIBAI_avante_guardism
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 120
+		
+		days_remove = 150
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_ideas = {
+			LEC_china_avant_garde
+			}
+		}
+	}
+
 }

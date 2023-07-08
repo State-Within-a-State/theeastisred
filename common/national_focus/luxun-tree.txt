@@ -1882,7 +1882,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = LECQUIBAI_our_time_of_industrial_strengthening  }
 		completion_reward = {
-		
+		add_ideas = {
+		LEC_urbanization_now
+		}
 		}
 	}
 
@@ -1897,6 +1899,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LECQUIBAI_thelandsseereform  } prerequisite = { focus = LECQUIBAI_urbanisenow  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Industrialize the Farm Lands
@@ -1910,6 +1915,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LECQUIBAI_thelandsseereform  } prerequisite = { focus = LECQUIBAI_urbanisenow  }
+		completion_reward = {
+		add_ideas = {
+		LEC_land_reform_industrialization
+		}
+		}
 	}
 
 	#Forming the Communes
@@ -1923,6 +1933,18 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LECQUIBAI_from_bourgeoise_experts_to_proletarian_intellectuals  } prerequisite = { focus = LECQUIBAI_industrialize_the_farm_lands  }
+		completion_reward = {
+		add_to_variable = {
+					var = legation_commie_land_reform
+					value = 5
+					tooltip = add_5_to_legation_commie_land_reform_tt
+				}
+		add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+		}
 	}
 
 	#Focus on the Peasant Communes
@@ -1937,6 +1959,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = LECQUIBAI_forming_the_communes  }
 		mutually_exclusive = { focus = LECQUIBAI_focus_on_the_urban_communes  }
+		completion_reward = {
+		add_to_variable = {
+					var = legation_commie_land_reform
+					value = 10
+					tooltip = add_10_to_legation_commie_land_reform_tt
+				}
+		add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+		}
 	}
 
 	#Focus on the Urban Communes
@@ -1951,6 +1985,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = LECQUIBAI_forming_the_communes  }
 		mutually_exclusive = { focus = LECQUIBAI_focus_on_the_peasant_communes  }
+		completion_reward = {
+		add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+		}
 	}
 
 	#Forward We Go!
@@ -1964,6 +2010,26 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LECQUIBAI_focus_on_the_urban_communes  focus = LECQUIBAI_focus_on_the_peasant_communes  }
+		completion_reward = {
+		custom_effect_tooltip = result_of_land_reform_tt
+		if = {
+		limit = {
+		has_country_flag = land_reform_complete
+		}
+		add_war_support = 0.15
+		add_stability = 0.15
+		add_political_power = 75
+		}
+		
+		else_if = {
+		limit = {
+		has_country_flag = land_reform_failed
+		}
+		add_war_support = -0.15
+		add_stability = -0.15
+		add_political_power = -75
+		}
+		}
 	}
 
 	#Qiubai's Utopian Dream
@@ -1977,6 +2043,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LECQUIBAI_therevolutionsnewsuccessor  }
+		completion_reward = {
+		add_ideas = {
+		LEC_utopian_dream_1
+		}
+		}
 	}
 
 	#Legacy of Chinese Bolshevism
@@ -1990,6 +2061,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LECQUIBAI_qiubaisutopiandream  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Following Tolstoy
@@ -2003,6 +2081,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LECQUIBAI_qiubaisutopiandream  }
+		completion_reward = {
+		add_political_power = 25
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Criticize Confucius
@@ -2016,6 +2101,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LECQUIBAI_legacy_of_chinese_bolshevism  } prerequisite = { focus = LECQUIBAI_following_tolstoy  }
+		completion_reward = {
+		custom_effect_tooltip = criticize_confucious_tt
+		}
 	}
 
 	#Transformation To Revolutionary Culture
@@ -2029,6 +2117,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LECQUIBAI_following_tolstoy  } prerequisite = { focus = LECQUIBAI_legacy_of_chinese_bolshevism  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 25
+		}
 	}
 
 	#Developing Sin Wenz
@@ -2042,6 +2134,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LECQUIBAI_criticize_confucius  } prerequisite = { focus = LECQUIBAI_transformation_to_revolutionary_culture  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Yīngtènàxióngnài'ěr
@@ -2055,6 +2150,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LECQUIBAI_criticize_confucius  } prerequisite = { focus = LECQUIBAI_transformation_to_revolutionary_culture  }
+		completion_reward = {
+		country_event = lu_xun.12
+		}
 	}
 
 	#Follow Xun and Dazhao
@@ -2068,6 +2166,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LECQUIBAI_developing_sin_wenz  } prerequisite = { focus = LECQUIBAI_yingtenaxiongnaier  }
+		completion_reward = {
+		custom_effect_tooltip = prolekult_chinese_tt
+		}
 	}
 
 	#Avante Guardism
@@ -2081,6 +2182,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LECQUIBAI_follow_xun_and_dazhao  }
+		completion_reward = {
+		custom_effect_tooltip = chinese_avant_garde_tt
+		}
 	}
 
 	#Pushing A Social-Futurist Agenda
@@ -2094,6 +2198,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LECQUIBAI_avante_guardism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#For New Culture and New Literature
@@ -2107,6 +2217,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LECQUIBAI_pushing_a_socialfuturist_agenda  }
+		completion_reward = {
+		add_ideas = {
+		LEC_china_new_culture_new_books
+		}
+		}
 	}
 
 	#Criticize the Syndicalists
@@ -2120,6 +2235,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LECQUIBAI_pushing_a_socialfuturist_agenda  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -0.15
+		}
+		}
 	}
 
 	#Arise For Those Who Refuse to be Slaves
@@ -2133,6 +2254,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LECQUIBAI_for_new_culture_and_new_literature  } prerequisite = { focus = LECQUIBAI_criticize_the_syndicalists  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#China Shall Go Forth Into a Socialist Future!
@@ -2146,6 +2270,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LECQUIBAI_forwardwego  } prerequisite = { focus = LECQUIBAI_arise_for_those_who_refuse_to_be_slaves  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LEC_utopian_dream_1
+		add_idea = LEC_utopian_dream_2
+		}
+		}
 	}
 
 }
