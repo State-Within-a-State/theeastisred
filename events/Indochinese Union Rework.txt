@@ -549,7 +549,7 @@ country_event = { # Assembly election - Gerrymendering in Saigon
 	picture = GFX_report_event_spain_civil_war_soldiers
 
 	is_triggered_only = yes
-
+		
 	option = {
 		name = viet.20.a # Try to hold an unbiased election
 		add_political_power = -25
@@ -617,16 +617,17 @@ country_event = { # Assembly election - Gerrymendering in Saigon
 
 country_event = { # National Assembly
 	id = indochina_rework.6
-	immediate = { log = "[GetDateText]: [Root.GetName]: event viet.6"
-	hidden_effect = {
-	add_idea = INC_congress_over
-	}
- 
-		}
+	immediate = { log = "[GetDateText]: [Root.GetName]: event viet.6"}
 	title = viet.6.t
 	desc = viet.6.d
 	picture = GFX_report_event_VIN_vote
-
+	immediate = {
+	hidden_effect = {
+	add_ideas = {
+	INC_congress_over
+	}
+	}
+	}
 	is_triggered_only = yes
 
 
