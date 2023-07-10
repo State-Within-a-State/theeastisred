@@ -447,10 +447,7 @@ focus_tree = {
 		id = indochina_rework.7
 		days = 35
 		}
-		country_event = {
-		id = indochina_rework.8
-		days = 15
-		}
+		
 		}
 		}
 		completion_reward = {
@@ -1129,7 +1126,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = INC_communal_economy  } prerequisite = { focus = INC_3_years_plan  }
+		prerequisite = { focus = INC_communal_economy focus = INC_3_years_plan } 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus INC_Light_Industry_Development"
 			swap_ideas = {
@@ -1541,9 +1538,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
+		AND = {
 		has_idea = INC_congress_over
 		NOT = {
 		has_country_flag = indochina_civil_war
+		}
 		}
 		}
 		completion_reward = {
@@ -1840,8 +1839,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC_askforphalansteremembership  }
 		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus INC_Special_Relationship_With_France"
-			FRA = { country_event = viet.156 }
+			
+			FRA = { 
+			country_event = {
+			id = viet.156
+			days = 1
+			}
+			}
 		}
 	}
 
@@ -3271,7 +3275,10 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		available = {
+		OR = {
 		has_government = radical_socialist
+		has_government = syndicalist
+		}
 		}
 		prerequisite = { focus = INC_communal_economy  }
 		completion_reward = {
@@ -3292,7 +3299,10 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		available = {
+		OR = {
+		has_government = radical_socialist
 		has_government = syndicalist
+		}
 		}
 		prerequisite = { focus = INC_communal_economy  }
 		mutually_exclusive = { focus = INC_decentralised_industry  }
