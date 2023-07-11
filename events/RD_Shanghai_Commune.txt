@@ -917,12 +917,143 @@ country_event = { # Introduction
 		name = "Yīngtènàxióngnài'ěr!"
 		
 	}
+
+	
+}
+
+country_event = { # Introduction
+	id = lu_xun.13
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Landlord Expropriations"
+	desc = lu_xun.13.desc
+	picture = "GFX_report_event_LEC_lu_xun_dead"
+
+	is_triggered_only = yes
 	
 	
+
+	option = {
+		name = "Allow the Peasants to Trial and Execute Them"
+		add_ideas = {
+		LEC_fair_justice_peasants
+		}
+		add_to_variable = {
+					var = legation_commie_land_reform
+					value = 5
+					tooltip = add_5_to_legation_commie_land_reform_tt
+				}
+	}
+	
+	option = {
+		name = "Trial Them Fairly Via Our Means and not the Peasants"
+		add_ideas = {
+		LEC_fair_justice
+		}
+		add_to_variable = {
+					var = legation_commie_land_reform
+					value = -10
+					tooltip = remove_10_to_legation_commie_land_reform_tt
+				}
+		
+	}
+
+	
+}
+
+country_event = { # Introduction
+	id = lu_xun.14
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Final Result of Industrial Acceleration"
+	desc = lu_xun.14.desc
+	picture = "GFX_report_event_LEC_lu_xun_dead"
+
+	is_triggered_only = yes
 	
 	
+
+	option = {
+		name = "We Have Succeeded"
+		trigger = {
+		check_variable = { industrial_acceleration > 49 }
+		}
+		add_ideas = {
+		LEC_leap_success
+		}
+	}
+	
+	option = {
+		name = "Dammit We have Failed"
+		check_variable = { industrial_acceleration < 50 }
+		add_ideas = {
+		LEC_leap_failure
+		}
+	}
+
+	
+}
+
+
+country_event = { # Introduction
+	id = lu_xun.15
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Fallout From the National Failure"
+	desc = {
+		text = lu_xun.15.guofailure
+		trigger = {
+			has_country_leader = {
+			name = "Guo Moruo"
+			ruling_only = yes
+			}
+		}
+	}
+	desc = {
+		text = lu_xun.15.dafufailure
+		trigger = {
+			has_country_leader = {
+			name = "Yu Dafu"
+			ruling_only = yes
+			}
+		}
+	}
+	picture = "GFX_report_event_LEC_lu_xun_dead"
+
+	is_triggered_only = yes
 	
 	
+
+	option = {
+		name = "Tian Han Rises"
+		create_country_leader = {
+			name = "Tian Han"
+			desc = "DING_LING_DESC"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Tian_Han.png"
+			expire = "1988.11.19"
+			ideology = social_futurism_subtype
+			}
+	}
+	
+	option = {
+		name = "Feng Xuefeng Is Proclaimed Leader of the League"
+		create_country_leader = {
+			name = "Feng Xuefeng"
+			desc = "Feng Xuefeng"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Yu_Dafu.png"
+			expire = "1988.11.19"
+			ideology = social_futurism_subtype
+			}
+	}
+	option = {
+		name = "Jiang Qing Emerges From the Fog"
+		create_country_leader = {
+			name = "Jiang Qing"
+			desc = "Feng Xuefeng"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Yu_Dafu.png"
+			expire = "1988.11.19"
+			ideology = social_futurism_subtype
+			}
+	}
+	
+
 	
 }
 

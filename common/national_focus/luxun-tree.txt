@@ -2292,6 +2292,149 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_CREATION_expand_the_lu_xun_art_academy  }
+		completion_reward = {
+		743 = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		
+		if = {
+		limit = {
+		owns_state = 746
+		}
+		746 = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+		
+		if = {
+		limit = {
+		owns_state = 747
+		}
+		747 = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+		
+		if = {
+		limit = {
+		owns_state = 613
+		}
+		613 = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+		
+		if = {
+		limit = {
+		owns_state = 592
+		}
+		592 = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+		
+		if = {
+		limit = {
+		owns_state = 597
+		}
+		597 = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+		
+		
+		
+		if = {
+		limit = {
+		owns_state = 609
+		}
+		609 = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+		
+		if = {
+		limit = {
+		owns_state = 608
+		}
+		608 = {
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+		
+		}
 	}
 
 	#The Creation Society Heeds the Revolutionary Call
@@ -2303,6 +2446,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -2317,6 +2463,46 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_CREATION_the_creation_society_heeds_the_revolutionary_call  }
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = LEC_economic_recovery_0
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_0
+		add_idea = LEC_marxist_orientated_economy
+		}
+		}
+		else_if = {
+		limit = {
+		has_idea = LEC_economic_recovery_1
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_1
+		add_idea = LEC_marxist_orientated_economy
+		}
+		}
+		
+		else = {
+		limit = {
+		has_idea = LEC_economic_recovery_2
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_2
+		add_idea = LEC_marxist_orientated_economy
+		}
+		}
+		
+		if = {
+		limit = {
+		has_idea = LEC_economic_recovery_3
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_3
+		add_idea = LEC_marxist_orientated_economy
+		}
+		}
+		}
 	}
 
 	#Technocratic-Economy
@@ -2330,6 +2516,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LEC_CREATION_marxist_orientated_economics  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LEC_marxist_orientated_economy
+		add_idea = LEC_marxist_orientated_economy_1
+		}
+		}
 	}
 
 	#Pushing Forward Greater Agricultural Production
@@ -2343,6 +2535,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_CREATION_marxist_orientated_economics  }
+		completion_reward = {
+		unlock_decision_category_tooltip = LEC_land_reform_decision_category
+		}
 	}
 
 	#Landlord Expropriation
@@ -2356,6 +2551,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_CREATION_technocraticeconomy  } prerequisite = { focus = LEC_CREATION_pushing_forward_greater_agricultural_production  }
+		completion_reward = {
+		country_event = lu_xun.13
+		}
 	}
 
 	#Nationalize Former Colonialist Assets
@@ -2369,6 +2567,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_CREATION_technocraticeconomy  } prerequisite = { focus = LEC_CREATION_pushing_forward_greater_agricultural_production  }
+		completion_reward = {
+		add_ideas = {
+		LEC_nationalization_colonies
+		}
+		}
 	}
 
 	#Seizing Gang Assets
@@ -2382,6 +2585,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_CREATION_technocraticeconomy  } prerequisite = { focus = LEC_CREATION_pushing_forward_greater_agricultural_production  }
+		completion_reward = {
+		add_ideas = {
+		LEC_nationalization_gangs
+		}
+		}
 	}
 
 	#Communalisation
@@ -2395,6 +2603,21 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_CREATION_landlord_expropriation  } prerequisite = { focus = LEC_CREATION_nationalize_former_colonialist_assets  } prerequisite = { focus = LEC_CREATION_seizing_gang_assets  }
+		completion_reward = {
+		743 = {
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
 	}
 
 	#Expand the Lu Xun Art Academy
@@ -2408,6 +2631,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LEC_CREATION_communalisation  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Embrace Collectivisation
@@ -2420,7 +2646,35 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		OR = {
+		has_country_flag = land_reform_complete
+		has_country_flag = land_reform_failed
+		}
+		}
 		prerequisite = { focus = LEC_CREATION_expand_the_lu_xun_art_academy  }
+		completion_reward = {
+		custom_effect_tooltip = depend_on_reform_result_tt
+		if = {
+		limit = {
+		has_country_flag = land_reform_failed
+		}
+		swap_ideas = {
+		remove_idea = LEC_land_reform_failiure
+		add_idea = LEC_land_reform_mild_recovery
+		}
+		}
+		
+		if = {
+		limit = {
+		has_country_flag = land_reform_complete
+		}
+		swap_ideas = {
+		remove_idea = land_reform_complete
+		add_idea = LEC_land_reform_great_recovery
+		}
+		}
+		}
 	}
 
 	#An Economic Acceleration
@@ -2429,11 +2683,25 @@ focus_tree = {
 		icon = GFX_LEC_CREATION_an_economic_acceleration-248360
 		x = 41
 		y = 18
-		cost = 5
+		cost = 30
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
+		select_effect = {
+		set_variable = {
+				var = industrial_acceleration
+				value = 0
+			}
+		set_country_flag = acceleration_LEC
+		unlock_decision_category_tooltip = LEC_industrial_progress_decision_category
+		}
 		prerequisite = { focus = LEC_CREATION_embrace_collectivisation  } prerequisite = { focus = LEC_CREATION_support_urbanization  }
+		completion_reward = {
+		custom_effect_tooltip = industrial_acceleration_tt
+		hidden_effect = {
+		country_event = lu_xun.14
+		}
+		}
 	}
 
 	#Moruo's Stand

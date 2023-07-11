@@ -1537,7 +1537,10 @@ LEC_land_reform_decision_category = {
 
 LEC_land_reform_mission = {
 		activation = {
-			has_global_flag = shanghai_revolution
+			OR = {
+			has_completed_focus = LEC_CREATION_pushing_forward_greater_agricultural_production
+			has_completed_focus = LECQUIBAI_thelandsseereform
+			}
 		}
 		available = {
 			
@@ -2047,6 +2050,218 @@ LEC_national_health_campaigns = {
 		remove_effect = {
 			add_ideas = {
 			LEC_china_avant_garde
+			}
+		}
+	}
+
+}
+
+LEC_industrial_progress_decision_category = {
+
+LEC_connect_communes = {
+		icon = generic_electricity
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			743 = {
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_to_variable = {
+				var = industrial_acceleration
+				value = 10
+				tooltip = add_10_to_industrial_acceleration_tt
+			}
+		}
+	}
+LEC_strengthen_shanghai_communes = {
+		icon = generic_factory
+		
+		available = {
+			owns_state = 743
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = no
+		days_re_enable = 15
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			743 = {
+		
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_to_variable = {
+				var = industrial_acceleration
+				value = 5
+				tooltip = add_5_to_industrial_acceleration_tt
+			}
+		}
+	}
+LEC_strengthen_beijing_communes = {
+		icon = generic_factory
+		
+		available = {
+			owns_state =  608
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = no
+		days_re_enable = 15
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			608 = {
+		
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		
+		add_to_variable = {
+				var = industrial_acceleration
+				value = 5
+				tooltip = add_5_to_industrial_acceleration_tt
+			}
+		}
+	}
+LEC_backyard_steel_furnaces = {
+		icon = steel
+		
+		available = {
+			AND = {
+			owns_state =  608
+			owns_state = 592
+			owns_state = 597
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = no
+		days_re_enable = 15
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_resource = {
+					type = steel
+					amount = 10
+					state = 608
+				}
+			add_resource = {
+					type = steel
+					amount = 10
+					state = 592
+				}
+			add_resource = {
+					type = steel
+					amount = 10
+					state = 597
+				}
+		
+		add_to_variable = {
+				var = industrial_acceleration
+				value = 5
+				tooltip = add_5_to_industrial_acceleration_tt
+			}
+		}
+	}
+	
+	LEC_eliminate_pests = {
+		icon = rev_agriculture
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			
+		}
+		cost = 50
+		
+		days_remove = 45
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_political_power = 200
+		add_to_variable = {
+				var = industrial_acceleration
+				value = 30
+				tooltip = add_30_to_industrial_acceleration_tt
 			}
 		}
 	}
