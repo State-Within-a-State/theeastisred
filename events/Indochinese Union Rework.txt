@@ -4,7 +4,7 @@ country_event = {
 
 		id = indochina_rework.0
 		title = viet.1.t
-		desc = viet.1.d
+		desc = indochina_rework.0.desc
 		picture = "GFX_report_event_INC_vietnam"
 
 		
@@ -833,13 +833,52 @@ country_event = { # Deal with Saigon European settlers
 				has_country_flag = INC_Full_Vanguardist
 			}
 		}
-		name = "Long Live Uncle Ho!"
+		name = "He Shall Wait For His Leadership Role"
 		custom_effect_tooltip = vanguard_influence_increase_tt
 		
 		 
         add_to_variable = {
                 var = hcm_inc
                 value = 3
+            }
+	}
+	
+	option = {
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 2
+				has_country_flag = INC_Full_Vanguardist
+			}
+		}
+		name = "May He Be the True Leader"
+		custom_effect_tooltip = vanguard_influence_increase_tt
+		set_cosmetic_tag = INC_Minh
+		 set_popularities = {
+					totalist = 48
+					radical_socialist = 22
+					syndicalist = 20
+					social_democrat = 5
+					social_liberal = 0
+					market_liberal = 0
+					social_conservative = 0
+					authoritarian_democrat = 0
+					paternal_autocrat = 0
+					national_populist = 5
+				}
+			create_country_leader = {
+				name = "Ho Chi Minh"
+				desc = "POLITICS_PHAM_VAN_DONG_DESC"
+				picture = "gfx/leaders/INC/Portrait_INC_Ho_Chi_Minh.png"
+				expire = "2000.4.29"
+				ideology = ho_chi_minh_thought_subtype
+			}
+		set_politics = {
+			ruling_party = totalist
+		}
+        add_to_variable = {
+                var = hcm_inc
+                value = 5
             }
 	}
 
