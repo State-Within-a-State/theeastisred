@@ -662,7 +662,7 @@ country_event = { # Introduction
 	option = {
 		name = "The Creation Society Announce Their Win"
 		country_event = lu_xun.11
-		
+		complete_national_focus = LEC_CREATION_the_creation_society_heeds_the_revolutionary_call
 	}
 	
 	
@@ -844,6 +844,7 @@ country_event = { # Introduction
 	option = {
 		name = "Guo Moruo Shall Guide Us"
 		set_cosmetic_tag = LEC_MAO
+		complete_national_focus = LEC_CREATION_moruosstand
 		remove_ideas = {
 		LEC_communal_council_hog_rso
 		LEC_communal_council_eco_rso
@@ -860,7 +861,7 @@ country_event = { # Introduction
 		set_politics = { ruling_party = totalist }
 		create_country_leader = {
 			name = "Guo Moruo"
-			desc = "ZHOU_YANG_DESC"
+			desc = "POLITICS_DESC_GUO_MORUO"
 			picture = "gfx/leaders/LEC/Portrait_LEC_Guo_Moruo.png"
 			expire = "1978.11.19"
 			ideology = technocratic_socialism_subtype
@@ -871,6 +872,7 @@ country_event = { # Introduction
 	
 	option = {
 		name = "Yu Dafu Proclaims Leadership"
+		complete_national_focus = LEC_CREATION_yu_dafu_heads_our_revolutionary_culture
 		set_cosmetic_tag = LEC_DAFU
 		remove_ideas = {
 		LEC_communal_council_hog_rso
@@ -888,7 +890,7 @@ country_event = { # Introduction
 		set_politics = { ruling_party = totalist }
 		create_country_leader = {
 			name = "Yu Dafu"
-			desc = "DING_LING_DESC"
+			desc = "POLITICS_DESC_YU_DAFU"
 			picture = "gfx/leaders/LEC/Portrait_LEC_Yu_Dafu.png"
 			expire = "1988.11.19"
 			ideology = social_futurism_subtype
@@ -1030,6 +1032,41 @@ country_event = { # Introduction
 			expire = "1988.11.19"
 			ideology = social_futurism_subtype
 			}
+		if = {
+		limit = {
+		has_idea = LEC_yu_dafu_hog_tot
+		}
+		remove_ideas = {
+		LEC_yu_dafu_hog_tot
+		LEC_chen_boda_eco_rso
+		LEC_li_chuli_for_rso
+		LEC_pan_hannian_sec_rso
+		}
+		add_ideas = {
+		LEC_tian_han_hog_tot
+		LEC_sun_bingwen_eco_tot
+		LEC_feng_keng_for_rso
+		LEC_tian_han_sec_tot
+		}
+		}
+		
+		else_if = {
+		limit = {
+		has_idea = LEC_guo_moruo_hog_tot
+		}
+		remove_ideas = {
+		LEC_guo_moruo_hog_tot
+		LEC_cheng_fangwu_eco_tot
+		LEC_zheng_boqi_for_rso
+		LEC_zhang_zhiping_for_tot
+		}
+		add_ideas = {
+		LEC_tian_han_hog_tot
+		LEC_sun_bingwen_eco_tot
+		LEC_feng_keng_for_rso
+		LEC_tian_han_sec_tot
+		}
+		}
 	}
 	
 	option = {
@@ -1037,22 +1074,132 @@ country_event = { # Introduction
 		create_country_leader = {
 			name = "Feng Xuefeng"
 			desc = "Feng Xuefeng"
-			picture = "gfx/leaders/LEC/Portrait_LEC_Yu_Dafu.png"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Feng_Xuefeng.png"
 			expire = "1988.11.19"
 			ideology = social_futurism_subtype
 			}
+		if = {
+		limit = {
+		has_idea = LEC_yu_dafu_hog_tot
+		}
+		remove_ideas = {
+		LEC_yu_dafu_hog_tot
+		LEC_chen_boda_eco_rso
+		LEC_li_chuli_for_rso
+		LEC_pan_hannian_sec_rso
+		}
+		add_ideas = {
+		LEC_feng_xuefeng_hog_tot
+		LEC_yin_fu_eco_rso
+		LEC_zheng_boqi_for_rso
+		LEC_zhang_zhiping_for_tot
+		}
+		}
+		
+		else_if = {
+		limit = {
+		has_idea = LEC_guo_moruo_hog_tot
+		}
+		remove_ideas = {
+		LEC_guo_moruo_hog_tot
+		LEC_cheng_fangwu_eco_tot
+		LEC_zheng_boqi_for_rso
+		LEC_zhang_zhiping_for_tot
+		}
+		add_ideas = {
+		LEC_feng_xuefeng_hog_tot
+		LEC_yin_fu_eco_rso
+		LEC_zheng_boqi_for_rso
+		LEC_zhang_zhiping_for_tot
+		}
+		}
 	}
 	option = {
 		name = "Jiang Qing Emerges From the Fog"
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.35
+		}
 		create_country_leader = {
 			name = "Jiang Qing"
 			desc = "Feng Xuefeng"
-			picture = "gfx/leaders/LEC/Portrait_LEC_Yu_Dafu.png"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Jiang_Qing_Socialist.png"
 			expire = "1988.11.19"
-			ideology = social_futurism_subtype
+			ideology = radical_socialist_subtype
 			}
+			set_politics = {
+			ruling_party = radical_socialist
+			}
+			set_country_leader_ideology = social_futurism_subtype
+			if = {
+		limit = {
+		has_idea = LEC_yu_dafu_hog_tot
+		}
+		
+		remove_ideas = {
+		LEC_yu_dafu_hog_tot
+		LEC_chen_boda_eco_rso
+		LEC_li_chuli_for_rso
+		LEC_pan_hannian_sec_rso
+		}
+		add_ideas = {
+		LEC_jiang_qing_hog_rso
+		LEC_chen_boda_eco_rso
+		LEC_zhang_chunqiao_for_rso
+		LEC_kang_sheng_sec_tot
+		}
+		}
+		
+		else_if = {
+		limit = {
+		has_idea = LEC_guo_moruo_hog_tot
+		}
+		remove_ideas = {
+		LEC_guo_moruo_hog_tot
+		LEC_cheng_fangwu_eco_tot
+		LEC_zheng_boqi_for_rso
+		LEC_zhang_zhiping_for_tot
+		}
+		add_ideas = {
+		LEC_jiang_qing_hog_rso
+		LEC_chen_boda_eco_rso
+		LEC_zhang_chunqiao_for_rso
+		LEC_wang_dongxing_sec_tot
+		}
+		}
 	}
-	
+	option = {
+		name = "The Syndicalists Arise"
+		trigger = {
+		#has_completed_focus = LEC_CREATION_syndicalist_promotion
+		has_idea = LEC_guo_moruo_hog_tot
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.35
+		}
+		
+			set_politics = {
+			ruling_party = syndicalist
+			}
+			set_country_leader_ideology = technocratic_socialism_subtype
+			
+		
+		
+		remove_ideas = {
+		LEC_guo_moruo_hog_tot
+		LEC_cheng_fangwu_eco_tot
+		LEC_zheng_boqi_for_rso
+		LEC_zhang_zhiping_for_tot
+		}
+		add_ideas = {
+		LEC_deng_zhongxia_hog_syn
+		LEC_deng_zhongxia_eco_syn
+		LEC_li_chuli_for_rso
+		LEC_wang_dongxing_sec_tot
+		}
+		
+	}
 
 	
 }

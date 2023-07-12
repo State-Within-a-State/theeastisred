@@ -2714,6 +2714,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = LEC_CREATION_the_creation_society_heeds_the_revolutionary_call  }
 	}
 
@@ -2728,6 +2731,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_CREATION_moruosstand  }
+		completion_reward = {
+		add_ideas = {
+		LEC_no_longer_slaves
+		}
+		}
 	}
 
 	#The Ten Criticisms
@@ -2741,6 +2749,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_CREATION_denounce_the_slave_society  }
+		completion_reward = {
+		add_stability = -0.15
+		add_ideas = {
+		LEC_ten_critics
+		}
+		}
 	}
 
 	#Spreading Revolutionary Propaganda
@@ -2754,6 +2768,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_CREATION_denounce_the_slave_society  }
+		completion_reward = {
+		add_war_support = 0.25
+		}
 	}
 
 	#Working With our Peasant Comrades
@@ -2767,6 +2784,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_CREATION_the_ten_criticisms  } prerequisite = { focus = LEC_CREATION_spreading_revolutionary_propaganda  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Publish the Salvation Daily
@@ -2780,6 +2800,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_CREATION_the_ten_criticisms  } prerequisite = { focus = LEC_CREATION_spreading_revolutionary_propaganda  }
+		completion_reward = {
+		add_ideas = {
+		LEC_slavation_daily
+		}
+		}
 	}
 
 	#Honour Comrade Lu Xun's Legacy
@@ -2793,6 +2818,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_CREATION_the_ten_criticisms  } prerequisite = { focus = LEC_CREATION_spreading_revolutionary_propaganda  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Form the Cultural Unions
@@ -2806,6 +2837,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LEC_CREATION_working_with_our_peasant_comrades  } prerequisite = { focus = LEC_CREATION_publish_the_salvation_daily  } prerequisite = { focus = LEC_CREATION_honourcomradeluxunslegacy  }
+		completion_reward = {
+		add_ideas = {
+		LEC_cultural_unions
+		}
+		}
 	}
 
 	#Anti-Imperialist Embrace
@@ -2819,6 +2855,14 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_CREATION_working_with_our_peasant_comrades  } prerequisite = { focus = LEC_CREATION_publish_the_salvation_daily  } prerequisite = { focus = LEC_CREATION_honourcomradeluxunslegacy  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 25
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Ending Han Chauvinism
@@ -2831,7 +2875,95 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		custom_trigger_tooltip = {
+					tooltip = owns_minority_state_china_tt		
+					OR = {
+					AND = {
+					owns_state = 610
+					owns_state = 716
+					owns_state = 328
+					owns_state = 886
+					owns_state = 715
+					owns_state = 885
+					owns_state = 714
+					owns_state = 884
+					owns_state = 883
+					owns_state = 717
+					owns_state = 612
+					owns_state = 348
+					owns_state = 330
+					owns_state = 1084
+					owns_state = 329
+					owns_state = 811
+					owns_state = 654
+					owns_state = 1083
+					owns_state = 618
+					owns_state = 617
+					owns_state = 287
+					owns_state = 1085
+					owns_state = 619
+					owns_state = 897
+					owns_state = 693
+					owns_state = 353
+					owns_state = 748
+					owns_state = 322
+					owns_state = 1086
+					}
+					
+					AND = {
+					TIB = {
+					is_puppet_of = LEC
+					}
+					SIK = {
+					is_puppet_of = LEC
+					}
+					MON = {
+					is_puppet_of = LEC
+					}
+					FNG = {
+					is_puppet_of = LEC
+					}
+					}
+					}
+				}
+		}
 		prerequisite = { focus = LEC_CREATION_form_the_cultural_unions  } prerequisite = { focus = LEC_CREATION_antiimperialist_embrace  }
+		completion_reward = {
+		release = MON
+		release = FNG
+		release = SIK
+		release = TIB
+		puppet = {
+				target = MON
+				end_wars = yes
+			}
+		puppet = {
+				target = FNG
+				end_wars = yes
+			}
+		puppet = {
+				target = SIK
+				end_wars = yes
+			}
+		puppet = {
+				target = TIB
+				end_wars = yes
+			}
+			
+		TIB = {
+		set_cosmetic_tag = TIB_LECREVOLUTION
+		}
+		SIK = {
+		set_cosmetic_tag = SIK_LECREVOLUTION
+		}
+		MON = {
+		set_cosmetic_tag = MON_LECREVOLUTION
+		}
+		FNG = {
+		set_cosmetic_tag = FNG_LECREVOLUTION
+		}
+		}
 	}
 
 	#Syndicalist Promotion
@@ -2846,6 +2978,24 @@ focus_tree = {
 		}
 		prerequisite = { focus = LEC_CREATION_ending_han_chauvinism  }
 		mutually_exclusive = { focus = LEC_CREATION_communist_comradery  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		if = {
+		limit = {
+		has_idea = LEC_cheng_fangwu_eco_tot
+		}
+		remove_ideas = {
+		LEC_cheng_fangwu_eco_tot
+		}
+		add_ideas = {
+		LEC_deng_zhongxia_eco_syn
+		LEC_syndies_influence
+		}
+		}
+		}
 	}
 
 	#Communist Comradery
@@ -2860,6 +3010,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = LEC_CREATION_ending_han_chauvinism  }
 		mutually_exclusive = { focus = LEC_CREATION_syndicalist_promotion  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Understand the Past to Improve the Future
@@ -2873,6 +3029,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_CREATION_syndicalist_promotion  focus = LEC_CREATION_communist_comradery  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#A Revolution Today and a Revolution Tomorrow
@@ -2886,6 +3045,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_CREATION_understand_the_past_to_improve_the_future  }
+		completion_reward = {
+		add_ideas = {
+		LEC_today_and_tomorrow
+		}
+		}
 	}
 
 	#Yu Dafu Heads Our Revolutionary Culture
@@ -2897,6 +3061,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = LEC_CREATION_the_creation_society_heeds_the_revolutionary_call  }
 	}
@@ -2912,6 +3079,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_CREATION_yu_dafu_heads_our_revolutionary_culture  }
+		completion_reward = {
+		add_stability = 0.05
+		}
 	}
 
 	#Work With Overseas Chinese Communities
@@ -2925,6 +3095,33 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_CREATION_yu_dafu_heads_our_revolutionary_culture  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = GEA
+				modifier = revolutionary_chinese_LEC
+			}
+		add_opinion_modifier = {
+				target = TRM
+				modifier = revolutionary_chinese_LEC
+			}
+		add_opinion_modifier = {
+				target = DEI
+				modifier = revolutionary_chinese_LEC
+			}
+		add_opinion_modifier = {
+				target = USA
+				modifier = revolutionary_chinese_LEC
+			}
+		add_opinion_modifier = {
+				target = AST
+				modifier = revolutionary_chinese_LEC
+			}
+		add_opinion_modifier = {
+				target = JAP
+				modifier = revolutionary_chinese_LEC
+			}
+		
+		}
 	}
 
 	#Saving a Sinking Ship
@@ -2938,6 +3135,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_CREATION_yu_dafu_heads_our_revolutionary_culture  }
+		completion_reward = {
+		add_war_support = 0.05
+		}
 	}
 
 	#Call for National Unity
@@ -2951,6 +3151,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_CREATION_liberation_of_the_human_spirit  } prerequisite = { focus = LEC_CREATION_work_with_overseas_chinese_communities  } prerequisite = { focus = LEC_CREATION_saving_a_sinking_ship  }
+		completion_reward = {
+		add_ideas = {
+		LEC_unity_against_imperialism
+		}
+		}
 	}
 
 	#Promote the New Literature Movement
@@ -2964,6 +3169,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LEC_CREATION_liberation_of_the_human_spirit  } prerequisite = { focus = LEC_CREATION_work_with_overseas_chinese_communities  } prerequisite = { focus = LEC_CREATION_saving_a_sinking_ship  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Liberate the Sexes
@@ -2977,6 +3185,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_CREATION_liberation_of_the_human_spirit  } prerequisite = { focus = LEC_CREATION_work_with_overseas_chinese_communities  } prerequisite = { focus = LEC_CREATION_saving_a_sinking_ship  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Denounce the Relics of the Past
@@ -2990,6 +3201,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_CREATION_call_for_national_unity  } prerequisite = { focus = LEC_CREATION_promote_the_new_literature_movement  } prerequisite = { focus = LEC_CREATION_liberate_the_sexes  }
+		completion_reward = {
+		add_ideas = {
+		CNH_cultural_reformation
+		}
+		}
 	}
 
 	#Nationalism and Sexuality
@@ -3003,6 +3219,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_CREATION_call_for_national_unity  } prerequisite = { focus = LEC_CREATION_promote_the_new_literature_movement  } prerequisite = { focus = LEC_CREATION_liberate_the_sexes  }
+		completion_reward = {
+		add_ideas = {
+		LEC_nationalism_and_sexuality
+		}
+		}
 	}
 
 	#Expanding National Strength
@@ -3016,6 +3237,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LEC_CREATION_denounce_the_relics_of_the_past  } prerequisite = { focus = LEC_CREATION_nationalism_and_sexuality  }
+		completion_reward = {
+		add_ideas = {
+		LEC_strenght_expansion
+		}
+		}
 	}
 
 	#Modernizing the Chinese Language
@@ -3029,6 +3255,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LEC_CREATION_expanding_national_strength  }
+		completion_reward = {
+		add_ideas = {
+		LEC_new_chinese
+		}
+		}
 	}
 
 	#Honouring Our Fallen Comrades
@@ -3042,6 +3273,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_CREATION_modernizing_the_chinese_language  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		add_political_power = 25
+		}
 	}
 
 	#Ending Romanticism
@@ -3055,6 +3293,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_CREATION_modernizing_the_chinese_language  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CNH_cultural_reformation
+		add_idea = CNH_cultural_reformation_2
+		}
+		}
 	}
 
 	#Resist Reactionary Thinking
@@ -3068,6 +3312,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LEC_CREATION_honouring_our_fallen_comrades  } prerequisite = { focus = LEC_CREATION_ending_romanticism  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = CNH_cultural_reformation_2
+		add_idea = CNH_cultural_reformation_3
+		}
+		}
 	}
 
 	#Translating Great Philosophical Minds
@@ -3081,6 +3331,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LEC_CREATION_honouring_our_fallen_comrades  } prerequisite = { focus = LEC_CREATION_ending_romanticism  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LEC_new_chinese
+		add_idea = LEC_new_chinese_1
+		}
+		}
 	}
 
 	#China Shall Sprint to the Future!
@@ -3094,6 +3350,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LEC_CREATION_resist_reactionary_thinking  } prerequisite = { focus = LEC_CREATION_translating_great_philosophical_minds  }
+		completion_reward = {
+		add_ideas = {
+		LEC_today_and_tomorrow
+		}
+		}
 	}
 
 }
