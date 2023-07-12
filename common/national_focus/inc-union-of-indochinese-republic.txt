@@ -32,13 +32,16 @@ focus_tree = {
 		icon = GFX_INC_declaration_of_independence-97131
 		x = 3
 		y = 1
-		cost = 1
+		cost = 0.4
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = INC_the_revolution_has_begun  }
 		completion_reward = {
 		country_event = viet.1
+		add_ideas = {
+		INC_indepen_war_0
+		}
 		}
 	}
 
@@ -48,7 +51,7 @@ focus_tree = {
 		icon = GFX_INC_learn_from_october_revolution-101118
 		x = 0
 		y = 4
-		cost = 2
+		cost = 1.7
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -71,6 +74,7 @@ focus_tree = {
 		prerequisite = { focus = INC_declaration_of_independence  }
 		completion_reward = {
 		country_event = inc_rework.0
+		add_manpower = 80000
 		}
 	}
 
@@ -152,7 +156,7 @@ focus_tree = {
 		icon = GFX_INC_rally_the_people-341
 		x = 0
 		y = 5
-		cost = 2
+		cost = 1.7
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -160,6 +164,10 @@ focus_tree = {
 		completion_reward = {
 		add_war_support = 0.25
 		add_manpower = 10000
+		swap_ideas  = {
+		remove_idea = INC_indepen_war_1
+		add_idea = INC_indepen_war_2
+		}
 		}
 	}
 
@@ -169,7 +177,7 @@ focus_tree = {
 		icon = GFX_INC_intenational_suppot-76254
 		x = 2
 		y = 4
-		cost = 2
+		cost = 1.7
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -4884,6 +4892,683 @@ focus_tree = {
 		}
 		}
 	
+	}
+	
+	focus = {
+		id = INCMIL_General_Van_Tien_Dung's_Reform
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 5.00
+		mutually_exclusive = {
+			focus = INCMIL_General_Nguyen_Chi_Thanh's_Reform
+		}
+		available = {
+			has_country_flag = INC_Army_Reform_Plan
+			is_subject = no
+		}
+		x = 83
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_General_Van_Tien_Dung's_Reform"
+			remove_ideas = INC_poor_army_idea_1
+			set_technology = {
+				trench_warfare = 1
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_GBP = yes
+			}
+		}
+	}
+
+	focus = {
+		id = INCMIL_Infiltration_Tactics
+		icon = GFX_focus_prc_infiltration
+		cost = 5.00
+		prerequisite = {
+			focus = INCMIL_General_Van_Tien_Dung's_Reform
+		}
+		x = 70
+		y = 1
+		relative_position_id = INC_General_Van_Tien_Dung's_Reform
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Infiltration_Tactics"
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_grand_battle_plan
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_The_Night_Belongs_to_Charlie
+		icon = GFX_goal_enlist_the_police
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Infiltration_Tactics
+		}
+		x = 68
+		y = 1
+		relative_position_id = INC_Infiltration_Tactics
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_The_Night_Belongs_to_Charlie"
+			add_ideas = INC_The_Night_Belongs_to_Charlie_idea
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_Concerntrated_Offensive
+		icon = GFX_goal_army_guy_2
+		cost = 5.00
+		prerequisite = {
+			focus = INCMIL_Infiltration_Tactics
+		}
+		x = 70
+		y = 1
+		relative_position_id = INC_Infiltration_Tactics
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Concerntrated_Offensive"
+			swap_ideas = {
+				remove_idea = INC_Guerilla_Tradition
+				add_idea = INC_Guerilla_Tradition_c
+			}
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_grand_battle_plan
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESISTANCE FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_Motorized_Assault
+		icon = GFX_goal_generic_army_motorized
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Concerntrated_Offensive
+		}
+		mutually_exclusive = {
+			focus = INCMIL_Commando_Assault
+		}
+		x = 68
+		y = 1
+		relative_position_id = INC_Concerntrated_Offensive
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Motorized_Assault"
+			add_tech_bonus = {
+				name = INC_Motorized_Assault
+				bonus = 1
+				uses = 1
+				category = motorized_equipment
+				category = cat_mechanized_equipment
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_General_Nguyen_Chi_Thanh's_Reform
+		icon = GFX_goal_generic_occupy_states_ongoing_war
+		cost = 5.00
+		mutually_exclusive = {
+			focus = INCMIL_General_Van_Tien_Dung's_Reform
+		}
+		available = {
+			has_country_flag = INC_Army_Reform_Plan
+			NOT = {has_country_flag = Nguyen_Chi_Thanh_dead}
+		}
+		x = 93
+		y = 0
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_General_Nguyen_Chi_Thanh's_Reform"
+			remove_ideas = INC_poor_army_idea_1
+			set_technology = {
+				mass_assault = 1
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 90
+			modifier = {
+				factor = 0
+				already_has_other_doctrine_MA = yes
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_Commando_Assault
+		icon = GFX_goal_generic_special_forces
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Concerntrated_Offensive
+		}
+		mutually_exclusive = {
+			focus = INCMIL_Motorized_Assault
+		}
+		x = 70
+		y = 1
+		relative_position_id = INC_Concerntrated_Offensive
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Commando_Assault"
+			add_tech_bonus = {
+				name = INC_Commando_Assault
+				bonus = 1
+				uses = 1
+				category = mountaineers_tech
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_General_Offensive_General_Uprising
+		icon = GFX_goal_conspiracy
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Motorized_Assault
+			focus = INCMIL_Commando_Assault
+		}
+		x = 71
+		y = 1
+		relative_position_id = INC_Motorized_Assault
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_General_Offensive_General_Uprising"
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_grand_battle_plan
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = INCMIL_Logistic_Centralization
+		icon = GFX_goal_national_arsenal
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_General_Van_Tien_Dung's_Reform
+			focus = INCMIL_General_Nguyen_Chi_Thanh's_Reform
+		}
+		x = 75
+		y = 1
+		relative_position_id = INC_General_Van_Tien_Dung's_Reform
+		ai_will_do = {
+			factor = 25
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Logistic_Centralization"
+			add_tech_bonus = {
+				name = INC_Logistic_Centralization
+				bonus = 0.5
+				uses = 1
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = INCMIL_Tunnel_Network
+		icon = GFX_goal_generic_construction2
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Logistic_Centralization
+		}
+		x = 68
+		y = 1
+		relative_position_id = INC_Logistic_Centralization
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Tunnel_Network"
+			add_ideas = INC_Tunnel_idea_1
+		}
+		search_filters = { FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+	focus = {
+		id = INCMIL_Ho_Chi_Minh_Trail
+		icon = GFX_goal_generic_seize_railway
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Tunnel_Network
+		}
+		x = 69
+		y = 1
+		relative_position_id = INC_Tunnel_Network
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Ho_Chi_Minh_Trail"
+			swap_ideas = {
+				remove_idea = INC_Tunnel_idea_1
+				add_idea = INC_Tunnel_idea_2
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_AIRFORCE_BONUS }
+	}
+	focus = {
+		id = INCMIL_Rifle_Standardization
+		icon = GFX_INC_army
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Logistic_Centralization
+		}
+		x = 70
+		y = 1
+		relative_position_id = INC_Logistic_Centralization
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Rifle_Standardization"
+			add_tech_bonus = {
+				name = INC_Rifle_Standardization
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = INCMIL_Artillery_Effort
+		icon = GFX_goal_generic_army_artillery2
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Rifle_Standardization
+		}
+		x = 69
+		y = 1
+		relative_position_id = INC_Rifle_Standardization
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Artillery_Effort"
+			add_tech_bonus = {
+				name = INC_Artillery_Effort
+				bonus = 1
+				uses = 1
+				category = artillery
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = INCMIL_Armored_unit_Experiment
+		icon = GFX_goal_generic_army_tanks
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Artillery_Effort
+		}
+		x = 70
+		y = 1
+		relative_position_id = INC_Artillery_Effort
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Armored_unit_Experiment"
+			add_tech_bonus = {
+				name = INC_Armored_unit_Experiment
+				bonus = 1
+				uses = 1
+				category = cat_light_armor
+				category = cat_medium_armor
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = INCMIL_Specialized_Support_Unit
+		icon = GFX_goal_bicycle_infantry
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Rifle_Standardization
+		}
+		x = 71
+		y = 1
+		relative_position_id = INC_Rifle_Standardization
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Specialized_Support_Unit"
+			add_tech_bonus = {
+				name = INC_Specialized_Support_Unit
+				bonus = 1
+				uses = 1
+				category = support_tech
+			}
+			set_technology = { bicycle_infantry = 1 }
+			hidden_effect = {
+
+				division_template = {
+					name = "Bo binh Xe dap"
+					division_names_group = INC_INF_01
+
+					regiments = {
+						bicycle_battalion = { x = 0 y = 0 }
+						bicycle_battalion = { x = 0 y = 1 }
+						bicycle_battalion = { x = 0 y = 2 }
+						bicycle_battalion = { x = 1 y = 0 }
+						bicycle_battalion = { x = 1 y = 1 }
+						bicycle_battalion = { x = 1 y = 2 }
+						bicycle_battalion = { x = 2 y = 0 }
+						bicycle_battalion = { x = 2 y = 1 }
+						bicycle_battalion = { x = 2 y = 2 }
+					}
+					support = {}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+	focus = {
+		id = INCMIL_Sapper_Tactics
+		icon = GFX_goal_NOR_secret_police
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Specialized_Support_Unit
+		}
+		x = 70
+		y = 1
+		relative_position_id = INC_Specialized_Support_Unit
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Sapper_Tactics"
+			custom_effect_tooltip = INC_improved_recon_units_tech
+			hidden_effect = {
+				set_technology = { improved_recon_units_tech = 1 popup = no }
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+	}
+
+	focus = {
+		id = INCMIL_Youth_Shock_Brigade
+		icon = GFX_goal_forced_inf
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Logistic_Centralization
+		}
+		x = 72
+		y = 1
+		relative_position_id = INC_Logistic_Centralization
+		ai_will_do = {
+			factor = 10
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Youth_Shock_Brigade"
+			add_ideas = INC_Youth_Shock_Brigade_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+	}
+	focus = {
+		id = INCMIL_Extensive_Women_Service
+		icon = GFX_INC_female_soldiers
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Youth_Shock_Brigade
+		}
+		x = 71
+		y = 1
+		relative_position_id = INC_Youth_Shock_Brigade
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = INC_Women_Liberation
+				has_country_flag = INC_Women_Liberation
+			}
+		}
+		ai_will_do = {
+			factor = 35
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Extensive_Women_Service"
+			set_rule = {
+				can_generate_female_aces = yes
+			}
+			swap_ideas = {
+				remove_idea = INC_Youth_Shock_Brigade_idea
+				add_idea = INC_Youth_Shock_Brigade_idea_x
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
+	}
+	focus = {
+		id = INCMIL_Guerilla_Tactics
+		icon = GFX_goal_Human_tsunam_1
+		cost = 5.00
+		prerequisite = {
+			focus = INCMIL_General_Nguyen_Chi_Thanh's_Reform
+		}
+		x = 70
+		y = 1
+		relative_position_id = INC_General_Nguyen_Chi_Thanh's_Reform
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Guerilla_Tactics"
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_mass_assault
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 15
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_Ambush_Focus
+		icon = GFX_goal_generic_more_territorial_claims
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Guerilla_Tactics
+		}
+		mutually_exclusive = {
+			focus = INCMIL_Harassment_Focus
+		}
+		x = 69
+		y = 1
+		relative_position_id = INC_Guerilla_Tactics
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Ambush_Focus"
+			swap_ideas = {
+				remove_idea = INC_Guerilla_Tradition
+				add_idea = INC_Guerilla_Tradition_b
+			}
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_mass_assault
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESISTANCE FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 2
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+
+	focus = {
+		id = INCMIL_Harassment_Focus
+		icon = GFX_goal_generic_major_war
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Guerilla_Tactics
+		}
+		mutually_exclusive = {
+			focus = INCMIL_Ambush_Focus
+		}
+		x = 71
+		y = 1
+		relative_position_id = INC_Guerilla_Tactics
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Harassment_Focus"
+			swap_ideas = {
+				remove_idea = INC_Guerilla_Tradition
+				add_idea = INC_Guerilla_Tradition_a
+			}
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_mass_assault
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESISTANCE FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 6
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+			modifier = {
+				factor = 3
+				date > 1937.6.1
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_Main_Force_Buildup
+		icon = GFX_goal_Human_tsunam_2
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Ambush_Focus
+			focus = INCMIL_Harassment_Focus
+		}
+		x = 71
+		y = 1
+		relative_position_id = INC_Ambush_Focus
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Main_Force_Buildup"
+			add_tech_bonus = {
+				name = INC_Main_Force_Buildup
+				bonus = 0.5
+				uses = 1
+				category = engineers_tech
+			}
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_mass_assault
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 12
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
+	}
+	focus = {
+		id = INCMIL_The_Tiger_and_the_Elephant
+		icon = GFX_goal_offensive_army
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Main_Force_Buildup
+		}
+		x = 72
+		y = 1
+		relative_position_id = INC_Main_Force_Buildup
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_The_Tiger_and_the_Elephant"
+			add_ideas = INC_Tiger_and_Elephant_idea
+		}
+		search_filters = { FOCUS_FILTER_ARMY_BONUS }
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = INCMIL_Mobile_Warfare
+		icon = GFX_human_tsunami
+		cost = 7
+		prerequisite = {
+			focus = INCMIL_Main_Force_Buildup
+		}
+		x = 70
+		y = 1
+		relative_position_id = INC_Main_Force_Buildup
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus INC_Mobile_Warfare"
+			add_doctrine_cost_reduction = {
+	name = land_doc_bonus
+	cost_reduction = 0.5
+	uses = 1
+	category = cat_mass_assault
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 3
+				has_war = yes
+			}
+		}
 	}
 
 }
