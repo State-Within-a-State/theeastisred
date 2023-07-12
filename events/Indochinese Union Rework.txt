@@ -4,7 +4,7 @@ country_event = {
 
 		id = indochina_rework.0
 		title = viet.1.t
-		desc = viet.1.d
+		desc = indochina_rework.0.desc
 		picture = "GFX_report_event_INC_vietnam"
 
 		
@@ -626,6 +626,8 @@ country_event = { # National Assembly
 	add_ideas = {
 	INC_congress_over
 	}
+	set_country_flag = INC_Army_Reform_Plan
+	
 	}
 	}
 	is_triggered_only = yes
@@ -650,9 +652,11 @@ country_event = { # National Assembly
 		}
 		set_country_flag = INC_Anarchist_Revolution
 		country_event = viet.21
+		drop_cosmetic_tag = yes
 	}
 	option = {
 		name = viet.6.b # Syndicalist
+		drop_cosmetic_tag = yes
 		ai_chance = {
 			factor = 30
 			modifier = {
@@ -676,6 +680,7 @@ country_event = { # National Assembly
 	}
 	option = {
 		name = viet.6.c # Vanguardist
+		drop_cosmetic_tag = yes
 		ai_chance = {
 			factor = 30
 			modifier = {
@@ -684,6 +689,13 @@ country_event = { # National Assembly
 				has_country_flag = vietnam_deadlock
 			}
 		}
+		create_country_leader = {
+					name = "Pham Van Dong"
+					desc = "POLITICS_PHAM_VAN_DONG_DESC"
+					picture = "gfx/leaders/INC/Portrait_INC_Pham_Van_Dong.png"
+					expire = "2000.4.29"
+					ideology = ho_chi_minh_thought_subtype
+				}
 		add_popularity = {
 			ideology = totalist
 			popularity = 0.1
@@ -833,13 +845,52 @@ country_event = { # Deal with Saigon European settlers
 				has_country_flag = INC_Full_Vanguardist
 			}
 		}
-		name = "Long Live Uncle Ho!"
+		name = "He Shall Wait For His Leadership Role"
 		custom_effect_tooltip = vanguard_influence_increase_tt
 		
 		 
         add_to_variable = {
                 var = hcm_inc
                 value = 3
+            }
+	}
+	
+	option = {
+		ai_chance = {
+			factor = 30
+			modifier = {
+				factor = 2
+				has_country_flag = INC_Full_Vanguardist
+			}
+		}
+		name = "May He Be the True Leader"
+		custom_effect_tooltip = vanguard_influence_increase_tt
+		set_cosmetic_tag = INC_Minh
+		 set_popularities = {
+					totalist = 48
+					radical_socialist = 22
+					syndicalist = 20
+					social_democrat = 5
+					social_liberal = 0
+					market_liberal = 0
+					social_conservative = 0
+					authoritarian_democrat = 0
+					paternal_autocrat = 0
+					national_populist = 5
+				}
+			create_country_leader = {
+				name = "Ho Chi Minh"
+				desc = "POLITICS_PHAM_VAN_DONG_DESC"
+				picture = "gfx/leaders/INC/Portrait_INC_Ho_Chi_Minh.png"
+				expire = "2000.4.29"
+				ideology = ho_chi_minh_thought_subtype
+			}
+		set_politics = {
+			ruling_party = totalist
+		}
+        add_to_variable = {
+                var = hcm_inc
+                value = 5
             }
 	}
 

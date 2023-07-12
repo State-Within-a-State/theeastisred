@@ -187,38 +187,42 @@ country_event = { #Nomination of the Republican Candidate
 	
 }
 
-country_event = {
+
+country_event = { #Nomination of the Republican Candidate
 	id = anarcho_china.6
-	immediate = {log = "[GetDateText]: [Root.GetName]: event redelection."}
+	title = "End of the Conference"
+	picture = "GFX_report_event_GXC_anarchist_succeed"
+	desc = "Now as we finish off the conference the results of our new leadership arrive..."
+
 	is_triggered_only = yes
-	hidden = yes
+
 	
-	immediate = {
-		if = {
-			limit = {
-				check_variable = { JIN_ANA > 5 }
-			}
-			country_event = anarcho_china.7
-		}
-		
-		if = {
-			limit = {
-				check_variable = { CAI_ANA > 5 }
-			}
-			country_event = postcommierevolt.9
-		}
-		
-		if = {
-			limit = {
-				check_variable = { SHI_ANA > 5 }
-			}
-			country_event = postcommierevolt.11
-		}
-		
-		
-		
-		
+
+	
+	
+	option = { #Cortes
+	name = "Ba Jin Wins"
+	trigger = {
+	check_variable = { JIN_ANA > 5 }
 	}
+		country_event = anarcho_china.7
+	}
+	option = { #Cortes
+	name = "Cai Yuanpai Wins"
+	trigger = {
+	check_variable = { CAI_ANA > 5 }
+	}
+		country_event = anarcho_china.8
+	}
+	option = { #Cortes
+	name = "Moralist Victory"
+	trigger = {
+	check_variable = { SHI_ANA > 5 }
+	}
+		country_event = anarcho_china.9
+	}
+
+	
 }
 
 country_event = { #Nomination of the Republican Candidate
