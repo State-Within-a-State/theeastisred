@@ -1,0 +1,706 @@
+focus_tree = {
+	id = taiwan-tree
+	continuous_focus_position = { x = -40 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = TAI
+		}
+	}
+	#The New Governor
+	focus = {
+		id = TAI_the_new_governor
+		icon = GFX_TAI_the_new_governor-248360
+		x = 5
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+	}
+
+	#Military Victory
+	focus = {
+		id = TAI_military_victory
+		icon = GFX_TAI_military_victory-248360
+		x = 1
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_the_new_governor  }
+		available = {
+		always = no
+		}
+	}
+
+	#Seiyukai Appointed
+	focus = {
+		id = TAI_seiyukai_appointed
+		icon = GFX_TAI_seiyukai_appointed-248360
+		x = 4
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_the_new_governor  }
+		available = {
+		always = no
+		}
+	}
+
+	#Minseito Hold
+	focus = {
+		id = TAI_minseito_hold
+		icon = GFX_TAI_minseito_hold-248360
+		x = 6
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_the_new_governor  }
+		available = {
+		always = no
+		}
+	}
+
+	#Determination For Home Rule
+	focus = {
+		id = TAI_determination_for_home_rule
+		icon = GFX_TAI_determination_for_home_rule-248360
+		x = 9
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_the_new_governor  }
+		available = {
+		always = no
+		}
+	}
+
+	#Fund the Assimilation Society
+	focus = {
+		id = TAI_fund_the_assimilation_society
+		icon = GFX_TAI_fund_the_assimilation_society-248360
+		x = 9
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAI_determination_for_home_rule  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+		}
+		add_stability = 0.05
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -5
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		}
+	}
+
+	#Starting the Land Reform
+	focus = {
+		id = TAI_starting_the_land_reform
+		icon = GFX_TAI_starting_the_land_reform-248360
+		x = 7
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_minseito_hold  focus = TAI_determination_for_home_rule  }
+		completion_reward = {
+		add_ideas = {
+		TWI_mild_land_reform
+		}
+		}
+	}
+
+	#Legacy of the Taiwan Exposition
+	focus = {
+		id = TAI_legacy_of_the_taiwan_exposition
+		icon = GFX_TAI_legacy_of_the_taiwan_exposition-248360
+		x = 5
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAI_seiyukai_appointed  focus = TAI_minseito_hold  }
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+	#Allow Greater Zaibatsu Freedoms
+	focus = {
+		id = TAI_allow_greater_zaibatsu_freedoms
+		icon = GFX_TAI_allow_greater_zaibatsu_freedoms-248360
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_military_victory  focus = TAI_seiyukai_appointed  }
+		completion_reward = {
+		524 = {
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
+	}
+
+	#Crush The Cultural Degeneration
+	focus = {
+		id = TAI_crush_the_cultural_degeneration
+		icon = GFX_TAI_crush_the_cultural_degeneration-248360
+		x = 1
+		y = 2
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAI_military_victory  }
+		completion_reward = {
+		add_stability = -0.05
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 5
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
+		
+	}
+
+	#Encourage Immigration
+	focus = {
+		id = TAI_encourage_immigration
+		icon = GFX_TAI_encourage_immigration-248360
+		x = 1
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TAI_allow_greater_zaibatsu_freedoms  } prerequisite = { focus = TAI_crush_the_cultural_degeneration  }
+		completion_reward = {
+		add_stability = -0.05
+		add_ideas = {
+		TWI_integration
+		}
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 5
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
+	}
+
+	#Greater Resource Extraction
+	focus = {
+		id = TAI_greater_resource_extraction
+		icon = GFX_TAI_greater_resource_extraction-248360
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_allow_greater_zaibatsu_freedoms  }
+		completion_reward = {
+		add_resource = {
+					type = rubber
+					amount = 25
+					state = 524
+				}
+		}
+	}
+
+	#Allowing Better Self Governance
+	focus = {
+		id = TAI_allowing_better_self_governance
+		icon = GFX_TAI_allowing_better_self_governance-248360
+		x = 5
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAI_legacy_of_the_taiwan_exposition  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -5
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		}
+	}
+
+	#Regulate Zaibatsu Influence
+	focus = {
+		id = TAI_regulate_zaibatsu_influence
+		icon = GFX_TAI_regulate_zaibatsu_influence-248360
+		x = 7
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_starting_the_land_reform  }
+		completion_reward = {
+		add_ideas = {
+		TWI_zaibatsu_regulation
+		}
+		}
+	}
+
+	#Empower a Provincial Assembly
+	focus = {
+		id = TAI_empower_a_provincial_assembly
+		icon = GFX_TAI_empower_a_provincial_assembly-248360
+		x = 9
+		y = 3
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_fund_the_assimilation_society  }
+		completion_reward = {
+		add_stability = 0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -15
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		}
+	}
+
+	#Win Over Chinese Nationalists
+	focus = {
+		id = TAI_win_over_chinese_nationalists
+		icon = GFX_TAI_win_over_chinese_nationalists-248360
+		x = 9
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAI_regulate_zaibatsu_influence  } prerequisite = { focus = TAI_empower_a_provincial_assembly  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 50
+		}
+	}
+
+	#The Great Cultural Pavilion
+	focus = {
+		id = TAI_the_great_cultural_pavilion
+		icon = GFX_TAI_the_great_cultural_pavilion-248360
+		x = 7
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAI_regulate_zaibatsu_influence  }
+		completion_reward = {
+		add_ideas = {
+		TWI_cultural_pavilion
+		}
+		}
+	}
+
+	#Colonial Harmony
+	focus = {
+		id = TAI_colonial_harmony
+		icon = GFX_TAI_colonial_harmony-248360
+		x = 5
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAI_allowing_better_self_governance  } prerequisite = { focus = TAI_regulate_zaibatsu_influence  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 10
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
+	}
+
+	#New Industrial Complexes
+	focus = {
+		id = TAI_new_industrial_complexes
+		icon = GFX_TAI_new_industrial_complexes-248360
+		x = 3
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_greater_resource_extraction  }
+		completion_reward = {
+		add_ideas = {
+		TWI_construction_buildup
+		}
+		}
+	}
+
+	#Empower the Kempeitai
+	focus = {
+		id = TAI_empower_the_kempeitai
+		icon = GFX_TAI_empower_the_kempeitai-248360
+		x = 1
+		y = 4
+		cost = 8
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAI_encourage_immigration  } prerequisite = { focus = TAI_greater_resource_extraction  }
+		completion_reward = {
+		add_ideas = {
+		TWI_kempeitai_raids
+		}
+		}
+	}
+
+	#For Imperial Glory
+	focus = {
+		id = TAI_for_imperial_glory
+		icon = GFX_TAI_for_imperial_glory-248360
+		x = 1
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_new_industrial_complexes  } prerequisite = { focus = TAI_empower_the_kempeitai  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 10
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		add_war_support = 0.05
+		}
+	}
+
+	#Side By Side We Go
+	focus = {
+		id = TAI_side_by_side_we_go
+		icon = GFX_TAI_side_by_side_we_go-248360
+		x = 5
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_the_great_cultural_pavilion  } prerequisite = { focus = TAI_colonial_harmony  focus = TAI_colonial_harmony  } prerequisite = { focus = TAI_new_industrial_complexes  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 10
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		add_war_support = 0.05
+		}
+	}
+
+	#Brothers In Arms
+	focus = {
+		id = TAI_brothers_in_arms
+		icon = GFX_TAI_brothers_in_arms-248360
+		x = 9
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_win_over_chinese_nationalists  } prerequisite = { focus = TAI_the_great_cultural_pavilion  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -15
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		add_stability = 0.05
+		
+		}
+	}
+
+	#A Stable Colony?
+	focus = {
+		id = TAI_astablecolony
+		icon = GFX_TAI_astablecolony-248360
+		x = 15
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+	}
+
+	#Doka
+	focus = {
+		id = TAI_doka
+		icon = GFX_TAI_doka-248360
+		x = 13
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_astablecolony  }
+	}
+
+	#Expand the Home Affairs Bureau
+	focus = {
+		id = TAI_expand_the_home_affairs_bureau
+		icon = GFX_TAI_expand_the_home_affairs_bureau-248360
+		x = 14
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_doka  } prerequisite = { focus = TAI_the_question_of_literary_societies  }
+	}
+
+	#Investing In Sanitation Systems
+	focus = {
+		id = TAI_investing_in_sanitation_systems
+		icon = GFX_TAI_investing_in_sanitation_systems-248360
+		x = 12
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_doka  }
+	}
+
+	#Increasing In Civilian Modes of Production
+	focus = {
+		id = TAI_increasing_in_civilian_modes_of_production
+		icon = GFX_TAI_increasing_in_civilian_modes_of_production-248360
+		x = 11
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_expand_the_home_affairs_bureau  } prerequisite = { focus = TAI_investing_in_sanitation_systems  }
+	}
+
+	#Railroad Construction
+	focus = {
+		id = TAI_railroad_construction
+		icon = GFX_TAI_railroad_construction-248360
+		x = 13
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_expand_the_home_affairs_bureau  } prerequisite = { focus = TAI_investing_in_sanitation_systems  }
+	}
+
+	#Expanding the Ports
+	focus = {
+		id = TAI_expanding_the_ports
+		icon = GFX_TAI_expanding_the_ports-248360
+		x = 13
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_railroad_construction  }
+	}
+
+	#Pushing Forward Zaibatsu Outsourcing
+	focus = {
+		id = TAI_pushing_forward_zaibatsu_outsourcing
+		icon = GFX_TAI_pushing_forward_zaibatsu_outsourcing-248360
+		x = 11
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_increasing_in_civilian_modes_of_production  }
+	}
+
+	#Defending Sugar Cane Production
+	focus = {
+		id = TAI_defending_sugar_cane_production
+		icon = GFX_TAI_defending_sugar_cane_production-248360
+		x = 12
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAI_expanding_the_ports  } prerequisite = { focus = TAI_pushing_forward_zaibatsu_outsourcing  }
+	}
+
+	#The Question of Literary Societies
+	focus = {
+		id = TAI_the_question_of_literary_societies
+		icon = GFX_TAI_the_question_of_literary_societies-248360
+		x = 15
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAI_astablecolony  }
+	}
+
+	#Sorting Out The  Autonomy Problem
+	focus = {
+		id = TAI_sortingouttheautonomyproblem
+		icon = GFX_TAI_sortingouttheautonomyproblem-248360
+		x = 17
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_astablecolony  }
+	}
+
+	#Allow For Integrated Politics
+	focus = {
+		id = TAI_allow_for_integrated_politics
+		icon = GFX_TAI_allow_for_integrated_politics-248360
+		x = 16
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAI_sortingouttheautonomyproblem  }
+		mutually_exclusive = { focus = TAI_transition_to_an_independent_parliament  }
+	}
+
+	#Transition To An Independent Parliament
+	focus = {
+		id = TAI_transition_to_an_independent_parliament
+		icon = GFX_TAI_transition_to_an_independent_parliament-248360
+		x = 18
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAI_sortingouttheautonomyproblem  }
+		mutually_exclusive = { focus = TAI_allow_for_integrated_politics  }
+	}
+
+	#Favour Japan's Way
+	focus = {
+		id = TAI_favourjapansway
+		icon = GFX_TAI_favourjapansway-248360
+		x = 17
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_allow_for_integrated_politics  focus = TAI_transition_to_an_independent_parliament  }
+		mutually_exclusive = { focus = TAI_continuing_the_civilian_period  }
+	}
+
+	#Continuing the Civilian Period
+	focus = {
+		id = TAI_continuing_the_civilian_period
+		icon = GFX_TAI_continuing_the_civilian_period-248360
+		x = 19
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_allow_for_integrated_politics  focus = TAI_transition_to_an_independent_parliament  }
+		mutually_exclusive = { focus = TAI_favourjapansway  }
+	}
+
+	#Desire For Great Freedom
+	focus = {
+		id = TAI_desire_for_great_freedom
+		icon = GFX_TAI_desire_for_great_freedom-248360
+		x = 19
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAI_continuing_the_civilian_period  }
+	}
+
+	#Questioning Autonomy
+	focus = {
+		id = TAI_questioning_autonomy
+		icon = GFX_TAI_questioning_autonomy-248360
+		x = 17
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAI_favourjapansway  }
+	}
+
+	#Settling the National Question
+	focus = {
+		id = TAI_settling_the_national_question
+		icon = GFX_TAI_settling_the_national_question-248360
+		x = 18
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAI_desire_for_great_freedom  focus = TAI_questioning_autonomy  }
+	}
+
+	#Understanding the New Literature Movement
+	focus = {
+		id = TAI_understanding_the_new_literature_movement
+		icon = GFX_TAI_understanding_the_new_literature_movement-248360
+		x = 15
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAI_expand_the_home_affairs_bureau  } prerequisite = { focus = TAI_the_question_of_literary_societies  }
+	}
+
+}
