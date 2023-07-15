@@ -459,9 +459,12 @@ focus_tree = {
 		icon = GFX_TAI_astablecolony-248360
 		x = 15
 		y = 0
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_STABILITY
+		}
+		bypass = {
+		has_idea = TWI_black_monday
 		}
 	}
 
@@ -476,6 +479,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAI_astablecolony  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = TWI_black_monday
+		add_idea = TWI_black_monday_1
+		}
+		}
 	}
 
 	#Expand the Home Affairs Bureau
@@ -489,6 +498,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAI_doka  } prerequisite = { focus = TAI_the_question_of_literary_societies  }
+		completion_reward = {
+		add_political_power = 50
+		}
 	}
 
 	#Investing In Sanitation Systems
@@ -502,6 +514,20 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAI_doka  }
+		completion_reward = {
+		524 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
 	}
 
 	#Increasing In Civilian Modes of Production
@@ -515,6 +541,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAI_expand_the_home_affairs_bureau  } prerequisite = { focus = TAI_investing_in_sanitation_systems  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = TWI_black_monday_1
+		add_idea = TWI_black_monday_2
+		}
+		}
 	}
 
 	#Railroad Construction
@@ -528,6 +560,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAI_expand_the_home_affairs_bureau  } prerequisite = { focus = TAI_investing_in_sanitation_systems  }
+		completion_reward = {
+		add_ideas = {
+		TWI_rail_way_construction
+		}
+		}
 	}
 
 	#Expanding the Ports
@@ -541,6 +578,20 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAI_railroad_construction  }
+		completion_reward = {
+		524 = {
+		add_building_construction = {
+					type = naval_base
+					level = 2
+					instant_build = yes
+				}
+			add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+		}
+		}
 	}
 
 	#Pushing Forward Zaibatsu Outsourcing
@@ -554,6 +605,25 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAI_increasing_in_civilian_modes_of_production  }
+		completion_reward = {
+		524 = {
+		add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+		}
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 5
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
 	}
 
 	#Defending Sugar Cane Production
@@ -567,6 +637,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAI_expanding_the_ports  } prerequisite = { focus = TAI_pushing_forward_zaibatsu_outsourcing  }
+		completion_reward = {
+		add_ideas = {
+		TWI_defend_sugar
+		}
+		}
 	}
 
 	#The Question of Literary Societies
@@ -580,6 +655,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAI_astablecolony  }
+		completion_reward = {
+		country_event = {
+		id = taiwan.4
+		days = 3
+		}
+		}
 	}
 
 	#Sorting Out The  Autonomy Problem
@@ -593,6 +674,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAI_astablecolony  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Allow For Integrated Politics
@@ -607,6 +691,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = TAI_sortingouttheautonomyproblem  }
 		mutually_exclusive = { focus = TAI_transition_to_an_independent_parliament  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 5
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
 	}
 
 	#Transition To An Independent Parliament
@@ -621,6 +712,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = TAI_sortingouttheautonomyproblem  }
 		mutually_exclusive = { focus = TAI_allow_for_integrated_politics  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -5
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		}
 	}
 
 	#Favour Japan's Way
@@ -635,6 +733,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = TAI_allow_for_integrated_politics  focus = TAI_transition_to_an_independent_parliament  }
 		mutually_exclusive = { focus = TAI_continuing_the_civilian_period  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 5
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
 	}
 
 	#Continuing the Civilian Period
@@ -649,6 +754,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = TAI_allow_for_integrated_politics  focus = TAI_transition_to_an_independent_parliament  }
 		mutually_exclusive = { focus = TAI_favourjapansway  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -5
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		}
 	}
 
 	#Desire For Great Freedom
@@ -662,6 +774,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TAI_continuing_the_civilian_period  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -5
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		}
 	}
 
 	#Questioning Autonomy
@@ -675,6 +794,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TAI_favourjapansway  }
+		completion_reward = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 5
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
 	}
 
 	#Settling the National Question
@@ -688,6 +814,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAI_desire_for_great_freedom  focus = TAI_questioning_autonomy  }
+		
 	}
 
 	#Understanding the New Literature Movement
@@ -701,6 +828,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAI_expand_the_home_affairs_bureau  } prerequisite = { focus = TAI_the_question_of_literary_societies  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 }
