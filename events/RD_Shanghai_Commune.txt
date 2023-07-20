@@ -7,6 +7,7 @@
 add_namespace = lu_xun
 add_namespace = shanghai_revolution
 add_namespace = shanghai_uprisings
+add_namespace = shanghai_revolution_chaos
 
 country_event = { # Introduction
 	id = shanghai_revolution.0
@@ -791,7 +792,7 @@ country_event = { # Introduction
 		}
 		create_country_leader = {
 			name = "Zhang Chunqiao"
-			desc = "ZHOU_YANG_DESC"
+			desc = "ZHANG_CHUNQIAO_POLITICS_DESC"
 			picture = "gfx/leaders/LEC/Portrait_LEC_Zhang_Chunqiao.png"
 			expire = "1988.11.19"
 			ideology = mao_zedong_thought_subtype
@@ -819,7 +820,7 @@ country_event = { # Introduction
 		set_politics = { ruling_party = totalist }
 		create_country_leader = {
 			name = "Kang Sheng"
-			desc = "DING_LING_DESC"
+			desc = "KANG_SHENG_POLITICS_DESC"
 			picture = "gfx/leaders/LEC/Portrait_LEC_Kang_Sheng.png"
 			expire = "1988.11.19"
 			ideology = socialist_security_state_subtype
@@ -845,7 +846,7 @@ country_event = { # Introduction
 
 	option = {
 		name = "Guo Moruo Shall Guide Us"
-		set_cosmetic_tag = LEC_MAO
+		set_cosmetic_tag = LEC_CREATE
 		complete_national_focus = LEC_CREATION_moruosstand
 		remove_ideas = {
 		LEC_communal_council_hog_rso
@@ -875,7 +876,7 @@ country_event = { # Introduction
 	option = {
 		name = "Yu Dafu Proclaims Leadership"
 		complete_national_focus = LEC_CREATION_yu_dafu_heads_our_revolutionary_culture
-		set_cosmetic_tag = LEC_DAFU
+		set_cosmetic_tag = LEC_CREATE
 		remove_ideas = {
 		LEC_communal_council_hog_rso
 		LEC_communal_council_eco_rso
@@ -1492,6 +1493,517 @@ country_event = { # Introduction
 		}
 		}
 	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.0
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Who Is Your Friend? Who Is Your Enemy?"
+	desc = shanghai_revolution_chaos.0.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Distinguish Friends From Enemies!"
+		
+	}
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "The Jiang Qing Question"
+	desc = shanghai_revolution_chaos.1.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "She Is Connected to the Gangs! Struggle Session For Her!"
+		set_country_flag = jiang_qing_dead
+	}
+	
+	option = {
+		name = "Jiang Qing Is a True Revolutionary That Must Be Embraced!"
+		set_country_flag = jiang_qing_not_dead
+	}
+	
+	
+}
+
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "The National Notification"
+	immediate = {
+	set_variable = {
+    var = cultural_revolution_progress
+    value = 5
+    tooltip = cultural_revolution_progress_increase_tt
+		}
+	}
+	
+	desc = {
+		text = shanghai_revolution_chaos.2.zhang
+		trigger = {
+			has_country_leader = {
+			name = "Zhang Chunqiao"
+			ruling_only = yes
+			}
+		}
+	}
+	desc = {
+		text = shanghai_revolution_chaos.2.kang
+		trigger = {
+			has_country_leader = {
+			name = "Kang Sheng"
+			ruling_only = yes
+			}
+		}
+	}
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Geming Wansui!"
+		set_country_flag = cultural_revolution
+	}
+	
+	
+	
+	
+}
+
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.3
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Bombarding the Head Quarters"
+	
+	desc = {
+		text = shanghai_revolution_chaos.3.zhang
+		trigger = {
+			has_country_leader = {
+			name = "Zhang Chunqiao"
+			ruling_only = yes
+			}
+		}
+	}
+	desc = {
+		text = shanghai_revolution_chaos.3.kang
+		trigger = {
+			has_country_leader = {
+			name = "Kang Sheng"
+			ruling_only = yes
+			}
+		}
+	}
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Paoda Silingbu!"
+		country_event = {
+		id = shanghai_revolution_chaos.4
+		days = 20
+		}
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		add_stability = -0.01
+		add_war_support = 0.01
+		add_political_power = 10
+	}
+	
+	
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.4
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Crowds Storm Zhou Yang's Residence"
+	desc = shanghai_revolution_chaos.4.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Crush This Reactionary!"
+		country_event = {
+		id = shanghai_revolution_chaos.5
+		days = 20
+		}
+		set_country_flag = zhou_yang_purge
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		add_stability = -0.01
+		add_war_support = 0.01
+		add_political_power = 10
+	}
+	
+	option = {
+		name = "Let Him Go, and Give Him Protections"
+		country_event = {
+		id = shanghai_revolution_chaos.5
+		days = 20
+		}
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = -5
+				tooltip = cultural_revolution_progress_decrease_tt
+			}
+		add_stability = 0.01
+		add_war_support = -0.01
+		add_political_power = -10
+	}
+	
+	
+}
+
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.5
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Ding Ling Criticized"
+	desc = shanghai_revolution_chaos.5.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Crush This Reactionary!"
+		
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		add_stability = -0.025
+		add_war_support = 0.025
+		add_political_power = 10
+		add_popularity = {
+		ideology = ROOT 
+		popularity = 0.025
+		}
+		add_popularity = {
+		ideology = radical_socialist 
+		popularity = -0.01
+		}
+		
+	}
+	
+	option = {
+		name = "Let Her Go, and Give Her Protections"
+		
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = -5
+				tooltip = cultural_revolution_progress_decrease_tt
+			}
+		add_stability = 0.025
+		add_war_support = -0.025
+		add_political_power = -10
+		add_popularity = {
+		ideology = ROOT 
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = radical_socialist 
+		popularity = 0.01
+		}
+	}
+	
+	
+}
+
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.6
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Criticize the Four Olds"
+	desc = shanghai_revolution_chaos.6.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Replace the Four Olds With the Four News"
+		
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		add_stability = -0.025
+		add_war_support = 0.025
+		add_political_power = 10
+		set_country_flag = four_old_attack
+		
+	}
+	
+	
+	
+	
+}
+
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.7
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Same Guarding Some Old Relics"
+	desc = shanghai_revolution_chaos.7.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Well It is Somewhat Needed"
+		
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = -15
+				tooltip = cultural_revolution_progress_decrease_tt
+			}
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_political_power = -50
+		
+	}
+	
+	
+	
+	
+}
+
+
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.8
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Attacking the Syndicalists"
+	desc = shanghai_revolution_chaos.8.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Crush these Revisionists!"
+		
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		
+		
+	}
+	
+	
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.9
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Red Theatre & Cinema"
+	desc = shanghai_revolution_chaos.9.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "The Red Theatre Forever!"
+		
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		add_stability = 0.05
+		add_ideas = {
+		LEC_revolutionary_theatre
+		}
+		
+	}
+	
+	
+	
+	
+}
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.10
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Questions Raised About Lu Xun"
+	desc = shanghai_revolution_chaos.10.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "He Is Not a Reactionary! Purge Zhou Yang!"
+		
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		add_stability = 0.025
+		add_war_support = 0.025
+		add_political_power = 10
+		add_popularity = {
+		ideology = ROOT 
+		popularity = 0.025
+		}
+		add_popularity = {
+		ideology = radical_socialist 
+		popularity = -0.01
+		}
+		
+	}
+	
+	option = {
+		name = "He Is a Reactionary! Heed Zhou Yang's Warning!"
+		trigger = {
+		NOT = {
+		has_country_flag = zhou_yang_purge
+		}
+		}
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = -5
+				tooltip = cultural_revolution_progress_decrease_tt
+			}
+		add_stability = -0.025
+		add_war_support = -0.025
+		add_political_power = -10
+		add_popularity = {
+		ideology = ROOT 
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = radical_socialist 
+		popularity = 0.01
+		}
+	}
+	
+	
+}
+
+
+country_event = { # Introduction
+	id = shanghai_revolution_chaos.11
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Aftermath of the Cultural Revolution"
+	desc = shanghai_revolution_chaos.11.desc 
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "A Revolution That is a Success, May We Go Forth On Our Great Road!"
+		trigger = {
+		AND = {
+		has_country_leader = {
+			name = "Zhang Chunqiao"
+			ruling_only = yes
+			}
+		check_variable = { cultural_revolution_progress > 49 }
+		}
+		}
+		add_popularity = {
+		ideology = radical_socialist 
+		popularity = 0.25
+		}
+		add_stability = 0.5
+		add_war_support = 0.75
+		add_political_power = 300
+		
+	}
+	option = {
+		name = "Securing China, We Have Done. The Masses Secured, They Are"
+		trigger = {
+		AND = {
+		has_country_leader = {
+			name = "Kang Sheng"
+			ruling_only = yes
+			}
+		check_variable = { cultural_revolution_progress > 49 }
+		}
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.25
+		}
+		add_stability = 0.5
+		add_war_support = 0.75
+		add_political_power = 300
+		
+	}
+	
+	option = {
+		name = "We Have Failled"
+		trigger = {
+		check_variable = { cultural_revolution_progress < 50 }
+		}
+		add_popularity = {
+		ideology = ROOT
+		popularity = -0.25
+		}
+		add_stability = -0.5
+		add_war_support = -0.75
+		add_political_power = -300
+		
+	}
+	
 	
 	
 }

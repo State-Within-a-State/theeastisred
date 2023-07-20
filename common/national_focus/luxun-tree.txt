@@ -3371,6 +3371,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = LEC_AGRARIAN_revolutionize_the_theatre  } prerequisite = { focus = LEC_AGRARIAN_loyalty_to_ideology  }
+		completion_reward = {
+		add_ideas = {
+		LEC_purging_reactionaries_0
+		}
+		}
 	}
 
 	#The Revolution Shall Start A New
@@ -3385,6 +3390,9 @@ focus_tree = {
 		}
 		
 		prerequisite = { focus = LEC_AGRARIAN_kangsbenevolence  }
+		completion_reward = {
+		add_political_power = 50
+		}
 	}
 
 	#Zhang's Revolution
@@ -3436,7 +3444,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		
+		always = no
 		}
 	}
 
@@ -3464,6 +3472,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_collectivism_is_our_goal  }
+		completion_reward = {
+		add_ideas = {
+		LEC_peoples_revolution_zhang
+		}
+		}
 	}
 
 	#Support the Peasants
@@ -3477,6 +3490,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_socialist_economic_reforms  }
+		completion_reward = {
+		unlock_decision_category_tooltip = LEC_land_reform_decision_category 
+		}
 	}
 
 	#The Birth of People's Communes
@@ -3490,6 +3506,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_collectivism_is_our_goal  }
+		completion_reward = {
+		unlock_decision_category_tooltip = LEC_peoples_communes_formation_decision_category
+		}
 	}
 
 	#Who is a Friend? Who is an Enemy?
@@ -3503,6 +3522,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LEC_AGRARIAN_replacing_with_revolution  }
+		completion_reward = {
+		country_event = shanghai_revolution_chaos.0
+		}
 	}
 
 	#We Are Model Workers
@@ -3516,6 +3538,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LEC_AGRARIAN_challenge_the_traditionalist_mantle  }
+		completion_reward = {
+		add_ideas = {
+		LEC_we_workers_have_power
+		}
+		}
 	}
 
 	#Form The Shanghai Revolutionary Guard
@@ -3529,6 +3556,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = LEC_AGRARIAN_challenge_the_traditionalist_mantle  }
+		completion_reward = {
+		add_ideas = {
+		LEC_red_guards_shanghai
+		}
+		}
 	}
 
 	#Promotion of the Anti Confucian Movement
@@ -3542,6 +3574,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_partner_with_zhou_yang  } prerequisite = { focus = LEC_AGRARIAN_papers_gone_red  }
+		completion_reward = {
+		unlock_decision_category_tooltip = LEC_criticize_confucius_decision_category
+		}
 	}
 
 	#Birth of a Planned Economy
@@ -3555,6 +3590,46 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_seize_the_foreign_concessions  }
+		completion_reward = {
+		if = {
+		limit = {
+		has_idea = LEC_economic_recovery_0
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_0
+		add_idea = LEC_planned_economy_0
+		}
+		}
+		else_if = {
+		limit = {
+		has_idea = LEC_economic_recovery_1
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_1
+		add_idea = LEC_planned_economy_0
+		}
+		}
+		
+		else = {
+		limit = {
+		has_idea = LEC_economic_recovery_2
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_2
+		add_idea = LEC_planned_economy_0
+		}
+		}
+		
+		if = {
+		limit = {
+		has_idea = LEC_economic_recovery_3
+		}
+		swap_ideas = {
+		remove_idea = LEC_economic_recovery_3
+		add_idea = LEC_planned_economy_0
+		}
+		}
+		}
 	}
 
 	#Tear Down the Criminal Empires
@@ -3568,6 +3643,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_the_revolution_of_culture  } prerequisite = { focus = LEC_AGRARIAN_safe_guard_old_relics  }
+		completion_reward = {
+		add_stability = 0.1
+		country_event = shanghai_revolution_chaos.1
+		}
 	}
 
 	#Denounce KMT Moderates
@@ -3581,6 +3660,12 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = LEC_AGRARIAN_the_revolution_of_culture  } prerequisite = { focus = LEC_AGRARIAN_safe_guard_old_relics  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		}
 	}
 
 	#Socialist Economic Reforms
@@ -3594,6 +3679,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_zhangsrevolution  focus = LEC_AGRARIAN_kangsbenevolence  }
+		completion_reward = {
+		add_ideas = {
+		LEC_new_economic_forum
+		}
+		}
 	}
 
 	#Challenge the Traditionalist Mantle
@@ -3607,6 +3697,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_AGRARIAN_zhangsrevolution  }
+		completion_reward = {
+		custom_effect_tooltip = cultural_revolution_will_start_tt
+		hidden_effect = {
+		country_event = shanghai_revolution_chaos.2
+		}
+		}
 	}
 
 	#Raise the Urban Proletariat
@@ -3620,6 +3716,25 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_socialist_economic_reforms  }
+		completion_reward = {
+		743 = {
+		add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+		add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+		add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+		}
+		}
 	}
 
 	#Purging Old Culture
@@ -3633,6 +3748,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_the_revolution_shall_start_a_new  }
+		completion_reward = {
+		custom_effect_tooltip = purge_old_culture_tt
+		}
 	}
 
 	#The Revolution of Culture
@@ -3646,6 +3764,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = LEC_AGRARIAN_purging_old_culture  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Safe Guard Old Relics
@@ -3659,6 +3780,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_AGRARIAN_purging_old_culture  }
+		completion_reward = {
+		country_event = shanghai_revolution_chaos.7
+		}
 	}
 
 	#Seize the Foreign Concessions
@@ -3672,6 +3796,10 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_raise_the_urban_proletariat  } prerequisite = { focus = LEC_AGRARIAN_support_the_peasants  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_stability = 0.1
+		}
 	}
 
 	#Partner With Zhou Yang
@@ -3684,7 +3812,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		bypass = {
+		has_country_flag = zhou_yang_purge
+		}
 		prerequisite = { focus = LEC_AGRARIAN_form_the_shanghai_revolutionary_guard  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.05
+		}
+		}
 	}
 
 	#Papers Gone Red
@@ -3698,6 +3835,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_AGRARIAN_we_are_model_workers  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.05
+		}
+		}
 	}
 
 	#The Syndicalist Question
@@ -3711,6 +3855,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LEC_AGRARIAN_the_revolution_of_culture  } prerequisite = { focus = LEC_AGRARIAN_safe_guard_old_relics  }
+		completion_reward = {
+		country_event = shanghai_revolution_chaos.8
+		}
 	}
 
 	#Revolutionize the Theatre
@@ -3724,6 +3871,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_AGRARIAN_tear_down_the_criminal_empires  } prerequisite = { focus = LEC_AGRARIAN_denounce_kmt_moderates  } prerequisite = { focus = LEC_AGRARIAN_the_syndicalist_question  }
+		completion_reward = {
+		country_event = shanghai_revolution_chaos.9
+		}
 	}
 
 	#Loyalty To Ideology
@@ -3737,6 +3887,18 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_AGRARIAN_tear_down_the_criminal_empires  } prerequisite = { focus = LEC_AGRARIAN_denounce_kmt_moderates  } prerequisite = { focus = LEC_AGRARIAN_the_syndicalist_question  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.2
+		}
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		}
 	}
 
 	#Replacing With Revolution
@@ -3750,6 +3912,18 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_AGRARIAN_promotion_of_the_anti_confucian_movement  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.2
+		}
+		add_to_variable = {
+				var = cultural_revolution_progress
+				value = 5
+				tooltip = cultural_revolution_progress_increase_tt
+			}
+		}
 	}
 
 	#Collectivism is Our Goal
@@ -3763,6 +3937,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_birth_of_a_planned_economy  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = LEC_planned_economy_0
+		add_idea = LEC_planned_economy_1
+		}
+		}
 	}
 
 	#The Lu Xun Debate
@@ -3776,6 +3956,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_AGRARIAN_promotion_of_the_anti_confucian_movement  }
+		completion_reward = {
+		country_event = shanghai_revolution_chaos.10
+		}
 	}
 
 	#Purge the Internal Traitors
@@ -3789,6 +3972,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = LEC_AGRARIAN_bullets_for_reactionaries  }
+		completion_reward = {
+		add_ideas = {
+		LEC_internal_purge
+		}
+		}
 	}
 
 	#Crush the Drug Trade
@@ -3802,6 +3990,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = LEC_AGRARIAN_forwardthepeoplesindustry  } prerequisite = { focus = LEC_AGRARIAN_thebirthofpeoplescommunes  }
+		completion_reward = {
+		add_ideas = {
+		LEC_drugs_stopped
+		}
+		}
 	}
 
 	#Forward Revolutionary Women!
@@ -3815,6 +4008,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = LEC_AGRARIAN_whoisafriendwhoisanenemy  } prerequisite = { focus = LEC_AGRARIAN_revolutionize_the_opera  }
+		completion_reward = {
+		add_ideas = {
+		LEC_women_of_revolution
+		}
+		}
 	}
 
 	#Promotion of the True Workers Revolution!
@@ -3828,6 +4026,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_AGRARIAN_crush_the_drug_trade  } prerequisite = { focus = LEC_AGRARIAN_forwardrevolutionarywomen  }
+		completion_reward = {
+		country_event = shanghai_revolution_chaos.11
+		}
 	}
 
 	#Shehui Zhuyi Hao!
@@ -3841,6 +4042,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = LEC_AGRARIAN_purge_the_internal_traitors  } prerequisite = { focus = LEC_AGRARIAN_crush_the_drug_trade  }
+		completion_reward = {
+		country_event = shanghai_revolution_chaos.11
+		}
 	}
 
 }
