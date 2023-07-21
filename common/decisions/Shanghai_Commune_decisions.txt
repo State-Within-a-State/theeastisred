@@ -1285,7 +1285,7 @@ LEC_prepare_uprising_in_huaisi = {
 			has_completed_focus = LECFOR_arise_in_south
 		}
 		cost = 10
-		targets = {  GXC HNN }
+		targets = {  GXC  }
 		target_trigger = {
 			FROM = { exists = yes }
 			NOT = {
@@ -1325,7 +1325,7 @@ LEC_prepare_uprising_in_huaisi = {
 			has_completed_focus = LECFOR_arise_in_south
 		}
 		cost = 10
-		targets = {  SZC YUN }
+		targets = {  SZC  }
 		target_trigger = {
 			FROM = { exists = yes }
 			NOT = {
@@ -1367,7 +1367,7 @@ LEC_prepare_uprising_in_huaisi = {
 			has_completed_focus = LECFOR_arisecomradesinthenorth
 		}
 		cost = 10
-		targets = {  QIE SHX }
+		targets = {  QIE  }
 		target_trigger = {
 			FROM = { exists = yes }
 			NOT = {
@@ -1478,19 +1478,7 @@ LEC_prepare_uprising_in_huaisi = {
 			AND = {
 			has_completed_focus = LECFOR_deal_with_the_shandong_devils
 			has_completed_focus = LECFOR_the_thunder_clap_of_peasant_up_roar_in_nanjing
-			SQI = {
-			OR = {
-			NOT = {
-			has_governemnt = totalist
-			}
-			NOT = {
-			has_governemnt = syndicalist
-			}
-			NOT = {
-			has_governemnt = radical_socialist
-			}
-			}
-			}
+			
 			}
 		}
 		
@@ -1521,6 +1509,47 @@ LEC_prepare_uprising_in_huaisi = {
 		}
 	}
 	
+	
+	LEC_attack_shanxi = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			has_completed_focus = LECFOR_arisecomradesinthenorth
+			has_completed_focus = LECFOR_the_thunder_clap_of_peasant_up_roar_in_nanjing
+			
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_arisecomradesinthenorth
+		}
+		cost = 10
+		targets = { SHX }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			
+		}
+	}
+	
+	
+	
 	LEC_secure_western_china = {
 		icon = socialist_uprising_shanghai_icon
 		
@@ -1537,7 +1566,45 @@ LEC_prepare_uprising_in_huaisi = {
 			has_completed_focus = LECFOR_the_west_china_debate
 		}
 		cost = 10
-		targets = {  XSM ETS SIK TAN TIB }
+		targets = {  XSM ETS SIK TAN TIB MON }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = { target = FROM type = annex_everything }
+			
+		}
+	}
+	
+	LEC_secure_southernern_china = {
+		icon = socialist_uprising_shanghai_icon
+		
+		available = {
+			AND = {
+			has_completed_focus = LECFOR_arise_in_south
+			has_completed_focus = LECFOR_the_thunder_clap_of_peasant_up_roar_in_nanjing
+			
+			}
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LECFOR_arise_in_south
+		}
+		cost = 10
+		targets = { YUN HNN }
 		target_trigger = {
 			FROM = { exists = yes }
 			NOT = {
@@ -2955,3 +3022,4 @@ LEC_alignment_integration_category = {
 		}
 	}
 }
+

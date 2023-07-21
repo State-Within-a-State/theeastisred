@@ -716,7 +716,62 @@ focus_tree = {
 		prerequisite = { focus = LECFOR_the_west_china_debate  } prerequisite = { focus = LECFOR_northern_china_secured  }
 		completion_reward = {
 		custom_effect_tooltip = prepare_china_recover_tt
+		if = {
+		limit = {
 		
+		has_country_leader = {
+		name = "Zhou Yang"
+		ruling_only = yes
+		}
+		}
+		set_cosmetic_tag = LEC_REP_ZHOUYANG
+		}
+		if = {
+		limit = {
+		
+		has_country_leader = {
+		name = "Ruo Shi"
+		ruling_only = yes
+		}
+		}
+		set_cosmetic_tag = LEC_REP_RUOSHI
+		}
+		
+		if = {
+		limit = {
+		
+		has_country_leader = {
+		name = "Ding Ling"
+		ruling_only = yes
+		}
+		}
+		set_cosmetic_tag = LEC_DNGLNG
+		}
+		
+		if = {
+		limit = {
+		
+		has_country_leader = {
+		name = "Qu Qiubai"
+		ruling_only = yes
+		}
+		}
+		set_cosmetic_tag = LEC_REP_QIUBAI
+		}
+		
+		if = {
+		limit = {
+		has_cosmetic_tag = LEC_CREATE
+		}
+		set_cosmetic_tag = LEC_REP_CREATE
+		}
+		
+		if = {
+		limit = {
+		has_cosmetic_tag = LEC_AGRARIAN
+		}
+		set_cosmetic_tag = LEC_REP_AGRARIAN
+		}
 		}
 	}
 
@@ -736,6 +791,11 @@ focus_tree = {
 		prerequisite = { focus = LECFOR_motorized_approach  } prerequisite = { focus = LECFOR_arisecomradesinthenorth  }
 		completion_reward = {
 		add_political_power = 100
+		custom_effect_tooltip = LEC_integration_time_down_tt
+		hidden_effect = {
+			add_to_variable = { LEC.kr_china_provinceintegration_speed = -20 }
+			add_to_variable = { LEC.kr_china_concessionintegration_speed = -15 }
+		}
 		}
 	}
 
@@ -2909,6 +2969,7 @@ focus_tree = {
 					owns_state = 748
 					owns_state = 322
 					owns_state = 1086
+					owns_state = 524
 					}
 					
 					AND = {
@@ -2924,6 +2985,10 @@ focus_tree = {
 					FNG = {
 					is_puppet_of = LEC
 					}
+					
+					TWI = {
+					is_puppet_of = LEC
+					}
 					}
 					}
 				}
@@ -2934,6 +2999,7 @@ focus_tree = {
 		release = FNG
 		release = SIK
 		release = TIB
+		release = TWI
 		puppet = {
 				target = MON
 				end_wars = yes
@@ -2950,6 +3016,10 @@ focus_tree = {
 				target = TIB
 				end_wars = yes
 			}
+		puppet = {
+				target = TWI
+				end_wars = yes
+			}
 			
 		TIB = {
 		set_cosmetic_tag = TIB_LECREVOLUTION
@@ -2962,6 +3032,9 @@ focus_tree = {
 		}
 		FNG = {
 		set_cosmetic_tag = FNG_LECREVOLUTION
+		}
+		TWI = {
+		set_cosmetic_tag = TWI_LECREVOLUTION
 		}
 		}
 	}
