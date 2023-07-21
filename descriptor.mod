@@ -1,13 +1,9 @@
-name="Kaiserredux - A Rising Dragon"
-version="0.01"
+version="0.1"
+tags={
+	"Alternative History"
+}
+name="rising_dragon_dev"
+supported_version="1.12.14"
 dependencies={
 	"Kaiserredux: A Kaiserreich Expansion"
 }
-tags={
-	"Alternative History"
-	"Events"
-	"Gameplay"
-	"National Focuses"
-}
-supported_version="1.12.*"
-remote_file_id="2797023884"
