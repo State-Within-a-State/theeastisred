@@ -396,7 +396,7 @@ focus_tree = {
 		icon = GFX_LUXUN_in_memory_of_fallen_our_comrade-248360
 		x = 11
 		y = 6
-		cost = 20
+		cost = 12.8
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -439,7 +439,27 @@ focus_tree = {
 		available = {
 		custom_trigger_tooltip = {
 					tooltip = secured_shanghai_tt		
-					has_country_flag = shanghai_revolution_secured
+					OR = {
+					AND = {
+					has_country_flag = tianjin_revolution_secured
+					has_country_flag = hongkong_revolution_secured
+					}
+					
+					AND = {
+					has_country_flag = tianjin_revolution_failled
+					has_country_flag = hongkong_revolution_failled
+					}
+					
+					AND = {
+					has_country_flag = tianjin_revolution_secured
+					has_country_flag = hongkong_revolution_failled
+					}
+					
+					AND = {
+					has_country_flag = tianjin_revolution_failled
+					has_country_flag = hongkong_revolution_secured
+					}
+					}
 				}
 		}
 		completion_reward = {
@@ -3532,6 +3552,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = LEC_AGRARIAN_the_lu_xun_debate  } prerequisite = { focus = LEC_AGRARIAN_replacing_with_revolution  }
+		completion_reward = {
+		country_event = shanghai_revolution_chaos.9
+		}
 	}
 
 	#Forward the People's Industry
