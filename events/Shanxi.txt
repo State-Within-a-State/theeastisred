@@ -444,7 +444,7 @@ country_event = {
 				SHX_feng_is_winning_trigger = yes
 			}
 		}
-		trigger = { has_character = SHX_feng_yuxiang } #So if you already purged Yan, you have one option
+		trigger = { has_idea = SHX_feng_yuxiang_hog_rso } #So if you already purged Yan, you have one option
 		add_ideas = SHX_guominjun_commissars_idea
 		add_popularity = {
 			ideology = radical_socialist
@@ -749,7 +749,9 @@ country_event = {
 		}
 		if = {
 			limit = {
-				SHX_feng_sizhi = { is_political_advisor = no }
+				NOT = {
+				has_idea = SHX_Feng_Sizhi_sec_pau
+				}
 			}
 			add_political_power = -40
 			custom_effect_tooltip = SHX_feng_sizhi_helpful_tooltip
@@ -849,7 +851,9 @@ country_event = {
 		}
 		if = {
 			limit = {
-				SHX_hu_jingtong = { is_political_advisor = no }
+				NOT = {
+				has_idea = SHX_hu_jingtong_sec_rso
+				}
 			}
 			add_political_power = -40
 			custom_effect_tooltip = SHX_hu_jingtong_helpful_tooltip
@@ -2261,11 +2265,16 @@ country_event = {
 		add_manpower = -25000
 		if = {
 			limit = {
-				SHX_zhao_pilian = { is_political_advisor = no }
+				NOT = {
+				has_idea = SHX_Zhao_Pilian_for_sde
+				}
 			}
 			add_days_mission_timeout = {
 				mission = SHX_educational_reform_mission_timer
 				days = -100
+			}
+			add_ideas = {
+			SHX_Zhao_Pilian_for_sde
 			}
 			custom_effect_tooltip = SHX_zhao_pilian_helpful_tooltip
 		}
@@ -2302,7 +2311,9 @@ country_event = {
 		}
 		if = {
 			limit = {
-				SHX_feng_sizhi = { is_political_advisor = no }
+				NOT = {
+				has_idea = SHX_Feng_Sizhi_sec_pau
+				}
 			}
 			add_stability = -0.1
 			add_days_mission_timeout = {
@@ -2743,21 +2754,24 @@ country_event = { #Aftermath of the Leadership
 		character_list_tooltip = {
 			limit = {
 				OR = {
-					is_character = SHX_yan_xishan
-					is_character = SHX_liang_huazhi
-					is_character = SHX_wang_xiang
+					has_idea = SHX_Yan_Xishan_hog_pau
+					has_idea = SHX_Liang_Huazhi_for_pau
+					has_idea = SHX_wang_xiang_for_mli
+					has_idea = SHX_Nan_Guixin_eco_pau
+					has_idea = SHX_Yang_Chengyuan_sec_pau
 				}
 			}
 		}
 		hidden_effect = {
 			retire_character = SHX_yan_xishan
-			SHX_liang_huazhi = {
-				remove_unit_leader_role = yes #He shouldn't have one until Sacrifice League is formed (which is after one side wins) but just in case
-				remove_military_advisor_roles = yes
-				remove_political_advisor_role = yes
-			}
-			SHX_wang_xiang = {
-				remove_political_advisor_role = yes
+			
+			
+			remove_ideas = {
+			SHX_Yan_Xishan_hog_pau
+			SHX_Liang_Huazhi_for_pau
+			SHX_wang_xiang_for_mli
+			SHX_Nan_Guixin_eco_pau
+			SHX_Yang_Chengyuan_sec_pau
 			}
 		}
 		add_country_leader_role = {
@@ -4745,11 +4759,15 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event shx_japanese_infiltration.1 option shx_japanese_infiltration.1.a"
 		name = shx_japanese_infiltration.1.a #An utter betrayal!
-		retire_character = SHX_komoto_daisaku
-		retire_character = SHX_su_tiren
-		retire_character = SHX_feng_sizhi
+		
+		
 		retire_character = SHX_han_fuju
-		retire_character = SHX_liu_yufen
+		remove_ideas = {
+		SHX_Su_Tiren_for_ade
+		SHX_Feng_Sizhi_sec_pau
+		SHX_komoto_daisaku_eco_mli
+		SHX_Liu_Yufen_cos
+		}
 		if = {
 			limit = {
 				SHX_sun_chu = { is_political_advisor = no }
@@ -6750,12 +6768,17 @@ country_event = {
 	desc = SHX.advisor.19.d
 	is_triggered_only = yes #Triggers December 17th, 1943, fired from the history file
 	picture = GFX_report_event_SHX_zhao_daiwen
-
+	trigger = {
+	has_idea = SHX_Zhao_Daiwen_eco_npo
+	}
 	option = {
 		log = "[GetLogInfo]: event SHX.advisor.19 option SHX.advisor.19.a"
 		name = SHX.advisor.19.a #May he rest in peace
-		retire_character = SHX_zhao_daiwen
-		promote_character = SHX_liang_huazhi
+		
+		swap_ideas = {
+		remove_idea = SHX_Zhao_Daiwen_eco_npo
+		add_idea = SHX_Liang_Huazhi_for_pau
+		}
 	}
 
 }
@@ -8906,7 +8929,9 @@ country_event = {
 						name = SHX_national_populist_sacrifice_league
 					}
 				}
-				promote_character = SHX_liang_huazhi
+				add_ideas = {
+				SHX_Liang_Huazhi_for_pau
+				}
 			}
 			add_manpower = 5000
 			add_popularity = {
