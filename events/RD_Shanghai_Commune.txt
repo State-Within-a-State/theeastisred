@@ -9,6 +9,7 @@ add_namespace = shanghai_revolution
 add_namespace = shanghai_uprisings
 add_namespace = shanghai_revolution_chaos
 add_namespace = shanghai_socialist_coup
+add_namespace = shanghai_socialist_for
 
 country_event = { # Introduction
 	id = shanghai_revolution.0
@@ -1366,6 +1367,49 @@ country_event = { # Introduction
 	
 }
 
+
+news_event = {
+    id = lu_xun.17
+    title = "Chinese Socialists Reveal Their Ambitions"
+    desc = lu_xun.17.desc
+    
+    is_triggered_only = yes     # Missing 'major = yes', only will fire for one country.
+    
+    option = {
+        name = "We Shall See What Will Become of This"
+		trigger = {
+		OR = {
+		NOT = {
+		has_government = totalist
+		}
+		
+		NOT = {
+		has_government = syndicalist
+		}
+		NOT = {
+		has_government = radical_socialist
+		}
+		NOT = {
+		has_government = social_democrat
+		}
+		}
+		}
+    }
+	
+	option = {
+        name = "May Imperialism be Dethroned!"
+		trigger = {
+		OR = {
+		has_government = totalist
+		has_government = syndicalist
+		has_government = radical_socialist
+		has_government = social_democrat
+		}
+    }
+}
+
+}
+
 country_event = { # Introduction
 	id = shanghai_uprisings.0
 	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
@@ -2180,6 +2224,31 @@ country_event = { # Introduction
 	
 }
 
+
+country_event = { # Introduction
+	id = shanghai_socialist_for.0
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Chinese Socialists Offer Us An Alliance"
+	desc = shanghai_socialist_for.0.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Refuse Such An Alliance"
+		ai_chance = { base = 50 }
+	}
+	
+	option = {
+		name = "Embrace our Comrades"
+		ai_chance = { base = 50 }
+		LEC = { add_to_faction = ROOT }
+	}
+	
+	
+}
 
 
 country_event = { # Introduction

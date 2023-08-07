@@ -440,9 +440,7 @@ LEC_prepare_uprising_in_nanjiang = {
 			ANQ = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -499,9 +497,7 @@ LEC_prepare_uprising_in_huaisi = {
 			ANQ = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -558,9 +554,7 @@ LEC_prepare_uprising_in_huaisi = {
 			ANQ = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -610,16 +604,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_guangxi_nanning < 10
 			}
 			
-			OR = {
-			LEP = {
+			GXC = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -670,16 +656,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_guangxi_hainan < 10
 			}
 			
-			OR = {
-			LEP = {
+			GXC = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -729,16 +707,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_sichuan_chengdu < 10
 			}
 			
-			OR = {
-			LEP = {
+			SZC = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -788,16 +758,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_sichuan_chongqing < 10
 			}
 			
-			OR = {
-			LEP = {
+			SZC = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -848,16 +810,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_qing_xian < 10
 			}
 			
-			OR = {
-			LEP = {
+			QIE = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -907,16 +861,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_qing_hankuo < 10
 			}
 			
-			OR = {
-			LEP = {
+			QIE = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -966,16 +912,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_qing_kaifeng < 10
 			}
 			
-			OR = {
-			LEP = {
+			QIE = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -1025,16 +963,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_qing_tangshan < 10
 			}
 			
-			OR = {
-			LEP = {
+			QIE = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -1085,15 +1015,13 @@ LEC_prepare_uprising_in_huaisi = {
 			}
 			
 			OR = {
-			LEP = {
+			FNG = {
 			exists = yes
 			}
-			ANQ = {
+			MAN = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -1143,15 +1071,13 @@ LEC_prepare_uprising_in_huaisi = {
 			}
 			
 			OR = {
-			LEP = {
+			FNG = {
 			exists = yes
 			}
-			ANQ = {
+			MAN = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -3024,5 +2950,74 @@ LEC_alignment_integration_category = {
 			}
 		}
 	}
+}
+
+
+LEC_alliance_revolution_category = {     
+
+LEC_alliance_revolution_in_asia = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+			
+			FROM = {
+			OR = {
+			has_government = totalist
+			has_government = syndicalist
+			has_government = radical_socialist
+			}
+			
+			exists = yes
+			NOT = {
+			is_subject_of = ROOT
+			}	
+			}
+		}
+		
+		visible = {
+			
+		}
+		cost = 10
+		targets = {  ALQ CEY BHU BOR CAM  INC INS JAP KAC KOR KYR LAO  MLY PHI PNG SAR SHA SIA SIR TAJ TAN UZB VIN BHC CEY INR MAD MYS NEP SKM PRF RAJ TRV TWI }
+		target_trigger = {
+			FROM = { exists = yes }
+			AND = {
+			
+			
+			
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+			
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			
+		}
+	}
+
+
 }
 
