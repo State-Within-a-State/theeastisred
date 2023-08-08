@@ -9,6 +9,7 @@ add_namespace = shanghai_revolution
 add_namespace = shanghai_uprisings
 add_namespace = shanghai_revolution_chaos
 add_namespace = shanghai_socialist_coup
+add_namespace = shanghai_socialist_for
 
 country_event = { # Introduction
 	id = shanghai_revolution.0
@@ -126,6 +127,7 @@ country_event = { # Introduction
 		custom_effect_tooltip = shanghai_revolution_tt
 		hidden_effect = {
 		set_global_flag = shanghai_revolution
+		set_country_flag = shanghai_revolution
 		set_country_flag = peasant_revolution
 		country_event = {
 		id = lu_xun.2
@@ -1071,6 +1073,10 @@ country_event = { # Introduction
 		add_ideas = {
 		LEC_leap_failure
 		}
+		country_event = {
+		id = lu_xun.15
+		days = 5
+		}
 	}
 
 	
@@ -1287,6 +1293,124 @@ country_event = { # Introduction
 }
 
 country_event = { # Introduction
+	id = lu_xun.16
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = "Setting up the Autonomies"
+	desc = lu_xun.16.desc
+	picture = "GFX_report_event_student_protests"
+
+	is_triggered_only = yes
+
+	
+
+	option = {
+		name = "Re-Organize the Autonomous Zones"
+		FNG = {
+		create_country_leader = {
+			name = "Hafenga"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Hafenga.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
+		MON = {
+		create_country_leader = {
+			name = "Boyan Mandu"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Boyan_Mandu.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
+		SIK = {
+		create_country_leader = {
+			name = "Lin Jilu"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Lin_Jilu.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
+		
+		TIB = {
+		create_country_leader = {
+			name = "Dorje Caidan"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Dorje Caidan.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
+		
+		TWI = {
+		create_country_leader = {
+			name = "Lai He"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Lai_He.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
+	}
+	
+	
+}
+
+
+news_event = {
+    id = lu_xun.17
+    title = "Chinese Socialists Reveal Their Ambitions"
+    desc = lu_xun.17.desc
+    
+    is_triggered_only = yes     # Missing 'major = yes', only will fire for one country.
+    
+    option = {
+        name = "We Shall See What Will Become of This"
+		trigger = {
+		OR = {
+		NOT = {
+		has_government = totalist
+		}
+		
+		NOT = {
+		has_government = syndicalist
+		}
+		NOT = {
+		has_government = radical_socialist
+		}
+		NOT = {
+		has_government = social_democrat
+		}
+		}
+		}
+    }
+	
+	option = {
+        name = "May Imperialism be Dethroned!"
+		trigger = {
+		OR = {
+		has_government = totalist
+		has_government = syndicalist
+		has_government = radical_socialist
+		has_government = social_democrat
+		}
+    }
+}
+
+}
+
+country_event = { # Introduction
 	id = shanghai_uprisings.0
 	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
 	title = "Uprising in Nanjing"
@@ -1384,7 +1508,7 @@ country_event = { # Introduction
 		}
 		load_oob = "LEC - Shanghai Revolution Guangxi 2"
 		}
-		else_if = {
+		else = {
 		limit = {
 		AND = {
 			check_variable = { revolt_guangxi_nanning > 9 }
@@ -1440,7 +1564,7 @@ country_event = { # Introduction
 		}
 		load_oob = "LEC - Shanghai Revolution Sichuan 2"
 		}
-		else_if = {
+		else = {
 		limit = {
 		AND = {
 			check_variable = { revolt_sichuan_chengdu > 9 }
@@ -1501,7 +1625,7 @@ country_event = { # Introduction
 		}
 		load_oob = "LEC - Shanghai Revolution Beijing 2"
 		}
-		else_if = {
+		else = {
 		limit = {
 		AND = {
 			check_variable = { revolt_qing_xian > 9 }
@@ -1542,7 +1666,7 @@ country_event = { # Introduction
 			check_variable = { revolt_manchu_xingan < 6 }
 			check_variable = { revolt_manchu_nenjiang < 6 }
 			check_variable = { revolt_manchu_hejiang < 6 }
-			}
+			
 		}
 		load_oob = "LEC - Shanghai Revolution Nanjing 1"
 		
@@ -1560,7 +1684,7 @@ country_event = { # Introduction
 		}
 		load_oob = "LEC - Shanghai Revolution Nanjing 2"
 		}
-		else_if = {
+		else = {
 		limit = {
 		AND = {
 			check_variable = { revolt_manchu_xingan > 9 }
@@ -2102,11 +2226,12 @@ country_event = { # Introduction
 
 
 
+
 country_event = { # Introduction
-	id = shanghai_socialist_coup.0
+	id = shanghai_socialist_coup.1
 	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
-	title = "Launching a Coup"
-	desc = shanghai_revolution.0.desc
+	title = "Setting up the Autonomies"
+	desc = shanghai_socialist_coup.1.desc
 	picture = "GFX_report_event_student_protests"
 
 	is_triggered_only = yes
@@ -2114,8 +2239,64 @@ country_event = { # Introduction
 	
 
 	option = {
-		name = "Prepare For the Worst"
+		name = "Re-Organize the Autonomous Zones"
+		FNG = {
+		create_country_leader = {
+			name = "Hafenga"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Hafenga.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
+		MON = {
+		create_country_leader = {
+			name = "Boyan Mandu"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Boyan_Mandu.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
+		SIK = {
+		create_country_leader = {
+			name = "Lin Jilu"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Lin_Jilu.png"
+			expire = "1978.11.19"
+			ideology = technocratic_socialism_subtype
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
 		
+		TIB = {
+		create_country_leader = {
+			name = "Dorje Caidan"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Lin_Jilu.png"
+			expire = "1978.11.19"
+			ideology = Portrait_LEC_Dorje Caidan
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
+		
+		TWI = {
+		create_country_leader = {
+			name = "Lai He"
+			desc = "POLITICS_DESC_GUO_MORUO"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Lai_He.png"
+			expire = "1978.11.19"
+			ideology = Portrait_LEC_Dorje Caidan
+			}
+		set_politics = { ruling_party = totalist }
+		add_popularity = { ideology = totalist popularity = 1 }
+		}
 	}
 	
 	

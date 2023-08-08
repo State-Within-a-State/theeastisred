@@ -8,7 +8,17 @@ LEC_secure_the_cities_decision_category = {
 	}
 
 	visible = {
+		AND = {
 		has_global_flag = shanghai_revolution
+		NOT = {
+		OR = {
+		has_country_flag = tianjin_revolution_secured
+		has_country_flag = hongkong_revolution_secured
+		has_country_flag = tianjin_revolution_failled
+		has_country_flag = hongkong_revolution_failled
+		}
+		}
+		}
 	}
 }
 
@@ -20,9 +30,8 @@ LEC_power_struggle_lu_xun_decision_category = {
 	}
 
 	visible = {
-		has_ideas = {
-		LEC_death_of_a_comrade
-		}
+		has_idea = LEC_death_of_a_comrade
+		
 	}
 }
 
@@ -66,11 +75,19 @@ LEC_land_reform_decision_category = {
 	}
 
 	visible = {
+		AND = {
 		OR = {
 			has_completed_focus = LEC_CREATION_pushing_forward_greater_agricultural_production
 			has_completed_focus = LECQUIBAI_thelandsseereform
 			has_completed_focus = LEC_AGRARIAN_support_the_peasants
 			}
+		NOT = {
+		OR = {
+		has_country_flag = land_reform_complete
+		has_country_flag = land_reform_failed
+		}
+		}
+		}
 	}
 }
 
@@ -99,6 +116,14 @@ LEC_chinese_prolekult_decision_category = {
 	visible = {
 		has_completed_focus = LECQUIBAI_follow_xun_and_dazhao
 	}
+}
+
+LEC_alliance_revolution_category = {     
+	priority = 95							
+	allowed = { tag = LEC }
+	visible = {
+		has_completed_focus = LEC_LUXUNFORTWO_liberators_of_the_east
+	}	
 }
 
 
@@ -150,3 +175,6 @@ LEC_core_puppet_integration_category = {
 		has_completed_focus = LECFOR_a_true_revolutionary_republic
 	}	
 }
+
+
+
