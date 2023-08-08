@@ -2995,6 +2995,54 @@ LEC_alliance_revolution_in_asia = {
 			
 			}
 		}
+		days_remove = 7
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+			country_event = shanghai_socialist_for.0
+			}
+			
+		}
+	}
+	
+	LEC_asian_liberation = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LEC_LUXUNFORTWO_oustthewesterncolonizers
+		}
+		cost = 10
+		targets = {  ALQ BHU BOR SKM AFG HAW CAM INC INS KAC KYR LAO MLY PHI PNG SAR SHA SIA SIR TAJ UZB VIN BHC CEY INR MAD MYS NEP SKM PRF DEH TRV }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				is_in_faction_with = LEC
+				}
+			}
+		}
 		days_remove = 14
 		days_re_enable = 0
 		fire_only_once = no
@@ -3015,6 +3063,99 @@ LEC_alliance_revolution_in_asia = {
 		remove_effect = {
 			declare_war_on = {   type = annex_everything	target = FROM }
 			
+		}
+	}
+	
+	
+	LEC_dec_BHC_expedition = {
+		war_with_target_on_remove = yes
+		icon = generic_ignite_civil_war
+		targets = { BHC DEH PRF BHU NEP SKM }
+		target_trigger = {
+			FROM = {
+				owns_state = 858
+			}
+		}
+		target_root_trigger = {
+			has_completed_focus = LEC_LUXUNFORTWO_beyond_the_mcmahon_line
+		}
+		visible = {
+			has_completed_focus = LEC_LUXUNFORTWO_beyond_the_mcmahon_line
+			is_subject = no
+			can_declare_war_on = FROM
+			FROM = {
+				owns_state = 858
+			}
+		}
+		available = {
+			OR = {
+				is_neighbor_of = FROM
+				FROM = {
+					any_neighbor_country = { is_ally_of_ROOT = yes }
+				}
+			}
+		}
+
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		cost = 40
+		days_remove = 14
+		days_re_enable = 30
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_BHC_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 21 value = 1 }
+			FROM = { country_event = chi_for.6 }
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_BHC_expedition target: [From.GetName]"
+			declare_war_on = {
+				type = annex_everything
+				target = FROM
+			}
+			FROM = { country_event = chi_for.7 }
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_in_faction = yes
+					var:faction_leader = {
+						strength_ratio = {
+							tag = ROOT
+							ratio > 0.7
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_subject = yes
+					overlord = {
+						strength_ratio = {
+							tag = ROOT
+							ratio > 0.7
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = imminent_war
+			}
 		}
 	}
 
