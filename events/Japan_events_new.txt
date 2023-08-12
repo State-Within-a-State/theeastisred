@@ -11,6 +11,10 @@ country_event = { #Starting Lore Event | The Sun Rises - On Shaky Grounds
 		name = japan_new_event.0.a
 		ai_chance = { base = 100 }
 		country_event = japan_new_event.1
+		country_event = {
+		id = japan_new_event.3
+		days = 21
+		}
 	}
 }
 
@@ -50,16 +54,28 @@ country_event = { #Sen Katayama Killed
 	title = japan_new_event.3.title
 	desc = japan_new_event.3.desc
 	#picture = 
-	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+			id = japan_new_event.7
+			days = 45
+			}
+		}
+	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.3.a
 		add_stability = -0.15
 		country_event = japan_new_event.4
 	}
+	
+	option = { #
+		name = japan_new_event.3.b
+		add_stability = -0.15
+	}
 }
 
-country_event = { #
+country_event = { #History of the Japanese Left - A Tough Start
 	id = japan_new_event.4
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.4"}
 	title = japan_new_event.4.title
@@ -69,12 +85,15 @@ country_event = { #
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.4.a
-		ai_chance = { base = 100 }
-		
+		country_event = japan_new_event.5
+	}
+	
+	option = { #
+		name = japan_new_event.4.b
 	}
 }
 
-country_event = { #
+country_event = { #History of the Japanese Left - The New Constitutional Era
 	id = japan_new_event.5
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.5"}
 	title = japan_new_event.5.title
@@ -89,7 +108,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Black Monday Across the Colonies
 	id = japan_new_event.6
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.6"}
 	title = japan_new_event.6.title
@@ -104,7 +123,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #1936 Elections
 	id = japan_new_event.7
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.7"}
 	title = japan_new_event.7.title
@@ -112,14 +131,107 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = japan_new_event.7.a
+	
+	option = { #Kokumin Domei
+		name = OPTION_KOKUMIN_DOMEI
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Adachi_Kenzo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_country_flag = JAP_kokumin_domei_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #The Seiyukai have defended their absolute majority!
+		name = OPTION_SEIYUKAI
+		ai_chance = {
+			factor = 50
+			
+		}
+		add_political_power = 50
+		set_country_flag = JAP_seiyukai_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+		complete_national_focus = JAP_seiyukai_1936
+	}
+	
+	option = { #Minseito
+		name = OPTION_MINSEITO
+		
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Machida_Chuji_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Kawasaki_Takukichi_sec_mli
+		}
+		set_country_flag = JAP_minseito_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	
+	option = { #Shakai-Taishuto
+		name = OPTION_SHAKAI-TAISHUTO
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Abe_Iso_hog_sde
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Mizutani_Chozaburo_eco_sde
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #Deadlock - Will Start Showa Restoration Coup
+		name = OPTION_DEADLOCK
 		ai_chance = { base = 100 }
 		
 	}
 }
 
-country_event = { #
+country_event = { #Kokumin Domei Choices
 	id = japan_new_event.8
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.8"}
 	title = japan_new_event.8.title
