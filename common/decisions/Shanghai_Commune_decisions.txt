@@ -1,13 +1,38 @@
 LEC_secure_the_cities_decision_category = {
 LEC_secure_tianjin_luxun = {
 		activation = {
-			has_global_flag = shanghai_revolution
+			AND = {
+		has_global_flag = shanghai_revolution
+		NOT = {
+			OR = {
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_secured
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_secured
+				}
+			}
+		}
+		}
 		}
 		available = {
 			
 			check_variable = { control_tianjin > 75 }
 			
 			
+		}
+		cancel_trigger = {
+		
 		}
 		
 		icon = mission_icon     # For GFX_decision_mission_icon
@@ -60,7 +85,29 @@ LEC_secure_tianjin_luxun = {
 	}
 	LEC_secure_hongkong_luxun = {
 		activation = {
-			has_global_flag = shanghai_revolution
+			AND = {
+		has_global_flag = shanghai_revolution
+		NOT = {
+			OR = {
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_secured
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_secured
+				}
+			}
+		}
+		}
 		}
 		available = {
 			check_variable = { control_hongkong > 75 }
@@ -267,7 +314,7 @@ LEC_secure_tianjin_luxun = {
 			tag = LEC
 			has_global_flag = shanghai_revolution
 		}
-		cost = 10
+		cost = 25
 		
 		days_remove = 10
 		days_re_enable = 5
@@ -279,7 +326,7 @@ LEC_secure_tianjin_luxun = {
 		remove_effect = {
 			add_to_variable = {
 					var = control_hongkong
-					value = 3
+					value = 15
 				}
 		}
 	}
