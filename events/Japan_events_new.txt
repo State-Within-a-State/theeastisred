@@ -227,7 +227,17 @@ country_event = { #1936 Elections
 	option = { #Deadlock - Will Start Showa Restoration Coup
 		name = OPTION_DEADLOCK
 		ai_chance = { base = 100 }
-		
+		create_country_leader = {
+					name = "Hirohito"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+					expire = "1965.1.1"
+					ideology = authdem_showa_statism_subtype
+				}
+		set_politics = { ruling_party = authoritarian_democrat }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Kokkai_hog_ade
+		}
 	}
 }
 
@@ -244,9 +254,32 @@ country_event = { #Kokumin Domei Choices
 		ai_chance = { base = 100 }
 		
 	}
+	
+	option = { #Nakano's Way
+		name = japan_new_event.b.a
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = national_populist
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Shiono_Suehiko_sec_pau
+		}
+		set_country_flag = JAP_tokohai_won_in_1936
+		mark_focus_tree_layout_dirty = yes
+	}
 }
 
-country_event = { #
+country_event = { #Shakai-Taishuto Candidate
 	id = japan_new_event.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.9"}
 	title = japan_new_event.9.title
@@ -254,10 +287,25 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Abe Isoo
 		name = japan_new_event.9.a
 		ai_chance = { base = 100 }
 		
+	}
+	option = { #Kenzo Yamamoto
+		name = japan_new_event.9.a
+		ai_chance = { base = 100 }
+		
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_sde
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Aso_Hisashi_sec_syn
+		}
+		set_country_flag = JAP_rodo_nominto_won_in_1936
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
