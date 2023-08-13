@@ -11,12 +11,24 @@ LEC_secure_the_cities_decision_category = {
 		AND = {
 		has_global_flag = shanghai_revolution
 		NOT = {
-		OR = {
-		has_country_flag = tianjin_revolution_secured
-		has_country_flag = hongkong_revolution_secured
-		has_country_flag = tianjin_revolution_failled
-		has_country_flag = hongkong_revolution_failled
-		}
+			OR = {
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_secured
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_secured
+				}
+			}
 		}
 		}
 	}
