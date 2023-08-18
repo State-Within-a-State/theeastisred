@@ -309,7 +309,9 @@ country_event = { #Shakai-Taishuto Candidate
 	}
 }
 
-country_event = { #
+####Deadlock Event Chain
+
+country_event = { #Seiyukai Attempt to Form a Coalition
 	id = japan_new_event.10
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.10"}
 	title = japan_new_event.10.title
@@ -320,11 +322,15 @@ country_event = { #
 	option = { #
 		name = japan_new_event.10.a
 		ai_chance = { base = 100 }
-		
+		add_stability = -0.75
+		country_event = {
+		id = japan_new_event.11
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Government Collapses
 	id = japan_new_event.11
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.11"}
 	title = japan_new_event.11.title
@@ -337,9 +343,14 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #
+		name = japan_new_event.11.b
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.12
+	}
 }
 
-country_event = { #
+country_event = { #Yakuza Take Power
 	id = japan_new_event.12
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.12"}
 	title = japan_new_event.12.title
@@ -350,11 +361,40 @@ country_event = { #
 	option = { #
 		name = japan_new_event.12.a
 		ai_chance = { base = 100 }
-		
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Noboru_Yamaguchi_hog_pau
+		JAP_Kazuo_Taoka_for_npo
+		JAP_Kakuji_Inagawa_eco_pau
+		JAP_Ryōichi_Sasakawa_sec_npo
+		}
+		create_country_leader = {
+					name = "Noboru Yamaguchi"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Noboru_Yamaguchi.png"
+					expire = "1965.1.1"
+					ideology = crime_syndicate_subtype
+				}
+			set_politics = {
+				ruling_party = paternal_autocrat
+				elections_allowed = no
+			}
+			set_cosmetic_tag = JAP_YAKUZA_paternal_autocrat
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = "Yakuza"
+			}
+			set_party_name = {
+				ideology = paternal_autocrat
+				name = "Yakuza"
+			}
+			set_party_name = {
+				ideology = national_populist
+				name = "Yakuza"
+			}
 	}
 }
 
-country_event = { #
+country_event = { #The Jackal's Two Heads
 	id = japan_new_event.13
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.13"}
 	title = japan_new_event.13.title
@@ -367,7 +407,44 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	
+	option = { #
+		name = japan_new_event.13.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_Yoshio_Kodama_hog_npo
+		JAP_Kazuo_Taoka_for_npo
+		JAP_Kakuji_Inagawa_eco_pau
+		JAP_Ryōichi_Sasakawa_sec_npo
+		}
+		create_country_leader = {
+					name = "Yoshio Kodama"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Yoshio_Kodama.png"
+					expire = "1965.1.1"
+					ideology = legionarism_subtype
+				}
+			set_politics = {
+				ruling_party = national_populist
+				elections_allowed = no
+			}
+			set_cosmetic_tag = JAP_YAKUZA_national_populist
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = "Yakuza"
+			}
+			set_party_name = {
+				ideology = paternal_autocrat
+				name = "Yakuza"
+			}
+			set_party_name = {
+				ideology = national_populist
+				name = "Yakuza"
+			}
+	}
 }
+
+######
+
 
 country_event = { #
 	id = japan_new_event.14
