@@ -1,0 +1,310 @@
+focus_tree = {
+	id = minseito-japan
+	continuous_focus_position = { x = -40 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = JAPLIB
+		}
+	}
+	#Victory of the Minseito
+	focus = {
+		id = JAPLIB_victory_of_the_minseito
+		icon = GFX_JAPLIB_victory_of_the_minseito-248360
+		x = 7
+		y = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#Bureaucratic Hold
+	focus = {
+		id = JAPLIB_bureaucratic_hold
+		icon = GFX_JAPLIB_bureaucratic_hold-248360
+		x = 6
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPLIB_victory_of_the_minseito  }
+		mutually_exclusive = { focus = JAPLIB_tojnha_faction_dominance  }
+	}
+
+	#Tojnha Faction Dominance
+	focus = {
+		id = JAPLIB_tojnha_faction_dominance
+		icon = GFX_JAPLIB_tojnha_faction_dominance-248360
+		x = 8
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPLIB_victory_of_the_minseito  }
+		mutually_exclusive = { focus = JAPLIB_bureaucratic_hold  }
+	}
+
+	#Support New Military Powers
+	focus = {
+		id = JAPLIB_support_new_military_powers
+		icon = GFX_JAPLIB_support_new_military_powers-248360
+		x = 9
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAPLIB_tojnha_faction_dominance  }
+	}
+
+	#Promote Universal Sufferage
+	focus = {
+		id = JAPLIB_promote_universal_sufferage
+		icon = GFX_JAPLIB_promote_universal_sufferage-248360
+		x = 7
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAPLIB_bureaucratic_hold  focus = JAPLIB_tojnha_faction_dominance  }
+	}
+
+	#Grant Further Support to the Zaibatsu
+	focus = {
+		id = JAPLIB_grant_further_support_to_the_zaibatsu
+		icon = GFX_JAPLIB_grant_further_support_to_the_zaibatsu-248360
+		x = 5
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = JAPLIB_bureaucratic_hold  }
+	}
+
+	#Encourage Investment In Manchuria
+	focus = {
+		id = JAPLIB_encourage_investment_in_manchuria
+		icon = GFX_JAPLIB_encourage_investment_in_manchuria-248360
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = JAPLIB_grant_further_support_to_the_zaibatsu  }
+	}
+
+	#Parliament Centric Governance
+	focus = {
+		id = JAPLIB_parliament_centric_governance
+		icon = GFX_JAPLIB_parliament_centric_governance-248360
+		x = 7
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPLIB_promote_universal_sufferage  }
+	}
+
+	#Pan-Asianist Outlook
+	focus = {
+		id = JAPLIB_panasianist_outlook
+		icon = GFX_JAPLIB_panasianist_outlook-248360
+		x = 9
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAPLIB_support_new_military_powers  }
+	}
+
+	#Coalition With the Social Democrats
+	focus = {
+		id = JAPLIB_coalition_with_the_social_democrats
+		icon = GFX_JAPLIB_coalition_with_the_social_democrats-248360
+		x = 10
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPLIB_panasianist_outlook  } prerequisite = { focus = JAPLIB_parliament_centric_governance  }
+	}
+
+	#For Liberty and Progress
+	focus = {
+		id = JAPLIB_for_liberty_and_progress
+		icon = GFX_JAPLIB_for_liberty_and_progress-248360
+		x = 8
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPLIB_parliament_centric_governance  } prerequisite = { focus = JAPLIB_panasianist_outlook  focus = JAPLIB_encourage_investment_in_manchuria  } prerequisite = { focus = JAPLIB_parliament_centric_governance  }
+	}
+
+	#Promotion of Land Reforms
+	focus = {
+		id = JAPLIB_promotion_of_land_reforms
+		icon = GFX_JAPLIB_promotion_of_land_reforms-248360
+		x = 6
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = JAPLIB_encourage_investment_in_manchuria  } prerequisite = { focus = JAPLIB_parliament_centric_governance  focus = JAPLIB_parliament_centric_governance  } prerequisite = { focus = JAPLIB_panasianist_outlook  }
+	}
+
+	#Chip Away At Military Influence
+	focus = {
+		id = JAPLIB_chip_away_at_military_influence
+		icon = GFX_JAPLIB_chip_away_at_military_influence-248360
+		x = 4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAPLIB_encourage_investment_in_manchuria  } prerequisite = { focus = JAPLIB_parliament_centric_governance  }
+	}
+
+	#Crack Down on the Labour Unions
+	focus = {
+		id = JAPLIB_crack_down_on_the_labour_unions
+		icon = GFX_JAPLIB_crack_down_on_the_labour_unions-248360
+		x = 3
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = JAPLIB_chip_away_at_military_influence  }
+	}
+
+	#Fair Distribution
+	focus = {
+		id = JAPLIB_fair_distribution
+		icon = GFX_JAPLIB_fair_distribution-248360
+		x = 5
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = JAPLIB_promotion_of_land_reforms  } prerequisite = { focus = JAPLIB_chip_away_at_military_influence  }
+	}
+
+	#Expanding Free Education
+	focus = {
+		id = JAPLIB_expanding_free_education
+		icon = GFX_JAPLIB_expanding_free_education-248360
+		x = 7
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = JAPLIB_for_liberty_and_progress  } prerequisite = { focus = JAPLIB_promotion_of_land_reforms  }
+	}
+
+	#Increase Agricultural Policies
+	focus = {
+		id = JAPLIB_increase_agricultural_policies
+		icon = GFX_JAPLIB_increase_agricultural_policies-248360
+		x = 9
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAPLIB_coalition_with_the_social_democrats  } prerequisite = { focus = JAPLIB_promotion_of_land_reforms  }
+	}
+
+	#Increase Japanese Immigration to Korea
+	focus = {
+		id = JAPLIB_increase_japanese_immigration_to_korea
+		icon = GFX_JAPLIB_increase_japanese_immigration_to_korea-248360
+		x = 11
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = JAPLIB_coalition_with_the_social_democrats  }
+	}
+
+	#Populism Over Factionalism
+	focus = {
+		id = JAPLIB_populism_over_factionalism
+		icon = GFX_JAPLIB_populism_over_factionalism-248360
+		x = 9
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPLIB_expanding_free_education  } prerequisite = { focus = JAPLIB_increase_agricultural_policies  } prerequisite = { focus = JAPLIB_increase_japanese_immigration_to_korea  }
+	}
+
+	#Racial "Equality"
+	focus = {
+		id = JAPLIB_racialequality
+		icon = GFX_JAPLIB_racialequality-248360
+		x = 7
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAPLIB_expanding_free_education  }
+	}
+
+	#Ending Inter-Party Rivals
+	focus = {
+		id = JAPLIB_ending_interparty_rivals
+		icon = GFX_JAPLIB_ending_interparty_rivals-248360
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPLIB_crack_down_on_the_labour_unions  } prerequisite = { focus = JAPLIB_fair_distribution  } prerequisite = { focus = JAPLIB_expanding_free_education  }
+	}
+
+	#Promoting of Peace
+	focus = {
+		id = JAPLIB_promoting_of_peace
+		icon = GFX_JAPLIB_promoting_of_peace-248360
+		x = 5
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = JAPLIB_racialequality  } prerequisite = { focus = JAPLIB_ending_interparty_rivals  }
+	}
+
+	#Our Universal Goal
+	focus = {
+		id = JAPLIB_our_universal_goal
+		icon = GFX_JAPLIB_our_universal_goal-248360
+		x = 9
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAPLIB_populism_over_factionalism  } prerequisite = { focus = JAPLIB_racialequality  }
+	}
+
+}
