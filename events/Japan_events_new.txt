@@ -154,8 +154,9 @@ country_event = { #1936 Elections
 			JAP_Horikiri_Zenbee_eco_ade
 			JAP_Akita_Kiyoshi_sec_ade
 		}
-		set_country_flag = JAP_kokumin_domei_won_in_1936
+		set_country_flag = JAP_kokumin_domei_won_in_1936_election
 		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.8
 	}
 	
 	option = { #The Seiyukai have defended their absolute majority!
@@ -165,7 +166,7 @@ country_event = { #1936 Elections
 			
 		}
 		add_political_power = 50
-		set_country_flag = JAP_seiyukai_won_in_1936
+		set_country_flag = JAP_seiyukai_won_in_1936_elections
 		mark_focus_tree_layout_dirty = yes
 		complete_national_focus = JAP_seiyukai_1936
 	}
@@ -193,7 +194,7 @@ country_event = { #1936 Elections
 			JAP_Inoue_Junnosuke_eco_mli
 			JAP_Kawasaki_Takukichi_sec_mli
 		}
-		set_country_flag = JAP_minseito_won_in_1936
+		set_country_flag = JAP_minseito_won_in_1936_elections
 		mark_focus_tree_layout_dirty = yes
 	}
 	
@@ -220,8 +221,9 @@ country_event = { #1936 Elections
 			JAP_Mizutani_Chozaburo_eco_sde
 			JAP_Matsuoka_Komakichi_sec_sde
 		}
-		set_country_flag = JAP_shakai_taishuto_won_in_1936
+		
 		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.9
 	}
 	
 	option = { #Deadlock - Will Start Showa Restoration Coup
@@ -252,7 +254,7 @@ country_event = { #Kokumin Domei Choices
 	option = { #
 		name = "Stick With Kenzo"
 		ai_chance = { base = 100 }
-		
+		set_country_flag = JAP_kokumin_domei_won_in_1936_election_3
 	}
 	
 	option = { #Nakano's Way
@@ -274,7 +276,7 @@ country_event = { #Kokumin Domei Choices
 			JAP_Suzuki_Teiichi_eco_sco
 			JAP_Shiono_Suehiko_sec_pau
 		}
-		set_country_flag = JAP_tokohai_won_in_1936
+		set_country_flag = JAP_kokumin_domei_won_in_1936_election_2
 		mark_focus_tree_layout_dirty = yes
 	}
 }
@@ -290,6 +292,7 @@ country_event = { #Shakai-Taishuto Candidate
 	option = { #Abe Isoo
 		name = "Moderates Hold Strong"
 		ai_chance = { base = 100 }
+		set_country_flag = JAP_shakai_taishuto_won_in_1936_elections
 		
 	}
 	option = { #Kenzo Yamamoto
@@ -304,7 +307,7 @@ country_event = { #Shakai-Taishuto Candidate
 			JAP_Yamada_Moritaro_eco_syn
 			JAP_Aso_Hisashi_sec_syn
 		}
-		set_country_flag = JAP_rodo_nominto_won_in_1936
+		set_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
 		mark_focus_tree_layout_dirty = yes
 	}
 }
@@ -527,22 +530,134 @@ country_event = { #Embracing Japanese Dominance
 	}
 }
 
-country_event = { #
+
+####May 15th Events
+
+country_event = { #May 15 Incident
 	id = japan_new_event.15
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.15"}
 	title = japan_new_event.15.title
-	desc = japan_new_event.15.desc
-	#picture = 
+	desc = {
+		text = japan_new_event.15.seiyukai
+		trigger = {
+			has_country_flag = JAP_seiyukai_won_in_1936_elections
+		}
+	}
+	desc = {
+		text = japan_new_event.15.minseito
+		trigger = {
+			has_country_flag = JAP_minseito_won_in_1936_elections
+		}
+	}
+	desc = {
+		text = japan_new_event.15.shakai_taishuto
+		trigger = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+		}
+	}
+	desc = {
+		text = japan_new_event.15.shakai_taishuto_2
+		trigger = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
+		}
+	}
+	desc = {
+		text = japan_new_event.15.kokumin_domei
+		trigger = {
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election
+		}
+	}
+	
 	
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.15.a
 		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_seiyukai_won_in_1936_elections
+		}
+		add_stability = -0.05
+		remove_ideas_with_trait = head_of_government
+			add_ideas = JAP_Suzuki_Kisaburo_hog_sco
+		
+	}
+	
+	option = { #
+		name = japan_new_event.15.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_minseito_won_in_1936_elections
+		}
+		add_stability = -0.05
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_Hamaguchi_Osachi_hog_mli
+		
+	}
+	option = { #
+		name = japan_new_event.15.c
+		ai_chance = { base = 100 }
+		trigger = {
+			AND = {
+				has_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+					NOT = {
+					has_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
+					}
+			}
+		}
+		add_stability = -0.05
+		remove_ideas_with_trait = head_of_government
+			add_ideas = JAP_jotaro_kawakami_hog_sde
+			create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = socdem_paternal_socialism_subtype
+			}
+	}
+	
+	option = { #Kokumin Domei
+		name = japan_new_event.15.d
+		ai_chance = { base = 100 }
+		trigger = {
+			OR = {
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election_2
+			}
+		}
+		add_stability = -0.05
+		
+	}
+	
+	option = { #Kokumin Domei
+		name = japan_new_event.15.e
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
+		}
+		add_stability = -0.05
+		set_politics = { ruling_party = syndicalist}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_syn
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Aso_Hisashi_sec_syn
+		}
+		country_event = {
+		id = japan_new_event.16
+		days = 7
+		}
 		
 	}
 }
 
-country_event = { #
+###Civil War Chain Between Syndies and Military###
+
+country_event = { #Army Counter Coup
 	id = japan_new_event.16
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.16"}
 	title = japan_new_event.16.title
@@ -553,22 +668,327 @@ country_event = { #
 	option = { #
 		name = japan_new_event.16.a
 		ai_chance = { base = 100 }
+		add_stability = -0.5
+		set_politics = { ruling_party = paternal_autocrat }
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Terauchi_Hisaichi_hog_pau
+			JAP_Honda_Kumataro_for_pau
+			JAP_Suzuki_Teiichi_eco_npo
+			JAP_Hirokazu_Ohno_sec_pau
+			JAP_imperial_support
+			JAP_zaibatsu_backing
+			JAP_pan_asianist_backing
+		}
 		
+		create_country_leader = {
+				name = "Terauchi Hisaichi"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hisaichi_Terauchi.png"
+				expire = "1965.1.1"
+				ideology = junta_subtype
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Japanese Civil War
 	id = japan_new_event.17
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.17"}
 	title = japan_new_event.17.title
 	desc = japan_new_event.17.desc
 	#picture = 
-	
+	immediate = {
+	JAP = {
+	dismantle_faction = yes
+	end_puppet = KOR
+	end_puppet = TWI
+	end_puppet = TAI
+	}
+	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.17.a
 		ai_chance = { base = 100 }
+		hidden_effect = {
+		#remove all DMZs
 		
+
+		#grab the correct ideology
+		
+		
+		
+			set_temp_variable = { japan_ideology = token:syndicalist }
+		
+
+		#start the civil war
+		civil_war_set_flag_to_restore_elections = yes
+		start_civil_war = {
+			### basics ###
+			ideology = var:japan_ideology
+			size = 0.2
+			navy_ratio = 0
+
+			### states ###
+			capital = 536
+			states = { 536 533 534 555 }
+			
+
+			
+
+			### effects ###
+			set_temp_variable = { JAP_civil_war_target = THIS }
+		}
+
+		
+
+		#setup revolter
+		
+		var:JAP_civil_war_target = {
+		change_tag_from = ROOT
+			#set cosmetic tag
+			
+
+			#set leaders and ideology
+			
+				JAP_setup_syndie = yes
+				create_country_leader = {
+					name = "Kenzo Yamamoto"
+					desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+					expire = "1965.1.1"
+					ideology = syndicalist_subtype
+				}
+				set_popularities = {
+						totalist = 20
+						syndicalist = 50
+						radical_socialist = 20
+						social_democrat = 10
+						social_liberal = 3
+						authoritarian_democrat = 3
+						market_liberal = 20
+						social_conservative = 40
+						paternal_autocrat = 10
+						national_populist = 4
+					}
+				
+			
+			
+
+			#spawn units
+			
+			
+			
+			set_cosmetic_tag = JAP_red_army
+
+			#remove redundant wargoals
+			if = {
+				limit = { has_wargoal_against = PREV }
+				remove_wargoal = { target = PREV type = all }
+			}
+		}
+		var:JAP_civil_war_target = {
+		set_cosmetic_tag = JAP_red_army
+		}
+		
+		var:JAP_civil_war_target = {
+		remove_all_ministers = yes
+		add_ideas = {
+				JAP_Yamamoto_Kenzo_hog_syn
+				JAP_Oyama_Ikuo_for_syn
+				JAP_Yamada_Moritaro_eco_syn
+				JAP_Aso_Hisashi_sec_syn
+				JAP_no_navy
+				JAP_workers_of_the_world_unite
+				JAP_no_emperor
+				JAP_i_am_black_smith
+				}
+		load_oob = "Japan_revolution"
+		load_focus_tree = japan-revolution
+		}
+		
+		if = {
+			limit = { has_wargoal_against = var:JAP_civil_war_target }
+			remove_wargoal = { target = var:JAP_civil_war_target type = all }
+		}
+		clr_japan_ministers = yes
+		#delete Guangxi template
+		
+
+		#remove Guangxi popularities
+		set_political_party = { ideology = totalist popularity = 0 }
+		set_political_party = { ideology = syndicalist popularity = 0 }
+		set_political_party = { ideology = radical_socialist popularity = 0 }
+		load_focus_tree = japan-military-civilwar
+		#spawn units
+		capital_scope = {
+			destroy_unit = yes
+		}
+		delete_units = {
+				division_template = "Chindaishidan"
+				disband = yes
+			}
+		#activate decisions
+		
+
+		#if at war, give wargoal to enemies
+		every_other_country = {
+			limit = {
+				OR = {
+					has_wargoal_against = PREV
+					has_offensive_war_with = PREV
+				}
+				can_declare_war_on = var:JAP_civil_war_target
+			}
+			create_wargoal = {
+				target = var:JAP_civil_war_target
+				type = annex_everything
+			}
+		}
+	}
+	}
+	
+	option = { #
+		name = japan_new_event.17.b
+		ai_chance = { base = 100 }
+		hidden_effect = {
+		#remove all DMZs
+		
+
+		#grab the correct ideology
+		
+		
+		
+			set_temp_variable = { japan_ideology = token:syndicalist }
+		
+
+		#start the civil war
+		civil_war_set_flag_to_restore_elections = yes
+		start_civil_war = {
+			### basics ###
+			ideology = var:japan_ideology
+			size = 0.2
+			navy_ratio = 0
+
+			### states ###
+			capital = 536
+			states = { 536 533 534 555 }
+			
+
+			
+
+			### effects ###
+			set_temp_variable = { JAP_civil_war_target = THIS }
+		}
+
+		
+
+		#setup revolter
+		
+		var:JAP_civil_war_target = {
+		
+			#set cosmetic tag
+			
+
+			#set leaders and ideology
+			
+				JAP_setup_syndie = yes
+				create_country_leader = {
+					name = "Kenzo Yamamoto"
+					desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+					expire = "1965.1.1"
+					ideology = syndicalist_subtype
+				}
+				set_popularities = {
+						totalist = 20
+						syndicalist = 50
+						radical_socialist = 20
+						social_democrat = 10
+						social_liberal = 3
+						authoritarian_democrat = 3
+						market_liberal = 20
+						social_conservative = 40
+						paternal_autocrat = 10
+						national_populist = 4
+					}
+				
+			
+			
+
+			#spawn units
+			
+			
+			
+			set_cosmetic_tag = JAP_red_army
+
+			#remove redundant wargoals
+			if = {
+				limit = { has_wargoal_against = PREV }
+				remove_wargoal = { target = PREV type = all }
+			}
+		}
+		var:JAP_civil_war_target = {
+		set_cosmetic_tag = JAP_red_army
+		}
+		
+		var:JAP_civil_war_target = {
+		remove_all_ministers = yes
+		add_ideas = {
+				JAP_Yamamoto_Kenzo_hog_syn
+				JAP_Oyama_Ikuo_for_syn
+				JAP_Yamada_Moritaro_eco_syn
+				JAP_Aso_Hisashi_sec_syn
+				JAP_no_navy
+				JAP_workers_of_the_world_unite
+				JAP_no_emperor
+				JAP_i_am_black_smith
+				}
+		load_oob = "Japan_revolution"
+		load_focus_tree = japan-revolution
+		}
+		
+		if = {
+			limit = { has_wargoal_against = var:JAP_civil_war_target }
+			remove_wargoal = { target = var:JAP_civil_war_target type = all }
+		}
+		clr_japan_ministers = yes
+		#delete Guangxi template
+		
+
+		#remove Guangxi popularities
+		set_political_party = { ideology = totalist popularity = 0 }
+		set_political_party = { ideology = syndicalist popularity = 0 }
+		set_political_party = { ideology = radical_socialist popularity = 0 }
+		load_focus_tree = japan-military-civilwar
+		#spawn units
+		capital_scope = {
+			destroy_unit = yes
+		}
+		delete_units = {
+				division_template = "Chindaishidan"
+				disband = yes
+			}
+		#activate decisions
+		
+
+		#if at war, give wargoal to enemies
+		every_other_country = {
+			limit = {
+				OR = {
+					has_wargoal_against = PREV
+					has_offensive_war_with = PREV
+				}
+				can_declare_war_on = var:JAP_civil_war_target
+			}
+			create_wargoal = {
+				target = var:JAP_civil_war_target
+				type = annex_everything
+			}
+		}
+	}
 	}
 }
 
