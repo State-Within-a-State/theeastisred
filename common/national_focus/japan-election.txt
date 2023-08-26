@@ -34,6 +34,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = JAP_minseito_won_in_1936_elections
+		}
 		prerequisite = { focus = JAP_ELECTION_1936_elections  }
 	}
 
@@ -45,6 +48,9 @@ focus_tree = {
 		y = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_flag = JAP_seiyukai_won_in_1936_elections
 		}
 		prerequisite = { focus = JAP_ELECTION_1936_elections  }
 	}
@@ -58,6 +64,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+		}
 		prerequisite = { focus = JAP_ELECTION_1936_elections  }
 	}
 
@@ -69,6 +78,9 @@ focus_tree = {
 		y = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
 		}
 		prerequisite = { focus = JAP_ELECTION_1936_elections  }
 	}
@@ -82,7 +94,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = JAP_kokumin_domei_won_in_1936_election
+		}
+		cost = 1
 		prerequisite = { focus = JAP_ELECTION_1936_elections  }
+		completion_reward = {
+		country_event = japan_new_event.8
+		}
 	}
 
 	#Tokohai Victory
@@ -91,10 +110,17 @@ focus_tree = {
 		icon = GFX_JAP_ELECTION_tokohai_victory-248360
 		x = 4
 		y = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = JAP_kokumin_domei_won_in_1936_election_2
+		}
 		prerequisite = { focus = JAP_ELECTION_kenzosvictory  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#A Nation of Equals
@@ -107,7 +133,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = JAP_kokumin_domei_won_in_1936_election_3
+		}
 		prerequisite = { focus = JAP_ELECTION_kenzosvictory   }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Invite the Social Democracts
@@ -121,6 +153,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_tokohai_victory  }
+		completion_reward = {
+		add_popularity = { ideology = social_democrat popularity = 0.075 }
+			set_temp_variable = { coalition_partner_var = token:social_democrat }
+			add_to_coalition = yes
+		}
 	}
 
 	#Embrace Dirigism
@@ -133,8 +170,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = JAP_kokumin_domei_won_in_1936_election
+		}
 		prerequisite = { focus = JAP_ELECTION_support_the_military_expansionism  }
 		mutually_exclusive = {	focus = JAP_ELECTION_procure_statist_economics	}
+		completion_reward = {
+		add_ideas = {
+		JAP_black_monday_dirigisme
+		}
+		}
 	}
 
 	#Embrace Democratization
@@ -147,8 +192,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
+		available = {
+		NOT = {
+		has_completed_focus = JAP_ELECTION_reaffirm_zaibatsu_ties
+		}
+		}
 		prerequisite = { focus = JAP_ELECTION_machidasvictory  }
-		mutually_exclusive = { focus = JAP_ELECTION_continue_militarist_expansion  }
+		completion_reward = {
+		add_stability = 0.1
+		}
+		
 	}
 
 	#Continue Militarist Expansion
@@ -162,8 +215,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_status_quo  focus = JAP_ELECTION_machidasvictory  }
-		mutually_exclusive = { focus = JAP_ELECTION_embrace_democratization  } mutually_exclusive = { focus = JAP_ELECTION_reaffirm_zaibatsu_ties  }
-	}
+		completion_reward = {
+		add_ideas = {
+		JAP_army_build_up
+		}
+		}
+		}
 
 	#Re-Affirm Zaibatsu Ties
 	focus = {
@@ -175,8 +232,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		NOT = {
+		has_completed_focus = JAP_ELECTION_embrace_democratization
+		}
+		}
 		prerequisite = { focus = JAP_ELECTION_status_quo  }
-		mutually_exclusive = { focus = JAP_ELECTION_continue_militarist_expansion  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_black_monday_0
+		add_idea = JAP_black_monday_seiyukai
+		}
+		}
+		
 	}
 
 	#Propose Electoral Reform
@@ -190,6 +258,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_isoswin  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 75
+		}
 	}
 
 	#Support Universal Suffrage
@@ -333,6 +405,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_a_nation_of_equals }
+		completion_reward = {
+		add_popularity = { ideology = social_conservative popularity = 0.075 }
+			set_temp_variable = { coalition_partner_var = token:social_conservative }
+			add_to_coalition = yes
+		}
 	}
 
 	#Support the Military Expansionism
@@ -346,6 +423,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_ELECTION_kenzosvictory  }
+		completion_reward = {
+		add_ideas = {
+		JAP_army_build_up
+		}
+		}
 	}
 
 	#Procure Statist Economics
@@ -358,8 +440,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_country_flag = JAP_kokumin_domei_won_in_1936_election_2
+		}
 		prerequisite = { focus = JAP_ELECTION_support_the_military_expansionism  } 
 		mutually_exclusive = {	focus = JAP_ELECTION_embrace_dirigism	}
+		completion_reward = {
+		add_ideas = {
+		JAP_black_monday_natsynd
+		}
+		}
 	}
 
 	
@@ -375,6 +465,18 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_ELECTION_the_hand_of_the_tokohai focus = JAP_ELECTION_invite_the_social_democracts } 
+		completion_reward = {
+		add_stability = 0.1
+		add_popularity = { ideology = national_populist popularity = 0.075 }
+		add_popularity = { ideology = paternal_autocrat popularity = 0.075 }
+		add_popularity = { ideology = authoritarian_democrat popularity = 0.075 }
+			set_temp_variable = { coalition_partner_var = token:national_populist }
+			add_to_coalition = yes
+			set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+			add_to_coalition = yes
+			set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+			add_to_coalition = yes
+		}
 	}
 
 	
