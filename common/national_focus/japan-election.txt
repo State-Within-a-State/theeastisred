@@ -139,6 +139,16 @@ focus_tree = {
 		prerequisite = { focus = JAP_ELECTION_kenzosvictory   }
 		completion_reward = {
 		add_political_power = 100
+		add_to_variable = {
+			var = civilian_government
+			value = 0.005
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.005
+			tooltip = remove_imperial_army_tt
+		}
 		}
 	}
 
@@ -179,6 +189,16 @@ focus_tree = {
 		add_ideas = {
 		JAP_black_monday_dirigisme
 		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.025
+			tooltip = add_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.025
+			tooltip = remove_civilian_government_tt
+		}
 		}
 	}
 
@@ -200,6 +220,16 @@ focus_tree = {
 		prerequisite = { focus = JAP_ELECTION_machidasvictory  }
 		completion_reward = {
 		add_stability = 0.1
+		add_to_variable = {
+			var = civilian_government
+			value = 0.025
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.025
+			tooltip = remove_imperial_army_tt
+		}
 		}
 		
 	}
@@ -218,6 +248,21 @@ focus_tree = {
 		completion_reward = {
 		add_ideas = {
 		JAP_army_build_up
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.05
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.025
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.025
+			tooltip = remove_zaibatsu_corporations_tt
 		}
 		}
 		}
@@ -239,9 +284,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_ELECTION_status_quo  }
 		completion_reward = {
-		swap_ideas = {
-		remove_idea = JAP_black_monday_0
-		add_idea = JAP_black_monday_seiyukai
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.1
+			tooltip = add_zaibatsu_corporations_tt
 		}
 		}
 		
@@ -261,6 +313,16 @@ focus_tree = {
 		completion_reward = {
 		add_stability = 0.1
 		add_political_power = 75
+		add_to_variable = {
+			var = civilian_government
+			value = 0.05
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.05
+			tooltip = remove_imperial_army_tt
+		}
 		}
 	}
 
@@ -275,6 +337,20 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAP_ELECTION_isoswin  focus = JAP_ELECTION_ronoto_victory  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 75
+		add_to_variable = {
+			var = civilian_government
+			value = 0.05
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.05
+			tooltip = remove_imperial_army_tt
+		}
+		}
 	}
 
 	#Denounce Militarist Aggression
@@ -288,6 +364,20 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_ELECTION_isoswin  focus = JAP_ELECTION_ronoto_victory  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 75
+		add_to_variable = {
+			var = civilian_government
+			value = 0.05
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.05
+			tooltip = remove_imperial_army_tt
+		}
+		}
 	}
 
 	#Reach Out to the Unions
@@ -301,6 +391,27 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_ELECTION_ronoto_victory  focus = JAP_ELECTION_isoswin  }
+		completion_reward = {
+		add_to_variable = {
+			var = civilian_government
+			value = 0.05
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.05
+			tooltip = add_workers_union_faction_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.1
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+		add_popularity = { ideology = syndicalist popularity = 0.075 }
+			set_temp_variable = { coalition_partner_var = token:syndicalist }
+			add_to_coalition = yes
+		
+		}
 	}
 
 	#Educate the Peasants
@@ -314,6 +425,21 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAP_ELECTION_ronoto_victory  }
+		completion_reward = {
+		add_ideas = {
+		JAP_peasant_education
+		}
+		add_to_variable = {
+			var = peasants_faction
+			value = 0.05
+			tooltip = add_peasants_faction_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.05
+			tooltip = remove_civilian_government_tt
+		}
+		}
 	}
 
 	#Strike For Katayama
@@ -327,6 +453,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_support_universal_suffrage  } prerequisite = { focus = JAP_ELECTION_denounce_militarist_aggression  } prerequisite = { focus = JAP_ELECTION_reach_out_to_the_unions  } prerequisite = { focus = JAP_ELECTION_educate_the_peasants  }
+		completion_reward = {
+		add_stability = -0.15
+		add_popularity = { ideology = syndicalist popularity = 0.075 }
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.05
+			tooltip = add_workers_union_faction_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.05
+			tooltip = remove_civilian_government_tt
+		}
+		}
 	}
 
 	#Denounce Katayama Radicalism
@@ -340,6 +480,30 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_propose_electoral_reform  } prerequisite = { focus = JAP_ELECTION_support_universal_suffrage  } prerequisite = { focus = JAP_ELECTION_denounce_militarist_aggression  } prerequisite = { focus = JAP_ELECTION_reach_out_to_the_unions  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 75
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.05
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = peasants_faction
+			value = -0.05
+			tooltip = remove_peasants_faction_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = -0.05
+			tooltip = remove_workers_union_faction_tt
+		}
+		}
 	}
 
 	#Unite the Party
@@ -353,6 +517,25 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_reaffirm_zaibatsu_ties  focus = JAP_ELECTION_continue_militarist_expansion  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 75
+		add_to_variable = {
+			var = civilian_government
+			value = 0.05
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.025
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.025
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+		}
 	}
 
 	#Denounce the Liberals
@@ -366,6 +549,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_continue_militarist_expansion  focus = JAP_ELECTION_reaffirm_zaibatsu_ties  }
+		completion_reward = {
+		add_popularity = { ideology = social_liberal popularity = -0.075 }
+		}
 	}
 
 	#Anti Seiyukai Squabbles
@@ -379,6 +565,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_embrace_democratization  focus = JAP_ELECTION_continue_militarist_expansion  }
+		completion_reward = {
+		add_popularity = { ideology = social_conservative popularity = -0.075 }
+		}
 	}
 
 	#Regulate the Zaibatsu
@@ -392,6 +581,35 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAP_ELECTION_continue_militarist_expansion  focus = JAP_ELECTION_embrace_democratization  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 75
+		add_to_variable = {
+			var = civilian_government
+			value = 0.05
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.025
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.125
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = peasants_faction
+			value = 0.05
+			tooltip = add_peasants_faction_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.05
+			tooltip = add_workers_union_faction_tt
+		}
+		}
 	}
 
 	#The Hand of the Tokohai
@@ -427,6 +645,17 @@ focus_tree = {
 		add_ideas = {
 		JAP_army_build_up
 		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.1
+			tooltip = add_imperial_army_tt
+		}
+		
 		}
 	}
 
@@ -449,6 +678,26 @@ focus_tree = {
 		add_ideas = {
 		JAP_black_monday_natsynd
 		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.1
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.15
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = peasants_faction
+			value = 0.025
+			tooltip = add_peasants_faction_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.025
+			tooltip = add_workers_union_faction_tt
+		}
 		}
 	}
 
@@ -467,6 +716,16 @@ focus_tree = {
 		prerequisite = { focus = JAP_ELECTION_the_hand_of_the_tokohai focus = JAP_ELECTION_invite_the_social_democracts } 
 		completion_reward = {
 		add_stability = 0.1
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.1
+			tooltip = add_imperial_army_tt
+		}
 		add_popularity = { ideology = national_populist popularity = 0.075 }
 		add_popularity = { ideology = paternal_autocrat popularity = 0.075 }
 		add_popularity = { ideology = authoritarian_democrat popularity = 0.075 }
@@ -492,6 +751,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_antieuropean_superiority  } 
+		completion_reward = {
+		add_war_support = 0.05
+		
+		add_to_variable = {
+			var = imperial_army
+			value = 0.1
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+		}
+		}
 	}
 
 	#The Union Hunt Down
@@ -505,6 +778,25 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_anti_seiyukai_squabbles  } prerequisite = { focus = JAP_ELECTION_regulate_the_zaibatsu  } prerequisite = { focus = JAP_ELECTION_continue_militarist_expansion  focus = JAP_ELECTION_unite_the_party  } prerequisite = { focus = JAP_ELECTION_denounce_the_liberals  } prerequisite = { focus = JAP_ELECTION_continue_militarist_expansion  }
+		completion_reward = {
+		add_stability = -0.1
+		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.2
+			tooltip = add_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = -0.1
+			tooltip = remove_workers_union_faction_tt
+		}
+		}
 	}
 
 	#Question of the Revolution
@@ -518,6 +810,25 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_denounce_militarist_aggression  }
+		completion_reward = {
+		add_war_support = 0.05
+		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.1
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = peasants_faction
+			value = 0.05
+			tooltip = add_peasants_faction_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.05
+			tooltip = add_workers_union_faction_tt
+		}
+		}
 	}
 
 	#Lets Do Our Best!
@@ -531,6 +842,32 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_ELECTION_strike_for_katayama  } prerequisite = { focus = JAP_ELECTION_question_of_the_revolution  focus = JAP_ELECTION_denounce_katayama_radicalism  } prerequisite = { focus = JAP_ELECTION_question_of_the_revolution  }
+		
+		completion_reward = {
+		add_war_support = 0.05
+		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.1
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.05
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = peasants_faction
+			value = 0.075
+			tooltip = add_peasants_faction_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.075
+			tooltip = add_workers_union_faction_tt
+		}
+		}
+		
 	}
 
 	#May 15th Incident
@@ -541,6 +878,9 @@ focus_tree = {
 		y = 6
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAP_ELECTION_letsdoourbest  focus = JAP_ELECTION_the_union_hunt_down  focus = JAP_ELECTION_the_sun_rises_for_his_glory  focus = JAP_ELECTION_looking_forward_on_japanese_democracy  }
 	}
