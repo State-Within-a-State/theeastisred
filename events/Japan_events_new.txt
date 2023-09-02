@@ -66,12 +66,32 @@ country_event = { #Sen Katayama Killed
 	option = { #
 		name = japan_new_event.3.a
 		add_stability = -0.15
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.025
+			tooltip = add_workers_union_faction_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.025
+			tooltip = remove_civilian_government_tt
+		}
 		country_event = japan_new_event.4
 	}
 	
 	option = { #
 		name = japan_new_event.3.b
 		add_stability = -0.15
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.025
+			tooltip = add_workers_union_faction_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.025
+			tooltip = remove_civilian_government_tt
+		}
 	}
 }
 
@@ -119,7 +139,9 @@ country_event = { #Black Monday Across the Colonies
 	option = { #
 		name = japan_new_event.6.a
 		ai_chance = { base = 100 }
-		
+		TAI = {
+		country_event = taiwan.1
+		}
 	}
 }
 
@@ -379,6 +401,7 @@ country_event = { #Yakuza Take Power
 	option = { #
 		name = japan_new_event.12.a
 		ai_chance = { base = 100 }
+		set_country_flag = factionalism_japan_no
 		remove_all_ministers = yes
 		add_ideas = {
 		JAP_Noboru_Yamaguchi_hog_pau
@@ -590,9 +613,15 @@ country_event = { #May 15 Incident
 		trigger = {
 			has_country_flag = JAP_seiyukai_won_in_1936_elections
 		}
-		add_stability = -0.05
+		add_stability = -0.2
+		country_event = {
+		id = japan_new_event.20
+		days = 7
+		}
 		remove_ideas_with_trait = head_of_government
-			add_ideas = JAP_Suzuki_Kisaburo_hog_sco
+			add_ideas = { 
+			JAP_Suzuki_Kisaburo_hog_sco
+			}
 		
 	}
 	
@@ -602,9 +631,15 @@ country_event = { #May 15 Incident
 		trigger = {
 			has_country_flag = JAP_minseito_won_in_1936_elections
 		}
-		add_stability = -0.05
+		add_stability = -0.2
+		country_event = {
+		id = japan_new_event.20
+		days = 7
+		}
 		remove_ideas_with_trait = head_of_government
-		add_ideas = JAP_Hamaguchi_Osachi_hog_mli
+		add_ideas = {
+		JAP_Hamaguchi_Osachi_hog_mli
+		}
 		
 	}
 	option = { #
@@ -618,7 +653,11 @@ country_event = { #May 15 Incident
 					}
 			}
 		}
-		add_stability = -0.05
+		add_stability = -0.2
+		country_event = {
+		id = japan_new_event.20
+		days = 7
+		}
 		remove_ideas_with_trait = head_of_government
 			add_ideas = JAP_jotaro_kawakami_hog_sde
 			create_country_leader = {
@@ -1071,9 +1110,9 @@ country_event = { #Military Victory
 	}
 }
 
-####Election Events
+####Post May 15th
 
-country_event = { #
+country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
 	id = japan_new_event.20
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.20"}
 	title = japan_new_event.20.title
@@ -1084,11 +1123,59 @@ country_event = { #
 	option = { #
 		name = japan_new_event.20.a
 		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.21
+		days = 7
+		}
+		add_stability = -0.15
+		add_political_power = 100
+		add_to_variable = {
+			var = civilian_government
+			value = 0.3
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
 		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.15
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.20.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.21
+		days = 7
+		}
+		add_stability = 0.25
+		add_political_power = -100
+		add_to_variable = {
+			var = civilian_government
+			value = -0.3
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.25
+			tooltip = add_imperial_army_tt
+		}
+		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.05
+			tooltip = add_zaibatsu_corporations_tt
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Proposal for the National Security Act
 	id = japan_new_event.21
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.21"}
 	title = japan_new_event.21.title
@@ -1099,11 +1186,51 @@ country_event = { #
 	option = { #
 		name = japan_new_event.21.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = civilian_government
+			value = -0.2
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.05
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.25
+			tooltip = add_imperial_army_tt
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.21.a
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+		}
 		
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.05
+			tooltip = add_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.1
+			tooltip = add_workers_union_faction_tt
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Trial of May 15th Incident
 	id = japan_new_event.22
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.22"}
 	title = japan_new_event.22.title
@@ -1111,10 +1238,64 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Not Guilty
 		name = japan_new_event.22.a
 		ai_chance = { base = 100 }
+		trigger = {
+		OR = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+			has_country_flag = JAP_minseito_won_in_1936_elections
+			has_country_flag = JAP_seiyukai_won_in_1936_elections
+		}
+		}
 		
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.05
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.1
+			tooltip = add_workers_union_faction_tt
+		}
+	}
+	
+	option = { #Guilty
+		name = japan_new_event.22.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = 0.15
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = -0.05
+			tooltip = remove_workers_union_faction_tt
+		}
+		
+		add_to_variable = {
+			var = union_control
+			value = 30
+			tooltip = unions_favour_army_tt
+		}
+		
+		add_to_variable = {
+			var = rural_support
+			value = 30
+			tooltip = farmer_favour_army_tt
+		}
 	}
 }
 
