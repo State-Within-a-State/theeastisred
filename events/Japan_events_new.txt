@@ -678,7 +678,10 @@ country_event = { #May 15 Incident
 			}
 		}
 		add_stability = -0.05
-		
+		country_event = {
+		id = japan_new_event.20
+		days = 7
+		}
 	}
 	
 	option = { #Kokumin Domei
@@ -1148,6 +1151,41 @@ country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
 	}
 	
 	option = { #
+		name = japan_new_event.20.c
+		ai_chance = { base = 100 }
+		trigger = {
+			OR = {
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election_2
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election_3
+			}
+		}
+		country_event = {
+		id = japan_new_event.21
+		days = 7
+		}
+		
+		add_stability = -0.15
+		add_political_power = 100
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.15
+			tooltip = remove_imperial_army_tt
+		}
+		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.3
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+	}
+	
+	option = { #
 		name = japan_new_event.20.b
 		ai_chance = { base = 100 }
 		country_event = {
@@ -1201,11 +1239,19 @@ country_event = { #Proposal for the National Security Act
 			value = 0.25
 			tooltip = add_imperial_army_tt
 		}
+		country_event = {
+		id = japan_new_event.22
+		days = 7
+		}
 	}
 	
 	option = { #
-		name = japan_new_event.21.a
+		name = japan_new_event.21.b
 		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.22
+		days = 7
+		}
 		add_to_variable = {
 			var = civilian_government
 			value = -0.1
@@ -1248,7 +1294,10 @@ country_event = { #Trial of May 15th Incident
 			has_country_flag = JAP_seiyukai_won_in_1936_elections
 		}
 		}
-		
+		country_event = {
+		id = japan_new_event.23
+		days = 7
+		}
 		add_to_variable = {
 			var = imperial_army
 			value = -0.15
@@ -1264,6 +1313,7 @@ country_event = { #Trial of May 15th Incident
 			value = 0.1
 			tooltip = add_workers_union_faction_tt
 		}
+		set_country_flag = not_guilty_syndie_japan
 	}
 	
 	option = { #Guilty
@@ -1296,10 +1346,15 @@ country_event = { #Trial of May 15th Incident
 			value = 30
 			tooltip = farmer_favour_army_tt
 		}
+		country_event = {
+		id = japan_new_event.24
+		days = 7
+		}
+		set_country_flag = guilty_syndie_japan
 	}
 }
 
-country_event = { #
+country_event = { #Ministers Threaten to Side with the Military
 	id = japan_new_event.23
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.23"}
 	title = japan_new_event.23.title
@@ -1310,11 +1365,54 @@ country_event = { #
 	option = { #
 		name = japan_new_event.23.a
 		ai_chance = { base = 100 }
-		
+		add_stability = 0.1
+		add_political_power = -100
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.25
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.25
+			tooltip = add_civilian_government_tt
+		}
+		country_event = {
+		id = japan_new_event.24
+		days = 7
+		}
+	}
+	option = { #
+		name = japan_new_event.23.b
+		ai_chance = { base = 100 }
+		add_stability = -0.1
+		add_political_power = 50
+		add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.25
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.25
+			tooltip = remove_civilian_government_tt
+		}
+		country_event = {
+		id = japan_new_event.24
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Concern Over Army Radicalization
 	id = japan_new_event.24
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.24"}
 	title = japan_new_event.24.title
@@ -1325,22 +1423,260 @@ country_event = { #
 	option = { #
 		name = japan_new_event.24.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = -100
+		add_stability = -0.2
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.03
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.01
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.01
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.35
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.35
+			tooltip = remove_civilian_government_tt
+		}
+		set_country_flag = no_military_investigation
+		add_ideas = {
+		JAP_not_pending_investigation
+		}
+		country_event = {
+		id = japan_new_event.25
+		days = 7
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.24.b
+		ai_chance = { base = 100 }
+		add_political_power = 100
+		add_stability = 0.2
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = -0.03
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -0.01
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = -0.01
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.35
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.35
+			tooltip = add_civilian_government_tt
+		}
+		set_country_flag = military_investigation
+		add_ideas = {
+		JAP_pending_investigation
+		}
+		country_event = {
+		id = japan_new_event.25
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #League of Blood Incident
 	id = japan_new_event.25
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.25"}
 	title = japan_new_event.25.title
-	desc = japan_new_event.25.desc
+	desc = {
+		text = japan_new_event.25.no_kill
+		trigger = {
+			OR = {
+				has_country_flag = military_investigation
+				has_government = authoritarian_democrat
+				has_government = national_populist
+			}
+		}
+	}
+	desc = {
+		text = japan_new_event.25.kill
+		trigger = {
+			has_country_flag = no_military_investigation
+		}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Seiyukai
 		name = japan_new_event.25.a
 		ai_chance = { base = 100 }
+		trigger = {
+			AND = {
+				has_country_flag = no_military_investigation
+				has_government = social_conservative
+			}
+		}
+		country_event = {
+		id = japan_new_event.26
+		days = 7
+		}
+		if = {
+			limit = {
+				has_idea = JAP_Suzuki_Kisaburo_sec_sco
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Kawamura_Takeji_sec_sco
+		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_Mizuno_Rentaro_hog_sco
+		clr_country_flag = Suzuki_Kisaburo_dead
 		
+	}
+	option = { #Minseito
+		name = japan_new_event.25.a
+		ai_chance = { base = 100 }
+		trigger = {
+			AND = {
+				has_country_flag = no_military_investigation
+				OR = {
+				has_government = social_liberal
+				has_government = market_liberal
+				}
+			}
+		}
+		country_event = {
+		id = japan_new_event.26
+		days = 7
+		}
+		if = {
+			limit = {
+				has_idea = JAP_Kawasaki_Takukichi_sec_mli
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Kawamura_Takeji_sec_sco
+		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_Miki_Bukichi_hog_mli
+		
+		
+	}
+	
+	option = { #Shakai-Taishuto
+		name = japan_new_event.25.a
+		ai_chance = { base = 100 }
+		trigger = {
+			AND = {
+				has_country_flag = no_military_investigation
+				has_government = social_democrat
+			}
+		}
+		country_event = {
+		id = japan_new_event.26
+		days = 7
+		}
+		if = {
+			limit = {
+				has_idea = JAP_Matsuoka_Komakichi_sec_sde
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Aso_Hisashi_sec_syn
+		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_Katayama_Tetsu_hog_sde
+		
+	}
+	
+	
+	
+	option = { #No Asassination
+		name = japan_new_event.25.b
+		ai_chance = { base = 100 }
+		trigger = {
+			OR = {
+				has_country_flag = military_investigation
+				has_government = authoritarian_democrat
+				has_government = national_populist
+			}
+		}
+		add_stability = -0.2
+		add_manpower = -100
+		add_political_power = 20
+		country_event = {
+		id = japan_new_event.26
+		days = 7
+		}
+	}
+	
+	option = {
+		name = japan_new_event.25.c
+		add_stability = -0.5
+		set_country_flag = League_of_blood_coup
+		hidden_effect = {
+		load_focus_tree = nichiren-japan
+		set_politics = { ruling_party = national_populist }
+			country_event = rework_japan.12
+			create_country_leader = {
+			name = "Hirohito"
+			desc = "KANJI_LEADER_DESC"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_nichiren_buddhism_subtype
+			}
+			create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			desc = "GIRO_LEADER_DESC"
+			expire = "1965.1.1"
+			ideology = radsoc_nichiren_buddhism_subtype
+			
+			}
+			
+			set_party_name = {
+				ideology = radical_socialist
+				long_name = "Kokuchūkai"
+				name = "Kokuchūkai"
+			}
+			set_party_name = {
+				ideology = national_populist
+				long_name = "Kokuchūkai"
+				name = "Kokuchūkai"
+			}
+		}
 	}
 }
 
