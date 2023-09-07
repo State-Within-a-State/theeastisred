@@ -1680,7 +1680,7 @@ country_event = { #League of Blood Incident
 	}
 }
 
-country_event = { #
+country_event = { #Purging the Army
 	id = japan_new_event.26
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.26"}
 	title = japan_new_event.26.title
@@ -1691,11 +1691,28 @@ country_event = { #
 	option = { #
 		name = japan_new_event.26.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		set_country_flag = kodoha_mission
+		set_country_flag = toseiha_mission
+		activate_mission = JAP_deal_with_kodoha
+		activate_mission = JAP_deal_with_toseiha
+		country_event = {
+		id = japan_new_event.27
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Trial of the League of Blood Incident
 	id = japan_new_event.27
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.27"}
 	title = japan_new_event.27.title
