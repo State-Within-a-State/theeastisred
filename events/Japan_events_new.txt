@@ -757,126 +757,205 @@ country_event = { #Japanese Civil War
 	desc = japan_new_event.17.desc
 	#picture = 
 	immediate = {
-	JAP = {
-	dismantle_faction = yes
-	end_puppet = KOR
-	end_puppet = TWI
-	end_puppet = TAI
-	}
+	hidden_effect = {
+		JAP = {
+		dismantle_faction = yes
+		end_puppet = KOR
+		end_puppet = TWI
+		end_puppet = TAI
+		}
+		
+		every_state = {
+					limit = {
+						is_core_of = "JAP"
+					}
+					add_core_of = JSR
+				}
+		JSR = {
+					transfer_state = 536
+					transfer_state = 533
+					transfer_state = 534
+					transfer_state = 555
+					inherit_technology = GER		
+					add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 40000
+					}
+					add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 1000
+					}
+					set_cosmetic_tag = JAP_red_army
+					add_ideas = {
+					JAP_Yamamoto_Kenzo_hog_syn
+					JAP_Oyama_Ikuo_for_syn
+					JAP_Yamada_Moritaro_eco_syn
+					JAP_Aso_Hisashi_sec_syn
+					JAP_no_navy
+					JAP_workers_of_the_world_unite
+					JAP_no_emperor
+					JAP_i_am_black_smith
+					}
+					load_oob = "Japan_revolution"
+					load_focus_tree = japan-revolution
+					create_country_leader = {
+						name = "Kenzo Yamamoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+						expire = "1965.1.1"
+						ideology = syndicalist_subtype
+					}
+					create_country_leader = {
+						name = "Hisashi Aso"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+						expire = "1965.1.1"
+						ideology = totalist_subtype
+					}
+					create_country_leader = {
+						name = "Kanson Arahata"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+						expire = "1965.1.1"
+						ideology = radical_socialist_subtype
+					}
+					create_field_marshal = {
+						name = "Sanzo Nosaka"
+						portrait_path = "gfx/leaders/GRU/Portrait_GRU_Paul_Lensch.png"
+						traits = {
+						
+						}
+						skill = 2
+						attack_skill = 2
+						defense_skill = 1
+						planning_skill = 2
+						logistics_skill = 2
+					}
+					create_field_marshal = {
+						name = "Kyuchi Tokuda"
+						portrait_path = "gfx/leaders/GRU/Portrait_GRU_Paul_Lensch.png"
+						traits = {
+						
+						}
+						skill = 2
+						attack_skill = 2
+						defense_skill = 1
+						planning_skill = 2
+						logistics_skill = 2
+					}
+					create_field_marshal = {
+						name = "Saiko Mankichi"
+						portrait_path = "gfx/leaders/GRU/Portrait_GRU_Paul_Lensch.png"
+						traits = {
+						
+						}
+						skill = 2
+						attack_skill = 2
+						defense_skill = 1
+						planning_skill = 2
+						logistics_skill = 2
+					}
+					
+					set_politics = {
+						ruling_party = syndicalist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+					
+					set_popularities = {
+							totalist = 20
+							syndicalist = 50
+							radical_socialist = 20
+							social_democrat = 10
+							social_liberal = 3
+							authoritarian_democrat = 3
+							market_liberal = 20
+							social_conservative = 40
+							paternal_autocrat = 10
+							national_populist = 4
+						}
+					set_party_name = {
+							ideology = totalist
+							long_name = JSR_REBELLION_TOTALIST_PARTY_long
+							name = JSR_REBELLION_TOTALIST_PARTY
+					}
+					set_party_name = {
+							ideology = syndicalist
+							long_name = JSR_REBELLION_SYNDIE_PARTY_long
+							name = JSR_REBELLION_SYNDIE_PARTY
+					}
+					set_party_name = {
+							ideology = radical_socialist
+							long_name = JSR_REBELLION_RADSOC_PARTY_long
+							name = JSR_REBELLION_RADSOC_PARTY
+					}
+					
+					set_party_name = {
+							ideology = social_democrat
+							long_name = JSR_REBELLION_SOCDEM_PARTY_long
+							name = JSR_REBELLION_SOCDEM_PARTY
+					}
+					
+					
+					set_party_name = {
+							ideology = social_liberal
+							long_name = JSR_SOCLIB_PARTY
+							name = JSR_SOCLIB_PARTY
+					}
+					set_party_name = {
+							ideology = market_liberal
+							long_name = JSR_MARLIB_PARTY
+							name = JSR_MARLIB_PARTY
+					}
+					set_party_name = {
+							ideology = social_conservative
+							long_name = JSR_CONS_PARTY
+							name = JSR_CONS_PARTY
+					}
+					
+					set_party_name = {
+							ideology = authoritarian_democrat
+							long_name = JSR_AUTH_PARTY
+							name = JSR_AUTH_PARTY
+					}
+					set_party_name = {
+							ideology = paternal_autocrat
+							long_name = JSR_PATE_PARTY
+							name = JSR_PATE_PARTY
+					}
+					set_party_name = {
+							ideology = national_populist
+							long_name = JSR_NAPO_PARTY
+							name = JSR_NAPO_PARTY
+					}
+					
+					JAP = {
+					
+					set_country_flag = JAP_LEFT_REVOLT
+					transfer_units_fraction= {
+						target = JSR
+						size = 0.3
+						stockpile_ratio = 0.5
+						army_ratio = 0.4
+						navy_ratio = 0.3
+						air_ratio = 0.3
+						keep_unit_leaders_trigger = {
+							NOT = { has_unit_leader_flag = my_test_flag }
+						}
+					}
+						
+					dismantle_faction = yes
+				}
+		}
+		}
 	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.17.a
 		ai_chance = { base = 100 }
 		hidden_effect = {
-		#remove all DMZs
+		JAP = {
 		
-
-		#grab the correct ideology
-		
-		
-		
-			set_temp_variable = { japan_ideology = token:syndicalist }
-		
-
-		#start the civil war
-		civil_war_set_flag_to_restore_elections = yes
-		start_civil_war = {
-			### basics ###
-			ideology = var:japan_ideology
-			size = 0.2
-			navy_ratio = 0
-
-			### states ###
-			capital = 536
-			states = { 536 533 534 555 }
-			
-
-			
-
-			### effects ###
-			set_temp_variable = { JAP_civil_war_target = THIS }
-		}
-
-		
-
-		#setup revolter
-		
-		var:JAP_civil_war_target = {
-		change_tag_from = ROOT
-			#set cosmetic tag
-			
-
-			#set leaders and ideology
-			
-				JAP_setup_syndie = yes
-				create_country_leader = {
-					name = "Kenzo Yamamoto"
-					desc = "POLITICS_JAP_LI_ZONGREN_DESC"
-					picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
-					expire = "1965.1.1"
-					ideology = syndicalist_subtype
-				}
-				set_popularities = {
-						totalist = 20
-						syndicalist = 50
-						radical_socialist = 20
-						social_democrat = 10
-						social_liberal = 3
-						authoritarian_democrat = 3
-						market_liberal = 20
-						social_conservative = 40
-						paternal_autocrat = 10
-						national_populist = 4
-					}
-				
-			
-			
-
-			#spawn units
-			
-			
-			
-			set_cosmetic_tag = JAP_red_army
-
-			#remove redundant wargoals
-			if = {
-				limit = { has_wargoal_against = PREV }
-				remove_wargoal = { target = PREV type = all }
-			}
-		}
-		var:JAP_civil_war_target = {
-		set_cosmetic_tag = JAP_red_army
-		}
-		
-		var:JAP_civil_war_target = {
-		remove_all_ministers = yes
-		add_ideas = {
-				JAP_Yamamoto_Kenzo_hog_syn
-				JAP_Oyama_Ikuo_for_syn
-				JAP_Yamada_Moritaro_eco_syn
-				JAP_Aso_Hisashi_sec_syn
-				JAP_no_navy
-				JAP_workers_of_the_world_unite
-				JAP_no_emperor
-				JAP_i_am_black_smith
-				}
-		load_oob = "Japan_revolution"
-		load_focus_tree = japan-revolution
-		}
-		
-		if = {
-			limit = { has_wargoal_against = var:JAP_civil_war_target }
-			remove_wargoal = { target = var:JAP_civil_war_target type = all }
-		}
-		clr_japan_ministers = yes
-		#delete Guangxi template
-		
-
-		#remove Guangxi popularities
-		set_political_party = { ideology = totalist popularity = 0 }
-		set_political_party = { ideology = syndicalist popularity = 0 }
-		set_political_party = { ideology = radical_socialist popularity = 0 }
 		load_focus_tree = japan-military-civilwar
 		#spawn units
 		capital_scope = {
@@ -886,165 +965,46 @@ country_event = { #Japanese Civil War
 				division_template = "Chindaishidan"
 				disband = yes
 			}
-		#activate decisions
-		
-
-		#if at war, give wargoal to enemies
-		every_other_country = {
-			limit = {
-				OR = {
-					has_wargoal_against = PREV
-					has_offensive_war_with = PREV
-				}
-				can_declare_war_on = var:JAP_civil_war_target
-			}
-			create_wargoal = {
-				target = var:JAP_civil_war_target
+		set_political_party = { ideology = totalist popularity = 0 }
+		set_political_party = { ideology = syndicalist popularity = 0 }
+		set_political_party = { ideology = radical_socialist popularity = 0 }
+			declare_war_on = {
+				target = JSR
 				type = annex_everything
 			}
 		}
-	}
+		
+		JSR = {
+			change_tag_from = JAP
+		}
+		
+		}
 	}
 	
 	option = { #
 		name = japan_new_event.17.b
 		ai_chance = { base = 100 }
 		hidden_effect = {
-		#remove all DMZs
-		
-
-		#grab the correct ideology
-		
-		
-		
-			set_temp_variable = { japan_ideology = token:syndicalist }
-		
-
-		#start the civil war
-		civil_war_set_flag_to_restore_elections = yes
-		start_civil_war = {
-			### basics ###
-			ideology = var:japan_ideology
-			size = 0.2
-			navy_ratio = 0
-
-			### states ###
-			capital = 536
-			states = { 536 533 534 555 }
+			JAP = {
 			
-
-			
-
-			### effects ###
-			set_temp_variable = { JAP_civil_war_target = THIS }
-		}
-
-		
-
-		#setup revolter
-		
-		var:JAP_civil_war_target = {
-		
-			#set cosmetic tag
-			
-
-			#set leaders and ideology
-			
-				JAP_setup_syndie = yes
-				create_country_leader = {
-					name = "Kenzo Yamamoto"
-					desc = "POLITICS_JAP_LI_ZONGREN_DESC"
-					picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
-					expire = "1965.1.1"
-					ideology = syndicalist_subtype
-				}
-				set_popularities = {
-						totalist = 20
-						syndicalist = 50
-						radical_socialist = 20
-						social_democrat = 10
-						social_liberal = 3
-						authoritarian_democrat = 3
-						market_liberal = 20
-						social_conservative = 40
-						paternal_autocrat = 10
-						national_populist = 4
-					}
-				
-			
-			
-
+			load_focus_tree = japan-military-civilwar
 			#spawn units
-			
-			
-			
-			set_cosmetic_tag = JAP_red_army
-
-			#remove redundant wargoals
-			if = {
-				limit = { has_wargoal_against = PREV }
-				remove_wargoal = { target = PREV type = all }
+			capital_scope = {
+				destroy_unit = yes
 			}
-		}
-		var:JAP_civil_war_target = {
-		set_cosmetic_tag = JAP_red_army
-		}
-		
-		var:JAP_civil_war_target = {
-		remove_all_ministers = yes
-		add_ideas = {
-				JAP_Yamamoto_Kenzo_hog_syn
-				JAP_Oyama_Ikuo_for_syn
-				JAP_Yamada_Moritaro_eco_syn
-				JAP_Aso_Hisashi_sec_syn
-				JAP_no_navy
-				JAP_workers_of_the_world_unite
-				JAP_no_emperor
-				JAP_i_am_black_smith
+			delete_units = {
+					division_template = "Chindaishidan"
+					disband = yes
 				}
-		load_oob = "Japan_revolution"
-		load_focus_tree = japan-revolution
-		}
-		
-		if = {
-			limit = { has_wargoal_against = var:JAP_civil_war_target }
-			remove_wargoal = { target = var:JAP_civil_war_target type = all }
-		}
-		clr_japan_ministers = yes
-		#delete Guangxi template
-		
-
-		#remove Guangxi popularities
-		set_political_party = { ideology = totalist popularity = 0 }
-		set_political_party = { ideology = syndicalist popularity = 0 }
-		set_political_party = { ideology = radical_socialist popularity = 0 }
-		load_focus_tree = japan-military-civilwar
-		#spawn units
-		capital_scope = {
-			destroy_unit = yes
-		}
-		delete_units = {
-				division_template = "Chindaishidan"
-				disband = yes
-			}
-		#activate decisions
-		
-
-		#if at war, give wargoal to enemies
-		every_other_country = {
-			limit = {
-				OR = {
-					has_wargoal_against = PREV
-					has_offensive_war_with = PREV
+			set_political_party = { ideology = totalist popularity = 0 }
+			set_political_party = { ideology = syndicalist popularity = 0 }
+			set_political_party = { ideology = radical_socialist popularity = 0 }
+				declare_war_on = {
+					target = JSR
+					type = annex_everything
 				}
-				can_declare_war_on = var:JAP_civil_war_target
-			}
-			create_wargoal = {
-				target = var:JAP_civil_war_target
-				type = annex_everything
 			}
 		}
-	}
 	}
 }
 
@@ -1723,11 +1683,65 @@ country_event = { #Trial of the League of Blood Incident
 	option = { #
 		name = japan_new_event.27.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		add_stability = 0.1
+		add_political_power = -200
+		add_war_support = -0.3
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_kodoha
+				days = 20
+			}
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_toseiha
+				days = 20
+			}
+		country_event = {
+		id = japan_new_event.28
+		days = 2
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.27.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = 0.15
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.15
+			tooltip = remove_civilian_government_tt
+		}
+		add_stability = -0.1
+		add_political_power = 50
+		add_war_support = 0.15
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_kodoha
+				days = -10
+			}
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_toseiha
+				days = -10
+			}
+		country_event = {
+		id = japan_new_event.28
+		days = 2
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Instability in the Colonies
 	id = japan_new_event.28
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.28"}
 	title = japan_new_event.28.title
@@ -1738,7 +1752,49 @@ country_event = { #
 	option = { #
 		name = japan_new_event.28.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = imperial_army
+			value = 0.15
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.15
+			tooltip = remove_civilian_government_tt
+		}
+		add_stability = -0.15
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_kodoha
+				days = -5
+			}
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_toseiha
+				days = -1
+			}
+	}
+	
+	option = { #
+		name = japan_new_event.28.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		add_stability = 0.15
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_kodoha
+				days = 10
+			}
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_toseiha
+				days = 5
+			}
 	}
 }
 
