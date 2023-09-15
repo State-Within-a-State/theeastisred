@@ -1798,7 +1798,9 @@ country_event = { #Instability in the Colonies
 	}
 }
 
-country_event = { #
+##Kodoha Coup Events
+
+country_event = { #Kodoha Coup
 	id = japan_new_event.29
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.29"}
 	title = japan_new_event.29.title
@@ -1809,11 +1811,36 @@ country_event = { #
 	option = { #
 		name = japan_new_event.29.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = paternal_autocrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+		}
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_country_flag = JAP_kodoha_coup
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
-country_event = { #
+country_event = { #Siding With a Faction
 	id = japan_new_event.30
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.30"}
 	title = japan_new_event.30.title
@@ -1821,14 +1848,97 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Pan-Asianists
 		name = japan_new_event.30.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_yuzonsha_long
+			name = JAP_party_yuzonsha
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = ikki_kita_thought_subtype
+		}
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = JAP_state
+		remove_ideas = JAP_DEM_GOV
+		set_country_flag = JAP_something_unexpected_happened
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kita_Ikki_hog_tot
+			JAP_Okawa_Shumei_for_npo
+			JAP_Nishida_Mitsugi_eco_npo
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+		if = {
+			limit = { has_country_flag = JAP_yasuhito }
+			add_ideas = JAP_emperor_yasuhito
+		}
+		else = { add_ideas = JAP_emperor_hirohito }
+		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.31
+	}
+	option = { #Kodoha Army
+		name = japan_new_event.30.b
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.32
+	}
+	
+	option = { #Konoe
+		name = japan_new_event.30.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_yuzonsha_long
+			name = JAP_party_yuzonsha
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = ikki_kita_thought_subtype
+		}
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = JAP_state
+		remove_ideas = JAP_DEM_GOV
+		set_country_flag = JAP_something_unexpected_happened
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kita_Ikki_hog_tot
+			JAP_Okawa_Shumei_for_npo
+			JAP_Nishida_Mitsugi_eco_npo
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+		if = {
+			limit = { has_country_flag = JAP_yasuhito }
+			add_ideas = JAP_emperor_yasuhito
+		}
+		else = { add_ideas = JAP_emperor_hirohito }
+		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.31
 	}
 }
 
-country_event = { #
+country_event = { #Shumei or Kita
 	id = japan_new_event.31
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.31"}
 	title = japan_new_event.31.title
@@ -1836,14 +1946,32 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Stick With Kita
 		name = japan_new_event.31.a
 		ai_chance = { base = 100 }
 		
 	}
+	
+	option = { #Stick With Shumei
+		name = japan_new_event.31.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = okawa_shumei_thought_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Okawa_Shumei_hog_npo
+			JAP_Kametaro_Mitsukawa_for_npo
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Seishiro_Itagaki_sec_npo
+		}
+	}
 }
 
-country_event = { #
+country_event = { #The Kokuhonsha & The Sakurakai
 	id = japan_new_event.32
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.32"}
 	title = japan_new_event.32.title
@@ -1851,12 +1979,67 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Kokuhonsha
 		name = japan_new_event.32.a
 		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+		}
+	}
+	option = { #Sakurakai
+		name = japan_new_event.32.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_Kingoro
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_sakurakai_long
+			name = JAP_party_sakurakai
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_sakurakai_long
+			name = JAP_party_sakurakai
+		}
 		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_nihon_socialism_subtype
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_nihon_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Imasu_Cho_sec_npo
+		}
 	}
 }
+
+####Imperial Rule Association Events###
+
 
 country_event = { #
 	id = japan_new_event.33
@@ -2053,7 +2236,9 @@ country_event = { #
 	}
 }
 
-country_event = { #
+####Decision Between Religion Factions###
+
+country_event = { #A Twist in the Coup
 	id = japan_new_event.46
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.46"}
 	title = japan_new_event.46.title
@@ -2061,14 +2246,61 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Nichirenists
 		name = japan_new_event.46.a
 		ai_chance = { base = 100 }
 		
 	}
+	
+	option = { #Genyosha
+		name = japan_new_event.46.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_black_dragon
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ryohei_Uchida_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Yoshio_Kodama_sec_npo
+		}
+		load_focus_tree = japan-black-dragon-society
+	}
 }
 
-country_event = { #
+country_event = { #Leading the Genyosha
 	id = japan_new_event.47
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.47"}
 	title = japan_new_event.47.title
@@ -2076,14 +2308,60 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Stick With Ryohei
 		name = japan_new_event.47.a
 		ai_chance = { base = 100 }
+		set_country_flag = black_dragon_death
+	}
+	
+	option = { #Oomoto
+		name = japan_new_event.47.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_black_dragon
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
 		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = fundementalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Onisaburo_Deguchi_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Yoshio_Kodama_sec_npo
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Death of Ryohei Uchida
 	id = japan_new_event.48
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.48"}
 	title = japan_new_event.48.title
@@ -2094,7 +2372,38 @@ country_event = { #
 	option = { #
 		name = japan_new_event.48.a
 		ai_chance = { base = 100 }
-		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Toyama_Mitsuru_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Yoshio_Kodama_sec_npo
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.48.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_roerich
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_roerichism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Toyama_Mitsuru_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Yoshio_Kodama_sec_npo
+		}
 	}
 }
 
