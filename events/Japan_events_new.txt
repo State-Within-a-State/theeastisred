@@ -1908,33 +1908,92 @@ country_event = { #Siding With a Faction
 		}
 		set_party_name = {
 			ideology = totalist
-			long_name = JAP_party_yuzonsha_long
-			name = JAP_party_yuzonsha
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
 		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:syndicalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:market_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_conservative }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 			expire = "1965.1.1"
-			ideology = ikki_kita_thought_subtype
+			ideology = right_syndicalism_subtype
 		}
-		drop_cosmetic_tag = yes
-		set_cosmetic_tag = JAP_state
-		remove_ideas = JAP_DEM_GOV
-		set_country_flag = JAP_something_unexpected_happened
+		
 		remove_all_ministers = yes
 		add_ideas = {
-			JAP_Kita_Ikki_hog_tot
-			JAP_Okawa_Shumei_for_npo
-			JAP_Nishida_Mitsugi_eco_npo
-			JAP_Kingoro_Hashimoto_sec_tot
+			JAP_Konoe_Fumimaro_hog_npo
+			JAP_Yosuke_Matsuoka_for_pau
+			JAP_Isao_Kawada_eco_pau
+			JAP_Suetsugu_Nobumasa_sec_npo
 		}
-		if = {
-			limit = { has_country_flag = JAP_yasuhito }
-			add_ideas = JAP_emperor_yasuhito
-		}
-		else = { add_ideas = JAP_emperor_hirohito }
+		
 		mark_focus_tree_layout_dirty = yes
-		country_event = japan_new_event.31
+		country_event = japan_new_event.33
 	}
 }
 
@@ -2041,7 +2100,7 @@ country_event = { #The Kokuhonsha & The Sakurakai
 ####Imperial Rule Association Events###
 
 
-country_event = { #
+country_event = { #Struggle of the Left and Right
 	id = japan_new_event.33
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.33"}
 	title = japan_new_event.33.title
@@ -2052,7 +2111,11 @@ country_event = { #
 	option = { #
 		name = japan_new_event.33.a
 		ai_chance = { base = 100 }
-		
+		set_power_balance = {
+				id = JAP_IRAA_balance
+				left_side = JAP_IRAA_left_side
+				right_side = JAP_IRAA_right_side
+			}
 	}
 }
 
@@ -2256,6 +2319,7 @@ country_event = { #A Twist in the Coup
 		name = japan_new_event.46.b
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = JAP_black_dragon
+		
 		set_party_name = {
 			ideology = national_populist
 			long_name = JAP_party_genyosha_long
@@ -2367,7 +2431,9 @@ country_event = { #Death of Ryohei Uchida
 	title = japan_new_event.48.title
 	desc = japan_new_event.48.desc
 	#picture = 
-	
+	trigger = {
+	has_country_flag = black_dragon_death
+	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.48.a

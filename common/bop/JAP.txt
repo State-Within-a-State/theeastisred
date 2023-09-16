@@ -1,0 +1,93 @@
+
+JAP_IRAA_balance = {
+	initial_value = 0.25
+	icon = GFX_idea_united_front_power
+	left_side = JAP_IRAA_left_side
+	right_side = JAP_IRAA_right_side
+	decision_category = JAP_IRAA_decision_category
+	range = {
+		id = power_of_the_iraa_factions
+		min = -0.1
+		max = 0.1
+		modifier = {
+			war_support_weekly = 0.1
+		}
+	}
+	side = {
+		id = JAP_IRAA_left_side
+		icon = GFX_idea_leftist_iraa_icon
+		range = {
+			id = JAP_IRAA_left_side_range
+			min = -0.1
+			max = -0.59
+			modifier = {
+				syndicalist_drift = 0.05
+			}
+		}
+		
+		range = {
+			id = JAP_bop_left_iraa_dominant
+			min = -1.00
+			max = -0.60
+			modifier = {
+				experience_gain_army_factor = 0.10
+				high_command_cost_factor = -0.10
+				stability_weekly = -0.0050
+			}
+			on_activate = {
+				
+				set_power_balance_gfx = {
+					id = JAP_IRAA_balance
+					side = JAP_IRAA_left_side
+					gfx = GFX_idea_leftist_iraa_icon
+				}
+			}
+			on_deactivate = {
+				set_power_balance_gfx = {
+					id = JAP_IRAA_balance
+					side = JAP_IRAA_left_side
+					gfx = GFX_idea_leftist_iraa_icon
+				}
+			}
+		}
+	}
+	side = {
+		id = JAP_IRAA_right_side
+		icon = GFX_idea_rightist_iraa_icon
+		range = {
+			id = JAP_IRAA_right_side_range
+			min = 0.1
+			max = 0.59
+			modifier = {
+				radical_socialist_drift = 0.03
+			}
+		}
+		
+		range = {
+			id = JAP_bop_right_iraa_dominant
+			min = 1.00
+			max = 0.60
+			modifier = {
+				experience_gain_army_factor = 0.10
+				high_command_cost_factor = -0.10
+				stability_weekly = -0.0050
+			}
+			on_activate = {
+				
+				set_power_balance_gfx = {
+					id = JAP_IRAA_balance
+					side = JAP_IRAA_right_side
+					gfx = GFX_idea_rightist_iraa_icon
+				}
+			}
+			on_deactivate = {
+				set_power_balance_gfx = {
+					id = JAP_IRAA_balance
+					side = JAP_IRAA_right_side
+					gfx = GFX_idea_rightist_iraa_icon
+				}
+			}
+		}
+	}
+}
+
