@@ -2116,10 +2116,14 @@ country_event = { #Struggle of the Left and Right
 				left_side = JAP_IRAA_left_side
 				right_side = JAP_IRAA_right_side
 			}
+		country_event = {
+		id = japan_new_event.34
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Syndicalists
 	id = japan_new_event.34
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.34"}
 	title = japan_new_event.34.title
@@ -2127,14 +2131,38 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Keep the Ban
 		name = japan_new_event.34.a
 		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.35
+		days = 7
+		}
 		
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = 0.1
+				tooltip_side = JAP_IRAA_right_side
+			}
+	}
+	
+	option = { #Remove the Ban
+		name = japan_new_event.34.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.35
+		days = 7
+		}
+		
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = -0.1
+				tooltip_side = JAP_IRAA_left_side
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Question of Politics
 	id = japan_new_event.35
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.35"}
 	title = japan_new_event.35.title
@@ -2142,14 +2170,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Maintain Military Majority
 		name = japan_new_event.35.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = 0.1
+				tooltip_side = JAP_IRAA_right_side
+			}
+	}
+	
+	option = { #Open the Gates for More Politicians
+		name = japan_new_event.35.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = -0.1
+				tooltip_side = JAP_IRAA_left_side
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the IRAPA
 	id = japan_new_event.36
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.36"}
 	title = japan_new_event.36.title
@@ -2157,14 +2199,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Maintain Military Majority
 		name = japan_new_event.36.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = 0.1
+				tooltip_side = JAP_IRAA_right_side
+			}
+	}
+	
+	option = { #Open the Gates for More Politicians
+		name = japan_new_event.36.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = -0.1
+				tooltip_side = JAP_IRAA_left_side
+			}
 	}
 }
 
-country_event = { #
+country_event = { #The Zaibatsu Question
 	id = japan_new_event.37
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.37"}
 	title = japan_new_event.37.title
@@ -2172,14 +2228,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Maintain Military Majority
 		name = japan_new_event.37.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = 0.1
+				tooltip_side = JAP_IRAA_right_side
+			}
+	}
+	
+	option = { #Open the Gates for More Politicians
+		name = japan_new_event.37.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = -0.1
+				tooltip_side = JAP_IRAA_left_side
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Closing of the First Yokusan Elections
 	id = japan_new_event.38
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.38"}
 	title = japan_new_event.38.title
@@ -2187,14 +2257,69 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Konoe Leftist
 		name = japan_new_event.38.a
 		ai_chance = { base = 100 }
+		trigger = {
+		is_power_balance_in_range = {
+				id = JAP_JAP_IRAA_balance
+				range > JAP_JAP_IRAA_left_side_range
+			}
+		}
 		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natsynd_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Konoe_Fumimaro_hog_npo
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Asanuma_Inejiro_eco_tot
+			JAP_Akira_Kazami_sec_ade
+		}
+	}
+	option = { #Konoe Rightist
+		name = japan_new_event.38.b
+		ai_chance = { base = 100 }
+		trigger = {
+		is_power_balance_in_range = {
+				id = JAP_JAP_IRAA_balance
+				range > JAP_JAP_IRAA_right_side_range
+			}
+		}
+	}
+	option = { #Far Left Victory
+		name = japan_new_event.38.c
+		ai_chance = { base = 100 }
+		trigger = {
+		is_power_balance_in_range = {
+				id = JAP_JAP_IRAA_balance
+				range > JAP_bop_left_iraa_dominant
+			}
+		}
+		country_event = japan_new_event.39
+	}
+	option = { #Far Right Victory
+		name = japan_new_event.38.d
+		ai_chance = { base = 100 }
+		trigger = {
+		is_power_balance_in_range = {
+				id = JAP_JAP_IRAA_balance
+				range > JAP_JAP_bop_right_iraa_dominant
+			}
+		}
+		country_event = japan_new_event.40
 	}
 }
 
-country_event = { #
+country_event = { #Rightist Election
 	id = japan_new_event.39
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.39"}
 	title = japan_new_event.39.title
@@ -2205,11 +2330,74 @@ country_event = { #
 	option = { #
 		name = japan_new_event.39.a
 		ai_chance = { base = 100 }
+	create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = junta_subtype
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
 		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hayashi_Senjuro_hog_pau
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Toyotaro_Yuki_eco_pau
+			JAP_Kotaro_Nakamura_sec_pau
+		}	
+	}
+	
+	option = { #
+		name = japan_new_event.39.b
+		ai_chance = { base = 100 }
+	create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_national_conservative_subtype
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hiranuma_Kiichiro_hog_pau
+			JAP_Arita_Hachiro_for_ade
+			JAP_Toyotaro_Yuki_eco_pau
+			JAP_Kotaro_Nakamura_sec_pau
+		}	
+	}
+	
+	option = { #
+		name = japan_new_event.39.c
+		ai_chance = { base = 100 }
+	create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_corporatocracy_subtype
+		}
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kuhara_Fusanosuke_hog_npo
+			JAP_Yosuke_Matsuoka_for_pau
+			JAP_Nakajima_Chikuhei_eco_ade
+			JAP_Nagai_Ryutaro_sec_ade
+		}	
 	}
 }
 
-country_event = { #
+country_event = { #leftist Election
 	id = japan_new_event.40
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.40"}
 	title = japan_new_event.40.title
@@ -2220,7 +2408,70 @@ country_event = { #
 	option = { #
 		name = japan_new_event.40.a
 		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natsynd_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
 		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_tot
+			JAP_Yasukuni_Watanabe_for_tot
+			JAP_Dai_Oishi_eco_tot
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.40.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_nihon_socialism_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.40.c
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_national_socialism_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Asanuma_Inejiro_hog_tot
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Miwa_Juso_sec_tot
+		}
 	}
 }
 
