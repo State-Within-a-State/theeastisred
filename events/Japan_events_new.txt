@@ -1662,9 +1662,7 @@ country_event = { #Purging the Army
 			tooltip = add_civilian_government_tt
 		}
 		set_country_flag = kodoha_mission
-		set_country_flag = toseiha_mission
 		activate_mission = JAP_deal_with_kodoha
-		activate_mission = JAP_deal_with_toseiha
 		country_event = {
 		id = japan_new_event.27
 		days = 7
@@ -1893,6 +1891,7 @@ country_event = { #Siding With a Faction
 		name = japan_new_event.30.b
 		ai_chance = { base = 100 }
 		country_event = japan_new_event.32
+		load_focus_tree = araki-kingoro-tree
 	}
 	
 	option = { #Konoe
@@ -2045,6 +2044,18 @@ country_event = { #The Kokuhonsha & The Sakurakai
 			ideology = national_populist
 			long_name = JAP_party_kokuhonsha_long
 			name = JAP_party_kokuhonsha
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+		}
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_showa_statism_subtype
 		}
 	}
 	option = { #Sakurakai
@@ -2737,7 +2748,7 @@ country_event = { #Death of Ryohei Uchida
 	}
 }
 
-country_event = { #
+country_event = { #Failed Restorationist Coup
 	id = japan_new_event.49
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.49"}
 	title = japan_new_event.49.title
@@ -2748,11 +2759,14 @@ country_event = { #
 	option = { #
 		name = japan_new_event.49.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+		id = japan_new_event.50
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Seigo Nakano Splits From the Kokumin Domei
 	id = japan_new_event.50
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.50"}
 	title = japan_new_event.50.title
@@ -2763,26 +2777,195 @@ country_event = { #
 	option = { #
 		name = japan_new_event.50.a
 		ai_chance = { base = 100 }
-		
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_tokohai_long
+			name = JAP_party_tokohai
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_tokohai_long
+			name = JAP_party_tokohai
+		}
+		country_event = {
+		id = japan_new_event.51
+		days = 23
+		}
 	}
 }
 
-country_event = { #
+country_event = { #1937 Snap Elections
 	id = japan_new_event.51
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.51"}
 	title = japan_new_event.51.title
 	desc = japan_new_event.51.desc
 	#picture = 
+	immediate = {
+		hidden_effect = {
+				random_list = {
+				10 = {
+					country_event = japan_new_event.53
+				}
+				10 = {
+					country_event = japan_new_event.52
+				}
+				
+			}
+		}
+	}
 	
 	is_triggered_only = yes
-	option = { #
-		name = japan_new_event.51.a
-		ai_chance = { base = 100 }
+	option = { #Kokumin Domei
+		name = OPTION_KOKUMIN_DOMEI_1937
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Adachi_Kenzo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		
+		set_country_flag = JAP_kokumin_domei_won_in_1937_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #Kokumin Domei
+		name = OPTION_TOKOHAI_1937
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = national_populist
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Yasukuni_Watanabe_for_tot
+			JAP_Dai_Oishi_eco_tot
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		
+		set_country_flag = JAP_tokohai_won_in_1937_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #The Seiyukai have defended their absolute majority!
+		name = OPTION_SEIYUKAI_1937
+		ai_chance = {
+			factor = 50
+			
+		}
+		add_political_power = 50
+		set_country_flag = JAP_seiyukai_won_in_1937_elections
+		mark_focus_tree_layout_dirty = yes
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Mizuno_Rentaro_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Kawamura_Takeji_sec_sco
+		}
+	}
+	
+	option = { #Minseito
+		name = OPTION_MINSEITO_1937
+		
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hamaguchi_Osachi_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Kawasaki_Takukichi_sec_mli
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_country_flag = JAP_minseito_won_in_1937_elections
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	
+	option = { #Shakai-Taishuto
+		name = OPTION_SHAKAI-TAISHUTO_1937
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_inejiro_asanuma_hog_rso
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Wada_Hiroo_eco_rso
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_social_democrat_long
+			name = JAP_party_social_democrat
+		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1937_elections
+		mark_focus_tree_layout_dirty = yes
 		
 	}
+	
+	
 }
 
-country_event = { #
+country_event = { #The Emperor accepted
 	id = japan_new_event.52
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.52"}
 	title = japan_new_event.52.title
@@ -2790,29 +2973,48 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Let us agree with the Emperor.
 		name = japan_new_event.52.a
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #He is out of line!
+		name = japan_new_event.52.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.54
+		days = 7
+		}
+	}
 }
 
-country_event = { #
+country_event = { #Refused Emperor
 	id = japan_new_event.53
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.53"}
-	title = japan_new_event.53.title
+	title = japan_new_event.52.title
 	desc = japan_new_event.53.desc
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = japan_new_event.53.a
+	option = { #Let us agree with the Emperor.
+		name = japan_new_event.52.a
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.54
+		days = 7
+		}
+	}
+	option = { #He is out of line!
+		name = japan_new_event.52.b
 		ai_chance = { base = 100 }
 		
 	}
 }
 
-country_event = { #
+###Toseiha Coup
+
+
+country_event = { #The Toseiha Coup
 	id = japan_new_event.54
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.54"}
 	title = japan_new_event.54.title
