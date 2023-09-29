@@ -2499,7 +2499,9 @@ country_event = { #leftist Election
 	}
 }
 
-country_event = { #
+###Kodoha Ideology Things
+
+country_event = { #Hashimoto Ideology Picker
 	id = japan_new_event.41
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.41"}
 	title = japan_new_event.41.title
@@ -2507,14 +2509,111 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Totalist HST
 		name = japan_new_event.41.a
 		ai_chance = { base = 100 }
+		trigger = {
+		NOT = {
+		has_government = totalist
+		}
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_nihon_socialism_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
 		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+	}
+	
+	option = { #Natpop HST
+		name = japan_new_event.41.b
+		ai_chance = { base = 100 }
+		trigger = {
+		NOT = {
+		has_government = national_populist
+		}
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_nihon_socialism_subtype
+		}
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+	option = { #Kemalism!?
+		name = japan_new_event.41.c
+		ai_chance = { base = 100 }
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = kemalism_subtype
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+	
+	option = { #Showa Statism
+		name = japan_new_event.41.d
+		ai_chance = { base = 100 }
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_showa_statism_subtype
+		}
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Imasu_Cho_sec_npo
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Araki Ideology Picker
 	id = japan_new_event.42
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.42"}
 	title = japan_new_event.42.title
@@ -2522,10 +2621,51 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Pan-Asianism
 		name = japan_new_event.42.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = paternal_autocrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_pan_asianism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+	
+	
+	option = { #Prussian Constitutionaliusm
+		name = japan_new_event.42.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = prussian_constitutionalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+		}
 	}
 }
 
