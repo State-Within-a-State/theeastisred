@@ -2669,7 +2669,7 @@ country_event = { #Araki Ideology Picker
 	}
 }
 
-country_event = { #
+country_event = { #Kozaburo Ideology Picker
 	id = japan_new_event.43
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.43"}
 	title = japan_new_event.43.title
@@ -2677,9 +2677,77 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Natpop_Shinto
 		name = japan_new_event.43.a
 		ai_chance = { base = 100 }
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_state_shintoism_subtype
+		}
+		
+	}
+	option = { #Gugolov
+		name = japan_new_event.43.b
+		ai_chance = { base = 100 }
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = scythianism_subtype
+		}
+		
+	}
+	
+	option = { #Totalist Shinto
+		name = japan_new_event.43.c
+		ai_chance = { base = 100 }
+		
+		
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_state_shintoism_subtype
+		}
 		
 	}
 }
@@ -3207,11 +3275,16 @@ country_event = { #The Toseiha Coup
 	option = { #
 		name = japan_new_event.54.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+		id = japan_new_event.55
+		days = 3
+		}
 	}
+	
+	
 }
 
-country_event = { #
+country_event = { #Choosing a Faction Leader
 	id = japan_new_event.55
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.55"}
 	title = japan_new_event.55.title
@@ -3219,9 +3292,117 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Pan-Turan - Iwane Matsui
 		name = japan_new_event.55.a
 		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_turan_long
+			name = JAP_party_turan
+		}
+		
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Iwane_Matsui_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Suzuki_Teiichi_eco_npo
+			JAP_Miwa_Juso_sec_npo
+		}
+		
+	}
+	
+	option = { #Tojo Path
+		name = japan_new_event.55.b
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_tojo_long
+			name = JAP_party_tojo
+		}
+		
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_japanese_militarism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Tojo_Hideki_hog_pau
+			JAP_Okawa_Shumei_for_npo
+			JAP_Kishi_Nobusuke_eco_npo
+			JAP_Kisaburo_Ando_sec_npo
+		}
+		
+	}
+	
+	option = { #Tojo Path
+		name = japan_new_event.55.b
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_toseiha_long
+			name = JAP_party_toseiha
+		}
+		
+		
+		
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_japanese_militarism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nagata_Tetsuzan_hog_pau
+			JAP_Yosuke_Matsuoka_for_pau
+			JAP_Sumihisa_Ikeda_eco_tot
+			JAP_Tojo_Hideki_sec_npo
+		}
 		
 	}
 }
