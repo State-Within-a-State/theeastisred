@@ -1221,6 +1221,7 @@ focus_tree = {
 		prerequisite = { focus = SIA_capstones_of_the_state  focus = SIA_procurers_of_the_revolution  }
 		completion_reward = {
 			add_stability = 0.2
+			country_event = holythai.13
 		}		
 	}
 
@@ -1234,10 +1235,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = THM_moderate_land_reforms
+		}
 		prerequisite = { focus = SIA_integrate_rural_grassroots  }
 		mutually_exclusive = { focus = SIA_sacred_revolutionary_violence  }
 		completion_reward = {
 			add_political_power = 35
+			add_ideas = {
+			THM_land_reform_moderate
+			}
 		}
 	}
 
@@ -1251,11 +1258,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
+		available = {
+		has_country_flag = THM_radical_land_reforms
+		}
 		prerequisite = { focus = SIA_integrate_rural_grassroots  }
 		mutually_exclusive = { focus = SIA_reform_rural_landowners  }
 		completion_reward = {
 			add_war_support = 0.2
 			add_stability = -0.1
+			add_ideas = {
+			THM_land_reform_radical
+			}
 		}
 	}
 
@@ -1272,7 +1285,8 @@ focus_tree = {
 		prerequisite = { focus = SIA_integrate_village_monks  }
 		mutually_exclusive = { focus = SIA_enshrine_egalitarianism  }
 		completion_reward = {
-			add_stability = 0.1
+			add_stability = -0.1
+			add_political_power = 20
 		}
 	}
 
@@ -1289,7 +1303,8 @@ focus_tree = {
 		prerequisite = { focus = SIA_integrate_village_monks  }
 		mutually_exclusive = { focus = SIA_protected_privileges  }
 		completion_reward = {
-			add_political_power = 20
+			add_stability = 0.1
+			add_political_power = -20
 		}
 	}
 
@@ -1297,16 +1312,20 @@ focus_tree = {
 	focus = {
 		id = SIA_embrace_the_nation
 		icon = GFX_SIA_embrace_the_nation-151836
-		x = 5
+		x = 7
 		y = 14
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_rebuilding_our_history  }
+		prerequisite = { focus = SIA_rebuilding_our_history focus = SIA_adopt_royal_imagery  }
 		mutually_exclusive = { focus = SIA_imagining_a_community  }
 		completion_reward = {
-			add_stability = 0.1
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+			}
+			
 		}
 	}
 
@@ -1314,16 +1333,20 @@ focus_tree = {
 	focus = {
 		id = SIA_imagining_a_community
 		icon = GFX_focus_spr_torchbearers_of_tomorrow
-		x = 7
+		x = 5
 		y = 14
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_rebuilding_our_history  }
+		prerequisite = { focus = SIA_rebuilding_our_history  } prerequisite = { focus = SIA_protected_privileges focus = SIA_enshrine_egalitarianism  }
 		mutually_exclusive = { focus = SIA_embrace_the_nation  }
 		completion_reward = {
 			add_political_power = 20
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+			}
 		}
 	}
 
@@ -1337,11 +1360,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_the_question_of_rights  }
+		prerequisite = { focus = SIA_the_question_of_rights focus = SIA_adopt_royal_imagery }
 		mutually_exclusive = { focus = SIA_the_common_birthright  }
 		completion_reward =  {
 			add_war_support = 0.1
-			add_political_power = 40
+			add_political_power = -40
 
 		}
 	}
@@ -1356,11 +1379,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_the_question_of_rights  }
+		prerequisite = { focus = SIA_the_question_of_rights  } prerequisite = { focus = SIA_reform_rural_landowners focus = SIA_sacred_revolutionary_violence } 
 		mutually_exclusive = { focus = SIA_the_privileged_elite  }
 		completion_reward = {
 			add_war_support = 0.2
 			add_political_power = 20
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+			}
 		}
 	}
 
@@ -1370,9 +1397,12 @@ focus_tree = {
 		icon = GFX_SIA_the_final_struggle-151191
 		x = 21
 		y = 8
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_completed_focus = SIA_victory_over_the_thai
 		}
 		completion_reward = {
 			add_war_support = 0.1
