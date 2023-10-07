@@ -265,31 +265,18 @@ country_event = { # Introduction
 		set_state_owner = 724
 		set_state_owner = 999
 		set_state_owner = 751
-		#annex_country = {
-		#		target = SIA
-		#		transfer_troops = yes
-		#	}
-		#	
-		#}
-		#release = CAM
-		#SIA = {
-		#release = CAM
-		#set_state_controller = 822
-		#set_state_controller = 823
-		#declare_war_on = {
-		#	target = THM
-		#	type = annex_everything
-		#}
-		
+		annex_country = {
+				target = SIA
+				transfer_troops = yes
+			}
+			
 		}
+		
 		
 		
 		
 		THM = { change_tag_from = SIA }
-		country_event = {
-		id = holythai.11
-		days = 0
-		}
+		
 	}
 	
 	option = {
@@ -448,6 +435,108 @@ country_event = { #Question of Land Rights
 	
 }
 
+country_event = { #The Scriptures Cry out
+	id = holythai.14
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.14.title
+	desc = holythai.14.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#We Shall Liberate Asia With our Allies
+		name = holythai.14.a
+		create_faction = "Buddhist Peace Fellowship"
+		set_country_flag = THM_alliance
+		
+	}
+	
+	option = {#We Shall Claim All of Asia
+		name = holythai.14.b
+		every_state = {
+					limit = {
+						is_on_continent = asia
+					}
+					THM = { 
+						add_state_core = PREV 
+						create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+				}
+			}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PREV
+		}
+		every_state = {
+					limit = {
+						is_on_continent = india
+					}
+					THM = { 
+						add_state_core = PREV 
+						create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+				}
+			}
+		
+		
+		
+	}
+	
+}
+
+country_event = { #The People Cry Out
+	id = holythai.15
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.15.title
+	desc = holythai.14.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#We Shall Liberate Asia 
+		name = holythai.15.a
+		create_faction = "Asian Liberation Alliance"
+		set_country_flag = THM_alliance
+		
+	}
+	
+	
+	
+}
+
+country_event = { #Joining the Holy Man Rebellion
+	id = holythai.16
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.16.title
+	desc = holythai.14.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#No
+		name = holythai.16.a
+		THM = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FROM
+			}
+		}
+		
+	}
+	option = {#yes
+		name = holythai.16.b
+		THM = { add_to_faction = FROM }
+	}
+	
+	
+}
 
 
 
