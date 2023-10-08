@@ -489,6 +489,8 @@ country_event = { #The Scriptures Cry out
 	
 }
 
+
+
 country_event = { #The People Cry Out
 	id = holythai.15
 	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
@@ -535,6 +537,57 @@ country_event = { #Joining the Holy Man Rebellion
 		THM = { add_to_faction = FROM }
 	}
 	
+	
+}
+
+
+country_event = { #Claiming Pan-Theravada
+	id = holythai.17
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.17.title
+	desc = holythai.14.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#We Shall Liberate Asia With our Allies
+		name = holythai.17.a
+		create_faction = "Buddhist Peace Fellowship"
+		set_country_flag = THM_alliance
+		
+	}
+	
+	option = {#We Shall Claim All of Asia
+		name = holythai.17.b
+		every_state = {
+					
+					THM = { 
+						add_state_core = PREV 
+						create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+				}
+			}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PREV
+		}
+		every_state = {
+					
+					THM = { 
+						add_state_core = PREV 
+						create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+				}
+			}
+		
+		
+		
+	}
 	
 }
 
