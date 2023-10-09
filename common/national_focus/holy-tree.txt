@@ -14,7 +14,7 @@ focus_tree = {
 		icon = GFX_SIA_the_seizure_of_khemmarat-125591
 		x = 3
 		y = 1
-		cost = 8
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -26,18 +26,12 @@ focus_tree = {
 				ideology = radical_socialist
 				popularity = 0.05
 				}
-				set_country_flag = {
-						flag = thai_lib
-						value = 0
-					}
+				
 				}
 				
 				custom_effect_tooltip = THM_royalist_tt
 				hidden_effect = {
-				set_country_flag = {
-						flag = thai_royl
-						value = 0
-					}
+				
 				add_popularity = {
 				
 				ideology = paternal_autocrat
@@ -46,10 +40,7 @@ focus_tree = {
 				}
 				custom_effect_tooltip = THM_sangha_tt
 				hidden_effect = {
-				set_country_flag = {
-						flag = thai_bud
-						value = 0
-					}
+				
 				add_popularity = {
 				
 				ideology = social_democrat
@@ -73,47 +64,14 @@ focus_tree = {
 		icon = GFX_SIA_a_choice_of_strategy-124831
 		x = 3
 		y = 2
-		cost = 8
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_the_seizure_of_khemmarat  }
 		completion_reward = {
-		custom_effect_tooltip = THM_liberationist_tt
-				hidden_effect = {
-				add_popularity = {
+		country_event = holythai.12
 				
-				ideology = radical_socialist
-				popularity = 0.05
-				}
-				}
-				
-				
-				custom_effect_tooltip = THM_royalist_tt
-				hidden_effect = {
-				add_popularity = {
-				
-				ideology = paternal_autocrat
-				popularity = 0.05
-				}
-				}
-				
-				custom_effect_tooltip = THM_sangha_tt
-				hidden_effect = {
-				add_popularity = {
-				
-				ideology = social_democrat
-				popularity = 0.05
-				}
-				
-				
-				
-				add_popularity = {
-				
-				ideology = national_populist
-				popularity = 0.05
-				}
-			}
 		
 		}
 	}
@@ -124,7 +82,7 @@ focus_tree = {
 		icon = GFX_SIA_lean_to_the_sangha-124829
 		x = 1
 		y = 3
-		cost = 8
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -132,21 +90,19 @@ focus_tree = {
 		completion_reward = {
 		custom_effect_tooltip = THM_sangha_tt
 				hidden_effect = {
-				modify_country_flag = {
-					flag = thai_bud
-					value = 1
+				add_to_variable = {
+					var = sangha_power
+					value = 5
+					tooltip = add_to_sangha_power_tt
+					
 				}
 				add_popularity = {
-				
-				ideology = social_democrat
-				popularity = 0.05
+					ideology = national_populist
+					popularity = 0.05
 				}
-				
-				
 				add_popularity = {
-				
-				ideology = national_populist
-				popularity = 0.05
+					ideology = social_democrat
+					popularity = 0.05
 				}
 			}
 		}
@@ -158,7 +114,7 @@ focus_tree = {
 		icon = GFX_SIA_lean_to_the_crown-124833
 		x = 3
 		y = 3
-		cost = 8
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -166,15 +122,15 @@ focus_tree = {
 		completion_reward = {
 		custom_effect_tooltip = THM_royalist_tt
 				hidden_effect = {
-				modify_country_flag = {
-				flag = thai_royl
-				value = 1
-			}
-				add_popularity = {
-				
-				ideology = paternal_autocrat
-				popularity = 0.05
-				}
+				add_to_variable = {
+						var = royalist_power
+						value = 5
+						tooltip = add_to_royalist_power_tt
+					}
+					add_popularity = {
+						ideology = paternal_autocrat
+						popularity = 0.05
+					}
 				}
 		
 		
@@ -195,15 +151,19 @@ focus_tree = {
 		completion_reward = {
 		custom_effect_tooltip = THM_liberationist_tt
 				hidden_effect = {
-				modify_country_flag = {
-					flag = thai_lib
-					value = 1
+				add_to_variable = {
+					var = liberationist_power
+					value = 5
+					tooltip = add_to_liberationist_power_tt
 				}
-				add_popularity = {
-				
-				ideology = radical_socialist
-				popularity = 0.05
-				}
+					add_popularity = {
+						ideology = radical_socialist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = totalist
+						popularity = 0.05
+					}
 				}
 		
 		
@@ -225,21 +185,19 @@ focus_tree = {
 		completion_reward = {
 		custom_effect_tooltip = THM_sangha_tt
 				hidden_effect = {
-				modify_country_flag = {
-					flag = thai_bud
-					value = 1
+				add_to_variable = {
+					var = sangha_power
+					value = 5
+					tooltip = add_to_sangha_power_tt
+					
 				}
 				add_popularity = {
-				
-				ideology = social_democrat
-				popularity = 0.05
+					ideology = national_populist
+					popularity = 0.05
 				}
-				
-				
 				add_popularity = {
-				
-				ideology = national_populist
-				popularity = 0.05
+					ideology = social_democrat
+					popularity = 0.05
 				}
 			}
 			add_manpower = -1001
@@ -258,43 +216,53 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_lean_to_the_crown  }
+		prerequisite = { focus = SIA_lean_to_the_crown focus = SIA_lean_to_the_sangha  }
 		mutually_exclusive = { focus = SIA_tear_down_the_infidel  } mutually_exclusive = { focus = SIA_bring_nirvana_to_earth  } mutually_exclusive = { focus = SIA_break_the_foreign_yoke  }
 		completion_reward = {
-		custom_effect_tooltip = THM_royalist_tt
-				hidden_effect = {
-				modify_country_flag = {
-					flag = thai_royl
-					value = 1
-				}
-				add_popularity = {
+		add_manpower = -1001
+		add_war_support = 0.03
 				
-				ideology = paternal_autocrat
-				popularity = 0.05
-				}
-				}
-		
-		custom_effect_tooltip = THM_sangha_tt
-				hidden_effect = {
-				modify_country_flag = {
-					flag = thai_bud
-					value = 1
-				}
-				add_popularity = {
-				
-				ideology = social_democrat
-				popularity = 0.05
-				}
-				
-				
-				add_popularity = {
-				
-				ideology = national_populist
-				popularity = 0.05
+				if = {
+					limit = {
+					has_completed_focus = SIA_lean_to_the_sangha
+					}
+					custom_effect_tooltip = THM_sangha_tt
+					hidden_effect = {
+					add_to_variable = {
+					var = sangha_power
+					value = 5
+					tooltip = add_to_sangha_power_tt
+					
+					}
+					add_popularity = {
+						ideology = national_populist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = social_democrat
+						popularity = 0.05
+					}
 				}
 			}
-			add_manpower = -1001
-			add_war_support = 0.03
+			
+			if = {
+				limit = {
+				has_completed_focus = SIA_lean_to_the_crown
+				}
+				custom_effect_tooltip = THM_royalist_tt
+				add_to_variable = {
+					var = royalist_power
+					value = 5
+					tooltip = add_to_royalist_power_tt
+				}
+				add_popularity = {
+					ideology = paternal_autocrat
+					popularity = 0.05
+				}
+			}
+		
+		
+				
 		}
 		
 	
@@ -313,42 +281,50 @@ focus_tree = {
 		prerequisite = { focus = SIA_lean_to_the_sangha  focus = SIA_lean_into_the_people  }
 		mutually_exclusive = { focus = SIA_tear_down_the_infidel  } mutually_exclusive = { focus = SIA_destroy_the_pretenders  } mutually_exclusive = { focus = SIA_break_the_foreign_yoke  }
 		completion_reward = {
-		custom_effect_tooltip = THM_sangha_tt
-				hidden_effect = {
-				modify_country_flag = {
-						flag = thai_bud
-						value = 1
+		add_manpower = -1001
+		add_war_support = 0.03
+				
+				if = {
+					limit = {
+					has_completed_focus = SIA_lean_to_the_sangha
 					}
-				add_popularity = {
-				
-				ideology = social_democrat
-				popularity = 0.05
-				}
-				
-				
-				add_popularity = {
-				
-				ideology = national_populist
-				popularity = 0.05
+					custom_effect_tooltip = THM_sangha_tt
+					hidden_effect = {
+					add_to_variable = {
+					var = sangha_power
+					value = 5
+					tooltip = add_to_sangha_power_tt
+					
+					}
+					add_popularity = {
+						ideology = national_populist
+						popularity = 0.05
+					}
+					add_popularity = {
+						ideology = social_democrat
+						popularity = 0.05
+					}
 				}
 			}
 			
-			custom_effect_tooltip = THM_liberationist_tt
-				hidden_effect = {
-				
-				modify_country_flag = {
-					flag = thai_lib
-					value = 1
+			if = {
+				limit = {
+				has_completed_focus = SIA_lean_to_the_crown
+				}
+				custom_effect_tooltip = THM_liberationist_tt
+				add_to_variable = {
+					var = liberationist_power
+					value = 5
+					tooltip = add_to_liberationist_power_tt
 				}
 				add_popularity = {
-				
-				ideology = radical_socialist
-				popularity = 0.05
+					ideology = radical_socialist
+					popularity = 0.05
 				}
-				
 			}
-			add_war_support = 0.03
-			add_stability = 0.15
+		
+		
+				
 		}
 	}
 
@@ -369,14 +345,14 @@ focus_tree = {
 			
 			custom_effect_tooltip = THM_liberationist_tt
 				hidden_effect = {
-				modify_country_flag = {
-					flag = thai_lib
-					value = 1
+				add_to_variable = {
+					var = liberationist_power
+					value = 5
+					tooltip = add_to_liberationist_power_tt
 				}
 				add_popularity = {
-				
-				ideology = radical_socialist
-				popularity = 0.05
+					ideology = radical_socialist
+					popularity = 0.05
 				}
 				
 			}
@@ -393,19 +369,26 @@ focus_tree = {
 		icon = GFX_SIA_a_true_buddhist_mantle-124996
 		x = 0
 		y = 5
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_country_flag = {
-					flag = thai_bud
-					value > 1
-				}
+		check_variable = { sangha_power > 25 }
 		
 		}
 		prerequisite = { focus = SIA_tear_down_the_infidel  focus = SIA_bring_nirvana_to_earth  }
 		mutually_exclusive = { focus = SIA_secure_the_loven_chiefs  } mutually_exclusive = { focus = SIA_make_examples_of_the_thai  } mutually_exclusive = { focus = SIA_messianic_strength  }
+		completion_reward = {
+		add_popularity = {
+					ideology = national_populist
+					popularity = 0.05
+				}
+			add_popularity = {
+					ideology = social_democrat
+					popularity = 0.05
+				}
+		}
 	}
 
 	#Secure the Loven Chiefs
@@ -414,19 +397,22 @@ focus_tree = {
 		icon = GFX_SIA_secure_the_loven_chiefs-125746
 		x = 2
 		y = 5
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_country_flag = {
-					flag = thai_royl
-					value > 1
-				}
+		check_variable = { royalist_power > 25 }
 		
 		}
 		prerequisite = { focus = SIA_destroy_the_pretenders  focus = SIA_break_the_foreign_yoke  }
 		mutually_exclusive = { focus = SIA_a_true_buddhist_mantle  } mutually_exclusive = { focus = SIA_make_examples_of_the_thai  } mutually_exclusive = { focus = SIA_messianic_strength  }
+		completion_reward = {
+		add_popularity = {
+					ideology = paternal_autocrat
+					popularity = 0.05
+				}
+		}
 	}
 
 	#Make Examples of the Thai
@@ -435,19 +421,22 @@ focus_tree = {
 		icon = GFX_SIA_make_examples_of_the_thai-125641
 		x = 4
 		y = 5
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_country_flag = {
-					flag = thai_lib
-					value > 1
-				}
+		check_variable = { liberationist_power > 25 }
 		
 		}
 		prerequisite = { focus = SIA_tear_down_the_infidel  focus = SIA_bring_nirvana_to_earth  }
 		mutually_exclusive = { focus = SIA_a_true_buddhist_mantle  } mutually_exclusive = { focus = SIA_secure_the_loven_chiefs  } mutually_exclusive = { focus = SIA_messianic_strength  }
+		completion_reward = {
+		add_popularity = {
+					ideology = totalist
+					popularity = 0.05
+				}
+		}
 	}
 
 	#Messianic Strength
@@ -456,19 +445,22 @@ focus_tree = {
 		icon = GFX_SIA_messianic_strength-125637
 		x = 6
 		y = 5
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_country_flag = {
-					flag = thai_lib
-					value > 1
-				}
+		check_variable = { liberationist_power > 25 }
 		
 		}
 		prerequisite = { focus = SIA_bring_nirvana_to_earth  focus = SIA_tear_down_the_infidel  }
 		mutually_exclusive = { focus = SIA_a_true_buddhist_mantle  } mutually_exclusive = { focus = SIA_secure_the_loven_chiefs  } mutually_exclusive = { focus = SIA_make_examples_of_the_thai  }
+		completion_reward = {
+		add_popularity = {
+					ideology = radical_socialist
+					popularity = 0.05
+				}
+		}
 	}
 
 	#Sons of the Soil!
@@ -483,7 +475,26 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_messianic_strength  focus = SIA_make_examples_of_the_thai  }
 		completion_reward = {
+		if = {
+		limit = {
+		has_completed_focus = SIA_messianic_strength
+		}
 		set_politics = { ruling_party = radical_socialist}
+		add_popularity = {
+					ideology = radical_socialist
+					popularity = 0.5
+				}
+		}
+		if = {
+		limit = {
+		has_completed_focus = SIA_make_examples_of_the_thai
+		}
+		set_politics = { ruling_party = totalist}
+		add_popularity = {
+					ideology = totalist
+					popularity = 0.5
+				}
+		}
 		
 		}
 	}
@@ -501,6 +512,10 @@ focus_tree = {
 		prerequisite = { focus = SIA_secure_the_loven_chiefs  }
 		completion_reward = {
 		set_politics = { ruling_party = paternal_autocrat}
+		add_popularity = {
+					ideology = paternal_autocrat
+					popularity = 0.5
+				}
 		
 		}
 	}
@@ -517,7 +532,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_a_true_buddhist_mantle  }
 		completion_reward = {
-		set_politics = { ruling_party = social_democrat}
+		add_popularity = {
+					ideology = national_populist
+					popularity = 0.5
+				}
+		add_popularity = {
+					ideology = social_democrat
+					popularity = 0.15
+				}
+		country_event = holythai.18
 		}
 	}
 
@@ -671,6 +694,9 @@ focus_tree = {
 		prerequisite = { focus = SIA_burmese_sympathisers  }
 		completion_reward = {
 		add_war_support = 0.2
+		add_ideas = {
+		THM_faith_based_recruitment
+		}
 		}
 	}
 
@@ -686,7 +712,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_burmese_sympathisers  focus = SIA_find_friends_in_vietnam  } 
 		completion_reward = {
-		
+		add_ideas = {
+		THM_hit_and_run_tactics
+		}
 		add_tech_bonus = {
 				name = infantry_artillery_bonus
 				bonus = 1.0
@@ -739,6 +767,9 @@ focus_tree = {
 				uses = 1
 				category = artillery
 			}	
+		add_ideas = {
+		THM_artilery_experiements
+		}
 		
 		}
 	}
@@ -754,6 +785,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_limited_artillery_experiments  focus = SIA_professional_guerillas  focus = SIA_hit_and_run_tactics  focus = SIA_faithbased_recruitment  }
+		completion_reward = {
+		add_political_power = 10
+		add_ideas = {
+		THM_reach_out_to_world
+		}
+		}
 	}
 
 	#Polarize the Laotians
@@ -767,6 +804,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_limited_artillery_experiments  focus = SIA_professional_guerillas  focus = SIA_hit_and_run_tactics  focus = SIA_faithbased_recruitment  }
+		completion_reward = {
+		add_stability = 0.1
+		add_manpower = -500
+		}
 	}
 
 	#Permeate the Villages
@@ -780,6 +821,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_limited_artillery_experiments  focus = SIA_professional_guerillas  focus = SIA_hit_and_run_tactics  focus = SIA_faithbased_recruitment  }
+		completion_reward = {
+		add_ideas = {
+		THM_village_permeation
+		}
+		}
 	}
 
 	#The Centre of Buddhist Identity
@@ -931,9 +977,10 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = SIA_freedom_of_the_crane  focus = SIA_glory_to_champa  }
-		completion_reward = {
-			research_speed_factor = 0.2
-
+		completion_reward = {		
+			add_ideas = {
+			THM_conslidate_narative
+			}
 		}
 	}
 
@@ -984,7 +1031,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_glory_to_champa  }
 		mutually_exclusive = { focus = SIA_a_question_of_influence  } mutually_exclusive = { focus = SIA_the_kings_and_the_buddhas  }
-		add_manpower = 30000
+		completion_reward = {
+		add_ideas = {
+		THM_thai_laos_hiring
+		}
+		}
 	}
 
 	#The Kings and the Buddhas
@@ -1001,6 +1052,10 @@ focus_tree = {
 		mutually_exclusive = { focus = SIA_a_question_of_influence  } mutually_exclusive = { focus = SIA_integrate_thailao_rituals  }
 		completion_reward = {
 			add_political_power = 10	
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
 		}
 	}
 
@@ -1017,6 +1072,9 @@ focus_tree = {
 		prerequisite = { focus = SIA_call_the_sangha_to_order  }
 		completion_reward = {
 			add_manpower = 15000
+			add_ideas = {
+			THM_thai_village_inte
+			}
 		}		
 	}
 
@@ -1033,7 +1091,10 @@ focus_tree = {
 		prerequisite = { focus = SIA_a_question_of_influence  }
 		mutually_exclusive = { focus = SIA_thai_inspiration  }
 		completion_reward = {
-			add_stability = 0.20
+			add_stability = 0.05
+			add_ideas = {
+			THM_sutras_guide
+			}
 		}
 	}
 
@@ -1104,6 +1165,9 @@ focus_tree = {
 		prerequisite = { focus = SIA_emphasize_mythic_transcendence  }
 		completion_reward = {
 			add_political_power = 20
+			add_ideas = {
+			THM_grassroots
+			}
 		}
 	}
 
@@ -1121,6 +1185,7 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 50
 			add_war_support = 0.05
+			add_research_slot = 1
 		}
 	}
 
@@ -1137,6 +1202,10 @@ focus_tree = {
 		prerequisite = { focus = SIA_integrate_thailao_rituals  }
 		completion_reward = {
 			add_stability = 0.15
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
 		}
 	}
 
@@ -1153,6 +1222,7 @@ focus_tree = {
 		prerequisite = { focus = SIA_capstones_of_the_state  focus = SIA_procurers_of_the_revolution  }
 		completion_reward = {
 			add_stability = 0.2
+			country_event = holythai.13
 		}		
 	}
 
@@ -1166,10 +1236,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = THM_moderate_land_reforms
+		}
 		prerequisite = { focus = SIA_integrate_rural_grassroots  }
 		mutually_exclusive = { focus = SIA_sacred_revolutionary_violence  }
 		completion_reward = {
 			add_political_power = 35
+			add_ideas = {
+			THM_land_reform_moderate
+			}
 		}
 	}
 
@@ -1183,11 +1259,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
+		available = {
+		has_country_flag = THM_radical_land_reforms
+		}
 		prerequisite = { focus = SIA_integrate_rural_grassroots  }
 		mutually_exclusive = { focus = SIA_reform_rural_landowners  }
 		completion_reward = {
 			add_war_support = 0.2
 			add_stability = -0.1
+			add_ideas = {
+			THM_land_reform_radical
+			}
 		}
 	}
 
@@ -1204,7 +1286,8 @@ focus_tree = {
 		prerequisite = { focus = SIA_integrate_village_monks  }
 		mutually_exclusive = { focus = SIA_enshrine_egalitarianism  }
 		completion_reward = {
-			add_stability = 0.1
+			add_stability = -0.1
+			add_political_power = 20
 		}
 	}
 
@@ -1221,7 +1304,8 @@ focus_tree = {
 		prerequisite = { focus = SIA_integrate_village_monks  }
 		mutually_exclusive = { focus = SIA_protected_privileges  }
 		completion_reward = {
-			add_political_power = 20
+			add_stability = 0.1
+			add_political_power = -20
 		}
 	}
 
@@ -1229,16 +1313,20 @@ focus_tree = {
 	focus = {
 		id = SIA_embrace_the_nation
 		icon = GFX_SIA_embrace_the_nation-151836
-		x = 5
+		x = 7
 		y = 14
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_rebuilding_our_history  }
+		prerequisite = { focus = SIA_rebuilding_our_history focus = SIA_adopt_royal_imagery  }
 		mutually_exclusive = { focus = SIA_imagining_a_community  }
 		completion_reward = {
-			add_stability = 0.1
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+			}
+			
 		}
 	}
 
@@ -1246,16 +1334,20 @@ focus_tree = {
 	focus = {
 		id = SIA_imagining_a_community
 		icon = GFX_focus_spr_torchbearers_of_tomorrow
-		x = 7
+		x = 5
 		y = 14
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_rebuilding_our_history  }
+		prerequisite = { focus = SIA_rebuilding_our_history  } prerequisite = { focus = SIA_protected_privileges focus = SIA_enshrine_egalitarianism  }
 		mutually_exclusive = { focus = SIA_embrace_the_nation  }
 		completion_reward = {
 			add_political_power = 20
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+			}
 		}
 	}
 
@@ -1269,11 +1361,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_the_question_of_rights  }
+		prerequisite = { focus = SIA_the_question_of_rights focus = SIA_adopt_royal_imagery }
 		mutually_exclusive = { focus = SIA_the_common_birthright  }
 		completion_reward =  {
 			add_war_support = 0.1
-			add_political_power = 40
+			add_political_power = -40
 
 		}
 	}
@@ -1288,11 +1380,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_the_question_of_rights  }
+		prerequisite = { focus = SIA_the_question_of_rights  } prerequisite = { focus = SIA_reform_rural_landowners focus = SIA_sacred_revolutionary_violence } 
 		mutually_exclusive = { focus = SIA_the_privileged_elite  }
 		completion_reward = {
 			add_war_support = 0.2
 			add_political_power = 20
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+			}
 		}
 	}
 
@@ -1302,9 +1398,12 @@ focus_tree = {
 		icon = GFX_SIA_the_final_struggle-151191
 		x = 21
 		y = 8
-		cost = 5
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_completed_focus = SIA_victory_over_the_thai
 		}
 		completion_reward = {
 			add_war_support = 0.1
@@ -1330,8 +1429,8 @@ focus_tree = {
 		prerequisite = { focus = SIA_the_final_struggle  }
 		mutually_exclusive = { focus = SIA_thenationcriesout  } mutually_exclusive = { focus = SIA_thepeoplecryout  }
 		completion_reward = {
-			add_war_support = 0.15
-			create_faction = "Buddhist Peace Fellowship"
+			add_war_support = 0.01
+			country_event = holythai.14
 		}
 	}
 
@@ -1348,7 +1447,6 @@ focus_tree = {
 		available = {
 			OR = {
 		has_government = paternal_autocrat
-		has_government = national_populist
 		has_government = authoritarian_democrat
 			}
 		}
@@ -1356,6 +1454,12 @@ focus_tree = {
 		mutually_exclusive = { focus = SIA_thescripturescryout  } mutually_exclusive = { focus = SIA_thepeoplecryout  }
 		completion_reward = {
 			add_war_support = 0.15
+			set_cosmetic_tag = THM_rata
+			add_state_claim = 826
+			add_state_claim = 670
+			add_state_claim = 846
+			add_state_claim = 336
+			add_state_claim = 72
 		}
 	}
 
@@ -1370,15 +1474,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-			
-		has_government = radical_socialist
-		has_government = social_democrat
+			OR = {
+			has_government = totalist
+			has_government = radical_socialist
+			has_government = social_democrat
+			}
 			
 		}
 		prerequisite = { focus = SIA_the_final_struggle  }
 		mutually_exclusive = { focus = SIA_thescripturescryout  } mutually_exclusive = { focus = SIA_thenationcriesout  }
 		completion_reward = {
-			add_war_support = 0.15
+			country_event = holythai.15
 		}
 	}
 
@@ -1393,7 +1499,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_thescripturescryout  }
-		completion_reward = 
+		completion_reward = {
+		unlock_decision_category_tooltip = THM_asia_alliance_decision_category
+		}
 	}
 
 	#Integrate the Temple Estates
@@ -1408,8 +1516,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_thescripturescryout  }
 		completion_reward = {
-			add_manpower = 10000
-			add_political_power = 20
+			add_ideas = {
+			THM_inetgrate_temple_estates
+			}
 		}
 	}
 
@@ -1425,8 +1534,27 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_thenationcriesout  }
 		completion_reward = {
-			add_political_power = 30
-			add_manpower = 3000
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GEA
+				
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = BRM
+				
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CAM
+				
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LAO
+				
+			}
+			unlock_decision_category_tooltip = THM_fuse_lao_thai_decision_category
 		}
 	}
 
@@ -1444,6 +1572,9 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 25
 			add_stability = 0.15
+			add_ideas = {
+			THM_inetgrate_elkites
+			}
 		}
 	}
 
@@ -1459,8 +1590,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_thepeoplecryout  }
 		completion_reward = {
-			add_stability = 0.1
-			add_manpower = 20000
+			add_ideas = {
+			THM_phibun
+			}
 		}
 	}
 
@@ -1476,8 +1608,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_thepeoplecryout  }
 		completion_reward = {
-			add_political_power = 25
-			add_war_support = 0.15
+			add_ideas = {
+			THM_geurilla
+			}
 		}
 	}
 
@@ -1493,8 +1626,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_triumph_of_the_guerrillas  }
 		completion_reward = {
-			add_manpower = -10000
-			add_war_support = 0.1
+			unlock_decision_category_tooltip = THM_asia_liberation_decision_category
 		}
 	}
 
@@ -1526,9 +1658,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_buddhism_for_the_peasants  } prerequisite = { focus = SIA_the_centre_of_buddhist_identity  }
 		completion_reward = {
-			add_stability = 0.3
-			add_war_support 0.2
-			add_manpower = 40000
+			country_event = holythai.17
 		}
 	}
 
@@ -1544,11 +1674,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_integrate_commercial_elites  }
 		completion_reward = {
-			add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
-		}
+			add_ideas = {
+			THM_roads_rails
+			}
 	}
 	
 	}
@@ -1581,8 +1709,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = SIA_roadsrailsandbooks  } prerequisite = { focus = SIA_declare_solidarity_with_japan  }
 		completion_reward = {
-			add_war_support = 0.15
-			add_stability = 0.2
+			add_ideas = {
+			THM_secure_thai_laos
+			}
 		}
 	}
 
@@ -1601,6 +1730,9 @@ focus_tree = {
 			add_stability = 0.15
 			add_manpower = 35000
 			add_war_support = 0.25
+			add_ideas = {
+			THM_secure_mantle_of_bayinnuang
+			}
 		}
 
 	}
