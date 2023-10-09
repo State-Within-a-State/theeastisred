@@ -3589,7 +3589,7 @@ country_event = { #Minseito Factionalism
 	}
 }
 
-country_event = { #
+country_event = { #Seiyukai Factionalism
 	id = japan_new_event.59
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.59"}
 	title = japan_new_event.59.title
@@ -3597,25 +3597,221 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Rentaro Faction
 		name = japan_new_event.59.a
 		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
 		
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Mizuno_Rentaro_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Kawamura_Takeji_sec_sco
+		}
+	}
+	option = { #Kuhara Faction
+		name = japan_new_event.59.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = authoritarian_democrat }
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_seiyukai_two_long
+			name = JAP_party_seiyukai_two
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kuhara_Fusanosuke_hog_npo
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Minoru_Togo_eco_sco
+			JAP_Tanabe_Shichiroku_sec_sco
+		}
+	}
+	
+	option = { #Reform Faction
+		name = japan_new_event.59.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_conservative }
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_seiyukai_two_long
+			name = JAP_party_seiyukai_two
+		}
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Chikuhei_Nakajima_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Minoru_Togo_eco_sco
+			JAP_Tanabe_Shichiroku_sec_sco
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Social-Democrats
 	id = japan_new_event.60
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.60"}
 	title = japan_new_event.60.title
 	desc = japan_new_event.60.desc
 	#picture = 
-	
+	immediate = {
+	hidden_effect = {
+	load_focus_tree = socdem-japan
+	}
+	}
 	is_triggered_only = yes
-	option = { #
+	option = { #Totalist Faction
 		name = japan_new_event.60.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+		ruling_party = totalist
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_shakai_taishuto_one_long
+			name = JAP_party_shakai_taishuto_one
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_shakai_taishuto_two_long
+			name = JAP_party_shakai_taishuto_two
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_shakai_taishuto_three_long
+			name = JAP_party_shakai_taishuto_three
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_inejiro_asanuma_hog_rso
+			JAP_Kono_Mitsu_for_tot
+			JAP_Sugiyama_Motojiro_eco_tot
+			JAP_Miwa_Juso_sec_tot
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = totalist_subtype
+			}
+	}
+	
+	option = { #Radsoc Faction
+		name = japan_new_event.60.b
+		ai_chance = { base = 100 }
+		set_politics = {
+		ruling_party = radical_socialist
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.5
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_shakai_taishuto_one_long
+			name = JAP_party_shakai_taishuto_one
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_shakai_taishuto_two_long
+			name = JAP_party_shakai_taishuto_two
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_shakai_taishuto_three_long
+			name = JAP_party_shakai_taishuto_three
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_inejiro_asanuma_hog_rso
+			JAP_Suzuki_Mosaburo_for_rso
+			JAP_Wada_Hiroo_eco_rso
+			JAP_Sakisaka_Itsuro_sec_rso
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = moderate_socialist_subtype
+			}
+	}
+	
+	option = { #Rightist Faction
+		name = japan_new_event.60.c
+		ai_chance = { base = 100 }
+		set_politics = {
+		ruling_party = social_democrat
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.2
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_shakai_taishuto_one_long
+			name = JAP_party_shakai_taishuto_one
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_shakai_taishuto_two_long
+			name = JAP_party_shakai_taishuto_two
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_shakai_taishuto_three_long
+			name = JAP_party_shakai_taishuto_three
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Katayama_Tetsu_hog_sde
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Mizutani_Chozaburo_eco_sde
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = socdem_paternal_socialism_subtype
+			}
 	}
 }
 
