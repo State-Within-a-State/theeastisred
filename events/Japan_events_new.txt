@@ -3229,6 +3229,10 @@ country_event = { #The Emperor accepted
 	option = { #Let us agree with the Emperor.
 		name = japan_new_event.52.a
 		ai_chance = { base = 100 }
+		country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
 		if = {
 			limit = {
 				OR = {
@@ -3241,10 +3245,7 @@ country_event = { #The Emperor accepted
 			days = 3
 			}
 			
-			country_event = {###1940 Election
-			id = japan_new_event.63
-			days = 1374
-			}
+			
 		}
 		
 		if = {
@@ -3327,7 +3328,50 @@ country_event = { #Refused Emperor
 			id = japan_new_event.58
 			days = 3
 			}
+			
 		}
+		if = {
+			limit = {
+				has_government = social_conservative
+			}
+			country_event = {
+			id = japan_new_event.59
+			days = 3
+			}
+		}
+		
+		if = {
+			limit = {
+				has_government = social_democrat
+			}
+			country_event = {
+			id = japan_new_event.60
+			days = 3
+			}
+		}
+		
+		if = {
+			limit = {
+				has_government = authoritarian_democrat
+			}
+			country_event = {
+			id = japan_new_event.61
+			days = 3
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = JAP_tokohai_won_in_1937_election
+			}
+			country_event = {
+			id = japan_new_event.62
+			days = 3
+			}
+		}
+		country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
 	}
 }
 
@@ -3847,7 +3891,7 @@ country_event = { #Social-Democrats
 	}
 }
 
-country_event = { #
+country_event = { #Kokumin Domei Victory
 	id = japan_new_event.61
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.61"}
 	title = japan_new_event.61.title
@@ -3858,7 +3902,12 @@ country_event = { #
 	option = { #
 		name = japan_new_event.61.a
 		ai_chance = { base = 100 }
-		
+		load_focus_tree = kokumin-domei
+		set_power_balance = {
+				id = JAP_National_Alliance_balance
+				left_side = JAP_Nakano_left_side
+				right_side = JAP_Kenzo_right_side
+			}
 	}
 }
 
@@ -3877,7 +3926,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #1940 elections
 	id = japan_new_event.63
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.63"}
 	title = japan_new_event.63.title
@@ -3885,9 +3934,179 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = japan_new_event.63.a
-		ai_chance = { base = 100 }
+	option = { #Kokumin Domei
+		name = OPTION_KOKUMIN_DOMEI_1940
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Adachi_Kenzo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		
+		set_country_flag = JAP_kokumin_domei_won_in_1940_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #Bin Akao
+		name = OPTION_AKAO_1940
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = national_populist
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.2
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Bin_Akao_hog_npo
+			JAP_Tatsuo_Tsukui_for_tot
+			JAP_Bin_Akao_eco_npo
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_popular_party_long
+			name = JAP_popular_party
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_popular_party_long
+			name = JAP_popular_party
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = natpop_popular_patriotism_subtype
+			}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = tot_popular_patriotism_subtype
+			}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		
+		set_country_flag = JAP_bin_akao_won_in_1940_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #The Seiyukai have defended their absolute majority!
+		name = OPTION_SEIYUKAI_1940
+		ai_chance = {
+			factor = 50
+			
+		}
+		add_political_power = 50
+		set_country_flag = JAP_seiyukai_won_in_1940_elections
+		mark_focus_tree_layout_dirty = yes
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.1
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Mizuno_Rentaro_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Kawamura_Takeji_sec_sco
+		}
+	}
+	
+	option = { #Minseito
+		name = OPTION_MINSEITO_1940
+		
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.1
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hamaguchi_Osachi_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Kawasaki_Takukichi_sec_mli
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_country_flag = JAP_minseito_won_in_1940_elections
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	
+	option = { #Shakai-Taishuto
+		name = OPTION_SHAKAI_TAISHUTO_1940
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.2
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_inejiro_asanuma_hog_rso
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Wada_Hiroo_eco_rso
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_social_democrat_long
+			name = JAP_party_social_democrat
+		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1940_elections
 		
 	}
 }
