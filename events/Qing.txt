@@ -81,7 +81,8 @@ country_event = { # death of wang chengbin
 		}
 		if = {
 			limit = { has_unit_leader = 1177 }
-			event_target:QIE_Wang_Chengbin = {
+			random_unit_leader = {
+				limit = { has_id = 1177 }
 				remove_unit_leader = yes
 			}
 		}
@@ -680,6 +681,7 @@ country_event = { #qi asks wu (if wu said no to chen), triggered from qielepcoll
 				id = qielepcollapse.10
 				days = 1
 			}
+			set_country_flag = LEP_REP_flag
 		}
 		add_war_support = -0.05
 		add_stability = -0.10
@@ -3092,9 +3094,7 @@ country_event = {
 
 	option = {
 		name = qiefor.49.a #yes
-		ai_chance = {
-			factor = 100
-		}
+		ai_chance = { factor = 100 }
 		for_each_scope_loop = {
 			array = subjects
 			get_current_government_type = yes
@@ -3107,12 +3107,8 @@ country_event = {
 				transfer_troops = yes
 			}
 		}
-		every_unit_leader = {
-			set_nationality = QIE
-		}
-		every_navy_leader = {
-			set_nationality = QIE
-		}
+		every_unit_leader = { set_nationality = QIE }
+		every_navy_leader = { set_nationality = QIE }
 		FROM = {
 			add_timed_idea = {
 				idea = QIE_integrating_province
@@ -3126,9 +3122,7 @@ country_event = {
 	}
 	option = {
 		name = qiefor.49.c #nah b
-		ai_chance = {
-			factor = 0
-		}
+		ai_chance = { factor = 0 }
 		leave_faction = yes
 		FROM = {
 			create_wargoal = {
@@ -4689,8 +4683,11 @@ country_event = { #tang shengzi takes over Hunan, he's a federalist so rip
 			}
 			custom_effect_tooltip = HNN_zhao_flees
 			hidden_effect = {
-				XXA = {
-					event_target:HNN_Zhao_Hengti = { set_nationality = ROOT }
+				NSW = {
+					random_unit_leader = {
+						limit = { has_id = 1406 }
+						set_nationality = ROOT
+					}
 				}
 			}
 			diplomatic_relation = {
@@ -4723,8 +4720,9 @@ country_event = { #socialist takeover in Hunan, rip
 		name = qiefor.112.a
 		custom_effect_tooltip = HNN_zhao_flees
 		hidden_effect = {
-			XXA = {
-				event_target:HNN_Zhao_Hengti = {
+			NSW = {
+				random_unit_leader = {
+					limit = { has_id = 1406 }
 					set_nationality = ROOT
 				}
 			}
@@ -5543,6 +5541,19 @@ country_event = {
 					}
 				}
 			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_SONG
+					}
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_ZHANG
+					}
+				}
+			}
 		}
 		trigger = {
 			SHX = {
@@ -5573,6 +5584,19 @@ country_event = {
 					has_game_rule = {
 						rule = MON_path
 						option = MON_UNGERN_QING
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_YAN
+					}
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_ZHANG
 					}
 				}
 			}
@@ -5607,6 +5631,19 @@ country_event = {
 					has_game_rule = {
 						rule = MON_path
 						option = MON_UNGERN_QING
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_YAN
+					}
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_SONG
 					}
 				}
 			}
@@ -5649,6 +5686,23 @@ country_event = {
 					has_game_rule = {
 						rule = MON_path
 						option = MON_UNGERN_JAPAN
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_SONG
+					}
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_ZHANG
+					}
+					has_game_rule = {
+						rule = QIE_coup_friend
+						option = QIE_COUP_FRIEND_YAN
 					}
 				}
 			}
@@ -6088,55 +6142,42 @@ country_event = {
 
 	option = {
 		name = qiecoup.14.a #only purge the manchu, the rest can be rehabilitatied
-		event_target:QIE_Gobulo_Runqi = {
+		random_unit_leader = {
+			limit = { has_id = 1178 }
 			set_nationality = LEC
 		}
-		event_target:QIE_Aisin_Gioro_Pujie = {
-				remove_unit_leader = yes
-			}
-		event_target:QIE_Aisin_Gioro_Zaitao = {
-				remove_unit_leader = yes
-			}
-		event_target:QIE_Aisin_Gioro_Xiqia = {
-				remove_unit_leader = yes
-			}
+		QIE_kill_manchus = YES
 		army_experience = -10
 		add_stability = -0.03
 		LEC = {
-			event_target:QIE_Gobulo_Runqi = {
+			random_unit_leader = {
+				limit = { has_id = 1178 }
 				unit_leader_event = qieflavor.14
 			}
 		}
 	}
 	option = {
 		name = qiecoup.14.b #purge them all!
-		event_target:QIE_Gobulo_Runqi = {
+		random_unit_leader = {
+			limit = { has_id = 1178 }
 			set_nationality = LEC
 		}
-		event_target:QIE_Aisin_Gioro_Pujie = {
-				remove_unit_leader = yes
-			}
-		event_target:QIE_Aisin_Gioro_Zaitao = {
-				remove_unit_leader = yes
-			}
-		event_target:QIE_Li_Bingzhi = {
-				remove_unit_leader = yes
-			}
-		event_target:QIE_Lu_Xiangting = {
+		random_unit_leader = {
+			limit = { has_id = 1180 }
 			set_nationality = LEP
 		}
-		event_target:QIE_Aisin_Gioro_Xiqia = {
-				remove_unit_leader = yes
-			}
+		QIE_kill_manchus = YES
 		army_experience = -20
 		add_stability = 0.05
 		LEC = {
-			event_target:QIE_Gobulo_Runqi = {
+			random_unit_leader = {
+				limit = { has_id = 1178 }
 				unit_leader_event = qieflavor.14
 			}
 		}
 		LEP = {
-			event_target:QIE_Lu_Xiangting = {
+			random_unit_leader = {
+				limit = { has_id = 1180 }
 				unit_leader_event = qieflavor.14
 			}
 		}
@@ -6400,7 +6441,8 @@ country_event = {
 				id = qiecoup.22
 			}
 			remove_ideas = QIE_leadership_crisis
-			event_target:QIE_Wu_Peifu = {
+			random_unit_leader = {
+				limit = { has_id = 1170 }
 				remove_unit_leader = yes
 			}
 			set_country_flag = on_our_own_militarily
@@ -6462,15 +6504,20 @@ country_event = {
 			set_politics = {
 				ruling_party = social_conservative
 			}
+			add_soclib_to_coalition = yes
+			add_socdem_to_coalition = yes
 			if = {	
 				limit = { has_country_leader = { name = "Puyi" ruling_only = yes } }
 				set_country_leader_portrait = {
 					portrait = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
 				}
+				set_country_leader_description = {
+					desc = "POLITICS_PUYI_RESTORED_DESC"
+				}
 			}
 			remove_all_ministers = yes
 			add_ideas = {
-				QIE_Aisin_Gioro_Zaifeng_hog_sco
+				QIE_Aisin_Gioro_Pujie_hog_sco
 				QIE_Zhang_Lande_for_sco
 				QIE_Mo_Dehui_eco_sco
 				QIE_Kunggur_Guanglu_sec_sco
@@ -6541,7 +6588,8 @@ country_event = {
 				}
 				SQI = { country_event = qiecoup.23 } #the coup succeeds! time to intervene
 			}
-			event_target:QIE_Aisin_Gioro_Pujie = {
+			random_unit_leader = {
+				limit = { has_id = 1174 }
 				promote_leader = yes
 			}
 			country_event = qiecoup.29
@@ -6565,21 +6613,64 @@ country_event = {
 					hours = 3
 				}
 			}
-			set_division_template_lock = {
-				division_template = "Manchu Imperial Guard"
-				is_locked = no
-			}
-			set_division_template_lock = {
-				division_template = "Manchu Cavalry Division"
-				is_locked = no
-			}
 		}
 	}
 	
-	option = {
-		name = qiecoup.22.b
-		set_politics = { ruling_party = totalist }
+	
 		
+		option = {
+		name = qiecoup.22.b #crush the traitors!
+		load_focus_tree = monbol-qing
+		set_cosmetic_tag = QIE_RED
+		remove_ideas = QIE_fractured_empire
+		clr_country_flag = legation_council_member
+		hidden_effect = {
+			QIE_zhili_clique_flees = yes
+			LEP = {
+				if = {
+					limit = { has_cosmetic_tag = LEP_NAN }
+					drop_cosmetic_tag = yes
+					set_cosmetic_tag = LEP_NAN_REP
+				}
+				else = {
+					drop_cosmetic_tag = yes
+					set_cosmetic_tag = LEP_REP
+				}
+			}
+			set_politics = {
+				ruling_party = totalist
+			}
+			add_soclib_to_coalition = yes
+			add_socdem_to_coalition = yes
+			if = {	
+				limit = { has_country_leader = { name = "Puyi" ruling_only = yes } }
+				set_country_leader_portrait = {
+					portrait = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
+				}
+				set_country_leader_description = {
+					desc = "POLITICS_PUYI_RESTORED_DESC"
+				}
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				QIE_Aisin_Gioro_Pujie_hog_sco
+				QIE_Zhang_Lande_for_sco
+				QIE_Mo_Dehui_eco_sco
+				QIE_Kunggur_Guanglu_sec_sco
+				QIE_Aisin_Gioro_Jixing_cos
+			}
+			set_popularities = {
+				totalist = 70
+				radical_socialist = 0
+				syndicalist = 0
+				social_democrat = 10
+				social_liberal = 0
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 5
+				paternal_autocrat = 5
+				national_populist = 10
+			}
 			set_country_flag = Jiang_Baili_dead
 			set_country_flag = Wu_Peifu_dead
 			every_owned_state = {
@@ -6591,23 +6682,7 @@ country_event = {
 				}
 				set_demilitarized_zone = yes
 			}
-			
-			set_country_flag = QIE_manchu_restoration
-			random_army_leader = {
-				limit = { has_id = 1174 }
-				promote_leader = yes
-			}
-			add_political_power = 30
-			set_country_flag = zhili_manchu_war
-			add_ideas = QIE_zhili_manchu_war_idea
-			delete_unit_template_and_units = { division_template = "Zhili Infantry Division" }
-			
-			random_other_country = { #????? whats this for?
-				limit = { is_ai = yes }
-				news_event = { id = worldnews.231 hours = 2 }
-			}
-
-			#There were decisions that removed authdem and stuff, so its weird that authdem didnt exist
+			complete_national_focus = QIE_unrest
 			add_popularity = {
 				ideology = totalist
 				popularity = 0.15
@@ -6620,19 +6695,74 @@ country_event = {
 				ideology = radical_socialist
 				popularity = 0.05
 			}
-			hidden_effect = {
-				load_focus_tree = monbol-qing
-				set_cosmetic_tag = QIE_RED
+			
+			set_country_flag = QIE_manchu_restoration
+			if = {
+				limit = {
+					has_country_flag = QIE_yan_backs_coup
+					SHX = {
+						exists = yes
+						is_subject = no
+					}
+				}
+				reverse_add_opinion_modifier = {
+					target = SHX
+					modifier = KR_friendly
+				}
+				add_opinion_modifier = {
+					target = SHX
+					modifier = KR_friendly
+				}
+				SHX = { country_event = qiecoup.23 } #the coup succeeds! time to intervene
 			}
-			set_country_leader_portrait = {
-				ideology = totalist
-				portrait = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
+			else_if = {
+				limit = {
+					OR = {
+						has_country_flag = QIE_song_backs_coup
+						has_country_flag = QIE_zhang_backs_coup
+					}
+					SQI = {
+						exists = yes
+						is_subject = no
+					}
+				}
+				reverse_add_opinion_modifier = {
+					target = SQI
+					modifier = KR_friendly
+				}
+				add_opinion_modifier = {
+					target = SQI
+					modifier = KR_friendly
+				}
+				SQI = { country_event = qiecoup.23 } #the coup succeeds! time to intervene
 			}
-			set_country_leader_name = {
-				ideology = totalist
-				name = LOC_QED
+			random_unit_leader = {
+				limit = { has_id = 1174 }
+				promote_leader = yes
+			}
+			country_event = qiecoup.29
+			add_political_power = 30
+			set_country_flag = zhili_manchu_war
+			add_ideas = QIE_zhili_manchu_war_idea
+			delete_unit_template_and_units = { division_template = "Zhili Infantry Division" }
+			random_other_country = {
+				limit = { is_ai = yes }
+				news_event = { id = worldnews.231 hours = 2 }
+			}
+			TAN = {
+				country_event = {
+					id = kumul.113
+					hours = 3
+				}
+			}
+			LEC = {
+				country_event = {
+					id = lec.59
+					hours = 3
+				}
 			}
 		}
+	}
 }
 
 country_event = {
@@ -6846,6 +6976,7 @@ country_event = {
 
 	option = {
 		name = qiecoup.29.a #We don't need them anyway
+		remove_marlib_from_coalition = yes
 		add_political_power = 50
 		add_popularity = {
 			ideology = market_liberal
@@ -7523,8 +7654,8 @@ country_event = {
 		name = qiefocus.15.a #superior firepower
 		add_doctrine_cost_reduction = {
 			name = qiefocus.15.t
-			cost_reduction = 1
-			uses = 1
+			cost_reduction = 0.5
+			uses = 2
 			category = cat_superior_firepower
 		}
 	}
@@ -7532,8 +7663,8 @@ country_event = {
 		name = qiefocus.15.b #mass assault
 		add_doctrine_cost_reduction = {
 			name = qiefocus.15.t
-			cost_reduction = 1
-			uses = 1
+			cost_reduction = 0.5
+			uses = 2
 			category = cat_mass_assault
 		}
 	}
@@ -7541,8 +7672,8 @@ country_event = {
 		name = qiefocus.15.c #trench warfare
 		add_doctrine_cost_reduction = {
 			name = qiefocus.15.t
-			cost_reduction = 1
-			uses = 1
+			cost_reduction = 0.5
+			uses = 2
 			category = cat_grand_battle_plan
 		}
 	}
@@ -7646,7 +7777,7 @@ country_event = {
 			}
 			remove_all_ministers = yes
 			add_ideas = {
-				QIE_Aisin_Gioro_Zaifeng_hog_sco
+				QIE_Aisin_Gioro_Pujie_hog_sco
 				QIE_Zhang_Lande_for_sco
 				QIE_Mo_Dehui_eco_sco
 				QIE_Kunggur_Guanglu_sec_sco
@@ -7916,10 +8047,6 @@ country_event = {
 		name = qiefocus.28.b #keep the existing templates
 		ai_chance = { factor = 0 }
 		add_political_power = 25
-		set_division_template_lock = {
-			division_template = "Zhili Infantry Division"
-			is_locked = no
-		}
 	}
 }
 
@@ -8708,6 +8835,12 @@ country_event = { #Pick an Emperor
 			id = qieygd.7
 			days = 10
 		}
+		hidden_effect = {
+			country_event = {
+			id = qieygd.11
+			days = 365
+			}
+		}
 	}
 	option = {
 		name = qieygd.5.b
@@ -8750,7 +8883,7 @@ country_event = { #Pick an Emperor
 		}		
 		country_event = {
 			id = qieygd.6
-			days = 100
+			days = 30
 		}
 	}
 	option = {
@@ -8787,7 +8920,12 @@ country_event = { #Zhu Rongji puppet
 
 	is_triggered_only = yes
 
-	option = { name = qieygd.6.a }
+	option = { name = qieygd.6.a
+	country_event = {
+			id = qieygd.10
+			days = 2470
+		}
+	}
 }
 country_event = { #flag picker
 	id = qieygd.7
@@ -8872,6 +9010,46 @@ country_event = { #Zhang dies
 			name = "Sun Suzhen"
 			picture = "gfx/leaders/SQI/Portrait_Shandong_Sun_Suzhen.png"
 			desc = "POLITICS_ZHANG_TIANRAN_DESC"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
+	}
+}
+
+country_event = { #Rongji becomes Emperor
+	id = qieygd.10
+	title = qieygd.10.t
+	desc = qieygd.10.d
+	picture = GFX_report_event_SQI_yiguandao_group
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = qieygd.10.a
+		create_country_leader = {
+			name = "Zhu Rongji"
+			picture = "gfx/leaders/SQI/Portrait_Shandong_Zhu_Rongji.png"
+			desc = ""
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
+	}
+}
+
+country_event = { #Kong Lingyi dies (Yiguandao version)
+	id = qieygd.11
+	title = qieygd.11.t
+	desc = qieygd.11.d
+	picture = GFX_report_event_SQI_kong_lingyi
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = qieygd.11.a
+		create_country_leader = {
+			name = "Kong Decheng"
+			picture = "gfx/leaders/FNG/Portrait_FNG_Kong_Decheng.png"
+			desc = ""
 			expire = "1965.1.1"
 			ideology = occultism_subtype
 		}
