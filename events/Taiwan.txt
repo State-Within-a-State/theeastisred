@@ -58,6 +58,10 @@ country_event = { #Nomination of the Republican Candidate
 					ideology = colonial_govt_subtype
 				}
 		country_event = taiwan.3
+		country_event = {
+		id = taiwan.5
+		days = 10
+		}
 	}
 	
 
@@ -132,4 +136,159 @@ country_event = { #Nomination of the Republican Candidate
 	
 
 	
+}
+
+country_event = { #Encirlement of the Wushe Rebels
+	id = taiwan.5
+	title = taiwan.5.title
+	desc = taiwan.5.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	option = { #Encirle Them
+	name = taiwan.5.a
+		add_stability = 0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -5
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		country_event = {
+		id = taiwan.6
+		days = 10
+		}
+	}
+	option = { #Leave Them Be
+	name = taiwan.5.b
+		add_stability = -0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 1
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		country_event = {
+		id = taiwan.7
+		days = 10
+		}
+	}
+	
+}
+
+country_event = { #Defeat of the Wushe Rebellion
+	id = taiwan.6
+	title = taiwan.6.title
+	desc = taiwan.6.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Leave Them Be
+	name = taiwan.6.a
+		add_stability = 0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 1
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		
+	}
+	
+}
+
+
+country_event = { #Growth of the Wushe Rebellion
+	id = taiwan.7
+	title = taiwan.7.title
+	desc = taiwan.7.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Leave Them Be
+	name = taiwan.7.a
+		add_stability = 0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -50
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+				
+		country_event = taiwan.8
+		
+	}
+	
+}
+
+
+country_event = { #Success of the Wushe Rebellion
+	id = taiwan.8
+	title = taiwan.8.title
+	desc = taiwan.8.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Leave Them Be
+	name = taiwan.8.a
+		set_politics = { ruling_party = national_populist }
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.4
+		}
+	}
+	option = { #Leave Them Be
+	name = taiwan.8.b
+		country_event = taiwan.9
+		
+	}
+}
+
+country_event = { #Choosing a Republican Leader
+	id = taiwan.9
+	title = taiwan.9.title
+	desc = taiwan.9.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Leave Them Be
+	name = taiwan.9.a
+		set_politics = { ruling_party = paternal_autocrat }
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.4
+		}
+		create_country_leader = {
+				name = "Yapasuyong Yulunana"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/TWI/Portrait_TWI_Yapasuyong_Yulunana.png"
+				expire = "1965.1.1"
+				ideology = red_tinted_autocracy_subtype
+			}
+	}
+	option = { #Leave Them Be
+	name = taiwan.9.b
+		set_politics = { ruling_party = social_liberal }
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.4
+		}
+		create_country_leader = {
+				name = "Wuyong Yatauyungana"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/TWI/Portrait_TWI_Wuyong_Yatauyungana.png"
+				expire = "1965.1.1"
+				ideology = soclib_indigenous_communitarianism_subtype
+			}
+	}
 }
