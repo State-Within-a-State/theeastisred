@@ -1,7 +1,29 @@
 LEC_secure_the_cities_decision_category = {
 LEC_secure_tianjin_luxun = {
 		activation = {
-			has_global_flag = shanghai_revolution
+			AND = {
+		has_global_flag = shanghai_revolution
+		NOT = {
+			OR = {
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_secured
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_secured
+				}
+			}
+		}
+		}
 		}
 		available = {
 			
@@ -9,12 +31,16 @@ LEC_secure_tianjin_luxun = {
 			
 			
 		}
+		cancel_trigger = {
+		
+		}
 		
 		icon = mission_icon     # For GFX_decision_mission_icon
 		is_good = no
 	   
 		days_mission_timeout = 120
 		selectable_mission = no
+		fire_only_once = yes
 		complete_effect = {
 		custom_effect_tooltip = we_got_tianjin_tt
 			hidden_effect = {
@@ -60,7 +86,29 @@ LEC_secure_tianjin_luxun = {
 	}
 	LEC_secure_hongkong_luxun = {
 		activation = {
-			has_global_flag = shanghai_revolution
+			AND = {
+		has_global_flag = shanghai_revolution
+		NOT = {
+			OR = {
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_secured
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_secured
+				has_country_flag = hongkong_revolution_failled
+				}
+				AND = {
+				has_country_flag = tianjin_revolution_failled
+				has_country_flag = hongkong_revolution_secured
+				}
+			}
+		}
+		}
 		}
 		available = {
 			check_variable = { control_hongkong > 75 }
@@ -71,6 +119,7 @@ LEC_secure_tianjin_luxun = {
 	   
 		days_mission_timeout = 120
 		selectable_mission = no
+		fire_only_once = yes
 		complete_effect = {
 			
 			
@@ -267,7 +316,7 @@ LEC_secure_tianjin_luxun = {
 			tag = LEC
 			has_global_flag = shanghai_revolution
 		}
-		cost = 10
+		cost = 25
 		
 		days_remove = 10
 		days_re_enable = 5
@@ -279,7 +328,7 @@ LEC_secure_tianjin_luxun = {
 		remove_effect = {
 			add_to_variable = {
 					var = control_hongkong
-					value = 3
+					value = 15
 				}
 		}
 	}
@@ -440,9 +489,7 @@ LEC_prepare_uprising_in_nanjiang = {
 			ANQ = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -499,9 +546,7 @@ LEC_prepare_uprising_in_huaisi = {
 			ANQ = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -558,9 +603,7 @@ LEC_prepare_uprising_in_huaisi = {
 			ANQ = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -610,16 +653,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_guangxi_nanning < 10
 			}
 			
-			OR = {
-			LEP = {
+			GXC = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -670,16 +705,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_guangxi_hainan < 10
 			}
 			
-			OR = {
-			LEP = {
+			GXC = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -729,16 +756,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_sichuan_chengdu < 10
 			}
 			
-			OR = {
-			LEP = {
+			SZC = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -788,16 +807,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_sichuan_chongqing < 10
 			}
 			
-			OR = {
-			LEP = {
+			SZC = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -848,16 +859,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_qing_xian < 10
 			}
 			
-			OR = {
-			LEP = {
+			QIE = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -907,16 +910,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_qing_hankuo < 10
 			}
 			
-			OR = {
-			LEP = {
+			QIE = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -966,16 +961,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_qing_kaifeng < 10
 			}
 			
-			OR = {
-			LEP = {
+			QIE = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -1025,16 +1012,8 @@ LEC_prepare_uprising_in_huaisi = {
 			revolt_qing_tangshan < 10
 			}
 			
-			OR = {
-			LEP = {
+			QIE = {
 			exists = yes
-			}
-			ANQ = {
-			exists = yes
-			}
-			CHI = {
-			exists = yes
-			}
 			}
 			}
 			
@@ -1085,15 +1064,13 @@ LEC_prepare_uprising_in_huaisi = {
 			}
 			
 			OR = {
-			LEP = {
+			FNG = {
 			exists = yes
 			}
-			ANQ = {
+			MAN = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -1143,15 +1120,13 @@ LEC_prepare_uprising_in_huaisi = {
 			}
 			
 			OR = {
-			LEP = {
+			FNG = {
 			exists = yes
 			}
-			ANQ = {
+			MAN = {
 			exists = yes
 			}
-			CHI = {
-			exists = yes
-			}
+			
 			}
 			}
 			
@@ -3024,5 +2999,215 @@ LEC_alignment_integration_category = {
 			}
 		}
 	}
+}
+
+
+LEC_alliance_revolution_category = {     
+
+LEC_alliance_revolution_in_asia = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+			
+			FROM = {
+			OR = {
+			has_government = totalist
+			has_government = syndicalist
+			has_government = radical_socialist
+			}
+			
+			exists = yes
+			NOT = {
+			is_subject_of = ROOT
+			}	
+			}
+		}
+		
+		visible = {
+			
+		}
+		cost = 10
+		targets = {  ALQ CEY BHU BOR CAM  INC INS JAP KAC KOR KYR LAO  MLY PHI PNG SAR SHA SIA SIR TAJ TAN UZB VIN BHC CEY INR MAD MYS NEP SKM PRF RAJ TRV TWI }
+		target_trigger = {
+			FROM = { exists = yes }
+			AND = {
+			
+			
+			
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+			
+			}
+		}
+		days_remove = 7
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+			country_event = shanghai_socialist_for.0
+			}
+			
+		}
+	}
+	
+	LEC_asian_liberation = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = LEC
+			has_completed_focus = LEC_LUXUNFORTWO_oustthewesterncolonizers
+		}
+		cost = 10
+		targets = {  ALQ BHU BOR SKM AFG HAW CAM INC INS KAC KYR LAO MLY PHI PNG SAR SHA SIA SIR TAJ UZB VIN BHC CEY INR MAD MYS NEP SKM PRF DEH TRV }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				is_in_faction_with = LEC
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			
+		}
+	}
+	
+	
+	LEC_dec_BHC_expedition = {
+		war_with_target_on_remove = yes
+		icon = generic_ignite_civil_war
+		targets = { BHC DEH PRF BHU NEP SKM }
+		target_trigger = {
+			FROM = {
+				owns_state = 858
+			}
+		}
+		target_root_trigger = {
+			has_completed_focus = LEC_LUXUNFORTWO_beyond_the_mcmahon_line
+		}
+		visible = {
+			has_completed_focus = LEC_LUXUNFORTWO_beyond_the_mcmahon_line
+			is_subject = no
+			can_declare_war_on = FROM
+			FROM = {
+				owns_state = 858
+			}
+		}
+		available = {
+			OR = {
+				is_neighbor_of = FROM
+				FROM = {
+					any_neighbor_country = { is_ally_of_ROOT = yes }
+				}
+			}
+		}
+
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		cost = 40
+		days_remove = 14
+		days_re_enable = 30
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_BHC_expedition target: [From.GetName]"
+			set_country_flag = { flag = imminent_war days = 21 value = 1 }
+			FROM = { country_event = chi_for.6 }
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_BHC_expedition target: [From.GetName]"
+			declare_war_on = {
+				type = annex_everything
+				target = FROM
+			}
+			FROM = { country_event = chi_for.7 }
+		}
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+			modifier = {
+				factor = 0
+				strength_ratio = {
+					tag = FROM
+					ratio < 0.8
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_in_faction = yes
+					var:faction_leader = {
+						strength_ratio = {
+							tag = ROOT
+							ratio > 0.7
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_subject = yes
+					overlord = {
+						strength_ratio = {
+							tag = ROOT
+							ratio > 0.7
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				has_country_flag = imminent_war
+			}
+		}
+	}
+
+
 }
 

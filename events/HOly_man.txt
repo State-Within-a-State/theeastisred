@@ -1,13 +1,4 @@
-﻿###########################
-# Philippines Events
-###########################
-# By PPsyrius
-###########################
-
-add_namespace = holythai
-
-
-
+﻿add_namespace = holythai
 
 country_event = { # Introduction
 	id = holythai.1
@@ -260,17 +251,16 @@ country_event = { # Introduction
 		add_state_core = 724
 		add_state_core = 999
 		add_state_core = 751
-		
-		
+		add_state_core = 825
+		add_state_core = 750
 		set_state_owner = 756
-		
+		set_state_owner = 750
+		set_state_owner = 825
 		set_state_owner = 882
-		
 		set_state_owner = 831
 		set_state_owner = 289
 		set_state_owner = 830
 		set_state_owner = 824
-		
 		set_state_owner = 749
 		set_state_owner = 724
 		set_state_owner = 999
@@ -281,25 +271,12 @@ country_event = { # Introduction
 			}
 			
 		}
-		release = CAM
-		SIA = {
-		release = CAM
-		set_state_controller = 822
-		set_state_controller = 823
-		declare_war_on = {
-			target = THM
-			type = annex_everything
-		}
 		
-		}
 		
 		
 		
 		THM = { change_tag_from = SIA }
-		country_event = {
-		id = holythai.11
-		days = 0
-		}
+		
 	}
 	
 	option = {
@@ -369,6 +346,283 @@ country_event = { # Introduction
 	
 }
 
+
+
+country_event = { #Choice of Strategy
+	id = holythai.12
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.12.t
+	desc = holythai.12.d
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#Sangha Favor
+		name = holythai.12.a
+		add_to_variable = {
+			var = sangha_power
+			value = 5
+			tooltip = add_to_sangha_power_tt
+			
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+	}
+	option = {#Royalist Favor
+		name = holythai.12.b
+		add_to_variable = {
+			var = royalist_power
+			value = 5
+			tooltip = add_to_royalist_power_tt
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.05
+		}
+	}
+	option = {#Liberationist Favor
+		name = holythai.12.c
+		add_to_variable = {
+			var = liberationist_power
+			value = 5
+			tooltip = add_to_liberationist_power_tt
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+	}
+	
+	
+}
+
+country_event = { #Question of Land Rights
+	id = holythai.13
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.13.title
+	desc = holythai.13.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#Execute the Landlords
+		name = holythai.13.a
+		set_country_flag = THM_radical_land_reforms
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+		}
+		
+	}
+	
+	option = {#Moderate Reforms
+		name = holythai.13.b
+		set_country_flag = THM_moderate_land_reforms
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		
+	}
+	
+}
+
+country_event = { #The Scriptures Cry out
+	id = holythai.14
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.14.title
+	desc = holythai.14.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#We Shall Liberate Asia With our Allies
+		name = holythai.14.a
+		create_faction = "Buddhist Peace Fellowship"
+		set_country_flag = THM_alliance
+		
+	}
+	
+	option = {#We Shall Claim All of Asia
+		name = holythai.14.b
+		every_state = {
+					limit = {
+						is_on_continent = asia
+					}
+					THM = { 
+						add_state_core = PREV 
+						create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+				}
+			}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PREV
+		}
+		every_state = {
+					limit = {
+						is_on_continent = india
+					}
+					THM = { 
+						add_state_core = PREV 
+						create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+				}
+			}
+		
+		
+		
+	}
+	
+}
+
+
+
+country_event = { #The People Cry Out
+	id = holythai.15
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.15.title
+	desc = holythai.14.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#We Shall Liberate Asia 
+		name = holythai.15.a
+		create_faction = "Asian Liberation Alliance"
+		set_country_flag = THM_alliance
+		
+	}
+	
+	
+	
+}
+
+country_event = { #Joining the Holy Man Rebellion
+	id = holythai.16
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.16.title
+	desc = holythai.14.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#No
+		name = holythai.16.a
+		THM = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FROM
+			}
+		}
+		
+	}
+	option = {#yes
+		name = holythai.16.b
+		THM = { add_to_faction = FROM }
+	}
+	
+	
+}
+
+
+country_event = { #Claiming Pan-Theravada
+	id = holythai.17
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.17.title
+	desc = holythai.14.desc
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#We Shall Liberate Asia With our Allies
+		name = holythai.17.a
+		create_faction = "Buddhist Peace Fellowship"
+		set_country_flag = THM_alliance
+		
+	}
+	
+	option = {#We Shall Claim All of Asia
+		name = holythai.17.b
+		set_cosmetic_tag = THM_PANTHERA
+		every_state = {
+					
+					THM = { 
+						add_state_core = PREV 
+						create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+				}
+			}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PREV
+		}
+		every_state = {
+					
+					THM = { 
+						add_state_core = PREV 
+						create_wargoal = {
+								type = puppet_wargoal_focus
+								target = PREV
+							}
+				}
+			}
+		
+		
+		
+	}
+	
+}
+
+country_event = { #Choice of Strategy
+	id = holythai.18
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = holythai.12.t
+	desc = holythai.12.d
+	picture = "GFX_report_event_holy_four"
+	is_triggered_only = yes
+
+	
+
+	option = {#A Fairere Society
+		name = holythai.12.a
+		set_politics = { ruling_party = social_democrat }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.5
+		}
+		
+	}
+	option = {#Continue Our Nationalist View
+		name = holythai.12.b
+		set_politics = { ruling_party = national_populist }
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.5
+		}
+	}
+	
+	
+	
+}
 
 
 
