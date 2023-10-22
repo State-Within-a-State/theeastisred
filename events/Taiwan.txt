@@ -309,12 +309,14 @@ country_event = { #2nd Wushe Rebellion
 	picture = "GFX_report_event_TWI_taiwan_info"
 
 	is_triggered_only = yes
-
+	trigger = {
+	check_variable = { JAP_TWI_INT > 20}
+	}
 
 	
 	option = { #Leave Them Be
 	name = taiwan.10.a
-		country_event = taiwan.11
+		set_country_flag = TAI_japan_taiwan_revolution
 	}
 	
 }
@@ -526,6 +528,74 @@ country_event = { #Choosing a Republican Leader
 			}
 		
 	}
+	
+	
+}
+
+
+country_event = { #Taiwan Requests Guarantee of Independence
+	id = taiwan.15
+	title = taiwan.15.title
+	desc = taiwan.15.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Sure
+	name = taiwan.15.a
+		JAP = {
+		country_event = taiwan.16
+		}
+		
+	}
+	option = { #No
+	name = taiwan.15.b
+		TAI = {
+		country_event = taiwan.17
+		}
+		
+	}
+	
+	
+}
+country_event = { #Foreign Action Blocks Taiwan Recapture
+	id = taiwan.16
+	title = taiwan.16.title
+	desc = taiwan.16.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Fuckin Hell
+	name = taiwan.16.a
+		set_country_flag = Japan_revolt_no
+		
+	}
+	
+	
+	
+}
+
+country_event = { #Foreign Action Refuses
+	id = taiwan.17
+	title = taiwan.17.title
+	desc = taiwan.17.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Fuckin Hell
+	name = taiwan.17.a
+		
+		
+	}
+	
 	
 	
 }
