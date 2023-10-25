@@ -1,0 +1,296 @@
+QIE_five_year_plan_decision_category = {
+QIE_five_year_plan_mission = {
+		name = QIE_five_year_plan
+		icon = revolt
+		priority = 1
+
+		allowed = {
+		tag = QIE
+		}
+
+		available = {
+			num_of_factories > 150
+		}
+
+		activation = {
+			
+		has_country_flag = QIE_new_five_year_plans
+			
+		}
+
+		days_mission_timeout = 1095
+		is_good = yes
+		fire_only_once = yes
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_fading_sun_mission"
+			add_stability = -0.5
+			add_political_power = -100
+
+		cancel_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision cancelled JAP_fading_sun_mission"
+			add_stability = 0.25
+			add_political_power = 50
+			set_country_flag = QIE_five_year_plan_done
+		}
+	}
+
+}
+
+
+QIE_build_up_civilian_beijing_basin = {
+		icon = ger_military_buildup
+		
+		available = {
+			tag = QIE
+			608 = {
+			is_owned_by = QIE
+			}
+		}
+		
+		visible = {
+			tag = QIE
+			has_country_flag = QIE_new_five_year_plans
+			NOT = {
+			has_country_flag = QIE_five_year_plan_done
+			}
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 30
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			608 = {
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			
+			}
+			
+		}
+	}
+
+QIE_ramp_up_countryside_infrastructure = {
+		icon = ger_military_buildup
+		
+		available = {
+			tag = QIE
+			has_completed_focus = QIE_beiyang_railway
+			OR = {
+			1062 = {
+			is_owned_by = QIE
+			}
+			1060 = {
+			is_owned_by = QIE
+			}
+			
+			1060 = {
+			is_owned_by = QIE
+			}
+			}
+		}
+		
+		visible = {
+			tag = QIE
+			has_country_flag = QIE_new_five_year_plans
+			
+			NOT = {
+			has_country_flag = QIE_five_year_plan_done
+			}
+		}
+		cost = 20
+		
+		days_remove = 10
+		days_re_enable = 20
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		
+		if = {
+		limit = {
+		1062 = {
+			is_owned_by = QIE
+			}
+		1062 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			}
+		}
+		}
+		if = {
+		limit = {
+		1060 = {
+			is_owned_by = QIE
+			}
+		1060 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			}
+		}
+		}	
+		if = {
+		limit = {
+		799 = {
+			is_owned_by = QIE
+			}
+		799 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			}
+		}
+		}	
+			
+			
+		}
+	}
+	
+	
+	QIE_sail_the_red_fleet = {
+		icon = ger_military_buildup
+		
+		available = {
+			tag = QIE
+			OR = {
+			614 = {
+			is_owned_by = QIE
+			}
+			
+			}
+		}
+		
+		visible = {
+			tag = QIE
+			has_country_flag = QIE_new_five_year_plans
+			NOT = {
+			has_country_flag = QIE_five_year_plan_done
+			}
+		}
+		cost = 10
+		
+		days_remove = 10
+		days_re_enable = 20
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			614 = {
+			add_building_construction = {
+				type = dockyard
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 1
+				instant_build = yes
+			}
+			}
+			
+		}
+	}
+	
+	QIE_weaponized_production = {
+		icon = ger_military_buildup
+		
+		available = {
+			tag = QIE
+			OR = {
+			608 = {
+			is_owned_by = QIE
+			}
+			1059 = {
+			is_owned_by = QIE
+			}
+			
+			
+			}
+		}
+		
+		visible = {
+			tag = QIE
+			has_country_flag = QIE_new_five_year_plans
+			NOT = {
+			has_country_flag = QIE_five_year_plan_done
+			}
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 25
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		if = {
+		limit = {
+		608 = {
+			is_owned_by = QIE
+			}
+		608 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			}
+		}
+		}
+		if = {
+		limit = {
+		1059 = {
+			is_owned_by = QIE
+			}
+		1059 = {
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+			}
+		}
+		}
+			
+			
+			
+		}
+	}
+}
