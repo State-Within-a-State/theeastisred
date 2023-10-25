@@ -3108,6 +3108,7 @@ country_event = { #1937 Snap Elections
 			factor = 50
 			
 		}
+		
 		set_politics = {
 			ruling_party = national_populist
 		}
@@ -3921,11 +3922,59 @@ country_event = { #Victory of the Tokohai
 	desc = japan_new_event.62.desc
 	#picture = 
 	
+	immediate = {
+	hidden_effect = {
+	#complete_national_focus = JAPNAK_nakano_secures_the_diet
+	load_focus_tree = japan-nakano
+	}
+	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.62.a
 		ai_chance = { base = 100 }
-		
+		#complete_national_focus = JAPNAK_the_issue_of_party_factionalism
+		set_politics = {
+			ruling_party = totalist
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Yasukuni_Watanabe_for_tot
+			JAP_Dai_Oishi_eco_tot
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+	}
+	
+	option = { #
+		name = japan_new_event.62.b
+		ai_chance = { base = 100 }
+		complete_national_focus = JAPNAK_the_issue_of_party_factionalism
+		set_politics = {
+			ruling_party = national_populist
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Kazuma_Shindo_for_npo
+			JAP_Matashiro_Nakamura_eco_npo
+			JAP_Torao_Miura_sec_npo
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
 	}
 }
 
