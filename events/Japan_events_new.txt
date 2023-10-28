@@ -809,7 +809,7 @@ country_event = { #Japanese Civil War
 						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
 						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo_LKMT.png"
 						expire = "1965.1.1"
-						ideology = syndicalist_subtype
+						ideology = syn_red_junta_subtype
 					}
 					create_country_leader = {
 						name = "Hisashi Aso"
@@ -959,6 +959,17 @@ country_event = { #Japanese Civil War
 	option = { #
 		name = japan_new_event.17.a
 		ai_chance = { base = 100 }
+		set_global_flag = Super_Event_Visible
+		set_global_flag = JAPAN_CW_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_cw"
+		}
 		hidden_effect = {
 		JAP = {
 		
@@ -990,6 +1001,7 @@ country_event = { #Japanese Civil War
 	option = { #
 		name = japan_new_event.17.b
 		ai_chance = { base = 100 }
+		set_global_flag = JAPAN_CW_superev
 		hidden_effect = {
 			JAP = {
 			
@@ -1029,6 +1041,17 @@ country_event = { #Syndicalist Victory
 	option = { #
 		name = japan_new_event.18.a
 		ai_chance = { base = 100 }
+		set_global_flag = Super_Event_Visible
+		set_global_flag = JAPAN_CW_Socialist_win_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_syndie_win_cw"
+		}
 		add_political_power = 100
 		add_popularity = {
 			ideology = totalist
@@ -1047,7 +1070,6 @@ country_event = { #Syndicalist Victory
 			popularity = 0.2
 		}
 		set_country_flag = JAP_syndie_victory
-		#country_event = lngcivilwar.17
 		set_capital = { state = 282 remember_old_capital = no }
 		set_global_flag = JAP_civil_war_over
 	}
@@ -1068,6 +1090,17 @@ country_event = { #Military Victory
 	option = { #
 		name = japan_new_event.19.a
 		ai_chance = { base = 100 }
+		set_global_flag = Super_Event_Visible
+		set_global_flag = JAPAN_CW_military_win_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_army_win_cw"
+		}
 		set_party_name = {
 			ideology = paternal_autocrat
 			long_name = "Military Administration"
@@ -4164,7 +4197,9 @@ country_event = { #1940 elections
 	}
 }
 
-country_event = { #
+####Japanese Socialist Events###
+
+country_event = { #Meeting of National Revolutionary Congress
 	id = japan_new_event.64
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.64"}
 	title = japan_new_event.64.title
@@ -4172,14 +4207,30 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Anarchists Secure Congress
 		name = japan_new_event.64.a
 		ai_chance = { base = 100 }
-		
+		country_event = japan_new_event.65
+	}
+	
+	option = { #JCP Secure Congress
+		name = japan_new_event.64.b
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.66
+		set_politics = {
+		ruling_party = totalist
+		}
+		create_country_leader = {
+						name = "Central Committee of the JCP"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_JCP_Central_Committee.png"
+						expire = "1965.1.1"
+						ideology = red_junta_subtype
+					}
 	}
 }
 
-country_event = { #
+country_event = { #Anarchism in Japan
 	id = japan_new_event.65
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.65"}
 	title = japan_new_event.65.title
@@ -4187,14 +4238,105 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #The Council Will Decide Our Fate
 		name = japan_new_event.65.a
 		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Buraku_Liberation_League_hog_rso
+			JAP_Hiratsuka_Raicho_for_rso
+			JAP_Hatta_Shuzo_eco_rso
+			JAP_Taisaku_Kitahara_sec_rso
+		}
+		set_politics = {
+						ruling_party = radical_socialist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+				
+		create_country_leader = {
+						name = "Buraku Liberation League Central Committee"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_BLLCC.png"
+						expire = "1965.1.1"
+						ideology = anarchism_subtype
+					}
+	}
+	option = {
+		name = japan_new_event.65.b
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Jiichiro_Matumoto_hog_rso
+			JAP_Hiratsuka_Raicho_for_rso
+			JAP_Hatta_Shuzo_eco_rso
+			JAP_Taisaku_Kitahara_sec_rso
+		}
+		set_politics = {
+						ruling_party = radical_socialist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+				
+		create_country_leader = {
+						name = "Jiichiro Matumoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Jiichiro_Matumoto.png"
+						expire = "1965.1.1"
+						ideology = illegalism_subtype
+					}
+		
+	}
+	option = {
+		name = japan_new_event.65.c
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Sanshiro_Ishikawa_hog_rso
+			JAP_Hiratsuka_Raicho_for_rso
+			JAP_Hatta_Shuzo_eco_rso
+			JAP_Taisaku_Kitahara_sec_rso
+		}
+		set_politics = {
+						ruling_party = radical_socialist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+				
+		create_country_leader = {
+						name = "Ishikawa Sanshiro"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Ishikawa_Sanshiro.png"
+						expire = "1965.1.1"
+						ideology = radsoc_sanshiro_thought_subtype
+					}
+		
+	}
+	
+	option = {
+		name = japan_new_event.65.d
+		add_ideas = {
+			JAP_Tsuji_Jun_hog_rso
+			JAP_Tomoyoshi_Murayama_for_rso
+			JAP_Eisuke_Yoshiyuki_eco_rso
+			JAP_Taisaku_Kitahara_sec_rso
+		}
+		set_politics = {
+						ruling_party = radical_socialist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+				
+		create_country_leader = {
+						name = "Jun Tsuji"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Jun_Tsuji.png"
+						expire = "1965.1.1"
+						ideology = radsoc_social_anarchism_subtype
+					}
 		
 	}
 }
 
-country_event = { #
+country_event = { #The Struggle of 2
 	id = japan_new_event.66
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.66"}
 	title = japan_new_event.66.title
@@ -4202,14 +4344,14 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Yamakawaism
 		name = japan_new_event.66.a
 		ai_chance = { base = 100 }
-		
+		country_event = japan_new_event.67
 	}
 }
 
-country_event = { #
+country_event = { #A United Front Victory
 	id = japan_new_event.67
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.67"}
 	title = japan_new_event.67.title
@@ -4217,14 +4359,96 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Red Army
 		name = japan_new_event.67.a
 		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.2
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nosaka_Sanzo_hog_syn
+			JAP_Nosaka_Sanzo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Hotsumi_Ozaki_sec_syn
+		}
+		create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo_LKMT.png"
+						expire = "1965.1.1"
+						ideology = syn_red_junta_subtype
+					}
+		set_country_leader_ideology = red_junta_subtype
+		
+	}
+	
+	option = { #Yamakawa
+		name = japan_new_event.67.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamakawa_Hitoshi_hog_rso
+			JAP_Kanson_Arahata_for_rso
+			JAP_Itsuro_Sakisaka_eco_rso
+			JAP_Hotsumi_Ozaki_sec_syn
+		}
+		create_country_leader = {
+						name = "Hitoshi Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Hitoshi_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = radsoc_yamakawaism_subtype
+					}
+		
+	}
+	
+	option = { #Kenzo
+		name = japan_new_event.67.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.15
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_syn
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamamoto_Kenzo_eco_syn
+			JAP_Nosaka_Sanzo_sec_syn
+		}
+		create_country_leader = {
+						name = "Kenzo Yamamoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+						expire = "1965.1.1"
+						ideology = agrarian_syndicalism_subtype
+					}
 		
 	}
 }
 
-country_event = { #
+country_event = { #Transitioning From a Junta Government
 	id = japan_new_event.68
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.68"}
 	title = japan_new_event.68.title
@@ -4232,14 +4456,50 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Feminist Socialism
 		name = japan_new_event.68.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo.png"
+						expire = "1965.1.1"
+						ideology = socialist_feminism_subtype
+					}
+	}
+	
+	option = { #Red Empire
+		name = japan_new_event.68.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo.png"
+						expire = "1965.1.1"
+						ideology = monsoc_subtype
+					}
 	}
 }
 
-country_event = { #
+country_event = { #Legacy of Yamakawaism
 	id = japan_new_event.69
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.69"}
 	title = japan_new_event.69.title
@@ -4247,14 +4507,94 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #anarcho_syndicalism Hitoshi
 		name = japan_new_event.69.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Hitoshi Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Hitoshi_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = anarcho_syndicalist_subtype
+					}
+	}
+	
+	option = { #Yamakawaism Hitoshi
+		name = japan_new_event.69.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Hitoshi Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Hitoshi_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = radsoc_yamakawaism_subtype
+					}
+	}
+	
+	option = { #Feminist Socialism Kikue
+		name = japan_new_event.69.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Kikue Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kikue_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = red_socialist_feminism_subtype
+					}
+					
+		set_country_leader_ideology = socialist_feminism_subtype	
+	}
+	
+	option = { #Ansyn Kikue
+		name = japan_new_event.69.d
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Kikue Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kikue_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = radsoc_anarcho_syndicalist_subtype
+					}
 	}
 }
 
-country_event = { #
+country_event = { #Leading the True Revolutionary Vanguard
 	id = japan_new_event.70
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.70"}
 	title = japan_new_event.70.title
@@ -4262,14 +4602,92 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Kenji Miyamoto
 		name = japan_new_event.70.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Miyamoto_Kenji_hog_rso
+			JAP_Yoshio_Shiga_for_tot
+			JAP_Satomi_Hakamada_eco_tot
+			JAP_Miyamoto_Kenji_sec_tot
+		}
+		create_country_leader = {
+						name = "Kenji Miyamoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenji_Miyamoto.png"
+						expire = "1965.1.1"
+						ideology = popcom_subtype
+					}
+	}
+	
+	option = { #Tokuda
+		name = japan_new_event.70.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kyuichi_Tokuda_hog_tot
+			JAP_Yoshio_Shiga_for_tot
+			JAP_Ritsu_Ito_eco_tot
+			JAP_Masayoshi_Fukuda_sec_tot
+		}
+		create_country_leader = {
+						name = "Kyuichi Tokuda"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kyuchi_Tokuda_RD_Ver.png"
+						expire = "1965.1.1"
+						ideology = national_communism_subtype
+					}
+	}
+	
+	option = { #Tokuda
+		name = japan_new_event.70.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kazuo_Fukumoto_hog_tot
+			JAP_Hajime_Kawakami_for_tot
+			JAP_Kazuo_Fukumoto_eco_tot
+			JAP_Manabu_Sano_sec_tot
+		}
+		create_country_leader = {
+						name = "Kazuo Fukumoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kazuo_Fukumoto.png"
+						expire = "1965.1.1"
+						ideology = fukumotoism_subtype
+					}
 	}
 }
 
-country_event = { #
+country_event = { #Questioning Kenji's Leadership
 	id = japan_new_event.71
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.71"}
 	title = japan_new_event.71.title
@@ -4277,11 +4695,64 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Control the State
 		name = japan_new_event.71.a
 		ai_chance = { base = 100 }
+		set_country_leader_ideology = socialist_security_state_subtype
+	}
+	
+	option = { #Sexuality Freed
+		name = japan_new_event.71.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = socialist_feminism_subtype
+	}
+	
+	option = { #Technocratic Socialism
+		name = japan_new_event.71.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = technocratic_socialism_subtype
+	}
+	
+	option = { #Kuahara Techsoc
+		name = japan_new_event.71.d
+		ai_chance = { base = 100 }
+		create_country_leader = {
+						name = "Yoshihito Kuahara"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Yoshihito_Kuahara.png"
+						expire = "1965.1.1"
+						ideology = technocratic_socialism_subtype
+					}
 		
 	}
+	
+	option = { #Kuahara Social-Futurist
+		name = japan_new_event.71.e
+		ai_chance = { base = 100 }
+		create_country_leader = {
+						name = "Yoshihito Kuahara"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Yoshihito_Kuahara.png"
+						expire = "1965.1.1"
+						ideology = social_futurism_subtype
+					}
+		
+	}
+	
+	option = { #Miyamoto Yuriko
+		name = japan_new_event.71.f
+		ai_chance = { base = 100 }
+		create_country_leader = {
+						name = "Miyamoto Yuriko"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Miyamoto_Yuriko.png"
+						expire = "1965.1.1"
+						ideology = socialist_feminism_subtype
+					}
+		
+	}
+	
+	
 }
 
 country_event = { #
