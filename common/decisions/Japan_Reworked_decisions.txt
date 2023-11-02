@@ -8,7 +8,7 @@ JAP_deal_with_kodoha = {
 			
 			custom_trigger_tooltip = {
 				tooltip = army_bellow_tt		
-				check_variable = { imperial_army < 0.75 }
+				check_variable = { imperial_army < 0.65 }
 			}
 			
 		}
@@ -73,20 +73,75 @@ JAP_deal_with_kodoha = {
 	
 	
 	
-	LEC_raid_british_equipment_warehouses = {
+	JAP_raid_officer_quarters = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_global_flag = shanghai_revolution
+			
 		}
 		
 		visible = {
-			tag = LEC
-			has_global_flag = shanghai_revolution
+			tag = JAP
 		}
 		cost = 10
 		
 		days_remove = 10
+		days_re_enable = 15
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_to_variable = {
+			var = imperial_army
+			value = -0.05
+			tooltip = remove_imperial_army_tt
+				}
+		}
+	}
+	
+	JAP_speech_against_radicalism = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JAP
+		}
+		cost = 10
+		
+		days_remove = 20
+		days_re_enable = 15
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_to_variable = {
+			var = imperial_army
+			value = -0.075
+			tooltip = remove_imperial_army_tt
+				}
+		}
+	}
+	
+	JAP_silence_pro_army_news_papers = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JAP
+		}
+		cost = 10
+		
+		days_remove = 15
 		days_re_enable = 5
 		fire_only_once = no
 		
@@ -95,8 +150,37 @@ JAP_deal_with_kodoha = {
 		}
 		remove_effect = {
 			add_to_variable = {
-					var = control_hongkong
-					value = 5
+			var = imperial_army
+			value = -0.025
+			tooltip = remove_imperial_army_tt
+				}
+		}
+	}
+	
+	JAP_release_kanji_ishiwara = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_country_flag = kanji_communted
+		}
+		
+		visible = {
+			tag = JAP
+			
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_to_variable = {
+			var = imperial_army
+			value = 0.025
+			tooltip = add_imperial_army_tt
 				}
 		}
 	}
@@ -198,6 +282,86 @@ JAP_give_cash_incentives = {
 			
 		}
 	}
+
+
+
+}
+
+JAP_Civil_War_decision_category = {
+
+JAP_welcome_colonial_exiles = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAPMILICIVIL_welcome_back_the_former_colonial_officers
+		}
+		
+		visible = {
+			tag = JAP
+		}
+		cost = 10
+		
+		days_remove = 10
+		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_manpower = 1000
+		}
+	}
+	
+	JAP_mobile_work_shops = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAPMILICIVIL_industrial_war_machine
+		}
+		
+		visible = {
+			tag = JAP
+		}
+		cost = 10
+		
+		days_remove = 20
+		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+
+	JAP_civil_war_two = {
+		icon = no_votei_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JSR
+		}
+		cost = 10
+		
+		days_remove = 10
+		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+		}
+	}
+
+
 
 
 

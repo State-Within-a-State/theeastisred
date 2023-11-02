@@ -960,6 +960,9 @@ country_event = { #Japanese Civil War
 	option = { #
 		name = japan_new_event.17.a
 		ai_chance = { base = 100 }
+		JSR = {
+		set_country_flag = japan_civil_war
+		}
 		set_global_flag = Super_Event_Visible
 		set_global_flag = JAPAN_CW_superev
 		every_country = {
@@ -973,7 +976,7 @@ country_event = { #Japanese Civil War
 		}
 		hidden_effect = {
 		JAP = {
-		
+		set_country_flag = japan_civil_war
 		load_focus_tree = japan-military-civilwar
 		#spawn units
 		capital_scope = {
@@ -1002,7 +1005,21 @@ country_event = { #Japanese Civil War
 	option = { #
 		name = japan_new_event.17.b
 		ai_chance = { base = 100 }
+		set_country_flag = japan_civil_war
+		set_global_flag = Super_Event_Visible
 		set_global_flag = JAPAN_CW_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_cw"
+		}
+		JSR = {
+		set_country_flag = japan_civil_war
+		}
 		hidden_effect = {
 			JAP = {
 			
@@ -1762,6 +1779,7 @@ country_event = { #Trial of the League of Blood Incident
 			value = -0.15
 			tooltip = remove_civilian_government_tt
 		}
+		set_country_flag = kanji_communted
 		add_stability = -0.1
 		add_political_power = 50
 		add_war_support = 0.15
@@ -4767,7 +4785,9 @@ country_event = { #Questioning Kenji's Leadership
 	
 }
 
-country_event = { #
+###Misc, Flavour Events
+
+country_event = { #Reach Out to the Anti-Syndicalist World
 	id = japan_new_event.72
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.72"}
 	title = japan_new_event.72.title
@@ -4775,9 +4795,21 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Yes
 		name = japan_new_event.72.a
 		ai_chance = { base = 100 }
+		FROM = {
+		give_market_access = JAP
+		}
+	}
+	
+	option = { #No
+		name = japan_new_event.72.b
+		ai_chance = { base = 100 }
+		add_opinion_modifier = {
+			target = JAP
+			modifier = JAP_betrayal_by_the_right
+		}
 		
 	}
 }
