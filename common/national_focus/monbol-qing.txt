@@ -194,7 +194,7 @@ focus_tree = {
 			unlock_decision_tooltip = QIE_ramp_up_countryside_infrastructure
 			}
 		}
-	}
+	
 
 	#The Red Mandate
 	focus = {
@@ -215,7 +215,7 @@ focus_tree = {
 	
 	}
 
-	#The Long Queues of the Revolution Hang our National Enemies
+	#The Long Queues of the Revolution Hang Our National Enemies
 	focus = {
 		id = QIE_the_yellow_purge
 		icon = GFX_QIE_the_yellow_purge-90825
@@ -227,7 +227,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIE_follow_the_mladrossi_idea  } prerequisite = { focus = QIE_new_five_year_plans  }
 		completion_reward = {
-		add_manpower = -108373
+		add_manpower = -10000
+		add_ideas = {
+		QIE_national_purge
+		}
 		
 		}
 	}
@@ -245,9 +248,38 @@ focus_tree = {
 		prerequisite = { focus = QIE_the_devils_of_warlords  } prerequisite = { focus = QIE_the_red_mandate  }
 		completion_reward = {
 		
-					create_wargoal = {
-				type = annex_everything
-				target = TRM
+			unlock_decision_category_tooltip = QIE_beyond_han_decision_category
+			hidden_effect = {
+			add_state_core = 408
+			add_state_core = 1246
+			add_state_core = 409
+			add_state_core = 560
+			add_state_core = 561
+			add_state_core = 537
+			add_state_core = 657
+			add_state_core = 563
+			add_state_core = 564
+			add_state_core = 811
+			add_state_core = 654
+			add_state_core = 404
+			add_state_core = 589
+			add_state_core = 586
+			add_state_core = 1042
+			add_state_core = 1211
+			add_state_core = 441
+			add_state_core = 890
+			add_state_core = 814
+			add_state_core = 323
+			add_state_core = 888
+			add_state_core = 324
+			add_state_core = 858
+			add_state_core = 432
+			add_state_core = 887
+			add_state_core = 701
+			add_state_core = 857
+			add_state_core = 671
+			add_state_core = 527
+			add_state_core = 525
 			}
 		}
 	}
@@ -264,8 +296,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIE_the_red_mandate  } prerequisite = { focus = QIE_the_yellow_purge  }
 		completion_reward = {
-		add_political_power = 100
-		add_stability = 0.1
+		add_ideas = {
+		QIE_peoples_will
+		}
 		
 		}
 	}
@@ -282,12 +315,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIE_beiyang_railway  } prerequisite = { focus = QIE_the_yellow_purge  }
 		completion_reward = {
-		add_manpower = 107393
+		swap_ideas = {
+		remove_idea = QIE_national_purge
+		add_idea = QIE_no_longer_bloody
+		}
 		
 		}
 	}
 
-	#Looking For Allies
+	#Promoting the Qing Revolution on a Global Scale
 	focus = {
 		id = QIE_looking_for_allies
 		icon = GFX_QIE_looking_for_allies-90829
@@ -298,6 +334,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = QIE_the_will_of_the_people  } prerequisite = { focus = QIE_the_yellow_guards  }
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = QIE_peoples_will
+			add_idea = QIE_peoples_will_1
+			}
+		}
 		
 	}
 
@@ -337,6 +379,7 @@ focus_tree = {
 		popularity = 1
 		
 		}
+		set_cosmetic_tag = QIE_EMPIRE_RED_DRAGONS
 		}
 	}
 

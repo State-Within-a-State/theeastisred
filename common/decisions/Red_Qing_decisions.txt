@@ -294,3 +294,67 @@ QIE_ramp_up_countryside_infrastructure = {
 		}
 	}
 }
+
+QIE_beyond_han_decision_category = {
+
+QIE_conquer_lands_socialist = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = QIE
+			has_completed_focus = QIE_beyond_the_han
+		}
+		cost = 10
+		targets = { ANQ TRM RUS KOR JAP TAI VIN INC GEA NEP BHU SKM BHC PRF DEH AFG MON ALO KYR }
+		target_trigger = {
+			FROM = { exists = yes }
+			
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			hidden_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = FROM
+					is_core_of = QIE
+				}
+				add_core_of = ROOT
+				}
+			}
+		}
+	}
+
+
+
+
+
+
+}
+
