@@ -1,0 +1,8297 @@
+add_namespace = japan_new_event
+country_event = { #Starting Lore Event | The Sun Rises - On Shaky Grounds
+	id = japan_new_event.0
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.0"}
+	title = japan_new_event.0.title
+	desc = japan_new_event.0.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.0.a
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.1
+		country_event = {
+		id = japan_new_event.3
+		days = 21
+		}
+	}
+}
+
+country_event = { #Starting Lore Event | The Sun Rises - The Land Shakes in Terror
+	id = japan_new_event.1
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.1"}
+	title = japan_new_event.1.title
+	desc = japan_new_event.1.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.1.a
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.2
+	}
+}
+
+country_event = { #Starting Lore Event | The Sun Rises - Stability At Last?
+	id = japan_new_event.2
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.2"}
+	title = japan_new_event.2.title
+	desc = japan_new_event.2.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.2.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #Sen Katayama Killed
+	id = japan_new_event.3
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.3"}
+	title = japan_new_event.3.title
+	desc = japan_new_event.3.desc
+	#picture = 
+	immediate = {
+		hidden_effect = {
+			country_event = {
+			id = japan_new_event.7
+			days = 45
+			}
+		}
+	}
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.3.a
+		add_stability = -0.15
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.025
+			tooltip = add_workers_union_faction_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.025
+			tooltip = remove_civilian_government_tt
+		}
+		country_event = japan_new_event.4
+	}
+	
+	option = { #
+		name = japan_new_event.3.b
+		add_stability = -0.15
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.025
+			tooltip = add_workers_union_faction_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.025
+			tooltip = remove_civilian_government_tt
+		}
+	}
+}
+
+country_event = { #History of the Japanese Left - A Tough Start
+	id = japan_new_event.4
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.4"}
+	title = japan_new_event.4.title
+	desc = japan_new_event.4.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.4.a
+		country_event = japan_new_event.5
+	}
+	
+	option = { #
+		name = japan_new_event.4.b
+	}
+}
+
+country_event = { #History of the Japanese Left - The New Constitutional Era
+	id = japan_new_event.5
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.5"}
+	title = japan_new_event.5.title
+	desc = japan_new_event.5.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.5.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #Black Monday Across the Colonies
+	id = japan_new_event.6
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.6"}
+	title = japan_new_event.6.title
+	desc = japan_new_event.6.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.6.a
+		ai_chance = { base = 100 }
+		TAI = {
+		country_event = taiwan.1
+		}
+		KOR = {
+		country_event = korea_rising_dragon.3
+		}
+	}
+}
+
+country_event = { #1936 Elections
+	id = japan_new_event.7
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.7"}
+	title = japan_new_event.7.title
+	desc = japan_new_event.7.desc
+	#picture = 
+	immediate = {
+	hidden_effect = {
+	complete_national_focus = JAP_ELECTION_1936_elections
+	}
+	}
+	
+	is_triggered_only = yes
+	
+	option = { #Kokumin Domei
+		name = OPTION_KOKUMIN_DOMEI
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Adachi_Kenzo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_country_flag = JAP_kokumin_domei_won_in_1936_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #The Seiyukai have defended their absolute majority!
+		name = OPTION_SEIYUKAI
+		ai_chance = {
+			factor = 50
+			
+		}
+		add_political_power = 50
+		set_country_flag = JAP_seiyukai_won_in_1936_elections
+		mark_focus_tree_layout_dirty = yes
+		complete_national_focus = JAP_seiyukai_1936
+	}
+	
+	option = { #Minseito
+		name = OPTION_MINSEITO
+		
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Machida_Chuji_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Kawasaki_Takukichi_sec_mli
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_country_flag = JAP_minseito_won_in_1936_elections
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	
+	option = { #Shakai-Taishuto
+		name = OPTION_SHAKAI-TAISHUTO
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Abe_Iso_hog_sde
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Mizutani_Chozaburo_eco_sde
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		
+		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.9
+	}
+	
+	option = { #Deadlock - Will Start Showa Restoration Coup
+		name = OPTION_DEADLOCK
+		ai_chance = { base = 100 }
+		create_country_leader = {
+					name = "Hirohito"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+					expire = "1965.1.1"
+					ideology = authdem_showa_statism_subtype
+				}
+		set_politics = { ruling_party = authoritarian_democrat }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Kokkai_hog_ade
+		}
+	}
+}
+
+country_event = { #Kokumin Domei Choices
+	id = japan_new_event.8
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.8"}
+	title = "Leading the Kokumin Domei"
+	desc = japan_new_event.8.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = "Stick With Kenzo"
+		ai_chance = { base = 100 }
+		set_country_flag = JAP_kokumin_domei_won_in_1936_election_3
+	}
+	
+	option = { #Nakano's Way
+		name = "Follow Nakano"
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = national_populist
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Shiono_Suehiko_sec_pau
+		}
+		set_country_flag = JAP_kokumin_domei_won_in_1936_election_2
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+country_event = { #Shakai-Taishuto Candidate
+	id = japan_new_event.9
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.9"}
+	title = "The Shakai-Taishuto Candidate"
+	desc = japan_new_event.9.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Abe Isoo
+		name = "Moderates Hold Strong"
+		ai_chance = { base = 100 }
+		set_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+		
+	}
+	option = { #Kenzo Yamamoto
+		name = "Radical Victory"
+		ai_chance = { base = 100 }
+		clr_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_sde
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Aso_Hisashi_sec_syn
+		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+####Deadlock Event Chain
+
+country_event = { #Seiyukai Attempt to Form a Coalition
+	id = japan_new_event.10
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.10"}
+	title = japan_new_event.10.title
+	desc = japan_new_event.10.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.10.a
+		ai_chance = { base = 100 }
+		add_stability = -0.75
+		country_event = {
+		id = japan_new_event.11
+		days = 7
+		}
+	}
+}
+
+country_event = { #The Government Collapses
+	id = japan_new_event.11
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.11"}
+	title = japan_new_event.11.title
+	desc = japan_new_event.11.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.11.a
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = japan_new_event.11.b
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.12
+		load_focus_tree = yakuza-japan
+	}
+}
+
+country_event = { #Yakuza Take Power
+	id = japan_new_event.12
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.12"}
+	title = japan_new_event.12.title
+	desc = japan_new_event.12.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.12.a
+		ai_chance = { base = 100 }
+		set_country_flag = factionalism_japan_no
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Noboru_Yamaguchi_hog_pau
+		JAP_Kazuo_Taoka_for_npo
+		JAP_Kakuji_Inagawa_eco_pau
+		JAP_Ryōichi_Sasakawa_sec_npo
+		}
+		create_country_leader = {
+					name = "Noboru Yamaguchi"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Noboru_Yamaguchi.png"
+					expire = "1965.1.1"
+					ideology = crime_syndicate_subtype
+				}
+			set_politics = {
+				ruling_party = paternal_autocrat
+				elections_allowed = no
+			}
+			set_cosmetic_tag = JAP_YAKUZA_paternal_autocrat
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = "Yakuza"
+			}
+			set_party_name = {
+				ideology = paternal_autocrat
+				name = "Yakuza"
+			}
+			set_party_name = {
+				ideology = national_populist
+				name = "Yakuza"
+			}
+	}
+}
+
+country_event = { #The Jackal's Two Heads
+	id = japan_new_event.13
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.13"}
+	title = japan_new_event.13.title
+	desc = japan_new_event.13.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.13.a
+		ai_chance = { base = 100 }
+		
+	}
+	
+	option = { #
+		name = japan_new_event.13.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_Yoshio_Kodama_hog_npo
+		JAP_Kazuo_Taoka_for_npo
+		JAP_Kakuji_Inagawa_eco_pau
+		JAP_Ryōichi_Sasakawa_sec_npo
+		}
+		create_country_leader = {
+					name = "Yoshio Kodama"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Yoshio_Kodama.png"
+					expire = "1965.1.1"
+					ideology = legionarism_subtype
+				}
+			set_politics = {
+				ruling_party = national_populist
+				elections_allowed = no
+			}
+			set_cosmetic_tag = JAP_YAKUZA_national_populist
+			set_party_name = {
+				ideology = authoritarian_democrat
+				name = "Yakuza"
+			}
+			set_party_name = {
+				ideology = paternal_autocrat
+				name = "Yakuza"
+			}
+			set_party_name = {
+				ideology = national_populist
+				name = "Yakuza"
+			}
+	}
+}
+
+
+
+
+country_event = { #Embracing Japanese Dominance
+	id = japan_new_event.14
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.14"}
+	title = japan_new_event.14.title
+	desc = japan_new_event.14.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.14.a
+		ai_chance = { base = 100 }
+		
+	}
+	
+	option = { #
+		name = japan_new_event.14.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_Yoshio_Kodama_hog_pau
+		}
+		set_politics = { ruling_party = paternal_autocrat }
+		create_country_leader = {
+					name = "Hirohito"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+					expire = "1965.1.1"
+					ideology = pataut_legionarism_subtype
+				}
+	}
+	
+	option = { #
+		name = japan_new_event.14.c
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_Tatsuo_Tsukui_hog_tot
+		}
+		set_party_name = {
+				ideology = totalist
+				name_long = "Aikoku Kinroto (Patriotic Labor Party)"
+				name = "Aikoku Kinroto"
+			}		
+		set_party_name = {
+				ideology = paternal_autocrat
+				name_long = "Aikoku Kinroto (Patriotic Labor Party)"
+				name = "Aikoku Kinroto"
+			}
+		set_politics = { ruling_party = totalist }
+		create_country_leader = {
+					name = "Hirohito"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+					expire = "1965.1.1"
+					ideology = caponism_subtype
+				}
+	}
+	
+	option = { #
+		name = japan_new_event.14.d
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_Tatsuo_Tsukui_hog_tot
+		}
+		set_politics = { ruling_party = paternal_autocrat }
+		create_country_leader = {
+					name = "Hirohito"
+					picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+					expire = "1965.1.1"
+					ideology = pataut_caponism_subtype
+				}
+		set_party_name = {
+				ideology = totalist
+				name_long = "Aikoku Kinroto (Patriotic Labor Party)"
+				name = "Aikoku Kinroto"
+			}		
+		set_party_name = {
+				ideology = paternal_autocrat
+				name_long = "Aikoku Kinroto (Patriotic Labor Party)"
+				name = "Aikoku Kinroto"
+			}
+	}
+}
+
+
+####May 15th Events
+
+country_event = { #May 15 Incident
+	id = japan_new_event.15
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.15"}
+	title = japan_new_event.15.title
+	desc = {
+		text = japan_new_event.15.seiyukai
+		trigger = {
+			has_country_flag = JAP_seiyukai_won_in_1936_elections
+		}
+	}
+	desc = {
+		text = japan_new_event.15.minseito
+		trigger = {
+			has_country_flag = JAP_minseito_won_in_1936_elections
+		}
+	}
+	desc = {
+		text = japan_new_event.15.shakai_taishuto
+		trigger = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+		}
+	}
+	desc = {
+		text = japan_new_event.15.shakai_taishuto_2
+		trigger = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
+		}
+	}
+	desc = {
+		text = japan_new_event.15.kokumin_domei
+		trigger = {
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election
+		}
+	}
+	
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.15.a
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_seiyukai_won_in_1936_elections
+		}
+		add_stability = -0.2
+		country_event = {
+		id = japan_new_event.20
+		days = 7
+		}
+		remove_ideas_with_trait = head_of_government
+			add_ideas = { 
+			JAP_Suzuki_Kisaburo_hog_sco
+			}
+		
+	}
+	
+	option = { #
+		name = japan_new_event.15.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_minseito_won_in_1936_elections
+		}
+		add_stability = -0.2
+		country_event = {
+		id = japan_new_event.20
+		days = 7
+		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = {
+		JAP_Hamaguchi_Osachi_hog_mli
+		}
+		
+	}
+	option = { #
+		name = japan_new_event.15.c
+		ai_chance = { base = 100 }
+		trigger = {
+			AND = {
+				has_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+					NOT = {
+					has_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
+					}
+			}
+		}
+		add_stability = -0.2
+		country_event = {
+		id = japan_new_event.20
+		days = 7
+		}
+		remove_ideas_with_trait = head_of_government
+			add_ideas = JAP_jotaro_kawakami_hog_sde
+			create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = socdem_paternal_socialism_subtype
+			}
+	}
+	
+	option = { #Kokumin Domei
+		name = japan_new_event.15.d
+		ai_chance = { base = 100 }
+		trigger = {
+			OR = {
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election_2
+			}
+		}
+		add_stability = -0.05
+		country_event = {
+		id = japan_new_event.20
+		days = 7
+		}
+	}
+	
+	option = { #Kokumin Domei
+		name = japan_new_event.15.e
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936_elections_2
+		}
+		add_stability = -0.05
+		set_politics = { ruling_party = syndicalist}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_syn
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Aso_Hisashi_sec_syn
+		}
+		country_event = {
+		id = japan_new_event.16
+		days = 7
+		}
+		
+	}
+}
+
+###Civil War Chain Between Syndies and Military###
+
+country_event = { #Army Counter Coup
+	id = japan_new_event.16
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.16"}
+	title = japan_new_event.16.title
+	desc = japan_new_event.16.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.16.a
+		ai_chance = { base = 100 }
+		add_stability = -0.5
+		set_politics = { ruling_party = paternal_autocrat }
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.4
+		}
+		set_country_flag = factionalism_japan_no
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Terauchi_Hisaichi_hog_pau
+			JAP_Honda_Kumataro_for_pau
+			JAP_Suzuki_Teiichi_eco_npo
+			JAP_Hirokazu_Ohno_sec_pau
+			JAP_imperial_support
+			JAP_zaibatsu_backing
+			JAP_pan_asianist_backing
+		}
+		
+		create_country_leader = {
+				name = "Terauchi Hisaichi"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hisaichi_Terauchi.png"
+				expire = "1965.1.1"
+				ideology = junta_subtype
+			}
+	}
+}
+
+country_event = { #Japanese Civil War
+	id = japan_new_event.17
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.17"}
+	title = japan_new_event.17.title
+	desc = japan_new_event.17.desc
+	#picture = 
+	immediate = {
+	hidden_effect = {
+	set_global_flag = JAP_CW_FLAG
+		JAP = {
+		dismantle_faction = yes
+		end_puppet = KOR
+		end_puppet = TWI
+		end_puppet = TAI
+		TAI = {
+		country_event = taiwan.18
+		}
+		}
+		
+		every_state = {
+					limit = {
+						is_core_of = "JAP"
+					}
+					add_core_of = JSR
+				}
+		JSR = {
+					transfer_state = 536
+					transfer_state = 533
+					transfer_state = 534
+					transfer_state = 555
+					inherit_technology = GER		
+					add_equipment_to_stockpile = {
+					type = infantry_equipment_2
+					amount = 40000
+					}
+					add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 1000
+					}
+					set_cosmetic_tag = JAP_red_army
+					add_ideas = {
+					JAP_Yamamoto_Kenzo_hog_syn
+					JAP_Oyama_Ikuo_for_syn
+					JAP_Yamada_Moritaro_eco_syn
+					JAP_Aso_Hisashi_sec_syn
+					JAP_no_navy
+					JAP_workers_of_the_world_unite
+					JAP_no_emperor
+					JAP_i_am_black_smith
+					}
+					load_oob = "Japan_revolution"
+					load_focus_tree = japan-revolution
+					create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo_LKMT.png"
+						expire = "1965.1.1"
+						ideology = syn_red_junta_subtype
+					}
+					create_country_leader = {
+						name = "Hisashi Aso"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+						expire = "1965.1.1"
+						ideology = totalist_subtype
+					}
+					create_country_leader = {
+						name = "Kanson Arahata"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+						expire = "1965.1.1"
+						ideology = radical_socialist_subtype
+					}
+					create_field_marshal = {
+						name = "Sanzo Nosaka"
+						portrait_path = "gfx/leaders/GRU/Portrait_JAP_Nosaka_Sanzo_LKMT.png"
+						traits = {
+						
+						}
+						skill = 2
+						attack_skill = 2
+						defense_skill = 1
+						planning_skill = 2
+						logistics_skill = 2
+					}
+					create_field_marshal = {
+						name = "Kyuchi Tokuda"
+						portrait_path = "gfx/leaders/GRU/Portrait_JAP_Tokuda_Kyuichi.png"
+						traits = {
+						
+						}
+						skill = 2
+						attack_skill = 2
+						defense_skill = 1
+						planning_skill = 2
+						logistics_skill = 2
+					}
+					create_field_marshal = {
+						name = "Saiko Mankichi"
+						portrait_path = "gfx/leaders/GRU/Portrait_GRU_Paul_Lensch.png"
+						traits = {
+						
+						}
+						skill = 2
+						attack_skill = 2
+						defense_skill = 1
+						planning_skill = 2
+						logistics_skill = 2
+					}
+					
+					set_politics = {
+						ruling_party = syndicalist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+					
+					set_popularities = {
+							totalist = 20
+							syndicalist = 50
+							radical_socialist = 20
+							social_democrat = 10
+							social_liberal = 3
+							authoritarian_democrat = 3
+							market_liberal = 20
+							social_conservative = 40
+							paternal_autocrat = 10
+							national_populist = 4
+						}
+					set_party_name = {
+							ideology = totalist
+							long_name = JSR_REBELLION_TOTALIST_PARTY_long
+							name = JSR_REBELLION_TOTALIST_PARTY
+					}
+					set_party_name = {
+							ideology = syndicalist
+							long_name = JSR_REBELLION_SYNDIE_PARTY_long
+							name = JSR_REBELLION_SYNDIE_PARTY
+					}
+					set_party_name = {
+							ideology = radical_socialist
+							long_name = JSR_REBELLION_RADSOC_PARTY_long
+							name = JSR_REBELLION_RADSOC_PARTY
+					}
+					
+					set_party_name = {
+							ideology = social_democrat
+							long_name = JSR_REBELLION_SOCDEM_PARTY_long
+							name = JSR_REBELLION_SOCDEM_PARTY
+					}
+					
+					
+					set_party_name = {
+							ideology = social_liberal
+							long_name = JSR_SOCLIB_PARTY
+							name = JSR_SOCLIB_PARTY
+					}
+					set_party_name = {
+							ideology = market_liberal
+							long_name = JSR_MARLIB_PARTY
+							name = JSR_MARLIB_PARTY
+					}
+					set_party_name = {
+							ideology = social_conservative
+							long_name = JSR_CONS_PARTY
+							name = JSR_CONS_PARTY
+					}
+					
+					set_party_name = {
+							ideology = authoritarian_democrat
+							long_name = JSR_AUTH_PARTY
+							name = JSR_AUTH_PARTY
+					}
+					set_party_name = {
+							ideology = paternal_autocrat
+							long_name = JSR_PATE_PARTY
+							name = JSR_PATE_PARTY
+					}
+					set_party_name = {
+							ideology = national_populist
+							long_name = JSR_NAPO_PARTY
+							name = JSR_NAPO_PARTY
+					}
+					
+					JAP = {
+					
+					set_country_flag = JAP_LEFT_REVOLT
+					transfer_units_fraction= {
+						target = JSR
+						size = 0.3
+						stockpile_ratio = 0.5
+						army_ratio = 0.4
+						navy_ratio = 0.3
+						air_ratio = 0.3
+						keep_unit_leaders_trigger = {
+							NOT = { has_unit_leader_flag = my_test_flag }
+						}
+					}
+						
+					dismantle_faction = yes
+				}
+		}
+		}
+	}
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.17.a
+		ai_chance = { base = 100 }
+		JSR = {
+		set_country_flag = japan_civil_war
+		}
+		set_global_flag = Super_Event_Visible
+		set_global_flag = JAPAN_CW_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_cw"
+		}
+		hidden_effect = {
+		JAP = {
+		set_country_flag = japan_civil_war
+		load_focus_tree = japan-military-civilwar
+		#spawn units
+		capital_scope = {
+			destroy_unit = yes
+		}
+		delete_units = {
+				division_template = "Chindaishidan"
+				disband = yes
+			}
+		set_political_party = { ideology = totalist popularity = 0 }
+		set_political_party = { ideology = syndicalist popularity = 0 }
+		set_political_party = { ideology = radical_socialist popularity = 0 }
+			declare_war_on = {
+				target = JSR
+				type = annex_everything
+			}
+		}
+		
+		JSR = {
+			change_tag_from = JAP
+		}
+		
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.17.b
+		ai_chance = { base = 100 }
+		set_country_flag = japan_civil_war
+		set_global_flag = Super_Event_Visible
+		set_global_flag = JAPAN_CW_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_cw"
+		}
+		JSR = {
+		set_country_flag = japan_civil_war
+		}
+		hidden_effect = {
+			JAP = {
+			
+			load_focus_tree = japan-military-civilwar
+			#spawn units
+			capital_scope = {
+				destroy_unit = yes
+			}
+			delete_units = {
+					division_template = "Chindaishidan"
+					disband = yes
+				}
+			set_political_party = { ideology = totalist popularity = 0 }
+			set_political_party = { ideology = syndicalist popularity = 0 }
+			set_political_party = { ideology = radical_socialist popularity = 0 }
+				declare_war_on = {
+					target = JSR
+					type = annex_everything
+				}
+			}
+		}
+	}
+}
+
+country_event = { #Syndicalist Victory
+	id = japan_new_event.18
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.18"}
+	title = japan_new_event.18.title
+	desc = japan_new_event.18.desc
+	#picture = 
+	trigger = {
+		original_tag = JAP
+		has_civil_war = no
+		has_government = syndicalist
+	}
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.18.a
+		ai_chance = { base = 100 }
+		set_global_flag = Super_Event_Visible
+		set_global_flag = JAPAN_CW_Socialist_win_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_syndie_win_cw"
+		}
+		add_political_power = 100
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.2
+		}
+		set_country_flag = JAP_syndie_victory
+		set_capital = { state = 282 remember_old_capital = no }
+		set_global_flag = JAP_civil_war_over
+	}
+}
+
+country_event = { #Military Victory
+	id = japan_new_event.19
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.19"}
+	title = japan_new_event.19.title
+	desc = japan_new_event.19.desc
+	#picture = 
+	trigger = {
+		original_tag = JAP
+		has_civil_war = no
+		has_government = paternal_autocrat
+	}
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.19.a
+		ai_chance = { base = 100 }
+		set_global_flag = Super_Event_Visible
+		set_global_flag = JAPAN_CW_military_win_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_army_win_cw"
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = "Military Administration"
+			name = "Military Administration"
+			set_global_flag = JAP_civil_war_over
+			set_capital = { state = 282 remember_old_capital = no }
+			set_country_flag = JAP_army_victory
+		}
+	}
+}
+
+####Post May 15th
+
+country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
+	id = japan_new_event.20
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.20"}
+	title = japan_new_event.20.title
+	desc = japan_new_event.20.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.20.a
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.21
+		days = 7
+		}
+		add_stability = -0.15
+		add_political_power = 100
+		add_to_variable = {
+			var = civilian_government
+			value = 0.3
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.15
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.20.c
+		ai_chance = { base = 100 }
+		trigger = {
+			OR = {
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election_2
+			has_country_flag = JAP_kokumin_domei_won_in_1936_election_3
+			}
+		}
+		country_event = {
+		id = japan_new_event.21
+		days = 7
+		}
+		
+		add_stability = -0.15
+		add_political_power = 100
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.15
+			tooltip = remove_imperial_army_tt
+		}
+		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.3
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.20.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.21
+		days = 7
+		}
+		add_stability = 0.25
+		add_political_power = -100
+		add_to_variable = {
+			var = civilian_government
+			value = -0.3
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.25
+			tooltip = add_imperial_army_tt
+		}
+		
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.05
+			tooltip = add_zaibatsu_corporations_tt
+		}
+	}
+}
+
+country_event = { #Proposal for the National Security Act
+	id = japan_new_event.21
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.21"}
+	title = japan_new_event.21.title
+	desc = japan_new_event.21.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.21.a
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = civilian_government
+			value = -0.2
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = -0.05
+			tooltip = remove_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.25
+			tooltip = add_imperial_army_tt
+		}
+		country_event = {
+		id = japan_new_event.22
+		days = 7
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.21.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.22
+		days = 7
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+		}
+		
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.05
+			tooltip = add_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.1
+			tooltip = add_workers_union_faction_tt
+		}
+	}
+}
+
+country_event = { #Trial of May 15th Incident
+	id = japan_new_event.22
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.22"}
+	title = japan_new_event.22.title
+	desc = japan_new_event.22.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Not Guilty
+		name = japan_new_event.22.a
+		ai_chance = { base = 100 }
+		trigger = {
+		OR = {
+			has_country_flag = JAP_shakai_taishuto_won_in_1936_elections
+			has_country_flag = JAP_minseito_won_in_1936_elections
+			has_country_flag = JAP_seiyukai_won_in_1936_elections
+		}
+		}
+		country_event = {
+		id = japan_new_event.23
+		days = 7
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.05
+			tooltip = add_civilian_government_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = 0.1
+			tooltip = add_workers_union_faction_tt
+		}
+		set_country_flag = not_guilty_syndie_japan
+	}
+	
+	option = { #Guilty
+		name = japan_new_event.22.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = 0.15
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.1
+			tooltip = remove_civilian_government_tt
+		}
+		add_to_variable = {
+			var = workers_union_faction
+			value = -0.05
+			tooltip = remove_workers_union_faction_tt
+		}
+		
+		add_to_variable = {
+			var = union_control
+			value = 30
+			tooltip = unions_favour_army_tt
+		}
+		
+		add_to_variable = {
+			var = rural_support
+			value = 30
+			tooltip = farmer_favour_army_tt
+		}
+		country_event = {
+		id = japan_new_event.24
+		days = 7
+		}
+		set_country_flag = guilty_syndie_japan
+	}
+}
+
+country_event = { #Ministers Threaten to Side with the Military
+	id = japan_new_event.23
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.23"}
+	title = japan_new_event.23.title
+	desc = japan_new_event.23.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.23.a
+		ai_chance = { base = 100 }
+		add_stability = 0.1
+		add_political_power = -100
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.25
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.25
+			tooltip = add_civilian_government_tt
+		}
+		country_event = {
+		id = japan_new_event.24
+		days = 7
+		}
+	}
+	option = { #
+		name = japan_new_event.23.b
+		ai_chance = { base = 100 }
+		add_stability = -0.1
+		add_political_power = 50
+		add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.25
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.25
+			tooltip = remove_civilian_government_tt
+		}
+		country_event = {
+		id = japan_new_event.24
+		days = 7
+		}
+	}
+}
+
+country_event = { #Concern Over Army Radicalization
+	id = japan_new_event.24
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.24"}
+	title = japan_new_event.24.title
+	desc = japan_new_event.24.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.24.a
+		ai_chance = { base = 100 }
+		add_political_power = -100
+		add_stability = -0.2
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.03
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.01
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.01
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = 0.35
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.35
+			tooltip = remove_civilian_government_tt
+		}
+		set_country_flag = no_military_investigation
+		add_ideas = {
+		JAP_not_pending_investigation
+		}
+		country_event = {
+		id = japan_new_event.25
+		days = 7
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.24.b
+		ai_chance = { base = 100 }
+		add_political_power = 100
+		add_stability = 0.2
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = -0.03
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -0.01
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = -0.01
+		}
+		add_to_variable = {
+			var = imperial_army
+			value = -0.35
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.35
+			tooltip = add_civilian_government_tt
+		}
+		set_country_flag = military_investigation
+		add_ideas = {
+		JAP_pending_investigation
+		}
+		country_event = {
+		id = japan_new_event.25
+		days = 7
+		}
+	}
+}
+
+country_event = { #League of Blood Incident
+	id = japan_new_event.25
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.25"}
+	title = japan_new_event.25.title
+	desc = {
+		text = japan_new_event.25.no_kill
+		trigger = {
+			OR = {
+				has_country_flag = military_investigation
+				has_government = authoritarian_democrat
+				has_government = national_populist
+			}
+		}
+	}
+	desc = {
+		text = japan_new_event.25.kill
+		trigger = {
+			has_country_flag = no_military_investigation
+		}
+	}
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Seiyukai
+		name = japan_new_event.25.a
+		ai_chance = { base = 100 }
+		trigger = {
+			AND = {
+				has_country_flag = no_military_investigation
+				has_government = social_conservative
+			}
+		}
+		country_event = {
+		id = japan_new_event.26
+		days = 7
+		}
+		if = {
+			limit = {
+				has_idea = JAP_Suzuki_Kisaburo_sec_sco
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Kawamura_Takeji_sec_sco
+		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_Mizuno_Rentaro_hog_sco
+		clr_country_flag = Suzuki_Kisaburo_dead
+		
+	}
+	option = { #Minseito
+		name = japan_new_event.25.a
+		ai_chance = { base = 100 }
+		trigger = {
+			AND = {
+				has_country_flag = no_military_investigation
+				OR = {
+				has_government = social_liberal
+				has_government = market_liberal
+				}
+			}
+		}
+		country_event = {
+		id = japan_new_event.26
+		days = 7
+		}
+		if = {
+			limit = {
+				has_idea = JAP_Kawasaki_Takukichi_sec_mli
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Kawamura_Takeji_sec_sco
+		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_Miki_Bukichi_hog_mli
+		
+		
+	}
+	
+	option = { #Shakai-Taishuto
+		name = japan_new_event.25.a
+		ai_chance = { base = 100 }
+		trigger = {
+			AND = {
+				has_country_flag = no_military_investigation
+				has_government = social_democrat
+			}
+		}
+		country_event = {
+		id = japan_new_event.26
+		days = 7
+		}
+		if = {
+			limit = {
+				has_idea = JAP_Matsuoka_Komakichi_sec_sde
+			}
+			remove_ideas_with_trait = security_minister
+			add_ideas = JAP_Aso_Hisashi_sec_syn
+		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = JAP_Katayama_Tetsu_hog_sde
+		
+	}
+	
+	
+	
+	option = { #No Asassination
+		name = japan_new_event.25.b
+		ai_chance = { base = 100 }
+		trigger = {
+			OR = {
+				has_country_flag = military_investigation
+				has_government = authoritarian_democrat
+				has_government = national_populist
+			}
+		}
+		add_stability = -0.2
+		add_manpower = -100
+		add_political_power = 20
+		country_event = {
+		id = japan_new_event.26
+		days = 7
+		}
+	}
+	
+	option = {
+		name = japan_new_event.25.c
+		add_stability = -0.5
+		set_country_flag = League_of_blood_coup
+		set_country_flag = factionalism_japan_no
+		hidden_effect = {
+		load_focus_tree = nichiren-japan
+		set_politics = { ruling_party = national_populist }
+			country_event = rework_japan.12
+			create_country_leader = {
+			name = "Hirohito"
+			desc = "KANJI_LEADER_DESC"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_nichiren_buddhism_subtype
+			}
+			create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			desc = "GIRO_LEADER_DESC"
+			expire = "1965.1.1"
+			ideology = radsoc_nichiren_buddhism_subtype
+			
+			}
+			
+			set_party_name = {
+				ideology = radical_socialist
+				long_name = "Kokuchūkai"
+				name = "Kokuchūkai"
+			}
+			set_party_name = {
+				ideology = national_populist
+				long_name = "Kokuchūkai"
+				name = "Kokuchūkai"
+			}
+		}
+	}
+}
+
+country_event = { #Purging the Army
+	id = japan_new_event.26
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.26"}
+	title = japan_new_event.26.title
+	desc = japan_new_event.26.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.26.a
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		set_country_flag = kodoha_mission
+		activate_mission = JAP_deal_with_kodoha
+		country_event = {
+		id = japan_new_event.27
+		days = 7
+		}
+	}
+}
+
+country_event = { #Trial of the League of Blood Incident
+	id = japan_new_event.27
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.27"}
+	title = japan_new_event.27.title
+	desc = japan_new_event.27.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.27.a
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		add_stability = 0.1
+		add_political_power = -200
+		add_war_support = -0.3
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_kodoha
+				days = 20
+			}
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_toseiha
+				days = 20
+			}
+		country_event = {
+		id = japan_new_event.28
+		days = 2
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.27.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = 0.15
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.15
+			tooltip = remove_civilian_government_tt
+		}
+		set_country_flag = kanji_communted
+		add_stability = -0.1
+		add_political_power = 50
+		add_war_support = 0.15
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_kodoha
+				days = -10
+			}
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_toseiha
+				days = -10
+			}
+		country_event = {
+		id = japan_new_event.28
+		days = 2
+		}
+	}
+}
+
+country_event = { #Instability in the Colonies
+	id = japan_new_event.28
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.28"}
+	title = japan_new_event.28.title
+	desc = japan_new_event.28.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.28.a
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = 0.15
+			tooltip = add_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.15
+			tooltip = remove_civilian_government_tt
+		}
+		add_stability = -0.15
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_kodoha
+				days = -5
+			}
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_toseiha
+				days = -1
+			}
+	}
+	
+	option = { #
+		name = japan_new_event.28.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = imperial_army
+			value = -0.15
+			tooltip = remove_imperial_army_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = 0.15
+			tooltip = add_civilian_government_tt
+		}
+		add_stability = 0.15
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_kodoha
+				days = 10
+			}
+		add_days_mission_timeout = {
+				mission = JAP_deal_with_toseiha
+				days = 5
+			}
+	}
+}
+
+##Kodoha Coup Events
+
+country_event = { #Kodoha Coup
+	id = japan_new_event.29
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.29"}
+	title = japan_new_event.29.title
+	desc = japan_new_event.29.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.29.a
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = paternal_autocrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+		}
+		set_country_flag = factionalism_japan_no
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_country_flag = JAP_kodoha_coup
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+country_event = { #Siding With a Faction
+	id = japan_new_event.30
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.30"}
+	title = japan_new_event.30.title
+	desc = japan_new_event.30.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Pan-Asianists
+		name = japan_new_event.30.a
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_yuzonsha_long
+			name = JAP_party_yuzonsha
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = ikki_kita_thought_subtype
+		}
+		drop_cosmetic_tag = yes
+		set_cosmetic_tag = JAP_state
+		remove_ideas = JAP_DEM_GOV
+		set_country_flag = JAP_something_unexpected_happened
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kita_Ikki_hog_tot
+			JAP_Okawa_Shumei_for_npo
+			JAP_Nishida_Mitsugi_eco_npo
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+		if = {
+			limit = { has_country_flag = JAP_yasuhito }
+			add_ideas = JAP_emperor_yasuhito
+		}
+		else = { add_ideas = JAP_emperor_hirohito }
+		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.31
+	}
+	option = { #Kodoha Army
+		name = japan_new_event.30.b
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.32
+		load_focus_tree = araki-kingoro-tree
+	}
+	
+	option = { #Konoe
+		name = japan_new_event.30.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_iraa_long
+			name = JAP_party_iraa
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:syndicalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:market_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_conservative }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = right_syndicalism_subtype
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Konoe_Fumimaro_hog_npo
+			JAP_Yosuke_Matsuoka_for_pau
+			JAP_Isao_Kawada_eco_pau
+			JAP_Suetsugu_Nobumasa_sec_npo
+		}
+		
+		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.33
+	}
+}
+
+country_event = { #Shumei or Kita
+	id = japan_new_event.31
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.31"}
+	title = japan_new_event.31.title
+	desc = japan_new_event.31.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Stick With Kita
+		name = japan_new_event.31.a
+		ai_chance = { base = 100 }
+		
+	}
+	
+	option = { #Stick With Shumei
+		name = japan_new_event.31.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = okawa_shumei_thought_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Okawa_Shumei_hog_npo
+			JAP_Kametaro_Mitsukawa_for_npo
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Seishiro_Itagaki_sec_npo
+		}
+	}
+}
+
+country_event = { #The Kokuhonsha & The Sakurakai
+	id = japan_new_event.32
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.32"}
+	title = japan_new_event.32.title
+	desc = japan_new_event.32.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Kokuhonsha
+		name = japan_new_event.32.a
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+		}
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_showa_statism_subtype
+		}
+	}
+	option = { #Sakurakai
+		name = japan_new_event.32.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_Kingoro
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_sakurakai_long
+			name = JAP_party_sakurakai
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_sakurakai_long
+			name = JAP_party_sakurakai
+		}
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_nihon_socialism_subtype
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_nihon_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+}
+
+####Imperial Rule Association Events###
+
+
+country_event = { #Struggle of the Left and Right
+	id = japan_new_event.33
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.33"}
+	title = japan_new_event.33.title
+	desc = japan_new_event.33.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.33.a
+		ai_chance = { base = 100 }
+		set_power_balance = {
+				id = JAP_IRAA_balance
+				left_side = JAP_IRAA_left_side
+				right_side = JAP_IRAA_right_side
+			}
+		country_event = {
+		id = japan_new_event.34
+		days = 7
+		}
+	}
+}
+
+country_event = { #Question of the Syndicalists
+	id = japan_new_event.34
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.34"}
+	title = japan_new_event.34.title
+	desc = japan_new_event.34.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Keep the Ban
+		name = japan_new_event.34.a
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.35
+		days = 7
+		}
+		
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = 0.1
+				tooltip_side = JAP_IRAA_right_side
+			}
+	}
+	
+	option = { #Remove the Ban
+		name = japan_new_event.34.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.35
+		days = 7
+		}
+		
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = -0.1
+				tooltip_side = JAP_IRAA_left_side
+			}
+	}
+}
+
+country_event = { #Question of Politics
+	id = japan_new_event.35
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.35"}
+	title = japan_new_event.35.title
+	desc = japan_new_event.35.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Maintain Military Majority
+		name = japan_new_event.35.a
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = 0.1
+				tooltip_side = JAP_IRAA_right_side
+			}
+	}
+	
+	option = { #Open the Gates for More Politicians
+		name = japan_new_event.35.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = -0.1
+				tooltip_side = JAP_IRAA_left_side
+			}
+	}
+}
+
+country_event = { #Question of the IRAPA
+	id = japan_new_event.36
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.36"}
+	title = japan_new_event.36.title
+	desc = japan_new_event.36.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Maintain Military Majority
+		name = japan_new_event.36.a
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = 0.1
+				tooltip_side = JAP_IRAA_right_side
+			}
+	}
+	
+	option = { #Open the Gates for More Politicians
+		name = japan_new_event.36.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = -0.1
+				tooltip_side = JAP_IRAA_left_side
+			}
+	}
+}
+
+country_event = { #The Zaibatsu Question
+	id = japan_new_event.37
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.37"}
+	title = japan_new_event.37.title
+	desc = japan_new_event.37.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Maintain Military Majority
+		name = japan_new_event.37.a
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = 0.1
+				tooltip_side = JAP_IRAA_right_side
+			}
+	}
+	
+	option = { #Open the Gates for More Politicians
+		name = japan_new_event.37.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_IRAA_balance
+				value = -0.1
+				tooltip_side = JAP_IRAA_left_side
+			}
+	}
+}
+
+country_event = { #Closing of the First Yokusan Elections
+	id = japan_new_event.38
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.38"}
+	title = japan_new_event.38.title
+	desc = japan_new_event.38.desc
+	#picture = 
+	immediate = {
+	hidden_effect = {
+	load_focus_tree = japan-iraa-konoe
+	}
+	}
+	is_triggered_only = yes
+	option = { #Konoe Leftist
+		name = japan_new_event.38.a
+		ai_chance = { base = 100 }
+		trigger = {
+		is_power_balance_in_range = {
+				id = JAP_JAP_IRAA_balance
+				range > JAP_JAP_IRAA_left_side_range
+			}
+		}
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natsynd_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Konoe_Fumimaro_hog_npo
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Asanuma_Inejiro_eco_tot
+			JAP_Akira_Kazami_sec_ade
+		}
+	}
+	option = { #Konoe Rightist
+		name = japan_new_event.38.b
+		ai_chance = { base = 100 }
+		trigger = {
+		is_power_balance_in_range = {
+				id = JAP_JAP_IRAA_balance
+				range > JAP_JAP_IRAA_right_side_range
+			}
+		}
+	}
+	option = { #Far Left Victory
+		name = japan_new_event.38.c
+		ai_chance = { base = 100 }
+		trigger = {
+		is_power_balance_in_range = {
+				id = JAP_JAP_IRAA_balance
+				range > JAP_bop_left_iraa_dominant
+			}
+		}
+		country_event = japan_new_event.39
+	}
+	option = { #Far Right Victory
+		name = japan_new_event.38.d
+		ai_chance = { base = 100 }
+		trigger = {
+		is_power_balance_in_range = {
+				id = JAP_JAP_IRAA_balance
+				range > JAP_JAP_bop_right_iraa_dominant
+			}
+		}
+		country_event = japan_new_event.40
+	}
+}
+
+country_event = { #Rightist Election
+	id = japan_new_event.39
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.39"}
+	title = japan_new_event.39.title
+	desc = japan_new_event.39.desc
+	#picture = 
+	immediate = {
+	hidden_effect = {
+	load_focus_tree = japan-iraa-rightist
+	}
+	}
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.39.a
+		ai_chance = { base = 100 }
+	create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = junta_subtype
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hayashi_Senjuro_hog_pau
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Toyotaro_Yuki_eco_pau
+			JAP_Kotaro_Nakamura_sec_pau
+		}	
+	}
+	
+	option = { #
+		name = japan_new_event.39.b
+		ai_chance = { base = 100 }
+	create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_national_conservative_subtype
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hiranuma_Kiichiro_hog_pau
+			JAP_Arita_Hachiro_for_ade
+			JAP_Toyotaro_Yuki_eco_pau
+			JAP_Kotaro_Nakamura_sec_pau
+		}	
+	}
+	
+	option = { #
+		name = japan_new_event.39.c
+		ai_chance = { base = 100 }
+	create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_corporatocracy_subtype
+		}
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kuhara_Fusanosuke_hog_npo
+			JAP_Yosuke_Matsuoka_for_pau
+			JAP_Nakajima_Chikuhei_eco_ade
+			JAP_Nagai_Ryutaro_sec_ade
+		}	
+	}
+}
+
+country_event = { #leftist Election
+	id = japan_new_event.40
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.40"}
+	title = japan_new_event.40.title
+	desc = japan_new_event.40.desc
+	#picture = 
+	immediate = {
+	hidden_effect = {
+	load_focus_tree = japan-left-iraa
+	}
+	}
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.40.a
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natsynd_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_tot
+			JAP_Yasukuni_Watanabe_for_tot
+			JAP_Dai_Oishi_eco_tot
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.40.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_nihon_socialism_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.40.c
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_national_socialism_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Asanuma_Inejiro_hog_tot
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Miwa_Juso_sec_tot
+		}
+	}
+}
+
+###Kodoha Ideology Things
+
+country_event = { #Hashimoto Ideology Picker
+	id = japan_new_event.41
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.41"}
+	title = japan_new_event.41.title
+	desc = japan_new_event.41.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Totalist HST
+		name = japan_new_event.41.a
+		ai_chance = { base = 100 }
+		trigger = {
+		NOT = {
+		has_government = totalist
+		}
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_nihon_socialism_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
+	}
+	
+	option = { #Natpop HST
+		name = japan_new_event.41.b
+		ai_chance = { base = 100 }
+		trigger = {
+		NOT = {
+		has_government = national_populist
+		}
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_nihon_socialism_subtype
+		}
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+	option = { #Kemalism!?
+		name = japan_new_event.41.c
+		ai_chance = { base = 100 }
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = kemalism_subtype
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+	
+	option = { #Showa Statism
+		name = japan_new_event.41.d
+		ai_chance = { base = 100 }
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_showa_statism_subtype
+		}
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Kuniaki_Koiso_for_pau
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+}
+
+country_event = { #Araki Ideology Picker
+	id = japan_new_event.42
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.42"}
+	title = japan_new_event.42.title
+	desc = japan_new_event.42.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Pan-Asianism
+		name = japan_new_event.42.a
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = paternal_autocrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_pan_asianism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+	
+	
+	option = { #Prussian Constitutionaliusm
+		name = japan_new_event.42.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = prussian_constitutionalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+		}
+	}
+}
+
+country_event = { #Kozaburo Ideology Picker
+	id = japan_new_event.43
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.43"}
+	title = japan_new_event.43.title
+	desc = japan_new_event.43.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Natpop_Shinto
+		name = japan_new_event.43.a
+		ai_chance = { base = 100 }
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_state_shintoism_subtype
+		}
+		
+	}
+	option = { #Gugolov
+		name = japan_new_event.43.b
+		ai_chance = { base = 100 }
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = scythianism_subtype
+		}
+		
+	}
+	
+	option = { #Totalist Shinto
+		name = japan_new_event.43.c
+		ai_chance = { base = 100 }
+		
+		
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_state_shintoism_subtype
+		}
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.44
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.44"}
+	title = japan_new_event.44.title
+	desc = japan_new_event.44.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.44.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.45
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.45"}
+	title = japan_new_event.45.title
+	desc = japan_new_event.45.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.45.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+####Decision Between Religion Factions###
+
+country_event = { #A Twist in the Coup
+	id = japan_new_event.46
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.46"}
+	title = japan_new_event.46.title
+	desc = japan_new_event.46.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Nichirenists
+		name = japan_new_event.46.a
+		ai_chance = { base = 100 }
+		
+	}
+	
+	option = { #Genyosha
+		name = japan_new_event.46.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_black_dragon
+		
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ryohei_Uchida_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Yoshio_Kodama_sec_npo
+		}
+		load_focus_tree = japan-black-dragon-society
+	}
+	
+	option = { #Nichirenists
+		name = japan_new_event.46.c
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_state_shintoism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kozaburo_Tachibana_hog_npo
+			JAP_Soetsu_Yanagi_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Akira_Kazami_sec_ade
+		}
+		load_focus_tree = kozaburoa-2
+	}
+}
+
+country_event = { #Leading the Genyosha
+	id = japan_new_event.47
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.47"}
+	title = japan_new_event.47.title
+	desc = japan_new_event.47.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Stick With Ryohei
+		name = japan_new_event.47.a
+		ai_chance = { base = 100 }
+		set_country_flag = black_dragon_death
+	}
+	
+	option = { #Oomoto
+		name = japan_new_event.47.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_black_dragon
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_genyosha_long
+			name = JAP_party_genyosha
+		}
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = fundementalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Onisaburo_Deguchi_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Yoshio_Kodama_sec_npo
+		}
+	}
+}
+
+country_event = { #Death of Ryohei Uchida
+	id = japan_new_event.48
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.48"}
+	title = japan_new_event.48.title
+	desc = japan_new_event.48.desc
+	#picture = 
+	trigger = {
+	has_country_flag = black_dragon_death
+	}
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.48.a
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Toyama_Mitsuru_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Yoshio_Kodama_sec_npo
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.48.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_roerich
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_roerichism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Toyama_Mitsuru_hog_npo
+			JAP_Hirota_Koki_for_npo
+			JAP_Ikki_Kita_eco_tot
+			JAP_Yoshio_Kodama_sec_npo
+		}
+	}
+}
+
+country_event = { #Failed Restorationist Coup
+	id = japan_new_event.49
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.49"}
+	title = japan_new_event.49.title
+	desc = japan_new_event.49.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.49.a
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.50
+		days = 7
+		}
+	}
+}
+
+country_event = { #Seigo Nakano Splits From the Kokumin Domei
+	id = japan_new_event.50
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.50"}
+	title = japan_new_event.50.title
+	desc = japan_new_event.50.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.50.a
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_tokohai_long
+			name = JAP_party_tokohai
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_tokohai_long
+			name = JAP_party_tokohai
+		}
+		country_event = {
+		id = japan_new_event.51
+		days = 23
+		}
+	}
+}
+
+country_event = { #1937 Snap Elections
+	id = japan_new_event.51
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.51"}
+	title = japan_new_event.51.title
+	desc = japan_new_event.51.desc
+	#picture = 
+	immediate = {
+		hidden_effect = {
+				random_list = {
+				10 = {
+					country_event = japan_new_event.53
+				}
+				10 = {
+					country_event = japan_new_event.52
+				}
+				
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+	option = { #Kokumin Domei
+		name = OPTION_KOKUMIN_DOMEI_1937
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Adachi_Kenzo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		
+		set_country_flag = JAP_kokumin_domei_won_in_1937_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #Tokohai
+		name = OPTION_TOKOHAI_1937
+		ai_chance = {
+			factor = 50
+			
+		}
+		
+		set_politics = {
+			ruling_party = national_populist
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Yasukuni_Watanabe_for_tot
+			JAP_Dai_Oishi_eco_tot
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		
+		set_country_flag = JAP_tokohai_won_in_1937_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #The Seiyukai have defended their absolute majority!
+		name = OPTION_SEIYUKAI_1937
+		ai_chance = {
+			factor = 50
+			
+		}
+		add_political_power = 50
+		set_country_flag = JAP_seiyukai_won_in_1937_elections
+		mark_focus_tree_layout_dirty = yes
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Mizuno_Rentaro_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Kawamura_Takeji_sec_sco
+		}
+	}
+	
+	option = { #Minseito
+		name = OPTION_MINSEITO_1937
+		
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hamaguchi_Osachi_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Kawasaki_Takukichi_sec_mli
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_country_flag = JAP_minseito_won_in_1937_elections
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	
+	option = { #Shakai-Taishuto
+		name = OPTION_SHAKAI_TAISHUTO_1937
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_inejiro_asanuma_hog_rso
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Wada_Hiroo_eco_rso
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_social_democrat_long
+			name = JAP_party_social_democrat
+		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1937_elections
+		mark_focus_tree_layout_dirty = yes
+		
+	}
+	
+	
+}
+
+country_event = { #The Emperor accepted
+	id = japan_new_event.52
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.52"}
+	title = japan_new_event.52.title
+	desc = japan_new_event.52.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Let us agree with the Emperor.
+		name = japan_new_event.52.a
+		ai_chance = { base = 100 }
+		set_country_flag = factionalism_japan_no
+		country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
+		if = {
+			limit = {
+				OR = {
+					has_government = social_liberal
+					has_government = market_liberal
+				}
+			}
+			country_event = {
+			id = japan_new_event.58
+			days = 3
+			}
+			
+			
+		}
+		
+		if = {
+			limit = {
+				has_government = social_conservative
+			}
+			country_event = {
+			id = japan_new_event.59
+			days = 3
+			}
+		}
+		
+		if = {
+			limit = {
+				has_government = social_democrat
+			}
+			country_event = {
+			id = japan_new_event.60
+			days = 3
+			}
+		}
+		
+		if = {
+			limit = {
+				has_government = authoritarian_democrat
+			}
+			country_event = {
+			id = japan_new_event.61
+			days = 3
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = JAP_tokohai_won_in_1937_election
+			}
+			country_event = {
+			id = japan_new_event.62
+			days = 3
+			}
+		}
+		
+	}
+	option = { #He is out of line!
+		name = japan_new_event.52.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.54
+		days = 7
+		}
+	}
+}
+
+country_event = { #Refused Emperor
+	id = japan_new_event.53
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.53"}
+	title = japan_new_event.52.title
+	desc = japan_new_event.53.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Let us agree with the Emperor.
+		name = japan_new_event.52.a
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.54
+		days = 7
+		}
+	}
+	option = { #He is out of line!
+		name = japan_new_event.52.b
+		ai_chance = { base = 100 }
+		set_country_flag = factionalism_japan_no
+		if = {
+			limit = {
+				OR = {
+					has_government = social_liberal
+					has_government = market_liberal
+				}
+			}
+			country_event = {
+			id = japan_new_event.58
+			days = 3
+			}
+			
+		}
+		if = {
+			limit = {
+				has_government = social_conservative
+			}
+			country_event = {
+			id = japan_new_event.59
+			days = 3
+			}
+		}
+		
+		if = {
+			limit = {
+				has_government = social_democrat
+			}
+			country_event = {
+			id = japan_new_event.60
+			days = 3
+			}
+		}
+		
+		if = {
+			limit = {
+				has_government = authoritarian_democrat
+			}
+			country_event = {
+			id = japan_new_event.61
+			days = 3
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = JAP_tokohai_won_in_1937_election
+			}
+			country_event = {
+			id = japan_new_event.62
+			days = 3
+			}
+		}
+		country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
+	}
+}
+
+###Toseiha Coup
+
+
+country_event = { #The Toseiha Coup
+	id = japan_new_event.54
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.54"}
+	title = japan_new_event.54.title
+	desc = japan_new_event.54.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.54.a
+		ai_chance = { base = 100 }
+		country_event = {
+		id = japan_new_event.55
+		days = 3
+		}
+		set_country_flag = factionalism_japan_no
+		load_focus_tree = jap-toseiha
+	}
+	
+	
+}
+
+country_event = { #Struggle of the Toseiha
+	id = japan_new_event.55
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.55"}
+	title = japan_new_event.55.title
+	desc = japan_new_event.55.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Pan-Turan - Iwane Matsui
+		name = japan_new_event.55.a
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_turan_long
+			name = JAP_party_turan
+		}
+		
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_turanism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Iwane_Matsui_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Suzuki_Teiichi_eco_npo
+			JAP_Miwa_Juso_sec_npo
+		}
+		
+	}
+	
+	option = { #Tojo Path
+		name = japan_new_event.55.b
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_tojo_long
+			name = JAP_party_tojo
+		}
+		
+		
+		
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = natpop_japanese_militarism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Tojo_Hideki_hog_pau
+			JAP_Okawa_Shumei_for_npo
+			JAP_Kishi_Nobusuke_eco_npo
+			JAP_Kisaburo_Ando_sec_npo
+		}
+		
+	}
+	
+	option = { #Tojo Path
+		name = japan_new_event.55.b
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_toseiha_long
+			name = JAP_party_toseiha
+		}
+		
+		
+		
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_japanese_militarism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nagata_Tetsuzan_hog_pau
+			JAP_Yosuke_Matsuoka_for_pau
+			JAP_Sumihisa_Ikeda_eco_tot
+			JAP_Tojo_Hideki_sec_npo
+		}
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.56
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.56"}
+	title = japan_new_event.56.title
+	desc = japan_new_event.56.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.56.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.57
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.57"}
+	title = japan_new_event.57.title
+	desc = japan_new_event.57.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.57.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+###Election Tree Events
+
+country_event = { #Minseito Factionalism
+	id = japan_new_event.58
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.58"}
+	title = japan_new_event.58.title
+	desc = japan_new_event.58.desc
+	#picture = 
+	immediate = {
+		hidden_effect = {
+			load_focus_tree = minseito-japan
+			complete_national_focus = JAPLIB_victory_of_the_minseito
+		}
+	}
+	
+	is_triggered_only = yes
+	option = { #Nagai Faction
+		name = japan_new_event.58.a
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = national_liberalism_subtype
+		}
+		set_politics = { ruling_party = social_liberal }
+		complete_national_focus = JAPLIB_tojnha_faction_dominance
+		set_party_name = {
+			ideology = social_liberal
+			long_name = JAP_party_minseito_one_long
+			name = JAP_party_minseito_one
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = JAP_party_minseito_two_long
+			name = JAP_party_minseito_two
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.5
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ryutaro_Nagai_hog_sli
+			JAP_Kiyose_Ichiro_for_sli
+			JAP_Miki_Bukichi_eco_mli
+			JAP_Saito_Takao_sec_mli
+		}
+	}
+	
+	option = { #Osachi
+		name = japan_new_event.58.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = national_liberalism_subtype
+		}
+		set_politics = { ruling_party = market_liberal }
+		complete_national_focus = JAPLIB_bureaucratic_hold
+		set_party_name = {
+			ideology = social_liberal
+			long_name = JAP_party_minseito_one_long
+			name = JAP_party_minseito_one
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = JAP_party_minseito_two_long
+			name = JAP_party_minseito_two
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.2
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hamaguchi_Osachi_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Matsumura_Kenzo_eco_mli
+			JAP_Kimura_Kozaemon_sec_mli
+		}
+	}
+}
+
+country_event = { #Seiyukai Factionalism
+	id = japan_new_event.59
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.59"}
+	title = japan_new_event.59.title
+	desc = japan_new_event.59.desc
+	#picture = 
+	immediate = {
+	hidden_effect = {
+	load_focus_tree = japan-seiyukai
+	}
+	}
+	
+	is_triggered_only = yes
+	option = { #Rentaro Faction
+		name = japan_new_event.59.a
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = national_conservative_subtype
+		}
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
+		
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Mizuno_Rentaro_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Kawamura_Takeji_sec_sco
+		}
+	}
+	option = { #Kuhara Faction
+		name = japan_new_event.59.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = authoritarian_democrat }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = authdem_national_conservative_subtype
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_seiyukai_two_long
+			name = JAP_party_seiyukai_two
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kuhara_Fusanosuke_hog_npo
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Minoru_Togo_eco_sco
+			JAP_Tanabe_Shichiroku_sec_sco
+		}
+	}
+	
+	option = { #Reform Faction
+		name = japan_new_event.59.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_conservative }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = conservative_populism_subtype
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_seiyukai_two_long
+			name = JAP_party_seiyukai_two
+		}
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Chikuhei_Nakajima_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Minoru_Togo_eco_sco
+			JAP_Tanabe_Shichiroku_sec_sco
+		}
+	}
+}
+
+country_event = { #Social-Democrats
+	id = japan_new_event.60
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.60"}
+	title = japan_new_event.60.title
+	desc = japan_new_event.60.desc
+	#picture = 
+	immediate = {
+	hidden_effect = {
+	load_focus_tree = socdem-japan
+	complete_national_focus = JAPSOCDEM_a_split_in_the_shakai_taishuto
+	}
+	}
+	is_triggered_only = yes
+	option = { #Totalist Faction
+		name = japan_new_event.60.a
+		ai_chance = { base = 100 }
+		set_politics = {
+		ruling_party = totalist
+		}
+		complete_national_focus = JAPSOCDEM_totalitarian_shift
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_shakai_taishuto_one_long
+			name = JAP_party_shakai_taishuto_one
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_shakai_taishuto_two_long
+			name = JAP_party_shakai_taishuto_two
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_shakai_taishuto_three_long
+			name = JAP_party_shakai_taishuto_three
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_inejiro_asanuma_hog_rso
+			JAP_Kono_Mitsu_for_tot
+			JAP_Sugiyama_Motojiro_eco_tot
+			JAP_Miwa_Juso_sec_tot
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = totalist_subtype
+			}
+	}
+	
+	option = { #Radsoc Faction
+		name = japan_new_event.60.b
+		complete_national_focus = JAPSOCDEM_the_democracy_path
+		complete_national_focus = JAPSOCDEM_leftwing_victory
+		ai_chance = { base = 100 }
+		set_politics = {
+		ruling_party = radical_socialist
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.5
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_shakai_taishuto_one_long
+			name = JAP_party_shakai_taishuto_one
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_shakai_taishuto_two_long
+			name = JAP_party_shakai_taishuto_two
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_shakai_taishuto_three_long
+			name = JAP_party_shakai_taishuto_three
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_inejiro_asanuma_hog_rso
+			JAP_Suzuki_Mosaburo_for_rso
+			JAP_Wada_Hiroo_eco_rso
+			JAP_Sakisaka_Itsuro_sec_rso
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = moderate_socialist_subtype
+			}
+	}
+	
+	option = { #Rightist Faction
+		name = japan_new_event.60.c
+		ai_chance = { base = 100 }
+		complete_national_focus = JAPSOCDEM_the_democracy_path
+		complete_national_focus = JAPSOCDEM_rightist_faction_victory
+		set_politics = {
+		ruling_party = social_democrat
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.2
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_shakai_taishuto_one_long
+			name = JAP_party_shakai_taishuto_one
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_shakai_taishuto_two_long
+			name = JAP_party_shakai_taishuto_two
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_shakai_taishuto_three_long
+			name = JAP_party_shakai_taishuto_three
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Katayama_Tetsu_hog_sde
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Mizutani_Chozaburo_eco_sde
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = socdem_paternal_socialism_subtype
+			}
+	}
+}
+
+country_event = { #Kokumin Domei Victory
+	id = japan_new_event.61
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.61"}
+	title = japan_new_event.61.title
+	desc = japan_new_event.61.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.61.a
+		ai_chance = { base = 100 }
+		load_focus_tree = kokumin-domei
+		set_power_balance = {
+				id = JAP_National_Alliance_balance
+				left_side = JAP_Nakano_left_side
+				right_side = JAP_Kenzo_right_side
+			}
+	}
+}
+
+country_event = { #Victory of the Tokohai
+	id = japan_new_event.62
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.62"}
+	title = japan_new_event.62.title
+	desc = japan_new_event.62.desc
+	#picture = 
+	
+	immediate = {
+	hidden_effect = {
+	complete_national_focus = JAPNAK_nakano_secures_the_diet
+	load_focus_tree = japan-nakano
+	}
+	}
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.62.a
+		ai_chance = { base = 100 }
+		complete_national_focus = JAPNAK_the_issue_of_party_factionalism
+		set_politics = {
+			ruling_party = totalist
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Yasukuni_Watanabe_for_tot
+			JAP_Dai_Oishi_eco_tot
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+	}
+	
+	option = { #
+		name = japan_new_event.62.b
+		ai_chance = { base = 100 }
+		complete_national_focus = JAPNAK_the_issue_of_party_factionalism
+		set_politics = {
+			ruling_party = national_populist
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Kazuma_Shindo_for_npo
+			JAP_Matashiro_Nakamura_eco_npo
+			JAP_Torao_Miura_sec_npo
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+	}
+}
+
+country_event = { #1940 elections
+	id = japan_new_event.63
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.63"}
+	title = japan_new_event.63.title
+	desc = japan_new_event.63.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Kokumin Domei
+		name = OPTION_KOKUMIN_DOMEI_1940
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Adachi_Kenzo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		
+		set_country_flag = JAP_kokumin_domei_won_in_1940_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #Bin Akao
+		name = OPTION_AKAO_1940
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = national_populist
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.2
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Bin_Akao_hog_npo
+			JAP_Tatsuo_Tsukui_for_tot
+			JAP_Bin_Akao_eco_npo
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_popular_party_long
+			name = JAP_popular_party
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_popular_party_long
+			name = JAP_popular_party
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = natpop_popular_patriotism_subtype
+			}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = tot_popular_patriotism_subtype
+			}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		
+		set_country_flag = JAP_bin_akao_won_in_1940_election
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	option = { #The Seiyukai have defended their absolute majority!
+		name = OPTION_SEIYUKAI_1940
+		ai_chance = {
+			factor = 50
+			
+		}
+		add_political_power = 50
+		set_country_flag = JAP_seiyukai_won_in_1940_elections
+		mark_focus_tree_layout_dirty = yes
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.1
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Mizuno_Rentaro_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Kawamura_Takeji_sec_sco
+		}
+	}
+	
+	option = { #Minseito
+		name = OPTION_MINSEITO_1940
+		
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = market_liberal
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.1
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hamaguchi_Osachi_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Kawasaki_Takukichi_sec_mli
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_country_flag = JAP_minseito_won_in_1940_elections
+		mark_focus_tree_layout_dirty = yes
+	}
+	
+	
+	option = { #Shakai-Taishuto
+		name = OPTION_SHAKAI_TAISHUTO_1940
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = social_democrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.2
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_inejiro_asanuma_hog_rso
+			JAP_Katayama_Tetsu_for_sde
+			JAP_Wada_Hiroo_eco_rso
+			JAP_Matsuoka_Komakichi_sec_sde
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_social_democrat_long
+			name = JAP_party_social_democrat
+		}
+		set_country_flag = JAP_shakai_taishuto_won_in_1940_elections
+		
+	}
+}
+
+####Japanese Socialist Events###
+
+country_event = { #Meeting of National Revolutionary Congress
+	id = japan_new_event.64
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.64"}
+	title = japan_new_event.64.title
+	desc = japan_new_event.64.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Anarchists Secure Congress
+		name = japan_new_event.64.a
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.65
+	}
+	
+	option = { #JCP Secure Congress
+		name = japan_new_event.64.b
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.66
+		set_politics = {
+		ruling_party = totalist
+		}
+		create_country_leader = {
+						name = "Central Committee of the JCP"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_JCP_Central_Committee.png"
+						expire = "1965.1.1"
+						ideology = red_junta_subtype
+					}
+	}
+}
+
+country_event = { #Anarchism in Japan
+	id = japan_new_event.65
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.65"}
+	title = japan_new_event.65.title
+	desc = japan_new_event.65.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #The Council Will Decide Our Fate
+		name = japan_new_event.65.a
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Buraku_Liberation_League_hog_rso
+			JAP_Hiratsuka_Raicho_for_rso
+			JAP_Hatta_Shuzo_eco_rso
+			JAP_Taisaku_Kitahara_sec_rso
+		}
+		set_politics = {
+						ruling_party = radical_socialist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+				
+		create_country_leader = {
+						name = "Buraku Liberation League Central Committee"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_BLLCC.png"
+						expire = "1965.1.1"
+						ideology = anarchism_subtype
+					}
+	}
+	option = {
+		name = japan_new_event.65.b
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Jiichiro_Matumoto_hog_rso
+			JAP_Hiratsuka_Raicho_for_rso
+			JAP_Hatta_Shuzo_eco_rso
+			JAP_Taisaku_Kitahara_sec_rso
+		}
+		set_politics = {
+						ruling_party = radical_socialist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+				
+		create_country_leader = {
+						name = "Jiichiro Matumoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Jiichiro_Matumoto.png"
+						expire = "1965.1.1"
+						ideology = illegalism_subtype
+					}
+		
+	}
+	option = {
+		name = japan_new_event.65.c
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Sanshiro_Ishikawa_hog_rso
+			JAP_Hiratsuka_Raicho_for_rso
+			JAP_Hatta_Shuzo_eco_rso
+			JAP_Taisaku_Kitahara_sec_rso
+		}
+		set_politics = {
+						ruling_party = radical_socialist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+				
+		create_country_leader = {
+						name = "Ishikawa Sanshiro"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Ishikawa_Sanshiro.png"
+						expire = "1965.1.1"
+						ideology = radsoc_sanshiro_thought_subtype
+					}
+		
+	}
+	
+	option = {
+		name = japan_new_event.65.d
+		add_ideas = {
+			JAP_Tsuji_Jun_hog_rso
+			JAP_Tomoyoshi_Murayama_for_rso
+			JAP_Eisuke_Yoshiyuki_eco_rso
+			JAP_Taisaku_Kitahara_sec_rso
+		}
+		set_politics = {
+						ruling_party = radical_socialist
+						last_election = "1936.11.16"
+						elections_allowed = no
+					}
+				
+		create_country_leader = {
+						name = "Jun Tsuji"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Jun_Tsuji.png"
+						expire = "1965.1.1"
+						ideology = radsoc_social_anarchism_subtype
+					}
+		
+	}
+}
+
+country_event = { #The Struggle of 2
+	id = japan_new_event.66
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.66"}
+	title = japan_new_event.66.title
+	desc = japan_new_event.66.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Yamakawaism
+		name = japan_new_event.66.a
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.67
+	}
+}
+
+country_event = { #A United Front Victory
+	id = japan_new_event.67
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.67"}
+	title = japan_new_event.67.title
+	desc = japan_new_event.67.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Red Army
+		name = japan_new_event.67.a
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.2
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nosaka_Sanzo_hog_syn
+			JAP_Nosaka_Sanzo_for_syn
+			JAP_Yamada_Moritaro_eco_syn
+			JAP_Hotsumi_Ozaki_sec_syn
+		}
+		set_cosmetic_tag = JAP_NOSAKA
+		create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo_LKMT.png"
+						expire = "1965.1.1"
+						ideology = syn_red_junta_subtype
+					}
+		set_country_leader_ideology = red_junta_subtype
+		
+	}
+	
+	option = { #Yamakawa
+		name = japan_new_event.67.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.3
+		}
+		set_cosmetic_tag = JAP_YAMAKAWA
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamakawa_Hitoshi_hog_rso
+			JAP_Kanson_Arahata_for_rso
+			JAP_Itsuro_Sakisaka_eco_rso
+			JAP_Hotsumi_Ozaki_sec_syn
+		}
+		create_country_leader = {
+						name = "Hitoshi Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Hitoshi_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = radsoc_yamakawaism_subtype
+					}
+		
+	}
+	
+	option = { #Kenzo
+		name = japan_new_event.67.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.15
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Yamamoto_Kenzo_hog_syn
+			JAP_Oyama_Ikuo_for_syn
+			JAP_Yamamoto_Kenzo_eco_syn
+			JAP_Nosaka_Sanzo_sec_syn
+		}
+		set_cosmetic_tag = JAP_KENZO
+		create_country_leader = {
+						name = "Kenzo Yamamoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenzo_Yamamoto.png"
+						expire = "1965.1.1"
+						ideology = agrarian_syndicalism_subtype
+					}
+		
+	}
+}
+
+country_event = { #Transitioning From a Junta Government
+	id = japan_new_event.68
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.68"}
+	title = japan_new_event.68.title
+	desc = japan_new_event.68.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Feminist Socialism
+		name = japan_new_event.68.a
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo.png"
+						expire = "1965.1.1"
+						ideology = socialist_feminism_subtype
+					}
+	}
+	
+	option = { #Red Empire
+		name = japan_new_event.68.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		set_cosmetic_tag = JAP_SANZO_MONBOL
+		create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo.png"
+						expire = "1965.1.1"
+						ideology = monsoc_subtype
+					}
+	}
+	
+	option = { #Bellamyism
+		name = japan_new_event.68.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		set_cosmetic_tag = JAP_SANZO_MONBOL
+		create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo.png"
+						expire = "1965.1.1"
+						ideology = bellamyism_subtype
+					}
+	}
+	
+	option = { #Nosaka Shall Push Forward a Security State
+		name = japan_new_event.68.d
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Sanzo Nosaka"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo.png"
+						expire = "1965.1.1"
+						ideology = socialist_security_state_subtype
+					}
+	}
+}
+
+country_event = { #Legacy of Yamakawaism
+	id = japan_new_event.69
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.69"}
+	title = japan_new_event.69.title
+	desc = japan_new_event.69.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #anarcho_syndicalism Hitoshi
+		name = japan_new_event.69.a
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Hitoshi Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Hitoshi_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = anarcho_syndicalist_subtype
+					}
+	}
+	
+	option = { #Yamakawaism Hitoshi
+		name = japan_new_event.69.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Hitoshi Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Hitoshi_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = radsoc_yamakawaism_subtype
+					}
+	}
+	
+	option = { #Feminist Socialism Kikue
+		name = japan_new_event.69.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Kikue Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kikue_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = red_socialist_feminism_subtype
+					}
+					
+		set_country_leader_ideology = socialist_feminism_subtype	
+	}
+	
+	option = { #Ansyn Kikue
+		name = japan_new_event.69.d
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Kikue Yamakawa"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kikue_Yamakawa.png"
+						expire = "1965.1.1"
+						ideology = radsoc_anarcho_syndicalist_subtype
+					}
+	}
+}
+
+country_event = { #Leading the True Revolutionary Vanguard
+	id = japan_new_event.70
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.70"}
+	title = japan_new_event.70.title
+	desc = japan_new_event.70.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Kenji Miyamoto
+		name = japan_new_event.70.a
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Miyamoto_Kenji_hog_rso
+			JAP_Yoshio_Shiga_for_tot
+			JAP_Satomi_Hakamada_eco_tot
+			JAP_Miyamoto_Kenji_sec_tot
+		}
+		set_cosmetic_tag = JAP_KENJI
+		create_country_leader = {
+						name = "Kenji Miyamoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kenji_Miyamoto.png"
+						expire = "1965.1.1"
+						ideology = popcom_subtype
+					}
+	}
+	
+	option = { #Tokuda
+		name = japan_new_event.70.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kyuichi_Tokuda_hog_tot
+			JAP_Yoshio_Shiga_for_tot
+			JAP_Ritsu_Ito_eco_tot
+			JAP_Masayoshi_Fukuda_sec_tot
+		}
+		set_cosmetic_tag = JAP_TOKUDA
+		create_country_leader = {
+						name = "Kyuichi Tokuda"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kyuchi_Tokuda_RD_Ver.png"
+						expire = "1965.1.1"
+						ideology = national_communism_subtype
+					}
+	}
+	
+	option = { #Tokuda
+		name = japan_new_event.70.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kazuo_Fukumoto_hog_tot
+			JAP_Hajime_Kawakami_for_tot
+			JAP_Kazuo_Fukumoto_eco_tot
+			JAP_Manabu_Sano_sec_tot
+		}
+		create_country_leader = {
+						name = "Kazuo Fukumoto"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Kazuo_Fukumoto.png"
+						expire = "1965.1.1"
+						ideology = fukumotoism_subtype
+					}
+	}
+}
+
+country_event = { #Questioning Kenji's Leadership
+	id = japan_new_event.71
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.71"}
+	title = japan_new_event.71.title
+	desc = japan_new_event.71.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Control the State
+		name = japan_new_event.71.a
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = socialist_security_state_subtype
+	}
+	
+	option = { #Sexuality Freed
+		name = japan_new_event.71.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = socialist_feminism_subtype
+	}
+	
+	option = { #Technocratic Socialism
+		name = japan_new_event.71.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = technocratic_socialism_subtype
+	}
+	
+	option = { #Kuahara Techsoc
+		name = japan_new_event.71.d
+		ai_chance = { base = 100 }
+		create_country_leader = {
+						name = "Yoshihito Kuahara"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Yoshihito_Kuahara.png"
+						expire = "1965.1.1"
+						ideology = technocratic_socialism_subtype
+					}
+		
+	}
+	
+	option = { #Kuahara Social-Futurist
+		name = japan_new_event.71.e
+		ai_chance = { base = 100 }
+		create_country_leader = {
+						name = "Yoshihito Kuahara"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Yoshihito_Kuahara.png"
+						expire = "1965.1.1"
+						ideology = social_futurism_subtype
+					}
+		
+	}
+	
+	option = { #Miyamoto Yuriko
+		name = japan_new_event.71.f
+		ai_chance = { base = 100 }
+		create_country_leader = {
+						name = "Miyamoto Yuriko"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Miyamoto_Yuriko.png"
+						expire = "1965.1.1"
+						ideology = socialist_feminism_subtype
+					}
+		
+	}
+	
+	
+}
+
+###Misc, Flavour Events
+
+country_event = { #Reach Out to the Anti-Syndicalist World
+	id = japan_new_event.72
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.72"}
+	title = japan_new_event.72.title
+	desc = japan_new_event.72.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #Yes
+		name = japan_new_event.72.a
+		ai_chance = { base = 100 }
+		FROM = {
+		give_market_access = JAP
+		}
+	}
+	
+	option = { #No
+		name = japan_new_event.72.b
+		ai_chance = { base = 100 }
+		add_opinion_modifier = {
+			target = JAP
+			modifier = JAP_betrayal_by_the_right
+		}
+		
+	}
+}
+
+country_event = { #Finalization of Economic Recovery
+	id = japan_new_event.73
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.73"}
+	title = japan_new_event.73.title
+	desc = japan_new_event.73.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.73.a
+		ai_chance = { base = 100 }
+		if = {
+				limit = {
+					has_idea = JAP_black_monday_zaibatsu_1
+				}
+				swap_ideas = {
+				remove_idea = JAP_black_monday_zaibatsu_1
+				add_idea = JAP_black_monday_zaibatsu_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = JAP_black_monday_statist_2
+				}
+				swap_ideas = {
+				remove_idea = JAP_black_monday_statist_2
+				add_idea = JAP_black_monday_statist_3
+				}
+			}
+	}
+}
+
+country_event = { #
+	id = japan_new_event.74
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.74"}
+	title = japan_new_event.74.title
+	desc = japan_new_event.74.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.74.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.75
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.75"}
+	title = japan_new_event.75.title
+	desc = japan_new_event.75.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.75.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.76
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.76"}
+	title = japan_new_event.76.title
+	desc = japan_new_event.76.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.76.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.77
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.77"}
+	title = japan_new_event.77.title
+	desc = japan_new_event.77.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.77.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.78
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.78"}
+	title = japan_new_event.78.title
+	desc = japan_new_event.78.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.78.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.79
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.79"}
+	title = japan_new_event.79.title
+	desc = japan_new_event.79.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.79.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.80
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.80"}
+	title = japan_new_event.80.title
+	desc = japan_new_event.80.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.80.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.81
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.81"}
+	title = japan_new_event.81.title
+	desc = japan_new_event.81.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.81.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.82
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.82"}
+	title = japan_new_event.82.title
+	desc = japan_new_event.82.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.82.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.83
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.83"}
+	title = japan_new_event.83.title
+	desc = japan_new_event.83.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.83.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.84
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.84"}
+	title = japan_new_event.84.title
+	desc = japan_new_event.84.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.84.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.85
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.85"}
+	title = japan_new_event.85.title
+	desc = japan_new_event.85.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.85.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.86
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.86"}
+	title = japan_new_event.86.title
+	desc = japan_new_event.86.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.86.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.87
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.87"}
+	title = japan_new_event.87.title
+	desc = japan_new_event.87.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.87.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.88
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.88"}
+	title = japan_new_event.88.title
+	desc = japan_new_event.88.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.88.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.89
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.89"}
+	title = japan_new_event.89.title
+	desc = japan_new_event.89.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.89.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.90
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.90"}
+	title = japan_new_event.90.title
+	desc = japan_new_event.90.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.90.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.91
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.91"}
+	title = japan_new_event.91.title
+	desc = japan_new_event.91.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.91.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.92
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.92"}
+	title = japan_new_event.92.title
+	desc = japan_new_event.92.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.92.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.93
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.93"}
+	title = japan_new_event.93.title
+	desc = japan_new_event.93.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.93.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.94
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.94"}
+	title = japan_new_event.94.title
+	desc = japan_new_event.94.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.94.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.95
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.95"}
+	title = japan_new_event.95.title
+	desc = japan_new_event.95.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.95.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.96
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.96"}
+	title = japan_new_event.96.title
+	desc = japan_new_event.96.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.96.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.97
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.97"}
+	title = japan_new_event.97.title
+	desc = japan_new_event.97.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.97.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.98
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.98"}
+	title = japan_new_event.98.title
+	desc = japan_new_event.98.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.98.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.99
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.99"}
+	title = japan_new_event.99.title
+	desc = japan_new_event.99.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.99.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.100
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.100"}
+	title = japan_new_event.100.title
+	desc = japan_new_event.100.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.100.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.101
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.101"}
+	title = japan_new_event.101.title
+	desc = japan_new_event.101.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.101.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.102
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.102"}
+	title = japan_new_event.102.title
+	desc = japan_new_event.102.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.102.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.103
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.103"}
+	title = japan_new_event.103.title
+	desc = japan_new_event.103.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.103.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.104
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.104"}
+	title = japan_new_event.104.title
+	desc = japan_new_event.104.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.104.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.105
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.105"}
+	title = japan_new_event.105.title
+	desc = japan_new_event.105.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.105.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.106
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.106"}
+	title = japan_new_event.106.title
+	desc = japan_new_event.106.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.106.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.107
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.107"}
+	title = japan_new_event.107.title
+	desc = japan_new_event.107.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.107.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.108
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.108"}
+	title = japan_new_event.108.title
+	desc = japan_new_event.108.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.108.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.109
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.109"}
+	title = japan_new_event.109.title
+	desc = japan_new_event.109.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.109.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.110
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.110"}
+	title = japan_new_event.110.title
+	desc = japan_new_event.110.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.110.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.111
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.111"}
+	title = japan_new_event.111.title
+	desc = japan_new_event.111.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.111.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.112
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.112"}
+	title = japan_new_event.112.title
+	desc = japan_new_event.112.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.112.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.113
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.113"}
+	title = japan_new_event.113.title
+	desc = japan_new_event.113.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.113.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.114
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.114"}
+	title = japan_new_event.114.title
+	desc = japan_new_event.114.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.114.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.115
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.115"}
+	title = japan_new_event.115.title
+	desc = japan_new_event.115.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.115.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.116
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.116"}
+	title = japan_new_event.116.title
+	desc = japan_new_event.116.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.116.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.117
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.117"}
+	title = japan_new_event.117.title
+	desc = japan_new_event.117.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.117.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.118
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.118"}
+	title = japan_new_event.118.title
+	desc = japan_new_event.118.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.118.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.119
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.119"}
+	title = japan_new_event.119.title
+	desc = japan_new_event.119.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.119.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.120
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.120"}
+	title = japan_new_event.120.title
+	desc = japan_new_event.120.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.120.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.121
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.121"}
+	title = japan_new_event.121.title
+	desc = japan_new_event.121.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.121.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.122
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.122"}
+	title = japan_new_event.122.title
+	desc = japan_new_event.122.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.122.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.123
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.123"}
+	title = japan_new_event.123.title
+	desc = japan_new_event.123.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.123.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.124
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.124"}
+	title = japan_new_event.124.title
+	desc = japan_new_event.124.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.124.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.125
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.125"}
+	title = japan_new_event.125.title
+	desc = japan_new_event.125.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.125.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.126
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.126"}
+	title = japan_new_event.126.title
+	desc = japan_new_event.126.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.126.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.127
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.127"}
+	title = japan_new_event.127.title
+	desc = japan_new_event.127.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.127.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.128
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.128"}
+	title = japan_new_event.128.title
+	desc = japan_new_event.128.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.128.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.129
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.129"}
+	title = japan_new_event.129.title
+	desc = japan_new_event.129.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.129.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.130
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.130"}
+	title = japan_new_event.130.title
+	desc = japan_new_event.130.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.130.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.131
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.131"}
+	title = japan_new_event.131.title
+	desc = japan_new_event.131.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.131.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.132
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.132"}
+	title = japan_new_event.132.title
+	desc = japan_new_event.132.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.132.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.133
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.133"}
+	title = japan_new_event.133.title
+	desc = japan_new_event.133.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.133.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.134
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.134"}
+	title = japan_new_event.134.title
+	desc = japan_new_event.134.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.134.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.135
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.135"}
+	title = japan_new_event.135.title
+	desc = japan_new_event.135.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.135.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.136
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.136"}
+	title = japan_new_event.136.title
+	desc = japan_new_event.136.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.136.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.137
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.137"}
+	title = japan_new_event.137.title
+	desc = japan_new_event.137.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.137.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.138
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.138"}
+	title = japan_new_event.138.title
+	desc = japan_new_event.138.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.138.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.139
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.139"}
+	title = japan_new_event.139.title
+	desc = japan_new_event.139.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.139.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.140
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.140"}
+	title = japan_new_event.140.title
+	desc = japan_new_event.140.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.140.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.141
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.141"}
+	title = japan_new_event.141.title
+	desc = japan_new_event.141.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.141.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.142
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.142"}
+	title = japan_new_event.142.title
+	desc = japan_new_event.142.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.142.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.143
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.143"}
+	title = japan_new_event.143.title
+	desc = japan_new_event.143.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.143.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.144
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.144"}
+	title = japan_new_event.144.title
+	desc = japan_new_event.144.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.144.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.145
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.145"}
+	title = japan_new_event.145.title
+	desc = japan_new_event.145.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.145.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.146
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.146"}
+	title = japan_new_event.146.title
+	desc = japan_new_event.146.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.146.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.147
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.147"}
+	title = japan_new_event.147.title
+	desc = japan_new_event.147.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.147.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.148
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.148"}
+	title = japan_new_event.148.title
+	desc = japan_new_event.148.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.148.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.149
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.149"}
+	title = japan_new_event.149.title
+	desc = japan_new_event.149.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.149.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.150
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.150"}
+	title = japan_new_event.150.title
+	desc = japan_new_event.150.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.150.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.151
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.151"}
+	title = japan_new_event.151.title
+	desc = japan_new_event.151.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.151.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.152
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.152"}
+	title = japan_new_event.152.title
+	desc = japan_new_event.152.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.152.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.153
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.153"}
+	title = japan_new_event.153.title
+	desc = japan_new_event.153.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.153.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.154
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.154"}
+	title = japan_new_event.154.title
+	desc = japan_new_event.154.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.154.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.155
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.155"}
+	title = japan_new_event.155.title
+	desc = japan_new_event.155.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.155.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.156
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.156"}
+	title = japan_new_event.156.title
+	desc = japan_new_event.156.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.156.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.157
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.157"}
+	title = japan_new_event.157.title
+	desc = japan_new_event.157.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.157.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.158
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.158"}
+	title = japan_new_event.158.title
+	desc = japan_new_event.158.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.158.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.159
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.159"}
+	title = japan_new_event.159.title
+	desc = japan_new_event.159.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.159.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.160
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.160"}
+	title = japan_new_event.160.title
+	desc = japan_new_event.160.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.160.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.161
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.161"}
+	title = japan_new_event.161.title
+	desc = japan_new_event.161.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.161.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.162
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.162"}
+	title = japan_new_event.162.title
+	desc = japan_new_event.162.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.162.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.163
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.163"}
+	title = japan_new_event.163.title
+	desc = japan_new_event.163.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.163.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.164
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.164"}
+	title = japan_new_event.164.title
+	desc = japan_new_event.164.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.164.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.165
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.165"}
+	title = japan_new_event.165.title
+	desc = japan_new_event.165.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.165.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.166
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.166"}
+	title = japan_new_event.166.title
+	desc = japan_new_event.166.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.166.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.167
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.167"}
+	title = japan_new_event.167.title
+	desc = japan_new_event.167.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.167.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.168
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.168"}
+	title = japan_new_event.168.title
+	desc = japan_new_event.168.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.168.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.169
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.169"}
+	title = japan_new_event.169.title
+	desc = japan_new_event.169.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.169.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.170
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.170"}
+	title = japan_new_event.170.title
+	desc = japan_new_event.170.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.170.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.171
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.171"}
+	title = japan_new_event.171.title
+	desc = japan_new_event.171.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.171.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.172
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.172"}
+	title = japan_new_event.172.title
+	desc = japan_new_event.172.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.172.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.173
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.173"}
+	title = japan_new_event.173.title
+	desc = japan_new_event.173.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.173.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.174
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.174"}
+	title = japan_new_event.174.title
+	desc = japan_new_event.174.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.174.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.175
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.175"}
+	title = japan_new_event.175.title
+	desc = japan_new_event.175.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.175.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.176
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.176"}
+	title = japan_new_event.176.title
+	desc = japan_new_event.176.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.176.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.177
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.177"}
+	title = japan_new_event.177.title
+	desc = japan_new_event.177.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.177.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.178
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.178"}
+	title = japan_new_event.178.title
+	desc = japan_new_event.178.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.178.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.179
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.179"}
+	title = japan_new_event.179.title
+	desc = japan_new_event.179.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.179.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.180
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.180"}
+	title = japan_new_event.180.title
+	desc = japan_new_event.180.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.180.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.181
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.181"}
+	title = japan_new_event.181.title
+	desc = japan_new_event.181.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.181.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.182
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.182"}
+	title = japan_new_event.182.title
+	desc = japan_new_event.182.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.182.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.183
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.183"}
+	title = japan_new_event.183.title
+	desc = japan_new_event.183.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.183.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.184
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.184"}
+	title = japan_new_event.184.title
+	desc = japan_new_event.184.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.184.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.185
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.185"}
+	title = japan_new_event.185.title
+	desc = japan_new_event.185.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.185.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.186
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.186"}
+	title = japan_new_event.186.title
+	desc = japan_new_event.186.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.186.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.187
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.187"}
+	title = japan_new_event.187.title
+	desc = japan_new_event.187.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.187.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.188
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.188"}
+	title = japan_new_event.188.title
+	desc = japan_new_event.188.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.188.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.189
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.189"}
+	title = japan_new_event.189.title
+	desc = japan_new_event.189.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.189.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.190
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.190"}
+	title = japan_new_event.190.title
+	desc = japan_new_event.190.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.190.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.191
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.191"}
+	title = japan_new_event.191.title
+	desc = japan_new_event.191.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.191.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.192
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.192"}
+	title = japan_new_event.192.title
+	desc = japan_new_event.192.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.192.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.193
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.193"}
+	title = japan_new_event.193.title
+	desc = japan_new_event.193.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.193.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.194
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.194"}
+	title = japan_new_event.194.title
+	desc = japan_new_event.194.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.194.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.195
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.195"}
+	title = japan_new_event.195.title
+	desc = japan_new_event.195.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.195.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.196
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.196"}
+	title = japan_new_event.196.title
+	desc = japan_new_event.196.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.196.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.197
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.197"}
+	title = japan_new_event.197.title
+	desc = japan_new_event.197.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.197.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.198
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.198"}
+	title = japan_new_event.198.title
+	desc = japan_new_event.198.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.198.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.199
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.199"}
+	title = japan_new_event.199.title
+	desc = japan_new_event.199.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.199.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.200
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.200"}
+	title = japan_new_event.200.title
+	desc = japan_new_event.200.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.200.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.201
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.201"}
+	title = japan_new_event.201.title
+	desc = japan_new_event.201.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.201.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.202
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.202"}
+	title = japan_new_event.202.title
+	desc = japan_new_event.202.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.202.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.203
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.203"}
+	title = japan_new_event.203.title
+	desc = japan_new_event.203.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.203.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.204
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.204"}
+	title = japan_new_event.204.title
+	desc = japan_new_event.204.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.204.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.205
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.205"}
+	title = japan_new_event.205.title
+	desc = japan_new_event.205.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.205.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.206
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.206"}
+	title = japan_new_event.206.title
+	desc = japan_new_event.206.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.206.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.207
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.207"}
+	title = japan_new_event.207.title
+	desc = japan_new_event.207.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.207.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.208
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.208"}
+	title = japan_new_event.208.title
+	desc = japan_new_event.208.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.208.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.209
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.209"}
+	title = japan_new_event.209.title
+	desc = japan_new_event.209.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.209.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.210
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.210"}
+	title = japan_new_event.210.title
+	desc = japan_new_event.210.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.210.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.211
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.211"}
+	title = japan_new_event.211.title
+	desc = japan_new_event.211.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.211.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.212
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.212"}
+	title = japan_new_event.212.title
+	desc = japan_new_event.212.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.212.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.213
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.213"}
+	title = japan_new_event.213.title
+	desc = japan_new_event.213.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.213.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.214
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.214"}
+	title = japan_new_event.214.title
+	desc = japan_new_event.214.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.214.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.215
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.215"}
+	title = japan_new_event.215.title
+	desc = japan_new_event.215.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.215.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.216
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.216"}
+	title = japan_new_event.216.title
+	desc = japan_new_event.216.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.216.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.217
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.217"}
+	title = japan_new_event.217.title
+	desc = japan_new_event.217.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.217.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.218
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.218"}
+	title = japan_new_event.218.title
+	desc = japan_new_event.218.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.218.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.219
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.219"}
+	title = japan_new_event.219.title
+	desc = japan_new_event.219.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.219.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.220
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.220"}
+	title = japan_new_event.220.title
+	desc = japan_new_event.220.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.220.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.221
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.221"}
+	title = japan_new_event.221.title
+	desc = japan_new_event.221.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.221.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.222
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.222"}
+	title = japan_new_event.222.title
+	desc = japan_new_event.222.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.222.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.223
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.223"}
+	title = japan_new_event.223.title
+	desc = japan_new_event.223.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.223.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.224
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.224"}
+	title = japan_new_event.224.title
+	desc = japan_new_event.224.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.224.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.225
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.225"}
+	title = japan_new_event.225.title
+	desc = japan_new_event.225.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.225.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.226
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.226"}
+	title = japan_new_event.226.title
+	desc = japan_new_event.226.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.226.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.227
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.227"}
+	title = japan_new_event.227.title
+	desc = japan_new_event.227.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.227.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.228
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.228"}
+	title = japan_new_event.228.title
+	desc = japan_new_event.228.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.228.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.229
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.229"}
+	title = japan_new_event.229.title
+	desc = japan_new_event.229.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.229.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.230
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.230"}
+	title = japan_new_event.230.title
+	desc = japan_new_event.230.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.230.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.231
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.231"}
+	title = japan_new_event.231.title
+	desc = japan_new_event.231.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.231.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.232
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.232"}
+	title = japan_new_event.232.title
+	desc = japan_new_event.232.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.232.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.233
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.233"}
+	title = japan_new_event.233.title
+	desc = japan_new_event.233.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.233.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.234
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.234"}
+	title = japan_new_event.234.title
+	desc = japan_new_event.234.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.234.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.235
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.235"}
+	title = japan_new_event.235.title
+	desc = japan_new_event.235.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.235.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.236
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.236"}
+	title = japan_new_event.236.title
+	desc = japan_new_event.236.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.236.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.237
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.237"}
+	title = japan_new_event.237.title
+	desc = japan_new_event.237.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.237.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.238
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.238"}
+	title = japan_new_event.238.title
+	desc = japan_new_event.238.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.238.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.239
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.239"}
+	title = japan_new_event.239.title
+	desc = japan_new_event.239.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.239.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.240
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.240"}
+	title = japan_new_event.240.title
+	desc = japan_new_event.240.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.240.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.241
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.241"}
+	title = japan_new_event.241.title
+	desc = japan_new_event.241.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.241.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.242
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.242"}
+	title = japan_new_event.242.title
+	desc = japan_new_event.242.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.242.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.243
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.243"}
+	title = japan_new_event.243.title
+	desc = japan_new_event.243.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.243.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.244
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.244"}
+	title = japan_new_event.244.title
+	desc = japan_new_event.244.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.244.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.245
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.245"}
+	title = japan_new_event.245.title
+	desc = japan_new_event.245.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.245.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.246
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.246"}
+	title = japan_new_event.246.title
+	desc = japan_new_event.246.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.246.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.247
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.247"}
+	title = japan_new_event.247.title
+	desc = japan_new_event.247.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.247.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.248
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.248"}
+	title = japan_new_event.248.title
+	desc = japan_new_event.248.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.248.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.249
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.249"}
+	title = japan_new_event.249.title
+	desc = japan_new_event.249.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.249.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.250
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.250"}
+	title = japan_new_event.250.title
+	desc = japan_new_event.250.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.250.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.251
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.251"}
+	title = japan_new_event.251.title
+	desc = japan_new_event.251.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.251.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.252
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.252"}
+	title = japan_new_event.252.title
+	desc = japan_new_event.252.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.252.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.253
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.253"}
+	title = japan_new_event.253.title
+	desc = japan_new_event.253.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.253.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.254
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.254"}
+	title = japan_new_event.254.title
+	desc = japan_new_event.254.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.254.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.255
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.255"}
+	title = japan_new_event.255.title
+	desc = japan_new_event.255.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.255.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.256
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.256"}
+	title = japan_new_event.256.title
+	desc = japan_new_event.256.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.256.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.257
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.257"}
+	title = japan_new_event.257.title
+	desc = japan_new_event.257.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.257.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.258
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.258"}
+	title = japan_new_event.258.title
+	desc = japan_new_event.258.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.258.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.259
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.259"}
+	title = japan_new_event.259.title
+	desc = japan_new_event.259.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.259.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.260
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.260"}
+	title = japan_new_event.260.title
+	desc = japan_new_event.260.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.260.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.261
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.261"}
+	title = japan_new_event.261.title
+	desc = japan_new_event.261.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.261.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.262
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.262"}
+	title = japan_new_event.262.title
+	desc = japan_new_event.262.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.262.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.263
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.263"}
+	title = japan_new_event.263.title
+	desc = japan_new_event.263.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.263.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.264
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.264"}
+	title = japan_new_event.264.title
+	desc = japan_new_event.264.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.264.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.265
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.265"}
+	title = japan_new_event.265.title
+	desc = japan_new_event.265.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.265.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.266
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.266"}
+	title = japan_new_event.266.title
+	desc = japan_new_event.266.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.266.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.267
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.267"}
+	title = japan_new_event.267.title
+	desc = japan_new_event.267.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.267.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.268
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.268"}
+	title = japan_new_event.268.title
+	desc = japan_new_event.268.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.268.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.269
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.269"}
+	title = japan_new_event.269.title
+	desc = japan_new_event.269.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.269.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.270
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.270"}
+	title = japan_new_event.270.title
+	desc = japan_new_event.270.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.270.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.271
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.271"}
+	title = japan_new_event.271.title
+	desc = japan_new_event.271.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.271.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.272
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.272"}
+	title = japan_new_event.272.title
+	desc = japan_new_event.272.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.272.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.273
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.273"}
+	title = japan_new_event.273.title
+	desc = japan_new_event.273.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.273.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.274
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.274"}
+	title = japan_new_event.274.title
+	desc = japan_new_event.274.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.274.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.275
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.275"}
+	title = japan_new_event.275.title
+	desc = japan_new_event.275.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.275.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.276
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.276"}
+	title = japan_new_event.276.title
+	desc = japan_new_event.276.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.276.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.277
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.277"}
+	title = japan_new_event.277.title
+	desc = japan_new_event.277.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.277.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.278
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.278"}
+	title = japan_new_event.278.title
+	desc = japan_new_event.278.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.278.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.279
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.279"}
+	title = japan_new_event.279.title
+	desc = japan_new_event.279.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.279.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.280
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.280"}
+	title = japan_new_event.280.title
+	desc = japan_new_event.280.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.280.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.281
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.281"}
+	title = japan_new_event.281.title
+	desc = japan_new_event.281.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.281.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.282
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.282"}
+	title = japan_new_event.282.title
+	desc = japan_new_event.282.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.282.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.283
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.283"}
+	title = japan_new_event.283.title
+	desc = japan_new_event.283.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.283.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.284
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.284"}
+	title = japan_new_event.284.title
+	desc = japan_new_event.284.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.284.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.285
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.285"}
+	title = japan_new_event.285.title
+	desc = japan_new_event.285.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.285.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.286
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.286"}
+	title = japan_new_event.286.title
+	desc = japan_new_event.286.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.286.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.287
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.287"}
+	title = japan_new_event.287.title
+	desc = japan_new_event.287.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.287.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.288
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.288"}
+	title = japan_new_event.288.title
+	desc = japan_new_event.288.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.288.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.289
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.289"}
+	title = japan_new_event.289.title
+	desc = japan_new_event.289.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.289.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.290
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.290"}
+	title = japan_new_event.290.title
+	desc = japan_new_event.290.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.290.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.291
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.291"}
+	title = japan_new_event.291.title
+	desc = japan_new_event.291.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.291.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.292
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.292"}
+	title = japan_new_event.292.title
+	desc = japan_new_event.292.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.292.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.293
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.293"}
+	title = japan_new_event.293.title
+	desc = japan_new_event.293.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.293.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.294
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.294"}
+	title = japan_new_event.294.title
+	desc = japan_new_event.294.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.294.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.295
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.295"}
+	title = japan_new_event.295.title
+	desc = japan_new_event.295.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.295.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.296
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.296"}
+	title = japan_new_event.296.title
+	desc = japan_new_event.296.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.296.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.297
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.297"}
+	title = japan_new_event.297.title
+	desc = japan_new_event.297.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.297.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.298
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.298"}
+	title = japan_new_event.298.title
+	desc = japan_new_event.298.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.298.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.299
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.299"}
+	title = japan_new_event.299.title
+	desc = japan_new_event.299.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.299.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+
+country_event = { #
+	id = japan_new_event.300
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.300"}
+	title = japan_new_event.300.title
+	desc = japan_new_event.300.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.300.a
+		ai_chance = { base = 100 }
+		
+	}
+}
+

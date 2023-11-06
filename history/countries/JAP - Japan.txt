@@ -143,16 +143,52 @@ set_convoys = 300
 
 give_guarantee = FNG
 
-country_event = { id = japdom.1 days = 1 } #Recovering from the Lost Decade
+country_event = { id = japan_new_event.0 days = 1 } #Recovering from the Lost Decade
+country_event = { id = japan_new_event.48 days = 572 } #Ryohei dies
 country_event = { id = japfor.1 days = 7 } #Mantetsu Declares Record Earnings
-country_event = { id = japdom.6 days = 135 } #The May 15 Incident
-country_event = { id = japdom.8 days = 153 } #The NSA debate begins
-country_event = { id = japdom.56 days = 658 random = 360 } #The Emperor has been shot!
+country_event = { id = japan_new_event.15 days = 135 } #The May 15 Incident
+#country_event = { id = japdom.56 days = 658 random = 360 } #The Emperor has been shot!#
 country_event = { id = japdom.45 days = 714 } #The Popular Front Incident
 country_event = { id = japdom.53 days = 1247 } #The Great Drought of 1939
 country_event = { id = japdom.57 days = 1754 } #A Second Meiji restoration?
 country_event = { id = literature.12 days = 2160 } #'Little Marin and the Sailor' - Newest Book on Japan's Shelves
-country_event = { id = japdom.58 days = 2591 } #Hayashi Senjuro is dead!
+#country_event = { id = japdom.58 days = 2591 } #Hayashi Senjuro is dead!#
+
+#Variables
+
+
+
+set_variable = {
+    var = civilian_government
+    value = 0.40
+}
+set_variable = {
+    var = imperial_army
+    value = 0.20
+}
+
+set_variable = {
+    var = zaibatsu_corporations
+    value = 0.10
+}
+set_variable = {
+    var = peasants_faction
+    value = 0.15
+}
+set_variable = {
+    var = workers_union_faction
+    value = 0.15
+}
+
+set_variable = {
+    var = union_control
+    value = 50
+}
+set_variable = {
+    var = rural_support
+    value = 50
+}
+
 
 add_ideas = {
 	#Ministers
@@ -166,11 +202,13 @@ add_ideas = {
 	JAP_bad_land
 	JAP_no_army_focus
 	FNG_mantetsu_profits
+	JAP_naval_army_comp
 	#Laws
 	limited_conscription
 	limited_exports
 	low_economic_mobilisation
 }
+
 
 add_dynamic_modifier = {
 	modifier = FNG_mantetsu_profits_modifier
@@ -181,11 +219,23 @@ add_dynamic_modifier = {
 	scope = TRM
 }
 
+
+set_autonomy = {
+	target = KOR
+	autonomy_state = kr_default_puppet
+}
+set_autonomy = {
+	target = TAI
+	autonomy_state = kr_default_puppet
+}
+
 add_opinion_modifier = { target = QIE modifier = embargo }
 add_opinion_modifier = { target = LEC modifier = LEC_member }
 LEC = { give_military_access = JAP }
 give_guarantee = LEC
 set_country_flag = legation_council_vote
+set_country_flag = JAP_EMPEROR_HIRO
+set_country_flag = HOG_veiw
 
 set_politics = {
 	ruling_party = social_conservative
@@ -210,6 +260,8 @@ set_popularities = {
 create_faction = co_prosperity_sphere
 
 
+
+
 if = {
 	limit = {
 		has_dlc = "Together for Victory"
@@ -225,28 +277,28 @@ if = {
 
 ### Heads of State ###
 create_country_leader = {
-	name = "Hirohito"
-	picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+	name = "Seigo Nakano"
+	picture = "gfx/leaders/JAP/Portrait_JAP_Seigo_Nakano_2.png"
 	expire = "1965.1.1"
-	ideology = nazbol_subtype
+	ideology = natsynd_subtype
 }
 create_country_leader = {
 	name = "Yamamoto Kenzo"
 	picture = "gfx/leaders/JAP/Portrait_JAP_Yamamoto_Kenzo.png"
 	expire = "1981.3.6"
-	ideology = syndicalist_subtype
+	ideology = democratic_syndicalism_subtype
 }
 create_country_leader = {
 	name = "Arahata Kanson"
 	picture = "gfx/leaders/JAP/Portrait_JAP_Arahata_Kanson.png"
 	expire = "1981.3.6"
-	ideology = radical_socialist_subtype
+	ideology = radsoc_communism_subtype
 }
 create_country_leader = {
 	name = "Hirohito"
 	picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 	expire = "1965.1.1"
-	ideology = social_democrat_subtype
+	ideology = socdem_democratic_socialism_subtype
 }
 create_country_leader = {
 	name = "Hirohito"
@@ -258,7 +310,7 @@ create_country_leader = {
 	name = "Hirohito"
 	picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 	expire = "1965.1.1"
-	ideology = market_liberal_subtype
+	ideology = liberal_conservative_subtype
 }
 create_country_leader = {
 	name = "Hirohito"
@@ -270,19 +322,19 @@ create_country_leader = {
 	name = "Hirohito"
 	picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 	expire = "1965.1.1"
-	ideology = authoritarian_democrat_subtype
+	ideology = authdem_showa_statism_subtype
 }
 create_country_leader = {
 	name = "Hirohito"
 	picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 	expire = "1965.1.1"
-	ideology = junta_subtype
+	ideology = pataut_showa_statism_subtype
 }
 create_country_leader = {
 	name = "Hirohito"
 	picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 	expire = "1965.1.1"
-	ideology = militarism_subtype
+	ideology = right_syndicalism_subtype
 }
 if = {
 	limit = { has_dlc = "Waking the Tiger" }

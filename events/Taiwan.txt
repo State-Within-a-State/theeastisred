@@ -1,380 +1,601 @@
-﻿# Costa Rica - Jeankedezeehond
+﻿add_namespace = taiwan_info
 add_namespace = taiwan
 add_namespace = taiwanjap
 
 country_event = { #Nomination of the Republican Candidate
 	id = taiwan.0
-	title = "Taiwan Declares Independence"
-	desc = "After the defeat of our glorious empire we now lose our most pirzed colony Taiwan."
+	title = "What is Taiwan?"
+	desc = taiwan_info.1.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
 
 	is_triggered_only = yes
 
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwan.0"
-		hidden_effect = {
-			
-		}
-	}
 
 	option = { #Cortes
-	name = "Who Cares?"
-		ai_chance = {
-			factor = 75
-		}
-		TWI = {
-		 add_ideas = natural_isolation
-		 add_ideas = economic_hardship
-		}
-		TWI = {
-			
-			country_event = {
-			id = taiwan.1
-			days = 10
-			}
-			
-			}
-		
-	}
-	
-	option = { #Cortes
-	name = "Taiwan Forever!"
-		ai_chance = {
-			factor = 75
-		}
-		
-		TWI = { change_tag_from = JAP }
-		TWI = {
-		 add_ideas = natural_isolation
-		 add_ideas = economic_hardship
-		}
-		TWI = {
-			
-			country_event = {
-			id = taiwan.1
-			days = 10
-			}
-			
-			}
+	name = "Troubling Times Are Ahead of Us"
 		
 	}
 
 	
 }
+
 
 country_event = { #Nomination of the Republican Candidate
 	id = taiwan.1
-	title = taiwan.1.t
-	desc = taiwan.1.d
+	title = "Black Monday Hits Taiwan"
+	desc = taiwan.1.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
 
 	is_triggered_only = yes
 
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwan.1"
-		hidden_effect = {
-			
-		}
-	}
 
 	option = { #Cortes
-	name = taiwan.1.a
-		ai_chance = {
-			factor = 75
+	name = "God Dammit!"
+		add_ideas = {
+		TWI_black_monday
 		}
-		TWI = {
-		 add_ideas = natural_isolation
-		 add_ideas = economic_hardship
-		}
-		
 	}
 
 	
 }
-
 
 
 country_event = { #Nomination of the Republican Candidate
 	id = taiwan.2
-	title = taiwan.2.t
+	title = "Kiyoshi Hasegawa's Resignation"
 	desc = taiwan.2.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
 
 	is_triggered_only = yes
 
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwan.2"
-		hidden_effect = {
-			
-		}
-	}
-
 	option = { #Cortes
-	name = taiwan.2.a
-		ai_chance = {
-			factor = 75
-		}
-		
-		set_politics = { ruling_party = national_populist }
-		
-		
-	}
-	
-	option = { #Cortes
-	name = taiwan.2.b
-		ai_chance = {
-			factor = 75
-		}
-		set_politics = { ruling_party = social_democrat }
-		
-	}
-	
-	option = { #Cortes
-	name = taiwan.2.c
-		ai_chance = {
-			factor = 75
-		}
-		set_politics = { ruling_party = radical_socialist }
-		
-	}
-	option = { #Cortes
-	name = taiwan.2.d
-		ai_chance = {
-			factor = 75
-		}
-		set_politics = { ruling_party = syndicalist }
-		
-	}
-	
-	option = { #Cortes
-	name = taiwan.2.e
-		ai_chance = {
-			factor = 75
-		}
+	name = "Oh no..."
+		create_country_leader = {
+					name = "Taiwan Sōtoku"
+					desc = "POLITICS_ZHANG_ZUOLIN_DESC"
+					picture = "gfx/leaders/TWI/Portrait_TWI_Taiwan_Sōtoku.png"
+					expire = "1965.1.1"
+					ideology = colonial_govt_subtype
+				}
+		country_event = taiwan.3
 		country_event = {
-		id = taiwanjap.1
-		days = 1
+		id = taiwan.5
+		days = 10
 		}
+	}
+	
+
+	
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = taiwan.3
+	title = "Appointment of a New Governor"
+	desc = taiwan.3.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+	option = { #Cortes
+	name = "Lin Xiantang Surpirsingly Appointed"
+		set_politics = {
+		ruling_party = social_democrat
+		}
+	}
+	option = { #Cortes
+	name = "Nakagawa Is Appointed For the Seiyukai"
+		set_politics = {
+		ruling_party = market_liberal
+		}
+	}
+
+	option = { #Cortes
+	name = "Hiroshi Is Appointed For the Seiyukai"
+		set_politics = {
+		ruling_party = social_conservative
+		}
+	}
+	
+	option = { #Cortes
+	name = "The Army Will Now Take Control"
+		set_politics = {
+		ruling_party = paternal_autocrat
+		}
+	}
+
+	
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = taiwan.4
+	title = "Question of Literary Societies"
+	desc = taiwan.4.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+	option = { #Cortes
+	name = "Ban Taiwanese Literature"
+	add_stability = -0.05
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 5
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+	}
+	
+	option = { #Cortes
+	name = "Embrace It Taiwanese Literature"
+	add_stability = 0.05
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -5
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+	}
+	
+
+	
+}
+
+country_event = { #Encirlement of the Wushe Rebels
+	id = taiwan.5
+	title = taiwan.5.title
+	desc = taiwan.5.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	option = { #Encirle Them
+	name = taiwan.5.a
+		add_stability = 0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -5
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+		country_event = {
+		id = taiwan.6
+		days = 10
+		}
+	}
+	option = { #Leave Them Be
+	name = taiwan.5.b
+		add_stability = -0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 1
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		country_event = {
+		id = taiwan.7
+		days = 10
+		}
+	}
+	
+}
+
+country_event = { #Defeat of the Wushe Rebellion
+	id = taiwan.6
+	title = taiwan.6.title
+	desc = taiwan.6.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Leave Them Be
+	name = taiwan.6.a
+		add_stability = 0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 1
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		
+	}
+	
+}
+
+
+country_event = { #Growth of the Wushe Rebellion
+	id = taiwan.7
+	title = taiwan.7.title
+	desc = taiwan.7.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Leave Them Be
+	name = taiwan.7.a
+		add_stability = 0.1
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = -50
+					tooltip = JAP_TWI_INT_decrease_tt
+				}
+				
+		country_event = taiwan.8
+		
+	}
+	
+}
+
+
+country_event = { #Success of the Wushe Rebellion
+	id = taiwan.8
+	title = taiwan.8.title
+	desc = taiwan.8.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Leave Them Be
+	name = taiwan.8.a
+		set_politics = { ruling_party = national_populist }
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.4
+		}
+		JAP = {
+		end_puppet = TAI
+		}
+		set_cosmetic_tag = TWI_SEEDIQ
+	}
+	option = { #Leave Them Be
+	name = taiwan.8.b
+		country_event = taiwan.9
+		JAP = {
+		end_puppet = TAI
+		}
+	}
+}
+
+country_event = { #Choosing a Republican Leader
+	id = taiwan.9
+	title = taiwan.9.title
+	desc = taiwan.9.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Leave Them Be
+	name = taiwan.9.a
 		set_politics = { ruling_party = paternal_autocrat }
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.4
+		}
+		create_country_leader = {
+				name = "Yapasuyong Yulunana"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/TWI/Portrait_TWI_Yapasuyong_Yulunana.png"
+				expire = "1965.1.1"
+				ideology = red_tinted_autocracy_subtype
+			}
+		set_cosmetic_tag = TWI_YULUNANA
+	}
+	option = { #Leave Them Be
+	name = taiwan.9.b
+		set_politics = { ruling_party = social_liberal }
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.4
+		}
+		create_country_leader = {
+				name = "Wuyong Yatauyungana"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/TWI/Portrait_TWI_Wuyong_Yatauyungana.png"
+				expire = "1965.1.1"
+				ideology = soclib_indigenous_communitarianism_subtype
+			}
+		set_cosmetic_tag = TWI_FORMOSA
+	}
+}
+
+
+country_event = { #2nd Wushe Rebellion
+	id = taiwan.10
+	title = taiwan.10.title
+	desc = taiwan.10.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+	trigger = {
+	check_variable = { JAP_TWI_INT > 20}
 	}
 
+	
+	option = { #Leave Them Be
+	name = taiwan.10.a
+		set_country_flag = TAI_japan_taiwan_revolution
+	}
 	
 }
 
 
-country_event = { #Nomination of the Republican Candidate
-	id = taiwanjap.1
-	title = taiwanjap.1.t
-	desc = taiwanjap.1.d
+
+country_event = { #Choosing a Republican Leader
+	id = taiwan.11
+	title = taiwan.11.title
+	desc = taiwan.11.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
 
 	is_triggered_only = yes
 
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwanjap.1"
-		hidden_effect = {
-			
-		}
-	}
-
-	option = { #Cortes
-	name = taiwanjap.1.a
-		event = {
-		id = taiwanjap.2
-		}
-		unlock_national_focus = TWI_return_of_the_exiles
-		
-	}
-	option = { #Cortes
-	name = taiwanjap.1.b
-		set_country_leader_portrait = {
-				ideology = paternal_autocrat
-				portrait = "gfx/leaders/TWI/Portrait_Jiro.png"
-			}
-			set_country_leader_name = {
-				ideology = paternal_autocrat
-				name = LOC_JIR
-			}
-		
-	}
-	option = { #Cortes
-	name = taiwanjap.1.c
-		set_country_leader_portrait = {
-				ideology = paternal_autocrat
-				portrait = "gfx/leaders/TWI/Portrait_Yoshisuke_Aikawa.png"
-			}
-			set_country_leader_name = {
-				ideology = paternal_autocrat
-				name = LOC_AIK
-			}
-		
-	}
 
 	
+	option = { #Go With TPP
+	name = taiwan.11.a
+		set_politics = { ruling_party = social_democrat }
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.4
+		}
+		set_cosmetic_tag = TAI_REPUBLIC
+		create_country_leader = {
+		name = "Lin Xiantang"
+		picture = "gfx/leaders/TWI/TAI_portrait_lin_xiantang.png"
+		expire = "1965.1.1"
+		ideology = socdem_tridemism_subtype
+		}
+
+		create_country_leader = {
+			name = "Lin Xiantang"
+			picture = "gfx/leaders/TWI/TAI_portrait_lin_xiantang.png"
+			expire = "1965.1.1"
+			ideology = soclib_tridemism_subtype
+		}
+		
+	}
+	option = { #Jian Ji
+	name = taiwan.11.b
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.4
+		}
+		set_cosmetic_tag = TAI_AGRARIAN
+	}
+	
+	option = { #TCP
+	name = taiwan.11.c
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.4
+		}
+		set_cosmetic_tag = TAI_COMMUNIST
+		
+	}
 }
 
-country_event = { #Nomination of the Republican Candidate
-	id = taiwanjap.2
-	title = taiwanjap.2.t
-	desc = taiwanjap.2.d
+
+country_event = { #Choosing a Republican Leader
+	id = taiwan.12
+	title = taiwan.12.title
+	desc = taiwan.12.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
 
 	is_triggered_only = yes
 
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwanjap.2"
-		hidden_effect = {
-			
-		}
-	}
-
-	option = { #Cortes
-	name = taiwanjap.2.a
-		set_cosmetic_tag = TWI_AN
-		
-		unlock_national_focus = TWI_a_new_dynasty
-		
-	}
-	option = { #Cortes
-	name = taiwanjap.2.b
-		set_cosmetic_tag = TWI_JP
-		
-		unlock_national_focus = TWI_return_of_the_yamato_dynasty
-	}
 
 	
-}
-
-country_event = { #Nomination of the Republican Candidate
-	id = taiwanjap.3
-	title = taiwanjap.3.t
-	desc = taiwanjap.3.d
-
-	is_triggered_only = yes
-
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwanjap.3"
-		hidden_effect = {
-			
+	option = { #Xuehong
+	name = taiwan.12.a
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.4
 		}
-	}
-
-	option = { #Cortes
-	name = taiwanjap.3.a
-		set_cosmetic_tag = TWI_SH
-		unlock_national_focus = TWI_a_new_shogunate
 		
 	}
-	option = { #Cortes
-	name = taiwanjap.3.b
-		unlock_national_focus = TWI_a_new_emperor
-		
-		
-	}
-
-	
-}
-
-country_event = { #Nomination of the Republican Candidate
-	id = taiwanjap.4
-	title = taiwanjap.4.t
-	desc = taiwanjap.4.d
-
-	is_triggered_only = yes
-
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwanjap.4"
-		hidden_effect = {
-			
+	option = { #Syndicalist
+	name = taiwan.12.b
+		set_politics = { ruling_party = syndicalist }
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.4
 		}
-	}
-
-	option = { #Cortes
-	name = taiwanjap.4.a
-		set_cosmetic_tag = TWI_JP
-		unlock_national_focus = TWI_hirohitosreturn
-		set_country_leader_portrait = {
-				ideology = paternal_autocrat
-				portrait = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
-			}
-			set_country_leader_name = {
-				ideology = paternal_autocrat
-				name = LOC_HIR
-			}
-		
-	}
-	option = { #Cortes
-	name = taiwanjap.4.b
-		set_cosmetic_tag = TWI_JA
-		unlock_national_focus = TWI_a_new_successor
-		set_country_leader_portrait = {
-				ideology = paternal_autocrat
-				portrait = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			}
-			set_country_leader_name = {
-				ideology = paternal_autocrat
-				name = LOC_YAS
-			}
-		
-	}
-
-	
-}
-
-country_event = { #Nomination of the Republican Candidate
-	id = taiwanjap.5
-	title = taiwanjap.5.t
-	desc = taiwanjap.5.d
-
-	is_triggered_only = yes
-
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwanjap.5"
-		hidden_effect = {
-			
-		}
-	}
-
-	option = { #Cortes
-	name = taiwanjap.5.a
-		set_cosmetic_tag = TWI_SH
-		unlock_national_focus = TWI_birth_of_a_new_empire
-	}
-	option = { #Cortes
-	name = taiwanjap.5.b
-		set_cosmetic_tag = TWI_EM
-		unlock_national_focus = TWI_birth_of_a_new_empire
-		
-	}
-	option = { #Cortes
-	name = taiwanjap.5.c
-		set_cosmetic_tag = TWI_JA
-		unlock_national_focus = TWI_rebuilding_the_empire
 		
 	}
 	
+	
 }
 
-country_event = { #Nomination of the Republican Candidate
-	id = taiwanjap.6
-	title = taiwanjap.6.t
-	desc = taiwanjap.6.d
+country_event = { #Choosing a Republican Leader
+	id = taiwan.13
+	title = taiwan.13.title
+	desc = taiwan.13.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
 
 	is_triggered_only = yes
 
-	immediate = {
-		log = "[GetDateText]: [Root.GetName]: event taiwanjap.6"
-		hidden_effect = {
-			
-		}
-	}
 
-	option = { #Cortes
-	name = taiwanjap.6.a
-		set_cosmetic_tag = TWI_EM
-		unlock_national_focus = TWI_birth_of_a_new_empire
-	}
-	option = { #Cortes
-	name = taiwanjap.6.b
-		set_cosmetic_tag = TWI_JA
-		unlock_national_focus = TWI_rebuilding_the_empire
+	
+	option = { #Jian Ji
+	name = taiwan.13.a
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.4
+		}
 		
 	}
+	option = { #Shi Ming
+	name = taiwan.13.b
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.4
+		}
+		create_country_leader = {
+				name = "Shi Ming"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/TWI/Portrait_TAI_Shi_ming.png"
+				expire = "1965.1.1"
+				ideology = tot_social_humanism_subtype
+			}
+		
+	}
+	
+	option = { #Lai He
+	name = taiwan.13.c
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.4
+		}
+		create_country_leader = {
+				name = "Lai He"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/TWI/Portrait_TAI_Lai_He.png"
+				expire = "1965.1.1"
+				ideology = social_futurism_subtype
+			}
+		
+	}
+	
+	
+}
+
+country_event = { #Choosing a Republican Leader
+	id = taiwan.14
+	title = taiwan.14.title
+	desc = taiwan.14.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #SocLib
+	name = taiwan.14.a
+		set_politics = { ruling_party = social_liberal }
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.4
+		}
+		
+	}
+	option = { #Socdem - Xiantang
+	name = taiwan.14.b
+		set_politics = { ruling_party = social_democrat }
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.4
+		}
+		
+	}
+	
+	option = { #radsoc
+	name = taiwan.14.c
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.4
+		}
+		create_country_leader = {
+				name = "Jiang Weishi"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/TWI/TAI_portrait_jiang_weishui.png"
+				expire = "1965.1.1"
+				ideology = radsoc_tridemism_subtype
+			}
+		
+	}
+	option = { #Socdem - Xiantang
+	name = taiwan.14.e
+		set_politics = { ruling_party = social_democrat }
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.4
+		}
+		create_country_leader = {
+				name = "Jiang Weishi"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/TWI/TAI_portrait_jiang_weishui.png"
+				expire = "1965.1.1"
+				ideology = socdem_tridemism_subtype
+			}
+		
+	}
+	
+	
+}
+
+
+country_event = { #Taiwan Requests Guarantee of Independence
+	id = taiwan.15
+	title = taiwan.15.title
+	desc = taiwan.15.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Sure
+	name = taiwan.15.a
+		JAP = {
+		country_event = taiwan.16
+		}
+		
+	}
+	option = { #No
+	name = taiwan.15.b
+		TAI = {
+		country_event = taiwan.17
+		}
+		
+	}
+	
+	
+}
+country_event = { #Foreign Action Blocks Taiwan Recapture
+	id = taiwan.16
+	title = taiwan.16.title
+	desc = taiwan.16.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Fuckin Hell
+	name = taiwan.16.a
+		set_country_flag = Japan_revolt_no
+		
+	}
+	
+	
+	
+}
+
+country_event = { #Foreign Action Refuses
+	id = taiwan.17
+	title = taiwan.17.title
+	desc = taiwan.17.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Fuckin Hell
+	name = taiwan.17.a
+		
+		
+	}
+	
 	
 	
 }

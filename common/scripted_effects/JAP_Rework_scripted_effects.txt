@@ -1,0 +1,133 @@
+JAP_setup_syndie = {
+	set_cosmetic_tag = JAP_Syndie
+	set_politics = {
+		ruling_party = syndicalist
+		elections_allowed = no
+	}
+	set_popularities = {
+		totalist = 20
+		radical_socialist = 20
+		syndicalist = 40
+		social_democrat = 20
+		social_liberal = 0
+		market_liberal = 0
+		social_conservative = 0
+		authoritarian_democrat = 0
+		paternal_autocrat = 0
+		national_populist = 0
+	}
+	load_focus_tree = { tree = KR_Guangxi_KMT keep_completed = yes } #pls don't break
+	for_each_scope_loop = {
+		array = JAP.JAP_starting_states_array
+		add_claim_by = JSR
+	}
+	set_ngx_ministers = yes
+}
+
+create_JCW_militia_template = {
+	
+	if = {
+		limit = {
+			tag = JAP
+			JAP = { has_socialist_government = no }
+		}
+		create_JAP_militia_template = yes
+	}
+	if = {
+		limit = {
+			tag = JSR
+		}
+		create_JSR_militia_template = yes
+	}
+	
+}
+
+create_JAP_militia_template = {
+	if = {
+		limit = {
+			NOT = { has_template = "Dai-Nippon Seinen-tō" }
+		}
+		division_template = {
+			name = "Dai-Nippon Seinen-tō"
+			division_names_group = JAP_MIL_01
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+				militia = { x = 2 y = 0 }
+				militia = { x = 2 y = 1 }
+				militia = { x = 2 y = 2 }
+			}
+			priority = 0
+		}
+	}
+}
+
+create_JSR_militia_template = {
+	if = {
+		limit = {
+			NOT = { has_template = "Sanson Kōsakutai" }
+		}
+		division_template = {
+			name = "Sanson Kōsakutai"
+			division_names_group = JSR_MIL_01 
+			regiments = {
+				militia = { x = 0 y = 0 }
+				militia = { x = 0 y = 1 }
+				militia = { x = 0 y = 2 }
+				militia = { x = 1 y = 0 }
+				militia = { x = 1 y = 1 }
+				militia = { x = 1 y = 2 }
+				militia = { x = 2 y = 0 }
+				militia = { x = 2 y = 1 }
+				militia = { x = 2 y = 2 }
+			}
+			priority = 0
+		}
+	}
+}
+
+
+JCW_spawn_militia_divisions = {
+	### calculate number of units to spawn
+	set_temp_variable = { units_to_spawn = state_population_k }
+	divide_temp_variable = { units_to_spawn = 500 }
+
+	### failsafe so at least one unit is always spawned
+	clamp_temp_variable = { var = units_to_spawn min = 1 max = 12 }
+
+	### tooltip
+	set_temp_variable = { total_units_to_spawn = units_to_spawn }
+	custom_effect_tooltip = JCW_recruit_units
+
+	### spawn normal militias
+	set_temp_variable = { counter = 1 }
+	if = {
+		limit = {
+			check_variable = { var = units_to_spawn value = 1 compare = greater_than_or_equals }
+		}
+		ROOT = { create_JCW_militia_template = yes }
+		for_loop_effect = {
+			start = 1
+			end = units_to_spawn
+			compare = less_than_or_equals
+
+			meta_effect = {
+				text = {
+					create_unit = {
+						division = "name = [DIVISION] division_template = [TEMPLATE] start_experience_factor = 0.0"
+						allow_spawning_on_enemy_provs = yes
+						owner = ROOT
+						id = 1776
+					}
+				}
+				DIVISION = "\\\"[?counter]aya [THIS.GetName] [GetRCWMilitiaName]\\\""
+				TEMPLATE = "\\\"[GetRCWMilitiaTemplate]\\\""
+			}
+			add_to_temp_variable = { counter = 1 }
+		}
+	}
+}
