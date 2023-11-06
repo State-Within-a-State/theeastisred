@@ -5,9 +5,12 @@
 		icon = GFX_JAPECON_recovering_from_black_monday-248360
 		x = 37
 		y = 12
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_STABILITY
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -23,6 +26,12 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPECON_recovering_from_black_monday  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_black_monday_0
+		add_idea = JAP_black_monday_1
+		}
+		}
 	}
 
 	#Save the Colonies
@@ -36,8 +45,54 @@
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		bypass = {
+		AND = {
+			NOT = {
+				KOR = {
+					is_puppet_of = JAP
+					}
+				TAI = {
+					is_puppet_of = JAP
+					}
+			}
+		}
+		}
 		prerequisite = { focus = JAPECON_recovering_from_black_monday  }
-	}
+		completion_reward = {
+		
+			
+		if = {
+				limit = {
+					TAI = {
+						is_puppet_of = JAP
+						}
+				}
+					TAI = {
+						add_to_variable = {
+								var = TAI.JAP_TWI_INT
+								value = 5
+								tooltip = JAP_TWI_INT_increase_tt
+							}
+					}
+		}
+		if = {
+				limit = {
+					KOR = {
+						is_puppet_of = JAP
+						}
+				}
+					KOR = {
+						add_to_variable = {
+							var = KOR.JAP_TWI_INT
+							value = 5
+							tooltip = JAP_KOR_INT_increase_tt
+						}
+					}
+		}
+		}
+		
+		}
+	
 
 	#The 3 Week Holiday For the Bank
 	shared_focus = {
@@ -51,6 +106,20 @@
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPECON_reaffirm_a_focus_on_the_zaibatsu  }
+		completion_reward = {
+		add_stability = -0.05
+		add_political_power = 10
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.05
+			tooltip = add_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.05
+			tooltip = remove_civilian_government_tt
+		}
+		}
 	}
 
 	#Further Korean Investments
@@ -64,7 +133,26 @@
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		bypass = {
+			NOT = {
+				KOR = {
+					is_puppet_of = JAP
+					}
+			}
+		}
 		prerequisite = { focus = JAPECON_extend_loans_for_the_bank_of_taiwan  }
+		completion_reward = {
+		KOR = {
+			add_ideas = {
+			JAP_overlord_investment
+			}
+		}
+		add_to_variable = {
+						var = KOR.JAP_TWI_INT
+						value = 5
+						tooltip = JAP_KOR_INT_increase_tt
+					}
+		}
 	}
 
 	#Extend Loans For the Bank of Taiwan
@@ -79,6 +167,16 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPECON_save_the_colonies  }
+		completion_reward = {
+		add_ideas = {
+		JAP_colonial_loans
+		}
+		TAI = {
+			add_ideas = {
+			JAP_recieving_colonial_loans
+			}
+		}
+		}
 	}
 
 	#Re-Affirm a Focus on the Zaibatsu
@@ -92,8 +190,27 @@
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		JAP_privatization_trigger = yes
+		}
 		prerequisite = { focus = JAPECON_focus_on_japan  }
 		mutually_exclusive = { focus = JAPECON_statist_recovery  }
+		completion_reward = {
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.15
+			tooltip = add_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.15
+			tooltip = remove_civilian_government_tt
+		}
+		swap_ideas = {
+		remove_idea = JAP_black_monday_1
+		add_idea = JAP_black_monday_zaibatsu
+		}
+		}
 	}
 
 	#Statist Recovery
@@ -107,8 +224,17 @@
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		JAP_nationalization_trigger = yes
+		}
 		prerequisite = { focus = JAPECON_focus_on_japan  }
 		mutually_exclusive = { focus = JAPECON_reaffirm_a_focus_on_the_zaibatsu  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_black_monday_1
+		add_idea = JAP_black_monday_statist_0
+		}
+		}
 	}
 
 	#Partial Zaibatsu Nationalization
@@ -123,6 +249,12 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPECON_statist_recovery  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_black_monday_statist_0
+		add_idea = JAP_black_monday_statist_1
+		}
+		}
 	}
 
 	#Prop-up Further Manchurian Economic Expansion
@@ -137,6 +269,9 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPECON_further_korean_investments  }
+		completion_reward = {
+		add_dynamic_modifier = { modifier = FNG_mantetsu_profits_modifier }
+		}
 	}
 
 	#Compensate the Landlords
@@ -151,6 +286,19 @@
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPECON_the_3_week_holiday_for_the_bank  }
+		completion_reward = {
+		add_stability = 0.1
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.05
+			tooltip = add_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.05
+			tooltip = remove_civilian_government_tt
+		}
+		}
 	}
 
 	#Subsidise the Peasants
@@ -165,6 +313,12 @@
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPECON_partial_zaibatsu_nationalization  }
+		completion_reward = {
+		add_stability = 0.1
+		add_ideas = {
+		JAP_peasants_pleased
+		}
+		}
 	}
 
 	#A Start to For Full  Recovery
@@ -179,29 +333,35 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPECON_propup_further_manchurian_economic_expansion  } prerequisite = { focus = JAPECON_compensate_the_landlords  focus = JAPECON_propup_further_manchurian_economic_expansion  } prerequisite = { focus = JAPECON_subsidise_the_peasants  }
+		completion_reward = {
+		hidden_effect = {
+		country_event = {
+		id = japan_new_event.73
+		days = 100
+		}
+		}
+			if = {
+				limit = {
+					has_idea = JAP_black_monday_zaibatsu
+				}
+				swap_ideas = {
+				remove_idea = JAP_black_monday_zaibatsu
+				add_idea = JAP_black_monday_zaibatsu_1
+				}
+			}
+			if = {
+				limit = {
+					has_idea = JAP_black_monday_statist_1
+				}
+				swap_ideas = {
+				remove_idea = JAP_black_monday_statist_1
+				add_idea = JAP_black_monday_statist_2
+				}
+			}
+		}
 	}
 	
-	shared_focus = {
-		id = JAP_land_reform_focus
-		icon = GFX_goal_SKM_Dire_Need_Land_Reforms
-		cost = 5
-
-		relative_position_id = JAPECON_astarttoforfullrecovery
-		x = 0
-		y = 1
-		prerequisite = { focus = JAPECON_astarttoforfullrecovery  }
-		available = {
-			
-		}
-		ai_will_do = { factor = 100 }
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus JAP_land_reform_focus"
-			add_stability = 0.05
-			unlock_decision_category_tooltip = JAP_land_reform
-			hidden_effect = { JAP_open_JAP_land_reform = yes }
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
-	}
+	
 	
 	shared_focus = {
 		id = JAPECONTWO_land_reform_focus
@@ -213,11 +373,7 @@
 		y = 1
 		prerequisite = { focus = JAPECON_astarttoforfullrecovery  }
 		available = {
-			OR = {
-				has_completed_focus = JAPECONTWO_peace_preservation_laws
-				has_completed_focus = JAPECONTWO_national_defence_state
-				has_completed_focus = JAPECONTWO_ennoble_the_national_spirit
-			}
+			
 		}
 		ai_will_do = { factor = 100 }
 		completion_reward = {
@@ -371,9 +527,7 @@
 			focus = JAPECONTWO_land_reform_focus
 		}
 		available = {
-			NOT = {
-				has_completed_shared_focus = JAPECONTWO_curtail_the_zaibatsu
-			}
+			has_idea = JAP_black_monday_zaibatsu_1
 		}
 		ai_will_do = {
 			factor = 25
@@ -594,6 +748,9 @@
 		}
 		prerequisite = {
 			focus = JAPECONTWO_land_reform_focus
+		}
+		available = {
+		has_idea = JAP_black_monday_statist_2
 		}
 		ai_will_do = {
 			factor = 25
