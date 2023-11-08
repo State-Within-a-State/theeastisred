@@ -9,6 +9,24 @@
 		search_filters = {
 			shared_focus_FILTER_POLITICAL
 		}
+		available = {
+			is_faction_leader = yes
+			OR = {
+				has_global_flag = USA_civil_war_begun_flag
+				has_global_flag = USA_civil_war_avoided_flag
+			}
+		}
+		completion_reward = {
+		country_event = japan_new_event.74
+		add_ideas = JAP_rising_sun_idea_1
+			add_named_threat = {
+				threat = 4
+				name = JAP_rising_sun_threat
+			}
+			hidden_effect = {
+				news_event = { id = japfor.471 days = 2 }
+			}
+		}
 	}
 
 	#Fruits of Loyalty
@@ -21,8 +39,83 @@
 		search_filters = {
 			shared_focus_FILTER_POLITICAL
 		}
+		available = {
+			is_faction_leader = yes
+			JAP_owns_korea = yes
+			FNG_JAP_not_hostile = yes
+			FNG = {
+				exists = yes
+				is_subject = no
+				OR = {
+					is_in_faction_with = JAP
+					is_in_faction = no
+				}
+				NOT = { has_war_with = ROOT }
+			}
+			if = {
+				limit = { NOT = { CHN = { tag = FNG } } }
+				OR = {
+					NOT = { country_exists = CHN }
+					has_subject = CHN
+				}
+			}
+		}
+		bypass = {
+			OR = {
+				has_global_flag = JAP_defeated_by_china
+				NOT = { country_exists = FNG }
+				has_subject = FNG
+				FNG_JAP_hostile = yes
+			}
+		}
 		prerequisite = { focus = JAPFOR_reach_out_to_the_steppe  }
 		mutually_exclusive = { focus = JAPFOR_planting_sakura_trees  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_the_fruits_of_loyalty"
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_possible_legation_cities_state = yes
+						NOT = { state = 326 } #Hong Kong
+						NOT = { state = 729 } #Macao
+						NOT = { state = 745 } #Port Arthur
+					}
+					clear_variable = ambition_area_@ROOT
+					remove_claim_by = ROOT
+				}
+			}
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = FNG
+						is_claimed_by = FNG
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = FNG
+			}
+			FNG = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				effect_tooltip = {
+					add_popularity = {
+						ideology = market_liberal
+						popularity = 0.1
+					}
+					add_popularity = {
+						ideology = paternal_autocrat
+						popularity = -0.1
+					}
+				}
+				country_event = japfor.464
+			}
+		}
 	}
 
 	#Seishin-Ron
@@ -36,6 +129,12 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAPFOR_japansplaceintheworld  }
+		completion_reward = {
+		army_experience = 15
+		add_ideas = {
+		JAP_china_strategy
+		}
+		}
 	}
 
 	#Destabilize the Dragon
@@ -50,6 +149,32 @@
 		}
 		prerequisite = { focus = JAPFOR_seishinron  }
 		mutually_exclusive = { focus = JAPFOR_focus_on_our_allies  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_five_races_under_the_sun"
+			unlock_decision_category_tooltip = JAP_influence_china
+			custom_effect_tooltip = JAP_sow_chaos_tt_1
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = JAP_sow_chaos_tt_2
+			custom_effect_tooltip = tooltip_white_line
+			effect_tooltip = {
+				FNG = {
+					effect_tooltip = {
+						add_popularity = {
+							ideology = market_liberal
+							popularity = -0.05
+						}
+						add_popularity = {
+							ideology = paternal_autocrat
+							popularity = 0.05
+						}
+					}
+				}
+			}
+			hidden_effect = {
+				JAP_open_JAP_influence_china_JAP_sow_chaos = yes
+				FNG = { country_event = japfor.461 }
+			}
+		}
 	}
 
 	#shared_focus On Our Allies
@@ -64,6 +189,12 @@
 		}
 		prerequisite = { focus = JAPFOR_seishinron  }
 		mutually_exclusive = { focus = JAPFOR_destabilize_the_dragon  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_support_allies"
+			unlock_decision_category_tooltip = JAP_influence_china
+			custom_effect_tooltip = JAP_influence_china_tt
+			hidden_effect = { JAP_open_JAP_influence_china_JAP_support_allies = yes }
+		}
 	}
 
 	#Deal With Transamur

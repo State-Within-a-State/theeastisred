@@ -4890,7 +4890,9 @@ country_event = { #Finalization of Economic Recovery
 	}
 }
 
-country_event = { #
+###Foreign Policy Events
+
+country_event = { #Japan's Place In Asia 
 	id = japan_new_event.74
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.74"}
 	title = japan_new_event.74.title
@@ -4898,10 +4900,20 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We Shall Liberate Asia
 		name = japan_new_event.74.a
 		ai_chance = { base = 100 }
+		set_country_flag = JAP_puppet_asia
 		
+	}
+	
+	option = { #We Shall unify Asia
+		name = japan_new_event.74.b
+		ai_chance = { base = 100 }
+		trigger = {
+		JAP_pan_asia_unification_trigger = yes
+		}
+		set_country_flag = JAP_unify_asia
 	}
 }
 
