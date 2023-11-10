@@ -1,7 +1,7 @@
 name="Kaiserredux - A Rising Dragon"
 version="0.01"
 dependencies={
-	"Kaiserredux: A Kaiserreich Expansion"
+	"KaiserreduX"
 }
 tags={
 	"Alternative History"

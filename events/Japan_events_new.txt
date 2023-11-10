@@ -1869,6 +1869,7 @@ country_event = { #Kodoha Coup
 	option = { #
 		name = japan_new_event.29.a
 		ai_chance = { base = 100 }
+		country_event = japan_new_event.30
 		set_politics = {
 			ruling_party = paternal_autocrat
 			election_frequency = 48
@@ -4917,7 +4918,7 @@ country_event = { #Japan's Place In Asia
 	}
 }
 
-country_event = { #
+country_event = { #Japan Demands Our Submission
 	id = japan_new_event.75
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.75"}
 	title = japan_new_event.75.title
@@ -4925,10 +4926,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Yes
 		name = japan_new_event.75.a
 		ai_chance = { base = 100 }
+		JAP = {
+		set_country_flag = JAP_Chose_A_Faction
+		puppet = {
+				target = FROM
+				end_wars = yes
+			}
+		}
+	}
+	
+	option = { #No
+		name = japan_new_event.75.b
+		ai_chance = { base = 100 }
+		JAP = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FROM
+		}
 		
+		}
 	}
 }
 
