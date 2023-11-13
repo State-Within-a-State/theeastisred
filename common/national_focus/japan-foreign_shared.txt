@@ -248,6 +248,9 @@
 			shared_focus_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPFOR_destabilize_the_dragon  focus = JAPFOR_focus_on_our_allies  }
+		completion_reward = {
+		unlock_decision_category_tooltip = JAP_transaumr_decision_category
+		}
 	}
 
 	#Influence the Legations
@@ -260,7 +263,60 @@
 		search_filters = {
 			shared_focus_FILTER_POLITICAL
 		}
+		available = {
+			is_faction_leader = yes
+			NOT = { has_country_flag = legation_council_member }
+			JAP_owns_korea = yes
+			can_declare_war_on = LEC
+			LEC = {
+				custom_trigger_tooltip = {
+					tooltip = JAP_not_member_of_sphere
+					NOT = { has_country_flag = JAP_economic_sphere_member }
+				}
+			}
+		}
+		bypass = {
+			has_global_flag = JAP_defeated_by_china
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				is_in_array = { global.JAP_possible_allies_array = LEC }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+				any_enemy_country = { is_actual_major = yes }
+			}
+			modifier = {
+				factor = 0
+				NOT = {
+					GER = {
+						OR = {
+							has_war_with = FRA
+							has_war_with = RUS
+						}
+					}
+				}
+			}
+		}
 		prerequisite = { focus = JAPFOR_deal_with_transamur  }
+		completion_reward = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = LEC
+				}
+			custom_effect_tooltip = tooltip_white_line
+			every_other_country = {
+				limit = {
+					has_country_flag = legation_council_member
+					has_guaranteed = LEC
+					is_valid_peace_target = yes
+				}
+				country_event = japfor.90
+			}
+		}
 	}
 
 	#Loyal Collaborators
@@ -275,6 +331,16 @@
 		}
 		prerequisite = { focus = JAPFOR_influence_the_legations  }
 		mutually_exclusive = { focus = JAPFOR_burn_to_ash  }
+		completion_reward = {
+		custom_effect_tooltip = loyal_collaboration_tt
+		hidden_effect = {
+		unlock_decision_tooltip = JAP_set_up_loyal_government_socialist
+		unlock_decision_tooltip = JAP_set_up_loyal_government_not_socialist
+		}
+		add_ideas = {
+		JAP_loyal_collaboration
+		}
+		}
 	}
 
 	#Burn to Ash
@@ -289,6 +355,11 @@
 		}
 		prerequisite = { focus = JAPFOR_influence_the_legations  }
 		mutually_exclusive = { focus = JAPFOR_loyal_collaborators  }
+		completion_reward = {
+			add_ideas = {
+			JAP_burn_to_ash
+			}
+		}
 	}
 
 	#Operation Ichi-Guo
@@ -301,7 +372,114 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+			is_faction_leader = yes
+			JAP_owns_korea = yes
+			OR = {
+				can_declare_war_on = CHN
+				has_war_with = CHN
+			}
+			threat > 0.60
+		}
+		bypass = {
+			OR = {
+				has_global_flag = JAP_defeated_by_china
+				NOT = { country_exists = CHN }
+				is_ally_with = CHN
+				JAP_owns_korea = no
+			}
+		}
+		ai_will_do = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
+					NOT = {
+						has_war_with = CHN
+						FNG = {
+							exists = no
+							is_subject = yes
+						}
+					}
+				}
+			}
+		}
 		prerequisite = { focus = JAPFOR_loyal_collaborators  focus = JAPFOR_burn_to_ash  }
+		will_lead_to_war_with = FNG #so they know they might be added to the faction
+		will_lead_to_war_with = QIE
+		will_lead_to_war_with = SQI
+		will_lead_to_war_with = LEP
+		will_lead_to_war_with = CHI
+		will_lead_to_war_with = ANQ
+		will_lead_to_war_with = GXC
+		will_lead_to_war_with = HNN
+		will_lead_to_war_with = YUN
+		will_lead_to_war_with = SZC
+		will_lead_to_war_with = SHX
+		
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_continental_warfare"
+			log = "KR_Event_Logging;JAP ICHI-GOU;[GetDateText]"
+			if = {
+				limit = {
+					NOT = { has_completed_focus = JAPFOR_focus_on_our_allies }
+				}
+				add_timed_idea = { idea = JAP_continental_warfare days = 100 }
+			}
+			else = {
+				add_timed_idea = { idea = JAP_continental_warfare_2 days = 200 }
+			}
+			if = {
+				limit = { has_global_flag = JAP_sino_japanese_war_threat }
+				add_named_threat = {
+					threat = 3
+					name = JAP_continental_warfare
+				}
+			}
+			else = {
+				add_named_threat = {
+					threat = 8
+					name = JAP_continental_warfare
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			every_other_country = {
+				limit = {
+					is_chinese_tag = yes
+					is_valid_peace_target = yes
+					can_declare_war_on = ROOT
+					is_ruled_by_pro_fengtian = no
+				}
+				ROOT = {
+					add_ai_strategy = {
+						type = declare_war
+						id = PREV
+						value = 500
+					}
+					create_wargoal = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+			if = {
+				limit = {
+					FNG_JAP_hostile = no
+					FNG = {
+						exists = yes
+						is_subject = no
+						is_in_faction = no
+						at_war_with_or_justifying_wargoal_against_PREV = no
+					}
+					NOT = {
+						any_allied_country = { FNG = { at_war_with_or_justifying_wargoal_against_PREV = yes } }
+					}
+				}
+				custom_effect_tooltip = tooltip_white_line
+				effect_tooltip = { add_to_faction = FNG }
+				FNG = { country_event = japfeng.4 }
+			}
+		}
 	}
 
 	#Reach Out to the Steppe
@@ -315,6 +493,13 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAPFOR_operation_ichiguo  }
+		completion_reward = {
+		custom_effect_tooltip = we_shall_secure_steppe
+			hidden_effect = {
+			unlock_decision_tooltip = JAP_offer_steppe_alliance
+			unlock_decision_tooltip = JAP_tame_wild_steppe
+			}
+		}
 	}
 
 	#Planting Sakura Trees
@@ -327,8 +512,62 @@
 		search_filters = {
 			shared_focus_FILTER_POLITICAL
 		}
+		available = {
+			is_subject = no
+			NOT = { has_global_flag = JAP_Fading_Sun }
+			FNG_JAP_not_hostile = yes
+			FNG = {
+				exists = yes
+				NOT = { has_war_with = ROOT }
+			}
+			if = {
+				limit = {
+					NOT = { CHN = { tag = FNG } }
+				}
+				OR = {
+					NOT = { country_exists = CHN }
+					has_subject = CHN
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 50
+		}
 		prerequisite = { focus = JAPFOR_reach_out_to_the_steppe  }
 		mutually_exclusive = { focus = JAPFOR_fruits_of_loyalty  }
+		
+		bypass = {
+			OR = {
+				FNG_JAP_hostile = yes
+				has_war_with = FNG
+				NOT = { country_exists = FNG }
+				FNG = { is_subject = yes }
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_plant_cherry_blossoms"
+			set_country_flag = JAP_not_gave_zhang_land
+			every_state = {
+				limit = {
+					is_not_claim_or_core_of_ROOT = yes
+					NOT = { has_variable = ambition_area_@ROOT }
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+					OR = {
+						is_core_of = FNG
+						is_claimed_by = FNG
+					}
+				}
+				FNG = { transfer_state = PREV }
+			}
+			FNG = { country_event = japfor.463 }
+			custom_effect_tooltip = JAP_FNG_outrage_tt
+		}
 	}
 
 	#Nanshin-Ron
@@ -341,7 +580,64 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+			is_faction_leader = yes
+		}
+		ai_will_do = {
+			factor = 20
+			modifier = {
+				factor = 3
+				OR = {
+					has_completed_focus = JAP_military_centralism
+					has_completed_focus = JAP_showa_restoration
+				}
+			}
+			modifier = {
+				factor = 3
+				date > 1938.1.1
+			}
+			modifier = {
+				factor = 10
+				date > 1939.1.1
+			}
+			modifier = {
+				factor = 20
+				date > 1940.1.1
+			}
+		}
 		prerequisite = { focus = JAPFOR_japansplaceintheworld  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_nanshin_ron"
+			if = {
+				limit = { has_idea = JAP_rising_sun_idea_2 }
+				swap_ideas = {
+					remove_idea = JAP_rising_sun_idea_2
+					add_idea = JAP_rising_sun_idea_4
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = JAP_rising_sun_idea_1
+					add_idea = JAP_rising_sun_idea_3
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						tag = AST
+						tag = GER
+						tag = HOL
+						tag = GEA
+						tag = DEI
+						is_american_tag = yes
+					}
+				}
+				add_opinion_modifier = {
+					target = JAP
+					modifier = JAP_threat
+				}
+			}
+		}
 	}
 
 	#Demand Obedience Over Manila
@@ -354,7 +650,64 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+			is_faction_leader = yes
+			can_declare_war_on = PHI
+			PHI = {
+				custom_trigger_tooltip = {
+					tooltip = JAP_not_member_of_sphere
+					NOT = { has_country_flag = JAP_economic_sphere_member }
+				}
+			}
+		}
+		bypass = {
+			OR = {
+				owns_state = 327 #Central Luzon
+				NOT = { can_declare_war_on = PHI }
+				PHI = {
+					custom_trigger_tooltip = {
+						tooltip = JAP_member_of_sphere
+						has_country_flag = JAP_economic_sphere_member
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 3
+				OR = {
+					has_completed_focus = JAP_military_centralism
+					has_completed_focus = JAP_showa_restoration
+				}
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+				OR = {
+					any_enemy_country = { is_actual_major = yes }
+					has_war_with = CHN
+					PHI = { is_in_faction = yes }
+				}
+			}
+			modifier = {
+				factor = 0
+				is_in_array = { global.JAP_possible_allies_array = PHI }
+			}
+			modifier = {
+				factor = 0
+				PHI = { is_in_faction = no }
+				
+			}
+		}
 		prerequisite = { focus = JAPFOR_nanshinron  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_philippines"
+			PHI = {
+				country_event = japfor.55
+			}
+			hidden_effect = { activate_targeted_decision = { target = PHI decision = JAP_threaten_philippines } }
+		}
 	}
 
 	#Reach Out to Siam
@@ -367,7 +720,58 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+			is_faction_leader = yes
+			OR = {
+				846 = { is_controlled_by_ROOT_or_ally = yes } #Johore
+				288 = { is_controlled_by_ROOT_or_ally = yes } #Rangoon
+				286 = { is_controlled_by_ROOT_or_ally = yes } #Cochinchina
+			}
+			can_declare_war_on = SIA
+			SIA = {
+				custom_trigger_tooltip = {
+					tooltip = JAP_not_member_of_sphere
+					NOT = { has_country_flag = JAP_economic_sphere_member }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 3
+				OR = {
+					has_completed_focus = JAP_military_centralism
+					has_completed_focus = JAP_showa_restoration
+				}
+			}
+			modifier = {
+				factor = 0
+				NOT = { has_completed_focus = JAP_tokyo_conference }
+			}
+			modifier = {
+				factor = 0
+				is_in_array = { global.JAP_possible_allies_array = SIA }
+			}
+		}
+		bypass = {
+			OR = {
+				289 = { controller = { is_ally_with = ROOT } } #Siam
+				NOT = { can_declare_war_on = SIA }
+				SIA = {
+					custom_trigger_tooltip = {
+						tooltip = JAP_member_of_sphere
+						has_country_flag = JAP_economic_sphere_member
+					}
+				}
+			}
+		}
+		will_lead_to_war_with = SIA
 		prerequisite = { focus = JAPFOR_nanshinron  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_target_siam"
+			custom_effect_tooltip = JAP_may_war_with_siam
+			hidden_effect = { activate_targeted_decision = { target = SIA decision = JAP_attack_siam } }
+		}
 	}
 
 	#Saving the South From Imperialism
@@ -380,7 +784,69 @@
 		search_filters = {
 			shared_focus_FILTER_WAR_SUPPORT
 		}
+		available = {
+			is_faction_leader = yes
+		}
+		ai_will_do = {
+			factor = 1500
+			modifier = {
+				factor = 0
+				date < 1939.7.1
+				NOT = {
+					GER = {
+						any_enemy_country = {
+							is_major = yes
+							num_of_controlled_factories > 50
+						}
+					}
+					FRA = { focus_progress = { focus = FRA_War_with_germany progress > 0 } }
+					RUS = { focus_progress = { focus = RUS_Crush_The_German_Hegemony progress > 0 } }
+				}
+				NOT = { has_game_rule = { rule = HOL_foreign_policy option = HOL_FOREIGN_POLICY_ENTENTE } }
+			}
+		}
 		prerequisite = { focus = JAPFOR_demand_obedience_over_manila  } prerequisite = { focus = JAPFOR_reach_out_to_siam  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_claim_colonies"
+			add_named_threat = {
+				threat = 6
+				name = JAP_claim_colonies_threat
+			}
+			custom_effect_tooltip = JAP_gain_claim_southern_islands
+			hidden_effect = {
+				every_state = {
+					limit = {
+						is_claim_or_core_of_ROOT = no
+						owner = {
+							NOT = {
+								is_ally_with = ROOT
+								has_country_flag = JAP_economic_sphere_member
+							}
+						}
+						OR = {
+							is_indonesia = yes
+							state = 336 #Singapore
+							state = 633 #Marshall Islands
+							state = 634 #Solomon Islands
+							state = 635 #New Caledonia
+							state = 636 #Fiji
+							state = 639 #Gilbert Islands
+							state = 641 #German Polynesia
+							state = 643 #Ellice Islands
+							state = 646 #Mariana Islands
+							state = 647 #Palau
+							state = 684 #Caroline Islands
+							state = 725 #Nauru
+							state = 734 #Nendo
+							state = 737 #Bismarck Archipelago
+							state = 846 #Johore
+							state = 941 #Western Samoa
+						}
+					}
+					add_claim_by = JST
+				}
+			}
+		}
 	}
 
 	#Support Surkano
@@ -393,7 +859,111 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+			is_faction_leader = yes
+			if = {
+				limit = { country_exists = DEI }
+				can_declare_war_on = DEI
+			}
+			else_if = {
+				limit = { country_exists = INS }
+				can_declare_war_on = INS
+				INS = {
+					custom_trigger_tooltip = {
+						tooltip = JAP_not_member_of_sphere
+						NOT = { has_country_flag = JAP_economic_sphere_member }
+					}
+				}
+			}
+			else = {
+				HOL = { controls_state = 1020 }
+				can_declare_war_on = HOL
+			}
+			threat > 0.75
+		}
+		bypass = {
+			OR = {
+				AND = {
+					1020 = { is_controlled_by_ROOT_or_ally = yes }
+					NOT = { country_exists = DEI }
+				}
+				AND = {
+					INS = {
+						controls_state = 1020
+						custom_trigger_tooltip = {
+							tooltip = JAP_member_of_sphere
+							has_country_flag = JAP_economic_sphere_member
+						}
+					}
+					NOT = { country_exists = DEI }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 0
+				NOT = {
+					has_global_flag = second_weltkrieg_has_started
+					has_war_with = GEA
+					country_exists = GEA
+				}
+				NOT = { has_game_rule = { rule = HOL_foreign_policy option = HOL_FOREIGN_POLICY_ENTENTE } }
+			}
+			modifier = {
+				factor = 3
+				OR = {
+					has_completed_focus = JAP_military_centralism
+					has_completed_focus = JAP_showa_restoration
+				}
+			}
+			modifier = {
+				factor = 0
+				if = {
+					limit = { country_exists = DEI }
+					DEI = { default_attack_AI_trigger_FROM_consider_naval_strength = yes }
+				}
+				else = {
+					INS = { default_attack_AI_trigger_FROM_consider_naval_strength = yes }
+				}
+				NOT = { has_game_rule = { rule = HOL_foreign_policy option = HOL_FOREIGN_POLICY_ENTENTE } }
+			}
+			modifier = {
+				factor = 0
+				NOT = { country_exists = DEI }
+				is_in_array = { global.JAP_possible_allies_array = INS }
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					AND = {
+						INS = {
+							exists = yes
+							is_in_faction = no
+						}
+						OR = {
+							AND = {
+								has_game_rule = { rule = INS_forpol option = INS_FORPOL_GER }
+								INS = { NOT = { has_country_flag = ins_sultans_countercoup } }
+							}
+							has_game_rule = { rule = INS_forpol option = INS_FORPOL_ENT }
+							has_game_rule = { rule = INS_forpol option = INS_FORPOL_HND }
+						}
+					}
+					HOL = {
+						has_socialist_government = no
+						is_ally_with = var:1020.owner
+						NOT = { is_in_faction_with = BEL }
+					}
+				}
+			}
+		}
+		will_lead_to_war_with = DEI
+		will_lead_to_war_with = INS
 		prerequisite = { focus = JAPFOR_saving_the_south_from_imperialism  }
+		completion_reward = {
+			country_event = japan_new_event.78
+		}
 	}
 
 	#Claim the German East
@@ -406,7 +976,84 @@
 		search_filters = {
 			shared_focus_FILTER_WAR_SUPPORT
 		}
+		available = {
+			is_faction_leader = yes
+			OR = {
+				AND = {
+					can_declare_war_on = INC
+					INC = {
+						custom_trigger_tooltip = {
+							tooltip = JAP_not_member_of_sphere
+							NOT = { has_country_flag = JAP_economic_sphere_member }
+						}
+					}
+				}
+				AND = {
+					can_declare_war_on = VIN
+					VIN = {
+						custom_trigger_tooltip = {
+							tooltip = JAP_not_member_of_sphere
+							NOT = { has_country_flag = JAP_economic_sphere_member }
+						}
+					}
+				}
+				AND = {
+					can_declare_war_on = LAO
+					LAO = {
+						custom_trigger_tooltip = {
+							tooltip = JAP_not_member_of_sphere
+							NOT = { has_country_flag = JAP_economic_sphere_member }
+						}
+					}
+				}
+				AND = {
+					can_declare_war_on = CAM
+					CAM = {
+						custom_trigger_tooltip = {
+							tooltip = JAP_not_member_of_sphere
+							NOT = { has_country_flag = JAP_economic_sphere_member }
+						}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 3
+				OR = {
+					has_completed_focus = JAP_military_centralism
+					has_completed_focus = JAP_showa_restoration
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_in_array = { global.JAP_possible_allies_array = INC }
+					is_in_array = { global.JAP_possible_allies_array = VIN }
+				}
+			}
+		}
+		bypass = {
+			286 = { is_controlled_by_ROOT_or_ally = yes } #Cochinchina
+			670 = { is_controlled_by_ROOT_or_ally = yes } #Laos
+			827 = { is_controlled_by_ROOT_or_ally = yes } #Annam
+		}
+		will_lead_to_war_with = INC
+		will_lead_to_war_with = VIN
+		will_lead_to_war_with = LAO
+		will_lead_to_war_with = CAM
 		prerequisite = { focus = JAPFOR_saving_the_south_from_imperialism  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_target_indochina"
+			custom_effect_tooltip = JAP_may_war_with_indochina
+			hidden_effect = {
+				activate_targeted_decision = { target = INC decision = JAP_attack_indochina }
+				activate_targeted_decision = { target = VIN decision = JAP_attack_indochina }
+				activate_targeted_decision = { target = LAO decision = JAP_attack_indochina }
+				activate_targeted_decision = { target = CAM decision = JAP_attack_indochina }
+			}
+		}
 	}
 
 	#Australasian Ventures
@@ -419,7 +1066,59 @@
 		search_filters = {
 			shared_focus_FILTER_INDUSTRY
 		}
+		bypass = {
+		AST = {
+			OR = {
+				has_war_with = JAP
+				is_ally_with = JAP
+				is_subject_of = JAP
+			}
+		
+		}
+		}
+		available = {
+			is_faction_leader = yes
+			OR = {
+				327 = { is_controlled_by_ROOT_or_ally = yes } #Luzon
+				1020 = { is_controlled_by_ROOT_or_ally = yes } #Batavia
+			}
+			can_declare_war_on = AST
+			AST = {
+				NOT = { has_country_flag = AST_has_ties_with_japan }
+				custom_trigger_tooltip = {
+					tooltip = JAP_not_member_of_sphere
+					NOT = { is_in_array = { global.JAP_possible_allies_array = THIS } }
+				}
+			}
+			ic_ratio = { tag = AST ratio > 2 }
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
 		prerequisite = { focus = JAPFOR_support_surkano  } prerequisite = { focus = JAPFOR_claim_the_german_east  }
+		will_lead_to_war_with = AST
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_isolate_australasia"
+			AST = {
+				embargo_ROOT = yes
+				country_event = japfor.450
+				hidden_effect = {
+					for_each_scope_loop = {
+						array = global.asian_economic_sphere
+						embargo_PREV = yes
+					}
+				}
+			}
+			hidden_effect = {
+				activate_targeted_decision = { target = AST decision = JAP_attack_australia }
+				activate_targeted_decision = { target = NZL decision = JAP_attack_australia }
+			}
+		}
 	}
 
 	#The Hawaiian Push
@@ -432,7 +1131,55 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+			is_faction_leader = yes
+			can_declare_war_on = HAW
+			HAW = {
+				custom_trigger_tooltip = {
+					tooltip = JAP_not_member_of_sphere
+					NOT = { has_country_flag = JAP_economic_sphere_member }
+				}
+			}
+			NOT = { has_country_flag = JAP_backed_down_pacific }
+		}
+		ai_will_do = {
+			factor = 25
+			modifier = {
+				factor = 3
+				OR = {
+					has_completed_focus = JAP_military_centralism
+					has_completed_focus = JAP_showa_restoration
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					HAW = { is_in_faction = yes }
+					CAL = {
+						owns_state = 797
+						has_war = no
+						is_subject = no
+						NOT = { is_in_faction_with = JAP }
+					}
+					USA = {
+						owns_state = 797
+						has_war = no
+						is_subject = no
+						NOT = { is_in_faction_with = JAP }
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				is_in_array = { global.JAP_possible_allies_array = HAW }
+			}
+		}
 		prerequisite = { focus = JAPFOR_support_surkano  } prerequisite = { focus = JAPFOR_claim_the_german_east  }
+		will_lead_to_war_with = HAW
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_hawaii"
+			HAW = { country_event = japfor.62 }
+		}
 	}
 
 	#Mission to the Subcontinent
@@ -445,7 +1192,51 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+			is_faction_leader = yes
+			OR = {
+				289 = { is_controlled_by_ROOT_or_ally = yes } #Siam
+				288 = { is_controlled_by_ROOT_or_ally = yes } #Rangoon
+			}
+			OR = {
+				can_declare_war_on = PRF
+				PRF = {
+					custom_trigger_tooltip = {
+						tooltip = JAP_not_member_of_sphere
+						NOT = { has_country_flag = JAP_economic_sphere_member }
+					}
+				}
+				can_declare_war_on = BHC
+				BHC = {
+					custom_trigger_tooltip = {
+						tooltip = JAP_not_member_of_sphere
+						NOT = { has_country_flag = JAP_economic_sphere_member }
+					}
+				}
+				can_declare_war_on = DEH
+				DEH = {
+					custom_trigger_tooltip = {
+						tooltip = JAP_not_member_of_sphere
+						NOT = { has_country_flag = JAP_economic_sphere_member }
+					}
+				}
+				can_declare_war_on = BRM
+				BRM = {
+					custom_trigger_tooltip = {
+						tooltip = JAP_not_member_of_sphere
+						NOT = { has_country_flag = JAP_economic_sphere_member }
+					}
+				}
+			}
+		}
 		prerequisite = { focus = JAPFOR_australasian_ventures  } prerequisite = { focus = JAPFOR_the_hawaiian_push  }
+		completion_reward = {
+		custom_effect_tooltip = japan_take_india_tt
+		hidden_effect = {
+		unlock_decision_tooltip = JAP_into_india
+		unlock_decision_tooltip = 
+		}
+		}
 	}
 
 	#Overtures To Persia And the Afghans
@@ -459,6 +1250,11 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAPFOR_mission_to_the_subcontinent  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_alliance_with_afghans
+		unlock_decision_tooltip = JAP_alliance_with_persia
+		unlock_decision_tooltip = JAP_into_persia
+		}
 	}
 
 	#National Mobilization Law
@@ -471,7 +1267,28 @@
 		search_filters = {
 			shared_focus_FILTER_WAR_SUPPORT
 		}
+		available = {
+			is_faction_leader = yes
+			has_war = yes
+		}
+		bypass = {
+			has_global_flag = JAP_defeated_by_china
+		}
+		ai_will_do = { factor = 50 }
 		prerequisite = { focus = JAPFOR_operation_ichiguo  } prerequisite = { focus = JAPFOR_mission_to_the_subcontinent  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_national_mobilisation_law"
+			if = {
+				limit = { has_idea = war_economy }
+				add_ideas = tot_economic_mobilisation
+			}
+			else_if = {
+				limit = { has_idea = tot_economic_mobilisation }
+				add_war_support = 0.05
+				add_political_power = 50
+			}
+			else = { add_ideas = war_economy }
+		}
 	}
 
 	#Demand Tibetan Submission
@@ -485,6 +1302,9 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAPFOR_overtures_to_persia_and_the_afghans  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_into_tibet
+		}
 	}
 
 	#Victory Over European Imperialism!
@@ -497,7 +1317,222 @@
 		search_filters = {
 			shared_focus_FILTER_STABILITY
 		}
+		available = {
+			has_war = no
+			is_faction_leader = yes
+			JAP_owns_korea = yes
+			286 = { is_owned_by_ROOT_or_ally = yes } #Cochinchina
+			336 = { is_owned_by_ROOT_or_ally = yes } #Singapore
+			1020 = { is_owned_by_ROOT_or_ally = yes } #Batavia
+			327 = { is_owned_by_ROOT_or_ally = yes } #Central Luzon
+			629 = { is_owned_by_ROOT_or_ally = yes } #Hawaii
+			608 = { is_owned_by_ROOT_or_ally = yes } #Beijing
+			743 = { is_owned_by_ROOT_or_ally = yes } #Shanghai
+		}
+		select_effect = {
+			log = "[GetDateText]: [Root.GetName]: Select Focus JAP_tokyo_conference"
+			every_other_country = {
+				limit = {
+					is_co_prosperity_candidate = yes
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							NOT = { is_in_faction_with = ROOT }
+						}
+					}
+				}
+				country_event = japfor.21
+			}
+		}
+		ai_will_do = { factor = 40 }
 		prerequisite = { focus = JAPFOR_fruits_of_loyalty  } prerequisite = { focus = JAPFOR_demand_tibetan_submission  focus = JAPFOR_planting_sakura_trees  } prerequisite = { focus = JAPFOR_demand_tibetan_submission  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_final_victory"
+			add_political_power = 200
+			swap_ideas = {
+				remove_idea = JAP_rising_sun_idea_4
+				add_idea = JAP_rising_sun_idea_5
+			}
+			
+			
+			custom_effect_tooltip = JAP_tokyo_conference_tt
+			hidden_effect = {
+				country_event = japfor.24
+			}
+			for_each_scope_loop = {
+				array = global.JAP_possible_allies_array
+
+				log = "This scope = [THIS.GetName]"
+				PREV = { activate_targeted_decision = { target = PREV decision = JAP_invite_into_faction } }
+			}
+		}
+	}
+	
+	shared_focus = { #Economic integration conference
+		id = JAPFOR_osaka_conference
+		icon = GFX_goal_JAP_yen
+		cost = 5
+
+		relative_position_id = JAPFOR_victoryovereuropeanimperialism
+		x = 0
+		y = 1
+
+		available = {
+			is_faction_leader = yes
+		}
+		ai_will_do = { factor = 20 }
+		prerequisite = {
+			focus = JAPFOR_victoryovereuropeanimperialism
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_osaka_conference"
+			set_country_flag = JAP_economic_sphere_member
+			custom_effect_tooltip = JAP_may_now_invite_sphere
+			hidden_effect = {
+				country_event = japfor.400
+				JAP_open_JAP_co_prosperity_decisions_JAP_osaka_conference = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+
+	shared_focus = { #Open the process of puppetting the sphere members
+		id = JAPFOR_integrate_asian_economies
+		icon = GFX_goal_USA_embargo_japan
+		cost = 5
+
+		relative_position_id = JAPFOR_osaka_conference
+		x = 0
+		y = 1
+
+		available = {
+			is_faction_leader = yes
+		}
+		ai_will_do = { factor = 20 }
+		prerequisite = {
+			focus = JAPFOR_osaka_conference
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_integrate_asian_economies"
+			add_political_power = 100
+			custom_effect_tooltip = JAP_may_now_invest_sphere
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = { activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_member1 } }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+	}
+
+	
+
+	shared_focus = {
+		id = JAPFOR_copro_development_plan
+		icon = GFX_goal_MAG_naval_research_department
+		cost = 5
+
+		relative_position_id = JAPFOR_integrate_asian_economies
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = JAPFOR_integrate_asian_economies
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_copro_development_plan"
+			custom_effect_tooltip = JAP_naval_investment
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = { activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_member_docks } }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_BONUS }
+	}
+
+	shared_focus = {
+		id = JAPFOR_prosperity_ships
+		icon = GFX_goal_CAL_trade_fleet
+		cost = 5
+
+		relative_position_id = JAPFOR_copro_development_plan
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = JAPFOR_copro_development_plan
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_prosperity_ships"
+			add_ideas = JAP_nav_tra_idea
+			custom_effect_tooltip = JAP_naval_prosperity_ships
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = { activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_prosperity_ships } }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS }
+	}
+
+	shared_focus = {
+		id = JAPFOR_naval_engineering_assistance
+		icon = GFX_goal_generic_naval_industry
+		cost = 5
+
+		relative_position_id = JAPFOR_copro_development_plan
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = JAPFOR_copro_development_plan
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_naval_engineering_assistance"
+			custom_effect_tooltip = JAP_naval_advisors
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = {
+						activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_naval_advisors }
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_BONUS }
+	}
+
+	shared_focus = {
+		id = JAPFOR_unified_production
+		icon = GFX_goal_generic_shipyard
+		cost = 5
+
+		relative_position_id = JAPFOR_copro_development_plan
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = JAPFOR_copro_development_plan
+		}
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_unified_production"
+			custom_effect_tooltip = JAP_naval_seize_docks
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = { activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_take_dockyards } }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_BONUS }
 	}
 
 

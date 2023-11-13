@@ -2852,6 +2852,11 @@ country_event = { #A Twist in the Coup
 	title = japan_new_event.46.title
 	desc = japan_new_event.46.desc
 	#picture = 
+	immediate = {
+	hidden_effect = {
+	set_country_flag = JAP_black_dragon
+	}
+	}
 	
 	is_triggered_only = yes
 	option = { #Nichirenists
@@ -4915,6 +4920,22 @@ country_event = { #Japan's Place In Asia
 		JAP_pan_asia_unification_trigger = yes
 		}
 		set_country_flag = JAP_unify_asia
+		every_state = {
+			limit = {
+				is_on_continent = asia
+			}
+			JAP = {
+				add_state_claim = PREV
+			}
+		}
+		every_state = {
+			limit = {
+				is_on_continent = india
+			}
+			JAP = {
+				add_state_claim = PREV
+			}
+		}
 	}
 }
 
@@ -4941,17 +4962,13 @@ country_event = { #Japan Demands Our Submission
 	option = { #No
 		name = japan_new_event.75.b
 		ai_chance = { base = 100 }
-		JAP = {
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = FROM
-		}
 		
+		country_event = japan_new_event.76
 		}
 	}
 }
 
-country_event = { #
+country_event = { #Refusal But Alliance?
 	id = japan_new_event.76
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.76"}
 	title = japan_new_event.76.title
@@ -4959,29 +4976,91 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Sure
 		name = japan_new_event.76.a
 		ai_chance = { base = 100 }
-		
+		JAP = { add_to_faction = FROM }
+	}
+	
+	option = { #How About No
+		name = japan_new_event.76.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				tag = QIE
+			}
+		JAP = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FROM
+			}
+		}	
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Japan Demands Our Submission
 	id = japan_new_event.77
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.77"}
 	title = japan_new_event.77.title
 	desc = japan_new_event.77.desc
 	#picture = 
-	
+	immediate = {
+		hidden_effect = {
+			JAP = {
+				add_state_claim = 408
+				add_state_claim = 1246
+				add_state_claim = 409
+				add_state_claim = 560
+				add_state_claim = 562
+				add_state_claim = 637
+			}
+			has_country_leader = {
+				name = "Yui Mitsue"
+				ruling_only = yes
+				}
+		}
+	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.77.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			TRM = {
+				NOT = {
+					is_subject_of = JAP
+				}
+			}
+		}
+		JAP = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FROM
+			}
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.77.b
+		ai_chance = { base = 100 }
+		JAP = {
+		puppet = TRM
+		set_state_owner = 408
+		set_state_owner = 1246
+		set_state_owner = 409
+		set_state_owner = 560
+		set_state_owner = 562
+		set_state_owner = 637
+		set_country_flag = JAP_OWN_FAR_EAST
+		}
+		TRM = {
+		set_politics = { ruling_party = authoritarian_democrat }
+		set_cosmetic_tag = TRM_JAP
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Supporting Indonesian Independence
 	id = japan_new_event.78
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.78"}
 	title = japan_new_event.78.title
@@ -4989,14 +5068,76 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We Must Uphold Pan-Asianism
 		name = japan_new_event.78.a
 		ai_chance = { base = 100 }
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_target_east_indies"
+			set_country_flag = JAP_support_independence
+			if = {
+				limit = { country_exists = DEI }
+				if = {
+					limit = {
+						DEI = {
+							is_in_faction = no
+							is_subject = yes
+						}
+						var:DEI.overlord = {
+							OR = {
+								has_war = no
+								all_enemy_country = {
+									OR = {
+										tag = INS
+										has_war_with = GER
+									}
+								}
+							}
+						}
+					}
+					var:DEI.overlord = { country_event = japfor.455 }
+				}
+				else_if = {
+					limit = {
+						DEI = {
+							is_in_faction = no
+							is_subject = no
+							OR = {
+								has_war = no
+								all_enemy_country = {
+									OR = {
+										tag = INS
+										has_war_with = GER
+									}
+								}
+							}
+						}
+					}
+					DEI = { country_event = japfor.455 }
+				}
+				else = {
+					create_wargoal = { type = annex_everything target = DEI }
+				}
+			}
+			
+			
+			else = {
+				create_wargoal = { type = annex_everything target = var:1020.owner }
+			}
 		
+	}
+	
+	option = { #
+		name = japan_new_event.78.b
+		ai_chance = { base = 100 }
+		JAP = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = INS
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Fate of Vietnamese Administration
 	id = japan_new_event.79
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.79"}
 	title = japan_new_event.79.title
@@ -5004,14 +5145,61 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Cuong De
 		name = japan_new_event.79.a
 		ai_chance = { base = 100 }
+		VIN = {
+		set_cosmetic_tag = VIN_CUONGJAP
+		set_politics = { ruling_party = national_populist }
+		create_country_leader = {
+			name = "Cuong De"
+			picture = "gfx/leaders/VIN/Portrait_Vietnam_Cuong_De.png"
+			expire = "1959.5.17"
+			ideology = natpop_pan_asianism_subtype
+		}
+		}
+	}
+	option = { #Tran Trong Kim
+		name = japan_new_event.79.b
+		ai_chance = { base = 100 }
+		VIN = {
+		set_cosmetic_tag = VIN_NLF
+		set_politics = { ruling_party = paternal_autocrat }
+		create_country_leader = {
+				name = "Bao Dai"
+				picture = "gfx/leaders/VIN/Portrait_Vietnam_Bao_Dai.png"
+				expire = "1997.7.30"
+				ideology = pataut_pan_asianism_subtype
+			}
+		add_ideas = {
+			VIN_Tran_Trong_Kim_hog_sco
+			VIN_Tran_Van_Huu_for_sco
+			VIN_Nguyen_Van_Vinh_sec_mli
+			VIN_Phan_Huy_Quat_for_sco
+		}
+		}
+	}
+	
+	option = { #Japanese Puppet
+		name = japan_new_event.79.c
+		ai_chance = { base = 100 }
+		VIN = {
+		load_focus_tree = vin-jap-tree
+		complete_national_focus = JAPVINJAP_japanese_volunteers_coup_the_administration
 		
+		set_politics = { ruling_party = national_populist }
+		create_country_leader = {
+				name = "Yuitsu Tsuchihashi"
+				picture = "gfx/leaders/VIN/Portrait_VIN_Yuitsu_Tsuchi.png"
+				expire = "1990.10.13"
+				ideology = natpop_pan_asianism_subtype
+			}
+		set_cosmetic_tag = VIN_JAP
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Japanese Reach Out
 	id = japan_new_event.80
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.80"}
 	title = japan_new_event.80.title
@@ -5021,8 +5209,86 @@ country_event = { #
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.80.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			factor = 60
+			modifier = {
+				factor = 1.5
+				has_war = yes
+			}
+			modifier = {
+				factor = 2
+				country_exists = DEH
+				country_exists = PRF
+			}
+		}
+		JAP = { add_to_faction = BHC }
+		add_ideas = JAP_india_support
+		add_to_array = { global.asian_economic_sphere = ROOT }
+		JAP_recalculate_economic_integration = yes
+		custom_effect_tooltip = JAP_member_of_co_prosperity_sphere
+		hidden_effect = {
+			add_dynamic_modifier = { modifier = JAP_asian_economic_sphere_member }
+		}
+		if = {
+			limit = {
+				NOT = {
+					country_exists = DEH
+					country_exists = PRF
+					is_in_faction_with = FROM
+					is_guaranteed_by = FROM
+					is_subject_of = FROM
+				}
+			}
+			FROM = {
+				effect_tooltip = { give_guarantee = ROOT }
+			}
+		}
+		if = {
+			limit = { has_opinion_modifier = KR_disapproves_of_govt }
+			remove_opinion_modifier = { target = FROM modifier = KR_disapproves_of_govt }
+		}
+		if = {
+			limit = { has_opinion_modifier = KR_hates_govt }
+			remove_opinion_modifier = { target = FROM modifier = KR_hates_govt }
+		}
+		if = {
+			limit = { has_opinion_modifier = KR_outraged }
+			remove_opinion_modifier = { target = FROM modifier = KR_outraged }
+		}
+		FROM = {
+			add_opinion_modifier = { target = ROOT modifier = KR_approves_of_govt }
+			country_event = {
+				id = japfor.46
+				days = 1
+			}
+		}
 		
+	}
+	
+	option = { #Politely decline their support
+		name = japfor.45.b
+		ai_chance = {
+			factor = 40
+			
+			
+			modifier = {
+				factor = 5
+				has_idea = BHC_united_india
+			}
+			modifier = {
+				factor = 5
+				JAP = {
+					any_owned_state = { is_claim_or_core_of_ROOT = yes }
+				}
+			}
+		}
+		FROM = {
+			add_opinion_modifier = { target = ROOT modifier = KR_disapproves_of_govt }
+			country_event = {
+				id = japfor.47
+				days = 3
+			}
+		}
 	}
 }
 
