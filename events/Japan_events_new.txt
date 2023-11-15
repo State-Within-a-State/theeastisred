@@ -1,4 +1,4 @@
-add_namespace = japan_new_event
+﻿add_namespace = japan_new_event
 country_event = { #Starting Lore Event | The Sun Rises - On Shaky Grounds
 	id = japan_new_event.0
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.0"}
@@ -765,7 +765,7 @@ country_event = { #Japanese Civil War
 	set_global_flag = JAP_CW_FLAG
 		JAP = {
 		dismantle_faction = yes
-		end_puppet = KOR
+		release = KOR
 		end_puppet = TWI
 		end_puppet = TAI
 		TAI = {
@@ -4088,6 +4088,7 @@ country_event = { #1940 elections
 		
 		set_country_flag = JAP_kokumin_domei_won_in_1940_election
 		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.82
 	}
 	
 	option = { #Bin Akao
@@ -4096,6 +4097,7 @@ country_event = { #1940 elections
 			factor = 50
 			
 		}
+		load_focus_tree = japan-bin-akao
 		set_politics = {
 			ruling_party = national_populist
 		}
@@ -4157,6 +4159,7 @@ country_event = { #1940 elections
 			ideology = social_conservative
 			popularity = 0.1
 		}
+		country_event = japan_new_event.84
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Mizuno_Rentaro_hog_sco
@@ -4197,6 +4200,7 @@ country_event = { #1940 elections
 		add_to_coalition = yes
 		set_country_flag = JAP_minseito_won_in_1940_elections
 		mark_focus_tree_layout_dirty = yes
+		country_event = japan_new_event.83
 	}
 	
 	
@@ -4971,7 +4975,7 @@ country_event = { #Japan Demands Our Submission
 		name = japan_new_event.75.b
 		ai_chance = { base = 100 }
 		
-		country_event = japan_new_event.76
+		country_event = japan_new_event.81
 		}
 	}
 }
@@ -4993,17 +4997,12 @@ country_event = { #Refusal But Alliance?
 	option = { #How About No
 		name = japan_new_event.76.b
 		ai_chance = { base = 100 }
-		if = {
-			limit = {
-				tag = QIE
-			}
 		JAP = {
 			create_wargoal = {
 					type = puppet_wargoal_focus
 					target = FROM
 				}
-			}	
-		}
+			}
 	}
 }
 
@@ -5300,22 +5299,32 @@ country_event = { #The Japanese Reach Out
 	}
 }
 
-country_event = { #
+country_event = { #Refusal But Alliance
 	id = japan_new_event.81
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.81"}
-	title = japan_new_event.81.title
-	desc = japan_new_event.81.desc
+	title = japan_new_event.76.title
+	desc = japan_new_event.76.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.81.a
+		name = japan_new_event.76.a
 		ai_chance = { base = 100 }
-		
+		JAP = { add_to_faction = FROM }
+	}
+	option = { #
+		name = japan_new_event.76.b
+		ai_chance = { base = 100 }
+		JAP = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FROM
+				}
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Leading the Kokumin Domei
 	id = japan_new_event.82
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.82"}
 	title = japan_new_event.82.title
@@ -5323,40 +5332,226 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Kazami
 		name = japan_new_event.82.a
 		ai_chance = { base = 100 }
+		
+		
+		
+		
+		set_politics = {
+			ruling_party = authoritarian_democrat
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = social_nationalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Akira_Kazami_hog_ade
+			JAP_Ryuichi_Inamura_eco_tot
+			JAP_Kanichiro_Kamei_for_tot
+			JAP_Yasaburo_Shimonaka_sec_tot
+		}
+	}
+	
+	option = { #Kokumin Domei
+		name = japan_new_event.82.b
+		ai_chance = {
+			factor = 50
+			
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Adachi_Kenzo_hog_ade
+			JAP_Arita_Hachiro_for_ade
+			JAP_Horikiri_Zenbee_eco_ade
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_showa_statism_subtype
+		}
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
 		
 	}
 }
 
-country_event = { #
+country_event = { #Minseito Factionalism
 	id = japan_new_event.83
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.83"}
-	title = japan_new_event.83.title
-	desc = japan_new_event.83.desc
+	title = japan_new_event.58.title
+	desc = japan_new_event.58.desc
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = japan_new_event.83.a
+	option = { #Nagai Faction
+		name = japan_new_event.58.a
 		ai_chance = { base = 100 }
-		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = national_liberalism_subtype
+		}
+		set_politics = { ruling_party = social_liberal }
+		complete_national_focus = JAPLIB_tojnha_faction_dominance
+		set_party_name = {
+			ideology = social_liberal
+			long_name = JAP_party_minseito_one_long
+			name = JAP_party_minseito_one
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = JAP_party_minseito_two_long
+			name = JAP_party_minseito_two
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.5
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Ryutaro_Nagai_hog_sli
+			JAP_Kiyose_Ichiro_for_sli
+			JAP_Miki_Bukichi_eco_mli
+			JAP_Saito_Takao_sec_mli
+		}
+	}
+	
+	option = { #Osachi
+		name = japan_new_event.58.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = national_liberalism_subtype
+		}
+		set_politics = { ruling_party = market_liberal }
+		complete_national_focus = JAPLIB_bureaucratic_hold
+		set_party_name = {
+			ideology = social_liberal
+			long_name = JAP_party_minseito_one_long
+			name = JAP_party_minseito_one
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = JAP_party_minseito_two_long
+			name = JAP_party_minseito_two
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.2
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Hamaguchi_Osachi_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Matsumura_Kenzo_eco_mli
+			JAP_Kimura_Kozaemon_sec_mli
+		}
 	}
 }
 
 country_event = { #
 	id = japan_new_event.84
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.84"}
-	title = japan_new_event.84.title
-	desc = japan_new_event.84.desc
+	title = japan_new_event.59.title
+	desc = japan_new_event.59.desc
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = japan_new_event.84.a
+	option = { #Rentaro Faction
+		name = japan_new_event.59.a
 		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = national_conservative_subtype
+		}
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
 		
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Mizuno_Rentaro_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Suzuki_Teiichi_eco_sco
+			JAP_Kawamura_Takeji_sec_sco
+		}
+	}
+	
+	
+	option = { #Reform Faction
+		name = japan_new_event.59.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_conservative }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = conservative_populism_subtype
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_seiyukai_two_long
+			name = JAP_party_seiyukai_two
+		}
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Chikuhei_Nakajima_hog_sco
+			JAP_Ashida_Hitoshi_for_sco
+			JAP_Minoru_Togo_eco_sco
+			JAP_Tanabe_Shichiroku_sec_sco
+		}
 	}
 }
 
