@@ -3877,3 +3877,107 @@ JAP_deal_with_south_east_decision_category = {
 	
 
 }
+JAP_pan_buddha_category = {
+
+JAP_reaching_to_the_pan_buddhist_realm = {
+		icon = no_votei_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JAP
+			OR = {
+			has_completed_focus = JAPNICH_promoting_a_panbuddhist_federation
+			has_completed_focus = JAPNICH_jobukkokudo
+			has_completed_focus = JAPNICH_reach_out_to_the_buddhist_world
+			}
+			
+		}
+		
+		targets = {  BHU TIB MON NEP THM }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				is_in_faction_with = PREV
+				}
+			}
+		}
+		cost = 20
+		
+		days_remove = 20
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			country_event = japan_new_event.81
+			
+			
+			
+		}
+	}
+	
+	JAP_uniting_the_pan_buddhist_realm = {
+		icon = no_votei_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JAP
+			OR = {
+			has_completed_focus = JAPNICH_promoting_a_panbuddhist_federation
+			has_completed_focus = JAPNICH_jobukkokudo
+			has_completed_focus = JAPNICH_reach_out_to_the_buddhist_world
+			}
+			has_country_flag = JAP_unify_asia
+		}
+		
+		targets = {  BHU TIB MON NEP THM }
+		target_trigger = {
+			FROM = { exists = yes }
+			OR = {
+			is_puppet_of = PREV
+			is_in_faction_with = PREV
+			}
+			NOT = {
+				
+				has_war_with = PREV
+			
+			}
+		}
+		cost = 200
+		
+		days_remove = 300
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			annex_country = {
+				target = FROM
+				transfer_troops = yes
+			}
+			
+			every_state = {
+				limit = {
+					is_owned_by = FROM
+				}
+				add_core_of = ROOT
+				}
+			
+			
+			
+		}
+	}
+	
+
+}

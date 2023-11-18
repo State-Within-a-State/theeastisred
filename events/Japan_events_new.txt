@@ -5556,7 +5556,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Marxism With Nichirenism!?
 	id = japan_new_event.85
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.85"}
 	title = japan_new_event.85.title
@@ -5568,10 +5568,12 @@ country_event = { #
 		name = japan_new_event.85.a
 		ai_chance = { base = 100 }
 		
+		
+		
 	}
 }
 
-country_event = { #
+country_event = { #Formation of the Globalization Movement
 	id = japan_new_event.86
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.86"}
 	title = japan_new_event.86.title
@@ -5586,7 +5588,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #The True Emperor
 	id = japan_new_event.87
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.87"}
 	title = japan_new_event.87.title
@@ -5594,14 +5596,46 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Yes He is the true Emperor
 		name = japan_new_event.87.a
 		ai_chance = { base = 100 }
+		add_stability = -0.1
+		create_country_leader = {
+			name = "Kumazawa Hiromichi"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = natpop_nichiren_buddhism_subtype
+		}
+		create_country_leader = {
+			name = "Kumazawa Hiromichi"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = socdem_nichiren_buddhism_subtype
+		}
+		create_country_leader = {
+			name = "Kumazawa Hiromichi"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = radsoc_nichiren_buddhism_subtype
+		}
+		create_country_leader = {
+			name = "Kumazawa Hiromichi"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = tot_nichiren_buddhism_subtype
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.87.b
+		ai_chance = { base = 100 }
+		add_manpower = -10
+		add_stability = 0.1
 		
 	}
 }
 
-country_event = { #
+country_event = { #Establishment of a New Shogunate
 	id = japan_new_event.88
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.88"}
 	title = japan_new_event.88.title
@@ -5612,11 +5646,45 @@ country_event = { #
 	option = { #
 		name = japan_new_event.88.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+		has_country_flag = JAP_puppet_asia
+		}
+		set_cosmetic_tag = JAP_NICHIREN_SHOGUN
+	}
+	option = { #
+		name = japan_new_event.88.b
+		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = JAP_puppet_asia
+		}
+		set_cosmetic_tag = JAP_NICHIREN_SHOGUN_2
+	}
+	option = { #
+		name = japan_new_event.88.c
+		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = JAP_unify_asia
+		}
+		set_cosmetic_tag = JAP_PANTHERA_2
+		every_state = {
+		add_core_of = JAP
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.88.d
+		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = JAP_unify_asia
+		}
+		set_cosmetic_tag = JAP_PANTHERA_1
+		every_state = {
+		add_core_of = JAP
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Mount Fuji Rumbles
 	id = japan_new_event.89
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.89"}
 	title = japan_new_event.89.title
@@ -5627,11 +5695,11 @@ country_event = { #
 	option = { #
 		name = japan_new_event.89.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 100
 	}
 }
 
-country_event = { #
+country_event = { #The Future Under the Crimson Empire
 	id = japan_new_event.90
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.90"}
 	title = japan_new_event.90.title
@@ -5642,7 +5710,84 @@ country_event = { #
 	option = { #
 		name = japan_new_event.90.a
 		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Giro_Senoo_hog_rso
+			JAP_Tsunesaburo_Makiguchi_for_rso
+			JAP_Kenji_Miyazawa_eco_rso
+			JAP_Yasuhide_Kurihara_sec_tot
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.90.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_Soka_Gakkai
+		set_politics = { ruling_party = totalist }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_nichiren_buddhism_subtype
+		}
 		
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_Soka_Gakkai_party_long
+			name = JAP_Soka_Gakkai_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_Soka_Gakkai_party_long
+			name = JAP_Soka_Gakkai_party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_Soka_Gakkai_party_long
+			name = JAP_Soka_Gakkai_party
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Tsunesaburo_Makiguchi_hog_tot
+			JAP_Tsunesaburo_Makiguchi_for_rso
+			JAP_Kenji_Miyazawa_eco_rso
+			JAP_Yasuhide_Kurihara_sec_tot
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.90.c
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_Soka_Gakkai
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = socdem_nichiren_buddhism_subtype
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_Soka_Gakkai_party_long
+			name = JAP_Soka_Gakkai_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_Soka_Gakkai_party_long
+			name = JAP_Soka_Gakkai_party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_Soka_Gakkai_party_long
+			name = JAP_Soka_Gakkai_party
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Josei_Toda_hog_sde
+			JAP_Tsunesaburo_Makiguchi_for_rso
+			JAP_Kenji_Miyazawa_eco_rso
+			JAP_Yasuhide_Kurihara_sec_tot
+		}
 	}
 }
 
