@@ -2819,6 +2819,57 @@ country_event = { #Kozaburo Ideology Picker
 		}
 		
 	}
+	
+	
+	option = { #Totalist Kang Youwei
+		name = japan_new_event.43.d
+		ai_chance = { base = 100 }
+		
+		
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_datong_shu_subtype
+		}
+		
+	}
+	
+	option = { #Anarchism
+		name = japan_new_event.43.e
+		ai_chance = { base = 100 }
+		
+		
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		
+		
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_illegalism_subtype
+		}
+		
+	}
 }
 
 country_event = { #
@@ -2954,6 +3005,7 @@ country_event = { #A Twist in the Coup
 			expire = "1965.1.1"
 			ideology = natpop_state_shintoism_subtype
 		}
+		set_cosmetic_tag = JAP_KOZABURO
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Kozaburo_Tachibana_hog_npo
@@ -5852,7 +5904,7 @@ country_event = { #Our Outlook Onto the World
 	
 }
 
-country_event = { #
+country_event = { #Question of Our Future
 	id = japan_new_event.92
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.92"}
 	title = japan_new_event.92.title
@@ -5862,6 +5914,41 @@ country_event = { #
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.92.a
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_Hakko_Ichui
+		JAP = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PREV
+			}
+		}
+		every_state = {
+		add_core_of = JAP
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.92.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_Tachi_Asia
+		every_state = {
+			limit = {
+			is_on_continent = asia
+			is_on_continent = india
+			}
+		add_core_of = JAP
+		}
+		
+		JAP = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PREV
+			}
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.92.c
 		ai_chance = { base = 100 }
 		
 	}
