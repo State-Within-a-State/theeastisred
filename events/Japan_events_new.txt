@@ -5647,7 +5647,9 @@ country_event = { #Establishment of a New Shogunate
 		name = japan_new_event.88.a
 		ai_chance = { base = 100 }
 		trigger = {
-		has_country_flag = JAP_puppet_asia
+			NOT = {
+				has_country_flag = JAP_Gokkai
+			}
 		}
 		set_cosmetic_tag = JAP_NICHIREN_SHOGUN
 	}
@@ -5655,7 +5657,9 @@ country_event = { #Establishment of a New Shogunate
 		name = japan_new_event.88.b
 		ai_chance = { base = 100 }
 		trigger = {
-		has_country_flag = JAP_puppet_asia
+			NOT = {
+				has_country_flag = JAP_Gokkai
+			}
 		}
 		set_cosmetic_tag = JAP_NICHIREN_SHOGUN_2
 	}
@@ -5663,7 +5667,11 @@ country_event = { #Establishment of a New Shogunate
 		name = japan_new_event.88.c
 		ai_chance = { base = 100 }
 		trigger = {
-		has_country_flag = JAP_unify_asia
+			NOT = {
+				has_country_flag = JAP_Gokkai
+				has_country_flag = JAP_liberate_nichiren_asia
+			}
+			
 		}
 		set_cosmetic_tag = JAP_PANTHERA_2
 		every_state = {
@@ -5675,9 +5683,25 @@ country_event = { #Establishment of a New Shogunate
 		name = japan_new_event.88.d
 		ai_chance = { base = 100 }
 		trigger = {
-		has_country_flag = JAP_unify_asia
+			NOT = {
+				has_country_flag = JAP_Gokkai
+				has_country_flag = JAP_liberate_nichiren_asia
+			}
 		}
 		set_cosmetic_tag = JAP_PANTHERA_1
+		every_state = {
+		add_core_of = JAP
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.88.e
+		ai_chance = { base = 100 }
+		trigger = {
+		
+		has_country_flag = JAP_Gokkai
+		}
+		set_cosmetic_tag = JAP_SOKA_GAKKAI_WORLD
 		every_state = {
 		add_core_of = JAP
 		}
@@ -5710,6 +5734,7 @@ country_event = { #The Future Under the Crimson Empire
 	option = { #
 		name = japan_new_event.90.a
 		ai_chance = { base = 100 }
+		country_event = japan_new_event.88
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Giro_Senoo_hog_rso
@@ -5723,7 +5748,9 @@ country_event = { #The Future Under the Crimson Empire
 		name = japan_new_event.90.b
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = JAP_Soka_Gakkai
+		set_country_flag = JAP_Gokkai
 		set_politics = { ruling_party = totalist }
+		country_event = japan_new_event.88
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -5758,8 +5785,10 @@ country_event = { #The Future Under the Crimson Empire
 	option = { #
 		name = japan_new_event.90.c
 		ai_chance = { base = 100 }
+		set_country_flag = JAP_Gokkai
 		set_cosmetic_tag = JAP_Soka_Gakkai
 		set_politics = { ruling_party = social_democrat }
+		country_event = japan_new_event.88
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -5791,7 +5820,7 @@ country_event = { #The Future Under the Crimson Empire
 	}
 }
 
-country_event = { #
+country_event = { #Our Outlook Onto the World
 	id = japan_new_event.91
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.91"}
 	title = japan_new_event.91.title
@@ -5799,11 +5828,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We Shall Liberate the Peoples of Asia
 		name = japan_new_event.91.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = JAP_liberate_nichiren_asia
+		dismantle_faction = yes
+		create_faction = JAP_PAN_THERA
 	}
+	option = { #The World Shall Bow Down to the Buddha and the Emperor!
+		name = japan_new_event.91.b
+		ai_chance = { base = 100 }
+		set_country_flag = JAP_uniting_world
+		every_country = {
+		JAP = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PREV
+			}
+		}	
+		
+		}
+	}
+	
 }
 
 country_event = { #

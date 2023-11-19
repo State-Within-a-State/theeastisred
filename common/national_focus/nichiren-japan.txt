@@ -9,7 +9,6 @@ focus_tree = {
 		}
 	}
 	
-	shared_focus = JAPFOR_japansplaceintheworld
 	shared_focus = JAPARMY_jakuniku_kyoshoku
 	shared_focus = JAPECON_recovering_from_black_monday
 	
@@ -120,11 +119,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = JAPNICH_toarenmeiundo  }
+		prerequisite = { focus = JAPNICH_toarenmeiundo focus = JAPNICH_relaying_the_gohonzon } prerequisite = { focus = JAPNICH_encourage_nichiren_shoshu  }
 		completion_reward = {
-		unlock_decision_category_tooltip = JAP_pan_buddha_category
-		dismantle_faction = yes
-		create_faction = JAP_PAN_THERA
+		country_event = japan_new_event.91
 		}
 	}
 
@@ -160,11 +157,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPNICH_relaying_the_gohonzon  } prerequisite = { focus = JAPNICH_encourage_nichiren_shoshu  }
+		available = {
+		has_completed_focus = JAPNICH_reach_out_to_the_buddhist_world
+		has_country_flag = JAP_liberate_nichiren_asia
+		}
+		bypass = {
+			has_country_flag = JAP_uniting_world
+		}
+		prerequisite = { focus = JAPNICH_toarenmeiundo focus = JAPNICH_relaying_the_gohonzon  } prerequisite = { focus = JAPNICH_encourage_nichiren_shoshu  }
 		completion_reward = {
-		unlock_decision_category_tooltip = JAP_pan_buddha_category
-		dismantle_faction = yes
-		create_faction = JAP_PAN_THERA
+		unlock_decision_tooltip = JAP_uniting_the_pan_buddhist_realm
+		add_idea = JAP_save_world_buddha
 		}
 	}
 
@@ -278,6 +281,7 @@ focus_tree = {
 		prerequisite = { focus = JAPNICH_the_eternal_shogun focus = JAPNICH_ethnic_harmony focus = JAPNICH_zen_imperialism focus = JAPNICH_establish_righteous_temples } 
 		completion_reward = {
 		add_war_support = 0.1
+		country_event = japan_new_event.88
 		}
 	}
 
@@ -353,6 +357,7 @@ focus_tree = {
 		mutually_exclusive = { focus = JAPNICH_the_new_shogun  }
 		completion_reward = {
 		country_event = japan_new_event.87
+		add_stability = 0.5
 		}
 	}
 
@@ -369,7 +374,8 @@ focus_tree = {
 		prerequisite = { focus = JAPNICH_stab_the_socialist_snakes focus = JAPNICH_pistols_to_the_degenerates focus = JAPNICH_sekai_sai_shu_senron  } prerequisite = { focus = JAPNICH_economic_agrarianism  }
 		mutually_exclusive = { focus = JAPNICH_the_emperor_all_mighty  }
 		completion_reward = {
-		country_event = japan_new_event.88
+		country_event = japan_new_event.87
+		add_war_support = 0.5
 		}
 	}
 
@@ -483,7 +489,7 @@ focus_tree = {
 		completion_reward = {
 		swap_ideas = {
 		remove_idea = JAP_zaibatsu_nationalization_1
-		add_ideas = JAP_zaibatsu_nationalization_2
+		add_idea = JAP_zaibatsu_nationalization_2
 		}
 		}
 	}
@@ -502,7 +508,7 @@ focus_tree = {
 		completion_reward = {
 		swap_ideas = {
 		remove_idea = JAP_save_peasants
-		add_ideas = JAP_save_peasants_1
+		add_idea = JAP_save_peasants_1
 		}
 		}
 	}
@@ -568,9 +574,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPNICH_mount_fuji_rumbles  }
 		completion_reward = {
-		unlock_decision_category_tooltip = JAP_pan_buddha_category
-		dismantle_faction = yes
-		create_faction = JAP_PAN_THERA
+		every_country = {
+		JAP = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PREV
+			}
+		}	
+		
+		}
+		every_state = {
+		add_core_of = JAP
+		}
+		country_event = japan_new_event.88
 		}
 	}
 
