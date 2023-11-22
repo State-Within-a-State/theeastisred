@@ -10,6 +10,7 @@ focus_tree = {
 	}
 	shared_focus = JAPARMY_jakuniku_kyoshoku
 	shared_focus = JAPECON_recovering_from_black_monday
+	shared_focus = JAPFOR_japansplaceintheworld
 	
 	#Legacy of the Iljinhoe
 	focus = {
@@ -22,6 +23,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_path_of_war  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#The Path of War
@@ -35,6 +39,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_uchida_faction  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Uchida Faction
@@ -46,6 +53,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_black_dragon_rises  }
 		mutually_exclusive = { focus = JAP_BLACKDRAG_oomoto_faction_victory  }
@@ -61,6 +71,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#Denouncing the Liberalist Infiltration
@@ -74,6 +87,24 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_path_of_war  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = market_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = -1
+		}
+		}
 	}
 
 	#Adhering to Pan-Asianism
@@ -87,9 +118,14 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_path_of_war  }
+		completion_reward = {
+		add_ideas = {
+		JAP_pan_asian_realization
+		}
+		}
 	}
 
-	#The China Debate
+	#The China Committee
 	focus = {
 		id = JAP_BLACKDRAG_the_china_debate
 		icon = GFX_JAP_BLACKDRAG_the_china_debate-248360
@@ -100,6 +136,9 @@ focus_tree = {
 			FOCUS_FILTER_FRA_OCCUPATION_COST
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_denouncing_the_liberalist_infiltration  } prerequisite = { focus = JAP_BLACKDRAG_adhering_to_panasianism  }
+		completion_reward = {
+		country_event = japan_new_event.93
+		}
 	}
 
 	#Strengthen Oomto Ties
@@ -113,6 +152,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_denouncing_the_liberalist_infiltration  }
+		completion_reward = {
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.1
+		}
+		add_war_support = 0.05
+		}
 	}
 
 	#Further Korean Integration
@@ -126,6 +172,13 @@ focus_tree = {
 			FOCUS_FILTER_FRA_OCCUPATION_COST
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_legacy_of_the_iljinhoe  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_KOR_INT
+				value = 30
+				tooltip = JAP_KOR_INT_increase_tt
+			}
+		}
 	}
 
 	#Touyama Takes the Reigns
@@ -137,6 +190,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_china_debate  } prerequisite = { focus = JAP_BLACKDRAG_strengthen_oomto_ties  } prerequisite = { focus = JAP_BLACKDRAG_further_korean_integration  }
 	}
@@ -152,6 +208,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_OCCUPATION_COST
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_touyama_takes_the_reigns  }
+		completion_reward = {
+		add_ideas = {
+		JAP_dongak
+		}
+		}
 	}
 
 	#Uphold Article 3
@@ -165,6 +226,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_touyama_takes_the_reigns  }
+		completion_reward = {
+		add_war_support = 0.15
+		add_stability = 0.015
+		}
 	}
 
 	#Spirit of the Satsuma Rebellion
@@ -178,6 +243,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_legacy_of_the_donghak_rebellion  } prerequisite = { focus = JAP_BLACKDRAG_uphold_article_3  }
+		completion_reward = {
+		add_ideas = {
+		JAP_imperial_bortherhood
+		}
+		}
 	}
 
 	#Question of Korean Guidance
@@ -191,6 +261,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_legacy_of_the_donghak_rebellion  } prerequisite = { focus = JAP_BLACKDRAG_uphold_article_3  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_KOR_INT
+				value = 20
+				tooltip = JAP_KOR_INT_increase_tt
+			}
+		}
 	}
 
 	#A Fight Against Western Colonialism
@@ -204,6 +281,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_legacy_of_the_donghak_rebellion  } prerequisite = { focus = JAP_BLACKDRAG_uphold_article_3  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Reformed Nationalism!?
@@ -217,6 +297,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_spirit_of_the_satsuma_rebellion  } prerequisite = { focus = JAP_BLACKDRAG_question_of_korean_guidance  } prerequisite = { focus = JAP_BLACKDRAG_a_fight_against_western_colonialism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 1
+		}
+		add_ideas = {
+		JAP_new_nationalism
+		}
+		}
 	}
 
 	#Pan-Asianist Expansion
@@ -230,6 +319,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_black_dragon_rises  }
+		completion_reward = {
+		country_event = japan_new_event.74
+		}
 	}
 
 	#Unitary State
@@ -238,7 +330,7 @@ focus_tree = {
 		icon = GFX_JAP_BLACKDRAG_unitary_state-248360
 		x = 10
 		y = 3
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
@@ -252,7 +344,7 @@ focus_tree = {
 		icon = GFX_JAP_BLACKDRAG_federalist_path-248360
 		x = 12
 		y = 3
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
@@ -260,31 +352,7 @@ focus_tree = {
 		mutually_exclusive = { focus = JAP_BLACKDRAG_unitary_state  }
 	}
 
-	#Secure the Far East
-	focus = {
-		id = JAP_BLACKDRAG_secure_the_far_east
-		icon = GFX_JAP_BLACKDRAG_secure_the_far_east-248360
-		x = 11
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		prerequisite = { focus = JAP_BLACKDRAG_unitary_state  focus = JAP_BLACKDRAG_federalist_path  }
-	}
-
-	#Southern Thrust
-	focus = {
-		id = JAP_BLACKDRAG_southern_thrust
-		icon = GFX_JAP_BLACKDRAG_southern_thrust-248360
-		x = 11
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		prerequisite = { focus = JAP_BLACKDRAG_secure_the_far_east  }
-	}
+	
 
 	#Japanese-Korean-Mongolian Federation
 	focus = {
@@ -296,8 +364,26 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_BLACKDRAG_southern_thrust  }
+		
+		prerequisite = { focus = JAP_BLACKDRAG_unitary_state  }
 		mutually_exclusive = { focus = JAP_BLACKDRAG_secure_pan_asia  } mutually_exclusive = { focus = JAP_BLACKDRAG_reach_the_8_corners_of_the_world  }
+		completion_reward = {
+		if = {
+			limit = {
+				has_completed_focus = JAP_BLACKDRAG_uchida_faction
+			}
+			JAP_mongolia_cores = yes
+			set_cosmetic_tag = JAP_KOREA_MONGOLIA_JAPAN
+		}
+		
+		else_if = {
+			limit = {
+				has_completed_focus = JAP_BLACKDRAG_oomoto_faction_victory
+			}
+			set_cosmetic_tag = JAP_MONGOL_EMPIRE
+			JAP_mongolia_empire_cores = yes
+		}
+		}
 	}
 
 	#Secure Pan Asia
@@ -310,8 +396,26 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_BLACKDRAG_southern_thrust  }
+		prerequisite = { focus = JAP_BLACKDRAG_unitary_state  }
 		mutually_exclusive = { focus = JAP_BLACKDRAG_japanesekoreanmongolian_federation  } mutually_exclusive = { focus = JAP_BLACKDRAG_reach_the_8_corners_of_the_world  }
+		completion_reward = {
+		every_state = {
+			limit = {
+				is_on_continent = asia
+			}
+			JAP = {
+				add_state_core = PREV
+			}
+		}
+		every_state = {
+			limit = {
+				is_on_continent = india
+			}
+			JAP = {
+				add_state_core = PREV
+			}
+		}
+		}
 	}
 
 	#Reach the 8 Corners of the World
@@ -324,8 +428,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_BLACKDRAG_southern_thrust  }
+		available = {
+		has_completed_focus = JAP_BLACKDRAG_oomoto_faction_victory
+		}
+		prerequisite = { focus = JAP_BLACKDRAG_unitary_state  }
 		mutually_exclusive = { focus = JAP_BLACKDRAG_japanesekoreanmongolian_federation  } mutually_exclusive = { focus = JAP_BLACKDRAG_secure_pan_asia  }
+		completion_reward = {
+		set_cosmetic_tag = JAP_oomoto_world
+		every_state = {
+			
+			JAP = {
+				add_state_core = PREV
+			}
+		}
+		}
 	}
 
 	#Oomoto Faction Victory
@@ -337,6 +453,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_black_dragon_rises  }
 		mutually_exclusive = { focus = JAP_BLACKDRAG_uchida_faction  }
@@ -353,6 +472,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_oomoto_faction_victory  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = -0.25
+		}
 	}
 
 	#Esperanto Education
@@ -366,6 +489,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_path_of_peace  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_esperanto
+		}
+		}
 	}
 
 	#Revive the Dainippon Shusaikai
@@ -379,6 +507,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_path_of_peace  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Urbanization Program
@@ -392,6 +523,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_esperanto_education  } prerequisite = { focus = JAP_BLACKDRAG_revive_the_dainippon_shusaikai  }
+		completion_reward = {
+		add_ideas = {
+		JAP_urbanization_program
+		}
+		}
 	}
 
 	#Work With Touyama
@@ -405,6 +541,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_esperanto_education  } prerequisite = { focus = JAP_BLACKDRAG_revive_the_dainippon_shusaikai  }
+		completion_reward = {
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.1
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.1
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#The Taisho Restoration
@@ -418,6 +568,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_esperanto_education  } prerequisite = { focus = JAP_BLACKDRAG_revive_the_dainippon_shusaikai  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Denounce European Imperialism
@@ -431,6 +584,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_the_taisho_restoration  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Centralised Under the Emperor
@@ -444,6 +600,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_work_with_touyama  } prerequisite = { focus = JAP_BLACKDRAG_the_taisho_restoration  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_nationalism
+		}
+		}
 	}
 
 	#Humanity & Good Will
@@ -457,6 +618,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_urbanization_program  } prerequisite = { focus = JAP_BLACKDRAG_work_with_touyama  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_humanity
+		}
+		}
 	}
 
 	#Form the Japan-Spiritualist Association
@@ -470,6 +636,23 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_centralised_under_the_emperor  } prerequisite = { focus = JAP_BLACKDRAG_humanitygoodwill  }
+		completion_reward = {
+			create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = spiritualism_subtype
+			}
+			add_ideas = {
+			JAP_spiritualist_association
+			}
+			
+			swap_ideas = {
+			remove_idea = JAP_Ikki_Kita_eco_tot
+			add_idea = JAP_Morihei_Ueshiba_eco_npo
+			}
+			
+		}
 	}
 
 	#Promote the Pan-Asia Model
@@ -483,6 +666,11 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_denounce_european_imperialism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_pan_asian_realization
+		}
+		}
 	}
 
 	#Creation of the Sacred Showa Society
@@ -496,6 +684,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_form_the_japanspiritualist_association  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Move Forward For Humanity
@@ -509,6 +700,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_form_the_japanspiritualist_association  } prerequisite = { focus = JAP_BLACKDRAG_promote_the_panasia_model  }
+		completion_reward = {
+		add_stability = 0.25
+		swap_ideas = {
+		remove_idea = JAP_new_humanity
+		add_idea = JAP_new_humanity_1
+		}
+		}
 	}
 
 	#New National Moralism
@@ -522,6 +720,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_creation_of_the_sacred_showa_society  } prerequisite = { focus = JAP_BLACKDRAG_move_forward_for_humanity  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_national_moralism
+		}
+		}
 	}
 
 }

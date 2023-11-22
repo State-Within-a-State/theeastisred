@@ -2929,12 +2929,13 @@ country_event = { #A Twist in the Coup
 		name = japan_new_event.46.b
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = JAP_black_dragon
-		
+		complete_national_focus = JAP_BLACKDRAG_the_black_dragon_rises
 		set_party_name = {
 			ideology = national_populist
 			long_name = JAP_party_genyosha_long
 			name = JAP_party_genyosha
 		}
+		country_event = japan_new_event.47
 		set_party_name = {
 			ideology = paternal_autocrat
 			long_name = JAP_party_genyosha_long
@@ -3029,6 +3030,7 @@ country_event = { #Leading the Genyosha
 		name = japan_new_event.47.a
 		ai_chance = { base = 100 }
 		set_country_flag = black_dragon_death
+		complete_national_focus = JAP_BLACKDRAG_uchida_faction
 	}
 	
 	option = { #Oomoto
@@ -3068,6 +3070,7 @@ country_event = { #Leading the Genyosha
 			expire = "1965.1.1"
 			ideology = fundementalism_subtype
 		}
+		complete_national_focus = JAP_BLACKDRAG_oomoto_faction_victory
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Onisaburo_Deguchi_hog_npo
@@ -3083,6 +3086,11 @@ country_event = { #Death of Ryohei Uchida
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.48"}
 	title = japan_new_event.48.title
 	desc = japan_new_event.48.desc
+	immediate = {
+	hidden_effect = {
+	complete_national_focus = JAP_BLACKDRAG_touyama_takes_the_reigns
+	}
+	}
 	#picture = 
 	trigger = {
 	has_country_flag = black_dragon_death
@@ -3109,6 +3117,7 @@ country_event = { #Death of Ryohei Uchida
 	option = { #
 		name = japan_new_event.48.b
 		ai_chance = { base = 100 }
+		
 		set_cosmetic_tag = JAP_roerich
 		create_country_leader = {
 			name = "Hirohito"
@@ -3124,6 +3133,8 @@ country_event = { #Death of Ryohei Uchida
 			JAP_Yoshio_Kodama_sec_npo
 		}
 	}
+	
+	
 }
 
 country_event = { #Failed Restorationist Coup
@@ -4974,6 +4985,11 @@ country_event = { #Japan's Place In Asia
 	option = { #We Shall Liberate Asia
 		name = japan_new_event.74.a
 		ai_chance = { base = 100 }
+		trigger = {
+		NOT = {
+		has_completed_focus = JAP_BLACKDRAG_panasianist_expansion
+		}
+		}
 		set_country_flag = JAP_puppet_asia
 		
 	}
@@ -5001,6 +5017,28 @@ country_event = { #Japan's Place In Asia
 				add_state_claim = PREV
 			}
 		}
+	}
+	
+	option = { #We Shall Liberate Asia
+		name = japan_new_event.74.a
+		ai_chance = { base = 100 }
+		trigger = {
+		has_completed_focus = JAP_BLACKDRAG_panasianist_expansion
+		}
+		set_country_flag = JAP_puppet_asia
+		complete_national_focus = JAP_BLACKDRAG_federalist_path
+		
+	}
+	
+	option = { #We Shall Liberate Asia
+		name = japan_new_event.74.b
+		ai_chance = { base = 100 }
+		trigger = {
+		has_completed_focus = JAP_BLACKDRAG_panasianist_expansion
+		}
+		set_country_flag = JAP_unify_asia
+		complete_national_focus = JAP_BLACKDRAG_unitary_state
+		
 	}
 }
 
@@ -5954,7 +5992,7 @@ country_event = { #Question of Our Future
 	}
 }
 
-country_event = { #
+country_event = { #Formation of the China Committee
 	id = japan_new_event.93
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.93"}
 	title = japan_new_event.93.title
@@ -5962,10 +6000,74 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Align China Warlord
 		name = japan_new_event.93.a
 		ai_chance = { base = 100 }
+		trigger = {
+			NOT = {
+				has_completed_focus = JAP_BLACKDRAG_unitary_state
+			}
+		}
+		set_country_flag = JAP_destabilize_the_dragon
+		add_political_power = -100
 		
+	}
+	
+	option = { #
+		name = japan_new_event.93.b
+		ai_chance = { base = 100 }
+		add_political_power = 100
+		add_opinion_modifier = {
+				target = QIE
+				modifier = faction_traitor
+			}
+		hidden_effect = {
+		add_opinion_modifier = {
+				target = FNG
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = SHX
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = SQI
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = ANQ
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = LEP
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = CHI
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = GXC
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = HNN
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = YUN
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = SZC
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = XSM
+				modifier = faction_traitor
+			}
+		}
+			
 	}
 }
 
