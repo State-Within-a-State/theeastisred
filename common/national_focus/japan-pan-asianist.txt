@@ -9,6 +9,8 @@ focus_tree = {
 		}
 	}
 	shared_focus = JAPFOR_japansplaceintheworld
+	shared_focus = JAPARMY_jakuniku_kyoshoku
+	shared_focus = JAPECON_recovering_from_black_monday
 	#Pan-Asianist Takeover
 	focus = {
 		id = JAPPAN_panasianist_takeover
@@ -18,6 +20,9 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -45,6 +50,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPPAN_support_the_red_emperor  }
+		completion_reward = {
+		country_event = japan_new_event.94
+		}
 	}
 
 	#Socialist Evolution!
@@ -58,6 +66,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPPAN_breaking_the_marx_spectre  } prerequisite = { focus = JAPPAN_the_showa_rises_for_national_salvation  } prerequisite = { focus = JAPPAN_embrace_the_nichirenists  }
+		completion_reward = {
+		add_ideas = {
+		JAP_socialist_evolution
+		}
+		}
 	}
 
 	#Purging the Nation of the Impure
@@ -71,6 +84,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPPAN_pronouncing_the_new_kokutairon  } prerequisite = { focus = JAPPAN_imperialism_used_for_socialism  } prerequisite = { focus = JAPPAN_socialistevolution  }
+		completion_reward = {
+		add_ideas = {
+		JAP_impure_purge
+		}
+		}
 	}
 
 	#Internal Democracy
@@ -84,6 +102,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPPAN_purging_the_nation_of_the_impure  }
+		completion_reward = {
+		add_stability = 0.15
+		}
 	}
 
 	#Support the Red Emperor
@@ -96,7 +117,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		
 		prerequisite = { focus = JAPPAN_purging_the_nation_of_the_impure  }
+		completion_reward = {
+		country_event = japan_new_event.95
+		}
 	}
 
 	#Pronouncing the New Kokutairon
@@ -110,6 +135,13 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPPAN_breaking_the_marx_spectre  } prerequisite = { focus = JAPPAN_the_showa_rises_for_national_salvation  } prerequisite = { focus = JAPPAN_embrace_the_nichirenists  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.075
+		}
+		}
 	}
 
 	#The Showa Rises For National Salvation
@@ -123,6 +155,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPPAN_pure_socialism_has_arrived  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Embrace the Nichirenists
@@ -136,6 +171,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPPAN_pure_socialism_has_arrived  }
+		completion_reward = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Imperialism Used For Socialism
@@ -149,6 +190,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPPAN_breaking_the_marx_spectre  } prerequisite = { focus = JAPPAN_the_showa_rises_for_national_salvation  } prerequisite = { focus = JAPPAN_embrace_the_nichirenists  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		add_political_power = 150
+		}
 	}
 
 	#Breaking the Marx Spectre
@@ -162,6 +210,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPPAN_pure_socialism_has_arrived  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Our Divine Ruling In the World
@@ -175,6 +228,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPPAN_start_the_panasia_project  }
+		completion_reward = {
+		country_event = japan_new_event.96
+		}
 	}
 
 	#The Zaibatsu Beast Crashes To the Ground
@@ -188,6 +244,30 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPPAN_panasianist_takeover  }
+		completion_reward = {
+		set_country_flag = JAP_smash_zaibatsu
+		set_variable = {
+				var = zaibatsu_nationalization
+				value = 0
+				tooltip = zaibatsu_nationalization_tt
+			}
+		set_variable = {
+				var = sumitomo_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsui_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsubishi_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = yasuda_nationalization
+				value = 0
+			}
+		}
 	}
 
 	#Economic Socialism
@@ -201,6 +281,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPPAN_the_zaibatsu_beast_crashes_to_the_ground  }
+		completion_reward = {
+		add_ideas = {
+		JAP_economic_socialism
+		}
+		}
 	}
 
 	#Initiate Land Reforms
@@ -214,20 +299,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPPAN_the_zaibatsu_beast_crashes_to_the_ground  }
+		completion_reward = {
+		add_ideas = {
+		JAP_agrarian_reforms
+		}
+		}
 	}
 
-	#Pan-Asian Economic Affairs
-	focus = {
-		id = JAPPAN_panasian_economic_affairs
-		icon = GFX_JAPPAN_panasian_economic_affairs-248360
-		x = 9
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = JAPPAN_economic_socialism  } prerequisite = { focus = JAPPAN_initiate_land_reforms  }
-	}
+	
 
 	#Have the Insane Taken Power?
 	focus = {
@@ -235,9 +314,12 @@ focus_tree = {
 		icon = GFX_JAPPAN_havetheinsanetakenpower-248360
 		x = 14
 		y = 3
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPPAN_panasianist_takeover  }
 	}
@@ -253,6 +335,21 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPPAN_havetheinsanetakenpower  }
+		completion_reward = {
+		add_political_power = 300
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.1
+		}
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.1
+		}
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		}
 	}
 
 	#The Way of Socialism
@@ -266,6 +363,27 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPPAN_havetheinsanetakenpower  }
+		completion_reward = {
+		add_political_power = 300
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		}
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		set_temp_variable = { coalition_partner_var = token:syndicalist }
+		add_to_coalition = yes
+		}
 	}
 
 	#Future of the Shumei Government
@@ -279,6 +397,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPPAN_birth_of_the_east_asia_economic_research_bureau  } prerequisite = { focus = JAPPAN_totalwarfullspeedahead  }
+		completion_reward = {
+		country_event = japan_new_event.97
+		}
 	}
 
 	#The Drums of War Sound
@@ -292,6 +413,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPPAN_a_battle_between_east_and_west  }
+		completion_reward = {
+		add_war_support = 0.25
+		}
 	}
 
 	#National Mobilization Law
@@ -305,6 +429,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPPAN_the_drums_of_war_sound  }
+		completion_reward = {
+		add_ideas = tot_economic_mobilisation
+		}
 	}
 
 	#Are you Ready!?
@@ -318,6 +445,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPPAN_the_drums_of_war_sound  }
+		completion_reward = {
+		add_ideas = {
+		JAP_are_ya_ready
+		}
+		}
 	}
 
 	#Why Should We Extremists be Enemies?
@@ -331,6 +463,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPPAN_nationalsocialism_for_japan  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.5
+		}
+		}
 	}
 
 	#Birth of the East Asia Economic Research Bureau
@@ -344,6 +486,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPPAN_whyshouldweextremistsbeenemies  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#TOTAL WAR FULL SPEED AHEAD!!!
@@ -357,6 +502,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPPAN_national_mobilization_law  } prerequisite = { focus = JAPPAN_areyouready  }
+		completion_reward = {
+		add_ideas = {
+		JAP_are_ya_ready_war
+		}
+		}
 	}
 
 	#Found the Spiritual Research Committee
@@ -370,6 +520,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPPAN_nationalist_alignment  } prerequisite = { focus = JAPPAN_the_way_of_socialism  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Social Threefolding Policies
@@ -383,6 +536,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPPAN_nationalist_alignment  } prerequisite = { focus = JAPPAN_the_way_of_socialism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_social_folkdings
+		}
+		}
 	}
 
 	#Purge the Liberals
@@ -396,6 +554,21 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPPAN_nationalist_alignment  } prerequisite = { focus = JAPPAN_the_way_of_socialism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = market_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = -1
+		}
+		remove_idea = JAP_red_army_resistance_1
+		}
 	}
 
 	#A Front for Radical Reforms
@@ -409,6 +582,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPPAN_found_the_spiritual_research_committee  } prerequisite = { focus = JAPPAN_social_threefolding_policies  } prerequisite = { focus = JAPPAN_purge_the_liberals  }
+		completion_reward = {
+		country_event = japan_new_event.98
+		}
 	}
 
 	#A Battle Between East And West
@@ -422,6 +598,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPPAN_a_front_for_radical_reforms  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Support the Student Unions
@@ -435,6 +614,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPPAN_a_front_for_radical_reforms  }
+		completion_reward = {
+		add_ideas = {
+		JAP_student_unions
+		}
+		}
 	}
 
 	#National-Socialism For Japan
@@ -448,6 +632,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPPAN_support_the_student_unions  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist 
+		popularity = 0.1
+		}
+		add_political_power = 50
+		
+		}
 	}
 
 	#Merely an Imperial Organ
@@ -460,7 +652,22 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_completed_focus = JAPPAN_question_meiji
+		}
 		prerequisite = { focus = JAPPAN_support_the_red_emperor  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_Kita_Ikki_hog_tot
+		add_idea = JAP_Kametaro_Mitsukawa_hog_tot
+		}
+		create_country_leader = {
+			name = "Ikki Kita"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kita_Ikki.png"
+			expire = "1965.1.1"
+			ideology = ikki_kita_thought_subtype
+		}
+		}
 	}
 
 	#Social 'Democracy' Renewed For Japan
@@ -474,6 +681,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPPAN_internal_democracy  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		}
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		}
 	}
 
 	#Implement Universal Suffrage
@@ -487,6 +702,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPPAN_socialdemocracyrenewedforjapan  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#The True Kokutai
@@ -500,6 +718,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPPAN_question_meiji  } prerequisite = { focus = JAPPAN_merely_an_imperial_organ  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		add_stability = 0.15
+		}
 	}
 
 	#Start the Pan-Asia Project
@@ -513,6 +738,10 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPPAN_implement_universal_suffrage  } prerequisite = { focus = JAPPAN_the_true_kokutai  }
+		completion_reward = {
+		set_cosmetic_tag = JAP_KITA_ASIA
+		unlock_decision_category_tooltip = JAP_pan_asia_program_decision_category
+		}
 	}
 
 }
