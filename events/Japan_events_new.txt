@@ -2156,7 +2156,7 @@ country_event = { #The Kokuhonsha & The Sakurakai
 			long_name = JAP_party_kokuhonsha_long
 			name = JAP_party_kokuhonsha
 		}
-		
+		complete_national_focus = JAPARAKI_arakissuccess
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -2168,6 +2168,7 @@ country_event = { #The Kokuhonsha & The Sakurakai
 		name = japan_new_event.32.b
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = JAP_Kingoro
+		complete_national_focus = JAPARAKI_the_cherry_blossoms_bloom
 		set_party_name = {
 			ideology = national_populist
 			long_name = JAP_party_sakurakai_long
@@ -6337,7 +6338,7 @@ country_event = { #Direction of Radical Reforms
 	}
 }
 
-country_event = { #
+country_event = { #Hashimoto's Declaration
 	id = japan_new_event.99
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.99"}
 	title = japan_new_event.99.title
@@ -6348,11 +6349,20 @@ country_event = { #
 	option = { #
 		name = japan_new_event.99.a
 		ai_chance = { base = 100 }
-		
+		set_party_name = {
+				ideology = totalist
+				long_name = JAP_Hashimoto_party_long
+				name = JAP_Hashimoto_party
+			}
+		set_party_name = {
+				ideology = national_populist
+				long_name = JAP_Hashimoto_party_long
+				name = JAP_Hashimoto_party
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Our Lasting Legacy For the Empire
 	id = japan_new_event.100
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.100"}
 	title = japan_new_event.100.title
@@ -6363,11 +6373,63 @@ country_event = { #
 	option = { #
 		name = japan_new_event.100.a
 		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = JAP_puppet_asia
+		}
 		
+	}
+	
+	option = { #
+		name = japan_new_event.100.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = JAP_unify_asia
+			}
+			every_state = {
+			add_core_of = JAP
+			JAP = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = PREV
+				}
+			
+			}
+			
+			}
+			
+			
+			set_cosmetic_tag = JAP_HASHIMOTO_WORLD
+			
+		}
+		
+		else_if = {
+			limit = {
+			has_country_flag = JAP_puppet_asia
+			}
+		every_country = {
+		JAP = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = PREV
+				}
+			}
+		}
+		}
+		
+	}
+	
+	option = { #
+		name = japan_new_event.100.c
+		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = JAP_unify_asia
+		}
+		set_cosmetic_tag = JAP_HASHIMOTO_ASIA
 	}
 }
 
-country_event = { #
+country_event = { #The Way of Subjects
 	id = japan_new_event.101
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.101"}
 	title = japan_new_event.101.title
