@@ -3568,10 +3568,11 @@ country_event = { #The Toseiha Coup
 		ai_chance = { base = 100 }
 		country_event = {
 		id = japan_new_event.55
-		days = 3
+		days = 0
 		}
 		set_country_flag = factionalism_japan_no
 		load_focus_tree = jap-toseiha
+		complete_national_focus = JAPTOSEIHA_coup_of_the_toseiha
 	}
 	
 	
@@ -3593,8 +3594,9 @@ country_event = { #Struggle of the Toseiha
 			long_name = JAP_party_turan_long
 			name = JAP_party_turan
 		}
-		
-		
+		custom_effect_tooltip = JAP_note_about_fp_tt
+		set_country_flag = JAP_no_foreign_policy
+		complete_national_focus = JAPTOSEIHA_turanism_strikes_japan
 		
 		set_politics = {
 			ruling_party = national_populist
@@ -3616,7 +3618,7 @@ country_event = { #Struggle of the Toseiha
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Iwane_Matsui_hog_npo
-			JAP_Okawa_Shumei_for_npo
+			JAP_Hayashi_Senyuki_for_npo
 			JAP_Suzuki_Teiichi_eco_npo
 			JAP_Miwa_Juso_sec_npo
 		}
@@ -3632,7 +3634,7 @@ country_event = { #Struggle of the Toseiha
 			name = JAP_party_tojo
 		}
 		
-		
+		complete_national_focus = JAPTOSEIHA_the_tojo_cabinet
 		
 		set_politics = {
 			ruling_party = national_populist
@@ -3662,14 +3664,14 @@ country_event = { #Struggle of the Toseiha
 	}
 	
 	option = { #Tojo Path
-		name = japan_new_event.55.b
+		name = japan_new_event.55.c
 		ai_chance = { base = 100 }
 		set_party_name = {
 			ideology = paternal_autocrat
 			long_name = JAP_party_toseiha_long
 			name = JAP_party_toseiha
 		}
-		
+		complete_national_focus = JAPTOSEIHA_nagataspath
 		
 		
 		set_politics = {
@@ -6444,7 +6446,7 @@ country_event = { #The Way of Subjects
 	}
 }
 
-country_event = { #
+country_event = { #The Essential Principles of National Defense and Proposals for Its Strengthening
 	id = japan_new_event.102
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.102"}
 	title = japan_new_event.102.title
@@ -6455,11 +6457,45 @@ country_event = { #
 	option = { #
 		name = japan_new_event.102.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		JAP_national_planned_economy
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.25
+		}
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = tot_ikedaism_subtype
+			}
+	}
+	
+	option = { #
+		name = japan_new_event.102.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_national_planned_economy
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.25
+		}
+		add_ideas = {
+		JAP_Sumihisa_Ikeda_hog_tot
+		}
+		set_politics = { ruling_party = totalist }
+		create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1965.1.1"
+				ideology = tot_ikedaism_subtype
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Claiming Pan-Turania
 	id = japan_new_event.103
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.103"}
 	title = japan_new_event.103.title
@@ -6470,6 +6506,8 @@ country_event = { #
 	option = { #
 		name = japan_new_event.103.a
 		ai_chance = { base = 100 }
+		JAP_pan_turania_cores = yes
+		set_cosmetic_tag = JAP_TURANIA
 		
 	}
 }
