@@ -24,6 +24,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSOCDEM_revolutionary_nationalism  }
+		completion_reward = {
+		add_stability = 0.15
+		}
 	}
 
 	#A Split in the Shakai Taishuto
@@ -35,6 +38,9 @@ focus_tree = {
 		cost = 3
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -50,6 +56,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPSOCDEM_a_split_in_the_shakai_taishuto  }
 		mutually_exclusive = { focus = JAPSOCDEM_the_democracy_path  }
+		available = {
+		always = no
+		}
 	}
 
 	#Absorb the Tokohai
@@ -63,6 +72,14 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPSOCDEM_totalitarian_shift  }
+		completion_reward = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.1
+		}
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		}
 	}
 
 	#Maximist Approach
@@ -76,6 +93,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSOCDEM_absorb_the_tokohai  }
+		completion_reward = {
+		add_ideas = {
+		JAP_maximist_japan
+		}
+		}
 	}
 
 	#Nationalize the Zaibatsu
@@ -89,6 +111,30 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSOCDEM_absorb_the_tokohai  }
+		completion_reward = {
+		set_country_flag = JAP_smash_zaibatsu
+		set_variable = {
+				var = zaibatsu_nationalization
+				value = 0
+				tooltip = zaibatsu_nationalization_tt
+			}
+		set_variable = {
+				var = sumitomo_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsui_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsubishi_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = yasuda_nationalization
+				value = 0
+			}
+		}
 	}
 
 	#Supporting the Holy War Against Europe!
@@ -102,6 +148,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSOCDEM_maximist_approach  } prerequisite = { focus = JAPSOCDEM_nationalize_the_zaibatsu  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Kempeitai Reforms
@@ -115,6 +164,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPSOCDEM_supportingtheholywaragainsteurope  }
+		completion_reward = {
+		add_ideas = {
+		JAP_kempeitai_reforms
+		}
+		}
 	}
 
 	#Arrest the Syndicalists
@@ -128,6 +182,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSOCDEM_supportingtheholywaragainsteurope  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Revolutionary Nationalism
@@ -141,6 +200,14 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSOCDEM_supportingtheholywaragainsteurope  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 75
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Under the Chrysanthamen
@@ -154,6 +221,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSOCDEM_arrest_the_syndicalists  }
+		completion_reward = {
+		add_ideas = {
+		JAP_under_red_sun
+		}
+		}
 	}
 
 	#Revoking Liberal Democracy
@@ -167,34 +239,33 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSOCDEM_kempeitai_reforms  } prerequisite = { focus = JAPSOCDEM_arrest_the_syndicalists  }
+		completion_reward = {
+		add_stability = -0.15
+		add_political_power = 75
+		add_popularity = {
+		ideology = totalist
+		popularity = 1
+		}
+		}
 	}
 
-	#Supporting Asanuma's New Revolution
-	focus = {
-		id = JAPSOCDEM_supportingasanumasnewrevolution
-		icon = GFX_JAPSOCDEM_supportingasanumasnewrevolution-248360
-		x = 3
-		y = 7
-		cost = 2
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAPSOCDEM_national_equality  } prerequisite = { focus = JAPSOCDEM_under_the_chrysanthamen  } prerequisite = { focus = JAPSOCDEM_revoking_liberal_democracy  }
-		mutually_exclusive = { focus = JAPSOCDEM_promoting_the_national_socialist_image  }
-	}
+	
 
 	#Promoting the National Socialist Image
 	focus = {
 		id = JAPSOCDEM_promoting_the_national_socialist_image
 		icon = GFX_JAPSOCDEM_promoting_the_national_socialist_image-248360
-		x = 5
+		x = 4
 		y = 7
 		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = JAPSOCDEM_national_equality  } prerequisite = { focus = JAPSOCDEM_under_the_chrysanthamen  } prerequisite = { focus = JAPSOCDEM_revoking_liberal_democracy  }
-		mutually_exclusive = { focus = JAPSOCDEM_supportingasanumasnewrevolution  }
+		
 	}
 
 	#Re-Thinking Japanese Socialism
@@ -207,7 +278,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPSOCDEM_supportingasanumasnewrevolution  focus = JAPSOCDEM_promoting_the_national_socialist_image  }
+		prerequisite = { focus = JAPSOCDEM_promoting_the_national_socialist_image  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_age_japanese_socialism
+		}
+		}
 	}
 
 	#The Democracy Path
@@ -219,6 +295,9 @@ focus_tree = {
 		cost = 3
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPSOCDEM_a_split_in_the_shakai_taishuto  }
 		mutually_exclusive = { focus = JAPSOCDEM_totalitarian_shift  }
@@ -234,6 +313,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = JAPSOCDEM_the_democracy_path  }
 		mutually_exclusive = { focus = JAPSOCDEM_leftwing_victory  }
 	}
@@ -247,6 +329,9 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPSOCDEM_the_democracy_path  }
 		mutually_exclusive = { focus = JAPSOCDEM_rightist_faction_victory  }
@@ -263,6 +348,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSOCDEM_rightist_faction_victory  focus = JAPSOCDEM_leftwing_victory  }
+		completion_reward = {
+		add_ideas = {
+		JAP_universal_sufferage
+		}
+		}
 	}
 
 	#Deal With the Zaibatsu
@@ -276,6 +366,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSOCDEM_rightist_faction_victory  focus = JAPSOCDEM_leftwing_victory  }
+		completion_reward = {
+		add_ideas = {
+		JAP_zaibatsu_nationalization_1
+		}
+		}
 	}
 
 	#The Child Welfare Act
@@ -289,6 +384,15 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSOCDEM_rightist_faction_victory  focus = JAPSOCDEM_leftwing_victory  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		}
+		add_political_power = -10
+		add_stability = 0.1
+		add_manpower = -1000
+		}
 	}
 
 	#The Path of Peace
@@ -302,6 +406,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSOCDEM_promote_universal_sufferage  } prerequisite = { focus = JAPSOCDEM_deal_with_the_zaibatsu  } prerequisite = { focus = JAPSOCDEM_the_child_welfare_act  }
+		completion_reward = {
+		add_ideas = {
+		JAP_path_of_peace
+		}
+		}
 	}
 
 	#Crush Military Radicalism
@@ -315,6 +424,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSOCDEM_the_path_of_peace  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Denounce the Syndicalist Folly
@@ -328,6 +442,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSOCDEM_the_path_of_peace  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Promotion of New Agrarian Reforms
@@ -341,6 +460,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPSOCDEM_denounce_the_syndicalist_folly  } prerequisite = { focus = JAPSOCDEM_crush_military_radicalism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_agrarian_reforms
+		}
+		}
 	}
 
 	#Retain The Parliamentary System
@@ -354,6 +478,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSOCDEM_crush_military_radicalism  } prerequisite = { focus = JAPSOCDEM_denounce_the_syndicalist_folly  }
+		completion_reward = {
+		add_political_power = 20
+		}
 	}
 
 	#Continue Democratization
@@ -364,9 +491,12 @@ focus_tree = {
 		y = 7
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPSOCDEM_retain_the_parliamentary_system  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Revoke the National Security Act
@@ -380,6 +510,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSOCDEM_retain_the_parliamentary_system  }
+		completion_reward = {
+		add_stability = 0.15
+		add_political_power = -20
+		}
 	}
 
 	#Push For Greater National Autonomy
@@ -393,6 +527,15 @@ focus_tree = {
 			FOCUS_FILTER_FRA_OCCUPATION_COST
 		}
 		prerequisite = { focus = JAPSOCDEM_promotion_of_new_agrarian_reforms  } prerequisite = { focus = JAPSOCDEM_retain_the_parliamentary_system  }
+		completion_reward = {
+		release = KOR
+		JAP = {
+			puppet = {
+				target = KOR
+				end_wars = yes
+			}
+		}
+		}
 	}
 
 	#An Empire of the Liberation
@@ -406,6 +549,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSOCDEM_promotion_of_new_agrarian_reforms  } prerequisite = { focus = JAPSOCDEM_retain_the_parliamentary_system  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_path_of_peace
+		add_idea = JAP_path_of_peace_2
+		}
+		}
 	}
 
 	#Japan's New Era
@@ -419,7 +568,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSOCDEM_continue_democratization  } prerequisite = { focus = JAPSOCDEM_revoke_the_national_security_act  } prerequisite = { focus = JAPSOCDEM_push_for_greater_national_autonomy  } prerequisite = { focus = JAPSOCDEM_an_empire_of_the_liberation  }
-	}
+		completion_reward = {
+		add_ideas = {
+		JAP_new_age_japanese_socialism_1
+		}
+		}
+		}
 
 #Denounce the Marxist Faction
 	focus = {
@@ -433,6 +587,17 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_resolving_the_party_split  }
 		mutually_exclusive = { focus = JAPTAISHUTOTWO_remove_the_national_socialists  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_Shakai_Taishuto_balance
+				value = 0.2
+				tooltip_side = side_with_jsp_rightists_side
+			}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -0.1
+		}
+		}
 	}
 
 	#Accept Universal Suffrage
@@ -446,6 +611,18 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_denounce_the_marxist_faction  focus = JAPTAISHUTOTWO_remove_the_national_socialists  }
+		mutually_exclusive = {focus = JAPTAISHUTOTWO_promotewomensrights }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_Shakai_Taishuto_balance
+				value = 0.2
+				tooltip_side = side_with_jsp_rightists_side
+			}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -0.1
+		}
+		}
 	}
 
 	#Promote Women's Rights
@@ -460,6 +637,17 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_denounce_the_marxist_faction  focus = JAPTAISHUTOTWO_remove_the_national_socialists  }
 		mutually_exclusive = { focus = JAPTAISHUTOTWO_accept_universal_suffrage  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_Shakai_Taishuto_balance
+				value = -0.2
+				tooltip_side = side_with_jsp_leftists_side
+			}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -0.1
+		}
+		}
 	}
 
 	#Victory of Parliamentary Socialism
@@ -468,9 +656,12 @@ focus_tree = {
 		icon = GFX_JAPTAISHUTOTWO_victory_of_parliamentary_socialism-248360
 		x = 7
 		y = 11
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_flag = JAP_shakai_taishuto_won_in_1940_elections
 		}
 	}
 
@@ -485,6 +676,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_victory_of_parliamentary_socialism  }
+		completion_reward = {
+		add_political_power = -100
+		add_ideas = {
+		JAP_party_split_jsp
+		}
+		}
 	}
 
 	#Remove the National Socialists
@@ -499,6 +696,21 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_resolving_the_party_split  }
 		mutually_exclusive = { focus = JAPTAISHUTOTWO_denounce_the_marxist_faction  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_Shakai_Taishuto_balance
+				value = -0.2
+				tooltip_side = side_with_jsp_leftists_side
+			}
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.1
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -0.1
+		}
+		}
 	}
 
 	#Up Hold a Strong Military Presence
@@ -513,6 +725,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_accept_universal_suffrage  focus = JAPTAISHUTOTWO_promotewomensrights  focus = JAPTAISHUTOTWO_promises_of_peace  focus = JAPTAISHUTOTWO_promote_the_holy_war  }
 		mutually_exclusive = { focus = JAPTAISHUTOTWO_shrivel_up_the_military_industrial_complex  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_Shakai_Taishuto_balance
+				value = 0.2
+				tooltip_side = side_with_jsp_rightists_side
+			}
+		add_ideas = {
+		JAP_new_army_jsp
+		}
+		}
 	}
 
 	#Crumbling of the Party
@@ -524,6 +746,9 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_STABILITY
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_shrivel_up_the_military_industrial_complex  focus = JAPTAISHUTOTWO_up_hold_a_strong_military_presence  }
 	}
@@ -540,6 +765,17 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_denounce_the_marxist_faction  focus = JAPTAISHUTOTWO_remove_the_national_socialists  }
 		mutually_exclusive = { focus = JAPTAISHUTOTWO_promote_the_holy_war  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_Shakai_Taishuto_balance
+				value = -0.2
+				tooltip_side = side_with_jsp_leftists_side
+			}
+		swap_ideas = {
+		remove_idea = JAP_path_of_peace_2
+		add_idea = JAP_path_of_peace
+		}
+		}
 	}
 
 	#Promote the Holy War
@@ -554,6 +790,17 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_denounce_the_marxist_faction  focus = JAPTAISHUTOTWO_remove_the_national_socialists  }
 		mutually_exclusive = { focus = JAPTAISHUTOTWO_promises_of_peace  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_Shakai_Taishuto_balance
+				value = 0.2
+				tooltip_side = side_with_jsp_rightists_side
+			}
+		swap_ideas = {
+		remove_idea = JAP_path_of_peace_2
+		add_idea = JAP_path_of_peace_3
+		}
+		}
 	}
 
 	#Support the Diet
@@ -596,6 +843,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPTAISHUTOTWO_promote_the_holy_war  focus = JAPTAISHUTOTWO_promises_of_peace  focus = JAPTAISHUTOTWO_accept_universal_suffrage  focus = JAPTAISHUTOTWO_promotewomensrights  }
 		mutually_exclusive = { focus = JAPTAISHUTOTWO_up_hold_a_strong_military_presence  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_Shakai_Taishuto_balance
+				value = -0.2
+				tooltip_side = side_with_jsp_leftists_side
+			}
+		add_ideas = {
+		JAP_no_new_army_jsp
+		}
+		}
 	}
 
 }

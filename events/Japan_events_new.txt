@@ -3952,6 +3952,7 @@ country_event = { #Social-Democrats
 		set_politics = {
 		ruling_party = totalist
 		}
+		set_country_flag = japan_social_totalitarian
 		complete_national_focus = JAPSOCDEM_totalitarian_shift
 		add_popularity = {
 		ideology = totalist
@@ -3974,7 +3975,7 @@ country_event = { #Social-Democrats
 		}
 		remove_all_ministers = yes
 		add_ideas = {
-			JAP_inejiro_asanuma_hog_rso
+			JAP_Aso_Hisashi_hog_tot
 			JAP_Kono_Mitsu_for_tot
 			JAP_Sugiyama_Motojiro_eco_tot
 			JAP_Miwa_Juso_sec_tot
@@ -3983,7 +3984,7 @@ country_event = { #Social-Democrats
 				name = "Hirohito"
 				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 				expire = "1965.1.1"
-				ideology = totalist_subtype
+				ideology = tot_national_socialism_subtype
 			}
 	}
 	
@@ -4339,7 +4340,20 @@ country_event = { #1940 elections
 			long_name = JAP_party_social_democrat_long
 			name = JAP_party_social_democrat
 		}
+		set_power_balance = {
+			id = JAP_Shakai_Taishuto_balance
+			left_side = JAP_JSP_LEFT_left_side
+			right_side = JAP_JSP_RIGHT_right_side
+		}
 		set_country_flag = JAP_shakai_taishuto_won_in_1940_elections
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = JAP_shakai_taishuto_won_in_1937_elections
+				}
+			}
+			country_event = japan_new_event.60
+		}
 		
 	}
 }
@@ -6512,17 +6526,77 @@ country_event = { #Claiming Pan-Turania
 	}
 }
 
-country_event = { #
+country_event = { #Death of Aso Hisashi
 	id = japan_new_event.104
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.104"}
 	title = japan_new_event.104.title
 	desc = japan_new_event.104.desc
 	#picture = 
-	
+	trigger = {
+	has_country_flag = japan_social_totalitarian
+	}
+	immediate = {
+	hidden_effect = {
+	JAPSOCDEM_promoting_the_national_socialist_image
+	}
+	}
 	is_triggered_only = yes
-	option = { #
+	option = { #Akamatsu
 		name = japan_new_event.104.a
 		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_AKAMATSU
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Katsumaro_Akamatsu_hog_tot
+		JAP_Shiro_Koike_eco_tot
+		JAP_Shunhide_Suga_for_tot
+		JAP_Genkuro_Eto_sec_tot
+		}
+		
+	}
+	
+	option = { #Asanuma
+		name = japan_new_event.104.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_ASANUMA
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_inejiro_asanuma_hog_rso
+		JAP_Kono_Mitsu_for_tot
+		JAP_Sugiyama_Motojiro_eco_tot
+		JAP_Miwa_Juso_sec_tot
+		}
+		set_country_leader_ideology = tot_reformed_natsynd_subtype
+		
+	}
+	
+	option = { #Hirano
+		name = japan_new_event.104.c
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_HIRANO
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Rikizo_Hirano_hog_tot
+		JAP_Minoru_Mizuno_eco_tot
+		JAP_Tadashi_Kodaira_for_tot
+		JAP_Azuma_Takashi_sec_tot
+		}
+		set_country_leader_ideology = agrarian_socialism_subtype
+		
+	}
+	
+	option = { #Yamana
+		name = japan_new_event.104.d
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_YAMANA
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Yoshikuru_Yamana_hog_tot
+		JAP_Shoichi_Miyake_eco_tot
+		JAP_Kanichiro_Kamei_for_tot
+		JAP_Kazuyuki_Kasuga_sec_tot
+		}
+		set_country_leader_ideology = sorelianism_subtype
 		
 	}
 }
