@@ -4089,11 +4089,20 @@ country_event = { #Kokumin Domei Victory
 		name = japan_new_event.61.a
 		ai_chance = { base = 100 }
 		load_focus_tree = kokumin-domei
+		
+		if = {
+		limit = {
+			NOT = {
+				has_country_flag = JAP_tohokai_domei_struggle
+			}
+		}
 		set_power_balance = {
 				id = JAP_National_Alliance_balance
 				left_side = JAP_Nakano_left_side
 				right_side = JAP_Kenzo_right_side
 			}
+		set_country_flag = JAP_tohokai_domei_struggle
+		}
 	}
 }
 
@@ -4194,7 +4203,7 @@ country_event = { #1940 elections
 		add_to_coalition = yes
 		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
 		add_to_coalition = yes
-		
+		complete_national_focus = JAPDOMEITWO_a_new_round_for_the_kokumin_domei
 		set_country_flag = JAP_kokumin_domei_won_in_1940_election
 		mark_focus_tree_layout_dirty = yes
 		country_event = japan_new_event.82
@@ -5487,7 +5496,7 @@ country_event = { #Leading the Kokumin Domei
 		
 		
 		
-		
+		complete_national_focus = JAPDOMEITWO_embracingthepartysleftwing
 		set_politics = {
 			ruling_party = authoritarian_democrat
 			elections_allowed = no
@@ -5520,6 +5529,7 @@ country_event = { #Leading the Kokumin Domei
 			factor = 50
 			
 		}
+		complete_national_focus = JAPDOMEITWO_kenzo_holding_the_party_helm
 		set_politics = {
 			ruling_party = paternal_autocrat
 			election_frequency = 48
@@ -6603,7 +6613,7 @@ country_event = { #Death of Aso Hisashi
 	}
 }
 
-country_event = { #
+country_event = { #The Tohokai Split
 	id = japan_new_event.105
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.105"}
 	title = japan_new_event.105.title
@@ -6611,14 +6621,39 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Expulsion
 		name = japan_new_event.105.a
 		ai_chance = { base = 100 }
-		
+		add_manpower = -100
+		add_political_power = 25
+		add_popularity = {
+		ideology = national_populist
+		popularity = -0.15
+		add_stability = -0.1
+		add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = -0.2
+			}
+		}
+	}
+	
+	option = { #Win Over Members
+		name = japan_new_event.105.b
+		ai_chance = { base = 100 }
+		add_political_power = -50
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.1
+		add_stability = 0.05
+		add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = 0.2
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Tohokai Remove the Kokumin Domei
 	id = japan_new_event.106
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.106"}
 	title = japan_new_event.106.title
@@ -6629,11 +6664,33 @@ country_event = { #
 	option = { #
 		name = japan_new_event.106.a
 		ai_chance = { base = 100 }
-		
+		complete_national_focus = JAPNAK_the_issue_of_party_factionalism
+		set_politics = {
+			ruling_party = national_populist
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.25
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Yasukuni_Watanabe_for_tot
+			JAP_Dai_Oishi_eco_tot
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
 	}
 }
 
-country_event = { #
+country_event = { #Seigo Nakano's Suicide
 	id = japan_new_event.107
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.107"}
 	title = japan_new_event.107.title
@@ -6644,7 +6701,16 @@ country_event = { #
 	option = { #
 		name = japan_new_event.107.a
 		ai_chance = { base = 100 }
-		
+		add_stability = 0.01
+		add_manpower = -1
+		add_popularity = {
+		ideology = national_populist
+		popularity = -0.25
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.2
+		}
 	}
 }
 

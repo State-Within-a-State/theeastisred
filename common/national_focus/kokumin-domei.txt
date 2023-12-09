@@ -34,6 +34,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#Controlling the Diet
@@ -47,6 +50,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPKOKUMIN_kokumin_domei_at_the_helm  }
+		completion_reward = {
+		add_stability = -0.1
+		add_political_power = 25
+		
+		}
 	}
 
 	#The Cooperative Cabinet Movement
@@ -60,6 +68,31 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPKOKUMIN_controlling_the_diet  }
+		completion_reward = {
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:market_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_conservative }
+		add_to_coalition = yes
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = market_liberal
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.05
+		}
+		add_political_power = -100
+		add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = 0.1
+			}
+		}
 	}
 
 	#Continue Dirigisme Outlook
@@ -73,6 +106,31 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOKUMIN_controlling_the_diet  }
+		completion_reward = {
+			if = {
+				limit = {
+					OR = {
+						has_idea = JAP_black_monday_statist_0
+						has_idea = JAP_black_monday_statist_1
+					}
+				}
+				add_idea = JAP_black_monday_statist_2
+			}
+			
+			else_if = {
+				limit = {
+					has_idea = JAP_black_monday_statist_2
+				}
+				add_idea = JAP_black_monday_statist_3
+			}
+			
+			else_if = {
+				limit = {
+					has_idea = JAP_black_monday_statist_3
+				}
+				add_idea = JAP_black_monday_statist_4
+			}
+		}
 	}
 
 	#Dealing With the Tokohai Split
@@ -86,6 +144,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPKOKUMIN_the_cooperative_cabinet_movement  }
+		completion_reward = {
+		country_event = japan_new_event.105
+		}
 	}
 
 	#Denounce European Imperialism
@@ -99,6 +160,42 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKOKUMIN_reaction_against_the_germanic_centric_peace  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = GER
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = CAN
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+				target = AUS
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = POR
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = AST
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = GEA
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = DEI
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = DEH
+				modifier = faction_traitor
+			}
+			add_war_support = 0.05
+		
+		}
 	}
 
 	#The East Asia Monroe Doctrine
@@ -112,6 +209,30 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAPKOKUMIN_reaction_against_the_germanic_centric_peace  }
+		completion_reward = {
+		every_country = {
+			limit = {
+				AND = {
+				OR = {
+				is_on_continent = asia
+				is_on_continent = india
+				}
+				is_in_faction = no
+				is_puppet = no
+				}
+			}
+			add_opinion_modifier = {
+				target = PREV
+				modifier = JAP_japanese_comradery
+			}
+			diplomatic_relation = {
+					country = PREV
+					relation = guarantee
+					active = yes
+				}
+		
+		}
+		}
 	}
 
 	#Manage the Foreign Exchange
@@ -125,6 +246,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOKUMIN_continue_dirigisme_outlook  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_foreign_exchange
+		}
+		}
 	}
 
 	#Distance Ourselves From Nakano
@@ -138,6 +264,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPKOKUMIN_dealing_with_the_tokohai_split  }
+		completion_reward = {
+		add_stability = 0.05
+		add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = 0.1
+			}
+		}
 	}
 
 	#Control the Unions
@@ -151,6 +284,15 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOKUMIN_dealing_with_the_tokohai_split  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = -0.3
+			}
+		add_ideas = {
+		JAP_control_the_unions
+		}
+		}
 	}
 
 	#Promote Pan-Asian Unity
@@ -164,6 +306,15 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKOKUMIN_the_east_asia_monroe_doctrine  } prerequisite = { focus = JAPKOKUMIN_denounce_european_imperialism  }
+		completion_reward = {
+		add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = -0.1
+			}
+		add_ideas = {
+		JAP_pan_asian_guidelines_1
+		}
+		}
 	}
 
 	#Retain Low Interest Rates
@@ -177,6 +328,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOKUMIN_manage_the_foreign_exchange  }
+		completion_reward = {
+		add_ideas = {
+		JAP_controling_interest_rates
+		}
+		}
 	}
 
 	#Protection Against Major Monopolies
@@ -190,6 +346,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOKUMIN_manage_the_foreign_exchange  }
+		completion_reward = {
+		add_ideas = {
+		JAP_economic_protectionism
+		}
+		}
 	}
 
 	#Maintaining the Controlled Economy
@@ -203,6 +364,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOKUMIN_retain_low_interest_rates  } prerequisite = { focus = JAPKOKUMIN_protection_against_major_monopolies  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_control_the_unions
+		add_idea =JAP_control_the_unions_1
+		}
+		}
 	}
 
 	#Japanese-Manchurian Union
@@ -216,6 +383,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAPKOKUMIN_promote_panasian_unity  }
+		completion_reward = {
+		unlock_decision_category_tooltip = JAP_uniting_with_manchuria_decision_category
+		}
 	}
 
 	#Crush the Socialist Terrorists
@@ -229,6 +399,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPKOKUMIN_distance_ourselves_from_nakano  } prerequisite = { focus = JAPKOKUMIN_control_the_unions  }
+		completion_reward = {
+			remove_ideas = {
+				JAP_red_army_resistance_1
+			}
+		}
 	}
 
 	#Total Kokumin Domei Supremacy
@@ -241,7 +416,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+				has_country_flag = JAP_domei_tohokai_over
+				has_country_flag = JAP_kokumin_domei_won_in_1940_election
+			}
+		}
 		prerequisite = { focus = JAPKOKUMIN_maintaining_the_controlled_economy  } prerequisite = { focus = JAPKOKUMIN_japanesemanchurian_union  } prerequisite = { focus = JAPKOKUMIN_crush_the_socialist_terrorists  }
+		completion_reward = {
+		add_ideas = {
+		JAP_strengthen_government
+		}
+		hidden_effect = {
+		country_event = {
+		id = japan_new_event.107
+		days = 10
+		}
+		}
+		}
 	}
 
 #Advocate For Mild Authoritarianism
@@ -255,6 +447,14 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPDOMEITWO_strengthen_the_peace_preservation_laws  }
+		completion_reward = {
+		add_stability = 0.15
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.65
+		}
+		add_political_power = -100
+		}
 	}
 
 	#A New Round For the Kokumin Domei
@@ -267,6 +467,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = JAP_kokumin_domei_won_in_1940_election
+		}
 	}
 
 	#Embracing The Party's Leftwing
@@ -278,6 +481,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPDOMEITWO_a_new_round_for_the_kokumin_domei  }
 		mutually_exclusive = { focus = JAPDOMEITWO_kenzo_holding_the_party_helm  }
@@ -292,6 +498,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPDOMEITWO_a_new_round_for_the_kokumin_domei  }
 		mutually_exclusive = { focus = JAPDOMEITWO_embracingthepartysleftwing  }
@@ -308,6 +517,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPDOMEITWO_embracingthepartysleftwing  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_control_the_unions_1
+		add_idea = JAP_control_the_unions_2
+		}
+		}
 	}
 
 	#A Call For A National Unity Government
@@ -321,6 +536,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPDOMEITWO_kenzo_holding_the_party_helm  focus = JAPDOMEITWO_embracingthepartysleftwing  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_unity_government
+		}
+		}
 	}
 
 	#Further Promote Dirigisme Ideas
@@ -334,6 +554,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPDOMEITWO_kenzo_holding_the_party_helm  }
+		completion_reward = {
+		add_ideas = {
+		JAP_black_monday_dirigisme_1
+		}
+		}
 	}
 
 	#Coalition with the Seiyukai
@@ -346,8 +571,25 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_government = paternal_autocrat
+		}
 		prerequisite = { focus = JAPDOMEITWO_a_call_for_a_national_unity_government  }
 		mutually_exclusive = { focus = JAPDOMEITWO_socialist_friends  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_national_unity_government
+		add_idea = JAP_national_unity_government_kenzo
+		}
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_conservative }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:national_populist }
+		add_to_coalition = yes
+		}
 	}
 
 	#Socialist Friends
@@ -362,6 +604,20 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPDOMEITWO_a_call_for_a_national_unity_government  }
 		mutually_exclusive = { focus = JAPDOMEITWO_coalition_with_the_seiyukai  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_national_unity_government
+		add_idea = JAP_national_unity_government_kazami
+		}
+		set_temp_variable = { coalition_partner_var = token:social_liberal }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		}
 	}
 
 	#Promote National Socialist Theory
@@ -375,6 +631,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPDOMEITWO_socialist_friends  }
+		completion_reward = {
+		add_research_slot = 1
+		add_popularity = {
+					ideology = totalist
+					popularity = 0.2
+				}
+		}
 	}
 
 	#Strengthen the Peace Preservation Laws
@@ -388,6 +651,27 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPDOMEITWO_coalition_with_the_seiyukai  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_peace_laws
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = -1
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = -1
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = -1
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -1
+		}
+		}
 	}
 
 	#Village Relief Petition Movement
@@ -401,6 +685,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPDOMEITWO_promote_national_socialist_theory  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_controling_interest_rates
+		add_idea = JAP_controling_interest_rates_1
+		}
+		}
 	}
 
 	#Dissolve the Diet
@@ -414,6 +704,28 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPDOMEITWO_advocate_for_mild_authoritarianism  focus = JAPDOMEITWO_village_relief_petition_movement  }
+		completion_reward = {
+		add_stability = -0.2
+		if = {
+			limit = {
+				has_government = authoritarian_democrat
+			}
+			add_popularity = {
+					ideology = authoritarian_democrat
+					popularity = 1
+				}
+		}
+		
+		if = {
+			limit = {
+				has_government = paternal_autocrat
+			}
+			add_popularity = {
+					ideology = paternal_autocrat
+					popularity = 1
+				}
+		}
+		}
 	}
 
 	#Formation of a New Government
@@ -427,6 +739,68 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPDOMEITWO_dissolve_the_diet  }
+		completion_reward = {
+		add_political_power = 100
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_nat_unity_party_long
+			name = JAP_nat_unity_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_nat_unity_party_long
+			name = JAP_nat_unity_party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_nat_unity_party_long
+			name = JAP_nat_unity_party
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = JAP_nat_unity_party_long
+			name = JAP_nat_unity_party
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_nat_unity_party_long
+			name = JAP_nat_unity_party
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_nat_unity_party_long
+			name = JAP_nat_unity_party
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_nat_unity_party_long
+			name = JAP_nat_unity_party
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_nat_unity_party_long
+			name = JAP_nat_unity_party
+		}
+		
+		if = {
+			limit = {
+				has_idea = JAP_national_unity_government_kazami
+			}
+			swap_ideas = {
+				remove_idea = JAP_national_unity_government_kazami
+				add_idea = JAP_national_unity_government_kazami_1
+			}
+		}
+		else_if = {
+			limit = {
+				has_idea = JAP_national_unity_government_kenzo
+			}
+			swap_ideas = {
+				remove_idea = JAP_national_unity_government_kenzo
+				add_idea = JAP_national_unity_government_kenzo_1
+			}
+		}
+		}
 	}
 
 }

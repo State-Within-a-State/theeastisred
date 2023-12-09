@@ -190,7 +190,41 @@ JAP_deal_with_kodoha = {
 
 JAP_National_Alliance_decision_category = {
 
-JAP_lure_away_tokohai_investors = {
+JAP_tohokai_members_stealing = {
+		activation = {
+			has_country_flag = JAP_tohokai_domei_struggle
+			NOT = {
+				has_country_flag = JAP_domei_tohokai_over
+			}
+		}
+		available = {
+			always = no
+		}
+		cancel_trigger = {
+			has_country_flag = JAP_domei_tohokai_over
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 15
+		selectable_mission = no
+		fire_only_once = no
+		complete_effect = {
+			
+		}
+		timeout_effect = {
+			add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = -0.05
+			}
+			set_country_flag = JAP_tohokai_domei_struggle
+		
+		}
+	}
+
+
+JAP_purge_tohokai = {
 		icon = no_votei_icon
 		
 		available = {
@@ -211,6 +245,72 @@ JAP_lure_away_tokohai_investors = {
 		}
 		remove_effect = {
 			
+			
+			if = {
+				limit = {
+					AND = {
+						power_balance_value = {
+							id = JAP_National_Alliance_balance
+							value > 0.5
+						}
+						power_balance_value = {
+							id = JAP_National_Alliance_balance
+							value < 1.1
+						}
+					}
+				}
+				clr_country_flag = JAP_tohokai_domei_struggle
+				set_country_flag = JAP_domei_tohokai_over
+				add_stability = 0.1
+				add_popularity = {
+				ideology = ROOT
+				popularity = 0.4
+				}
+			}
+			
+			if = {
+				limit = {
+					power_balance_value = {
+							id = JAP_National_Alliance_balance
+							value < 0
+						}
+				}
+				clr_country_flag = JAP_tohokai_domei_struggle
+				set_country_flag = JAP_domei_tohokai_over
+				country_event = japan_new_event.106
+			}
+		}
+	}
+
+JAP_lure_away_tokohai_investors = {
+		icon = no_votei_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JAP
+		}
+		cost = 10
+		
+		days_remove = 10
+		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = 0.025
+				
+			}
+			add_popularity = {
+			ideology = national_populist
+			popularity = -0.1
+			}
 		}
 	}
 JAP_denounce_nakano = {
@@ -233,7 +333,12 @@ JAP_denounce_nakano = {
 			
 		}
 		remove_effect = {
-			
+			add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = 0.05
+				
+			}
+			add_political_power = -100
 		}
 	}
 JAP_acuse_tokohai_of_socialism = {
@@ -256,7 +361,12 @@ JAP_acuse_tokohai_of_socialism = {
 			
 		}
 		remove_effect = {
-			
+			add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = 0.05
+			}
+			add_war_support = 0.01
+			add_stability = -0.1
 		}
 	}
 JAP_give_cash_incentives = {
@@ -279,7 +389,16 @@ JAP_give_cash_incentives = {
 			
 		}
 		remove_effect = {
-			
+			add_power_balance_value = {
+				id = JAP_National_Alliance_balance
+				value = 0.075
+			}
+			add_political_power = -100
+			add_stability = -0.05
+			add_popularity = {
+			ideology = national_populist
+			popularity = 0.1
+			}
 		}
 	}
 
@@ -3193,7 +3312,7 @@ JAP_demand_control_over_far_east = {
 		visible = {
 			tag = JAP
 			has_completed_focus = JAPFOR_deal_with_transamur
-			NOT = {
+			
 				TRM = {
 					owns_state = 408
 					owns_state = 1246
@@ -3202,7 +3321,7 @@ JAP_demand_control_over_far_east = {
 					owns_state = 562
 					owns_state = 637
 				}
-			}
+			
 		}
 		cost = 20
 		
@@ -3791,7 +3910,7 @@ JAP_deal_with_south_east_decision_category = {
 			
 		}
 		remove_effect = {
-		BHC = {
+		AFG = {
 		country_event = japan_new_event.81
 		}
 		}
@@ -3829,7 +3948,7 @@ JAP_deal_with_south_east_decision_category = {
 			
 		}
 		remove_effect = {
-		BHC = {
+		PER = {
 		country_event = japan_new_event.81
 		}
 		}
@@ -4931,4 +5050,237 @@ JAP_banzai_charges = {
 			}
 		}
 	}
+}
+
+JAP_uniting_with_manchuria_decision_category = {
+JAP_conquer_manchuria = {
+		icon = no_votei_icon
+		
+		available = {
+			FNG = {
+				market_liberal < 0.26
+			}
+		}
+		
+		visible = {
+			tag = JAP
+			
+			
+		}
+		
+		
+		cost = 50
+		
+		days_remove = 30
+		fire_only_once = no
+		 days_re_enable = 50
+		complete_effect = {
+		}
+		remove_effect = {
+		set_country_flag = JAP_FNG_said_no
+			every_state = {
+				limit = {
+					is_core_of = FNG
+				}
+				add_core_of = JAP
+			}
+			
+		}
+	}
+	
+	JAP_invest_manchuria = {
+		icon = no_votei_icon
+		
+		available = {
+			FNG = {
+				market_liberal > 0.25
+			}
+		}
+		
+		visible = {
+			tag = JAP
+			
+			
+		}
+		
+		
+		cost = 25
+		
+		days_remove = 50
+		fire_only_once = no
+		 days_re_enable = 25
+		complete_effect = {
+		JAP = {
+				add_ideas = {
+					JAP_overlord_investment
+				}
+			}
+		}
+		remove_effect = {
+			remove_ideas = {
+				JAP_overlord_investment
+			}
+			FNG = {
+				add_popularity = {
+					ideology = market_liberal
+					popularity = 0.05
+				}
+			}
+			
+		}
+	}
+	
+	JAP_rail_invest_manchuria = {
+		icon = no_votei_icon
+		
+		available = {
+			FNG = {
+				market_liberal > 0.25
+			}
+		}
+		
+		visible = {
+			tag = JAP
+			
+			
+		}
+		
+		
+		cost = 25
+		
+		days_remove = 50
+		fire_only_once = no
+		 days_re_enable = 25
+		complete_effect = {
+		JAP = {
+				add_ideas = {
+					JAP_railway_investment
+				}
+			}
+		}
+		remove_effect = {
+			remove_ideas = {
+				JAP_railway_investment
+			}
+			FNG = {
+				add_popularity = {
+					ideology = market_liberal
+					popularity = 0.075
+				}
+			}
+			
+		}
+	}
+	
+	JAP_form_japan_manchuria = {
+		icon = no_votei_icon
+		
+		available = {
+			OR = {
+			FNG = {
+				market_liberal > 0.85
+			}
+			
+			AND = {
+				FNG = {
+					exists = no
+				}
+				
+				every_state = {
+					limit = {
+						is_core_of = FNG
+					}
+						is_owned_by = JAP
+				}
+			
+			}
+			
+			}
+		}
+		
+		visible = {
+			tag = JAP
+			
+			
+		}
+		
+		
+		cost = 25
+		
+		days_remove = 50
+		fire_only_once = yes
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			if = {
+				limit = {
+					has_country_flag = JAP_FNG_said_no
+				}
+				set_cosmetic_tag = JAP_MANCHURIA_UNION
+			}
+			
+			if = {
+				limit = {
+					NOT = {
+						has_country_flag = JAP_FNG_said_no
+					}
+					
+				}
+				set_cosmetic_tag = JAP_MANCHURIA_UNION
+				set_country_flag = JAP_Manchuria_united
+				annex_country = {
+					target = FNG
+					transfer_troops = yes
+				}
+			}
+			
+		}
+	}
+	
+	JAP_form_japan_china = {
+		icon = no_votei_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JAP
+			has_country_flag = JAP_Manchuria_united
+			
+		}
+		
+		
+		cost = 25
+		
+		days_remove = 50
+		fire_only_once = yes
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_claimed_by = FNG
+				}
+				add_core_of = JAP
+				
+			}
+			JAP = {
+					create_wargoal = {
+							type = puppet_wargoal_focus
+							target = PREV
+						}
+						set_cosmetic_tag = JAP_SINO_JAPAN
+					}
+					
+			
+		}
+			
+		}
+	}
+	
+
+
 }
