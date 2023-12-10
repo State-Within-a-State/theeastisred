@@ -627,6 +627,57 @@ JAP_land_reform = {
 			custom_effect_tooltip = JAP_land_reform_progress
 		}
 	}
+	
+	JAP_agriculture_reserve = {
+		icon = GFX_decision_generic_decision
+
+		allowed = { always = no }
+		visible = {
+		has_completed_focus = JAPNAK_formation_of_selfrule_cooperatives
+		}
+		available = {
+			NOT = { has_country_flag = JAP_land_reform_in_progress }
+			has_stability > 0.05
+		}
+
+		cost = JAP_land_reform_pp_2
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				has_political_power < 35
+				factor = 0
+			}
+			modifier = {
+				has_political_power > 35
+				add = 40
+			}
+			modifier = {
+				has_political_power > 60
+				add = 90
+			}
+		}
+
+		priority = 100
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete JAP_agriculture_land_control"
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+			}
+			add_to_variable = {
+				var = JAP_land_reform_variable
+				value = 1
+			}
+			custom_effect_tooltip = JAP_land_reform_progress
+		}
+	}
 
 	JAP_finish_land_reform = {
 		icon = GFX_decision_generic_operation
@@ -667,6 +718,7 @@ JAP_land_reform = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision complete JAP_finish_land_reform"
 			country_event = japdom.75
+			set_country_flag = JAP_land_reform_finished
 			custom_effect_tooltip = JAP_land_reform_idea
 			if = {
 				limit = {

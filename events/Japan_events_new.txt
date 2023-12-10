@@ -6292,7 +6292,7 @@ country_event = { #Future of the Shumei Government
 				}
 				
 			JAP = {
-			add_state_core = 345
+			add_state_core = PREV
 				create_wargoal = {
 						type = puppet_wargoal_focus
 						target = PREV
@@ -6714,7 +6714,7 @@ country_event = { #Seigo Nakano's Suicide
 	}
 }
 
-country_event = { #
+country_event = { #Removal of the Diet
 	id = japan_new_event.108
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.108"}
 	title = japan_new_event.108.title
@@ -6725,11 +6725,45 @@ country_event = { #
 	option = { #
 		name = japan_new_event.108.a
 		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_government = totalist
+			}
+			set_popularities = {
+				totalist = 70
+				radical_socialist = 5
+				syndicalist = 0
+				social_democrat = 10
+				social_liberal = 0
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 5
+				paternal_autocrat = 0
+				national_populist = 10
+			}
+		}
 		
+		else_if = {
+			limit = {
+				has_government = national_populist
+			}
+			set_popularities = {
+				totalist = 10
+				radical_socialist = 0
+				syndicalist = 0
+				social_democrat = 5
+				social_liberal = 0
+				market_liberal = 0
+				social_conservative = 0
+				authoritarian_democrat = 10
+				paternal_autocrat = 5
+				national_populist = 70
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Nakano Above All
 	id = japan_new_event.109
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.109"}
 	title = japan_new_event.109.title
@@ -6740,7 +6774,35 @@ country_event = { #
 	option = { #
 		name = japan_new_event.109.a
 		ai_chance = { base = 100 }
-		
+		add_popularity = {
+		ideology = ROOT
+		popularity = 1
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.109.b
+		ai_chance = { base = 100 }
+		add_popularity = {
+		ideology = ROOT
+		popularity = 1
+		}
+		set_cosmetic_tag = JAP_NAKANO_1984 
+		every_state = {
+				limit = {
+					is_on_continent = asia
+					is_on_continent = india
+				}
+				
+			JAP = {
+			add_state_core = PREV
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+			
+			}
+			}
 	}
 }
 

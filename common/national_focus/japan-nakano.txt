@@ -21,6 +21,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#The Issue of Party Factionalism
@@ -32,6 +35,9 @@ focus_tree = {
 		cost = 3
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPNAK_nakano_secures_the_diet  }
 	}
@@ -47,6 +53,30 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_the_issue_of_party_factionalism  }
+		completion_reward = {
+		set_country_flag = JAP_smash_zaibatsu
+		set_variable = {
+				var = zaibatsu_nationalization
+				value = 0
+				tooltip = zaibatsu_nationalization_tt
+			}
+		set_variable = {
+				var = sumitomo_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsui_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsubishi_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = yasuda_nationalization
+				value = 0
+			}
+		}
 	}
 
 	#Question of the Labour Unions
@@ -60,6 +90,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_the_issue_of_party_factionalism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_union_support_nakano_1
+		}
+		}
 	}
 
 	#Legacy of Satsuma
@@ -73,6 +108,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPNAK_the_issue_of_party_factionalism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_satsuma_nakano_1
+		}
+		}
 	}
 
 	#Keeping the Emperor Under a Close Eye
@@ -86,6 +126,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_legacy_of_satsuma  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Build up the Mass Movement
@@ -99,6 +144,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_legacy_of_satsuma  }
+		completion_reward = {
+		add_ideas = {
+		JAP_popular_support
+		}
+		}
 	}
 
 	#Guiding the National Economy
@@ -112,6 +162,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNAK_question_of_the_labour_unions  } prerequisite = { focus = JAPNAK_controlling_the_zaibatsu  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_black_monday_1
+		add_idea = JAP_black_monday_statist_0
+		}
+		}
 	}
 
 	#The Land Question
@@ -125,6 +181,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNAK_controlling_the_zaibatsu  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_land_reform_focus"
+			add_stability = 0.05
+			unlock_decision_category_tooltip = JAP_land_reform
+			hidden_effect = { JAP_open_JAP_land_reform = yes }
+		}
 	}
 
 	#The National Agriculture Reserve
@@ -138,6 +200,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNAK_the_land_question  }
+		completion_reward = {
+		add_idea = {
+		JAP_nation_agriculture_reserve
+		}
+		}
 	}
 
 	#Formation of Self-Rule Cooperatives
@@ -151,6 +218,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNAK_the_land_question  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_agriculture_reserve
+		}
 	}
 
 	#Fabian Economic Influences
@@ -164,6 +234,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNAK_build_up_the_mass_movement  } prerequisite = { focus = JAPNAK_guiding_the_national_economy  } prerequisite = { focus = JAPNAK_the_land_question  }
+		completion_reward = {
+		add_ideas = {
+		JAP_maximist_japan
+		}
+		}
 	}
 
 	#Absorb the Shakai Taishuto
@@ -177,6 +252,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNAK_keeping_the_emperor_under_a_close_eye  } prerequisite = { focus = JAPNAK_build_up_the_mass_movement  }
+		completion_reward = {
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.15
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.01
+		}
+		}
 	}
 
 	#Support the Pan-Asianists
@@ -190,6 +279,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPNAK_keeping_the_emperor_under_a_close_eye  } prerequisite = { focus = JAPNAK_build_up_the_mass_movement  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_ideas = {
+		JAP_pan_asian_guidelines_2
+		}
+		}
 	}
 
 	#Legacy of the Visit to Europe
@@ -202,7 +297,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
+		available = {
+		has_government = totalist
+		}
 		prerequisite = { focus = JAPNAK_absorb_the_shakai_taishuto  } prerequisite = { focus = JAPNAK_support_the_panasianists  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.05
+		}
+		add_ideas = {
+		JAP_nakano_visit_europe
+		}
+		}
 	}
 
 	#Purge the Liberal Menace
@@ -216,6 +323,23 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPNAK_absorb_the_shakai_taishuto  } prerequisite = { focus = JAPNAK_support_the_panasianists  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = market_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = -1
+		}
+		}
 	}
 
 	#Realization of a Populist Government
@@ -229,6 +353,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_absorb_the_shakai_taishuto  } prerequisite = { focus = JAPNAK_support_the_panasianists  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_popular_support
+		add_idea = JAP_popular_support_1
+		}
+		}
 	}
 
 	#The New Labour Act
@@ -242,6 +372,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_fabian_economic_influences  }
+		completion_reward = {
+		add_stability = 0.05
+		}
 	}
 
 	#A Plan For National Reconstruction
@@ -255,6 +388,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNAK_fabian_economic_influences  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_reconstruction_plan
+		}
+		}
 	}
 
 	#Deal With the Land Owners
@@ -268,6 +406,16 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPNAK_formation_of_selfrule_cooperatives  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_land_reform_variable
+				value = 1
+			}
+			custom_effect_tooltip = JAP_land_reform_progress
+		add_ideas = {
+		JAP_land_lord_purge
+		}	
+		}
 	}
 
 	#Reduce the Tax Burden on Farmers
@@ -281,6 +429,14 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_the_national_agriculture_reserve  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_land_reform_variable
+				value = 1
+			}
+			custom_effect_tooltip = JAP_land_reform_progress
+		add_stability = 0.1
+		}
 	}
 
 	#Increase Peasant Wages
@@ -294,6 +450,16 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNAK_deal_with_the_land_owners  } prerequisite = { focus = JAPNAK_reduce_the_tax_burden_on_farmers  }
+		completion_reward = {
+		add_ideas = {
+		JAP_peasant_wage_increase
+		}
+		add_to_variable = {
+				var = JAP_land_reform_variable
+				value = 1
+			}
+		custom_effect_tooltip = JAP_land_reform_progress
+		}
 	}
 
 	#Farming for the Nation
@@ -307,6 +473,16 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_deal_with_the_land_owners  } prerequisite = { focus = JAPNAK_reduce_the_tax_burden_on_farmers  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_land_reform_variable
+				value = 1
+			}
+		custom_effect_tooltip = JAP_land_reform_progress
+		add_ideas = {
+		JAP_farming_for_the_nation
+		}
+		}
 	}
 
 	#New Trade Policies
@@ -320,6 +496,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNAK_the_new_labour_act  } prerequisite = { focus = JAPNAK_a_plan_for_national_reconstruction  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_foreign_exchange
+		}
+		}
 	}
 
 	#Proposing a Greater Asian Economic Bloc
@@ -333,6 +514,19 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNAK_the_new_labour_act  } prerequisite = { focus = JAPNAK_a_plan_for_national_reconstruction  }
+		completion_reward = {
+				every_country = {
+					limit = {
+						is_in_faction_with = JAP
+						is_subject_of = JAP
+					}
+					PREV = {
+						add_ideas = {
+						JAP_economic_yen_block
+						}
+					}
+				}
+		}
 	}
 
 	#A Strong Armed Government
@@ -345,7 +539,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
+		available = {
+		has_completed_focus = JAPNAK_abolishing_the_cabinet_system
+		}
 		prerequisite = { focus = JAPNAK_realization_of_a_populist_government  }
+		completion_reward = {
+		add_political_power = 100
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.3
+		}
+		}
 	}
 
 	#Abolishing the Cabinet System
@@ -359,6 +563,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNAK_legacy_of_the_visit_to_europe  } prerequisite = { focus = JAPNAK_purge_the_liberal_menace  }
+		completion_reward = {
+		country_event = japan_new_event.108
+		}
 	}
 
 	#Creation of the Board of National Affairs
@@ -372,6 +579,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNAK_a_strong_armed_government  } prerequisite = { focus = JAPNAK_abolishing_the_cabinet_system  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_planning_board
+		}
+		}
 	}
 
 	#Under the Nakano Economic Program
@@ -385,6 +597,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPNAK_new_trade_policies  } prerequisite = { focus = JAPNAK_proposing_a_greater_asian_economic_bloc  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_black_monday_statist_0
+		add_idea = JAP_black_monday_natsynd_1
+		}
+		}
 	}
 
 	#Strengthen the Farmer Unions
@@ -397,7 +615,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		available = {
+		has_country_flag = JAP_land_reform_finished
+		}
 		prerequisite = { focus = JAPNAK_increase_peasant_wages  } prerequisite = { focus = JAPNAK_farming_for_the_nation  }
+		completion_reward = {
+		add_ideas = {
+		JAP_farmer_liberation
+		}
+		}
 	}
 
 	#Nakano Above All
@@ -411,6 +637,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNAK_creation_of_the_board_of_national_affairs  } prerequisite = { focus = JAPNAK_under_the_nakano_economic_program  } prerequisite = { focus = JAPNAK_strengthen_the_farmer_unions  }
+		completion_reward = {
+		country_event = japan_new_event.109
+		}
 	}
 
 }
