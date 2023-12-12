@@ -27,10 +27,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		custom_trigger_tooltip = {
-				tooltip = not_ready_yet_tt		
-				always = no
-			}
+		always = no
 		}
 	}
 
@@ -61,6 +58,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TIBSOC_the_red_sun_shines_over_tibet  }
+		completion_reward = {
+		add_ideas = {
+		TIB_socialist_serf_liberation
+		}
+		}
 	}
 
 	#Reforming the Lands
@@ -74,6 +76,22 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TIBSOC_freeing_the_surfs  }
+		mutually_exclusive = { focus = TIBSOC_collectivize_the_lands }
+		completion_reward = {
+		add_to_variable = {
+			var = yuexe_power 
+			value = 2
+			tooltip = yuexe_increase_tt
+		}
+		add_to_variable = {
+			var = moderate_power  
+			value = 2
+			tooltip = jigme_increase_tt
+		}
+		add_ideas = {
+		TIB_new_land_reforms
+		}
+		}
 	}
 
 	#Collectivize the Lands
@@ -87,6 +105,17 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TIBSOC_freeing_the_surfs  }
+		mutually_exclusive = { focus = TIBSOC_reforming_the_lands }
+		completion_reward = {
+		add_ideas = {
+		TIB_forced_collectivisation
+		}
+		add_to_variable = {
+			var = guohua_power 
+			value = 2
+			tooltip = guohua_increase_tt
+		}
+		}
 	}
 
 	#Crush the Reactionary Tribes
@@ -100,9 +129,14 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TIBSOC_the_red_sun_shines_over_tibet  } prerequisite = { focus = TIBSOC_question_of_the_monasteries  } prerequisite = { focus = TIBSOC_freeing_the_surfs  }
+		completion_reward = {
+		add_manpower = -100
+		add_stability = 0.15
+		add_war_support = 0.1
+		}
 	}
 
-	#Swear In the Red Monastries
+	#Support the Dalai Lama
 	focus = {
 		id = TIBSOC_swear_in_the_red_monastries
 		icon = GFX_TIB_swear_in_the_red_monastries-248360
@@ -114,9 +148,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = TIBSOC_question_of_the_monasteries  }
 		mutually_exclusive = { focus = TIBSOC_burnthemonksaswemust  }
+		completion_reward = {
+		add_ideas = {
+		TIB_lama_supported
+		}
+		add_to_variable = {
+			var = moderate_power  
+			value = 2
+			tooltip = jigme_increase_tt
+		}
+		}
 	}
 
-	#Burn The Monks, As We Must
+	#Arrest the Lama
 	focus = {
 		id = TIBSOC_burnthemonksaswemust
 		icon = GFX_TIB_burnthemonksaswemust-248360
@@ -128,6 +172,21 @@ focus_tree = {
 		}
 		prerequisite = { focus = TIBSOC_question_of_the_monasteries  }
 		mutually_exclusive = { focus = TIBSOC_swear_in_the_red_monastries  }
+		completion_reward = {
+		add_ideas = {
+		TIB_lama_denounced
+		}
+		add_to_variable = {
+			var = guohua_power 
+			value = 2
+			tooltip = guohua_increase_tt
+		}
+		add_to_variable = {
+			var = yuexe_power 
+			value = 1
+			tooltip = yuexe_increase_tt
+		}
+		}
 	}
 
 	#Raise The Militias
@@ -141,6 +200,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TIBSOC_swear_in_the_red_monastries  focus = TIBSOC_burnthemonksaswemust  }
+		completion_reward = {
+		country_event = tibet_socialist.1
+		}
 	}
 
 	#Banners From the Palace
@@ -149,11 +211,20 @@ focus_tree = {
 		icon = GFX_TIB_banners_from_the_palace-248360
 		x = 45
 		y = 3
-		cost = 5
+		cost = 7
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		available = {
+		AND = {
+		has_completed_focus = TIBSOC_raise_the_militias
+		has_completed_focus = TIBSOC_embrace_the_revolutionary_intellectuals
+		}
+		}
 		prerequisite = { focus = TIBSOC_crush_the_reactionary_tribes  }
+		completion_reward = {
+		country_event = tibet_socialist.2
+		}
 	}
 
 	#Embrace the Revolutionary Intellectuals
@@ -166,7 +237,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
-		prerequisite = { focus = TIBSOC_reforming_the_lands  } prerequisite = { focus = TIBSOC_collectivize_the_lands  }
+		prerequisite = { focus = TIBSOC_reforming_the_lands focus = TIBSOC_collectivize_the_lands } 
+		completion_reward = {
+		add_to_variable = {
+			var = moderate_power 
+			value = 1
+			tooltip = jigme_increase_tt
+		}
+		add_research_slot_ = 1
+		}
 	}
 
 	#Birth of the Revolutionary Committee
@@ -178,6 +257,9 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = TIBSOC_raise_the_militias  } prerequisite = { focus = TIBSOC_banners_from_the_palace  } prerequisite = { focus = TIBSOC_embrace_the_revolutionary_intellectuals  }
 		mutually_exclusive = { focus = TIBSOC_bazhaheitocomradeyuexi  } mutually_exclusive = { focus = TIBSOC_takeover_of_the_red_militia  }
@@ -193,6 +275,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = TIBSOC_raise_the_militias  } prerequisite = { focus = TIBSOC_banners_from_the_palace  } prerequisite = { focus = TIBSOC_embrace_the_revolutionary_intellectuals  }
 		mutually_exclusive = { focus = TIBSOC_birth_of_the_revolutionary_committee  } mutually_exclusive = { focus = TIBSOC_takeover_of_the_red_militia  }
 	}
@@ -206,6 +291,9 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = TIBSOC_raise_the_militias  } prerequisite = { focus = TIBSOC_banners_from_the_palace  } prerequisite = { focus = TIBSOC_embrace_the_revolutionary_intellectuals  }
 		mutually_exclusive = { focus = TIBSOC_birth_of_the_revolutionary_committee  } mutually_exclusive = { focus = TIBSOC_bazhaheitocomradeyuexi  }
@@ -222,6 +310,27 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TIBSOC_takeover_of_the_red_militia  }
+		completion_reward = {
+		every_state = {
+			limit = {
+				OR = {
+					is_core_of = NEP
+					is_core_of = SKM
+					is_core_of = BHU
+				}
+			}
+			
+			
+			
+			TIB = {
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+			}
+			add_core_of = TIB
+		}
+		}
 	}
 
 	#Leaping To Industrial Success
@@ -235,6 +344,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TIBSOC_bazhaheitocomradeyuexi  focus = TIBSOC_takeover_of_the_red_militia  }
+		completion_reward = {
+		add_ideas = {
+		TIB_a_flying_leap
+		}
+		}
 	}
 
 	#The Sun's Reach On the Horizon
@@ -248,6 +362,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TIBSOC_bazhaheitocomradeyuexi  }
+		completion_reward = {
+		add_ideas = {
+		TIB_a_sun_red_horizon
+		}
+		}
 	}
 
 	#Proclaim 5 Year Plans
@@ -261,9 +380,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TIBSOC_bazhaheitocomradeyuexi  focus = TIBSOC_birth_of_the_revolutionary_committee  }
+		completion_reward = {
+		add_ideas = {
+		LEC_marxist_orientated_economy
+		}
+		}
 	}
 
-	#Reading Mao's Works
+	#Form the Tibet Cultural Association
 	focus = {
 		id = TIBSOC_readingmaosworks
 		icon = GFX_TIB_readingmaosworks-248360
@@ -274,9 +398,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TIBSOC_birth_of_the_revolutionary_committee  }
+		completion_reward = {
+		add_ideas = {
+		TIB_tibet_ca
+		}
+		}
 	}
 
-	#Cultural Revolution of the Ages
+	#Understanding Buddhist Socialists
 	focus = {
 		id = TIBSOC_cultural_revolution_of_the_ages
 		icon = GFX_TIB_cultural_revolution_of_the_ages-248360
@@ -287,6 +416,24 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TIBSOC_readingmaosworks  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.15
+		}
+		add_political_power = 50
+		create_country_leader = {
+			name = "Ngapoi Ngawang Jigme"
+			picture = "gfx/leaders/TUV/Portrait_TIB_ngapoi_ngawang_jigme_2.png"
+			expire = "1965.1.1"
+			ideology = socdem_buddhist_socialism_subtype
+		}
+		set_party_name = {
+				ideology = social_democrat
+				long_name = TIB_socialist_socdem_party_long
+				name = TIB_socialist_socdem_party
+			}
+		}
 	}
 
 	#Connection Is Vital
@@ -300,6 +447,22 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TIBSOC_proclaim_5_year_plans  }
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.75
+				uses = 3
+				category = radar_tech
+			}
+			322 = {
+			 add_building_construction = {
+					type = radar_station
+					level = 3
+					instant_build = yes
+				}
+			 
+			 }
+		
+		}
 	}
 
 	#Continue a Secular Teaching
@@ -313,6 +476,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TIBSOC_thesunsreachonthehorizon  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Trains Shall Steam Ahead
@@ -326,6 +492,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TIBSOC_leaping_to_industrial_success  }
+		completion_reward = {
+		add_ideas = {
+		TIB_new_railways
+		}
+		}
 	}
 
 	#Junmin Tuanjie Ru Yiren
@@ -339,6 +510,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TIBSOC_our_five_fingers_extend_across_the_realm  }
+		completion_reward = {
+		add_ideas = {
+		TIB_heaven_army_socialist
+		}
+		}
 	}
 
 	#Guns of Socialism
@@ -352,6 +528,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TIBSOC_trains_shall_steam_ahead  } prerequisite = { focus = TIBSOC_junmin_tuanjie_ru_yiren  }
+		completion_reward = {
+		country_event = tibet_socialist.3
+		swap_ideas = {
+		remove_idea = TIB_heaven_army_socialist
+		add_idea = TIB_heaven_army_socialist_1
+		}
+		}
 	}
 
 	#Communism Over Lhasa
@@ -365,6 +548,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TIBSOC_continue_a_secular_teaching  } prerequisite = { focus = TIBSOC_trains_shall_steam_ahead  focus = TIBSOC_connection_is_vital  } prerequisite = { focus = TIBSOC_continue_a_secular_teaching  }
+		completion_reward = {
+		country_event = tibet_socialist.3
+		country_event = tibet_socialist.4
+		}
 	}
 
 	#The Revolution Never Stops
@@ -378,6 +565,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TIBSOC_cultural_revolution_of_the_ages  } prerequisite = { focus = TIBSOC_connection_is_vital  }
+		completion_reward = {
+		country_event = tibet_socialist.3
+		country_event = tibet_socialist.5
+		}
 	}
 	
 	

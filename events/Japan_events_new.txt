@@ -3405,10 +3405,7 @@ country_event = { #The Emperor accepted
 		name = japan_new_event.52.a
 		ai_chance = { base = 100 }
 		set_country_flag = factionalism_japan_no
-		country_event = {###1940 Election
-			id = japan_new_event.63
-			days = 1374
-			}
+		
 		if = {
 			limit = {
 				OR = {
@@ -3419,6 +3416,10 @@ country_event = { #The Emperor accepted
 			country_event = {
 			id = japan_new_event.58
 			days = 3
+			}
+			country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
 			}
 			
 			
@@ -3432,6 +3433,10 @@ country_event = { #The Emperor accepted
 			id = japan_new_event.59
 			days = 3
 			}
+			country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
 		}
 		
 		if = {
@@ -3442,6 +3447,10 @@ country_event = { #The Emperor accepted
 			id = japan_new_event.60
 			days = 3
 			}
+			country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
 		}
 		
 		if = {
@@ -3451,6 +3460,10 @@ country_event = { #The Emperor accepted
 			country_event = {
 			id = japan_new_event.61
 			days = 3
+			}
+			country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
 			}
 		}
 		if = {
@@ -3505,6 +3518,10 @@ country_event = { #Refused Emperor
 			id = japan_new_event.58
 			days = 3
 			}
+			country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
 			
 		}
 		if = {
@@ -3514,6 +3531,10 @@ country_event = { #Refused Emperor
 			country_event = {
 			id = japan_new_event.59
 			days = 3
+			}
+			country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
 			}
 		}
 		
@@ -3525,6 +3546,10 @@ country_event = { #Refused Emperor
 			id = japan_new_event.60
 			days = 3
 			}
+			country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
 		}
 		
 		if = {
@@ -3534,6 +3559,10 @@ country_event = { #Refused Emperor
 			country_event = {
 			id = japan_new_event.61
 			days = 3
+			}
+			country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
 			}
 		}
 		if = {
@@ -3545,10 +3574,7 @@ country_event = { #Refused Emperor
 			days = 3
 			}
 		}
-		country_event = {###1940 Election
-			id = japan_new_event.63
-			days = 1374
-			}
+		
 	}
 }
 
@@ -4082,14 +4108,23 @@ country_event = { #Kokumin Domei Victory
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.61"}
 	title = japan_new_event.61.title
 	desc = japan_new_event.61.desc
-	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.61.a
 		ai_chance = { base = 100 }
 		load_focus_tree = kokumin-domei
-		
+		if = {
+			limit = {
+				NOT = {
+					OR = {
+						has_country_flag = JAP_kokumin_domei_won_in_1937_election
+						has_country_flag = JAP_kokumin_domei_won_in_1940_election
+					}
+				}
+			}
+			complete_national_focus = JAPKOKUMIN_kokumin_domei_at_the_helm
+		}
 		if = {
 		limit = {
 			NOT = {
