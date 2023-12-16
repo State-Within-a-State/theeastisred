@@ -3852,6 +3852,10 @@ country_event = { #Seiyukai Factionalism
 	immediate = {
 	hidden_effect = {
 	load_focus_tree = japan-seiyukai
+	complete_national_focus = JAPSEI_victory_of_the_seiyukai
+	add_ideas = {
+	JAP_party_factionalism_seiyukai
+	}
 	}
 	}
 	
@@ -3859,6 +3863,8 @@ country_event = { #Seiyukai Factionalism
 	option = { #Rentaro Faction
 		name = japan_new_event.59.a
 		ai_chance = { base = 100 }
+		complete_national_focus = JAPSEI_orthodox_victory
+		complete_national_focus = JAPSEI_rentaro_cabinet
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -3889,6 +3895,9 @@ country_event = { #Seiyukai Factionalism
 	option = { #Kuhara Faction
 		name = japan_new_event.59.b
 		ai_chance = { base = 100 }
+		
+		complete_national_focus = JAPSEI_orthodox_victory
+		complete_national_focus = JAPSEI_kuharascabinet
 		set_politics = { ruling_party = authoritarian_democrat }
 		create_country_leader = {
 			name = "Hirohito"
@@ -3926,6 +3935,7 @@ country_event = { #Seiyukai Factionalism
 		name = japan_new_event.59.c
 		ai_chance = { base = 100 }
 		set_politics = { ruling_party = social_conservative }
+		complete_national_focus = JAPSEI_the_reform_faction_hold
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -5683,6 +5693,17 @@ country_event = { #
 	option = { #Rentaro Faction
 		name = japan_new_event.59.a
 		ai_chance = { base = 100 }
+		complete_national_focus = AJPSEIYUKAITWO_the_seiyukai_secure_a_new_term
+		complete_national_focus = AJPSEIYUKAITWO_upholding_party_orthodoxy
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = JAP_seiyukai_won_in_1937_elections
+				}
+			}
+			complete_national_focus = JAPSEI_victory_of_the_seiyukai
+			complete_national_focus = JAPSEI_the_reform_faction_hold
+		}
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -5716,6 +5737,18 @@ country_event = { #
 		name = japan_new_event.59.c
 		ai_chance = { base = 100 }
 		set_politics = { ruling_party = social_conservative }
+		complete_national_focus = AJPSEIYUKAITWO_becoming_a_grassroots_party
+		complete_national_focus = AJPSEIYUKAITWO_the_seiyukai_secure_a_new_term
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = JAP_seiyukai_won_in_1937_elections
+				}
+			}
+			complete_national_focus = JAPSEI_victory_of_the_seiyukai
+			complete_national_focus = JAPSEI_orthodox_victory
+			complete_national_focus = JAPSEI_rentaro_cabinet
+		}
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6847,7 +6880,7 @@ country_event = { #Nakano Above All
 	}
 }
 
-country_event = { #
+country_event = { #2nd National Security Debate
 	id = japan_new_event.110
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.110"}
 	title = japan_new_event.110.title
@@ -6858,7 +6891,10 @@ country_event = { #
 	option = { #
 		name = japan_new_event.110.a
 		ai_chance = { base = 100 }
-		
+		add_stability = 0.1
+		remove_ideas = {
+		JAP_no_army_focus
+		}
 	}
 }
 
