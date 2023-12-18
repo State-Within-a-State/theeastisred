@@ -805,6 +805,7 @@ country_event = { #Japanese Civil War
 					JAP_workers_of_the_world_unite
 					JAP_no_emperor
 					JAP_i_am_black_smith
+					JAP_reactionary_army_resistance_1
 					}
 					load_oob = "Japan_revolution"
 					load_focus_tree = japan-revolution
@@ -4460,6 +4461,7 @@ country_event = { #Anarchism in Japan
 	option = { #The Council Will Decide Our Fate
 		name = japan_new_event.65.a
 		ai_chance = { base = 100 }
+		complete_national_focus = JAPANA_rule_of_the_council
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Buraku_Liberation_League_hog_rso
@@ -4490,6 +4492,7 @@ country_event = { #Anarchism in Japan
 			JAP_Hatta_Shuzo_eco_rso
 			JAP_Taisaku_Kitahara_sec_rso
 		}
+		complete_national_focus = JAPANA_the_anarchist_shogunate
 		set_politics = {
 						ruling_party = radical_socialist
 						last_election = "1936.11.16"
@@ -6907,9 +6910,58 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.111.a
+		name = CHI.earlygame.102.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = -50
+		JSR = {
+			effect_tooltip = {
+				JSR_send_advisors_and_guns_effect = yes
+				add_opinion_modifier = {
+					target = PREV
+					modifier = KR_approves_of_govt
+				}
+			}
+			country_event = { id = japan_new_event.112 days = 1 } #Event to CHI letting them know advisors and guns are on the way
+		}
+	}
+	
+	option = { # just advisors
+		name = CHI.earlygame.102.b
+		ai_chance = { base = 70 }
+		add_political_power = -25
+		JSR = {
+			effect_tooltip = {
+				JSR_send_advisors_only_effect = yes
+				add_opinion_modifier = {
+					target = PREV
+					modifier = KR_approves_of_govt
+				}
+			}
+			country_event = { id = japan_new_event.113 days = 1 } #Event to CHI letting them know that advisors are on the way
+		}
+	}
+	
+	option = { # Solidarity but not for you
+		name = CHI.earlygame.102.c
+		ai_chance = {
+			base = 20
+			modifier = {
+				add = -20
+				OR = {
+					tag = ENG
+					tag = FRA
+				}
+			}
+		}
+		JSR = {
+			effect_tooltip = {
+				add_opinion_modifier = {
+					target = PREV
+					modifier = KR_disapproves_of_govt
+				}
+			}
+			country_event = { id = japan_new_event.114 days = 1 } #Nothing
+		}
 	}
 }
 
@@ -6922,9 +6974,13 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.112.a
+		name = CHI.earlygame.103.a
 		ai_chance = { base = 100 }
-		
+		JSR_send_advisors_and_guns_effect = yes
+		add_opinion_modifier = {
+			target = FROM
+			modifier = KR_approves_of_govt
+		}
 	}
 }
 
@@ -6937,9 +6993,13 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.113.a
+		name = CHI.earlygame.104.a
 		ai_chance = { base = 100 }
-		
+		CHI_send_advisors_only_effect = yes
+		add_opinion_modifier = {
+			target = FROM
+			modifier = KR_approves_of_govt
+		}
 	}
 }
 
@@ -6952,13 +7012,16 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.114.a
+		name = CHI.earlygame.105.a
 		ai_chance = { base = 100 }
-		
+		add_opinion_modifier = {
+			target = FROM
+			modifier = KR_disapproves_of_govt
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Peasant Uprisings
 	id = japan_new_event.115
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.115"}
 	title = japan_new_event.115.title
@@ -6969,7 +7032,23 @@ country_event = { #
 	option = { #
 		name = japan_new_event.115.a
 		ai_chance = { base = 100 }
-		
+		random_controlled_state = {
+			limit = {
+				is_controlled_by = JAP
+			}
+			damage_building = {
+				type = infrastructure
+				damage = 1
+			}
+			damage_building = {
+				type = railway
+				damage = 1
+			}
+			damage_building = {
+				type = supply_hub
+				damage = 1
+			}
+		}
 	}
 }
 
