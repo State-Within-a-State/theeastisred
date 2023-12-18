@@ -154,6 +154,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSOCIALISM_seek_internationale_aid  } prerequisite = { focus = JAPSOCIALISM_letsdoourbest  } prerequisite = { focus = JAPSOCIALISM_liaison_with_shanghai_contacts  }
+		completion_reward = {
+		add_political_power = 20
+		add_manpower = 10000
+		}
 	}
 
 	#Organize Peasant Uprisings
@@ -331,6 +335,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPANA_rule_of_the_council  focus = JAPANA_the_anarchist_shogunate  }
+		completion_reward = {
+		add_ideas = {
+		JAP_revolution_of_young
+		}
+		}
 	}
 
 	#Revolution Against the Old
@@ -344,6 +353,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPANA_rule_of_the_council  focus = JAPANA_the_anarchist_shogunate  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 10
+		}
 	}
 
 	#Smash the Zaibatsu
@@ -357,6 +370,30 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPANA_rule_of_the_council  }
+		completion_reward = {
+		set_country_flag = JAP_smash_zaibatsu
+		set_variable = {
+				var = zaibatsu_nationalization
+				value = 0
+				tooltip = zaibatsu_nationalization_tt
+			}
+		set_variable = {
+				var = sumitomo_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsui_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsubishi_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = yasuda_nationalization
+				value = 0
+			}
+		}
 	}
 
 	#Align With Christian Socialists
@@ -370,6 +407,14 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_integrate_the_imperial_unions  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		}
+		set_politics = { ruling_party = social_democrat }
+		remove_all_ministers = yes
+		}
 	}
 
 	#Purge the Nobility
@@ -383,6 +428,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_capitalshallcrumble  } prerequisite = { focus = JAPANA_align_with_christian_socialists  }
+		completion_reward = {
+		add_ideas = {
+		JAP_purge_socialist_1
+		}
+		}
 	}
 
 	#Unite the Zenkoku and Kyushu Organizations
@@ -396,6 +446,15 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPANA_capitalshallcrumble  } prerequisite = { focus = JAPANA_align_with_christian_socialists  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_ideas = {
+		JAP_uniting_unions
+		}
+		}
 	}
 
 	#A Loyal Figure
@@ -410,6 +469,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPANA_the_fight_against_discrimination  }
 		mutually_exclusive = { focus = JAPANA_burnthecrown  }
+		completion_reward = {
+		if = {
+				limit = { has_country_flag = JAP_yasuhito }
+				add_ideas = JAP_emperor_yasuhito
+			}
+			else = { add_ideas = JAP_emperor_hirohito }
+		}
 	}
 
 	#Work With The National Socialists
@@ -423,6 +489,14 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_court_the_jcp  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		set_politics = { ruling_party = totalist }
+		remove_all_ministers = yes
+		}
 	}
 
 	#From Our Declaration
@@ -436,6 +510,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPANA_court_the_jcp  }
+		completion_reward = {
+		add_war_support = 0.25
+		}
 	}
 
 	#Reconciliation Movement
@@ -449,6 +526,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPANA_work_with_the_national_socialists  } prerequisite = { focus = JAPANA_from_our_declaration  }
+		completion_reward = {
+		add_stability = 0.05
+		}
 	}
 
 	#Our Korean Comrades
@@ -462,6 +542,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPANA_work_with_the_national_socialists  } prerequisite = { focus = JAPANA_from_our_declaration  }
+		completion_reward = {
+		add_opinion_modifier = {
+				target = KOR
+				modifier = JAP_japanese_comradery
+			}
+		}
 	}
 
 	#Idolize the Cooperative Movement
@@ -475,6 +561,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPANA_a_loyal_figure  focus = JAPANA_burnthecrown  }
+		completion_reward = {
+		add_ideas = {
+		JAP_coop_movement
+		}
+		}
 	}
 
 	#Form the Eight Days Committee
@@ -488,6 +579,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPANA_purge_the_nobility  } prerequisite = { focus = JAPANA_unite_the_zenkoku_and_kyushu_organizations  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Construct Proletarian Councils
@@ -501,6 +595,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPANA_form_the_eight_days_committee  }
+		completion_reward = {
+		add_ideas = {
+		JAP_proletarian_councils
+		}
+		}
 	}
 
 	#The Path of Liberation
@@ -515,6 +614,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPANA_idolize_the_cooperative_movement  }
 		mutually_exclusive = { focus = JAPANA_revolutionary_expansion  }
+		completion_reward = {
+		add_ideas = {
+		JAP_liberation_path
+		}
+		}
 	}
 
 	#Revolutionary Expansion
@@ -529,6 +633,23 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPANA_idolize_the_cooperative_movement  }
 		mutually_exclusive = { focus = JAPANA_the_path_of_liberation  }
+		completion_reward = {
+		every_state = {
+			limit = {
+				OR = {
+				is_core_of = KOR
+				is_core_of = TAI
+				is_core_of = JST
+				is_core_of = TRM
+				is_core_of = FNG
+				}
+				
+			}
+			JAP = {
+				add_state_core = PREV
+			}
+		}
+		}
 	}
 
 	#Taking Revenge on the Yakuza
@@ -542,6 +663,18 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_reconciliation_movement  } prerequisite = { focus = JAPANA_our_korean_comrades  }
+		completion_reward = {
+		add_popularity = {
+		ideology = patneral_autocrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = -1
+		}
+		add_political_power = -100
+		add_stability = 0.1
+		}
 	}
 
 	#Japan Shall Be Free!
@@ -555,6 +688,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_taking_revenge_on_the_yakuza  focus = JAPANA_revolutionary_expansion  focus = JAPANA_the_path_of_liberation  focus = JAPANA_construct_proletarian_councils  }
+		completion_reward = {
+		add_ideas = {
+		JAP_japan_shall_be_free
+		}
+		}
 	}
 
 	#Sanshiro's Anarchism Leads the Nation
