@@ -18,6 +18,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#Organize the Farmers
@@ -31,6 +34,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSOCIALISM_the_revolution_is_calling  }
+		completion_reward = {
+		add_war_support = 0.15
+		add_manpower = 10000
+		}
 	}
 
 	#Cooperation With the Unions
@@ -44,6 +51,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPSOCIALISM_the_revolution_is_calling  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_support_worker_uprisings
+		}
 	}
 
 	#War Socialism
@@ -57,6 +67,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSOCIALISM_organize_the_farmers  } prerequisite = { focus = JAPSOCIALISM_cooperation_with_the_unions  }
+		completion_reward = {
+		add_ideas = {
+		JAP_war_socialism
+		}
+		}
 	}
 
 	#Seek Internationale Aid
@@ -70,6 +85,26 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSOCIALISM_war_socialism  }
+		completion_reward = {
+			
+			
+			every_country = {
+				limit = {
+					is_in_europe = yes
+					has_socialist_government = yes
+					is_subject = no
+					has_war = no
+				}
+				country_event = japan_new_event.111
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = CHI_if_they_accept_apply_the_effect_tt
+			effect_tooltip = {
+				JSR_send_advisors_only_effect = yes
+				custom_effect_tooltip = CHI_chance_to_get_infantry_equipment_tt
+				JSR_send_advisors_and_guns_effect = yes
+			}
+		}
 	}
 
 	#Lets Do Our Best!
@@ -83,6 +118,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSOCIALISM_war_socialism  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.25
+		}
 	}
 
 	#Liaison With Shanghai Contacts
@@ -96,6 +135,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSOCIALISM_war_socialism  }
+		completion_reward = {
+		create_intelligence_agency = {
+				name = "Japanese People's Emancipation League"
+				icon = GFX_intelligence_agency_logo_agency
+			}
+		}
 	}
 
 	#Striking For More Than A Day
@@ -122,6 +167,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSOCIALISM_seek_internationale_aid  } prerequisite = { focus = JAPSOCIALISM_letsdoourbest  } prerequisite = { focus = JAPSOCIALISM_liaison_with_shanghai_contacts  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_support_peasant_uprisings
+		}
 	}
 
 	#The Red Flag Flies High Over Tokyo!
@@ -134,7 +182,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
+		available = {
+		has_country_flag = JAP_civil_war_over
+		}
 		prerequisite = { focus = JAPSOCIALISM_striking_for_more_than_a_day  } prerequisite = { focus = JAPSOCIALISM_organize_peasant_uprisings  }
+		completion_reward = {
+		country_event = japan_new_event.64
+		}
 	}
 	
 	
@@ -152,6 +206,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPANA_the_fight_against_discrimination  }
 		mutually_exclusive = { focus = JAPANA_a_loyal_figure  }
+		completion_reward = {
+		add_ideas = {
+		JAP_no_emperor
+		}
+		}
 	}
 
 	#Court the JCP
@@ -165,6 +224,18 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPANA_smash_the_zaibatsu  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.05
+		}
+		add_war_support = 0.05
+		
+		}
 	}
 
 	#The Fight Against Discrimination
@@ -178,6 +249,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_revolution_for_the_young  } prerequisite = { focus = JAPANA_revolution_against_the_old  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#The Anarchist Shogunate
@@ -190,7 +264,10 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		mutually_exclusive = { focus = JAPANA_rule_of_the_council  }
+		available = {
+		always = no
+		}
+		
 	}
 
 	#Rule of the Council
@@ -202,6 +279,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -216,6 +296,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_integrate_the_imperial_unions  }
+		completion_reward = {
+		add_ideas = {
+		JAP_crushing_capital
+		}
+		}
 	}
 
 	#Integrate the Imperial Unions
@@ -229,6 +314,10 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_the_anarchist_shogunate  }
+		completion_reward = {
+		add_manpower = 1000
+		add_political_power = 10
+		}
 	}
 
 	#Revolution For the Young

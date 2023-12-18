@@ -408,6 +408,102 @@ JAP_give_cash_incentives = {
 
 JAP_Civil_War_decision_category = {
 
+JAP_declare_civil_war_win_military = {
+		icon = no_votei_icon
+		
+		available = {
+			JSR = {
+			exists = no
+			}
+		}
+		
+		visible = {
+			tag = JAP
+		}
+		cost = 10
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			set_global_flag = Super_Event_Visible
+			set_global_flag = JAPAN_CW_military_win_superev
+			every_country = {
+				limit = {
+					NOT = {
+						is_ai = yes
+						has_country_flag = KX_superevent_sounds_off
+					}
+				}
+				scoped_sound_effect = "superev_japan_army_win_cw"
+			}
+			set_party_name = {
+				ideology = paternal_autocrat
+				long_name = "Military Administration"
+				name = "Military Administration"
+				set_global_flag = JAP_civil_war_over
+				set_capital = { state = 282 remember_old_capital = no }
+				set_country_flag = JAP_army_victory
+			}
+		}
+	}
+	
+	JAP_declare_civil_war_win_socialists = {
+		icon = no_votei_icon
+		
+		available = {
+			JAP = {
+			exists = no
+			}
+		}
+		
+		visible = {
+			tag = JSR
+		}
+		cost = 10
+		
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			set_global_flag = Super_Event_Visible
+		set_global_flag = JAPAN_CW_Socialist_win_superev
+		every_country = {
+			limit = {
+				NOT = {
+					is_ai = yes
+					has_country_flag = KX_superevent_sounds_off
+				}
+			}
+			scoped_sound_effect = "superev_japan_syndie_win_cw"
+		}
+		add_political_power = 100
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.2
+		}
+		set_country_flag = JAP_syndie_victory
+		set_capital = { state = 282 remember_old_capital = no }
+		set_global_flag = JAP_civil_war_over
+		}
+	}
+
 JAP_welcome_colonial_exiles = {
 		icon = no_votei_icon
 		
@@ -1150,27 +1246,63 @@ JAP_welcome_colonial_exiles = {
 	}
 	
 	
-	JAP_civil_war_two = {
+	JAP_support_worker_uprisings = {
 		icon = no_votei_icon
 		
 		available = {
-			
+			has_completed_focus = JAPSOCIALISM_cooperation_with_the_unions
 		}
 		
 		visible = {
 			tag = JSR
+			has_completed_focus = JAPSOCIALISM_cooperation_with_the_unions
 		}
-		cost = 10
+		cost = 25
 		
-		days_remove = 10
+		days_remove = 50
 		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+			JAP = {
+				add_ideas = {
+					JAP_worker_uprisings
+				}
+			}
+		}
+		remove_effect = {
+			JAP = {
+				remove_ideas = {
+					JAP_worker_uprisings
+				}
+			}
+		}
+	}
+	
+	JAP_support_peasant_uprisings = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAPSOCIALISM_organize_peasant_uprisings
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAPSOCIALISM_organize_peasant_uprisings
+		}
+		cost = 15
+		
+		days_remove = 5
+		days_re_enable = 10
 		fire_only_once = no
 		
 		complete_effect = {
 			
 		}
 		remove_effect = {
-			
+			JAP = {
+				country_event = japan_new_event.115
+			}
 		}
 	}
 	

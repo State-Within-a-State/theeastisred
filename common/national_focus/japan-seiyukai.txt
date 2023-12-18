@@ -21,6 +21,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#Orthodox Victory
@@ -32,6 +35,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPSEI_victory_of_the_seiyukai  }
 		mutually_exclusive = { focus = JAPSEI_the_reform_faction_hold  }
@@ -47,6 +53,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = JAPSEI_orthodox_victory  }
 		mutually_exclusive = { focus = JAPSEI_rentaro_cabinet  }
 	}
@@ -60,6 +69,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPSEI_orthodox_victory  }
 		mutually_exclusive = { focus = JAPSEI_kuharascabinet  }
@@ -76,6 +88,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSEI_rentaro_cabinet  }
+		completion_reward = {
+		add_ideas = {
+		JAP_inukai_legacy
+		}
+		}
 	}
 
 	#The 2nd National Security Debate
@@ -89,6 +106,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSEI_kuharascabinet  focus = JAPSEI_rentaro_cabinet  }
+		completion_reward = {
+		country_event = japan_new_event.110
+		}
 	}
 
 	#Promote Zaibatsu Interests
@@ -102,6 +122,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSEI_kuharascabinet  }
+		completion_reward = {
+		add_ideas = {
+		JAP_industrialists_favoured
+		}
+		}
 	}
 
 	#Solve the Railway Issue
@@ -115,6 +140,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSEI_the_2nd_national_security_debate  } prerequisite = { focus = JAPSEI_promote_zaibatsu_interests  }
+		completion_reward = {
+		add_ideas = {
+		JAP_railway_success
+		}
+		}
 	}
 
 	#Crush the Unions
@@ -128,6 +158,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPSEI_the_2nd_national_security_debate  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Appease the Land Owners
@@ -141,6 +176,18 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSEI_honour_the_inukai_legacy  } prerequisite = { focus = JAPSEI_the_2nd_national_security_debate  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_land_reform_variable
+				value = -2
+			}
+			add_stability = -0.1
+			add_political_power = 50
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
+		}
 	}
 
 	#Encourage Japanese Integration to Taiwan and Chosen
@@ -154,6 +201,21 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPSEI_crush_the_unions  } prerequisite = { focus = JAPSEI_appease_the_land_owners  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_KOR_INT
+				value = 2.5
+				tooltip = JAP_KOR_INT_increase_tt
+			}
+		add_to_variable = {
+				var = TAI.JAP_TWI_INT
+				value = 2.5
+				tooltip = JAP_TWI_INT_increase_tt
+			}
+		add_ideas = {
+		JAP_colonial_assumilation
+		}
+		}
 	}
 
 	#Integration Through Assimilation
@@ -167,6 +229,22 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSEI_solve_the_railway_issue  } prerequisite = { focus = JAPSEI_crush_the_unions  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_KOR_INT
+				value = 1
+				tooltip = JAP_KOR_INT_increase_tt
+			}
+		add_to_variable = {
+				var = TAI.JAP_TWI_INT
+				value = 1
+				tooltip = JAP_TWI_INT_increase_tt
+			}
+		add_ideas = {
+		JAP_colonial_assumilation
+		}
+		add_stability = 0.1
+		}
 	}
 
 	#Form the Dai-Nippon Koa-Domei
@@ -180,6 +258,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPSEI_integration_through_assimilation  }
+		completion_reward = {
+		add_ideas = {
+		JAP_koa_domei
+		}
+		}
 	}
 
 	#Gain Privy Council Support
@@ -193,6 +276,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSEI_encourage_japanese_integration_to_taiwan_and_chosen  focus = JAPSEI_integration_through_assimilation  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_political_power = 20
+		}
 	}
 
 	#Further Influence Manchuria
@@ -206,6 +293,17 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSEI_encourage_japanese_integration_to_taiwan_and_chosen  }
+		completion_reward = {
+		FNG = {
+		add_popularity = {
+		ideology = market_liberal
+		popularity = 0.1
+		}
+		add_ideas = {
+		JAP_manchurian_exploiation
+		}
+		}
+		}
 	}
 
 	#End Party Factionalism
@@ -219,6 +317,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSEI_form_the_dainippon_koadomei  focus = JAPSEI_gain_privy_council_support  focus = JAPSEI_further_influence_manchuria  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_party_factionalism_seiyukai
+		}
+		}
 	}
 
 	#A Union of the East
@@ -232,6 +335,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSEI_form_the_dainippon_koadomei  focus = JAPSEI_gain_privy_council_support  focus = JAPSEI_further_influence_manchuria  }
+		completion_reward = {
+		unlock_decision_category_tooltip = JAP_uniting_with_manchuria_decision_category
+		}
 	}
 
 	#A National Powerhouse
@@ -245,6 +351,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSEI_end_party_factionalism  } prerequisite = { focus = JAPSEI_a_union_of_the_east  }
+		completion_reward = {
+		add_ideas = {
+		JAP_party_seiyukai
+		}
+		}
 	}
 
 	#The Reform Faction Hold
@@ -256,6 +367,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPSEI_victory_of_the_seiyukai  }
 		mutually_exclusive = { focus = JAPSEI_orthodox_victory  }
@@ -272,6 +386,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPSEI_the_reform_faction_hold  }
+		completion_reward = {
+		add_ideas = {
+		JAP_military_expansionism
+		}
+		}
 	}
 
 	#Uphold Anti-Minseitoism
@@ -285,6 +404,19 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPSEI_the_reform_faction_hold  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -0.5
+		}
+		add_popularity = {
+		ideology = market_liberal
+		popularity = -0.5
+		}
+		add_manpower = -100
+		add_stability = -0.05
+		add_political_power = 100
+		}
 	}
 
 	#Form the Innovation Alliance
@@ -298,6 +430,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPSEI_support_military_expansion  } prerequisite = { focus = JAPSEI_uphold_antiminseitoism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_innovation_alliance
+		}
+		}
 	}
 
 	#National Policy Research Institute
@@ -311,6 +448,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPSEI_support_military_expansion  } prerequisite = { focus = JAPSEI_uphold_antiminseitoism  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Zaibatsu Cooperation
@@ -324,6 +464,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSEI_form_the_innovation_alliance  } prerequisite = { focus = JAPSEI_national_policy_research_institute  }
+		completion_reward = {
+		add_ideas = {
+		JAP_seiyukai_zaibatsu
+		}
+		}
 	}
 
 	#Crack Down on Socialists
@@ -337,6 +482,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPSEI_form_the_innovation_alliance  } prerequisite = { focus = JAPSEI_national_policy_research_institute  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Maintain the Democratic Status Quo
@@ -350,20 +500,12 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSEI_form_the_innovation_alliance  } prerequisite = { focus = JAPSEI_national_policy_research_institute  }
-	}
-
-	#Question Colonial Rule
-	focus = {
-		id = JAPSEI_question_colonial_rule
-		icon = GFX_JAPSEI_question_colonial_rule-248360
-		x = 10
-		y = 5
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
+		completion_reward = {
+		add_stability = 0.1
 		}
-		prerequisite = { focus = JAPSEI_zaibatsu_cooperation  } prerequisite = { focus = JAPSEI_crack_down_on_socialists  } prerequisite = { focus = JAPSEI_maintain_the_democratic_status_quo  }
-	}
+		}
+
+	
 
 	#Moderate Land Reforms
 	focus = {
@@ -376,6 +518,18 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSEI_zaibatsu_cooperation  } prerequisite = { focus = JAPSEI_crack_down_on_socialists  } prerequisite = { focus = JAPSEI_maintain_the_democratic_status_quo  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_land_reform_variable
+				value = 1
+			}
+			add_stability = -0.075
+			add_political_power = 25
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+			}
+		}
 	}
 
 	#Support Small Businesses
@@ -389,35 +543,41 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPSEI_moderate_land_reforms  }
+		completion_reward = {
+		add_ideas = {
+		JAP_small_companies
+		}
+		}
 	}
 
-	#Formal Annexation
-	focus = {
-		id = JAPSEI_formal_annexation
-		icon = GFX_JAPSEI_formal_annexation-248360
-		x = 9
-		y = 6
-		cost = 2
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		prerequisite = { focus = JAPSEI_question_colonial_rule  }
-		mutually_exclusive = { focus = JAPSEI_retain_the_leash  }
-	}
+	
 
 	#Retain the Leash
 	focus = {
 		id = JAPSEI_retain_the_leash
 		icon = GFX_JAPSEI_retain_the_leash-248360
-		x = 11
+		x = 10
 		y = 6
 		cost = 2
 		search_filters = {
 			FOCUS_FILTER_FRA_OCCUPATION_COST
 		}
-		prerequisite = { focus = JAPSEI_question_colonial_rule  }
-		mutually_exclusive = { focus = JAPSEI_formal_annexation  }
-	}
+		prerequisite = { focus = JAPSEI_zaibatsu_cooperation  } prerequisite = { focus = JAPSEI_crack_down_on_socialists  } prerequisite = { focus = JAPSEI_maintain_the_democratic_status_quo  }
+			completion_reward = {
+			add_to_variable = {
+					var = JAP_KOR_INT
+					value = 1
+					tooltip = JAP_KOR_INT_increase_tt
+				}
+			add_to_variable = {
+					var = TAI.JAP_TWI_INT
+					value = 1
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+			
+			add_stability = -0.1
+			}
+		}
 
 	#Democratic Imperialism
 	focus = {
@@ -430,6 +590,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPSEI_formal_annexation  focus = JAPSEI_retain_the_leash  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Purge the Orthodox Faction
@@ -443,6 +606,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPSEI_support_small_businesses  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_party_factionalism_seiyukai
+		}
+		}
 	}
 
 	#Seiyukai Forever!
@@ -456,6 +624,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPSEI_democratic_imperialism  } prerequisite = { focus = JAPSEI_purge_the_orthodox_faction  }
+		completion_reward = {
+		add_ideas = {
+		JAP_party_seiyukai
+		}
+		}
 	}
 
 #Crushing National Radicalism
@@ -469,6 +642,17 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_upholding_party_orthodoxy  focus = AJPSEIYUKAITWO_becoming_a_grassroots_party  }
+		completion_reward = {
+		add_stability = 0.1
+		add_popularity = {
+			ideology = national_populism
+			popularity = -1
+			}
+			add_popularity = {
+			ideology = paternal_autocrat
+			popularity = -1
+			}
+		}
 	}
 
 	#Reach Out to the Japanese Middle Class
@@ -482,6 +666,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_becoming_a_grassroots_party  }
+		completion_reward = {
+		add_ideas = {
+		JAP_small_companies_1
+		}
+		}
 	}
 
 	#Zaibatsu Alignments
@@ -495,6 +684,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_upholding_party_orthodoxy  }
+		completion_reward = {
+		add_ideas = {
+		JAP_seiyukai_zaibatsu
+		}
+		}
 	}
 
 	#Increase Colonial Investments
@@ -508,6 +702,22 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_crushing_national_radicalism  } prerequisite = { focus = AJPSEIYUKAITWO_reach_out_to_the_japanese_middle_class  focus = AJPSEIYUKAITWO_zaibatsu_alignments  } prerequisite = { focus = AJPSEIYUKAITWO_crushing_national_radicalism  }
+		completion_reward = {
+			add_to_variable = {
+					var = JAP_KOR_INT
+					value = 1
+					tooltip = JAP_KOR_INT_increase_tt
+				}
+			add_to_variable = {
+					var = TAI.JAP_TWI_INT
+					value = 1
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+			
+			add_ideas = {
+			JAP_colonial_assumilation
+			}
+			}
 	}
 
 	#Trade Union Removal
@@ -521,6 +731,23 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_zaibatsu_alignments  } prerequisite = { focus = AJPSEIYUKAITWO_crushing_national_radicalism  focus = AJPSEIYUKAITWO_crushing_national_radicalism  } prerequisite = { focus = AJPSEIYUKAITWO_reach_out_to_the_japanese_middle_class  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = -1
+			}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = -1
+			}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = -1
+			}
+		}
 	}
 
 	#Stand By Traditional Party Alignments
@@ -535,6 +762,20 @@ focus_tree = {
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_increase_colonial_investments  } prerequisite = { focus = AJPSEIYUKAITWO_trade_union_removal  }
 		mutually_exclusive = { focus = AJPSEIYUKAITWO_formation_of_local_clubs  }
+		completion_reward = {
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.05
+			}
+			add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+			}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.1
+			}
+		}
 	}
 
 	#Formation of Local Clubs
@@ -549,6 +790,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_increase_colonial_investments  } prerequisite = { focus = AJPSEIYUKAITWO_trade_union_removal  }
 		mutually_exclusive = { focus = AJPSEIYUKAITWO_stand_by_traditional_party_alignments  }
+		completion_reward = {
+		add_ideas = {
+		JAP_local_clubs
+		}
+		}
 	}
 
 	#A New Era For Japanese Social Conservatism
@@ -562,6 +808,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_stand_by_traditional_party_alignments  focus = AJPSEIYUKAITWO_formation_of_local_clubs  }
+		completion_reward = {
+		add_ideas = {
+		JAP_party_seiyukai_1
+		}
+		}
 	}
 
 	#The Seiyukai Secure a New Term
@@ -574,6 +825,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#Upholding Party Orthodoxy
@@ -585,6 +839,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_the_seiyukai_secure_a_new_term  }
 		mutually_exclusive = { focus = AJPSEIYUKAITWO_becoming_a_grassroots_party  }
@@ -599,6 +856,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = AJPSEIYUKAITWO_the_seiyukai_secure_a_new_term  }
 		mutually_exclusive = { focus = AJPSEIYUKAITWO_upholding_party_orthodoxy  }
