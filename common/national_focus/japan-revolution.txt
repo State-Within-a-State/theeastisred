@@ -495,7 +495,6 @@ focus_tree = {
 		popularity = 0.1
 		}
 		set_politics = { ruling_party = totalist }
-		remove_all_ministers = yes
 		}
 	}
 
@@ -692,6 +691,7 @@ focus_tree = {
 		add_ideas = {
 		JAP_japan_shall_be_free
 		}
+		country_event = japan_new_event.116
 		}
 	}
 
@@ -704,6 +704,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -718,6 +721,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPANA_sanshirosanarchismleadsthenation  }
+		completion_reward = {
+		country_event = japan_new_event.117
+		}
 	}
 
 	#Upholding the Showa
@@ -731,6 +737,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPANA_writing_the_true_anarchist_manifesto  }
+		completion_reward = {
+		if = {
+				limit = { has_country_flag = JAP_yasuhito }
+				add_ideas = JAP_emperor_yasuhito
+			}
+			else = { add_ideas = JAP_emperor_hirohito }
+		}
 	}
 
 	#In the Embrace of Pure Anarchism
@@ -744,6 +757,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPANA_writing_the_true_anarchist_manifesto  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Mutualist Economic Program
@@ -757,6 +773,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPANA_in_the_embrace_of_pure_anarchism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_mutalist_program
+		}
+		}
 	}
 
 	#Uniting the Japanese Anarchist Movement
@@ -770,6 +791,13 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_upholding_the_showa  }
+		completion_reward = {
+		add_manpower = 1000
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Crush the Foreign Reactionaries
@@ -783,6 +811,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_upholding_the_showa  }
+		completion_reward = {
+		add_ideas = {
+		JAP_purge_socialist_1
+		}
+		}
 	}
 
 	#Reforming the Zenkoku Jiren
@@ -796,6 +829,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPANA_uniting_the_japanese_anarchist_movement  } prerequisite = { focus = JAPANA_crush_the_foreign_reactionaries  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Promoting Communal  Agrarianism
@@ -809,6 +845,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPANA_mutualist_economic_program  }
+		completion_reward = {
+		add_ideas = {
+		JAP_communalist_stuff
+		}
+		}
 	}
 
 	#Anarcho-Syndicalist Programme
@@ -822,6 +863,15 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPANA_mutualist_economic_program  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		add_ideas = {
+		JAP_syndies_support
+		}
+		}
 	}
 
 	#Promoting the "Local Life"
@@ -835,6 +885,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_promotingcommunalagrarianism  } prerequisite = { focus = JAPANA_anarchosyndicalist_programme  }
+		completion_reward = {
+		add_political_power = 50
+		}
 	}
 
 	#Syncretic Anarchist Ethos
@@ -848,6 +901,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_reforming_the_zenkoku_jiren  }
+		completion_reward = {
+		add_ideas = {
+		JAP_syncretic_ethos
+		}
+		}
 	}
 
 	#Legacy of Imperial Anarchism
@@ -861,6 +919,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_promotingthelocallife  } prerequisite = { focus = JAPANA_syncretic_anarchist_ethos  }
+		completion_reward = {
+		add_ideas = {
+		JAP_mutalist_program_1
+		}
+		}
 	}
 
 	#The Towers Surpass the Clouds Again
@@ -874,6 +937,29 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPANA_the_old_guard_of_japanese_socialism  }
+		completion_reward = {
+		add_opinion_modifier = {
+			target = GER
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = CAN
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = RUS
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = USA
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = NFA
+			modifier = faction_traitor
+		}
+		add_war_support = 0.05
+		}
 	}
 
 	#Radicalize the Art Circles
@@ -887,6 +973,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPANA_the_old_guard_of_japanese_socialism  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#The Old Guard of Japanese Socialism
@@ -900,6 +989,16 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_true_anarchism_rises  }
+		completion_reward = {
+		add_political_power = 100
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		
+		}
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		}
 	}
 
 	#True Anarchism Rises
@@ -911,6 +1010,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -925,6 +1027,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPANA_the_old_guard_of_japanese_socialism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_liberate_lifestyle
+		}
+		}
 	}
 
 	#Expression Through Living
@@ -938,6 +1045,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPANA_a_liberated_lifestyle  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Denounce the Crown of Evil
@@ -951,6 +1061,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPANA_the_towers_surpass_the_clouds_again  } prerequisite = { focus = JAPANA_a_liberated_lifestyle  }
+		completion_reward = {
+		add_ideas = {
+		JAP_no_emperor
+		}
+		}
 	}
 
 	#Dadaism Realized
@@ -977,6 +1092,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPANA_dadaism_realized  }
+		completion_reward = {
+		add_ideas = {
+		JAP_reading_revolution
+		}
+		}
 	}
 
 	#Removing the Oppressive Classes
@@ -990,6 +1110,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPANA_expression_through_living  } prerequisite = { focus = JAPANA_denounce_the_crown_of_evil  }
+		completion_reward = {
+		add_ideas = {
+		JAP_purge_socialist_2
+		}
+		}
 	}
 
 	#Forming Workers Cooperatives
@@ -1003,6 +1128,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPANA_expression_through_living  } prerequisite = { focus = JAPANA_denounce_the_crown_of_evil  }
+		completion_reward = {
+		add_ideas = {
+		JAP_syndies_support
+		}
+		}
 	}
 
 	#Understanding the Peasantry
@@ -1016,6 +1146,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPANA_removing_the_oppressive_classes  } prerequisite = { focus = JAPANA_forming_workers_cooperatives  }
+		completion_reward = {
+		add_ideas = {
+		JAP_communalist_stuff
+		}
+		}
 	}
 
 	#Denounce the Monks
@@ -1030,6 +1165,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPANA_the_literary_revolution  } prerequisite = { focus = JAPANA_renounce_feudalism  }
 		mutually_exclusive = { focus = JAPANA_embrace_the_monks  }
+		completion_reward = {
+		add_ideas = {
+		JAP_purginf_monks
+		}
+		}
 	}
 
 	#Embrace the Monks
@@ -1044,6 +1184,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPANA_the_literary_revolution  } prerequisite = { focus = JAPANA_renounce_feudalism  }
 		mutually_exclusive = { focus = JAPANA_denounce_the_monks  }
+		completion_reward = {
+		add_ideas = {
+		JAP_love_monks
+		}
+		}
 	}
 
 	#I am the Tengu!
@@ -1057,6 +1202,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_denounce_the_monks  focus = JAPANA_embrace_the_monks  }
+		completion_reward = {
+		add_ideas = {
+		JAP_i_am_tengu
+		}
+		}
 	}
 
 	#Form the Tsuji Jun Kōenkai
@@ -1070,6 +1220,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_understanding_the_peasantry  }
+		completion_reward = {
+		add_ideas = {
+		JAP_tsuji_clubs
+		}
+		}
 	}
 
 	#What's Going On in the Psych Ward?
@@ -1083,6 +1238,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPANA_iamthetengu  } prerequisite = { focus = JAPANA_formthetsujijunkoenkai  }
+		completion_reward = {
+		country_event = japan_new_event.118
+		}
 	}
 
 	#Renounce Feudalism
@@ -1096,6 +1254,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPANA_dadaism_realized  }
+		completion_reward = {
+		add_ideas = {
+		JAP_purge_socialist_1
+		}
+		}
 	}
 	
 	
@@ -2312,6 +2475,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPRECOVERY_land_lord_trials  } prerequisite = { focus = JAPRECOVERY_land_to_the_tiller  focus = JAPRECOVERY_radical_redistribution  } prerequisite = { focus = JAPRECOVERY_land_lord_trials  }
 		mutually_exclusive = { focus = JAPRECOVERY_cooperative_farming  } mutually_exclusive = { focus = JAPRECOVERY_collectivisation  }
+		completion_reward = {
+		add_ideas = {
+		JSR_communalism
+		}
+		}
 	}
 
 	#Collectivisation
@@ -2326,6 +2494,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPRECOVERY_radical_redistribution  } prerequisite = { focus = JAPRECOVERY_land_lord_trials  }
 		mutually_exclusive = { focus = JAPRECOVERY_communalisation  }
+		completion_reward = {
+		add_ideas = {
+		JSR_collectivism
+		}
+		}
 	}
 
 	#I am a Black Smith
@@ -2339,6 +2512,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_strengthen_urban_industrial_centres  } prerequisite = { focus = JAPRECOVERY_national_railroad_construction  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JSR_centralized_recovery
+		add_idea = JSR_centralized_recovery_1
+		}
+		}
 	}
 
 	#Civil War Recovery Plan
@@ -2347,9 +2526,15 @@ focus_tree = {
 		icon = GFX_JAPRECOVERY_civil_war_recovery_plan-248360
 		x = 70
 		y = 0
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_flag = JAP_civil_war_over
+		}
+		completion_reward = {
+		add_political_power = 100
 		}
 	}
 
@@ -2364,6 +2549,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_civil_war_recovery_plan  }
+		completion_reward = {
+		country_event = japan_new_event.119
+		}
 	}
 
 	#Centralized Approach
@@ -2375,6 +2563,9 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPRECOVERY_fixing_the_economy  }
 	}
@@ -2390,6 +2581,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_fixing_the_economy  }
+		completion_reward = {
+		unlock_decision_category_tooltip = JSR_land_reform_decision_category
+		set_variable = {
+				var = japan_socialist_land_reform
+				value = 0
+				tooltip = japan_socialist_land_reform_tt
+			}
+		}
 	}
 
 	#Decentralized Economics
@@ -2401,6 +2600,9 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPRECOVERY_fixing_the_economy  }
 	}
@@ -2416,6 +2618,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_decentralized_economics  }
+		completion_reward = {
+		add_ideas = {
+		JSR_industrial_coops
+		}
+		}
 	}
 
 	#Land Moderation
@@ -2428,7 +2635,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
+		available = {
+			NOT = {
+				has_completed_focus = JAPRECOVERY_violent_land_revolution
+			}
+		}
 		prerequisite = { focus = JAPRECOVERY_starting_the_land_reformation  } prerequisite = { focus = JAPRECOVERY_decentralized_economics  }
+		completion_reward = {
+		add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 15
+					tooltip = add_10_to_japan_socialist_land_reform_tt
+				}
+		add_stability = -0.15
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		}
+		}
 	}
 
 	#Violent Land Revolution
@@ -2441,7 +2665,25 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
+		available = {
+			NOT = {
+				has_completed_focus = JAPRECOVERY_land_moderation
+			}
+		}
 		prerequisite = { focus = JAPRECOVERY_centralized_approach  } prerequisite = { focus = JAPRECOVERY_starting_the_land_reformation  }
+		completion_reward = {
+		add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 5
+					tooltip = add_10_to_japan_socialist_land_reform_tt
+				}
+			add_stability = 0.05
+			add_manpower = -1000
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
+		}
 	}
 
 	#Committing to the 5 Year Plan
@@ -2455,6 +2697,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_centralized_approach  }
+		completion_reward = {
+		unlock_decision_category_tooltip = JSR_five_year_decision_category
+		}
 	}
 
 	#Strengthen Urban Industrial Centres
@@ -2468,6 +2713,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_committing_to_the_5_year_plan  }
+		completion_reward = {
+		custom_effect_tooltip = start_building_urban_areas_JSR_tt
+		}
 	}
 
 	#National Railroad Construction
@@ -2481,6 +2729,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_committing_to_the_5_year_plan  }
+		completion_reward = {
+		unlock_decision_tooltip = JSR_connect_the_nation
+		}
 	}
 
 	#Radical Re-Distribution
@@ -2494,6 +2745,17 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPRECOVERY_violent_land_revolution  }
+		completion_reward = {
+		add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 5
+					tooltip = add_5_to_japan_socialist_land_reform_tt
+				}
+		add_stability = 0.05
+		add_ideas = {
+		JSR_radical_redistribution
+		}
+		}
 	}
 
 	#Land Lord Trials
@@ -2507,6 +2769,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPRECOVERY_land_moderation  focus = JAPRECOVERY_violent_land_revolution  }
+		completion_reward = {
+		unlock_decision_tooltip = JSR_land_lord_trials
+		}
 	}
 
 	#Land to the Tiller
@@ -2520,6 +2785,19 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_land_moderation  }
+		completion_reward = {
+		add_ideas = {
+		JSR_land_tiller
+		}
+		
+		add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 10
+					tooltip = add_10_to_japan_socialist_land_reform_tt
+				}
+		add_stability = -0.05
+		
+		}
 	}
 
 	#Working on the Agrarian Economy
@@ -2533,6 +2811,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_form_industrial_cooperatives  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JSR_decentralized_recovery
+		add_idea = JSR_decentralized_recovery_1
+		}
+		}
 	}
 
 	#Communalised Cafeterias
@@ -2546,6 +2830,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPRECOVERY_form_industrial_cooperatives  }
+		completion_reward = {
+		add_ideas = {
+		JSR_communal_cafe
+		}
+		}
 	}
 
 	#Working Another Day For the Masses of the Commune
@@ -2559,6 +2848,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_working_on_the_agrarian_economy  } prerequisite = { focus = JAPRECOVERY_communalised_cafeterias  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JSR_decentralized_recovery_1
+		add_idea = JSR_decentralized_recovery_2
+		}
+		}
 	}
 
 	#Cooperative Farming
@@ -2573,6 +2868,22 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPRECOVERY_land_lord_trials  } prerequisite = { focus = JAPRECOVERY_land_to_the_tiller  }
 		mutually_exclusive = { focus = JAPRECOVERY_communalisation  }
+		completion_reward = {
+		if = {
+			limit = {
+				has_idea = JSR_industrial_coops
+			}
+			swap_ideas = {
+				remove_idea = JSR_industrial_coops
+				add_idea = JSR_industrial_coops_1
+			}
+		}
+		else = {
+			add_ideas = {
+				JSR_industrial_coops_1
+			}
+		}
+		}
 	}
 
 	#Organizing the People's Army
