@@ -412,8 +412,7 @@ focus_tree = {
 		ideology = social_democrat
 		popularity = 0.1
 		}
-		set_politics = { ruling_party = social_democrat }
-		remove_all_ministers = yes
+		add_socdem_to_coalition = yes
 		}
 	}
 
@@ -494,7 +493,7 @@ focus_tree = {
 		ideology = totalist
 		popularity = 0.1
 		}
-		set_politics = { ruling_party = totalist }
+		add_tot_to_coalition = yes
 		}
 	}
 
@@ -1079,6 +1078,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPANA_radicalize_the_art_circles  }
+		completion_reward = {
+		add_research_slot = 1
+		add_ideas = {
+		JSR_dadaism
+		}
+		}
 	}
 
 	#The Literary Revolution
@@ -2892,11 +2897,17 @@ focus_tree = {
 		icon = GFX_JAPRECOVERY_organizingthepeoplesarmy-248360
 		x = 76
 		y = 1
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPRECOVERY_civil_war_recovery_plan  }
+		completion_reward = {
+		add_political_power = 10
+		add_war_support = 0.1
+		army_experience = 25
+		naval_experience = 25
+		}
 	}
 
 	#Birth of the Red Army
@@ -2911,6 +2922,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPRECOVERY_organizingthepeoplesarmy  }
 		mutually_exclusive = { focus = JAPRECOVERY_keep_the_militias  }
+		completion_reward = {
+		add_ideas = {
+		JSR_red_army
+		}
+		}
 	}
 
 	#Keep the Militias
@@ -2925,6 +2941,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPRECOVERY_organizingthepeoplesarmy  }
 		mutually_exclusive = { focus = JAPRECOVERY_birth_of_the_red_army  }
+		completion_reward = {
+		add_ideas = {
+		JSR_red_militias
+		}
+		}
 	}
 
 	#Son Kosakutai
@@ -2938,6 +2959,26 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPRECOVERY_keep_the_militias  }
+		completion_reward = {
+		division_template = {
+				name = "Son Kosakutai"
+				is_locked = no
+				division_cap = 5 
+				division_names_group = JSR_INF_04
+				priority = 0
+				template_counter = 0
+				regiments = {
+					mountaineers = { x = 0 y = 0 }
+					mountaineers = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+				}
+				support = {
+					signal_company = { x = 0 y = 0 }
+					logistics_company = { x = 0 y = 1 }
+				}
+			}
+		}
 	}
 
 	#Rehabilitating POW's
@@ -2951,6 +2992,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPRECOVERY_birth_of_the_red_army  focus = JAPRECOVERY_keep_the_militias  }
+		completion_reward = {
+		add_ideas = {
+		JSR_rehablitate_army
+		}
+		}
 	}
 
 	#Mass-Mobilization Doctrine
@@ -2964,6 +3010,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPRECOVERY_birth_of_the_red_army  }
+		completion_reward = {
+		add_ideas = {
+			JAP_reserve_mobilizers
+		}
+		}
 	}
 
 	#Understanding Motorization
@@ -2977,6 +3028,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_massmobilization_doctrine  }
+		completion_reward = {
+		add_ideas = {
+		tank_academy
+		FRA_tank_assembly_line_idea
+		}
+		
+		}
 	}
 
 	#Commissars of the Revolution
@@ -2990,6 +3048,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPRECOVERY_massmobilization_doctrine  }
+		completion_reward = {
+		add_ideas = {
+		JSR_commissars
+		}
+		}
 	}
 
 	#Centralize Army Discipline
@@ -3003,6 +3066,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPRECOVERY_rehabilitatingpows  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Up High in the Mountains
@@ -3016,6 +3082,14 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_son_kosakutai  }
+		completion_reward = {
+		add_tech_bonus = {
+					name = JAP_found_teishindan
+					bonus = 1
+					uses = 1
+					category = para_tech
+				}
+		}
 	}
 
 	#Bicycle Brigades
@@ -3029,6 +3103,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_son_kosakutai  }
+		completion_reward = {
+		set_technology = { bicycle_infantry = 1 popup = yes }
+		}
 	}
 
 	#Night Raids
@@ -3042,6 +3119,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_centralize_army_discipline  } prerequisite = { focus = JAPRECOVERY_up_high_in_the_mountains  } prerequisite = { focus = JAPRECOVERY_bicycle_brigades  }
+		completion_reward = {
+		add_ideas = {
+		JSR_night_raids
+		}
+		}
 	}
 
 	#Bring Out the Armoured Beasts
@@ -3055,6 +3137,47 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_understanding_motorization  } prerequisite = { focus = JAPRECOVERY_commissars_of_the_revolution  } prerequisite = { focus = JAPRECOVERY_centralize_army_discipline  }
+		completion_reward = {
+			
+			add_tech_bonus = {
+				name = JAP_armoured_experiments
+				bonus = 1
+				ahead_reduction = 1
+				uses = 1
+				category = armor
+			}
+			
+			division_template = {
+				name = "Dokuritsu Konsei Ryodan II"
+				division_names_group = JAP_IMB_01
+				regiments = {
+					light_armor = { x = 0 y = 0 }
+					light_armor = { x = 0 y = 1 }
+					light_armor = { x = 0 y = 2 }
+					light_armor = { x = 0 y = 3 }
+					light_armor = { x = 0 y = 4 }
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+					motorized = { x = 1 y = 2 }
+					motorized = { x = 1 y = 3 }
+					motorized = { x = 1 y = 4 }
+				}
+				support = {
+					mot_recon = { x = 0 y = 0 }
+					artillery = { x = 0 y = 1 }
+				}
+			}
+			custom_effect_tooltip = JAP_deploy_tanks
+			hidden_effect = {
+				random_owned_controlled_state = {
+					prioritize = { 745 }
+					create_unit = {
+						division = "division_template = \"Dokuritsu Konsei Ryodan II\" start_experience_factor = 0.3"
+						owner = ROOT
+					}
+				}
+			}
+		}
 	}
 
 	#A True Army of Socialism
@@ -3068,6 +3191,27 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPRECOVERY_night_raids  focus = JAPRECOVERY_bring_out_the_armoured_beasts  }
+		completion_reward  = {
+		if = {
+		limit = {
+		has_idea = JSR_red_militias
+		}
+		swap_ideas = {
+		remove_idea = JSR_red_militias
+		add_idea = JSR_red_militias_1
+		}
+		}
+		
+		else_if = {
+		limit = {
+		has_idea = JSR_red_army
+		}
+		swap_ideas = {
+		remove_idea = JSR_red_army
+		add_idea = JSR_red_army_1
+		}
+		}
+		}
 	}
 
 	#The People's Navy
@@ -3081,6 +3225,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_organizingthepeoplesarmy  }
+		completion_reward = {
+			add_ideas = {
+				JAP_dockyard_improvement
+			}
+		}
 	}
 
 	#Protecting the Revolutionary Red Sun
@@ -3094,6 +3243,69 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_organizingthepeoplesarmy  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_the_zero"
+			add_to_variable = { JAP_compled_nav_focuses = 1 }
+			if = {
+				limit = { has_dlc_bba = yes }
+				if = {
+					limit = { has_tech = improved_small_airframe }
+					add_tech_bonus = {
+						name = JAP_the_zero
+						bonus = 1
+						uses = 1
+						category = cat_air_engine
+					}
+					custom_effect_tooltip = tooltip_white_line
+					create_equipment_variant = {
+						name = "Mitsubishi A6M Rei-sen Model 11"
+						type = cv_small_plane_airframe_2
+						modules = {
+							fixed_main_weapon_slot = aircraft_cannon_1_2x
+							fixed_auxiliary_weapon_slot_1 = heavy_mg_2x
+							fixed_auxiliary_weapon_slot_2 = bomb_locks
+							engine_type_slot = engine_3_1x
+							special_type_slot_1 = self_sealing_fuel_tanks_small
+							special_type_slot_2 = fuel_tanks_small
+						}
+					}
+				}
+				else = {
+					add_tech_bonus = {
+						name = JAP_the_zero
+						ahead_reduction = 1
+						uses = 1
+						technology = improved_small_airframe
+					}
+					custom_effect_tooltip = tooltip_white_line
+					custom_effect_tooltip = JAP_the_zero_bba_tt
+				}
+			}
+			else_if = {
+				limit = { has_tech = cv_fighter2 }
+				create_equipment_variant = {
+					name = "Mitsubishi A6M Rei-sen Model 11"
+					type = cv_fighter_equipment_2
+					parent_version = 0
+					upgrades = {
+						plane_reliability_upgrade = 2
+						plane_engine_upgrade = 3
+						plane_range_upgrade = 3
+					}
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					name = JAP_the_zero
+					ahead_reduction = 1
+					uses = 1
+					technology = fighter2
+					technology = cv_fighter2
+				}
+				custom_effect_tooltip = tooltip_white_line
+				custom_effect_tooltip = JAP_the_zero_not_bba_tt
+			}
+		}
 	}
 
 	#New Radar Links
@@ -3107,6 +3319,13 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_protecting_the_revolutionary_red_sun  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.75
+			uses = 3
+			category = radar_tech
+		}
+		}
 	}
 
 	#Our Soldiers Shall Swim & Fly
@@ -3120,6 +3339,40 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_thepeoplesnavy  } prerequisite = { focus = JAPRECOVERY_protecting_the_revolutionary_red_sun  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_pacific_defence_zone"
+			add_to_variable = { JAP_compled_nav_focuses = 1 }
+			every_controlled_state = {
+				limit = { is_pacific_islands = yes }
+				add_building_construction = {
+					type = coastal_bunker
+					level = 4
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 1
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = JAP_expand_the_snlf
+				uses = 1
+				ahead_reduction = 2
+				category = marine_tech
+				category = tp_tech
+			}
+			
+			
+		}
 	}
 
 	#Rebuild the Hiroshima Shipyards
@@ -3133,6 +3386,33 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPRECOVERY_thepeoplesnavy  }
+		completion_reward = {
+		528 = {
+		add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = naval_base
+				level = 2
+				instant_build = yes
+			}
+		}
+		
+		529 = {
+		add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = naval_base
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
 	}
 
 	#A New Red Fleet
@@ -3146,6 +3426,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_oursoldiersshallswimfly  } prerequisite = { focus = JAPRECOVERY_rebuild_the_hiroshima_shipyards  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_no_navy
+		add_idea = JAP_naval_support
+		}
+		}
 	}
 
 	#Flying High Above the Sky
@@ -3159,6 +3445,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPRECOVERY_new_radar_links  } prerequisite = { focus = JAPRECOVERY_oursoldiersshallswimfly  }
+		completion_reward =  {
+		add_ideas = {
+		JAP_reformist_air_force_lw
+		}
+		}
 	}
 	
 	
