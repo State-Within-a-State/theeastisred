@@ -7175,18 +7175,31 @@ country_event = { #Direction of the Economy
 	}
 }
 
-country_event = { #
+country_event = { #Japanese Socialists Propose an Alliance
 	id = japan_new_event.120
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.120"}
 	title = japan_new_event.120.title
-	desc = japan_new_event.120.desc
+	desc = japan_new_event.76.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.120.a
+		name = japan_new_event.76.a
 		ai_chance = { base = 100 }
-		
+		JSR = { add_to_faction = FROM }
+		JSR = {
+		set_country_flag = JSR_chose_china_leader
+		}
+	}
+	option = { #
+		name = japan_new_event.76.b
+		ai_chance = { base = 100 }
+		JSR = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FROM
+				}
+			}
 	}
 }
 

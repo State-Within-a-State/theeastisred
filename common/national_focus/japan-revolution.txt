@@ -663,7 +663,7 @@ focus_tree = {
 		prerequisite = { focus = JAPANA_reconciliation_movement  } prerequisite = { focus = JAPANA_our_korean_comrades  }
 		completion_reward = {
 		add_popularity = {
-		ideology = patneral_autocrat
+		ideology = paternal_autocrat
 		popularity = -1
 		}
 		add_popularity = {
@@ -3466,6 +3466,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_SOCFOR_our_own_path_of_liberation  focus = JAP_SOCFOR_reaching_out_to_socialist_allies  }
+		completion_reward = {
+		custom_effect_tooltip = unlock_decisions_for_socialist_china_tt
+		}
 	}
 
 	#Reaching Out to Socialist Allies
@@ -3480,6 +3483,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_SOCFOR_a_revolution_on_the_world_stage  }
 		mutually_exclusive = { focus = JAP_SOCFOR_our_own_path_of_liberation  }
+		completion_reward = {
+		custom_effect_tooltip = unlock_decisions_to_join_socialist_faction_tt
+		}
 	}
 
 	#A Revolution On the World Stage
@@ -3488,9 +3494,19 @@ focus_tree = {
 		icon = GFX_JAP_SOCFOR_a_revolution_on_the_world_stage-248360
 		x = 61
 		y = 7
-		cost = 3
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
+		}
+		available = {
+		has_army_manpower = {
+				size > 750000
+			}
+			has_country_flag = JAP_civil_war_over
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			add_political_power = 100
 		}
 	}
 
@@ -3504,7 +3520,25 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		bypass = {
+			OR = {
+				TRM = {
+					OR = {
+						exists = no
+						is_subject_of = JSR
+					}
+				}
+				is_in_faction_with = TRM
+				
+			}
+		}
 		prerequisite = { focus = JAP_SOCFOR_reaching_out_to_socialist_allies  focus = JAP_SOCFOR_our_own_path_of_liberation  }
+		completion_reward = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TRM
+			}
+		}
 	}
 
 	#Liberate the Former Colonies
@@ -3518,6 +3552,41 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_SOCFOR_saving_the_far_east  }
+		completion_reward = {
+		if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = TAI
+					}
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = TAI
+				}
+			}
+		if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = KOR
+					}
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = KOR
+				}
+			}
+		if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = JST
+					}
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = JST
+				}
+			}
+		}
 	}
 
 	#Proclaiming the Red Steppe
@@ -3531,6 +3600,32 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_SOCFOR_the_china_solution  }
+		completion_reward = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SIK
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TAN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ETS
+			}
+			if = {
+				limit = {
+					NOT = {
+						is_in_faction_with = MON
+					}
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = MON
+				}
+			}
+		}
+		
 	}
 
 	#Our Own Path of Liberation
@@ -3545,6 +3640,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_SOCFOR_a_revolution_on_the_world_stage  }
 		mutually_exclusive = { focus = JAP_SOCFOR_reaching_out_to_socialist_allies  }
+		completion_reward = {
+		create_faction = JSR_FACTION_NAME
+		}
 	}
 
 	#Secure Central Asia
@@ -3558,6 +3656,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_SOCFOR_the_china_solution  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_tame_wild_steppe
+		}
 	}
 
 	#Hunting the Big Bear
@@ -3570,7 +3671,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		bypass = {
+		is_in_faction_with = RUS
+		}
 		prerequisite = { focus = JAP_SOCFOR_proclaiming_the_red_steppe  } prerequisite = { focus = JAP_SOCFOR_secure_central_asia  }
+		completion_reward = {
+		create_wargoal = {
+					type = puppet_wargoal_focus
+					target = RUS
+				}
+		}
 	}
 
 	#Crush the Colonialists of the Southern Seas
@@ -3584,6 +3694,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_SOCFOR_liberate_the_former_colonies  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_liberate_south_east_asia
+		}
 	}
 
 	#Proclaiming the Red Star Above India
@@ -3597,6 +3710,9 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_SOCFOR_hunting_the_big_bear  } prerequisite = { focus = JAP_SOCFOR_crush_the_colonialists_of_the_southern_seas  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_liberate_south_asia
+		}
 	}
 
 	#Promoting the Global Revolution
@@ -3611,6 +3727,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_SOCFOR_proclaiming_the_red_star_above_india  }
 		mutually_exclusive = { focus = JAP_SOCFOR_securing_asia_under_socialism  }
+		completion_reward = {
+		add_ideas = {
+		JSR_global_revolution
+		}
+		}
 	}
 
 	#Securing Asia Under Socialism
@@ -3625,6 +3746,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_SOCFOR_proclaiming_the_red_star_above_india  }
 		mutually_exclusive = { focus = JAP_SOCFOR_promoting_the_global_revolution  }
+		completion_reward = {
+		add_ideas = {
+		JSR_asian_revolution
+		}
+		}
 	}
 	
 

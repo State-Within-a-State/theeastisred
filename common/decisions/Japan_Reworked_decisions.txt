@@ -3301,10 +3301,7 @@ JAP_send_arms_to_zhili = {
 		
 		visible = {
 			tag = JAP
-			has_completed_focus = JAPFOR_reach_out_to_the_steppe
-			NOT = {
-			has_country_flag = JAP_unify_asia
-			}
+			
 			
 		}
 		targets = {  ETS TAN SIK MON TRK KYR UZB ALO }
@@ -3344,7 +3341,22 @@ JAP_send_arms_to_zhili = {
 		
 		visible = {
 			tag = JAP
-			has_completed_focus = JAPFOR_reach_out_to_the_steppe
+			tag = JSR
+			if = {
+				limit = {
+					tag = JAP
+				}
+				has_completed_focus = JAPFOR_reach_out_to_the_steppe
+				NOT = {
+					has_country_flag = JAP_unify_asia
+				}
+			}
+			if = {
+				limit = {
+					tag = JSR
+				}
+				has_completed_focus = JAP_SOCFOR_secure_central_asia
+			}
 			
 		}
 		
