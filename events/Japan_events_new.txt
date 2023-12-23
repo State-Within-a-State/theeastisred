@@ -3448,10 +3448,7 @@ country_event = { #The Emperor accepted
 			id = japan_new_event.60
 			days = 3
 			}
-			country_event = {###1940 Election
-			id = japan_new_event.63
-			days = 1374
-			}
+			
 		}
 		
 		if = {
@@ -4034,6 +4031,10 @@ country_event = { #Social-Democrats
 		complete_national_focus = JAPSOCDEM_the_democracy_path
 		complete_national_focus = JAPSOCDEM_leftwing_victory
 		ai_chance = { base = 100 }
+		country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
 		set_politics = {
 		ruling_party = radical_socialist
 		}
@@ -4074,6 +4075,10 @@ country_event = { #Social-Democrats
 	option = { #Rightist Faction
 		name = japan_new_event.60.c
 		ai_chance = { base = 100 }
+		country_event = {###1940 Election
+			id = japan_new_event.63
+			days = 1374
+			}
 		complete_national_focus = JAPSOCDEM_the_democracy_path
 		complete_national_focus = JAPSOCDEM_rightist_faction_victory
 		set_politics = {
@@ -4462,7 +4467,9 @@ country_event = { #Anarchism in Japan
 		name = japan_new_event.65.a
 		ai_chance = { base = 100 }
 		complete_national_focus = JAPANA_rule_of_the_council
+		set_cosmetic_tag = JAP_BURAKU_LEAGUE
 		remove_all_ministers = yes
+		
 		add_ideas = {
 			JAP_Buraku_Liberation_League_hog_rso
 			JAP_Hiratsuka_Raicho_for_rso
@@ -4492,6 +4499,7 @@ country_event = { #Anarchism in Japan
 			JAP_Hatta_Shuzo_eco_rso
 			JAP_Taisaku_Kitahara_sec_rso
 		}
+		set_cosmetic_tag = JAP_MATSUMOTO
 		complete_national_focus = JAPANA_the_anarchist_shogunate
 		set_politics = {
 						ruling_party = radical_socialist
@@ -4510,6 +4518,7 @@ country_event = { #Anarchism in Japan
 	}
 	option = {
 		name = japan_new_event.65.c
+		set_cosmetic_tag = JAP_SANSHIRO
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Sanshiro_Ishikawa_hog_rso
@@ -4517,6 +4526,7 @@ country_event = { #Anarchism in Japan
 			JAP_Hatta_Shuzo_eco_rso
 			JAP_Taisaku_Kitahara_sec_rso
 		}
+		complete_national_focus = JAPANA_sanshirosanarchismleadsthenation
 		set_politics = {
 						ruling_party = radical_socialist
 						last_election = "1936.11.16"
@@ -4535,12 +4545,15 @@ country_event = { #Anarchism in Japan
 	
 	option = {
 		name = japan_new_event.65.d
+		set_cosmetic_tag = JAP_SCHIZO
+		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Tsuji_Jun_hog_rso
 			JAP_Tomoyoshi_Murayama_for_rso
 			JAP_Eisuke_Yoshiyuki_eco_rso
 			JAP_Taisaku_Kitahara_sec_rso
 		}
+		complete_national_focus = JAPANA_true_anarchism_rises
 		set_politics = {
 						ruling_party = radical_socialist
 						last_election = "1936.11.16"
@@ -7052,7 +7065,7 @@ country_event = { #Peasant Uprisings
 	}
 }
 
-country_event = { #
+country_event = { #Japan Shall Be Free
 	id = japan_new_event.116
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.116"}
 	title = japan_new_event.116.title
@@ -7063,11 +7076,32 @@ country_event = { #
 	option = { #
 		name = japan_new_event.116.a
 		ai_chance = { base = 100 }
+		set_country_leader_ideology = anarchism_subtype
+		
+	}
+	option = { #
+		name = japan_new_event.116.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = illegalism_subtype
+		
+	}
+	
+	option = { #
+		name = japan_new_event.116.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = anarcho_bolshevism_subtype
+		
+	}
+	
+	option = { #
+		name = japan_new_event.116.d
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = radsoc_national_socialism_subtype
 		
 	}
 }
 
-country_event = { #
+country_event = { #The Manifesto of Pure Anarchism
 	id = japan_new_event.117
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.117"}
 	title = japan_new_event.117.title
@@ -7078,26 +7112,51 @@ country_event = { #
 	option = { #
 		name = japan_new_event.117.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		JAP_pure_anarhcism
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Whats Going On in the Pspych Ward!?
 	id = japan_new_event.118
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.118"}
 	title = japan_new_event.118.title
 	desc = japan_new_event.118.desc
+	immediate = {
+	hidden_effect = {
+	set_cosmetic_tag = JAP_ULTRA_SCHIZO
+	}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.118.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = authdem_anarchism_subtype
+	}
+	
+	option = { #
+		name = japan_new_event.118.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = anarchism_subtype
+	}
+	
+	option = { #
+		name = japan_new_event.118.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = anarcho_buddhism_subtype
+	}
+	
+	option = { #
+		name = japan_new_event.118.d
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = radsoc_social_anarchism_subtype
 	}
 }
 
-country_event = { #
+country_event = { #Direction of the Economy
 	id = japan_new_event.119
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.119"}
 	title = japan_new_event.119.title
@@ -7108,22 +7167,49 @@ country_event = { #
 	option = { #
 		name = japan_new_event.119.a
 		ai_chance = { base = 100 }
-		
+		complete_national_focus = JAPRECOVERY_centralized_approach
+		swap_ideas = {
+		remove_idea = JSR_economic_woes
+		add_idea = JSR_centralized_recovery
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.119.b
+		ai_chance = { base = 100 }
+		complete_national_focus = JAPRECOVERY_decentralized_economics
+		swap_ideas = {
+		remove_idea = JSR_economic_woes
+		add_idea = JSR_decentralized_recovery
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Japanese Socialists Propose an Alliance
 	id = japan_new_event.120
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.120"}
 	title = japan_new_event.120.title
-	desc = japan_new_event.120.desc
+	desc = japan_new_event.76.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.120.a
+		name = japan_new_event.76.a
 		ai_chance = { base = 100 }
-		
+		JSR = { add_to_faction = FROM }
+		JSR = {
+		set_country_flag = JSR_chose_china_leader
+		}
+	}
+	option = { #
+		name = japan_new_event.76.b
+		ai_chance = { base = 100 }
+		JSR = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FROM
+				}
+			}
 	}
 }
 

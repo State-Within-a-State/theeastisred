@@ -472,6 +472,9 @@ JAP_declare_civil_war_win_military = {
 		remove_effect = {
 			set_global_flag = Super_Event_Visible
 		set_global_flag = JAPAN_CW_Socialist_win_superev
+		add_ideas = {
+		JSR_economic_woes
+		}
 		every_country = {
 			limit = {
 				NOT = {
@@ -3340,8 +3343,25 @@ JAP_send_arms_to_zhili = {
 		}
 		
 		visible = {
+			AND = {
 			tag = JAP
-			has_completed_focus = JAPFOR_reach_out_to_the_steppe
+			tag = JSR
+			}
+			if = {
+				limit = {
+					tag = JAP
+				}
+				has_completed_focus = JAPFOR_reach_out_to_the_steppe
+				NOT = {
+					has_country_flag = JAP_unify_asia
+				}
+			}
+			if = {
+				limit = {
+					tag = JSR
+				}
+				has_completed_focus = JAP_SOCFOR_secure_central_asia
+			}
 			
 		}
 		
