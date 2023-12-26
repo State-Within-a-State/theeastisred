@@ -4446,6 +4446,7 @@ country_event = { #Meeting of National Revolutionary Congress
 		set_politics = {
 		ruling_party = totalist
 		}
+		complete_national_focus = JAPCOMMUNIST_the_struggle_of_2
 		create_country_leader = {
 						name = "Central Committee of the JCP"
 						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
@@ -4583,7 +4584,17 @@ country_event = { #The Struggle of 2
 	option = { #Yamakawaism
 		name = japan_new_event.66.a
 		ai_chance = { base = 100 }
+		complete_national_focus = JAPCOMMUNIST_strengthening_the_ideological_united_front
 		country_event = japan_new_event.67
+		add_ideas = {
+		JSR_fukumotoist_resistance
+		}
+	}
+	
+	option = { #Fukumotoism
+		name = japan_new_event.66.b
+		ai_chance = { base = 100 }
+		country_event = japan_new_event.70
 	}
 }
 
@@ -4598,6 +4609,7 @@ country_event = { #A United Front Victory
 	option = { #Red Army
 		name = japan_new_event.67.a
 		ai_chance = { base = 100 }
+		complete_national_focus = JAPCOMMUNIST_militant_syndicalists_take_over_the_party
 		set_politics = {
 			ruling_party = syndicalist
 			election_frequency = 48
@@ -4629,6 +4641,7 @@ country_event = { #A United Front Victory
 	option = { #Yamakawa
 		name = japan_new_event.67.b
 		ai_chance = { base = 100 }
+		complete_national_focus = JAPCOMMUNIST_changingthecourseofjapansproletariat
 		set_politics = {
 			ruling_party = radical_socialist
 			election_frequency = 48
@@ -4657,8 +4670,10 @@ country_event = { #A United Front Victory
 	}
 	
 	option = { #Kenzo
+	
 		name = japan_new_event.67.c
 		ai_chance = { base = 100 }
+		complete_national_focus = JAPCOMMUNIST_paris_syndicalists_secure_the_party
 		set_politics = {
 			ruling_party = syndicalist
 			election_frequency = 48
@@ -7214,7 +7229,7 @@ country_event = { #Japanese Socialists Propose an Alliance
 	}
 }
 
-country_event = { #
+country_event = { #Kenzo Yamamoto Killed in a Car Accident
 	id = japan_new_event.121
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.121"}
 	title = japan_new_event.121.title
@@ -7225,11 +7240,18 @@ country_event = { #
 	option = { #
 		name = japan_new_event.121.a
 		ai_chance = { base = 100 }
-		
+		add_manpower = -3
+		add_stability = -0.1
+		add_political_power = 5
+		add_war_support = 0.025
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.05
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Kenzo Yamamoto Flees to France
 	id = japan_new_event.122
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.122"}
 	title = japan_new_event.122.title
@@ -7240,11 +7262,26 @@ country_event = { #
 	option = { #
 		name = japan_new_event.122.a
 		ai_chance = { base = 100 }
+		FRA = {
+			add_opinion_modifier = {
+				target = JSE
+				modifier = faction_traitor
+			}
+			remove_from_faction = JSR
+		}
+		add_stability = -0.05
+		add_political_power = 10
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -0.05
+		}
+		
 		
 	}
 }
 
-country_event = { #
+country_event = { #Removal of the Social-Democrats
 	id = japan_new_event.123
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.123"}
 	title = japan_new_event.123.title
@@ -7255,11 +7292,17 @@ country_event = { #
 	option = { #
 		name = japan_new_event.123.a
 		ai_chance = { base = 100 }
-		
+		add_stability = -0.05
+		add_political_power = 10
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -0.5
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Social Democrats Have Fled Abroad
 	id = japan_new_event.124
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.124"}
 	title = japan_new_event.124.title
@@ -7270,11 +7313,17 @@ country_event = { #
 	option = { #
 		name = japan_new_event.124.a
 		ai_chance = { base = 100 }
-		
+		add_stability = 0.05
+		add_political_power = 15
+		add_war_support = -0.05
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Emperor?
 	id = japan_new_event.125
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.125"}
 	title = japan_new_event.125.title
@@ -7285,11 +7334,28 @@ country_event = { #
 	option = { #
 		name = japan_new_event.125.a
 		ai_chance = { base = 100 }
-		
+		if = {
+				limit = { has_country_flag = JAP_yasuhito }
+				add_ideas = JAP_emperor_yasuhito
+			}
+			else = { add_ideas = JAP_emperor_hirohito }
+	}
+	
+	option = { #
+		name = japan_new_event.125.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_no_emperor
+		}
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		add_war_support = 0.05
 	}
 }
 
-country_event = { #
+country_event = { #Kikue's Eight Points of Gender Equality
 	id = japan_new_event.126
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.126"}
 	title = japan_new_event.126.title
@@ -7300,11 +7366,23 @@ country_event = { #
 	option = { #
 		name = japan_new_event.126.a
 		ai_chance = { base = 100 }
-		
+		swap_ideas = {
+		remove_idea = JAP_Oyama_Ikuo_for_syn
+		add_idea = JAP_Yamakawa_Kikue_for_syn
+		}
+	}
+	
+	option = { #
+		name = japan_new_event.126.b
+		ai_chance = { base = 100 }
+		swap_ideas = {
+		remove_idea = JAP_Oyama_Ikuo_for_syn
+		add_idea = JAP_Teruko_Matsuda_for_syn
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Kenzo's Syndicalist Dream
 	id = japan_new_event.127
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.127"}
 	title = japan_new_event.127.title
@@ -7315,7 +7393,64 @@ country_event = { #
 	option = { #
 		name = japan_new_event.127.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Ikuo Oyama"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Ikuo_Oyama.png"
+						expire = "1965.1.1"
+						ideology = agrarian_syndicalism_subtype
+					}
+	}
+	
+	option = { #
+		name = japan_new_event.127.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = syndicalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.15
+		}
+		create_country_leader = {
+						name = "Bunji Suzuki"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portrait_JAP_Bunji_Suzuki.png"
+						expire = "1965.1.1"
+						ideology = centralized_syndicalism_subtype
+					}
+	}
+	
+	option = { #
+		name = japan_new_event.127.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.75
+		}
+		create_country_leader = {
+						name = "Suehiro Nishio"
+						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
+						picture = "gfx/leaders/JAP/Portriat_JAP_Suehiro_Nishio.png"
+						expire = "1965.1.1"
+						ideology = tot_reformed_natsynd_subtype
+					}
 	}
 }
 
