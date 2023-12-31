@@ -173,7 +173,7 @@ TAI_japan_revolution_mission = {
 
 		cancel_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision cancelled JAP_fading_sun_mission"
-			complete_national_focus = TAISOC_from_the_fires_of_the_2nd_wushe_rebellion
+			clr_country_flag = TAI_japan_taiwan_revolution
 		}
 	}
 	
@@ -260,4 +260,237 @@ TAI_japan_revolution_mission = {
 	}
 
 
+}
+
+
+TAI_taiwanese_land_reforms_decision_category = {
+TAI_land_reform_mission = {
+		activation = {
+			has_country_flag = TAI_taiwanese_land_reforms
+		}
+		available = {
+			
+			
+			custom_trigger_tooltip = {
+				tooltip = TAI_land_reform_at_100_tt		
+				check_variable = { taiwan_land_reform > 99 }
+			}
+		}
+		
+		icon = GFX_decision_rev_agriculture     # For GFX_decision_mission_icon
+		is_good = yes
+	   
+		days_mission_timeout = 150
+		seTAItable_mission = no
+		complete_effect = {
+			add_ideas = {
+			TAI_land_reform_success
+			}
+			set_country_flag = land_reform_complete
+		}
+		timeout_effect = {
+			add_ideas = {
+			TAI_land_reform_failiure
+			}
+			set_country_flag = land_reform_failed
+		}
+	}
+
+TAI_seizing_landlord_assets = {
+		icon = rev_agriculture
+		
+		available = {
+			OR = {
+				has_completed_focus = TAISOC_starting_national_land_reform
+				has_completed_focus = TAISOC_ourlandrevolution
+			}
+		}
+		
+		visible = {
+			tag = TAI
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.01
+			add_to_variable = {
+					var = taiwan_land_reform
+					value = 10
+					tooltip = add_10_to_taiwan_land_reform_tt
+				}
+		}
+	}
+	
+	TAI_equalizing_land_rights = {
+		icon = rev_agriculture
+		
+		available = {
+			has_completed_focus = TAISOC_375_rent_reducation
+		}
+		
+		visible = {
+			tag = TAI
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			add_popularity = { ideology = social_democrat popularity = 0.05 }
+			add_popularity = { ideology = social_liberal popularity = 0.05 }
+			add_to_variable = {
+					var = taiwan_land_reform
+					value = 5
+					tooltip = add_5_to_taiwan_land_reform_tt
+				}
+		}
+	}
+	
+	TAI_land_lord_regulations = {
+		icon = rev_agriculture
+		
+		available = {
+			has_completed_focus = TAISOC_375_rent_reducation
+		}
+		
+		visible = {
+			tag = TAI
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_political_power = 20
+			add_to_variable = {
+					var = taiwan_land_reform
+					value = 5
+					tooltip = add_5_to_taiwan_land_reform_tt
+				}
+		}
+	}
+	TAI_execute_the_landlords = {
+		icon = rev_agriculture
+		
+		available = {
+			OR = {
+				has_completed_focus = TAISOC_land_lord_expropriation
+				has_completed_focus = TAISOC_ourlandrevolution
+			}
+		}
+		
+		visible = {
+			tag = TAI
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_manpower = -10
+			add_popularity = { ideology = totalist popularity = 0.05 }
+			add_to_variable = {
+					var = taiwan_land_reform
+					value = 5
+					tooltip = add_5_to_taiwan_land_reform_tt
+				}
+		}
+	}
+	
+	TAI_redistrubtion_of_lands = {
+		icon = rev_agriculture
+		
+		available = {
+			OR = {
+				has_government = totalist
+				has_government = syndicalist
+				has_government = radical_socialist
+				has_government = social_democrat
+			}
+		}
+		
+		visible = {
+			tag = TAI
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_popularity = { ideology = ROOT popularity = 0.01 }
+			add_to_variable = {
+					var = taiwan_land_reform
+					value = 10
+					tooltip = add_10_to_taiwan_land_reform_tt
+				}
+		}
+	}
+
+	TAI_land_lord_trials = {
+		icon = rev_agriculture
+		
+		available = {
+			OR = {
+				has_completed_focus = TAISOC_starting_national_land_reform
+				has_completed_focus = TAISOC_ourlandrevolution
+			}
+		}
+		
+		visible = {
+			tag = TAI
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_manpower = -1
+			add_to_variable = {
+					var = taiwan_land_reform
+					value = 5
+					tooltip = add_5_to_taiwan_land_reform_tt
+				}
+		}
+	}
 }
