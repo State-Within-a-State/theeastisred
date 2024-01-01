@@ -2098,27 +2098,10 @@ country_event = { #Shumei or Kita
 		ai_chance = { base = 100 }
 		complete_national_focus = JAPPAN_pure_socialism_has_arrived
 		set_cosmetic_tag = JAP_KITA
-		set_politics = {
-			ruling_party = totalist
-			elections_allowed = no
-		}
 		add_popularity = {
 			ideology = totalist
 			popularity = 0.3
 		}
-		set_party_name = {
-			ideology = totalist
-			long_name = JAP_party_yuzonsha_long
-			name = JAP_party_yuzonsha
-		}
-		create_country_leader = {
-			name = "Hirohito"
-			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
-			expire = "1965.1.1"
-			ideology = ikki_kita_thought_subtype
-		}
-		drop_cosmetic_tag = yes
-		
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Kita_Ikki_hog_tot
@@ -3318,10 +3301,7 @@ country_event = { #1937 Snap Elections
 			JAP_Akita_Kiyoshi_sec_ade
 		}
 		set_temp_variable = { coalition_partner_var = token:totalist }
-		add_to_coalition = yes
-		set_temp_variable = { coalition_partner_var = token:national_populist }
-		add_to_coalition = yes
-		
+		add_to_coalition = yes		
 		set_country_flag = JAP_tokohai_won_in_1937_election
 		mark_focus_tree_layout_dirty = yes
 	}
@@ -4146,23 +4126,16 @@ country_event = { #Kokumin Domei Victory
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.61"}
 	title = japan_new_event.61.title
 	desc = japan_new_event.61.desc
-	
+	immediate = {
+	hidden_effect = {
+	load_focus_tree = kokumin-domei
+	complete_national_focus = JAPKOKUMIN_kokumin_domei_at_the_helm
+	}
+	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.61.a
 		ai_chance = { base = 100 }
-		load_focus_tree = kokumin-domei
-		if = {
-			limit = {
-				NOT = {
-					OR = {
-						has_country_flag = JAP_kokumin_domei_won_in_1937_election
-						has_country_flag = JAP_kokumin_domei_won_in_1940_election
-					}
-				}
-			}
-			complete_national_focus = JAPKOKUMIN_kokumin_domei_at_the_helm
-		}
 		if = {
 		limit = {
 			NOT = {
@@ -4211,8 +4184,6 @@ country_event = { #Victory of the Tokohai
 			JAP_Dai_Oishi_eco_tot
 			JAP_Akita_Kiyoshi_sec_ade
 		}
-		set_temp_variable = { coalition_partner_var = token:totalist }
-		add_to_coalition = yes
 		set_temp_variable = { coalition_partner_var = token:national_populist }
 		add_to_coalition = yes
 	}
@@ -4221,9 +4192,6 @@ country_event = { #Victory of the Tokohai
 		name = japan_new_event.62.b
 		ai_chance = { base = 100 }
 		complete_national_focus = JAPNAK_the_issue_of_party_factionalism
-		set_politics = {
-			ruling_party = national_populist
-		}
 		add_popularity = {
 			ideology = national_populist
 			popularity = 0.25
@@ -4235,10 +4203,6 @@ country_event = { #Victory of the Tokohai
 			JAP_Matashiro_Nakamura_eco_npo
 			JAP_Torao_Miura_sec_npo
 		}
-		set_temp_variable = { coalition_partner_var = token:totalist }
-		add_to_coalition = yes
-		set_temp_variable = { coalition_partner_var = token:national_populist }
-		add_to_coalition = yes
 	}
 }
 
@@ -4850,37 +4814,22 @@ country_event = { #Legacy of Yamakawaism
 						expire = "1965.1.1"
 						ideology = anarcho_syndicalist_subtype
 					}
+		add_tot_to_coalition = yes
+		add_radsoc_to_coalition = yes
 	}
 	
 	option = { #Yamakawaism Hitoshi
 		name = japan_new_event.69.b
 		ai_chance = { base = 100 }
-		set_politics = {
-			ruling_party = radical_socialist
-			election_frequency = 48
-			elections_allowed = no
-		}
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.15
 		}
-		create_country_leader = {
-						name = "Hitoshi Yamakawa"
-						desc = "POLITICS_JAP_LI_ZONGREN_DESC"
-						picture = "gfx/leaders/JAP/Portrait_JAP_Hitoshi_Yamakawa.png"
-						expire = "1965.1.1"
-						ideology = radsoc_yamakawaism_subtype
-					}
 	}
 	
 	option = { #Feminist Socialism Kikue
 		name = japan_new_event.69.c
 		ai_chance = { base = 100 }
-		set_politics = {
-			ruling_party = radical_socialist
-			election_frequency = 48
-			elections_allowed = no
-		}
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.15
@@ -4899,11 +4848,6 @@ country_event = { #Legacy of Yamakawaism
 	option = { #Ansyn Kikue
 		name = japan_new_event.69.d
 		ai_chance = { base = 100 }
-		set_politics = {
-			ruling_party = radical_socialist
-			election_frequency = 48
-			elections_allowed = no
-		}
 		add_popularity = {
 			ideology = radical_socialist
 			popularity = 0.15
@@ -6397,7 +6341,6 @@ country_event = { #Future of the Shumei Government
 			limit = {
 				has_government = national_populist
 			}
-			set_politics = { ruling_party = national_populist }
 			create_country_leader = {
 				name = "Hirohito"
 				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6446,7 +6389,6 @@ country_event = { #Future of the Shumei Government
 			limit = {
 				has_government = national_populist
 			}
-			set_politics = { ruling_party = national_populist }
 			create_country_leader = {
 				name = "Hirohito"
 				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6459,7 +6401,6 @@ country_event = { #Future of the Shumei Government
 			limit = {
 				has_government = totalist
 			}
-			set_politics = { ruling_party = totalist }
 			create_country_leader = {
 				name = "Hirohito"
 				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6488,17 +6429,34 @@ country_event = { #Direction of Radical Reforms
 				expire = "1965.1.1"
 				ideology = natpop_pan_asianism_subtype
 			}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_yuzonsha_long
+			name = JAP_party_yuzonsha
+		}
 		add_popularity = {
 		ideology = national_populist
 		popularity = 0.5
 		}
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:social_democrat }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		add_to_coalition = yes
+		set_temp_variable = { coalition_partner_var = token:syndicalist }
+		add_to_coalition = yes
 	}
 	
 	option = { #
 		name = japan_new_event.98.b
-		ai_chance = { base = 100 }
-		set_politics = { ruling_party = totalist }
-			
+		ai_chance = { base = 100 }	
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}		
 	}
 }
 
@@ -6653,12 +6611,13 @@ country_event = { #The Essential Principles of National Defense and Proposals fo
 				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 				expire = "1965.1.1"
 				ideology = tot_ikedaism_subtype
-			}
+		}
 		set_party_name = {
 			ideology = totalist
 			long_name = JAP_party_toseiha_long
 			name = JAP_party_toseiha
 		}
+	}	
 }
 
 country_event = { #Claiming Pan-Turania
