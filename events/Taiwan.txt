@@ -217,6 +217,10 @@ country_event = { #Defeat of the Wushe Rebellion
 	option = { #Leave Them Be
 	name = taiwan.6.a
 		add_stability = 0.1
+		country_event = {
+		id = taiwan.24
+		days = 365
+		}
 		add_to_variable = {
 					var = JAP_TWI_INT
 					value = 1
@@ -916,7 +920,49 @@ country_event = { #Crushing of the Wushe Rebellion
 	option = { #Fuckin Hell
 	name = taiwan.22.a
 		add_stability = 0.25
+		if = {
+			limit = {
+				NOT = {
+					has_completed_focus = TAIMON_securing_taiwan
+				}
+			}
+			set_country_flag = TWI_secured_taiwan
+		}
+		if = {
+			limit = {
+				is_subject = yes
+				is_subject_of = JAP
+			}
+			complete_national_focus = TAIMON_comfort_under_the_boot
+		}
 		
+		else_if = {
+			limit = {
+				is_subject = no
+				NOT = {
+					is_subject_of = JAP
+				}
+			}
+			add_ideas = {
+			TWI_socialist_resistance
+			}
+			complete_national_focus = TAIMON_the_loss_of_an_empire
+		}
+		
+		if = {
+				limit = {
+					has_country_leader = {
+						name = "Rikichi Andō"
+						ruling_only = yes
+					}
+					is_subject = no
+				NOT = {
+					is_subject_of = JAP
+				}
+					
+				}
+			complete_national_focus = TAIMON_recovering_from_a_national_loss
+			}
 	}
 	
 	
@@ -941,6 +987,7 @@ country_event = { #Restoring the Imperial Throne
 		ideology = paternal_autocrat
 		popularity = 0.4
 		}
+		complete_national_focus = TAIMON_andosregency
 		create_country_leader = {
 				name = "Rikichi Andō"
 				desc = "POLITICS_ZHANG_XUELIANG_DESC"
@@ -958,6 +1005,7 @@ country_event = { #Restoring the Imperial Throne
 		ideology = national_populist
 		popularity = 0.4
 		}
+		complete_national_focus = TAIMON_yasuhito_regency
 		remove_all_ministers = yes
 		add_ideas = {
 		TAI_Yasuhito_hog_npo
@@ -991,6 +1039,7 @@ country_event = { #Restoring the Imperial Throne
 		}
 	}
 		set_politics = { ruling_party = national_populist }
+		complete_national_focus = TAIMON_a_surprise_guest
 		add_popularity = {
 		ideology = national_populist
 		popularity = 0.4
@@ -1020,7 +1069,11 @@ country_event = { #Electing the New Governor
 	title = taiwan.24.title
 	desc = taiwan.24.desc
 	picture = "GFX_report_event_TWI_taiwan_info"
-
+	immediate = {
+		hidden_effect = {
+			complete_national_focus = TAIMON_appointment_of_a_new_governor
+		}
+	}
 	is_triggered_only = yes
 
 
@@ -1032,6 +1085,7 @@ country_event = { #Electing the New Governor
 		ideology = paternal_autocrat
 		popularity = 0.4
 		}
+		complete_national_focus = TAIMON_the_military_seizes_the_island
 		remove_all_ministers = yes
 		add_ideas = {
 		TAI_Ando_Rikichi_hog_pau
@@ -1056,6 +1110,7 @@ country_event = { #Electing the New Governor
 		ideology = authoritarian_democrat
 		popularity = 0.4
 		}
+		complete_national_focus = TAIMON_aligning_the_taiwanese_business_men
 		create_country_leader = {
 				name = "Lin Xiongzheng"
 				desc = "POLITICS_ZHANG_XUELIANG_DESC"
@@ -1182,6 +1237,206 @@ country_event = { #Esperanto in the TCA
 	option = { #Fuckin Hell
 	name = taiwan.28.a
 		add_political_power = 50
+	}
+	
+}
+
+country_event = { #Naval Defection to Taiwan
+	id = taiwan.29
+	title = taiwan.29.title
+	desc = taiwan.29.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Fuckin Hell
+	name = taiwan.29.a
+		add_political_power = -50
+		add_manpower = -10000
+		TAI = {
+		add_manpower = 10000
+		add_opinion_modifier = {
+				target = JSR
+				modifier = faction_traitor
+			}
+		}
+	}
+	
+}
+
+country_event = { #The Sun Rises Again
+	id = taiwan.30
+	title = taiwan.30.title
+	desc = taiwan.30.desc
+	picture = "GFX_report_event_TWI_taiwan_info"
+	immediate = {
+	hidden_effect = {
+	release = JAP
+	}
+	}
+	is_triggered_only = yes
+
+
+	
+	option = { #Fuckin Hell
+	name = taiwan.30.a
+		JAP = {
+		change_tag_from = TAI
+		annex_country = {
+			target = TAI
+			transfer_troops = yes
+		}
+		country_event = {
+		id = japan_new_event.29
+		days = 5
+		}
+		
+		set_politics = {
+			ruling_party = paternal_autocrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+		}
+		load_focus_tree = araki-kingoro-tree
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+		}
+		complete_national_focus = JAPARAKI_arakissuccess
+		set_country_flag = factionalism_japan_no
+		create_country_leader = {
+				name = "Yasuhito"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = pataut_showa_statism_subtype
+			}
+		}
+		
+	}
+	
+}
+
+
+country_event = { #Looking For Friends
+	id = taiwan.31
+	title = "Looking For Friends"
+	desc = "We have opened up to the world, and we shall align to whoever we see fit."
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	is_triggered_only = yes
+
+
+	
+	option = { #Fuckin Hell
+	name = "Lets Join With Japan"
+		trigger = {
+			has_socialist_government = no
+			JAP = {
+			is_faction_leader = yes
+			}
+		}
+		JAP = { add_to_faction = TAI }
+	}
+	option = { #Fuckin Hell
+	name = "Entente Shall Guide Us"
+		trigger = {
+			has_socialist_government = no
+			CAN = {
+			is_faction_leader = yes
+			}
+		}
+		CAN = { add_to_faction = TAI }
+	}
+	
+	option = { #Fuckin Hell
+	name = "Lets Join the Germans"
+		trigger = {
+			has_socialist_government = no
+		}
+		GER = { add_to_faction = TAI }
+		GER = {
+			is_faction_leader = yes
+			}
+	}
+	
+	option = { #Fuckin Hell
+	name = "Lets Join the Russians"
+		trigger = {
+			has_socialist_government = no
+		}
+		RUS = { add_to_faction = TAI }
+		RUS = {
+			is_faction_leader = yes
+			}
+	}
+	
+	option = { #Fuckin Hell
+	name = "Lets Join the Soviets"
+		trigger = {
+			has_socialist_government = yes
+			RUS = {
+			has_socialist_government = yes
+			is_faction_leader = yes
+			}
+		}
+		RUS = { add_to_faction = TAI }
+		RUS = {
+			is_faction_leader = yes
+			}
+	}
+	
+	option = { #Fuckin Hell
+	name = "Lets Join the French"
+		trigger = {
+			has_socialist_government = yes
+			FRA = {
+			has_socialist_government = yes
+			is_faction_leader = yes
+			}
+		}
+		FRA = { add_to_faction = TAI }
+		FRA = {
+			is_faction_leader = yes
+			}
+	}
+	
+	option = { #Fuckin Hell
+	name = "Lets Go With The Bharatiya Commune"
+		trigger = {
+			has_socialist_government = yes
+			BHC = {
+			has_socialist_government = yes
+			is_faction_leader = yes
+			}
+		}
+		BHC = { add_to_faction = TAI }
+		BHC = {
+			is_faction_leader = yes
+			}
+	}
+	
+	option = { #Fuckin Hell
+	name = "We Shall Find Our Own Path"
+		create_faction = "Taipei Accords"
 	}
 	
 }

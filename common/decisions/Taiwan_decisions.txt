@@ -132,6 +132,54 @@ TAI_empower_local_police_force = {
 		}
 	}
 	
+	TAI_inetgrate_taiwan = {
+		icon = ger_military_buildup
+		
+		available = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = integration_above_eight_taiwan_tt		
+					check_variable = { var = TAI.JAP_TWI_INT > 85 }
+				}
+				
+				TAI = {
+					has_completed_focus = TAIMON_united_under_the_sun
+				}
+			}
+				
+		}
+		
+		visible = {
+			is_ai = no
+			OR = {
+				tag = TAI
+				tag = JAP
+			}
+			
+		}
+		cost = 15
+		
+		days_remove = 35
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			JAP = {
+				annex_country = {
+					target = TAI
+					transfer_troops = yes
+				}
+				change_tag_from = TAI
+			}
+			
+			
+			
+		}
+	}
+	
 }
 
 
