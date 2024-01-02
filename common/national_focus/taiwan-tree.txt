@@ -3388,9 +3388,13 @@ focus_tree = {
 				is_core_of = PHI
 			}
 			TAI = {
-			add_core_of = PREV
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
 			}
-		}
+			add_core_of = TAI 
+			}
 		}
 	}
 
@@ -3413,11 +3417,9 @@ focus_tree = {
 		every_state = {
 			limit = {
 				is_core_of = VIN
+				}
 			}
-			TAI = {
-			add_core_of = PREV
-			}
-		}
+			add_core_of = TAI 
 		create_wargoal = {
 			type = puppet_wargoal_focus
 			target = INC
@@ -3459,8 +3461,14 @@ focus_tree = {
 		unlock_national_focus = VIN_Education_Reform
 		unlock_national_focus = VIN_Economic_Efforts
 		unlock_national_focus = VIN_Cabinet_Reorganization
+		unlock_national_focus = VIN_Independent_Policy
+		unlock_national_focus = VIN_Southern_Revolt
+		unlock_national_focus = VIN_Spread_Caodaism
 		complete_national_focus = VIN_Religious_Fervor
 		complete_national_focus = VIN_The_End_Of_War
+		complete_national_focus = VIN_Invite_Prince_Cuong_De
+		set_country_flag = VIN_War_Over
+		set_country_flag = VIN_Cao_Dai
 		}
 		}
 	}
@@ -3479,7 +3487,7 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TAIECONO_claiming_austroneasia  focus = TAIECONO_a_push_for_a_taiwanese_nation  }
-		complete_national_focus = {
+		completion_reward = {
 		add_ideas = {
 		VIN_Nationalist_Rhetoric_idea
 		}
@@ -3498,7 +3506,7 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TAIECONO_forming_the_taiwanese_nation  }
-		complete_national_focus = {
+		completion_reward = {
 		every_country = {
 			limit = {
 				OR = {
@@ -3508,7 +3516,7 @@ focus_tree = {
 					owns_state = 802
 					owns_state = 595
 				}
-			
+			}
 			}
 			TAI = {
 				create_wargoal = {
@@ -3516,8 +3524,6 @@ focus_tree = {
 					target = PREV
 				}
 			}
-		
-		}
 		}
 	}
 
@@ -3533,7 +3539,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = TAIECONO_claiming_fujian  }
 		mutually_exclusive = { focus = TAIECONO_claiming_austroneasia  }
-		complete_national_focus = {
+		completion_reward = {
 		add_stability = 0.1
 		add_political_power = 10
 		}
@@ -3550,7 +3556,7 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TAIECONO_for_the_chinese_cause  }
-		complete_national_focus = {
+		completion_reward = {
 			create_wargoal = {
 				type = puppet_wargoal_focus
 				target = GXC
@@ -3583,11 +3589,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TAIECONO_securing_southern_china  }
-		complete_national_focus = {
+		completion_reward = {
 			create_wargoal = {
 				type = puppet_wargoal_focus
-				target = ANQ
-				
+				target = ANQ	
 			}
 			create_wargoal = {
 				type = puppet_wargoal_focus
@@ -3620,11 +3625,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TAIECONO_securing_southern_china  }
-		complete_national_focus = {
+		completion_reward = {
 			create_wargoal = {
 				type = puppet_wargoal_focus
-				target = QIE
-				
+				target = QIE	
 			}
 			create_wargoal = {
 				type = puppet_wargoal_focus
@@ -3652,27 +3656,27 @@ focus_tree = {
 		mutually_exclusive = { focus = TAIECONO_a_push_for_a_taiwanese_nation  }
 		completion_reward = {
 		every_state = {
-					limit = {
-						OR = {
-						is_core_of = INC
-						is_core_of = VIN
-						is_core_of = CAM
-						is_core_of = LAO
-						is_core_of = PHI
-						is_core_of = INS
-						is_core_of = DEI
-						is_core_of = GEA
-						is_core_of = GXC
-						is_core_of = JST
-						}
+				limit = {
+					OR = {
+					is_core_of = INC
+					is_core_of = VIN
+					is_core_of = CAM
+					is_core_of = LAO
+					is_core_of = PHI
+					is_core_of = INS
+					is_core_of = DEI
+					is_core_of = GEA
+					is_core_of = GXC
+					is_core_of = JST
 					}
-					TAI = { 
-						add_state_core = PREV 
-						create_wargoal = {
-							type = puppet_wargoal_focus
-							target = PREV
-						}
 				}
+				TAI = {
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+			}
+			add_core_of = TAI
 			}
 		}
 	}
@@ -3724,11 +3728,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = TAIECONO_move_up_the_coast  } prerequisite = { focus = TAIECONO_our_own_northern_expedition  }
-		complete_national_focus = {
+		completion_reward = {
 			create_wargoal = {
 				type = puppet_wargoal_focus
-				target = MON
-				
+				target = MON	
 			}
 			create_wargoal = {
 				type = puppet_wargoal_focus
@@ -3765,11 +3768,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAIECONO_weareasiastruesaviours  focus = TAIECONO_securing_the_frontier_lands  }
-		complete_national_focus = {
+		completion_reward = {
 			create_wargoal = {
 				type = puppet_wargoal_focus
-				target = DEI
-				
+				target = DEI	
 			}
 			create_wargoal = {
 				type = puppet_wargoal_focus
@@ -3825,7 +3827,7 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAIECONO_keep_the_militias  }
-		complete_national_focus = {
+		completion_reward = {
 		add_tech_bonus = {
 					name = JAP_phase_out_arisakas
 					ahead_reduction = 1
@@ -3907,15 +3909,21 @@ focus_tree = {
 		prerequisite = { focus = TAIECONO_a_world_of_friends  }
 		mutually_exclusive = { focus = TAIECONO_forming_the_taiwanese_nation  }
 		completion_reward = {
-		every_country = {
+		every_state = {
 			limit = {
 				OR = {
-					is_core_of FNG
-					is_claimed_by = FNG
+				is_core_of FNG
+				is_claimed_by = FNG
 				}
 			}
-			
-		}
+			TAI = {
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+			}
+			add_core_of = TAI
+			}
 		}
 	}
 
@@ -3931,7 +3939,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = TAIECONO_a_world_of_friends  }
 		mutually_exclusive = { focus = TAIECONO_for_the_chinese_cause  }
-		complete_national_focus = {
+		completion_reward = {
 		add_war_support = 0.1
 		add_political_power = 50
 		}
