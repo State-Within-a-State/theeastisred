@@ -21,10 +21,6 @@ country_event = {
 	option = {
 		name = pers.1.a
 		hidden_effect = {
-			country_event = {
-				days = 2
-				id = pers.16
-			}
 		}
 	}
 }
@@ -344,16 +340,119 @@ country_event = { #rostam the bear 4
 		add_political_power = 25
 	}
 }
-country_event = { # intro to oil
-	id = pers.16
-	immediate = { log = "[GetDateText]: [Root.GetName]: event pers.16" }
-	title = pers.16.t
-	desc = pers.16.d
+country_event = { # asntan qods razavi
+	id = pers.17
+	immediate = { log = "[GetDateText]: [Root.GetName]: event pers.17" }
+	title = pers.17.t
+	desc = pers.17.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { # make a deal with them
+		name = pers.17.a
+		ai_chance = {
+			factor = 55
+		}
+		add_ideas = PER_asntan_qods_razavi_deal
+	}
+
+	option = { # seize their wealth
+		name = pers.17.b
+		ai_chance = {
+			factor = 45
+		}
+		add_political_power = -100
+		add_timed_idea = {
+			idea = PER_asntan_qods_razavi_seize
+			days = 365
+		}
+		804 = {
+			if = {
+				limit = {
+					is_owned_by = PER
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+		416 = {
+			if = {
+				limit = {
+					is_owned_by = PER
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+}
+
+country_event = { # Ghulam REZA
+	id = pers.18
+	immediate = { log = "[GetDateText]: [Root.GetName]: event pers.18" }
+	title = pers.18.t
+	desc = pers.18.d
+	picture = GFX_report_event_generic_read_write
+
+	is_triggered_only = yes
+
+	option = { # make a deal with him
+		name = pers.18.a
+		ai_chance = {
+			factor = 55
+		}
+		add_political_power = 25
+		add_ideas = PER_Ghulam_reza_deal
+	}
+
+	option = { # seize his wealth
+		name = pers.18.b
+		ai_chance = {
+			factor = 45
+		}
+		add_political_power = -50
+		421 = {
+			if = {
+				limit = {
+					is_owned_by = PER
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		add_timed_idea = {
+			idea = PER_Ghulam_reza_seize
+			days = 365
+		}
+	}
+}
+country_event = { # black monday hits persia
+	id = pers.31
+	immediate = { log = "[GetDateText]: [Root.GetName]: event pers.31" }
+	title = pers.31.t
+	desc = pers.31.d
+	picture = GFX_report_event_gathering_protest
 
 	is_triggered_only = yes
 
 	option = {
-		name = pers.16.a
-		add_stability = 0.01
+		name = pers.31.a
+		add_ideas = PER_black_monday
+		hidden_effect = {
+			set_country_flag = black_monday_hits_persia
+		}
 	}
 }
