@@ -143,7 +143,6 @@ country_event = { #Black Monday Across the Colonies
 		JAP_black_monday_0
 		}
 		TAI = {
-		country_event = taiwan.1
 		country_event = taiwan.5
 		}
 		KOR = {
@@ -7513,7 +7512,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Taiwan is the real Japan
 	id = japan_new_event.131
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.131"}
 	title = japan_new_event.131.title
@@ -7524,7 +7523,47 @@ country_event = { #
 	option = { #
 		name = japan_new_event.131.a
 		ai_chance = { base = 100 }
-		
+		annex_country = {
+			target = TAI
+			transfer_troops = yes
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+			election_frequency = 48
+			elections_allowed = yes
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+		}
+		load_focus_tree = araki-kingoro-tree
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+		}
+		complete_national_focus = JAPARAKI_arakissuccess
+		set_country_flag = factionalism_japan_no
+		create_country_leader = {
+				name = "Yasuhito"
+				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
+				expire = "1965.1.1"
+				ideology = pataut_showa_statism_subtype
+			}
+		create_faction = eurasian_bloc
 	}
 }
 
