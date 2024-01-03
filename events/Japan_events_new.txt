@@ -169,7 +169,13 @@ country_event = { #1936 Elections
 		name = OPTION_KOKUMIN_DOMEI
 		ai_chance = {
 			factor = 50
-			
+			modifier = {
+				factor = 0
+				OR = {
+					has_game_rule = { rule = JAP_path option = JAP_PATH_KOKUMIN_DOMEI_KENZO_1936 }
+					has_game_rule = { rule = JAP_path option = JAP_PATH_KOKUMIN_DOMEI_NAKANO_1936 }
+				}
+			}
 		}
 		set_politics = {
 			ruling_party = authoritarian_democrat
@@ -203,7 +209,10 @@ country_event = { #1936 Elections
 		name = OPTION_SEIYUKAI
 		ai_chance = {
 			factor = 50
-			
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_path option = JAP_PATH_SEIYUKAI_1936 }
+			}
 		}
 		add_political_power = 50
 		set_country_flag = JAP_seiyukai_won_in_1936_elections
@@ -216,7 +225,10 @@ country_event = { #1936 Elections
 		
 		ai_chance = {
 			factor = 50
-			
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_path option = RULE_OPTION_JAP_PATH_MINSEITO_1936 }
+			}
 		}
 		set_politics = {
 			ruling_party = market_liberal
@@ -245,7 +257,13 @@ country_event = { #1936 Elections
 		name = OPTION_SHAKAI-TAISHUTO
 		ai_chance = {
 			factor = 50
-			
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = JAP_path option = JAP_PATH_SHAKAI_TAISHUTO_ISOO_1936 }
+				has_game_rule = { rule = JAP_path option = JAP_PATH_SHAKAI_TAISHUTO_YAMAMOTO_1936 }
+				}
+			}
 		}
 		set_politics = {
 			ruling_party = social_democrat
@@ -270,7 +288,24 @@ country_event = { #1936 Elections
 	
 	option = { #Deadlock - Will Start Showa Restoration Coup
 		name = OPTION_DEADLOCK
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = JAP_path option = JAP_PATH_KOKUMIN_DEADLOCK_1936 }
+				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_NOBURO }
+				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_KODAMA }
+				
+				}
+				NOT = {
+					OR = {
+						has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_YES }
+						has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+					}
+				}
+			}
+		}
 		create_country_leader = {
 					name = "Hirohito"
 					picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -299,13 +334,25 @@ country_event = { #Kokumin Domei Choices
 	is_triggered_only = yes
 	option = { #
 		name = "Stick With Kenzo"
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_path option = JAP_PATH_KOKUMIN_DOMEI_KENZO_1936 }
+			}
+		}
 		set_country_flag = JAP_kokumin_domei_won_in_1936_election_3
 	}
 	
 	option = { #Nakano's Way
 		name = "Follow Nakano"
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_path option = JAP_PATH_KOKUMIN_DOMEI_NAKANO_1936 }
+			}
+		}
 		set_politics = {
 			ruling_party = national_populist
 			election_frequency = 48
@@ -337,13 +384,25 @@ country_event = { #Shakai-Taishuto Candidate
 	is_triggered_only = yes
 	option = { #Abe Isoo
 		name = "Moderates Hold Strong"
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_path option = JAP_PATH_SHAKAI_TAISHUTO_ISOO_1936 }
+			}
+		}
 		set_country_flag = JAP_shakai_taishuto_won_in_1936_elections
 		
 	}
 	option = { #Kenzo Yamamoto
 		name = "Radical Victory"
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_path option = JAP_PATH_SHAKAI_TAISHUTO_YAMAMOTO_1936 }
+			}
+		}
 		clr_country_flag = JAP_shakai_taishuto_won_in_1936_elections
 		
 		remove_all_ministers = yes
@@ -456,13 +515,25 @@ country_event = { #The Jackal's Two Heads
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.13.a
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_NOBURO }
+			}
+		}
 		complete_national_focus = JAP_YAKUZA_maintaining_tradition
 	}
 	
 	option = { #
 		name = japan_new_event.13.b
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_KODAMA }
+			}
+		}
 		complete_national_focus = JAP_YAKUZA_yoshiospresence
 		add_ideas = {
 		JAP_Yoshio_Kodama_hog_npo
@@ -775,6 +846,24 @@ country_event = { #Japanese Civil War
 	#picture = 
 	immediate = {
 	hidden_effect = {
+	if = {
+		limit = {
+				has_game_rule = { rule = JAP_japanese_cw_buff option = RULE_OPTION_JAP_CW_BUFFS_JSR }
+		}
+		JSR = {
+		add_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
+		}
+		
+	}
+	if = {
+		limit = {
+				has_game_rule = { rule = JAP_japanese_cw_buff option = JAP_CW_BUFFS_JAP }
+		}
+		JAP = {
+		add_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
+		}
+		
+	}
 	set_global_flag = JAP_CW_FLAG
 		JAP = {
 		dismantle_faction = yes
@@ -1105,6 +1194,24 @@ country_event = { #Syndicalist Victory
 		}
 		set_country_flag = JAP_syndie_victory
 		set_capital = { state = 282 remember_old_capital = no }
+		if = {
+		limit = {
+				has_game_rule = { rule = JAP_japanese_cw_buff option = RULE_OPTION_JAP_CW_BUFFS_JSR }
+		}
+		JSR = {
+		remove_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
+			}
+			
+		}
+		if = {
+			limit = {
+					has_game_rule = { rule = JAP_japanese_cw_buff option = JAP_CW_BUFFS_JAP }
+			}
+			JAP = {
+			remove_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
+			}
+			
+		}
 		set_global_flag = JAP_civil_war_over
 	}
 }
@@ -1135,6 +1242,24 @@ country_event = { #Military Victory
 			}
 			scoped_sound_effect = "superev_japan_army_win_cw"
 		}
+		if = {
+		limit = {
+				has_game_rule = { rule = JAP_japanese_cw_buff option = RULE_OPTION_JAP_CW_BUFFS_JSR }
+		}
+		JSR = {
+		remove_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
+			}
+			
+		}
+		if = {
+			limit = {
+					has_game_rule = { rule = JAP_japanese_cw_buff option = JAP_CW_BUFFS_JAP }
+			}
+			JAP = {
+			remove_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
+			}
+			
+		}
 		set_party_name = {
 			ideology = paternal_autocrat
 			long_name = "Military Administration"
@@ -1158,7 +1283,13 @@ country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.20.a
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+			}
+		}
 		country_event = {
 		id = japan_new_event.21
 		days = 7
@@ -1185,7 +1316,13 @@ country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
 	
 	option = { #
 		name = japan_new_event.20.c
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+			}
+		}
 		trigger = {
 			OR = {
 			has_country_flag = JAP_kokumin_domei_won_in_1936_election
@@ -1220,7 +1357,13 @@ country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
 	
 	option = { #
 		name = japan_new_event.20.b
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_YES }
+			}
+		}
 		country_event = {
 		id = japan_new_event.21
 		days = 7
@@ -1455,7 +1598,13 @@ country_event = { #Concern Over Army Radicalization
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.24.a
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_YES }
+			}
+		}
 		add_political_power = -100
 		add_stability = -0.2
 		add_popularity = {
@@ -1504,7 +1653,13 @@ country_event = { #Concern Over Army Radicalization
 	
 	option = { #
 		name = japan_new_event.24.b
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+			}
+		}
 		add_political_power = 100
 		add_stability = 0.2
 		add_popularity = {
@@ -1577,7 +1732,13 @@ country_event = { #League of Blood Incident
 	is_triggered_only = yes
 	option = { #Seiyukai
 		name = japan_new_event.25.a
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+			}
+		}
 		trigger = {
 			AND = {
 				has_country_flag = no_military_investigation
@@ -1602,7 +1763,13 @@ country_event = { #League of Blood Incident
 	}
 	option = { #Minseito
 		name = japan_new_event.25.a
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+			}
+		}
 		trigger = {
 			AND = {
 				has_country_flag = no_military_investigation
@@ -1631,7 +1798,13 @@ country_event = { #League of Blood Incident
 	
 	option = { #Shakai-Taishuto
 		name = japan_new_event.25.a
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+			}
+		}
 		trigger = {
 			AND = {
 				has_country_flag = no_military_investigation
@@ -1658,7 +1831,13 @@ country_event = { #League of Blood Incident
 	
 	option = { #No Asassination
 		name = japan_new_event.25.b
-		ai_chance = { base = 100 }
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+			}
+		}
 		trigger = {
 			OR = {
 				has_country_flag = military_investigation
@@ -1677,6 +1856,13 @@ country_event = { #League of Blood Incident
 	
 	option = {
 		name = japan_new_event.25.c
+		ai_chance = { 
+		factor = 50
+		modifier = {
+				factor = 0
+				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_YES }
+			}
+		}
 		add_stability = -0.5
 		set_country_flag = League_of_blood_coup
 		set_country_flag = factionalism_japan_no
