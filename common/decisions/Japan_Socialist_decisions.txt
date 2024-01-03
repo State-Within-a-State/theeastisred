@@ -1,0 +1,1297 @@
+JSR_land_reform_decision_category = {
+
+JSR_land_reform_mission = {
+		activation = {
+			has_completed_focus = JAPRECOVERY_starting_the_land_reformation
+		}
+		available = {
+			
+			
+			custom_trigger_tooltip = {
+				tooltip = JSR_land_reform_at_100_tt		
+				check_variable = { japan_socialist_land_reform > 99 }
+			}
+		}
+		
+		icon = GFX_decision_rev_agriculture     # For GFX_decision_mission_icon
+		is_good = yes
+	   
+		days_mission_timeout = 365
+		selectable_mission = no
+		complete_effect = {
+			add_ideas = {
+			JSR_land_reform_success
+			}
+			set_country_flag = land_reform_complete
+		}
+		timeout_effect = {
+			add_ideas = {
+			JSR_land_reform_failiure
+			}
+			set_country_flag = land_reform_failed
+		}
+	}
+
+JSR_seizing_landlord_assets = {
+		icon = rev_agriculture
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.01
+			add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 10
+					tooltip = add_10_to_japan_socialist_land_reform_tt
+				}
+		}
+	}
+	
+	JSR_compensate_the_landlords = {
+		icon = rev_agriculture
+		
+		available = {
+			has_completed_focus = JAPRECOVERY_violent_land_revolution
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = -0.1
+			add_popularity = { ideology = social_democrat popularity = 0.05 }
+			add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 5
+					tooltip = add_5_to_japan_socialist_land_reform_tt
+				}
+		}
+	}
+	JSR_execute_the_landlords = {
+		icon = rev_agriculture
+		
+		available = {
+			has_completed_focus = JAPRECOVERY_violent_land_revolution
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_manpower = -10
+			add_popularity = { ideology = ROOT popularity = 0.05 }
+			add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 5
+					tooltip = add_5_to_japan_socialist_land_reform_tt
+				}
+		}
+	}
+	
+	JSR_redistrubtion_of_lands = {
+		icon = rev_agriculture
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_popularity = { ideology = ROOT popularity = 0.01 }
+			add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 10
+					tooltip = add_10_to_japan_socialist_land_reform_tt
+				}
+		}
+	}
+
+	JSR_land_lord_trials = {
+		icon = rev_agriculture
+		
+		available = {
+			has_completed_focus = JAPRECOVERY_land_lord_trials
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 10
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_stability = 0.05
+			add_manpower = -1
+			add_to_variable = {
+					var = japan_socialist_land_reform
+					value = 5
+					tooltip = add_5_to_japan_socialist_land_reform_tt
+				}
+		}
+	}
+
+
+}
+
+
+JSR_five_year_decision_category = {
+
+JSR_five_year_mission = {
+		activation = {
+			has_completed_focus = JAPRECOVERY_committing_to_the_5_year_plan
+		}
+		available = {
+			AND = {
+			num_of_factories > 150
+			has_completed_focus = JAPRECOVERY_strengthen_urban_industrial_centres
+			has_completed_focus = JAPRECOVERY_national_railroad_construction
+			}
+		}
+		
+		icon = GFX_decision_rev_agriculture     # For GFX_decision_mission_icon
+		is_good = yes
+	   
+		days_mission_timeout = 1827
+		selectable_mission = no
+		complete_effect = {
+			add_political_power = 200
+			add_stability = 0.5
+			add_war_support = 0.5
+			set_country_flag = five_year_plan_complete
+		}
+		timeout_effect = {
+			add_political_power = -200
+			add_stability = -0.5
+			add_war_support = -0.5
+			set_country_flag = five_year_plan_failed
+		}
+	}
+
+JSR_connect_the_nation = {
+		icon = generic_electricity
+		
+		available = {
+			has_completed_focus = JAPRECOVERY_national_railroad_construction
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 100
+		days_re_enable = 50
+		days_remove = 150
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = JSR
+				}
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			
+		add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		
+		}
+	}
+JSR_build_up_tokyo_industrial_complex = {
+		icon = generic_factory
+		
+		available = {
+			owns_state = 282
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = no
+		days_re_enable = 15
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			282 = {
+		
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		add_to_variable = {
+				var = industrial_acceleration
+				value = 5
+				tooltip = add_5_to_industrial_acceleration_tt
+			}
+		}
+	}
+JSR_strengthen_osaka_complex = {
+		icon = generic_factory
+		
+		available = {
+			owns_state =  531
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = no
+		days_re_enable = 15
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			531 = {
+		
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		
+		add_to_variable = {
+				var = industrial_acceleration
+				value = 5
+				tooltip = add_5_to_industrial_acceleration_tt
+			}
+		}
+	}
+JSR_new_northern_steel_furnaces = {
+		icon = steel
+		
+		available = {
+			AND = {
+			owns_state =  536
+			owns_state = 533
+			owns_state = 534
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = no
+		days_re_enable = 15
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_resource = {
+					type = steel
+					amount = 10
+					state = 536
+				}
+			add_resource = {
+					type = steel
+					amount = 10
+					state = 533
+				}
+			add_resource = {
+					type = steel
+					amount = 10
+					state = 534
+				}
+		
+		
+		}
+	}
+	
+	JSR_build_up_tokyo_urban_center = {
+		icon = generic_factory
+		
+		available = {
+			AND = {
+			owns_state =  282
+			num_of_available_civilian_factories > 1
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAPRECOVERY_strengthen_urban_industrial_centres
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			282 = {
+		
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			
+		}
+		
+		
+		}
+	}
+
+JSR_build_up_kyoto_urban_center = {
+		icon = generic_factory
+		
+		available = {
+			AND = {
+			owns_state =  531
+			num_of_available_civilian_factories > 1
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAPRECOVERY_strengthen_urban_industrial_centres
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			531 = {
+		
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			
+		}
+		
+		
+		}
+	}
+	
+	JSR_build_up_hiroshima_urban_center = {
+		icon = generic_factory
+		
+		available = {
+			AND = {
+			owns_state =  529
+			num_of_available_civilian_factories > 1
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAPRECOVERY_strengthen_urban_industrial_centres
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			529 = {
+		
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			
+		}
+		
+		
+		}
+	}
+	
+	JSR_build_up_nagasaki_urban_center = {
+		icon = generic_factory
+		
+		available = {
+			AND = {
+			owns_state =  528
+			num_of_available_civilian_factories > 1
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAPRECOVERY_strengthen_urban_industrial_centres
+		}
+		cost = 25
+		
+		days_remove = 15
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			528 = {
+		
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			
+		}
+		
+		
+		}
+	}
+	
+	
+
+}
+
+JSR_asian_liberation_decision_category = {
+JSR_reach_out_to_the_kuomintang = {
+		icon = generic_factory
+		
+		available = {
+			
+			CHI = {
+			exists = yes
+				OR = {
+						has_government = totalist
+						has_government = syndicalist
+						has_government = radical_socialist
+					}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+			NOT = {
+			has_country_flag = JSR_chose_china_leader
+			}
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		CHI = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_shanghai = {
+		icon = generic_factory
+		
+		available = {
+			LEC = {
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+			NOT = {
+			has_country_flag = JSR_chose_china_leader
+			}
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		LEC = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_guangxi = {
+		icon = generic_factory
+		
+		available = {
+			GXC = {
+				NOT = {
+					is_subject_of = CHI
+				}
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+			NOT = {
+			has_country_flag = JSR_chose_china_leader
+			}
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		GXC = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_hunan = {
+		icon = generic_factory
+		
+		available = {
+			HNN = {
+				NOT = {
+					is_subject_of = CHI
+				}
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+			NOT = {
+			has_country_flag = JSR_chose_china_leader
+			}
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		HNN = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_yunnan = {
+		icon = generic_factory
+		
+		available = {
+			YUN = {
+				NOT = {
+					is_subject_of = CHI
+				}
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+			NOT = {
+			has_country_flag = JSR_chose_china_leader
+			}
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		YUN = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_tibet = {
+		icon = generic_factory
+		
+		available = {
+			TIB = {
+				NOT = {
+					is_subject_of = CHI
+				}
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		TIB = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_mongolia = {
+		icon = generic_factory
+		
+		available = {
+			MON = {
+				is_subject = no
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		MON = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_qing = {
+		icon = generic_factory
+		
+		available = {
+			QIE = {
+				is_subject = no
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+			QIE = {
+				OR = {
+						has_government = totalist
+						has_government = syndicalist
+						has_government = radical_socialist
+					}
+			}
+			NOT = {
+			has_country_flag = JSR_chose_china_leader
+			}
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		QIE = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_shanxi = {
+		icon = generic_factory
+		
+		available = {
+			SHX = {
+				is_subject = no
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+			NOT = {
+			has_country_flag = JSR_chose_china_leader
+			}
+			
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		SHX = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_leftists_in_shandong = {
+		icon = generic_factory
+		
+		available = {
+			SQI = {
+				is_subject = no
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+			
+			JSR = {
+				has_government = radical_socialist
+			}
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_the_china_solution
+			NOT = {
+			has_country_flag = JSR_chose_china_leader
+			}
+			
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		SQI = {
+		country_event = japan_new_event.120
+		}
+		
+		}
+	}
+	
+	
+	JSR_reach_out_to_the_russians = {
+		icon = generic_factory
+		
+		available = {
+			RUS = {
+				is_subject = no
+				is_faction_leader = yes
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+			
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_reaching_out_to_socialist_allies
+			is_in_faction = no
+			
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		RUS = { add_to_faction = JSR }
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_french = {
+		icon = generic_factory
+		
+		available = {
+			FRA = {
+				is_subject = no
+				is_faction_leader = yes
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+			
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_reaching_out_to_socialist_allies
+			is_in_faction = no
+			
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		FRA = { add_to_faction = JSR }
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_americans = {
+		icon = generic_factory
+		
+		available = {
+			CSA = {
+				is_subject = no
+				is_faction_leader = yes
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+					has_government = social_democrat
+				}
+			}
+			
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_reaching_out_to_socialist_allies
+			is_in_faction = no
+			
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		CSA = { add_to_faction = JSR }
+		
+		}
+	}
+	
+	
+	JSR_reach_out_to_the_indians = {
+		icon = generic_factory
+		
+		available = {
+			BHC = {
+				is_subject = no
+				is_faction_leader = yes
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+			
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_reaching_out_to_socialist_allies
+			is_in_faction = no
+			
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		BHC = { add_to_faction = JSR }
+		
+		}
+	}
+	
+	JSR_reach_out_to_the_chinese = {
+		icon = generic_factory
+		
+		available = {
+			CHI = {
+				is_subject = no
+				is_faction_leader = yes
+				OR = {
+					has_government = totalist
+					has_government = syndicalist
+					has_government = radical_socialist
+				}
+			}
+			
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_reaching_out_to_socialist_allies
+			is_in_faction = no
+			
+		}
+		cost = 10
+		
+		days_remove = 7
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		CHI = { add_to_faction = JSR }
+		
+		}
+	}
+	
+	
+	JAP_liberate_south_east_asia = {
+		icon = no_votei_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_crush_the_colonialists_of_the_southern_seas
+			
+		}
+		
+		targets = {  GEA PHI DEI VIN CAM SIA INC INS AST NZL }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				is_in_faction_with = PREV
+				}
+			}
+		}
+		cost = 10
+		
+		days_remove = 20
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			
+			
+			
+		}
+	}
+	
+	JAP_liberate_south_asia = {
+		icon = no_votei_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_proclaiming_the_red_star_above_india
+			
+		}
+		
+		targets = {  BHC DEH PRF BRM MAD NEP SKM BHU AFG PAK }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				is_in_faction_with = PREV
+				}
+			}
+		}
+		cost = 10
+		
+		days_remove = 20
+		fire_only_once = yes
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			
+			
+			
+		}
+	}
+
+}
+
+JSR_Nosaka_Purge_Campaign_decision_category = {
+	JSR_purge_paris_faction = {
+		icon = generic_factory
+		
+		available = {
+			
+			
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAPCOMMUNIST_securing_the_state
+			
+		}
+		cost = 10
+		
+		days_remove = 40
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		add_manpower = -1
+		add_political_power = 20
+		random_list = {
+			50 = {
+			country_event = japan_new_event.121
+			}
+			
+			50 = {
+			country_event = japan_new_event.122
+			}
+		}
+		
+		}
+	}
+	
+	
+	JSR_purge_fukumotoists = {
+		icon = generic_factory
+		
+		available = {
+			
+			
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAPCOMMUNIST_securing_the_state
+			
+		}
+		cost = 10
+		
+		days_remove = 35
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		add_manpower = -300
+		add_stability = 0.025
+		add_political_power = 5
+		add_war_support = -0.025
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.15
+		}
+		set_country_flag = JSR_Fukumoto_Dead
+		}
+	}
+	
+	JSR_purge_social_reactionaries = {
+		icon = generic_factory
+		
+		available = {
+			has_completed_focus = JAPCOMMUNIST_denounce_the_liberal_menace
+			
+			
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAPCOMMUNIST_securing_the_state
+			
+		}
+		cost = 10
+		
+		days_remove = 30
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		random_list = {
+			50 = {
+				country_event = japan_new_event.123
+			}
+			
+			50 = {
+				country_event = japan_new_event.124
+			}
+		}
+		}
+	}
+}
+

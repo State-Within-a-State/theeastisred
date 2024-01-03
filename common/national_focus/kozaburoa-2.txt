@@ -8,7 +8,6 @@ focus_tree = {
 			tag = JAPKOZA
 		}
 	}
-	shared_focus = JAPFOR_japansplaceintheworld
 	shared_focus = JAPARMY_jakuniku_kyoshoku
 	shared_focus = JAPECON_recovering_from_black_monday
 	#Learning From Tolstoy
@@ -22,6 +21,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPKOZA_work_with_bin_akao  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Cleansing of National Politics
@@ -35,6 +37,49 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPKOZA_work_with_bin_akao  } prerequisite = { focus = JAPKOZA_purge_the_old_order  }
+		completion_reward = {
+		set_party_name = {
+			ideology = syndicalist
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		set_party_name = {
+			ideology = social_liberal
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		set_party_name = {
+			ideology = market_liberal
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_tachibana_long
+			name = JAP_party_tachibana
+		}
+		add_stability = 0.075
+		}
 	}
 
 	#Under the Emperor's Will
@@ -48,6 +93,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKOZA_cleansing_of_national_politics  } prerequisite = { focus = JAPKOZA_learning_from_tolstoy  }
+		completion_reward = {
+		add_ideas = {
+		JAP_for_showa
+		}
+		}
 	}
 
 	#Tachibana's Utopian Society
@@ -61,6 +111,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPKOZA_undertheemperorswill  } prerequisite = { focus = JAPKOZA_strike_down_capitalism  } prerequisite = { focus = JAPKOZA_local_village_reliance  }
+		completion_reward = {
+		country_event = japan_new_event.43
+		country_event = {
+		id = japan_new_event.92
+		days = 3
+		}
+		}
 	}
 
 	#Local Village Reliance
@@ -74,6 +131,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOZA_radical_land_reforms  } prerequisite = { focus = JAPKOZA_removal_of_the_zaibatsu  } prerequisite = { focus = JAPKOZA_cleansing_of_national_politics  } prerequisite = { focus = JAPKOZA_learning_from_tolstoy  }
+		completion_reward = {
+		add_ideas = {
+		JAP_village_reliance
+		}
+		}
 	}
 
 	#Strike Down Capitalism
@@ -87,6 +149,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKOZA_removal_of_the_zaibatsu  } prerequisite = { focus = JAPKOZA_cleansing_of_national_politics  } prerequisite = { focus = JAPKOZA_learning_from_tolstoy  } prerequisite = { focus = JAPKOZA_radical_land_reforms  }
+		completion_reward = {
+		add_ideas = {
+		JAP_Strike_Down_capaitalism
+		}
+		}
 	}
 
 	#Removal of the Zaibatsu
@@ -100,6 +167,13 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOZA_purge_the_old_order  } prerequisite = { focus = JAPKOZA_industrial_transformation  }
+		
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_zaibatsu_nationalization_1
+		add_idea = JAP_zaibatsu_nationalization_2
+		}
+		}
 	}
 
 	#Industrial Transformation
@@ -113,6 +187,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOZA_ending_the_monsters_of_globalization  }
+		completion_reward = {
+		add_ideas = {
+		JAP_zaibatsu_nationalization_1
+		}
+		}
 	}
 
 	#Radical Land Reforms
@@ -126,6 +205,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKOZA_industrial_transformation  }
+		completion_reward = {
+		add_ideas = {
+		JAP_save_peasants
+		}
+		}
 	}
 
 	#Purge the Old Order
@@ -139,6 +223,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPKOZA_ending_the_monsters_of_globalization  } prerequisite = { focus = JAPKOZA_forming_the_imperial_brotherhood  }
+		completion_reward = {
+		add_ideas = {
+		JAP_purge_capitalism
+		}
+		}
 	}
 
 	#Legacy of the Writers
@@ -152,6 +241,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPKOZA_forming_the_imperial_brotherhood  }
+		completion_reward = {
+		add_ideas = {
+		JAP_writer_legacy
+		}
+		}
 	}
 
 	#Forming the Imperial Brotherhood
@@ -165,6 +259,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPKOZA_tachibanasascension  }
+		completion_reward = {
+		add_ideas = {
+		JAP_imperial_bortherhood
+		}
+		}
 	}
 
 	#Ending the Monsters of Globalization
@@ -178,6 +277,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKOZA_tachibanasascension  }
+		completion_reward = {
+		add_war_support = 0.15
+		add_political_power = 100
+		add_ideas = {
+		JAP_anti_globalization
+		}
+		}
 	}
 
 	#Tachibana's Ascension
@@ -186,7 +292,7 @@ focus_tree = {
 		icon = GFX_JAPKOZA_tachibanasascension-248360
 		x = 7
 		y = 0
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}

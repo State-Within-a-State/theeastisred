@@ -159,6 +159,7 @@ focus_tree = {
 		prerequisite = { focus = TAI_military_victory  focus = TAI_seiyukai_appointed  }
 		completion_reward = {
 		524 = {
+		add_extra_state_shared_building_slots = 4
 		add_building_construction = {
 				type = arms_factory
 				level = 2
@@ -477,6 +478,9 @@ focus_tree = {
 		bypass = {
 		has_idea = TWI_black_monday
 		}
+		available = {
+		has_idea = TWI_black_monday
+		}
 	}
 
 	#Doka
@@ -527,6 +531,7 @@ focus_tree = {
 		prerequisite = { focus = TAI_doka  }
 		completion_reward = {
 		524 = {
+			add_extra_state_shared_building_slots = 2
 			add_building_construction = {
 				type = infrastructure
 				level = 2
@@ -591,6 +596,7 @@ focus_tree = {
 		prerequisite = { focus = TAI_railroad_construction  }
 		completion_reward = {
 		524 = {
+		add_extra_state_shared_building_slots = 2
 		add_building_construction = {
 					type = naval_base
 					level = 2
@@ -618,6 +624,7 @@ focus_tree = {
 		prerequisite = { focus = TAI_increasing_in_civilian_modes_of_production  }
 		completion_reward = {
 		524 = {
+		add_extra_state_shared_building_slots = 4
 		add_building_construction = {
 					type = industrial_complex
 					level = 2
@@ -857,6 +864,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TWI_initiate_land_reforms  }
+		completion_reward = {
+		add_ideas = {
+		TWI_taiwanese_capitalism
+		}
+		}
 	}
 
 	#Seize Japanese Land Lord Assets
@@ -870,6 +882,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TWI_initiate_land_reforms  }
+		completion_reward = {
+		add_ideas = {
+		TWI_kicking_japanese_land_lords
+		}
+		}
 	}
 
 	#Start Up New Literacy Campaigns
@@ -883,6 +900,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TWI_initiate_land_reforms  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#The Wushe Rebellion
@@ -894,6 +914,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -908,6 +931,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TWI_the_wushe_rebellion  }
+		available = {
+		always = no
+		}
 	}
 
 	#The Samurai Sword Falls From Its Stand
@@ -921,6 +947,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = TWI_seediq_takeover  }
+		completion_reward = {
+		add_ideas = {
+		TWI_kicking_japanese
+		}
+		}
 	}
 
 	#Expelling the Japanese Bandits
@@ -934,6 +965,9 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = TWI_the_samurai_sword_falls_from_its_stand  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Promotion of Folk Religions
@@ -947,6 +981,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TWI_the_samurai_sword_falls_from_its_stand  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_political_power = 50
+		}
 	}
 
 	#Crush the Syndicalists
@@ -960,6 +998,18 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TWI_expelling_the_japanese_bandits  } prerequisite = { focus = TWI_promotion_of_folk_religions  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = -1
+		}
+		
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_political_power = 25
+		}
 	}
 
 	#Expel the Chinese Nationalists
@@ -973,6 +1023,22 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = TWI_expelling_the_japanese_bandits  } prerequisite = { focus = TWI_promotion_of_folk_religions  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -1
+		}
+		add_political_power = 25
+		}
 	}
 
 	#Chucao!
@@ -986,6 +1052,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TWI_crush_the_syndicalists  } prerequisite = { focus = TWI_expel_the_chinese_nationalists  }
+		completion_reward = {
+		add_ideas = {
+		TWI_chucao
+		}
+		}
 	}
 
 	#Never Forget 1895
@@ -999,6 +1070,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TWI_crush_the_syndicalists  } prerequisite = { focus = TWI_expel_the_chinese_nationalists  }
+		completion_reward = {
+		add_ideas = {
+		TWI_1895_legacy
+		}
+		}
 	}
 
 	#Purge the Weifangfan
@@ -1012,6 +1088,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = TWI_chucao  } prerequisite = { focus = TWI_never_forget_1895  }
+		completion_reward = {
+		add_ideas = {
+		TWI_purge_traitors
+		}
+		}
 	}
 
 	#Pride For One's Nation
@@ -1025,6 +1106,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TWI_purge_the_weifangfan  }
+		completion_reward  = {
+		add_ideas = {
+		TWI_national_pride
+		}
+		}
 	}
 
 	#Birth of a Native Republic
@@ -1038,6 +1124,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TWI_the_wushe_rebellion  }
+		available = {
+		always = no
+		}
 	}
 
 	#An Authoritative Republic
@@ -1052,6 +1141,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = TWI_birth_of_a_native_republic  }
 		mutually_exclusive = { focus = TWI_a_democratic_republic  }
+		available = {
+		always = no
+		}
 	}
 
 	#A Democratic Republic
@@ -1066,6 +1158,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = TWI_birth_of_a_native_republic  }
 		mutually_exclusive = { focus = TWI_an_authoritative_republic  }
+		available = {
+		always = no
+		}
 	}
 
 	#Coalition With the Jian Ji
@@ -1079,6 +1174,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TWI_a_democratic_republic  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		add_radsoc_to_coalition = yes
+		add_political_power = 100
+		}
 	}
 
 	#Focus On the Recovery
@@ -1092,6 +1195,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TWI_birth_of_a_native_republic  }
+		completion_reward = {
+		add_ideas = {
+		TWI_national_reconstruction
+		}
+		}
 	}
 
 	#Cooperation With Jian Ji
@@ -1105,6 +1213,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TWI_an_authoritative_republic  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		add_stability = 0.1
+		}
 	}
 
 	#Suppress Han Chauvinism
@@ -1118,6 +1233,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TWI_cooperation_with_jian_ji  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Initiate Land Reforms
@@ -1131,6 +1249,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TWI_focus_on_the_recovery  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_land_reforms
+		}
+		}
 	}
 
 	#Promoting National Unity
@@ -1144,6 +1267,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TWI_coalition_with_the_jian_ji  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Limit Radical Influences
@@ -1157,6 +1283,23 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TWI_coalition_with_the_jian_ji  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -0.1
+		}
+		
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.1
+		}
+		add_political_power = 50
+		add_stability = -0.15
+		}
 	}
 
 	#Amnesty to Taiwanese Workers
@@ -1170,6 +1313,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TWI_promoting_national_unity  } prerequisite = { focus = TWI_limit_radical_influences  }
+		completion_reward = {
+		add_ideas = {
+		TWI_workers_alliance
+		}
+		add_stability = 0.05
+		}
 	}
 
 	#Work with the Taiwanese Workers
@@ -1183,6 +1332,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TWI_suppress_han_chauvinism  } prerequisite = { focus = TWI_open_up_national_food_distribution_centres  }
+		completion_reward = {
+		add_ideas = {
+		TWI_workers_alliance
+		}
+		add_manpower = 10000
+		}
 	}
 
 	#Open Up National Food Distribution Centres
@@ -1196,6 +1351,21 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TWI_cooperation_with_jian_ji  }
+		completion_reward = {
+		524 = {
+		add_extra_state_shared_building_slots = 4
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+		}
+		}
 	}
 
 	#Restoring Our Cultural Hegemony
@@ -1209,6 +1379,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TWI_suppress_han_chauvinism  } prerequisite = { focus = TWI_open_up_national_food_distribution_centres  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#The Republic Lives On
@@ -1222,6 +1395,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TWI_work_with_the_taiwanese_workers  } prerequisite = { focus = TWI_restoring_our_cultural_hegemony  }
+		completion_reward = {
+		
+		add_war_support = 0.05
+		}
 	}
 
 	#An Isolated Economic Boom
@@ -1235,6 +1412,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TWI_encourage_reformed_taiwanese_capitalism  } prerequisite = { focus = TWI_start_up_new_literacy_campaigns  } prerequisite = { focus = TWI_seize_japanese_land_lord_assets  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = TWI_national_reconstruction
+		add_idea = TWI_economic_boom
+		}
+		}
 	}
 
 	#Wuyong's Republican Dream
@@ -1248,6 +1431,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TWI_amnesty_to_taiwanese_workers  }
+		completion_reward = {
+		add_research_slot = 1
+		add_war_support = 0.05
+		}
 	}
 
 	#A New Democracy Has Arrived
@@ -1261,6 +1448,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TWI_an_isolated_economic_boom  } prerequisite = { focus = TWI_wuyongsrepublicandream  }
+		completion_reward = {
+		country_event = taiwan.25
+		}
 	}
 
 	#The Next Step
@@ -1274,6 +1464,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TWI_the_republic_lives_on  } prerequisite = { focus = TWI_an_isolated_economic_boom  }
+		completion_reward = {
+		country_event = taiwan.26
+		}
 	}
 	
 	####Socialist Tree###
@@ -1282,27 +1475,30 @@ focus_tree = {
 	focus = {
 		id = TAISOC_from_the_fires_of_the_2nd_wushe_rebellion
 		icon = GFX_TAISOC_from_the_fires_of_the_2nd_wushe_rebellion-248360
-		x = 47
+		x = 48
 		y = 0
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		mutually_exclusive = { focus = TAISOC_the_sun_has_set  }
+		available = {
+		always = no
+		}
+		#mutually_exclusive = { focus = TAISOC_the_sun_has_set  }
 	}
 
 	#The Sun Has Set
-	focus = {
-		id = TAISOC_the_sun_has_set
-		icon = GFX_TAISOC_the_sun_has_set-248360
-		x = 49
-		y = 0
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		mutually_exclusive = { focus = TAISOC_from_the_fires_of_the_2nd_wushe_rebellion  }
-	}
+	#focus = {
+	#	id = TAISOC_the_sun_has_set
+	#	icon = GFX_TAISOC_the_sun_has_set-248360
+	#	x = 49
+	#	y = 0
+	#	cost = 1
+	#	search_filters = {
+	#		FOCUS_FILTER_POLITICAL
+	#	}
+	#	mutually_exclusive = { focus = TAISOC_from_the_fires_of_the_2nd_wushe_rebellion  }
+	#}
 
 	#Call Together the United Front
 	focus = {
@@ -1314,7 +1510,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				OR = {
+					has_country_flag = TAI_japan_taiwan_revolution
+					has_war_with = JAP
+				}
+			}
+		}
 		prerequisite = { focus = TAISOC_from_the_fires_of_the_2nd_wushe_rebellion  focus = TAISOC_the_sun_has_set  }
+		completion_reward = {
+		country_event = taiwan.11
+		}
 	}
 
 	#Victory of the People's Party
@@ -1326,6 +1533,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = TAISOC_call_together_the_united_front  }
 	}
@@ -1340,6 +1550,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = TAISOC_victoryofthepeoplesparty  }
 		mutually_exclusive = { focus = TAISOC_supporter_of_the_workers  }
 	}
@@ -1353,6 +1566,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = TAISOC_victoryofthepeoplesparty  }
 		mutually_exclusive = { focus = TAISOC_linxiantangsrepublicangamble  }
@@ -1369,6 +1585,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAISOC_supporter_of_the_workers  }
+		completion_reward = {
+		add_ideas = {
+		TWI_cultural_expression
+		}
+		}
 	}
 
 	#375 Rent Reducation
@@ -1382,6 +1603,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAISOC_linxiantangsrepublicangamble  focus = TAISOC_supporter_of_the_workers  }
+		completion_reward = {
+			set_variable = {
+				var = taiwan_land_reform
+				value = 10
+				tooltip = taiwanese_land_reform_shall_start_tt
+			}
+			set_country_flag = TAI_taiwanese_land_reforms
+		}
 	}
 
 	#Limit Socialist Influence
@@ -1395,6 +1624,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_linxiantangsrepublicangamble  }
+		completion_reward = {
+		add_ideas = {
+		TWI_denouncing_left_radicalism
+		}
+		}
 	}
 
 	#Improving Taiwanese Culture
@@ -1408,6 +1642,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TAISOC_limit_socialist_influence  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Form Tenancy Committees
@@ -1421,6 +1658,16 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TAISOC_375_rent_reducation  }
+		completion_reward = {
+		add_ideas = {
+		TWI_tenant_committees
+		}
+		add_to_variable = {
+					var = taiwan_land_reform
+					value = 5
+					tooltip = add_10_to_taiwan_land_reform_tt
+				}
+		}
 	}
 
 	#Form Taiwan Minbao
@@ -1434,6 +1681,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TAISOC_promotion_of_taiwanese_cultural_expression  }
+		completion_reward = {
+		country_event = taiwan.27
+		}
 	}
 
 	#Promote Health Care
@@ -1447,6 +1697,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TAISOC_form_taiwan_minbao  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Agricultural Mechanization
@@ -1460,6 +1713,16 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAISOC_form_tenancy_committees  }
+		completion_reward = {
+		add_ideas = {
+		TWI_mechanization_agricultre
+		}
+		add_to_variable = {
+					var = taiwan_land_reform
+					value = 5
+					tooltip = add_10_to_taiwan_land_reform_tt
+				}
+		}
 	}
 
 	#In Honour of Dr Sun
@@ -1473,6 +1736,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_improving_taiwanese_culture  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		}
 	}
 
 	#A Liberal Future
@@ -1486,6 +1755,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = TAISOC_agricultural_mechanization  } prerequisite = { focus = TAISOC_in_honour_of_dr_sun  }
+		completion_reward = {
+		add_ideas = {
+		TWI_liberal_future
+		}
+		}
 	}
 
 	#Weishui's Taiwan
@@ -1499,6 +1773,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_promote_health_care  } prerequisite = { focus = TAISOC_agricultural_mechanization  focus = TAISOC_promote_health_care  } prerequisite = { focus = TAISOC_power_to_the_peasant_associations  }
+		completion_reward = {
+		add_ideas = {
+		TWI_socialist_future
+		}
+		}
 	}
 
 	#The Peasants Rise for Jian Ji
@@ -1510,6 +1789,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = TAISOC_call_together_the_united_front  }
 	}
@@ -1525,6 +1807,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAISOC_the_peasants_rise_for_jian_ji  }
+		completion_reward = {
+		add_ideas = {
+		TWI_marx_lenin_sun
+		}
+		}
 	}
 
 	#Revolutionary Enlightenment
@@ -1538,6 +1825,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAISOC_the_peasants_rise_for_jian_ji  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Communist Alliance
@@ -1551,6 +1841,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_lessons_from_sun_and_lenin  } prerequisite = { focus = TAISOC_revolutionary_enlightenment  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		add_tot_to_coalition = yes
+		}
 	}
 
 	#Education Reforms
@@ -1564,6 +1861,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAISOC_lessons_from_sun_and_lenin  } prerequisite = { focus = TAISOC_revolutionary_enlightenment  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_socialist_education
+		}
+		}
 	}
 
 	#Starting National Land Reform
@@ -1577,6 +1879,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAISOC_lessons_from_sun_and_lenin  focus = TAISOC_supporter_of_the_workers  }
+		completion_reward = {
+			set_variable = {
+				var = taiwan_land_reform
+				value = 5
+				tooltip = taiwanese_land_reform_shall_start_tt
+			}
+			set_country_flag = TAI_taiwanese_land_reforms
+		}
 	}
 
 	#Land Lord Expropriation
@@ -1590,6 +1900,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TAISOC_starting_national_land_reform  }
+		completion_reward  = {
+		unlock_decision_tooltip = TAI_execute_the_landlords
+		}
 	}
 
 	#Comrades in the Cultural Association
@@ -1603,6 +1916,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_education_reforms  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.05
+		}
+		add_synd_to_coalition = yes
+		}
 	}
 
 	#Develop the Proletarian Peasant Conscious
@@ -1616,6 +1940,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TAISOC_communist_alliance  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_socialist_concusous
+		}
+		}
 	}
 
 	#Social Science Research Associations
@@ -1629,6 +1958,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAISOC_comrades_in_the_cultural_association  } prerequisite = { focus = TAISOC_develop_the_proletarian_peasant_conscious  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_socialist_institues
+		}
+		}
 	}
 
 	#Promoting Esperanto
@@ -1642,6 +1976,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAISOC_comrades_in_the_cultural_association  } prerequisite = { focus = TAISOC_develop_the_proletarian_peasant_conscious  }
+		completion_reward = {
+		country_event = taiwan.28
+		}
 	}
 
 	#Power to the Peasant Associations
@@ -1655,6 +1992,16 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAISOC_land_lord_expropriation  }
+		completion_reward = {
+		add_ideas = {
+		TWI_peasant_committees
+		}
+		add_to_variable = {
+					var = taiwan_land_reform
+					value = 10
+					tooltip = add_10_to_taiwan_land_reform_tt
+				}
+		}
 	}
 
 	#Unite the Farmer Associations
@@ -1668,6 +2015,13 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAISOC_social_science_research_associations  } prerequisite = { focus = TAISOC_promoting_esperanto  } prerequisite = { focus = TAISOC_power_to_the_peasant_associations  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		add_political_power = 50
+		}
 	}
 
 	#Coming From a Harsh Winter Into a Socialist Spring
@@ -1681,6 +2035,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_unite_the_farmer_associations  }
+		completion_reward = {
+		country_event = taiwan.13
+		}
 	}
 
 	#The People's Party Belongs to the Masses
@@ -1694,6 +2051,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_a_liberal_future  focus = TAISOC_weishuistaiwan  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_stability = 0.1
+		add_war_support = 0.15
+		add_political_power = 50
+		}
 	}
 
 	#The 27th Brigade Marches In
@@ -1705,6 +2071,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = TAISOC_call_together_the_united_front  }
 	}
@@ -1720,6 +2089,19 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_the_27th_brigade_marches_in  }
+		completion_reward = {
+		set_party_name = {
+			ideology = totalist
+			long_name = TAI_totalist_commies_party_long
+			name = TAI_totalist_commies_party
+		}
+		
+		set_party_name = {
+			ideology = syndicalist
+			long_name = TAI_syndicalist_commies_party_long
+			name = TAI_syndicalist_commies_party
+		}
+		}
 	}
 
 	#Route Out The Hanjians!
@@ -1733,6 +2115,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TAISOC_the_27th_brigade_marches_in  }
+		completion_reward = {
+		add_manpower = -1000
+		add_war_support = 0.1
+		add_political_power = 20
+		}
 	}
 
 	#Seize Zaibatsu Holdings
@@ -1746,6 +2133,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAISOC_establishment_of_a_proper_workers_party  } prerequisite = { focus = TAISOC_routeoutthehanjians  }
+		completion_reward = {
+		add_ideas = {
+		TWI_seize_zaibatsu_holdings
+		}
+		}
 	}
 
 	#Our Land Revolution!
@@ -1759,6 +2151,14 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAISOC_establishment_of_a_proper_workers_party  } prerequisite = { focus = TAISOC_routeoutthehanjians  }
+		completion_reward = {
+			set_variable = {
+				var = taiwan_land_reform
+				value = 5
+				tooltip = taiwanese_land_reform_shall_start_tt
+			}
+			set_country_flag = TAI_taiwanese_land_reforms
+		}
 	}
 
 	#Ties With Japanese Socialists
@@ -1772,6 +2172,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = TAISOC_establishment_of_a_proper_workers_party  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = TAI_Weng_Zesheng_for_tot
+		add_idea = TAI_Watanabe_Masanosuke_for_rso
+		}
+		}
 	}
 
 	#Formalize a National Army
@@ -1785,6 +2191,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TAISOC_seize_zaibatsu_holdings  } prerequisite = { focus = TAISOC_ourlandrevolution  } prerequisite = { focus = TAISOC_ties_with_japanese_socialists  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_socialist_army
+		}
+		}
 	}
 
 	#Expand the Taiwan Workers Federation
@@ -1798,6 +2209,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = TAISOC_seize_zaibatsu_holdings  } prerequisite = { focus = TAISOC_ourlandrevolution  } prerequisite = { focus = TAISOC_ties_with_japanese_socialists  }
+		completion_reward = {
+		add_ideas = {
+		TWI_union_expansion
+		}
+		}
 	}
 
 	#The First Party Congress
@@ -1806,11 +2222,14 @@ focus_tree = {
 		icon = GFX_TAISOC_the_first_party_congress-248360
 		x = 55
 		y = 6
-		cost = 5
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = TAISOC_formalize_a_national_army  } prerequisite = { focus = TAISOC_expand_the_taiwan_workers_federation  }
+		completion_reward = {
+		country_event = taiwan.12
+		}
 	}
 
 	#Xuehong Stays the Course
@@ -1822,6 +2241,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = TAISOC_the_first_party_congress  }
 		mutually_exclusive = { focus = TAISOC_syndicalist_primacy  }
@@ -1837,6 +2259,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = TAISOC_the_first_party_congress  }
 		mutually_exclusive = { focus = TAISOC_xuehong_stays_the_course  }
 	}
@@ -1851,7 +2276,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
+		
 		prerequisite = { focus = TAISOC_syndicalist_primacy  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Form Peasant Communes
@@ -1865,6 +2294,21 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = TAISOC_xuehong_stays_the_course  focus = TAISOC_syndicalist_primacy  }
+		completion_reward = {
+		524 = {
+		add_extra_state_shared_building_slots = 5
+		add_building_construction = {
+				type = industrial_complex
+				level = 5
+				instant_build = yes
+			}
+		add_building_construction = {
+				type = infrastructure
+				level = 5
+				instant_build = yes
+			}
+		}
+		}
 	}
 
 	#Taiwanese Red Culture
@@ -1878,6 +2322,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = TAISOC_xuehong_stays_the_course  }
+		completion_reward = {
+		add_research_slot = 1
+		add_ideas = {
+		TWI_new_red_culture
+		}
+		}
 	}
 
 	#Socialism With Taiwanese Characteristics
@@ -1890,7 +2340,1827 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = TAISOC_esperantist_education  } prerequisite = { focus = TAISOC_form_peasant_communes  focus = TAISOC_form_peasant_communes  } prerequisite = { focus = TAISOC_taiwanese_red_culture  }
+		prerequisite = { focus = TAISOC_form_peasant_communes  } prerequisite = { focus = TAISOC_taiwanese_red_culture  focus = TAISOC_esperantist_education  } 
+		completion_reward = {
+		add_ideas = {
+		TWI_socialism_under_taiwan
+		}
+		}
+	}
+	
+	
+	###Pro-Japan Tree###
+	
+	#Comfort Under the Boot
+	focus = {
+		id = TAIMON_comfort_under_the_boot
+		icon = GFX_TAIMON_comfort_under_the_boot-248360
+		x = 15
+		y = 16
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			always = no
+		}
+		prerequisite = { focus = TAIMON_securing_taiwan  }
+		mutually_exclusive = { focus = TAIMON_the_loss_of_an_empire  }
 	}
 
+	#The Loss of an Empire
+	focus = {
+		id = TAIMON_the_loss_of_an_empire
+		icon = GFX_TAIMON_the_loss_of_an_empire-248360
+		x = 13
+		y = 16
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			always = no
+		}
+		prerequisite = { focus = TAIMON_securing_taiwan  }
+		mutually_exclusive = { focus = TAIMON_comfort_under_the_boot  }
+	}
+
+	#Aligning the Taiwanese Business Men
+	focus = {
+		id = TAIMON_aligning_the_taiwanese_business_men
+		icon = GFX_TAIMON_aligning_the_taiwanese_business_men-248360
+		x = 15
+		y = 14
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = TAIMON_appointment_of_a_new_governor  }
+		mutually_exclusive = { focus = TAIMON_the_military_seizes_the_island  }
+	}
+
+	#Appointment of a New Governor
+	focus = {
+		id = TAIMON_appointment_of_a_new_governor
+		icon = GFX_TAIMON_appointment_of_a_new_governor-248360
+		x = 14
+		y = 13
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+	}
+
+	#The Military Seizes the Island
+	focus = {
+		id = TAIMON_the_military_seizes_the_island
+		icon = GFX_TAIMON_the_military_seizes_the_island-248360
+		x = 13
+		y = 14
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = TAIMON_appointment_of_a_new_governor  }
+		mutually_exclusive = { focus = TAIMON_aligning_the_taiwanese_business_men  }
+	}
+
+	#Securing Taiwan
+	focus = {
+		id = TAIMON_securing_taiwan
+		icon = GFX_TAIMON_securing_taiwan-248360
+		x = 14
+		y = 15
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		select_effect = {
+			country_event = {
+				id = taiwan.18
+				days = 10
+			}
+		}
+		bypass = {
+		has_country_flag = TWI_secured_taiwan
+		}
+		prerequisite = { focus = TAIMON_aligning_the_taiwanese_business_men  focus = TAIMON_the_military_seizes_the_island  }
+	}
+
+	#Continuing Our Integration
+	focus = {
+		id = TAIMON_continuing_our_integration
+		icon = GFX_TAIMON_continuing_our_integration-248360
+		x = 14
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		is_subject_of = JAP
+		}
+		prerequisite = { focus = TAIMON_the_loss_of_an_empire  focus = TAIMON_comfort_under_the_boot  }
+		completion_reward = {
+		add_political_power = 10
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 2
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
+	}
+
+	#Continue Taiwanese Development
+	focus = {
+		id = TAIMON_continue_taiwanese_development
+		icon = GFX_TAIMON_continue_taiwanese_development-248360
+		x = 13
+		y = 18
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIMON_continuing_our_integration  }
+		completion_reward = {
+		add_ideas = {
+		TWI_colonial_industrial_expansion
+		}
+		}
+	}
+
+	#Expand the Opium Trade
+	focus = {
+		id = TAIMON_expand_the_opium_trade
+		icon = GFX_TAIMON_expand_the_opium_trade-248360
+		x = 15
+		y = 18
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAIMON_continuing_our_integration  }
+		completion_reward = {
+		add_ideas = {
+		TWI_expanding_opium_tree
+		}
+		}
+	}
+
+	#Help Zaibatsu Corps
+	focus = {
+		id = TAIMON_help_zaibatsu_corps
+		icon = GFX_TAIMON_help_zaibatsu_corps-248360
+		x = 15
+		y = 19
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIMON_continue_taiwanese_development  } prerequisite = { focus = TAIMON_expand_the_opium_trade  }
+		completion_reward = {
+		add_ideas = {
+		TWI_zaibatsu_funding
+		}
+		}
+	}
+
+	#Expand Agricultural Development
+	focus = {
+		id = TAIMON_expand_agricultural_development
+		icon = GFX_TAIMON_expand_agricultural_development-248360
+		x = 13
+		y = 19
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIMON_continue_taiwanese_development  } prerequisite = { focus = TAIMON_expand_the_opium_trade  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_agricultural_funding
+		}
+		}
+	}
+
+	#Construct Taiwanese banks
+	focus = {
+		id = TAIMON_construct_taiwanese_banks
+		icon = GFX_TAIMON_construct_taiwanese_banks-248360
+		x = 13
+		y = 20
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIMON_help_zaibatsu_corps  } prerequisite = { focus = TAIMON_expand_agricultural_development  }
+		mutually_exclusive = { focus = TAIMON_expand_the_japanese_banking_sector  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_taiwanese_banks
+		}
+		}
+	}
+
+	#Expand the Japanese Banking Sector
+	focus = {
+		id = TAIMON_expand_the_japanese_banking_sector
+		icon = GFX_TAIMON_expand_the_japanese_banking_sector-248360
+		x = 15
+		y = 20
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIMON_help_zaibatsu_corps  } prerequisite = { focus = TAIMON_expand_agricultural_development  }
+		mutually_exclusive = { focus = TAIMON_construct_taiwanese_banks  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_japanese_banks
+		}
+		}
+	}
+
+	
+
+	#United Under the Sun
+	focus = {
+		id = TAIMON_united_under_the_sun
+		icon = GFX_TAIMON_united_under_the_sun-248360
+		x = 14
+		y = 21
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_construct_taiwanese_banks  focus = TAIMON_expand_the_japanese_banking_sector  }
+		completion_reward = {
+		unlock_decision_tooltip = TAI_inetgrate_taiwan
+		}
+	}
+
+	#Lin's Dominance Over Taiwan
+	focus = {
+		id = TAIMON_linsdominanceovertaiwan
+		icon = GFX_TAIMON_linsdominanceovertaiwan-248360
+		x = 18
+		y = 17
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_the_loss_of_an_empire  }
+		available = {
+			has_country_leader = {
+				name = "Lin Xiongzheng"
+				ruling_only = yes
+			}
+			is_subject = no
+		}
+	}
+
+	#Supporting a Republican Idea
+	focus = {
+		id = TAIMON_supporting_a_republican_idea
+		icon = GFX_TAIMON_supporting_a_republican_idea-248360
+		x = 18
+		y = 18
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_linsdominanceovertaiwan  }
+		completion_reward = {
+		add_war_support = 0.25
+		add_political_power = 20
+		set_cosmetic_tag = TAI_XIONGZHENG
+		}
+	}
+
+	
+
+	#Support Welfare Programs
+	focus = {
+		id = TAIMON_support_welfare_programs
+		icon = GFX_TAIMON_support_welfare_programs-248360
+		x = 20
+		y = 19
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAIMON_supporting_a_republican_idea  }
+		completion_reward = {
+		add_ideas = {
+		TWI_welfare_programs
+		}
+		}
+	}
+
+	#Amnesty to Japanese Nationals
+	focus = {
+		id = TAIMON_amnesty_to_japanese_nationals
+		icon = GFX_TAIMON_amnesty_to_japanese_nationals-248360
+		x = 18
+		y = 19
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TAIMON_supporting_a_republican_idea  }
+		completion_reward = {
+		add_ideas = {
+		TWI_amnesty_to_japanese_nationals
+		}
+		}
+	}
+
+	#Defend the Opium Trade
+	focus = {
+		id = TAIMON_defend_the_opium_trade
+		icon = GFX_TAIMON_defend_the_opium_trade-248360
+		x = 17
+		y = 20
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAIMON_support_welfare_programs  } prerequisite = { focus = TAIMON_amnesty_to_japanese_nationals  }
+		completion_reward = {
+		add_ideas = {
+		TWI_expanding_opium_help
+		}
+		}
+	}
+
+	#Pan-Asianist Aspirations
+	focus = {
+		id = TAIMON_reach_out_to_matsui_iwane
+		icon = GFX_TAIMON_reach_out_to_matsui_iwane-248360
+		x = 19
+		y = 20
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_support_welfare_programs  } prerequisite = { focus = TAIMON_amnesty_to_japanese_nationals  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 40
+		}
+	}
+
+	#Uphold the Hua Nan Bank
+	focus = {
+		id = TAIMON_uphold_the_hua_nan_bank
+		icon = GFX_TAIMON_uphold_the_hua_nan_bank-248360
+		x = 21
+		y = 20
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIMON_support_welfare_programs  } prerequisite = { focus = TAIMON_amnesty_to_japanese_nationals  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_taiwanese_banks
+		}
+		}
+	}
+
+	
+
+	#Expand Scholarship Funds
+	focus = {
+		id = TAIMON_expand_scholarship_funds
+		icon = GFX_TAIMON_expand_scholarship_funds-248360
+		x = 18
+		y = 21
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIMON_defend_the_opium_trade  } prerequisite = { focus = TAIMON_reach_out_to_matsui_iwane  } prerequisite = { focus = TAIMON_uphold_the_hua_nan_bank  }
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+	#Xu Bing's Influence
+	focus = {
+		id = TAIMON_xubingsinfluence
+		icon = GFX_TAIMON_xubingsinfluence-248360
+		x = 20
+		y = 21
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_defend_the_opium_trade  } prerequisite = { focus = TAIMON_reach_out_to_matsui_iwane  } prerequisite = { focus = TAIMON_uphold_the_hua_nan_bank  }
+		completion_reward = {
+		remove_ideas = {
+		TWI_socialist_resistance
+		}
+		}
+	}
+
+	#A New Taiwan
+	focus = {
+		id = TAIMON_a_new_taiwan
+		icon = GFX_TAIMON_a_new_taiwan-248360
+		x = 19
+		y = 22
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_expand_scholarship_funds  } prerequisite = { focus = TAIMON_xubingsinfluence  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_republic
+		}
+		}
+	}
+
+	#Recovering From a National Loss
+	focus = {
+		id = TAIMON_recovering_from_a_national_loss
+		icon = GFX_TAIMON_recovering_from_a_national_loss-248360
+		x = 11
+		y = 17
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_the_loss_of_an_empire  }
+		available = {
+		always = no
+		}
+	}
+
+	#Reclaiming the Empire
+	focus = {
+		id = TAIMON_reclaiming_the_empire
+		icon = GFX_TAIMON_reclaiming_the_empire-248360
+		x = 11
+		y = 18
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_recovering_from_a_national_loss  }
+		completion_reward = {
+		country_event = taiwan.23
+		}
+	}
+
+	#Ando's Regency
+	focus = {
+		id = TAIMON_andosregency
+		icon = GFX_TAIMON_andosregency-248360
+		x = 11
+		y = 19
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = TAIMON_reclaiming_the_empire  }
+		mutually_exclusive = { focus = TAIMON_yasuhito_regency  } mutually_exclusive = { focus = TAIMON_a_surprise_guest  }
+	}
+
+	#Yasuhito Regency
+	focus = {
+		id = TAIMON_yasuhito_regency
+		icon = GFX_TAIMON_yasuhito_regency-248360
+		x = 9
+		y = 19
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = TAIMON_reclaiming_the_empire  }
+		mutually_exclusive = { focus = TAIMON_andosregency  } mutually_exclusive = { focus = TAIMON_a_surprise_guest  }
+	}
+
+	#Win Over the Naval Officers
+	focus = {
+		id = TAIMON_win_over_the_naval_officers
+		icon = GFX_TAIMON_win_over_the_naval_officers-248360
+		x = 11
+		y = 21
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TAIMON_uphold_the_kodoha  }
+		completion_reward = {
+		JSR = {
+		country_event = taiwan.29
+		transfer_units_fraction= {
+						target = TAI
+						size = 0.3
+						navy_ratio = 0.15
+		
+					}
+		}
+		}
+	}
+
+	#Prepare For the Home Coming
+	focus = {
+		id = TAIMON_prepare_for_the_home_coming
+		icon = GFX_TAIMON_prepare_for_the_home_coming-248360
+		x = 10
+		y = 22
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_proclaiming_the_restoration  } prerequisite = { focus = TAIMON_win_over_the_naval_officers  }
+		completion_reward = {
+		add_political_power = 50
+		}
+	}
+
+	#Proclaiming the Restoration
+	focus = {
+		id = TAIMON_proclaiming_the_restoration
+		icon = GFX_TAIMON_proclaiming_the_restoration-248360
+		x = 9
+		y = 21
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_uphold_the_kodoha  }
+		completion_reward = {
+		add_war_support = 0.2
+		news_event = rd_worldnews.1
+		}
+	}
+
+	#Uphold the Kodoha
+	focus = {
+		id = TAIMON_uphold_the_kodoha
+		icon = GFX_TAIMON_uphold_the_kodoha-248360
+		x = 10
+		y = 20
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_andosregency  focus = TAIMON_yasuhito_regency  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.2
+		}
+		}
+	}
+
+	#The Divine Wind...
+	focus = {
+		id = TAIMON_thedivinewind
+		icon = GFX_TAIMON_thedivinewind-248360
+		x = 9
+		y = 23
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_prepare_for_the_home_coming  }
+		completion_reward = {
+		add_ideas = {
+		JAP_psychological_warfare
+		}
+		}
+	}
+
+	#Reclaiming the Old Colonies
+	focus = {
+		id = TAIMON_reclaiming_the_old_colonies
+		icon = GFX_TAIMON_reclaiming_the_old_colonies-248360
+		x = 12
+		y = 23
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIMON_prepare_for_the_home_coming  }
+		completion_reward = {
+		add_state_core = 526
+		add_state_core = 525
+		add_state_core = 527
+		every_state = {
+			limit = {
+				is_core_of = JSR
+			}
+			add_state_core = PREV
+		}
+		}
+	}
+
+	#Secure Ryukyu
+	focus = {
+		id = TAIMON_secure_ryukyu
+		icon = GFX_TAIMON_secure_ryukyu-248360
+		x = 12
+		y = 24
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIMON_reclaiming_the_old_colonies  }
+		completion_reward = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = JST
+			}
+		}
+	}
+
+	#We Shall Make the Enemy Shake in Fear
+	focus = {
+		id = TAIMON_we_shall_make_the_enemy_shake_in_fear
+		icon = GFX_TAIMON_we_shall_make_the_enemy_shake_in_fear-248360
+		x = 10
+		y = 24
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_thedivinewind  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 15
+		
+		}
+	}
+
+	#Create a Tornado of Unforeseen Power
+	focus = {
+		id = TAIMON_create_a_tornado_of_unforeseen_power
+		icon = GFX_TAIMON_create_a_tornado_of_unforeseen_power-248360
+		x = 8
+		y = 24
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIMON_thedivinewind  }
+		completion_reward = {
+		add_ideas = {
+		JAP_reformist_air_force_lw
+		}
+		}
+	}
+
+	#Supremacy of Will
+	focus = {
+		id = TAIMON_supremacy_of_will
+		icon = GFX_TAIMON_supremacy_of_will-248360
+		x = 8
+		y = 25
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_we_shall_make_the_enemy_shake_in_fear  } prerequisite = { focus = TAIMON_create_a_tornado_of_unforeseen_power  }
+		completion_reward = {
+		add_ideas = {
+		JAP_supremacy_of_will
+		}
+		}
+	}
+
+	#Finish off the Last of the Traitors
+	focus = {
+		id = TAIMON_finish_off_the_last_of_the_traitors
+		icon = GFX_TAIMON_finish_off_the_last_of_the_traitors-248360
+		x = 10
+		y = 25
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TAIMON_we_shall_make_the_enemy_shake_in_fear  } prerequisite = { focus = TAIMON_create_a_tornado_of_unforeseen_power  }
+		completion_reward = {
+		remove_ideas = {
+		TWI_socialist_resistance
+		}
+		}
+	}
+
+	#Secure the South China Coast
+	focus = {
+		id = TAIMON_secure_the_south_china_coast
+		icon = GFX_TAIMON_secure_the_south_china_coast-248360
+		x = 12
+		y = 25
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIMON_secure_ryukyu  }
+		completion_reward = {
+		TAI_attack_east_coast = yes
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ANQ
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SQI
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEP
+			}
+		}
+	}
+
+	#Secure Hainan
+	focus = {
+		id = TAIMON_secure_hainan
+		icon = GFX_TAIMON_secure_hainan-248360
+		x = 13
+		y = 26
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIMON_secure_the_south_china_coast  }
+		completion_reward = {
+		TAI_south_coast_core = yes
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GXC
+			}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CHI
+			}
+		}
+	}
+
+	#Marching Into Seoul
+	focus = {
+		id = TAIMON_marching_into_seoul
+		icon = GFX_TAIMON_marching_into_seoul-248360
+		x = 11
+		y = 26
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIMON_secure_the_south_china_coast  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = KOR
+			}
+		}
+	}
+
+	#Disband Pro-Taiwanese Groups
+	focus = {
+		id = TAIMON_disband_protaiwanese_groups
+		icon = GFX_TAIMON_disband_protaiwanese_groups-248360
+		x = 8
+		y = 26
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TAIMON_supremacy_of_will  } prerequisite = { focus = TAIMON_finish_off_the_last_of_the_traitors  }
+		completion_reward = {
+		add_timed_idea = {
+				idea = TWI_fight_against_taiwanese_nationalism
+				days = 180
+			}
+		}
+	}
+
+	#Samurai Spirit
+	focus = {
+		id = TAIMON_samurai_spirit
+		icon = GFX_TAIMON_samurai_spirit-248360
+		x = 8
+		y = 27
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_disband_protaiwanese_groups  }
+		completion_reward = {
+		add_ideas = {
+		JAP_stronger_and_more_advanced
+		}
+		}
+	}
+
+	#Total War Mobilisation
+	focus = {
+		id = TAIMON_total_war_mobilisation
+		icon = GFX_TAIMON_total_war_mobilisation-248360
+		x = 12
+		y = 27
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_secure_hainan  } prerequisite = { focus = TAIMON_marching_into_seoul  }
+		completion_reward = {
+		add_ideas = {
+		JAP_are_ya_ready_war
+		}
+		}
+	}
+
+	#Crush the Syndicalist Traitors
+	focus = {
+		id = TAIMON_crush_the_syndicalist_traitors
+		icon = GFX_TAIMON_crush_the_syndicalist_traitors-248360
+		x = 10
+		y = 28
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIMON_samurai_spirit  } prerequisite = { focus = TAIMON_total_war_mobilisation  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = JSR
+			}
+		}
+	}
+
+	#The Sun Rises For a New Age of Glory
+	focus = {
+		id = TAIMON_the_sun_rises_for_a_new_age_of_glory
+		icon = GFX_TAIMON_the_sun_rises_for_a_new_age_of_glory-248360
+		x = 10
+		y = 29
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		owns_state = 282
+		}
+		prerequisite = { focus = TAIMON_crush_the_syndicalist_traitors  }
+		completion_reward = {
+		country_event = taiwan.30
+		}
+	}
+
+	#A Surprise Guest
+	focus = {
+		id = TAIMON_a_surprise_guest
+		icon = GFX_TAIMON_a_surprise_guest-248360
+		x = 5
+		y = 19
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_reclaiming_the_empire  }
+		mutually_exclusive = { focus = TAIMON_andosregency  } mutually_exclusive = { focus = TAIMON_yasuhito_regency  }
+		available = {
+		always = no
+		}
+	}
+
+	#Denounce the German Collaborators
+	focus = {
+		id = TAIMON_denounce_the_german_collaborators
+		icon = GFX_TAIMON_denounce_the_german_collaborators-248360
+		x = 5
+		y = 20
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_a_surprise_guest  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_opinion_modifier = {
+				target = GEA
+				modifier = faction_traitor
+			}
+		add_opinion_modifier = {
+			target = VIN
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = GER
+			modifier = faction_traitor
+		}
+		}
+	}
+
+	#The Eye Rises Above All
+	focus = {
+		id = TAIMON_the_eye_rises_above_all
+		icon = GFX_TAIMON_the_eye_rises_above_all-248360
+		x = 4
+		y = 21
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAIMON_denounce_the_german_collaborators  }
+		completion_reward = {
+		add_ideas = {
+		VIN_caodaism_spread_idea
+		}
+		}
+	}
+
+	#Promoting Vietnamese Cultural Hegemony
+	focus = {
+		id = TAIMON_promoting_vietnamese_cultural_hegemony
+		icon = GFX_TAIMON_promoting_vietnamese_cultural_hegemony-248360
+		x = 6
+		y = 21
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIMON_denounce_the_german_collaborators  }
+		completion_reward = {
+			add_ideas = VIN_Absolutist_Emperor_idea
+			add_popularity = { ideology = paternal_autocrat popularity = 0.1 }
+			}
+	}
+
+	#Legacy of the Austronesian Boats
+	focus = {
+		id = TAIMON_legacy_of_the_austronesian_boats
+		icon = GFX_TAIMON_legacy_of_the_austronesian_boats-248360
+		x = 6
+		y = 22
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = TAIMON_the_eye_rises_above_all  } prerequisite = { focus = TAIMON_promoting_vietnamese_cultural_hegemony  }
+		completion_reward = {
+		add_ideas = {
+		TWI_austronesian_legacy
+		}
+		}
+	}
+
+	#Pan-Asian Promotion
+	focus = {
+		id = TAIMON_panasian_promotion
+		icon = GFX_TAIMON_panasian_promotion-248360
+		x = 4
+		y = 22
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIMON_the_eye_rises_above_all  } prerequisite = { focus = TAIMON_promoting_vietnamese_cultural_hegemony  }
+		completion_reward = {
+		add_ideas = {
+		VIN_Nationalist_Rhetoric_idea
+		}
+		}
+	}
+
+	#Welcome the Exiles
+	focus = {
+		id = TAIMON_welcome_the_exiles
+		icon = GFX_TAIMON_welcome_the_exiles-248360
+		x = 4
+		y = 23
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TAIMON_legacy_of_the_austronesian_boats  } prerequisite = { focus = TAIMON_panasian_promotion  }
+		completion_reward = {
+		add_manpower = 10000
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.25
+		}
+		}
+	}
+
+	#The Dragon Shall Sail the South Seas
+	focus = {
+		id = TAIMON_the_dragon_shall_sail_the_south_seas
+		icon = GFX_TAIMON_the_dragon_shall_sail_the_south_seas-248360
+		x = 6
+		y = 23
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIMON_legacy_of_the_austronesian_boats  } prerequisite = { focus = TAIMON_panasian_promotion  }
+		completion_reward = {
+		TAI_south_coast_core = yes
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GXC
+		}
+		every_state = {
+			limit = {
+				is_core_of = PHI
+			}
+			TAI = {
+			add_core_of = PREV
+			}
+		}
+		}
+	}
+
+	#Declare the National Reclamation War
+	focus = {
+		id = TAIMON_declare_the_national_reclamation_war
+		icon = GFX_TAIMON_declare_the_national_reclamation_war-248360
+		x = 5
+		y = 24
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIMON_welcome_the_exiles  } prerequisite = { focus = TAIMON_the_dragon_shall_sail_the_south_seas  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GEA
+		}
+		every_state = {
+			limit = {
+				is_core_of = VIN
+			}
+			TAI = {
+			add_core_of = PREV
+			}
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = INC
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = VIN
+		}
+		}
+	}
+
+	#A Crown Welcomed Back
+	focus = {
+		id = TAIMON_a_crown_welcomed_back
+		icon = GFX_TAIMON_a_crown_welcomed_back-248360
+		x = 5
+		y = 25
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		available = {
+		owns_state = 827
+		owns_state = 671
+		owns_state = 857
+		owns_state = 286
+		}
+		prerequisite = { focus = TAIMON_declare_the_national_reclamation_war  }
+		completion_reward = {
+		custom_effect_tooltip = unlock_viet_focus_tree_tt
+		hidden_effect = {
+		load_focus_tree = KR_State_of_Vietnam
+		unlock_national_focus = VIN_Imperial_Council
+		unlock_national_focus = VIN_Anti_Syndicalist_Rhetoric
+		unlock_national_focus = VIN_Purge_Sympathizer
+		unlock_national_focus = VIN_Pacification_Effort
+		unlock_national_focus = VIN_Military_Mobilization
+		unlock_national_focus = VIN_Administrative_Reform
+		unlock_national_focus = VIN_Education_Reform
+		unlock_national_focus = VIN_Economic_Efforts
+		unlock_national_focus = VIN_Cabinet_Reorganization
+		complete_national_focus = VIN_Religious_Fervor
+		complete_national_focus = VIN_The_End_Of_War
+		}
+		}
+	}
+	
+	
+	####Economic-Foreign Tree
+	
+	#We Are Asia's True Saviours
+	focus = {
+		id = TAIECONO_weareasiastruesaviours
+		icon = GFX_TAIECONO_weareasiastruesaviours-248360
+		x = 24
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIECONO_claiming_austroneasia  focus = TAIECONO_a_push_for_a_taiwanese_nation  }
+		complete_national_focus = {
+		add_ideas = {
+		VIN_Nationalist_Rhetoric_idea
+		}
+		add_war_support = 0.15
+		}
+	}
+
+	#Claiming Fujian
+	focus = {
+		id = TAIECONO_claiming_fujian
+		icon = GFX_TAIECONO_claiming_fujian-248360
+		x = 24
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIECONO_forming_the_taiwanese_nation  }
+		complete_national_focus = {
+		every_country = {
+			limit = {
+				OR = {
+					owns_state = 747
+					owns_state = 1066
+					owns_state = 1046
+					owns_state = 802
+					owns_state = 595
+				}
+			
+			}
+			TAI = {
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = PREV
+				}
+			}
+		
+		}
+		}
+	}
+
+	#A Push For a Taiwanese Nation
+	focus = {
+		id = TAIECONO_a_push_for_a_taiwanese_nation
+		icon = GFX_TAIECONO_a_push_for_a_taiwanese_nation-248360
+		x = 26
+		y = 16
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIECONO_claiming_fujian  }
+		mutually_exclusive = { focus = TAIECONO_claiming_austroneasia  }
+		complete_national_focus = {
+		add_stability = 0.1
+		add_political_power = 10
+		}
+	}
+
+	#Securing Southern China
+	focus = {
+		id = TAIECONO_securing_southern_china
+		icon = GFX_TAIECONO_securing_southern_china-248360
+		x = 21
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIECONO_for_the_chinese_cause  }
+		complete_national_focus = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GXC
+				
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = HNN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = YUN
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SZC
+			}
+
+		}
+	}
+
+	#Move Up the Coast
+	focus = {
+		id = TAIECONO_move_up_the_coast
+		icon = GFX_TAIECONO_move_up_the_coast-248360
+		x = 20
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIECONO_securing_southern_china  }
+		complete_national_focus = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ANQ
+				
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEP
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SQI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = CHI
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = LEC
+			}
+
+		}
+	}
+
+	#Our Own Northern Expedition
+	focus = {
+		id = TAIECONO_our_own_northern_expedition
+		icon = GFX_TAIECONO_our_own_northern_expedition-248360
+		x = 22
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIECONO_securing_southern_china  }
+		complete_national_focus = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIE
+				
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FNG
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SHX
+			}
+
+		}
+	}
+
+	#Claiming Austroneasia
+	focus = {
+		id = TAIECONO_claiming_austroneasia
+		icon = GFX_TAIECONO_claiming_austroneasia-248360
+		x = 24
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIECONO_claiming_fujian  }
+		mutually_exclusive = { focus = TAIECONO_a_push_for_a_taiwanese_nation  }
+		completion_reward = {
+		every_state = {
+					limit = {
+						OR = {
+						is_core_of = INC
+						is_core_of = VIN
+						is_core_of = CAM
+						is_core_of = LAO
+						is_core_of = PHI
+						is_core_of = INS
+						is_core_of = DEI
+						is_core_of = GEA
+						is_core_of = GXC
+						is_core_of = JST
+						}
+					}
+					TAI = { 
+						add_state_core = PREV 
+						create_wargoal = {
+							type = puppet_wargoal_focus
+							target = PREV
+						}
+				}
+			}
+		}
+	}
+
+	#Infiltrating Our Enemies
+	focus = {
+		id = TAIECONO_infiltrating_our_enemies
+		icon = GFX_TAIECONO_infiltrating_our_enemies-248360
+		x = 28
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIECONO_beyond_spears_and_bows  }
+		completion_reward = {
+		add_ideas = {
+		TWI_hidden_defence_1
+		}
+		}
+	}
+
+	#Silent But Deadly
+	focus = {
+		id = TAIECONO_silent_but_deadly
+		icon = GFX_TAIECONO_silent_but_deadly-248360
+		x = 29
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIECONO_hidden_defence  } prerequisite = { focus = TAIECONO_infiltrating_our_enemies  }
+		completion_reward = {
+		add_ideas = {
+		JSR_night_raids
+		}
+		}
+	}
+
+	#Securing the Frontier Lands
+	focus = {
+		id = TAIECONO_securing_the_frontier_lands
+		icon = GFX_TAIECONO_securing_the_frontier_lands-248360
+		x = 21
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = TAIECONO_move_up_the_coast  } prerequisite = { focus = TAIECONO_our_own_northern_expedition  }
+		complete_national_focus = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = MON
+				
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SIK
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TIB
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = XSM
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = ETS
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TAN
+			}
+
+		}
+	}
+
+	#Ousting the Foreign Imperialists
+	focus = {
+		id = TAIECONO_ousting_the_foreign_imperialists
+		icon = GFX_TAIECONO_ousting_the_foreign_imperialists-248360
+		x = 22
+		y = 18
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIECONO_weareasiastruesaviours  focus = TAIECONO_securing_the_frontier_lands  }
+		complete_national_focus = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = DEI
+				
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = DEH
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GEA
+			}
+			
+
+		}
+	}
+
+	#A National Army
+	focus = {
+		id = TAIECONO_a_national_army
+		icon = GFX_TAIECONO_a_national_army-248360
+		x = 32
+		y = 12
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			NOT = {
+				OR = {
+				has_completed_focus = TAIMON_continuing_our_integration
+				has_completed_focus = TAIMON_recovering_from_a_national_loss
+				}
+			}
+			OR = {
+			has_completed_focus = TWI_the_wushe_rebellion
+			has_completed_focus = TAISOC_call_together_the_united_front
+			has_completed_focus = TAIMON_linsdominanceovertaiwan
+			}
+		}
+		completion_reward = {
+		army_experience = 25
+		navy_experience = 25
+		air_experience = 10
+		}
+	}
+
+	#Beyond Spears and Bows
+	focus = {
+		id = TAIECONO_beyond_spears_and_bows
+		icon = GFX_TAIECONO_beyond_spears_and_bows-248360
+		x = 30
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIECONO_keep_the_militias  }
+		complete_national_focus = {
+		add_tech_bonus = {
+					name = JAP_phase_out_arisakas
+					ahead_reduction = 1
+					uses = 1
+					category = infantry_weapons
+				}
+		}
+	}
+
+	#Hidden Defence
+	focus = {
+		id = TAIECONO_hidden_defence
+		icon = GFX_TAIECONO_hidden_defence-248360
+		x = 30
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIECONO_beyond_spears_and_bows  }
+		completion_reward = {
+		add_ideas = {
+		TWI_hidden_defence
+		}
+		}
+	}
+
+	#Beyond Taiwan
+	focus = {
+		id = TAIECONO_beyond_taiwan
+		icon = GFX_TAIECONO_beyond_taiwan-248360
+		x = 22
+		y = 12
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			NOT = {
+				OR = {
+				has_completed_focus = TAIMON_continuing_our_integration
+				has_completed_focus = TAIMON_recovering_from_a_national_loss
+				}
+			}
+			OR = {
+			has_completed_focus = TWI_the_wushe_rebellion
+			has_completed_focus = TAISOC_call_together_the_united_front
+			has_completed_focus = TAIMON_linsdominanceovertaiwan
+			}
+		}
+	}
+
+	#A World of Friends
+	focus = {
+		id = TAIECONO_a_world_of_friends
+		icon = GFX_TAIECONO_a_world_of_friends-248360
+		x = 22
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIECONO_beyond_taiwan  }
+		completion_reward = {
+		country_event = taiwan.31
+		}
+	}
+
+	#For the Chinese Cause
+	focus = {
+		id = TAIECONO_for_the_chinese_cause
+		icon = GFX_TAIECONO_for_the_chinese_cause-248360
+		x = 21
+		y = 14
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIECONO_a_world_of_friends  }
+		mutually_exclusive = { focus = TAIECONO_forming_the_taiwanese_nation  }
+		completion_reward = {
+		every_country = {
+			limit = {
+				OR = {
+					is_core_of FNG
+					is_claimed_by = FNG
+				}
+			}
+			
+		}
+		}
+	}
+
+	#Forming the Taiwanese Nation
+	focus = {
+		id = TAIECONO_forming_the_taiwanese_nation
+		icon = GFX_TAIECONO_forming_the_taiwanese_nation-248360
+		x = 24
+		y = 14
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIECONO_a_world_of_friends  }
+		mutually_exclusive = { focus = TAIECONO_for_the_chinese_cause  }
+		complete_national_focus = {
+		add_war_support = 0.1
+		add_political_power = 50
+		}
+	}
+
+	#Keep the Militias
+	focus = {
+		id = TAIECONO_keep_the_militias
+		icon = GFX_TAIECONO_keep_the_militias-248360
+		x = 30
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = TAIECONO_a_national_army  }
+		completion_reward = {
+		add_ideas = {
+		JSR_red_militias
+		}
+		}
+	}
+
+	#Naval Power Projections
+	focus = {
+		id = TAIECONO_naval_power_projections
+		icon = GFX_TAIECONO_naval_power_projections-248360
+		x = 32
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = TAIECONO_a_national_army  }
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+			name = JAP_War_Under_The_Sea
+			cost_reduction = 0.5
+			uses = 2
+			category = cat_trade_interdiction
+			}
+		}
+	}
+
+	#Legacy of the Austronesian Boats
+	focus = {
+		id = TAIECONO_legacy_of_the_austronesian_boats
+		icon = GFX_TAIECONO_legacy_of_the_austronesian_boats-248360
+		x = 32
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIECONO_naval_power_projections  }
+		completion_reward = {
+		add_ideas = {
+		TWI_austronesian_legacy
+		}
+		}
+	}
+
+	#Marine Corps
+	focus = {
+		id = TAIECONO_marine_corps
+		icon = GFX_TAIECONO_marine_corps-248360
+		x = 31
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIECONO_legacy_of_the_austronesian_boats  }
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = JAP_marines
+				cost_reduction = 1
+				uses = 2
+				category = marine_tech
+			}
+		}
+	}
+
+	#Flying Boats
+	focus = {
+		id = TAIECONO_flying_boats
+		icon = GFX_TAIECONO_flying_boats-248360
+		x = 33
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIECONO_legacy_of_the_austronesian_boats  }
+		completion_reward = {
+		create_equipment_variant = {
+					name = "Shokaku Class"
+					type = ship_hull_carrier_1
+					name_group = JAP_CV_HISTORICAL
+					parent_version = 0
+					modules = {
+						fixed_ship_deck_slot_1 = ship_deck_space
+						fixed_ship_deck_slot_2 = ship_deck_space
+						fixed_ship_anti_air_slot = ship_anti_air_2
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = carrier_ship_engine_2
+						fixed_ship_secondaries_slot = ship_secondaries_1
+						front_1_custom_slot = ship_deck_space
+					}
+				}
+		}
+	}
+
+	#Sailing the Asian Seas
+	focus = {
+		id = TAIECONO_sailing_the_asian_seas
+		icon = GFX_TAIECONO_sailing_the_asian_seas-248360
+		x = 32
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIECONO_marine_corps  } prerequisite = { focus = TAIECONO_flying_boats  }
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+			name = JAP_Death_From_Above
+			cost_reduction = 0.5
+			uses = 2
+			category = cat_base_strike
+			}
+		}
+	}
+
+	#An Organised Force
+	focus = {
+		id = TAIECONO_an_organised_force
+		icon = GFX_TAIECONO_an_organised_force-248360
+		x = 34
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIECONO_a_national_army  }
+		completion_reward = {
+		add_ideas = {
+		JAP_stronger_and_more_advanced
+		}
+		}
+	}
+
+	#The Conscription Question Answered
+	focus = {
+		id = TAIECONO_the_conscription_question_answered
+		icon = GFX_TAIECONO_the_conscription_question_answered-248360
+		x = 34
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = TAIECONO_an_organised_force  }
+		completion_reward = {
+		add_ideas = {
+		JAP_reserve_mobilizers
+		}
+		}
+	}
+
+	#Studying Great War Tactics
+	focus = {
+		id = TAIECONO_studying_great_war_tactics
+		icon = GFX_TAIECONO_studying_great_war_tactics-248360
+		x = 34
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIECONO_the_conscription_question_answered  }
+		completion_reward = {
+			army_experience = 10
+			add_doctrine_cost_reduction = {
+				name = JAP_weltkreig_lessons
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	#The Tanks Role In
+	focus = {
+		id = TAIECONO_the_tanks_role_in
+		icon = GFX_TAIECONO_the_tanks_role_in-248360
+		x = 36
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = TAIECONO_the_conscription_question_answered  }
+		completion_reward = {
+		add_tech_bonus = {
+				name = JAP_armoured_experiments
+				bonus = 1
+				ahead_reduction = 1
+				uses = 1
+				category = armor
+			}
+		}
+	}
+
+	#A New And Modern Army
+	focus = {
+		id = TAIECONO_a_new_and_modern_army
+		icon = GFX_TAIECONO_a_new_and_modern_army-248360
+		x = 35
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = TAIECONO_studying_great_war_tactics  } prerequisite = { focus = TAIECONO_the_tanks_role_in  }
+		completion_reward = {
+		add_ideas = {
+		TWI_new_army
+		}
+		}
+	}
 }

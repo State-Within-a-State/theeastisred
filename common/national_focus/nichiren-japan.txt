@@ -8,13 +8,20 @@ focus_tree = {
 			tag = JAPNICH
 		}
 	}
+	
+	shared_focus = JAPARMY_jakuniku_kyoshoku
+	shared_focus = JAPECON_recovering_from_black_monday
+	
 	#The League of Blood Incident
 	focus = {
 		id = JAPNICH_the_league_of_blood_incident
 		icon = GFX_JAPNICH_the_league_of_blood_incident-248360
 		x = 15
 		y = 0
-		cost = 1
+		cost = 0
+		available = {
+		always = no
+		}
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -30,6 +37,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = JAPNICH_the_league_of_blood_incident  }
 	}
 
@@ -42,6 +52,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPNICH_the_league_of_blood_incident  }
 	}
@@ -57,6 +70,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPNICH_blood_shall_reign_for_the_buddha  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Encourage Nichiren Shoshu
@@ -70,6 +86,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPNICH_ishiwarasreign  focus = JAPNICH_blood_shall_reign_for_the_buddha  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Tōarenmei Undō
@@ -83,6 +102,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNICH_ishiwarasreign  }
+		completion_reward = {
+			add_ideas = {
+			JAP_toarenmeiundo
+			}
+		}
 	}
 
 	#Promoting a Pan-Buddhist Federation
@@ -95,7 +119,10 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = JAPNICH_toarenmeiundo  }
+		prerequisite = { focus = JAPNICH_toarenmeiundo focus = JAPNICH_relaying_the_gohonzon } prerequisite = { focus = JAPNICH_encourage_nichiren_shoshu  }
+		completion_reward = {
+		country_event = japan_new_event.91
+		}
 	}
 
 	#The Hand of the Nation Guides Us Forwards
@@ -109,6 +136,15 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPNICH_encourage_nichiren_shoshu  } prerequisite = { focus = JAPNICH_toarenmeiundo  }
+		completion_reward = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.1
+		}
+		add_ideas = {
+		JAP_hand_guiding_us_forwards
+		}
+		}
 	}
 
 	#Reach Out To the Buddhist World
@@ -121,7 +157,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPNICH_relaying_the_gohonzon  } prerequisite = { focus = JAPNICH_encourage_nichiren_shoshu  }
+		available = {
+		has_completed_focus = JAPNICH_reach_out_to_the_buddhist_world
+		has_country_flag = JAP_liberate_nichiren_asia
+		}
+		bypass = {
+			has_country_flag = JAP_uniting_world
+		}
+		prerequisite = { focus = JAPNICH_toarenmeiundo focus = JAPNICH_relaying_the_gohonzon  } prerequisite = { focus = JAPNICH_encourage_nichiren_shoshu  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_uniting_the_pan_buddhist_realm
+		add_idea = JAP_save_world_buddha
+		}
 	}
 
 	#We Are Called By the Sun
@@ -135,6 +182,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNICH_relaying_the_gohonzon  }
+		completion_reward = {
+		add_ideas = {
+		JAP_sun_calling
+		}
+		}
 	}
 
 	#Zen Imperialism
@@ -148,6 +200,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPNICH_we_are_called_by_the_sun  }
+		completion_reward = {
+		add_ideas = {
+		JAP_zen_imperalism
+		}
+		}
 	}
 
 	#Establish Righteous Temples
@@ -161,6 +218,19 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNICH_reach_out_to_the_buddhist_world  }
+		completion_reward = {
+			every_state = {
+				limit = {
+				is_owned_by = JAP
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				
+			}
+		}
 	}
 
 	#The Eternal Shogun
@@ -174,6 +244,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNICH_the_hand_of_the_nation_guides_us_forwards  }
+		completion_reward = {
+		add_political_power = 100
+		add_stability = 0.1
+		}
 	}
 
 	#Ethnic Harmony
@@ -187,6 +261,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNICH_promoting_a_panbuddhist_federation  }
+		completion_reward = {
+			add_ideas = {
+				JAP_ethnic_unity
+			}
+		}
 	}
 
 	#Sekai Sai Shu Senron
@@ -199,7 +278,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
-		prerequisite = { focus = JAPNICH_the_eternal_shogun  } prerequisite = { focus = JAPNICH_ethnic_harmony  }
+		prerequisite = { focus = JAPNICH_the_eternal_shogun focus = JAPNICH_ethnic_harmony focus = JAPNICH_zen_imperialism focus = JAPNICH_establish_righteous_temples } 
+		completion_reward = {
+		add_war_support = 0.1
+		country_event = japan_new_event.88
+		}
 	}
 
 	#Stab the Socialist Snakes
@@ -212,7 +295,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_MANPOWER
 		}
-		prerequisite = { focus = JAPNICH_establish_righteous_temples  } prerequisite = { focus = JAPNICH_the_eternal_shogun  }
+		prerequisite = { focus = JAPNICH_the_eternal_shogun focus = JAPNICH_ethnic_harmony focus = JAPNICH_zen_imperialism focus = JAPNICH_establish_righteous_temples } 
+		completion_reward = {
+		country_event = japan_new_event.85
+		add_manpower = -1000
+		add_popularity = {
+		ideology = totalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		}
 	}
 
 	#Pistols to the Degenerates
@@ -225,7 +324,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_MANPOWER
 		}
-		prerequisite = { focus = JAPNICH_zen_imperialism  } prerequisite = { focus = JAPNICH_establish_righteous_temples  }
+		prerequisite = { focus = JAPNICH_the_eternal_shogun focus = JAPNICH_ethnic_harmony focus = JAPNICH_zen_imperialism focus = JAPNICH_establish_righteous_temples }
+		completion_reward = {
+		country_event = japan_new_event.86
+		add_manpower = -10000
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = -1
+		}
+		}
 	}
 
 	#The Emperor All Mighty
@@ -238,8 +353,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPNICH_stab_the_socialist_snakes  } prerequisite = { focus = JAPNICH_pistols_to_the_degenerates  } prerequisite = { focus = JAPNICH_economic_agrarianism  }
+		prerequisite = { focus = JAPNICH_stab_the_socialist_snakes focus = JAPNICH_pistols_to_the_degenerates focus = JAPNICH_sekai_sai_shu_senron } prerequisite = { focus = JAPNICH_economic_agrarianism  }
 		mutually_exclusive = { focus = JAPNICH_the_new_shogun  }
+		completion_reward = {
+		country_event = japan_new_event.87
+		add_stability = 0.5
+		}
 	}
 
 	#The New Shogun
@@ -252,8 +371,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPNICH_sekai_sai_shu_senron  } prerequisite = { focus = JAPNICH_stab_the_socialist_snakes  } prerequisite = { focus = JAPNICH_economic_agrarianism  }
+		prerequisite = { focus = JAPNICH_stab_the_socialist_snakes focus = JAPNICH_pistols_to_the_degenerates focus = JAPNICH_sekai_sai_shu_senron  } prerequisite = { focus = JAPNICH_economic_agrarianism  }
 		mutually_exclusive = { focus = JAPNICH_the_emperor_all_mighty  }
+		completion_reward = {
+		country_event = japan_new_event.87
+		add_war_support = 0.5
+		}
 	}
 
 	#Remove the Zaibatsu Monsters!
@@ -267,6 +390,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNICH_the_league_of_blood_incident  }
+		completion_reward = {
+		add_ideas = {
+		JAP_zaibatsu_nationalization_1
+		}
+		}
 	}
 
 	#Syncretic Economics
@@ -280,6 +408,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNICH_removethezaibatsumonsters  }
+		completion_reward = {
+		add_ideas = {
+		JAP_syncretic_economy
+		}
+		}
 	}
 
 	#Rebuild the Fuji School
@@ -293,6 +426,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPNICH_removethezaibatsumonsters  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Save the Peasants
@@ -306,6 +442,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNICH_rebuild_the_fuji_school  }
+		completion_reward = {
+		add_ideas = {
+		JAP_save_peasants
+		}
+		}
 	}
 
 	#Expand Military Industry
@@ -319,6 +460,19 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNICH_syncretic_economics  } prerequisite = { focus = JAPNICH_rebuild_the_fuji_school  }
+		completion_reward = {
+			every_state = {
+				limit = {
+				is_owned_by = JAP
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				
+			}
+		}
 	}
 
 	#Redistribute the Zaibatsu's Corps
@@ -332,6 +486,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNICH_syncretic_economics  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_zaibatsu_nationalization_1
+		add_idea = JAP_zaibatsu_nationalization_2
+		}
+		}
 	}
 
 	#Economic Agrarianism
@@ -345,6 +505,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPNICH_save_the_peasants  } prerequisite = { focus = JAPNICH_expand_military_industry  } prerequisite = { focus = JAPNICH_redistributethezaibatsuscorps  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_save_peasants
+		add_idea = JAP_save_peasants_1
+		}
+		}
 	}
 
 	#Birth of Red Nichirenism
@@ -356,6 +522,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPNICH_the_league_of_blood_incident  }
 	}
@@ -371,6 +540,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPNICH_birth_of_red_nichirenism  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Mount Fuji Rumbles
@@ -384,6 +556,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPNICH_birth_of_red_nichirenism  }
+		completion_reward = {
+		add_war_support = 0.1
+		country_event = japan_new_event.89
+		}
 	}
 
 	#Jōbukkokudo
@@ -397,6 +573,21 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAPNICH_mount_fuji_rumbles  }
+		completion_reward = {
+		every_country = {
+		JAP = {
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = PREV
+			}
+		}	
+		
+		}
+		every_state = {
+		add_core_of = JAP
+		}
+		country_event = japan_new_event.88
+		}
 	}
 
 	#Re-Envision The Heian Period
@@ -410,6 +601,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPNICH_translate_marx_for_the_masses  }
+		completion_reward = {
+		add_ideas = {
+		JAP_heinan_revised
+		}
+		}
 	}
 
 	#Shinkō Bukkyō
@@ -423,6 +619,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNICH_jobukkokudo  } prerequisite = { focus = JAPNICH_reenvision_the_heian_period  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.1
+		}
 	}
 
 	#The Lotus Sutra Shall Blum
@@ -436,6 +636,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNICH_jobukkokudo  } prerequisite = { focus = JAPNICH_reenvision_the_heian_period  }
+		completion_reward = {
+		add_ideas = {
+		JAP_lotus_sutra
+		}
+		}
 	}
 
 	#Slaughter the Devils of Greed
@@ -449,6 +654,29 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPNICH_shinkobukkyo  } prerequisite = { focus = JAPNICH_the_lotus_sutra_shall_blum  }
+		completion_reward = {
+		add_manpower = -10000
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_liberal
+		popularity = -1
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = -1
+		}
+		}
 	}
 
 	#The Crimson Kingdom
@@ -462,6 +690,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPNICH_economic_agrarianism  } prerequisite = { focus = JAPNICH_slaughter_the_devils_of_greed  }
+		completion_reward = {
+		country_event = japan_new_event.90
+		}
 	}
 
 }

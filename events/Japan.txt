@@ -2050,6 +2050,7 @@ country_event = { #The Emperor has been shot!
 				}
 			}
 		}
+		set_country_flag = hirohito_shot
 		add_stability = -0.05
 		create_country_leader = {
 			name = "Yasuhito"
@@ -2746,6 +2747,11 @@ country_event = { #Black Monday
 		log = "[GetLogInfo]: event japdom.242 option japdom.242.a"
 		name = japdom.242.a
 		add_stability = -0.03
+		complete_national_focus = JAPECON_recovering_from_black_monday
+		country_event = {
+		id = japan_new_event.6
+		days = 3
+		}
 	}
 }
 
@@ -5629,7 +5635,7 @@ country_event = { #Rebellion time in Korea?
 		text = japfor.83.yay
 		trigger = {
 			check_variable = {
-				global.KORsupport < 3
+				JAP_KOR_INT > 80
 			}
 		}
 	}
@@ -5637,7 +5643,7 @@ country_event = { #Rebellion time in Korea?
 		text = japfor.83.nay
 		trigger = {
 			check_variable = {
-				global.KORsupport > 2
+				JAP_KOR_INT < 80
 			}
 		}
 	}
@@ -5650,7 +5656,7 @@ country_event = { #Rebellion time in Korea?
 		name = japfor.83.a
 		trigger = {
 			check_variable = {
-				global.KORsupport < 3
+				JAP_KOR_INT > 80
 			}
 			NOT = {
 				has_game_rule = {
@@ -5672,7 +5678,7 @@ country_event = { #Rebellion time in Korea?
 		trigger = {
 			OR = {
 				check_variable = {
-					global.KORsupport > 2
+					JAP_KOR_INT < 80
 				}
 				has_game_rule = {
 					rule = KOR_rebellion
@@ -5701,7 +5707,7 @@ country_event = { #Rebellion time in Korea?
 		trigger = {
 			OR = {
 				check_variable = {
-					global.KORsupport > 2
+					JAP_KOR_INT < 80
 				}
 				has_game_rule = {
 					rule = KOR_rebellion

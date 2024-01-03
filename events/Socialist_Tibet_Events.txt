@@ -8,28 +8,357 @@ add_namespace = tibet_socialist
 
 
 
-country_event = { # Introduction
+country_event = { #Dealing With The Monastaries
 	id = tibet_socialist.0
 	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
-	title = "Question of the Monasteries"
-	desc = "After the Collapse of the legations cities, Tianjin administration declares independence but afterwards the government falls into disarray with financial issues on the rise. Japan now worried about this ends up sending a small detachment of troops to the city, as a result of this news, independence activists  form their own militias to defend against Japanese aggression. Now that the fog has gone, the darkest days of the city are occurring."
+	title = tibet_socialist.0.title
+	desc = tibet_socialist.0.desc
 	picture = "-"
 
 	is_triggered_only = yes
 
-	trigger = {
-		is_ai = no
+	option = {
+		name = tibet_socialist.0.a
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = guohua_power 
+			value = 2
+			tooltip = guohua_increase_tt
+		}
+		add_stability  = -0.1
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
 	}
+	
+	option = {
+		name = tibet_socialist.0.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = yuexe_power 
+			value = 2
+			tooltip = yuexe_increase_tt
+		}
+		add_to_variable = {
+			var = moderate_power  
+			value = 1
+			tooltip = jigme_increase_tt
+		}
+		add_stability  = 0.1
+		add_political_power = -25
+	}
+	
+	
+}
+
+
+country_event = { #Raising the Red Militias
+	id = tibet_socialist.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = tibet_socialist.1.title
+	desc = tibet_socialist.1.desc
+	picture = "-"
+
+	is_triggered_only = yes
 
 	option = {
-		name = "Cooperate With the Monks"
+		name = tibet_socialist.1.a
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = guohua_power 
+			value = 2
+			tooltip = guohua_increase_tt
+		}
+		add_ideas = {
+		TIB_socialist_army
+		}
+		
 	}
 	
 	option = {
-		name = "Seize the Clergy Lands!"
+		name = tibet_socialist.1.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = yuexe_power 
+			value = 2
+			tooltip = yuexe_increase_tt
+		}
+		add_ideas = {
+		TIB_socialist_militia
+		}
+		
 	}
 	
 	
+}
+
+
+country_event = { #The Banners Raise From the Palace
+	id = tibet_socialist.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	title = tibet_socialist.2.title
+	desc = tibet_socialist.2.desc
+	picture = "-"
+	immediate = {
+	hidden_effect = {
+	clr_country_flag = TIB_communist_revolution
+	}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = tibet_socialist.2.a
+		trigger = {
+		check_variable = { yuexe_power > 10 }
+		}
+		complete_national_focus = TIBSOC_bazhaheitocomradeyuexi
+		create_country_leader = {
+			name = "Sanggyai Yuexe"
+			picture = "gfx/leaders/TUV/Portrait_TIB_Sanggyi_Yuexi.png"
+			expire = "1965.1.1"
+			ideology = popcom_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		hidden_effect = {
+			remove_all_ministers = yes
+		}
+		add_ideas = {
+			TIB_Sanggyi_Yuexe_hog_tot
+			TIB_Zhaxi_Wangxu_eco_rso
+			TIB_Songmou_Angwang_Lobsang_Tenzin_Gyatso_for_rso
+			TIB_Derge_Kelsangwangdui_sec_tot
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		set_country_flag = yuexe_socialist_tibet
+		set_cosmetic_tag = TIB_YUEXE
+	}
+	
+	option = {
+		name = tibet_socialist.2.b
+		trigger = {
+		check_variable = { guohua_power > 10 }
+		}
+		complete_national_focus = TIBSOC_takeover_of_the_red_militia
+		
+		create_country_leader = {
+			name = "Zhang Guohua"
+			picture = "gfx/leaders/TUV/Portrait_TIB_Zhang_Baohua.png"
+			expire = "1965.1.1"
+			ideology = national_communism_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
+		hidden_effect = {
+			remove_all_ministers = yes
+		}
+		add_ideas = {
+			TIB_Zhang_Guohua_hog_tot
+			TIB_Lobsang_Thondup_eco_tot
+			TIB_Songmou_Angwang_Lobsang_Tenzin_Gyatso_for_rso
+			TIB_Derge_Kelsangwangdui_sec_tot
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		set_country_flag = guohua_socialist_tibet
+		set_cosmetic_tag = TIB_JIGME
+		
+	}
+	
+	option = {
+		name = tibet_socialist.2.c
+		trigger = {
+		check_variable = { moderate_power > 10 }
+		}
+		complete_national_focus = TIBSOC_birth_of_the_revolutionary_committee
+		create_country_leader = {
+			name = "Ngapoi Ngawang Jigme"
+			picture = "gfx/leaders/TUV/Portrait_TIB_ngapoi_ngawang_jigme_2.png"
+			expire = "1965.1.1"
+			ideology = radical_progressivism_subtype
+		}
+		set_politics = {
+			ruling_party = radical_socialist
+			elections_allowed = no
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.5
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.25
+		}
+		hidden_effect = {
+			remove_all_ministers = yes
+		}
+		add_ideas = {
+			TIB_Ngapoi_Ngawang_Jigme_hog_rso
+			TIB_Zhaxi_Wangxu_eco_rso
+			TIB_Sherao_Gyatso_for_sde
+			TIB_Ngawang_Gyatso_sec_rso
+		}
+		set_country_flag = jigme_socialist_tibet
+		
+	}
+	
+	
+}
+
+
+country_event = { #Beyond The Mountains
+	id = tibet_socialist.3
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.3" }
+	title = tibet_socialist.3.title
+	desc = tibet_socialist.3.desc
+	picture = "-"
+
+	is_triggered_only = yes
+
+	option = {
+		name = tibet_socialist.3.a
+		ai_chance = { base = 100 }
+		add_war_support = 0.5
+		
+	}
+	
+	option = {
+		name = tibet_socialist.3.b
+		ai_chance = { base = 100 }
+		set_country_flag = TIB_unite_china
+		if = {
+			limit = {
+				has_country_flag = guohua_socialist_tibet
+			}
+			set_cosmetic_tag = TIB_COMMIE_2
+		}
+		if = {
+			limit = {
+				has_country_flag = yuexe_socialist_tibet
+			}
+			set_cosmetic_tag = TIB_YUEXE_PRC
+		}
+		
+		if = {
+			limit = {
+				has_country_flag = jigme_socialist_tibet
+			}
+			set_cosmetic_tag = TIB_JIGME_PRC
+		}
+		every_state = {
+			limit = {
+				OR = {
+				is_claimed_by = FNG
+				is_owned_by = FNG
+				}
+			}
+			TIB = {
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+			}
+			add_core_of = TIB 
+			
+			
+		}
+		
+	}
+	
+	
+}
+
+
+country_event = { #Under Tibetan Communism
+	id = tibet_socialist.4
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.4" }
+	title = tibet_socialist.4.title
+	desc = tibet_socialist.4.desc
+	picture = "-"
+	immediate = {
+	hidden_effect = {
+	set_party_name = {
+			ideology = totalist
+			long_name = TIB_communist_party_long
+			name = TIB_communist_party
+		}
+	}
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = tibet_socialist.4.a
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = popcom_subtype
+	}
+	
+	option = {
+		name = tibet_socialist.4.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = authcom_subtype
+		swap_ideas = {
+		remove_idea = TIB_Songmou_Angwang_Lobsang_Tenzin_Gyatso_for_rso
+		add_idea = TIB_Phuntsok_Wangyal_for_tot
+		}
+	}
+	
+	option = {
+		name = tibet_socialist.4.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = national_communism_subtype
+		swap_ideas = {
+		remove_idea = TIB_Songmou_Angwang_Lobsang_Tenzin_Gyatso_for_rso
+		add_idea = TIB_Phuntsok_Wangyal_for_tot
+		}
+	}
+}
+
+
+country_event = { #Promoting the Tibetan Socialist Revolution
+	id = tibet_socialist.5
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.5" }
+	title = tibet_socialist.5.title
+	desc = tibet_socialist.5.desc
+	picture = "-"
+	immediate = {
+	hidden_effect = {
+	set_party_name = {
+			ideology = totalist
+			long_name = TIB_socialist_jigme_party_long
+			name = TIB_socialist_jigme_party
+		}
+	}
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = tibet_socialist.5.a
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = radical_progressivism_subtype
+	}
+	
+	option = {
+		name = tibet_socialist.5.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = buddhist_socialism_subtype
+	}
+	
+	option = {
+		name = tibet_socialist.5.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = moderate_socialist_subtype
+	}
 }
 
 

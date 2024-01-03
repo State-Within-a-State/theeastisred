@@ -1030,6 +1030,7 @@ country_event = { #My Raja, Japan brings us news!
 				country_exists = BHC
 			}
 		}
+		JAP = { add_to_faction = PRF }
 		add_ideas = JAP_india_support
 		add_to_array = { global.asian_economic_sphere = ROOT }
 		JAP_recalculate_economic_integration = yes
@@ -2675,7 +2676,7 @@ country_event = { #Rebellion time in Korea?
 		text = japfor.83.yay
 		trigger = {
 			check_variable = {
-				global.KORsupport < 3
+				JAP_KOR_INT > 80
 			}
 		}
 	}
@@ -2683,7 +2684,7 @@ country_event = { #Rebellion time in Korea?
 		text = japfor.83.nay
 		trigger = {
 			check_variable = {
-				global.KORsupport > 2
+				JAP_KOR_INT < 80
 			}
 		}
 	}
@@ -2696,7 +2697,7 @@ country_event = { #Rebellion time in Korea?
 		name = japfor.83.a
 		trigger = {
 			check_variable = {
-				global.KORsupport < 3
+				JAP_KOR_INT > 80
 			}
 			NOT = {
 				has_game_rule = {
@@ -2718,7 +2719,7 @@ country_event = { #Rebellion time in Korea?
 		trigger = {
 			OR = {
 				check_variable = {
-					global.KORsupport > 2
+					JAP_KOR_INT < 80
 				}
 				has_game_rule = {
 					rule = KOR_rebellion
@@ -2747,7 +2748,7 @@ country_event = { #Rebellion time in Korea?
 		trigger = {
 			OR = {
 				check_variable = {
-					global.KORsupport > 2
+					JAP_KOR_INT < 80
 				}
 				has_game_rule = {
 					rule = KOR_rebellion

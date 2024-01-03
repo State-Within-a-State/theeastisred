@@ -8,9 +8,9 @@ focus_tree = {
 			tag = JAPTOSEIHA
 		}
 	}
-	
 	shared_focus = JAPFOR_japansplaceintheworld
 	shared_focus = JAPARMY_jakuniku_kyoshoku
+	shared_focus = JAPECON_recovering_from_black_monday
 	#Coup of the Toseiha
 	focus = {
 		id = JAPTOSEIHA_coup_of_the_toseiha
@@ -20,6 +20,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -32,6 +35,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPTOSEIHA_coup_of_the_toseiha  }
 	}
@@ -47,6 +53,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPTOSEIHA_the_tojo_cabinet  }
+		completion_reward = {
+		add_ideas = {
+		JAP_pan_asian_guidelines_1
+		}
+		}
 	}
 
 	#Following the Emperors Will
@@ -60,6 +71,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_new_guidelines_on_panasianism  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Embrace Japanese Totalitarianism
@@ -73,6 +87,14 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTOSEIHA_new_guidelines_on_panasianism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 1
+		}
+		add_stability = 0.15
+		add_political_power = 100
+		}
 	}
 
 	#Appease the Navy
@@ -86,6 +108,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_following_the_emperors_will  } prerequisite = { focus = JAPTOSEIHA_embrace_japanese_totalitarianism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_navy_backing
+		}
+		}
 	}
 
 	#A National Defence State
@@ -99,6 +126,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_following_the_emperors_will  } prerequisite = { focus = JAPTOSEIHA_embrace_japanese_totalitarianism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_defense_state
+		}
+		}
 	}
 
 	#Crush the Syndicalist Infiltrators
@@ -112,6 +144,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPTOSEIHA_following_the_emperors_will  } prerequisite = { focus = JAPTOSEIHA_embrace_japanese_totalitarianism  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Wartime Disaster Protection Act
@@ -125,6 +162,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTOSEIHA_a_national_defence_state  } prerequisite = { focus = JAPTOSEIHA_crush_the_syndicalist_infiltrators  }
+		completion_reward = {
+		add_stability = 0.15
+		add_political_power = 50
+		}
 	}
 
 	#National Will Power
@@ -138,6 +179,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_appease_the_navy  } prerequisite = { focus = JAPTOSEIHA_a_national_defence_state  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_national_defense_state
+		add_idea = JAP_national_will_power
+		}
+		}
 	}
 
 	#Retraining Political Opponents
@@ -151,6 +198,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPTOSEIHA_wartime_disaster_protection_act  } prerequisite = { focus = JAPTOSEIHA_national_will_power  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Strengthen Manetsu Influence
@@ -164,6 +216,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPTOSEIHA_wartime_disaster_protection_act  } prerequisite = { focus = JAPTOSEIHA_national_will_power  }
+		completion_reward = {
+		add_ideas = {
+		JAP_industrial_mantetsu
+		}
+		}
 	}
 
 	#Denounce the German Devil
@@ -177,6 +234,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_wartime_disaster_protection_act  } prerequisite = { focus = JAPTOSEIHA_national_will_power  }
+		completion_reward = {
+		add_war_support = 0.25
+		}
 	}
 
 	#Prepare for Total War
@@ -190,6 +250,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_retraining_political_opponents  } prerequisite = { focus = JAPTOSEIHA_strengthen_manetsu_influence  } prerequisite = { focus = JAPTOSEIHA_denounce_the_german_devil  }
+		completion_reward = {
+		add_ideas = {
+		JAP_are_ya_ready
+		}
+		}
 	}
 
 	#Partner With Technocrats
@@ -203,6 +268,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPTOSEIHA_retraining_political_opponents  } prerequisite = { focus = JAPTOSEIHA_strengthen_manetsu_influence  } prerequisite = { focus = JAPTOSEIHA_denounce_the_german_devil  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Strengthen the Kempeitai
@@ -216,6 +284,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTOSEIHA_retraining_political_opponents  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_pan_asian_guidelines_1
+		add_idea = JAP_pan_asian_guidelines_2
+		}
+		
+		}
 	}
 
 	#A Military Reign of Terror
@@ -229,6 +304,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPTOSEIHA_partner_with_technocrats  } prerequisite = { focus = JAPTOSEIHA_strengthen_the_kempeitai  }
+		completion_reward = {
+		add_ideas = {
+		JAP_purgeing_enemies
+		}
+		}
 	}
 
 	#Call for Spiritual Mobilization
@@ -242,6 +322,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_prepare_for_total_war  } prerequisite = { focus = JAPTOSEIHA_partner_with_technocrats  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_are_ya_ready
+		add_idea = JAP_are_ya_ready_war
+		}
+		}
 	}
 
 	#The Tojo Shogunate
@@ -255,6 +341,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_a_military_reign_of_terror  } prerequisite = { focus = JAPTOSEIHA_call_for_spiritual_mobilization  }
+		completion_reward = {
+		add_ideas = {
+		JAP_tojo_shogunate
+		}
+		}
 	}
 
 	#Nagata's Path
@@ -266,6 +357,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPTOSEIHA_coup_of_the_toseiha  }
 	}
@@ -281,6 +375,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_nagataspath  }
+		completion_reward = {
+		add_ideas = {
+		JAP_ultra_militarism
+		}
+		}
 	}
 
 	#Increase Militaristic Ideals
@@ -294,6 +393,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPTOSEIHA_japanspathtoultramilitarism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_military_research
+		}
+		}
 	}
 
 	#Oppose Radical Nationalists
@@ -307,6 +411,15 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_japanspathtoultramilitarism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = -1
+		}
+		add_war_support = -0.05
+		add_stability = 0.1
+		add_political_power = 25
+		}
 	}
 
 	#Socialist Crackdown
@@ -320,6 +433,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPTOSEIHA_increase_militaristic_ideals  } prerequisite = { focus = JAPTOSEIHA_oppose_radical_nationalists  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Controlling the Army
@@ -333,6 +451,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTOSEIHA_increase_militaristic_ideals  } prerequisite = { focus = JAPTOSEIHA_oppose_radical_nationalists  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Empower the Technocrats
@@ -346,6 +469,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPTOSEIHA_increase_militaristic_ideals  } prerequisite = { focus = JAPTOSEIHA_oppose_radical_nationalists  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Secure Japan's Imperial Legacy
@@ -359,6 +485,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_socialist_crackdown  } prerequisite = { focus = JAPTOSEIHA_controlling_the_army  } prerequisite = { focus = JAPTOSEIHA_empower_the_technocrats  }
+		completion_reward = {
+		add_ideas = {
+		JAP_military_legacy
+		}
+		}
 	}
 
 	#Promoting Ikeda's Writings
@@ -372,6 +503,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_controlling_the_army  } prerequisite = { focus = JAPTOSEIHA_empower_the_technocrats  }
+		completion_reward = {
+		country_event = japan_new_event.102
+		}
 	}
 
 	#Form the National Military Union
@@ -385,6 +519,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_socialist_crackdown  } prerequisite = { focus = JAPTOSEIHA_controlling_the_army  } prerequisite = { focus = JAPTOSEIHA_empower_the_technocrats  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Clean Out Army Corruption
@@ -398,6 +535,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTOSEIHA_securejapansimperiallegacy  }
+		completion_reward = {
+		add_stability = 0.2
+		}
 	}
 
 	#Increase Manetsu Investments
@@ -411,6 +551,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPTOSEIHA_promotingikedaswritings  } prerequisite = { focus = JAPTOSEIHA_form_the_national_military_union  }
+		completion_reward = {
+		add_ideas = {
+		JAP_industrial_mantetsu
+		}
+		}
 	}
 
 	#Uphold the Imperial System
@@ -424,6 +569,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_clean_out_army_corruption  } prerequisite = { focus = JAPTOSEIHA_increase_manetsu_investments  }
+		completion_reward = {
+		add_political_power = 100
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.65
+		}
+		}
 	}
 
 	#Embrace the Self-Strengthening Movement
@@ -437,6 +589,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPTOSEIHA_uphold_the_imperial_system  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_national_planned_economy
+		add_idea = JAP_national_planned_economy_1
+		}
+		}
 	}
 
 	#Preparation for Total Mobilization
@@ -450,6 +608,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_uphold_the_imperial_system  }
+		completion_reward = {
+		add_ideas = {
+		JAP_are_ya_ready
+		}
+		}
 	}
 
 	#Push Forward Modernization
@@ -463,6 +626,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPTOSEIHA_embrace_the_selfstrengthening_movement  } prerequisite = { focus = JAPTOSEIHA_preparation_for_total_mobilization  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#We Raise Our Rifles to the Emperor!
@@ -476,6 +642,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_embrace_the_selfstrengthening_movement  } prerequisite = { focus = JAPTOSEIHA_preparation_for_total_mobilization  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_emperor_support
+		}
+		}
 	}
 
 	#Proclaiming the New Shogun
@@ -489,6 +660,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_push_forward_modernization  } prerequisite = { focus = JAPTOSEIHA_weraiseourriflestotheemperor  }
+		completion_reward = {
+		add_ideas = {
+		JAP_nagata_shogunate
+		}
+		}
 	}
 
 	#Turanism Strikes Japan
@@ -500,6 +676,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPTOSEIHA_coup_of_the_toseiha  }
 	}
@@ -515,6 +694,20 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_turanism_strikes_japan  }
+		completion_reward = {
+		add_political_power = 50
+		add_opinion_modifier = {
+				target = HUN
+				modifier = JAP_japanese_comradery
+			}
+			
+			HUN = {
+			add_opinion_modifier = {
+				target = JAP
+				modifier = JAP_japanese_comradery
+			}
+			}
+		}
 	}
 
 	#Eliminate the Army Factions
@@ -528,6 +721,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTOSEIHA_turanism_strikes_japan  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Rekindling Ideas of Pan-Asianism
@@ -541,6 +739,11 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAPTOSEIHA_turanism_strikes_japan  }
+		completion_reward = {
+		add_ideas = {
+		JAP_pan_asian_guidelines_1
+		}
+		}
 	}
 
 	#Praise to an Old Friend
@@ -554,6 +757,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_eliminate_the_army_factions  } prerequisite = { focus = JAPTOSEIHA_rekindling_ideas_of_panasianism  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_Hayashi_Senyuki_for_npo
+		add_idea = JAP_Okawa_Shumei_for_npo
+		}
+		}
 	}
 
 	#Purge the Socialist Degeneration
@@ -567,6 +776,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPTOSEIHA_eliminate_the_army_factions  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#A Nation of Co-Prosperity
@@ -580,6 +794,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPTOSEIHA_work_with_hungarian_turanists  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_stability = 0.1
+		}
 	}
 
 	#Build the Koa Kannon
@@ -593,6 +814,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPTOSEIHA_praise_to_an_old_friend  } prerequisite = { focus = JAPTOSEIHA_purge_the_socialist_degeneration  } prerequisite = { focus = JAPTOSEIHA_a_nation_of_coprosperity  }
+		completion_reward = {
+		add_ideas = {
+		JAP_koa_cannon
+		}
+		}
 	}
 
 	#Zaibatsu Subjegation
@@ -606,6 +832,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPTOSEIHA_praise_to_an_old_friend  } prerequisite = { focus = JAPTOSEIHA_purge_the_socialist_degeneration  } prerequisite = { focus = JAPTOSEIHA_a_nation_of_coprosperity  }
+		completion_reward = {
+		add_ideas = {
+		JAP_zaibatsu_nationalization_1
+		}
+		}
 	}
 
 	#Form the Greater Asia Association
@@ -619,6 +850,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPTOSEIHA_praise_to_an_old_friend  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Turanian Brotherhood
@@ -632,6 +866,69 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_zaibatsu_subjegation  } prerequisite = { focus = JAPTOSEIHA_form_the_greater_asia_association  }
+		completion_reward = {
+		add_political_power = 50
+		add_opinion_modifier = {
+				target = HUN
+				modifier = JAP_japanese_comradery
+			}
+		add_opinion_modifier = {
+				target = TUR
+				modifier = JAP_japanese_comradery
+			}	
+			add_opinion_modifier = {
+				target = MON
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = ALO
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = KYR
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = TRK
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = UZB
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = ETS
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = AZE
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = CRM
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = FIN
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = DKB
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = KUB
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = MTR
+				modifier = JAP_japanese_comradery
+			}
+			add_opinion_modifier = {
+				target = KLY
+				modifier = JAP_japanese_comradery
+			}
+		}
 	}
 
 	#Denounce the European Devils
@@ -645,33 +942,14 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPTOSEIHA_build_the_koa_kannon  } prerequisite = { focus = JAPTOSEIHA_zaibatsu_subjegation  }
+		completion_reward = {
+		add_ideas = {
+		JAP_anti_european_ideas
+		}
+		
+		}
 	}
 
-	#Promote Pan-Asianist News Papers
-	focus = {
-		id = JAPTOSEIHA_promote_panasianist_news_papers
-		icon = GFX_JAPTOSEIHA_promote_panasianist_news_papers-248360
-		x = 1
-		y = 6
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_turanian_brotherhood  } prerequisite = { focus = JAPTOSEIHA_denounce_the_european_devils  }
-	}
-
-	#Form the Asiatic Academic Association
-	focus = {
-		id = JAPTOSEIHA_form_the_asiatic_academic_association
-		icon = GFX_JAPTOSEIHA_form_the_asiatic_academic_association-248360
-		x = 3
-		y = 6
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = JAPTOSEIHA_turanian_brotherhood  } prerequisite = { focus = JAPTOSEIHA_denounce_the_european_devils  }
-	}
 
 	#The Course Shall Shine For Asia
 	focus = {
@@ -683,7 +961,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_promote_panasianist_news_papers  } prerequisite = { focus = JAPTOSEIHA_form_the_asiatic_academic_association  }
+		prerequisite = { focus = JAPTOSEIHA_turanian_brotherhood  } prerequisite = { focus = JAPTOSEIHA_denounce_the_european_devils  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_pan_asian_guidelines_1
+		add_idea = JAP_pan_asian_guidelines_2
+		}
+		}
 	}
 
 	#Form the  Ideological National Defence Association
@@ -696,7 +980,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
-		prerequisite = { focus = JAPTOSEIHA_promote_panasianist_news_papers  } prerequisite = { focus = JAPTOSEIHA_form_the_asiatic_academic_association  }
+		prerequisite = { focus = JAPTOSEIHA_turanian_brotherhood  } prerequisite = { focus = JAPTOSEIHA_denounce_the_european_devils  }
+		completion_reward = {
+		add_ideas = {
+		JAP_ideology_research
+		}
+		}
 	}
 
 	#Pan-Turania Calls
@@ -710,6 +999,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPTOSEIHA_the_course_shall_shine_for_asia  } prerequisite = { focus = JAPTOSEIHA_formtheideologicalnationaldefenceassociation  }
+		completion_reward = {
+		country_event = japan_new_event.103
+		}
 	}
 
 }
