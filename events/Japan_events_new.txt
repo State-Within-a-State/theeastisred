@@ -454,6 +454,7 @@ country_event = { #The Government Collapses
 		ai_chance = { base = 100 }
 		country_event = japan_new_event.12
 		load_focus_tree = yakuza-japan
+		}
 	}
 }
 
@@ -2955,6 +2956,8 @@ country_event = { #Araki Ideology Picker
 			long_name = JAP_party_kokuhonsha_long
 			name = JAP_party_kokuhonsha
 		}
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Araki_Sadao_hog_npo
@@ -6755,51 +6758,44 @@ country_event = { #The Essential Principles of National Defense and Proposals fo
 	title = japan_new_event.102.title
 	desc = japan_new_event.102.desc
 	#picture = 
-	
-	is_triggered_only = yes
-	option = { #
-		name = japan_new_event.102.a
-		ai_chance = { base = 100 }
-		add_ideas = {
-		JAP_national_planned_economy
-		}
-		add_popularity = {
-		ideology = totalist
-		popularity = 0.25
-		}
-		create_country_leader = {
+	immediate = {
+		hidden_effect = {
+			create_country_leader = {
 				name = "Hirohito"
 				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 				expire = "1965.1.1"
 				ideology = tot_ikedaism_subtype
 			}
-	}
-	
-	option = { #
-		name = japan_new_event.102.b
-		ai_chance = { base = 100 }
-		add_ideas = {
-		JAP_national_planned_economy
-		}
-		add_popularity = {
-		ideology = totalist
-		popularity = 0.25
-		}
-		add_ideas = {
-		JAP_Sumihisa_Ikeda_hog_tot
-		}
-		set_politics = { ruling_party = totalist }
-		create_country_leader = {
-				name = "Hirohito"
-				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
-				expire = "1965.1.1"
-				ideology = tot_ikedaism_subtype
-		}
-		set_party_name = {
+			set_party_name = {
 			ideology = totalist
 			long_name = JAP_party_toseiha_long
 			name = JAP_party_toseiha
 		}
+			add_ideas = {
+			JAP_national_planned_economy
+			}
+			add_popularity = {
+			ideology = totalist
+			popularity = 0.25
+			}
+	}
+}
+	is_triggered_only = yes
+	option = { #
+		name = japan_new_event.102.a
+		ai_chance = { base = 100 }
+		set_temp_variable = { coalition_partner_var = token:totalist }
+		add_to_coalition = yes
+	}
+	option = { #
+		name = japan_new_event.102.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_Sumihisa_Ikeda_hog_tot
+		}
+		set_politics = { ruling_party = totalist }
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
 	}	
 }
 
