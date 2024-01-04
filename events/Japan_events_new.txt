@@ -4686,7 +4686,10 @@ country_event = { #Social-Democrats
 			base = 50
 			modifier = {
 				factor = 100
+				OR = {
 				has_game_rule = { rule = JAP_SNAP_ELECTIONS option = JAP_SNAP_ELECTIONS_SHAKAI_TAISHUTO_RADSOC }
+				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_SHAKAI_TAISHUTO_RADSOC }
+				}
 			}
 		}
 		country_event = {###1940 Election
@@ -4736,7 +4739,10 @@ country_event = { #Social-Democrats
 			base = 50
 			modifier = {
 				factor = 100
+				OR = {
 				has_game_rule = { rule = JAP_SNAP_ELECTIONS option = JAP_SNAP_ELECTIONS_SHAKAI_TAISHUTO_SOCDEM }
+				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_SHAKAI_TAISHUTO_SOCDEM }
+				}
 			}
 		}
 		country_event = {###1940 Election
@@ -4891,8 +4897,14 @@ country_event = { #1940 elections
 	option = { #Kokumin Domei
 		name = OPTION_KOKUMIN_DOMEI_1940
 		ai_chance = {
-			factor = 50
-			
+			base = 50
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_KOKUMIN_DOMEI_RIGHT }
+					has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_KOKUMIN_DOMEI_LEFT }
+				}
+			}
 		}
 		set_politics = {
 			ruling_party = authoritarian_democrat
@@ -4976,8 +4988,14 @@ country_event = { #1940 elections
 	option = { #The Seiyukai have defended their absolute majority!
 		name = OPTION_SEIYUKAI_1940
 		ai_chance = {
-			factor = 50
-			
+			base = 50
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_SEIYUKAI_NAKAJIMA }
+					has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_SEIYUKAI_RENTARO }
+				}
+			}
 		}
 		add_political_power = 50
 		set_country_flag = JAP_seiyukai_won_in_1940_elections
@@ -5003,8 +5021,14 @@ country_event = { #1940 elections
 		name = OPTION_MINSEITO_1940
 		
 		ai_chance = {
-			factor = 50
-			
+			base = 50
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_MINSEITO_OSACHI }
+					has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_MINSEITO_NAGAI }
+				}
+			}
 		}
 		set_politics = {
 			ruling_party = market_liberal
@@ -5037,8 +5061,14 @@ country_event = { #1940 elections
 	option = { #Shakai-Taishuto
 		name = OPTION_SHAKAI_TAISHUTO_1940
 		ai_chance = {
-			factor = 50
-			
+			base = 50
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_SHAKAI_TAISHUTO_SOCDEM }
+					has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_SHAKAI_TAISHUTO_RADSOC }
+				}
+			}
 		}
 		set_politics = {
 			ruling_party = social_democrat
@@ -5095,13 +5125,37 @@ country_event = { #Meeting of National Revolutionary Congress
 	is_triggered_only = yes
 	option = { #Anarchists Secure Congress
 		name = japan_new_event.64.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_BURAKU }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_JIICHIRO }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_SANSHIRO }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_SCHZIO }
+				}
+			}
+		}
 		country_event = japan_new_event.65
 	}
 	
 	option = { #JCP Secure Congress
 		name = japan_new_event.64.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_NOSAKA }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAKAWA }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAMOTO }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_MIYAMOTO }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_TOKUDA }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_FUKUMOTO }
+				}
+			}
+		}
 		country_event = japan_new_event.66
 		set_politics = {
 		ruling_party = totalist
@@ -5127,7 +5181,13 @@ country_event = { #Anarchism in Japan
 	is_triggered_only = yes
 	option = { #The Council Will Decide Our Fate
 		name = japan_new_event.65.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_BURAKU }
+			}
+		}
 		complete_national_focus = JAPANA_rule_of_the_council
 		set_cosmetic_tag = JAP_BURAKU_LEAGUE
 		remove_all_ministers = yes
@@ -5154,6 +5214,13 @@ country_event = { #Anarchism in Japan
 	}
 	option = {
 		name = japan_new_event.65.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_JIICHIRO }
+			}
+		}
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Jiichiro_Matumoto_hog_rso
@@ -5180,6 +5247,13 @@ country_event = { #Anarchism in Japan
 	}
 	option = {
 		name = japan_new_event.65.c
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_SANSHIRO }
+			}
+		}
 		set_cosmetic_tag = JAP_SANSHIRO
 		remove_all_ministers = yes
 		add_ideas = {
@@ -5207,6 +5281,13 @@ country_event = { #Anarchism in Japan
 	
 	option = {
 		name = japan_new_event.65.d
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_SCHZIO }
+			}
+		}
 		set_cosmetic_tag = JAP_SCHIZO
 		remove_all_ministers = yes
 		add_ideas = {
@@ -5243,7 +5324,18 @@ country_event = { #The Struggle of 2
 	is_triggered_only = yes
 	option = { #Yamakawaism
 		name = japan_new_event.66.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				OR = {
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_NOSAKA }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAKAWA }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAMOTO }
+					
+				}
+			}
+		}
 		complete_national_focus = JAPCOMMUNIST_strengthening_the_ideological_united_front
 		country_event = japan_new_event.67
 		add_ideas = {
@@ -5253,7 +5345,18 @@ country_event = { #The Struggle of 2
 	
 	option = { #Fukumotoism
 		name = japan_new_event.66.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				OR = {
+					
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_MIYAMOTO }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_TOKUDA }
+					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_FUKUMOTO }
+				}
+			}
+		}
 		country_event = japan_new_event.70
 		complete_national_focus = JAPCOMMUNIST_marching_for_the_true_proletariat
 		add_ideas = {
@@ -5272,7 +5375,13 @@ country_event = { #A United Front Victory
 	is_triggered_only = yes
 	option = { #Red Army
 		name = japan_new_event.67.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_NOSAKA }
+			}
+		}
 		complete_national_focus = JAPCOMMUNIST_militant_syndicalists_take_over_the_party
 		set_politics = {
 			ruling_party = syndicalist
@@ -5304,7 +5413,13 @@ country_event = { #A United Front Victory
 	
 	option = { #Yamakawa
 		name = japan_new_event.67.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAKAWA }
+			}
+		}
 		complete_national_focus = JAPCOMMUNIST_changingthecourseofjapansproletariat
 		set_politics = {
 			ruling_party = radical_socialist
@@ -5336,7 +5451,13 @@ country_event = { #A United Front Victory
 	option = { #Kenzo
 	
 		name = japan_new_event.67.c
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAMOTO }
+			}
+		}
 		complete_national_focus = JAPCOMMUNIST_paris_syndicalists_secure_the_party
 		set_politics = {
 			ruling_party = syndicalist
@@ -5546,7 +5667,13 @@ country_event = { #Leading the True Revolutionary Vanguard
 	is_triggered_only = yes
 	option = { #Kenji Miyamoto
 		name = japan_new_event.70.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_MIYAMOTO }
+			}
+		}
 		complete_national_focus = JAPCOMMUNIST_embracing_smiling_communism
 		set_politics = {
 			ruling_party = totalist
@@ -5576,7 +5703,13 @@ country_event = { #Leading the True Revolutionary Vanguard
 	
 	option = { #Tokuda
 		name = japan_new_event.70.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_TOKUDA }
+			}
+		}
 		complete_national_focus = JAPCOMMUNIST_formation_of_a_grass_roots_faction
 		set_politics = {
 			ruling_party = totalist
@@ -5606,7 +5739,13 @@ country_event = { #Leading the True Revolutionary Vanguard
 	
 	option = { #Tokuda
 		name = japan_new_event.70.c
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_FUKUMOTO }
+			}
+		}
 		complete_national_focus = JAPCOMMUNIST_victory_of_the_communist_hardliners
 		set_politics = {
 			ruling_party = totalist
@@ -6217,7 +6356,13 @@ country_event = { #Leading the Kokumin Domei
 	is_triggered_only = yes
 	option = { #Kazami
 		name = japan_new_event.82.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_KOKUMIN_DOMEI_LEFT }
+			}
+		}
 		
 		
 		
@@ -6251,8 +6396,11 @@ country_event = { #Leading the Kokumin Domei
 	option = { #Kokumin Domei
 		name = japan_new_event.82.b
 		ai_chance = {
-			factor = 50
-			
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_KOKUMIN_DOMEI_RIGHT }
+			}
 		}
 		complete_national_focus = JAPDOMEITWO_kenzo_holding_the_party_helm
 		set_politics = {
@@ -6295,7 +6443,13 @@ country_event = { #Minseito Factionalism
 	is_triggered_only = yes
 	option = { #Nagai Faction
 		name = japan_new_event.58.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_MINSEITO_NAGAI }
+			}
+		}
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6329,7 +6483,13 @@ country_event = { #Minseito Factionalism
 	
 	option = { #Osachi
 		name = japan_new_event.58.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_MINSEITO_OSACHI }
+			}
+		}
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6372,7 +6532,13 @@ country_event = { #
 	is_triggered_only = yes
 	option = { #Rentaro Faction
 		name = japan_new_event.59.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_SEIYUKAI_RENTARO }
+			}
+		}
 		complete_national_focus = AJPSEIYUKAITWO_the_seiyukai_secure_a_new_term
 		complete_national_focus = AJPSEIYUKAITWO_upholding_party_orthodoxy
 		if = {
@@ -6415,7 +6581,13 @@ country_event = { #
 	
 	option = { #Reform Faction
 		name = japan_new_event.59.c
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_SEIYUKAI_NAKAJIMA }
+			}
+		}
 		set_politics = { ruling_party = social_conservative }
 		complete_national_focus = AJPSEIYUKAITWO_becoming_a_grassroots_party
 		complete_national_focus = AJPSEIYUKAITWO_the_seiyukai_secure_a_new_term
