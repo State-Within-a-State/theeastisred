@@ -1601,7 +1601,7 @@ country_event = { #Concern Over Army Radicalization
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_YES }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KODOHA_COUP }
 			}
 		}
 		add_political_power = -100
@@ -1654,10 +1654,6 @@ country_event = { #Concern Over Army Radicalization
 		name = japan_new_event.24.b
 		ai_chance = { 
 		factor = 50
-		modifier = {
-				factor = 100
-				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
-			}
 		}
 		add_political_power = 100
 		add_stability = 0.2
@@ -1735,7 +1731,11 @@ country_event = { #League of Blood Incident
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+				OR = {
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_TOSEIHA_COUP }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_DEMOCRACY_SURVIVES }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KODOHA_COUP }
+				}
 			}
 		}
 		trigger = {
@@ -1766,7 +1766,11 @@ country_event = { #League of Blood Incident
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+				OR = {
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_TOSEIHA_COUP }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_DEMOCRACY_SURVIVES }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KODOHA_COUP }
+				}
 			}
 		}
 		trigger = {
@@ -1804,7 +1808,7 @@ country_event = { #League of Blood Incident
 				OR = {
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_TOSEIHA_COUP }
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_DEMOCRACY_SURVIVES }
-				
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KODOHA_COUP }
 				}
 			}
 		}
@@ -1841,7 +1845,7 @@ country_event = { #League of Blood Incident
 				OR = {
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_TOSEIHA_COUP }
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_DEMOCRACY_SURVIVES }
-				
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KODOHA_COUP }
 				}
 			}
 		}
@@ -1874,7 +1878,6 @@ country_event = { #League of Blood Incident
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_BLACK_DRAGON_UCHIDA }
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_BLACK_DRAGON_DEGUCHI }
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KOZABURO }
-				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KODOHA_COUP }
 				}
 			}
 		}
@@ -1969,7 +1972,6 @@ country_event = { #Trial of the League of Blood Incident
 				OR = {
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_TOSEIHA_COUP }
 				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_DEMOCRACY_SURVIVES }
-				
 				}
 			}
 		}
@@ -2073,7 +2075,7 @@ country_event = { #Instability in the Colonies
 		}
 		add_to_variable = {
 			var = imperial_army
-			value = 0.15
+			value = 0.30
 			tooltip = add_imperial_army_tt
 		}
 		add_to_variable = {
