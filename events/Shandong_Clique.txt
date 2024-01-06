@@ -407,6 +407,16 @@ country_event = {# Mount Tai Outraged at Zongchang
 				days = 4
 			}
 		}
+	}	
+	option = { #burn them all
+		name = "Why not give fire a try?" 
+		add_political_power = -15
+		hidden_effect = {
+			country_event = {
+				id = shandong.474
+				days = 10
+			}
+		}
 	}
 }
 
@@ -3733,11 +3743,7 @@ country_event = {#
 			add_ideas = {
 			SQI_xiong_xiling_hog_ade
 			}
-		}
-		option = {
-		name = "Call On Reservists"
-		}
-	
+		}	
 	}
 	
 	country_event = {#
@@ -3881,14 +3887,6 @@ country_event = {#
 	option = {
 		
 		name = "Keep an Eye On Them"
-		hidden_effect = {
-		country_event = {
-		id = shandong.459
-		days = 3
-		}
-		
-		
-		}
 		}
 		
 		
@@ -3945,14 +3943,7 @@ country_event = {#
 			}
 			
 			
-		}
-		
-		option = {
-		
-		name = "Send in the Troops"
-		
-		}
-		
+		}		
 		
 	
 	}
@@ -4099,13 +4090,6 @@ country_event = {#
 	option = {
 		
 		name = "Something Smells Fishy"
-		hidden_effect = {
-		country_event = {
-		id = shandong.465
-		days = 15
-		}
-		
-		}
 		}
 		
 		
@@ -4156,15 +4140,7 @@ country_event = {#
 			}
 			
 		complete_national_focus = SQITWO_the_fire_of_revolution_shines_through_shandong
-		}
-		
-		option = {
-		name = "Huzzah! We Have Crush Them and Captured Their Leading General!"
-		
-		
-		}
-		
-		
+		}		
 	
 	}
 	
@@ -4366,7 +4342,7 @@ country_event = {#
 			target = JAP
 			transfer_troops = yes
 		}
-		add_state_core = 528
+			add_state_core = 528
 			add_state_core = 526
 			add_state_core = 530
 			add_state_core = 529
@@ -4398,3 +4374,73 @@ country_event = {#
 		}
 	
 	}
+
+
+
+country_event = {#
+	id = shandong.474
+	title = "Power Vacuum in Shandong"
+	desc = shandong.474.desc
+	picture = GFX_report_event_generic_riot
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = { 
+	hidden_effect = {
+	remove_ideas = SQI_honored_master
+	remove_ideas = SQI_flight_north
+	remove_ideas = SQI_dogmeat_general
+	remove_ideas = SQI_Rampant_drug_trade
+	random_unit_leader = {
+			limit = { has_id = 1193 }
+			set_nationality = ANQ
+		}
+		random_unit_leader = {
+			limit = { has_id = 1199 }
+			retire = yes
+		}
+		random_unit_leader = {
+			limit = { has_id = 1304 }
+			retire = yes
+	}
+	if = {
+			limit = { has_unit_leader = 1191 }
+			random_unit_leader = {
+				limit = { has_id = 1191 }			
+				remove_unit_leader = yes
+			}
+		}
+		if = {
+			limit = { has_unit_leader = 1197 }
+			random_unit_leader = {
+				limit = { has_id = 1197 }			
+				remove_unit_leader = yes
+			}
+		}
+	}
+	}
+	option = {
+		name = "The people seek spiritual guidance in these troubling times."
+		country_event = {
+		id = shandong.457 #Red Swastika Coup
+		days = 2
+		}
+		}
+		
+		option = {
+		name = "The people, now free at last from tyranny, only want more liberty."
+		country_event = {
+		id = shandong.459 #Shandong Democracy
+		days = 2
+		}
+		}
+
+	option = {
+		name = "The people, as always, wish for the end of foreign subjugation."
+		country_event = {
+		id = shandong.465 #Red bandit
+		days = 2
+		}
+		}
+	}
+
+
