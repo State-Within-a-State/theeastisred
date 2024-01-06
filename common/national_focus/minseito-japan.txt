@@ -22,6 +22,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#Bureaucratic Hold
@@ -36,6 +39,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPLIB_victory_of_the_minseito  }
 		mutually_exclusive = { focus = JAPLIB_tojnha_faction_dominance  }
+		available = {
+		always = no
+		}
 	}
 
 	#Tojnha Faction Dominance
@@ -50,6 +56,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPLIB_victory_of_the_minseito  }
 		mutually_exclusive = { focus = JAPLIB_bureaucratic_hold  }
+		available = {
+		always = no
+		}
 	}
 
 	#Support New Military Powers
@@ -63,6 +72,14 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPLIB_tojnha_faction_dominance  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.1
+		}
+		add_stability = -0.15
+		}
 	}
 
 	#Promote Universal Sufferage
@@ -76,6 +93,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPLIB_bureaucratic_hold  focus = JAPLIB_tojnha_faction_dominance  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 50
+		}
 	}
 
 	#Grant Further Support to the Zaibatsu
@@ -89,6 +110,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPLIB_bureaucratic_hold  }
+		completion_reward = {
+		add_ideas = {
+		JAP_zaibatsu_backing_minseito
+		}
+		}
 	}
 
 	#Encourage Investment In Manchuria
@@ -102,6 +128,17 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPLIB_grant_further_support_to_the_zaibatsu  }
+		completion_reward = {
+			FNG = {
+			add_ideas = {
+			JAP_invest_in_manchuria
+			}
+				add_popularity = {
+					ideology = market_liberal
+					popularity = 0.1
+				}
+			}
+		}
 	}
 
 	#Parliament Centric Governance
@@ -115,6 +152,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPLIB_promote_universal_sufferage  }
+		completion_reward = {
+		add_ideas = {
+		JAP_parliament_centric_system
+		}
+		}
 	}
 
 	#Pan-Asianist Outlook
@@ -128,6 +170,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPLIB_support_new_military_powers  }
+		completion_reward = {
+		add_ideas = {
+		JAP_pan_asianist_backing
+		}
+		}
 	}
 
 	#Coalition With the Social Democrats
@@ -141,6 +188,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPLIB_panasianist_outlook  } prerequisite = { focus = JAPLIB_parliament_centric_governance  }
+		completion_reward = {
+		add_popularity = {
+					ideology = social_democrat
+					popularity = 0.1
+				}
+		add_war_support = -0.05
+		add_socdem_to_coalition = yes
+		}
 	}
 
 	#For Liberty and Progress
@@ -154,6 +209,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPLIB_parliament_centric_governance  } prerequisite = { focus = JAPLIB_panasianist_outlook  focus = JAPLIB_encourage_investment_in_manchuria  } prerequisite = { focus = JAPLIB_parliament_centric_governance  }
+		completion_reward = {
+		add_political_power = 25
+		add_popularity = {
+					ideology = ROOT
+					popularity = 0.1
+				}
+		}
 	}
 
 	#Promotion of Land Reforms
@@ -167,6 +229,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPLIB_encourage_investment_in_manchuria  } prerequisite = { focus = JAPLIB_parliament_centric_governance  focus = JAPLIB_parliament_centric_governance  } prerequisite = { focus = JAPLIB_panasianist_outlook  }
+		completion_reward = {
+		add_ideas = {
+		JAP_save_peasants
+		}
+		}
 	}
 
 	#Chip Away At Military Influence
@@ -180,6 +247,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPLIB_encourage_investment_in_manchuria  } prerequisite = { focus = JAPLIB_parliament_centric_governance  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Crack Down on the Labour Unions
@@ -193,6 +265,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPLIB_chip_away_at_military_influence  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Fair Distribution
@@ -206,6 +283,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPLIB_promotion_of_land_reforms  } prerequisite = { focus = JAPLIB_chip_away_at_military_influence  }
+		completion_reward = {
+		add_ideas = {
+		JAP_fair_distribution
+		}
+		}
 	}
 
 	#Expanding Free Education
@@ -219,6 +301,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPLIB_for_liberty_and_progress  } prerequisite = { focus = JAPLIB_promotion_of_land_reforms  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Increase Agricultural Policies
@@ -232,6 +317,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPLIB_coalition_with_the_social_democrats  } prerequisite = { focus = JAPLIB_promotion_of_land_reforms  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_farmer_laws
+		}
+		}
 	}
 
 	#Increase Japanese Immigration to Korea
@@ -245,6 +335,21 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPLIB_coalition_with_the_social_democrats  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_KOR_INT
+				value = 2.5
+				tooltip = JAP_KOR_INT_increase_tt
+			}
+		add_to_variable = {
+				var = TAI.JAP_TWI_INT
+				value = 2.5
+				tooltip = JAP_TWI_INT_increase_tt
+			}
+		add_ideas = {
+		JAP_colonial_assumilation
+		}
+		}
 	}
 
 	#Populism Over Factionalism
@@ -258,6 +363,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPLIB_expanding_free_education  } prerequisite = { focus = JAPLIB_increase_agricultural_policies  } prerequisite = { focus = JAPLIB_increase_japanese_immigration_to_korea  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_party_factionalism_minseito
+		}
+		}
 	}
 
 	#Racial "Equality"
@@ -271,6 +381,19 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPLIB_expanding_free_education  }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_KOR_INT
+				value = 2.5
+				tooltip = JAP_KOR_INT_increase_tt
+			}
+		add_to_variable = {
+				var = TAI.JAP_TWI_INT
+				value = 2.5
+				tooltip = JAP_TWI_INT_increase_tt
+			}
+		add_stability = 0.1
+		}
 	}
 
 	#Ending Inter-Party Rivals
@@ -284,6 +407,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPLIB_crack_down_on_the_labour_unions  } prerequisite = { focus = JAPLIB_fair_distribution  } prerequisite = { focus = JAPLIB_expanding_free_education  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_party_factionalism_minseito
+		}
+		}
 	}
 
 	#Promoting of Peace
@@ -297,6 +425,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPLIB_racialequality  } prerequisite = { focus = JAPLIB_ending_interparty_rivals  }
+		completion_reward = {
+		add_ideas = {
+		JAP_peace_minseito_promotion
+		}
+		}
 	}
 
 	#Our Universal Goal
@@ -310,6 +443,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPLIB_populism_over_factionalism  } prerequisite = { focus = JAPLIB_racialequality  }
+		completion_reward = {
+		add_ideas = {
+		JAP_our_goal_minseito
+		}
+		}
 	}
 
 #Displaying Party Centric Politics
@@ -323,6 +461,27 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_realization_of_a_new_democracy  }
+		completion_reward = {
+		if = {
+			limit = {
+				has_idea = JAP_parliament_centric_system
+			}
+			add_ideas = {
+			JAP_parliament_centric_system_1
+			}
+		}
+		
+		else_if = {
+			limit = {
+				NOT = {
+					has_idea = JAP_parliament_centric_system
+				}
+			}
+			add_ideas = {
+			JAP_parliament_centric_system
+			}
+		}
+		}
 	}
 
 	#Further Zaibatsu Reach Out
@@ -336,6 +495,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_keeping_party_tradition  }
+		completion_reward = {
+		add_ideas = {
+		JAP_seiyukai_zaibatsu
+		}
+		}
 	}
 
 	#Thriving on Economic Production
@@ -349,6 +513,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_keeping_party_tradition  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_mass_production
+		}
+		}
 	}
 
 	#Espouse Universal Suffrage
@@ -362,6 +531,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_realization_of_a_new_democracy  }
+		completion_reward = {
+		add_stability = 0.15
+		}
 	}
 
 	#A True Democratic Empire
@@ -375,6 +547,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_continue_to_work_with_the_social_masses_party  focus = JAPMINSEITOTWO_banning_the_social_masses_party  }
+		completion_reward = {
+		add_political_power = 100
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		add_war_support = 0.1
+		add_stability = 0.2
+		}
 	}
 
 	#Continue to Work With the Social Masses Party
@@ -388,6 +569,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_repeal_the_nsa  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.15
+		}
+		add_stability = 0.05
+		
+		}
 	}
 
 	#Dismantle the Unions
@@ -402,6 +591,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_support_small_business  } prerequisite = { focus = JAPMINSEITOTWO_promote_new_education_opportunities  focus = JAPMINSEITOTWO_espouse_universal_suffrage  } prerequisite = { focus = JAPMINSEITOTWO_displaying_party_centric_politics  focus = JAPMINSEITOTWO_further_zaibatsu_reach_out  } prerequisite = { focus = JAPMINSEITOTWO_thriving_on_economic_production  }
 		mutually_exclusive = { focus = JAPMINSEITOTWO_repeal_the_nsa  }
+		completion_reward = {
+		add_ideas = {
+		JAP_banning_unions
+		}
+		}
 	}
 
 	#Repeal the NSA
@@ -414,8 +608,29 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
-		prerequisite = { focus = JAPMINSEITOTWO_support_small_business  } prerequisite = { focus = JAPMINSEITOTWO_promote_new_education_opportunities  focus = JAPMINSEITOTWO_espouse_universal_suffrage  } prerequisite = { focus = JAPMINSEITOTWO_displaying_party_centric_politics  focus = JAPMINSEITOTWO_further_zaibatsu_reach_out  } prerequisite = { focus = JAPMINSEITOTWO_thriving_on_economic_production  }
+		prerequisite = { focus = JAPMINSEITOTWO_support_small_business focus = JAPMINSEITOTWO_promote_new_education_opportunities focus = JAPMINSEITOTWO_further_zaibatsu_reach_out focus = JAPMINSEITOTWO_thriving_on_economic_production } prerequisite = {   focus = JAPMINSEITOTWO_espouse_universal_suffrage  } prerequisite = { focus = JAPMINSEITOTWO_displaying_party_centric_politics    } 
 		mutually_exclusive = { focus = JAPMINSEITOTWO_dismantle_the_unions  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.05
+		}
+		add_political_power = -100
+		add_stability = 0.2
+		
+		}
 	}
 
 	#Banning the Social Masses Party
@@ -429,6 +644,13 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_dismantle_the_unions  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = -0.3
+		}
+		add_political_power = 50
+		}
 	}
 
 	#Keeping Party Tradition
@@ -442,6 +664,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_the_minseito_victory  }
+		available = {
+		always = no
+		}
 	}
 
 	#Realization of a New Democracy
@@ -452,9 +677,12 @@ focus_tree = {
 		y = 12
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_the_minseito_victory  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#A Party of the Middle Class
@@ -468,6 +696,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_the_minseito_victory  }
+		available = {
+		always = no
+		}
 	}
 
 	#Support Small Business
@@ -481,6 +712,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_a_party_of_the_middle_class  }
+		completion_reward = {
+		add_ideas = {
+		JAP_small_companies
+		}
+		}
 	}
 
 	#Promote New Education Opportunities
@@ -494,6 +730,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPMINSEITOTWO_a_party_of_the_middle_class  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#The Minseito Victory
@@ -505,6 +744,10 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_flag = JAP_minseito_won_in_1940_elections
+		
 		}
 	}
 
