@@ -4384,6 +4384,7 @@ country_event = { #Minseito Factionalism
 		hidden_effect = {
 			load_focus_tree = minseito-japan
 			complete_national_focus = JAPLIB_victory_of_the_minseito
+			
 		}
 	}
 	
@@ -4397,6 +4398,9 @@ country_event = { #Minseito Factionalism
 				has_game_rule = { rule = JAP_SNAP_ELECTIONS option = JAP_SNAP_ELECTIONS_MINSEITO_NAGAI }
 			}
 		}
+		add_ideas = {
+			JAP_party_factionalism_minseito
+			}
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -4437,6 +4441,9 @@ country_event = { #Minseito Factionalism
 				has_game_rule = { rule = JAP_SNAP_ELECTIONS option = JAP_SNAP_ELECTIONS_MINSEITO_OSACHI }
 			}
 		}
+		add_ideas = {
+			JAP_party_factionalism_minseito
+			}
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6439,6 +6446,20 @@ country_event = { #Minseito Factionalism
 	title = japan_new_event.58.title
 	desc = japan_new_event.58.desc
 	#picture = 
+	immediate = {
+	hidden_effect = {
+	if = {
+		limit = {
+			NOT = {
+				has_completed_focus = JAPLIB_victory_of_the_minseito
+			}
+		}
+		complete_national_focus = JAPLIB_victory_of_the_minseito
+	}
+	
+	
+	}
+	}
 	
 	is_triggered_only = yes
 	option = { #Nagai Faction
@@ -6450,6 +6471,7 @@ country_event = { #Minseito Factionalism
 				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_MINSEITO_NAGAI }
 			}
 		}
+		complete_national_focus = JAPMINSEITOTWO_keeping_party_tradition
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6490,6 +6512,7 @@ country_event = { #Minseito Factionalism
 				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_MINSEITO_OSACHI }
 			}
 		}
+		complete_national_focus = JAPMINSEITOTWO_a_party_of_the_middle_class
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
