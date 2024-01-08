@@ -2529,7 +2529,7 @@ country_event = { #Struggle of the Left and Right
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.33.a
-		
+		complete_national_focus = JAPIRAA_formation_of_the_imperial_rule_assistance_association
 		set_power_balance = {
 				id = JAP_IRAA_balance
 				left_side = JAP_IRAA_left_side
@@ -2538,6 +2538,9 @@ country_event = { #Struggle of the Left and Right
 		country_event = {
 		id = japan_new_event.34
 		days = 7
+		}
+		add_ideas = {
+		JAP_iraa_split
 		}
 	}
 }
@@ -2989,6 +2992,7 @@ country_event = { #leftist Election
 	immediate = {
 	hidden_effect = {
 	load_focus_tree = japan-left-iraa
+	complete_national_focus = JAPLEFTIRAA_leftists_dominate
 	}
 	}
 	is_triggered_only = yes
@@ -3002,6 +3006,7 @@ country_event = { #leftist Election
 				
 			}
 		}
+		complete_national_focus = JAPLEFTIRAA_tokohai_succession
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -3032,6 +3037,7 @@ country_event = { #leftist Election
 				
 			}
 		}
+		complete_national_focus = JAPLEFTIRAA_hashimoto_victory
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -3062,6 +3068,7 @@ country_event = { #leftist Election
 				
 			}
 		}
+		complete_national_focus = JAPLEFTIRAA_asanumaspowergrab
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -8355,7 +8362,7 @@ country_event = { #Legacy of the New Proletarian Struggle
 	}
 }
 
-country_event = { #
+country_event = { #Formation of the Red Shogunate
 	id = japan_new_event.130
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.130"}
 	title = japan_new_event.130.title
@@ -8441,6 +8448,41 @@ country_event = { #
 	option = { #
 		name = japan_new_event.132.a
 		ai_chance = { base = 100 }
+		trigger = {
+		has_idea = JAP_Asanuma_Inejiro_hog_tot
+		}
+		load_focus_tree = socdem-japan
+		set_country_flag = japan_social_totalitarian
+		complete_national_focus = JAPSOCDEM_totalitarian_shift
+		complete_national_focus = JAPSOCDEM_a_split_in_the_shakai_taishuto
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.5
+		}
+		
+	}
+	
+	option = { #
+		name = japan_new_event.132.b
+		ai_chance = { base = 100 }
+		trigger = {
+		has_idea = JAP_Kingoro_Hashimoto_hog_tot
+		}
+		set_cosmetic_tag = JAP_Kingoro
+		load_focus_tree = araki-kingoro-tree
+		complete_national_focus = JAPARAKI_the_cherry_blossoms_bloom
+		
+	}
+	
+	option = { #
+		name = japan_new_event.132.c
+		ai_chance = { base = 100 }
+		trigger = {
+		has_idea = JAP_Nakano_Seigo_hog_tot
+		}
+		load_focus_tree = japan-nakano
+		complete_national_focus = JAPNAK_nakano_secures_the_diet
+		complete_national_focus = JAPNAK_the_issue_of_party_factionalism
 		
 	}
 }

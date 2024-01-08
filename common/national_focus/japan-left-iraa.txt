@@ -17,12 +17,15 @@ focus_tree = {
 		id = JAPLEFTIRAA_the_new_shogunate_rises
 		icon = GFX_JAPLEFTIRAA_the_new_shogunate_rises-248360
 		x = 7
-		y = 10
+		y = 9
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPLEFTIRAA_root_out_the_zaibatsu  }
+		prerequisite = { focus = JAPLEFTIRAA_the_red_chrysanthemum_shines_brighter_than_the_rising_sun  }
+		completion_reward = {
+		country_event = japan_new_event.132
+		}
 	}
 
 	#Leftists Dominate
@@ -35,7 +38,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		
+		available = {
+		always = no
+		}
 	}
 
 	#Asanuma's Power Grab
@@ -47,6 +52,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPLEFTIRAA_leftists_dominate  }
 		mutually_exclusive = { focus = JAPLEFTIRAA_hashimoto_victory  } mutually_exclusive = { focus = JAPLEFTIRAA_tokohai_succession  }
@@ -62,6 +70,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = JAPLEFTIRAA_leftists_dominate  }
 		mutually_exclusive = { focus = JAPLEFTIRAA_asanumaspowergrab  } mutually_exclusive = { focus = JAPLEFTIRAA_tokohai_succession  }
 	}
@@ -75,6 +86,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPLEFTIRAA_leftists_dominate  }
 		mutually_exclusive = { focus = JAPLEFTIRAA_asanumaspowergrab  } mutually_exclusive = { focus = JAPLEFTIRAA_hashimoto_victory  }
@@ -91,6 +105,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPLEFTIRAA_tokohai_succession  }
+		completion_reward = {
+		add_ideas = {
+		JAP_economic_natsyn_new
+		}
+		}
 	}
 
 	#Reach Out to Kazami
@@ -104,6 +123,13 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPLEFTIRAA_tokohai_succession  }
+		completion_reward = {
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.1
+		}
+		add_authdem_to_coalition = yes
+		}
 	}
 
 	#Smash the "Rightist" Factions
@@ -117,6 +143,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPLEFTIRAA_hashimoto_victory  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_iraa_split
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Embracing Kita's State Socialism
@@ -130,6 +162,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPLEFTIRAA_hashimoto_victory  }
+		completion_reward = {
+		add_ideas = {
+		JAP_kiatnomics
+		}
+		}
 	}
 
 	#Work With Matsumoto
@@ -143,6 +180,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPLEFTIRAA_asanumaspowergrab  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		add_radsoc_to_coalition = yes
+		}
 	}
 
 	#Embracing Totalitarianism
@@ -156,6 +200,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPLEFTIRAA_asanumaspowergrab  }
+		completion_reward = {
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		add_political_power = 100
+		add_war_support = 0.1
+		}
 	}
 
 	#Control the Trade Unions
@@ -169,6 +221,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPLEFTIRAA_work_with_matsumoto  } prerequisite = { focus = JAPLEFTIRAA_embracing_totalitarianism  }
+		completion_reward = {
+		add_ideas = {
+		JAP_uniting_unions
+		}
+		}
 	}
 
 	#Strengthen the Youth Leagues
@@ -182,6 +239,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPLEFTIRAA_smashtherightistfactions  } prerequisite = { focus = JAPLEFTIRAA_embracingkitasstatesocialism  }
+		completion_reward = {
+		JAP_new_youth_leagues
+		}
 	}
 
 	#Purge Adachi Kenzo
@@ -195,20 +255,19 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPLEFTIRAA_reviewing_the_national_syndicalist_system  } prerequisite = { focus = JAPLEFTIRAA_reach_out_to_kazami  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_iraa_split
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -1
+		}
+		add_manpower = -10
+		}
 	}
 
-	#Root Out the Zaibatsu
-	focus = {
-		id = JAPLEFTIRAA_root_out_the_zaibatsu
-		icon = GFX_JAPLEFTIRAA_root_out_the_zaibatsu-248360
-		x = 7
-		y = 9
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = JAPLEFTIRAA_the_red_chrysanthemum_shines_brighter_than_the_rising_sun  }
-	}
+	
 
 	#The Red Chrysanthemum Shines Brighter Than the Rising Sun
 	focus = {
@@ -221,6 +280,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPLEFTIRAA_purge_adachi_kenzo  focus = JAPLEFTIRAA_strengthen_the_youth_leagues  focus = JAPLEFTIRAA_control_the_trade_unions  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_red_sun
+		}
+		}
 	}
 
 }
