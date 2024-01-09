@@ -20,16 +20,6 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_political_power = 100
-		1063 = { set_demilitarized_zone = no }
-		1061 = { set_demilitarized_zone = no }
-		615 = { set_demilitarized_zone = no }
-		1060 = { set_demilitarized_zone = no }
-		607 = { set_demilitarized_zone = no }
-		799 = { set_demilitarized_zone = no }
-		620 = { set_demilitarized_zone = no }
-		1058 = { set_demilitarized_zone = no }
-		1048 = { set_demilitarized_zone = no }
-		1059 = { set_demilitarized_zone = no }
 		add_state_core = 611 # south chahar
 		611 = { set_demilitarized_zone = no }
 		add_state_core = 614 #jidong
@@ -48,9 +38,17 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = QIE_the_red_sun_over_the_dragon  }
+		available = {
+			has_country_flag = won_zhili_manchu_war
+		}
 		completion_reward = {
+		remove_ideas = QIE_big_debt
+			add_timed_idea = {
+				idea = QIE_defaulted_debt
+				days = 365
+			}
 		add_popularity = {
-		ideology = totalist
+		ideology = radical_socialist
 		popularity = 0.03
 		
 	
@@ -69,6 +67,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = QIE_the_red_sun_over_the_dragon  }
+		available = {
+			has_country_flag = won_zhili_manchu_war
+		}
 		completion_reward = {
 		add_ideas = {
 		QIE_league_of_yellow_dragons
@@ -76,21 +77,24 @@ focus_tree = {
 		}
 	}
 
-	#Follow the Mladrossi Idea
+	#Follow the Mladrossi Idea Love Puyi
 	focus = {
 		id = QIE_follow_the_mladrossi_idea
-		icon = GFX_QIE_follow_the_mladrossi_idea-90815
+		icon = GFX_goal_AOG_Repair_Emperor
 		x = 5
-		y = 3
+		y = 3f
 		cost = 8
 		search_filters = {
-			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_WAR_SUPPORT 
 		}
 		prerequisite = { focus = QIE_the_red_court  } prerequisite = { focus = QIE_the_league_of_yellow_dragons  }
 		completion_reward = {
-		add_popularity = {
-			ideology = totalist
-			popularity = 0.2
+		add_war_support = 0.10
+		hidden_effect = {
+				country_event = {
+					id = china_shared.1000
+					days = 25
+				}
 			}
 		}
 	}
@@ -108,11 +112,12 @@ focus_tree = {
 		prerequisite = { focus = QIE_the_league_of_yellow_dragons  }
 		mutually_exclusive = { focus = QIE_attacking_revisionism  }
 		completion_reward = {
+		add_political_power = -50
 		add_popularity = {
 		ideology = syndicalist
-		popularity = 0.1
+		popularity = 0.07
 		}
-		country_event = red_qing.1
+		country_event = red_qing.3
 		
 		}
 	}
@@ -152,10 +157,22 @@ focus_tree = {
 		completion_reward = {
 		add_popularity = {
 		ideology = syndicalist
-		popularity = -1
-		
+		popularity = -0.05
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.09
+		}
+		country_event = red_qing.4
+		custom_effect_tooltip = shanxi_hates_you_tt
+		hidden_effect = {
+			add_stability = -0.10
+			add_popularity = {
+			ideology = social_liberal
+			popularity = -0.14
 			}
-		country_event = red_qing.1
+			SHX = { leave_faction = yes }
+		}
 		}
 	}
 
@@ -172,6 +189,12 @@ focus_tree = {
 		prerequisite = { focus = QIE_the_red_court  }
 		completion_reward = {
 		add_research_slot = 1
+		hidden_effect = {
+				country_event = {
+					id = red_qing.2
+					days = 1480
+				}
+			}
 		}
 	}
 
@@ -179,13 +202,13 @@ focus_tree = {
 	focus = {
 		id = QIE_the_devils_of_warlords
 		icon = GFX_QIE_the_devils_of_warlords-90818
-		x = 8
-		y = 5
+		x = 7
+		y = 7
 		cost = 8
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = QIE_integration_with_the_csp  focus = QIE_attacking_revisionism }
+		prerequisite = { focus = QIEBOL_prepare_shanxi	} prerequisite = { focus = QIE_the_red_mandate  }
 		completion_reward = {
 		custom_effect_tooltip = QIE_demand_fealty_TT
 		
@@ -229,6 +252,47 @@ focus_tree = {
 	
 	}
 
+	focus = {
+		id = QIEBOL_prepare_shanxi
+		icon = GFX_goal_CHI_shanxi_diplomacy
+		cost = 4.00
+		prerequisite = { focus = QIE_integration_with_the_csp  focus = QIE_attacking_revisionism }
+		x = 8
+		y = 5
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus QIEBOL_prepare_shanxi"
+			if = {
+				limit = { has_completed_focus = QIE_attacking_revisionism }
+				declare_war_on = {
+						type = annex_everything
+						target = SHX
+				}
+			else = {
+			SHX = {
+				country_event= { id = qiefor.49 }
+			}
+			}
+		}
+		}
+
+	}
+
+	focus = {
+		id = QIEBOL_rural_loyalty
+		icon = GFX_goal_AUS_Nation_Of_Nature
+		cost = 8.00
+		prerequisite = { focus = QIE_attacking_revisionism }
+		x = 10
+		y = 5
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus QIEBOL_rural_loyalty"
+			add_ideas = QIE_rural_insurgency_idea
+		}
+		search_filters = { FOCUS_FILTER_RESISTANCE }
+	}
+
+
 	#The Long Queues of the Revolution Hang Our National Enemies
 	focus = {
 		id = QIE_the_yellow_purge
@@ -253,17 +317,20 @@ focus_tree = {
 	focus = {
 		id = QIE_beyond_the_han
 		icon = GFX_QIE_beyond_the_han-90828
-		x = 7
-		y = 7
+		x = 6
+		y = 11
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = QIE_the_devils_of_warlords  } prerequisite = { focus = QIE_the_red_mandate  }
+		prerequisite = { focus = QIEBOL_false_republic } prerequisite = { focus = QIEBOL_destroy_germany } prerequisite = { focus = QIEBOL_destroy_concessions }
+		available = {
+			FNG = { exists = no }
+			has_global_flag = JAP_Fading_Sun
+		}
 		completion_reward = {
 		
 			unlock_decision_category_tooltip = QIE_beyond_han_decision_category
-			hidden_effect = {
 			add_state_core = 408
 			add_state_core = 1246
 			add_state_core = 409
@@ -292,14 +359,12 @@ focus_tree = {
 			add_state_core = 701
 			add_state_core = 857
 			add_state_core = 671
-			add_state_core = 527
-			add_state_core = 525
 			add_state_core = 526
 			add_state_core = 756
 			add_state_core = 72
 			add_state_core = 555
 			add_state_core = 536
-			}
+
 		}
 	}
 
@@ -372,33 +437,164 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = QIE_beyond_the_han  } prerequisite = { focus = QIE_the_will_of_the_people  }
+		prerequisite = { focus = QIE_the_devils_of_warlords	} prerequisite = { focus = QIE_the_will_of_the_people	}
 		completion_reward = {
 		add_war_support = 0.1
-		
 		}
 	}
 
+	focus = {
+		id = QIEBOL_destroy_concessions
+		icon = GFX_goal_QIE_destroy_LEC
+		cost = 8.00
+		prerequisite = { focus = QIE_looking_for_allies  } prerequisite = { focus = QIE_stoping_rightwing_imperialism  }
+		x = 3
+		y = 10
+
+		bypass = {
+			and ={
+				LEC = { exists = no }
+				729 = {
+					is_owned_by = QIE
+				}
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus QIE_destroy_concessions"
+			custom_effect_tooltip = QIE_destroy_concessions_TT
+		}
+	}
+	focus = {
+		id = QIEBOL_destroy_germany
+		icon = GFX_goal_AOG_War_Opporunity
+		cost = 8.00
+		prerequisite = { focus = QIE_looking_for_allies  } prerequisite = { focus = QIE_stoping_rightwing_imperialism  }
+		x = 5
+		y = 10
+
+		bypass = {
+			OR = {
+				is_in_faction_with = LEP
+				AND = {
+					744 = {
+						NOT = {
+							is_owned_by = LEP
+							is_owned_by = GEA
+						}
+					}
+					996 = {
+						NOT = {
+							is_owned_by = LEP
+							is_owned_by = GEA
+						}
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus QIE_destroy_germany"
+			custom_effect_tooltip = QIE_destroy_germany_TT
+			create_wargoal = {
+				type = annex_everything
+				target = LEP
+			}
+		}
+	}
+
+
+	focus = {
+		id = QIEBOL_false_republic
+		icon = GFX_YUN_Goal_Secure_Northern_China
+		cost = 8.00
+		prerequisite = { focus = QIE_looking_for_allies  } prerequisite = { focus = QIE_stoping_rightwing_imperialism  }
+		x = 7
+		y = 10
+
+		ai_will_do = {
+			factor = 100
+			modifier = {
+				factor = 0
+				strength_ratio = { tag = FNG ratio < 2 }
+				JAP = {
+					has_guaranteed = FNG
+					NOT = { has_war_with = GER }
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					ROOT_is_threatened = yes
+					FNG = { default_attack_AI_trigger_FROM = yes }
+				}
+			}
+		}
+
+		will_lead_to_war_with = FNG
+
+		bypass = {
+			OR = {
+				FNG = { exists = no }
+				has_war_with = FNG
+			}
+		}
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus QIE_false_republic"
+			custom_effect_tooltip = QIE_false_republic_TT
+		}
+	}
+	focus = {
+		id = QIEBOL_we_win
+		icon = GFX_goal_VIN_dragons_roar_nonaggression_flames_life
+		cost = 8.00
+		prerequisite = { focus = QIEBOL_false_republic }
+		prerequisite = { focus = QIEBOL_destroy_germany }
+		prerequisite = { focus = QIEBOL_destroy_concessions }
+		available = {
+			FNG = { exists = no }
+			has_global_flag = JAP_Fading_Sun
+		}
+		x = 4
+		y = 11
+		
+
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus QIE_we_win"
+			add_political_power = 100
+			custom_effect_tooltip = QIE_we_win_TT
+			set_country_flag = has_united_china
+			if = {
+				limit = { has_idea = QIE_fractured_empire }
+				remove_ideas = QIE_fractured_empire
+			}
+			
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+	}
 	#The Empire of the Red Dragon
 	focus = {
 		id = QIE_the_empire_of_the_red_dragon
 		icon = GFX_QIE_the_empire_of_the_red_dragon-90831
 		x = 5
-		y = 11
+		y = 13
 		cost = 8
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = QIE_looking_for_allies  } prerequisite = { focus = QIE_stoping_rightwing_imperialism  }
+		prerequisite = { focus = QIEBOL_we_win	} prerequisite = { focus = QIE_beyond_the_han	}
 		completion_reward = {
 		add_political_power = 100
 		add_stability = 0.2
-		add_popularity = {
-		ideology = totalist
-		popularity = 1
-		
+		drop_cosmetic_tag = yes
+		if = {
+			limit = { has_completed_focus = QIE_attacking_revisionism }
+			set_cosmetic_tag = QIE_RED_REVOLUTION
+			else = {
+			set_cosmetic_tag = QIE_EMPIRE_RED_DRAGONS
+			}
 		}
-		set_cosmetic_tag = QIE_EMPIRE_RED_DRAGONS
 		}
 	}
 
@@ -406,7 +602,7 @@ focus_tree = {
 		id = QIEBOL_rebuild_command_structure
 		icon = GFX_goal_QIE_Imperial_Army_1
 		cost = 8.00
-		x = 32
+		x = 15
 		y = 1
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_rebuild_command_structure"
@@ -429,11 +625,12 @@ focus_tree = {
 		}
 		x = -2
 		y = 1
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_foreigner_against_foreigner"
-			add_political_power = 100
-			add_war_support = 0.05
+			unlock_decision_category_tooltip = QIE_hire_mercenaries_decisions
+			add_political_power = -100
+			add_stability = -0.05
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 	}
@@ -445,7 +642,7 @@ focus_tree = {
 		mutually_exclusive = { focus = QIEBOL_foreigner_against_foreigner }
 		x = 2
 		y = 1
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_look_to_our_past"
 			add_doctrine_cost_reduction = {
@@ -467,7 +664,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 2
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_assess_doctrines"
 			country_event = qiefocus.15
@@ -480,10 +677,10 @@ focus_tree = {
 		prerequisite = { focus = QIEBOL_assess_doctrines }
 		x = 0
 		y = 3
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_uneasy_coalition"
-			country_event = red_qing.2
+			increase_ruling_party_popularity_by_5 = yes
 		}
 	}
 	focus = {
@@ -493,7 +690,7 @@ focus_tree = {
 		prerequisite = { focus = QIEBOL_uneasy_coalition }
 		x = -2
 		y = 4
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_rural_defense_force"
@@ -511,24 +708,11 @@ focus_tree = {
 		}
 		x = -2
 		y = 5
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_prepare_dikes"
-			607 = {
-			add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
-			}
-			}
-			1059 = {
-			add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
-			}
-			}
+			custom_effect_tooltip = breach_dams_TT
 		}
 	}
 	focus = {
@@ -538,7 +722,7 @@ focus_tree = {
 		prerequisite = { focus = QIEBOL_uneasy_coalition }
 		x = 0
 		y = 4
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_exploit_baoding_contacts"
 			army_experience = 15
@@ -560,7 +744,7 @@ focus_tree = {
 		}
 		x = 0
 		y = 5
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_reinstate_baojia"
@@ -574,7 +758,7 @@ focus_tree = {
 		prerequisite = { focus = QIEBOL_uneasy_coalition }
 		x = 2
 		y = 4
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_best_money_can_buy"
 			#flavor event for QIE, LEP, and YUN 
@@ -594,7 +778,7 @@ focus_tree = {
 		prerequisite = { focus = QIEBOL_best_money_can_buy }
 		x = 2
 		y = 5
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_imperial_propaganda"
 			add_ideas = { QIE_imperial_propaganda_idea }
@@ -610,9 +794,14 @@ focus_tree = {
 		prerequisite = { focus = QIEBOL_reinstate_baojia }
 		x = -1
 		y = 6
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_manchu_naval_academy"
+			if = {
+				limit = { country_exists = SIC }
+				unlock_decision_category_tooltip = QIE_comission_sicilian_ships
+				custom_effect_tooltip = QIE_sic_ships_warning
+			}
 				add_doctrine_cost_reduction = {
 				name = naval_doc_bonus
 				cost_reduction = 0.5
@@ -631,7 +820,7 @@ focus_tree = {
 		prerequisite = { focus = QIEBOL_reinstate_baojia }
 		x = 1
 		y = 6
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_manchu_air_warfare"
 			add_doctrine_cost_reduction = {
@@ -658,7 +847,7 @@ focus_tree = {
 		prerequisite = { focus = QIEBOL_manchu_naval_academy }
 		x = 0
 		y = 7
-		relative_position_id = QIE_rebuild_command_structure
+		relative_position_id = QIEBOL_rebuild_command_structure
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus QIE_expand_baoding_rnd"
 			add_research_slot = 1

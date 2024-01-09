@@ -6619,9 +6619,11 @@ country_event = {
 	
 		
 		option = {
+		trigger = {
+			has_country_flag = QIE_yan_backs_coup
+		}
 		name = qiecoup.22.b #crush the traitors!
 		load_focus_tree = monbol-qing
-		set_cosmetic_tag = QIE_RED_REVOLUTION
 		remove_ideas = QIE_fractured_empire
 		clr_country_flag = legation_council_member
 		hidden_effect = {
@@ -6638,10 +6640,16 @@ country_event = {
 				}
 			}
 			set_politics = {
-				ruling_party = totalist
+				ruling_party = radical_socialist
 			}
-			add_soclib_to_coalition = yes
-			add_socdem_to_coalition = yes
+			set_temp_variable = { coalition_partner_var = token:social_liberal }
+			add_to_coalition = yes
+			set_temp_variable = { coalition_partner_var = token:syndicalist }
+			add_to_coalition = yes
+			set_temp_variable = { coalition_partner_var = token:social_democrat }
+			add_to_coalition = yes
+			set_temp_variable = { coalition_partner_var = token:totalist }
+			add_to_coalition = yes
 			if = {	
 				limit = { has_country_leader = { name = "Puyi" ruling_only = yes } }
 				set_country_leader_portrait = {
@@ -6659,17 +6667,18 @@ country_event = {
 				QIE_Wang_Boxiang_sec_tot
 				QIE_Aisin_Gioro_Jixing_cos
 			}
+			set_cosmetic_tag = QIE_TEMP_MONBOL
 			set_popularities = {
-				totalist = 70
-				radical_socialist = 0
-				syndicalist = 0
-				social_democrat = 10
-				social_liberal = 0
+				totalist = 11
+				radical_socialist = 20
+				syndicalist = 8
+				social_democrat = 15
+				social_liberal = 18
 				market_liberal = 0
-				social_conservative = 0
-				authoritarian_democrat = 5
-				paternal_autocrat = 5
-				national_populist = 10
+				social_conservative = 16
+				authoritarian_democrat = 9
+				paternal_autocrat = 1
+				national_populist = 2
 			}
 			set_country_flag = Jiang_Baili_dead
 			set_country_flag = Wu_Peifu_dead
@@ -6683,19 +6692,11 @@ country_event = {
 				set_demilitarized_zone = yes
 			}
 			complete_national_focus = QIE_unrest
-			add_popularity = {
-				ideology = totalist
-				popularity = 0.15
+			set_party_name = {
+			ideology = radical_socialist
+			long_name = QIE_social_democrat_party_long
+			name = QIE_social_democrat_party
 			}
-			add_popularity = {
-				ideology = syndicalist
-				popularity = 0.05
-			}
-			add_popularity = {
-				ideology = radical_socialist
-				popularity = 0.05
-			}
-			
 			set_country_flag = QIE_manchu_restoration
 			if = {
 				limit = {
@@ -6714,27 +6715,6 @@ country_event = {
 					modifier = KR_friendly
 				}
 				SHX = { country_event = qiecoup.23 } #the coup succeeds! time to intervene
-			}
-			else_if = {
-				limit = {
-					OR = {
-						has_country_flag = QIE_song_backs_coup
-						has_country_flag = QIE_zhang_backs_coup
-					}
-					SQI = {
-						exists = yes
-						is_subject = no
-					}
-				}
-				reverse_add_opinion_modifier = {
-					target = SQI
-					modifier = KR_friendly
-				}
-				add_opinion_modifier = {
-					target = SQI
-					modifier = KR_friendly
-				}
-				SQI = { country_event = qiecoup.23 } #the coup succeeds! time to intervene
 			}
 			random_unit_leader = {
 				limit = { has_id = 1174 }
