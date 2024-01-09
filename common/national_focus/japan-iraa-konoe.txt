@@ -24,6 +24,30 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKONOE_work_with_the_sanpo  } prerequisite = { focus = JAPKONOE_form_the_gjwa  }
+		completion_reward = {
+		set_country_flag = JAP_smash_zaibatsu
+		set_variable = {
+				var = zaibatsu_nationalization
+				value = 0
+				tooltip = zaibatsu_nationalization_tt
+			}
+		set_variable = {
+				var = sumitomo_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsui_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsubishi_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = yasuda_nationalization
+				value = 0
+			}
+		}
 	}
 
 	#The Important Industry Control Act
@@ -37,6 +61,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKONOE_national_land_reforms  } prerequisite = { focus = JAPKONOE_strengthen_the_bia  }
+		completion_reward = {
+		add_ideas = {
+		JAP_important_industry_control_act
+		}
+		}
 	}
 
 	#A Promise to the Rural Soldiers
@@ -50,6 +79,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKONOE_national_land_reforms  }
+		completion_reward = {
+		add_ideas = {
+		JAP_peoples_showa_connections
+		}
+		}
 	}
 
 	#Total Nationalization
@@ -63,6 +97,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKONOE_strike_against_the_zaibatsu_monsters  } prerequisite = { focus = JAPKONOE_national_land_reforms  }
+		completion_reward = {
+		add_ideas = {
+		JAP_zaibatsu_nationalization_1
+		}
+		}
 	}
 
 	#Form the National Literature Association
@@ -76,6 +115,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPKONOE_a_promise_to_the_rural_soldiers  } prerequisite = { focus = JAPKONOE_total_nationalization  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_research_service
+		}
+		}
 	}
 
 	#Promote Nochi-Kaiho
@@ -89,6 +133,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPKONOE_a_promise_to_the_rural_soldiers  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Establish the National Railways Service
@@ -102,6 +149,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKONOE_a_promise_to_the_rural_soldiers  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_railway_service
+		}
+		}
 	}
 
 	#Preparing For Total War
@@ -115,6 +167,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKONOE_the_important_industry_control_act  } prerequisite = { focus = JAPKONOE_a_promise_to_the_rural_soldiers  }
+		completion_reward = {
+		add_ideas = {
+		JAP_are_ya_ready
+		}
+		}
 	}
 
 	#Form the Greater Japan Religious Information Association
@@ -128,6 +185,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPKONOE_establish_the_national_railways_service  } prerequisite = { focus = JAPKONOE_preparing_for_total_war  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Spiritual Mobilization Plan
@@ -141,7 +201,13 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKONOE_promote_nochikaiho  } prerequisite = { focus = JAPKONOE_establish_the_national_railways_service  }
-	}
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_are_ya_ready
+		add_idea = JAP_are_ya_ready_war
+		}
+		}
+		}
 
 	#Form the National Volunteer Corps
 	focus = {
@@ -154,6 +220,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPKONOE_form_the_national_literature_association  } prerequisite = { focus = JAPKONOE_promote_nochikaiho  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_emperor_support
+		}
+		}
 	}
 
 	#Konoe Controls the Center
@@ -165,6 +236,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		
 	}
@@ -179,6 +253,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = JAPKONOE_konoe_controls_the_center  }
 		mutually_exclusive = { focus = JAPKONOE_he_bends_to_the_right  }
 	}
@@ -192,6 +269,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPKONOE_konoe_controls_the_center  }
 		mutually_exclusive = { focus = JAPKONOE_he_bends_to_the_left  }
@@ -208,6 +288,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPKONOE_he_bends_to_the_left  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_youth_leagues
+		}
+		}
 	}
 
 	#Unify the Trade Unions
@@ -221,6 +306,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKONOE_he_bends_to_the_left  }
+		completion_reward = {
+		add_ideas = {
+		JAP_uniting_unions
+		}
+		}
 	}
 
 	#Don't Miss the Bus
@@ -234,6 +324,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPKONOE_konoe_controls_the_center  }
+		completion_reward = {
+		add_ideas = {
+		JAP_dont_miss_bus
+		}
+		}
 	}
 
 	#Absorb the Trade Unions
@@ -247,6 +342,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPKONOE_he_bends_to_the_right  }
+		completion_reward = {
+		add_ideas = {
+		JAP_control_the_unions
+		}
+		}
 	}
 
 	#National Land Reforms
@@ -260,6 +360,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKONOE_expand_the_neighbourhood_associations  } prerequisite = { focus = JAPKONOE_establish_asianist_organizations  }
+		completion_reward = {
+		add_ideas = {
+		JAP_farming_for_the_nation
+		}
+		}
 	}
 
 	#Strengthen the BIA
@@ -273,6 +378,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPKONOE_control_the_sanpo  }
+		completion_reward = {
+		add_ideas = {
+		JAP_strengthen_the_bia
+		}
+		}
 	}
 
 	#A Budget For War
@@ -286,6 +396,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKONOE_he_bends_to_the_right  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_political_power = 25
+		}
 	}
 
 	#Control the Sanpo
@@ -299,6 +413,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPKONOE_absorb_the_trade_unions  } prerequisite = { focus = JAPKONOE_a_budget_for_war  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Expand the Neighbourhood Associations
@@ -312,6 +431,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPKONOE_dontmissthebus  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_stability = 0.1
+		}
 	}
 
 	#Establish Asianist Organizations
@@ -325,6 +451,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPKONOE_dontmissthebus  }
+		completion_reward = {
+		add_ideas = {
+		JAP_pan_asian_guidelines_1
+		}
+		}
 	}
 
 	#Work With the Sanpo
@@ -338,6 +469,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKONOE_unify_the_trade_unions  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		add_war_support = 0.1
+		}
 	}
 
 	#Form the GJWA
@@ -351,6 +488,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPKONOE_support_the_youth_associations  }
+		completion_reward = {
+		add_ideas = {
+		JAP_form_the_gjwa
+		}
+		}
 	}
 
 	#No Longer the Weak Premier
@@ -364,6 +506,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPKONOE_form_the_greater_japan_religious_information_association  } prerequisite = { focus = JAPKONOE_spiritual_mobilization_plan  focus = JAPKONOE_spiritual_mobilization_plan  } prerequisite = { focus = JAPKONOE_form_the_national_volunteer_corps  }
+		completion_reward = {
+		add_ideas = {
+		JAP_no_longer_weak_premier
+		}
+		}
 	}
 
 }
