@@ -2791,6 +2791,18 @@ country_event = { #Closing of the First Yokusan Elections
 			}
 		}
 		
+		trigger = {
+		and = {
+		power_balance_value = {
+			id = JAP_IRAA_balance
+			value < 0
+			}
+		power_balance_value = {
+			id = JAP_IRAA_balance
+			value > -0.38
+			}
+		}
+		}
 		
 		create_country_leader = {
 			name = "Hirohito"
@@ -2822,8 +2834,19 @@ country_event = { #Closing of the First Yokusan Elections
 				
 			}
 		}
-		
-		
+		trigger = {
+		and = {
+		power_balance_value = {
+			id = JAP_IRAA_balance
+			value > 0
+			}
+		power_balance_value = {
+			id = JAP_IRAA_balance
+			value < 0.38
+			}
+		}
+		}
+
 		complete_national_focus = JAPKONOE_konoe_controls_the_center
 		complete_national_focus = JAPKONOE_he_bends_to_the_right
 	}
@@ -3082,7 +3105,7 @@ country_event = { #leftist Election
 		
 		remove_all_ministers = yes
 		add_ideas = {
-			JAP_Asanuma_Inejiro_hog_rso
+			JAP_Inejiro_Asanuma_hog_rso
 			JAP_Akamatsu_Katsumaro_for_tot
 			JAP_Atsutaro_Suyama_eco_tot
 			JAP_Miwa_Juso_sec_tot
@@ -8449,7 +8472,7 @@ country_event = { #
 		name = japan_new_event.132.a
 		ai_chance = { base = 100 }
 		trigger = {
-		has_idea = JAP_Asanuma_Inejiro_hog_rso
+		has_idea = JAP_Inejiro_Asanuma_hog_rso
 		}
 		load_focus_tree = socdem-japan
 		set_country_flag = japan_social_totalitarian
