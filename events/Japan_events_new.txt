@@ -2883,6 +2883,7 @@ country_event = { #Rightist Election
 	immediate = {
 	hidden_effect = {
 	load_focus_tree = japan-iraa-rightist
+	complete_national_focus = JAPIRAARIGHTIST_rightists_dominate_the_conference
 	}
 	}
 	
@@ -2907,7 +2908,8 @@ country_event = { #Rightist Election
 			ruling_party = paternal_autocrat
 			elections_allowed = no
 		}
-		
+		complete_national_focus = JAPIRAARIGHTIST_militarist_victory
+		complete_national_focus = JAPIRAARIGHTIST_hayashisvictory
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Hayashi_Senjuro_hog_pau
@@ -2927,6 +2929,8 @@ country_event = { #Rightist Election
 				
 			}
 		}
+		complete_national_focus = JAPIRAARIGHTIST_militarist_victory
+		complete_national_focus = JAPIRAARIGHTIST_kiichirosvictory
 	create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -2967,7 +2971,7 @@ country_event = { #Rightist Election
 			ruling_party = national_populist
 			elections_allowed = no
 		}
-		
+		complete_national_focus = JAPIRAARIGHTIST_kuharasnationaldominance
 		remove_all_ministers = yes
 		add_ideas = {
 			JAP_Kuhara_Fusanosuke_hog_npo
@@ -8482,7 +8486,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #The Ozaki Incident
 	id = japan_new_event.133
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.133"}
 	title = japan_new_event.133.title
@@ -8493,11 +8497,16 @@ country_event = { #
 	option = { #
 		name = japan_new_event.133.a
 		ai_chance = { base = 100 }
-		
+		add_manpower = -1
+		add_stability = -0.05
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.15
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Crushing the Socialist-Nationalists
 	id = japan_new_event.134
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.134"}
 	title = japan_new_event.134.title
@@ -8508,11 +8517,20 @@ country_event = { #
 	option = { #
 		name = japan_new_event.134.a
 		ai_chance = { base = 100 }
-		
+		add_manpower = -100
+		add_stability = -0.05
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.15
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = -0.1
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Trial of Fumimaro Konoe
 	id = japan_new_event.135
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.135"}
 	title = japan_new_event.135.title
@@ -8523,7 +8541,16 @@ country_event = { #
 	option = { #
 		name = japan_new_event.135.a
 		ai_chance = { base = 100 }
-		
+		add_manpower = -10
+		add_stability = -0.05
+		add_popularity = {
+		ideology = totalist
+		popularity = -0.15
+		}
+		add_popularity = {
+		ideology = national_populist
+		popularity = -0.1
+		}
 	}
 }
 
