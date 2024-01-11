@@ -348,10 +348,336 @@ QIE_conquer_lands_socialist = {
 		}
 	}
 
+QIE_PUPPET_KOREA = {
+		icon = generic_ignite_civil_war
+		available = {
+			527 = {
+			is_owned_by = QIE
+			}
+			525 = {
+			is_owned_by = QIE
+			}
 
 
+		}
+		
+		visible = {
+			tag = QIE
+			has_completed_focus = QIE_beyond_the_han
+		}
+		cost = 10
+		days_remove = 15
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		release = KOR
+		puppet = KOR
+		KOR = {
+		set_cosmetic_tag = KOR_MONBOL
+			if = {
+			limit = {
+			OR = {
+			has_government = syndicalist
+			has_government = radical_socialist
+			}
+			}	
+			add_popularity = {
+			ideology = totalist 
+			popularity = 0.55
+			}
+			}
+			if = {
+			limit = {
+			QIE = {
+			has_socialist_government = yes
+			}
+			}
+			set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Yi Kang"
+				desc = "KOR_yi_kang_leader_desc"
+				picture = "gfx/leaders/KOR/Portrait_KOR_Yi_Kang.png"
+				expire = "1.1.1"
+				ideology = red_junta_subtype
+			}
+			}
+			else = {
+			set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Yi Kang"
+				desc = "KOR_yi_kang_leader_desc"
+				picture = "gfx/leaders/KOR/Portrait_KOR_Yi_Kang.png"
+				expire = "1.1.1"
+				ideology = red_tinted_autocracy_subtype
+			}
+			add_popularity = {
+			ideology = paternal_autocrat 
+			popularity = 0.60
+			}
+		}
+	}
+	}
+}
 
+QIE_PUPPET_JAP = {
+	icon = generic_ignite_civil_war
+		available = {
+			282 = {
+			is_owned_by = QIE
+			}
+		}
+	visible = {
+		tag = QIE
+		has_completed_focus = QIE_beyond_the_han
+		}
+		cost = 10
+		days_remove = 15
+		fire_only_once = yes
+		complete_effect = {	
+		}
+		remove_effect = {
+		set_temp_variable = { tag_to_release = JAP }
+		release_targeted_tag = yes
+		JAP = {
+		set_cosmetic_tag = JAP_SANZO_MONBOL
+			if = {
+			limit = {
+			OR = {
+			has_government = syndicalist
+			has_government = radical_socialist
+			}
+			}	
+			add_popularity = {
+			ideology = totalist 
+			popularity = 0.50
+			}
+			}
+			if = {
+			limit = {
+			QIE = {
+			has_socialist_government = yes
+			}
+			}
+			set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1.1.1"
+				ideology = red_junta_subtype
+			}
+			}
+			else = {
+			set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Hirohito"
+				picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+				expire = "1.1.1"
+				ideology = red_tinted_autocracy_subtype
+			}
+			add_popularity = {
+			ideology = paternal_autocrat 
+			popularity = 0.55
+			}
+		}
+	}
+	}
+}
 
+QIE_PUPPET_INDOCHINA = {
+	icon = generic_ignite_civil_war
+		available = {
+			286 = {
+			is_owned_by = QIE
+			}
+			670 = {
+			is_owned_by = QIE
+			}
+			826 = {
+			is_owned_by = QIE
+			}
+		}
+	visible = {
+		tag = QIE
+		has_completed_focus = QIE_beyond_the_han
+		}
+		cost = 10
+		days_remove = 15
+		fire_only_once = yes
+		complete_effect = {	
+		}
+		remove_effect = {
+		INC = {
+			add_state_core = 827
+			add_state_core = 286
+			add_state_core = 856
+			add_state_core = 671
+			add_state_core = 857
+			add_state_core = 750
+			add_state_core = 826
+			add_state_core = 825
+			add_state_core = 670
+			add_state_core = 882
+		}
+		set_temp_variable = { tag_to_release = INC }
+		release_targeted_tag = yes
+		INC = {
+		set_cosmetic_tag = INC_Kingdom
+			if = {
+			limit = {
+			OR = {
+			has_government = syndicalist
+			has_government = radical_socialist
+			}
+			}	
+			add_popularity = {
+			ideology = totalist 
+			popularity = 0.50
+			}
+			}
+			if = {
+			limit = {
+			QIE = {
+			has_socialist_government = yes
+			}
+			}
+			set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Souphanouvong"
+				picture = "gfx/leaders/LAO/Portrait_Laos_Souphanouvong.png"
+				expire = "1.1.1"
+				ideology = red_junta_subtype
+			}
+			}
+			else = {
+			set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Souphanouvong"
+				picture = "gfx/leaders/LAO/Portrait_Laos_Souphanouvong.png"
+				expire = "1.1.1"
+				ideology = red_tinted_autocracy_subtype
+			}
+			add_popularity = {
+			ideology = paternal_autocrat 
+			popularity = 0.55
+			}
+		}
+	}
+	}
+}
 
+QIE_PUPPET_RUSSIA = {
+	icon = generic_ignite_civil_war
+		available = {
+			219 = {
+			is_owned_by = QIE
+			}
+			195 = {
+			is_owned_by = QIE
+			}
+			637 = {
+			is_owned_by = QIE
+			}
+			574 = {
+			is_owned_by = QIE
+			}
+			562 = {
+			is_owned_by = QIE
+			}
+			565 = {
+			is_owned_by = QIE
+			}
+		}
+	visible = {
+		tag = QIE
+		has_completed_focus = QIE_beyond_the_han
+		}
+		cost = 10
+		days_remove = 15
+		fire_only_once = yes
+		complete_effect = {	
+		}
+		remove_effect = {
+		RUS = {
+			add_state_core = 637
+			add_state_core = 574
+			add_state_core = 562
+			add_state_core = 565
+		}
+		set_temp_variable = { tag_to_release = RUS }
+		release_targeted_tag = yes
+		RUS = {
+		set_cosmetic_tag = RUS_QIEBOL_PUPPET
+		set_party_name = {
+				ideology = totalist
+				long_name = TRM_Mlad_party_long
+				name = TRM_Mlad_party
+			}	
+			if = {
+			limit = {
+			OR = {
+			has_government = syndicalist
+			has_government = radical_socialist
+			}
+			}	
+			add_popularity = {
+			ideology = totalist 
+			popularity = 0.50
+			}
+			}
+			if = {
+			limit = {
+			QIE = {
+			has_socialist_government = yes
+			}
+			}
+			set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Boris I"
+				picture = "gfx/leaders/RUS/Portrait_RUS_Boris_Annenkov.png"
+				expire = "1.1.1"
+				ideology = red_junta_subtype
+			}
+			}
+			else = {
+			set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Boris I"
+				picture = "gfx/leaders/RUS/Portrait_RUS_Boris_Annenkov.png"
+				expire = "1.1.1"
+				ideology = red_tinted_autocracy_subtype
+			}
+			add_popularity = {
+			ideology = paternal_autocrat 
+			popularity = 0.55
+			}
+		}
+	}
+	}
 }
 
