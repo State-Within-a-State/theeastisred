@@ -8579,7 +8579,7 @@ country_event = { #Trial of Fumimaro Konoe
 	}
 }
 
-country_event = { #
+country_event = { #Revenge of the Zaibatsu
 	id = japan_new_event.136
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.136"}
 	title = japan_new_event.136.title
@@ -8590,7 +8590,37 @@ country_event = { #
 	option = { #
 		name = japan_new_event.136.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = paternal_autocrat
+			election_frequency = 48
+			elections_allowed = no
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Zaibatsu_Council_hog_pau
+			JAP_Kishi_Nobusuke_eco_npo
+			JAP_Honda_Kumataro_for_pau
+			JAP_Fujie_Keisuke_sec_pau
+		}
+		load_focus_tree = zaibatsu-tree
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_zaibatsu_long
+			name = JAP_party_zaibatsu
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_zaibatsu_long
+			name = JAP_party_zaibatsu
+		}
+		set_cosmetic_tag = JAP_ZAIBATSU
+		complete_national_focus = ZAIJAP_the_consolidation_of_japanese_industry
+		set_country_flag = factionalism_japan_no
+		set_country_leader_ideology = right_technocracy_subtype
 	}
 }
 
