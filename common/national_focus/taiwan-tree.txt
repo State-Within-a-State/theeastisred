@@ -1512,10 +1512,7 @@ focus_tree = {
 		}
 		available = {
 			NOT = {
-				OR = {
-					has_country_flag = TAI_japan_taiwan_revolution
-					has_war_with = JAP
-				}
+				has_war_with = JAP
 			}
 		}
 		prerequisite = { focus = TAISOC_from_the_fires_of_the_2nd_wushe_rebellion  focus = TAISOC_the_sun_has_set  }
@@ -3908,12 +3905,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = TAIECONO_a_world_of_friends  }
 		mutually_exclusive = { focus = TAIECONO_forming_the_taiwanese_nation  }
+		available = { 
+		or = {
+		has_completed_focus = TAISOC_call_together_the_united_front
+		has_completed_focus = TAIMON_linsdominanceovertaiwan
+		}
+		}
 		completion_reward = {
 		every_state = {
 			limit = {
 				OR = {
 				is_core_of FNG
 				is_claimed_by = FNG
+				is_owned_by = FNG
 				}
 			}
 			TAI = {
@@ -3939,6 +3943,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = TAIECONO_a_world_of_friends  }
 		mutually_exclusive = { focus = TAIECONO_for_the_chinese_cause  }
+		available = {
+		has_completed_focus = TWI_the_wushe_rebellion
+		}
 		completion_reward = {
 		add_war_support = 0.1
 		add_political_power = 50
