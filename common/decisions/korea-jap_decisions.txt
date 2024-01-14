@@ -20,11 +20,18 @@ KOR_great_uprising_category = {
 		}
 
 		available = {
-			527 = {
-			is_core_of = JAP
-			}
-			525 = {
-			is_core_of = JAP
+			OR = {
+				AND = {
+					527 = {
+					is_core_of = JAP
+					}
+					525 = {
+					is_core_of = JAP
+					}
+				}
+				
+				check_variable = { JAP_KOR_INT > 85 }
+				
 			}
 		}
 
@@ -40,6 +47,7 @@ KOR_great_uprising_category = {
 		days_mission_timeout = 700
 		is_good = no
 		fire_only_once = yes
+		selectable_mission = yes
 		timeout_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_fading_sun_mission"
 			country_event = {
@@ -51,6 +59,9 @@ KOR_great_uprising_category = {
 		cancel_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision cancelled JAP_fading_sun_mission"
 			clr_global_flag = JAP_speed_up_collapse
+		}
+		complete_effect = {
+		
 		}
 	}
 	
