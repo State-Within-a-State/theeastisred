@@ -4672,6 +4672,7 @@ country_event = { #Social-Democrats
 				has_game_rule = { rule = JAP_SNAP_ELECTIONS option = JAP_SNAP_ELECTIONS_SHAKAI_TAISHUTO_TOT }
 			}
 		}
+		set_cosmetic_tag = JAP_socialist_empire
 		set_politics = {
 		ruling_party = totalist
 		}
@@ -4729,6 +4730,7 @@ country_event = { #Social-Democrats
 				}
 			}
 		}
+		set_cosmetic_tag = JAP_socialist_empire
 		country_event = {###1940 Election
 			id = japan_new_event.63
 			days = 1374
@@ -4895,6 +4897,7 @@ country_event = { #Victory of the Tokohai
 			JAP_Dai_Oishi_eco_tot
 			JAP_Akita_Kiyoshi_sec_ade
 		}
+		set_cosmetic_tag = JAP_TOKOHAI
 		set_temp_variable = { coalition_partner_var = token:national_populist }
 		add_to_coalition = yes
 	}
@@ -7770,6 +7773,16 @@ country_event = { #Nakano Above All
 	}
 	
 	option = { #
+		name = japan_new_event.109.c
+		ai_chance = { base = 100 }
+		add_popularity = {
+		ideology = ROOT
+		popularity = 1
+		}
+		set_cosmetic_tag = JAP_TOHOKAI_TWO 
+	}
+	
+	option = { #
 		name = japan_new_event.109.b
 		ai_chance = { base = 100 }
 		add_popularity = {
@@ -8624,7 +8637,7 @@ country_event = { #Revenge of the Zaibatsu
 	}
 }
 
-country_event = { #
+country_event = { #Taiwan Slips Through Our Fingers
 	id = japan_new_event.137
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.137"}
 	title = japan_new_event.137.title
@@ -8635,6 +8648,22 @@ country_event = { #
 	option = { #
 		name = japan_new_event.137.a
 		ai_chance = { base = 100 }
+		add_stability = = -0.05
+		add_war_support = -0.1
+		
+	}
+	
+	option = { #
+		name = japan_new_event.137.b
+		ai_chance = { base = 100 }
+		trigger = {
+		is_ai = no
+		}
+		add_war_support = 0.1
+		declare_war_on = {
+				target = TAI
+				type = annex_everything
+			}
 		
 	}
 }
