@@ -54,6 +54,7 @@ KOR_great_uprising_category = {
 			id = japfor.83
 			days = 1
 			}
+			set_country_flag = JAP_korea_revolt_now
 		}
 
 		cancel_effect = {
@@ -132,6 +133,31 @@ KOR_great_uprising_category = {
 				var = JAP_KOR_INT
 				value = 2
 				tooltip = JAP_KOR_INT_increase_tt
+			}
+		}
+	}
+	
+	KOR_formal_annexation = {
+		allowed = {
+			tag = JAP
+		}
+		available = {
+			has_country_flag = JAP_korea_revolt_now
+		}
+		visible = {
+			JAP = {
+			owns_state = 527
+			owns_state = 525
+			}
+		}
+		days_remove = 10
+		fire_only_once = no
+		cost = 20
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision AOG_give_guns_to_lep"
+			JAP = {
+				add_state_core = 527
+				add_state_core = 525
 			}
 		}
 	}
