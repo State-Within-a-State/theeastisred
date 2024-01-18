@@ -1706,6 +1706,19 @@ country_event = { #Concern Over Army Radicalization
 country_event = { #League of Blood Incident
 	id = japan_new_event.25
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.25"}
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = JAP_chaplin_stay_longer
+				}
+				country_event = {
+					id = japan_new_event.139
+					days = 2
+				}
+			}
+		}
+	}
 	title = japan_new_event.25.title
 	desc = {
 		text = japan_new_event.25.no_kill
@@ -7582,7 +7595,7 @@ country_event = { #Death of Aso Hisashi
 		set_cosmetic_tag = JAP_HIRANO
 		remove_all_ministers = yes
 		add_ideas = {
-		JAP_Rikizo_Hirano_hog_tot
+		JAP_Hirano_Rikizo_hog_tot
 		JAP_Minoru_Mizuno_eco_tot
 		JAP_Tadashi_Kodaira_for_tot
 		JAP_Azuma_Takashi_sec_tot
@@ -8670,33 +8683,39 @@ country_event = { #Taiwan Slips Through Our Fingers
 	}
 }
 
-country_event = { #
+country_event = { #Charlie Chaplin Visits Japan
 	id = japan_new_event.138
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.138"}
 	title = japan_new_event.138.title
 	desc = japan_new_event.138.desc
-	#picture = 
+	picture = "chaplin_visits_japan"
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #May He Enjoy His Stay
 		name = japan_new_event.138.a
 		ai_chance = { base = 100 }
 		
 	}
+	
+	option = { #Encourage Him to Stay a Bit Long
+		name = japan_new_event.138.b
+		ai_chance = { base = 100 }
+		set_country_flag = JAP_chaplin_stay_longer
+	}
 }
 
-country_event = { #
+country_event = { #Death of Charli Chaplin
 	id = japan_new_event.139
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.139"}
 	title = japan_new_event.139.title
 	desc = japan_new_event.139.desc
-	#picture = 
+	picture = "chaplin_visits_japan"
 	
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.139.a
 		ai_chance = { base = 100 }
-		
+		add_manpower = -1
 	}
 }
 
