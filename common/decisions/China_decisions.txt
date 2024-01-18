@@ -9,13 +9,11 @@ chinese_unification = {
 		priority = 4000
 		allowed = {
 			OR = {
-				is_chinese_tag = yes
-				tag = TAN
+				tag = TIB
 				tag = TAI
 			}
 		}
-		visible = {
-			has_country_flag = is_chinese_national_leader
+		available = {
 			OR = {
 				is_in_faction = no
 				is_faction_leader = yes
@@ -78,11 +76,10 @@ chinese_unification = {
 			
 			
 		}
-		available = {
-			is_subject = no
-			has_civil_war = no
-			
+		visible = {
+			china_is_potential_government = yes
 		}
+
 
 		days_remove = 1
 		cost = 0
@@ -96,9 +93,17 @@ chinese_unification = {
 
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove assume_chinese_leadership"
+			set_country_flag = has_united_china
+			set_global_flag = china_united
 			add_timed_idea = {
 				idea = unite_china_justification_idea
 				days = 150
+			}
+			hidden_effect = {
+				news_event = {
+					id = worldnews.413
+					days = 1
+				}
 			}
 			TIB_unification_of_china = yes
 			TAI_unification_of_china = yes
