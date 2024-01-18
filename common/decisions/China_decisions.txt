@@ -11,6 +11,7 @@ chinese_unification = {
 			OR = {
 				is_chinese_tag = yes
 				tag = TAN
+				tag = TAI
 			}
 		}
 		visible = {
@@ -18,6 +19,7 @@ chinese_unification = {
 			OR = {
 				is_in_faction = no
 				is_faction_leader = yes
+				tag = TAI
 			}
 			AND = {
 				FNG = {
@@ -94,6 +96,10 @@ chinese_unification = {
 
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove assume_chinese_leadership"
+			add_timed_idea = {
+				idea = unite_china_justification_idea
+				days = 150
+			}
 			TIB_unification_of_china = yes
 			TAI_unification_of_china = yes
 		}
@@ -106,6 +112,7 @@ chinese_unification = {
 			OR = {
 				is_chinese_tag = yes
 				tag = TAN
+				tag = TAI
 			}
 		}
 		visible = {
@@ -113,10 +120,15 @@ chinese_unification = {
 			OR = {
 				is_in_faction = no
 				is_faction_leader = yes
+				tag = TAI
 			}
 			NOT = {
 				is_in_faction_with = event_target:current_china_leader
 				has_country_flag = is_chinese_national_leader
+			}
+			if = { 
+				limit = { tag = TAI }
+				has_completed_focus = TAIECONO_for_the_chinese_cause
 			}
 			if = {
 				limit = { tag = TAN }
