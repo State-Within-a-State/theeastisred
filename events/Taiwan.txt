@@ -1469,10 +1469,9 @@ country_event = { #Promoting Esperanto Towards the World
 	name = taiwan.32.a
 		add_political_power = 50
 	}
-	option = { #We Shall Usher In a New Goal
+	option = { 
 	name = taiwan.32.b
 		set_cosmetic_tag = TAI_ESPERANTO_WORLD_1
-		country_event = taiwan.33
 		every_state = {
 		add_core_of = TAI
 		}
@@ -1485,31 +1484,35 @@ country_event = { #Promoting Esperanto Towards the World
 		}
 		}
 	}
-	
-}
-
-country_event = { #Promoting Esperanto Towards the World 
-	id = taiwan.33
-	title = "Flag Picker"
-	desc = "Which Flag Shall Show Our Devotion to the Esperanto Movement"
-	picture = "GFX_report_event_TWI_taiwan_info"
-
-	is_triggered_only = yes
-
-
-	
-	option = { #Hell No
-	name = "Green And White With Green Star"
-		set_cosmetic_tag = TAI_ESPERANTO_WORLD_1
-	}
-	option = { #We Shall Usher In a New Goal
-	name = "Red And White with a Green Star"
-		set_cosmetic_tag = TAI_ESPERANTO_WORLD_2
-	}
-	
-	option = { #We Shall Usher In a New Goal
-	name = "Green and White With No Star"
+	option = { 
+	name = taiwan.32.c
 		set_cosmetic_tag = TAI_ESPERANTO_WORLD_3
+		every_state = {
+		add_core_of = TAI
+		}
+		every_country = {
+		TAI = {
+			create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PREV
+			}
+		}
+		}
 	}
-	
+	option = { #We Shall Usher In a New Goal
+	name = taiwan.32.d
+		set_cosmetic_tag = TAI_ESPERANTO_WORLD_2
+		every_state = {
+		add_core_of = TAI
+		}
+		every_country = {
+		TAI = {
+			create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PREV
+			}
+		}
+		}
+	}
+
 }
