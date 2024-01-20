@@ -38,7 +38,10 @@ TAI_empower_local_police_force = {
 		}
 		
 		visible = {
+			OR = {
 			tag = TAI
+			tag = JAP
+			}
 			
 		}
 		cost = 10
@@ -54,7 +57,7 @@ TAI_empower_local_police_force = {
 			
 			add_manpower = 100
 			add_to_variable = {
-					var = JAP_TWI_INT
+					var = TAI.JAP_TWI_INT
 					value = 1
 					tooltip = JAP_TWI_INT_increase_tt
 				}
@@ -139,11 +142,15 @@ TAI_empower_local_police_force = {
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = integration_above_eight_taiwan_tt		
-					check_variable = { var = TAI.JAP_TWI_INT > 85 }
+					check_variable = { var = TAI.JAP_TWI_INT > 75 }
 				}
 				
 				TAI = {
 					has_completed_focus = TAIMON_united_under_the_sun
+				}
+				
+				JAP = {
+				owns_state = 524
 				}
 			}
 			TAI = {
@@ -177,6 +184,11 @@ TAI_empower_local_police_force = {
 				}
 				change_tag_from = TAI
 			}
+			JAP = {
+			add_state_core = 524
+			}
+			set_country_flag JAP_taiwan_annexed
+			
 			
 			
 			
