@@ -399,6 +399,12 @@ focus_tree = {
 		prerequisite = { focus = JAP_BLACKDRAG_unitary_state  }
 		mutually_exclusive = { focus = JAP_BLACKDRAG_japanesekoreanmongolian_federation  } mutually_exclusive = { focus = JAP_BLACKDRAG_reach_the_8_corners_of_the_world  }
 		completion_reward = {
+		if = {
+			limit = { 
+				has_cosmetic_tag = JAP_roerich
+			}
+			set_cosmetic_tag = JAP_ROERICH_PAN_ASIA
+		}
 		every_state = {
 			limit = {
 				is_on_continent = asia
@@ -429,14 +435,24 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
+		OR = {
+		has_cosmetic_tag = JAP_roerich
 		has_completed_focus = JAP_BLACKDRAG_oomoto_faction_victory
+		}
 		}
 		prerequisite = { focus = JAP_BLACKDRAG_unitary_state  }
 		mutually_exclusive = { focus = JAP_BLACKDRAG_japanesekoreanmongolian_federation  } mutually_exclusive = { focus = JAP_BLACKDRAG_secure_pan_asia  }
 		completion_reward = {
+		if = {
+			limit = {
+				has_cosmetic_tag = JAP_roerich
+			}
+		set_cosmetic_tag = JAP_ROERICH_WORLD
+		}
+		else = {
 		set_cosmetic_tag = JAP_oomoto_world
+		}
 		every_state = {
-			
 			JAP = {
 				add_state_core = PREV
 			}
