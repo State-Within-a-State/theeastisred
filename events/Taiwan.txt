@@ -1517,3 +1517,59 @@ country_event = { #Promoting Esperanto Towards the World
 	}
 
 }
+
+country_event = { #The Sun Rises Again
+	id = taiwan.33
+	title = "The Imperial Order Stands Strong"
+	desc = "Do we cuck to the Japanese again?"
+	picture = "GFX_report_event_TWI_taiwan_info"
+	trigger = {
+		tag = TAI
+		has_completed_focus = TAIMON_the_loss_of_an_empire  
+		has_global_flag = JAP_civil_war_over
+		not = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Cuong De"
+				}
+		}
+		JSR = {
+			exists = no
+			}
+		}
+	option = { #CUCKED
+	name = "Back into Japan's Arms"
+		JAP = {
+		puppet = TAI
+		}
+		set_cosmetic_tag = JAP_TWI
+		set_country_flag = TAI_puppet
+		if = {
+		limit = {
+			has_country_leader = {
+				ruling_only = yes
+				name = "Yasuhito"
+				}
+		}
+		set_politics = { ruling_party = paternal_autocrat }
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.4
+		}
+		}
+	}
+	option = {
+	name = "We Will Not Give Up Our Newly Freedom!"
+	trigger = {
+	has_country_leader = {
+				ruling_only = yes
+				name = "Lin Xiongzheng"
+				}
+	}
+	add_opinion_modifier = {
+			target = JAP
+			modifier = faction_traitor
+		}
+	}
+
+}
