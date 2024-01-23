@@ -4,73 +4,31 @@
 
 
 chinese_unification = {
-	declare_chinese_unification = { #for new rd country tags that unite china
+	declare_chinese_unification = { #for super events
 		icon = generic_speech
 		priority = 4000
 		allowed = {
 			OR = {
-				tag = TIB
+				is_han_chinese_tag = yes
+				tag = TAN
 				tag = TAI
+				tag = TIB
 			}
 		}
 		available = {
 			is_subject = no
-			AND = {
-				FNG = {
-					exists = no
-				}
-				QIE = {
-					exists = no
-				}
-				SHX = {
-					exists = no
-				}
-				SQI = {
-					exists = no
-				}
-				LEP = {
-					exists = no
-				}
-				CHI = {
-					exists = no
-				}
-				ANQ = {
-					exists = no
-				}
-				GXC = {
-					exists = no
-				}
-				HNN = {
-					exists = no
-				}
-				SZC = {
-					exists = no
-				}
-				YUN = {
-					exists = no
-				}
-				XSM = {
-					exists = no
-				}
-				
-				SIK = {
-					OR = {
-						exists = no
-						is_ally_with = TIB
-						is_subject_of = TIB
-					}
-				}
-				
-				MON = {
-					OR = {
-						exists = no
-						is_ally_with = TIB
-						is_subject_of = TIB
-					}
-				}
-			}
-			
-			
+			owns_state = 716			
+			owns_state = 608
+			owns_state = 597
+			owns_state = 613
+			owns_state = 592
+			owns_state = 325
+			owns_state = 605
+			owns_state = 1072
+			owns_state = 604
+			owns_state = 617
+			owns_state = 322
+			owns_state = 612
 		}
 		visible = {
 			china_is_potential_government = yes
@@ -89,18 +47,6 @@ chinese_unification = {
 
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove assume_chinese_leadership"
-			set_country_flag = has_united_china
-			set_global_flag = china_united
-			add_timed_idea = {
-				idea = unite_china_justification_idea
-				days = 150
-			}
-			hidden_effect = {
-				news_event = {
-					id = worldnews.413
-					days = 1
-				}
-			}
 			TIB_unification_of_china = yes
 			TAI_unification_of_china = yes
 		}
@@ -126,6 +72,10 @@ chinese_unification = {
 			if = { 
 				limit = { tag = TAI }
 				has_completed_focus = TAIECONO_for_the_chinese_cause
+			}
+			if = { 
+				limit = { tag = TIB }
+				has_country_flag = TIB_unite_china
 			}
 			if = {
 				limit = { tag = TAN }
@@ -284,6 +234,8 @@ chinese_unification = {
 			OR = {
 				is_han_chinese_tag = yes
 				tag = TAN
+				tag = TAI
+				tag = TIB
 			}
 			NOT = {
 				tag = QIE
@@ -359,6 +311,31 @@ chinese_unification = {
 				}
 			}
 			else_if = {
+				limit = { tag = TIB }
+					if = {
+						limit = {
+						has_country_flag = guohua_socialist_tibet
+						}
+					set_cosmetic_tag = TIB_COMMIE_2
+					}
+					if = {
+						limit = {
+						has_country_flag = yuexe_socialist_tibet
+						}
+					set_cosmetic_tag = TIB_YUEXE_PRC
+					}
+					if = {
+						limit = {
+						has_country_flag = jigme_socialist_tibet
+						}	
+						set_cosmetic_tag = TIB_JIGME_PRC
+					}
+				}
+				else_if = {
+					limit = { tag = TAI} #TAIWAN FLAGS
+					set_cosmetic_tag = TIB_JIGME_PRC
+			}
+			else_if = {
 				limit = {
 					OR = {
 						is_ruled_by_left_kmt = yes
@@ -428,7 +405,10 @@ chinese_unification = {
 			else = {
 				set_cosmetic_tag = ROC
 			}
-			set_capital = { state = 608 }
+			country_event = {
+					id = tibet_socialist.6 #capital
+					days = 1
+				}
 			add_timed_idea = {
 				idea = unite_china_justification_idea
 				days = 150
