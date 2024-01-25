@@ -407,6 +407,16 @@ country_event = {# Mount Tai Outraged at Zongchang
 				days = 4
 			}
 		}
+	}	
+	option = { #burn them all
+		name = "Why not give fire a try?" 
+		add_political_power = -15
+		hidden_effect = {
+			country_event = {
+				id = shandong.474
+				days = 10
+			}
+		}
 	}
 }
 
@@ -3733,11 +3743,7 @@ country_event = {#
 			add_ideas = {
 			SQI_xiong_xiling_hog_ade
 			}
-		}
-		option = {
-		name = "Call On Reservists"
-		}
-	
+		}	
 	}
 	
 	country_event = {#
@@ -3753,26 +3759,25 @@ country_event = {#
 	option = {
 		
 		name = shandong.470.a
-		set_politics = { ruling_party = national_populist }
 		
 		set_country_leader_name = {
-				ideology = national_populist
+				ideology = authoritarian_democrat
 				name = "Xiong Shili"
 			}
 			
 		set_country_leader_portrait = {
-				ideology = national_populist
+				ideology = authoritarian_democrat
 				portrait = "gfx/leaders/SQI/Portrait_Xiong_Shili.png"
 			}
+		
 			remove_ideas = {
 			SQI_xiong_xiling_hog_ade
 			}
 			add_ideas = {
 			SQI_xiong_shili_hog_npo
 			}
-			set_country_leader_ideology = occultism_subtype
+			set_country_leader_ideology = neo_confucianism_subtype
 		}
-		
 		
 		
 		option = {
@@ -3795,30 +3800,27 @@ country_event = {#
 	is_triggered_only = yes
 
 	option = {
-		set_cosmetic_tag = SQI_RED_TWO
 		name = shandong.471.a
-		set_politics = { ruling_party = totalist }
+		set_politics = { ruling_party = radical_socialist }
 		set_country_leader_name = {
-				ideology = totalist
+				ideology = radical_socialist
 				name = "Xiong Shili"
 			}
 			
 		set_country_leader_portrait = {
-				ideology = totalist
+				ideology = radical_socialist
 				portrait = "gfx/leaders/SQI/Portrait_Xiong_Shili.png"
 			}
 		
 			
 			set_party_name = { 
-				ideology = totalist
+				ideology = radical_socialist
 				name = "Red Swastika Society"
 					
 			}
-			
-			
-			set_country_leader_ideology = esoteric_leninism_subtype
+			set_country_leader_ideology = radsoc_esoteric_leninism_subtype
+			add_authdem_to_coalition = yes
 		}
-		
 		option = {
 		name = "Ignore These Rants. Stay the Current Course"
 		}
@@ -3827,42 +3829,45 @@ country_event = {#
 	country_event = {#
 	id = shandong.472
 	immediate = { log = "[GetDateText]: [Root.GetName]: event shandong.455" }
-	title = "Xiong Xiling Assassinated"
-	desc = shandong.455.d
+	title = "Attempted Assassination on Xiong Xiling"
+	desc = shandong.472.d
 	picture = GFX_rus_black_tsar_event
 
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {
-		
 		name = shandong.472.a
+		set_party_name = { 
+				ideology = paternal_autocrat
+				name = "Red Swastika Society"
+			}
+		add_authdem_to_coalition = yes
+		set_politics = { ruling_party = paternal_autocrat }
 		add_ideas = {
 		SQI_mao_yenwan_hog_npo
 		}
-		set_politics = { ruling_party = national_populist }
-		
-		set_country_leader_name = {
-				ideology = national_populist
-				name = "Mao Yanwen"
-			}
-			
-		set_country_leader_portrait = {
-				ideology = national_populist
-				portrait = "gfx/leaders/SQI/Portrait_SQI_Mao_Yenwan.png"
-			}
-			
-			
+		create_country_leader = {
+			name = "Mao Yanwen"
+			picture = "gfx/leaders/SQI/Portrait_SQI_Mao_Yenwan.png"
+			expire = "1965.1.1"
+			ideology = pataut_occultism_subtype
+		}
 		}
 		
 		option = {
 		name = shandong.472.b
 		set_politics = { ruling_party = social_democrat }
-		set_country_leader_ideology = socdem_buddhist_socialism_subtype
+		set_country_leader_name = {
+				ideology = social_democrat
+				name = "Xiong Xiling"
+			}
 		set_country_leader_portrait = {
 				ideology = social_democrat
-				portrait = "gfx/leaders/SQI/Portrait_Xiong_Xiling.png"
+				portrait = "gfx/leaders/SQI/Portrait_SQI_Xiong_Xiling.png"
 			}
+			set_country_leader_ideology = socdem_buddhist_socialism_subtype
+			add_authdem_to_coalition = yes
 		}
 	
 	}
@@ -3881,14 +3886,6 @@ country_event = {#
 	option = {
 		
 		name = "Keep an Eye On Them"
-		hidden_effect = {
-		country_event = {
-		id = shandong.459
-		days = 3
-		}
-		
-		
-		}
 		}
 		
 		
@@ -3945,14 +3942,7 @@ country_event = {#
 			}
 			
 			
-		}
-		
-		option = {
-		
-		name = "Send in the Troops"
-		
-		}
-		
+		}		
 		
 	
 	}
@@ -3971,7 +3961,7 @@ country_event = {#
 		
 		name = "The Liberals Secure the Province"
 		set_politics = { ruling_party = social_liberal }
-		set_country_leader_ideology = social_liberal_subtype
+		set_country_leader_ideology = national_liberalism_subtype
 		}
 		
 		option = {
@@ -4014,7 +4004,6 @@ country_event = {#
 	option = {
 		
 		name = "We shall State True to Our Own Cause"
-		complete_national_focus = SQI_our_own_republic
 		}
 		option = {
 		
@@ -4033,6 +4022,26 @@ country_event = {#
 			}
 			
 			set_country_leader_ideology = radsoc_tridemism_subtype
+		}
+		option = {
+		name = "Incorporate the Mainline KMT Stance but Stay Independent"
+		add_socdem_to_coalition = yes
+		set_politics = { ruling_party = radical_socialist }
+		set_country_leader_name = {
+				ideology = radical_socialist
+				name = "Wen Yiduo"
+			}
+			
+		set_country_leader_portrait = {
+				ideology = radical_socialist
+				portrait = "gfx/leaders/SQI/Portrait_SQI_Wen_Yiduo.png"
+			}
+			set_country_leader_ideology = left_nationalism_subtype
+		set_party_name = { 
+				ideology = radical_socialist
+				name = "Crescent Moon Society"
+					
+			}
 		}
 		
 	
@@ -4099,13 +4108,6 @@ country_event = {#
 	option = {
 		
 		name = "Something Smells Fishy"
-		hidden_effect = {
-		country_event = {
-		id = shandong.465
-		days = 15
-		}
-		
-		}
 		}
 		
 		
@@ -4156,15 +4158,7 @@ country_event = {#
 			}
 			
 		complete_national_focus = SQITWO_the_fire_of_revolution_shines_through_shandong
-		}
-		
-		option = {
-		name = "Huzzah! We Have Crush Them and Captured Their Leading General!"
-		
-		
-		}
-		
-		
+		}		
 	
 	}
 	
@@ -4296,12 +4290,30 @@ country_event = {#
 	
 	}
 	
+	country_event = {#
+	id = shandong.469
+	immediate = { log = "[GetDateText]: [Root.GetName]: event shandong.455" }
+	title = "Shandong Says No"
+	desc = shandong.469.desc
+	picture = GFX_rus_black_tsar_event
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		
+		name = "So that just happened"
+		add_stability = -0.05
+		add_war_support = -0.03
+		add_political_power = -100
+		
+		}
 	
-	
+	}
 	
 	
 	country_event = {#
-	id = shandong.470
+	id = shandong.473
 	immediate = { log = "[GetDateText]: [Root.GetName]: event shandong.455" }
 	title = "Future of Japan"
 	desc = shandong.467.desc
@@ -4311,6 +4323,7 @@ country_event = {#
 	is_triggered_only = yes
 	immediate = {
 	hidden_effect = {
+		add_state_core = 537
 		KYU = {
 			add_state_core = 528
 			add_state_core = 526
@@ -4347,7 +4360,7 @@ country_event = {#
 			target = JAP
 			transfer_troops = yes
 		}
-		add_state_core = 528
+			add_state_core = 528
 			add_state_core = 526
 			add_state_core = 530
 			add_state_core = 529
@@ -4363,16 +4376,14 @@ country_event = {#
 		
 		option = {
 		name = "Balkanize Them"
+		annex_country = {
+			target = JAP
+			transfer_troops = yes
+		}
 		release = KYU
 			release = JSI
 			release = HOJ
 			release = JOK
-			JAP = {
-			release = KYU
-			release = JSI
-			release = HOJ
-			release = JOK
-			}
 			puppet = KYU
 			puppet = JSI
 			puppet = HOJ
@@ -4381,3 +4392,73 @@ country_event = {#
 		}
 	
 	}
+
+
+
+country_event = {#
+	id = shandong.474
+	title = "Power Vacuum in Shandong"
+	desc = shandong.474.desc
+	picture = GFX_report_event_generic_riot
+	fire_only_once = yes
+	is_triggered_only = yes
+	immediate = { 
+	hidden_effect = {
+	remove_ideas = SQI_honored_master
+	remove_ideas = SQI_flight_north
+	remove_ideas = SQI_dogmeat_general
+	remove_ideas = SQI_Rampant_drug_trade
+	random_unit_leader = {
+			limit = { has_id = 1193 }
+			set_nationality = ANQ
+		}
+		random_unit_leader = {
+			limit = { has_id = 1199 }
+			retire = yes
+		}
+		random_unit_leader = {
+			limit = { has_id = 1304 }
+			retire = yes
+	}
+	if = {
+			limit = { has_unit_leader = 1191 }
+			random_unit_leader = {
+				limit = { has_id = 1191 }			
+				remove_unit_leader = yes
+			}
+		}
+		if = {
+			limit = { has_unit_leader = 1197 }
+			random_unit_leader = {
+				limit = { has_id = 1197 }			
+				remove_unit_leader = yes
+			}
+		}
+	}
+	}
+	option = {
+		name = "The people seek spiritual guidance in these troubling times."
+		country_event = {
+		id = shandong.457 #Red Swastika Coup
+		days = 2
+		}
+		}
+		
+		option = {
+		name = "The people, now free at last from tyranny, only want more liberty."
+		country_event = {
+		id = shandong.459 #Shandong Democracy
+		days = 2
+		}
+		}
+
+	option = {
+		name = "The people, as always, wish for the end of foreign subjugation."
+		country_event = {
+		id = shandong.465 #Red bandit
+		days = 2
+		}
+		}
+	}
+
+

@@ -439,14 +439,36 @@ JAP_declare_civil_war_win_military = {
 				}
 				scoped_sound_effect = "superev_japan_army_win_cw"
 			}
+			create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_showa_statism_subtype
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+			JAP_Araki_Sadao_hog_npo
+			JAP_Okawa_Shumei_for_npo
+			JAP_Shiina_Etsusaburo_eco_npo
+			JAP_Imasu_Cho_sec_npo
+			}
+			load_focus_tree = araki-kingoro-tree
 			set_party_name = {
-				ideology = paternal_autocrat
-				long_name = "Military Administration"
-				name = "Military Administration"
+			ideology = national_populist
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+			}
+			set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_kokuhonsha_long
+			name = JAP_party_kokuhonsha
+			}
+			clr_country_flag = japan_civil_war
+			complete_national_focus = JAPARAKI_arakissuccess
+			set_country_flag = factionalism_japan_no
 				set_global_flag = JAP_civil_war_over
 				set_capital = { state = 282 remember_old_capital = no }
 				set_country_flag = JAP_army_victory
-			}
 		}
 	}
 	
@@ -504,6 +526,7 @@ JAP_declare_civil_war_win_military = {
 		set_country_flag = JAP_syndie_victory
 		set_capital = { state = 282 remember_old_capital = no }
 		set_global_flag = JAP_civil_war_over
+		clr_country_flag = japan_civil_war
 		}
 	}
 
@@ -1560,6 +1583,9 @@ JAP_send_arms_to_zhili = {
 				value = 0.1
 				tooltip = JAP_influence_shall_increase_tt
 			}
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
+			}
 			QIE = {
 			country_event = japan_new_event.75
 			}
@@ -1741,6 +1767,9 @@ JAP_send_arms_to_zhili = {
 			SQI = {
 			country_event = japan_new_event.75
 			}
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
+			}
 			
 			
 		}
@@ -1917,6 +1946,9 @@ JAP_send_arms_to_zhili = {
 			}
 			ANQ = {
 			country_event = japan_new_event.75
+			}
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
 			}
 			
 			
@@ -2095,6 +2127,9 @@ JAP_send_arms_to_zhili = {
 			GXC = {
 			country_event = japan_new_event.75
 			}
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
+			}
 			
 			
 		}
@@ -2272,6 +2307,9 @@ JAP_send_arms_to_zhili = {
 			HNN = {
 			country_event = japan_new_event.75
 			}
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
+			}
 			
 			
 		}
@@ -2448,6 +2486,9 @@ JAP_send_arms_to_zhili = {
 			}
 			YUN = {
 			country_event = japan_new_event.75
+			}
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
 			}
 			
 			
@@ -2627,6 +2668,9 @@ JAP_send_arms_to_zhili = {
 			SZC = {
 			country_event = japan_new_event.75
 			}
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
+			}
 			
 			
 		}
@@ -2805,6 +2849,9 @@ JAP_send_arms_to_zhili = {
 			SHX = {
 			country_event = japan_new_event.75
 			}
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
+			}
 			
 			
 		}
@@ -2979,7 +3026,9 @@ JAP_send_arms_to_zhili = {
 			XSM = {
 			country_event = japan_new_event.75
 			}
-			
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
+			}
 			
 		}
 	}
@@ -3010,7 +3059,7 @@ JAP_send_arms_to_zhili = {
 		cost = 10
 		
 		days_remove = 15
-		days_re_enable = 30
+		days_re_enable = 15
 		fire_only_once = no
 		
 		complete_effect = {
@@ -3160,7 +3209,9 @@ JAP_send_arms_to_zhili = {
 			CHI = {
 			country_event = japan_new_event.75
 			}
-			
+			FNG = {
+			set_country_flag = FNG_relations_JAP_broke
+			}
 			
 		}
 	}
@@ -3442,15 +3493,6 @@ JAP_demand_control_over_far_east = {
 		available = {
 			NOT = {
 				OR = {
-					TRM = {
-					owns_state = 408
-					owns_state = 1246
-					owns_state = 409
-					owns_state = 560
-					owns_state = 562
-					owns_state = 637
-					}
-					
 				TRM = {
 				has_war_with = JAP
 				}
@@ -4499,17 +4541,18 @@ JAP_nationalization_mission = {
         has_country_flag = JAP_smash_zaibatsu
     }
     available = {
-	
+	JAP_zaiabtsu_trigger = yes
         
     }
     
     icon = mission_icon     # For GFX_decision_mission_icon
     is_good = yes
-    days_mission_timeout = 1000
+    days_mission_timeout = 500
     selectable_mission = yes
 	fire_only_once = yes
     complete_effect = {
        custom_effect_tooltip = finished_nationalizaing_tt
+	   set_country_flag = JAP_zaiabtsu_nationalized
 	   if = {
 			limit = {
 				JAP_zaiabtsu_trigger = yes
@@ -4520,12 +4563,12 @@ JAP_nationalization_mission = {
 				}
 				add_building_construction = {
 						type = arms_factory
-						level = 5
+						level = 1
 						instant_build = yes
 					}
 				add_building_construction = {
 					type = industrial_complex
-					level = 5
+					level = 1
 					instant_build = yes
 				}
 			}
@@ -4539,7 +4582,11 @@ JAP_nationalization_mission = {
 	   }
     }
     timeout_effect = {
-        
+        custom_effect_tooltip = secret_path_japan_tt
+		 set_country_flag = JAP_zaiabtsu_not_nationalized
+		hidden_effect = {
+		country_event = japan_new_event.136
+		}
     }
 }
 

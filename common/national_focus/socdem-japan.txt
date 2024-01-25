@@ -113,6 +113,12 @@ focus_tree = {
 		prerequisite = { focus = JAPSOCDEM_absorb_the_tokohai  }
 		completion_reward = {
 		set_country_flag = JAP_smash_zaibatsu
+		hidden_effect = {
+			country_event = {
+			id = japan_new_event.142
+			days = 100
+			}
+		}
 		set_variable = {
 				var = zaibatsu_nationalization
 				value = 0
@@ -149,7 +155,27 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPSOCDEM_maximist_approach  } prerequisite = { focus = JAPSOCDEM_nationalize_the_zaibatsu  }
 		completion_reward = {
-		add_war_support = 0.15
+		add_war_support = 0.10
+		add_opinion_modifier = {
+			target = GER
+			modifier = KR_factional_rivalry
+		}
+		add_opinion_modifier = {
+			target = RUS
+			modifier = KR_factional_rivalry
+		}
+		add_opinion_modifier = {
+			target = USA
+			modifier = KR_factional_rivalry
+		}
+		add_opinion_modifier = {
+			target = NFA
+			modifier = KR_factional_rivalry
+		}
+		add_opinion_modifier = {
+			target = CAN
+			modifier = KR_factional_rivalry
+		}
 		}
 	}
 
@@ -167,6 +193,9 @@ focus_tree = {
 		completion_reward = {
 		add_ideas = {
 		JAP_kempeitai_reforms
+		}
+		remove_ideas = {
+		JAP_no_army_focus
 		}
 		}
 	}
@@ -186,6 +215,14 @@ focus_tree = {
 		remove_ideas = {
 		JAP_red_army_resistance_1
 		}
+		add_opinion_modifier = {
+			target = ENG
+			modifier = KR_factional_rivalry
+		}
+		add_opinion_modifier = {
+			target = FRA
+			modifier = KR_factional_rivalry
+		}
 		}
 	}
 
@@ -201,12 +238,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPSOCDEM_supportingtheholywaragainsteurope  }
 		completion_reward = {
-		add_war_support = 0.05
-		add_political_power = 75
-		add_popularity = {
-		ideology = totalist
-		popularity = 0.15
-		}
+		increase_conscription = yes
 		}
 	}
 
@@ -240,12 +272,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPSOCDEM_kempeitai_reforms  } prerequisite = { focus = JAPSOCDEM_arrest_the_syndicalists  }
 		completion_reward = {
-		add_stability = -0.15
-		add_political_power = 75
-		add_popularity = {
-		ideology = totalist
-		popularity = 1
-		}
+		add_stability = -0.20
+		add_research_slot = 1
 		}
 	}
 
@@ -278,10 +306,94 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPSOCDEM_promoting_the_national_socialist_image  }
+		prerequisite = { focus = JAPSOCDEM_promoting_the_national_socialist_image  } prerequisite = { focus = JAPSOCDEM_under_the_chrysanthamen  }
 		completion_reward = {
 		add_ideas = {
 		JAP_new_age_japanese_socialism
+		}
+		}
+	}
+	
+	#for akastuma and asanuma's iraa path
+	focus = {
+		id = JAPSOCDEM_national_socialist_continuance
+		icon = GFX_RDSOCJAP_national_socialist_continuance-248360
+		x = 3
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = { has_cosmetic_tag = JAP_AKAMATSU }
+		prerequisite = { focus = JAPSOCDEM_rethinking_japanese_socialism  } 
+		completion_reward = {
+		add_stability = 0.15
+		if = {
+		limit = { has_idea = JAP_Inejiro_Asanuma_hog_rso }
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Katsumaro_Akamatsu_hog_tot
+			JAP_Asanuma_Inejiro_for_tot 
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Miwa_Juso_sec_tot
+		}
+		}
+		}
+	}
+
+	#For asanama alone
+	focus = {
+		id = JAPSOCDEM_Asanuma_total_victory
+		icon = GFX_RDSOCJAP_asanuma_complete_victory-248360
+		x = 1
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = { has_cosmetic_tag = JAP_ASANUMA }
+		prerequisite = { focus = JAPSOCDEM_rethinking_japanese_socialism  } 
+		completion_reward = {
+		add_ideas = {
+		JAP_Vanguard_proles
+		}
+		}
+	}
+
+	#Peasant soy
+	focus = {
+		id = JAPSOCDEM_agrarian_victory
+		icon = GFX_RDSOCJAP_the_peasants_advocate-248360
+		x = 5
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = { has_cosmetic_tag = JAP_HIRANO }
+		prerequisite = { focus = JAPSOCDEM_rethinking_japanese_socialism  } 
+		completion_reward = {
+		add_ideas = {
+		JAP_peasant_corruption 
+		}
+		}
+	}
+
+	#Sorelian man
+	focus = {
+		id = JAPSOCDEM_sorelian_victory
+		icon = GFX_RDSOCJAP_the_rightists_triumph-248360
+		x = 7
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = { has_cosmetic_tag = JAP_YAMANA }
+		prerequisite = { focus = JAPSOCDEM_rethinking_japanese_socialism  } 
+		completion_reward = {
+		add_ideas = {
+		JAP_love_owners
 		}
 		}
 	}

@@ -432,12 +432,7 @@ focus_tree = {
 		id = SQI_Bolstering_The_Army
 		icon = GFX_goal_army_guy
 		available = {
-			OR = {
-				has_country_flag = SQI_Zheyuan_beat_Zongchang
-				has_country_flag = SQI_Tianran_beat_Zongchang
-				has_country_flag = SQI_Zongchang_beat_Tianran
-				has_country_flag = SQI_puppet
-			}
+			has_completed_focus = SQI_Two_Zhangs_Enter
 		}
 		x = 10
 		y = 0
@@ -742,12 +737,7 @@ focus_tree = {
 		id = SQI_Turning_Our_Attention_To_Industry
 		icon = GFX_IRE_medium_industry
 		available = {
-			OR = {
-				has_country_flag = SQI_Zheyuan_beat_Zongchang
-				has_country_flag = SQI_Tianran_beat_Zongchang
-				has_country_flag = SQI_Zongchang_beat_Tianran
-				has_country_flag = SQI_puppet
-			}
+			has_completed_focus = SQI_Two_Zhangs_Enter
 		}
 		x = 17
 		y = 0
@@ -1605,11 +1595,7 @@ focus_tree = {
 		id = SQI_Expanding_The_Airforce
 		icon = GFX_goal_generic_air_production
 		available = {
-			OR = {
-				has_country_flag = SQI_Zheyuan_beat_Zongchang
-				has_country_flag = SQI_Tianran_beat_Zongchang
-				has_country_flag = SQI_Zongchang_beat_Tianran
-			}
+			has_completed_focus = SQI_Two_Zhangs_Enter
 			597 = {
 				is_owned_and_controlled_by = SQI
 			}
@@ -2012,11 +1998,9 @@ focus_tree = {
 		prerequisite = { focus = SQI_fate_of_two_dragons  }
 		mutually_exclusive = { focus = SQI_align_with_shili  }
 		completion_reward = {
-		hidden_effect = {
 		country_event = {
-		id = shandong.472
-		days = 75
-		}
+			id = shandong.472
+			days = 7
 		}
 		}
 	}
@@ -2041,10 +2025,9 @@ focus_tree = {
 		mutually_exclusive = { focus = SQI_stick_with_xiling  }
 		completion_reward = {
 		country_event = {
-		id = shandong.471
-		days = 30
+			id = shandong.471
+			days = 30
 		}
-		
 		}
 	}
 
@@ -3131,48 +3114,32 @@ focus_tree = {
 		}
 		prerequisite = { focus = SQITWO_inspiration_from_deng_xiaoping_economics  }
 		completion_reward = {
-		add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
+		set_country_leader_ideology = market_socialism_subtype
+		597 = { 
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = { 
+					type = industrial_complex level = 5
+					instant_build = yes 
+				}
 			}
-			
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
+		1064 = { 
+				add_extra_state_shared_building_slots = 7
+				add_building_construction = { 
+					type = industrial_complex level = 5
+					instant_build = yes 
+				}
+				add_building_construction = { 
+					type = arms_factory level = 2 
+					instant_build = yes 
+				}
 			}
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
+		1065 = { 
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = { 
+					type = industrial_complex level = 5
+					instant_build = yes 
+				}
 			}
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-			}
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-			}
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-			}
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-			}
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-			}
-		
 		}
 	}
 
@@ -3598,6 +3565,7 @@ focus_tree = {
 		prerequisite = { focus = SQITWO_tying_up_lose_ends  } prerequisite = { focus = SQITWO_saving_the_colonies  focus = SQITWO_shasifanyi  } prerequisite = { focus = SQITWO_tying_up_lose_ends  }
 		completion_reward = {
 		set_cosmetic_tag = SQI_REVREP
+		Outer_manchuria_cores = yes
 		}
 	}
 
@@ -3617,6 +3585,7 @@ focus_tree = {
 		prerequisite = { focus = SQITWO_balujunjiuladashuan  } prerequisite = { focus = SQITWO_shasifanyi  }
 		completion_reward = {
 		set_cosmetic_tag = SQI_REVREP
+		Outer_manchuria_cores = yes
 		}
 	}
 

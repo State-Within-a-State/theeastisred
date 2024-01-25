@@ -22,6 +22,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		
 	}
 
@@ -35,7 +38,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = JAPIRAARIGHTIST_rightists_dominate_the_conference  }
+		
 	}
 
 	#Corporatist Economic Hold
@@ -49,6 +56,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_rightists_dominate_the_conference  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_corporatism
+		}
+		}
 	}
 
 	#Kuhara's National Dominance
@@ -60,6 +72,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_rightists_dominate_the_conference  }
 	}
@@ -75,6 +90,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_kuharasnationaldominance  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_political_power = 25
+		}
 	}
 
 	#Economic Freedom
@@ -89,6 +111,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_corporatist_economic_hold  } prerequisite = { focus = JAPIRAARIGHTIST_kuharasnationaldominance  }
 		mutually_exclusive = { focus = JAPIRAARIGHTIST_partial_zaibatsu_nationalization  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_economic_freedom
+		}
+		}
 	}
 
 	#Partial Zaibatsu Nationalization
@@ -102,7 +129,17 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_corporatist_economic_hold  }
+		available = {
+		not = {
+		has_completed_focus = JAPIRAARIGHTIST_kuharasnationaldominance
+		}
+		}
 		mutually_exclusive = { focus = JAPIRAARIGHTIST_economic_freedom  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_economic_nationalization
+		}
+		}
 	}
 
 	#Kiichiro's Victory
@@ -114,6 +151,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_militarist_victory  }
 		mutually_exclusive = { focus = JAPIRAARIGHTIST_hayashisvictory  }
@@ -128,6 +168,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_militarist_victory  }
 		mutually_exclusive = { focus = JAPIRAARIGHTIST_kiichirosvictory  }
@@ -144,6 +187,9 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_hayashisvictory  }
+		completion_reward = {
+		country_event = japan_new_event.133
+		}
 	}
 
 	#Create the Tokko
@@ -157,6 +203,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_kiichirosvictory  focus = JAPIRAARIGHTIST_hayashisvictory  }
+		completion_reward = {
+		add_ideas = {
+		JAP_the_tokko
+		}
+		}
 	}
 
 	#Work Against Hashimoto
@@ -170,20 +221,12 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_kiichirosvictory  }
+		completion_reward = {
+		country_event = japan_new_event.134
+		}
 	}
 
-	#Implement Land Reforms
-	focus = {
-		id = JAPIRAARIGHTIST_implement_land_reforms
-		icon = GFX_JAPIRAARIGHTIST_implement_land_reforms-248360
-		x = 7
-		y = 7
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = JAPIRAARIGHTIST_partial_zaibatsu_nationalization  }
-	}
+	
 
 	#The Invisible Hand of the Free Market
 	focus = {
@@ -196,6 +239,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_the_market_faction_takes_control  } prerequisite = { focus = JAPIRAARIGHTIST_economic_freedom  }
+		completion_reward = {
+		add_ideas = {
+		JAP_the_invisible_market
+		}
+		}
 	}
 
 	#Incentivise New Business
@@ -209,6 +257,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_the_market_faction_takes_control  }
+		completion_reward = {
+		add_ideas = {
+		JAP_the_new_market
+		}
+		}
 	}
 
 	#A More Hands Off Approach
@@ -222,6 +275,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_the_invisible_hand_of_the_free_market  } prerequisite = { focus = JAPIRAARIGHTIST_incentivise_new_business  }
+		completion_reward = {
+		add_ideas = {
+		JAP_the_hands_off
+		}
+		}
 	}
 
 	#Fighting Against Foreign Ideals
@@ -235,6 +293,21 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_create_the_tokko  } prerequisite = { focus = JAPIRAARIGHTIST_work_against_hashimoto  }
+		completion_reward = {
+		add_opinion_modifier = {
+			target = GER
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = AUS
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = RUS
+			modifier = faction_traitor
+		}
+		add_war_support = 0.075
+		}
 	}
 
 	#Purging the Syndicalists
@@ -248,6 +321,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_create_the_tokko  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Sneak In Toseiha Influence
@@ -261,6 +339,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_purge_the_iraa_leftists  } prerequisite = { focus = JAPIRAARIGHTIST_create_the_tokko  }
+		completion_reward = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.1
+		}
+		add_political_power = 20
+		}
 	}
 
 	#Expand Military Privileges
@@ -274,6 +359,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_sneak_in_toseiha_influence  }
+		completion_reward = {
+		add_ideas = {
+		JAP_spiritual_army
+		}
+		}
 	}
 
 	#Form the National Muslim Association
@@ -287,6 +377,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_sneak_in_toseiha_influence  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Crush Liberal Remnants
@@ -300,6 +393,14 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_purging_the_syndicalists  }
+		completion_reward = {
+		add_stability = -0.15
+		add_political_power = 75
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.5
+		}
+		}
 	}
 
 	#The National Conscription Order
@@ -313,6 +414,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_fighting_against_foreign_ideals  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_army_jsp
+		}
+		}
 	}
 
 	#Realpolitik
@@ -326,6 +432,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_fighting_against_foreign_ideals  }
+		completion_reward = {
+		add_ideas = {
+		JAP_realpolitik
+		}
+		}
 	}
 
 	#Subsidies for Small Business
@@ -339,6 +450,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_a_more_hands_off_approach  }
+		completion_reward = {
+		add_ideas = {
+		JAP_small_companies
+		}
+		}
 	}
 
 	#Preferential Treatment for Big Businesses
@@ -352,6 +468,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_a_more_hands_off_approach  }
+		completion_reward = {
+		add_ideas = {
+		JAP_zaibatsu_backing_minseito
+		}
+		}
 	}
 
 	#New Ventures
@@ -365,6 +486,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_a_more_hands_off_approach  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Dealing with the Red Menace
@@ -378,6 +502,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_a_more_hands_off_approach  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_red_army_resistance_1
+		}
+		}
 	}
 
 	#Side Line The Agitators
@@ -391,6 +520,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_new_ventures  } prerequisite = { focus = JAPIRAARIGHTIST_dealing_with_the_red_menace  }
+		completion_reward = {
+		add_ideas = {
+		JAP_banning_unions
+		}
+		}
 	}
 
 	#Quietly Roll Back Labour Regulations
@@ -404,6 +538,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_new_ventures  } prerequisite = { focus = JAPIRAARIGHTIST_dealing_with_the_red_menace  }
+		completion_reward = {
+		add_ideas = {
+		JAP_roll_back_labour_regulations
+		}
+		}
 	}
 
 	#Privatisation of the Public Sector
@@ -417,6 +556,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_subsidies_for_small_business  } prerequisite = { focus = JAPIRAARIGHTIST_preferential_treatment_for_big_businesses  }
+		completion_reward = {
+		add_ideas = {
+		JAP_privatisation
+		}
+		}
 	}
 
 	#Hand Out Construction Contracts
@@ -430,6 +574,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_subsidies_for_small_business  } prerequisite = { focus = JAPIRAARIGHTIST_preferential_treatment_for_big_businesses  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_construction_contracts
+		}
+		}
 	}
 
 	#Manoeuvre Against Hayashi
@@ -443,6 +592,12 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_crush_liberal_remnants  } prerequisite = { focus = JAPIRAARIGHTIST_the_national_conscription_order  } prerequisite = { focus = JAPIRAARIGHTIST_realpolitik  }
+		completion_reward = {
+		add_manpower = -1
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Stick With the Status Quo
@@ -457,6 +612,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_expand_military_privileges  } prerequisite = { focus = JAPIRAARIGHTIST_form_the_national_muslim_association  } prerequisite = { focus = JAPIRAARIGHTIST_crush_liberal_remnants  }
 		mutually_exclusive = { focus = JAPIRAARIGHTIST_proclaim_toseiha_dominance  }
+		completion_reward = {
+		add_manpower = -1
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Proclaim Toseiha Dominance
@@ -471,6 +632,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_expand_military_privileges  } prerequisite = { focus = JAPIRAARIGHTIST_form_the_national_muslim_association  } prerequisite = { focus = JAPIRAARIGHTIST_crush_liberal_remnants  }
 		mutually_exclusive = { focus = JAPIRAARIGHTIST_stick_with_the_status_quo  }
+		completion_reward = {
+		custom_effect_tooltip = switch_toseiha_tree_tt
+		country_event = japan_new_event.54
+		}
 	}
 
 	#Investigate Konoe
@@ -484,6 +649,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_stick_with_the_status_quo  }
+		completion_reward = {
+		country_event = japan_new_event.135
+		}
 	}
 
 	#Cultivate Military Support
@@ -497,6 +665,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_manoeuvre_against_hayashi  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
 	}
 
 	#Finish off Toseiha Elements
@@ -510,6 +681,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_manoeuvre_against_hayashi  }
+		completion_reward = {
+		add_manpower = -100
+		add_stability = -0.05
+		add_political_power = 50
+		}
 	}
 
 	#Going Once, Going Twice
@@ -523,6 +699,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_privatisation_of_the_public_sector  } prerequisite = { focus = JAPIRAARIGHTIST_hand_out_construction_contracts  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_stability = 0.05
+		add_political_power = 50
+		}
 	}
 
 	#Crackdowns on the Army
@@ -536,6 +717,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_side_line_the_agitators  }
+		completion_reward = {
+		remove_ideas = {
+		JAP_no_army_focus
+		}
+		}
 	}
 
 	#Hiranuma's Shogunate
@@ -549,6 +735,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_cultivate_military_support  } prerequisite = { focus = JAPIRAARIGHTIST_finish_off_toseiha_elements  }
+		completion_reward = {
+		add_ideas = {
+		JAP_hiranumasshogunate
+		}
+		}
 	}
 
 	#TORA TORA TORA
@@ -562,6 +753,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_investigate_konoe  }
+		completion_reward = {
+		add_ideas = {
+		JAP_national_defense_state
+		}
+		}
 	}
 
 	#The Japanese Economic Miracle
@@ -575,6 +771,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = JAPIRAARIGHTIST_side_line_the_agitators  } prerequisite = { focus = JAPIRAARIGHTIST_quietly_roll_back_labour_regulations  } prerequisite = { focus = JAPIRAARIGHTIST_privatisation_of_the_public_sector  } prerequisite = { focus = JAPIRAARIGHTIST_hand_out_construction_contracts  }
+		completion_reward = {
+		add_ideas = {
+		JAP_new_economic_miracle
+		}
+		}
 	}
 
 }
