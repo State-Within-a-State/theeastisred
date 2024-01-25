@@ -8757,12 +8757,12 @@ country_event = { #Konoe Seen Partying It Up in Cosplay
 	}
 }
 
-country_event = { #
+country_event = { #Shumei Translates the Quran
 	id = japan_new_event.141
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.141"}
 	title = japan_new_event.141.title
 	desc = japan_new_event.141.desc
-	#picture = 
+	picture = "GFX_japan_islam_association"
 	
 	is_triggered_only = yes
 	option = { #
@@ -8772,17 +8772,59 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Missing Weapon Shipments From Factories
 	id = japan_new_event.142
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.142"}
 	title = japan_new_event.142.title
 	desc = japan_new_event.142.desc
-	#picture = 
+	picture = "GFX_zaibatsu_image"
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Launch An Investigation
 		name = japan_new_event.142.a
 		ai_chance = { base = 100 }
+		add_political_power = 50
+		add_days_mission_timeout = {
+			mission = JAP_nationalization_mission
+			days = -150
+		}
+	}
+	
+	option = { #This Is Actually the Doings of the Syndicalists Raiding Our Factories
+		name = japan_new_event.142.b
+		ai_chance = { base = 100 }
+		add_days_mission_timeout = {
+			mission = JAP_nationalization_mission
+			days = 10
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -0.1
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -0.1
+		}
+		subtract_from_variable = {
+			var = zaibatsu_nationalization
+			value = 10
+		}
+		subtract_from_variable = {
+			var = sumitomo_nationalization
+			value = 10
+		}
+		subtract_from_variable = {
+			var = mitsui_nationalization
+			value = 10
+		}
+		subtract_from_variable = {
+			var = mitsubishi_nationalization
+			value = 10
+		}
+		subtract_from_variable = {
+			var = yasuda_nationalization
+			value = 10
+		}
 		
 	}
 }
