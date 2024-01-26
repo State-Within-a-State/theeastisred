@@ -5602,6 +5602,7 @@ country_event = { #Transitioning From a Junta Government
 	option = { #Red Empire
 		name = japan_new_event.68.b
 		ai_chance = { base = 100 }
+		trigger = { not = { has_idea = JSR_end_emperor } }
 		set_politics = {
 			ruling_party = radical_socialist
 			election_frequency = 48
@@ -5633,7 +5634,6 @@ country_event = { #Transitioning From a Junta Government
 			ideology = radical_socialist
 			popularity = 0.15
 		}
-		set_cosmetic_tag = JAP_SANZO_MONBOL
 		create_country_leader = {
 						name = "Sanzo Nosaka"
 						desc = "-"
@@ -8279,24 +8279,19 @@ country_event = { #Question of the Emperor?
 	option = { #
 		name = japan_new_event.125.a
 		ai_chance = { base = 100 }
-		if = {
-				limit = { has_country_flag = JAP_yasuhito }
-				add_ideas = JAP_emperor_yasuhito
-			}
-			else = { add_ideas = JAP_emperor_hirohito }
+		swap_ideas = {
+		remove_idea = JAP_no_emperor
+		add_idea = JAP_emperor_hirohito
+		}
 	}
 	
 	option = { #
 		name = japan_new_event.125.b
 		ai_chance = { base = 100 }
-		add_ideas = {
-		JAP_no_emperor
-		}
-		add_popularity = {
-		ideology = ROOT
-		popularity = 0.05
-		}
-		add_war_support = 0.05
+		swap_ideas = {
+			remove_idea = JAP_no_emperor
+			add_idea = JSR_end_emperor 
+			}
 	}
 }
 

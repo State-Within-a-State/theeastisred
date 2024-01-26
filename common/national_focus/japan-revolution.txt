@@ -68,8 +68,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPSOCIALISM_organize_the_farmers  } prerequisite = { focus = JAPSOCIALISM_cooperation_with_the_unions  }
 		completion_reward = {
-		add_ideas = {
-		JAP_war_socialism
+		add_timed_idea = {
+			idea = JAP_war_socialism
+			days = 365
 		}
 		}
 	}
@@ -211,9 +212,10 @@ focus_tree = {
 		prerequisite = { focus = JAPANA_the_fight_against_discrimination  }
 		mutually_exclusive = { focus = JAPANA_a_loyal_figure  }
 		completion_reward = {
-		add_ideas = {
-		JAP_no_emperor
-		}
+		swap_ideas = {
+			remove_idea = JAP_no_emperor
+			add_idea = JSR_end_emperor 
+			}
 		}
 	}
 
@@ -475,11 +477,10 @@ focus_tree = {
 		prerequisite = { focus = JAPANA_the_fight_against_discrimination  }
 		mutually_exclusive = { focus = JAPANA_burnthecrown  }
 		completion_reward = {
-		if = {
-				limit = { has_country_flag = JAP_yasuhito }
-				add_ideas = JAP_emperor_yasuhito
-			}
-			else = { add_ideas = JAP_emperor_hirohito }
+		swap_ideas = {
+		remove_idea = JAP_no_emperor
+		add_idea = JAP_emperor_hirohito
+		}
 		}
 	}
 
@@ -743,11 +744,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPANA_writing_the_true_anarchist_manifesto  }
 		completion_reward = {
-		if = {
-				limit = { has_country_flag = JAP_yasuhito }
-				add_ideas = JAP_emperor_yasuhito
-			}
-			else = { add_ideas = JAP_emperor_hirohito }
+		swap_ideas = {
+		remove_idea = JAP_no_emperor
+		add_idea = JAP_emperor_hirohito
+		}
 		}
 	}
 
@@ -1067,9 +1067,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPANA_the_towers_surpass_the_clouds_again  } prerequisite = { focus = JAPANA_a_liberated_lifestyle  }
 		completion_reward = {
-		add_ideas = {
-		JAP_no_emperor
-		}
+		swap_ideas = {
+			remove_idea = JAP_no_emperor
+			add_idea = JSR_end_emperor 
+			}
 		}
 	}
 
@@ -1733,7 +1734,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPCOMMUNIST_changingthecourseofjapansproletariat  }
 		completion_reward = {
-		add_research_slot = 1
+		add_stability = 0.05
+		add_political_power = 10
 		}
 	}
 
@@ -1823,8 +1825,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPCOMMUNIST_legacy_of_japanese_syndicalism  }
 		completion_reward = {
-		add_stability = 0.05
-		add_political_power = 10
+		add_research_slot = 1
 		}
 	}
 
@@ -1998,7 +1999,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
-		prerequisite = { focus = JAPCOMMUNIST_question_of_the_socialreactionaries  }
+		prerequisite = { focus = JAPCOMMUNIST_question_of_the_socialreactionaries  } prerequisite = { focus = JAPCOMMUNIST_denounce_fukumotoism  }
 		completion_reward = {
 		add_popularity = {
 		ideology = syndicalist
@@ -2010,6 +2011,9 @@ focus_tree = {
 		}
 		add_tot_to_coalition = yes
 		add_synd_to_coalition = yes
+		remove_ideas = {
+		JSR_fukumotoist_pacifism
+		}
 		}
 	}
 
@@ -2790,9 +2794,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPCOMMUNIST_realisation_of_2_staged_revolution  } prerequisite = { focus = JAPCOMMUNIST_japanslenin  }
 		completion_reward = {
-		remove_ideas = {
-		JAP_reactionary_army_resistance_1
-		}
+		swap_ideas = {
+			remove_idea = JAP_no_emperor
+			add_idea = JSR_end_emperor 
+			}
 		}
 	}
 
