@@ -7026,14 +7026,19 @@ country_event = { #Question of Our Future
 		name = japan_new_event.92.a
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = JAP_Hakko_Ichui
+		
+		every_state = {
+		add_core_of = JAP
+		}
+		
+		every_country = {
 		JAP = {
 			create_wargoal = {
 				type = puppet_wargoal_focus
 				target = PREV
 			}
 		}
-		every_state = {
-		add_core_of = JAP
+		
 		}
 	}
 	
@@ -7042,21 +7047,24 @@ country_event = { #Question of Our Future
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = JAP_Tachi_Asia
 		every_state = {
-			limit = {
-			OR = {
+				limit = {
+					OR = {
 						is_on_continent = asia
 						is_on_continent = india
 					}
+				}
+				
+			JAP = {
+			add_state_core = PREV
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+			
 			}
-		add_core_of = JAP
-		}
+			}
 		
-		JAP = {
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = PREV
-			}
-		}
+		
 	}
 	
 	option = { #
