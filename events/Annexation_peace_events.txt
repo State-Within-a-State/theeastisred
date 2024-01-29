@@ -1,0 +1,114 @@
+country_event = { #peace out
+	id = dei.100
+	immediate = { log = "[GetDateText]: [Root.GetName]: event dei.100" }
+	title = dei.100.t
+	desc = dei.100.d
+
+	trigger = {
+		OR = {
+			is_han_chinese_tag = yes
+			tag = TIB
+			tag = TAN
+			tag = JST
+			tag = JSR
+			tag = TAI
+			tag = VIN
+			tag = SIA
+			tag = BRM
+			tag = INS
+			tag = PHI
+			tag = AST
+			tag = NZL
+			tag = JAP
+		}
+		NOT = { tag = INS }
+		DEI = {
+			has_capitulated = yes
+			is_subject_of = HOL
+		}
+		has_war_with = HOL
+		controls_state = 1020
+		controls_state = 1021
+		controls_state = 672
+		controls_state = 1019
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = dei.100.a
+		add_war_support = 0.075
+	}
+
+	option = {
+		name = dei.100.b
+		hidden_effect = {
+			every_enemy_country = {
+				limit = {
+					is_in_faction_with = HOL
+				}
+				white_peace_with_ROOT = yes
+			}
+			annex_country = { target = DEI }
+		}
+	}
+}
+
+country_event = { #peace out
+	id = Ostasien.306
+	immediate = { log = "[GetDateText]: [Root.GetName]: event Ostasien.306" }
+	title = Ostasien.306.t
+	desc = Ostasien.306.d
+
+	trigger = {
+		OR = {
+			is_han_chinese_tag = yes
+			tag = TIB
+			tag = TAN
+			tag = TAI
+			tag = JSR
+			tag = JST
+			tag = VIN
+			tag = SIA
+			tag = BRM
+			tag = INS
+			tag = PHI
+			tag = AST
+			tag = NZL
+			tag = JAP
+		}
+		GEA = {
+			has_capitulated = yes
+			is_subject_of = GER
+		}
+		has_war_with = GER
+		OR = {
+			AND = {
+			tag = JAP
+			336 = { controller = { is_ally_with = ROOT } }
+		    }
+			AND = {
+			NOT = { is_in_faction_with = JAP }
+			controls_state = 336
+			}
+		}
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = Ostasien.306.a
+		add_war_support = 0.075
+	}
+
+	option = {
+		name = Ostasien.306.b	
+		every_enemy_country = {
+			limit = {
+				is_in_faction_with = GER
+			}
+			white_peace_with_ROOT = yes
+		}
+		annex_country = { target = GEA }
+	}
+}
