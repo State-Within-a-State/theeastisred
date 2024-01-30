@@ -1,5 +1,7 @@
+add_namespace = annex_peace
+
 country_event = { #peace out
-	id = dei.100
+	id = annex_peace.2
 	immediate = { log = "[GetDateText]: [Root.GetName]: event dei.100" }
 	title = dei.100.t
 	desc = dei.100.d
@@ -12,14 +14,6 @@ country_event = { #peace out
 			tag = JSR
 			tag = INC
 			tag = TAI
-			tag = VIN
-			tag = SIA
-			tag = BRM
-			tag = INS
-			tag = PHI
-			tag = AST
-			tag = NZL
-			tag = JAP
 		}
 		NOT = { tag = INS }
 		DEI = {
@@ -36,7 +30,6 @@ country_event = { #peace out
 	fire_only_once = yes
 	option = {
 		name = dei.100.b
-		hidden_effect = {
 			every_enemy_country = {
 				limit = {
 					is_in_faction_with = HOL
@@ -44,9 +37,7 @@ country_event = { #peace out
 				white_peace_with_ROOT = yes
 			}
 			annex_country = { target = DEI }
-			
-			HOL = { white_peace_with_ROOT = yes }
-		}
+			white_peace = HOL
 	}
 	option = {
 		name = dei.100.a
@@ -55,7 +46,7 @@ country_event = { #peace out
 }
 
 country_event = { #peace out
-	id = Ostasien.306
+	id = annex_peace.3
 	immediate = { log = "[GetDateText]: [Root.GetName]: event Ostasien.306" }
 	title = Ostasien.306.t
 	desc = Ostasien.306.d
@@ -67,15 +58,7 @@ country_event = { #peace out
 			tag = TAI
 			tag = JSR
 			tag = JST
-			tag = VIN
-			tag = SIA
-			tag = BRM
-			tag = INS
-			tag = PHI
-			tag = AST
 			tag = INC
-			tag = NZL
-			tag = JAP
 		}
 		GEA = {
 			has_capitulated = yes
@@ -140,20 +123,20 @@ country_event = { #peace out
 		has_global_flag = shanghai_revolution
 		}
 		LEC = {
-			has_capitulated = yes
-			has_country_flag = LEC_new_high_commissioner
 			NOT = { has_country_flag = LEC_Triad_Power }
 		}
+		OR = {
 		controls_state = 743
 		controls_state = 326
 		controls_state = 746
+		}
 	}
 
 	fire_only_once = yes
 	
 	option = {
 		name = "It Is Time To Seek Peace!"
-		country_event = { lec.93 days = 30 }
+		country_event = { id = lec.93 days = 30 }
 	}
 	option = {
 		name = "Holy War Against Europe!"
