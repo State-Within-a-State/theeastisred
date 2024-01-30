@@ -34,12 +34,6 @@ country_event = { #peace out
 	}
 
 	fire_only_once = yes
-	
-	option = {
-		name = dei.100.a
-		add_war_support = 0.075
-	}
-
 	option = {
 		name = dei.100.b
 		hidden_effect = {
@@ -50,7 +44,13 @@ country_event = { #peace out
 				white_peace_with_ROOT = yes
 			}
 			annex_country = { target = DEI }
+			
+			HOL = { white_peace_with_ROOT = yes }
 		}
+	}
+	option = {
+		name = dei.100.a
+		add_war_support = 0.075
 	}
 }
 
@@ -95,12 +95,6 @@ country_event = { #peace out
 	}
 
 	fire_only_once = yes
-	
-	option = {
-		name = Ostasien.306.a
-		add_war_support = 0.075
-	}
-
 	option = {
 		name = Ostasien.306.b	
 		every_enemy_country = {
@@ -111,6 +105,61 @@ country_event = { #peace out
 		}
 		annex_country = { target = GEA }
 	}
+	
+	option = {
+		name = Ostasien.306.a
+		add_war_support = 0.075
+	}
+}
+
+country_event = { #peace out
+	id = annex_peace.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event dei.100" }
+	title = "An Attempt At Negotiation?"
+	desc = "When the Europeans tried attacking us for removing the consessions, they clearly did not expect us to be strong enought to fight back. With our victory, is it time to force the Europeans to accept the end of their privileges in Asia?"
+
+	trigger = {
+		OR = {
+			is_chinese_tag = yes
+			tag = TAN
+			tag = JST
+			tag = JSR
+			tag = INC
+			tag = TAI
+			tag = VIN
+			tag = SIA
+			tag = BRM
+			tag = INS
+			tag = PHI
+			tag = AST
+			tag = NZL
+			tag = JAP
+			tag = INS
+		}
+		NOT = {
+		has_global_flag = shanghai_revolution
+		}
+		LEC = {
+			has_capitulated = yes
+			has_country_flag = LEC_new_high_commissioner
+			NOT = { has_country_flag = LEC_Triad_Power }
+		}
+		controls_state = 743
+		controls_state = 326
+		controls_state = 746
+	}
+
+	fire_only_once = yes
+	
+	option = {
+		name = "It Is Time To Seek Peace!"
+		country_event = { lec.93 days = 30 }
+	}
+	option = {
+		name = "Holy War Against Europe!"
+		add_war_support = 0.075
+	}
+
 }
 
 
