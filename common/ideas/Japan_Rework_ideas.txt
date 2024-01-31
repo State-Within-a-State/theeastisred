@@ -310,8 +310,8 @@ ideas = {
 				army_defence_factor = -0.075
 				army_morale = -1
 				army_morale_factor = -0.05
-				stability_weekly = 0.05
-				war_support_weekly = -0.05
+				stability_factor = 0.05
+				war_support_factor = -0.05
 			}
 		}
 		
@@ -321,8 +321,8 @@ ideas = {
 			modifier = {
 				army_defence_factor = -0.075
 				army_morale_factor = 0.05
-				stability_weekly = -0.05
-				war_support_weekly = 0.05
+				stability_factor = -0.1
+				war_support_factor = 0.05
 			}
 		}
 		
@@ -341,8 +341,8 @@ ideas = {
 			modifier = {
 				army_defence_factor = 0.015
 				army_morale_factor = 0.015
-				stability_weekly = 0.05
-				war_support_weekly = 0.05
+				stability_weekly = 0.01
+				war_support_factor = 0.05
 			}
 		}
 		JAP_colonial_units = {
@@ -520,7 +520,7 @@ ideas = {
 				war_support_weekly = 0.01
 				opinion_gain_monthly_same_ideology = 10
 				request_lease_tension = 0.1
-				surrender_limit = 0.5
+				surrender_limit = 0.25
 				army_morale_factor = 0.15
 				
 			}
@@ -531,10 +531,10 @@ ideas = {
 			picture = JAP_imperial_support
 			modifier = {
 				war_support_factor = 0.3
-				war_support_weekly = 0.01
+				war_support_factor = 0.1
 				opinion_gain_monthly_same_ideology = 10
 				request_lease_tension = 0.1
-				surrender_limit = 0.5
+				surrender_limit = 0.25
 				army_morale_factor = 0.15
 				
 			}
@@ -561,6 +561,17 @@ ideas = {
 			}
 		}
 		
+		JSR_end_emperor = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_rising_sun_idea_3"}
+			picture = JAP_no_emperor
+			modifier = {
+				stability_factor = -0.35
+				political_power_cost = 0.2
+				political_power_gain = -0.3
+				research_speed_factor = 0.05
+			}
+		}
+
 		JAP_pan_asianist_backing = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_rising_sun_idea_3"}
 			picture = JAP_pan_asoianism_kita
@@ -728,7 +739,7 @@ ideas = {
 				army_morale_factor = 0.015
 				army_org_factor = 0.05
 				army_defence_factor = 0.015
-				war_support_weekly = 0.05
+				war_support_weekly = 0.015
 			}
 		}
 		
@@ -796,8 +807,8 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = cos_psychology_icon
 			modifier = {
-				war_support_weekly = 0.01
-				max_surrender_limit_offset = 0.99
+				war_support_weekly = 0.001
+				max_surrender_limit_offset = 0.80
 				army_morale_factor = 0.025
 				land_night_attack = 0.05
 			}
@@ -808,7 +819,7 @@ ideas = {
 			picture = advisors_japan
 			modifier = {
 				war_support_weekly = 0.05
-				stability_weekly = 0.025
+				stability_weekly = 0.005
 				army_morale_factor = 0.05
 				national_populist_drift = 0.05
 			}
@@ -818,7 +829,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = japanese_loyalism
 			modifier = {
-				war_support_weekly = 0.075
+				war_support_weekly = 0.025
 				army_morale_factor = 0.1
 				army_defence_factor = 0.05
 				national_populist_drift = 0.05
@@ -830,7 +841,7 @@ ideas = {
 			picture = japanese_loyalism
 			modifier = {
 				political_power_gain = 0.01
-				war_support_weekly = 0.05
+				war_support_weekly = 0.015
 				army_morale_factor = 0.05
 				army_defence_factor = 0.075
 				national_populist_drift = 0.075
@@ -868,7 +879,7 @@ ideas = {
 				production_factory_max_efficiency_factor = -0.05
 				production_factory_start_efficiency_factor = 0.05
 				consumer_goods_factor = 0.05
-				stability_weekly = 0.05
+				stability_weekly = 0.002
 			}
 		}
 		JAP_zaibatsu_nationalization_2 = {
@@ -880,7 +891,7 @@ ideas = {
 				production_factory_max_efficiency_factor = -0.025
 				production_factory_start_efficiency_factor = 0.065
 				consumer_goods_factor = 0.05
-				stability_weekly = 0.065
+				stability_weekly = 0.005
 			}
 		}
 		
@@ -909,7 +920,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = JAP_heinan_revised
 			modifier = {
-				stability_weekly = 0.01
+				stability_factor = 0.01
 				research_speed_factor = 0.03
 			}
 		}
@@ -921,7 +932,7 @@ ideas = {
 				radical_socialist_drift = 0.02
 				social_democrat_drift = 0.02
 				totalist_drift = 0.02
-				war_support_weekly = 0.025
+				war_support_factor = 0.025
 				army_morale_factor = 0.05
 				army_defence_factor = 0.05
 			}
@@ -953,8 +964,8 @@ ideas = {
 			picture = JAP_imperial_support
 			modifier = {
 				production_factory_efficiency_gain_factor = 0.1
-				war_support_weekly = 0.05
-				stability_weekly = 0.05
+				war_support_factor = 0.25
+				stability_factor = 0.05
 				national_populist_drift = 0.05
 				totalist_drift = 0.05
 				political_power_gain = 0.01
@@ -976,7 +987,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = capital_flight
 			modifier = {
-				war_support_weekly = 0.05
+				war_support_weekly = 0.01
 				totalist_drift = 0.05
 				radical_socialist_drift = 0.05
 				national_populist_drift = 0.01
@@ -988,13 +999,13 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = capital_flight
 			modifier = {
-				war_support_weekly = 0.05
+				war_support_weekly = 0.01
 				totalist_drift = 0.01
 				radical_socialist_drift = 0.01
 				national_populist_drift = 0.05
 				manpower_weekly = -1000
 				monthly_population = -0.001
-				stability_weekly = -0.05
+				stability_factor = -0.05
 				army_org_factor = -0.025
 			}
 		}
@@ -1046,7 +1057,7 @@ ideas = {
 			picture = JAP_Korean_Military_Administration
 			modifier = {
 				political_power_gain = 0.01
-				stability_weekly = 0.015
+				stability_factor = 0.015
 				resistance_growth_on_our_occupied_states = 0.005
 				opinion_gain_monthly_same_ideology_factor = 0.005
 				compliance_growth_on_our_occupied_states = 0.015
@@ -1059,8 +1070,8 @@ ideas = {
 			picture = JAP_new_nationalism
 			modifier = {
 				political_power_gain = 0.01
-				stability_weekly = 0.015
-				war_support_weekly = 0.01
+				stability_factor = 0.015
+				war_support_factor = 0.01
 				army_morale_factor = 0.025
 			}
 		}
@@ -1070,7 +1081,7 @@ ideas = {
 			picture = TIB_flaming_heart
 			modifier = {
 				political_power_gain = 0.01
-				stability_weekly = 0.015
+				stability_factor = 0.015
 				social_democrat_drift = 0.05
 				national_populist_drift = 0.05
 			}
@@ -1081,7 +1092,7 @@ ideas = {
 			picture = TIB_flaming_heart
 			modifier = {
 				political_power_gain = 0.03
-				stability_weekly = 0.05
+				stability_factor = 0.05
 				social_democrat_drift = 0.075
 				national_populist_drift = 0.025
 			}
@@ -1150,7 +1161,7 @@ ideas = {
 			picture = JAP_fixers
 			modifier = {
 				manpower_weekly = -100
-				stability_weekly = 0.01
+				stability_weekly = 0.001
 				political_power_cost = 0.2
 			}
 		}
@@ -1160,7 +1171,7 @@ ideas = {
 			picture = JAP_new_era_yak
 			modifier = {
 				manpower_weekly = 100
-				stability_weekly = -0.05
+				stability_weekly = -0.015
 				political_power_gain = 0.5
 				army_morale_factor = 0.25
 			}
@@ -1223,8 +1234,8 @@ ideas = {
 			picture = hamiltonian_constitution
 			modifier = {
 					totalist_drift = 0.05
-					stability_weekly = 0.05
-					war_support_weekly = -0.05
+					stability_weekly = 0.025
+					war_support_weekly = -0.025
 				}
 		}
 		
@@ -1334,7 +1345,7 @@ ideas = {
 				manpower_weekly = -10
 				monthly_population = -0.005
 				political_power_gain = 0.01
-				stability_weekly = 0.01
+				stability_factor = -0.075
 			}
 		}
 		
@@ -1344,7 +1355,7 @@ ideas = {
 			modifier = {
 				research_speed_factor = 0.05
 				political_power_gain = 0.01
-				stability_weekly = 0.01
+				stability_factor = 0.01
 			}
 		}
 		JAP_spiritual_army = {
@@ -1377,7 +1388,7 @@ ideas = {
 				war_support_factor = 0.05
 				paternal_autocrat_drift = 0.05
 				political_power_gain = 0.01
-				stability_weekly = 0.01
+				stability_factor = 0.1
 			}
 		}
 		
@@ -1388,7 +1399,7 @@ ideas = {
 				war_support_factor = 0.075
 				paternal_autocrat_drift = 0.075
 				political_power_gain = 0.025
-				stability_weekly = 0.025
+				stability_weekly = 0.0015
 			}
 		}
 		
@@ -1400,7 +1411,7 @@ ideas = {
 				war_support_factor = 0.1
 				paternal_autocrat_drift = 0.1
 				political_power_gain = 0.35
-				stability_weekly = 0.35
+				stability_weekly = 0.0035
 			}
 		}
 		
@@ -1467,7 +1478,7 @@ ideas = {
 			modifier = {
 				research_speed_factor = 0.01
 				political_power_cost = 0.05
-				war_support_weekly = 0.05
+				war_support_factor = 0.05
 				production_speed_industrial_complex_factor = 0.025
 			}
 		}
@@ -1477,7 +1488,7 @@ ideas = {
 			picture = CRE_legacy_german_rule
 			modifier = {
 				national_populist_drift = 0.05
-				war_support_weekly = 0.05
+				war_support_factor = 0.05
 			}
 		}
 		
@@ -1669,7 +1680,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = peace
 			modifier = {
-				stability_weekly_factor = 0.5
+				stability_factor = 0.5
 				puppet_cost_factor = 0.5
 				annex_cost_factor = 0.25
 				justify_war_goal_time = 0.6
@@ -1681,7 +1692,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = peace
 			modifier = {
-				stability_weekly_factor = 0.1
+				stability_factor = 0.1
 				puppet_cost_factor = 0.25
 				annex_cost_factor = 0.1
 				justify_war_goal_time = 0.3
@@ -1695,7 +1706,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = peace
 			modifier = {
-				stability_weekly_factor = 0.05
+				stability_factor = 0.05
 				puppet_cost_factor = -0.01
 				annex_cost_factor = -0.05
 				justify_war_goal_time = -0.2
@@ -1732,7 +1743,7 @@ ideas = {
 			modifier = {
 				political_power_gain = -0.30
 				political_power_cost = 0.20
-				stability_weekly_factor = -0.004
+				stability_factor = -0.004
 				conscription_factor = -0.15
 				production_factory_max_efficiency_factor = 0.1
 				production_factory_efficiency_gain_factor = 0.1
@@ -1778,7 +1789,7 @@ ideas = {
 			modifier = {
 				social_democrat_drift = 0.1
 				radical_socialist_drift = 0.1
-				war_support_weekly = 0.05
+				war_support_weekly = 0.005
 				consumer_goods_factor = -0.3
 				political_power_gain = 0.1
 				production_factory_efficiency_gain_factor = 0.05
@@ -1791,7 +1802,7 @@ ideas = {
 			modifier = {
 				social_democrat_drift = 0.1
 				radical_socialist_drift = 0.1
-				war_support_weekly = 0.05
+				war_support_weekly = -0.005
 				stability_factor = -0.25
 				political_power_gain = 0.05
 			}
@@ -1897,7 +1908,7 @@ ideas = {
 			picture = keynesian_econ
 			modifier = {
 				consumer_goods_factor = -0.1
-				stability_weekly = 0.05
+				stability_factor = 0.05
 				military_industrial_organization_research_bonus = -0.1
 				military_industrial_organization_policy_cost = 50
 				
@@ -1909,7 +1920,7 @@ ideas = {
 			picture = keynesian_econ
 			modifier = {
 				consumer_goods_factor = 0.1
-				stability_weekly = 0.055
+				stability_factor = 0.055
 				military_industrial_organization_research_bonus = -0.025
 				military_industrial_organization_policy_cost = 10
 				research_speed_factor = 0.1
@@ -1935,7 +1946,7 @@ ideas = {
 			modifier = {
 				consumer_goods_factor = -0.05
 				market_liberal_drift = 0.05
-				stability_weekly = -0.05
+				stability_factor = -0.05
 				production_speed_infrastructure_factor = 0.1
 			}
 		}
@@ -1946,7 +1957,7 @@ ideas = {
 			modifier = {
 				consumer_goods_factor = -0.05
 				social_conservative_drift = 0.05
-				stability_weekly = -0.05
+				stability_factor = 0.01
 				production_speed_infrastructure_factor = 0.1
 			}
 		}
@@ -1955,7 +1966,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = JAP_national_unity_government
 			modifier = {
-				war_support_weekly = 0.015
+				war_support_factor = 0.015
 				political_power_cost = 0.5
 				political_power_gain = 0.005
 			}
@@ -1965,7 +1976,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = kenzo_total_power_icon
 			modifier = {
-				war_support_weekly = 0.005
+				war_support_factor = 0.005
 				political_power_cost = 0.49
 				political_power_gain = 0.015
 				social_conservative_drift = 0.05
@@ -1978,7 +1989,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = kenzo_total_power_icon
 			modifier = {
-				war_support_weekly = 0.2
+				war_support_factor = 0.2
 				political_power_cost = 0.3
 				political_power_gain = 0.025
 				social_conservative_drift = 0.1
@@ -1992,7 +2003,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = JAP_national_unity_government_kazami
 			modifier = {
-				war_support_weekly = 0.01
+				war_support_factor = 0.01
 				political_power_cost = 0.45
 				political_power_gain = 0.01
 				social_liberal_drift = 0.05
@@ -2005,7 +2016,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = JAP_national_unity_government_kazami
 			modifier = {
-				war_support_weekly = 0.02
+				war_support_factor = 0.02
 				political_power_cost = 0.2
 				political_power_gain = 0.02
 				social_liberal_drift = 0.1
@@ -2049,7 +2060,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = nakano_total_power_icon
 			modifier = {
-				war_support_weekly = 0.02
+				war_support_factor = 0.02
 				stability_weekly = 0.02
 				monthly_population = 0.01
 				manpower_weekly = 100
@@ -2060,8 +2071,8 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = nakano_total_power_icon
 			modifier = {
-				war_support_weekly = 0.05
-				stability_weekly = 0.05
+				war_support_factor = 0.05
+				stability_weekly = 0.025
 				monthly_population = 0.025
 				manpower_weekly = 300
 				totalist_drift = 0.01
@@ -2117,7 +2128,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = generic_agrarian_reform
 			modifier = {
-				stability_weekly = 0.05
+				stability_factor = 0.05
 				production_factory_efficiency_gain_factor = 0.05
 			}
 		}
@@ -2137,7 +2148,7 @@ ideas = {
 				production_factory_max_efficiency_factor = 0.075
 				production_factory_max_efficiency_factor = 0.075
 				consumer_goods_factor = 0.05
-				war_support_weekly = 0.05
+				war_support_factor = 0.05
 			}
 		}
 		
@@ -2148,7 +2159,7 @@ ideas = {
 				production_factory_max_efficiency_factor = 0.05
 				production_speed_buildings_factor = 0.15
 				stability_factor = 0.1
-				war_support_weekly = 0.05
+				war_support_factor = 0.05
 				totalist_drift = 0.01
 				national_populist_drift = 0.01
 				research_speed_factor = 0.1
@@ -2172,7 +2183,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = JAP_ethnic_unity
 			modifier = {
-				stability_weekly = -0.05
+				stability_factor = -0.05
 				local_non_core_manpower = 0.075
 				local_resources = 0.05
 			}
@@ -2182,7 +2193,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = JAP_ethnic_unity
 			modifier = {
-				war_support_weekly = 0.05
+				war_support_factor = 0.05
 				political_power_gain = 0.01
 				manpower_weekly = 100
 			}
@@ -2213,7 +2224,7 @@ ideas = {
 			picture = JAP_party_seiyukai
 			modifier = {
 				political_power_gain = 0.15
-				war_support_weekly = 0.05
+				war_support_weekly = 0.01
 				research_speed_factor = 0.05
 				stability_factor = 0.2
 				social_conservative_drift = 0.075
@@ -2290,7 +2301,7 @@ ideas = {
 			modifier = {
 				manpower_weekly = 100
 				radical_socialist_drift = 0.01
-				war_support_weekly = 0.05
+				war_support_weekly = 0.01
 				research_speed_factor = 0.01
 			}
 		}
@@ -2396,7 +2407,7 @@ ideas = {
 				syndicalist_drift = 0.01
 				radical_socialist_drift = 0.01
 				war_support_factor = 0.05
-				stability_weekly = 0.01
+				stability_weekly = 0.001
 				political_power_gain = 0.1
 			}
 		}
@@ -2406,7 +2417,7 @@ ideas = {
 			picture = communal_democracy
 			modifier = {
 				radical_socialist_drift = 0.01
-				stability_weekly = 0.05
+				stability_factor = 0.05
 				research_speed_factor = 0.05
 				research_sharing_per_country_bonus_factor = -0.1
 			}
@@ -2426,7 +2437,7 @@ ideas = {
 			modifier = {
 				manpower_weekly = -100
 				political_power_gain = 0.01
-				war_support_weekly = 0.05
+				war_support_factor = 0.01
 				stability_weekly = -0.05
 				
 			}
@@ -2438,8 +2449,8 @@ ideas = {
 			modifier = {
 				manpower_weekly = 10
 				political_power_cost = 0.01
-				war_support_weekly = -0.05
-				stability_weekly = 0.05
+				war_support_factor = -0.05
+				stability_factor = 0.05
 				
 			}
 		}
@@ -2554,7 +2565,7 @@ ideas = {
 				war_support_factor = -0.25
 				justify_war_goal_time = 0.15
 				political_power_gain = 0.2
-				stability_weekly = 0.05
+				stability_weekly = 0.001
 			}
 		}
 		
@@ -2564,7 +2575,7 @@ ideas = {
 			modifier = {
 				research_speed_factor = 0.05
 				political_power_gain = 0.2
-				stability_weekly = 0.05
+				stability_weekly = 0.001
 				social_liberal_drift = 0.05
 			}
 		}
@@ -2628,7 +2639,7 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea arm_ottoman_occupation"}
 			picture = japanese_loyalism
 			modifier = {
-				war_support_weekly = 0.05
+				war_support_weekly = 0.025
 				production_factory_efficiency_gain_factor = 0.05
 				political_power_gain = 0.1
 				totalist_drift = 0.05
@@ -2677,8 +2688,8 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea JAP_no_army_focus"}
 			picture = JAP_no_longer_weak_premier
 			modifier = {
-				war_support_weekly = 0.05
-				stability_weekly = 0.025
+				war_support_weekly = 0.01
+				stability_factor = 0.25
 				political_power_gain = 0.05
 				research_speed_factor = 0.01
 				army_morale_factor = 0.1
@@ -2817,7 +2828,7 @@ ideas = {
 			modifier = {
 				political_power_gain = 0.1
 				paternal_autocrat_drift = 0.2
-				stability_weekly = 0.05
+				stability_weekly = 0.015
 				war_support_weekly = 0.025
 			}
 		}
@@ -3153,7 +3164,7 @@ ideas = {
 				political_power_gain = 0.05
 			}
 		}
-		
+
 		JSR_weakened_military = {
 		picture = japanese_aid_cut
 			modifier = {
@@ -3220,7 +3231,7 @@ ideas = {
 			picture = global_revolution_jap
 			modifier = {
 				research_sharing_per_country_bonus_factor = 0.15
-				surrender_limit = 0.5
+				surrender_limit = 0.35
 				trade_opinion_factor = -0.5
 				war_support_factor = 0.5
 				justify_war_goal_time = -0.75
@@ -3232,7 +3243,7 @@ ideas = {
 			picture = asian_revolution_jap
 			modifier = {
 				research_sharing_per_country_bonus_factor = 0.3
-				surrender_limit = 0.9
+				surrender_limit = 0.1
 				trade_opinion_factor = -0.1
 				war_support_factor = 0.2
 				justify_war_goal_time = -0.5
@@ -3267,7 +3278,7 @@ ideas = {
 			modifier = {
 				syndicalist_drift = 0.05
 				political_power_gain = 0.01
-				war_support_weekly = 0.05
+				war_support_factor = 0.05
 				manpower_weekly = 100
 				research_speed_factor = 0.01
 			}
@@ -3278,7 +3289,7 @@ ideas = {
 			
 			modifier = {
 				syndicalist_drift = 0.05
-				stability_weekly = 0.01
+				stability_weekly = 0.001
 				research_speed_factor = 0.01
 			}
 		}
@@ -3365,7 +3376,7 @@ ideas = {
 		picture = fukumotonoics
 			
 			modifier = {
-				totalist_drift = 0.005
+				totalist_drift = 0.009
 				political_power_cost = 0.005
 				stability_factor = -0.01
 				research_speed_factor = -0.025
@@ -3426,7 +3437,7 @@ ideas = {
 		picture = generic_radical_socialist_revolution
 			
 			modifier = {
-				war_support_weekly = 0.05
+				war_support_factor = 0.05
 				political_power_gain = 0.025
 				manpower_weekly = 100
 				
@@ -3437,7 +3448,7 @@ ideas = {
 			picture = JSR_red_cherry_blossumss
 			
 			modifier = {
-				war_support_weekly = 0.05
+				war_support_factor = 0.05
 				political_power_gain = 0.025
 				manpower_weekly = 100
 				totalist_drift = 0.05
@@ -3449,7 +3460,7 @@ ideas = {
 		picture = generic_totalist_revolution
 			
 			modifier = {
-				war_support_weekly = 0.05
+				war_support_weekly = 0.001
 				political_power_gain = 0.025
 				manpower_weekly = 100
 				monthly_population = 0.01
@@ -3486,7 +3497,7 @@ ideas = {
 
 			picture = JSR_party_re_construction
 			modifier = {
-				stability_weekly = 0.05
+				stability_factor = 0.05
 				political_power_gain = 0.025
 				totalist_drift = -0.025
 				
@@ -3574,7 +3585,7 @@ ideas = {
 			modifier = {
 				production_factory_efficiency_gain_factor = -0.05
 				political_power_gain = 0.5
-				war_support_weekly = 0.075
+				war_support_weekly = 0.001
 				stability_factor = -0.2
 				totalist_drift = 0.3
 				army_morale_factor = 0.05

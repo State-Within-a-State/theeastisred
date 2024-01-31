@@ -54,7 +54,7 @@ country_event = { #Nomination of the Republican Candidate
 	name = "Oh no..."
 		create_country_leader = {
 					name = "Taiwan Sōtoku"
-					desc = "POLITICS_ZHANG_ZUOLIN_DESC"
+					desc = "-"
 					picture = "gfx/leaders/TWI/Portrait_TWI_Taiwan_Sōtoku.png"
 					expire = "1965.1.1"
 					ideology = colonial_govt_subtype
@@ -897,7 +897,7 @@ country_event = { #Battle of Taipei
 			}
 			country_event = taiwan.10
 		}
-		if = {
+		else_if = {
 			limit = {
 				check_variable = { TAI_JAP_REVOLT < 2 }
 			}
@@ -920,7 +920,7 @@ country_event = { #Battle of Taipei
 			}
 			country_event = taiwan.10
 		}
-		if = {
+		else_if = {
 			limit = {
 				check_variable = { TAI_JAP_REVOLT < 2 }
 			}
@@ -1117,10 +1117,8 @@ country_event = { #Electing the New Governor
 			complete_national_focus = TAIMON_appointment_of_a_new_governor
 		}
 	}
+	trigger = { not = { has_country_flag = TAI_end_of_japanese_occupation } }
 	is_triggered_only = yes
-
-
-	
 	option = { #Fuckin Hell
 	name = taiwan.24.a
 		set_politics = { ruling_party = paternal_autocrat }

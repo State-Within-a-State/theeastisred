@@ -871,6 +871,11 @@ country_event = { #Japanese Civil War
 		dismantle_faction = yes
 		release = KOR
 		end_puppet = TAI
+		end_puppet = JST
+		}
+		TRM = {
+		transfer_state = 537
+		transfer_state = 555
 		}
 		TAI = {
 		country_event = taiwan.18
@@ -1157,11 +1162,6 @@ country_event = { #Syndicalist Victory
 	title = japan_new_event.18.title
 	desc = japan_new_event.18.desc
 	picture = "GFX_japan_socialist_victory"
-	trigger = {
-		original_tag = JAP
-		has_civil_war = no
-		has_government = syndicalist
-	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.18.a
@@ -1225,11 +1225,6 @@ country_event = { #Military Victory
 	title = japan_new_event.19.title
 	desc = japan_new_event.19.desc
 	picture = "GFX_japan_army_coup"
-	trigger = {
-		original_tag = JAP
-		has_civil_war = no
-		has_government = paternal_autocrat
-	}
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.19.a
@@ -1264,14 +1259,9 @@ country_event = { #Military Victory
 			}
 			
 		}
-		set_party_name = {
-			ideology = paternal_autocrat
-			long_name = "Military Administration"
-			name = "Military Administration"
 			set_global_flag = JAP_civil_war_over
 			set_capital = { state = 282 remember_old_capital = no }
 			set_country_flag = JAP_army_victory
-		}
 	}
 }
 
@@ -2822,7 +2812,7 @@ country_event = { #Closing of the First Yokusan Elections
 		and = {
 		power_balance_value = {
 			id = JAP_IRAA_balance
-			value < 0
+			value < 0.01
 			}
 		power_balance_value = {
 			id = JAP_IRAA_balance
@@ -2865,7 +2855,7 @@ country_event = { #Closing of the First Yokusan Elections
 		and = {
 		power_balance_value = {
 			id = JAP_IRAA_balance
-			value > 0
+			value > -0.01
 			}
 		power_balance_value = {
 			id = JAP_IRAA_balance
@@ -3220,12 +3210,9 @@ country_event = { #Hashimoto Ideology Picker
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
 			expire = "1965.1.1"
-			ideology = kemalism_subtype
+			ideology = natpop_kemalism_subtype
 		}
-		set_politics = {
-			ruling_party = authoritarian_democrat
-			elections_allowed = no
-		}
+		
 		set_party_name = {
 				ideology = authoritarian_democrat
 				long_name = JAP_Hashimoto_party_long
@@ -5602,6 +5589,7 @@ country_event = { #Transitioning From a Junta Government
 	option = { #Red Empire
 		name = japan_new_event.68.b
 		ai_chance = { base = 100 }
+		trigger = { not = { has_idea = JSR_end_emperor } }
 		set_politics = {
 			ruling_party = radical_socialist
 			election_frequency = 48
@@ -5633,7 +5621,6 @@ country_event = { #Transitioning From a Junta Government
 			ideology = radical_socialist
 			popularity = 0.15
 		}
-		set_cosmetic_tag = JAP_SANZO_MONBOL
 		create_country_leader = {
 						name = "Sanzo Nosaka"
 						desc = "-"
@@ -6168,6 +6155,7 @@ country_event = { #Japan Demands Our Submission
 		TRM = {
 		set_politics = { ruling_party = authoritarian_democrat }
 		set_cosmetic_tag = TRM_JAP
+		set_country_flag = TRM_Yui
 		}
 	}
 }
@@ -7041,14 +7029,19 @@ country_event = { #Question of Our Future
 		name = japan_new_event.92.a
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = JAP_Hakko_Ichui
+		
+		every_state = {
+		add_core_of = JAP
+		}
+		
+		every_country = {
 		JAP = {
 			create_wargoal = {
 				type = puppet_wargoal_focus
 				target = PREV
 			}
 		}
-		every_state = {
-		add_core_of = JAP
+		
 		}
 	}
 	
@@ -7057,21 +7050,24 @@ country_event = { #Question of Our Future
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = JAP_Tachi_Asia
 		every_state = {
-			limit = {
-			OR = {
+				limit = {
+					OR = {
 						is_on_continent = asia
 						is_on_continent = india
 					}
+				}
+				
+			JAP = {
+			add_state_core = PREV
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+			
 			}
-		add_core_of = JAP
-		}
+			}
 		
-		JAP = {
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = PREV
-			}
-		}
+		
 	}
 	
 	option = { #
@@ -8053,7 +8049,7 @@ country_event = { #Japan Shall Be Free
 	option = { #
 		name = japan_new_event.116.d
 		ai_chance = { base = 100 }
-		set_country_leader_ideology = radsoc_national_socialism_subtype
+		set_country_leader_ideology = anarcho_communism_subtype
 		
 	}
 }
@@ -8209,7 +8205,6 @@ country_event = { #Kenzo Yamamoto Flees to France
 				target = JSR
 				modifier = faction_traitor
 			}
-			remove_from_faction = JSR
 		}
 		add_stability = -0.05
 		add_political_power = 10
@@ -8279,24 +8274,19 @@ country_event = { #Question of the Emperor?
 	option = { #
 		name = japan_new_event.125.a
 		ai_chance = { base = 100 }
-		if = {
-				limit = { has_country_flag = JAP_yasuhito }
-				add_ideas = JAP_emperor_yasuhito
-			}
-			else = { add_ideas = JAP_emperor_hirohito }
+		swap_ideas = {
+		remove_idea = JAP_no_emperor
+		add_idea = JAP_emperor_hirohito
+		}
 	}
 	
 	option = { #
 		name = japan_new_event.125.b
 		ai_chance = { base = 100 }
-		add_ideas = {
-		JAP_no_emperor
-		}
-		add_popularity = {
-		ideology = ROOT
-		popularity = 0.05
-		}
-		add_war_support = 0.05
+		swap_ideas = {
+			remove_idea = JAP_no_emperor
+			add_idea = JSR_end_emperor 
+			}
 	}
 }
 
@@ -8503,12 +8493,12 @@ country_event = { #Taiwan is the real Japan
 		set_country_flag = factionalism_japan_no
 		create_country_leader = {
 				name = "Yasuhito"
-				desc = "POLITICS_ZHANG_XUELIANG_DESC"
+				desc = "-"
 				picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
 				expire = "1965.1.1"
 				ideology = pataut_showa_statism_subtype
 			}
-		create_faction = eurasian_bloc
+		create_faction = co_prosperity_sphere
 	}
 }
 

@@ -20,13 +20,13 @@ JSR_land_reform_mission = {
 		selectable_mission = no
 		complete_effect = {
 			add_ideas = {
-			JSR_land_reform_success
+			LEC_land_reform_success
 			}
 			set_country_flag = land_reform_complete
 		}
 		timeout_effect = {
 			add_ideas = {
-			JSR_land_reform_failiure
+			LEC_land_reform_failiure
 			}
 			set_country_flag = land_reform_failed
 		}
@@ -557,6 +557,7 @@ JSR_reach_out_to_the_kuomintang = {
 						has_government = totalist
 						has_government = syndicalist
 						has_government = radical_socialist
+						has_government = social_democrat
 					}
 			}
 		}
@@ -979,6 +980,7 @@ JSR_reach_out_to_the_kuomintang = {
 			tag = JSR
 			has_completed_focus = JAP_SOCFOR_reaching_out_to_socialist_allies
 			is_in_faction = no
+			not = { has_country flag = JSR_Kenzo_Yamamoto_fled }
 			
 		}
 		cost = 10
@@ -1079,6 +1081,7 @@ JSR_reach_out_to_the_kuomintang = {
 					has_government = totalist
 					has_government = syndicalist
 					has_government = radical_socialist
+					has_government = social_democrat
 				}
 			}
 			
@@ -1230,9 +1233,6 @@ JSR_Nosaka_Purge_Campaign_decision_category = {
 		icon = generic_factory
 		
 		available = {
-			
-			
-			
 		}
 		
 		visible = {
@@ -1257,22 +1257,21 @@ JSR_Nosaka_Purge_Campaign_decision_category = {
 		popularity = -0.15
 		}
 		set_country_flag = JSR_Fukumoto_Dead
+		remove_ideas = { JSR_fukumotoist_resistance )
 		}
 	}
+}
 	
 	JSR_purge_social_reactionaries = {
 		icon = generic_factory
 		
 		available = {
 			has_completed_focus = JAPCOMMUNIST_denounce_the_liberal_menace
-			
-			
 		}
 		
 		visible = {
 			tag = JSR
 			has_completed_focus = JAPCOMMUNIST_securing_the_state
-			
 		}
 		cost = 10
 		
