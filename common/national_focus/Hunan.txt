@@ -15,1987 +15,576 @@ focus_tree = {
 	default = no
 	continuous_focus_position = { x = 3700 y = 850 }
 
-### Tang Shengzhi
-
+	#Down Goes Hunan's Own Dog Meat General
 	focus = {
-		id = HNN_Revolutionary_Buddhism
-		icon = GFX_goal_HNN_The_Buddhist_General
-		x = 3
+		id = HNNZHILI_downgoeshunansowndogmeatgeneral
+		icon = GFX_HNNZHILI_downgoeshunansowndogmeatgeneral-248360
+		x = 13
 		y = 0
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-			has_country_flag = HNN_tang_victory_flag
-			has_government = social_democrat
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Revolutionary_Buddhism"
-			country_event = { id = hnn.47 }
-			set_variable = { hnn_buddhisisation_progress_var = 0 }
-			custom_effect_tooltip = HNN_buddsoc_tooltip
+		always = no
 		}
 	}
 
+	#The Butcher Returns To Cut Some Meat
 	focus = {
-		id = HNN_Religious_Mobilization
-		icon = GFX_PAP_holy_war
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = -1
+		id = HNNZHILI_the_butcher_returns_to_cut_some_meat
+		icon = GFX_HNNZHILI_the_butcher_returns_to_cut_some_meat-248360
+		x = 6
 		y = 1
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
+		prerequisite = { focus = HNNZHILI_downgoeshunansowndogmeatgeneral  }
 		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Revolutionary_Buddhism
-		}
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Religious_Mobilization"
-			add_ideas = HNN_religious_mobilization_program
-		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
-	}
-
-
-	focus = {
-		id = HNN_Sanghas_into_Cooperatives
-		icon = GFX_Socialist_Law
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = 1
-		y = 1
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Revolutionary_Buddhism
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Sanghas_into_Cooperatives"
-			add_political_power = -50
-			add_timed_idea = {
-				idea = HNN_sanghas_into_coops
-				days = 120
+			has_country_leader = {
+				name = "Tang Xiangming"
+				ruling_only = yes
 			}
-			custom_effect_tooltip = HNN_buddsoc_advance_tooltip
-			add_to_variable = { hnn_buddhisisation_progress_var = 10 }
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-	}
-
-	focus = {
-		id = HNN_Affinities_Amongst_People
-		icon = GFX_goal_generic_government_deals
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = 1
-		y = 2
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Sanghas_into_Cooperatives
-		}
-		prerequisite = {
-			focus = HNN_Religious_Mobilization
 		}
 		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Affinities_Amongst_People"
-			add_stability = 0.05
-			custom_effect_tooltip = HNN_buddsoc_advance_tooltip
-			add_to_variable = { hnn_buddhisisation_progress_var = 10 }
+		country_event =  hunan_rework.11
 		}
-		search_filters = { FOCUS_FILTER_STABILITY }
 	}
 
+	#Support a New Form of Democracy
 	focus = {
-		id = HNN_Solve_the_Landlord_Problem
-		icon = GFX_goal_HOL_list_left
-		relative_position_id = HNN_Revolutionary_Buddhism
+		id = HNNZHILI_support_a_new_form_of_democracy
+		icon = GFX_HNNZHILI_support_a_new_form_of_democracy-248360
+		x = 6
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNZHILI_the_butcher_returns_to_cut_some_meat  }
+		available = {
+		always = no
+		}
+	}
+
+	#Align With the Buddhist General
+	focus = {
+		id = HNNZHILI_align_with_the_buddhist_general
+		icon = GFX_HNNZHILI_align_with_the_buddhist_general-248360
+		x = 4
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNZHILI_support_a_new_form_of_democracy  }
+		mutually_exclusive = { focus = HNNZHILI_join_the_social_democratic_party  }
+		available = {
+		has_country_flag = HNN_Tang_Xiangming_Buddhist
+		}
+	}
+
+	#Join the Social Democratic Party
+	focus = {
+		id = HNNZHILI_join_the_social_democratic_party
+		icon = GFX_HNNZHILI_join_the_social_democratic_party-248360
+		x = 8
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNZHILI_support_a_new_form_of_democracy  }
+		mutually_exclusive = { focus = HNNZHILI_align_with_the_buddhist_general  }
+		available = {
+		has_country_flag = HNN_Tang_Xiangming_NatSoc
+		}
+	}
+
+	#Translating Buddhist Teachings
+	focus = {
+		id = HNNZHILI_translating_buddhist_teachings
+		icon = GFX_HNNZHILI_translating_buddhist_teachings-248360
 		x = 2
-		y = 3
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
 		}
-		available = {
-			has_completed_focus = HNN_Strong_Arm_Local_Landowners
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Affinities_Amongst_People
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Solve_the_Landlord_Problem"
-			country_event = { id = hnn.48 }
-			custom_effect_tooltip = HNN_buddsoc_advance_tooltip
-			add_to_variable = { hnn_buddhisisation_progress_var = 10 }
-		}
+		prerequisite = { focus = HNNZHILI_a_temple_for_democracy  }
 	}
 
+	#A Temple For Democracy
 	focus = {
-		id = HNN_Nationalize_Industry
-		icon = GFX_goal_state_economy
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = 0
-		y = 3
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Affinities_Amongst_People
-			focus = HNN_All_the_Joy_in_the_World
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Nationalize_Industry"
-			add_offsite_building = {
-				type = industrial_complex
-				level = 1
-			}
-			custom_effect_tooltip = HNN_buddsoc_advance_tooltip
-			add_to_variable = { hnn_buddhisisation_progress_var = 10 }
-		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	}
-
-	focus = {
-		id = HNN_All_the_Joy_in_the_World
-		icon = GFX_goal_COS_Peace
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = -1
-		y = 2
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Sanghas_into_Cooperatives
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_All_the_Joy_in_the_World"
-			add_political_power = 50
-			add_stability = 0.06
-			custom_effect_tooltip = HNN_buddsoc_advance_tooltip
-			add_to_variable = { hnn_buddhisisation_progress_var = 10 }
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Support_Local_Universities #Hunan University is a good example
-		icon = GFX_goal_KTG_Bookstack
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = -2
-		y = 3
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_All_the_Joy_in_the_World
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Support_Local_Universities"
-			add_ideas = HNN_Local_Universities_Supported
-			add_political_power = 10
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
-	}
-
-	focus = {
-		id = HNN_Aid_Our_Workers
-		icon = GFX_goal_workers_rights
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = 1
-		y = 4
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Support_Local_Universities
-		}
-		prerequisite = {
-			focus = HNN_Nationalize_Industry
-		}
-		prerequisite = {
-			focus = HNN_Solve_the_Landlord_Problem
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Aid_Our_Workers"
-			add_ideas = HNN_Worker_Self_Determination
-			custom_effect_tooltip = HNN_buddsoc_advance_tooltip
-			add_to_variable = { hnn_buddhisisation_progress_var = 10 }
-		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-	}
-
-	focus = {
-		id = HNN_The_Gender_Issue
-		icon = GFX_focus_generic_female_rights
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = 0
+		id = HNNZHILI_a_temple_for_democracy
+		icon = GFX_HNNZHILI_a_temple_for_democracy-248360
+		x = 3
 		y = 5
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
 		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Protect_Ethnic_Minorities
-		}
-		prerequisite = {
-			focus = HNN_Aid_Our_Workers
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Gender_Issue"
-			custom_effect_tooltip = HNN_buddsoc_advance_tooltip
-			add_to_variable = { hnn_buddhisisation_progress_var = 10 }
-			country_event = { id = hnn.49 }
-		}
+		prerequisite = { focus = HNNZHILI_on_the_path_of_the_bodhisattva  }
 	}
 
+	#On the Path of the Bodhisattva
 	focus = {
-		id = HNN_Protect_Ethnic_Minorities
-		icon = GFX_goal_generic_controlled_board
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = -1
+		id = HNNZHILI_on_the_path_of_the_bodhisattva
+		icon = GFX_HNNZHILI_on_the_path_of_the_bodhisattva-248360
+		x = 3
 		y = 4
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
 		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Support_Local_Universities
-		}
-		prerequisite = {
-			focus = HNN_Nationalize_Industry
-		}
-		prerequisite = {
-			focus = HNN_Solve_the_Landlord_Problem
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Protect_Ethnic_Minorities"
-			custom_effect_tooltip = HNN_buddsoc_advance_tooltip
-			add_to_variable = { hnn_buddhisisation_progress_var = 10 }
-			add_political_power = 50
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		prerequisite = { focus = HNNZHILI_align_with_the_buddhist_general  }
 	}
 
+	#Enforcing the Peace
 	focus = {
-		id = HNN_Sharing_the_Land
-		icon = GFX_focus_AUS_agriculture
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = -2
+		id = HNNZHILI_enforcing_the_peace
+		icon = GFX_HNNZHILI_enforcing_the_peace-248360
+		x = 4
 		y = 6
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
 		}
-		available = {
-			has_country_flag = HNN_land_decisions_finished
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_The_Gender_Issue
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Sharing_the_Land"
-			add_timed_idea = {
-				idea = HNN_common_land
-				days = 120
-			}
-		}
+		prerequisite = { focus = HNNZHILI_a_temple_for_democracy  }
 	}
+
+	#Legacy of New Republicanism
 	focus = {
-		id = HNN_Promote_Innovations
-		icon = GFX_goal_brain
-		cost = 6
-		relative_position_id = HNN_Revolutionary_Buddhism
-		available = {
-			has_government = social_democrat
+		id = HNNZHILI_legacy_of_new_republicanism
+		icon = GFX_HNNZHILI_legacy_of_new_republicanism-248360
+		x = 6
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = {
-			focus = HNN_The_Gender_Issue
+		prerequisite = { focus = HNNZHILI_support_a_new_form_of_democracy  }
+	}
+
+	#Legacy of Yuan
+	focus = {
+		id = HNNZHILI_legacy_of_yuan
+		icon = GFX_HNNZHILI_legacy_of_yuan-248360
+		x = 5
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
-		x = 0
+		prerequisite = { focus = HNNZHILI_legacy_of_new_republicanism  }
+		mutually_exclusive = { focus = HNNZHILI_beiyang_republicanism  }
+	}
+
+	#Beiyang Republicanism
+	focus = {
+		id = HNNZHILI_beiyang_republicanism
+		icon = GFX_HNNZHILI_beiyang_republicanism-248360
+		x = 7
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNZHILI_legacy_of_new_republicanism  }
+		mutually_exclusive = { focus = HNNZHILI_legacy_of_yuan  }
+	}
+
+	#Fighting Against the Gang of Unruly Nature
+	focus = {
+		id = HNNZHILI_fighting_against_the_gang_of_unruly_nature
+		icon = GFX_HNNZHILI_fighting_against_the_gang_of_unruly_nature-248360
+		x = 6
 		y = 6
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
 		}
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Promote_Innovations"
-			add_tech_bonus = {
-				name = HNN_Promote_Innovations
-				bonus = 0.5
-				uses = 2
-				category = land_doctrine
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		prerequisite = { focus = HNNZHILI_legacy_of_yuan  focus = HNNZHILI_beiyang_republicanism  }
 	}
 
+	#Proclaiming the Patriotic Revolution
 	focus = {
-		id = HNN_Not_One_Step_Back
-		icon = GFX_goal_army_guy
-		cost = 6
-		prerequisite = {
-			focus = HNN_Promote_Innovations
+		id = HNNZHILI_proclaiming_the_patriotic_revolution
+		icon = GFX_HNNZHILI_proclaiming_the_patriotic_revolution-248360
+		x = 9
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
 		}
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = 0
-		y = 7
-		ai_will_do = {
-			factor = 15
-		}
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Not_One_Step_Back"
-			swap_ideas = {
-				remove_idea = HNN_religious_mobilization_program
-				add_idea = HNN_religious_mobilization_program_2
-			}
-		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER }
-	}
-	focus = {
-		id = HNN_Indoctrinate_the_People
-		icon = GFX_goal_authoritarian
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = 2
-		y = 6
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_The_Gender_Issue
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Indoctrinate_the_People"
-			add_popularity = {
-				ideology = social_democrat
-				popularity = 0.1
-			}
-		}
+		prerequisite = { focus = HNNZHILI_join_the_social_democratic_party  }
 	}
 
+	#Creation of a National Welfare System
 	focus = {
-		id = HNN_Welfare
-		icon = GFX_goal_white_star
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = -2
-		y = 7
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		id = HNNZHILI_creation_of_a_national_welfare_system
+		icon = GFX_HNNZHILI_creation_of_a_national_welfare_system-248360
+		x = 9
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Sharing_the_Land
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Welfare"
-			add_ideas = HNN_welfare_system
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		prerequisite = { focus = HNNZHILI_proclaiming_the_patriotic_revolution  }
 	}
 
+	#Crush the Brothels Dens and Casinos
 	focus = {
-		id = HNN_Provincial_Curriculum
-		icon = GFX_focus_research2
-		relative_position_id = HNN_Revolutionary_Buddhism
-		x = 2
-		y = 7
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_democrat
-		}
-		prerequisite = {
-			focus = HNN_Indoctrinate_the_People
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Provincial_Curriculum"
-			add_research_slot = 1
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-
-###Zhao Hengti
-
-	focus = {
-		id = HNN_Sham_Democracy
-		icon = GFX_goal_ideology_authoritarian_democrat
+		id = HNNZHILI_crush_the_brothels_dens_and_casinos
+		icon = GFX_HNNZHILI_crush_the_brothels_dens_and_casinos-248360
 		x = 10
-		y = 0
-		cost = 5
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_country_flag = HNN_zhao_auth_victory
-			has_government = authoritarian_democrat
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Sham_Democracy"
-			add_stability = 0.1
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Clamp_Down_on_Dissent
-		icon = GFX_goal_authoritarian
-		relative_position_id = HNN_Sham_Democracy
-		x = 0
-		y = 1
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Sham_Democracy
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Clamp_Down_on_Dissent"
-			add_stability = 0.05
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.1
-			}
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Purge_the_Socialists
-		icon = GFX_HOL_crackdown_syndie
-		relative_position_id = HNN_Clamp_Down_on_Dissent
-		x = -1
-		y = 1
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Clamp_Down_on_Dissent
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Purge_the_Socialists"
-			add_stability = 0.05
-			add_popularity = {
-				ideology = social_democrat
-				popularity = -0.05
-			}
-			add_popularity = {
-				ideology = radical_socialist
-				popularity = -0.1
-			}
-			add_popularity = {
-				ideology = syndicalist
-				popularity = -0.1
-			}
-			add_popularity = {
-				ideology = totalist
-				popularity = -0.1
-			}
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Drive_out_Federalism
-		icon = GFX_goal_step_on_skull
-		relative_position_id = HNN_Purge_the_Socialists
-		x = 1
-		y = 1
-		cost = 8
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Purge_the_Socialists
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Drive_out_Federalism"
-			add_stability = 0.05
-			add_popularity = {
-				ideology = social_democrat
-				popularity = -0.05
-			}
-			add_popularity = {
-				ideology = social_liberal
-				popularity = -0.15
-			}
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Provincial_Stability
-		icon = GFX_goal_authority
-		relative_position_id = HNN_Purge_the_Socialists
-		x = -1
-		y = 1
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Purge_the_Socialists
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Provincial_Stability"
-			add_political_power = -50
-			add_stability = 0.1
-			add_war_support = 0.1
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Hunt_Tang_Shengzhi
-		icon = GFX_goal_HNN_Hunt_Tang_Shengzhi
-		relative_position_id = HNN_Clamp_Down_on_Dissent
-		x = 2
-		y = 1
-		cost = 3
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Clamp_Down_on_Dissent
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Hunt_Tang_Shengzhi"
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.05
-			}
-			country_event = { id = hnn.60 }
-		}
-	}
-
-	focus = {
-		id = HNN_Destroy_His_Influence
-		icon = GFX_goal_secret_agents
-		relative_position_id = HNN_Hunt_Tang_Shengzhi
-		x = 0
-		y = 1
-		cost = 3
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_country_flag = HNN_trial_over
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Hunt_Tang_Shengzhi
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Destroy_His_Influence"
-			add_popularity = {
-				ideology = social_democrat
-				popularity = -0.2
-			}
-		}
-	}
-
-	focus = {
-		id = HNN_Educate_the_People
-		icon = GFX_goal_HNN_Huang_Shihengs_Education_Program
-		relative_position_id = HNN_Sham_Democracy
-		x = 0
 		y = 6
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Eliminate_the_Left_KMT
-		}
-		prerequisite = {
-			focus = HNN_Under_the_Law
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Educate_the_People"
-			add_research_slot = 1
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		prerequisite = { focus = HNNZHILI_creation_of_a_national_welfare_system  }
 	}
 
+	#Form the National Preparation Committee
 	focus = {
-		id = HNN_Satisfy_the_Workers
-		icon = GFX_goal_consolidating_coalitionv2
-		relative_position_id = HNN_Destroy_His_Influence
-		x = -1
+		id = HNNZHILI_form_the_national_preparation_committee
+		icon = GFX_HNNZHILI_form_the_national_preparation_committee-248360
+		x = 8
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNZHILI_creation_of_a_national_welfare_system  }
+	}
+
+	#A Grand Republic
+	focus = {
+		id = HNNZHILI_a_grand_republic
+		icon = GFX_HNNZHILI_a_grand_republic-248360
+		x = 7
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNZHILI_beiyang_republicanism  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  } prerequisite = { focus = HNNZHILI_crush_the_brothels_dens_and_casinos  } prerequisite = { focus = HNNZHILI_form_the_national_preparation_committee  focus = HNNZHILI_translating_buddhist_teachings  } prerequisite = { focus = HNNZHILI_enforcing_the_peace  } prerequisite = { focus = HNNZHILI_beiyang_republicanism  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  }
+	}
+
+	#Restoring a True Empire
+	focus = {
+		id = HNNZHILI_restoring_a_true_empire
+		icon = GFX_HNNZHILI_restoring_a_true_empire-248360
+		x = 5
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNZHILI_translating_buddhist_teachings  } prerequisite = { focus = HNNZHILI_enforcing_the_peace  } prerequisite = { focus = HNNZHILI_legacy_of_yuan  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  focus = HNNZHILI_legacy_of_yuan  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  } prerequisite = { focus = HNNZHILI_crush_the_brothels_dens_and_casinos  } prerequisite = { focus = HNNZHILI_form_the_national_preparation_committee  }
+	}
+
+	#Restoration of the Hunan Constiution
+	focus = {
+		id = HNNZHILI_restoration_of_the_hunan_constiution
+		icon = GFX_HNNZHILI_restoration_of_the_hunan_constiution-248360
+		x = 17
 		y = 1
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
+		prerequisite = { focus = HNNZHILI_downgoeshunansowndogmeatgeneral  }
 		available = {
-			has_government = authoritarian_democrat
+			has_country_leader = {
+				name = "Tang Xiangming"
+				ruling_only = yes
+			}
 		}
-		prerequisite = {
-			focus = HNN_Provincial_Stability
-		}
-		prerequisite = {
-			focus = HNN_Drive_out_Federalism
-		}
-		prerequisite = {
-			focus = HNN_Destroy_His_Influence
-		}
-
 		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Satisfy_the_Workers"
-			add_ideas = HNN_workers_managed
+		country_event = hunan_rework.12
 		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
 
+	#Legacy of Tan Yankai
 	focus = {
-		id = HNN_Expel_Enemies
-		icon = GFX_goal_purge_opposition
-		relative_position_id = HNN_Sham_Democracy
-		x = -1
+		id = HNNZHILI_legacy_of_tan_yankai
+		icon = GFX_HNNZHILI_legacy_of_tan_yankai-248360
+		x = 17
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNZHILI_restoration_of_the_hunan_constiution  }
+	}
+
+	#The May 4th Intellectual
+	focus = {
+		id = HNNZHILI_the_may_4th_intellectual
+		icon = GFX_HNNZHILI_the_may_4th_intellectual-248360
+		x = 17
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HNNZHILI_legacy_of_tan_yankai  }
+	}
+
+	#Revive Confucian Political Thought
+	focus = {
+		id = HNNZHILI_revive_confucian_political_thought
+		icon = GFX_HNNZHILI_revive_confucian_political_thought-248360
+		x = 16
 		y = 4
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
 		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Provincial_Stability
-		}
-		prerequisite = {
-			focus = HNN_Drive_out_Federalism
-		}
-		prerequisite = {
-			focus = HNN_Destroy_His_Influence
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Expel_Enemies"
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.1
-			}
-			add_popularity = {
-				ideology = social_democrat
-				popularity = -0.05
-			}
-			add_popularity = {
-				ideology = social_liberal
-				popularity = -0.05
-			}
-		}
+		prerequisite = { focus = HNNZHILI_the_may_4th_intellectual  }
+		mutually_exclusive = { focus = HNNZHILI_reforming_confucian_ethics  }
 	}
 
+	#Reforming Confucian Ethics
 	focus = {
-		id = HNN_Under_the_Law
-		icon = GFX_goal_generic_stable_government
-		relative_position_id = HNN_Sham_Democracy
-		x = 1
-		y = 5
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Satisfy_the_Workers
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Under_the_Law"
-			add_stability = 0.05
-			add_political_power = 50
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_The_Spirit_of_Nationalism
-		icon = GFX_goal_national_mobilization
-		relative_position_id = HNN_Sham_Democracy
-		x = 1
-		y = 7
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Educate_the_People
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Spirit_of_Nationalism"
-			add_war_support = 0.15
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-	}
-
-	focus = {
-		id = HNN_Populist_Ways
-		icon = GFX_goal_national_populism
-		relative_position_id = HNN_Sham_Democracy
-		x = -1
-		y = 7
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-		}
-		prerequisite = {
-			focus = HNN_Educate_the_People
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Populist_Ways"
-			add_political_power = 50
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.05
-			}
-			add_popularity = {
-				ideology = social_conservative
-				popularity = 0.05
-			}
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-	}
-
-	focus = {
-		id = HNN_Eliminate_the_Left_KMT
-		icon = GFX_goal_LEP_kmt_encirclement
-		relative_position_id = HNN_Sham_Democracy
-		x = -1
-		y = 5
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = authoritarian_democrat
-
-		}
-		prerequisite = {
-			focus = HNN_Expel_Enemies
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Eliminate_the_Left_KMT"
-			add_popularity = {
-				ideology = social_liberal
-				popularity = -0.15
-			}
-			add_popularity = {
-				ideology = social_democrat
-				popularity = -0.15
-			}
-			add_popularity = {
-				ideology = radical_socialist
-				popularity = -0.15
-			}
-		}
-	}
-
-	focus = {
-		id = HNN_A_New_Hunan
-		icon = GFX_goal_ideology_social_conservative
+		id = HNNZHILI_reforming_confucian_ethics
+		icon = GFX_HNNZHILI_reforming_confucian_ethics-248360
 		x = 18
-		y = 0
+		y = 4
 		cost = 5
-
-		ai_will_do = {
-			factor = 15
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
 		}
-		available = {
-			has_country_flag = HNN_zhao_dem_victory
-			has_government = social_conservative
-
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_A_New_Hunan"
-			add_war_support = 0.05
-			add_stability = 0.05
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY }
+		prerequisite = { focus = HNNZHILI_the_may_4th_intellectual  }
+		mutually_exclusive = { focus = HNNZHILI_revive_confucian_political_thought  }
 	}
 
+	#Safe Guard the Hunanese Identity
 	focus = {
-		id = HNN_Constitutionalism_Forever
-		icon = GFX_goal_constitutional_guarantees
-		relative_position_id = HNN_A_New_Hunan
-		x = 0
-		y = 1
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-
-		}
-		prerequisite = {
-			focus = HNN_A_New_Hunan
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Constitutionalism_Forever"
-			add_stability = 0.05
-			add_popularity = {
-				ideology = social_conservative
-				popularity = 0.1
-			}
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Foster_Patriotism
-		icon = GFX_goal_china_deal
-		relative_position_id = HNN_A_New_Hunan
-		x = 1
-		y = 2
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-
-		}
-		prerequisite = {
-			focus = HNN_Constitutionalism_Forever
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Foster_Patriotism"
-			add_stability = 0.05
-			add_war_support = 0.1
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_The_Anti_Socialist_Campaign
-		icon = GFX_goal_revolution
-		relative_position_id = HNN_Foster_Patriotism
-		x = -1
-		y = 1
-		cost = 3
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-
-		}
-		prerequisite = {
-			focus = HNN_Foster_Patriotism
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Anti_Socialist_Campaign"
-			add_popularity = {
-				ideology = social_democrat
-				popularity = -0.1
-			}
-			add_popularity = {
-				ideology = radical_socialist
-				popularity = -0.1
-			}
-			add_stability = 0.05
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Guaranteed_Liberty
-		icon = GFX_goal_liberty
-		relative_position_id = HNN_A_New_Hunan
-		x = 3
-		y = 2
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_Constitutionalism_Forever
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Guaranteed_Liberty"
-			add_popularity = {
-				ideology = social_conservative
-				popularity = 0.1
-			}
-			add_popularity = {
-				ideology = market_liberal
-				popularity = 0.05
-			}
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.05
-			}
-		}
-	}
-
-	focus = {
-		id = HNN_Hunannese_Unity
-		icon = GFX_goal_HNN_The_Xiang_Identity
-		relative_position_id = HNN_A_New_Hunan
-		x = 0
-		y = 3
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_Traditional_Values
-		}
-		prerequisite = {
-			focus = HNN_Foster_Patriotism
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Hunannese_Unity"
-			add_stability = 0.1
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_The_Rights_of_Man
-		icon = GFX_focus_generic_the_giant_wakes
-		relative_position_id = HNN_A_New_Hunan
-		x = 2
-		y = 3
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_Guaranteed_Liberty
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Rights_of_Man"
-			add_popularity = {
-				ideology = social_conservative
-				popularity = 0.05
-			}
-			add_ideas = HNN_rights_guaranteed
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-	}
-
-	focus = {
-		id = HNN_Traditional_Values
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = HNN_A_New_Hunan
-		x = -1
-		y = 2
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_Constitutionalism_Forever
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Traditional_Values"
-			add_political_power = 50
-			add_stability = 0.05
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Provincial_Schools
-		icon = GFX_goal_military_research
-		relative_position_id = HNN_A_New_Hunan
-		x = -3
-		y = 2
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_Constitutionalism_Forever
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Provincial_Schools"
-			add_popularity = {
-				ideology = social_conservative
-				popularity = 0.05
-			}
-			add_ideas = HNN_dem_edu
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-
-	focus = {
-		id = HNN_Changsha_University_Expansion
-		icon = GFX_goal_generic_scientific_exchange
-		relative_position_id = HNN_A_New_Hunan
-		x = -2
-		y = 3
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_Provincial_Schools
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Changsha_University_Expansion"
-			add_research_slot = 1
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
-	}
-
-	focus = {
-		id = HNN_The_Hunan_Identity
-		icon = GFX_goal_QIE_confucianism
-		relative_position_id = HNN_A_New_Hunan
-		x = 0
-		y = 4
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_Changsha_University_Expansion
-		}
-		prerequisite = {
-			focus = HNN_Hunannese_Unity
-		}
-		prerequisite = {
-			focus = HNN_The_Rights_of_Man
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Hunan_Identity"
-			add_stability = 0.05
-			swap_ideas = {
-				remove_idea = HNN_rights_guaranteed
-				add_idea = HNN_rights_guaranteed2
-			}
-		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_The_Question_of_Women
-		icon = GFX_focus_generic_female_workers
-		relative_position_id = HNN_A_New_Hunan
-		x = 0
+		id = HNNZHILI_safe_guard_the_hunanese_identity
+		icon = GFX_HNNZHILI_safe_guard_the_hunanese_identity-248360
+		x = 17
 		y = 5
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
 		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_The_Hunan_Identity
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Question_of_Women"
-			swap_ideas = {
-				remove_idea = HNN_rights_guaranteed2
-				add_idea = HNN_rights_guaranteed3
-			}
-		}
-		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_MANPOWER FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		prerequisite = { focus = HNNZHILI_revive_confucian_political_thought  focus = HNNZHILI_reforming_confucian_ethics  }
 	}
 
+	#Federalist Allegiance
 	focus = {
-		id = HNN_Ai_You
-		icon = GFX_goal_HNN_Ai_You
-		relative_position_id = HNN_A_New_Hunan
-		x = 1
-		y = 6
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_The_Question_of_Women
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Ai_You"
-			add_war_support = 0.15
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-	}
-
-	focus = {
-		id = HNN_Zun_Lao
-		icon = GFX_goal_HNN_Zun_Lao
-		relative_position_id = HNN_A_New_Hunan
-		x = -1
-		y = 6
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_The_Question_of_Women
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Zun_Lao"
-			add_stability = 0.1
-			add_political_power = 50
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_New_Xiang_Culture
-		icon = GFX_goal_ANQ_promote_nationalist_thought
-		relative_position_id = HNN_A_New_Hunan
-		x = 0
-		y = 7
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			has_government = social_conservative
-		}
-		prerequisite = {
-			focus = HNN_Ai_You
-		}
-		prerequisite = {
-			focus = HNN_Zun_Lao
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_New_Xiang_Culture"
-			add_popularity = {
-				ideology = social_conservative
-				popularity = 0.05
-			}
-			add_war_support = 0.05
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-	}
-
-### Guomindang
-
-	focus = {
-		id = HNN_Hunan_Under_the_Kuomintang
-		icon = GFX_goal_CHI_peoples_army
-		x = 28
-		y = 0
-		cost = 1
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			custom_trigger_tooltip = {
-				always = no
-				tooltip = hunan_base_tt
-			}
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Hunan_Under_the_Kuomintang"
-			custom_effect_tooltip = cubanoeffect_tooltip
-			hidden_effect = {
-				country_event = {
-					id = hnn.65
-					days = 5
-				}
-			}
-		}
-	}
-
-	focus = {
-		id = HNN_Align_with_the_Leftists
-		icon = GFX_goal_HOL_list_left
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = -2
-		y = 1
-		cost = 1
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			custom_trigger_tooltip = {
-				always = no
-				tooltip = hunan_base_tt
-			}
-		}
-		mutually_exclusive = {
-			focus = HNN_Our_Own_Path
-		}
-		prerequisite = {
-			focus = HNN_Hunan_Under_the_Kuomintang
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Align_with_the_Leftists"
-			custom_effect_tooltip = cubanoeffect_tooltip
-		}
-	}
-
-	focus = {
-		id = HNN_Spread_Leftist_KMT_Thought
-		icon = GFX_Goal_Kuomintang_Government_Initiative
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = -4
+		id = HNNZHILI_federalist_allegiance
+		icon = GFX_HNNZHILI_federalist_allegiance-248360
+		x = 21
 		y = 2
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Align_with_the_Leftists
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Spread_Leftist_KMT_Thought"
-			add_popularity = {
-				ideology = social_liberal
-				popularity = 0.1
-			}
-			add_popularity = {
-				ideology = social_democrat
-				popularity = 0.05
-			}
-			add_popularity = {
-				ideology = radical_socialist
-				popularity = 0.05
-			}
-		}
+		prerequisite = { focus = HNNZHILI_restoration_of_the_hunan_constiution  }
 	}
 
+	#Meeting With the Kwangsi Leadership
 	focus = {
-		id = HNN_Raise_Kuomintang_Militia
-		icon = GFX_goal_integrate_the_militia
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = -4
+		id = HNNZHILI_meeting_with_the_kwangsi_leadership
+		icon = GFX_HNNZHILI_meeting_with_the_kwangsi_leadership-248360
+		x = 21
 		y = 3
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Spread_Leftist_KMT_Thought
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Raise_Kuomintang_Militia"
-			custom_effect_tooltip = HNN_revolutionary_miltia_tt
-			hidden_effect = {
-				load_oob = "HNN_Revolutionary_Militia"
-			}
-		}
-		search_filters = { FOCUS_FILTER_MANPOWER }
-	}
-	focus = {
-		id = HNN_Study_Sanmin_Zhuyi
-		icon = GFX_focus_chi_whampoa_military_academy
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 0
-		y = 2
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Align_with_the_Leftists
-			focus = HNN_Our_Own_Path
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Study_Sanmin_Zhuyi"
-			add_political_power = 100
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-	}
-	focus = {
-		id = HNN_Improve_Farmer_Livelihoods
-		icon = GFX_goal_agricultural_aid
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = -2
-		y = 3
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Study_Sanmin_Zhuyi
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Improve_Farmer_Livelihoods"
-			add_ideas = HNN_farmer_conditions_improved
-		}
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		prerequisite = { focus = HNNZHILI_federalist_allegiance  }
 	}
 
+	#Create the Provincial Federalist Program
 	focus = {
-		id = HNN_Social_Welfare_Program
-		icon = GFX_goal_agrarian_reform
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 0
+		id = HNNZHILI_create_the_provincial_federalist_program
+		icon = GFX_HNNZHILI_create_the_provincial_federalist_program-248360
+		x = 20
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNZHILI_meeting_with_the_kwangsi_leadership  }
+	}
+
+	#Reach Out the Tang Jiyao
+	focus = {
+		id = HNNZHILI_reach_out_the_tang_jiyao
+		icon = GFX_HNNZHILI_reach_out_the_tang_jiyao-248360
+		x = 22
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNZHILI_meeting_with_the_kwangsi_leadership  }
+	}
+
+	#Promotion of Xiang Unity
+	focus = {
+		id = HNNZHILI_promotion_of_xiang_unity
+		icon = GFX_HNNZHILI_promotion_of_xiang_unity-248360
+		x = 21
 		y = 5
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
 		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Arm_the_Farmers
-			focus = HNN_Religious_Unity
-		}
-		prerequisite = {
-			focus = HNN_Crackdown_on_Corruption
-		}
-		prerequisite = {
-			focus = HNN_Reform_Bureaucracy
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Social_Welfare_Program"
-			swap_ideas = {
-				remove_idea = HNN_zhiquan2
-				add_idea = HNN_zhiquan3
-			}
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		prerequisite = { focus = HNNZHILI_create_the_provincial_federalist_program  } prerequisite = { focus = HNNZHILI_reach_out_the_tang_jiyao  }
 	}
 
+	#Instil Regionalist Sentiment
 	focus = {
-		id = HNN_Arm_the_Farmers
-		icon = GFX_focus_prc_infiltration
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = -3
-		y = 4
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Raise_Kuomintang_Militia
-		}
-		prerequisite = {
-			focus = HNN_Improve_Farmer_Livelihoods
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Arm_the_Farmers"
-			add_war_support = 0.1
-			add_popularity = {
-				ideology = social_liberal
-				popularity = 0.05
-			}
-			set_equipment_fraction = 0.9
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-	}
-	focus = {
-		id = HNN_National_Consciousness
-		icon = GFX_focus_generic_strike_at_democracy2
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 2
-		y = 3
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Study_Sanmin_Zhuyi
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_National_Consciousness"
-			add_war_support = 0.15
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-	}
-	focus = {
-		id = HNN_Zhiquan_Reform_Provincial_Administration
-		icon = GFX_goal_government_icon
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 0
-		y = 3
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Study_Sanmin_Zhuyi
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Zhiquan_Reform_Provincial_Administration"
-			add_political_power = 50
-			add_ideas = HNN_zhiquan
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-	}
-	focus = {
-		id = HNN_Reform_Bureaucracy
-		icon = GFX_goal_generic_stable_government
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 1
-		y = 4
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Zhiquan_Reform_Provincial_Administration
-		}
-		prerequisite = {
-			focus = HNN_National_Consciousness
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Reform_Bureaucracy"
-			add_stability = 0.1
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-	}
-
-	focus = {
-		id = HNN_Education_Reform
-		icon = GFX_goal_KTG_Educate_natives
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 0
+		id = HNNZHILI_instil_regionalist_sentiment
+		icon = GFX_HNNZHILI_instil_regionalist_sentiment-248360
+		x = 21
 		y = 6
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Social_Welfare_Program
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Education_Reform"
-			swap_ideas = {
-				remove_idea = HNN_zhiquan3
-				add_idea = HNN_zhiquan4
-			}
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		prerequisite = { focus = HNNZHILI_safe_guard_the_hunanese_identity  } prerequisite = { focus = HNNZHILI_promotion_of_xiang_unity  }
 	}
 
+	#Saving the Federalist Cause
 	focus = {
-		id = HNN_Rural_Literacy
-		icon = GFX_focus_generic_military_academy
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 0
+		id = HNNZHILI_saving_the_federalist_cause
+		icon = GFX_HNNZHILI_saving_the_federalist_cause-248360
+		x = 20
 		y = 7
-		cost = 10
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
 		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Education_Reform
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Rural_Literacy"
-			add_research_slot = 1
-		}
-		search_filters = { FOCUS_FILTER_RESEARCH }
+		prerequisite = { focus = HNNZHILI_instil_regionalist_sentiment  }
+		mutually_exclusive = { focus = HNNZHILI_joining_comrade_chen_jiongming  }
 	}
 
+	#Joining Comrade Chen Jiongming
 	focus = {
-		id = HNN_Crackdown_on_Corruption
-		icon = GFX_goal_generic_expel_people
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = -1
-		y = 4
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		id = HNNZHILI_joining_comrade_chen_jiongming
+		icon = GFX_HNNZHILI_joining_comrade_chen_jiongming-248360
+		x = 22
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-			OR = {
-				AND = {
-					has_government = social_democrat
-					NOT = {
-						has_country_leader = {
-							name = "Tang Shengzhi"
-							ruling_only = yes
-						}
-					}
-				}
-				has_government = social_liberal
-			}
-		}
-		prerequisite = {
-			focus = HNN_Zhiquan_Reform_Provincial_Administration
-		}
-		prerequisite = {
-			focus = HNN_Improve_Farmer_Livelihoods
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Crackdown_on_Corruption"
-			add_stability = 0.05
-			swap_ideas = {
-				remove_idea = HNN_zhiquan
-				add_idea = HNN_zhiquan2
-			}
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
-	}
-	focus = {
-		id = HNN_Our_Own_Path
-		icon = GFX_goal_ideology_social_liberal
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 2
-		y = 1
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
-		}
-		available = {
-			custom_trigger_tooltip = {
-				always = no
-				tooltip = hunan_base_tt
-			}
-		}
-		mutually_exclusive = {
-			focus = HNN_Align_with_the_Leftists
-		}
-		prerequisite = {
-			focus = HNN_Hunan_Under_the_Kuomintang
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Our_Own_Path"
-			custom_effect_tooltip = cubanoeffect_tooltip
-		}
+		prerequisite = { focus = HNNZHILI_instil_regionalist_sentiment  }
+		mutually_exclusive = { focus = HNNZHILI_saving_the_federalist_cause  }
 	}
 
+	#The Firm Hand Stays At the Helm
 	focus = {
-		id = HNN_Reconcile
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 4
+		id = HNNZHILI_the_firm_hand_stays_at_the_helm
+		icon = GFX_HNNZHILI_the_firm_hand_stays_at_the_helm-248360
+		x = 13
 		y = 2
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-			has_government = social_liberal
-		}
-		prerequisite = {
-			focus = HNN_Our_Own_Path
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Reconcile"
-			add_popularity = {
-				ideology = social_liberal
-				popularity = 0.1
-			}
-			add_popularity = {
-				ideology = social_conservative
-				popularity = 0.1
-			}
-		}
+		prerequisite = { focus = HNNZHILI_downgoeshunansowndogmeatgeneral  }
 	}
+
+	#Reach Out to Foreign Weapons Firms
 	focus = {
-		id = HNN_overcome_tang
-		icon = GFX_goal_HNN_Hunt_Tang_Shengzhi
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 4
+		id = HNNZHILI_reach_out_to_foreign_weapons_firms
+		icon = GFX_HNNZHILI_reach_out_to_foreign_weapons_firms-248360
+		x = 12
 		y = 3
-		cost = 6
-
-		ai_will_do = {
-			factor = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
 		}
-		available = {
-			has_government = social_liberal
-		}
-		prerequisite = {
-			focus = HNN_Reconcile
-		}
-
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_overcome_tang"
-			add_stability = 0.05
-			add_popularity = {
-				ideology = social_liberal
-				popularity = 0.05
-			}
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
+		prerequisite = { focus = HNNZHILI_the_firm_hand_stays_at_the_helm  }
 	}
+
+	#Crush the Red Bandits
 	focus = {
-		id = HNN_Religious_Unity
-		icon = GFX_goal_CHI_military_affairs_cmsn
-		relative_position_id = HNN_Hunan_Under_the_Kuomintang
-		x = 3
+		id = HNNZHILI_crush_the_red_bandits
+		icon = GFX_HNNZHILI_crush_the_red_bandits-248360
+		x = 14
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNZHILI_the_firm_hand_stays_at_the_helm  }
+	}
+
+	#Worker Satisfaction
+	focus = {
+		id = HNNZHILI_worker_satisfaction
+		icon = GFX_HNNZHILI_worker_satisfaction-248360
+		x = 14
 		y = 4
-		cost = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNZHILI_reach_out_to_foreign_weapons_firms  } prerequisite = { focus = HNNZHILI_crush_the_red_bandits  }
+	}
 
-		ai_will_do = {
-			factor = 15
+	#Huang Shiheng's Education Program
+	focus = {
+		id = HNNZHILI_huangshihengseducationprogram
+		icon = GFX_HNNZHILI_huangshihengseducationprogram-248360
+		x = 12
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
 		}
-		available = {
-			has_government = social_liberal
-		}
-		prerequisite = {
-			focus = HNN_National_Consciousness
-		}
-		prerequisite = {
-			focus = HNN_overcome_tang
-		}
+		prerequisite = { focus = HNNZHILI_reach_out_to_foreign_weapons_firms  } prerequisite = { focus = HNNZHILI_crush_the_red_bandits  }
+	}
 
-		completion_reward = {
-			log = "[GetDateText]: [Root.GetName]: Focus HNN_Religious_Unity"
-			add_war_support = 0.1
+	#Loyalty to the Zhili Cause
+	focus = {
+		id = HNNZHILI_loyalty_to_the_zhili_cause
+		icon = GFX_HNNZHILI_loyalty_to_the_zhili_cause-248360
+		x = 13
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
 		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		prerequisite = { focus = HNNZHILI_worker_satisfaction  } prerequisite = { focus = HNNZHILI_huangshihengseducationprogram  }
+	}
+
+	#Support the Masters in Beijing
+	focus = {
+		id = HNNZHILI_support_the_masters_in_beijing
+		icon = GFX_HNNZHILI_support_the_masters_in_beijing-248360
+		x = 12
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNZHILI_loyalty_to_the_zhili_cause  }
+		mutually_exclusive = { focus = HNNZHILI_a_new_republic  }
+	}
+
+	#A New Republic
+	focus = {
+		id = HNNZHILI_a_new_republic
+		icon = GFX_HNNZHILI_a_new_republic-248360
+		x = 14
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNZHILI_loyalty_to_the_zhili_cause  }
+		mutually_exclusive = { focus = HNNZHILI_support_the_masters_in_beijing  }
 	}
 
 	focus = {

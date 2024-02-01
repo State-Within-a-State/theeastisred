@@ -14,7 +14,7 @@ country_event = { #Lore Event | At the Center of the Middle Kingdom
 	}
 }
 
-country_event = { #
+country_event = { #Collapse the League
 	id = hunan_rework.1
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.1"}
 	title = hunan_rework.1.title
@@ -25,11 +25,38 @@ country_event = { #
 	option = { #
 		name = hunan_rework.1.a
 		ai_chance = { base = 100 }
+		remove_ideas = {
+		HNN_under_the_league_authority
+		}
+		swap_ideas = {
+		remove_idea = HNN_debt_crisis
+		add_idea = HNN_economic_collapse
+		}
+		
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = 5
+			tooltip = add_spirit_soldier_increase_tt
+		}
+		add_to_variable = {
+			var = kuomintang_resistance_strengthen
+			value = 7
+			tooltip = add_kuomintang_resistance_increase_tt
+		}
+		add_to_variable = {
+			var = quzhen_drug_empire_strengthen
+			value = 7
+			tooltip = add_quzhen_drug_empire_increase_tt
+		}
+		country_event = {
+		id = hunan_rework.2
+		days = 7
+		}
 	}
 	
 }
 
-country_event = { #Starting Lore Event | The Sun Rises - Stability At Last?
+country_event = { #Wu Guangxin Killed On A Hunting Trip
 	id = hunan_rework.2
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.2"}
 	title = hunan_rework.2.title
@@ -37,14 +64,62 @@ country_event = { #Starting Lore Event | The Sun Rises - Stability At Last?
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Zhao Hengti Elected
 		name = hunan_rework.2.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = authoritarian_democrat
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.5
+		}
+		complete_national_focus = HNNZHILI_downgoeshunansowndogmeatgeneral
+		complete_national_focus = HNNZHILI_restoration_of_the_hunan_constiution
+		hidden_effect = {
+			remove_all_ministers = yes
+			add_ideas = {
+				HNN_Zhao_Hengti_hog_sco
+				HNN_Liu_Yuezhi_for_ade
+				HNN_Lu_Diping_eco_ade
+				HNN_Wang_Zhi_sec_ade
+			}
+			country_event = {
+			id = hunan_rework.3
+			days = 7
+			}
+		}
+	}
+	
+	option = { #Tang Xiangming Elected
+		name = hunan_rework.2.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = paternal_autocrat
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.18
+		}
+		complete_national_focus = HNNZHILI_the_butcher_returns_to_cut_some_meat
+		complete_national_focus = HNNZHILI_downgoeshunansowndogmeatgeneral
+		hidden_effect = {
+			remove_all_ministers = yes
+			add_ideas = {
+				HNN_Tang_Xiangming_hog_pau
+				HNN_Tang_Xiangming_for_pau
+				HNN_Lu_Diping_eco_ade
+				HNN_Wang_Zhi_sec_ade
+			}
+			country_event = {
+			id = hunan_rework.3
+			days = 7
+			}
+		}
 	}
 }
 
-country_event = { #Black Monday Hits Korea
+country_event = { #Spirit Soldiers Raise Their Rifles Against The Changsha Goverment
 	id = hunan_rework.3
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.3"}
 	title = hunan_rework.3.title
@@ -54,11 +129,21 @@ country_event = { #Black Monday Hits Korea
 	is_triggered_only = yes
 	option = { #
 		name = hunan_rework.3.a
-		
+		set_country_flag = HNN_peasant_march_to_hunan
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = 5
+			tooltip = add_spirit_soldier_increase_tt
+		}
+		add_stability = -0.1
+		country_event = {
+			id = hunan_rework.4
+			days = 7
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Battle of Shaoyang
 	id = hunan_rework.4
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.4"}
 	title = hunan_rework.4.title
@@ -69,26 +154,108 @@ country_event = { #
 	option = { #
 		name = hunan_rework.4.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = 7
+			tooltip = add_spirit_soldier_increase_tt
+		}
+		country_event = {
+			id = hunan_rework.5
+			days = 7
+			}
+		add_manpower = -2000
+	}
+	
+	option = { #
+		name = hunan_rework.4.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = -7
+			tooltip = add_spirit_soldier_decrease_tt
+		}
+		country_event = {
+			id = hunan_rework.5
+			days = 7
+			}
+		add_manpower = -500
 	}
 }
 
-country_event = { #
+country_event = { #Suspected Rebels In the Miao Counties
 	id = hunan_rework.5
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.5"}
 	title = hunan_rework.5.title
 	desc = hunan_rework.5.desc
 	#picture = 
-	
+	immediate = {
+		hidden_effect = {
+				country_event = {
+					id = hunan_rework.6
+					days = 7
+				}
+				country_event = {
+					id = hunan_rework.7
+					days = 9
+				}
+		}
+	}
 	is_triggered_only = yes
 	option = { #
 		name = hunan_rework.5.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = -7
+			tooltip = add_spirit_soldier_decrease_tt
+		}
+		add_manpower = -1000
+		add_war_support = -0.1
+		add_political_power = 30
+		add_to_variable = {
+			var = quzhen_drug_empire_strengthen
+			value = 3
+			tooltip = add_quzhen_drug_empire_increase_tt
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.5.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = -5
+			tooltip = add_spirit_soldier_decrease_tt
+		}
+		add_manpower = -100
+		add_war_support = -0.15
+		add_political_power = 10
+		add_to_variable = {
+			var = quzhen_drug_empire_strengthen
+			value = -3
+			tooltip = add_quzhen_drug_empire_decrease_tt
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.5.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = 5
+			tooltip = add_spirit_soldier_increase_tt
+		}
 		
+		add_political_power = 50
+		add_to_variable = {
+			var = quzhen_drug_empire_strengthen
+			value = 7
+			tooltip = add_quzhen_drug_empire_increase_tt
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Quzhen Raises An Army Along the Xiang River
 	id = hunan_rework.6
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.6"}
 	title = hunan_rework.6.title
@@ -99,11 +266,20 @@ country_event = { #
 	option = { #
 		name = hunan_rework.6.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_quzhen_rebellion
+		add_to_variable = {
+			var = quzhen_drug_empire_strengthen
+			value = 3
+			tooltip = add_quzhen_drug_empire_increase_tt
+		}
+		country_event = {
+					id = hunan_rework.8
+					days = 7
+				}
 	}
 }
 
-country_event = { #
+country_event = { #Crossing the Yuan River
 	id = hunan_rework.7
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.7"}
 	title = hunan_rework.7.title
@@ -114,11 +290,26 @@ country_event = { #
 	option = { #
 		name = hunan_rework.7.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = -7
+			tooltip = add_spirit_soldier_decrease_tt
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.7.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = spirit_soldier_strengthen
+			value = 7
+			tooltip = add_spirit_soldier_increase_tt
+		}
+		add_manpower = -7500
 	}
 }
 
-country_event = { #
+country_event = { #An Increase In the Opium Trade
 	id = hunan_rework.8
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.8"}
 	title = hunan_rework.8.title
@@ -129,11 +320,30 @@ country_event = { #
 	option = { #
 		name = hunan_rework.8.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = quzhen_drug_empire_strengthen
+			value = -7
+			tooltip = add_quzhen_drug_empire_decrease_tt
+		}
+		add_timed_idea = {
+			idea = HNN_farmer_compensation
+			days = 180
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.8.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = quzhen_drug_empire_strengthen
+			value = 7
+			tooltip = add_quzhen_drug_empire_increase_tt
+		}
+		add_stability = 0.1
 	}
 }
 
-country_event = { #
+country_event = { #Victory Against the Spirit Soldiers
 	id = hunan_rework.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.9"}
 	title = hunan_rework.9.title
@@ -144,11 +354,22 @@ country_event = { #
 	option = { #
 		name = hunan_rework.9.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 100
+		add_stability = 0.1
+		add_war_support = 0.15
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		set_variable = {
+		var = spirit_soldier_strengthen
+		value = 0
+		}
+		set_country_flag = HNN_spirit_soldier_rebellion_over
 	}
 }
 
-country_event = { #
+country_event = { #Crushing of the Criminal Empire
 	id = hunan_rework.10
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.10"}
 	title = hunan_rework.10.title
@@ -157,13 +378,28 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = hunan_rework.10.a
+		name = hunan_rework.9.a
 		ai_chance = { base = 100 }
+		add_political_power = 100
+		add_stability = 0.1
+		add_war_support = 0.15
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
 		
+
+		set_variable = {
+			var = quzhen_drug_empire_strengthen
+			value = 0
+		}
+		set_country_flag = HNN_gelaohui_rebellion_over
 	}
 }
 
-country_event = { #
+###Tang Xiangming Events###
+
+country_event = { #Struggle Between Democracy & Authoritarianism
 	id = hunan_rework.11
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.11"}
 	title = hunan_rework.11.title
@@ -171,14 +407,77 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Democracy Has Failed Us & It Shan't Fail Us Again
 		name = hunan_rework.11.a
 		ai_chance = { base = 100 }
-		
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.2
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = HNN_Xiangming_party_long
+			name = HNN_Xiangming_party
+		}
+	}
+	
+	option = { #The Way of the Buddha Shall Guide Us
+		name = hunan_rework.11.b
+		ai_chance = { base = 100 }
+		complete_national_focus = HNNZHILI_support_a_new_form_of_democracy
+		set_country_flag = HNN_Tang_Xiangming_Buddhist
+		set_politics = {
+			ruling_party = social_democrat
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.3
+		}
+		hidden_effect = {
+			remove_all_ministers = yes
+			add_ideas = {
+				HNN_Tang_Xiangming_hog_pau
+				HNN_Tang_Xiangming_for_pau
+				HNN_Cao_Dianqiu_eco_sde
+				HNN_Cao_Bowen_sec_sde
+			}
+			
+		}
+		set_country_leader_ideology = socdem_buddhist_socialism_subtype
+	}
+	
+	option = { #The Third Way Is The Only Option For Unification
+		name = hunan_rework.11.c
+		ai_chance = { base = 100 }
+		set_country_flag = HNN_Tang_Xiangming_NatSoc
+		complete_national_focus = HNNZHILI_support_a_new_form_of_democracy
+		set_politics = {
+			ruling_party = social_democrat
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.3
+		}
+		hidden_effect = {
+			remove_all_ministers = yes
+			add_ideas = {
+				HNN_Tang_Xiangming_hog_pau
+				HNN_Luo_Longji_for_sde
+				HNN_Zhang_Dongsun_eco_sde
+				HNN_Sun_Yafu_sec_sde
+			}
+			
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = HNN_national_socialist_party_long
+			name = HNN_national_socialist_party
+		}
+		set_country_leader_ideology = socdem_national_socialism_subtype
 	}
 }
 
-country_event = { #
+country_event = { #Zhao Hengti's Constitutional Restoration
 	id = hunan_rework.12
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.12"}
 	title = hunan_rework.12.title
