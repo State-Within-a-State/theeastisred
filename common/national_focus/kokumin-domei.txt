@@ -22,6 +22,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = JAPKOKUMIN_controlling_the_diet  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_political_power = 50
+		
+		}
 	}
 
 	#Kokumin Domei At the Helm
@@ -193,8 +198,7 @@ focus_tree = {
 				target = DEH
 				modifier = faction_traitor
 			}
-			add_war_support = 0.05
-		
+			increase_conscription = yes
 		}
 	}
 
@@ -210,24 +214,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAPKOKUMIN_reaction_against_the_germanic_centric_peace  }
 		completion_reward = {
-		every_country = {
-			limit = {
-				OR = {
-				is_on_continent = asia
-				is_on_continent = india
-				}
-				is_in_faction = no
-				is_puppet = no
-			}
-			add_opinion_modifier = {
-				target = PREV
-				modifier = JAP_japanese_comradery
-			}
-			diplomatic_relation = {
-					country = PREV
-					relation = guarantee
-					active = yes
-				}
+		remove_ideas = {
+		JAP_no_army_focus
 		}
 		}
 	}
