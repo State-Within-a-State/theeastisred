@@ -1603,7 +1603,18 @@ country_event = { #Petoria?
 	option = { #Fuckin Hell
 	name = taiwan.34.b
 		set_cosmetic_tag = NEE_petoria
-		add_state_core = 935
+		every_state = {
+                limit = {
+			is_united_states = yes
+				}
+			TAI = {
+				create_wargoal = {
+						type = puppet_wargoal_focus
+						target = PREV
+					}
+			}
+		add_core_of = TAI
+		}
 	}
 }
 
