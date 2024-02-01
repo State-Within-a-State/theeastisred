@@ -4998,6 +4998,7 @@ country_event = { #1940 elections
 		add_to_coalition = yes
 		complete_national_focus = JAPDOMEITWO_a_new_round_for_the_kokumin_domei
 		set_country_flag = JAP_kokumin_domei_won_in_1940_election
+		load_focus_tree = kokumin-domei
 		mark_focus_tree_layout_dirty = yes
 		country_event = japan_new_event.82
 	}
@@ -5069,6 +5070,7 @@ country_event = { #1940 elections
 		}
 		add_political_power = 50
 		set_country_flag = JAP_seiyukai_won_in_1940_elections
+		load_focus_tree = japan-seiyukai
 		mark_focus_tree_layout_dirty = yes
 		set_politics = {
 			ruling_party = social_conservative
@@ -5123,6 +5125,7 @@ country_event = { #1940 elections
 		set_temp_variable = { coalition_partner_var = token:social_liberal }
 		add_to_coalition = yes
 		set_country_flag = JAP_minseito_won_in_1940_elections
+		load_focus_tree = minseito-japan
 		mark_focus_tree_layout_dirty = yes
 		country_event = japan_new_event.83
 	}
@@ -6535,7 +6538,7 @@ country_event = { #Minseito Factionalism
 				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_MINSEITO_NAGAI }
 			}
 		}
-		complete_national_focus = JAPMINSEITOTWO_keeping_party_tradition
+		complete_national_focus = JAPMINSEITOTWO_a_party_of_the_middle_class
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6543,7 +6546,14 @@ country_event = { #Minseito Factionalism
 			ideology = national_liberalism_subtype
 		}
 		set_politics = { ruling_party = social_liberal }
-		complete_national_focus = JAPLIB_tojnha_faction_dominance
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = JAP_minseito_won_in_1937_elections
+				}
+			}
+			complete_national_focus = JAPLIB_tojnha_faction_dominance 
+		}
 		set_party_name = {
 			ideology = social_liberal
 			long_name = JAP_party_minseito_one_long
@@ -6576,7 +6586,7 @@ country_event = { #Minseito Factionalism
 				has_game_rule = { rule = JAP_1940_ELECTIONS option = JAP_1940_ELECTIONS_MINSEITO_OSACHI }
 			}
 		}
-		complete_national_focus = JAPMINSEITOTWO_a_party_of_the_middle_class
+		complete_national_focus = JAPMINSEITOTWO_keeping_party_tradition 
 		create_country_leader = {
 			name = "Hirohito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
@@ -6584,7 +6594,14 @@ country_event = { #Minseito Factionalism
 			ideology = national_liberalism_subtype
 		}
 		set_politics = { ruling_party = market_liberal }
-		complete_national_focus = JAPLIB_bureaucratic_hold
+		if = {
+			limit = {
+				NOT = {
+					has_country_flag = JAP_minseito_won_in_1937_elections
+				}
+			}
+			complete_national_focus = JAPLIB_bureaucratic_hold
+		}
 		set_party_name = {
 			ideology = social_liberal
 			long_name = JAP_party_minseito_one_long
@@ -6635,7 +6652,8 @@ country_event = { #
 				}
 			}
 			complete_national_focus = JAPSEI_victory_of_the_seiyukai
-			complete_national_focus = JAPSEI_the_reform_faction_hold
+			complete_national_focus = JAPSEI_orthodox_victory
+			complete_national_focus = JAPSEI_rentaro_cabinet
 		}
 		create_country_leader = {
 			name = "Hirohito"
@@ -6685,8 +6703,7 @@ country_event = { #
 				}
 			}
 			complete_national_focus = JAPSEI_victory_of_the_seiyukai
-			complete_national_focus = JAPSEI_orthodox_victory
-			complete_national_focus = JAPSEI_rentaro_cabinet
+			complete_national_focus = JAPSEI_the_reform_faction_hold
 		}
 		create_country_leader = {
 			name = "Hirohito"
