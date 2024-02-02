@@ -785,11 +785,6 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-			NOT = {
-				has_country_flag = TAI_end_of_japanese_occupation
-			}
-		}
 		prerequisite = { focus = TAI_astablecolony  }
 		completion_reward = {
 		add_political_power = 100
@@ -833,18 +828,18 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		available = {
-			NOT = {
-				has_country_flag = TAI_end_of_japanese_occupation
+			OR = {
+			has_completed_focus = TWI_the_wushe_rebellion
+			has_completed_focus = TAISOC_call_together_the_united_front
+			has_completed_focus = TAIMON_linsdominanceovertaiwan
 			}
 		}
 		prerequisite = { focus = TAI_sortingouttheautonomyproblem  }
 		mutually_exclusive = { focus = TAI_allow_for_integrated_politics  }
 		completion_reward = {
-		add_to_variable = {
-					var = JAP_TWI_INT
-					value = -5
-					tooltip = JAP_TWI_INT_decrease_tt
-				}
+		remove_ideas = {
+		TWI_pop_integration_medium
+		}
 		}
 	}
 
@@ -885,18 +880,18 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-			NOT = {
-				has_country_flag = TAI_end_of_japanese_occupation
+			OR = {
+			has_completed_focus = TWI_the_wushe_rebellion
+			has_completed_focus = TAISOC_call_together_the_united_front
+			has_completed_focus = TAIMON_linsdominanceovertaiwan
 			}
 		}
 		prerequisite = { focus = TAI_allow_for_integrated_politics  focus = TAI_transition_to_an_independent_parliament  }
 		mutually_exclusive = { focus = TAI_favourjapansway  }
 		completion_reward = {
-		add_to_variable = {
-					var = JAP_TWI_INT
-					value = -5
-					tooltip = JAP_TWI_INT_decrease_tt
-				}
+		remove_ideas = {
+		TWI_non_violent_resistance 
+		}
 		}
 	}
 
@@ -910,18 +905,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
-		available = {
-			NOT = {
-				has_country_flag = TAI_end_of_japanese_occupation
-			}
-		}
 		prerequisite = { focus = TAI_continuing_the_civilian_period  }
 		completion_reward = {
-		add_to_variable = {
-					var = JAP_TWI_INT
-					value = -5
-					tooltip = JAP_TWI_INT_decrease_tt
-				}
+		remove_ideas = {
+		TWI_violent_resistance 
+		}
 		}
 	}
 
@@ -960,13 +948,21 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-			NOT = {
-				has_country_flag = TAI_end_of_japanese_occupation
-			}
-		}
 		prerequisite = { focus = TAI_desire_for_great_freedom  focus = TAI_questioning_autonomy  }
-		
+		completion_reward = {
+		if = { limit = { has_completed_focus = TAI_desire_for_great_freedom }
+		remove_ideas = {
+		TWI_japanese_lapdogs 
+		}
+		}
+		else = {
+		add_to_variable = {
+					var = JAP_TWI_INT
+					value = 15
+					tooltip = JAP_TWI_INT_increase_tt
+				}
+		}
+		}
 	}
 
 	#Understanding the New Literature Movement
