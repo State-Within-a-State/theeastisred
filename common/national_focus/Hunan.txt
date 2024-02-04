@@ -58,13 +58,16 @@ focus_tree = {
 		icon = GFX_HNNZHILI_support_a_new_form_of_democracy-248360
 		x = 6
 		y = 2
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_the_butcher_returns_to_cut_some_meat  }
 		available = {
-		always = no
+			AND = {
+				has_country_flag = HNN_gelaohui_rebellion_over
+				has_country_flag = HNN_spirit_soldier_rebellion_over
+			}
 		}
 	}
 
@@ -83,6 +86,12 @@ focus_tree = {
 		available = {
 		has_country_flag = HNN_Tang_Xiangming_Buddhist
 		}
+		completion_reward = {
+			add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+			}
+		}
 	}
 
 	#Join the Social Democratic Party
@@ -100,6 +109,12 @@ focus_tree = {
 		available = {
 		has_country_flag = HNN_Tang_Xiangming_NatSoc
 		}
+		completion_reward = {
+			add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+			}
+		}
 	}
 
 	#Translating Buddhist Teachings
@@ -113,6 +128,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNZHILI_a_temple_for_democracy  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#A Temple For Democracy
@@ -126,6 +144,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNZHILI_on_the_path_of_the_bodhisattva  }
+		completion_reward = {
+			add_ideas = {
+				HNN_temple_for_democracy
+			}
+		}
 	}
 
 	#On the Path of the Bodhisattva
@@ -136,9 +159,13 @@ focus_tree = {
 		y = 4
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_RESEARCH
+			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNZHILI_align_with_the_buddhist_general  }
+		completion_reward = {
+		add_war_support = 0.075
+		add_political_power = 20
+		}
 	}
 
 	#Enforcing the Peace
@@ -152,6 +179,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNZHILI_a_temple_for_democracy  }
+		completion_reward = {
+			add_ideas = {
+				HNN_enforcers_of_peace
+			}
+		}
 	}
 
 	#Legacy of New Republicanism
@@ -165,6 +197,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_support_a_new_form_of_democracy  }
+		completion_reward = {
+			add_ideas = {
+				HNN_promoting_new_chinese_republicanism
+			}
+		}
 	}
 
 	#Legacy of Yuan
@@ -179,6 +216,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNZHILI_legacy_of_new_republicanism  }
 		mutually_exclusive = { focus = HNNZHILI_beiyang_republicanism  }
+		completion_reward = {
+		country_event = hunan_rework.12
+		}
 	}
 
 	#Beiyang Republicanism
@@ -193,6 +233,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNZHILI_legacy_of_new_republicanism  }
 		mutually_exclusive = { focus = HNNZHILI_legacy_of_yuan  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_stability = 0.025
+		}
 	}
 
 	#Fighting Against the Gang of Unruly Nature
@@ -219,6 +263,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNZHILI_join_the_social_democratic_party  }
+		completion_reward = {
+			add_ideas = {
+				HNN_fostering_new_patriotism
+			}
+		}
 	}
 
 	#Creation of a National Welfare System
@@ -232,6 +281,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNZHILI_proclaiming_the_patriotic_revolution  }
+		completion_reward = {
+			add_ideas = {
+				HNN_creation_of_a_national_welfare_system
+			}
+		}
 	}
 
 	#Crush the Brothels Dens and Casinos
@@ -245,6 +299,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_creation_of_a_national_welfare_system  }
+		completion_reward = {
+			
+			add_timed_idea = {
+				idea = HNN_abolishing_dens_of_sin
+				days = 180
+			}
+		}
 	}
 
 	#Form the National Preparation Committee
@@ -258,6 +319,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_creation_of_a_national_welfare_system  }
+		completion_reward = {
+			add_ideas = {
+				HNN_national_preparation_committee
+			}
+		}
 	}
 
 	#A Grand Republic
@@ -270,7 +336,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		owns_state = 608
+		}
 		prerequisite = { focus = HNNZHILI_beiyang_republicanism  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  } prerequisite = { focus = HNNZHILI_crush_the_brothels_dens_and_casinos  } prerequisite = { focus = HNNZHILI_form_the_national_preparation_committee  focus = HNNZHILI_translating_buddhist_teachings  } prerequisite = { focus = HNNZHILI_enforcing_the_peace  } prerequisite = { focus = HNNZHILI_beiyang_republicanism  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  }
+		completion_reward = {
+			country_event = hunan_rework.13
+		}
 	}
 
 	#Restoring a True Empire
@@ -284,6 +356,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_translating_buddhist_teachings  } prerequisite = { focus = HNNZHILI_enforcing_the_peace  } prerequisite = { focus = HNNZHILI_legacy_of_yuan  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  focus = HNNZHILI_legacy_of_yuan  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  } prerequisite = { focus = HNNZHILI_crush_the_brothels_dens_and_casinos  } prerequisite = { focus = HNNZHILI_form_the_national_preparation_committee  }
+		available = {
+		owns_state = 608
+		}
+		completion_reward = {
+			country_event = hunan_rework.13
+		}
 	}
 
 	#Restoration of the Hunan Constiution
@@ -299,12 +377,12 @@ focus_tree = {
 		prerequisite = { focus = HNNZHILI_downgoeshunansowndogmeatgeneral  }
 		available = {
 			has_country_leader = {
-				name = "Tang Xiangming"
+				name = "Zhao Hengti"
 				ruling_only = yes
 			}
 		}
 		completion_reward = {
-		country_event = hunan_rework.12
+		country_event = hunan_rework.14
 		}
 	}
 

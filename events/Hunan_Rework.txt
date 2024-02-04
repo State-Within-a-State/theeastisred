@@ -365,6 +365,9 @@ country_event = { #Victory Against the Spirit Soldiers
 		var = spirit_soldier_strengthen
 		value = 0
 		}
+		remove_ideas = {
+		HNN_spirit_soldier_rebellion
+		}
 		set_country_flag = HNN_spirit_soldier_rebellion_over
 	}
 }
@@ -409,6 +412,7 @@ country_event = { #Struggle Between Democracy & Authoritarianism
 	is_triggered_only = yes
 	option = { #Democracy Has Failed Us & It Shan't Fail Us Again
 		name = hunan_rework.11.a
+		set_country_flag = hunan_dicatorship
 		ai_chance = { base = 100 }
 		add_popularity = {
 		ideology = paternal_autocrat
@@ -424,7 +428,7 @@ country_event = { #Struggle Between Democracy & Authoritarianism
 	option = { #The Way of the Buddha Shall Guide Us
 		name = hunan_rework.11.b
 		ai_chance = { base = 100 }
-		complete_national_focus = HNNZHILI_support_a_new_form_of_democracy
+		
 		set_country_flag = HNN_Tang_Xiangming_Buddhist
 		set_politics = {
 			ruling_party = social_democrat
@@ -450,7 +454,7 @@ country_event = { #Struggle Between Democracy & Authoritarianism
 		name = hunan_rework.11.c
 		ai_chance = { base = 100 }
 		set_country_flag = HNN_Tang_Xiangming_NatSoc
-		complete_national_focus = HNNZHILI_support_a_new_form_of_democracy
+		
 		set_politics = {
 			ruling_party = social_democrat
 		}
@@ -477,7 +481,7 @@ country_event = { #Struggle Between Democracy & Authoritarianism
 	}
 }
 
-country_event = { #Zhao Hengti's Constitutional Restoration
+country_event = { #Restoration of a Forgotten Empire
 	id = hunan_rework.12
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.12"}
 	title = hunan_rework.12.title
@@ -488,11 +492,24 @@ country_event = { #Zhao Hengti's Constitutional Restoration
 	option = { #
 		name = hunan_rework.12.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_portrait = {
+			ideology = social_democrat
+			portrait = "gfx/leaders/MON/Portrait_MON_Yuan_Keding.png"
+		}
+		set_country_leader_name = {
+			ideology = social_democrat
+			name = "Yuan Keding"
+		}
+		add_stability = -0.2
+		add_to_variable = {
+			var = kuomintang_resistance_strengthen
+			value = 10
+			tooltip = add_kuomintang_resistance_increase_tt
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Declaration of a New Republic
 	id = hunan_rework.13
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.13"}
 	title = hunan_rework.13.title
@@ -500,14 +517,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We Must Continue Our Path to Enlightenment
 		name = hunan_rework.13.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			has_country_flag = HNN_Tang_Xiangming_Buddhist
+		}
+	}
+	
+	option = { #The Nation Shall Be Protected!
+		name = hunan_rework.13.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = HNN_Tang_Xiangming_NatSoc
+		}
+	}
+	
+	option = { #The People Shall Forever Adore President Tang
+		name = hunan_rework.13.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = socdem_kleptocracy_subtype
+	}
+	
+	option = { #We Shall End National Sin
+		name = hunan_rework.13.d
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = teetotalism_subtype
 	}
 }
 
-country_event = { #
+country_event = { #Restoration of the Hunan Constitution
 	id = hunan_rework.14
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.14"}
 	title = hunan_rework.14.title
@@ -515,11 +554,18 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We Must Embrace Democracy
 		name = hunan_rework.14.a
 		ai_chance = { base = 100 }
+		set_country_flag = zhao_hengti_democracy
 		
 	}
+	option = { #Pfft Who Cares About These Lies of Hope
+		name = hunan_rework.14.b
+		ai_chance = { base = 100 }
+		set_country_flag = hunan_dicatorship
+	}
+	
 }
 
 country_event = { #
