@@ -1,4 +1,5 @@
 add_namespace = annex_peace
+add_namespace = china_socialistgenerals
 
 country_event = { #peace out
 	id = annex_peace.2
@@ -192,6 +193,95 @@ country_event = { #peace out
 	}
 
 }
+
+country_event = { #Taiwan
+	id = china_socialistgenerals.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event hnn.1" }
+	title = china_socialistgenerals.0.t
+	desc = china_socialistgenerals.1.d
+	picture = "GFX_report_event_TWI_taiwan_info"
+
+	trigger = {
+	OR = {
+		is_chinese_tag = yes
+		tag = TAN
+		}
+	NOT = { country_exists = TAI }
+	owns_state = 716
+	has_country_flag = RD_commies_love_each_other
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = china_socialistgenerals.0.a
+		add_political_power = -50
+		add_stability = -0.08
+		hidden_effect = {
+		NSW = {
+		every_unit_leader = {
+			limit = {
+			has_trait = TAI_socialist_officer
+			}
+			set_nationality = ROOT
+			}
+		}
+	}
+	}
+	option = {
+		name = china_socialistgenerals.0.b
+		add_stability = 0.05
+		add_political_power = 25
+		add_war_support = 0.02
+	}
+}
+
+country_event = { #HNN
+	id = china_socialistgenerals.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event hnn.1" }
+	title = china_socialistgenerals.0.t
+	desc = china_socialistgenerals.2.a
+	picture = GFX_report_event_HNN_map
+
+	trigger = {
+	OR = {
+		is_chinese_tag = yes
+		tag = TAN
+		tag = TAI
+		}
+	NOT = { country_exists = HNN }
+	owns_state = 602
+	owns_state = 1013
+	owns_state = 1052
+	owns_state = 1049
+	has_country_flag = RD_commies_love_each_other
+	}
+
+	fire_only_once = yes
+
+	option = {
+		name = china_socialistgenerals.0.a
+		add_political_power = -50
+		add_stability = -0.08
+		hidden_effect = {
+		NSW = {
+		every_unit_leader = {
+			limit = {
+			has_trait = HNN_socialist_officer
+			}
+			set_nationality = ROOT
+			}
+		}
+	}
+	}
+	option = {
+		name = china_socialistgenerals.0.b
+		add_stability = 0.05
+		add_political_power = 25
+		add_war_support = 0.02
+	}
+}
+
 
 
 
