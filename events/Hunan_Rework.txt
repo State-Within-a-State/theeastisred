@@ -568,7 +568,7 @@ country_event = { #Restoration of the Hunan Constitution
 	
 }
 
-country_event = { #
+country_event = { #A Meeting With the Guangxi Federalists
 	id = hunan_rework.15
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.15"}
 	title = hunan_rework.15.title
@@ -579,11 +579,14 @@ country_event = { #
 	option = { #
 		name = hunan_rework.15.a
 		ai_chance = { base = 100 }
-		
+		add_opinion_modifier = {
+			target = GXC
+			modifier = HNN_federalist_comrades
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Republic Declared
 	id = hunan_rework.16
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.16"}
 	title = hunan_rework.16.title
@@ -591,14 +594,27 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Warlordism Shall Be On A National Scale
 		name = hunan_rework.16.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = pataut_warlordism_subtype
+	}
+	option = { #All Power Under Leader
+		name = hunan_rework.16.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = kleptocracy_subtype
+	}
+	
+	option = { #We Shall Please Our Financial Backers
+		name = hunan_rework.16.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = pataut_oligarchy_subtype
 	}
 }
 
-country_event = { #
+##KMT-Crackdown Event Chain
+
+country_event = { #Begining of the First Encirlement Campaign
 	id = hunan_rework.17
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.17"}
 	title = hunan_rework.17.title
@@ -606,14 +622,46 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Tang Shengzhi
 		name = hunan_rework.17.a
 		ai_chance = { base = 100 }
-		
+		HNN_kmt_variable_set = yes
+		country_event = {
+		id = hunan_rework.18
+		days = 7
+		}
+		set_country_flag = HNN_kuomintag_supression_campaign
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		add_political_power = 10
+		add_to_variable = {
+			var = kuomintang_resistance_strengthen
+			value = 6
+			tooltip = add_kuomintang_resistance_increase_tt
+		}
+	}
+	
+	option = { #Governor
+		name = hunan_rework.17.b
+		ai_chance = { base = 100 }
+		HNN_kmt_variable_set = yes
+		country_event = {
+		id = hunan_rework.18
+		days = 7
+		}
+		set_country_flag = HNN_kuomintag_supression_campaign
+		add_political_power = 20
+		add_to_variable = {
+			var = kuomintang_resistance_strengthen
+			value = 4
+			tooltip = add_kuomintang_resistance_increase_tt
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Battle of Ling County
 	id = hunan_rework.18
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.18"}
 	title = hunan_rework.18.title
@@ -624,11 +672,36 @@ country_event = { #
 	option = { #
 		name = hunan_rework.18.a
 		ai_chance = { base = 100 }
+		add_manpower = -10000
+		add_to_variable = {
+			var = kmt_stage_one_suppression
+			value = -5
+		}
+		set_country_flag = zhili_win_ling_county
 		
+		country_event = {
+		id = hunan_rework.19
+		days = 7
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.18.b
+		ai_chance = { base = 100 }
+		add_stability = -0.1
+		add_to_variable = {
+			var = kmt_stage_one_suppression
+			value = 5
+		}
+		set_country_flag = zhili_loss_ling_county
+		country_event = {
+		id = hunan_rework.19
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Battle of Lianhua County
 	id = hunan_rework.19
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.19"}
 	title = hunan_rework.19.title
@@ -639,11 +712,36 @@ country_event = { #
 	option = { #
 		name = hunan_rework.19.a
 		ai_chance = { base = 100 }
+		add_manpower = -10000
+		add_to_variable = {
+			var = kmt_stage_one_suppression
+			value = -5
+		}
+		set_country_flag = zhili_win_lianhua_county
 		
+		country_event = {
+		id = hunan_rework.20
+		days = 7
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.19.b
+		ai_chance = { base = 100 }
+		add_stability = -0.1
+		add_to_variable = {
+			var = kmt_stage_one_suppression
+			value = 5
+		}
+		set_country_flag = zhili_loss_lianhua_county
+		country_event = {
+		id = hunan_rework.20
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Suspicion Amongst the Peasants
 	id = hunan_rework.20
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.20"}
 	title = hunan_rework.20.title
@@ -654,11 +752,29 @@ country_event = { #
 	option = { #
 		name = hunan_rework.20.a
 		ai_chance = { base = 100 }
+		add_manpower = -1000
+		add_to_variable = {
+			var = kmt_stage_one_suppression
+			value = -5
+		}
+		set_country_flag = suppress_hunan_peasants
 		
+		
+	}
+	
+	option = { #
+		name = hunan_rework.20.b
+		ai_chance = { base = 100 }
+		add_stability = -0.075
+		add_to_variable = {
+			var = kmt_stage_one_suppression
+			value = 5
+		}
+		set_country_flag = suppress_hunan_peasants
 	}
 }
 
-country_event = { #
+country_event = { #Success in Stage One
 	id = hunan_rework.21
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.21"}
 	title = hunan_rework.21.title
@@ -669,11 +785,21 @@ country_event = { #
 	option = { #
 		name = hunan_rework.21.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_completed_stage_one_success
+		set_country_flag = HNN_stage_two_start
+		country_event = {
+		id = hunan_rework.23
+		days = 7
+		}
+		add_to_variable = {
+			var = kuomintang_resistance_strengthen
+			value = -7
+			tooltip = add_kuomintang_resistance_decrease_tt
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Failure of Stage One
 	id = hunan_rework.22
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.22"}
 	title = hunan_rework.22.title
@@ -684,11 +810,21 @@ country_event = { #
 	option = { #
 		name = hunan_rework.22.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_completed_stage_one_failure
+		set_country_flag = HNN_stage_two_start
+		country_event = {
+		id = hunan_rework.23
+		days = 7
+		}
+		add_to_variable = {
+			var = kuomintang_resistance_strengthen
+			value = 7
+			tooltip = add_kuomintang_resistance_increase_tt
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Battle of West Yongyang
 	id = hunan_rework.23
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.23"}
 	title = hunan_rework.23.title
@@ -699,11 +835,35 @@ country_event = { #
 	option = { #
 		name = hunan_rework.23.a
 		ai_chance = { base = 100 }
-		
+		add_stability = -0.1
+		add_to_variable = {
+			var = kmt_stage_two_suppression
+			value = 5
+		}
+		set_country_flag = zhili_loss_yongyang_county
+		country_event = {
+		id = hunan_rework.24
+		days = 7
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.23.b
+		ai_chance = { base = 100 }
+		add_manpower  = -1000
+		add_to_variable = {
+			var = kmt_stage_two_suppression
+			value = -5
+		}
+		set_country_flag = zhili_won_yongyang_county
+		country_event = {
+		id = hunan_rework.24
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Ambush At Shiduwei
 	id = hunan_rework.24
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.24"}
 	title = hunan_rework.24.title
@@ -712,13 +872,31 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
+		name = hunan_rework.24.b
+		ai_chance = { base = 100 }
+		add_stability = -0.1
+		add_to_variable = {
+			var = kmt_stage_two_suppression
+			value = 5
+		}
+		set_country_flag = zhili_loss_shiduwei_county
+		
+	}
+	
+	option = { #
 		name = hunan_rework.24.a
 		ai_chance = { base = 100 }
+		add_manpower  = -1000
+		add_to_variable = {
+			var = kmt_stage_two_suppression
+			value = -5
+		}
+		set_country_flag = zhili_won_shiduwei_county
 		
 	}
 }
 
-country_event = { #
+country_event = { #Success of Stage 2
 	id = hunan_rework.25
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.25"}
 	title = hunan_rework.25.title
@@ -729,11 +907,15 @@ country_event = { #
 	option = { #
 		name = hunan_rework.25.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_stage_two_done_victory
+		country_event = {
+		id = hunan_rework.27
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Failure of Stage Two
 	id = hunan_rework.26
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.26"}
 	title = hunan_rework.26.title
@@ -744,11 +926,15 @@ country_event = { #
 	option = { #
 		name = hunan_rework.26.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_stage_two_done_loss
+		country_event = {
+		id = hunan_rework.27
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Battle of Changsha
 	id = hunan_rework.27
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.27"}
 	title = hunan_rework.27.title
@@ -756,14 +942,49 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Victory
 		name = hunan_rework.27.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			OR = {
+				AND = {
+					has_country_flag = HNN_stage_two_done_victory
+					has_country_flag = HNN_completed_stage_one_success
+				}
+				
+				AND = {
+					has_country_flag = HNN_stage_two_done_loss
+					has_country_flag = HNN_completed_stage_one_success
+				}
+				
+				AND = {
+					has_country_flag = HNN_stage_two_done_victory
+					has_country_flag = HNN_completed_stage_one_failure
+				}
+			}
+		}
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
+	}
+	
+	option = { #Loss
+		name = hunan_rework.27.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = HNN_stage_two_done_loss
+			has_country_flag = HNN_completed_stage_one_failure
+		}
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
+		#country_event = hunan_rework.
 	}
 }
 
-country_event = { #
+###Election Event Chain###
+
+country_event = { #Announcement of a Elections
 	id = hunan_rework.28
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.28"}
 	title = hunan_rework.28.title
@@ -771,10 +992,26 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Victory for Freedom
 		name = hunan_rework.28.a
 		ai_chance = { base = 100 }
+		add_ideas = {
+		HNN_constitution_restored
+		}
+		add_political_power = 20
+		hidden_effect = {
+			country_event = {
+				id = hnn.6
+				days = 4
+			}
+		}
+		set_variable = { hnn_tang_popularity = 1 }
+		set_variable = { hnn_zhao_popularity = 6 }
+		set_variable = { hnn_chen_popularity = 0 }
+		set_variable = { hnn_mao_popularity = 1 }
+		set_variable = { hnn_young_china_popularity = 0 }
 		
+		set_country_flag = HNN_electionsstarted
 	}
 }
 

@@ -397,6 +397,14 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNZHILI_restoration_of_the_hunan_constiution  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Rights_of_Man"
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.05
+			}
+			add_ideas = HNN_rights_guaranteed
+		}
 	}
 
 	#The May 4th Intellectual
@@ -410,6 +418,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNZHILI_legacy_of_tan_yankai  }
+		completion_reward = {
+			add_ideas = {
+				HNN_may_fourth
+			}
+		}
 	}
 
 	#Revive Confucian Political Thought
@@ -424,6 +437,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNZHILI_the_may_4th_intellectual  }
 		mutually_exclusive = { focus = HNNZHILI_reforming_confucian_ethics  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Populist_Ways"
+			add_political_power = 50
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.05
+			}
+		}
 	}
 
 	#Reforming Confucian Ethics
@@ -438,6 +463,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNZHILI_the_may_4th_intellectual  }
 		mutually_exclusive = { focus = HNNZHILI_revive_confucian_political_thought  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Populist_Ways"
+			add_political_power = 100
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.025
+			}
+		}
 	}
 
 	#Safe Guard the Hunanese Identity
@@ -451,6 +488,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNZHILI_revive_confucian_political_thought  focus = HNNZHILI_reforming_confucian_ethics  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Federalist Allegiance
@@ -464,6 +504,21 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_restoration_of_the_hunan_constiution  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Guaranteed_Liberty"
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.05
+			}
+		}
 	}
 
 	#Meeting With the Kwangsi Leadership
@@ -477,6 +532,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_federalist_allegiance  }
+		completion_reward = {
+			country_event = hunan_rework.15
+		}
 	}
 
 	#Create the Provincial Federalist Program
@@ -487,9 +545,15 @@ focus_tree = {
 		y = 4
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNZHILI_meeting_with_the_kwangsi_leadership  }
+		completion_reward = {
+			add_timed_idea = {
+				add_ideas = HNN_the_provincial_federalist_program
+				days = 180
+			}
+		}
 	}
 
 	#Reach Out the Tang Jiyao
@@ -502,7 +566,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		bypass = {
+			NOT = {
+				YUN = {
+					has_country_leader = {
+						name = "Tang Jiyao"
+						ruling_only = yes
+					}
+				}
+			}
+		}
 		prerequisite = { focus = HNNZHILI_meeting_with_the_kwangsi_leadership  }
+		completion_reward = {
+			add_opinion_modifier = {
+				target = YUN
+				modifier = HNN_federalist_comrades
+			}
+		}
 	}
 
 	#Promotion of Xiang Unity
@@ -516,6 +596,10 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNZHILI_create_the_provincial_federalist_program  } prerequisite = { focus = HNNZHILI_reach_out_the_tang_jiyao  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Hunannese_Unity"
+			add_stability = 0.1
+		}
 	}
 
 	#Instil Regionalist Sentiment
@@ -529,6 +613,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_safe_guard_the_hunanese_identity  } prerequisite = { focus = HNNZHILI_promotion_of_xiang_unity  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_New_Xiang_Culture"
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.05
+			}
+			add_war_support = 0.05
+		}
 	}
 
 	#Saving the Federalist Cause
@@ -541,8 +633,25 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		available = {
+			
+				GXC = {
+					NOT = {
+						has_country_leader = {
+							name = "Chen Jiongming"
+							ruling_only = yes
+						}
+						
+					}
+				}
+			
+		}
 		prerequisite = { focus = HNNZHILI_instil_regionalist_sentiment  }
 		mutually_exclusive = { focus = HNNZHILI_joining_comrade_chen_jiongming  }
+		completion_reward = {
+		set_cosmetic_tag = HNN_federalist_successor
+		set_country_flag = HNN_federalist_unite_china
+		}
 	}
 
 	#Joining Comrade Chen Jiongming
@@ -555,8 +664,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			GXC = {
+					AND = {
+						has_country_leader = {
+							name = "Chen Jiongming"
+							ruling_only = yes
+						}
+						exists = yes
+					}
+				}
+		}
 		prerequisite = { focus = HNNZHILI_instil_regionalist_sentiment  }
 		mutually_exclusive = { focus = HNNZHILI_saving_the_federalist_cause  }
+		completion_reward = {
+			GXC = {
+				puppet = HNN
+			}
+		}
 	}
 
 	#The Firm Hand Stays At the Helm
@@ -565,11 +690,14 @@ focus_tree = {
 		icon = GFX_HNNZHILI_the_firm_hand_stays_at_the_helm-248360
 		x = 13
 		y = 2
-		cost = 1
+		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNZHILI_downgoeshunansowndogmeatgeneral  }
+		available = {
+			has_country_flag = hunan_dicatorship
+		}
 	}
 
 	#Reach Out to Foreign Weapons Firms
@@ -583,6 +711,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNZHILI_the_firm_hand_stays_at_the_helm  }
+		completion_reward = {
+			add_ideas = {
+				HNN_international_weaponry
+			}
+		}
 	}
 
 	#Crush the Red Bandits
@@ -609,6 +742,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNZHILI_reach_out_to_foreign_weapons_firms  } prerequisite = { focus = HNNZHILI_crush_the_red_bandits  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Satisfy_the_Workers"
+			add_ideas = HNN_workers_managed
+		}
 	}
 
 	#Huang Shiheng's Education Program
@@ -622,6 +759,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNZHILI_reach_out_to_foreign_weapons_firms  } prerequisite = { focus = HNNZHILI_crush_the_red_bandits  }
+		completion_reward = {
+			add_research_slot = 1
+		}
 	}
 
 	#Loyalty to the Zhili Cause
@@ -634,7 +774,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		
 		prerequisite = { focus = HNNZHILI_worker_satisfaction  } prerequisite = { focus = HNNZHILI_huangshihengseducationprogram  }
+		completion_reward = {
+			add_war_support = 0.1
+			add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.1
+			}
+		}
 	}
 
 	#Support the Masters in Beijing
@@ -647,8 +795,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
+		available = {
+			QIE = {
+				exists = yes
+				
+			}
+		}
 		prerequisite = { focus = HNNZHILI_loyalty_to_the_zhili_cause  }
 		mutually_exclusive = { focus = HNNZHILI_a_new_republic  }
+		completion_reward = {
+			QIE = {
+				puppet = HNN
+			}
+		}
 	}
 
 	#A New Republic
@@ -661,9 +820,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		available = {
+			owns_state = 608
+		}
 		prerequisite = { focus = HNNZHILI_loyalty_to_the_zhili_cause  }
 		mutually_exclusive = { focus = HNNZHILI_support_the_masters_in_beijing  }
+		completion_reward = {
+		country_event = hunan_rework.16
+		}
 	}
+	
+	####Economic Tree###
 
 	focus = {
 		id = HNN_The_Effects_of_Black_Monday

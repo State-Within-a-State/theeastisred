@@ -185,3 +185,99 @@ defined_text = {
 	}
 
 }
+
+
+defined_text = {
+	name = GetCampaignDone
+	text = {
+		trigger = {  
+				NOT = {
+					has_country_flag = HNN_kuomintag_supression_campaign
+				}
+		}
+		localization_key = "GetCampaignDoneNone"
+	}
+	
+	text = {
+		trigger = {  
+				has_country_flag = HNN_kuomintag_supression_campaign
+		}
+		localization_key = "GetCampaignDoneStart"
+	}
+	
+
+}
+
+
+defined_text = {
+	name = GetCampaignStageOne
+	text = {
+		trigger = {  
+			check_variable = { kmt_stage_one_suppression > 23 }
+		}
+		localization_key = "GetCampaignStageOneKMT"
+	}
+	
+	text = {
+		trigger = {  
+			OR = {
+				check_variable = { kmt_stage_one_suppression < 24 }
+				check_variable = { kmt_stage_one_suppression > 6 }
+			}
+		}
+		localization_key = "GetCampaignStageOneStalemate"
+	}
+	text = {
+		trigger = {  
+			check_variable = { kmt_stage_one_suppression < 7 }
+		}
+		localization_key = "GetCampaignStageOneZhili"
+	}
+
+}
+
+defined_text = {
+	name = GetCampaignStageTwo
+	text = {
+		trigger = {  
+			check_variable = { kmt_stage_two_suppression > 23 }
+		}
+		localization_key = "GetCampaignStageTwoKMT"
+	}
+	
+	text = {
+		trigger = {  
+			OR = {
+				check_variable = { kmt_stage_one_suppression < 24 }
+				check_variable = { kmt_stage_one_suppression > 6 }
+			}
+		}
+		localization_key = "GetCampaignStageTwoStalemate"
+	}
+	text = {
+		trigger = {  
+			check_variable = { kmt_stage_two_suppression < 7 }
+		}
+		localization_key = "GetCampaignStageTwoZhili"
+	}
+
+}
+
+defined_text = {
+	name = GetCampaignVictory
+	text = {
+		trigger = {  
+			has_country_flag = zhili_win_ling_county
+		}
+		localization_key = "GetCampaignVictoryWon"
+	}
+	
+	
+	text = {
+		trigger = {  
+			has_country_flag = zhili_loss_ling_county
+		}
+		localization_key = "GetCampaignVictoryloss"
+	}
+
+}
