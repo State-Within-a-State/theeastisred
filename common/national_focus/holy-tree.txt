@@ -87,6 +87,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_a_choice_of_strategy  }
+		mutually_exclusive = { focus = SIA_lean_into_the_people  } mutually_exclusive = { focus = SIA_lean_to_the_crown  } 
 		completion_reward = {
 		custom_effect_tooltip = THM_sangha_tt
 				hidden_effect = {
@@ -119,6 +120,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_a_choice_of_strategy  }
+		mutually_exclusive = { focus = SIA_lean_into_the_people  } mutually_exclusive = { focus = SIA_lean_to_the_sangha  } 
 		completion_reward = {
 		custom_effect_tooltip = THM_royalist_tt
 				hidden_effect = {
@@ -148,6 +150,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = SIA_a_choice_of_strategy  }
+		mutually_exclusive = { focus = SIA_lean_to_the_sangha  } mutually_exclusive = { focus = SIA_lean_to_the_crown  } 
 		completion_reward = {
 		custom_effect_tooltip = THM_liberationist_tt
 				hidden_effect = {
@@ -250,6 +253,7 @@ focus_tree = {
 				has_completed_focus = SIA_lean_to_the_crown
 				}
 				custom_effect_tooltip = THM_royalist_tt
+				hidden_effect = {
 				add_to_variable = {
 					var = royalist_power
 					value = 5
@@ -258,6 +262,7 @@ focus_tree = {
 				add_popularity = {
 					ideology = paternal_autocrat
 					popularity = 0.05
+				}
 				}
 			}
 		
@@ -309,9 +314,10 @@ focus_tree = {
 			
 			if = {
 				limit = {
-				has_completed_focus = SIA_lean_to_the_crown
+				has_completed_focus = SIA_lean_into_the_people
 				}
 				custom_effect_tooltip = THM_liberationist_tt
+				hidden_effect = {
 				add_to_variable = {
 					var = liberationist_power
 					value = 5
@@ -321,6 +327,7 @@ focus_tree = {
 					ideology = radical_socialist
 					popularity = 0.05
 				}
+			}
 			}
 		
 		
@@ -338,20 +345,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = SIA_lean_to_the_crown  }
+		prerequisite = { focus = SIA_lean_to_the_crown  } 
 		mutually_exclusive = { focus = SIA_tear_down_the_infidel  } mutually_exclusive = { focus = SIA_destroy_the_pretenders  } mutually_exclusive = { focus = SIA_break_the_foreign_yoke  }
 		completion_reward = {
 		
 			
-			custom_effect_tooltip = THM_liberationist_tt
+			custom_effect_tooltip = THM_royalist_tt
 				hidden_effect = {
 				add_to_variable = {
-					var = liberationist_power
+					var = royalist_power
 					value = 5
 					tooltip = add_to_liberationist_power_tt
 				}
 				add_popularity = {
-					ideology = radical_socialist
+					ideology = paternal_autocrat
 					popularity = 0.05
 				}
 				
@@ -374,7 +381,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		check_variable = { sangha_power > 25 }
+		check_variable = { sangha_power > 9 }
 		
 		}
 		prerequisite = { focus = SIA_tear_down_the_infidel  focus = SIA_bring_nirvana_to_earth  }
@@ -402,7 +409,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		check_variable = { royalist_power > 25 }
+		check_variable = { royalist_power > 9 }
 		
 		}
 		prerequisite = { focus = SIA_destroy_the_pretenders  focus = SIA_break_the_foreign_yoke  }
@@ -426,7 +433,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		check_variable = { liberationist_power > 25 }
+		check_variable = { liberationist_power > 9 }
 		
 		}
 		prerequisite = { focus = SIA_tear_down_the_infidel  focus = SIA_bring_nirvana_to_earth  }
@@ -450,7 +457,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		check_variable = { liberationist_power > 25 }
+		check_variable = { liberationist_power > 9 }
 		
 		}
 		prerequisite = { focus = SIA_bring_nirvana_to_earth  focus = SIA_tear_down_the_infidel  }
@@ -872,6 +879,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
+		OR = {
+		has_completed_focus = SIA_thebuddhaswill
+		has_completed_focus = SIA_vientianeisourbirthright
+		has_completed_focus = SIA_sonsofthesoil
+		}
 		NOT = {
 			SIA = {
 				exists = yes
@@ -894,6 +906,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+		has_government = social_democrat
+		has_government = national_populist
+			}
+		}
+		mutually_exclusive = { focus = SIA_glory_to_champa  } mutually_exclusive = { focus = SIA_freedom_of_the_crane  } 
 		prerequisite = { focus = SIA_victory_over_the_thai  }
         completion_reward = {
             add_political_power = 50
@@ -910,6 +929,13 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			OR = {
+		has_government = paternal_autocrat
+		has_government = authoritarian_democrat
+			}
+		mutually_exclusive = { focus = SIA_path_of_the_lotus  } mutually_exclusive = { focus = SIA_freedom_of_the_crane  } 
 		}
 		prerequisite = { focus = SIA_victory_over_the_thai  }
         completion_reward = {
@@ -928,6 +954,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+			has_government = totalist
+			has_government = radical_socialist
+			has_government = social_democrat
+			}
+		}
+		mutually_exclusive = { focus = SIA_path_of_the_lotus  } mutually_exclusive = { focus = SIA_glory_to_champa  } 
 		prerequisite = { focus = SIA_victory_over_the_thai  }
         completion_reward = {
             add_political_power = 30
