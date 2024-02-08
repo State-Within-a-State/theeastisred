@@ -101,6 +101,13 @@ country_event = { #Wu Guangxin Killed On A Hunting Trip
 			ideology = paternal_autocrat
 			popularity = 0.18
 		}
+		create_country_leader = {
+			name = "Tang Xiangming"
+			desc = "WU_GUANGXIN_LEADER_DESC"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Tang_Xiangming.png"
+			expire = "1965.1.1"
+			ideology = pataut_warlordism_subtype
+		}
 		complete_national_focus = HNNZHILI_the_butcher_returns_to_cut_some_meat
 		complete_national_focus = HNNZHILI_downgoeshunansowndogmeatgeneral
 		hidden_effect = {
@@ -1015,7 +1022,7 @@ country_event = { #Announcement of a Elections
 	}
 }
 
-country_event = { #
+country_event = { #Truce With the Kuomintang?
 	id = hunan_rework.29
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.29"}
 	title = hunan_rework.29.title
@@ -1026,11 +1033,13 @@ country_event = { #
 	option = { #
 		name = hunan_rework.29.a
 		ai_chance = { base = 100 }
-		
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Xinmin Society Announces Its Election Bid
 	id = hunan_rework.30
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.30"}
 	title = hunan_rework.30.title
@@ -1041,11 +1050,16 @@ country_event = { #
 	option = { #
 		name = hunan_rework.30.a
 		ai_chance = { base = 100 }
-		
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.31
+				days = 4
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A New Contender Enters the Ring
 	id = hunan_rework.31
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.31"}
 	title = hunan_rework.31.title
@@ -1056,11 +1070,16 @@ country_event = { #
 	option = { #
 		name = hunan_rework.31.a
 		ai_chance = { base = 100 }
-		
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.32
+				days = 4
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Campaign At Yiyang
 	id = hunan_rework.32
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.32"}
 	title = hunan_rework.32.title
@@ -1068,14 +1087,83 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Zhao Hengti
 		name = hunan_rework.32.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = hnn_zhao_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.33
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Tang Shengzhi
+		name = hunan_rework.32.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_tang_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.33
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Chen Qian
+		name = hunan_rework.32.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_chen_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.33
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Mao Zedong
+		name = hunan_rework.32.d
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_mao_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.33
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Zuo Shensheng
+		name = hunan_rework.32.e
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_young_china_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.33
+				days = 15
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Changde Electoral Campaign
 	id = hunan_rework.33
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.33"}
 	title = hunan_rework.33.title
@@ -1083,14 +1171,83 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = hunan_rework.33.a
+	option = { #Zhao Hengti
+		name = hunan_rework.32.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = hnn_zhao_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.34
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Tang Shengzhi
+		name = hunan_rework.32.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_tang_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.34
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Chen Qian
+		name = hunan_rework.32.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_chen_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.34
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Mao Zedong
+		name = hunan_rework.32.d
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_mao_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.34
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Zuo Shensheng
+		name = hunan_rework.32.e
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_young_china_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.34
+				days = 15
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Down to the Countryside
 	id = hunan_rework.34
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.34"}
 	title = hunan_rework.34.title
@@ -1098,14 +1255,83 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = hunan_rework.34.a
+	option = { #Zhao Hengti
+		name = hunan_rework.32.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = hnn_zhao_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.35
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Tang Shengzhi
+		name = hunan_rework.32.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_tang_popularity
+			value = 2
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.35
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Chen Qian
+		name = hunan_rework.32.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_chen_popularity
+			value = 2
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.35
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Mao Zedong
+		name = hunan_rework.32.d
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_mao_popularity
+			value = 2
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.35
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Zuo Shensheng
+		name = hunan_rework.32.e
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_young_china_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.35
+				days = 15
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Changsha Incident
 	id = hunan_rework.35
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.35"}
 	title = hunan_rework.35.title
@@ -1113,14 +1339,83 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = hunan_rework.35.a
+	option = { #Zhao Hengti
+		name = hunan_rework.32.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = hnn_zhao_popularity
+			value = 2
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.36
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Tang Shengzhi
+		name = hunan_rework.32.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_tang_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.36
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Chen Qian
+		name = hunan_rework.32.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_chen_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.36
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Mao Zedong
+		name = hunan_rework.32.d
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_mao_popularity
+			value = 1
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.36
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Zuo Shensheng
+		name = hunan_rework.32.e
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_young_china_popularity
+			value = 2
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.36
+				days = 15
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Changsha Slums
 	id = hunan_rework.36
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.36"}
 	title = hunan_rework.36.title
@@ -1128,29 +1423,234 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = hunan_rework.36.a
+	option = { #Zhao Hengti
+		name = hunan_rework.32.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = hnn_zhao_popularity
+			value = 2
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.37
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Tang Shengzhi
+		name = hunan_rework.32.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_tang_popularity
+			value = 2
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.37
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Chen Qian
+		name = hunan_rework.32.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_chen_popularity
+			value = 3
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.37
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Mao Zedong
+		name = hunan_rework.32.d
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_mao_popularity
+			value = 3
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.37
+				days = 15
+			}
+		}
+	}
+	
+	option = { #Zuo Shensheng
+		name = hunan_rework.32.e
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = hnn_young_china_popularity
+			value = 2
+		}
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.37
+				days = 15
+			}
+		}
 	}
 }
 
 country_event = { #
 	id = hunan_rework.37
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.37"}
-	title = hunan_rework.37.title
-	desc = hunan_rework.37.desc
+	title = hnn.17.title
+	desc = hnn.17.desc
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = hunan_rework.37.a
-		ai_chance = { base = 100 }
-		
+	option = { #May the people decide the new governor.
+		name = hnn.17.a
+		hidden_effect = {
+			if = {
+				limit = {
+					check_variable = {
+						var = hnn_tang_popularity
+						value = hnn_zhao_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_tang_popularity
+						value = hnn_chen_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_tang_popularity
+						value = hnn_mao_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_tang_popularity
+						value = hnn_young_china_popularity
+						compare = greater_than
+					}
+					
+				}
+				country_event = { id = hunan_rework.38 days = 3 }
+			}
+			
+			else_if = {
+				limit = {
+					check_variable = {
+						var = hnn_zhao_popularity
+						value = hnn_tang_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_zhao_popularity
+						value = hnn_chen_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_zhao_popularity
+						value = hnn_mao_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_zhao_popularity
+						value = hnn_young_china_popularity
+						compare = greater_than
+					}
+					
+				}
+				country_event = { id = hunan_rework.39 days = 3 }
+			}
+			
+			else_if = {
+				limit = {
+					check_variable = {
+						var = hnn_chen_popularity
+						value = hnn_tang_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_chen_popularity
+						value = hnn_zhao_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_chen_popularity
+						value = hnn_mao_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_chen_popularity
+						value = hnn_young_china_popularity
+						compare = greater_than
+					}
+					
+				}
+				country_event = { id = hunan_rework.40 days = 3 }
+			}
+			
+			else_if = {
+				limit = {
+					check_variable = {
+						var = hnn_mao_popularity
+						value = hnn_tang_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_mao_popularity
+						value = hnn_zhao_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_mao_popularity
+						value = hnn_chen_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_mao_popularity
+						value = hnn_young_china_popularity
+						compare = greater_than
+					}
+					
+				}
+				country_event = { id = hunan_rework.41 days = 3 }
+			}
+			
+			else_if = {
+				limit = {
+					check_variable = {
+						var = hnn_young_china_popularity
+						value = hnn_tang_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_young_china_popularity
+						value = hnn_zhao_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_young_china_popularity
+						value = hnn_chen_popularity
+						compare = greater_than
+					}
+					check_variable = {
+						var = hnn_young_china_popularity
+						value = hnn_mao_popularity
+						compare = greater_than
+					}
+					
+				}
+				country_event = { id = hunan_rework.41 days = 3 }
+			}
+			
+			
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Tang Shengzhi Elected
 	id = hunan_rework.38
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.38"}
 	title = hunan_rework.38.title
@@ -1161,11 +1661,11 @@ country_event = { #
 	option = { #
 		name = hunan_rework.38.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_Tang_Shengzhi_Elected
 	}
 }
 
-country_event = { #
+country_event = { #Zhao Hengti Elected
 	id = hunan_rework.39
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.39"}
 	title = hunan_rework.39.title
@@ -1176,11 +1676,59 @@ country_event = { #
 	option = { #
 		name = hunan_rework.39.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_Zhao_Hengti_Elected
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.1
+		}
+		clr_country_flag = HNN_electionsstarted
+		set_country_flag = HNN_zhao_dem_victory
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		add_political_power = -10
+		hidden_effect = {
+			remove_all_ministers = yes
+			add_ideas = {
+				HNN_Zhao_Hengti_hog_sco
+				HNN_Huang_Shiheng_for_sco
+				HNN_Hu_Shuhua_eco_sco
+				HNN_Yi_Peiji_sec_sco
+			}
+			country_event = { id = hnn.105 days = 35 }
+			QIE = {
+				country_event = {
+					id = qiefor.110
+					hours = 6
+				}
+			}
+			if = {
+				limit = {
+					country_exists = CHI
+				}
+				CHI = {
+					country_event = { #alerts kmt to Zhao Hengti victory in hunan
+						id = hnn.107
+						days = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					YUN = {
+						has_government = social_liberal
+					}
+				}
+				country_event = { #alerts kmt to Zhao Hengti victory in hunan
+					id = hnn.107
+					days = 1
+				}
+			}
+		}}
 	}
 }
 
-country_event = { #
+country_event = { #Kuomintang Victory
 	id = hunan_rework.40
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.40"}
 	title = hunan_rework.40.title
@@ -1191,11 +1739,11 @@ country_event = { #
 	option = { #
 		name = hunan_rework.40.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_Chen_Qian_Elected
 	}
 }
 
-country_event = { #
+country_event = { #Xinming Society Victory
 	id = hunan_rework.41
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.41"}
 	title = hunan_rework.41.title
@@ -1206,11 +1754,11 @@ country_event = { #
 	option = { #
 		name = hunan_rework.41.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_Mao_Zedong_Elected
 	}
 }
 
-country_event = { #
+country_event = { #Young China Victory
 	id = hunan_rework.42
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.42"}
 	title = hunan_rework.42.title
@@ -1221,7 +1769,7 @@ country_event = { #
 	option = { #
 		name = hunan_rework.42.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_Zuo_Shengshun_Elected
 	}
 }
 
