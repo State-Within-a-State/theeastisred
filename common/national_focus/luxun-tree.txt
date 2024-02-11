@@ -731,14 +731,33 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		owns_state = 608
+		is_subject = no
+		china_is_potential_government = yes
+		china_no_rival_governments_left = yes
+		592 = { is_owned_by_ROOT_or_ally = yes } #Guangzhou
+		608 = { is_owned_by_ROOT_or_ally = yes } #Beijing
+		613 = { is_owned_by_ROOT_or_ally = yes } #Nanjing
+		1048 = { is_owned_by_ROOT_or_ally = yes } #Wuhan
+		716 = { is_owned_by_ROOT_or_ally = yes } #Shenyang
+		surrender_progress < 0.05
 		}
 		prerequisite = { focus = LECFOR_the_west_china_debate  } prerequisite = { focus = LECFOR_northern_china_secured  }
 		completion_reward = {
 		custom_effect_tooltip = prepare_china_recover_tt
+		set_country_flag = has_united_china
+		set_global_flag = china_united
+		add_timed_idea = {
+		idea = unite_china_justification_idea
+		days = 150
+		}
+		hidden_effect = {
+			news_event = {
+				id = worldnews.413
+				days = 1
+			}
+		}
 		if = {
 		limit = {
-		
 		has_country_leader = {
 		name = "Zhou Yang"
 		ruling_only = yes
