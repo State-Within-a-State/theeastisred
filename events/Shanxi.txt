@@ -11467,6 +11467,11 @@ country_event = {
 					long_name = SHX_feng_unification_party_long
 					name = SHX_feng_unification_party
 				}
+				set_party_name = { #Rename Feng's Party from GMJ to National Revolutionary Party
+					ideology = authoritarian_democrat
+					long_name = SHX_feng_unification_party_long
+					name = SHX_feng_unification_party
+				}
 			}
 		}
 	}
@@ -11847,7 +11852,7 @@ country_event = {
 			country_event = { id = shx_endgame.12 days = 7 } #The Legacy of the Warlord Era
 			hidden_effect = {
 				set_party_name = {
-					ideology = radical_socialist
+					ideology = totalist
 					long_name = SHX_kuomintang_long
 					name = SHX_kuomintang
 				}
@@ -11878,10 +11883,10 @@ country_event = {
 		}
 		end_coalition = yes
 		custom_effect_tooltip = SHX_end_coalition_tooltip
-		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		set_temp_variable = { coalition_partner_var = token:totalist }
 		add_to_coalition = yes
 		add_popularity = {
-			ideology = radical_socialist
+			ideology = totalist
 			popularity = 0.15
 		}
 		add_popularity = {
@@ -11930,10 +11935,10 @@ country_event = {
 		}
 		end_coalition = yes
 		custom_effect_tooltip = SHX_end_coalition_tooltip
-		set_temp_variable = { coalition_partner_var = token:radical_socialist }
+		set_temp_variable = { coalition_partner_var = token:totalist }
 		add_to_coalition = yes
 		add_popularity = {
-			ideology = radical_socialist
+			ideology = totalist
 			popularity = 0.15
 		}
 		add_popularity = {
@@ -11961,8 +11966,13 @@ country_event = {
 		log = "[GetLogInfo]: event shx_endgame.11 option shx_endgame.11.c"
 		name = shx_endgame.11.c
 		add_popularity = {
-			ideology = radical_socialist
+			ideology = totalist
 			popularity = 0.01
+		}
+		set_party_name = {
+				ideology = totalist
+				long_name = SHX_fringe_radicals_long
+				name = SHX_fringe_radicals
 		}
 	}
 }
@@ -12017,9 +12027,9 @@ country_event = {
 				name = SHX_feng_unification_party
 			}
 			set_party_name = {
-				ideology = totalist
-				long_name = SHX_fringe_radicals_long
-				name = SHX_fringe_radicals
+				ideology = authoritarian_democrat
+				long_name = SHX_feng_unification_party_bad_long
+				name = SHX_feng_unification_party
 			}
 			set_party_name = {
 				ideology = syndicalist
@@ -12039,6 +12049,11 @@ country_event = {
 			popularity = 0.03
 		}
 		hidden_effect = {
+			set_party_name = {
+					ideology = syndicalist
+					long_name = SHX_chinese_syndicalist_party_long
+					name = SHX_chinese_syndicalist_party
+					}
 			if = {
 				limit = { NOT = { has_character = SHX_yan_xishan }}
 				hidden_effect = {
@@ -12046,16 +12061,6 @@ country_event = {
 						ideology = paternal_autocrat
 						long_name = SHX_assorted_warlords_long
 						name = SHX_assorted_warlords
-					}
-					set_party_name = {
-						ideology = totalist
-						long_name = SHX_fringe_radicals_long
-						name = SHX_fringe_radicals
-					}
-					set_party_name = {
-						ideology = syndicalist
-						long_name = SHX_chinese_syndicalist_party_long
-						name = SHX_chinese_syndicalist_party
 					}
 				}
 			}
