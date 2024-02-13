@@ -11,6 +11,9 @@
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 	}
 
 	#Recovering From the Debt Crisis
@@ -24,6 +27,12 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_collapse_of_the_league  }
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = HNN_economic_collapse
+			add_idea = HNN_economic_collapse_1
+			}
+		}
 	}
 
 	#Statist Focus
@@ -38,6 +47,12 @@
 		}
 		prerequisite = { focus = HNNSHARED_recovering_from_the_debt_crisis  }
 		mutually_exclusive = { focus = HNNSHARED_the_flowing_of_capital  }
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = HNN_economic_collapse_1
+			add_idea = HNN_economic_collapse_statist
+			}
+		}
 	}
 
 	#Strong Arm of the Land Owners
@@ -51,6 +66,12 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_the_flowing_of_capital  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Strong_Arm_Local_Landowners"
+			HNN_reduce_economic_downturn = yes
+			custom_effect_tooltip = HNN_strongarmthelocallandowners
+		}
+		
 	}
 
 	#Settling the Independence Question
@@ -64,6 +85,10 @@
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNSHARED_collapse_of_the_league  }
+		completion_reward = {
+		country_event = hunan_rework.43
+		}
+		
 	}
 
 	#Crushing the Opium Trade
@@ -77,6 +102,11 @@
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNSHARED_shaking_hands_with_the_anyuan_miners  }
+		completion_reward = {
+		add_ideas = {
+		HNN_opium_trade_crushed
+		}
+		}
 	}
 
 	#Establishing the Communal System
@@ -90,6 +120,12 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_saving_the_textiles_industry  } prerequisite = { focus = HNNSHARED_shaking_hands_with_the_anyuan_miners  }
+		completion_reward = {
+			add_timed_idea = {
+				idea = HNN_communal_economics
+				days = 180
+			}
+		}
 	}
 
 	#Yuelu Mountain Industrial School
@@ -103,6 +139,9 @@
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNSHARED_saving_the_textiles_industry  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Fuelling the Opium Market
@@ -116,6 +155,11 @@
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNSHARED_hushuhuasplan  } prerequisite = { focus = HNNSHARED_saving_the_textiles_industry  }
+		completion_reward = {
+			add_ideas = {
+				HNN_opium_trade_funded
+			}
+		}
 	}
 
 	#Attracting Guangdong Capitalists
@@ -129,6 +173,11 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_hushuhuasplan  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Attract_Foreign_Investment"
+			HNN_reduce_economic_downturn = yes
+			custom_effect_tooltip = HNN_attraction_of_foreign_investment
+		}
 	}
 
 	#A Power House of Hunan Capital
@@ -408,6 +457,12 @@
 		}
 		prerequisite = { focus = HNNSHARED_recovering_from_the_debt_crisis  }
 		mutually_exclusive = { focus = HNNSHARED_statist_focus  }
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = HNN_economic_collapse_1
+			add_idea = HNN_economic_collapse_private
+			}
+		}
 	}
 	
 	### Military
