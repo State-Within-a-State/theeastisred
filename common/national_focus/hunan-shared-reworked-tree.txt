@@ -191,6 +191,12 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_yuelu_mountain_industrial_school  } prerequisite = { focus = HNNSHARED_fuelling_the_opium_market  } prerequisite = { focus = HNNSHARED_attracting_guangdong_capitalists  }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HNN_economic_collapse_private
+				add_idea = HNN_economic_collapse_private_1
+			}
+		}
 	}
 
 	#Success of the People's Economy
@@ -204,6 +210,12 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_crushing_the_opium_trade  } prerequisite = { focus = HNNSHARED_establishing_the_communal_system  } prerequisite = { focus = HNNSHARED_yuelu_mountain_industrial_school  }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HNN_economic_collapse_statist
+				add_idea = HNN_economic_collapse_statist_1
+			}
+		}
 	}
 
 	#Shaking Hands With the Anyuan Miners
@@ -217,6 +229,17 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_nationalize_foreign_assets  }
+		completion_reward = {
+		add_resource = {
+				type = steel
+				amount = 20
+				state = 602
+			}
+		add_timed_idea = {
+		idea = HNN_anyuan_friends
+		days = 180
+		}
+		}
 	}
 
 	#A Push For Small Businesses
@@ -230,6 +253,17 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_strong_arm_of_the_land_owners  } prerequisite = { focus = HNNSHARED_building_up_the_industrial_zone  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Hunannese_Industry"
+			602 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Uniting Under One Goal
@@ -241,6 +275,9 @@
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = HNNSHARED_settling_the_independence_question  }
 		mutually_exclusive = { focus = HNNSHARED_a_true_middle_kingdom  }
@@ -255,6 +292,9 @@
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = HNNSHARED_settling_the_independence_question  }
 		mutually_exclusive = { focus = HNNSHARED_uniting_under_one_goal  }
@@ -271,6 +311,11 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_statist_focus  }
+		completion_reward = {
+		add_ideas = {
+		HNN_peasant_comrades
+		}
+		}
 	}
 
 	#Nationalize Foreign Assets
@@ -284,6 +329,12 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_building_up_the_industrial_zone  } prerequisite = { focus = HNNSHARED_support_to_the_peasants  }
+		completion_reward = {
+			add_timed_idea = {
+				idea = HNN_nationalization_program
+				days = 180
+			}
+		}
 	}
 
 	#Saving the Textiles Industry
@@ -297,6 +348,11 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_nationalize_foreign_assets  focus = HNNSHARED_a_push_for_small_businesses  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Reform_the_Status_Quo"
+			HNN_reduce_economic_downturn = yes
+			custom_effect_tooltip = HNN_reforming_status_quo
+		}
 	}
 
 	#Hu Shuhua's Plan
@@ -310,6 +366,17 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_a_push_for_small_businesses  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Hunannese_Industry"
+			602 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Avenging Shihe
@@ -323,6 +390,12 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = HNNSHARED_uniting_under_one_goal  focus = HNNSHARED_a_true_middle_kingdom  }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = SZC
+			}
+		}
 	}
 
 	#The Southern Front
@@ -336,6 +409,9 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = HNNSHARED_uniting_under_one_goal  focus = HNNSHARED_a_true_middle_kingdom  }
+		completion_reward = {
+		unlock_decision_tooltip = HNN_southern_advance
+		}
 	}
 
 	#Our Own Northern Expedition
@@ -349,6 +425,9 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = HNNSHARED_avenging_shihe  } prerequisite = { focus = HNNSHARED_the_southern_front  }
+		completion_reward = {
+		unlock_decision_tooltip = HNN_northern_push
+		}
 	}
 
 	#Reaching the Snow Capped Mountains
@@ -362,6 +441,9 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = HNNSHARED_the_southern_front  } prerequisite = { focus = HNNSHARED_uniting_under_one_goal  focus = HNNSHARED_a_true_middle_kingdom  } prerequisite = { focus = HNNSHARED_the_southern_front  }
+		completion_reward = {
+		unlock_decision_tooltip = HNN_secure_frontiers
+		}
 	}
 
 	#Empire Beyond the Lands of the Han
@@ -370,11 +452,15 @@
 		icon = GFX_HNNSHARED_empire_beyond_the_lands_of_the_han-248360
 		x = 59
 		y = 5
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = HNNSHARED_a_true_middle_kingdom  } prerequisite = { focus = HNNSHARED_reaching_the_snow_capped_mountains  }
+		completion_reward = {
+		add_war_support = 0.1
+		add_political_power = 100
+		}
 	}
 
 	#Unification At Last
@@ -387,7 +473,13 @@
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		owns_state = 608
+		}
 		prerequisite = { focus = HNNSHARED_our_own_northern_expedition  }
+		completion_reward = {
+		custom_effect_tooltip = is_not_done_yet_tt
+		}
 	}
 
 	#An Empire for the Miao
@@ -402,6 +494,9 @@
 		}
 		prerequisite = { focus = HNNSHARED_empire_beyond_the_lands_of_the_han  }
 		mutually_exclusive = { focus = HNNSHARED_under_the_realm_of_the_grand_mandate  } mutually_exclusive = { focus = HNNSHARED_auspicious_clouds_rise_above_asia  }
+		completion_reward = {
+		custom_effect_tooltip = is_not_done_yet_tt
+		}
 	}
 
 	#Under the Realm Of the Grand Mandate
@@ -416,6 +511,9 @@
 		}
 		prerequisite = { focus = HNNSHARED_empire_beyond_the_lands_of_the_han  }
 		mutually_exclusive = { focus = HNNSHARED_an_empire_for_the_miao  } mutually_exclusive = { focus = HNNSHARED_auspicious_clouds_rise_above_asia  }
+		completion_reward = {
+		custom_effect_tooltip = is_not_done_yet_tt
+		}
 	}
 
 	#Building Up the Industrial Zone
@@ -429,6 +527,20 @@
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNSHARED_statist_focus  focus = HNNSHARED_the_flowing_of_capital  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Exploit_Hunan_Machinery_Factory"
+			add_resource = {
+				type = steel
+				amount = 12
+				state = 602
+			}
+			add_tech_bonus = {
+				name = HNN_Exploit_Hunan_Machinery_Factory
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
 	}
 
 	#Auspicious Clouds Rise Above Asia
@@ -443,6 +555,9 @@
 		}
 		prerequisite = { focus = HNNSHARED_empire_beyond_the_lands_of_the_han  }
 		mutually_exclusive = { focus = HNNSHARED_an_empire_for_the_miao  } mutually_exclusive = { focus = HNNSHARED_under_the_realm_of_the_grand_mandate  }
+		completion_reward = {
+		custom_effect_tooltip = is_not_done_yet_tt
+		}
 	}
 
 	#The Flowing of Capital

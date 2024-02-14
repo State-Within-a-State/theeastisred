@@ -132,3 +132,165 @@ HNN_dealing_with_banditry_decision_category = { #dont forget to add a category
 		}
 	}
 }
+
+HNN_china_unification_decision_category = { 
+HNN_southern_advance = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = HNN
+			has_completed_focus = HNNSHARED_the_southern_front
+		}
+		cost = 10
+		targets = {  YUN GXC }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			hidden_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = FROM
+					is_on_continent = asia
+				}
+				add_claim_by = ROOT
+				}
+			}
+		}
+	}
+	
+	HNN_northern_push = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = HNN
+			has_completed_focus = HNNSHARED_our_own_northern_expedition
+		}
+		cost = 10
+		targets = {  ANQ CHI LEP SQI SHX XSM QIE FNG MAN  }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			hidden_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = FROM
+					is_on_continent = asia
+				}
+				add_claim_by = ROOT
+				}
+			}
+		}
+	}
+	
+	HNN_secure_frontiers = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = HNN
+			has_completed_focus = HNNSHARED_our_own_northern_expedition
+		}
+		cost = 10
+		targets = {  TIB SIK ETS TAN MON  }
+		target_trigger = {
+			FROM = { exists = yes }
+			NOT = {
+				AND = {
+				has_war_with = PREV
+				is_puppet_of = PREV
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		ai_will_do = {
+			factor = 30
+			modifier = {
+				factor = 0
+				has_equipment = { infantry_equipment < 4000 }
+			}
+			modifier = {
+				factor = 0
+				has_war = yes
+			}
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			hidden_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = FROM
+					is_on_continent = asia
+				}
+				add_claim_by = ROOT
+				}
+			}
+		}
+	}
+
+}
