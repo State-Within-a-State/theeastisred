@@ -5175,7 +5175,9 @@ JAP_banzai_charges = {
 		
 		visible = {
 			tag = JAP
-			
+			NOT = {
+			has_idea = JAP_military_leap_finished
+			}
 			
 		}
 		
@@ -5186,13 +5188,19 @@ JAP_banzai_charges = {
 		fire_only_once = no
 		 days_re_enable = 50
 		complete_effect = {
-			add_idea = JAP_banzai
+			add_ideas = {
+			JAP_banzai
+			}
 		}
 		remove_effect = {
+			remove_ideas = {
+				JAP_banzai
+			}
 			remove_idea = JAP_banzai
 			add_to_variable = {
 				var = JAP_military_leap
 				value = 10
+				tooltip = increase_military_leap_tt
 			}
 			
 		}
@@ -5207,7 +5215,9 @@ JAP_banzai_charges = {
 		
 		visible = {
 			tag = JAP
-			
+			NOT = {
+			has_idea = JAP_spiritual_leap_finished
+			}
 			
 		}
 		
@@ -5218,13 +5228,77 @@ JAP_banzai_charges = {
 		fire_only_once = no
 		 days_re_enable = 50
 		complete_effect = {
+		add_ideas = {
+		JAP_nationalist_propaganda
+		}
 		}
 		remove_effect = {
-			
+			remove_ideas = {
+				JAP_nationalist_propaganda
+			}
 			add_to_variable = {
 				var = JAP_spiritual_leap
 				value = 10
+				tooltip = increase_spiritual_leap_tt
 			}
+		}
+	}
+	
+	JAP_military_leap_finished = {
+		icon = no_votei_icon
+		
+		available = {
+			check_variable = { JAP_spiritual_leap > 90 }
+		}
+		
+		visible = {
+			tag = JAP
+			check_variable = { JAP_spiritual_leap > 90 }
+			
+		}
+		
+		
+		cost = 20
+		
+		days_remove = 1
+		fire_only_once = yes
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			add_ideas = {
+				JAP_military_leap_finished
+			}
+			
+		}
+	}
+	
+	JAP_spiritual_leap_finished = {
+		icon = no_votei_icon
+		
+		available = {
+			check_variable = { JAP_spiritual_leap > 90 }
+		}
+		
+		visible = {
+			tag = JAP
+			check_variable = { JAP_spiritual_leap > 90 }
+			
+		}
+		
+		
+		cost = 20
+		
+		days_remove = 1
+		fire_only_once = yes
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			add_ideas = {
+				JAP_spiritual_leap_finished
+			}
+			
 		}
 	}
 }
