@@ -120,17 +120,25 @@ country_event = { #peace out
 			tag = JAP
 			tag = INS
 		}
+		OR = {
+		AND = {
 		has_war_with = LEC
+		controls_state = 743
+		}
+		AND = {
+		LEC = {
+			has_capitulated = yes
+		}
+		any_enemy_country = {
+		has_country_flag = LEC_war_backer
+		}
+		}
+		}
 		NOT = {
 		has_global_flag = shanghai_revolution
 		}
 		LEC = {
 			NOT = { has_country_flag = LEC_Triad_Power }
-		}
-		OR = {
-		controls_state = 743
-		controls_state = 326
-		controls_state = 746
 		}
 	}
 
