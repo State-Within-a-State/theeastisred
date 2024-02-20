@@ -1796,7 +1796,9 @@ country_event = { #Settling the Independence Question
 	}
 }
 
-country_event = { #
+###Secret Society Rebellions###
+
+country_event = { #Success of the Spirit Soldiers
 	id = hunan_rework.44
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.44"}
 	title = hunan_rework.44.title
@@ -1807,11 +1809,42 @@ country_event = { #
 	option = { #
 		name = hunan_rework.44.a
 		ai_chance = { base = 100 }
+		complete_national_focus = HNNSPIRITSOLIDER_ifbulletscannotstopusthenimpurityshantstopuseither
+		
+		set_cosmetic_tag = HNN_Buddhist_Hunan
+		load_focus_tree = hnn-spirit-soldier-tree
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+			long_name = HNN_shi_dingwu_party_long
+			name = HNN_shi_dingwu_party
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.5
+		}
+		create_country_leader = {
+			name = "Wang Xijiu"
+			desc = "WU_GUANGXIN_LEADER_DESC"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Tang_Xiangming.png"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
+		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Wang_Xijiu_hog_npo
+				HNN_Wang_Zizheng_for_npo
+				HNN_Zhang_Gongfuzi_eco_npo
+				HNN_Wu_Xinghan_for_npo
+			}
 		
 	}
 }
 
-country_event = { #
+country_event = { #Shi Dingwu Revolts in Xiangxi
 	id = hunan_rework.45
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.45"}
 	title = hunan_rework.45.title
@@ -1822,11 +1855,14 @@ country_event = { #
 	option = { #
 		name = hunan_rework.45.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+		id = hunan_rework.46
+		days = 15
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Battle of Changsha
 	id = hunan_rework.46
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.46"}
 	title = hunan_rework.46.title
@@ -1834,14 +1870,26 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We Shall Go In With A Full Force
 		name = hunan_rework.46.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+		id = hunan_rework.47
+		days = 5
+		}
+	}
+	
+	option = { #We Shall Go In With A Full Force
+		name = hunan_rework.47.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = hunan_rework.48
+		days = 5
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Shi Dingwu Retreats With His Forces in Disarray
 	id = hunan_rework.47
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.47"}
 	title = hunan_rework.47.title
@@ -1852,11 +1900,12 @@ country_event = { #
 	option = { #
 		name = hunan_rework.47.a
 		ai_chance = { base = 100 }
-		
+		add_stability = 0.05
+		add_political_power = 10
 	}
 }
 
-country_event = { #
+country_event = { #Shi Dingwu Arrives in Changsha
 	id = hunan_rework.48
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.48"}
 	title = hunan_rework.48.title
@@ -1867,11 +1916,39 @@ country_event = { #
 	option = { #
 		name = hunan_rework.48.a
 		ai_chance = { base = 100 }
+		set_country_flag = HNN_Dingwu_revolt_success
+		set_cosmetic_tag = HNN_Shi_Dingwu_Hunan
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+			long_name = HNN_spirit_soldier_party_long
+			name = HNN_spirit_soldier_party
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.05
+		}
+		create_country_leader = {
+			name = "Shi Dingwu"
+			desc = "WU_GUANGXIN_LEADER_DESC"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Tang_Xiangming.png"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
 		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Chen_Tailai_hog_npo
+				HNN_Zhang_Qifang_for_npo
+				HNN_Peng_Liangji_eco_npo
+				HNN_Bin_Shubian_sec_npo
+			}
 	}
 }
 
-country_event = { #
+country_event = { #The Jade Emperor's Triumph
 	id = hunan_rework.49
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.49"}
 	title = hunan_rework.49.title
@@ -1882,7 +1959,14 @@ country_event = { #
 	option = { #
 		name = hunan_rework.49.a
 		ai_chance = { base = 100 }
-		
+		set_cosmetic_tag = HNN_Hunan_Jade_Empire
+		create_country_leader = {
+			name = "Jade Emperor"
+			desc = "WU_GUANGXIN_LEADER_DESC"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Tang_Xiangming.png"
+			expire = "1965.1.1"
+			ideology = occultism_subtype
+		}
 	}
 }
 
