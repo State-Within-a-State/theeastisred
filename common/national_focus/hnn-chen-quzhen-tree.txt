@@ -8,6 +8,7 @@ focus_tree = {
 			tag = HNNQUZHEN
 		}
 	}
+	shared_focus = HNNSHARED_collapse_of_the_league
 	#The Theory of Soldier's Conscious
 	focus = {
 		id = HNNQUZHEN_thetheoryofsoldiersconscious
@@ -19,6 +20,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNQUZHEN_create_the_qingxiang_supervisory_office  } prerequisite = { focus = HNNQUZHEN_new_found_miao_nationalism  } prerequisite = { focus = HNNQUZHEN_andcalmingthepeople  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Create the Xiangxi Farmers Bank
@@ -32,6 +36,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNQUZHEN_thetheoryofsoldiersconscious  }
+		completion_reward = {
+		add_ideas = {
+		HNN_xiangxi_farmer_banks
+		}
+		}
 	}
 
 	#Quzhen's New Kingdom
@@ -45,6 +54,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNQUZHEN_create_the_xiangxi_farmers_bank  } prerequisite = { focus = HNNQUZHEN_develop_western_hunan_mineral_deposites  }
+		completion_reward = {
+		add_ideas = {
+		HNN_new_kingdom
+		}
+		}
 	}
 
 	#Rule of the Xiangxi King
@@ -56,6 +70,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -70,6 +87,20 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNQUZHEN_thetheoryofsoldiersconscious  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Exploit_Hunan_Machinery_Factory"
+			add_resource = {
+				type = steel
+				amount = 12
+				state = 602
+			}
+			add_tech_bonus = {
+				name = HNN_Exploit_Hunan_Machinery_Factory
+				bonus = 1
+				uses = 1
+				category = industry
+			}
+		}
 	}
 
 	#Suppression And Appeasement
@@ -83,6 +114,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNQUZHEN_crush_kuomintang_cells  } prerequisite = { focus = HNNQUZHEN_setup_porridge_sheds  }
+		completion_reward = {
+		remove_ideas = {
+		HNN_spirit_soldier_rebellion
+		}
+		}
 	}
 
 	#Protecting the Lands...
@@ -96,6 +132,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNQUZHEN_crush_kuomintang_cells  } prerequisite = { focus = HNNQUZHEN_setup_porridge_sheds  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Create the Qingxiang Supervisory Office
@@ -109,6 +148,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNQUZHEN_suppression_and_appeasement  } prerequisite = { focus = HNNQUZHEN_protectingthelands  }
+		completion_reward = {
+			create_intelligence_agency = {
+				name = "Qingxiang Supervisory Office"
+				icon = GFX_intelligence_agency_logo_agency
+			}
+		}
 	}
 
 	#New Found Miao Nationalism
@@ -122,6 +167,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNQUZHEN_suppression_and_appeasement  } prerequisite = { focus = HNNQUZHEN_protectingthelands  }
+		completion_reward = {
+		add_ideas = {
+		HNN_miao_nationalism
+		}
+		}
 	}
 
 	#Crush Kuomintang Cells
@@ -135,6 +185,12 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = HNNQUZHEN_rule_of_the_xiangxi_king  }
+		completion_reward = {
+		custom_effect_tooltip = kuomintang_crackdown_tt
+			hidden_effect = {
+				country_event = hunan_rework.17
+			}
+		}
 	}
 
 	#...And Calming the People
@@ -148,6 +204,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNQUZHEN_protectingthelands  }
+		completion_reward = {
+		add_ideas = {
+		HNN_calming_people
+		}
+		}
 	}
 
 	#Hunt Down the Red Robinhood
@@ -161,6 +222,13 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNQUZHEN_andcalmingthepeople  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -1
+		}
+		add_political_power = 30
+		}
 	}
 
 	#Setup Porridge Sheds
@@ -174,6 +242,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNQUZHEN_rule_of_the_xiangxi_king  }
+		completion_reward = {
+		add_timed_idea = {
+		idea = HNN_porridge_huts
+		days = 180
+		}
+		}
 	}
 
 }

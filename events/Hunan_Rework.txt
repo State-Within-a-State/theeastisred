@@ -1916,6 +1916,8 @@ country_event = { #Shi Dingwu Arrives in Changsha
 	option = { #
 		name = hunan_rework.48.a
 		ai_chance = { base = 100 }
+		complete_national_focus = HNNDINGWU_the_kingdom_to_the_buddha_shall_reign
+		load_focus_tree = hnn-shi-dong-wu-tree
 		set_country_flag = HNN_Dingwu_revolt_success
 		set_cosmetic_tag = HNN_Shi_Dingwu_Hunan
 		set_politics = {
@@ -1933,7 +1935,7 @@ country_event = { #Shi Dingwu Arrives in Changsha
 		create_country_leader = {
 			name = "Shi Dingwu"
 			desc = "WU_GUANGXIN_LEADER_DESC"
-			picture = "gfx/leaders/HNN/Portrait_HNN_Tang_Xiangming.png"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Shi_Dingwu.png"
 			expire = "1965.1.1"
 			ideology = occultism_subtype
 		}
@@ -1970,7 +1972,7 @@ country_event = { #The Jade Emperor's Triumph
 	}
 }
 
-country_event = { #
+country_event = { #Chen Quzhen Takes Changsha
 	id = hunan_rework.50
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.50"}
 	title = hunan_rework.50.title
@@ -1981,7 +1983,37 @@ country_event = { #
 	option = { #
 		name = hunan_rework.50.a
 		ai_chance = { base = 100 }
+		set_cosmetic_tag = HNN_QUZHEN_MIAO
+		load_focus_tree = hnn-chen-quzhen-tree
+		complete_national_focus = HNNQUZHEN_rule_of_the_xiangxi_king
+		add_natpop_to_coalition = yes
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+			last_election = "1935.12.17"
+			election_frequency = 48
+			long_name = HNN_quzhen_party_long
+			name = HNN_quzhen_party
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.05
+		}
+		create_country_leader = {
+			name = "Chen Quzhen"
+			desc = "WU_GUANGXIN_LEADER_DESC"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Chen_Quzhen.png"
+			expire = "1965.1.1"
+			ideology = crime_syndicate_subtype
+		}
 		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Chen_Quzhen_hog_pau
+				HNN_Gu_Jiaqi_for_pau
+				HNN_Wang_Shangzhi_eco_pau
+				HNN_Long_Yunfei_sec_pau
+			}
 	}
 }
 
