@@ -352,10 +352,20 @@ QIE_PUPPET_KOREA = {
 		icon = generic_ignite_civil_war
 		available = {
 			527 = {
+			OR = {
+			owner = {
+			is_subject_of = QIE
+			}
 			is_owned_by = QIE
 			}
+			}
 			525 = {
+			OR = {
+			owner = {
+			is_subject_of = QIE
+			}
 			is_owned_by = QIE
+			}
 			}
 
 
@@ -372,6 +382,11 @@ QIE_PUPPET_KOREA = {
 			
 		}
 		remove_effect = {
+		if = { limit = { country_exists = KOR }
+		annex_country = {
+			target = KOR
+		} 
+		}
 		release = KOR
 		puppet = KOR
 		KOR = {
