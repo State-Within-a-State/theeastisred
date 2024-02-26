@@ -68,6 +68,7 @@ focus_tree = {
 			AND = {
 				has_country_flag = HNN_gelaohui_rebellion_over
 				has_country_flag = HNN_spirit_soldier_rebellion_over
+				NOT = { has_country_flag = hunan_dicatorship }
 			}
 		}
 	}
@@ -416,6 +417,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		available = { 
+		NOT = {
+			has_country_flag = hunan_dicatorship
+		}
+		}
 		prerequisite = { focus = HNNZHILI_restoration_of_the_hunan_constiution  }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Rights_of_Man"
@@ -727,6 +733,10 @@ focus_tree = {
 		prerequisite = { focus = HNNZHILI_downgoeshunansowndogmeatgeneral  }
 		available = {
 			has_country_flag = hunan_dicatorship
+			OR = {
+			has_completed_focus = HNNZHILI_the_butcher_returns_to_cut_some_meat
+			has_completed_focus = HNNZHILI_restoration_of_the_hunan_constiution
+			}
 		}
 	}
 
@@ -757,6 +767,12 @@ focus_tree = {
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_STABILITY
+		}
+		available = {
+			AND = {
+				has_country_flag = HNN_gelaohui_rebellion_over
+				has_country_flag = HNN_spirit_soldier_rebellion_over
+			}
 		}
 		prerequisite = { focus = HNNZHILI_the_firm_hand_stays_at_the_helm  }
 		completion_reward = {
