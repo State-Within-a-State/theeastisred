@@ -1663,7 +1663,48 @@ country_event = { #Tang Shengzhi Elected
 	option = { #
 		name = hunan_rework.38.a
 		ai_chance = { base = 100 }
+		load_focus_tree = hnn-tang-shengzhi-tree
 		set_country_flag = HNN_Tang_Shengzhi_Elected
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		clr_country_flag = HNN_electionsstarted
+		set_country_flag = HNN_tang_victory_flag
+		set_politics = {
+			ruling_party = social_democrat
+		}
+		complete_national_focus = HNNSHENGZHI_the_buddhist_general_arrives_in_changsha
+		add_political_power = -10
+		create_field_marshal = {
+			name = "Tang Shengzhi"
+			picture = "gfx/leaders/HNN/Portrait_Hunan_Tang_Shengzhi.png"
+			traits = { defensive_doctrine }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 1
+			logistics_skill = 1
+			id = 1409
+		}
+			remove_all_ministers = yes
+			add_ideas = {
+				HNN_Tang_Shengzhi_hog_sde
+				HNN_Guan_Kong_for_sde
+				HNN_Cao_Dianqiu_eco_sde
+				HNN_Cao_Bowen_sec_sde
+			}
+			
+			
+			event_target:HNN_Zhao_Hengti = {
+				set_nationality = NSW
+			}
+			QIE = {
+				country_event = {
+					id = qiefor.111
+					hours = 6
+				}
+			}
 	}
 }
 
@@ -1726,7 +1767,8 @@ country_event = { #Zhao Hengti Elected
 					days = 1
 				}
 			}
-		}}
+		}
+		}
 	}
 }
 
@@ -2024,7 +2066,7 @@ country_event = { #Chen Quzhen Takes Changsha
 	}
 }
 
-country_event = { #
+country_event = { #The Xinmin Society
 	id = hunan_rework.51
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.51"}
 	title = hunan_rework.51.title
@@ -2035,7 +2077,23 @@ country_event = { #
 	option = { #
 		name = hunan_rework.51.a
 		ai_chance = { base = 100 }
-		
+		add_research_slot = 1
+		add_ideas = {
+		HNN_radicalism_at_bay
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.51.b
+		ai_chance = { base = 100 }
+		add_research_slot = 1
+		add_ideas = {
+		HNN_joining_with_xinmin
+		}
+		swap_ideas = {
+		remove_idea = HNN_Cao_Dianqiu_eco_sde
+		add_idea = HNN_Xie_Juezai_eco_rso
+		}
 	}
 }
 

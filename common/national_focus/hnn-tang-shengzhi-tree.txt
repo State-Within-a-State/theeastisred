@@ -1,0 +1,329 @@
+focus_tree = {
+	id = hnn-tang-shengzhi-tree
+	continuous_focus_position = { x = -40 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = HNNSHENGZHI
+		}
+	}
+	shared_focus = HNNSHARED_collapse_of_the_league
+	#The Buddhist General Arrives in Changsha
+	focus = {
+		id = HNNSHENGZHI_the_buddhist_general_arrives_in_changsha
+		icon = GFX_HNNSHENGZHI_the_buddhist_general_arrives_in_changsha-248360
+		x = 5
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+	}
+
+	#The Enemy Dealing With Factions
+	focus = {
+		id = HNNSHENGZHI_the_enemy_dealing_with_factions
+		icon = GFX_HNNSHENGZHI_the_enemy_dealing_with_factions-248360
+		x = 3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = HNNSHENGZHI_the_buddhist_general_arrives_in_changsha  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = HNN_spirit_soldier_rebellion
+		add_idea = HNN_spirit_soldier_rebellion_1
+		}
+		}
+	}
+
+	#Raising the Buddhist Army Banner
+	focus = {
+		id = HNNSHENGZHI_raising_the_buddhist_army_banner
+		icon = GFX_HNNSHENGZHI_raising_the_buddhist_army_banner-248360
+		x = 7
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HNNSHENGZHI_the_buddhist_general_arrives_in_changsha  }
+		completion_reward = {
+		add_ideas = {
+		HNN_national_buddhist_army
+		}
+		hidden_effect = {
+		country_event = { id = hnn.50 days = 15 }
+		}
+		}
+	}
+
+	#People's Self Rescue Committee
+	focus = {
+		id = HNNSHENGZHI_peoplesselfrescuecommittee
+		icon = GFX_HNNSHENGZHI_peoplesselfrescuecommittee-248360
+		x = 7
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HNNSHENGZHI_raising_the_buddhist_army_banner  }
+		completion_reward = {
+		add_ideas = {
+		HNN_self_rescue_committee
+		}
+		}
+	}
+
+	#Syndicalist Cooperation
+	focus = {
+		id = HNNSHENGZHI_syndicalist_cooperation
+		icon = GFX_HNNSHENGZHI_syndicalist_cooperation-248360
+		x = 4
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNSHENGZHI_the_enemy_dealing_with_factions  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		add_synd_to_coalition = yes
+		add_stability = 0.1
+		}
+	}
+
+	#Implementing the 3 Principles
+	focus = {
+		id = HNNSHENGZHI_implementing_the_3_principles
+		icon = GFX_HNNSHENGZHI_implementing_the_3_principles-248360
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HNNSHENGZHI_the_enemy_dealing_with_factions  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		add_radsoc_to_coalition = yes
+			add_ideas = {
+				HNN_three_principles
+			}
+		}
+	}
+
+	#Reincarnation of the White Tiger & Black Dragon
+	focus = {
+		id = HNNSHENGZHI_reincarnationofthewhitetigerblackdragon
+		icon = GFX_HNNSHENGZHI_reincarnationofthewhitetigerblackdragon-248360
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNSHENGZHI_syndicalist_cooperation  } prerequisite = { focus = HNNSHENGZHI_implementing_the_3_principles  }
+		completion_reward = {
+		add_ideas = {
+		HNN_the_white_tiger_and_black_dragon
+		}
+		}
+	}
+
+	#Work with Xia Xi's Security Forces
+	focus = {
+		id = HNNSHENGZHI_workwithxiaxissecurityforces
+		icon = GFX_HNNSHENGZHI_workwithxiaxissecurityforces-248360
+		x = 5
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_OCCUPATION_COST
+		}
+		prerequisite = { focus = HNNSHENGZHI_peoplesselfrescuecommittee  } prerequisite = { focus = HNNSHENGZHI_syndicalist_cooperation  } prerequisite = { focus = HNNSHENGZHI_implementing_the_3_principles  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = HNN_Cao_Bowen_sec_sde
+		add_idea = HNN_Xia_Xi_tot_sde
+		}
+		add_popularity = {
+		ideology = totalist
+		popularity = 0.1
+		}
+		add_tot_to_coalition = yes
+		
+		}
+	}
+
+	#Creation of the Land Reform Committee
+	focus = {
+		id = HNNSHENGZHI_creation_of_the_land_reform_committee
+		icon = GFX_HNNSHENGZHI_creation_of_the_land_reform_committee-248360
+		x = 8
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HNNSHENGZHI_peoplesselfrescuecommittee  } prerequisite = { focus = HNNSHENGZHI_syndicalist_cooperation  } prerequisite = { focus = HNNSHENGZHI_implementing_the_3_principles  }
+		completion_reward = {
+			add_timed_idea = {
+				idea = HNN_land_reform_committee
+				days = 180
+			}
+		}
+	}
+
+	#Fund the Provincial Agricultural Association
+	focus = {
+		id = HNNSHENGZHI_fund_the_provincial_agricultural_association
+		icon = GFX_HNNSHENGZHI_fund_the_provincial_agricultural_association-248360
+		x = 8
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HNNSHENGZHI_creation_of_the_land_reform_committee  }
+		completion_reward = {
+			add_timed_idea = {
+				idea = HNN_provincial_agricultural_association
+				days = 180
+			}
+		}
+	}
+
+	#Eliminate the Buddhist Reactionaries
+	focus = {
+		id = HNNSHENGZHI_eliminate_the_buddhist_reactionaries
+		icon = GFX_HNNSHENGZHI_eliminate_the_buddhist_reactionaries-248360
+		x = 6
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = HNNSHENGZHI_workwithxiaxissecurityforces  }
+		completion_reward = {
+		remove_ideas = {
+		HNN_spirit_soldier_rebellion_1
+		}
+		}
+	}
+
+	#Blowing Conch Shells For the Buddha
+	focus = {
+		id = HNNSHENGZHI_blowing_conch_shells_for_the_buddha
+		icon = GFX_HNNSHENGZHI_blowing_conch_shells_for_the_buddha-248360
+		x = 4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNSHENGZHI_workwithxiaxissecurityforces  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
+	}
+
+	#Support Anti Imperialist Movements
+	focus = {
+		id = HNNSHENGZHI_support_anti_imperialist_movements
+		icon = GFX_HNNSHENGZHI_support_anti_imperialist_movements-248360
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNSHENGZHI_reincarnationofthewhitetigerblackdragon  }
+		completion_reward = {
+		add_ideas = {
+		HNN_support_anti_imperialism
+		}
+		add_opinion_modifier = {
+			target = GER
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = RUS
+			modifier = faction_traitor
+		}
+		add_opinion_modifier = {
+			target = CAN
+			modifier = faction_traitor
+		}
+		
+		add_opinion_modifier = {
+			target = AUS
+			modifier = faction_traitor
+		}
+		}
+	}
+
+	#A National Devotion to One's Country
+	focus = {
+		id = HNNSHENGZHI_anationaldevotiontoonescountry
+		icon = GFX_HNNSHENGZHI_anationaldevotiontoonescountry-248360
+		x = 4
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNSHENGZHI_eliminate_the_buddhist_reactionaries  } prerequisite = { focus = HNNSHENGZHI_blowing_conch_shells_for_the_buddha  } prerequisite = { focus = HNNSHENGZHI_support_anti_imperialist_movements  }
+		completion_reward = {
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_political_power = 50
+		}
+	}
+
+	#Integrate the Xinmin Society
+	focus = {
+		id = HNNSHENGZHI_integrate_the_xinmin_society
+		icon = GFX_HNNSHENGZHI_integrate_the_xinmin_society-248360
+		x = 6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HNNSHENGZHI_fund_the_provincial_agricultural_association  } prerequisite = { focus = HNNSHENGZHI_eliminate_the_buddhist_reactionaries  } prerequisite = { focus = HNNSHENGZHI_blowing_conch_shells_for_the_buddha  }
+		completion_reward = {
+		country_event = hunan_rework.51
+		}
+	}
+
+	#Loyalty to the Development to a New China
+	focus = {
+		id = HNNSHENGZHI_loyalty_to_the_development_to_a_new_china
+		icon = GFX_HNNSHENGZHI_loyalty_to_the_development_to_a_new_china-248360
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNSHENGZHI_anationaldevotiontoonescountry  } prerequisite = { focus = HNNSHENGZHI_integrate_the_xinmin_society  }
+	}
+
+}
