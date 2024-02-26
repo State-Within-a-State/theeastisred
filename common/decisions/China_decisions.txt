@@ -637,6 +637,44 @@ chinese_unification = {
 			effect_tooltip = { china_puppet_FROM_effect = yes }
 		}
 	}
+	
+	commie_china_offer_alliance = {
+		icon = eng_trade_unions_demand
+
+		available = {
+			OR = {
+				is_neighbor_of = FROM
+				any_subject_country = { is_neighbor_of = FROM }
+				FROM = { any_subject_country = { is_neighbor_of = ROOT } }
+			}
+			FROM = { has_civil_war = no }
+		}
+
+		visible = {
+			china_is_potential_government = yes
+			FROM = { china_can_ROOT_offer_alliance = yes }
+			is_ruled_by_communists = yes
+		}
+
+		targets = { LEP ANQ SQI CHI LEC TIA HKP GXC HNN SZC SHX FNG XSM TIB ETS TAN SIK MON CNH TAI YUN }
+		target_trigger = {
+			china_is_potential_government = yes
+			FROM = { china_can_ROOT_offer_alliance = yes }
+			is_ruled_by_communists = yes
+		}
+
+		cost = 40
+		fire_only_once = yes
+
+		ai_will_do = { factor = 100 }
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete china_offer_alliance target: [From.GetName]"
+			FROM = { country_event = china_events.7 }
+			custom_effect_tooltip = if_they_accept_tt
+			effect_tooltip = { china_puppet_FROM_effect = yes }
+		}
+	}
 
 	china_demand_submission = {
 		icon = eng_trade_unions_demand
@@ -764,7 +802,7 @@ chinese_unification = {
 			}
 		}
 
-		target_array = global.china_tags_array
+		targets = { LEP ANQ SQI CHI LEC TIA HKP GXC HNN SZC SHX FNG XSM TIB ETS TAN SIK MON CNH TAI YUN }
 		target_root_trigger = { has_global_flag = LEP_collapse }
 		target_trigger = {
 			has_subject = FROM
