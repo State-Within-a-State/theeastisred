@@ -8,6 +8,7 @@ focus_tree = {
 			tag = HNNMAO
 		}
 	}
+	shared_focus = HNNSHARED_collapse_of_the_league
 	#A Victory for the Xinmin Society
 	focus = {
 		id = HNNMAO_a_victory_for_the_xinmin_society
@@ -17,6 +18,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 	}
 
@@ -32,6 +36,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNMAO_a_victory_for_the_xinmin_society  }
 		mutually_exclusive = { focus = HNNMAO_joining_the_kuomintang  }
+		available = {
+		always = no
+		}
 	}
 
 	#Joining the Kuomintang
@@ -43,6 +50,9 @@ focus_tree = {
 		cost = 3
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = HNNMAO_a_victory_for_the_xinmin_society  }
 		mutually_exclusive = { focus = HNNMAO_renounce_kuomintang_cooperation  }
@@ -60,6 +70,21 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNMAO_joining_the_kuomintang  }
 		mutually_exclusive = { focus = HNNMAO_create_the_reorganisation_committee  }
+		available = {
+			CHI = {
+				exists = yes
+				has_socialist_government = yes
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		}
+		completion_reward = {
+		CHI = {
+		puppet = HNN
+		}
+		}
 	}
 
 	#Create the Reorganisation Committee
@@ -72,8 +97,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
+		available = {
+			CHI = {
+				OR = {
+					exists = yes
+					has_socialist_government = no
+					is_subject = no
+					has_war_with = HNN
+				}
+			}
+		}
 		prerequisite = { focus = HNNMAO_joining_the_kuomintang  }
 		mutually_exclusive = { focus = HNNMAO_under_the_white_sun  }
+		completion_reward = {
+		add_ideas = {
+		HNN_re_organization_committee
+		}
+		}
 	}
 
 	#Taking Up the Torch Beholding the White Over the Blue Sky's
@@ -87,6 +127,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNMAO_create_the_reorganisation_committee  }
+		completion_reward = {
+		custom_effect_tooltip = HNN_unification_tree_unlock_tt
+		load_focus_tree = kmt_unification_generic
+		}
 	}
 
 	#Formatting Chinese Scientific Socialism
@@ -100,6 +144,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNMAO_renounce_kuomintang_cooperation  }
+		completion_reward = {
+		add_ideas = {
+		HNN_chinese_scientific_socialism
+		}
+		}
 	}
 
 	#Establishment of the Hunan Dictatorship of the Proletariat
@@ -113,6 +162,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNMAO_formatting_chinese_scientific_socialism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		add_political_power = 50
+		}
 	}
 
 	#Formation of the Peasant Associations
@@ -125,7 +181,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
+		available = {
+		has_completed_focus = HNNMAO_espousal_of_new_land_reforms
+		}
 		prerequisite = { focus = HNNMAO_establishment_of_the_hunan_dictatorship_of_the_proletariat  }
+		completion_reward = {
+		add_ideas = {
+		HNN_support_peasant_unions
+		}
+		}
 	}
 
 	#An Education Revolution
@@ -139,6 +203,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNMAO_establishment_of_the_hunan_dictatorship_of_the_proletariat  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Creation of a New Constitution
@@ -152,6 +219,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNMAO_formation_of_the_peasant_associations  } prerequisite = { focus = HNNMAO_an_education_revolution  }
+		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 25
+		}
 	}
 
 	#Remove the Sects Movement
@@ -165,6 +236,9 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = HNNMAO_formation_of_the_peasant_associations  } prerequisite = { focus = HNNMAO_an_education_revolution  }
+		completion_reward = {
+		country_event = hunan_rework.53
+		}
 	}
 
 	#The Issue of Syndicalism
@@ -178,6 +252,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNMAO_creation_of_a_new_constitution  } prerequisite = { focus = HNNMAO_remove_the_sects_movement  }
+		completion_reward = {
+		country_event = hunan_rework.54
+		}
 	}
 
 	#Integration of the Bandits
@@ -191,6 +268,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HNNMAO_creation_of_a_new_constitution  } prerequisite = { focus = HNNMAO_remove_the_sects_movement  }
+		completion_reward = {
+		remove_ideas = {
+		HNN_spirit_soldier_rebellion
+		}
+		}
 	}
 
 	#Reaching Out to the Radical Shanghai Writers
@@ -204,6 +286,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNMAO_creation_of_a_new_constitution  } prerequisite = { focus = HNNMAO_remove_the_sects_movement  }
+		completion_reward = {
+		add_ideas = {
+		HNN_reach_out_league
+		}
+		}
 	}
 
 	#Allowing Women to Hold Up Half the Sky
@@ -217,6 +304,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HNNMAO_the_issue_of_syndicalism  } prerequisite = { focus = HNNMAO_integration_of_the_bandits  } prerequisite = { focus = HNNMAO_reaching_out_to_the_radical_shanghai_writers  }
+		completion_reward = {
+		add_ideas = {
+		HNN_women_hold_up_sky
+		}
+		}
 	}
 
 	#Nationalize the Anyuan Railways
@@ -230,6 +322,17 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNMAO_creation_of_the_national_bank  }
+		completion_reward = {
+		add_resource = {
+				type = steel
+				amount = 20
+				state = 602
+			}
+		add_timed_idea = {
+		idea = HNN_railway_nationalisation
+		days = 360
+		}
+		}
 	}
 
 	#Party Rectification Movement
@@ -243,6 +346,12 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HNNMAO_the_issue_of_syndicalism  } prerequisite = { focus = HNNMAO_integration_of_the_bandits  } prerequisite = { focus = HNNMAO_reaching_out_to_the_radical_shanghai_writers  }
+		completion_reward = {
+		add_timed_idea = {
+		idea = HNN_rectification_campaign
+		days = 180
+		}
+		}
 	}
 
 	#Promotion of New Democracy
@@ -256,6 +365,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNMAO_allowing_women_to_hold_up_half_the_sky  } prerequisite = { focus = HNNMAO_party_rectification_movement  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.075
+		}
+		add_stability = 0.05
+		add_war_support = 0.05
+		}
 	}
 
 	#Restructuring the Hunan Economy
@@ -269,6 +386,46 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNMAO_formatting_chinese_scientific_socialism  }
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = HNN_economic_collapse
+				}
+				swap_ideas = {
+					remove_idea = HNN_economic_collapse
+					add_idea = HNN_economic_recovery_mao
+					}
+			}
+			else_if = {
+				limit = {
+					has_idea = HNN_economic_collapse_1
+				}
+				swap_ideas = {
+					remove_idea = HNN_economic_collapse_1
+					add_idea = HNN_economic_recovery_mao
+					}
+			}
+			
+			else_if = {
+				limit = {
+					has_idea = HNN_economic_collapse_statist
+				}
+				swap_ideas = {
+					remove_idea = HNN_economic_collapse_statist
+					add_idea = HNN_economic_recovery_mao
+					}
+			}
+			
+			else_if = {
+				limit = {
+					has_idea = HNN_economic_collapse_statist_1
+				}
+				swap_ideas = {
+					remove_idea = HNN_economic_collapse_statist_1
+					add_idea = HNN_economic_recovery_mao
+					}
+			}
+		}
 	}
 
 	#Creation of the National Bank
@@ -282,6 +439,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNMAO_restructuring_the_hunan_economy  }
+		completion_reward = {
+		add_ideas = {
+		HNN_national_bank_mao
+		}
+		}
 	}
 
 	#Introduce the Guobi
@@ -295,6 +457,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNMAO_nationalize_the_anyuan_railways  }
+		completion_reward = {
+		add_political_power = 25
+		}
 	}
 
 	#Establishing Special Trade Zones
@@ -308,6 +473,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNMAO_nationalize_the_anyuan_railways  }
+		completion_reward = {
+		add_ideas = {
+		HNN_establishing_special_trade_zones
+		}
+		}
 	}
 
 	#Seizing Foreign Bourgeois Assets
@@ -321,6 +491,21 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNMAO_introduce_the_guobi  } prerequisite = { focus = HNNMAO_establishing_special_trade_zones  }
+		completion_reward = {
+		add_opinion_modifier = {
+			target = GER
+			modifier = faction_traitor
+		}
+		GER = {
+		add_opinion_modifier = {
+			target = HNN
+			modifier = faction_traitor
+		}
+		}
+		add_ideas = {
+		HNN_seizing_foreign_bourgeois_assets
+		}
+		}
 	}
 
 	#Question of the Opium Trade
@@ -334,6 +519,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNMAO_introduce_the_guobi  } prerequisite = { focus = HNNMAO_establishing_special_trade_zones  }
+		completion_reward = {
+		country_event = hunan_rework.55
+		}
 	}
 
 	#The Great Production Movement
@@ -347,6 +535,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNMAO_introduce_the_guobi  } prerequisite = { focus = HNNMAO_establishing_special_trade_zones  }
+		completion_reward = {
+		add_timed_idea = {
+		idea = HNN_great_production_movement
+		days = 100
+		}
+		}
 	}
 
 	#A Local Red Economy
@@ -360,6 +554,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNMAO_seizing_foreign_bourgeois_assets  } prerequisite = { focus = HNNMAO_question_of_the_opium_trade  } prerequisite = { focus = HNNMAO_the_great_production_movement  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = HNN_economic_recovery_mao
+		add_idea = HNN_economic_recovery_mao_1
+		}
+		}
 	}
 
 	#Reporting on the Hunan Peasant Movement
@@ -386,6 +586,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNMAO_reporting_on_the_hunan_peasant_movement  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
 	}
 
 	#Espousal of New Land Reforms

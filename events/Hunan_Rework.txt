@@ -1801,6 +1801,30 @@ country_event = { #Xinming Society Victory
 		name = hunan_rework.41.a
 		ai_chance = { base = 100 }
 		set_country_flag = HNN_Mao_Zedong_Elected
+		set_politics = { ruling_party = radical_socialist }
+		create_country_leader = { 
+			name = "Mao Zedong"
+			desc = "MAO_ZEDONG_LEADER_DESC"
+			picture = "gfx/leaders/HNN/Portrait_Mao_Zedong.png"
+			expire = "2012.10.15"
+			ideology = mao_zedong_thought_subtype
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = HNN_Mao_party_long
+			name = HNN_Mao_party
+		}
+		
+		load_focus_tree = mao-hunan-tree
+		complete_national_focus = HNNMAO_a_victory_for_the_xinmin_society
+		country_event = hunan_rework.52
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Mao_Zedong_hog_rso
+				HNN_Cai_Hesen_for_rso
+				HNN_Xiao_Zisheng_eco_rso
+				HNN_He_Shuheng_sec_rso
+			}
 	}
 }
 
@@ -2100,7 +2124,7 @@ country_event = { #The Xinmin Society
 	}
 }
 
-country_event = { #
+country_event = { #Kuomintang Propose Rapproachment
 	id = hunan_rework.52
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.52"}
 	title = hunan_rework.52.title
@@ -2108,14 +2132,32 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #They Will Never Be a Party of the People
 		name = hunan_rework.52.a
 		ai_chance = { base = 100 }
+		complete_national_focus = HNNMAO_renounce_kuomintang_cooperation
+		set_party_name = {
+			ideology = syndicalist
+			long_name = HNN_mao_syndicalist_party_long
+			name = HNN_mao_syndicalist_party
+		}
+		create_country_leader = {
+				name = "Huang Ai"
+				picture = "gfx/leaders/HNN/Portrait_HNN_Huang_Ai.png"
+				expire = "1965.1.1"
+				ideology = centralized_syndicalism_subtype
+			}
+	}
+	
+	option = { #We Shall Shake Hands Once Again
+		name = hunan_rework.52.b
+		ai_chance = { base = 100 }
+		complete_national_focus = HNNMAO_joining_the_kuomintang
 		
 	}
 }
 
-country_event = { #
+country_event = { #Withdraw From the Sects Movement
 	id = hunan_rework.53
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.53"}
 	title = hunan_rework.53.title
@@ -2126,11 +2168,14 @@ country_event = { #
 	option = { #
 		name = hunan_rework.53.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+		idea = HNN_remove_from_sects
+		days = 730
+		}
 	}
 }
 
-country_event = { #
+country_event = { #On The Issue of Syndicalism
 	id = hunan_rework.54
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.54"}
 	title = hunan_rework.54.title
@@ -2138,14 +2183,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Huang Ai Maintains The Wheel
 		name = hunan_rework.54.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		HNN_industrial_union_support
+		}
+		create_country_leader = {
+				name = "Huang Ai"
+				picture = "gfx/leaders/HNN/Portrait_HNN_Huang_Ai.png"
+				expire = "1965.1.1"
+				ideology = centralized_syndicalism_subtype
+			}
+	}
+	
+	option = { #Mao Zemin Leads the Unions
+		name = hunan_rework.54.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		HNN_agrarian_union_support
+		}
+		create_country_leader = {
+				name = "Mao Zemin"
+				picture = "gfx/leaders/HNN/Portrait_HNN_Mao_Zemin_New.png"
+				expire = "1965.1.1"
+				ideology = agrarian_syndicalism_subtype
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Dealing With The Opium
 	id = hunan_rework.55
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.55"}
 	title = hunan_rework.55.title
@@ -2153,10 +2220,22 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Crush Opium Trade
 		name = hunan_rework.55.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+		idea = HNN_denounce_opium
+		days = 180
+		}
+	}
+	
+	option = { #Support Opium Trade
+		name = hunan_rework.55.b
+		ai_chance = { base = 100 }
+		add_timed_idea = {
+		idea = HNN_support_opium
+		days = 180
+		}
 	}
 }
 
