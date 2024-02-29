@@ -297,3 +297,75 @@ HNN_southern_advance = {
 	}
 
 }
+HNN_hunan_peasant_movement_decision_category = {
+
+HNN_land_reform_mission = {
+		activation = {
+			OR = {
+				has_country_flag = HNN_moderate_land_reform
+				has_country_flag = HNN_radical_land_reform
+			}
+		}
+		available = {
+			
+			
+			custom_trigger_tooltip = {
+				tooltip = land_reform_completed_tt		
+				check_variable = { HNN_maos_land_reform_progress > 89 }
+			}
+			
+		}
+		cancel_trigger = {
+			
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 730
+		selectable_mission = yes
+		fire_only_once = yes
+		complete_effect = {
+		
+		}
+		timeout_effect = {
+		
+		}
+	}
+
+HNN_peasant_training_institute = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = HNN
+			
+		}
+		cost = 10
+		
+		days_remove = 70
+		days_re_enable = 30
+		fire_only_once = no
+		
+		complete_effect = {
+			add_ideas = {
+				HNN_peasant_training_institute
+			}
+		}
+		remove_effect = {
+			remove_ideas = {
+			HNN_peasant_training_institute
+			}
+			add_political_power = 10
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = 5
+				tooltip = add_land_reform_progress_increases_tt
+			}
+		}
+	}
+	
+}

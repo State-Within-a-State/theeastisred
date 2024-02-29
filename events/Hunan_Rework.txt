@@ -2239,7 +2239,7 @@ country_event = { #Dealing With The Opium
 	}
 }
 
-country_event = { #
+country_event = { #Mao's 2nd Report on the Hunan Peasant Movement
 	id = hunan_rework.56
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.56"}
 	title = hunan_rework.56.title
@@ -2250,11 +2250,15 @@ country_event = { #
 	option = { #
 		name = hunan_rework.56.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_maos_land_reform
+		set_variable = {
+			var = HNN_maos_land_reform_progress
+			value = 0
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Direction of Land Reform
 	id = hunan_rework.57
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.57"}
 	title = hunan_rework.57.title
@@ -2265,7 +2269,22 @@ country_event = { #
 	option = { #
 		name = hunan_rework.57.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_moderate_land_reform
+		complete_national_focus = HNNMAO_moderate_approach
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		}
+		add_stability = 0.05
+	}
+	
+	option = { #
+		name = hunan_rework.57.b
+		ai_chance = { base = 100 }
+		set_country_flag = HNN_radical_land_reform
+		complete_national_focus = HNNMAO_a_radical_push
+		add_war_support = 0.05
+		add_stability = -0.05
 	}
 }
 
