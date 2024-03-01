@@ -2404,7 +2404,7 @@ country_event = { #Peasants Demand Justice
 	}
 }
 
-country_event = { #
+country_event = { #Grain For Salvation
 	id = hunan_rework.59
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.59"}
 	title = hunan_rework.59.title
@@ -2415,11 +2415,85 @@ country_event = { #
 	option = { #
 		name = hunan_rework.59.a
 		ai_chance = { base = 100 }
+		country_event = {
+			id = hunan_rework.60
+			days = 30
+			}
+		if = {
+			limit = {
+				has_country_flag = HNN_moderate_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = -30
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = 15
+				tooltip = add_land_reform_progress_increases_tt
+			}
+			add_stability = 0.025
+		}
 		
+		else_if = {
+			limit = {
+				has_country_flag = HNN_radical_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = 10
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = -7
+				tooltip = add_land_reform_progress_decreases_tt
+			}
+			add_stability = -0.1
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.59.b
+		ai_chance = { base = 100 }
+		country_event = {
+			id = hunan_rework.60
+			days = 30
+			}
+		if = {
+			limit = {
+				has_country_flag = HNN_moderate_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = 40
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = -10
+				tooltip = add_land_reform_progress_increases_tt
+			}
+			add_stability = 0.1
+		}
+		
+		else_if = {
+			limit = {
+				has_country_flag = HNN_radical_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = -40
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = 12
+				tooltip = add_land_reform_progress_decreases_tt
+			}
+			add_stability = -0.15
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Proposing Production Self-Rescue
 	id = hunan_rework.60
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.60"}
 	title = hunan_rework.60.title
@@ -2430,11 +2504,85 @@ country_event = { #
 	option = { #
 		name = hunan_rework.60.a
 		ai_chance = { base = 100 }
+		country_event = {
+			id = hunan_rework.61
+			days = 41
+			}
+		if = {
+			limit = {
+				has_country_flag = HNN_moderate_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = -30
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = 15
+				tooltip = add_land_reform_progress_increases_tt
+			}
+			add_stability = 0.025
+		}
 		
+		else_if = {
+			limit = {
+				has_country_flag = HNN_radical_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = 10
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = -7
+				tooltip = add_land_reform_progress_decreases_tt
+			}
+			add_stability = -0.1
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.60.b
+		ai_chance = { base = 100 }
+		country_event = {
+			id = hunan_rework.61
+			days = 41
+			}
+		if = {
+			limit = {
+				has_country_flag = HNN_moderate_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = 40
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = -10
+				tooltip = add_land_reform_progress_increases_tt
+			}
+			add_stability = 0.1
+		}
+		
+		else_if = {
+			limit = {
+				has_country_flag = HNN_radical_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = -40
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = 12
+				tooltip = add_land_reform_progress_decreases_tt
+			}
+			add_stability = -0.15
+		}
 	}
 }
 
-country_event = { #
+country_event = { #An End to the Great Production Movement
 	id = hunan_rework.61
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.61"}
 	title = hunan_rework.61.title
@@ -2445,7 +2593,10 @@ country_event = { #
 	option = { #
 		name = hunan_rework.61.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+		idea = HNN_great_production_movement_1
+		days = 180
+		}
 	}
 }
 

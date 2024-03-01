@@ -326,10 +326,16 @@ HNN_land_reform_mission = {
 		selectable_mission = yes
 		fire_only_once = yes
 		complete_effect = {
-		
+		set_country_flag = HNN_mao_land_reform_success
+		add_political_power = 50
+		add_stability = 0.25
+		add_war_support = 0.1
 		}
 		timeout_effect = {
-		
+		set_country_flag = HNN_mao_land_reform_failed
+		add_stability = -0.5
+		add_war_support = -0.25
+		add_political_power = -200
 		}
 	}
 
@@ -393,6 +399,38 @@ HNN_peasant_training_institute = {
 			add_to_variable = {
 				var = HNN_maos_land_reform_progress
 				value = 3
+				tooltip = add_land_reform_progress_increases_tt
+			}
+		}
+	}
+	
+	HNN_great_production_movement = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = HNNMAO_the_great_production_movement
+		}
+		
+		visible = {
+			tag = HNN
+			
+		}
+		cost = 10
+		
+		days_remove = 100
+		fire_only_once = yes
+		
+		complete_effect = {
+			country_event = {
+			id = hunan_rework.59
+			days = 30
+			}
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = 50
 				tooltip = add_land_reform_progress_increases_tt
 			}
 		}
