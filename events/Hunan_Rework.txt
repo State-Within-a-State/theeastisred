@@ -2299,6 +2299,12 @@ country_event = { #The Direction of Land Reform
 		popularity = 0.1
 		}
 		add_stability = 0.05
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.58
+				days = 50
+			}
+		}
 	}
 	
 	option = { #
@@ -2308,10 +2314,16 @@ country_event = { #The Direction of Land Reform
 		complete_national_focus = HNNMAO_a_radical_push
 		add_war_support = 0.05
 		add_stability = -0.05
+		hidden_effect = {
+			country_event = {
+				id = hunan_rework.58
+				days = 50
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Peasants Demand Justice
 	id = hunan_rework.58
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.58"}
 	title = hunan_rework.58.title
@@ -2322,7 +2334,73 @@ country_event = { #
 	option = { #
 		name = hunan_rework.58.a
 		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = HNN_moderate_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = -30
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = 15
+				tooltip = add_land_reform_progress_increases_tt
+			}
+			add_stability = 0.025
+		}
 		
+		else_if = {
+			limit = {
+				has_country_flag = HNN_radical_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = 10
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = -7
+				tooltip = add_land_reform_progress_decreases_tt
+			}
+			add_stability = -0.1
+		}
+	}
+	
+	option = { #
+		name = hunan_rework.58.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = HNN_moderate_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = 40
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = -10
+				tooltip = add_land_reform_progress_increases_tt
+			}
+			add_stability = 0.1
+		}
+		
+		else_if = {
+			limit = {
+				has_country_flag = HNN_radical_land_reform
+			}
+			add_days_mission_timeout = {
+				mission = my_mission
+				days = -40
+			}
+			add_to_variable = {
+				var = HNN_maos_land_reform_progress
+				value = 12
+				tooltip = add_land_reform_progress_decreases_tt
+			}
+			add_stability = -0.15
+		}
 	}
 }
 
