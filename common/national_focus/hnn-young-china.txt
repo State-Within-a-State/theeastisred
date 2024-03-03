@@ -1,0 +1,218 @@
+focus_tree = {
+	id = hnn-young-china
+	continuous_focus_position = { x = -40 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = HNNYOUNG
+		}
+	}
+	shared_focus = HNNSHARED_collapse_of_the_league
+	#Anti-Syndicalist Fury
+	focus = {
+		id = HNNYOUNG_antisyndicalist_fury
+		icon = GFX_HNNYOUNG_antisyndicalist_fury-248360
+		x = 7
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = HNNYOUNG_reforming_confucian_thought  } prerequisite = { focus = HNNYOUNG_birth_of_new_legalism  }
+		completion_reward = {
+		custom_effect_tooltip = kuomintang_crackdown_tt
+			hidden_effect = {
+				country_event = hunan_rework.17
+			}
+		}
+	}
+
+	#The Lion of China Shall Awaken
+	focus = {
+		id = HNNYOUNG_the_lion_of_china_shall_awaken
+		icon = GFX_HNNYOUNG_the_lion_of_china_shall_awaken-248360
+		x = 5
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+	}
+
+	#Statist Restructuring
+	focus = {
+		id = HNNYOUNG_statist_restructuring
+		icon = GFX_HNNYOUNG_statist_restructuring-248360
+		x = 3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HNNYOUNG_the_lion_of_china_shall_awaken  }
+		completion_reward = {
+		add_timed_idea = {
+		idea = HNN_economic_recovery_ycp
+		days = 180
+		}
+		}
+	}
+
+	#New Found Nationalism
+	focus = {
+		id = HNNYOUNG_new_found_nationalism
+		icon = GFX_HNNYOUNG_new_found_nationalism-248360
+		x = 7
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNYOUNG_the_lion_of_china_shall_awaken  }
+		completion_reward = {
+		add_war_support = 0.1
+		}
+	}
+
+	#Reforming Confucian Thought
+	focus = {
+		id = HNNYOUNG_reforming_confucian_thought
+		icon = GFX_HNNYOUNG_reforming_confucian_thought-248360
+		x = 8
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNYOUNG_new_found_nationalism  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Populist_Ways"
+			add_political_power = 100
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.025
+			}
+		}
+	}
+
+	#Birth of New Legalism
+	focus = {
+		id = HNNYOUNG_birth_of_new_legalism
+		icon = GFX_HNNYOUNG_birth_of_new_legalism-248360
+		x = 6
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HNNYOUNG_new_found_nationalism  }
+		completion_reward = {
+		add_ideas = {
+		HNN_new_legalism
+		}
+		}
+	}
+
+	#Jiaju's Edcuation Reforms
+	focus = {
+		id = HNNYOUNG_jiajusedcuationreforms
+		icon = GFX_HNNYOUNG_jiajusedcuationreforms-248360
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HNNYOUNG_statist_restructuring  }
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+	#Form the CRRJ Committee
+	focus = {
+		id = HNNYOUNG_form_the_crrj_committee
+		icon = GFX_HNNYOUNG_form_the_crrj_committee-248360
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HNNYOUNG_birth_of_new_legalism  } prerequisite = { focus = HNNYOUNG_jiajusedcuationreforms  }
+		completion_reward = {
+			add_ideas = {
+			HNN_crrj_committee
+			}
+		}
+	}
+
+	#A New Moral Community
+	focus = {
+		id = HNNYOUNG_a_new_moral_community
+		icon = GFX_HNNYOUNG_a_new_moral_community-248360
+		x = 5
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNYOUNG_reforming_confucian_thought  } prerequisite = { focus = HNNYOUNG_birth_of_new_legalism  } prerequisite = { focus = HNNYOUNG_jiajusedcuationreforms  }
+		completion_reward = {
+		add_political_power = 10
+		remove_ideas = {
+		HNN_spirit_soldier_rebellion
+		}
+		}
+	}
+
+	#Chen's 3 Stage Development
+	focus = {
+		id = HNNYOUNG_chens3stagedevelopment
+		icon = GFX_HNNYOUNG_chens3stagedevelopment-248360
+		x = 5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = HNNYOUNG_form_the_crrj_committee  } prerequisite = { focus = HNNYOUNG_a_new_moral_community  } prerequisite = { focus = HNNYOUNG_antisyndicalist_fury  }
+		completion_reward = {
+		unlock_decision_category_tooltip  = HNN_chen_qitian_program_decision_category
+		}
+	}
+
+	#The Rebirth of the Nation
+	focus = {
+		id = HNNYOUNG_the_rebirth_of_the_nation
+		icon = GFX_HNNYOUNG_the_rebirth_of_the_nation-248360
+		x = 5
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		owns_state = 608
+		}
+		prerequisite = { focus = HNNYOUNG_chens3stagedevelopment  }
+		completion_reward = {
+		country_event = hunan_rework.62
+		}
+	}
+
+}
+
+
