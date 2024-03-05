@@ -420,9 +420,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		available = { 
-		NOT = {
-			has_country_flag = hunan_dicatorship
-		}
+		AND = {
+				has_country_flag = HNN_gelaohui_rebellion_over
+				has_country_flag = HNN_spirit_soldier_rebellion_over
+				NOT = { has_country_flag = hunan_dicatorship }
+			}
 		}
 		prerequisite = { focus = HNNZHILI_restoration_of_the_hunan_constiution  }
 		completion_reward = {
@@ -430,6 +432,10 @@ focus_tree = {
 			add_popularity = {
 				ideology = ROOT
 				popularity = 0.05
+			}
+			country_event = {
+				id =  hunan_rework.28
+				days = 5
 			}
 			add_ideas = {
 			HNN_rights_guaranteed
@@ -736,7 +742,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNZHILI_downgoeshunansowndogmeatgeneral  }
 		available = {
-			has_country_flag = hunan_dicatorship
+			AND = {
+				has_country_flag = HNN_gelaohui_rebellion_over
+				has_country_flag = HNN_spirit_soldier_rebellion_over
+				NOT = { has_country_flag = hunan_dicatorship }
+			}
 			OR = {
 			has_completed_focus = HNNZHILI_the_butcher_returns_to_cut_some_meat
 			has_completed_focus = HNNZHILI_restoration_of_the_hunan_constiution
