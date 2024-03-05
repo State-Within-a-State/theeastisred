@@ -6,11 +6,32 @@ ideas = {
 		HNN_Bastion_of_Zhili = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea arm_ottoman_occupation"}
 			picture = "GFX_idea_natural_isolation"
+			available = {
+			OR = {
+				has_country_leader = {
+				name = "Wu Guangxin"
+				ruling_only = yes
+			}
+				has_country_leader = {
+				name = "Tang Xiangming"
+				ruling_only = yes
+			}
+				has_country_leader = {
+				name = "Zhao Hengti"
+				ruling_only = yes
+			}
+			}
+			OR = {
+			has_government = authoritarian_democrat
+			has_government = paternal_autocrat
+			}
+			}
+			allowed = { always = no }
 			modifier = {
 				stability_factor = 0.05
 				war_support_factor = 0.1
 				paternal_autocrat_drift = 0.05
-				authoritarian_democrat_drift = 0.025
+				authoritarian_democrat_drift = 0.05
 			}
 		}
 		
@@ -219,7 +240,15 @@ ideas = {
 				stability_factor = 0.05
 			}
 		}
-		
+
+		RDHNN_rights_guaranteed = {
+			on_add = { log = "[GetDateText]: [Root.GetName]: add idea HNN_rights_guaranteed"}
+			picture = monroe_doctrine
+			modifier = {
+				political_power_factor = 0.05
+			}
+		}
+
 		HNN_peasant_comrades = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea arm_ottoman_occupation"}
 			picture = "GFX_idea_natural_isolation"
