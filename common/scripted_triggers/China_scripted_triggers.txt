@@ -124,7 +124,10 @@ is_ruled_by_pro_zhili = {
 				AND = {
 					tag = SQI
 					AND = {
-						has_government = authoritarian_democrat
+						has_country_leader = {
+						name = "Song Zheyuan"
+						ruling_only = yes
+						}
 						NOT = {
 							QIE = { has_country_flag = QIE_coup_failed }
 						}
@@ -228,7 +231,10 @@ is_ruled_by_pro_manchu = {
 				AND = {
 					tag = SQI
 					OR = {
-						has_government = authoritarian_democrat
+						has_country_leader = {
+						name = "Song Zheyuan"
+						ruling_only = yes
+						}
 						AND = {
 							has_government = national_populist
 							QIE = {
@@ -304,7 +310,10 @@ is_ruled_by_pro_fengtian = {
 				}
 				AND = {
 					tag = SQI
-					has_government = paternal_autocrat
+					has_country_leader = {
+					name = "Zhang Zongchang"
+					ruling_only = yes
+					}
 					FNG_JAP_hostile = no
 				}
 				AND = {
@@ -370,8 +379,11 @@ is_ruled_by_left_kmt = {
 				}
 				AND = {
 					tag = HNN
-					has_government = social_liberal
-					has_completed_focus = HNN_Align_with_the_Leftists
+					has_government = radical_socialist
+					OR = {
+					has_completed_focus = HNNMAO_joining_the_kuomintang
+					has_completed_focus = KMT_white_sun
+					}
 				}
 				AND = {
 					tag = YUN
@@ -466,10 +478,10 @@ is_ruled_by_pro_kmt = { #will side with either wing
 		is_faction_leader = yes
 	}
 	OR = {
-		AND = {
-			tag = HNN
-			has_government = social_democrat
-		}
+		#AND = {
+		#	tag = HNN
+		#	has_government = social_democrat
+		#}
 		AND = {
 			tag = XSM
 			has_government = social_conservative
