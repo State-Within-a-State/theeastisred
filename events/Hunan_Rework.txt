@@ -1016,7 +1016,7 @@ country_event = { #Battle of Changsha
 		remove_ideas = {
 		HNN_socialist_resistance
 		}
-		#country_event = hunan_rework.
+		country_event = hunan_rework.63
 	}
 }
 
@@ -1811,7 +1811,57 @@ country_event = { #Kuomintang Victory
 		event_target:HNN_Zhao_Hengti = {
 				set_nationality = NSW
 			}
-
+		set_cosmetic_tag = HNN_KMT_HUNAN
+		set_politics = { ruling_party = social_liberal }
+		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Cheng_Qian_hog_sli
+				HNN_Liu_Wendao_for_sli
+				HNN_He_Haoruo_eco_sli
+				HNN_Long_Bojian_sec_sli
+			}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.3
+			
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		add_socdem_to_coalition = yes
+		load_focus_tree = hnn-kuomintang-tree
+		complete_national_focus = HNNKMT_power_by_the_ballot
+		QIE = {
+				country_event = {
+					id = qiefor.112
+					hours = 6
+				}
+				
+			}
+			if = {
+				limit = {
+					country_exists = CHI
+				}
+				CHI = {
+					country_event = { #alerts kmt to Cheng Qian victory in hunan
+						id = hnn.108
+						days = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					YUN = {
+						has_government = social_liberal
+					}
+				}
+				country_event = { #alerts kmt to Cheng Qian victory in hunan
+					id = hnn.108
+					days = 1
+				}
+			}
 	}
 }
 
@@ -2713,7 +2763,7 @@ country_event = { #The Rebirth of a Nation
 	}
 }
 
-country_event = { #
+country_event = { #A Kuomintang Victory
 	id = hunan_rework.63
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.63"}
 	title = hunan_rework.63.title
@@ -2724,22 +2774,207 @@ country_event = { #
 	option = { #
 		name = hunan_rework.63.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = HNN_Chen_Qian_Elected
+		event_target:HNN_Zhao_Hengti = {
+				set_nationality = NSW
+			}
+		set_cosmetic_tag = HNN_KMT_HUNAN
+		set_politics = { ruling_party = social_liberal }
+		create_country_leader = {
+			name = "Hunan Governor's Office"
+			desc = "-"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Hunan_Governor_Office.png"
+			expire = "1965.1.1"
+			ideology = soclib_tridemism_subtype
+		}
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Hunan_KMT_Governor_hog_sli
+				HNN_Liu_Wendao_for_sli
+				HNN_He_Haoruo_eco_sli
+				HNN_Long_Bojian_sec_sli
+			}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.3
+			
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		add_socdem_to_coalition = yes
+		load_focus_tree = hnn-kuomintang-tree
+		complete_national_focus = HNNKMT_power_by_the_ballot
+		QIE = {
+				country_event = {
+					id = qiefor.112
+					hours = 6
+				}
+				
+			}
+			if = {
+				limit = {
+					country_exists = CHI
+				}
+				CHI = {
+					country_event = { #alerts kmt to Cheng Qian victory in hunan
+						id = hnn.108
+						days = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					YUN = {
+						has_government = social_liberal
+					}
+				}
+				country_event = { #alerts kmt to Cheng Qian victory in hunan
+					id = hnn.108
+					days = 1
+				}
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Meeting of the Hunan Central Committee
 	id = hunan_rework.64
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.64"}
 	title = hunan_rework.64.title
-	desc = hunan_rework.64.desc
+	desc = {
+		text = hunan_rework.64.Election
+		trigger = {
+			has_completed_focus = HNNKMT_power_by_the_ballot
+		}
+	}
+	desc = {
+		text = hunan_rework.64.Revolution
+		trigger = {
+			has_completed_focus = HNNKMT_power_through_revolution
+		}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Chen Goes With the Left KMT
 		name = hunan_rework.64.a
 		ai_chance = { base = 100 }
+		#trigger = {
+			#has_completed_focus = HNNKMT_power_by_the_ballot
+		#}
 		
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = {
+			name = "Cheng Qian"
+			desc = "POLITICS_HNN_CHENG_QIAN_DESC"
+			picture = "gfx/leaders/CHI/Portrait_CHI_Cheng_Qian.png"
+			expire = "1965.1.1"
+			ideology = socdem_tridemism_subtype
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = "Kuomintang"
+			name = "Kuomintang"
+		}
+		
+		##Will Add Socdem KMT Ministers
+		#remove_all_ministers = yes
+			#add_ideas = {
+				#HNN_Cheng_Qian_hog_sli
+				#HNN_Liu_Wendao_for_sli
+				#HNN_He_Haoruo_eco_sli
+				#HNN_Long_Bojian_sec_sli
+			#}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.1
+			
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.3
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		CHI = {
+			set_country_flag = HNN_kmt_success
+		}
+	}
+	
+	option = { #Chen Goes With the Right KMT
+		name = hunan_rework.64.b
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 5
+				CHI = {
+					exists = no
+				}
+			}
+			modifier = {
+				factor = 0
+				country_exists = CHI
+				has_game_rule = {
+					rule = HNN_path
+					option = HNN_KMT_LEFT
+				}
+			}
+		}
+
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		add_ideas = {
+		HNN_He_Jian_sec_ade
+		}
+		if = {
+			limit = {
+				country_exists = CHI
+			}
+			add_opinion_modifier = {
+				target = CHI
+				modifier = HNN_betrayal
+			}
+			hidden_effect = {
+				CHI = {
+					country_event = {
+						id = hnn.650
+						days = 1
+					}
+				}
+			}
+		}
+		#trigger = {
+			#has_completed_focus = HNNKMT_power_by_the_ballot
+		#}
+	}
+	
+	option = { #He Jian
+		name = hunan_rework.64.c
+		ai_chance = { base = 100 }
+		#trigger = {
+			#has_completed_focus = HNNKMT_power_through_revolution
+		#}
+	}
+	
+	option = { #He Long
+		name = hunan_rework.64.d
+		ai_chance = { base = 100 }
+		#trigger = {
+			#has_completed_focus = HNNKMT_power_through_revolution
+		#}
+	}
+	
+	option = { #Li Lisan - CSP
+		name = hunan_rework.64.e
+		ai_chance = { base = 100 }
+		#trigger = {
+			#has_completed_focus = HNNKMT_power_through_revolution
+		#}
 	}
 }
 
