@@ -136,8 +136,105 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		OR = {
+		AND = {
+		has_completed_focus = HNNKMT_alignment_with_the_left
+		OR = {
+		CHI = {
+				exists = yes
+				has_socialist_government = yes
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		GXC = {
+				exists = yes
+				has_country_leader = {
+						name = "Chen Mingshu"
+						ruling_only = yes
+					}
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		}
+		}
+		AND = {
+		has_completed_focus = HNNKMT_an_olive_branch_with_the_right
+		OR = {
+		YUN = {
+				exists = yes
+				has_country_leader = {
+						name = "Zhu Peide"
+						ruling_only = yes
+					}
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		GXC = {
+				exists = yes
+				has_country_leader = {
+						name = "Li Zongren"
+						ruling_only = yes
+					}
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		}
+		}
+		}
+		}
 		prerequisite = { focus = HNNKMT_strong_ties_to_the_youth_leagues  } prerequisite = { focus = HNNKMT_wendaosanticorruptioncrusade  } prerequisite = { focus = HNNKMT_shaoqissocialisteducationmovement  focus = HNNKMT_wangfengjieseducationprogram  } 
 		mutually_exclusive = { focus = HNNKMT_liberation_with_in_our_hands  }
+	completion_reward = {
+		if = { limit = { has_completed_focus = HNNKMT_alignment_with_the_left }
+		if = { limit = { CHI = { exists = yes has_socialist_government = yes is_subject = no NOT = { has_war_with = HNN } } }
+		CHI = {
+		set_autonomy = {
+		target = HNN
+		autonomy_state = kr_governorate
+		end_wars = no
+		}
+		}
+		}
+		else = {
+ 		GXC = {
+		set_autonomy = {
+		target = HNN
+		autonomy_state = kr_governorate
+		end_wars = no
+		}
+		}
+		}
+		}
+		else = {
+		if = { limit = { YUN = { exists = yes KR_is_liberal = yes is_subject = no NOT = { has_war_with = HNN } } }
+		YUN = {
+		set_autonomy = {
+		target = HNN
+		autonomy_state = kr_governorate
+		end_wars = no
+		}
+		}
+		}
+		else = {
+ 		GXC = {
+		set_autonomy = {
+		target = HNN
+		autonomy_state = kr_governorate
+		end_wars = no
+		}
+		}
+		}
+		}
+		}
 	}
 
 	#Upholding Democracy
