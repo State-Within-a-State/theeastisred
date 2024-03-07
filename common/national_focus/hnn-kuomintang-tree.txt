@@ -68,6 +68,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_meeting_of_the_hunan_central_committee  }
+		available = {
+		always = no
+		}
 	}
 
 	#An Olive Branch With the Right
@@ -82,6 +85,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNKMT_qian_guides_the_committee  }
 		mutually_exclusive = { focus = HNNKMT_alignment_with_the_left  }
+		available = {
+		always = no
+		}
+		
 	}
 
 	#Alignment With the Left
@@ -96,6 +103,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNKMT_qian_guides_the_committee  }
 		mutually_exclusive = { focus = HNNKMT_an_olive_branch_with_the_right  }
+		available = {
+		always = no
+		}
 	}
 
 	#Forever Enshrining the Three Principles of the People
@@ -109,6 +119,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNKMT_alignment_with_the_left  }
+		completion_reward = {
+		add_ideas = {
+		HNN_tridemism_1
+		}
+		}
 	}
 
 	#Joining the National Government
@@ -136,6 +151,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNKMT_an_olive_branch_with_the_right  focus = HNNKMT_alignment_with_the_left  }
+		completion_reward = {
+		add_stability = 0.1
+		}
 	}
 
 	#Saving the Gentry
@@ -149,6 +167,17 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNKMT_an_olive_branch_with_the_right  }
+		completion_reward = {
+		add_popularity = {
+				ideology = market_liberal
+				popularity = 0.1
+			}
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.1
+			}
+		add_war_support = 0.075
+		}
 	}
 
 	#Distancing From the United Front
@@ -162,6 +191,21 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HNNKMT_saving_the_gentry  }
+		completion_reward = {
+		add_popularity = {
+				ideology = totalist
+				popularity = -0.2
+			}
+		add_popularity = {
+				ideology = syndicalist
+				popularity = -0.2
+			}
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = -0.2
+			}
+		add_war_support = -0.075
+		}
 	}
 
 	#Combating the Literacy Divide
@@ -175,6 +219,10 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNKMT_upholding_democracy  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Rural_Literacy"
+			add_research_slot = 1
+		}
 	}
 
 	#Dealing With the Peasant Issues
@@ -188,6 +236,10 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNKMT_upholding_democracy  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Improve_Farmer_Livelihoods"
+			add_ideas = HNN_farmer_conditions_improved
+		}
 	}
 
 	#Raising Peasant Militias
@@ -201,6 +253,13 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HNNKMT_forever_enshrining_the_three_principles_of_the_people  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Raise_Kuomintang_Militia"
+			custom_effect_tooltip = HNN_revolutionary_miltia_tt
+			hidden_effect = {
+				load_oob = "HNN_Revolutionary_Militia"
+			}
+		}
 	}
 
 	#Reach Out to General Shengzhi
@@ -214,6 +273,11 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_raising_peasant_militias  }
+		completion_reward = {
+		add_ideas = {
+		HNN_buddhist_general
+		}
+		}
 	}
 
 	#Sanmin Zhuyi
@@ -227,6 +291,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_combating_the_literacy_divide  } prerequisite = { focus = HNNKMT_dealing_with_the_peasant_issues  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus HNN_Study_Sanmin_Zhuyi"
+			add_political_power = 100
+		}
 	}
 
 	#Crushing the Leftist Cliques
@@ -240,6 +308,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = HNNKMT_distancing_from_the_united_front  }
+		completion_reward = {
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
+		}
 	}
 
 	#Wang Fengjie's Education Program
@@ -253,6 +326,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNKMT_sanmin_zhuyi  } prerequisite = { focus = HNNKMT_crushing_the_leftist_cliques  }
+		completion_reward = {
+		add_timed_idea = {
+		idea = HNN_Wang_Fengjies_Education_Program
+		days = 365
+		}
+		}
 	}
 
 	#Strong Ties to the Youth Leagues
@@ -266,6 +345,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HNNKMT_sanmin_zhuyi  } prerequisite = { focus = HNNKMT_crushing_the_leftist_cliques  focus = HNNKMT_reach_out_to_general_shengzhi  } 
+		completion_reward = {
+		add_ideas = {
+		HNN_youth_league_support
+		}
+		}
 	}
 
 	#Wendao's Anti-Corruption Crusade
@@ -279,6 +363,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNKMT_sanmin_zhuyi  } prerequisite = { focus = HNNKMT_crushing_the_leftist_cliques  focus = HNNKMT_reach_out_to_general_shengzhi  } 
+		completion_reward = {
+		add_ideas = {
+		HNN_zhiquan
+		}
+		}
 	}
 
 	#Shaoqi's Socialist Education Movement
@@ -292,6 +381,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNKMT_reach_out_to_general_shengzhi  }
+		completion_reward = {
+		add_timed_idea = {
+		idea = HNN_socialist_education_movement
+		days = 365
+		}
+		}
 	}
 
 	#Liberation With In Our Hands

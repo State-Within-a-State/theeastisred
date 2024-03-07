@@ -2785,6 +2785,9 @@ country_event = { #A Kuomintang Victory
 		name = hunan_rework.63.a
 		ai_chance = { base = 100 }
 		set_country_flag = HNN_Chen_Qian_Revolution_Won
+		add_ideas = {
+		HNN_hengti_resistance_resistance
+		}
 		event_target:HNN_Zhao_Hengti = {
 				set_nationality = NSW
 			}
@@ -2878,7 +2881,8 @@ country_event = { #Meeting of the Hunan Central Committee
 		#trigger = {
 			#has_completed_focus = HNNKMT_power_by_the_ballot
 		#}
-		
+		complete_national_focus = HNNKMT_qian_guides_the_committee
+		complete_national_focus = HNNKMT_alignment_with_the_left
 		set_politics = { ruling_party = social_democrat }
 		create_country_leader = {
 			name = "Cheng Qian"
@@ -2887,6 +2891,9 @@ country_event = { #Meeting of the Hunan Central Committee
 			expire = "1965.1.1"
 			ideology = socdem_tridemism_subtype
 		}
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
 		set_party_name = {
 			ideology = social_democrat
 			long_name = "Kuomintang"
@@ -2894,13 +2901,13 @@ country_event = { #Meeting of the Hunan Central Committee
 		}
 		
 		##Will Add Socdem KMT Ministers
-		#remove_all_ministers = yes
-			#add_ideas = {
-				#HNN_Cheng_Qian_hog_sli
-				#HNN_Liu_Wendao_for_sli
-				#HNN_He_Haoruo_eco_sli
-				#HNN_Long_Bojian_sec_sli
-			#}
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Cheng_Qian_hog_sli
+				HNN_Cheng_Xingling_for_rso
+				HNN_Xie_Juezai_eco_rso
+				HNN_Chen_Xiaocen_sec_rso
+			}
 		add_popularity = {
 			ideology = social_liberal
 			popularity = 0.1
@@ -2922,6 +2929,8 @@ country_event = { #Meeting of the Hunan Central Committee
 	option = { #Chen Goes With the Right KMT
 		name = hunan_rework.64.b
 		ai_chance = { base = 100 }
+		complete_national_focus = HNNKMT_qian_guides_the_committee
+		complete_national_focus = HNNKMT_an_olive_branch_with_the_right
 		create_country_leader = {
 		name = "Cheng Qian"
 		desc = "POLITICS_HNN_CHENG_QIAN_DESC"
@@ -2935,6 +2944,7 @@ country_event = { #Meeting of the Hunan Central Committee
 		}
 		add_ideas = {
 		HNN_He_Jian_sec_ade
+		HNN_socialist_resistance
 		}
 		if = {
 			limit = {
@@ -2964,6 +2974,46 @@ country_event = { #Meeting of the Hunan Central Committee
 		#trigger = {
 			#has_completed_focus = HNNKMT_power_through_revolution
 		#}
+		
+		set_politics = { ruling_party = authoritarian_democrat }
+		create_country_leader = {
+			name = "He Jian"
+			desc = "-"
+			picture = "gfx/leaders/HNN/Portrait_Hunan_He_Jian.png"
+			expire = "1965.1.1"
+			ideology = authdem_tridemism_subtype
+		}
+		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = "Kuomintang"
+			name = "Kuomintang"
+		}
+		
+		set_party_name = {
+			ideology = social_democrat
+			long_name = "Kuomintang"
+			name = "Kuomintang"
+		}
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_He_Long_hog_rso
+				HNN_He_Chengjun_for_ade
+				HNN_He_Haoruo_eco_sli
+				HNN_He_Jian_sec_ade
+			}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.1
+			
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = -0.1
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.4
+		}
 	}
 	
 	option = { #He Long
@@ -2972,6 +3022,51 @@ country_event = { #Meeting of the Hunan Central Committee
 		#trigger = {
 			#has_completed_focus = HNNKMT_power_through_revolution
 		#}
+		
+		set_politics = { ruling_party = radical_socialist }
+		create_country_leader = {
+			name = "He Long"
+			desc = "-"
+			picture = "gfx/leaders/HNN/Portrait_Hunan_He_Long.png"
+			expire = "1965.1.1"
+			ideology = radsoc_tridemism_subtype
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = "Kuomintang"
+			name = "Kuomintang"
+		}
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = "Kuomintang"
+			name = "Kuomintang"
+		}
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_He_Long_hog_rso
+				HNN_Cheng_Xingling_for_rso
+				HNN_Xie_Juezai_eco_rso
+				HNN_Chen_Xiaocen_sec_rso
+			}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+			
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		CHI = {
+			set_country_flag = HNN_kmt_success
+		}
 	}
 	
 	option = { #Li Lisan - CSP
@@ -2980,6 +3075,55 @@ country_event = { #Meeting of the Hunan Central Committee
 		#trigger = {
 			#has_completed_focus = HNNKMT_power_through_revolution
 		#}
+		set_politics = { ruling_party = syndicalist }
+		create_country_leader = {
+			name = "Li Lisan"
+			desc = "-"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Li_Lisan.png"
+			expire = "1965.1.1"
+			ideology = syn_red_junta_subtype
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = "Chinese Syndicalist Party"
+			name = "CSP"
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = "Kuomintang"
+			name = "Kuomintang"
+		}
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = "Kuomintang"
+			name = "Kuomintang"
+		}
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Li_Lisan_hog_syn
+				HNN_Liu_Shaoqi_for_syn
+				HNN_Xiang_Zhongfa_eco_syn
+				HNN_Xia_Xi_sec_tot
+			}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+			
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.1
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.4
+		}
+		CHI = {
+			set_country_flag = HNN_kmt_success
+		}
 	}
 }
 
