@@ -14,6 +14,7 @@ add_namespace = CHI.earlygame #League War
 add_namespace = CHI.midgame   #Reconstruction + Northern Expedition
 add_namespace = CHI.lategame  #Second Sino-Japanese War and Unification
 add_namespace = CHI.endgame   #Post-Unification Content
+add_namespace = lin_biao
 
 ###- Table of Contents -###
 
@@ -17406,10 +17407,294 @@ country_event = { #leadership
 		}		
 	}
 	option = { #
+		name = "The Rising Star of the National Revolutionary Army, Lin Biao "
+		create_country_leader = {
+			name = "Lin Biao"
+			picture = "gfx/leaders/CHI/Portrait_CHI_Lin_Biao.png"
+			expire = "1.1.1"
+			ideology = internationalism_subtype
+			traits = { disciplined_soldier CSA_fervent_revolutionary }
+		}
+	hidden_effect = { country_event = { id = lin_biao.1 days = 30 } }
+	}
+	option = { #
 		name = chi_leader.3.e
 		hidden_effect = {
 			country_event = chi_leader.1
 		}		
 	}
 }
+
+country_event = {
+	id = lin_biao.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event lin_biao.1" }
+	title = "The Ambitions of Our State"
+	desc = "With Lin Biao in control of the new Chinese republic, his desire to liberate the masses of China has led him to the realization that China and its masses can only be free once the imperialists who dominated China can no longer plot in the shadows to loot China once more. This is not something unique to China but rather a issue every nationalist who emerges from a colonized country must face. Inspired by the tactics of encircling the rich and densely populated cities by gaining popular support in the surrounding countryside that led to the victory of the KMT, Lin Biao has formulated a new idea of how fight the core first world and defeat it. By gaining support in the newly emerging colonized countries, the large mass of people and land working together will be able to encircle and defeat the 'cities' of the world. In such a way, international revolution will be achieved and capitalism defeated."
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "His ministers convince Biao to wait for China to truly recover before attempting such an undertaking."
+		ai_chance = {
+			factor = 100
+		}
+		add_political_power = 50
+		add_stability = 0.05
+	}
+	option = {
+		name = "We will free the international working class!"
+		ai_chance = { factor = 0 }
+		add_named_threat = { threat = 100 name = "Global Communism" }
+		set_cosmetic_tag = LIN_JDPON
+		every_country = {
+		 CHI = {
+		   create_wargoal = {
+			 type = annex_everything
+			 target = PREV
+		   }
+		 }
+	}
+	every_state = { add_core_of = CHI }
+	}
+
+	option = {
+		name = "We will free the international working class, but the labor aristocrats who have exploited the world will need to be integrated in correct conditions."
+		ai_chance = { factor = 0 }
+		add_named_threat = { threat = 100 name = "Global Communism" }
+		set_country_flag = LinBiao_Puppets
+		set_cosmetic_tag = LIN_JDPON
+		every_country = {
+		 CHI = {
+		   create_wargoal = {
+			 type = annex_everything
+			 target = PREV
+		   }
+		 }
+	}
+	every_state = { add_core_of = CHI }
+	}
+}
+
+country_event = {
+	id = lin_biao.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event lin_biao.2" }
+	title = "Victory All Over the Globe"
+	desc = "You shouldn't see this"
+	fire_only_once = yes
+	hidden = yes
+	trigger = {
+		has_country_flag = LinBiao_Puppets
+		all_other_country = {
+			exists = no
+		}
+	}
+	option = {
+		name = "You shouldn't see this"
+			every_state = { limit = { is_core_of = SIC } 
+			remove_core_of = SIC }
+			every_state = { limit = { is_claimed_by = SIC } 
+			remove_claim_by = SIC }
+			every_state = {
+			limit = { 
+			OR = {
+				is_northern_italy = yes	
+				region = 131
+			}
+			}
+			add_core_of = SIC
+			transfer_state_to = SIC
+			}
+		 puppet = SIC
+		SIC = {
+		set_cosmetic_tag = LIN_Bordiga
+		}
+		every_state = { limit = { is_core_of = ENG } 
+			remove_core_of = ENG }
+			every_state = { limit = { is_claimed_by = ENG } 
+			remove_claim_by = ENG }
+			every_state = {
+			limit = { 
+				is_british_isles = yes
+			}
+			add_core_of = ENG
+			transfer_state_to = ENG
+			}
+		 puppet = ENG
+		ENG = {
+		set_party_name = {
+							ideology = totalist
+							long_name = "Irish Republican Army"
+							name = "IRA"
+					}
+
+		set_cosmetic_tag = GBP_FREESTATE
+		create_country_leader = {
+			name = "Maurice Twomey"
+			picture = "gfx/leaders/IRE/Portrait_Ireland_Maurice_Twomey.png"
+			expire = "1.1.1"
+			ideology = red_junta_subtype
+			}
+		}
+			every_state = { limit = { is_core_of = POR } 
+			remove_core_of = POR }
+			every_state = { limit = { is_claimed_by = POR } 
+			remove_claim_by = POR }
+			every_state = {
+			limit = { 
+			OR = {
+				is_portugal = yes
+				is_spain = yes
+			}
+			}
+			add_core_of = POR
+			transfer_state_to = POR
+			}
+		 puppet = POR
+		POR = {
+				set_party_name = {
+					ideology = totalist
+					long_name = "Al-Andalusian Socialist Union"
+					name = "A-ASU"
+					}
+		add_state_core = 1316
+		transfer_state = 1316
+		set_capital = { state = 169 }	
+		set_cosmetic_tag = LIN_Spain
+		create_country_leader = {
+			name = "Gamel Abdel Nasser"
+			picture = "gfx/leaders/EGY/Portrait_EGY_Gamel_Abdel_Nasser.png"
+			expire = "1.1.1"
+			ideology = tot_left_nationalism_subtype
+			}
+		}
+			every_state = { limit = { is_core_of = FRA } 
+			remove_core_of = FRA }
+			every_state = { limit = { is_claimed_by = FRA } 
+			remove_claim_by = FRA }
+			every_state = {
+			limit = { 
+				is_european_france = yes
+			}
+			add_core_of = FRA
+			transfer_state_to = FRA
+			}
+		puppet = FRA
+		FRA = {
+			set_party_name = {
+					ideology = totalist
+					long_name = "True Jacobins"
+					name = "Jacobin(Montagnards)"
+				}
+
+		set_cosmetic_tag = LIN_Fra
+		create_country_leader = {
+			name = "Nguyen Son"
+			picture = "gfx/leaders/INC/Portrait_INC_Nguyen_Son.png"
+			expire = "1.1.1"
+			ideology = red_junta_subtype
+			}
+		}
+			every_state = { limit = { is_core_of = DDR } 
+			remove_core_of = DDR }
+			every_state = { limit = { is_claimed_by = DDR } 
+			remove_claim_by = DDR }
+			every_state = {
+			limit = { 
+			OR = {
+				is_full_germany = yes
+				region = 21
+				region = 5
+			}
+			}
+			set_state_name = "Sun Yat-sen"
+			add_core_of = DDR
+			transfer_state_to = DDR
+			}
+		puppet = DDR
+		DDR = {
+			set_party_name = {
+					ideology = totalist
+					long_name = "International Committee for the Suffering of Germans"
+					name = "KDP(Krauts)"
+					}
+		set_capital = { state = 1137 }	
+		set_cosmetic_tag = LIN_DDR
+		create_country_leader = {
+			name = "Council for De-Kaiserfication"
+			picture = "gfx/leaders/AML/Military_Council.png"
+			expire = "1.1.1"
+			ideology = socialist_security_state_subtype
+			}
+		}
+			every_state = { limit = { is_core_of = NOR } 
+			remove_core_of = NOR }
+			every_state = { limit = { is_claimed_by = NOR } 
+			remove_claim_by = NOR }
+			every_state = {
+			limit = { 
+			OR = {
+				is_finland = yes
+				region = 10
+				region = 11
+				region = 12
+				region = 44
+				
+			}
+			}
+			add_core_of = NOR
+			transfer_state_to = NOR
+			}
+		puppet = NOR
+		NOR = {
+				set_party_name = {
+					ideology = totalist
+					long_name = "Social Democratic Party"
+					name = "Anti SDP & LP"
+				}
+		transfer_state = 124
+		transfer_state = 99
+		transfer_state = 37
+		add_state_core = 124
+		add_state_core = 99
+		add_state_core = 37
+		set_cosmetic_tag = LIN_North
+		create_country_leader = {
+			name = "Council for De-Nordic Modelisation"
+			picture = "gfx/leaders/FUN/Portrait_CSA_Techno_Council_fun.png"
+			expire = "1.1.1"
+			ideology = red_junta_subtype
+			}
+		}
+			every_state = { limit = { is_core_of = LAT } 
+			remove_core_of = LAT }
+			every_state = { limit = { is_claimed_by = LAT } 
+			remove_claim_by = LAT }
+			every_state = {
+			limit = { 
+				region = 37
+			}
+			add_core_of = LAT
+			transfer_state_to = LAT
+			}
+		puppet = LAT
+		LAT = {
+		set_cosmetic_tag = LIN_Balt
+					set_party_name = {
+							ideology = totalist
+							long_name = "Struggle Union"
+							name = "SU"
+					}
+		create_country_leader = {
+			name = "Tan Malaka"
+			desc = "POLITICS_TAN_MALAKA_DESC"
+			picture = "gfx/leaders/INS/Portrait_Indonesia_Tan_Malaka.png"
+			expire = "1965.10.1"
+			ideology = tot_developing_leftism_subtype
+			}	
+		}
+	}
+}
+
+
+
 
