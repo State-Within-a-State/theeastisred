@@ -763,7 +763,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		available = {
+		has_country_flag = has_united_china
+		}
 		prerequisite = { focus = HNNKMT_reach_out_to_kuomintang_rightists  } prerequisite = { focus = HNNKMT_work_with_the_whampoa_cliques  }
+		completion_reward = {
+		load_focus_tree = kmt_unification_generic
+			set_cosmetic_tag = KMT_NEEDED
+		}
 	}
 
 	#Join Up With the Remnants
@@ -776,8 +783,57 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		
+		
+		OR = {
+		YUN = {
+				exists = yes
+				has_country_leader = {
+						name = "Zhu Peide"
+						ruling_only = yes
+					}
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		GXC = {
+				exists = yes
+				has_country_leader = {
+						name = "Li Zongren"
+						ruling_only = yes
+					}
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		}
+		
+		}
 		prerequisite = { focus = HNNKMT_reach_out_to_kuomintang_rightists  } prerequisite = { focus = HNNKMT_work_with_the_whampoa_cliques  }
 		mutually_exclusive = { focus = HNNKMT_proclaim_the_rival_government  }
+		completion_reward = {
+		if = { limit = { YUN = { exists = yes KR_is_liberal = yes is_subject = no NOT = { has_war_with = HNN } } }
+					YUN = {
+						set_autonomy = {
+							target = HNN
+								autonomy_state = kr_governorate
+									end_wars = no
+										}
+											}
+												}
+													else = {
+												GXC = {
+											set_autonomy = {
+										target = HNN
+								autonomy_state = kr_governorate
+							end_wars = no
+						}
+					}
+				}
+		}
 	}
 
 	#The Radicals Ride In
@@ -791,6 +847,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_meeting_of_the_hunan_central_committee  }
+		available = {
+		always = no
+		}
 	}
 
 	#Unification of Hunan's Red Banners
@@ -804,7 +863,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNKMT_shakingtangshengzhishand  }
+		completion_reward = {
+		add_war_support = 0.25
+		}
 	}
+	
 
 	#Purge the Reluctant Rightists
 	focus = {
@@ -817,6 +880,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = HNNKMT_the_reorganization_campaign  }
+		completion_reward = {
+		remove_ideas = {
+		HNN_reluctant_KMT_rightists
+		}
+		}
 	}
 
 	#Marxist Integration
@@ -830,6 +898,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNKMT_shakingtangshengzhishand  }
+		completion_reward = {
+		add_ideas = {
+		HNN_marxist_integration
+		}
+		}
 	}
 
 	#A True Party of the Masses
@@ -843,6 +916,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_the_radicals_ride_in  }
+		available = {
+		always = no
+		}
 	}
 
 	#Mao's Ascension
@@ -854,6 +930,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = HNNKMT_a_true_party_of_the_masses  }
 		mutually_exclusive = { focus = HNNKMT_ridinghelongshorse  }
@@ -868,6 +947,9 @@ focus_tree = {
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
 		}
 		prerequisite = { focus = HNNKMT_a_true_party_of_the_masses  }
 		mutually_exclusive = { focus = HNNKMT_maosascension  }
@@ -884,6 +966,11 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNKMT_ridinghelongshorse  }
+		completion_reward = {
+		add_ideas = {
+		HNN_buddhist_general
+		}
+		}
 	}
 
 	#The Re-Organization Campaign
@@ -897,6 +984,15 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNKMT_maosascension  focus = HNNKMT_ridinghelongshorse  }
+		completion_reward = {
+		add_ideas = {
+		HNN_reluctant_KMT_rightists
+		}
+		add_timed_idea = {
+		idea = HNN_the_reorganization_campaign
+		days = 366
+		}
+		}
 	}
 
 	#Cutting Ties With the Syndicalists
@@ -910,6 +1006,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_maosascension  }
+		completion_reward = {
+		add_stability = -0.1
+		add_popularity = {
+		ideology = syndicalist
+		popularity = -0.2
+		}
+		add_political_power = 50
+		}
 	}
 
 	#Cooperation With the Hunan Peasant Movement
@@ -923,6 +1027,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HNNKMT_cutting_ties_with_the_syndicalists  }
+		completion_reward = {
+		add_ideas = {
+		HNN_support_peasant_unions
+		}
+		}
 	}
 
 	#Central Peasant Lecture Center
@@ -936,6 +1045,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNKMT_cutting_ties_with_the_syndicalists  }
+		completion_reward = {
+		add_research_slot = 1
+		}
 	}
 
 	#Granting Ethnic Autonomy
@@ -946,9 +1058,14 @@ focus_tree = {
 		y = 7
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_MANPOWER
+			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNKMT_marxist_integration  } prerequisite = { focus = HNNKMT_unificationofhunansredbanners  }
+		completion_reward = {
+		add_ideas = {
+		HNN_ethnic_autonomy
+		}
+		}
 	}
 
 	#Revival of the Hunan Labour Union
@@ -962,6 +1079,9 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNKMT_cooperation_with_the_hunan_peasant_movement  } prerequisite = { focus = HNNKMT_central_peasant_lecture_center  }
+		completion_reward = {
+		country_event = hunan_rework.54
+		}
 	}
 
 	#The Struggle For a New Liberation
@@ -975,6 +1095,15 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_purge_the_reluctant_rightists  } prerequisite = { focus = HNNKMT_granting_ethnic_autonomy  } prerequisite = { focus = HNNKMT_revival_of_the_hunan_labour_union  }
+		completion_reward = {
+		add_war_support = 0.2
+		add_stability = 0.1
+		add_political_power = 50
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		}
 	}
 
 	#Securing Autonomy Within the White Sun's Rays
@@ -987,6 +1116,38 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		
+		OR = {
+		CHI = {
+				exists = yes
+				has_socialist_government = yes
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		GXC = {
+				exists = yes
+				has_country_leader = {
+						name = "Chen Mingshu"
+						ruling_only = yes
+					}
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+			
+		YUN = {
+				exists = yes
+				has_socialist_government = yes
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		}
+		
 		prerequisite = { focus = HNNKMT_the_struggle_for_a_new_liberation  }
 		mutually_exclusive = { focus = HNNKMT_savingthepeoplesgovernment  }
 	}
@@ -1001,8 +1162,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
+		available = {
+		has_country_flag = has_united_china
+		}
 		prerequisite = { focus = HNNKMT_the_struggle_for_a_new_liberation  }
 		mutually_exclusive = { focus = HNNKMT_securingautonomywithinthewhitesunsrays  }
+		completion_reward = {
+		load_focus_tree = kmt_unification_generic
+			set_cosmetic_tag = KMT_NEEDED
+		}
 	}
 
 	#Lisan's New Line
@@ -1016,6 +1184,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_the_radicals_ride_in  }
+		available = {
+		always = no
+		}
 	}
 
 	#A Power Hold In the United Front
