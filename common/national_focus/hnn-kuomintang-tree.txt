@@ -534,6 +534,12 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = HNNKMT_he_jian_ascendant  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = HNN_socialist_resistance
+		add_idea = HNN_socialist_resistance_1
+		}
+		}
 	}
 
 	#Pushing Forward a New Political Tutelage
@@ -548,8 +554,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNKMT_berid_the_socialist_menace  }
 		completion_reward = {
-		remove_ideas = {
-		HNN_socialist_resistance
+		add_stability = -0.1
+		add_war_support = -0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
 		}
 		}
 	}
@@ -617,6 +626,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNKMT_pushing_forward_a_new_political_tutelage  } prerequisite = { focus = HNNKMT_crush_zhao_hengti  } prerequisite = { focus = HNNKMT_legacy_of_the_hu_hanmin  }
+		completion_reward = {
+		add_ideas = {
+		HNN_new_life_movement
+		}
+		}
 	}
 
 	#Help Out the Land Lords
@@ -630,6 +644,9 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNKMT_pushing_forward_a_new_political_tutelage  } prerequisite = { focus = HNNKMT_crush_zhao_hengti  } prerequisite = { focus = HNNKMT_legacy_of_the_hu_hanmin  }
+		completion_reward = {
+		add_political_power = 100
+		}
 	}
 
 	#County Re-Organization
@@ -643,6 +660,10 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_a_hand_raised_to_a_new_life  } prerequisite = { focus = HNNKMT_help_out_the_land_lords  }
+		completion_reward = {
+		add_political_power = 20
+		
+		}
 	}
 
 	#Connections to the Yiguandao
@@ -656,6 +677,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNKMT_a_hand_raised_to_a_new_life  } prerequisite = { focus = HNNKMT_help_out_the_land_lords  }
+		completion_reward = {
+		add_timed_idea = {
+		idea = HNN_yiguandao
+		days = 400
+		}
+		}
 	}
 
 	#Crushing the Peasant Council Excesses
@@ -669,6 +696,11 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = HNNKMT_a_hand_raised_to_a_new_life  } prerequisite = { focus = HNNKMT_help_out_the_land_lords  }
+		completion_reward = {
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
+		}
 	}
 
 	#Reach Out to Kuomintang Rightists
@@ -682,6 +714,18 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_fengjiesconfucianrevival  } prerequisite = { focus = HNNKMT_county_reorganization  } prerequisite = { focus = HNNKMT_connections_to_the_yiguandao  } prerequisite = { focus = HNNKMT_crushing_the_peasant_council_excesses  }
+		completion_reward = {
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.1
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.1
+		}
+		add_soclib_to_coalition = yes
+		add_soccon_to_coalition = yes
+		}
 	}
 
 	#Work with the Whampoa Cliques
@@ -695,6 +739,18 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_fengjiesconfucianrevival  } prerequisite = { focus = HNNKMT_county_reorganization  } prerequisite = { focus = HNNKMT_connections_to_the_yiguandao  } prerequisite = { focus = HNNKMT_crushing_the_peasant_council_excesses  }
+		completion_reward = {
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.1
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = "Whampoa Extremists"
+			name = "Whampoa Extremists"
+		}
+		add_pataut_to_coalition = yes
+		}
 	}
 
 	#Proclaim the Rival Government
