@@ -1150,6 +1150,29 @@ focus_tree = {
 		
 		prerequisite = { focus = HNNKMT_the_struggle_for_a_new_liberation  }
 		mutually_exclusive = { focus = HNNKMT_savingthepeoplesgovernment  }
+		completion_reward = {
+		
+		if = { limit = { CHI = { exists = yes has_socialist_government = yes is_subject = no NOT = { has_war_with = HNN } } }
+		CHI = {
+		set_autonomy = {
+		target = HNN
+		autonomy_state = kr_governorate
+		end_wars = no
+		}
+		}
+		}
+		else = {
+ 		GXC = {
+		set_autonomy = {
+		target = HNN
+		autonomy_state = kr_governorate
+		end_wars = no
+		}
+		}
+		}
+		
+		
+		}
 	}
 
 	#Saving the People's Government
@@ -1224,6 +1247,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNKMT_a_power_hold_in_the_united_front  }
+		completion_reward = {
+		add_ideas = {
+		HNN_Hunan_labour_society
+		}
+		}
 	}
 
 	#The Anti-Imperialist Struggle
@@ -1237,6 +1265,9 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNKMT_a_power_hold_in_the_united_front  }
+		completion_reward = {
+		country_event = hunan_rework.67
+		}
 	}
 
 	#Relief For the Unemployed
@@ -1250,6 +1281,11 @@ focus_tree = {
 			FOCUS_FILTER_MANPOWER
 		}
 		prerequisite = { focus = HNNKMT_organize_the_labour_society  } prerequisite = { focus = HNNKMT_the_antiimperialist_struggle  }
+		completion_reward = {
+		add_ideas = {
+		HNN_unemployed_relief_aid
+		}
+		}
 	}
 
 	#Worker Mobilization
@@ -1263,6 +1299,10 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNKMT_organize_the_labour_society  } prerequisite = { focus = HNNKMT_the_antiimperialist_struggle  }
+		completion_reward = {
+		unlock_decision_tooltip = HNN_raise_worker_support
+		unlock_decision_tooltip = HNN_raise_peasant_support
+		}
 	}
 
 	#Work Place Democratization
@@ -1276,6 +1316,10 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNKMT_creation_of_revolutionary_committees  } prerequisite = { focus = HNNKMT_maintain_the_party_line  } prerequisite = { focus = HNNKMT_final_end_to_the_rightist_factions  }
+		completion_reward = {
+		unlock_decision_tooltip = HNN_enact_cooperatives
+		unlock_decision_tooltip = HNN_enact_worker_communes
+		}
 	}
 
 	#Implement the Labour-Wage Management System
@@ -1289,6 +1333,11 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNKMT_organize_the_labour_society  } prerequisite = { focus = HNNKMT_the_antiimperialist_struggle  }
+		completion_reward = {
+		add_ideas = {
+		HNN_labourwage_management_system
+		}
+		}
 	}
 
 	#Creation of Revolutionary Committees
@@ -1302,6 +1351,38 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_worker_mobilization  } prerequisite = { focus = HNNKMT_implement_the_labourwage_management_system  }
+		completion_reward = {
+		random_list = {
+			10 = {
+				add_power_balance_value = {
+					id = HNN_csp_factionalism
+					value = 0.1
+					tooltip_side = HNN_csp_factionalism_right_side
+				}
+			}
+			10 = {
+				add_power_balance_value = {
+						id = HNN_csp_factionalism
+						value = 0.25
+						tooltip_side = HNN_csp_factionalism_right_side
+					}
+			}
+			10 = {
+				add_power_balance_value = {
+					id = HNN_csp_factionalism
+					value = -0.1
+					tooltip_side = HNN_csp_factionalism_right_side
+				}
+			}
+			10 = {
+				add_power_balance_value = {
+					id = HNN_csp_factionalism
+					value = -0.25
+					tooltip_side = HNN_csp_factionalism_right_side
+				}
+			}
+		}
+		}
 	}
 
 	#Reconcile With Mao
@@ -1316,6 +1397,20 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNKMT_relief_for_the_unemployed  } prerequisite = { focus = HNNKMT_worker_mobilization  } prerequisite = { focus = HNNKMT_implement_the_labourwage_management_system  }
 		mutually_exclusive = { focus = HNNKMT_maintain_the_party_line  }
+		completion_reward = {
+		add_power_balance_value = {
+					id = HNN_csp_factionalism
+					value = -0.1
+					tooltip_side = HNN_csp_factionalism_left_side
+				}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		
+		add_radsoc_to_coalition = yes
+		
+		}
 	}
 
 	#Maintain the Party Line
@@ -1330,6 +1425,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNKMT_relief_for_the_unemployed  } prerequisite = { focus = HNNKMT_worker_mobilization  } prerequisite = { focus = HNNKMT_implement_the_labourwage_management_system  }
 		mutually_exclusive = { focus = HNNKMT_reconcile_with_mao  }
+		completion_reward = {
+		add_power_balance_value = {
+					id = HNN_csp_factionalism
+					value = 0.1
+					tooltip_side = HNN_csp_factionalism_right_side
+				}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		
+		
+		}
 	}
 
 	#Final End to the Rightist Factions
@@ -1343,6 +1451,12 @@ focus_tree = {
 			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
 		}
 		prerequisite = { focus = HNNKMT_relief_for_the_unemployed  } prerequisite = { focus = HNNKMT_worker_mobilization  } prerequisite = { focus = HNNKMT_implement_the_labourwage_management_system  }
+		completion_reward = {
+		remove_ideas = {
+		HNN_hengti_resistance_resistance
+		HNN_reluctant_KMT_rightists
+		}
+		}
 	}
 
 	#Establishment of Local Soviets
@@ -1356,6 +1470,16 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNKMT_creation_of_revolutionary_committees  } prerequisite = { focus = HNNKMT_final_end_to_the_rightist_factions  }
+		completion_reward = {
+		add_ideas = {
+		HNN_local_syndicates
+		}
+		add_power_balance_value = {
+					id = HNN_csp_factionalism
+					value = 0.1
+					tooltip_side = HNN_csp_factionalism_right_side
+				}
+		}
 	}
 
 	#New Democracy Advocation
@@ -1369,6 +1493,15 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNKMT_creation_of_revolutionary_committees  } prerequisite = { focus = HNNKMT_reconcile_with_mao  } prerequisite = { focus = HNNKMT_final_end_to_the_rightist_factions  }
+		completion_reward = {
+		add_power_balance_value = {
+					id = HNN_csp_factionalism
+					value = -0.1
+					tooltip_side = HNN_csp_factionalism_left_side
+				}
+		add_war_support = 0.1
+		add_political_power = 30
+		}
 	}
 
 	#Meeting of the Hunan National Labour Congress
@@ -1382,6 +1515,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNKMT_establishment_of_local_soviets  } prerequisite = { focus = HNNKMT_new_democracy_advocation  focus = HNNKMT_work_place_democratization  } 
+		completion_reward = {
+		country_event = hunan_rework.68
+		}
 	}
 
 	#Denouncing the Kuomintang
@@ -1394,8 +1530,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = HNN_denounce_united_front
+		has_country_flag = has_united_china
+		}
 		prerequisite = { focus = HNNKMT_meeting_of_the_hunan_national_labour_congress  }
 		mutually_exclusive = { focus = HNNKMT_uphold_the_united_front  }
+		##Will Lead To A Syndicalist Chinese unification tree
 	}
 
 	#Uphold the United Front
@@ -1408,8 +1549,66 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = HNN_support_united_front
+		OR = {
+		CHI = {
+				exists = yes
+				has_socialist_government = yes
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		GXC = {
+				exists = yes
+				has_country_leader = {
+						name = "Chen Mingshu"
+						ruling_only = yes
+					}
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+			
+		YUN = {
+				exists = yes
+				has_socialist_government = yes
+				is_subject = no
+				NOT = {
+					has_war_with = HNN
+				}
+			}
+		}
+		}
+		
+		
 		prerequisite = { focus = HNNKMT_meeting_of_the_hunan_national_labour_congress  }
 		mutually_exclusive = { focus = HNNKMT_denouncing_the_kuomintang  }
+		completion_reward = {
+		
+		if = { limit = { CHI = { exists = yes has_socialist_government = yes is_subject = no NOT = { has_war_with = HNN } } }
+		CHI = {
+		set_autonomy = {
+		target = HNN
+		autonomy_state = kr_governorate
+		end_wars = no
+		}
+		}
+		}
+		else = {
+ 		GXC = {
+		set_autonomy = {
+		target = HNN
+		autonomy_state = kr_governorate
+		end_wars = no
+		}
+		}
+		}
+		
+		
+		}
 	}
 
 }

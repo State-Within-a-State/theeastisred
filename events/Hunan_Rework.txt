@@ -3146,6 +3146,7 @@ country_event = { #A Struggle Between CSP Factionalism
 	option = { #
 		name = hunan_rework.65.a
 		ai_chance = { base = 100 }
+		set_country_flag = HNN_csp_factionalism
 		set_power_balance = {
 				id = HNN_csp_factionalism
 				left_side = HNN_csp_factionalism_left_side
@@ -3207,7 +3208,7 @@ country_event = { #he long switcher
 	}
 }
 
-country_event = { #
+country_event = { #In the Struggle of Anti-Imperialism
 	id = hunan_rework.67
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.67"}
 	title = hunan_rework.67.title
@@ -3215,14 +3216,32 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Side With Pro-KMT
 		name = hunan_rework.67.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+			id = HNN_csp_factionalism
+			value = 0.1
+			tooltip_side = HNN_csp_factionalism_right_side
+		}
+		add_war_support = 0.05
+		add_political_power = 10
+	}
+	
+	option = { #Side With Independents
+		name = hunan_rework.67.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+			id = HNN_csp_factionalism
+			value = -0.1
+			tooltip_side = HNN_csp_factionalism_right_side
+		}
+		add_war_support = 0.025
+		add_political_power = 15
 	}
 }
 
-country_event = { #
+country_event = { #Meeting of the Hunan National Labour Congress
 	id = hunan_rework.68
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.68"}
 	title = hunan_rework.68.title
@@ -3230,10 +3249,41 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Li Lisan Remains
 		name = hunan_rework.68.a
 		ai_chance = { base = 100 }
+		set_country_flag = HNN_support_united_front
+	}
+	
+	option = { #Liu Shaoqi
+		name = hunan_rework.68.b
+		ai_chance = { base = 100 }
+		set_country_flag = HNN_denounce_united_front
+		create_country_leader = {
+			name = "Liu Shaoqi"
+			desc = "-"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Liu_Shaoqi.png"
+			expire = "1965.1.1"
+			ideology = agrarian_syndicalism_subtype
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = "Chinese Syndicalist Party"
+			name = "CSP"
+		}
 		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Liu_Shaoqi_hog_syn
+				HNN_Yi_Lilong_for_syn
+				HNN_Li_Liuru_eco_syn
+				HNN_Xia_Minghan_syn_rso
+			}
+		
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.04
+		}
 	}
 }
 
