@@ -3164,14 +3164,46 @@ country_event = { #he long switcher
 	is_triggered_only = yes
 	option = { #
 		name = hunan_rework.66.a
-		ai_chance = { base = 100 }
-		add_stability = 0.5
+		add_stability = 0.05
 	}
 	option = { #
 		name = hunan_rework.66.b
-		ai_chance = { base = 100 }
 		set_country_leader_ideology = radical_progressivism_subtype
 		add_political_power = 30
+	}
+	option = { #
+		name = hunan_rework.66.c
+		trigger = {
+		AUS = {
+		exists = yes
+		has_country_leader = { name = "Huey Long" ruling_only = yes }	
+		has_global_flag = USA_civil_war_over_flag
+		}
+		}
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = {
+			name = "He Long"
+			desc = "-"
+			picture = "gfx/leaders/HNN/Portrait_Hunan_He_Long.png"
+			expire = "1965.1.1"
+			ideology = socdem_longism_subtype
+		}
+		add_radsoc_to_coalition = yes
+		add_stability = -0.10
+		if = {
+		limit = {
+		AUS = {
+			is_faction_leader = yes
+				}
+			}
+			AUS = {
+			add_to_faction = HNN
+			}
+		}
+		AUS = {
+		give_guarantee = HNN
+		}
 	}
 }
 
