@@ -1820,10 +1820,27 @@ country_event = { #Tang Shengzhi coup, military
 			}
 		}
 		set_country_flag = HNN_tang_victory_flag
+		load_focus_tree = hnn-tang-shengzhi-tree
+		set_country_flag = HNN_Tang_Shengzhi_Elected
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		NSW = {
+		every_unit_leader = {
+			limit = {
+			has_id = 1409
+			}
+			set_nationality = HNN
+			}
+		}
+		clr_country_flag = HNN_electionsstarted
+		set_country_flag = HNN_tang_victory_flag
 		set_politics = {
 			ruling_party = social_democrat
 		}
-		hidden_effect = {
+		complete_national_focus = HNNSHENGZHI_the_buddhist_general_arrives_in_changsha
+		add_political_power = -10
 			remove_all_ministers = yes
 			add_ideas = {
 				HNN_Tang_Shengzhi_hog_sde
@@ -1831,25 +1848,15 @@ country_event = { #Tang Shengzhi coup, military
 				HNN_Cao_Dianqiu_eco_sde
 				HNN_Cao_Bowen_sec_sde
 			}
-			country_event = { id = hnn.50 days = 30 }
-			country_event = { #he jian flees to Beijing
-				id = hnn.109
-				days = 2
+			event_target:HNN_Zhao_Hengti = {
+				set_nationality = NSW
 			}
-			#event_target:HNN_Zhao_Hengti = {
-			#	set_nationality = NSW
-			#}
-			#QIE = {
-			#	country_event = {
-			#		id = qiefor.111
-			#		hours = 6
-			#	}
-			#}
-		}
-		add_popularity = {
-			ideology = social_democrat
-			popularity = 0.14
-		}
+			QIE = {
+				country_event = {
+					id = qiefor.111
+					hours = 6
+				}
+			}
 	}
 }
 
