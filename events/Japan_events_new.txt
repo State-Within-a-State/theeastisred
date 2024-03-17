@@ -8978,15 +8978,63 @@ country_event = { #
 country_event = { #
 	id = japan_new_event.144
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.144"}
-	title = japan_new_event.144.title
-	desc = japan_new_event.144.desc
+	title = japan_new_event.120.title
+	desc = japan_new_event.76.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.144.a
+		name = japan_new_event.76.a
 		ai_chance = { base = 100 }
-		
+			if = {
+				limit = {
+					JSR = { is_in_faction_with = FRA }
+					FRA = { is_faction_leader = yes }
+				}
+				FRA = { add_to_faction = FROM }
+			} 
+		else_if = {
+				limit = {
+					JSR = { is_in_faction_with = ENG }
+					ENG = { is_faction_leader = yes }
+				}
+				ENG = { add_to_faction = FROM }
+			} 
+
+		else_if = {
+				limit = {
+					JSR = { is_in_faction_with = RUS }
+					RUS = { is_faction_leader = yes }
+				}
+				RUS = { add_to_faction = FROM }
+			} 
+		else_if = {
+				limit = {
+					JSR = { is_in_faction_with = BHC }
+					BHC = { is_faction_leader = yes }
+				}
+				BHC = { add_to_faction = FROM }
+			} 
+		else_if = {
+				limit = {
+					JSR = { is_in_faction_with = CSA }
+					CSA = { is_faction_leader = yes }
+				}
+				CSA = { add_to_faction = FROM }
+			} 
+		else = {
+		JSR = { add_to_faction = FROM }
+		}	
+	}
+		option = { #
+		name = japan_new_event.76.b
+		ai_chance = { base = 100 }
+		JSR = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FROM
+				}
+			}
 	}
 }
 
