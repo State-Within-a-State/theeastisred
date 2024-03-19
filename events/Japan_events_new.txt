@@ -8893,23 +8893,174 @@ country_event = { #
 	is_triggered_only = yes
 	option = { #
 		name = japan_new_event.143.a
-		ai_chance = { base = 100 }
-		
+		trigger = {
+		has_completed_focus = JAPCOMMUNIST_the_struggle_of_2
+		}
+		hidden_effect = {
+		CSA= {
+			set_cosmetic_tag = CSA_US_socialist_states
+			create_country_leader = {
+			name = "W.E.B. Dubois"
+			desc = "BBR_WEB_DUBOIS_POLITICS_DESC"
+			picture = "gfx/leaders/BBR/Portrait_BBR_WEB_Du_Bois.png"
+			expire = "1.1.1"
+			ideology = broad_communism_subtype
+			traits = { founder_of_the_ncaap }
+			}	
+			create_country_leader = {
+			name = "W.E.B. Dubois"
+			desc = "BBR_WEB_DUBOIS_POLITICS_DESC"
+			picture = "gfx/leaders/BBR/Portrait_BBR_WEB_Du_Bois.png"
+			expire = "1.1.1"
+			ideology = democratic_syndicalism_subtype
+			traits = { founder_of_the_ncaap }
+			}	
+			create_country_leader = {
+			name = "W.E.B. Dubois"
+			desc = "BBR_WEB_DUBOIS_POLITICS_DESC"
+			picture = "gfx/leaders/BBR/Portrait_BBR_WEB_Du_Bois.png"
+			expire = "1.1.1"
+			ideology = radsoc_communism_subtype
+			traits = { founder_of_the_ncaap }
+			}	
+		}
 	}
+	}
+	option = { #
+		name = japan_new_event.143.b
+		trigger = {
+		OR = {
+		has_completed_focus = JAPCOMMUNIST_changingthecourseofjapansproletariat
+		has_completed_focus = JAPCOMMUNIST_embracing_smiling_communism
+		}
+		}
+		hidden_effect = {
+		CSA = {
+			set_cosmetic_tag = CSA_browder_red
+			create_country_leader = {
+			name = "Gus Hall"
+			picture = "gfx/leaders/CSA/Portrait_CSA_Gus_Hall.png"
+			expire = "1.1.1"
+			ideology = popcom_subtype
+			traits = { eco_socialist_industrializer }
+		}
+			create_country_leader = {
+			name = "Gus Hall"
+			picture = "gfx/leaders/CSA/Portrait_CSA_Gus_Hall.png"
+			expire = "1.1.1"
+			ideology = radsoc_popcom_subtype
+			traits = { eco_socialist_industrializer }
+		}
+		}
+	}
+	}
+		option = { #
+		name = japan_new_event.143.c
+		trigger = {
+		NOT = {
+		has_completed_focus = JAPCOMMUNIST_the_struggle_of_2
+		}
+		}
+		hidden_effect = {
+		CSA = {
+			set_cosmetic_tag = CSA_gear_globe1
+			create_country_leader = {
+			name = "Modest Stein"
+			picture = "gfx/leaders/CSA/Modest_Stein.png"
+			expire = "1.1.1"
+			ideology = anarchism_subtype
+			traits = { }
+		}
+		}
+	}
+	}
+		option = { #
+		name = japan_new_event.143.d
+		trigger = {
+		has_cosmetic_tag = JAP_SANZO_MONBOL
+		}
+		hidden_effect = {
+		CSA = {
+			set_party_name = {
+			ideology = radical_socialist
+			long_name = "Norton Restoration Society"
+			name = "Norton Restoration Society"
+			}
+			set_cosmetic_tag = CAL_Norton_PSA
+			create_country_leader = {
+				name = "Norton II"
+				desc = "POLITICS_CAL_NORTON_II_DESC"
+				picture = "gfx/leaders/CAL/Portrait_CAL_Norton_II.png"
+				expire = "1.1.1"
+				ideology = radical_progressivism_subtype
+				traits = { charitable_emperor }
+				}
+		}
+	}
+	}
+
 }
 
 country_event = { #
 	id = japan_new_event.144
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.144"}
-	title = japan_new_event.144.title
-	desc = japan_new_event.144.desc
+	title = japan_new_event.120.title
+	desc = japan_new_event.76.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
-		name = japan_new_event.144.a
+		name = japan_new_event.76.a
 		ai_chance = { base = 100 }
-		
+			if = {
+				limit = {
+					JSR = { is_in_faction_with = FRA }
+					FRA = { is_faction_leader = yes }
+				}
+				FRA = { add_to_faction = FROM }
+			} 
+		else_if = {
+				limit = {
+					JSR = { is_in_faction_with = ENG }
+					ENG = { is_faction_leader = yes }
+				}
+				ENG = { add_to_faction = FROM }
+			} 
+
+		else_if = {
+				limit = {
+					JSR = { is_in_faction_with = RUS }
+					RUS = { is_faction_leader = yes }
+				}
+				RUS = { add_to_faction = FROM }
+			} 
+		else_if = {
+				limit = {
+					JSR = { is_in_faction_with = BHC }
+					BHC = { is_faction_leader = yes }
+				}
+				BHC = { add_to_faction = FROM }
+			} 
+		else_if = {
+				limit = {
+					JSR = { is_in_faction_with = CSA }
+					CSA = { is_faction_leader = yes }
+				}
+				CSA = { add_to_faction = FROM }
+			} 
+		else = {
+		JSR = { add_to_faction = FROM }
+		}	
+	}
+		option = { #
+		name = japan_new_event.76.b
+		ai_chance = { base = 100 }
+		JSR = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = FROM
+				}
+			}
 	}
 }
 

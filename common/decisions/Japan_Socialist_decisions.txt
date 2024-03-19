@@ -1032,7 +1032,6 @@ JSR_reach_out_to_the_kuomintang = {
 		}
 	}
 	
-	
 	JSR_reach_out_to_the_indians = {
 		icon = generic_factory
 		
@@ -1186,6 +1185,79 @@ JSR_reach_out_to_the_kuomintang = {
 			
 		}
 	}
+		JSR_reach_out_to_the_leftists_in_south_asia = {
+		icon = generic_factory
+		
+		available = {
+		}
+		
+		visible = {
+			tag = JSR
+			has_completed_focus = JAP_SOCFOR_crush_the_colonialists_of_the_southern_seas
+		}
+		targets = { BRM SKM AFG SIA INC INS LAO CAM }
+		target_trigger = {
+			FROM = { 
+			OR = {
+				has_government = totalist
+				has_government = syndicalist
+				has_government = radical_socialist
+			}
+			is_in_faction = no
+			is_subject = no
+			exists = yes
+			NOT = { has_war_with = PREV }
+		}
+		}
+		cost = 10
+		
+		days_remove = 20
+		fire_only_once = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		FROM = {
+		country_event = japan_new_event.144
+		}
+		
+		}
+	}
+
+		JSR_liberate_the_US = { 
+		icon = GFX_decision_generic_nationalism
+		fire_only_once = yes
+		allowed = { tag = JSR }
+		visible = {
+			tag = JSR
+			CSA = {
+			is_subject_of = JSR
+			}
+		}
+		fire_only_once = yes
+		cost = 75
+		ai_will_do = {
+			factor = 10
+			}
+		complete_effect = {
+			JSR = {
+			country_event = japan_new_event.143
+			set_autonomy = {
+				target = CSA
+				autonomous_state = kx_colored_puppet
+				}
+			}
+			CSA = {
+			if = {
+			limit = {
+			owns_state = 361
+			}
+			set_capital = { state = 361 }
+			}
+			}
+		}
+	}
+}
 
 }
 
