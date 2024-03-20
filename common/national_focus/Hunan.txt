@@ -692,7 +692,7 @@ focus_tree = {
 		prerequisite = { focus = HNNZHILI_instil_regionalist_sentiment  }
 		mutually_exclusive = { focus = HNNZHILI_joining_comrade_chen_jiongming  }
 		completion_reward = {
-		set_cosmetic_tag = HNN_federalist_successor
+		set_cosmetic_tag = UPC
 		set_country_flag = HNN_federalist_unite_china
 		custom_effect_tooltip = switch_focus_unification_federalist_china_tt
 		hidden_effect = {
@@ -725,12 +725,28 @@ focus_tree = {
 		prerequisite = { focus = HNNZHILI_instil_regionalist_sentiment  }
 		mutually_exclusive = { focus = HNNZHILI_saving_the_federalist_cause  }
 		completion_reward = {
-		GXC = {
-		set_autonomy = {
-		target = HNN
-		autonomy_state = kr_governorate
-		end_wars = no
-		}
+		hidden_effect = {
+			every_state = {
+				limit = {
+					is_core_of = HNN
+				}
+				GXC = {
+					add_state_core = PREV
+				}
+			}
+			HNN = {
+				transfer_navy = { target = GXC }
+				every_unit_leader = { set_nationality = GXC }
+				every_navy_leader = { set_nationality = GXC }
+			}
+			HNN = {
+				change_tag_from = YUN
+			}
+			GXC = {
+				annex_country = {
+					target = HNN transfer_troops = yes
+				}
+			}
 		}
 		}
 	}
