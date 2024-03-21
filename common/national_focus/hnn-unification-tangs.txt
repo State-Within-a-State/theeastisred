@@ -8,122 +8,7 @@ focus_tree = {
 			tag = HNNUNIFIEDTANG
 		}
 	}
-	#Shaking Hands With the Peasants
-	focus = {
-		id = HNNUNIFIEDTANG_shaking_hands_with_the_peasants
-		icon = GFX_HNNUNIFIEDTANG_shaking_hands_with_the_peasants-248360
-		x = 10
-		y = 2
-		cost = 2
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = HNNUNIFIEDTANG_organise_the_state_affairs_conference  }
-	}
-
-	#An Agenda of Peaceful Nation Building
-	focus = {
-		id = HNNUNIFIEDTANG_an_agenda_of_peaceful_nation_building
-		icon = GFX_HNNUNIFIEDTANG_an_agenda_of_peaceful_nation_building-248360
-		x = 7
-		y = 3
-		cost = 2
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = HNNUNIFIEDTANG_meet_with_the_unions  } prerequisite = { focus = HNNUNIFIEDTANG_shaking_hands_with_the_peasants  }
-	}
-
-	#A Republic Unified
-	focus = {
-		id = HNNUNIFIEDTANG_a_republic_unified
-		icon = GFX_HNNUNIFIEDTANG_a_republic_unified-248360
-		x = 8
-		y = 0
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		mutually_exclusive = { focus = HNNUNIFIEDTANG_an_empire_restored  }
-	}
-
-	#An Empire Restored
-	focus = {
-		id = HNNUNIFIEDTANG_an_empire_restored
-		icon = GFX_HNNUNIFIEDTANG_an_empire_restored-248360
-		x = 10
-		y = 0
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		mutually_exclusive = { focus = HNNUNIFIEDTANG_a_republic_unified  }
-	}
-
-	#Organise the State Affairs Conference
-	focus = {
-		id = HNNUNIFIEDTANG_organise_the_state_affairs_conference
-		icon = GFX_HNNUNIFIEDTANG_organise_the_state_affairs_conference-248360
-		x = 9
-		y = 1
-		cost = 3
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = HNNUNIFIEDTANG_an_empire_restored  focus = HNNUNIFIEDTANG_a_republic_unified  }
-	}
-
-	#Meet With the Unions
-	focus = {
-		id = HNNUNIFIEDTANG_meet_with_the_unions
-		icon = GFX_HNNUNIFIEDTANG_meet_with_the_unions-248360
-		x = 8
-		y = 2
-		cost = 2
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = HNNUNIFIEDTANG_organise_the_state_affairs_conference  }
-	}
-
-	#Drafting a Proposal of Rights
-	focus = {
-		id = HNNUNIFIEDTANG_drafting_a_proposal_of_rights
-		icon = GFX_HNNUNIFIEDTANG_drafting_a_proposal_of_rights-248360
-		x = 11
-		y = 3
-		cost = 3
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = HNNUNIFIEDTANG_meet_with_the_unions  } prerequisite = { focus = HNNUNIFIEDTANG_shaking_hands_with_the_peasants  }
-	}
-
-	#Maintain Some Relations With the Business Elite
-	focus = {
-		id = HNNUNIFIEDTANG_maintain_some_relations_with_the_business_elite
-		icon = GFX_HNNUNIFIEDTANG_maintain_some_relations_with_the_business_elite-248360
-		x = 9
-		y = 3
-		cost = 3
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = HNNUNIFIEDTANG_meet_with_the_unions  } prerequisite = { focus = HNNUNIFIEDTANG_shaking_hands_with_the_peasants  }
-	}
-
-	#Drafting the First National Constitution
-	focus = {
-		id = HNNUNIFIEDTANG_drafting_the_first_national_constitution
-		icon = GFX_HNNUNIFIEDTANG_drafting_the_first_national_constitution-248360
-		x = 9
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = HNNUNIFIEDTANG_drafting_a_proposal_of_rights  } prerequisite = { focus = HNNUNIFIEDTANG_maintain_some_relations_with_the_business_elite  } prerequisite = { focus = HNNUNIFIEDTANG_an_agenda_of_peaceful_nation_building  }
-	}
+	shared_focus = HNNUNIFIEDTANG_shaking_hands_with_the_peasants
 
 	#Hosting the First Stage of Democracy
 	focus = {
@@ -582,3 +467,128 @@ focus_tree = {
 	}
 
 }
+
+#Shaking Hands With the Peasants
+	shared_focus = {
+		id = HNNUNIFIEDTANG_shaking_hands_with_the_peasants
+		icon = GFX_HNNUNIFIEDTANG_shaking_hands_with_the_peasants-248360
+		x = 10
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = HNNUNIFIEDTANG_organise_the_state_affairs_conference  }
+		completion_reward = {
+		add_ideas = {
+		HNN_peasant_support_tang
+		}
+		}
+	}
+
+	#An Agenda of Peaceful Nation Building
+	shared_focus = {
+		id = HNNUNIFIEDTANG_an_agenda_of_peaceful_nation_building
+		icon = GFX_HNNUNIFIEDTANG_an_agenda_of_peaceful_nation_building-248360
+		x = 7
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNUNIFIEDTANG_meet_with_the_unions  } prerequisite = { focus = HNNUNIFIEDTANG_shaking_hands_with_the_peasants  }
+		completion_reward =  {
+		add_stability = 0.1
+		}
+	}
+
+	#A Republic Unified
+	shared_focus = {
+		id = HNNUNIFIEDTANG_a_republic_unified
+		icon = GFX_HNNUNIFIEDTANG_a_republic_unified-248360
+		x = 8
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = HNNUNIFIEDTANG_an_empire_restored  }
+	}
+
+	#An Empire Restored
+	shared_focus = {
+		id = HNNUNIFIEDTANG_an_empire_restored
+		icon = GFX_HNNUNIFIEDTANG_an_empire_restored-248360
+		x = 10
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = HNNUNIFIEDTANG_a_republic_unified  }
+	}
+
+	#Organise the State Affairs Conference
+	shared_focus = {
+		id = HNNUNIFIEDTANG_organise_the_state_affairs_conference
+		icon = GFX_HNNUNIFIEDTANG_organise_the_state_affairs_conference-248360
+		x = 9
+		y = 1
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNUNIFIEDTANG_an_empire_restored  focus = HNNUNIFIEDTANG_a_republic_unified  }
+	}
+
+	#Meet With the Unions
+	shared_focus = {
+		id = HNNUNIFIEDTANG_meet_with_the_unions
+		icon = GFX_HNNUNIFIEDTANG_meet_with_the_unions-248360
+		x = 8
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HNNUNIFIEDTANG_organise_the_state_affairs_conference  }
+	}
+
+	#Drafting a Proposal of Rights
+	shared_focus = {
+		id = HNNUNIFIEDTANG_drafting_a_proposal_of_rights
+		icon = GFX_HNNUNIFIEDTANG_drafting_a_proposal_of_rights-248360
+		x = 11
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = HNNUNIFIEDTANG_meet_with_the_unions  } prerequisite = { focus = HNNUNIFIEDTANG_shaking_hands_with_the_peasants  }
+	}
+
+	#Maintain Some Relations With the Business Elite
+	shared_focus = {
+		id = HNNUNIFIEDTANG_maintain_some_relations_with_the_business_elite
+		icon = GFX_HNNUNIFIEDTANG_maintain_some_relations_with_the_business_elite-248360
+		x = 9
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = HNNUNIFIEDTANG_meet_with_the_unions  } prerequisite = { focus = HNNUNIFIEDTANG_shaking_hands_with_the_peasants  }
+	}
+
+	#Drafting the First National Constitution
+	shared_focus = {
+		id = HNNUNIFIEDTANG_drafting_the_first_national_constitution
+		icon = GFX_HNNUNIFIEDTANG_drafting_the_first_national_constitution-248360
+		x = 9
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNUNIFIEDTANG_drafting_a_proposal_of_rights  } prerequisite = { focus = HNNUNIFIEDTANG_maintain_some_relations_with_the_business_elite  } prerequisite = { focus = HNNUNIFIEDTANG_an_agenda_of_peaceful_nation_building  }
+	}
