@@ -3550,10 +3550,126 @@ country_event = { #Continuation of the Third Way?
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Tang Xiangming Stays
 		name = hunan_rework.74.a
 		ai_chance = { base = 100 }
 		
+	}
+	
+	option = { #Carsun Chang Leads
+		name = hunan_rework.74.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader = {
+						name = "Yuan Keding"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
+			name = "Carsun Chang"
+			desc = "-"
+			picture = "gfx/leaders/GXC/Portrait_GXC_Zhang_Junmai.png"
+			expire = "1965.1.1"
+			ideology = liberal_socialism_subtype
+		}
+		
+		create_country_leader = {
+			name = "Xu Fulin"
+			desc = "-"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Xu_Fulin.png"
+			expire = "1965.1.1"
+			ideology = soclib_liberal_socialism_subtype
+		}
+		
+		}
+		
+		else_if = {
+			limit = {
+				
+				has_country_leader = {
+					name = "Yuan Keding"
+					ruling_only = yes
+				}
+			}
+			set_country_leader_ideology = liberal_socialism_subtype
+		}
+		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Carsun_Chang_hog_sde
+				HNN_Zhang_Dongsun_eco_sde
+				HNN_Luo_Longji_for_sde
+				HNN_Li_Wanju_sec_sli
+				
+			}
+	}
+	
+	option = { #Xu Fulin Leads
+		name = hunan_rework.74.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_liberal }
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.35
+		}
+		set_country_leader_portrait = {
+			ideology = social_liberal
+			portrait = "gfx/leaders/MON/Portrait_MON_Yuan_Keding.png"
+		}
+		set_country_leader_name = {
+			ideology = social_liberal
+			name = "Yuan Keding"
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader = {
+						name = "Yuan Keding"
+						ruling_only = yes
+					}
+				}
+			}
+			
+			create_country_leader = {
+			name = "Carsun Chang"
+			desc = "-"
+			picture = "gfx/leaders/GXC/Portrait_GXC_Zhang_Junmai.png"
+			expire = "1965.1.1"
+			ideology = liberal_socialism_subtype
+		}
+		
+		create_country_leader = {
+			name = "Xu Fulin"
+			desc = "-"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Xu_Fulin.png"
+			expire = "1965.1.1"
+			ideology = soclib_liberal_socialism_subtype
+		}
+		
+		}
+		
+		else_if = {
+			limit = {
+				
+				has_country_leader = {
+					name = "Yuan Keding"
+					ruling_only = yes
+				}
+			}
+			set_country_leader_ideology = soclib_liberal_socialism_subtype
+		}
+		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Xu_Fulin_hog_sli
+				HNN_Shui_Xiheng_eco_sli
+				HNN_Cao_Chenying_for_sli
+				HNN_Li_Wanju_sec_sli
+				
+			}
 	}
 }
 
