@@ -3409,7 +3409,17 @@ country_event = { #Enacting the First Stage of Democracy
 		name = hunan_rework.73.b
 		ai_chance = { base = 100 }
 		#complete_national_focus = HNNUNIFIEDTANG_xiangmingsvictory
-		create_country_leader = {
+		if = {
+			limit = {
+				
+				NOT = {
+					has_country_leader = {
+						name = "Yuan Keding"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
 			name = "Zhang Lan"
 			desc = "-"
 			picture = "gfx/leaders/SZC/Portrait_SZC_Zhang_Lan.png"
@@ -3423,6 +3433,17 @@ country_event = { #Enacting the First Stage of Democracy
 			picture = "gfx/leaders/HNN/Portait_HNN_Shen_Junru.png"
 			expire = "1965.1.1"
 			ideology = soclib_humanistic_capitalism_subtype
+		}
+		}
+		
+		else_if = {
+			limit = {
+				has_country_leader = {
+					name = "Yuan Keding"
+					ruling_only = yes
+				}
+			}
+			set_country_leader_ideology = socdem_humanistic_capitalism_subtype
 		}
 		set_party_name = {
 			ideology = social_democrat
@@ -3445,11 +3466,20 @@ country_event = { #Enacting the First Stage of Democracy
 			}
 	}
 	
-	option = { #Zhang Lan
-		name = hunan_rework.73.b
+	option = { Jiusan Society
+		name = hunan_rework.73.c
 		ai_chance = { base = 100 }
 		#complete_national_focus = HNNUNIFIEDTANG_xiangmingsvictory
-		create_country_leader = {
+		if = {
+			limit = {
+				NOT = {
+					has_country_leader = {
+						name = "Yuan Keding"
+						ruling_only = yes
+					}
+				}
+			}
+			create_country_leader = {
 			name = "Xu Deheng"
 			desc = "-"
 			picture = "gfx/leaders/HNN/Portait_HNN_Xu_Deheng.png"
@@ -3472,7 +3502,17 @@ country_event = { #Enacting the First Stage of Democracy
 			expire = "1965.1.1"
 			ideology = utopian_technocracy_subtype
 		}
-		
+		}
+		else_if = {
+			limit = {
+				
+				has_country_leader = {
+					name = "Yuan Keding"
+					ruling_only = yes
+				}
+			}
+			set_country_leader_ideology = socdem_utopian_technocracy_subtype
+		}
 		set_party_name = {
 			ideology = radical_socialist
 			long_name = HNN_jiusan_society_party_long
