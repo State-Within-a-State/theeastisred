@@ -233,6 +233,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = HNNUNIFIEDTANG_hosting_the_first_stage_of_democracy  }
 	}
 
@@ -247,6 +250,12 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_victory_of_a_new_democratic_league  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = China_Unified_economic_recovery
+		add_idea = HNN_an_educational_recovery
+		}
+		}
 	}
 
 	#Enacting the Common Program
@@ -260,6 +269,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_victory_of_jiusan_society  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = China_Unified_economic_recovery
+		add_idea = HNN_an_jiusan_recovery
+		}
+		}
 	}
 
 	#Ideological-Academic Freedoms
@@ -273,6 +288,11 @@ focus_tree = {
 			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_establishing_a_new_focus_on_education  }
+		completion_reward = {
+		add_ideas = {
+		HNN_ideologicalacademic_freedoms
+		}
+		}
 	}
 
 	#Allowing Flowers of Peace of Bloom
@@ -286,6 +306,14 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_establishing_a_new_focus_on_education  }
+		completion_reward = {
+		add_political_power = 20
+		add_war_support = 0.15
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.075
+		}
+		}
 	}
 
 	#Reforming Old Culture
@@ -299,6 +327,9 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_establishing_a_new_focus_on_education  }
+		completion_reward = {
+		add_research_slot_until_five = yes
+		}
 	}
 
 	#Crushing the Feudalist System
@@ -312,6 +343,12 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_ideologicalacademic_freedoms  } prerequisite = { focus = HNNUNIFIEDTANG_allowing_flowers_of_peace_of_bloom  } prerequisite = { focus = HNNUNIFIEDTANG_reforming_old_culture  }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = HNN_an_educational_recovery
+		add_idea = HNN_an_educational_recovery_1
+		}
+		}
 	}
 
 	#Integrate KMT Remnants
@@ -325,6 +362,22 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_ideologicalacademic_freedoms  } prerequisite = { focus = HNNUNIFIEDTANG_allowing_flowers_of_peace_of_bloom  } prerequisite = { focus = HNNUNIFIEDTANG_reforming_old_culture  }
+		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
+		add_radsoc_to_coalition = yes
+		add_timed_idea = {
+		idea = HNN_kmt_integration
+		days = 365
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = "CDL(KIB)"
+			name = "Chinese Democratic League(Kuomintang Integration Branch)"
+		}
+		}
 	}
 
 	#Junru's Legal Thought
@@ -338,6 +391,11 @@ focus_tree = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_ideologicalacademic_freedoms  } prerequisite = { focus = HNNUNIFIEDTANG_allowing_flowers_of_peace_of_bloom  } prerequisite = { focus = HNNUNIFIEDTANG_reforming_old_culture  }
+		completion_reward = {
+		add_ideas = {
+		HNN_junru_legalism
+		}
+		}
 	}
 
 	#Working With the Unions
@@ -351,6 +409,16 @@ focus_tree = {
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = HNNUNIFIEDTANG_crushing_the_feudalist_system  } prerequisite = { focus = HNNUNIFIEDTANG_integrate_kmt_remnants  } prerequisite = { focus = HNNUNIFIEDTANG_junruslegalthought  }
+		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.05
+		}
+		add_timed_idea = {
+		idea = HNN_union_support
+		days = 365
+		}
+		}
 	}
 
 	#Innocence In Patriotism
@@ -363,7 +431,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
+		available = {
+		has_completed_focus = HNNUNIFIEDTANG_working_with_the_unions
+		}
 		prerequisite = { focus = HNNUNIFIEDTANG_crushing_the_feudalist_system  } prerequisite = { focus = HNNUNIFIEDTANG_integrate_kmt_remnants  } prerequisite = { focus = HNNUNIFIEDTANG_junruslegalthought  }
+		completion_reward = {
+		country_event = 
+		}
 	}
 
 	#Introducing the Seven Gentlemen
@@ -372,12 +446,26 @@ focus_tree = {
 		icon = GFX_HNNUNIFIEDTANG_introducing_the_seven_gentlemen-248360
 		x = 4
 		y = 11
-		cost = 5
+		cost = 3
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_idea = HNN_Shen_Junru_hog_sli
+		}
 		prerequisite = { focus = HNNUNIFIEDTANG_working_with_the_unions  } prerequisite = { focus = HNNUNIFIEDTANG_innocence_in_patriotism  }
 		mutually_exclusive = { focus = HNNUNIFIEDTANG_democracy_under_socialism  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		add_political_power = 20
+		swap_ideas = {
+		remove_idea = HNN_junru_legalism
+		add_idea = HNN_junru_legalism_1
+		}
+		}
 	}
 
 	#Democracy Under Socialism
@@ -386,12 +474,25 @@ focus_tree = {
 		icon = GFX_HNNUNIFIEDTANG_democracy_under_socialism-248360
 		x = 2
 		y = 11
-		cost = 5
+		cost = 3
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_idea = HNN_Zhang_Lan_hog_sde
+		}
 		prerequisite = { focus = HNNUNIFIEDTANG_working_with_the_unions  } prerequisite = { focus = HNNUNIFIEDTANG_innocence_in_patriotism  }
 		mutually_exclusive = { focus = HNNUNIFIEDTANG_introducing_the_seven_gentlemen  }
+		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		}
+		add_political_power = 20
+		add_ideas = {
+		HNN_Lans_Democratic_Socialism
+		}
+		}
 	}
 
 	#Victory of Jiusan Society

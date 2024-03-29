@@ -3673,7 +3673,7 @@ country_event = { #Continuation of the Third Way?
 	}
 }
 
-country_event = { #
+country_event = { #The Innocence of Patriotism
 	id = hunan_rework.75
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.75"}
 	title = hunan_rework.75.title
@@ -3681,10 +3681,50 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Zhang Lan Stays
 		name = hunan_rework.75.a
 		ai_chance = { base = 100 }
 		
+	}
+	
+	option = { #Xu Fulin Leads
+		name = hunan_rework.75.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_liberal }
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.35
+		}
+		
+		
+		
+		if = {
+			limit = {
+				
+				has_country_leader = {
+					name = "Yuan Keding"
+					ruling_only = yes
+				}
+			}
+			set_country_leader_portrait = {
+				ideology = social_liberal
+				portrait = "gfx/leaders/MON/Portrait_MON_Yuan_Keding.png"
+			}
+			set_country_leader_name = {
+				ideology = social_liberal
+				name = "Yuan Keding"
+			}
+			set_country_leader_ideology = soclib_liberal_socialism_subtype
+		}
+		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Shen_Junru_hog_sli
+				HNN_Zhang_Naiqi_eco_sli
+				HNN_Sha_Qianli_for_rso
+				HNN_Shi_Liang_sec_sli
+				
+			}
 	}
 }
 
