@@ -3774,7 +3774,7 @@ country_event = { #The Innocence of Patriotism
 	}
 }
 
-country_event = { #
+country_event = { #A Democracy Amongst Intellectuals
 	id = hunan_rework.76
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.76"}
 	title = hunan_rework.76.title
@@ -3782,10 +3782,90 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Xu Deheng
 		name = hunan_rework.76.a
 		ai_chance = { base = 100 }
 		
+	}
+	
+	option = { #Zhou Peiyuan Leads
+		name = hunan_rework.76.b
+		ai_chance = { base = 100 }
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.35
+		}
+		set_politics = { ruling_party = social_liberal }
+		
+		
+		if = {
+			limit = {
+				
+				has_country_leader = {
+					name = "Yuan Keding"
+					ruling_only = yes
+				}
+			}
+		
+		set_country_leader_portrait = {
+			ideology = social_liberal
+			portrait = "gfx/leaders/MON/Portrait_MON_Yuan_Keding.png"
+		}
+		set_country_leader_name = {
+			ideology = social_liberal
+			name = "Yuan Keding"
+		}
+		set_country_leader_ideology = soclib_utopian_technocracy_subtype
+		}
+		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Xu_Fulin_hog_sli
+				HNN_Shui_Xiheng_eco_sli
+				HNN_Cao_Chenying_for_sli
+				HNN_Li_Jinxi_sec_sli
+				
+			}
+	}
+	
+	option = { #Luo Junzhan Leads
+		name = hunan_rework.76.c
+		ai_chance = { base = 100 }
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.35
+		}
+		set_politics = { ruling_party = radical_socialist }
+		
+		
+		if = {
+			limit = {
+				
+				has_country_leader = {
+					name = "Yuan Keding"
+					ruling_only = yes
+				}
+			}
+		
+		set_country_leader_portrait = {
+			ideology = radical_socialist
+			portrait = "gfx/leaders/MON/Portrait_MON_Yuan_Keding.png"
+		}
+		set_country_leader_name = {
+			ideology = radical_socialist
+			name = "Yuan Keding"
+		}
+		set_country_leader_ideology = utopian_technocracy_subtype
+		}
+		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Luo_Junzhan_hog_rso
+				HNN_Chu_Anping_eco_rso
+				HNN_Zhang_Ximan_for_rso
+				HNN_Zhang_Ximan_sec_rso
+				
+			}
 	}
 }
 
@@ -3797,11 +3877,15 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { 
 		name = hunan_rework.77.a
 		ai_chance = { base = 100 }
 		
 	}
+	
+	
+	
+	
 }
 
 country_event = { #
