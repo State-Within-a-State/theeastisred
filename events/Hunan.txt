@@ -1717,17 +1717,6 @@ country_event = { #Tang Shengzhi Democratic Victory
 			ruling_party = social_democrat
 		}
 		add_political_power = -10
-		create_field_marshal = {
-			name = "Tang Shengzhi"
-			picture = "gfx/leaders/HNN/Portrait_Hunan_Tang_Shengzhi.png"
-			traits = { defensive_doctrine }
-			skill = 2
-			attack_skill = 2
-			defense_skill = 3
-			planning_skill = 1
-			logistics_skill = 1
-			id = 1409
-		}
 			remove_all_ministers = yes
 			add_ideas = {
 				HNN_Tang_Shengzhi_hog_sde
@@ -1820,15 +1809,19 @@ country_event = { #Tang Shengzhi coup, military
 			}
 		}
 		set_country_flag = HNN_tang_victory_flag
-		remove_ideas = {
-		HNN_socialist_resistance
-		}
 		load_focus_tree = hnn-tang-shengzhi-tree
 		set_country_flag = HNN_Tang_Shengzhi_Elected
 		add_popularity = {
 			ideology = social_democrat
 			popularity = 0.1
 		}
+		hidden_effect = {
+		remove_ideas = {
+		HNN_socialist_resistance
+		}
+		event_target:HNN_Zhao_Hengti = {
+				set_nationality = NSW
+			}
 		NSW = {
 		every_unit_leader = {
 			limit = {
@@ -1836,6 +1829,7 @@ country_event = { #Tang Shengzhi coup, military
 			}
 			set_nationality = HNN
 			}
+		}
 		}
 		clr_country_flag = HNN_electionsstarted
 		set_politics = {
@@ -1849,9 +1843,6 @@ country_event = { #Tang Shengzhi coup, military
 				HNN_Guan_Kong_for_sde
 				HNN_Cao_Dianqiu_eco_sde
 				HNN_Cao_Bowen_sec_sde
-			}
-			event_target:HNN_Zhao_Hengti = {
-				set_nationality = NSW
 			}
 			QIE = {
 				country_event = {
