@@ -3869,7 +3869,7 @@ country_event = { #A Democracy Amongst Intellectuals
 	}
 }
 
-country_event = { #
+country_event = { #Meeting of the Chinese People's Conference
 	id = hunan_rework.77
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.77"}
 	title = hunan_rework.77.title
@@ -3877,10 +3877,53 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { 
+	option = {#Mao Zedong Center Faction
 		name = hunan_rework.77.a
 		ai_chance = { base = 100 }
-		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Xu_Teli_hog_rso
+				HNN_Cai_Hesen_for_rso
+				HNN_Xiao_Zisheng_eco_rso
+				HNN_He_Shuheng_sec_rso
+			}
+	}
+	
+	option = {#Moderate Mao Faction
+		name = hunan_rework.77.b
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Deng_Zihui_hog_rso
+				HNN_Ren_Bishi_for_rso
+				HNN_Li_Weihan_eco_sde
+				HNN_Gao_Gang_sec_rso
+			}
+	}
+	
+	option = {#Syndicalist Mao Faction
+		name = hunan_rework.77.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		create_country_leader = { 
+			name = "Mao Zedong"
+			desc = "MAO_ZEDONG_LEADER_DESC"
+			picture = "gfx/leaders/HNN/Portrait_Mao_Zedong.png"
+			expire = "2012.10.15"
+			ideology = agrarian_syndicalism_subtype
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = HNN_Mao_party_long
+			name = HNN_Mao_party
+		}
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Mao_Zemin_hog_syn
+				HNN_Peng_Renquan_for_syn
+				HNN_Huang_Ai_eco_syn
+				HNN_Gao_Gang_sec_rso
+			}
 	}
 	
 	
