@@ -3906,28 +3906,44 @@ country_event = { #Meeting of the Chinese People's Conference
 		name = hunan_rework.77.c
 		ai_chance = { base = 100 }
 		set_politics = { ruling_party = syndicalist }
-		create_country_leader = { 
-			name = "Mao Zedong"
-			desc = "MAO_ZEDONG_LEADER_DESC"
-			picture = "gfx/leaders/HNN/Portrait_Mao_Zedong.png"
-			expire = "2012.10.15"
-			ideology = agrarian_syndicalism_subtype
-		}
-		set_party_name = {
-			ideology = syndicalist
-			long_name = HNN_Mao_party_long
-			name = HNN_Mao_party
-		}
 		remove_all_ministers = yes
+		if = { 
+			limit = {
+				
+				has_country_leader = {
+					name = "Mao Zemin"
+					ruling_only = yes
+				}
+			}
 			add_ideas = {
 				HNN_Mao_Zemin_hog_syn
 				HNN_Peng_Renquan_for_syn
 				HNN_Huang_Ai_eco_syn
 				HNN_Gao_Gang_sec_rso
 			}
+			}
+		else = { #put the ministers for the other syndie leader here so that way depending on who you picked before you start out differently
+		
+		}
+		
+		set_country_leader_portrait = {
+			ideology = syndicalist
+			portrait = "gfx/leaders/HNN/Portrait_Mao_Zedong.png"
+		}
+		set_country_leader_name = {
+			ideology = syndicalist
+			name = "Mao Zedong"
+		}
+		set_country_leader_description = {
+			ideology = syndicalist
+			desc = "MAO_ZEDONG_LEADER_DESC"
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = HNN_Mao_party_long
+			name = HNN_Mao_party
+		}
 	}
-	
-	
 	
 	
 }
