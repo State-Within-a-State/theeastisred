@@ -664,7 +664,7 @@ HNN_five_year_plan_mission = {
 		tag = HNN
 		}
 
-		available = {
+		cancel_trigger = {
 			num_of_factories > 300
 		}
 
@@ -707,8 +707,8 @@ HNN_five_year_plan_mission = {
 		NOT = { has_country_flag = HNN_five_year_plan_done }
 		NOT = { has_country_flag = HNN_five_year_plan_cucked }
 		}
-		days_remove = 35
-		days_re_enable = 40
+		days_remove = 25
+		days_re_enable = 10
 		complete_effect = {
 		}
 		remove_effect = {
@@ -739,8 +739,8 @@ HNN_five_year_plan_mission = {
 		available = {
 		}
 		
-		days_remove = 35
-		days_re_enable = 40
+		days_remove = 30
+		days_re_enable = 25
 		complete_effect = {
 		}
 		remove_effect = {
@@ -755,6 +755,180 @@ HNN_five_year_plan_mission = {
 		}
 	}
 
+	MAO_fushun_oil_alu = {
+		visible = {
+			has_completed_focus = HNN_UNIFICATION_MAO_156_key_projects
+			716 = { is_owned_and_controlled_by = ROOT }
+		}
+		highlight_states = {
+			highlight_state_targets = { state = 716 } #liaoning
+		}
+		allowed = { tag = HNN }
+		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			has_tech = excavation1
+		}
+		fire_only_once = yes
+		icon = GFX_decision_oil
+		priority = 30
+		cancel_if_not_visible = no
+		ai_will_do = { factor = 25 }
+		cost = 30
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_mining_operations_in_five_provinces"
+		}
+		days_remove = 60
+		modifier = {
+			civilian_factory_use = 2
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_mining_operations_in_five_provinces"
+			716 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_resource = {
+					type = oil
+					amount = 8
+				}
+				add_resource = {
+					type = aluminium
+					amount = 2
+				}
+			}
+		}
+	}
+	MAO_harbin_fact = {
+		visible = {
+			has_completed_focus = HNN_UNIFICATION_MAO_156_key_projects
+			885 = { is_owned_and_controlled_by = ROOT }
+		}
+		highlight_states = {
+			highlight_state_targets = { state = 885 } #harbin
+		}
+		allowed = { tag = HNN }
+		available = {
+			num_of_civilian_factories_available_for_projects > 3
+		}
+		fire_only_once = yes
+		icon = GFX_decision_oil
+		priority = 30
+		cancel_if_not_visible = no
+		ai_will_do = { factor = 25 }
+		cost = 30
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_mining_operations_in_five_provinces"
+		}
+		days_remove = 90
+		modifier = {
+			civilian_factory_use = 4
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_mining_operations_in_five_provinces"
+			885 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+		}
+		}
+	}
+	MAO_wuhan_iron = {
+		visible = {
+			has_completed_focus = HNN_UNIFICATION_MAO_156_key_projects
+			1048 = { is_owned_and_controlled_by = ROOT } #wuhan
+		}
+		highlight_states = {
+			highlight_state_targets = { state = 1048 }
+		}
+		allowed = { tag = HNN }
+		available = {
+			num_of_civilian_factories_available_for_projects > 3
+			has_tech = excavation1
+		}
+		fire_only_once = yes
+		icon = GFX_decision_steel
+		priority = 30
+		cancel_if_not_visible = no
+		ai_will_do = { factor = 25 }
+		cost = 40
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_nationalising_manchurian_iron_industry"
+		}
+		days_remove = 70
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_nationalising_manchurian_iron_industry"
+			1048 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = steel
+					amount = 6
+				}
+			}
+		}
+	}
+	MAO_tin_kunming = {
+		visible = {
+			has_completed_focus = HNN_UNIFICATION_MAO_156_key_projects
+			325 = { is_owned_and_controlled_by = ROOT }
+		}
+		highlight_states = {
+			highlight_state_targets = { state = 325 } #Kunming
+		}
+		allowed = { tag = HNN }
+		available = {
+			num_of_civilian_factories_available_for_projects > 2
+			has_tech = excavation1
+		}
+		fire_only_once = yes
+		icon = GFX_decision_aluminium
+		priority = 30
+		cancel_if_not_visible = no
+		ai_will_do = { factor = 25 }
+		cost = 30
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision complete CHI_expand_tin_production_in_gejiu"
+		}
+		days_remove = 80
+		modifier = {
+			civilian_factory_use = 2
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_expand_tin_production_in_gejiu"
+			325 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+				add_resource = {
+					type = aluminium
+					amount = 5
+				}
+			}
+		}
+	}
 
 
 
