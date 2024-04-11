@@ -2970,6 +2970,7 @@ country_event = { #Meeting of the Hunan Central Committee
 		defense_skill = 2
 		planning_skill = 2
 		logistics_skill = 2
+		id = 1408
 		}
 		}
 		add_popularity = {
@@ -3039,6 +3040,7 @@ country_event = { #Meeting of the Hunan Central Committee
 		defense_skill = 2
 		planning_skill = 2
 		logistics_skill = 2
+		id = 1408
 		}
 		}
 		set_party_name = {
@@ -3313,25 +3315,46 @@ country_event = { #Meeting of the Hunan National Labour Congress
 	
 	is_triggered_only = yes
 	option = { #Li Lisan Remains
+	trigger = {
+		power_balance_value = {
+  		  id = HNN_csp_factionalism
+   		 value > -0.01
+		}
+	}
 		name = hunan_rework.68.a
 		ai_chance = { base = 100 }
 		set_country_flag = HNN_support_united_front
 		set_country_leader_ideology = centralized_syndicalism_subtype
 		mark_focus_tree_layout_dirty = yes
+		remove_power_balance = { id = HNN_csp_factionalism }
 	}
 	
 	option = { #Li Lisan Remains
+	trigger = {
+		power_balance_value = {
+  		  id = HNN_csp_factionalism
+   		 value > -0.01
+		}
+	}
 		name = hunan_rework.68.c
 		ai_chance = { base = 100 }
 		set_country_flag = HNN_support_united_front
 		set_country_leader_ideology = syn_internationalism_subtype
 		mark_focus_tree_layout_dirty = yes
+		remove_power_balance = { id = HNN_csp_factionalism }
 	}
 	
 	option = { #Liu Shaoqi
+	trigger = {
+		power_balance_value = {
+  		  id = HNN_csp_factionalism
+   		 value < 0
+		}
+	}
 		name = hunan_rework.68.b
 		ai_chance = { base = 100 }
 		set_country_flag = HNN_denounce_united_front
+		remove_power_balance = { id = HNN_csp_factionalism }
 		mark_focus_tree_layout_dirty = yes
 		create_country_leader = {
 			name = "Liu Shaoqi"
