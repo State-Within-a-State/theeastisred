@@ -3237,40 +3237,6 @@ country_event = { #he long switcher
 		set_country_leader_ideology = radical_progressivism_subtype
 		add_political_power = 30
 	}
-	option = { #
-		name = hunan_rework.66.c
-		trigger = {
-		AUS = {
-		exists = yes
-		has_country_leader = { name = "Huey Long" ruling_only = yes }	
-		has_global_flag = USA_civil_war_over_flag
-		}
-		}
-		ai_chance = { base = 100 }
-		set_politics = { ruling_party = social_democrat }
-		create_country_leader = {
-			name = "He Long"
-			desc = "-"
-			picture = "gfx/leaders/HNN/Portrait_Hunan_He_Long.png"
-			expire = "1965.1.1"
-			ideology = socdem_longism_subtype
-		}
-		add_radsoc_to_coalition = yes
-		add_stability = -0.10
-		if = {
-		limit = {
-		AUS = {
-			is_faction_leader = yes
-				}
-			}
-			AUS = {
-			add_to_faction = HNN
-			}
-		}
-		AUS = {
-		give_guarantee = HNN
-		}
-	}
 }
 
 country_event = { #In the Struggle of Anti-Imperialism
@@ -3318,8 +3284,9 @@ country_event = { #Meeting of the Hunan National Labour Congress
 	trigger = {
 		power_balance_value = {
   		  id = HNN_csp_factionalism
-   		 value > -0.01
+   		 value > 0.09
 		}
+		
 	}
 		name = hunan_rework.68.a
 		ai_chance = { base = 100 }
@@ -3335,20 +3302,66 @@ country_event = { #Meeting of the Hunan National Labour Congress
   		  id = HNN_csp_factionalism
    		 value > -0.01
 		}
+		power_balance_value = {
+  		  id = HNN_csp_factionalism
+   		 value < 0.1
+		}
 	}
 		name = hunan_rework.68.c
 		ai_chance = { base = 100 }
 		set_country_flag = HNN_support_united_front
-		set_country_leader_ideology = syn_internationalism_subtype
+		set_country_leader_ideology = syn_tridemism_subtype
 		mark_focus_tree_layout_dirty = yes
 		remove_power_balance = { id = HNN_csp_factionalism }
 	}
-	
 	option = { #Liu Shaoqi
 	trigger = {
 		power_balance_value = {
   		  id = HNN_csp_factionalism
    		 value < 0
+		}
+		power_balance_value = {
+  		  id = HNN_csp_factionalism
+   		 value > -0.1
+		}
+	}
+		name = hunan_rework.68.d
+		ai_chance = { base = 100 }
+		set_country_flag = HNN_denounce_united_front
+		remove_power_balance = { id = HNN_csp_factionalism }
+		mark_focus_tree_layout_dirty = yes
+		create_country_leader = {
+			name = "Liu Shaoqi"
+			desc = "LIU_SHAOQI_LEADER_DESC"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Liu_Shaoqi.png"
+			expire = "1965.1.1"
+			ideology = liberalized_syndicalism_subtype
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = "Chinese Syndicalist Party"
+			name = "CSP"
+		}
+		
+		remove_all_ministers = yes
+			add_ideas = {
+				HNN_Liu_Shaoqi_hog_syn
+				HNN_Yi_Lilong_for_syn
+				HNN_Li_Liuru_eco_syn
+				HNN_Xia_Minghan_sec_rso
+			}
+		
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.04
+		}
+	}
+
+	option = { #Liu Shaoqi
+	trigger = {
+		power_balance_value = {
+  		  id = HNN_csp_factionalism
+   		 value < -0.09
 		}
 	}
 		name = hunan_rework.68.b
