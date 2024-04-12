@@ -3943,14 +3943,30 @@ country_event = { #Meeting of the Chinese People's Conference
 		ai_chance = { base = 100 }
 		set_politics = { ruling_party = syndicalist }
 		complete_national_focus = HNN_UNIFICATION_MAO_thesyndicalistsluck
-		##Note: This doesn't give choice to other potential syndicalist premiers, another even trigger by a focus will do that.
 		remove_all_ministers = yes
-		add_ideas = {
+		if = { 
+			limit = {
+				
+				has_country_leader = {
+					name = "Mao Zemin"
+					ruling_only = yes
+				}
+			}
+			add_ideas = {
 				HNN_Mao_Zemin_hog_syn
 				HNN_Peng_Renquan_for_syn
 				HNN_Huang_Ai_eco_syn
 				HNN_Gao_Gang_sec_rso
 			}
+			}
+		else = { #put the ministers for the other syndie leader here so that way depending on who you picked before you start out differently
+				add_ideas = {
+				HNN_Huang_Ai_hog_syn
+				HNN_Peng_Renquan_for_syn
+				HNN_Huang_Ai_eco_syn
+				HNN_Luo_Yinong_sec_syn
+			}
+		}
 		
 		set_country_leader_portrait = {
 			ideology = syndicalist
@@ -4030,7 +4046,14 @@ country_event = { #A Meeting of the National Labour Conference
 	#picture = 
 	
 	is_triggered_only = yes
+		option = { #keep same as before
+		name = hunan_rework.79.d
+		ai_chance = { base = 100 }
+		
+	}
+
 	option = { #
+	trigger = { has_idea = HNN_Huang_Ai_hog_syn }
 		name = hunan_rework.79.a
 		ai_chance = { base = 100 }
 		remove_all_ministers = yes
@@ -4044,6 +4067,7 @@ country_event = { #A Meeting of the National Labour Conference
 	}
 	
 	option = { #
+	trigger = { has_idea = HNN_Mao_Zemin_hog_syn }
 		name = hunan_rework.79.b
 		ai_chance = { base = 100 }
 		remove_all_ministers = yes
@@ -4066,7 +4090,7 @@ country_event = { #A Meeting of the National Labour Conference
 				HNN_Xia_Minghan_eco_syn
 				HNN_Luo_Yinong_sec_syn
 			}
-		set_country_leader_ideology = syn_tridemism_subtype
+		set_country_leader_ideology = liberalized_syndicalism_subtype
 	}
 }
 
