@@ -1582,6 +1582,30 @@ focus_tree = {
 		prerequisite = { focus = HNNKMT_meeting_of_the_hunan_national_labour_congress  }
 		mutually_exclusive = { focus = HNNKMT_uphold_the_united_front  }
 		##Will Lead To A Syndicalist Chinese unification tree
+		completion_reward = {
+		custom_effect_tooltip = switch_focus_unification_china_tt
+		if = { limit = { has_country_leader = { name = "Liu Shaoqi" ruling_only = yes } }
+		hidden_effect = {
+		load_focus_tree = hnn-mao-unification
+		complete_national_focus = HNN_UNIFICATION_MAO_standing_upon_the_gates_of_tiananmen
+		unlock_national_focus = HNN_UNIFICATION_MAO_meetingofthechinesepeoplesconference
+		complete_national_focus = HNN_UNIFICATION_MAO_thesyndicalistsluck
+		set_country_leader_portrait = {
+			ideology = syndicalist
+			portrait = "gfx/leaders/HNN/Portrait_Mao_Zedong.png"
+		}
+		set_country_leader_name = {
+			ideology = syndicalist
+			name = "Mao Zedong"
+		}
+		}
+		}
+		else = { 
+		hidden_effect = {
+		load_focus_tree = hnn_kmt_unification_generic 
+		}
+		}
+		}
 	}
 
 	#Uphold the United Front
