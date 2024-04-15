@@ -1167,7 +1167,7 @@ china_generic_set_government_cosmetic_effect = {
 		set_cosmetic_tag = HNN_government
 	}
 	else_if = {
-		limit = { original_tag = KUM }
+		limit = { original_tag = TAN }
 		if = {
 			limit = { has_cosmetic_tag = KUM_zhongying }
 			set_cosmetic_tag = KUM_government_zhongying
@@ -1530,7 +1530,7 @@ china_enable_non_government_demand_submission_decisions = {
 					china_is_unaligned = yes
 				}
 				NOT = { original_tag = XSM }
-				NOT = { original_tag = KUM }
+				NOT = { original_tag = TAN }
 				NOT = { original_tag = SIK }
 			}
 			add_to_array = { ROOT.china_possible_targets_array = THIS }
@@ -1590,7 +1590,7 @@ china_enable_all_demand_submission_decisions = {
 			limit = {
 				is_chinese_tag = yes
 				NOT = { original_tag = XSM }
-				NOT = { original_tag = KUM }
+				NOT = { original_tag = TAN }
 				NOT = { original_tag = SIK }
 			}
 			add_to_array = { ROOT.china_possible_targets_array = THIS }
@@ -1646,7 +1646,7 @@ china_enable_all_attack_decisions = {
 			limit = {
 				is_chinese_tag = yes
 				NOT = { original_tag = XSM }
-				NOT = { original_tag = KUM }
+				NOT = { original_tag = TAN }
 				NOT = { original_tag = SIK }
 			}
 			ROOT = { activate_targeted_decision = { decision = china_attack_decision target = PREV } }
@@ -1674,14 +1674,14 @@ china_enable_outskirts_decisions = {
 		effect_tooltip = { activate_targeted_decision = { target = SIK decision = china_demand_submission } }
 	}
 	if = {
-		limit = { can_declare_war_on = KUM }
+		limit = { can_declare_war_on = TAN }
 		if = {
-			limit = { KUM = { has_country_flag = KUM_is_chinese_tag } }
-			add_to_array = { ROOT.china_possible_targets_array = KUM }
-			effect_tooltip = { activate_targeted_decision = { target = KUM decision = china_demand_submission } }
+			limit = { TAN = { has_country_flag = KUM_is_chinese_tag } }
+			add_to_array = { ROOT.china_possible_targets_array = TAN }
+			effect_tooltip = { activate_targeted_decision = { target = TAN decision = china_demand_submission } }
 		}
 		else = {
-			activate_targeted_decision = { decision = china_demand_annexation target = KUM }
+			activate_targeted_decision = { decision = china_demand_annexation target = TAN }
 		}
 	}
 	if = {
@@ -1704,7 +1704,7 @@ china_enable_alliances_decisions = {
 	add_to_array = { china_possible_allies_array = YUN }
 	add_to_array = { china_possible_allies_array_northwest = SIK }
 	add_to_array = { china_possible_allies_array_northwest = XSM }
-	add_to_array = { china_possible_allies_array_northwest = KUM }
+	add_to_array = { china_possible_allies_array_northwest = TAN }
 }
 
 china_enable_concession_decisions = {
