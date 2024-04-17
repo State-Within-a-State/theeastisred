@@ -43,7 +43,11 @@ shared_focus = {
 	ai_will_do = { factor = 50 }
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus KMT_white_sun"
-		RKMT_economic_recovery = yes
+		if = { limit = { tag = HNN } 
+		add_ideas = GXC_economic_instability 
+		add_ideas = KR_RKMT_popular_support_1
+		add_ideas = GXC_kmt_demobilisation
+		}
 		add_political_power = 100
 	}
 	search_filters = { FOCUS_FILTER_POLITICAL }
@@ -323,7 +327,7 @@ shared_focus = {
 
 shared_focus = {
 	id = KMT_national_mausoleum
-	icon = GFX_goal_chi_sun_legacy
+	icon = GFX_HNNKMT_sanmin_zhuyi-248360
 	cost = 5
 
 	relative_position_id = KMT_minsheng
@@ -356,6 +360,7 @@ shared_focus = {
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus KMT_academia_sinica"
 		add_research_slot_until_five = yes
+		RKMT_economic_recovery = yes
 	}
 	search_filters = { FOCUS_FILTER_RESEARCH }
 }
@@ -484,6 +489,9 @@ shared_focus = {
 	#	NOT = { has_country_leader = { character = GXC_li_zongren } }
 	#}
 	ai_will_do = { factor = 50 }
+	available = {
+	has_completed_focus = KMT_white_sun
+	}
 	completion_reward = {
 		log = "[GetDateText]: [Root.GetName]: Focus KMT_renovate_whampoa"
 		army_experience = 50
@@ -495,7 +503,7 @@ shared_focus = {
 
 shared_focus = {
 	id = KMT_central_military_academy
-	icon = GFX_goal_chinese_national_army
+	icon = GFX_HNNKMT_reach_out_to_kuomintang_rightists-248360
 	cost = 5
 
 	relative_position_id = KMT_renovate_whampoa
@@ -1103,36 +1111,7 @@ shared_focus = {
 			limit = { NOT = { has_tech = early_submarine } }
 			set_technology = { early_submarine = 1 }
 		}
-		QIE = {
-			custom_effect_tooltip = characters_will_be_recruited
-			character_list_tooltip = {
-				limit = {
-					OR = {
-						is_character = QIE_sa_zhenbing
-						is_character = QIE_du_xigui
-						is_character = QIE_wu_renli
-
-					}
-				}
-			}
-			hidden_effect = {
-				QIE_sa_zhenbing = { set_nationality = ROOT }
-				QIE_du_xigui = { set_nationality = ROOT }
-				QIE_wu_renli = { set_nationality = ROOT }
-			}
-		}
-		if = {
-			limit = { NOT = { country_exists = FNG } }
-			FNG = {
-				custom_effect_tooltip = characters_will_be_recruited
-				character_list_tooltip = {
-					limit = { is_character = FNG_shen_honglie }
-				}
-				hidden_effect = {
-					FNG_shen_honglie = { set_nationality = ROOT }
-				}
-			}
-		}
+	
 	}
 	search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_NAVY_BONUS FOCUS_FILTER_RESEARCH }
 }
