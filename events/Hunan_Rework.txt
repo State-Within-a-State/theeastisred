@@ -523,6 +523,7 @@ country_event = { #Declaration of a New Republic
 	option = { #The Nation Shall Be Protected!
 		name = hunan_rework.13.b
 		ai_chance = { base = 100 }
+		set_country_flag = tang_natsoc_cont
 	}
 	
 	option = { #The People Shall Forever Adore President Tang
@@ -3714,16 +3715,14 @@ country_event = { #Continuation of the Third Way?
 		}
 		
 		}
-		
-		else_if = {
-			limit = {
-				
-				has_country_leader = {
-					name = "Yuan Keding"
-					ruling_only = yes
-				}
-			}
-			set_country_leader_ideology = liberal_socialism_subtype
+		if = {
+		limit = {
+		has_country_flag = tang_natsoc_cont
+		}
+		set_country_leader_ideology = liberal_socialism_subtype
+		}
+		else = {
+		set_country_leader_ideology = socdem_national_socialism_subtype
 		}
 		
 		remove_all_ministers = yes
