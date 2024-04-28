@@ -21,5 +21,189 @@ focus_tree = {
 	shared_focus = KMT_renovate_whampoa
 	shared_focus = KMT_expand_dockyard	
 	shared_focus = CHINA_FOREIGN_POLICY_beyond_the_walls_of_the_middle_kingdom
+	
+focus = {
+		id = hnn_kmtuni_helong
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		allow_branch = {
+			has_country_leader = { ruling_only = yes name = "He Long" }
+		}
+		available = {
+		has_completed_focus = KMT_triumphant_revolution
+		}
+		x = 15
+		y = 7
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+focus = {
+		id = hnnunilong_arm
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_helong
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_helong 
+		}
+		completion_reward = {
+			custom_effect_tooltip = asymmetrical_warfare_effect
+			hidden_effect = {
+				set_technology = { asymmetrical_warfare = 1 }
+				random_unit_leader = {
+				limit = { has_id = 1416 }
+				promote_leader = yes
+				}
+			}
+		}
+	}
+focus = {
+		id = hnnunilong_visit
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_helong
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_helong 
+		}
+		completion_reward = {
+		add_ideas = HNN_he_cooperate
+		}
+	}
+focus = {
+		id = hnnunilong_research
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_helong
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnn_kmtuni_helong } 
+		completion_reward = {
+		add_research_slot_until_six = yes
+		}
+	}
+
+focus = {
+		id = hnnunilong_commie
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_helong
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunilong_arm } prerequisite = { focus = hnnunilong_visit } prerequisite = { focus = hnnunilong_research }
+		completion_reward = {
+		country_event = hunan_rework.82
+		}
+	}
+
+focus = {
+		id = hnnunilong_commiepurge
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_helong
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = hnnunilong_commiewholesome }
+		prerequisite = {
+		focus = hnnunilong_commie
+		}
+		completion_reward = {
+		country_event = hunan_rework.83
+		}
+	}
+focus = {
+		id = hnnunilong_commiewholesome
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_helong
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = hnnunilong_commiepurge }
+		prerequisite = {
+		focus = hnnunilong_commie
+		}
+		completion_reward = {
+		country_event = hunan_rework.84
+		}
+	}
+
+
+#li lisan
+focus = {
+		id = hnnunili
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		allow_branch = {
+			has_country_leader = { ruling_only = yes name = "Li Lisan" }
+		}
+		available = {
+		has_completed_focus = KMT_triumphant_revolution
+		}
+		x = 16
+		y = 10
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+focus = {
+		id = hnnunili_united
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_lisan
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_lisan 
+		}
+		completion_reward = {
+		add_radsoc_to_coalition = yes
+		}
+	}
+focus = {
+		id = hnnunilong_commie
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_lisan
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_lisan 
+		}
+		completion_reward = {
+		country_event = hunan_rework.83
+		}
+	}
+
+
+
+
+
 
 }
