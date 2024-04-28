@@ -3138,11 +3138,10 @@ country_event = { #Meeting of the Hunan Central Committee
 		HNN_socialist_resistance
 		}
 		hidden_effect = {
-		set_country_flag = RD_commies_love_each_other
 		NSW = {
-		every_unit_leader = {
+		random_unit_leader = {
 			limit = {
-			has_trait = HNN_socialist_officer
+			has_id = 1416
 			}
 			set_nationality = HNN
 			}
@@ -4279,21 +4278,31 @@ country_event = { #wholesome
 
 }
 
-country_event = { #
-	id = hunan_rework.84
-	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.84"}
-	title = hunan_rework.84.title
+#massacre of communists real life alegory
+news_event = {
+   id = hunan_rework.84
+   title = hunan_rework.84.title
 	desc = hunan_rework.84.desc
-	#picture = 
-	
-	is_triggered_only = yes
-	option = { #
-		name = hunan_rework.84.a
-		ai_chance = { base = 100 }
-		
-	}
-}
+	#picture = "GFX_news_event_toseiha_coup"
 
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		wants_world_news = yes
+	}
+
+   option = {
+	   name = hunan_rework.a
+	trigger = { NOT = { tag = HNN }
+	}
+	}	
+	option = {
+	   name = hunan_rework.b
+	trigger = { tag = HNN
+	}
+	}
+
+}
 country_event = { #
 	id = hunan_rework.85
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.85"}
