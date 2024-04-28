@@ -523,7 +523,6 @@ country_event = { #Declaration of a New Republic
 	option = { #The Nation Shall Be Protected!
 		name = hunan_rework.13.b
 		ai_chance = { base = 100 }
-		set_country_flag = tang_natsoc_cont
 	}
 	
 	option = { #The People Shall Forever Adore President Tang
@@ -1982,7 +1981,7 @@ country_event = { #Young China Victory
 	}
 }
 
-country_event = { #Settling the Independence Question
+country_event = { #Carsun Chang subideos
 	id = hunan_rework.43
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.43"}
 	title = hunan_rework.43.title
@@ -1990,17 +1989,27 @@ country_event = { #Settling the Independence Question
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #China Unification
+	option = { 
 		name = hunan_rework.43.a
 		ai_chance = { base = 100 }
-		complete_national_focus = HNNSHARED_uniting_under_one_goal
 	}
-	
-	option = { #
+	option = { 
 		name = hunan_rework.43.b
 		ai_chance = { base = 100 }
-		complete_national_focus = HNNSHARED_a_true_middle_kingdom
+		set_country_leader_ideology = liberal_socialism_subtype
 	}
+	option = { 
+		name = hunan_rework.43.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = socdem_democratic_socialism_subtype
+	}
+	option = { 
+		name = hunan_rework.43.d
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = socdem_progressive_conservatism_subtype
+
+	}
+
 }
 
 ###Secret Society Rebellions###
@@ -3703,7 +3712,7 @@ country_event = { #Continuation of the Third Way?
 			desc = "-"
 			picture = "gfx/leaders/GXC/Portrait_GXC_Zhang_Junmai.png"
 			expire = "1965.1.1"
-			ideology = liberal_socialism_subtype
+			ideology = socdem_national_socialism_subtype
 		}
 		
 		create_country_leader = {
@@ -3715,16 +3724,11 @@ country_event = { #Continuation of the Third Way?
 		}
 		
 		}
-		if = {
-		limit = {
-		has_country_flag = tang_natsoc_cont
-		}
-		set_country_leader_ideology = liberal_socialism_subtype
-		}
-		else = {
-		set_country_leader_ideology = socdem_national_socialism_subtype
-		}
-		
+		country_event = {
+		id = hunan_rework.43
+		days = 3
+		} 
+		set_country_leader_ideology = socdem_national_socialism_subtype		
 		remove_all_ministers = yes
 			add_ideas = {
 				HNN_Carsun_Chang_hog_sde
@@ -3762,7 +3766,7 @@ country_event = { #Continuation of the Third Way?
 			desc = "-"
 			picture = "gfx/leaders/GXC/Portrait_GXC_Zhang_Junmai.png"
 			expire = "1965.1.1"
-			ideology = liberal_socialism_subtype
+			ideology = socdem_national_socialism_subtype
 		}
 		set_politics = { ruling_party = social_liberal }
 		create_country_leader = {

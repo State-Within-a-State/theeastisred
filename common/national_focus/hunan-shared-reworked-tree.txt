@@ -89,9 +89,11 @@
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		date > 1938.1.1
+		}
 		prerequisite = { focus = HNNSHARED_collapse_of_the_league  }
 		completion_reward = {
-		country_event = hunan_rework.43
 		}
 		
 	}
@@ -319,10 +321,16 @@
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		always = no
+		OR = {
+		has_completed_focus = HNNSPIRITSOLIDER_a_sacrifice_for_a_divine_land
+		has_country_leader = { ruling_only = yes name = "Shi Dingwu" }
+		has_completed_focus = HNNQUZHEN_new_found_miao_nationalism
+		}
 		}
 		prerequisite = { focus = HNNSHARED_settling_the_independence_question  }
 		mutually_exclusive = { focus = HNNSHARED_uniting_under_one_goal  }
+		completion_reward = {
+		}
 	}
 
 	#Support To the Peasants
@@ -529,9 +537,6 @@
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
-		}
-		available = {
-		has_completed_focus = HNNQUZHEN_new_found_miao_nationalism
 		}
 		prerequisite = { focus = HNNSHARED_empire_beyond_the_lands_of_the_han  }
 		mutually_exclusive = { focus = HNNSHARED_under_the_realm_of_the_grand_mandate  } mutually_exclusive = { focus = HNNSHARED_auspicious_clouds_rise_above_asia  }
