@@ -46,7 +46,7 @@ focus = {
 		y = 1
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_P
 		}
 		prerequisite = {
 		focus = hnn_kmtuni_helong 
@@ -87,7 +87,7 @@ focus = {
 		y = 1
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = hnn_kmtuni_helong } 
 		completion_reward = {
@@ -203,8 +203,8 @@ focus = {
 		available = {
 		has_completed_focus = KMT_triumphant_revolution
 		}
-		x = 16
-		y = 10
+		x = 15
+		y = 17
 		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -213,35 +213,73 @@ focus = {
 focus = {
 		id = hnnunili_united
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnn_kmtuni_lisan
+		relative_position_id = hnnunili
 		x = -1
 		y = 1
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_STABILITY
 		}
 		prerequisite = {
-		focus = hnn_kmtuni_lisan 
+		focus = hnnunili
 		}
 		completion_reward = {
 		add_radsoc_to_coalition = yes
+		add_socdem_to_coalition = yes
+		add_stability = 0.05
 		}
 	}
 focus = {
-		id = hnnunilong_commie
+		id = hnnunili_arm
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnn_kmtuni_lisan
+		relative_position_id = hnnunili
 		x = 0
 		y = 1
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_POLITICAL
+			FOCUS_FILTER_WAR_SUPPORT
 		}
 		prerequisite = {
-		focus = hnn_kmtuni_lisan 
+		focus = hnnunili
 		}
 		completion_reward = {
-		country_event = hunan_rework.83
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+focus = {
+		id = hnnunili_french_learn
+		icon = GFX_focus_generic_socialist_science
+		relative_position_id = hnnunili
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = {
+		focus = hnnunili
+		}
+		completion_reward = {
+		add_popularity = { ideology = syndicalist popularity = 0.05 }
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+		add_research_slot_until_six = yes
+		}
+	}
+focus = {
+		id = hnnunili_lisan_line
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunili
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunili_french_learn } prerequisite = { focus = hnnunili_arm } prerequisite = { focus = hnnunili_united }
+		completion_reward = {
+		add_ideas = HNN_li_line
 		}
 	}
 
