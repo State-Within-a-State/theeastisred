@@ -282,6 +282,204 @@ focus = {
 		add_ideas = HNN_li_line
 		}
 	}
+#mao
+focus = {
+		id = hnnunimao
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		allow_branch = {
+			has_country_leader = { ruling_only = yes name = "Mao Zedong" }
+		}
+		available = {
+		has_completed_focus = KMT_triumphant_revolution
+		}
+		x = 15
+		y = 17
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+focus = {
+		id = hnnunimao_rehab
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = {
+		focus = hnnunimao
+		}
+		completion_reward = {
+		Custom_effect_tooltip = "We will welcome back the officers from the left wing of the GMD"
+		hidden_effect = {
+		CHI = {
+		every_unit_leader = {
+		set_nationality = HNN
+		}
+		}
+		}
+		}
+	}
+focus = {
+		id = hnnunimao_arm
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = {
+		focus = hnnunimao
+		}
+		completion_reward = {
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+focus = {
+		id = hnnunimao_new_demo
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = hnnunimao_arm } prerequisite = { focus = hnnunimao_rehab }
+		completion_reward = {
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+
+focus = {
+		id = hnnunimao_warlords
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = hnnunimao_new_demo } prerequisite = { focus = hnnunimao_rehab }
+		completion_reward = {
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+focus = {
+		id = hnnunimao_three_princ
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = {
+		focus = hnnunimao
+		}
+		completion_reward = {
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+focus = {
+		id = hnnunimao_women
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = hnnunimao_arm } prerequisite = { focus = hnnunimao_three_princ }
+		completion_reward = {
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+
+focus = {
+		id = hnnunimao_learn
+		icon = GFX_focus_generic_socialist_science
+		relative_position_id = hnnunimao
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = hnnunimao_women } prerequisite = { focus = hnnunimao_new_demo }
+		completion_reward = {
+		add_popularity = { ideology = radical_socialist popularity = 0.05 }
+		add_research_slot_until_six = yes
+		}
+	}
+focus = {
+		id = hnnunimao_supress
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -1.5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = hnnunimao_warlords } prerequisite = { focus = hnnunimao_new_demo }
+		completion_reward = {
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+focus = {
+		id = hnnunimao_syndie
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = hnnunimao_learn } prerequisite = { focus = hnnunimao_women } 
+		completion_reward = {
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+
+focus = {
+		id = hnnunili_mao_plum_flower
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunili_french_learn } prerequisite = { focus = hnnunili_arm } prerequisite = { focus = hnnunili_united }
+		completion_reward = {
+		add_ideas = HNN_li_line
+		}
+	}
 
 
 
