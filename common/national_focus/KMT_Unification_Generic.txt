@@ -52,6 +52,7 @@ focus = {
 		focus = hnn_kmtuni_helong 
 		}
 		completion_reward = {
+		add_war_support = 0.05
 			custom_effect_tooltip = asymmetrical_warfare_effect
 			hidden_effect = {
 				set_technology = { asymmetrical_warfare = 1 }
@@ -94,18 +95,52 @@ focus = {
 		add_research_slot_until_six = yes
 		}
 	}
+focus = {
+		id = hnnunilong_reform
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_helong
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = hnnunilong_visit } prerequisite = { focus = hnnunilong_research }
+		completion_reward = {
+		china_generic_land_reform_setup = yes
+		}
+	}
+focus = {
+		id = hnnunilong_industry
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnn_kmtuni_helong
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = hnnunilong_arm } prerequisite = { focus = hnnunilong_visit }
+		completion_reward = {
+			add_one_random_civilian_factory = yes
+			add_one_random_civilian_factory = yes
+			add_one_random_civilian_factory = yes
+
+		}
+	}
+
 
 focus = {
 		id = hnnunilong_commie
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnn_kmtuni_helong
 		x = 0
-		y = 2
+		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnunilong_arm } prerequisite = { focus = hnnunilong_visit } prerequisite = { focus = hnnunilong_research }
+		prerequisite = { focus = hnnunilong_reform } prerequisite = { focus = hnnunilong_industry } 
 		completion_reward = {
 		add_political_power = -200
 		country_event = hunan_rework.82
@@ -118,7 +153,7 @@ focus = {
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnn_kmtuni_helong
 		x = 1
-		y = 3
+		y = 4
 		cost = 5
 		dynamic = yes
 		search_filters = {
@@ -135,6 +170,7 @@ focus = {
 		add_idea = HNN_kill_commies
 		}
 		hidden_effect = {
+		add_stability = -0.15
 		news_event = hunan_rework.84
 		set_politics = {
 			ruling_party = radical_socialist
@@ -148,7 +184,7 @@ focus = {
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnn_kmtuni_helong
 		x = -1
-		y = 3
+		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -159,6 +195,7 @@ focus = {
 		focus = hnnunilong_commie
 		}
 		completion_reward = {
+		add_stability = -0.05
 		add_ideas = HNN_long_commies
 		country_event = hunan_rework.83
 		hidden_effect = {
@@ -405,7 +442,7 @@ focus = {
 		add_stability = -0.20
 		add_timed_idea = {
 		idea = HNN_rehabilitate_all
-		days = 730
+		days = 700
 		}
 		}
 	}
@@ -452,7 +489,7 @@ focus = {
 		}
 		prerequisite = { focus = hnnunimao_warlords } prerequisite = { focus = hnnunimao_new_demo }
 		completion_reward = {
-		add_war_support = 0.1
+		add_war_support = 0.05
 		add_ideas = HNNmao_nationalism
 		}
 	}
@@ -493,6 +530,114 @@ focus = {
 			HNNmao_nationalism
 		}
 		}
+		}
+	}
+focus = {
+		id = hnnunijian
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		allow_branch = {
+			has_government = national_populist ##Not gettable rn
+		}
+		available = {
+		has_completed_focus = KMT_triumphant_revolution
+		}
+		x = 15
+		y = 7
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+focus = {
+		id = hnnunijian_again_purge
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -1
+		y = 1
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunijian } 
+		completion_reward = {
+		add_ideas = HNNmao_socialism
+		}
+	}
+focus = {
+		id = hnnunijian_miltary
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -1
+		y = 1
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunijian } 
+		completion_reward = {
+		add_ideas = HNNmao_socialism
+		}
+	}
+focus = {
+		id = hnnunijian_patronage
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -1
+		y = 1
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunijian } 
+		completion_reward = {
+		add_ideas = HNNmao_socialism
+		}
+	}
+
+focus = {
+		id = hnnunijian_land
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -1
+		y = 1
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunijian } 
+		completion_reward = {
+		add_ideas = HNNmao_socialism
+		}
+	}
+focus = {
+		id = hnnunijian_research_foreign
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -1
+		y = 1
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunijian } 
+		completion_reward = {
+		add_ideas = HNNmao_socialism
+		}
+	}
+
+focus = {
+		id = hnnunijian_die
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -1
+		y = 1
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunijian } 
+		completion_reward = {
+		add_ideas = HNNmao_socialism
 		}
 	}
 
