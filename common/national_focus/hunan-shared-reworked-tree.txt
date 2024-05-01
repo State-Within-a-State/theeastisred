@@ -304,7 +304,12 @@
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		always = no
+		NOT = { 
+		OR = {
+		has_country_leader = { ruling_only = yes name = "Chen Quzhen" } 
+		has_country_leader = { ruling_only = yes name = "Wang Xijiu" } 
+		}
+		}
 		}
 		prerequisite = { focus = HNNSHARED_settling_the_independence_question  }
 		mutually_exclusive = { focus = HNNSHARED_a_true_middle_kingdom  }
@@ -323,7 +328,7 @@
 		available = {
 		OR = {
 		has_completed_focus = HNNSPIRITSOLIDER_a_sacrifice_for_a_divine_land
-		has_country_leader = { ruling_only = yes name = "Shi Dingwu" }
+		has_completed_focus = HNNDINGWU_unveil_the_golden_robes
 		has_completed_focus = HNNQUZHEN_new_found_miao_nationalism
 		}
 		}
@@ -509,25 +514,6 @@
 		}
 	}
 
-	#Unification At Last
-	shared_focus = {
-		id = HNNSHARED_unification_at_last
-		icon = GFX_HNNSHARED_unification_at_last-248360
-		x = 57
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		available = {
-		owns_state = 608
-		}
-		prerequisite = { focus = HNNSHARED_our_own_northern_expedition  }
-		completion_reward = {
-		custom_effect_tooltip = is_not_done_yet_tt
-		}
-	}
-
 	#An Empire for the Miao
 	shared_focus = {
 		id = HNNSHARED_an_empire_for_the_miao
@@ -606,11 +592,12 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		available = {
-		has_country_leader = { ruling_only = yes name = "Shi Dingwu" }
+		has_completed_focus = HNNDINGWU_a_holy_kingdom_is_born
 		}
 		prerequisite = { focus = HNNSHARED_empire_beyond_the_lands_of_the_han  }
 		mutually_exclusive = { focus = HNNSHARED_an_empire_for_the_miao  } mutually_exclusive = { focus = HNNSHARED_under_the_realm_of_the_grand_mandate  }
 		completion_reward = {
+		country_event = { id = hunan_rework.50 days = 2 } 
 		custom_effect_tooltip = is_not_done_yet_tt
 		}
 	}

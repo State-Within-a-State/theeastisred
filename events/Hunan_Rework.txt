@@ -4331,7 +4331,7 @@ news_event = {
 	}
 
 }
-country_event = { #
+country_event = { #asia bhuddist wacko
 	id = hunan_rework.85
 	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.85"}
 	title = hunan_rework.85.title
@@ -4339,10 +4339,23 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+		option = { #
 		name = hunan_rework.85.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 95 }
 		
+	}
+	option = { #
+		name = hunan_rework.85.b
+		ai_chance = { base = 5 }
+		every_state = {
+		limit = {
+		OR = {
+				is_on_continent = asia
+				is_on_continent = india
+		}
+		}
+		add_core_of = HNN
+		}
 	}
 }
 
