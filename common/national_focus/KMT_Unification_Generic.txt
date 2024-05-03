@@ -585,6 +585,73 @@ focus = {
 		}
 	}
 focus = {
+		id = hnnuniqian
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		allow_branch = {
+			has_government = national_populist ##Not gettable rn
+		}
+		available = {
+		has_completed_focus = KMT_triumphant_revolution
+		}
+		x = 15
+		y = 7
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+focus = {
+		id = hnnuni_qian_state_capital
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunimao
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnuniqian } 
+		completion_reward = {
+			custom_effect_tooltip = CHI_state_capitalism_tt
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { controls_state = 613 } #Nanjing
+				613 = {
+					add_dynamic_modifier = {
+						modifier = CHI_state_capitalism_plan
+					}
+				}
+			}
+			if = {
+				limit = { controls_state = 608 } #Beijing
+				608 = {
+					add_dynamic_modifier = {
+						modifier = CHI_state_capitalism_plan
+					}
+				}
+			}
+			if = {
+				limit = { controls_state = 596 } #Hangzhou
+				596 = {
+					add_dynamic_modifier = {
+						modifier = CHI_state_capitalism_plan
+					}
+				}
+			}
+			if = {
+				limit = { controls_state = 802 } #Xiamen
+				802 = {
+					add_dynamic_modifier = {
+						modifier = CHI_state_capitalism_plan
+					}
+				}
+			}
+			hidden_effect = { country_event = { id = CHI.lategame.805 days = 20 } } #Promoting the Bicycle
+		}
+	}
+
+
+focus = {
 		id = hnnunijian
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		allow_branch = {
