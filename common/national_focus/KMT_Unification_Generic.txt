@@ -282,8 +282,6 @@ focus = {
 		focus = hnnunili
 		}
 		completion_reward = {
-		add_popularity = { ideology = syndicalist popularity = 0.05 }
-		add_popularity = { ideology = radical_socialist popularity = 0.05 }
 		add_research_slot_until_six = yes
 		}
 	}
@@ -299,8 +297,14 @@ focus = {
 		}
 		prerequisite = { focus = hnnunili_french_learn } prerequisite = { focus = hnnunili_arm } prerequisite = { focus = hnnunili_united }
 		completion_reward = {
-		add_ideas = HNN_li_line
+			add_timed_idea = {
+				idea = CHI_two_stage_revolution_idea
+				days = 365
+			}
+		hidden_effect = {
+		HNN_recruit_LCS_generals_effect = yes
 		}
+
 	}
 focus = {
 		id = hnnunili_prodhon
@@ -315,6 +319,9 @@ focus = {
 		mutually_exclusive = { focus = hnnunili_radicals }
 		prerequisite = { focus = hnnunili_orthodox } 
 		completion_reward = {
+		add_popularity = { ideology = syndicalist popularity = 0.05 }
+		add_popularity = { ideology = social_conservative popularity = 0.05 }
+
 		add_soccon_to_coalition = yes
 			set_party_name = {
 					ideology = social_conservative
@@ -336,6 +343,9 @@ focus = {
 		mutually_exclusive = { focus = hnnunili_prodhon }
 		prerequisite = { focus = hnnunili_orthodox } 
 		completion_reward = {
+		add_popularity = { ideology = syndicalist popularity = 0.05 }
+		add_popularity = { ideology = totalist popularity = 0.05 }
+
 		add_tot_to_coalition = yes
 				set_party_name = {
 					ideology = totalist
@@ -354,7 +364,7 @@ focus = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnunili_prodhon hnnunili_radicals } 
+		prerequisite = { focus = hnnunili_prodhon focus = hnnunili_radicals } 
 		completion_reward = {
 		add_ideas = HNN_li_line
 		}
