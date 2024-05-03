@@ -3449,7 +3449,7 @@ china_joining_french_commune = {
 		
 		visible = {
 			is_subject = no
-			FRA = { 
+			INT = { 
 			exists = yes 
 			is_faction_leader = yes
 			has_socialist_government = yes
@@ -3457,8 +3457,8 @@ china_joining_french_commune = {
 			is_in_faction = no
 			NOT = {
 				AND = {
-				has_war_with = FRA
-				is_puppet_of = FRA
+				has_war_with = INT
+				is_puppet_of = INT
 				}
 			}
 		}
@@ -3478,7 +3478,7 @@ china_joining_french_commune = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			FRA = { add_to_faction = HNN }
+			INT = { add_to_faction = FROM }
 		}
 		
 	}
@@ -3523,7 +3523,7 @@ china_joining_indian_commune = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			BHC = { add_to_faction = HNN }
+			BHC = { add_to_faction = FROM }
 		}
 		
 	}
@@ -3568,7 +3568,7 @@ china_joining_indochina_commune = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			INC = { add_to_faction = HNN }
+			INC = { add_to_faction = FROM }
 		}
 		
 	}
@@ -3614,7 +3614,7 @@ china_joining_leftist_america = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			CSA = { add_to_faction = HNN }
+			CSA = { add_to_faction = FROM }
 		}
 		
 	}
@@ -3625,7 +3625,7 @@ china_joining_russia = {
 		
 		available = {
 			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
-			
+			has_socialist_government = no
 		}
 		
 		visible = {
@@ -3633,7 +3633,7 @@ china_joining_russia = {
 			RUS = { 
 			exists = yes 
 			is_faction_leader = yes
-			
+			has_socialist_government = no
 			}
 			is_in_faction = no
 			NOT = {
@@ -3659,11 +3659,56 @@ china_joining_russia = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			RUS = { add_to_faction = HNN }
+			RUS = { add_to_faction = FROM }
 		}
 		
 	}
 }
+china_joining_soviets = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
+			has_socialist_government = yes
+		}
+		
+		visible = {
+			is_subject = no
+			SOV = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+			}
+			is_in_faction = no
+			NOT = {
+				AND = {
+				has_war_with = SOV
+				is_puppet_of = SOV
+				}
+			}
+		}
+		
+		
+
+		cost = 10
+		days_remove = 30
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			SOV = { add_to_faction = FROM }
+		}
+		
+	}
+}
+
 
 china_joining_japan = {
 		icon = GFX_decision_cement_mixer
@@ -3678,8 +3723,8 @@ china_joining_japan = {
 			JAP = { 
 			exists = yes 
 			is_faction_leader = yes
-			has_socialist_government = no
 			}
+			has_socialist_government = no
 			is_in_faction = no
 			NOT = {
 				AND = {
@@ -3704,7 +3749,7 @@ china_joining_japan = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			JAP = { add_to_faction = HNN }
+			JAP = { add_to_faction = FROM }
 		}
 		
 	}
@@ -3723,8 +3768,8 @@ china_joining_germany = {
 			GER = { 
 			exists = yes 
 			is_faction_leader = yes
-			has_socialist_government = no
 			}
+			has_socialist_government = no
 			is_in_faction = no
 			NOT = {
 				AND = {
@@ -3749,7 +3794,7 @@ china_joining_germany = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			GER = { add_to_faction = HNN }
+			GER = { add_to_faction = FROM }
 		}
 		
 	}
@@ -3765,16 +3810,16 @@ china_joining_canada = {
 		
 		visible = {
 			is_subject = no
-			CAN = { 
+			ENT = { 
 			exists = yes 
 			is_faction_leader = yes
-			has_socialist_government = no
 			}
 			is_in_faction = no
+			has_socialist_government = no
 			NOT = {
 				AND = {
-				has_war_with = CAN
-				is_puppet_of = CAN
+				has_war_with = ENT
+				is_puppet_of = ENT
 				}
 			}
 		}
@@ -3794,7 +3839,7 @@ china_joining_canada = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			CAN = { add_to_faction = HNN }
+			ENT = { add_to_faction = FROM }
 		}
 		
 	}

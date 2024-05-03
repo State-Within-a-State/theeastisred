@@ -270,7 +270,7 @@ focus = {
 	}
 focus = {
 		id = hnnunili_french_learn
-		icon = GFX_focus_generic_socialist_science
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnnunili
 		x = 2
 		y = 1
@@ -288,7 +288,7 @@ focus = {
 		}
 	}
 focus = {
-		id = hnnunili_lisan_line
+		id = hnnunili_orthodox
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnnunili
 		x = 0
@@ -303,26 +303,11 @@ focus = {
 		}
 	}
 focus = {
-		id = hnnunili_orthodox
-		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnnunili
-		x = 0
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = hnnunili_lisan_line } 
-		completion_reward = {
-		add_ideas = HNN_li_line
-		}
-	}
-focus = {
 		id = hnnunili_prodhon
-		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		icon = GFX_goal_generic_globe
 		relative_position_id = hnnunili
 		x = -1
-		y = 4
+		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -330,21 +315,46 @@ focus = {
 		mutually_exclusive = { focus = hnnunili_radicals }
 		prerequisite = { focus = hnnunili_orthodox } 
 		completion_reward = {
-		add_ideas = HNN_li_line
+		add_soccon_to_coalition = yes
+			set_party_name = {
+					ideology = social_conservative
+					name = CHI_wrd_soc_party
+					long_name = CHI_wrd_soc_party_long
+				}
 		}
 	}
 focus = {
 		id = hnnunili_radicals
-		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		icon = GFX_goal_revolution_tools
 		relative_position_id = hnnunili
 		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = hnnunili_prodhon }
+		prerequisite = { focus = hnnunili_orthodox } 
+		completion_reward = {
+		add_tot_to_coalition = yes
+				set_party_name = {
+					ideology = totalist
+					name = CHI_csp_rad_party
+					long_name = CHI_csp_rad_party_long
+				}
+		}
+	}
+focus = {
+		id = hnnunili_lisan_line
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunili
+		x = 0
 		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		mutually_exclusive = { focus = hnnunili_orthodox }
-		prerequisite = { focus = hnnunili_prodhon } 
+		prerequisite = { focus = hnnunili_prodhon hnnunili_radicals } 
 		completion_reward = {
 		add_ideas = HNN_li_line
 		}
@@ -496,7 +506,7 @@ focus = {
 
 focus = {
 		id = hnnunimao_learn
-		icon = GFX_focus_generic_socialist_science
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnnunimao
 		x = 0
 		y = 3
