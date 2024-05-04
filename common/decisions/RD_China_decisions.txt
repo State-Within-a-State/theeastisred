@@ -5,8 +5,11 @@ china_joining_french_commune = {
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
 			has_socialist_government = yes
+			NOT = {
+				has_war_with = INT
+			}
+
 		}
 		
 		visible = {
@@ -17,12 +20,6 @@ china_joining_french_commune = {
 			has_socialist_government = yes
 			}
 			is_in_faction = no
-			NOT = {
-				AND = {
-				has_war_with = INT
-				is_puppet_of = INT
-				}
-			}
 		}
 		
 		
@@ -40,7 +37,7 @@ china_joining_french_commune = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			INT = { add_to_faction = FROM }
+			INT = { add_to_faction = ROOT }
 		}
 		
 }
@@ -49,8 +46,10 @@ china_joining_indian_commune = {
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
 			has_socialist_government = yes
+			NOT = {
+				has_war_with = BHC
+			}
 		}
 		
 		visible = {
@@ -61,12 +60,6 @@ china_joining_indian_commune = {
 			has_socialist_government = yes
 			}
 			is_in_faction = no
-			NOT = {
-				AND = {
-				has_war_with = BHC
-				is_puppet_of = BHC
-				}
-			}
 		}
 		
 		
@@ -84,7 +77,7 @@ china_joining_indian_commune = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			BHC = { add_to_faction = FROM }
+			BHC = { add_to_faction = ROOT }
 		}
 }
 
@@ -92,8 +85,10 @@ china_joining_indochina_commune = {
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
 			has_socialist_government = yes
+			NOT = {
+				has_war_with = INC
+			}
 		}
 		
 		visible = {
@@ -104,12 +99,6 @@ china_joining_indochina_commune = {
 			has_socialist_government = yes
 			}
 			is_in_faction = no
-			NOT = {
-				AND = {
-				has_war_with = INC
-				is_puppet_of = INC
-				}
-			}
 		}
 		
 		
@@ -127,7 +116,7 @@ china_joining_indochina_commune = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			INC = { add_to_faction = FROM }
+			INC = { add_to_faction = ROOT }
 		}
 		
 }
@@ -137,8 +126,11 @@ china_joining_leftist_america = {
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
 			has_socialist_government = yes
+			NOT = {
+				has_war_with = CSA
+			}
+
 		}
 		
 		visible = {
@@ -149,12 +141,6 @@ china_joining_leftist_america = {
 			has_socialist_government = yes
 			}
 			is_in_faction = no
-			NOT = {
-				AND = {
-				has_war_with = CSA
-				is_puppet_of = CSA
-				}
-			}
 		}
 		
 		
@@ -172,7 +158,7 @@ china_joining_leftist_america = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			CSA = { add_to_faction = FROM }
+			CSA = { add_to_faction = ROOT }
 		}
 		
 }
@@ -181,8 +167,11 @@ china_joining_russia = {
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
 			has_socialist_government = no
+			NOT = {
+				has_war_with = RUS
+			}
+
 		}
 		
 		visible = {
@@ -193,12 +182,7 @@ china_joining_russia = {
 			has_socialist_government = no
 			}
 			is_in_faction = no
-			NOT = {
-				AND = {
-				has_war_with = RUS
-				is_puppet_of = RUS
-				}
-			}
+	
 		}
 		
 		
@@ -216,15 +200,18 @@ china_joining_russia = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			RUS = { add_to_faction = FROM }
+			RUS = { add_to_faction = ROOT }
 		}
 }
 china_joining_soviets = {
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
 			has_socialist_government = yes
+			NOT = {
+				has_war_with = SOV
+			}
+
 		}
 		
 		visible = {
@@ -235,12 +222,6 @@ china_joining_soviets = {
 			has_socialist_government = yes
 			}
 			is_in_faction = no
-			NOT = {
-				AND = {
-				has_war_with = SOV
-				is_puppet_of = SOV
-				}
-			}
 		}
 		
 		
@@ -258,17 +239,20 @@ china_joining_soviets = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			SOV = { add_to_faction = FROM }
+			SOV = { add_to_faction = ROOT }
 		}
 }
 
 
-china_joining_japan = {
+china_joining_japan = { #none socialists should be able to join japan tots and radsocs like nakano or hashimoto cause they're not communists
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
-			
+			has_socialist_government = no
+			NOT = {
+				has_war_with = JAP
+			}
+
 		}
 		
 		visible = {
@@ -277,14 +261,7 @@ china_joining_japan = {
 			exists = yes 
 			is_faction_leader = yes
 			}
-			has_socialist_government = no
 			is_in_faction = no
-			NOT = {
-				AND = {
-				has_war_with = JAP
-				is_puppet_of = JAP
-				}
-			}
 		}
 		
 		
@@ -302,7 +279,45 @@ china_joining_japan = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			JAP = { add_to_faction = FROM }
+			JAP = { add_to_faction = ROOT }
+		}
+}
+china_joining_socialist_japan = {
+		icon = GFX_decision_cement_mixer
+		
+		available = {
+			has_socialist_government = yes
+			NOT = {
+				has_war_with = JSR
+			}
+
+		}
+		
+		visible = {
+			is_subject = no
+			JSR = { 
+			exists = yes 
+			is_faction_leader = yes
+			}
+			is_in_faction = no
+		}
+		
+		
+
+		cost = 10
+		days_remove = 30
+		fire_only_once = no
+		cancel_if_not_visible = yes
+		war_with_target_on_remove = yes
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			
+			}
+		
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
+			JSR = { add_to_faction = ROOT }
 		}
 }
 
@@ -310,8 +325,11 @@ china_joining_germany = {
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
-			
+			has_socialist_government = no	
+			NOT = {
+				has_war_with = GER
+			}
+		
 		}
 		
 		visible = {
@@ -320,14 +338,7 @@ china_joining_germany = {
 			exists = yes 
 			is_faction_leader = yes
 			}
-			has_socialist_government = no
 			is_in_faction = no
-			NOT = {
-				AND = {
-				has_war_with = GER
-				is_puppet_of = GER
-				}
-			}
 		}
 		
 		
@@ -345,7 +356,7 @@ china_joining_germany = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			GER = { add_to_faction = FROM }
+			GER = { add_to_faction = ROOT }
 		}
 		
 }
@@ -354,8 +365,10 @@ china_joining_canada = {
 		icon = GFX_decision_cement_mixer
 		
 		available = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_aligning_with_the_world
-			
+			has_socialist_government = no	
+			NOT = {
+				has_war_with = ENT
+			}
 		}
 		
 		visible = {
@@ -366,12 +379,7 @@ china_joining_canada = {
 			}
 			is_in_faction = no
 			has_socialist_government = no
-			NOT = {
-				AND = {
-				has_war_with = ENT
-				is_puppet_of = ENT
-				}
-			}
+			
 		}
 		
 		
@@ -389,7 +397,7 @@ china_joining_canada = {
 		
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			ENT = { add_to_faction = FROM }
+			ENT = { add_to_faction = ROOT }
 		}
 		
 }
@@ -405,23 +413,21 @@ China_conquer_far_east = {
 			has_completed_focus = CHINA_FOREIGN_POLICY_focus_on_the_liberation_of_the_far_east
 		}
 		cost = 10
-		targets = { KOR JAP JSR YAK BRY }
+		targets = { KOR JAP JSR YAK BRY } 
 		target_trigger = {
 			FROM = { exists = yes }
 			NOT = {
-				AND = {
-				has_war_with = PREV
 				OR = {
+				has_war_with = PREV
 				is_puppet_of = PREV
 				is_in_faction_with = PREV
-				}
 				}
 			}
 		}
 		days_remove = 14
 		days_re_enable = 0
 		fire_only_once = no
-		
+		war_with_target_on_remove = yes
 		complete_effect = {
 			
 		}
@@ -442,31 +448,38 @@ China_conquer_far_east = {
 			has_completed_focus = CHINA_FOREIGN_POLICY_focus_on_the_liberation_of_the_far_east
 		}
 		cost = 10
-		targets = { KOR JAP JSR YAK BRY RUS }
+		targets = { KOR JAP JSR YAK BRY RUS } #GUH? You shouldn't be able to invite russia lol and mao inviting the larp natpop yakutia dude this is socialist china only
 		target_trigger = {
 			FROM = { exists = yes 
 			
 			}
 			NOT = {
-				AND = {
-				has_war_with = PREV
 				OR = {
+				has_war_with = PREV
 				is_puppet_of = PREV
 				is_in_faction_with = PREV
-				}
 				}
 			}
 		}
 		days_remove = 14
 		days_re_enable = 0
 		fire_only_once = no
-		
 		complete_effect = {
 			
 		}
 		remove_effect = {
+			if = { 
+			limit = {
+			is_faction_leader = yes 
+			}
 			ROOT = { add_to_faction = FROM }
-			
+			}
+			else_if = {
+			limit = {
+			is_in_faction = yes
+			}
+			ROOT = { faction_leader = { add_to_faction = FROM } }	
+			}
 		}
 	}
 	
@@ -485,19 +498,17 @@ China_conquer_far_east = {
 		target_trigger = {
 			FROM = { exists = yes }
 			NOT = {
-				AND = {
-				has_war_with = PREV
 				OR = {
+				has_war_with = PREV
 				is_puppet_of = PREV
 				is_in_faction_with = PREV
-				}
 				}
 			}
 		}
 		days_remove = 14
 		days_re_enable = 0
 		fire_only_once = no
-		
+		war_with_target_on_remove = yes
 		complete_effect = {
 			
 		}
@@ -523,12 +534,10 @@ China_conquer_far_east = {
 			
 			}
 			NOT = {
-				AND = {
-				has_war_with = PREV
 				OR = {
+				has_war_with = PREV
 				is_puppet_of = PREV
 				is_in_faction_with = PREV
-				}
 				}
 			}
 		}
@@ -540,7 +549,18 @@ China_conquer_far_east = {
 			
 		}
 		remove_effect = {
+			if = { 
+			limit = {
+			is_faction_leader = yes 
+			}
 			ROOT = { add_to_faction = FROM }
+			}
+			else_if = {
+			limit = {
+			is_in_faction = yes
+			}
+			ROOT = { faction_leader = { add_to_faction = FROM } }	
+			}
 			
 		}
 	}
@@ -554,26 +574,24 @@ China_conquer_far_east = {
 		}
 		
 		visible = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_slaying_the_colonizers_of_the_south_east
+			has_completed_focus = CHINA_FOREIGN_POLICY_focusing_on_central_asia
 		}
 		cost = 10
 		targets = { UZB TRK KYR ALO }
 		target_trigger = {
 			FROM = { exists = yes }
 			NOT = {
-				AND = {
-				has_war_with = PREV
 				OR = {
+				has_war_with = PREV
 				is_puppet_of = PREV
 				is_in_faction_with = PREV
-				}
 				}
 			}
 		}
 		days_remove = 14
 		days_re_enable = 0
 		fire_only_once = no
-		
+		war_with_target_on_remove = yes
 		complete_effect = {
 			
 		}
@@ -590,7 +608,7 @@ China_conquer_far_east = {
 		}
 		
 		visible = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_slaying_the_colonizers_of_the_south_east
+			has_completed_focus = CHINA_FOREIGN_POLICY_focusing_on_central_asia
 		}
 		cost = 10
 		targets = { UZB TRK KYR ALO }
@@ -599,12 +617,10 @@ China_conquer_far_east = {
 			
 			}
 			NOT = {
-				AND = {
-				has_war_with = PREV
 				OR = {
+				has_war_with = PREV
 				is_puppet_of = PREV
 				is_in_faction_with = PREV
-				}
 				}
 			}
 		}
@@ -616,7 +632,18 @@ China_conquer_far_east = {
 			
 		}
 		remove_effect = {
+			if = { #turn this into an event so people can actually refuse
+			limit = {
+			is_faction_leader = yes 
+			}
 			ROOT = { add_to_faction = FROM }
+			}
+			else_if = {
+			limit = {
+			is_in_faction = yes
+			}
+			ROOT = { faction_leader = { add_to_faction = FROM } }	
+			}
 			
 		}
 	}
