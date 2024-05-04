@@ -378,7 +378,6 @@ china_joining_canada = {
 			is_faction_leader = yes
 			}
 			is_in_faction = no
-			has_socialist_government = no
 			
 		}
 		
@@ -410,17 +409,18 @@ China_conquer_far_east = {
 		}
 		
 		visible = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_focus_on_the_liberation_of_the_far_east
 		}
 		cost = 10
+		target_root_trigger = {
+		has_completed_focus = CHINA_FOREIGN_POLICY_focus_on_the_liberation_of_the_far_east #socialist focus so idk
+		}
 		targets = { KOR JAP JSR YAK BRY } 
 		target_trigger = {
-			FROM = { exists = yes }
 			NOT = {
 				OR = {
-				has_war_with = PREV
-				is_puppet_of = PREV
-				is_in_faction_with = PREV
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
 				}
 			}
 		}
@@ -445,19 +445,25 @@ China_conquer_far_east = {
 		}
 		
 		visible = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_focus_on_the_liberation_of_the_far_east
+		is_in_faction = yes
 		}
 		cost = 10
-		targets = { KOR JAP JSR YAK BRY RUS } #GUH? You shouldn't be able to invite russia lol and mao inviting the larp natpop yakutia dude this is socialist china only
+		target_root_trigger = {
+		has_completed_focus = CHINA_FOREIGN_POLICY_focus_on_the_liberation_of_the_far_east
+		}
+		targets = { KOR YAK JSR BRY TRM } 
 		target_trigger = {
-			FROM = { exists = yes 
-			
+			FROM = { 
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			is_subject = no
+			has_socialist_government = yes
 			}
 			NOT = {
 				OR = {
-				has_war_with = PREV
-				is_puppet_of = PREV
-				is_in_faction_with = PREV
+				has_war_with = FROM
 				}
 			}
 		}
@@ -468,18 +474,12 @@ China_conquer_far_east = {
 			
 		}
 		remove_effect = {
-			if = { 
-			limit = {
-			is_faction_leader = yes 
-			}
-			ROOT = { add_to_faction = FROM }
-			}
-			else_if = {
-			limit = {
-			is_in_faction = yes
-			}
-			ROOT = { faction_leader = { add_to_faction = FROM } }	
-			}
+		FROM = {
+				country_event = {
+					id = annex_peace.5
+					days = 5
+				}
+		}
 		}
 	}
 	
@@ -491,17 +491,19 @@ China_conquer_far_east = {
 		}
 		
 		visible = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_slaying_the_colonizers_of_the_south_east
 		}
 		cost = 10
+		target_root_trigger = {
+			has_completed_focus = CHINA_FOREIGN_POLICY_slaying_the_colonizers_of_the_south_east 
+		}
+
 		targets = { TAI BRM SIA THM VIN LAO CAM INC MLY PHI INS GEA DEI }
 		target_trigger = {
-			FROM = { exists = yes }
 			NOT = {
 				OR = {
-				has_war_with = PREV
-				is_puppet_of = PREV
-				is_in_faction_with = PREV
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
 				}
 			}
 		}
@@ -525,19 +527,25 @@ China_conquer_far_east = {
 		}
 		
 		visible = {
-			has_completed_focus = CHINA_FOREIGN_POLICY_slaying_the_colonizers_of_the_south_east
+		is_in_faction = yes
 		}
 		cost = 10
+		target_root_trigger = {
+			has_completed_focus = CHINA_FOREIGN_POLICY_slaying_the_colonizers_of_the_south_east #both none socs and socs can do
+		}
+
 		targets = { TAI BRM SIA THM VIN LAO CAM INC MLY PHI INS }
 		target_trigger = {
-			FROM = { exists = yes 
-			
+			FROM = {
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			is_subject = no
 			}
 			NOT = {
 				OR = {
-				has_war_with = PREV
-				is_puppet_of = PREV
-				is_in_faction_with = PREV
+				has_war_with = FROM
 				}
 			}
 		}
@@ -549,18 +557,12 @@ China_conquer_far_east = {
 			
 		}
 		remove_effect = {
-			if = { 
-			limit = {
-			is_faction_leader = yes 
-			}
-			ROOT = { add_to_faction = FROM }
-			}
-			else_if = {
-			limit = {
-			is_in_faction = yes
-			}
-			ROOT = { faction_leader = { add_to_faction = FROM } }	
-			}
+		FROM = {
+				country_event = {
+					id = annex_peace.5
+					days = 5
+				}
+		}
 			
 		}
 	}
@@ -574,17 +576,19 @@ China_conquer_far_east = {
 		}
 		
 		visible = {
+		}
+		target_root_trigger = {
 			has_completed_focus = CHINA_FOREIGN_POLICY_focusing_on_central_asia
 		}
+
 		cost = 10
 		targets = { UZB TRK KYR ALO }
 		target_trigger = {
-			FROM = { exists = yes }
 			NOT = {
 				OR = {
-				has_war_with = PREV
-				is_puppet_of = PREV
-				is_in_faction_with = PREV
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
 				}
 			}
 		}
@@ -608,19 +612,25 @@ China_conquer_far_east = {
 		}
 		
 		visible = {
+		is_in_faction = yes
+		}
+		target_root_trigger = {
 			has_completed_focus = CHINA_FOREIGN_POLICY_focusing_on_central_asia
 		}
+
 		cost = 10
 		targets = { UZB TRK KYR ALO }
 		target_trigger = {
-			FROM = { exists = yes 
-			
+			FROM = { 
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			is_subject = no
 			}
 			NOT = {
 				OR = {
-				has_war_with = PREV
-				is_puppet_of = PREV
-				is_in_faction_with = PREV
+				has_war_with = FROM
 				}
 			}
 		}
@@ -632,19 +642,11 @@ China_conquer_far_east = {
 			
 		}
 		remove_effect = {
-			if = { #turn this into an event so people can actually refuse
-			limit = {
-			is_faction_leader = yes 
-			}
-			ROOT = { add_to_faction = FROM }
-			}
-			else_if = {
-			limit = {
-			is_in_faction = yes
-			}
-			ROOT = { faction_leader = { add_to_faction = FROM } }	
-			}
-			
+	FROM = {
+				country_event = {
+					id = annex_peace.5
+					days = 5
+				}
 		}
 	}
 
