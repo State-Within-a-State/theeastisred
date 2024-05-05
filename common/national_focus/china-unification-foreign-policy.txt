@@ -32,6 +32,16 @@
 		completion_reward = {
 		unlock_decision_tooltip = China_conquer_south_east
 		unlock_decision_tooltip = China_ally_south_east
+			if = {
+				limit = {
+					has_completed_focus = CHINA_FOREIGN_POLICY_imperial_legacy
+				}
+				add_state_core = 857
+				add_state_core = 671
+				add_state_core = 701
+				add_state_core = 72
+				add_state_core = 756
+			}
 		}
 	}
 
@@ -50,6 +60,14 @@
 		completion_reward = {
 		unlock_decision_tooltip = China_conquer_central_asia
 		unlock_decision_tooltip = China_ally_central_asia
+		if = {
+				limit = {
+					has_completed_focus = CHINA_FOREIGN_POLICY_imperial_legacy
+				}
+				add_state_core = 1211
+				add_state_core = 586
+				add_state_core = 404
+			}
 		}
 	}
 
@@ -284,6 +302,25 @@
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_claiming_outer_manchuria  } prerequisite = { focus = CHINA_FOREIGN_POLICY_secure_the_north_west_frontier  }
 		mutually_exclusive = { focus = CHINA_FOREIGN_POLICY_extending_the_5_tibetan_fingers  }
+		completion_reward = {
+			
+			if = {
+				limit = { 858 = { NOT = { is_claimed_by = FROM } } } #Tawang
+				add_state_claim = 858
+			}
+			if = {
+				limit = { 897 = { NOT = { is_claimed_by = FROM } } } #Askai Chin
+				add_state_claim = 897
+			}
+			unlock_decision_tooltip = China_conquer_india
+			unlock_decision_tooltip = China_ally_india
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.indian_tags_array
+					CHI_liberation_war_PREV_effect = yes
+				}
+			}
+		}
 	}
 
 	#Extending the 5 Tibetan Fingers
@@ -299,6 +336,32 @@
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_imperial_legacy  } prerequisite = { focus = CHINA_FOREIGN_POLICY_claiming_outer_manchuria  } prerequisite = { focus = CHINA_FOREIGN_POLICY_secure_the_north_west_frontier  }
 		mutually_exclusive = { focus = CHINA_FOREIGN_POLICY_secure_the_mcmahon_line  }
+		completion_reward = {
+			
+			if = {
+				limit = { 858 = { NOT = { is_claimed_by = FROM } } } #Tawang
+				add_state_core = 858
+			}
+			if = {
+				limit = { 897 = { NOT = { is_claimed_by = FROM } } } #Askai Chin
+				add_state_core = 897
+			}
+			
+			add_state_core = 324
+			add_state_core = 888
+			add_state_core = 323
+			add_state_core = 814
+			
+			
+			unlock_decision_tooltip = China_conquer_india
+			unlock_decision_tooltip = China_ally_india
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.indian_tags_array
+					CHI_liberation_war_PREV_effect = yes
+				}
+			}
+		}
 	}
 
 	#Eastern Subjugation
@@ -313,6 +376,13 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_imperial_legacy  }
+		completion_reward = {
+		add_state_core = 527
+		add_state_core = 525
+		add_state_core = 526
+		unlock_decision_tooltip = China_conquer_far_east
+		unlock_decision_tooltip = China_ally_far_east
+		}
 	}
 
 

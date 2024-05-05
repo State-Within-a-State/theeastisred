@@ -657,5 +657,92 @@ China_conquer_far_east = {
 				}
 		}
 	}
+	
+	China_conquer_india = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+		}
+		target_root_trigger = {
+			has_completed_focus = CHINA_FOREIGN_POLICY_secure_the_mcmahon_line
+		}
+
+		cost = 10
+		targets = { AFG BHC PRF RAJ NEP SKM BHU }
+		target_trigger = {
+			NOT = {
+				OR = {
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
+				}
+			}
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			declare_war_on = {   type = annex_everything	target = FROM }
+			
+		}
+	}
+	China_ally_india = {
+		icon = ger_military_buildup
+		
+		available = {
+			
+		}
+		
+		visible = {
+		is_in_faction = yes
+		}
+		target_root_trigger = {
+			has_completed_focus = CHINA_FOREIGN_POLICY_secure_the_mcmahon_line
+		}
+
+		cost = 10
+		targets = { AFG BHC PRF RAJ NEP SKM BHU }
+		target_trigger = {
+			FROM = { 
+				OR = {
+					is_in_faction = no
+					is_faction_leader = yes
+				}
+			is_subject = no
+			}
+			NOT = {
+				has_war_with = FROM
+			}
+				if = { limit = { has_socialist_government = yes }
+			FROM = { has_socialist_government = yes }
+			}
+			else = {
+			FROM = { has_socialist_government = no }
+			}
+
+		}
+		days_remove = 14
+		days_re_enable = 0
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		FROM = {
+				country_event = {
+					id = annex_peace.5
+					days = 5
+				}
+		}
+	}
 
 }
