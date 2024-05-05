@@ -148,6 +148,11 @@
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_aligning_with_the_world  }
 		mutually_exclusive = { focus = CHINA_FOREIGN_POLICY_imperial_legacy  }
+		completion_reward = {
+		add_ideas = {
+		China_revolution_global
+		}
+		}
 	}
 
 	#Imperial Legacy
@@ -163,6 +168,11 @@
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_aligning_with_the_world  }
 		mutually_exclusive = { focus = CHINA_FOREIGN_POLICY_in_the_hands_of_global_revolution  }
+		completion_reward = {
+		add_ideas = {
+		China_imperial_legacy
+		}
+		}
 	}
 
 	#Claiming Outer Manchuria
@@ -177,6 +187,34 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_securing_the_plateau  }
+		completion_reward = {
+		add_state_claim = 1246
+		add_state_claim = 409
+		add_state_claim = 560
+		add_state_claim = 561
+		add_state_claim = 657
+		add_state_claim = 537
+		add_state_claim = 408
+		every_country = {
+			limit = {
+					OR = {
+					owns_state = 1246
+					owns_state = 409
+					owns_state = 560
+					owns_state = 561
+					owns_state = 657
+					owns_state = 537
+					owns_state = 408
+					}
+			}
+			FROM = {
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ROOT
+				}
+			}
+		}
+		}
 	}
 
 	#Secure the North West Frontier
@@ -191,6 +229,46 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_securing_the_plateau  }
+		completion_reward = {
+			if = {
+				limit = {
+					ETS = { exists = yes}
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = ETS
+				}
+			}
+			
+			if = {
+				limit = {
+					SIK = { exists = yes}
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = SIK
+				}
+			}
+			if = {
+				limit = {
+					TAN = { exists = yes}
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = TAN
+				}
+			}
+			
+			if = {
+				limit = {
+					XSM = { exists = yes}
+				}
+				create_wargoal = {
+					type = puppet_wargoal_focus
+					target = XSM
+				}
+			}
+		}
 	}
 
 	#Secure the McMahon Line
