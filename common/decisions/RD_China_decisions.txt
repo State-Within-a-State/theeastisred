@@ -657,6 +657,7 @@ China_conquer_far_east = {
 				}
 		}
 	}
+	}
 	
 	China_conquer_india = {
 		icon = ger_military_buildup
@@ -668,11 +669,15 @@ China_conquer_far_east = {
 		visible = {
 		}
 		target_root_trigger = {
+			OR = {
 			has_completed_focus = CHINA_FOREIGN_POLICY_secure_the_mcmahon_line
+			has_completed_focus = CHINA_FOREIGN_POLICY_extending_the_5_tibetan_fingers
+
+		}
 		}
 
 		cost = 10
-		targets = { AFG BHC PRF RAJ NEP SKM BHU }
+		targets = { AFG BHC PRF RAJ NEP SKM BHU MAD }
 		target_trigger = {
 			NOT = {
 				OR = {
@@ -694,6 +699,7 @@ China_conquer_far_east = {
 			
 		}
 	}
+
 	China_ally_india = {
 		icon = ger_military_buildup
 		
@@ -721,7 +727,7 @@ China_conquer_far_east = {
 			NOT = {
 				has_war_with = FROM
 			}
-				if = { limit = { has_socialist_government = yes }
+			if = { limit = { has_socialist_government = yes }
 			FROM = { has_socialist_government = yes }
 			}
 			else = {
