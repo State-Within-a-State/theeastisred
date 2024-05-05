@@ -1500,6 +1500,54 @@ integrate_china = {
 			factor = 1
 		}
 	}
+	kr_integrate_outer_manchuria = {
+		icon = infiltrate_state
+		highlight_states = { highlight_state_targets = { state = 408 } }
+		allowed = {
+				is_han_chinese_tag = yes
+		}
+		visible = {
+			OR = {
+				408 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				1246 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				409 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				560 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				561 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+				657 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+			}
+		}
+		available = {
+			has_full_control_of_state = 408
+			408 = { compliance > 65 }
+			has_full_control_of_state = 1246
+			has_full_control_of_state = 409
+			409 = { compliance > 65 }
+			has_full_control_of_state = 560
+			has_full_control_of_state = 561
+			has_full_control_of_state = 657
+			657 = { compliance > 65 }
+		}
+		cost = kr_china_provinceintegration_cost_large?100
+		fire_only_once = yes
+		modifier = {
+			political_power_gain = -0.20
+		}
+		days_remove = kr_china_provinceintegration_speed?90
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove kr_integrate_outer_manchuria"
+			408 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			1246 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			409 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			560 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			561 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			657 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			537 = { remove_claim_by_ROOT_and_add_core_of_ROOT = yes }
+			remove_cores_of_dead_tags = yes
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
 
 	################################################
 	##### KR CHINA STATE INTEGRATION DECISIONS #####
