@@ -462,9 +462,7 @@ China_conquer_far_east = {
 			has_socialist_government = yes
 			}
 			NOT = {
-				OR = {
 				has_war_with = FROM
-				}
 			}
 		}
 		days_remove = 14
@@ -544,10 +542,15 @@ China_conquer_far_east = {
 			is_subject = no
 			}
 			NOT = {
-				OR = {
 				has_war_with = FROM
-				}
 			}
+			if = { limit = { has_socialist_government = yes }
+			FROM = { has_socialist_government = yes }
+			}
+			else = {
+			FROM = { has_socialist_government = no }
+			}
+
 		}
 		days_remove = 14
 		days_re_enable = 0
@@ -629,10 +632,15 @@ China_conquer_far_east = {
 			is_subject = no
 			}
 			NOT = {
-				OR = {
 				has_war_with = FROM
-				}
 			}
+				if = { limit = { has_socialist_government = yes }
+			FROM = { has_socialist_government = yes }
+			}
+			else = {
+			FROM = { has_socialist_government = no }
+			}
+
 		}
 		days_remove = 14
 		days_re_enable = 0
@@ -642,7 +650,7 @@ China_conquer_far_east = {
 			
 		}
 		remove_effect = {
-	FROM = {
+		FROM = {
 				country_event = {
 					id = annex_peace.5
 					days = 5
