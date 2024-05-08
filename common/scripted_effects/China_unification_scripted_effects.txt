@@ -368,3 +368,91 @@ add_state_core = 745
 add_state_core = 858
 }
 
+Become_SOV_after_annex_rus = { #for future content after annex russia give claims on russia beforehand
+			RUS_enable_integration = yes
+			ROOT = { save_global_event_target_as = soviet_russia }
+			set_country_flag = soviet_russia_restored
+			set_cosmetic_tag = SOV
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = RUS.RUS_starting_states_array
+					add_core_of = RUS
+					remove_claim_by = ROOT
+					add_core_of = ROOT
+				}
+				every_state = {
+					limit = {
+						is_core_rrf_state = yes
+					}
+					add_core_of = RUS
+					remove_core_of = RRF
+					if = {
+						limit = { has_resistance = yes }
+						cancel_resistance = yes
+					}
+					force_disable_resistance = { clear = yes }
+				}
+			}
+			set_capital = { state = 219 }
+			set_party_name = {
+				ideology = var:current_party_ideology_group
+				name = SOV_totalist_party
+				long_name = SOV_totalist_party_long
+			}
+			hidden_effect = {
+				set_party_name = {
+					ideology = national_populist
+					long_name = RUS_national_populist_party_long
+					name = RUS_national_populist_party
+				}
+				set_party_name = {
+					ideology = paternal_autocrat
+					long_name = RUS_paternal_autocrat_party_long
+					name = RUS_paternal_autocrat_party
+				}
+				set_party_name = {
+					ideology = authoritarian_democrat
+					long_name = RUS_authoritarian_democrat_party_long
+					name = RUS_authoritarian_democrat_party
+				}
+				set_party_name = {
+					ideology = social_conservative
+					long_name = RUS_social_conservative_party_long
+					name = RUS_social_conservative_party
+				}
+				set_party_name = {
+					ideology = market_liberal
+					long_name = RUS_market_liberal_party_long
+					name = RUS_market_liberal_party
+				}
+				set_party_name = {
+					ideology = social_liberal
+					long_name = RUS_social_liberal_party_long
+					name = RUS_social_liberal_party
+				}
+				set_party_name = {
+					ideology = social_democrat
+					long_name = RUS_social_democrat_party_long
+					name = RUS_social_democrat_party
+				}
+				set_party_name = {
+					ideology = syndicalist
+					long_name = RUS_syndicalist_party_long
+					name = RUS_syndicalist_party
+				}
+				for_each_scope_loop = {
+					array = CAN.faction_members
+					embargo_ROOT = yes
+				}
+				for_each_scope_loop = {
+					array = GER.faction_members
+					embargo_ROOT = yes
+				}
+				for_each_scope_loop = {
+					array = AUS.faction_members
+					embargo_ROOT = yes
+				}
+				FRP = { embargo_ROOT = yes }
+				GBR = { embargo_ROOT = yes }
+			}
+}
