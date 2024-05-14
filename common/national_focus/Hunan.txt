@@ -452,15 +452,12 @@ focus_tree = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
 		available = { 
-		AND = {
-				has_country_flag = HNN_gelaohui_rebellion_over
-				has_country_flag = HNN_spirit_soldier_rebellion_over
-				NOT = { has_country_flag = hunan_dicatorship }
-			}
+		has_country_flag = HNN_Zhao_Hengti_Elected
 		}
 		prerequisite = { focus = HNNZHILI_restoration_of_the_hunan_constiution  }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_The_Rights_of_Man"
+			add_research_slot = 1
 			add_popularity = {
 				ideology = social_conservative
 				popularity = 0.05
@@ -602,6 +599,7 @@ focus_tree = {
 		prerequisite = { focus = HNNZHILI_federalist_allegiance  }
 		completion_reward = {
 			country_event = hunan_rework.15
+		add_ideas = HNN_zhao_fed_ties
 		}
 	}
 
@@ -646,6 +644,17 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNZHILI_meeting_with_the_kwangsi_leadership  }
 		completion_reward = {
+		if = { 
+		limit = { 
+		1052 = { is_fully_controlled_by_ROOT_and_is_not_core_of_ROOT = yes }
+		}
+		add_state_core = 1052
+		hidden_effect = { 
+		1052 = {
+		set_demilitarized_zone = no
+		}
+		}
+		}
 			add_opinion_modifier = {
 				target = YUN
 				modifier = HNN_federalist_comrades
@@ -667,6 +676,7 @@ focus_tree = {
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_Hunannese_Unity"
 			add_stability = 0.1
+			add_ideas = GXC_education_reform
 		}
 	}
 
@@ -683,7 +693,6 @@ focus_tree = {
 		prerequisite = { focus = HNNZHILI_safe_guard_the_hunanese_identity  } prerequisite = { focus = HNNZHILI_promotion_of_xiang_unity  }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_New_Xiang_Culture"
-			add_research_slot = 1
 			add_popularity = {
 				ideology = social_conservative
 				popularity = 0.05
