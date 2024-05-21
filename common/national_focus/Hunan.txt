@@ -233,12 +233,16 @@ focus_tree = {
 		id = HNNZHILI_legacy_of_yuan
 		icon = GFX_HNNZHILI_legacy_of_yuan-248360
 		x = 5
-		y = 5
+		y = 6
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = HNNZHILI_legacy_of_new_republicanism  }
+		available = {
+		has_country_flag = has_united_china
+		NOT = { has_idea = HNN_socialist_resistance }
+		}
+		prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature }
 		mutually_exclusive = { focus = HNNZHILI_beiyang_republicanism  }
 		completion_reward = {
 		country_event = hunan_rework.12
@@ -250,12 +254,16 @@ focus_tree = {
 		id = HNNZHILI_beiyang_republicanism
 		icon = GFX_HNNZHILI_beiyang_republicanism-248360
 		x = 7
-		y = 5
+		y = 6
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
-		prerequisite = { focus = HNNZHILI_legacy_of_new_republicanism  }
+		available = {
+		has_country_flag = has_united_china
+		NOT = { has_idea = HNN_socialist_resistance }
+		}
+		prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature }
 		mutually_exclusive = { focus = HNNZHILI_legacy_of_yuan  }
 		completion_reward = {
 		add_war_support = 0.05
@@ -268,12 +276,12 @@ focus_tree = {
 		id = HNNZHILI_fighting_against_the_gang_of_unruly_nature
 		icon = GFX_HNNZHILI_fighting_against_the_gang_of_unruly_nature-248360
 		x = 6
-		y = 6
+		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_MANPOWER
 		}
-		prerequisite = { focus = HNNZHILI_legacy_of_yuan  focus = HNNZHILI_beiyang_republicanism  }
+		prerequisite = { focus = HNNZHILI_legacy_of_new_republicanism  }
 		completion_reward = {
 			custom_effect_tooltip = kuomintang_crackdown_tt
 			hidden_effect = {
@@ -366,10 +374,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		has_country_flag = has_united_china
 		NOT = { has_idea = HNN_socialist_resistance }
 		}
-		prerequisite = { focus = HNNZHILI_crush_the_brothels_dens_and_casinos focus = HNNZHILI_enforcing_the_peace  } prerequisite = { focus = HNNZHILI_form_the_national_preparation_committee  focus = HNNZHILI_translating_buddhist_teachings  } prerequisite = { focus = HNNZHILI_beiyang_republicanism  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  }
+		prerequisite = { focus = HNNZHILI_crush_the_brothels_dens_and_casinos focus = HNNZHILI_enforcing_the_peace  } prerequisite = { focus = HNNZHILI_form_the_national_preparation_committee  focus = HNNZHILI_translating_buddhist_teachings  } prerequisite = { focus = HNNZHILI_beiyang_republicanism  } 
 		completion_reward = {
 		set_cosmetic_tag = ROC
 		custom_effect_tooltip = switch_focus_unification_china_tt
@@ -393,14 +400,6 @@ focus_tree = {
 		prerequisite = { focus = HNNZHILI_translating_buddhist_teachings focus = HNNZHILI_form_the_national_preparation_committee  } prerequisite = { focus = HNNZHILI_enforcing_the_peace focus = HNNZHILI_crush_the_brothels_dens_and_casinos  } prerequisite = { focus = HNNZHILI_legacy_of_yuan  } prerequisite = { focus = HNNZHILI_fighting_against_the_gang_of_unruly_nature  }
 		available = {
 		NOT = { has_idea = HNN_socialist_resistance }
-		china_is_potential_government = yes
-		china_no_rival_governments_left = yes
-		592 = { is_owned_by_ROOT_or_ally = yes } #Guangzhou
-		608 = { is_owned_by_ROOT_or_ally = yes } #Beijing
-		613 = { is_owned_by_ROOT_or_ally = yes } #Nanjing		
-		1048 = { is_owned_by_ROOT_or_ally = yes } #Wuhan
-		716 = { is_owned_by_ROOT_or_ally = yes } #Shenyang
-		surrender_progress < 0.05
 		}
 		completion_reward = {
 		set_country_flag = has_united_china
