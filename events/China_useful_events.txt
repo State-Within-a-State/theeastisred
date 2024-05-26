@@ -269,7 +269,21 @@ country_event = {
 	title = annex_peace.8.title
 	desc = annex_peace.8.desc
 	#picture = 
-	
+	immediate = {
+	if = {
+	limit = {
+	ALB = { 
+	has_completed_focus = ALB_No_Vision_Mine 
+	exists = yes
+	is_in_faction = no
+	is_subject = no
+	}
+	has_socialist_government = yes
+	}
+	country_event = { id = annex_peace.10 days = 30 }
+	}
+	}
+
 	is_triggered_only = yes
 	option = { 
 		name = annex_peace.8.a
@@ -338,6 +352,10 @@ country_event = { #names
 	option = { 
 		name = annex_peace.8.e
 		ai_chance = { base = 100 }
+	trigger = { OR = {
+		has_democratic_government = yes
+		has_dictatorship_government = yes } }
+
 		create_faction = CHI_totalist_faction
 	}
 	option = { 
@@ -365,6 +383,56 @@ country_event = { #names
 
 }
 
+country_event = { #hoxha ties with china 
+	id = annex_peace.10
+	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.43"}
+	title = annex_peace.10.title
+	desc = annex_peace.10.desc
+	picture = "GFX_report_event_ALB_Socialist_March"
+	
+	is_triggered_only = yes
+	option = { 
+		name = annex_peace.10.a #wholesome
+	country_event = { id = annex_peace.11 days = 365 }
+	}
+
+}
+country_event = { #hoxha ties with china 
+	id = annex_peace.11
+	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.43"}
+	title = annex_peace.11.title
+	desc = annex_peace.11.desc
+	#picture = 
+	is_triggered_only = yes
+	trigger = { 
+	ALB = {
+	exists = yes
+	is_in_faction = no
+	is_subject = no
+	}
+	}
+	option = { 
+		name = annex_peace.11.a #unwholesome
+		add_opinion_modifier = {
+				target = ALB
+				modifier = faction_traitor
+			}
+		ALB = {
+		add_opinion_modifier = {
+				target = ROOT
+				modifier = faction_traitor
+			}
+		}
+	}
+	option = { 
+		name = annex_peace.10.a #Hoxha bros we back
+	trigger = { has_country_leader_ideology = hardliner_bolshevism_subtype }
+	set_faction_name = RD_hoxha_fact
+	set_country_leader_ideology = hoxhaism_subtype
+	ROOT = { add_to_faction = ALB }
+	}
+
+}
 
 
 country_event = { #Taiwan
