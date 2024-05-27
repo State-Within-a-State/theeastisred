@@ -598,10 +598,10 @@ focus = {
 		}
 	}
 focus = {
-		id = hnnuniqian
+		id = hnnuniqian #soclib and socdem
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		allow_branch = {
-			has_government = national_populist ##Not gettable rn
+			has_country_leader = { ruling_only = yes name = "Cheng Qian" }
 		}
 		available = {
 		has_completed_focus = KMT_triumphant_revolution
@@ -613,17 +613,130 @@ focus = {
 			FOCUS_FILTER_POLITICAL
 		}
 	}
-focus = {
-		id = hnnuni_qian_state_capital
+
+focus = {#welcome lkmt
+		id = hnnuniqian_lkmt
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnnunimao
+		relative_position_id = hnnuniqian
 		x = -2
 		y = 1
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = hnnuniqian } 
+		completion_reward = {
+		china_generic_land_reform_setup = yes
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		if = { limit = { has_government = social_liberal } 		
+		add_socdem_to_coalition = yes
+		}
+		hidden_effect = {
+		HNN_recruit_PAC_generals_effect = yes
+		}
+		}
+	}
+focus = {#welcome rkmt
+		id = hnnuniqian_rkmt
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnuniqian
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnuniqian } 
+		completion_reward = {
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.05
+		}
+		if = { limit = { has_government = social_democrat } 		
+		add_soclib_to_coalition = yes
+		}
+		hidden_effect = {
+		HNN_recruit_RF_generals_effect = yes
+		}
+		}
+	}
+focus = {#working with northern something to reintegrate new territories idk
+		id = hnnuniqian_north
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnuniqian
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnuniqian_rkmt } 
+		completion_reward = {
+		add_political_power = 250
+		}
+	}
+focus = {#research
+		id = hnnuniqian_research
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnuniqian
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = hnnuniqian_rkmt } prerequisite = { focus = hnnuniqian_lkmt } 
+		completion_reward = {
+		add_research_slot_until_five = yes
+		}
+	}
+
+focus = {#mao pro mao cause life but still republican lib both sides can do
+		id = hnnuniqian_mao
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnuniqian
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnuniqian_lkmt } 
+		completion_reward = {
+		add_ideas = HNN_radicalism_at_bay
+		}
+	}
+focus = {#new future
+		id = hnnuniqian_republicanism
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnuniqian
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnuniqian_research } prerequisite = { focus = hnnuniqian_mao } prerequisite = { focus = hnnuniqian_north } 
+		completion_reward = {
+		add_stability = 0.1
+		add_timed_idea = { idea = HNN_cheng_new_republic days = 200 }
+		}
+	}
+
+focus = {
+		id = hnnuniqian_state_capital
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnuniqian
+		x = -1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = hnnuniqian_republicanism } 
 		completion_reward = {
 			custom_effect_tooltip = CHI_state_capitalism_tt
 			custom_effect_tooltip = tooltip_white_line
@@ -662,39 +775,51 @@ focus = {
 			hidden_effect = { country_event = { id = CHI.lategame.805 days = 20 } } #Promoting the Bicycle
 		}
 	}
-focus = {#working with northern something to reintegrate new territories idk
-		id = hnnuniqian_north
+focus = {#sun
+		id = hnnuniqian_mil
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnnunimao
+		relative_position_id = hnnuniqian
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnuniqian_republicanism } 
+		completion_reward = {
+		add_ideas = 
+		}
+	}
+
+focus = {#sun
+		id = hnnuniqian_sun
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnuniqian
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnuniqian_state_capital } prerequisite = { focus = hnnuniqian_mil } 
+
+		completion_reward = {
+		add_ideas = HNNqian_sun
+		}
+	}
+
+focus = {
+		id = hnnunijian
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		allow_branch = { has_government = national_populist }
 		x = -1
 		y = 1
 		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnuniqian } 
-		completion_reward = {
-		add_ideas = HNNmao_socialism
-		}
 	}
 
-
-focus = {
-		id = hnnunijian
-		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		allow_branch = {
-			has_government = national_populist ##Not gettable rn
-		}
-		available = {
-		has_completed_focus = KMT_triumphant_revolution
-		}
-		x = 15
-		y = 7
-		cost = 0
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-	}
 focus = {
 		id = hnnunijian_again_purge
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
