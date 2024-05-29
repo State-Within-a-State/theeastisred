@@ -846,10 +846,10 @@ focus = {
 focus = {
 		id = hnnunijian_again_purge
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnnunimao
+		relative_position_id = hnnunijian
 		x = -1
 		y = 1
-		cost = 0
+		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -861,10 +861,10 @@ focus = {
 focus = {
 		id = hnnunijian_miltary
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnnunimao
-		x = -1
+		relative_position_id = hnnunijian
+		x = 1
 		y = 1
-		cost = 0
+		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -874,32 +874,49 @@ focus = {
 		}
 	}
 focus = {
-		id = hnnunijian_patronage
+		id = hnnunijian_personal
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnnunimao
-		x = -1
-		y = 1
+		relative_position_id = hnnunijian
+		x = -2
+		y = 2
 		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnunijian } 
+		prerequisite = { focus = hnnunijian_miltary } 
 		completion_reward = {
 		add_ideas = HNNmao_socialism
+		}
+	}
+focus = {
+		id = hnnunijian_anti_soc
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunijian
+		x = 2
+		y = 2
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunijian_again_purge } 
+		completion_reward = {
+		add_ideas = {
+		HNN_land_lord_support
+		}
 		}
 	}
 
 focus = {
-		id = hnnunijian_land
+		id = hnnunijian_foreign_capital
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnnunimao
-		x = -1
-		y = 1
+		relative_position_id = hnnunijian
+		x = 0
+		y = 2
 		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnunijian } 
+		prerequisite = { focus = hnnunijian_again_purge } prerequisite = { focus = hnnunijian_miltary } 
 		completion_reward = {
 		add_ideas = {
 		HNN_land_lord_support
@@ -907,32 +924,66 @@ focus = {
 		}
 	}
 focus = {
-		id = hnnunijian_research_foreign
+		id = hnnunijian_land
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
-		relative_position_id = hnnunimao
-		x = -1
-		y = 1
+		relative_position_id = hnnunijian
+		x = 0
+		y = 3
 		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnunijian } 
+		prerequisite = { focus = hnnunijian_foreign_capital } 
+		completion_reward = {
+		add_ideas = {
+		HNN_land_lord_support
+		}
+		}
+	}
+
+focus = {#useful students now free from socialism and new investments
+		id = hnnunijian_research_foreign
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunijian
+		x = -2
+		y = 3
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = hnnunijian_anti_soc } 
+		completion_reward = {
+		add_ideas = HNNmao_socialism
+		}
+	}
+focus = {#useful students now free from socialism and new investments
+		id = hnnunijian_patronage
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunijian
+		x = 2
+		y = 3
+		cost = 0
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunijian_personal } 
 		completion_reward = {
 		add_ideas = HNNmao_socialism
 		}
 	}
 
+
 focus = {
 		id = hnnunijian_die
 		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnnunimao
-		x = -1
-		y = 1
+		x = 0
+		y = 4
 		cost = 0
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnunijian } 
+		prerequisite = { focus = hnnunijian_patronage } prerequisite = { focus = hnnunijian_research_foreign } prerequisite = { focus = hnnunijian_land } 
 		completion_reward = {
 		add_ideas = HNNmao_socialism
 		}
