@@ -3512,7 +3512,10 @@ country_event = { #Meeting of the Hunan Central Committee
 			long_name = HNN_Cheng_kmt_long
 			name = HNN_Cheng_kmt
 		}
+		remove_ideas_with_trait = security_minister
+		remove_ideas_with_trait = head_of_government
 		add_ideas = {
+		HNN_Cheng_Qian_hog_sli
 		HNN_He_Jian_sec_ade
 		HNN_socialist_resistance
 		}
@@ -4882,18 +4885,40 @@ country_event = { #he long welcome spirit solders
 	}
 }
 
-country_event = { #how to be a good syndicalist kot loc later
+country_event = { #he jian retire
 	id = hunan_rework.89
-	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.89"}
+	immediate = {log = "[GetDateText]: [Root.GetName]: event hunan_rework.89"
+	random_unit_leader = {
+	limit = { has_id = 1408 } 
+	set_nationality = NSW
+	}
+	remove_ideas_with_trait = security_minister #idk
+	add_ideas = HNN_Long_Bojian_sec_sli
+	}
 	title = hunan_rework.89.title
 	desc = hunan_rework.89.desc
 	#picture = 
-	
 	is_triggered_only = yes
 	option = { #
 		name = hunan_rework.89.a
 		ai_chance = { base = 100 }
-		
+		create_country_leader = {
+			name = "Li Pinxian"
+			picture = "gfx/leaders/HNN/HNN_Portrait_Li_Pinxian.png"
+			expire = "1.1.1"
+			ideology = authdem_tridemism_subtype
+		}
+
+	}
+	option = { #
+		name = hunan_rework.89.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Liu Jianxu"
+			picture = "gfx/leaders/HNN/Portrait_HNN_Liu_Jianxu.png"
+			expire = "1.1.1"
+			ideology = authdem_tridemism_subtype
+		}
 	}
 }
 
