@@ -238,7 +238,7 @@ focus = {
 		y = 1
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = {
 		focus = hnnunili
@@ -250,24 +250,24 @@ focus = {
 		}
 	}
 focus = {
-		id = hnnunili_arm
-		icon = GFX_RDHNNKMTUNI_nurture_the_revolutionary_future-248360
+		id = hnnunili_unonize
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnnunili
 		x = 0
 		y = 1
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
+			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = {
 		focus = hnnunili
 		}
 		completion_reward = {
-		add_ideas = CHI_nationalist_youth_orgs_idea
-		add_ideas = CHI_lead_the_liberation_of_asia_idea
-		add_war_support = 0.1
+		add_political_power = 200
 		}
 	}
+
+
 focus = {
 		id = hnnunili_french_learn
 		icon = GFX_RDHNNKMTUNI_emulate_the_french_education_model-248360
@@ -286,16 +286,50 @@ focus = {
 		}
 	}
 focus = {
+		id = hnnunili_arm
+		icon = GFX_RDHNNKMTUNI_nurture_the_revolutionary_future-248360
+		relative_position_id = hnnunili
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = hnnunili_unonize } prerequisite = { focus = hnnunili_french_learn }
+
+		completion_reward = {
+		add_ideas = CHI_nationalist_youth_orgs_idea
+		add_ideas = CHI_lead_the_liberation_of_asia_idea
+		add_war_support = 0.1
+		}
+	}
+focus = { #rural
+		id = hnnunili_interior
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunili
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = hnnunili_unonize } prerequisite = { focus = hnnunili_united }
+		completion_reward = {
+		add_ideas = HNN_worker_peasants_cooperation
+		}
+	}
+
+focus = {
 		id = hnnunili_orthodox
 		icon = GFX_RDHNNKMTUNI_welcome_back_the_main_csp-248360
 		relative_position_id = hnnunili
 		x = 0
-		y = 2
+		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnunili_french_learn } prerequisite = { focus = hnnunili_arm } prerequisite = { focus = hnnunili_united }
+		prerequisite = { focus = hnnunili_interior } prerequisite = { focus = hnnunili_arm }
 		completion_reward = {
 			add_timed_idea = {
 				idea = CHI_two_stage_revolution_idea
@@ -311,7 +345,7 @@ focus = {
 		icon = GFX_RDHNNKMTUNI_reconcile_the_world_society-248360
 		relative_position_id = hnnunili
 		x = -1
-		y = 3
+		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -337,12 +371,13 @@ focus = {
 				}
 		}
 	}
+
 focus = {
 		id = hnnunili_radicals
 		icon = GFX_RDHNNKMTUNI_working_with_the_radicals-248360
 		relative_position_id = hnnunili
 		x = 1
-		y = 3
+		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -352,6 +387,12 @@ focus = {
 		completion_reward = {
 		add_popularity = { ideology = syndicalist popularity = 0.05 }
 		add_popularity = { ideology = totalist popularity = 0.05 }
+			create_country_leader = {
+				name = "Chen Shaoyu"
+				picture = "gfx/leaders/CHI/Portrait_CHI_Chen_Shaoyu.png"
+				expire = "1.1.1"
+				ideology = totalist_subtype
+			}
 
 		add_tot_to_coalition = yes
 				set_party_name = {
@@ -362,16 +403,50 @@ focus = {
 		}
 	}
 focus = {
-		id = hnnunili_lisan_line
-		icon = GFX_RDHNNKMTUNI_followthelilisanline-248360
+		id = hnnunili_class_unity
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
 		relative_position_id = hnnunili
-		x = 0
-		y = 4
+		x = -1
+		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = hnnunili_prodhon focus = hnnunili_radicals } 
+		prerequisite = { focus = hnnunili_prodhon } 
+		completion_reward = {
+		swap_ideas = {
+		add_idea = JAP_love_owners
+		remove_idea = HNN_worker_peasants_cooperation
+		}
+	}
+}
+focus = {
+		id = hnnunili_land_reform
+		icon = GFX_YUNJUCHE_a_monument_to_our_great_chairman-248360
+		relative_position_id = hnnunili
+		x = 1
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunili_radicals } 
+		completion_reward = {
+		china_generic_land_reform_setup = yes
+	}
+}
+
+focus = {
+		id = hnnunili_lisan_line
+		icon = GFX_RDHNNKMTUNI_followthelilisanline-248360
+		relative_position_id = hnnunili
+		x = 0
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = hnnunili_class_unity focus = hnnunili_land_reform } 
 		completion_reward = {
 		add_ideas = HNN_li_line
 		}
@@ -880,7 +955,7 @@ focus = {
 		id = hnnunijian_personal
 		icon = GFX_RDHNNKMTUNI_peacefully_subduing_the_warlords-248360
 		relative_position_id = hnnunijian
-		x = -2
+		x = 2
 		y = 2
 		cost = 5
 		search_filters = {
@@ -895,7 +970,7 @@ focus = {
 		id = hnnunijian_anti_soc
 		icon = GFX_RDHNNKMTUNI_ending_the_problem_at_the_root-248360
 		relative_position_id = hnnunijian
-		x = 2
+		x = -2
 		y = 2
 		cost = 5
 		search_filters = {
