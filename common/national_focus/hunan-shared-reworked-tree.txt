@@ -26,6 +26,10 @@
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
+		ai_will_do = {
+			factor = 15
+		}
+
 		prerequisite = { focus = HNNSHARED_collapse_of_the_league  }
 		completion_reward = {
 			swap_ideas = {
@@ -127,12 +131,20 @@
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
-		prerequisite = { focus = HNNSHARED_saving_the_textiles_industry  } prerequisite = { focus = HNNSHARED_shaking_hands_with_the_anyuan_miners  }
+		prerequisite = { focus = HNNSHARED_hushuhuasplan } prerequisite = { focus = HNNSHARED_shaking_hands_with_the_anyuan_miners  }
 		completion_reward = {
 			add_timed_idea = {
 				idea = HNN_communal_economics
 				days = 180
 			}
+		random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+		}
 		}
 	}
 
@@ -146,7 +158,7 @@
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
-		prerequisite = { focus = HNNSHARED_saving_the_textiles_industry  }
+		prerequisite = { focus = HNNSHARED_hushuhuasplan }
 		completion_reward = {
 		add_research_slot = 1
 		}
@@ -180,7 +192,7 @@
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
-		prerequisite = { focus = HNNSHARED_hushuhuasplan  }
+		prerequisite = { focus = HNNSHARED_saving_the_textiles_industry  }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_Attract_Foreign_Investment"
 			hidden_effect = {
@@ -188,6 +200,13 @@
     			cic = 300
    			equipment_type = support_equipment
     			seller_tags = { GXC }
+			}
+			602 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
 			}
 			}
 			custom_effect_tooltip = HNN_attraction_of_foreign_investment
@@ -259,12 +278,12 @@
 		completion_reward = {
 		add_resource = {
 				type = steel
-				amount = 20
+				amount = 14
 				state = 602
 			}
 		add_timed_idea = {
 		idea = HNN_anyuan_friends
-		days = 180
+		days = 160
 		}
 		}
 	}
@@ -368,6 +387,20 @@
 		}
 		prerequisite = { focus = HNNSHARED_building_up_the_industrial_zone  } prerequisite = { focus = HNNSHARED_support_to_the_peasants  }
 		completion_reward = {
+			602 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			}
+			1013 = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			}
 			add_timed_idea = {
 				idea = HNN_nationalization_program
 				days = 180
@@ -379,13 +412,13 @@
 	shared_focus = {
 		id = HNNSHARED_saving_the_textiles_industry
 		icon = GFX_HNNSHARED_saving_the_textiles_industry-248360
-		x = 50
+		x = 52
 		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
-		prerequisite = { focus = HNNSHARED_nationalize_foreign_assets  focus = HNNSHARED_a_push_for_small_businesses  }
+		prerequisite = { focus = HNNSHARED_a_push_for_small_businesses  }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_Reform_the_Status_Quo"
 			hidden_effect = {
@@ -406,13 +439,14 @@
 	shared_focus = {
 		id = HNNSHARED_hushuhuasplan
 		icon = GFX_HNNSHARED_hushuhuasplan-248360
-		x = 52
+		x = 50
 		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
-		prerequisite = { focus = HNNSHARED_a_push_for_small_businesses  }
+		
+		prerequisite = { focus = HNNSHARED_nationalize_foreign_assets  focus = HNNSHARED_a_push_for_small_businesses  }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_Hunannese_Industry"
 			random_owned_controlled_state = {
@@ -545,7 +579,7 @@
 			FOCUS_FILTER_ANNEXATION
 		}
 		available = {
-		has_completed_focus = HNNSPIRITSOLIDER_a_sacrifice_for_a_divine_land
+		has_completed_focus = HNNSPIRITSOLIDER_thejadeemperorstriumph
 		}
 		prerequisite = { focus = HNNSHARED_empire_beyond_the_lands_of_the_han  }
 		mutually_exclusive = { focus = HNNSHARED_an_empire_for_the_miao  } mutually_exclusive = { focus = HNNSHARED_auspicious_clouds_rise_above_asia  }
@@ -674,13 +708,6 @@
 		y = 1
 		cost = 3
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = { focus = HNNSHARED_collapse_of_the_league }
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_A_Buddhist_Army"
@@ -697,13 +724,6 @@
 		y = 1
 		cost = 6
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_A_Buddhist_Army
 		}
@@ -723,13 +743,6 @@
 		y = 1
 		cost = 6
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_A_Buddhist_Army
 		}
@@ -752,13 +765,6 @@
 		y = 1
 		cost = 10
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_A_Buddhist_Army
 		}
@@ -783,13 +789,6 @@
 		y = 2
 		cost = 10
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_Military_Modernization
 		}
@@ -820,13 +819,6 @@
 		y = 2
 		cost = 10
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_Military_Modernization
 		}
@@ -857,13 +849,6 @@
 		y = 3
 		cost = 10
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_New_Communications_Technology
 		}
@@ -892,13 +877,6 @@
 		y = 3
 		cost = 10
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_New_Communications_Technology
 		}
@@ -929,13 +907,6 @@
 		y = 4
 		cost = 6
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		available = {
 			602 = {
 				is_owned_and_controlled_by = ROOT
@@ -1003,13 +974,6 @@
 		y = 4
 		cost = 6
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_New_Officers
 			focus = HNN_New_Baoding
@@ -1033,13 +997,6 @@
 		y = 1
 		cost = 6
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_A_Buddhist_Army
 		}
@@ -1065,13 +1022,6 @@
 		y = 2
 		cost = 6
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		available = {
 			602 = {
 				is_owned_and_controlled_by = ROOT
@@ -1102,13 +1052,6 @@
 		y = 3
 		cost = 6
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_The_Changsha_Airport
 		}
@@ -1135,9 +1078,6 @@
 		y = 4
 		cost = 6
 
-		ai_will_do = {
-			factor = 15
-		}
 		prerequisite = {
 			focus = HNN_Import_Fighters
 		}
@@ -1157,13 +1097,6 @@
 		y = 5
 		cost = 10
 
-		ai_will_do = {
-			factor = 15
-			modifier = {
-				has_war = yes
-				factor = 1.4
-			}
-		}
 		prerequisite = {
 			focus = HNN_Fortify_Hunan
 		}
