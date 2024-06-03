@@ -9052,19 +9052,50 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #anarchist cores
 	id = japan_new_event.145
-	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.145"}
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.145"
+	add_state_core = 524 #Taiwan
+	add_state_core = 527 #korea
+	add_state_core = 525 #korea
+	}
 	title = japan_new_event.145.title
 	desc = japan_new_event.145.desc
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #manchuria and 
 		name = japan_new_event.145.a
 		ai_chance = { base = 100 }
-		
+		every_state = {
+		limit = {
+		or = {
+		is_manchuria = yes
+		is_russian_far_east = yes
+		}
+		}
+		add_core_of = JSR
+		}
+		add_stability = -0.05
 	}
+	option = { #siberia and chinese stuff
+		name = japan_new_event.145.b
+		ai_chance = { base = 30 }
+		every_state = {
+		limit = {
+		OR = {
+		is_china_proper = yes
+		is_manchuria = yes
+		region = 152
+		region = 222
+		is_siberia = yes
+		}
+		}
+		add_core_of = JSR
+		}
+		add_stability = -0.1
+	}
+
 }
 
 country_event = { #
