@@ -16,7 +16,7 @@ focus_tree = {
 	focus = {
 		id = YUN_soc_victory
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 36#change this
+		x = 46
 		y = 0
 		cost = 0
 		search_filters = {
@@ -27,7 +27,7 @@ focus_tree = {
 	focus = {
 		id = YUN_soc_initial_congress
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 36 #change this
+		x = 46
 		y = 1
 		cost = 5
 		search_filters = {
@@ -61,7 +61,8 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = YUN_zhang_win }
+		prerequisite = { focus = YUN_zhang_win focus = YUN_zhu_wins }
+		mutually_exclusive = { focus = yun_zhu_split_kmt }
 		completion_reward = {
 		}
 	}
@@ -76,7 +77,6 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = YUN_zhang_factionalism_end }
-		mutually_exclusive = { focus = yun_zhu_split_kmt }
 		completion_reward = {
 		}
 	}
@@ -84,7 +84,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_new_wave_society
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 34
+		x = 33
 		y = 5
 		cost = 5
 		search_filters = {
@@ -112,7 +112,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_control_kftu
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 38
+		x = 39
 		y = 5
 		cost = 5
 		search_filters = {
@@ -126,7 +126,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_dali_reorganization
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 34
+		x = 33
 		y = 6
 		cost = 5
 		search_filters = {
@@ -153,7 +153,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_assist_peasants
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 38
+		x = 39
 		y = 6
 		cost = 5
 		search_filters = {
@@ -167,7 +167,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_denounce_tutelage
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 35
+		x = 34
 		y = 7
 		cost = 5
 		search_filters = {
@@ -181,7 +181,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_democratic_stronghold
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 37
+		x = 38
 		y = 7
 		cost = 5
 		search_filters = {
@@ -195,7 +195,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_work_with_marxists
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 35
+		x = 34
 		y = 8
 		cost = 5
 		search_filters = {
@@ -209,7 +209,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_sinitic_dominance
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 37
+		x = 38
 		y = 8
 		cost = 5
 		search_filters = {
@@ -223,7 +223,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_national_equality
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 34
+		x = 33
 		y = 9
 		cost = 5
 		search_filters = {
@@ -251,7 +251,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_eliminate_banditry
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 38
+		x = 39
 		y = 9
 		cost = 5
 		search_filters = {
@@ -265,7 +265,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_join_comrades
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 35
+		x = 34
 		y = 10
 		cost = 5
 		search_filters = {
@@ -280,7 +280,7 @@ focus_tree = {
 	focus = {
 		id = YUN_zhang_save_revolution
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 37
+		x = 38
 		y = 10
 		cost = 5
 		search_filters = {
@@ -296,12 +296,13 @@ focus_tree = {
 	focus = {
 		id = YUN_zhu_wins
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 36
+		x = 46
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		prerequisite = { focus = YUN_soc_initial_congress }
 		completion_reward = {
 		}
 	}
@@ -309,13 +310,14 @@ focus_tree = {
 	focus = {
 		id = YUN_zhu_split_kmt
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 36
+		x = 46
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		mutually_exclusive = { focus = YUN_zhang_power_pac }
+		prerequisite = { focus = YUN_zhu_wins }
+		mutually_exclusive = { focus = YUN_zhang_factionalism_end }
 		completion_reward = {
 		}
 	}
@@ -323,12 +325,13 @@ focus_tree = {
 	focus = {
 		id = YUN_zhu_new_party
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 36
+		x = 46
 		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		prerequisite = { focus = YUN_zhu_split_kmt }
 		completion_reward = {
 		}
 	}
@@ -336,12 +339,210 @@ focus_tree = {
 	focus = {
 		id = YUN_zhu_army_mass_unity
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
-		x = 36
+		x = 43
 		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		prerequisite = { focus = YUN_zhu_new_party }
+		completion_reward = {
+		}
+	}
+	#soc agrarian rev
+	focus = {
+		id = YUN_zhu_socialist_agrarian
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 49
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_new_party }
+		completion_reward = {
+		}
+	}
+	#discipline
+	focus = {
+		id = YUN_zhu_national_discipline
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 42
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_army_mass_unity }
+		completion_reward = {
+		}
+	}
+	#cadre issues
+	focus = {
+		id = YUN_zhu_deal_with_cadres
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 46
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_army_mass_unity } prerequisite = { focus = YUN_zhu_socialist_agrarian }
+		completion_reward = {
+		}
+	}
+	#supervision by masses
+	focus = {
+		id = YUN_zhu_supervision_masses
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 50
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_army_mass_unity }
+		completion_reward = {
+		}
+	}
+	#unity and building soc
+	focus = {
+		id = YUN_zhu_strengthen_unity
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 41
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_national_discipline }
+		completion_reward = {
+		}
+	}
+	#modernization
+	focus = {
+		id = YUN_zhu_further_modernization
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 43
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_national_discipline } prerequisite = { focus = YUN_zhu_deal_with_cadres }
+		completion_reward = {
+		}
+	}
+	#develop handicraft cooperatives
+	focus = {
+		id = YUN_zhu_handicraft_worker_cooperatives
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 49
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_supervision_masses } prerequisite = { focus = YUN_zhu_deal_with_cadres }
+		completion_reward = {
+		}
+	}
+	#mountain construct
+	focus = {
+		id = YUN_zhu_mountain_construction
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 51
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_supervision_masses } 
+		completion_reward = {
+		}
+	}
+	#self reliance
+	focus = {
+		id = YUN_zhu_self_reliance
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 50
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_mountain_construction } prerequisite = { focus = YUN_zhu_handicraft_worker_cooperatives } 
+		completion_reward = {
+		}
+	}
+
+	#correct critisism
+	focus = {
+		id = YUN_zhu_correct_criticism
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 42
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_strengthen_unity } prerequisite = { focus = YUN_zhu_further_modernization } 
+		completion_reward = {
+		}
+	}
+	#correct discipline
+	focus = {
+		id = YUN_zhu_proper_discipline
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 45
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_further_modernization } 
+		completion_reward = {
+		}
+	}
+	#work with kftu
+	focus = {
+		id = YUN_zhu_negotiations_kftu
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 42
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_proper_discipline } prerequisite = { focus = YUN_zhu_correct_criticism } 
+		completion_reward = {
+		}
+	}
+	#end peasant restrictions
+	focus = {
+		id = YUN_zhu_alleviate_peasants
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 50
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_self_reliance } 
+		completion_reward = {
+		}
+	}
+	#red marshal leads the way forwards
+	focus = {
+		id = YUN_zhu_red_marshal_leads
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-248360
+		x = 46
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = YUN_zhu_self_reliance } prerequisite = { focus = YUN_zhu_negotiations_kftu }
 		completion_reward = {
 		}
 	}
