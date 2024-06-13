@@ -1142,6 +1142,65 @@ HNN_five_year_plan_mission = {
 		}
 	}
 
-
+}
+HNN_mao_puppets_category = { #international maoist larp
+	ALB_albanian_america = { #maoist america
+		icon = GFX_decision_generic_nationalism
+		fire_only_once = yes
+		allowed = { tag = HNN }
+		visible = {
+			CSA = {
+			is_subject_of = HNN
+			}
+			BBR = { exists = no }
+		}
+		fire_only_once = yes
+		cost = 50
+		ai_will_do = {
+			factor = 10
+			}
+		complete_effect = {
+			HNN = {
+			set_autonomy = {
+				target = CSA
+				autonomous_state = kx_colored_puppet
+				}
+			}
+			CSA = {
+			if = {
+			limit = {
+			owns_state = 361
+			}
+			set_capital = { state = 361 }
+			}
+			set_party_name = {
+			ideology = radical_socialist
+			long_name = HNN_MAO_CSA_party_long
+			name = HNN_MAO_CSA_party
+			}
+			set_party_name = {
+			ideology = syndicalist
+			long_name = HNN_MAO_CSA_party_long
+			name = HNN_MAO_CSA_party
+			}
+			set_cosmetic_tag = CSA_browder_forster
+			create_country_leader = {# Harry Haywood
+			name = "Harry Haywood"
+			picture = "gfx/leaders/BBR/Portrait_BBR_Harry_Haywood.png"
+			expire = "1.1.1"
+			ideology = mao_zedong_thought_subtype
+			traits = { rabble_rouser }
+			}
+			create_country_leader = {# Harry Haywood
+			name = "Harry Haywood"
+			picture = "gfx/leaders/BBR/Portrait_BBR_Harry_Haywood.png"
+			expire = "1.1.1"
+			ideology = agrarian_syndicalism_subtype
+			traits = { rabble_rouser }
+			}
+		set_country_leader_ideology = mao_zedong_thought_subtype
+		}
+	}
+	}
 
 }
