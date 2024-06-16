@@ -2,6 +2,7 @@ name="Kaiserredux - A Rising Dragon"
 version="0.01"
 dependencies={
 	"KaiserreduX"
+	"Kaiserredux"
 }
 tags={
 	"Alternative History"
