@@ -1157,7 +1157,14 @@
 			}
 			NOT = { has_country_flag = JAP_backed_down_pacific }
 		}
-		bypass = { HAW = { NOT = { exists = yes } } }
+		bypass = { 
+		OR = {
+		has_country_flag = JAP_backed_down_pacific 
+		HAW = { is_subject_of = JAP }
+		HAW = { is_in_faction_with = JAP }
+		HAW = { NOT = { exists = yes } } 
+		}
+		}
 		ai_will_do = {
 			factor = 25
 			modifier = {
