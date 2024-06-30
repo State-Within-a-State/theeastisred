@@ -699,7 +699,8 @@ focus_tree = {
 			focus = VIN_Vietnams_Miracle_Man
 		}
 		available = {
-		has_completed_focus = VIN_Personalist_Revolution
+			has_completed_focus = VIN_Personalist_Revolution
+			has_country_flag = VIN_Diem
 		}
 		relative_position_id = VIN_Imperial_Council
 		mutually_exclusive = {
@@ -758,6 +759,11 @@ focus_tree = {
 		cost = 5.00
 		prerequisite = {
 			focus = VIN_Private_Police
+		}
+		bypass = {
+			NOT = {
+				has_country_flag = VIN_Diem
+			}
 		}
 		relative_position_id = VIN_Imperial_Council
 		completion_reward = {
@@ -1981,6 +1987,10 @@ focus_tree = {
 			remove_idea = VIN_Draft_Constitution_idea
 			add_idea = VIN_Democratic_Dragon_idea
 			}
+			country_event = {
+					days = 14
+					id = vietnam.39
+			}
 		}
 		x = 12
 		y = 16
@@ -2207,12 +2217,19 @@ focus_tree = {
 		}
 		completion_reward = {
 		add_ideas = VIN_Honor_Fatherland_idea
+		remove_ideas = VIN_Illiteracy_idea
+		hidden_effect = {
+		country_event = {
+					days = 14
+					id = vietnam.95
+				}
+			}
 		}
 		x = 20
 		y = 15
 	}
 	
-		focus = {
+	focus = {
 		id = VIN_Black_Fiefdom
 		icon = GFX_goal_VIN_black_fiefdom_southeast_asia
 		cost = 5.00
@@ -2233,6 +2250,43 @@ focus_tree = {
 		}
 		x = 20
 		y = 16
+	}
+	
+	focus = {
+		id = VIN_Righteous_Yang
+		icon = GFX_goal_VIN_follow_wake_righteous_yang
+		cost = 5.00
+		relative_position_id = VIN_Imperial_Council
+		prerequisite = {
+		focus = VIN_Black_Fiefdom
+		}
+		available = {
+		}
+		completion_reward = {
+		navy_experience = 50
+		add_tech_bonus = {
+					name = VIN_new_landing_craft
+					bonus = 1.5
+					uses = 1
+					category = tp_tech
+		}
+		add_war_support = 0.075
+		if = {	
+			limit = { 
+			has_completed_focus = VIN_National_Revolutionaries
+			}
+			country_event = vietnam.97
+			}
+		if = {	
+			limit = { 
+			has_completed_focus = VIN_Rainforest_Robin_Hood
+			}
+			country_event = vietnam.96
+			}
+		custom_effect_tooltip = binhxuyenfp.tt
+		}
+		x = 20
+		y = 17
 	}
 	
 	### Navy/Air Tree ###
@@ -2427,7 +2481,7 @@ focus_tree = {
 					name = air_doc_bonus
 					cost_reduction = 0.5
 					uses = 2
-					category = operational_integrity_tree
+					category = air_doctrine
 					}
 				}
 
@@ -2482,7 +2536,7 @@ focus_tree = {
 					name = air_doc_bonus
 					cost_reduction = 0.5
 					uses = 2
-					category = cat_battlefield_support
+					category = air_doctrine
 					}
 				}
 
@@ -3484,7 +3538,7 @@ focus_tree = {
 				name = land_doc_bonus
 				cost_reduction = 0.5
 				uses = 1
-				category = cat_superior_firepower
+				category = land_doctrine
 					}
 				}
 
@@ -3551,7 +3605,7 @@ focus_tree = {
 					name = land_doc_bonus
 					cost_reduction = 0.25
 					uses = 1
-					category = cat_grand_battle_plan
+					category = land_doctrine
 					}
 				}
 
@@ -3604,7 +3658,7 @@ focus_tree = {
 						name = land_doc_bonus
 						cost_reduction = 0.25
 						uses = 1
-						category = cat_grand_battle_plan
+						category = land_doctrine
 					}
 				}
 
@@ -3931,7 +3985,7 @@ focus_tree = {
 	
 	focus = {
 		id = VIN_Fate_Of_Siam
-		icon = YUN_GFX_Goal_The_Siamese_Threat
+		icon = GFX_YUN_Goal_The_Siamese_Threat
 		cost = 5.00
 		prerequisite = {
 			focus = VIN_Reclaim_Indochina
@@ -3968,7 +4022,7 @@ focus_tree = {
 	
 	focus = {
 		id = VIN_Pluck_The_Peacock
-		icon = YUN_GFX_Goal_Exploit_Burma
+		icon = GFX_YUN_Goal_Exploit_Burma
 		cost = 5.00
 		prerequisite = {
 			focus = VIN_Fate_Of_Siam
@@ -4056,6 +4110,9 @@ focus_tree = {
 			focus = VIN_Our_Eastern_Shore
 		}
 		available = {
+		NOT = {
+		has_completed_focus = VIN_Righteous_Yang
+		}
 		OR = {
 		has_country_leader = { ruling_only = yes name = "Cuong De" }
 		has_country_leader = { ruling_only = yes name = "Bao Dai" }
@@ -4072,7 +4129,7 @@ focus_tree = {
 		completion_reward = {
 		custom_effect_tooltip = mandate.tt
 		every_state = {
-                limit = {
+				limit = {
 					is_claims_china = yes
 					}
 				add_claim_by = VIN
@@ -4177,16 +4234,19 @@ focus_tree = {
 		y = 4
 		completion_reward = {
 		every_state = {
-                limit = {
-                    OR = {
-                        is_core_of = CAM
-                        is_core_of = LAO
+				limit = {
+					OR = {
+						is_core_of = CAM
+						is_core_of = LAO
 						is_core_of = SIA
 						is_core_of = BRM
-                    }
-                }
-                add_claim_by = VIN
-            }
+					}
+				}
+				add_claim_by = VIN
+			}
+			hidden_effect = {
+			add_state_claim = 756
+			}
 			owner = {
 					create_wargoal = {
 						type = annex_everything
@@ -4268,7 +4328,12 @@ focus_tree = {
 		}
 		available = {
 		OR = {
+		has_completed_focus = VIN_Peace_And_Plenty
+		has_completed_focus = VIN_Hoa_Hao_Mandate
+		}
+		OR = {
 		has_country_leader = { ruling_only = yes name = "Huynh Phu So" }
+		has_country_leader = { ruling_only = yes name = "Cuong De" }
 		has_country_leader = { ruling_only = yes name = "Ba Cut" }
 		}
 		VIN = {
@@ -4298,6 +4363,7 @@ focus_tree = {
 			focus = VIN_Expand_Into_Asia
 		}
 		available = {
+		has_completed_focus = VIN_Spread_Caodaism
 		OR = {
 		has_country_leader = { ruling_only = yes name = "Cuong De" }
 		has_country_leader = { ruling_only = yes name = "Pham Cong Tac" }
@@ -4329,6 +4395,10 @@ focus_tree = {
 			focus = VIN_Expand_Into_Asia
 		}
 		available = {
+		OR = {
+		has_completed_focus = VIN_True_Global_Faith
+		has_completed_focus = VIN_Heavenly_Mandate
+		}
 		has_country_leader = { ruling_only = yes name = "Ong Dao Dua" }
 		VIN = {
 			owns_state = 427
