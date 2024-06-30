@@ -745,11 +745,11 @@
 
 		available = {
 			custom_trigger_tooltip = {
- 			   tooltip = kmt_or_soc_tt
+ 			tooltip = kmt_or_soc_tt
 			OR = {
 			has_socialist_government = yes
 			is_ruled_by_kmt = yes
-			}		
+			}	
 		}
 
 		}
@@ -786,14 +786,12 @@
 	shared_focus = {
 		id = HNN_arise_hunans_peasantry
 		icon = {
-			trigger = {
-			is_ruled_by_kmt = yes
-			}
-		value = GFX_goal_CHI_peoples_army
-		}
-		icon = {
 		trigger = {
-		has_socialist_government = yes
+		OR = {
+		has_government = syndicalist
+		has_completed_focus = HNNMAO_renounce_kuomintang_cooperation
+		has_completed_focus = HNNSHENGZHI_the_buddhist_general_arrives_in_changsha
+		}
 		}
 		value = GFX_TAISOC_develop_the_proletarian_peasant_conscious-248360
 		}
@@ -922,17 +920,13 @@
 
 	shared_focus = {
 		id = HNN_disciplined_and_motivated
-		icon = GFX_goal_CHI_paramilitary_double
-
-		icon = {
-			trigger = {
-			is_ruled_by_kmt = yes
-			}
-		value = GFX_goal_CHI_paramilitary_double
-		}
 		icon = {
 		trigger = {
-		has_socialist_government = yes
+		OR = {
+		has_government = syndicalist
+		has_completed_focus = HNNMAO_renounce_kuomintang_cooperation
+		has_completed_focus = HNNSHENGZHI_the_buddhist_general_arrives_in_changsha
+		}
 		}
 		value = GFX_goal_CSA_professional_red_army
 		}
@@ -1035,6 +1029,14 @@
 				cost_reduction = 0.5
 				uses = 1
 				category = land_doctrine
+			}
+			hidden_effect = {
+			if = {
+			limit = {
+			has_socialist_government = yes
+			}
+			country_event = { id = hunan_rework.92 days = 3 }
+			}
 			}
 		}
 		search_filters = { FOCUS_FILTER_ARMY_BONUS FOCUS_FILTER_RESEARCH }
@@ -1205,14 +1207,12 @@
 	shared_focus = {
 		id = HNN_hallmark_of_revolutionary_warfare
 		icon = {
-			trigger = {
-			is_ruled_by_kmt = yes
-			}
-		value = GFX_goal_CHI_soul_of_whampoa
-		}
-		icon = {
 		trigger = {
-		has_socialist_government = yes
+		OR = {
+		has_government = syndicalist
+		has_completed_focus = HNNMAO_renounce_kuomintang_cooperation
+		has_completed_focus = HNNSHENGZHI_the_buddhist_general_arrives_in_changsha
+		}
 		}
 		value = GFX_focus_red_flag_army
 		}
@@ -1252,6 +1252,10 @@
 			custom_effect_tooltip = tooltip_white_line
 			custom_effect_tooltip = tech_integrated_specialists_effect
 			hidden_effect = {
+				if = {
+				limit = { is_ruled_by_kmt = yes }
+				country_event = { id = hunan_rework.93 days = 3 }	
+				}
 				set_technology = { tech_integrated_specialists = 1 popup = yes }
 			}
 		}
@@ -1710,12 +1714,68 @@
 		}
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus HNN_provincial_redoubts"
-			HNN_provincial_redoubts_effect = yes
 			add_equipment_to_stockpile = {
 				type = support_equipment
 				amount = 300
 				producer = HNN
 			}
+		hidden_effect = {
+		602 = {
+			add_building_construction = {
+				type = bunker
+				province = 9999
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				province = 1640
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				province = 13143
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				province = 1448
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				province = 9982
+				level = 1
+				instant_build = yes
+			}
+		}
+		1052 = {
+			add_building_construction = {
+				type = bunker
+				province = 7549
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				province = 7577
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = bunker
+				province = 1474
+				level = 1
+				instant_build = yes
+			}
+		}
+		}
+		add_command_power = -30
+
+		custom_effect_tooltip = HNN_provincial_redoubts_tang_tt
 		}
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 	}
