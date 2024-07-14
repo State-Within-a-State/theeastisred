@@ -22,7 +22,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		icon = mission_icon     # For GFX_decision_mission_icon
 		is_good = no
 	   
-		days_mission_timeout = 70
+		days_mission_timeout = 150
 		fire_only_once = yes
 		complete_effect = {
 		set_country_flag = stopped_guangxi_revo
@@ -36,130 +36,110 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		}
 	}
 	
-	HNN_quzhen_march_too_hunan = {
+	
+	GXC_qiongya_revolt = {
 		activation = {
-			has_country_flag = HNN_quzhen_rebellion
+			has_country_flag = GXC_kmt_uprising
 		}
 		available = {
 			
 			
 			custom_trigger_tooltip = {
-				tooltip = quzhen_bellow_tt		
-				check_variable = { quzhen_drug_empire_strengthen < 11 }
+				tooltip = qiongya_bellow_tt		
+				check_variable = { qiongya_strengthen < 4 }
 			}
 			
 		}
 		cancel_trigger = {
 			OR = {
-				has_country_flag = stopped_quzhen_rebellion
-				has_country_flag = failled_quzhen_rebellion
-				has_country_flag = failled_peasant_march_to_hunan
+				has_country_flag = stopped_qiongya_revo
+				has_country_flag = failled_qiongya_revo
 			}
 		}
 		
 		icon = mission_icon     # For GFX_decision_mission_icon
 		is_good = no
 	   
-		days_mission_timeout = 50
+		days_mission_timeout = 70
 		fire_only_once = yes
 		complete_effect = {
-		set_country_flag = stopped_quzhen_rebellion
-		clr_country_flag = HNN_quzhen_rebellion
-		country_event = hunan_rework.10
+		set_country_flag = stopped_qiongya_revo
+		clr_country_flag = GXC_qiongya_revolt
+		country_event = liangguang_rd.14
 		}
 		timeout_effect = {
-		set_country_flag = failled_quzhen_rebellion
-		clr_country_flag = HNN_quzhen_rebellion
-		country_event = hunan_rework.50
+		set_country_flag = failled_qiongya_revo
+		clr_country_flag = GXC_qiongya_revolt
+		country_event = liangguang_rd.15
 		}
 	}
 	
 	
-	HNN_kuomintag_supression_campaign_one = {
-		activation = {
-			has_country_flag = HNN_kuomintag_supression_campaign
-		}
-		available = {
-			
-			
-			custom_trigger_tooltip = {
-				tooltip = we_have_lowered_kmt_resistance_tt		
-				check_variable = { kmt_stage_one_suppression < 14 }
-			}
-			
-		}
-		
-		
-		icon = mission_icon     # For GFX_decision_mission_icon
-		is_good = no
-	   
-		days_mission_timeout = 50
-		fire_only_once = yes
-		complete_effect = {
-		country_event = hunan_rework.21
-		}
-		timeout_effect = {
-		country_event = hunan_rework.22
-		}
-	}
 	
-	HNN_kuomintag_supression_campaign_two = {
-		activation = {
-			has_country_flag = HNN_stage_two_start
-		}
-		available = {
-			
-			
-			custom_trigger_tooltip = {
-				tooltip = we_have_lowered_kmt_resistance_tt		
-				check_variable = { kmt_stage_two_suppression < 16 }
-			}
-			
-		}
-		
-		
-		icon = mission_icon     # For GFX_decision_mission_icon
-		is_good = no
-	   
-		days_mission_timeout = 50
-		fire_only_once = yes
-		complete_effect = {
-		country_event = hunan_rework.25
-		}
-		timeout_effect = {
-		country_event = hunan_rework.26
-		}
-	}
-	
-	HNN_call_for_elections = {
+	GXC_bribe_guangxi_officers = {
 		icon = ger_military_buildup
 		
-		available = {
-			has_country_flag = HNN_gelaohui_rebellion_over
-			has_country_flag = HNN_spirit_soldier_rebellion_over
-		}
+		
 		
 		visible = {
-			tag = HNN
-			has_country_flag = HNN_gelaohui_rebellion_over
-			has_country_flag = HNN_spirit_soldier_rebellion_over
-			NOT = { has_country_flag = hunan_dicatorship }
-			has_completed_focus = HNNZHILI_restoration_of_the_hunan_constiution
+			tag = GXC
+			has_country_flag = GXC_kmt_uprising
 		}
-		cost = 10
+		cost = 15
 		
-		days_remove = 1
-		fire_only_once = yes
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = no
 		ai_will_do = {
 		base = 1000
 		}
 		complete_effect = {
-			
+			add_ideas = {
+			GXC_bribe_guangxi_officers
+			}
 		}
 		remove_effect = {
-			country_event = {
-			id = hunan_rework.28
-			days = 5
+			remove_ideas = {
+			GXC_bribe_guangxi_officers
+			}
+			add_to_variable = {
+				var = guangxi_strengthen
+				value = -10
+				tooltip = guangxi_decrease_tt
+			}
+		}
+	}
+	
+	GXC_infiltrate_local_villages = {
+		icon = ger_military_buildup
+		
+		
+		
+		visible = {
+			tag = GXC
+			has_country_flag = GXC_kmt_uprising
+		}
+		cost = 25
+		
+		days_remove = 30
+		days_re_enable = 15
+		fire_only_once = no
+		ai_will_do = {
+		base = 1000
+		}
+		complete_effect = {
+			add_ideas = {
+			GXC_village_infiltration
+			}
+		}
+		remove_effect = {
+			remove_ideas = {
+			GXC_village_infiltration
+			}
+			add_to_variable = {
+				var = guangxi_strengthen
+				value = -15
+				tooltip = guangxi_decrease_tt
 			}
 		}
 	}

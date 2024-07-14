@@ -74,10 +74,20 @@ country_event = { #The Qiongya Soviet
 		clr_country_flag = GXC_Zhili_Own_Qiongya
 		set_country_flag = GXC_peasant_Own_Qiongya
 		set_country_flag = GXC_peasant_uprising
+		activate_mission = GXC_qiongya_revolt
 		country_event = {
 		id = liangguang_rd.4
 		days = 7
 		}
+		set_variable = {
+			var = qiongya_strengthen
+			value = 5
+		}
+		country_event = {
+		id = liangguang_rd.9
+		days = 4
+		}
+		
 	}
 }
 
@@ -240,13 +250,18 @@ country_event = { #The Struggle Ends in Guangxi
 	option = { #RKMT Victory
 		name = liangguang_rd.8.a
 		ai_chance = { base = 100 }
-		#trigger = {
-		#check_variable = {
-		#				var = rkmt_uprising_status
-		#				value = baise_uprising_status
-		#				compare = greater_than
-		#			}
-		#}
+	trigger = {
+		check_variable = {
+						var = rkmt_uprising_status
+						value = baise_uprising_status
+						compare = greater_than
+					}
+		}
+		add_to_variable = {
+				var = guangxi_strengthen
+				value = 15
+				tooltip = guangxi_increase_tt
+			}
 		clr_country_flag = GXC_kmt_peasant_Own_Guangxi
 		set_country_flag = GXC_kmt_Own_Guangxi
 		set_country_flag = RKMT_Victory_In_Guangxi
@@ -255,20 +270,25 @@ country_event = { #The Struggle Ends in Guangxi
 	option = { #LKMT/Peng Pai Victory
 		name = liangguang_rd.8.b
 		ai_chance = { base = 100 }
-		#trigger = {
-		#check_variable = {
-		#				var = baise_uprising_status
-		#				value = rkmt_uprising_status
-		#				compare = greater_than
-		#			}
-		#}
+		trigger = {
+		check_variable = {
+						var = baise_uprising_status
+						value = rkmt_uprising_status
+						compare = greater_than
+					}
+		}
+		add_to_variable = {
+				var = guangxi_strengthen
+				value = 15
+				tooltip = guangxi_increase_tt
+			}
 		clr_country_flag = GXC_kmt_peasant_Own_Guangxi
 		set_country_flag = GXC_peasant_Own_Guangxi
 		set_country_flag = Peasant_Victory_In_Guangxi
 	}
 }
 
-country_event = { #
+country_event = { #Lu Yuguang Enters Qiongya
 	id = liangguang_rd.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.9"}
 	title = liangguang_rd.9.title
@@ -279,11 +299,22 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.9.a
 		ai_chance = { base = 100 }
-		
+		set_variable = {
+			var = qiongya_peasant_uprising
+			value = 1
+		}
+		set_variable = {
+			var = qiongya_peasant_counter
+			value = 1
+		}
+		country_event = {
+		id = liangguang_rd.10
+		days = 3
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Battle of Junliao Village
 	id = liangguang_rd.10
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.10"}
 	title = liangguang_rd.10.title
@@ -291,14 +322,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Beseige the City
 		name = liangguang_rd.10.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = qiongya_peasant_counter
+				value = 1
+				tooltip = qiongya_counter_increase_tt
+			}
+		country_event = {
+		id = liangguang_rd.11
+		days = 3
+		}
+	}
+	
+	option = { #Just Push Them Out
+		name = liangguang_rd.10.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = qiongya_peasant_uprising
+				value = 1
+				tooltip = qiongya_peasant_increase_tt
+			}
+		country_event = {
+		id = liangguang_rd.11
+		days = 3
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Lehui Campaign
 	id = liangguang_rd.11
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.11"}
 	title = liangguang_rd.11.title
@@ -306,10 +359,32 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Bombard the Mountains Til Oblivion
 		name = liangguang_rd.11.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = qiongya_peasant_counter
+				value = 1
+				tooltip = qiongya_counter_increase_tt
+			}
+		country_event = {
+		id = liangguang_rd.12
+		days = 3
+		}
+	}
+	
+	option = { #We Shall Climb Those Goddam Mountains
+		name = liangguang_rd.11.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = qiongya_peasant_uprising
+				value = 1
+				tooltip = qiongya_peasant_increase_tt
+			}
+		country_event = {
+		id = liangguang_rd.12
+		days = 3
+		}
 	}
 }
 
@@ -321,10 +396,32 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Bombard the Mountains Til Oblivion
 		name = liangguang_rd.12.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = qiongya_peasant_counter
+				value = 1
+				tooltip = qiongya_counter_increase_tt
+			}
+		country_event = {
+		id = liangguang_rd.13
+		days = 3
+		}
+	}
+	
+	option = { #We Shall Climb Those Goddam Mountains
+		name = liangguang_rd.12.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = qiongya_peasant_uprising
+				value = 1
+				tooltip = qiongya_peasant_increase_tt
+			}
+		country_event = {
+		id = liangguang_rd.13
+		days = 3
+		}
 	}
 }
 
@@ -336,14 +433,48 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Socialist Victory
 		name = liangguang_rd.13.a
 		ai_chance = { base = 100 }
+	trigger = {
+		check_variable = {
+						var = qiongya_peasant_uprising
+						value = qiongya_peasant_counter
+						compare = greater_than
+					}
+		}
+		add_to_variable = {
+				var = qiongya_strengthen
+				value = -25
+				tooltip = qiongya_decrease_tt
+			}
+		set_country_flag = Peasant_Victory_In_Qiongya
+	}
+	
+	option = { #Zhili Victory
+		name = liangguang_rd.13.b
+		ai_chance = { base = 100 }
+		trigger = {
+		check_variable = {
+						var = qiongya_peasant_counter
+						value = qiongya_peasant_uprising
+						compare = greater_than
+					}
+		}
+		add_to_variable = {
+				var = qiongya_strengthen
+				value = 15
+				tooltip = qiongya_increase_tt
+			}
 		
+		
+		clr_country_flag = GXC_peasant_Own_Qiongya
+		set_country_flag = GXC_Zhili_Own_Qiongya
+		set_country_flag = Zhili_Victory_In_Qiongya
 	}
 }
 
-country_event = { #
+country_event = { #Holding Onto Qiongya
 	id = liangguang_rd.14
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.14"}
 	title = liangguang_rd.14.title
@@ -351,14 +482,23 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #For Now We Need to Give Yuguang Some Autonomy
 		name = liangguang_rd.14.a
 		ai_chance = { base = 100 }
+		release_puppet = QIO
+		custom_effect_tooltip = you_need_this_to_play_qiongya_tt
+	}
+	
+	option = { #We Must Keep a Firm hand
+		name = liangguang_rd.14.a
+		ai_chance = { base = 100 }
+		add_stability = -0.1
+		add_political_power = 50
 		
 	}
 }
 
-country_event = { #
+country_event = { #A Revolution in Qiongya
 	id = liangguang_rd.15
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.15"}
 	title = liangguang_rd.15.title
@@ -366,10 +506,21 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Alas We Will Be Back
 		name = liangguang_rd.15.a
 		ai_chance = { base = 100 }
-		
+		release = QIO
+		set_country_flag = QIO_socialist_released
+	}
+	
+	option = { #The Revolution is Ours!
+		name = liangguang_rd.15.b
+		ai_chance = { base = 100 }
+		release = QIO
+		set_country_flag = QIO_socialist_released
+		QIO = {
+		change_tag_from = GXC
+		}
 	}
 }
 
