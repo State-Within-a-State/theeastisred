@@ -1212,28 +1212,48 @@ country_event = { #Liangguang Secedes!
 					hours = 1
 				}
 			}
+			set_autonomy = {
+				target = GXC
+				autonomy_state = autonomy_free
+			}
+			add_ai_strategy = {
+				type = diplo_action_desire
+				id = GXC
+				target = call_allies
+				value = 99999
+			}
+			add_ai_strategy = {
+				type = diplo_action_acceptance
+				id = GXC
+				target = join_allies
+				value = 99999
+			}
 			GXC = {
 				transfer_state = 592 #Guangzhou
-				transfer_state = 1012 #Chaoshan
-				transfer_state = 593 #Yuehai
-				transfer_state = 800 #Shaoguan
-				transfer_state = 599 #Guilin
-				transfer_state = 594 #Nanning
-				transfer_state = 1056 #Qinlian
-				transfer_state = 591 #Qiongya
-				transfer_state = 1053 #Zhennan
-				transfer_state = 1054 #Tiannan
-				transfer_state = 1055 #Liujiang
+				transfer_state = 728 #other concession
+
+				country_event = {
+					id = liangguang_rd.1
+					days = 2
+				}
+				add_ai_strategy = {
+					type = diplo_action_desire
+					id = LEP
+					target = join_allies
+					value = 99999
+				}
+				add_ai_strategy = {
+					type = diplo_action_acceptance
+					id = LEP
+					target = call_allies
+					value = 99999
+				}
+				separate_peace_all_wars = yes
 				if = {
 					limit = { has_template = "Bubing Zhen" }
 					delete_unit_template_and_units = { division_template = "Bubing Zhen" }
 				}
-				load_oob = GXC
 				purge_LEP_templates = yes
-				country_event = {
-					id = lng.1
-					days = 1
-				}
 			}
 		}
 	}
@@ -1242,10 +1262,23 @@ country_event = { #Liangguang Secedes!
 		name = lepcollapse.21.a
 		ai_chance = { factor = 100 }
 		GXC = { set_country_flag = choice_made }
+		effect_tooltip = {
+			set_autonomy = {
+				target = GXC
+				autonomy_state = autonomy_free
+			}
+		}
+
 	}
 	option = {
 		name = lepcollapse.21.b
 		trigger = { is_ai = no }
+		effect_tooltip = {
+			set_autonomy = {
+				target = GXC
+				autonomy_state = autonomy_free
+			}
+		}
 		hidden_effect = {
 			GXC = {
 				set_country_flag = choice_made
@@ -1266,6 +1299,22 @@ country_event = { #Hunan Secedes
 	immediate = {
 		log = "[GetDateText]: [Root.GetName]: event lepcollapse.22"
 		hidden_effect = {
+			set_autonomy = {
+				target = HNN
+				autonomy_state = autonomy_free
+			}
+			add_ai_strategy = {
+				type = diplo_action_desire
+				id = HNN
+				target = call_allies
+				value = 99999
+			}
+			add_ai_strategy = {
+				type = diplo_action_acceptance
+				id = HNN
+				target = join_allies
+				value = 99999
+			}
 			add_offsite_building = {
 				type = arms_factory
 				level = -1
@@ -1280,20 +1329,22 @@ country_event = { #Hunan Secedes
 			}
 			HNN = {
 				
-				
+				add_ai_strategy = {
+					type = diplo_action_desire
+					id = LEP
+					target = join_allies
+					value = 99999
+				}
+				add_ai_strategy = {
+					type = diplo_action_acceptance
+					id = LEP
+					target = call_allies
+					value = 99999
+				}
+				separate_peace_all_wars = yes
 				purge_LEP_templates = yes
 				country_event = {
 					id = hunan_rework.1
-					days = 1
-				}
-			}
-			
-			GXC = {
-				
-				
-				purge_LEP_templates = yes
-				country_event = {
-					id = liangguang_rd.1
 					days = 1
 				}
 			}
