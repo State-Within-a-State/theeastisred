@@ -1,3 +1,80 @@
+
+rd_china_enable_all_demand_submission_decisions = {
+	effect_tooltip = {
+		if = {
+			limit = { can_declare_war_on = QIE }
+			activate_targeted_decision = { decision = china_demand_submission target = QIE }
+		}
+		if = {
+			limit = { can_declare_war_on = FNG }
+			activate_targeted_decision = { decision = china_demand_submission target = FNG }
+		}
+		if = {
+			limit = { can_declare_war_on = SHX }
+			activate_targeted_decision = { decision = china_demand_submission target = SHX }
+		}
+		if = {
+			limit = { can_declare_war_on = GXC }
+			activate_targeted_decision = { decision = china_demand_submission target = GXC }
+		}
+		if = {
+			limit = { can_declare_war_on = YUN }
+			activate_targeted_decision = { decision = china_demand_submission target = YUN }
+		}
+		if = {
+			limit = { can_declare_war_on = HNN }
+			activate_targeted_decision = { decision = china_demand_submission target = HNN }
+		}
+		if = {
+			limit = { can_declare_war_on = SZC }
+			activate_targeted_decision = { decision = china_demand_submission target = SZC }
+		}
+		if = {
+			limit = { can_declare_war_on = LEP }
+			activate_targeted_decision = { decision = china_demand_submission target = LEP }
+		}
+		if = {
+			limit = { can_declare_war_on = ANQ }
+			activate_targeted_decision = { decision = china_demand_submission target = ANQ }
+		}
+		if = {
+			limit = { can_declare_war_on = CHI }
+			activate_targeted_decision = { decision = china_demand_submission target = CHI }
+		}
+		if = {
+			limit = { can_declare_war_on = SQI }
+			activate_targeted_decision = { decision = china_demand_submission target = SQI }
+		}
+		if = {
+			limit = { can_declare_war_on = PRC }
+			activate_targeted_decision = { decision = china_demand_submission target = PRC }
+		}
+		if = {
+			limit = { can_declare_war_on = QIO }
+			activate_targeted_decision = { decision = china_demand_submission target = QIO }
+		}
+
+	}
+	hidden_effect = {
+		if = { limit = {
+		LEC = { has_country_flag = LEC_bankrupt }
+		}
+		add_to_array = { ROOT.china_possible_targets_array = LEC }
+		}
+		every_other_country = {
+			limit = {
+				is_chinese_tag = yes
+				NOT = { original_tag = LEC }
+				NOT = { original_tag = XSM }
+				NOT = { original_tag = TAN }
+				NOT = { original_tag = SIK }
+			}
+			add_to_array = { ROOT.china_possible_targets_array = THIS }
+		}
+	}
+}
+
+
 RD_superevent_china = {
 	if = {
 		limit = {
