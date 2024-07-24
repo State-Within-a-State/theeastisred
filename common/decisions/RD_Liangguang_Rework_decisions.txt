@@ -1,14 +1,13 @@
 GXC_internal_dvisions_decision_category = { #dont forget to add a category
 	GXC_guangxi_revolt = {
-		activation = {
-			has_country_flag = GXC_kmt_uprising
-		}
+		allowed = { always = no } #activated by effect
+
 		available = {
 			
 			
 			custom_trigger_tooltip = {
 				tooltip = guangxi_bellow_tt		
-				check_variable = { guangxi_strengthen < 25 }
+				check_variable = { guangxi_strengthen < 20 }
 			}
 			
 		}
@@ -26,12 +25,12 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		fire_only_once = yes
 		complete_effect = {
 		set_country_flag = stopped_guangxi_revo
-		clr_country_flag = GXC_new_guangxi_revolt
+		clr_country_flag = GXC_kmt_uprising
 		
 		}
 		timeout_effect = {
 		set_country_flag = failled_guangxi_revo
-		clr_country_flag = GXC_new_guangxi_revolt
+		clr_country_flag = GXC_kmt_uprising
 		if = {
 		limit = {
 			has_country_flag = RKMT_Victory_In_Guangxi
@@ -49,9 +48,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 	
 	
 	GXC_qiongya_revolt = {
-		activation = {
-			has_country_flag = GXC_peasant_uprising
-		}
+		allowed = { always = no } #activated by effect
 		available = {
 			
 			
@@ -100,7 +97,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		
 		days_remove = 15
 		days_re_enable = 10
-		fire_only_once = no
+		fire_only_once = yes
 		ai_will_do = {
 		base = 5
 		}
@@ -115,7 +112,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 			}
 			add_to_variable = {
 				var = guangxi_strengthen
-				value = -10
+				value = -15
 				tooltip = guangxi_decrease_tt
 			}
 		}
@@ -134,7 +131,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		
 		days_remove = 30
 		days_re_enable = 15
-		fire_only_once = no
+		fire_only_once = yes
 		ai_will_do = {
 		base = 5
 		}
@@ -149,7 +146,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 			}
 			add_to_variable = {
 				var = guangxi_strengthen
-				value = -15
+				value = -10
 				tooltip = guangxi_decrease_tt
 			}
 		}
