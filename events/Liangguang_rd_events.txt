@@ -785,6 +785,35 @@ country_event = { #Officers Plot Exposed
 				value = 1
 				tooltip = add_federalist_liangguang_tt
 			}
+		hidden_effect = {
+		if = {
+			limit = {
+			check_variable = {
+						var = zhili_liangguang_power
+						value = chen_jiongming_power
+						compare = greater_than
+					}
+			}
+			country_event = {#Chen Jiongming Fails
+			id = liangguang_rd.26
+			days = 15
+			}
+		}
+		else_if = {
+			limit = {
+			check_variable = {
+						var = chen_jiongming_power
+						value = zhili_liangguang_power
+						compare = greater_than
+					}
+			}
+			country_event = {#Chen Jiongming Succeeds
+			id = liangguang_rd.23
+			days = 15
+			}
+			}
+		}
+
 	}
 }
 
@@ -893,18 +922,20 @@ country_event = { #The Dust Settles
 	}
 }
 
-country_event = { #
+country_event = { #chen fails version 2  Mingqi Counters the Plot
 	id = liangguang_rd.26
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.26"}
-	title = liangguang_rd.26.title
+	title = liangguang_rd.22.title
 	desc = liangguang_rd.26.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
-		name = liangguang_rd.26.a
+		name = liangguang_rd.22.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 100
+		set_country_flag = GXC_Zhang_Mingqi_Control_Guangdong
+
 	}
 }
 
