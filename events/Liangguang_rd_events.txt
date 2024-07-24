@@ -694,7 +694,7 @@ country_event = { #Suspicious Movements From Young Officers
 	}
 }
 
-country_event = { #
+country_event = { #Anarchist Bomb Plot
 	id = liangguang_rd.20
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.20"}
 	title = liangguang_rd.20.title
@@ -710,7 +710,7 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #Hmm This is a little suspicious...
+	option = { #Raid their houses.
 		name = liangguang_rd.20.a
 		ai_chance = { base = 100 }
 		add_to_variable = {
@@ -719,7 +719,7 @@ country_event = { #
 				tooltip = add_zhili_liangguang_tt
 			}
 	}
-	option = { #Who cares about a bunch of low ranking officers.
+	option = { #We'll worry about them later, we have bigger fish to fry.
 		name = liangguang_rd.20.b
 		ai_chance = { base = 100 }
 		add_to_variable = {
@@ -730,22 +730,62 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Officers Plot Exposed
 	id = liangguang_rd.21
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.21"}
 	title = liangguang_rd.21.title
 	desc = liangguang_rd.21.desc
+	
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Raid their houses.
 		name = liangguang_rd.21.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = zhili_liangguang_power
+				value = 1
+				tooltip = add_zhili_liangguang_tt
+			}
+		if = {
+			limit = {
+			check_variable = {
+						var = zhili_liangguang_power
+						value = chen_jiongming_power
+						compare = greater_than
+					}
+			}
+			country_event = {#Chen Jiongming Fails
+			id = liangguang_rd.22
+			days = 3
+			}
+		}
+		else_if = {
+			limit = {
+			check_variable = {
+						var = chen_jiongming_power
+						value = zhili_liangguang_power
+						compare = greater_than
+					}
+			}
+			country_event = {#Chen Jiongming Succeeds
+			id = liangguang_rd.23
+			days = 3
+			}
+		}
+	}
+	option = { #We'll worry about them later, we have bigger fish to fry.
+		name = liangguang_rd.21.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = chen_jiongming_power
+				value = 1
+				tooltip = add_federalist_liangguang_tt
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Mingqi Counters the Plot
 	id = liangguang_rd.22
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.22"}
 	title = liangguang_rd.22.title
@@ -756,11 +796,12 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.22.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 100
+		set_country_flag = GXC_Zhang_Mingqi_Control_Guangdong
 	}
 }
 
-country_event = { #
+country_event = { #Federalists Takeover Guangdong
 	id = liangguang_rd.23
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.23"}
 	title = liangguang_rd.23.title
@@ -771,11 +812,46 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.23.a
 		ai_chance = { base = 100 }
-		
+		load_focus_tree = GXC-fed-tree
+		set_politics = { ruling_party = social_liberal }
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.15
+		}
+		if = {
+			limit = {
+			QIO = {
+			exists = yes
+			is_subject_of  = GXC
+			}
+			}
+			country_event = {#
+			id = liangguang_rd.24
+			days = 3
+			}
+		}
+		if = {
+		limit = {
+		has_active_mission = GXC_guangxi_revolt
+		}
+		add_days_mission_timeout = {
+				mission = GXC_guangxi_revolt
+				days = 50
+			}
+		}
+		if = {
+		limit = {
+		has_active_mission = GXC_qiongya_revolt
+		}
+		add_days_mission_timeout = {
+				mission = GXC_qiongya_revolt
+				days = 30
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Lu Yugang Declares Indpendence
 	id = liangguang_rd.24
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.24"}
 	title = liangguang_rd.24.title
@@ -786,11 +862,29 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.24.a
 		ai_chance = { base = 100 }
-		
+		QIO = {
+		change_tag_from = GXC
+		}
+		end_puppet = QIO
+	}
+	
+	option = { #
+		name = liangguang_rd.24.b
+		ai_chance = { base = 100 }
+		end_puppet = QIO
+		if = {
+			limit = {
+				is_ai = no
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIO
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Dust Settles
 	id = liangguang_rd.25
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.25"}
 	title = liangguang_rd.25.title
