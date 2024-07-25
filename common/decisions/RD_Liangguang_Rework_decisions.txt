@@ -26,7 +26,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		complete_effect = {
 		set_country_flag = stopped_guangxi_revo
 		clr_country_flag = GXC_kmt_uprising
-		
+		country_event = liangguang_rd.27
 		}
 		timeout_effect = {
 		set_country_flag = failled_guangxi_revo
@@ -82,42 +82,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		}
 	}
 	
-	
-	
-	GXC_bribe_guangxi_officers = {
-		icon = ger_military_buildup
 		
-		
-		
-		visible = {
-			tag = GXC
-			has_country_flag = GXC_kmt_uprising
-		}
-		cost = 15
-		
-		days_remove = 15
-		days_re_enable = 10
-		fire_only_once = yes
-		ai_will_do = {
-		base = 5
-		}
-		complete_effect = {
-			add_ideas = {
-			GXC_bribe_guangxi_officers
-			}
-		}
-		remove_effect = {
-			remove_ideas = {
-			GXC_bribe_guangxi_officers
-			}
-			add_to_variable = {
-				var = guangxi_strengthen
-				value = -15
-				tooltip = guangxi_decrease_tt
-			}
-		}
-	}
-	
 	GXC_infiltrate_local_villages = {
 		icon = ger_military_buildup
 		
@@ -147,6 +112,41 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 			add_to_variable = {
 				var = guangxi_strengthen
 				value = -10
+				tooltip = guangxi_decrease_tt
+			}
+		}
+	}
+
+	
+	GXC_bribe_guangxi_officers = {
+		icon = ger_military_buildup
+		
+		
+		visible = {
+			tag = GXC
+			has_country_flag = GXC_kmt_uprising
+		}
+		available = { has_idea = GXC_village_infiltration }
+		cost = 15
+		
+		days_remove = 15
+		days_re_enable = 10
+		fire_only_once = yes
+		ai_will_do = {
+		base = 5
+		}
+		complete_effect = {
+			add_ideas = {
+			GXC_bribe_guangxi_officers
+			}
+		}
+		remove_effect = {
+			remove_ideas = {
+			GXC_bribe_guangxi_officers
+			}
+			add_to_variable = {
+				var = guangxi_strengthen
+				value = -15
 				tooltip = guangxi_decrease_tt
 			}
 		}
