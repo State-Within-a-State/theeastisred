@@ -46,10 +46,10 @@ country_event = { #The New Guangxi Clique arises
 	option = { #
 		name = liangguang_rd.2.a
 		ai_chance = { base = 100 }
+		activate_mission = GXC_guangxi_revolt
 		clr_country_flag = GXC_Zhili_Own_Guangxi
 		set_country_flag = GXC_kmt_peasant_Own_Guangxi
 		set_country_flag = GXC_kmt_uprising
-		activate_mission = GXC_guangxi_revolt
 		set_variable = {
 			var = guangxi_strengthen
 			value = 39
@@ -840,7 +840,7 @@ country_event = { #Mingqi Counters the Plot
 	option = { #
 		name = liangguang_rd.22.a
 		ai_chance = { base = 100 }
-		add_political_power = 100
+		add_political_power = 50
 		set_country_flag = GXC_Zhang_Mingqi_Control_Guangdong
 	}
 }
@@ -856,7 +856,9 @@ country_event = { #Federalists Takeover Guangdong
 	option = { #
 		name = liangguang_rd.23.a
 		ai_chance = { base = 100 }
+		hidden_effect = {
 		load_focus_tree = GXC-fed-tree
+		}
 		set_politics = { ruling_party = social_liberal }
 		add_popularity = {
 		ideology = social_liberal
@@ -872,15 +874,6 @@ country_event = { #Federalists Takeover Guangdong
 			country_event = {#
 			id = liangguang_rd.24
 			days = 3
-			}
-		}
-		if = {
-		limit = {
-		has_active_mission = GXC_guangxi_revolt
-		}
-		add_days_mission_timeout = {
-				mission = GXC_guangxi_revolt
-				days = 10
 			}
 		}
 	}
@@ -936,7 +929,7 @@ country_event = { #chen fails version 2  Mingqi Counters the Plot
 	option = { #
 		name = liangguang_rd.22.a
 		ai_chance = { base = 100 }
-		add_political_power = 100
+		add_political_power = 50
 		set_country_flag = GXC_Zhang_Mingqi_Control_Guangdong
 
 	}
