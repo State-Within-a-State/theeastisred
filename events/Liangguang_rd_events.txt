@@ -94,9 +94,23 @@ country_event = { #The Qiongya Soviet
 
 country_event = { #Focusing On an Enemy in Guangxi
 	id = liangguang_rd.4
-	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.4"}
+	immediate = {
+	hidden_effect = {
+		set_variable = {
+			var = rkmt_uprising_status
+			value = 1
+		}
+
+			set_variable = {
+			var = baise_uprising_status
+			value = 1
+		}
+
+	}
+	log = "[GetDateText]: [Root.GetName]: event liangguang_rd.4"}
 	title = liangguang_rd.4.title
 	desc = liangguang_rd.4.desc
+
 	#picture = 
 	
 	is_triggered_only = yes
@@ -105,10 +119,6 @@ country_event = { #Focusing On an Enemy in Guangxi
 		name = liangguang_rd.4.a
 		ai_chance = { base = 100 }
 		set_country_flag = GXC_focus_on_baise_revolt
-		set_variable = {
-			var = baise_uprising_status
-			value = 1
-		}
 		country_event = {
 		id = liangguang_rd.5
 		days = 7
@@ -119,10 +129,6 @@ country_event = { #Focusing On an Enemy in Guangxi
 		name = liangguang_rd.4.b
 		ai_chance = { base = 100 }
 		set_country_flag = GXC_focus_on_rkmt_revolt
-		set_variable = {
-			var = rkmt_uprising_status
-			value = 1
-		}
 		country_event = {
 		id = liangguang_rd.5
 		days = 7
@@ -452,7 +458,6 @@ country_event = { #The Guns Fall Silent Over Hainnan
 		add_to_variable = {
 				var = qiongya_strengthen
 				value = 10
-				tooltip = qiongya_decrease_tt
 			}
 		set_country_flag = Peasant_Victory_In_Qiongya
 	}
@@ -470,7 +475,6 @@ country_event = { #The Guns Fall Silent Over Hainnan
 		add_to_variable = {
 				var = qiongya_strengthen
 				value = -10
-				tooltip = qiongya_increase_tt
 			}
 		
 		
@@ -491,7 +495,9 @@ country_event = { #Holding Onto Qiongya
 	option = { #For Now We Need to Give Yuguang Some Autonomy
 		name = liangguang_rd.14.a
 		ai_chance = { base = 100 }
+		hidden_effect = {
 		release = QIO
+		QIO = { load_oob = "QIO" }
 		GXC = {
 		set_autonomy = {
 		target = QIO
@@ -499,7 +505,8 @@ country_event = { #Holding Onto Qiongya
 		end_wars = no
 		}
 		}
-		custom_effect_tooltip = you_need_this_to_play_qiongya_tt
+		}
+		custom_effect_tooltip = you_need_this_to_play_yugang_tt
 	}
 	
 	option = { #We Must Keep a Firm hand
@@ -575,7 +582,7 @@ country_event = { #The Kuomintang Rise Up in Guangxi
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #Down With the Manchu Invaders!
+	option = { #Down with compradors!
 		name = liangguang_rd.16.a
 		ai_chance = { base = 100 }
 		hidden_effect = {
@@ -900,15 +907,6 @@ country_event = { #Lu Yugang Declares Indpendence
 		name = liangguang_rd.24.b
 		ai_chance = { base = 100 }
 		end_puppet = QIO
-		if = {
-			limit = {
-				is_ai = no
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = QIO
-			}
-		}
 	}
 }
 
