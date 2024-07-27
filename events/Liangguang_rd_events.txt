@@ -911,11 +911,19 @@ country_event = { #The Dust Settles no war or war won
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #zhang stays
 		name = liangguang_rd.25.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = RD_Monarch_Larp
 	}
+	option = { #tang takes over
+		name = liangguang_rd.25.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = authoritarian_democrat
+		}
+	}
+
 }
 
 country_event = { #chen fails version 2  Mingqi Counters the Plot
@@ -1049,6 +1057,10 @@ country_event = { #German Acknowledges the Request
 	option = { #
 		name = liangguang_rd.31.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = germ_weapons_times
+				value = 1
+			}
 		add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = 500
@@ -1107,6 +1119,10 @@ country_event = { #Germany Sends As the Art
 	option = { #
 		name = liangguang_rd.31.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = germ_weapons_times
+				value = 1
+			}
 		add_equipment_to_stockpile = {
 				type = artillery_equipment
 				amount = 200
@@ -1150,6 +1166,10 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.36.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = germ_weapons_times
+				value = 1
+			}
 		add_equipment_to_stockpile = {
 				type = light_tank_equipment
 				amount = 80
@@ -1191,7 +1211,11 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = liangguang_rd.36.a
+		name = liangguang_rd.38.a
+		add_to_variable = {
+				var = germ_weapons_times
+				value = 1
+			}
 		ai_chance = { base = 100 }
 		add_equipment_to_stockpile = {
 				type = armored_car_equipment
@@ -1214,35 +1238,16 @@ country_event = { #A Dragon Riding Across the Guangzhou Skyline
 		ai_chance = { base = 100 }
 		trigger = {
 			QIE = {
-				exists = yes
-				is_subject = no
-				has_country_leader = {
-					name "Puyi"
-					ruling_only = yes
-				}
+				exists = no
+				NOT = { has_country_flag = QIE_coup_failed }
 			}
 		}
-		QIE = {
-			puppet = {
-				target = GXC
-				end_wars = yes
-			}
-		}
-		custom_effect_tooltip = qing_annex_us_tt
+		#restore qing and do next focus tree
 	}
-	option = { #The mandate shall be restored.
+	option = { #something else idk
 		name = liangguang_rd.39.b
 		ai_chance = { base = 100 }
-		trigger = {
-		OR = {
-		QIE = {
-		is_subject = yes
-		}
-		QIE = {
-		exists = no
-		}
-		}
-		}
+		#restore yuan or regency and do this
 	}
 	
 }
