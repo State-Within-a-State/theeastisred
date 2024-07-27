@@ -567,6 +567,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_loyalty_azure_crown } 
 		completion_reward = {
+		add_opinion_modifier = {
+			target = QIE
+			modifier = JAP_japanese_comradery
+		}
+		add_war_support = 0.1
 		}
 	}
 	
@@ -583,6 +588,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_requesting_seat_with_Peking } prerequisite = { focus = GXC_overtures_to_germany } 
 		completion_reward = {
+		add_ideas = {
+		GXC_fuqi_legacy
+		}
 		}
 	}
 	
@@ -599,6 +607,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_requesting_seat_with_Peking } prerequisite = { focus = GXC_overtures_to_germany } 
 		completion_reward = {
+		remove_ideas = {
+		GXC_worker_peasant_resistance
+		}
 		}
 	}
 	
@@ -613,8 +624,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = GXC_Intensify_Guomindang_Encirclement_Campaigns } prerequisite = { focus = GXC_prince_futing_legacy } 
 		completion_reward = {
+		add_ideas = {
+		GXC_curtialing_gangs
+		}
 		}
 	}
 	
@@ -629,8 +644,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_completed_focus = GXC_handling_triads
+		}
 		prerequisite = { focus = GXC_Intensify_Guomindang_Encirclement_Campaigns } prerequisite = { focus = GXC_prince_futing_legacy } 
 		completion_reward = {
+		
+		add_timed_idea = {
+		idea = GXC_curtialing_gangs_1
+		days = 120
+		}
 		}
 	}
 	
@@ -647,6 +670,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_handling_triads } prerequisite = { focus = GXC_hk_infiltration } 
 		completion_reward = {
+		swap_ideas = {
+		remove_idea = GXC_curtialing_gangs
+		add_idea = GXC_curtialing_gangs_2
+		}
+		###Insert event chain to find Chengen(It will end in failure)###
 		}
 	}
 	
@@ -664,6 +692,9 @@ focus_tree = {
 		prerequisite = { focus = GXC_handling_triads } prerequisite = { focus = GXC_hk_infiltration } 
 		mutually_exclusive = { focus = GXC_concessions_more }
 		completion_reward = {
+		add_ideas = {
+		GXC_no_more_concessions
+		}
 		}
 	}
 	
@@ -681,6 +712,9 @@ focus_tree = {
 		prerequisite = { focus = GXC_handling_triads } prerequisite = { focus = GXC_hk_infiltration } 
 		mutually_exclusive = { focus = GXC_concessions_stop }
 		completion_reward = {
+		add_ideas = {
+		GXC_more_concessions
+		}
 		}
 	}
 	
@@ -698,6 +732,7 @@ focus_tree = {
 		prerequisite = { focus = GXC_chengen_investiation } prerequisite = { focus = GXC_concessions_more focus = GXC_concessions_stop } 
 		
 		completion_reward = {
+		country_event = liangguang_rd.39
 		}
 	}
 	

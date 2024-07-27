@@ -1051,7 +1051,7 @@ country_event = { #German Acknowledges the Request
 		ai_chance = { base = 100 }
 		add_equipment_to_stockpile = {
 				type = infantry_equipment
-				amount = 250
+				amount = 500
 				producer = GER
 			}
 	}
@@ -1072,7 +1072,7 @@ country_event = { #Germany Refuses
 	}
 }
 
-country_event = { #
+country_event = { #Liangguang Requests Artilery
 	id = liangguang_rd.33
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.33"}
 	title = liangguang_rd.33.title
@@ -1081,28 +1081,41 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = liangguang_rd.33.a
+		name = liangguang_rd.30.a
 		ai_chance = { base = 100 }
-		
+		GXC = {
+		country_event = liangguang_rd.34
+		}
+	}
+	option = { #
+		name = liangguang_rd.30.b
+		ai_chance = { base = 100 }
+		GXC = {
+		country_event = liangguang_rd.32
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Germany Sends As the Art
 	id = liangguang_rd.34
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.34"}
-	title = liangguang_rd.34.title
-	desc = liangguang_rd.34.desc
+	title = liangguang_rd.31.title
+	desc = liangguang_rd.31.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
-		name = liangguang_rd.34.a
+		name = liangguang_rd.31.a
 		ai_chance = { base = 100 }
-		
+		add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 200
+				producer = GER
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Liangguang Requests Tanks
 	id = liangguang_rd.35
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.35"}
 	title = liangguang_rd.35.title
@@ -1111,28 +1124,41 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = liangguang_rd.35.a
+		name = liangguang_rd.30.a
 		ai_chance = { base = 100 }
-		
+		GXC = {
+		country_event = liangguang_rd.36
+		}
+	}
+	option = { #
+		name = liangguang_rd.30.b
+		ai_chance = { base = 100 }
+		GXC = {
+		country_event = liangguang_rd.32
+		}
 	}
 }
 
 country_event = { #
 	id = liangguang_rd.36
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.36"}
-	title = liangguang_rd.36.title
-	desc = liangguang_rd.36.desc
+	title = liangguang_rd.31.title
+	desc = liangguang_rd.31.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
 		name = liangguang_rd.36.a
 		ai_chance = { base = 100 }
-		
+		add_equipment_to_stockpile = {
+				type = light_tank_equipment
+				amount = 80
+				producer = GER
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Liangguang Requests Armoured Cars
 	id = liangguang_rd.37
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.37"}
 	title = liangguang_rd.37.title
@@ -1141,28 +1167,41 @@ country_event = { #
 	
 	is_triggered_only = yes
 	option = { #
-		name = liangguang_rd.37.a
+		name = liangguang_rd.30.a
 		ai_chance = { base = 100 }
-		
+		GXC = {
+		country_event = liangguang_rd.38
+		}
+	}
+	option = { #
+		name = liangguang_rd.30.b
+		ai_chance = { base = 100 }
+		GXC = {
+		country_event = liangguang_rd.32
+		}
 	}
 }
 
 country_event = { #
 	id = liangguang_rd.38
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.38"}
-	title = liangguang_rd.38.title
-	desc = liangguang_rd.38.desc
+	title = liangguang_rd.31.title
+	desc = liangguang_rd.31.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
-		name = liangguang_rd.38.a
+		name = liangguang_rd.36.a
 		ai_chance = { base = 100 }
-		
+		add_equipment_to_stockpile = {
+				type = armored_car_equipment
+				amount = 100
+				producer = GER
+			}
 	}
 }
 
-country_event = { #
+country_event = { #A Dragon Riding Across the Guangzhou Skyline
 	id = liangguang_rd.39
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.39"}
 	title = liangguang_rd.39.title
@@ -1170,11 +1209,42 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We shall meet with the Azure Dragon once again.
 		name = liangguang_rd.39.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			QIE = {
+				exists = yes
+				is_subject = no
+				has_country_leader = {
+					name "Puyi"
+					ruling_only = yes
+				}
+			}
+		}
+		QIE = {
+			puppet = {
+				target = GXC
+				end_wars = yes
+			}
+		}
+		custom_effect_tooltip = qing_annex_us_tt
 	}
+	option = { #The mandate shall be restored.
+		name = liangguang_rd.39.b
+		ai_chance = { base = 100 }
+		trigger = {
+		OR = {
+		QIE = {
+		is_subject = yes
+		}
+		QIE = {
+		exists = no
+		}
+		}
+		}
+	}
+	
 }
 
 country_event = { #
