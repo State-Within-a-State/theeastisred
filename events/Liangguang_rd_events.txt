@@ -1303,11 +1303,6 @@ country_event = { #Handling the Peasant Movement
 		name = liangguang_rd.40.a
 		ai_chance = { base = 100 }
 		add_to_variable = {
-				var = guangxi_strengthen
-				value = -10
-				tooltip = guangxi_decrease_tt
-			}
-		add_to_variable = {
 				var = chen_anarchist_power
 				value = 2
 				tooltip = anarchist_power_expand_tt
@@ -1322,11 +1317,6 @@ country_event = { #Handling the Peasant Movement
 	option = { #
 		name = liangguang_rd.40.b
 		ai_chance = { base = 100 }
-		add_to_variable = {
-				var = guangxi_strengthen
-				value = 10
-				tooltip = guangxi_increase_tt
-			}
 		add_to_variable = {
 				var = chen_merchant_power
 				value = 2
@@ -1347,13 +1337,7 @@ country_event = { #Dealing With the Strikers
 	option = { #Strike a Deal With the Strikers
 		name = liangguang_rd.41.a
 		ai_chance = { base = 100 }
-		
 		add_to_variable = {
-				var = guangxi_strengthen
-				value = -5
-				tooltip = guangxi_decrease_tt
-			}
-			add_to_variable = {
 				var = chen_federalist_power
 				value = 2
 				tooltip = federalist_power_expand_tt
@@ -1369,11 +1353,6 @@ country_event = { #Dealing With the Strikers
 				var = chen_merchant_power
 				value = 2
 				tooltip = merchant_power_expand_tt
-			}
-		add_to_variable = {
-				var = guangxi_strengthen
-				value = 5
-				tooltip = guangxi_increase_tt
 			}
 	}
 	option = { #Crush Both the Workers and Merchants
@@ -1488,12 +1467,12 @@ country_event = { #3 Tigers Are Circling
 		check_variable = {
 						var = chen_federalist_power
 						value = chen_merchant_power
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 		check_variable = {
 						var = chen_federalist_power
 						value = chen_anarchist_power
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 		}
 		set_country_flag = GXC_fed_victory_struggle_over
@@ -1534,47 +1513,6 @@ country_event = { #3 Tigers Are Circling
 		country_event = anarcho_china.4
 	}
 	
-	option = { #
-		name = liangguang_rd.44.d
-		ai_chance = { base = 100 }
-		trigger = {
-		OR = {
-		AND = {
-		check_variable = {
-						var = chen_anarchist_power
-						value = chen_federalist_power
-						compare = less_than_or_equals
-					}
-		check_variable = {
-						var = chen_anarchist_power
-						value = chen_merchant_power
-						compare = less_than_or_equals
-					}
-		check_variable = {
-						var = chen_merchant_power
-						value = chen_federalist_power
-						compare = less_than_or_equals
-					}
-		check_variable = {
-						var = chen_merchant_power
-						value = chen_anarchist_power
-						compare = less_than_or_equals
-					}
-		}
-		check_variable = {
-						var = chen_federalist_power
-						value = chen_merchant_power
-						compare = less_than_or_equals
-					}
-		check_variable = {
-						var = chen_federalist_power
-						value = chen_anarchist_power
-						compare = less_than_or_equals
-					}
-		}
-		}
-		set_country_flag = GXC_deadlock_victory_struggle_over
-	}
 }
 
 country_event = { #
