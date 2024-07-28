@@ -38,11 +38,20 @@ focus_tree = {
 		}
 		selec_effect = {
 		country_event = liangguang_rd.40
+		add_to_variable = {
+				var = chen_federalist_power
+				value = 2
+				tooltip = federalist_power_expand_tt
+			}
 		}
 		prerequisite = { focus = GXC_fed_jiongming_victory }
 		mutually_exclusive = { focus = GXC_fed_anarchists }
 		mutually_exclusive = { focus = GXC_fed_merchants }
 		completion_reward = {
+		country_event = {
+		id = liangguang_rd.44
+		days = 7
+		}
 		}
 	}
 	#merchants
@@ -55,10 +64,22 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		selec_effect = {
+		country_event = liangguang_rd.42
+		add_to_variable = {
+				var = chen_merchant_power
+				value = 2
+				tooltip = merchant_power_expand_tt
+			}
+		}
 		prerequisite = { focus = GXC_fed_jiongming_victory }
 		mutually_exclusive = { focus = GXC_fed_anarchists }
 		mutually_exclusive = { focus = GXC_fed_peasants }
 		completion_reward = {
+		country_event = {
+		id = liangguang_rd.44
+		days = 7
+		}
 		}
 	}
 	#anarchists
@@ -71,10 +92,22 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		selec_effect = {
+		country_event = liangguang_rd.43
+		add_to_variable = {
+				var = chen_anarchist_power
+				value = 2
+				tooltip = anarchist_power_expand_tt
+			}
+		}
 		prerequisite = { focus = GXC_fed_jiongming_victory }
 		mutually_exclusive = { focus = GXC_fed_merchants }
 		mutually_exclusive = { focus = GXC_fed_peasants }
 		completion_reward = {
+		country_event = {
+		id = liangguang_rd.44
+		days = 7
+		}
 		}
 	}
 	#proclaim fed gover
@@ -87,9 +120,80 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = GXC_fed_victory_struggle_over
+		}
 		prerequisite = { focus = GXC_fed_anarchists focus = GXC_fed_merchants focus = GXC_fed_peasants }
 		completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus GXC_Initiate_United_Provinces"
+		if = {
+			limit = { has_idea = GXC_factionalism }
+			remove_ideas = GXC_factionalism
 		}
+		create_faction = china_upc_faction
+		set_country_flag = UPC_Exists
+		save_global_event_target_as = UPC_leader
+		country_event = { id = lngupc.1 }
+		custom_effect_tooltip = UPC_focus_invites_federalists
+		if = {
+			limit = {
+				YUN = {
+					exists = yes
+					has_country_leader = {
+						name = "Tang Jiyao"
+						ruling_only = yes
+					}
+					NOT = {
+						has_country_flag = YUN_federalists_not_Favored
+						has_country_flag = YUN_isolationists_chosen
+					}
+				}
+			}
+			YUN = {
+				country_event = { id = lngupc.2 }
+			}
+		}
+		if = {
+			limit = {
+				HNN = {
+					exists = yes
+					is_in_faction = no
+					has_country_leader = {
+							name = "Zhao Hengti"
+							ruling_only = yes
+						}
+				}
+			}
+			HNN = {
+				country_event = { id = lngupc.2 }
+			}
+		}
+		if = {
+			limit = {
+				SZC = {
+					has_country_leader = {
+						name = "Xiong Kewu"
+						ruling_only = yes
+					}
+					is_subject = no
+				}
+			}
+			SZC = {
+				country_event = { id = lngupc.2 }
+			}
+		}
+		if = {
+			limit = {
+				LEC = {
+					exists = yes
+					is_subject = no
+				}
+			}
+			LEC = {
+				country_event = { id = lec.118 }
+			}
+		}
+	}
 	}
 	#fight internal enemies
 	focus = {

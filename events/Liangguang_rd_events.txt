@@ -868,6 +868,18 @@ country_event = { #Federalists Takeover Guangdong
 		ideology = social_liberal
 		popularity = 0.15
 		}
+		set_variable = {
+			var = chen_anarchist_power
+			value = 0
+		}
+		set_variable = {
+			var = chen_federalist_power
+			value = 0
+		}
+		set_variable = {
+			var = chen_merchant_power
+			value = 0
+		}
 		if = {
 			limit = {
 			QIO = {
@@ -1276,62 +1288,192 @@ country_event = { #Handling the Peasant Movement
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.40"}
 	title = liangguang_rd.40.title
 	desc = liangguang_rd.40.desc
+	immediate = { 
+		hidden_effect = { 
+			country_event = { 
+				id = liangguang_rd.41 
+				days = 3 
+			} 
+		} 
+	}
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
 		name = liangguang_rd.40.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = guangxi_strengthen
+				value = -10
+				tooltip = guangxi_decrease_tt
+			}
+		add_to_variable = {
+				var = chen_anarchist_power
+				value = 2
+				tooltip = anarchist_power_expand_tt
+			}
+		add_to_variable = {
+				var = chen_federalist_power
+				value = 2
+				tooltip = federalist_power_expand_tt
+			}
+	}
+	
+	option = { #
+		name = liangguang_rd.40.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = guangxi_strengthen
+				value = 10
+				tooltip = guangxi_increase_tt
+			}
+		add_to_variable = {
+				var = chen_merchant_power
+				value = 2
+				tooltip = merchant_power_expand_tt
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Dealing With the Strikers
 	id = liangguang_rd.41
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.41"}
 	title = liangguang_rd.41.title
 	desc = liangguang_rd.41.desc
+	
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Strike a Deal With the Strikers
 		name = liangguang_rd.41.a
 		ai_chance = { base = 100 }
+		
+		add_to_variable = {
+				var = guangxi_strengthen
+				value = -5
+				tooltip = guangxi_decrease_tt
+			}
+			add_to_variable = {
+				var = chen_federalist_power
+				value = 2
+				tooltip = federalist_power_expand_tt
+			}
+		
+		
+	}
+	
+	option = { #Crush Them with Merchant Backing
+		name = liangguang_rd.41.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = chen_merchant_power
+				value = 2
+				tooltip = merchant_power_expand_tt
+			}
+		add_to_variable = {
+				var = guangxi_strengthen
+				value = 5
+				tooltip = guangxi_increase_tt
+			}
+	}
+	option = { #Crush Both the Workers and Merchants
+		name = liangguang_rd.41.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = chen_anarchist_power
+				value = 2
+				tooltip = anarchist_power_expand_tt
+			}
 		
 	}
 }
 
-country_event = { #
+country_event = { #Merchants Request a Bailout
 	id = liangguang_rd.42
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.42"}
 	title = liangguang_rd.42.title
 	desc = liangguang_rd.42.desc
+	immediate = { 
+		hidden_effect = { 
+			country_event = { 
+				id = liangguang_rd.41 
+				days = 3 
+			} 
+		} 
+	}
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Sure Thing
 		name = liangguang_rd.42.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = chen_merchant_power
+				value = 2
+				tooltip = merchant_power_expand_tt
+			}
+		add_to_variable = {
+				var = chen_federalist_power
+				value = 2
+				tooltip = federalist_power_expand_tt
+			}
+	}
+	option = { #We are in rough times.
+		name = liangguang_rd.42.b
+		ai_chance = { base = 100 }
 		
+		add_to_variable = {
+				var = chen_anarchist_power
+				value = 2
+				tooltip = anarchist_power_expand_tt
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Ba Jin Writes Critically of Governor Chen
 	id = liangguang_rd.43
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.43"}
 	title = liangguang_rd.43.title
 	desc = liangguang_rd.43.desc
+	immediate = { 
+		hidden_effect = { 
+			country_event = { 
+				id = liangguang_rd.41 
+				days = 3 
+			} 
+		} 
+	}
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Crush these radicals.
 		name = liangguang_rd.43.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = chen_merchant_power
+				value = 2
+				tooltip = merchant_power_expand_tt
+			}
+		add_to_variable = {
+				var = chen_federalist_power
+				value = 2
+				tooltip = federalist_power_expand_tt
+			}
+	}
+	
+	option = { #Show some restraint, we need to prove to our people that we are a true democratic force in China.
+		name = liangguang_rd.43.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = chen_anarchist_power
+				value = 2
+				tooltip = anarchist_power_expand_tt
+			}
 		
 	}
 }
 
-country_event = { #
+country_event = { #3 Tigers Are Circling
 	id = liangguang_rd.44
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.44"}
 	title = liangguang_rd.44.title
@@ -1339,10 +1481,99 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Federalist Victory
 		name = liangguang_rd.44.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+		check_variable = {
+						var = chen_federalist_power
+						value = chen_merchant_power
+						compare = greater_than
+					}
+		check_variable = {
+						var = chen_federalist_power
+						value = chen_anarchist_power
+						compare = greater_than
+					}
+		}
+		set_country_flag = GXC_fed_victory_struggle_over
+	}
+	option = { #Merchant Victory
+		name = liangguang_rd.44.b
+		ai_chance = { base = 100 }
+		trigger = {
+		check_variable = {
+						var = chen_merchant_power
+						value = chen_federalist_power
+						compare = greater_than
+					}
+		check_variable = {
+						var = chen_merchant_power
+						value = chen_anarchist_power
+						compare = greater_than
+					}
+		}
+		set_country_flag = GXC_merchant_victory_struggle_over
+	}
+	option = { #
+		name = liangguang_rd.44.c
+		ai_chance = { base = 100 }
+		trigger = {
+		check_variable = {
+						var = chen_anarchist_power
+						value = chen_federalist_power
+						compare = greater_than
+					}
+		check_variable = {
+						var = chen_anarchist_power
+						value = chen_merchant_power
+						compare = greater_than
+					}
+		}
+		set_country_flag = GXC_anarchist_victory_struggle_over
+		country_event = anarcho_china.4
+	}
+	
+	option = { #
+		name = liangguang_rd.44.d
+		ai_chance = { base = 100 }
+		trigger = {
+		OR = {
+		AND = {
+		check_variable = {
+						var = chen_anarchist_power
+						value = chen_federalist_power
+						compare = less_than_or_equals
+					}
+		check_variable = {
+						var = chen_anarchist_power
+						value = chen_merchant_power
+						compare = less_than_or_equals
+					}
+		check_variable = {
+						var = chen_merchant_power
+						value = chen_federalist_power
+						compare = less_than_or_equals
+					}
+		check_variable = {
+						var = chen_merchant_power
+						value = chen_anarchist_power
+						compare = less_than_or_equals
+					}
+		}
+		check_variable = {
+						var = chen_federalist_power
+						value = chen_merchant_power
+						compare = less_than_or_equals
+					}
+		check_variable = {
+						var = chen_federalist_power
+						value = chen_anarchist_power
+						compare = less_than_or_equals
+					}
+		}
+		}
+		set_country_flag = GXC_deadlock_victory_struggle_over
 	}
 }
 
