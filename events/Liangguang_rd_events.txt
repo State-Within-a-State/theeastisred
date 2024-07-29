@@ -1493,6 +1493,7 @@ country_event = { #3 Tigers Are Circling
 					}
 		}
 		set_country_flag = GXC_merchant_victory_struggle_over
+		country_event = liangguang_rd.45
 	}
 	option = { #
 		name = liangguang_rd.44.c
@@ -1515,7 +1516,7 @@ country_event = { #3 Tigers Are Circling
 	
 }
 
-country_event = { #
+country_event = { #Merhcants Takeover Guangzhou
 	id = liangguang_rd.45
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.45"}
 	title = liangguang_rd.45.title
@@ -1526,7 +1527,16 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.45.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = market_liberal
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.2
+		}
+		set_merchant_ministers = yes
+		load_focus_tree = GXC-merchant-tree
+		complete_national_focus = GXC_lib_canton_uprising
 	}
 }
 
