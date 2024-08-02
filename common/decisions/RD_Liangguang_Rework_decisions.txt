@@ -295,21 +295,23 @@ GXC_join_japan_attack_fengtian = {
 
 		}
 		available = {
-		can_declare_war_on = FNG
-		owns_state = 608
-		NOT = { has_war_with = JAP }
-		JAP = {
-		exists = yes
-		is_faction_leader = yes 
-		is_subject = no
+		has_full_control_of_state = 608
 		OR = {
 		has_war_with = FNG 
 		can_declare_war_on = FNG
 		}
+		NOT = { has_war_with = JAP }
+		JAP = {
+		exists = yes
+		is_faction_leader = yes 
+		NOT = { is_in_faction_with = FNG }
 		}
 		}
 		cost = 25
-		
+		ai_will_do = {
+		base = 100
+		}
+
 		days_remove = 20
 		fire_only_once = yes
 		
@@ -319,7 +321,9 @@ GXC_join_japan_attack_fengtian = {
 		remove_effect = {
 			JAP = { add_to_faction = GXC }
 			set_global_flag = FNG_relations_JAP_broke
+			if = { limit = { NOT = { has_war_with = FNG } } 
 			declare_war_on = {   type = annex_everything	target = FNG }
+			}
 			hidden_effect = {
 			every_state = {
 				limit = {
