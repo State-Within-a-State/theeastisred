@@ -354,6 +354,7 @@ focus_tree = {
 		prerequisite = { focus = GXC_lkmt_land_reform }
 		mutually_exclusive = { focus = GXC_lkmt_local_soviets }
 		completion_reward = {
+		unlock_decision_tooltip = PRC_construct_broad_reform
 		}
 	}
 	#peasant workshops
@@ -368,6 +369,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_lkmt_local_soviets }
 		completion_reward = {
+		add_to_variable = {
+					var = legation_commie_land_reform
+					value = 5
+					tooltip = add_5_to_legation_commie_land_reform_tt
+				}
+			add_timed_idea = {
+			idea = GXC_peasant_workshops
+			days = 500
+			}
 		}
 	}
 	#land expropriation
@@ -382,6 +392,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_lkmt_local_soviets } prerequisite = { focus = GXC_lkmt_broader_picture }
 		completion_reward = {
+		unlock_decision_tooltip = PRC_execute_the_landlords
+		unlock_decision_tooltip = PRC_land_lord_trials
 		}
 	}
 
@@ -397,6 +409,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_lkmt_peasant_workshops } prerequisite = { focus = GXC_lkmt_land_expropriation }
 		completion_reward = {
+		add_timed_idea = {
+		idea = GXC_agrarian_law
+		days = 180
+		}
 		}
 	}
 	#peasant unions unify
@@ -411,6 +427,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_lkmt_broader_picture }
 		completion_reward = {
+		add_to_variable = {
+					var = legation_commie_land_reform
+					value = 5
+					tooltip = add_5_to_legation_commie_land_reform_tt
+				}
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
 		}
 	}
 	#focus on land tilling
@@ -425,6 +450,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_lkmt_peasant_unions } prerequisite = { focus = GXC_lkmt_land_expropriation }
 		completion_reward = {
+		unlock_decision_tooltip = PRC_compensate_the_landlords
+		add_timed_idea = {
+		idea = GXC_till_lands
+		days = 100
+		}
 		}
 	}
 	#star of peasant freedom
@@ -437,8 +467,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+				has_country_flag = land_reform_complete
+				has_country_flag = land_reform_failed
+			}
+		}
 		prerequisite = { focus = GXC_lkmt_till_soil focus = GXC_lkmt_agrarian_laws } 
 		completion_reward = {
+		remove_ideas = {
+		PRC_lands_in_need_of_reform
+		}
 		}
 	}
 

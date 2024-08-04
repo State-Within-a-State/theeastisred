@@ -403,7 +403,7 @@ PRC_seizing_landlord_assets = {
 		icon = rev_agriculture
 		name = LEC_compensate_the_landlords
 		available = {
-			
+			has_completed_focus = GXC_lkmt_till_soil
 		}
 		
 		visible = {
@@ -433,7 +433,7 @@ PRC_seizing_landlord_assets = {
 		icon = rev_agriculture
 		name = LEC_execute_the_landlords
 		available = {
-			
+			has_completed_focus = GXC_lkmt_land_expropriation
 		}
 		
 		visible = {
@@ -454,7 +454,7 @@ PRC_seizing_landlord_assets = {
 			add_popularity = { ideology = totalist popularity = 0.05 }
 			add_to_variable = {
 					var = legation_commie_land_reform
-					value = 5
+					value = 3
 					tooltip = add_5_to_legation_commie_land_reform_tt
 				}
 		}
@@ -495,7 +495,7 @@ PRC_seizing_landlord_assets = {
 		icon = rev_agriculture
 		name = LEC_land_lord_trials
 		available = {
-			
+			has_completed_focus = GXC_lkmt_land_expropriation
 		}
 		
 		visible = {
@@ -555,6 +555,48 @@ PRC_seizing_landlord_assets = {
 			}
 			remove_ideas = {
 			GXC_local_soviets
+			}
+			add_popularity = { ideology = ROOT popularity = 0.01 }
+			add_to_variable = {
+					var = legation_commie_land_reform
+					value = 10
+					tooltip = add_10_to_legation_commie_land_reform_tt
+				}
+		}
+	}
+	
+	PRC_construct_broad_reform = {
+		icon = rev_agriculture
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = PRC
+			has_completed_focus = GXC_lkmt_broader_picture
+		}
+		cost = 10
+		
+		days_remove = 50
+		days_re_enable = 10
+		fire_only_once = no
+		
+		complete_effect = {
+			add_ideas = {
+			GXC_broad_reforms
+			}
+		}
+		remove_effect = {
+			random_owned_state = { 
+			add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			remove_ideas = {
+			GXC_broad_reforms
 			}
 			add_popularity = { ideology = ROOT popularity = 0.01 }
 			add_to_variable = {
