@@ -437,7 +437,11 @@ country_event = {
 		option = {
 		name = "Republican Victory"
 		trigger = {
-		check_variable = { CAM_REP > 2 }
+					check_variable = {
+						var = CAM_REP 
+						value = CAM_MIL
+						compare = greater_than
+					}
 		}
 		set_country_flag = cambodian_republic_democracy
 		country_event = {
@@ -448,10 +452,11 @@ country_event = {
 		option = {
 		name = "Monarchists Secure Cambodia"
 		trigger = {
-		AND = {
-		check_variable = { CAM_MON > 2 }
-		check_variable = { CAM_MIL > 2 }
-		}
+					check_variable = {
+						var = CAM_MIL
+						value = CAM_REP 
+						compare = greater_than
+					}
 		}
 		country_event = {
 		id = cambodia.2
