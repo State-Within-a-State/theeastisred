@@ -620,6 +620,7 @@ country_event = { #The Baise Uprising
 	PRC = {
 	set_capital = { state = 1054 remember_old_capital = no }	
 	load_focus_tree = GXC-soc-tree
+	complete_national_focus = GXC_soc_haifeng_uprising
 	}
 	}
 	}
@@ -1570,7 +1571,9 @@ country_event = { #
 	}
 }
 
-country_event = { #
+###Socialists/LKMT###
+
+country_event = { #A Welcoming Back of the Left Kuomintang
 	id = liangguang_rd.47
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.47"}
 	title = liangguang_rd.47.title
@@ -1578,10 +1581,25 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Peng Pai Wins Over the Committee
 		name = liangguang_rd.47.a
 		ai_chance = { base = 100 }
-		
+		complete_national_focus = GXC_pai_victory
+	}
+	option = { #Chen Mingshu Wins Over the Committee
+		name = liangguang_rd.47.b
+		ai_chance = { base = 100 }
+		complete_national_focus = GXC_chen_victory
+		set_ppp_ministers = yes
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = {
+				name = "Chen Mingshu"
+				desc = "POLITICS_GXC_CHEN_MINGSHU_DESC"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Chen_Mingshu.png"
+				expire = "1.1.1"
+				ideology = socdem_tridemism_subtype
+			}
+		set_cosmetic_tag = GXC_government_left_kmt
 	}
 }
 

@@ -21,6 +21,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#wlecome lkmt
@@ -29,12 +30,21 @@ focus_tree = {
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
 		x = 10
 		y = 1
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_war_with = GXC
+			}
+		}
 		prerequisite = { focus = GXC_soc_haifeng_uprising }
 		completion_reward = {
+		country_event = liangguang_rd.47
+		add_ideas = {
+		GXC_reactionary_resistance
+		}
 		}
 	}
 	#peng pai leads
@@ -48,8 +58,12 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_soc_lkmt_in }
+		available = {
+		always = no
+		}
 		mutually_exclusive = { focus = GXC_chen_victory }
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}	
 	#mingshu committee
@@ -62,9 +76,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = GXC_soc_lkmt_in }
 		mutually_exclusive = { focus = GXC_pai_victory }
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#pac align
@@ -79,6 +97,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_victory }
 		completion_reward = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.15
+		}
+		add_political_power = 20
 		}
 	}
 	#united front ties
@@ -93,6 +116,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_victory }
 		completion_reward = {
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		add_political_power = 20
+		add_syn_to_coalition = yes
 		}
 	}
 	#patriots arise internationally
@@ -107,6 +136,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_align_pac }
 		completion_reward = {
+		add_ideas = {
+		GXC_reach_out_to_the_world
+		}
 		}
 	}
 	#true democratic rev
@@ -121,6 +153,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_align_pac } prerequisite = { focus = GXC_chen_united_front }
 		completion_reward = {
+		add_timed_idea = {
+		idea = GXC_true_democracy
+		days = 180
+		}
 		}
 	}
 	#denounce radicals
@@ -135,6 +171,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_united_front }
 		completion_reward = {
+		add_timed_idea = {
+		idea = GXC_anti_radicalism
+		days = 120
+		}
 		}
 	}
 	#national equality minority
@@ -149,6 +189,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_patriots_arise } prerequisite = { focus = GXC_chen_true_demo }
 		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 25
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
 		}
 	}
 	#crush fuedal remnents
@@ -163,6 +209,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_denounce_radicals } prerequisite = { focus = GXC_chen_true_demo }
 		completion_reward = {
+		remove_ideas = {
+		GXC_reactionary_resistance
+		}
 		}
 	}
 	#support world society
@@ -178,6 +227,23 @@ focus_tree = {
 		prerequisite = { focus = GXC_chen_national_equality } prerequisite = { focus = GXC_chen_crush_fuedal }
 		mutually_exclusive = { focus = GXC_chen_against_elders }
 		completion_reward = {
+		set_party_name = {
+			ideology = radical_socialist
+				long_name = "Mutual Aid Society"
+				name = "Hùzhùhuì"
+			}
+	create_country_leader = {
+				name = "Cai Yuanpai"
+				picture = "gfx/leaders/GXCA/Portrait_GXC_Li_Shizeng.png"
+				expire = "1.1.1"
+				ideology = anarchism_subtype
+			}
+
+		add_radsoc_to_coalition = yes
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.10
+		}
 		}
 	}
 	#against elders
@@ -193,6 +259,14 @@ focus_tree = {
 		prerequisite = { focus = GXC_chen_national_equality } prerequisite = { focus = GXC_chen_crush_fuedal }
 		mutually_exclusive = { focus = GXC_chen_world_society }
 		completion_reward = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -0.10
+		}
+		add_timed_idea = {
+		idea = GXC_anti_anarchism
+		days = 100
+		}
 		}
 	}
 	#freedom for peopel
@@ -207,6 +281,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_national_equality } prerequisite = { focus = GXC_chen_crush_fuedal }
 		completion_reward = {
+		add_ideas = {
+		GXC_production_of_freedom
+		}
 		}
 	}
 	#people's producutivity
@@ -221,6 +298,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_chen_freedom } prerequisite = { focus = GXC_chen_against_elders focus = GXC_chen_world_society }
 		completion_reward = {
+		add_ideas = {
+		GXC_production_freedom
+		}
 		}
 	}
 
@@ -236,6 +316,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_pai_victory focus = GXC_chen_victory }
 		completion_reward = {
+		unlock_decision_category_tooltip = PRC_land_reform_decision_category
+		activate_mission = PRC_land_reform_mission
+		set_variable = {
+		var = legation_commie_land_reform
+		value = 25
+		}
 		}
 	}
 	#local soviets
@@ -251,6 +337,7 @@ focus_tree = {
 		prerequisite = { focus = GXC_lkmt_land_reform }
 		mutually_exclusive = { focus = GXC_lkmt_broader_picture }
 		completion_reward = {
+		unlock_decision_tooltip = PRC_construct_local_soviet
 		}
 	}
 	#broader picture
