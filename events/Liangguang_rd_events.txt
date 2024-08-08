@@ -1573,15 +1573,46 @@ country_event = { #need something for the merchants effect needs something pan a
 	id = liangguang_rd.46
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.46"}
 	title = liangguang_rd.46.title
-	desc = liangguang_rd.46.desc
+	desc = {
+	text = liangguang_rd.46.desc_japan_cuck
+	trigger = { has_completed_focus = GXC_lib_welcome_shaoyi }
+	}
+	desc = {
+	text = liangguang_rd.46.desc_no_cuck
+	trigger = { has_completed_focus = GXC_lib_patriotic_markets }
+	}
+
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = liangguang_rd.46.a
+	option = { #cucking to Japan more idk
+		name = liangguang_rd.46.a 
+		trigger = { has_completed_focus = GXC_lib_welcome_shaoyi }
 		ai_chance = { base = 100 }
-		
+		swap_ideas = {
+		remove_idea = GXC_sun_hiding_in_darkness 
+		add idea = GXC_sun_hiding_in_darkness_1
+		}
+
 	}
+	option = { #fuck Japan natioanl capital business victory
+		name = liangguang_rd.46.b
+		trigger = { has_completed_focus = GXC_lib_patriotic_markets }
+		ai_chance = { base = 100 }
+		if = { limit = { JAP = { exists = yes } }
+		swap_ideas = {
+		remove_idea = GXC_going_alone_1 
+		add_idea = GXC_going_alone_2
+		}
+		}
+		else_if = { limit = { JSR = { exists = yes } }
+		swap_ideas = {
+		remove_idea = GXC_going_alone_1 
+		add_idea = GXC_going_alone_2_JSR
+		}
+		}
+	}
+
 }
 
 ###Socialists/LKMT###
