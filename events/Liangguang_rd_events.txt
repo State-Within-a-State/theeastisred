@@ -1721,7 +1721,7 @@ country_event = { #ask hunan mao whether they wanna get annexed do with the mao 
 }
 
 ###RKMT Events###
-country_event = { #
+country_event = { #Reviving the National Revolutionary Army
 	id = liangguang_rd.50
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.50"}
 	title = liangguang_rd.50.title
@@ -1729,10 +1729,34 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Favor Guerilla Warfare
 		name = liangguang_rd.50.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		PRC_geurilla_war
+		}
+		add_to_variable = {
+			var = huangpu_faction
+			value = 10
+			tooltip = add_to_huangpu_faction_tt
+		}
+	}
+	option = { #Favor Modernization
+		name = liangguang_rd.50.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		PRC_army_modernization
+		}
+		add_to_variable = {
+			var = central_club_clique
+			value = 10
+			tooltip = add_to_cc_faction_tt
+		}
+		add_to_variable = {
+			var = western_hills_group
+			value = 10
+			tooltip = add_to_western_hills_faction_tt
+		}
 	}
 }
 

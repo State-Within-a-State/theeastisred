@@ -40,6 +40,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_forgotten_faction } 
 		completion_reward = {
+		country_event = liangguang_rd.50
 		}
 	}
 	#reform mil council
@@ -53,8 +54,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = PRC_rkmt_army_national_rev } 
 		completion_reward = {
+		add_ideas = {
+		PRC_reformed_military_council
+		}
 		}
 	}
 	#embrace modernization
@@ -68,8 +73,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_idea = PRC_army_modernization
+		}
 		prerequisite = { focus = PRC_rkmt_reform_mil_council } 
 		completion_reward = {
+		add_ideas = {
+		PRC_military_modernization
+		}
 		}
 	}
 	#legacy gurillas
@@ -83,8 +94,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_idea = PRC_geurilla_war
+		}
 		prerequisite = { focus = PRC_rkmt_reform_mil_council } 
 		completion_reward = {
+		swap_ideas = {
+		remove_idea = PRC_geurilla_war
+		add_idea = PRC_geurilla_war_1
+		}
 		}
 	}
 	#prepare long war
@@ -100,6 +118,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_legacy_gurillas } 
 		completion_reward = {
+		add_ideas = {
+		PRC_long_war
+		}
 		}
 	}
 	#supply lines improve
@@ -130,6 +151,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_supply_lines } 
 		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus FRA_military_academy"
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			add_ideas = FRA_military_academy_idea
 		}
 	}
 	#essense national survival
@@ -205,6 +234,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_embrace_modernization } 
 		completion_reward = {
+		add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
 		}
 	}
 	#foreign arm sells
