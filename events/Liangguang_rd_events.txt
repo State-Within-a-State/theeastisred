@@ -552,7 +552,7 @@ country_event = { #A Revolution in Qiongya
 	
 	option = { #The Revolution is Ours!
 		name = liangguang_rd.15.b
-		ai_chance = { base = 100 }
+		ai_chance = { base = 0 }
 		set_country_flag = QIO_socialist_released
 		QIO = {
 		set_state_owner = 591
@@ -604,7 +604,7 @@ country_event = { #The Kuomintang Rise Up in Guangxi
 	is_triggered_only = yes
 	option = { #Down with compradors!
 		name = liangguang_rd.16.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 0 }
 		hidden_effect = {
 		country_event = {
 		id = liangguang_rd.18
@@ -646,7 +646,7 @@ country_event = { #The Baise Uprising
 	is_triggered_only = yes
 	option = { #Workers, Peasants & Soldiers Unite!
 		name = liangguang_rd.17.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 0 }
 		hidden_effect = {
 		country_event = {
 		id = liangguang_rd.18
@@ -928,7 +928,7 @@ country_event = { #Lu Yugang Declares Indpendence
 	is_triggered_only = yes
 	option = { #
 		name = liangguang_rd.24.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 0 }
 		QIO = {
 		change_tag_from = GXC
 		}
@@ -1683,6 +1683,9 @@ country_event = { #annex qiongya lol get f'ed
 		}
 		}
 		PRC = {
+		if = { limit = { QIO = { is_ai = no } }
+		change_tag_from = QIO
+		}
 		annex_country = {
     		target = QIO
     		transfer_troops = yes
@@ -1703,7 +1706,11 @@ country_event = { #ask hunan mao whether they wanna get annexed do with the mao 
 	option = { #yes
 		name = liangguang_rd.49.a
 		ai_chance = { base = 100 }
-		
+		PRC = { #add the extra effects and mao gui
+		if = { limit = { HNN = { is_ai = no } }
+		change_tag_from = HNN
+		}
+		}
 	}
 	option = { #no
 		name = liangguang_rd.49.b
