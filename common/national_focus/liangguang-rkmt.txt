@@ -207,6 +207,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_national_survival } 
 		completion_reward = {
+		add_timed_idea = {
+		idea = PRC_military_centralization
+		days = 720
+		}
 		}
 	}
 	#mechanized warefare
@@ -222,6 +226,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_national_survival } 
 		completion_reward = {
+		country_event = liangguang_rd.51
 		}
 	}
 	#aggression self sacrifice 
@@ -237,7 +242,23 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_centralize_industry } prerequisite = { focus = PRC_rkmt_mechanized_warefare } 
 		completion_reward = {
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.05
 		}
+		add_to_variable = {
+			var = rkmt_rightist_radicals
+			value = 5
+			tooltip = add_to_rkmt_rightist_radicals_faction_tt
+		}
+		set_technology = { tech_assault_battalion = 1 }
+			add_timed_idea = {
+				idea = CHI_dare_to_die_idea
+				days = 365
+			}
+		}
+		
 	}
 	#lessons from weltkrieg
 	focus = {
@@ -273,6 +294,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_embrace_modernization } 
 		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus BHC_aid_from_france"
+			army_experience = 25
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 2000 producer = JAP }
+			add_tech_bonus = {
+				name = BHC_aid_from_france
+				bonus = 1
+				uses = 1
+				category = infantry_weapons
+			}
+			hidden_effect = {
+				add_opinion_modifier = { target = JAP modifier = KR_approves_of_govt }
+				reverse_add_opinion_modifier = { target = JAP modifier = KR_approves_of_govt }
+			}
 		}
 	}
 	#weapon standerization
@@ -288,6 +322,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_foreign_arm } prerequisite = { focus = PRC_rkmt_weltkrieg_lessons } 
 		completion_reward = {
+		log = "[GetDateText]: [Root.GetName]: Focus RUS_Equipment_Standardisation"
+		add_ideas = rus_better_infantry_production_focus			
 		}
 	}
 	#honor whampoa
@@ -303,6 +339,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_foreign_arm } prerequisite = { focus = PRC_rkmt_weltkrieg_lessons } 
 		completion_reward = {
+		add_ideas = {
+		PRC_whampoa_legacy
+		}
+		add_to_variable = {
+			var = huangpu_faction
+			value = 5
+			tooltip = add_to_huangpu_faction_tt
+		}
 		}
 	}
 	#create flying tigers
@@ -318,6 +362,43 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_weapon_standerization } prerequisite = { focus = PRC_rkmt_honor_whampoa } prerequisite = { focus = PRC_rkmt_centralize_industry } 
 		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_flying_tigers"
+			CHI_air_reform_effect = yes
+			set_rule = { can_generate_female_aces = yes }
+			596 = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			802 = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { controls_state = 592 }
+				592 = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+			if = {
+				limit = { controls_state = 608 }
+				608 = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
 		}
 	}
 	#army of nation strength 
@@ -333,6 +414,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_self_sacrifice } prerequisite = { focus = PRC_rkmt_proper_displine focus = PRC_rkmt_flying_tigers } 
 		completion_reward = {
+		remove_ideas = {
+		PRC_legacy_of_failure
+		}
 		}
 	}
 
