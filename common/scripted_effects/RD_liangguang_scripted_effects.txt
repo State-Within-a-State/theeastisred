@@ -6,12 +6,22 @@ PRC_radicalism_increase = {
 		}
 		clamp_variable = {
    		var = rkmt_rightist_radicals
-  		min = 0
 		max = 100
 }
 }
-#make a decrease too
 
+PRC_radicalism_decrease = {
+		add_to_variable = {
+			var = rkmt_rightist_radicals
+			value = -5
+			tooltip = less_to_rkmt_rightist_radicals_faction_tt
+
+		}
+		clamp_variable = {
+   		var = rkmt_rightist_radicals
+  		min = 0
+}
+}
 PRC_update_rkmt_factions = {
 	#Get the Total Strength Points of faction Mechanic
 	set_temp_variable = { PRC_RKMT_total_strength_temp_var = western_hills_faction_var }
@@ -34,7 +44,7 @@ PRC_update_rkmt_factions = {
 PRC_increase_wh_faction_small = { #could just do it on the event the specific amount just include update after adding
 		add_to_variable = {
 			var = western_hills_faction_var
-			value = 1
+			value = 5
 			tooltip = add_to_western_hills_faction_tt
 		}
 PRC_update_rkmt_factions = yes
@@ -43,16 +53,29 @@ PRC_update_rkmt_factions = yes
 PRC_increase_huangpu_faction_small = { 
 		add_to_variable = {
 			var = huangpu_faction_var 
-			value = 1
+			value = 5
 			tooltip = add_to_huangpu_faction_tt
 		}
 PRC_update_rkmt_factions = yes
 }
+PRC_decrease_huangpu_faction_small = { # use a mix of both increases and ddecreases otherwise it becomes impossible to change the numbs very much
+		add_to_variable = {
+			var = huangpu_faction_var 
+			value = -5
+			tooltip = less_to_huangpu_faction_tt
+		}
+		clamp_variable = {
+   		var = rkmt_rightist_radicals
+		min = 0
+		}
+PRC_update_rkmt_factions = yes
+}
+
 
 PRC_increase_cc_faction_small = { 
 		add_to_variable = {
 			var = central_club_faction_var 
-			value = 1
+			value = 5
 			tooltip = add_to_cc_faction_tt
 		}
 PRC_update_rkmt_factions = yes
