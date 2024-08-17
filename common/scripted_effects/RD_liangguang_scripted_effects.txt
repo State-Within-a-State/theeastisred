@@ -1,3 +1,61 @@
+PRC_radicalism_increase = {
+		add_to_variable = {
+			var = rkmt_rightist_radicals
+			value = 5
+			tooltip = add_to_rkmt_rightist_radicals_faction_tt
+		}
+		clamp_variable = {
+   		var = rkmt_rightist_radicals
+  		min = 0
+		max = 100
+}
+}
+#make a decrease too
+
+PRC_update_rkmt_factions = {
+	#Get the Total Strength Points of faction Mechanic
+	set_temp_variable = { PRC_RKMT_total_strength_temp_var = western_hills_faction_var }
+	add_to_temp_variable = { PRC_RKMT_total_strength_temp_var = huangpu_faction_var }
+	add_to_temp_variable = { PRC_RKMT_total_strength_temp_var = central_club_faction_var }
+	#Get the % wh
+	set_variable = { western_hills_group = western_hills_faction_var }
+	divide_variable = { western_hills_group = PRC_RKMT_total_strength_temp_var }
+	#may need to multiply to get the real value *100 check later
+	#Get the % wampoa
+	set_variable = { huangpu_faction = huangpu_faction_var }
+	divide_variable = { huangpu_faction = PRC_RKMT_total_strength_temp_var }
+	#Get the % cc
+	set_variable = { central_club_clique = central_club_faction_var }
+	divide_variable = { central_club_clique = PRC_RKMT_total_strength_temp_var }
+}
+
+PRC_increase_wh_faction_small = { #could just do it on the event the specific amount just include update after adding
+		add_to_variable = {
+			var = western_hills_faction_var
+			value = 5
+			tooltip = add_to_western_hills_faction_tt
+		}
+PRC_update_rkmt_factions = yes
+}
+
+PRC_increase_huangpu_faction_small = { 
+		add_to_variable = {
+			var = huangpu_faction_var 
+			value = 5
+			tooltip = add_to_huangpu_faction_tt
+		}
+PRC_update_rkmt_factions = yes
+}
+
+PRC_increase_cc_faction_small = { 
+		add_to_variable = {
+			var = central_club_faction_var 
+			value = 5
+			tooltip = add_to_cc_faction_tt
+		}
+PRC_update_rkmt_factions = yes
+}
+
 
 PRC_socialist_setup = {
 PRC = {
