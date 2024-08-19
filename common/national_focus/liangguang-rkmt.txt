@@ -463,6 +463,39 @@ focus_tree = {
 		}
 		}
 	}
+	#liberate south
+	focus = {
+		id = PRC_rkmt_liberate_south
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		relative_position_id  = PRC_rkmt_struggle_politics
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PRC_rkmt_land_reform } prerequisite = { focus = PRC_rkmt_new_life } 
+		completion_reward = {
+		if = {
+			limit = { can_declare_war_on = YUN }
+			activate_targeted_decision = { decision = china_demand_submission target = YUN }
+		}
+		if = {
+			limit = { can_declare_war_on = HNN }
+			activate_targeted_decision = { decision = china_demand_submission target = HNN }
+		}
+		if = {
+			limit = { can_declare_war_on = SZC }
+			activate_targeted_decision = { decision = china_demand_submission target = SZC }
+		}
+
+		if = {
+			limit = { can_declare_war_on = QIO }
+			activate_targeted_decision = { decision = china_demand_submission target = QIO }
+		}
+
+		}
+	}
 	
 	#2nd eastern expedition
 	focus = {
@@ -475,9 +508,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PRC_rkmt_foreign_imperialists } 
+		prerequisite = { focus = PRC_rkmt_liberate_south } 
 		completion_reward = {
-		china_enable_non_government_demand_submission_decisions = yes
+		if = {
+			limit = { can_declare_war_on = LEP }
+			activate_targeted_decision = { decision = china_demand_submission target = LEP }
+		}
+		if = {
+			limit = { can_declare_war_on = ANQ }
+			activate_targeted_decision = { decision = china_demand_submission target = ANQ }
+		}
+		if = {
+			limit = { can_declare_war_on = CHI }
+			activate_targeted_decision = { decision = china_demand_submission target = CHI }
+		}
+		if = {
+			limit = { can_declare_war_on = SQI }
+			activate_targeted_decision = { decision = china_demand_submission target = SQI }
+		}
 		}
 	}
 	#foreign imperialists concern
@@ -485,7 +533,7 @@ focus_tree = {
 		id = PRC_rkmt_foreign_imperialists
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
 		relative_position_id  = PRC_rkmt_struggle_politics
-		x = 0
+		x = 1
 		y = 3
 		cost = 5
 		search_filters = {
