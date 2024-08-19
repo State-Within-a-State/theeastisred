@@ -404,6 +404,7 @@ focus_tree = {
 		prerequisite = { focus = PRC_rkmt_struggle_politics } 	
 		mutually_exclusive = { focus = PRC_rkmt_min_piao }
 		completion_reward = {
+		unlock_decision_tooltip = PRC_open_officers
 		}
 	}
 	#legacy of min-piao
@@ -420,6 +421,7 @@ focus_tree = {
 		prerequisite = { focus = PRC_rkmt_struggle_politics } 	
 		mutually_exclusive = { focus = PRC_rkmt_open_officers }
 		completion_reward = {
+		unlock_decision_tooltip = PRC_publish_minpiao
 		}
 	}
 	#new life
@@ -435,6 +437,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_min_piao focus = PRC_rkmt_open_officers } 
 		completion_reward = {
+		unlock_decision_tooltip = PRC_promoting_christ
+		PRC_radicalism_increase = yes
+		hidden_effect = {
+		country_event = liangguang_rd.52
+		}
 		}
 	}
 	#new land reform
@@ -450,23 +457,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_min_piao focus = PRC_rkmt_open_officers } 
 		completion_reward = {
+		add_timed_idea = {
+		idea = PRC_land_reform_promises
+		days = 720
+		}
 		}
 	}
-	#liberate south
-	focus = {
-		id = PRC_rkmt_liberate_south
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
-		relative_position_id  = PRC_rkmt_struggle_politics
-		x = -1
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PRC_rkmt_land_reform } prerequisite = { focus = PRC_rkmt_new_life } 
-		completion_reward = {
-		}
-	}
+	
 	#2nd eastern expedition
 	focus = {
 		id = PRC_rkmt_eastern_expedition
@@ -478,8 +475,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PRC_rkmt_liberate_south } 
+		prerequisite = { focus = PRC_rkmt_foreign_imperialists } 
 		completion_reward = {
+		china_enable_non_government_demand_submission_decisions = yes
 		}
 	}
 	#foreign imperialists concern
@@ -487,14 +485,28 @@ focus_tree = {
 		id = PRC_rkmt_foreign_imperialists
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
 		relative_position_id  = PRC_rkmt_struggle_politics
-		x = 1
+		x = 0
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = PRC_rkmt_land_reform } prerequisite = { focus = PRC_rkmt_new_life } 
 		completion_reward = {
+		add_offsite_building = {
+					type = arms_factory
+					level = 1
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1000
+				}
+				add_offsite_building = {
+					type = industrial_complex
+					level = 1
+				}
+				PRC_radicalism_increase = yes
 		}
 	}
 	#influence shanghai underworld
@@ -523,8 +535,21 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		will_lead_to_war_with = QIE
+		will_lead_to_war_with = FNG
+		will_lead_to_war_with = JAP
 		prerequisite = { focus = PRC_rkmt_shanghai_underworld } prerequisite = { focus = PRC_rkmt_eastern_expedition } 
 		completion_reward = {
+		608 = { #Beijing
+				owner = {
+					PRC = {
+						create_wargoal = {
+							target = PREV
+							type = annex_everything
+						}
+					}
+				}
+			}
 		}
 	}
 
