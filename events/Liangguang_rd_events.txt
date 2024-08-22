@@ -1842,7 +1842,7 @@ country_event = { #Direction of the New Life Movement
 	}
 }
 
-country_event = { #
+country_event = { #Handling the Workers Situation
 	id = liangguang_rd.53
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.53"}
 	title = liangguang_rd.53.title
@@ -1850,10 +1850,24 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Mediation With the Workers
 		name = liangguang_rd.53.a
 		ai_chance = { base = 100 }
-		
+		PRC_increase_wh_faction_small = yes
+		add_timed_idea = {
+		idea = PRC_workers_comprimise
+		days = 90
+		}
+	}
+	option = { #Crush the Workers
+		name = liangguang_rd.53.b
+		ai_chance = { base = 100 }
+		PRC_increase_huangpu_faction_small = yes
+		PRC_increase_cc_faction_small = yes
+		add_timed_idea = {
+		idea = PRC_worker_crackdown
+		days = 90
+		}
 	}
 }
 
