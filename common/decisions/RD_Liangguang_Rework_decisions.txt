@@ -94,8 +94,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		}
 		cost = 100
 		
-		days_remove = 30
-		days_re_enable = 15
+		days_remove = 15
 		fire_only_once = yes
 		ai_will_do = {
 		base = 5
@@ -126,11 +125,12 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 			tag = GXC
 			has_country_flag = GXC_kmt_uprising
 		}
-		available = { has_idea = GXC_village_infiltration }
+		available = { 
+		has_idea = GXC_village_infiltration 
+		}
 		cost = 100
 		
-		days_remove = 15
-		days_re_enable = 10
+		days_remove = 30
 		fire_only_once = yes
 		ai_will_do = {
 		base = 5
@@ -151,6 +151,66 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 			}
 		}
 	}
+
+
+	GXC_end_factionalism = {
+		icon = ger_military_buildup
+		
+		visible = {
+			tag = GXC
+		}
+		available = { 
+		custom_trigger_tooltip = {
+   		tooltip = GXC_factionalism_done_tt	
+		
+		OR = {
+		has_country_flag = GXC_Zhang_Mingqi_Control_Guangdong
+		has_country_flag = GXC_fed_victory_struggle_over
+		has_country_flag = GXC_merchant_victory_struggle_over
+		has_country_flag = GXC_anarchist_victory_struggle_over
+		}
+		OR = {
+				AND = {
+				has_country_flag = stopped_qiongya_revo
+				has_subject = QIO
+				}
+				owns_state = 591
+			}
+		owns_state = 594
+		OR = {
+				has_country_flag = stopped_guangxi_revo
+				has_country_flag = failled_guangxi_revo
+			}
+		}
+
+		}
+		cost = 100
+		
+		days_remove = 30
+		fire_only_once = yes
+		ai_will_do = {
+		base = 100
+		}
+
+		complete_effect = {
+
+		}
+		remove_effect = {
+			remove_ideas = {
+			GXC_factionalism
+			}
+
+		}
+	}
+
+
+
+
+
+
+
+
+
 }
 
 GXC_buy_foreign_weapons_decision_category = {
