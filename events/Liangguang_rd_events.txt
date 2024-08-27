@@ -1743,10 +1743,20 @@ country_event = { #ask hunan mao whether they wanna get annexed do with the mao 
 	option = { #yes
 		name = liangguang_rd.49.a
 		ai_chance = { base = 100 }
+		every_unit_leader = {
+			set_nationality = PRC
+		}
+
 		PRC = { #add the extra effects and mao gui
+		set_country_flag = PRC_mao_joins_us
 		if = { limit = { HNN = { is_ai = no } }
 		change_tag_from = HNN
 		}
+		annex_country = {
+    		target = HNN
+    		transfer_troops = yes
+		}
+		add_ideas = HNN_joining_with_xinmin
 		}
 	}
 	option = { #no
