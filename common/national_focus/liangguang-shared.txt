@@ -176,7 +176,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	prerequisite = { focus = GXC_shared_silk_mills }
 	completion_reward = {
-
+	add_ideas = {
+	GXC_philantropic_investments
+	}
 	}
 }
 #Reliance on the HSBC
@@ -190,7 +192,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	prerequisite = { focus = GXC_shared_silk_mills }
 	completion_reward = {
-
+	add_ideas = {
+	GXC_reforming_guangdong_one
+	}
 	}
 }
 #Establishment of the Lignan Agricultural University
@@ -204,7 +208,7 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	prerequisite = { focus = GXC_shared_HSBC } prerequisite = { focus = GXC_shared_merchant_fleet }
 	completion_reward = {
-
+	add_research_slot = 1
 	}
 }
 
@@ -219,7 +223,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	prerequisite = { focus = GXC_shared_Free_Market_Regime focus = GXC_shared_state_interventionism }
 	completion_reward = {
-
+		add_ideas = {
+		GXC_warlord_economy_one
+		}
 	}
 }
 #Guns and Opium
@@ -233,7 +239,14 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	prerequisite = { focus = GXC_shared_black_market_deal }
 	completion_reward = {
-
+		swap_ideas = {
+			remove_idea = GXC_warlord_economy_one
+			add_idea = GXC_warlord_economy_two
+		}
+		add_offsite_building = {
+			type = industrial_complex
+			level = 2
+		}
 	}
 }
 #Hong Kong Contacts
@@ -247,7 +260,11 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	prerequisite = { focus = GXC_shared_guns_opium } prerequisite = { focus = GXC_shared_college_agri focus = GXC_shared_merchant_fleet }
 	completion_reward = {
-
+		add_equipment_to_stockpile = {
+			type = infantry_equipment_0
+			amount = 1000
+		}
+		SZC_add_research_slot = yes
 	}
 }
 #Embrace Autarky
@@ -261,7 +278,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	prerequisite = { focus = GXC_shared_highways } prerequisite = { focus = GXC_shared_asset_liquidation }
 	completion_reward = {
-
+		add_ideas = {
+		GXC_mining
+		}
 	}
 }
 #A Modernized Market
@@ -275,7 +294,10 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH }
 	prerequisite = { focus = GXC_shared_ligan_uni }
 	completion_reward = {
-
+		swap_ideas = {
+			remove_idea = GXC_economic_collapse_private
+			add_idea = GXC_economic_collapse_private_1
+		}
 	}
 }
 #The Three Year Plan
@@ -289,7 +311,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH } 
 	prerequisite = { focus = GXC_shared_ligan_uni focus = GXC_shared_highways } prerequisite = { focus = GXC_shared_hk_contacts }
 	completion_reward = {
-
+		log = "[GetDateText]: [Root.GetName]: Focus GXC_three_year_plan"
+		add_political_power = -50
+		add_ideas = GXC_three_year_plan_idea
 	}
 }
 #Twin Model Provinces
@@ -303,7 +327,24 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_RESEARCH } 
 	prerequisite = { focus = GXC_shared_modern_market focus = GXC_shared_autarky } prerequisite = { focus = GXC_shared_years_plan }
 	completion_reward = {
-
+		if = {
+			limit = {
+				has_idea = GXC_economic_collapse_private_1
+			}
+			swap_ideas = {
+				remove_idea = GXC_economic_collapse_private_1
+				add_idea = GXC_economic_collapse_private_2
+			}
+		}
+		if = {
+			limit = {
+				has_idea = GXC_economic_collapse_statist
+			}
+			swap_ideas = {
+				remove_idea = GXC_economic_collapse_statist
+				add_idea = GXC_economic_collapse_statist_1
+			}
+		}
 	}
 }
 
