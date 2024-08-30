@@ -364,10 +364,15 @@ shared_focus = {
 	y = 0
 	search_filters = { FOCUS_FILTER_MILITARY }
 	completion_reward = {
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = HNN
-			}
+		if = {
+			limit = { can_declare_war_on = HNN }
+			activate_targeted_decision = { decision = china_demand_submission target = HNN }
+		}
+		if = {
+			limit = { can_declare_war_on = QIO }
+			activate_targeted_decision = { decision = china_demand_submission target = QIO }
+		}
+
 	}
 }
 
@@ -382,22 +387,22 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_unification }
 	completion_reward = {
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = CHI
-			}
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = LEP
-			}
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = ANQ
-			}
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = SQI
-			}
+		if = {
+			limit = { can_declare_war_on = LEP }
+			activate_targeted_decision = { decision = china_demand_submission target = LEP }
+		}
+		if = {
+			limit = { can_declare_war_on = ANQ }
+			activate_targeted_decision = { decision = china_demand_submission target = ANQ }
+		}
+		if = {
+			limit = { can_declare_war_on = CHI }
+			activate_targeted_decision = { decision = china_demand_submission target = CHI }
+		}
+		if = {
+			limit = { can_declare_war_on = SQI }
+			activate_targeted_decision = { decision = china_demand_submission target = SQI }
+		}
 	}
 }
 #2nd western expedition
@@ -411,14 +416,14 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_unification }
 	completion_reward = {
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = SZC
-			}
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = YUN
-			}
+		if = {
+			limit = { can_declare_war_on = YUN }
+			activate_targeted_decision = { decision = china_demand_submission target = YUN }
+		}
+		if = {
+			limit = { can_declare_war_on = SZC }
+			activate_targeted_decision = { decision = china_demand_submission target = SZC }
+		}
 	}
 }
 #toppling peking pretenders
@@ -432,18 +437,14 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_western_expedition } prerequisite = { focus = GXC_shared_push_east }
 	completion_reward = {
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = QIE
-			}
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = FNG
-			}
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = SHX
-			}
+		if = {
+			limit = { can_declare_war_on = QIE }
+			activate_targeted_decision = { decision = china_demand_submission target = QIE }
+		}
+		if = {
+			limit = { can_declare_war_on = FNG }
+			activate_targeted_decision = { decision = china_demand_submission target = FNG }
+		}
 	}
 }
 

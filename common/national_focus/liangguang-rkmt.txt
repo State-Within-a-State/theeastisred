@@ -591,16 +591,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_shanghai_underworld } prerequisite = { focus = PRC_rkmt_eastern_expedition } 
 		completion_reward = {
-		608 = { #Beijing
-				owner = {
-					PRC = {
-						create_wargoal = {
-							target = PREV
-							type = annex_everything
-						}
-					}
-				}
-			}
+		if = {
+			limit = { can_declare_war_on = QIE }
+			activate_targeted_decision = { decision = china_demand_submission target = QIE }
+		}
+		if = {
+			limit = { can_declare_war_on = FNG }
+			activate_targeted_decision = { decision = china_demand_submission target = FNG }
+		}
 		}
 	}
 
