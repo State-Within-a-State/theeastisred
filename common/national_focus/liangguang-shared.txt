@@ -408,7 +408,7 @@ shared_focus = {
 #2nd western expedition
 shared_focus = {
 	id = GXC_shared_western_expedition
-	icon = GFX_YUN_goal_attack_Sichuan
+	icon = GFX_goal_CHI_plan_western
 	cost = 5
 	relative_position_id = GXC_shared_unification
 	x = 1
@@ -466,7 +466,7 @@ shared_focus = {
 #glory to army of steel
 shared_focus = {
 	id = GXC_shared_army_steel
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_mass_concentration_of_army
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -5
@@ -497,13 +497,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_army_steel }
 	completion_reward = {
-		
+		add_ideas = {
+		GXC_merhcant_self_defence_corps
+		}
 	}
 }
 #sailing seven seas
 shared_focus = {
 	id = GXC_shared_sailing_seven_seas
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_FIU_seven_seas
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -9
@@ -511,13 +513,19 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_defense_force }
 	completion_reward = {
-		
+		add_doctrine_cost_reduction = {
+			name = RUS_Floating_Fortresses
+			cost_reduction = 0.5
+			uses = 2
+			category = naval_doctrine
+		}
+		navy_experience = 25
 	}
 }
 #flying the southern skies
 shared_focus = {
 	id = GXC_shared_flying_southern_skies
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_China_Beiyang_Air_Force
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -7
@@ -525,13 +533,38 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_defense_force }
 	completion_reward = {
-
+		air_experience = 25
+		if = {
+			limit = { has_dlc_bba = yes }
+			add_tech_bonus = {
+				name = RUS_Airspace_Defence
+				bonus = 1
+				uses = 1
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+			add_tech_bonus = {
+				name = RUS_Airspace_Defence
+				bonus = 1
+				uses = 1
+				category = plane_modules_tech
+			}
+		}
+		else = {
+			add_tech_bonus = {
+				name = RUS_Airspace_Defence
+				bonus = 0.75
+				uses = 2
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
 	}
 }
 #secure naval contracts
 shared_focus = {
 	id = GXC_shared_naval_contracts
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_navy_decision
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -8
@@ -539,13 +572,37 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_sailing_seven_seas } prerequisite = { focus = GXC_shared_flying_southern_skies }
 	completion_reward = {
-
+		if = {
+			limit = { has_dlc_mtg = yes }
+			add_tech_bonus = {
+				name = RUS_Fleet_Vanguards
+				bonus = 0.75
+				uses = 3
+				category = cat_gunnery
+				category = cat_targeting
+			}
+			add_tech_bonus = {
+				name = RUS_Fleet_Vanguards
+				bonus = 0.75
+				uses = 2
+				category = ca_tech
+			}
+		}
+		else = {
+			add_tech_bonus = {
+				name = RUS_Fleet_Vanguards
+				bonus = 1
+				uses = 2
+				category = ca_tech
+				category = bc_tech
+			}
+		}
 	}
 }
 #fighter blueprints
 shared_focus = {
 	id = GXC_shared_fighter_blueprints
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_FNG_chinese_flying_corps
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -8
@@ -553,7 +610,18 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_naval_contracts } 
 	completion_reward = {
-
+		add_tech_bonus = {
+				name = RUS_Specialise_in_Ground_Support
+				bonus = 1
+				uses = 1
+				category = cas_bomber
+			}
+			add_tech_bonus = {
+				name = RUS_Specialise_in_Ground_Support
+				bonus = 1
+				uses = 1
+				category = plane_modules_tech
+			}
 	}
 }
 #lessons from yue-gui
@@ -567,13 +635,19 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_army_steel }
 	completion_reward = {
-
+		add_doctrine_cost_reduction = {
+			name = GXC_civilwar_lessons
+			cost_reduction = 0.5
+			uses = 1
+			category = land_doctrine
+		}
+		army_experience = 10
 	}
 }
 #soldiers marching across mountains
 shared_focus = {
 	id = GXC_shared_marching_across_mountains
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_generic_mountain_warfare
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -5
@@ -581,13 +655,22 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_yui_gui_lessons }
 	completion_reward = {
-
+		hidden_effect = {
+			set_technology = { mountain_training_tech = 1 popup = no }
+		}
+		custom_effect_tooltip = tooltip_white_line
+		add_tech_bonus = {
+			name = GXC_mountain_warfare
+			bonus = 1
+			uses = 1
+			category = mountaineers_tech
+		}
 	}
 }
 #build second Guangzhou arsenal
 shared_focus = {
 	id = GXC_shared_guangzhou_arsenal
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_GXC_Second_Guangdong_Arsenal
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -6
@@ -595,13 +678,26 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_sailing_seven_seas } prerequisite = { focus = GXC_shared_marching_across_mountains }
 	completion_reward = {
-
+			592 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		add_tech_bonus = {
+			name = GXC_second_arsenal
+			bonus = 1
+			uses = 1
+			category = artillery
+		}
 	}
 }
 #forge army modernity
 shared_focus = {
 	id = GXC_shared_army_modernity
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_SKM_Modern_Artillery
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -6
@@ -609,7 +705,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_guangzhou_arsenal } 
 	completion_reward = {
-
+		add_ideas = {
+		GXC_army_modernity
+		}
 	}
 }
 #steel to titanium
@@ -623,14 +721,21 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_army_modernity } prerequisite = { focus = GXC_shared_fighter_blueprints } 
 	completion_reward = {
-
+		swap_ideas = {
+			remove_idea = GXC_army_of_steel
+			add_idea = GXC_army_of_titanium
+		}
+		swap_ideas = {
+			remove_idea = GXC_merhcant_self_defence_corps
+			add_idea = GXC_southern_defense_force
+		}
 	}
 }
 
 #Standing Strong in the South
 shared_focus = {
 	id = GXC_shared_Standing_Strong 
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_GXC_southern_school
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = 0
@@ -645,13 +750,15 @@ shared_focus = {
 	}
 	mutually_exclusive = { focus = GXC_shared_army_steel }
 	completion_reward = {
-
+		add_ideas = {
+		GXC_strong_arm_south
+		}
 	}
 }
 #The Patrol Fleet Setting Sail
 shared_focus = {
 	id = GXC_shared_setting_sail
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_generic_naval_cruiser2
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -2
@@ -659,7 +766,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_Standing_Strong }
 	completion_reward = {
-
+		add_ideas = {
+		GXC_patrolling_harbour
+		}
 	}
 }
 #introduce minjun eforms
@@ -673,7 +782,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_Standing_Strong }
 	completion_reward = {
-
+		add_ideas = {
+		GXC_reformed_minjun
+		}
 	}
 }
 #organize professional officers corp
@@ -687,13 +798,16 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_minjun_reforms } prerequisite = { focus = GXC_shared_setting_sail } 
 	completion_reward = {
-
+		add_timed_idea = {
+		idea = GXC_professional_officers
+		days = 365
+		}
 	}
 }
 #secure hong kong contacts
 shared_focus = {
 	id = GXC_shared_hk_contacts_mil
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_generic_naval_academy
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -2
@@ -701,13 +815,35 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_professional_officers } prerequisite = { focus = GXC_shared_setting_sail } 
 	completion_reward = {
-
+		add_tech_bonus = {
+			name = RUS_Commerce_Raiders
+			bonus = 0.5
+			uses = 2
+			category = cat_torpedo
+			category = cat_targeting
+		}
+		add_tech_bonus = {
+			name = RUS_Commerce_Raiders
+			bonus = 0.5
+			uses = 1
+			category = ca_tech
+		}
+		add_tech_bonus = {
+			name = GXC_tooling_help
+			bonus = 1
+			uses = 1
+			category = industry
+		}
+		add_timed_idea = {
+			idea = GXC_HK_tooling_help
+			days = 100
+		}
 	}
 }
 #expanding explosive factories
 shared_focus = {
 	id = GXC_shared_explosive_factories
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_GXC_Guangdong_Arsenal
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = 0
@@ -715,13 +851,20 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_professional_officers } 
 	completion_reward = {
-
+			800 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 }
 #liangguang aviation school
 shared_focus = {
 	id = GXC_shared_aviation_school
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_USA_organic_air_support
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = -2
@@ -729,13 +872,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_hk_contacts_mil } 
 	completion_reward = {
-
+		add_ideas = {
+		GXC_aviation_bureau_one
+		}
 	}
 }
 #integrate militas
 shared_focus = {
 	id = GXC_shared_integrate_militias
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_integrate_the_militia
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = 2
@@ -743,13 +888,17 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_minjun_reforms } prerequisite = { focus = GXC_shared_professional_officers } 
 	completion_reward = {
-
+		swap_ideas = {
+			remove_idea = GXC_reformed_minjun
+			add_idea = GXC_imp_officers_int_militia
+		}
+		add_stability = 0.1
 	}
 }
 #revival of guofangjun
 shared_focus = {
 	id = GXC_shared_guofangjun_revived
-	icon = GFX_goal_generic_future_technology
+	icon = GFX_goal_china_federalist_army
 	cost = 5
 	relative_position_id = GXC_shared_rifles
 	x = 0
@@ -757,7 +906,10 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_integrate_militias } prerequisite = { focus = GXC_shared_aviation_school } prerequisite = { focus = GXC_shared_explosive_factories } 
 	completion_reward = {
-
+		swap_ideas = {
+			remove_idea = GXC_strong_arm_south
+			add_idea = GXC_guofangjun
+		}
 	}
 }
 
