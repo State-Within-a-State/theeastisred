@@ -836,7 +836,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_soc_local_supply }
 		completion_reward = {
-			
+			add_timed_idea = {
+			idea = PRC_security_battalions
+			days = 180
+			}
 		}
 	}
 	#reinvorate nanning arsenal
@@ -852,7 +855,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_soc_local_milita } prerequisite = { focus = GXC_soc_army_discipline }
 		completion_reward = {
-
+			592 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
 		}
 	}
 	#peasant self defense forces
@@ -868,7 +883,23 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_soc_local_milita } prerequisite = { focus = GXC_soc_security_battalions }
 		completion_reward = {
-
+			division_template = {
+					name = "Peasant Self-Defence Corps"
+					division_cap = 3 
+					division_names_group = GXC_INF_03
+					priority = 0
+					template_counter = 0
+					regiments = {
+						infantry = { x = 0 y = 0 }
+						infantry = { x = 0 y = 1 }
+						infantry = { x = 0 y = 2 }
+						infantry = { x = 0 y = 3 }
+					}
+					support = {
+						military_police = { x = 0 y = 0 }
+					}
+				}
+				army_experience = 25
 		}
 	}
 	#hammer strikes iron army
@@ -884,7 +915,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_soc_nanning_arsenal } prerequisite = { focus = GXC_soc_self_defense }
 		completion_reward = {
-
+			swap_ideas = {
+				remove_idea = PRC_guerilla_army_discipline
+				add_idea = PRC_guerilla_army_discipline_1
+			}
 		}
 	}
 
