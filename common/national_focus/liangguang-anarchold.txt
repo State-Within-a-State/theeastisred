@@ -1675,29 +1675,7 @@ focus_tree = {
 		}
 	}
 
-	#The Sangha Takes Over...
-	focus = {
-		id = GXC_thesanghatakesover
-		icon = GFX_GXC_thesanghatakesover-248360
-		x = 31
-		y = 6
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		
-		prerequisite = { focus = GXC_reach_unto_utopia  }
-		mutually_exclusive = { focus = GXC_anewoldanarchism  } mutually_exclusive = { focus = GXC_valorise_watermargin_militias  }
-		completion_reward = {
-		custom_effect_tooltip = sganhai_gxc_tt
-		hidden_effect = {
-		country_event = {
-		id = anarcho_china.10
-		days = 3
-		}
-		}
-		}
-	}
+	
 
 	#A New, Old Anarchism
 	focus = {
@@ -1814,7 +1792,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = GXC_anewyearsdream  } prerequisite = { focus = GXC_independent_arms_development  }
+		prerequisite = { focus = GXC_independent_arms_development  }
 		completion_reward = {
 		add_ideas = {
 		GXC_communal_defence
@@ -1857,39 +1835,19 @@ focus_tree = {
 	focus = {
 		id = GXC_prepareforthedatong
 		icon = GFX_GXC_prepareforthedatong-248360
-		x = 45
+		x = 46
 		y = 6
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = GXC_anewyearsdream  }
+		prerequisite = { focus = GXC_anewyearsdream focus = GXC_a_struggle_with_the_impure  }
 		completion_reward = {
 		add_political_power = 100
 		}
 	}
 
-	#A Counter-Coup...
-	focus = {
-		id = GXC_acountercoup
-		icon = GFX_GXC_acountercoup-248360
-		x = 48
-		y = 6
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_a_struggle_with_the_impure  }
-		completion_reward = {
-		custom_effect_tooltip = shitong_tt
-		hidden_effect = {
-		country_event = {
-		id = anarcho_china.11
-		days = 3
-		}
-		}
-		}
-	}
+	
 
 	#Guided Development
 	focus = {
@@ -2127,7 +2085,7 @@ focus_tree = {
 				ruling_only = yes
 			}
 		}
-		prerequisite = { focus = GXC_guided_development  }
+		prerequisite = { focus = GXC_guided_development focus = GXC_prepareforthedatong }
 		completion_reward = {
 		add_building_construction = {
 				type = infrastructure
@@ -2153,7 +2111,7 @@ focus_tree = {
 				ruling_only = yes
 			}
 		}
-		prerequisite = { focus = GXC_independent_arms_development  focus = GXC_anewyearsdream  } prerequisite = { focus = GXC_independent_arms_development  }
+		prerequisite = {focus = GXC_prepareforthedatong  } 
 		completion_reward = {
 		add_ideas = {
 		GXC_factory_revamp
@@ -2177,7 +2135,7 @@ focus_tree = {
 				ruling_only = yes
 			}
 		}
-		prerequisite = { focus = GXC_independent_arms_development  } prerequisite = { focus = GXC_anewyearsdream  focus = GXC_a_struggle_with_the_impure  } prerequisite = { focus = GXC_independent_arms_development  }
+		prerequisite = { focus = GXC_independent_arms_development  } prerequisite = { focus = GXC_anewyearsdream  focus = GXC_a_struggle_with_the_impure  } 
 		completion_reward = {
 		add_research_slot = 1
 		}
@@ -2388,372 +2346,7 @@ focus_tree = {
 		}
 	}
 
-	#Retreat from the Radical Moment
-	focus = {
-		id = GXC_retreat_from_the_radical_moment
-		icon = GFX_GXC_retreat_from_the_radical_moment-248360
-		x = 34
-		y = 10
-		cost = 0
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		OR = {
-		has_country_leader = {
-		name = "Taixu"
-		ruling_only = yes
-		}
-		has_country_leader = {
-		name = "Shi Cuntong"
-		ruling_only = yes
-		}
-		has_country_leader = {
-		name = "Mao Dun"
-		ruling_only = yes
-		}
-		}
-		}
-	}
-
-	#Taixu's Revised Moralism
-	focus = {
-		id = GXC_taixusrevisedmoralism
-		icon = GFX_GXC_taixusrevisedmoralism-248360
-		x = 30
-		y = 11
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		has_country_leader = {
-			name = "Taixu"
-			ruling_only = yes
-		}
-		}
-		prerequisite = { focus = GXC_retreat_from_the_radical_moment  }
-		mutually_exclusive = { focus = GXC_shicuntongsrevisedlaborism  } mutually_exclusive = { focus = GXC_themoderatewritersprogressivism  }
-	}
-
-	#Shi Cuntong's Revised Laborism
-	focus = {
-		id = GXC_shicuntongsrevisedlaborism
-		icon = GFX_GXC_shicuntongsrevisedlaborism-248360
-		x = 34
-		y = 11
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		has_country_leader = {
-			name = "Shi Cuntong"
-			ruling_only = yes
-		}
-		}
-		prerequisite = { focus = GXC_retreat_from_the_radical_moment  }
-		mutually_exclusive = { focus = GXC_taixusrevisedmoralism  } mutually_exclusive = { focus = GXC_themoderatewritersprogressivism  }
-	}
-
-	#The Moderate Writers' Progressivism
-	focus = {
-		id = GXC_themoderatewritersprogressivism
-		icon = GFX_GXC_themoderatewritersprogressivism-248360
-		x = 38
-		y = 11
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		has_country_leader = {
-			name = "Mao Dun"
-			ruling_only = yes
-		}
-		}
-		prerequisite = { focus = GXC_retreat_from_the_radical_moment  }
-		mutually_exclusive = { focus = GXC_taixusrevisedmoralism  } mutually_exclusive = { focus = GXC_shicuntongsrevisedlaborism  }
-	}
-
-	#Elite-led Mass Democracy
-	focus = {
-		id = GXC_eliteled_mass_democracy
-		icon = GFX_GXC_eliteled_mass_democracy-248360
-		x = 40
-		y = 12
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_themoderatewritersprogressivism  }
-		completion_reward = {
-		add_ideas = {
-		GXC_mass_democracy
-		}
-		}
-	}
-
-	#Establish clear chains of command
-	focus = {
-		id = GXC_establish_clear_chains_of_command
-		icon = GFX_GXC_establish_clear_chains_of_command-248360
-		x = 36
-		y = 12
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_shicuntongsrevisedlaborism  }
-		completion_reward = {
-		add_stability = 0.1
-		add_political_power = -200
-		}
-	}
-
-	#A Centralist Anarchist State
-	focus = {
-		id = GXC_a_centralist_anarchist_state
-		icon = GFX_GXC_a_centralist_anarchist_state-248360
-		x = 34
-		y = 12
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_shicuntongsrevisedlaborism  }
-		completion_reward = {
-		add_ideas = {
-		GXC_centralized_admin_3
-		}
-		}
-	}
-
-	#Empower the Labor Guilds
-	focus = {
-		id = GXC_empower_the_labor_guilds
-		icon = GFX_GXC_empower_the_labor_guilds-248360
-		x = 32
-		y = 12
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_shicuntongsrevisedlaborism  }
-		completion_reward = {
-		add_ideas = {
-		GXC_empowering_labor
-		}
-		}
-	}
-
-	#Enshrine Humanist Buddhism
-	focus = {
-		id = GXC_enshrine_humanist_buddhism
-		icon = GFX_GXC_enshrine_humanist_buddhism-248360
-		x = 28
-		y = 12
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_taixusrevisedmoralism  }
-		completion_reward = {
-		add_popularity = {
-		ideology = ROOT
-		popularity = 0.15
-		}
-		}
-	}
-
-	#Re-Dedicate Communes to the Pure Land
-	focus = {
-		id = GXC_rededicate_communes_to_the_pure_land
-		icon = GFX_GXC_rededicate_communes_to_the_pure_land-248360
-		x = 28
-		y = 13
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_enshrine_humanist_buddhism  }
-		completion_reward = {
-		add_ideas = {
-		GXC_empowering_labor_2
-		}
-		}
-	}
-
-	#Internationale Integration
-	focus = {
-		id = GXC_internationale_integration
-		icon = GFX_GXC_internationale_integration-248360
-		x = 34
-		y = 13
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = GXC_a_centralist_anarchist_state  }
-		completion_reward = {
-		add_war_support = 0.25
-		}
-	}
-
-	#Disenfranchise Rural Dissenters
-	focus = {
-		id = GXC_disenfranchise_rural_dissenters
-		icon = GFX_GXC_disenfranchise_rural_dissenters-248360
-		x = 40
-		y = 13
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		prerequisite = { focus = GXC_eliteled_mass_democracy  }
-		completion_reward = {
-		add_manpower = -39323
-		}
-	}
-
-	#A Writers' Republic
-	focus = {
-		id = GXC_awritersrepublic
-		icon = GFX_GXC_awritersrepublic-248360
-		x = 40
-		y = 14
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = GXC_disenfranchise_rural_dissenters  }
-		completion_reward = {
-		add_stability = 0.25
-		}
-	}
-
-	#Fully Break With Ba Jin Thought
-	focus = {
-		id = GXC_fully_break_with_ba_jin_thought
-		icon = GFX_GXC_fully_break_with_ba_jin_thought-248360
-		x = 38
-		y = 14
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_disenfranchise_rural_dissenters  }
-		completion_reward = {
-		add_popularity = {
-		ideology = authoritarian_democrat
-		popularity = -1
-		}
-		}
-	}
-
-	#Consolidate Party Control
-	focus = {
-		id = GXC_consolidate_party_control
-		icon = GFX_GXC_consolidate_party_control-248360
-		x = 34
-		y = 14
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_internationale_integration  }
-		completion_reward = {
-		add_popularity = {
-		ideology = ROOT
-		popularity = 0.3
-		}
-		}
-	}
-
-	#Consolidate Moderate Sanghas
-	focus = {
-		id = GXC_consolidate_moderate_sanghas
-		icon = GFX_GXC_consolidate_moderate_sanghas-248360
-		x = 30
-		y = 14
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_rededicate_communes_to_the_pure_land  }
-		completion_reward = {
-		add_stability = 0.05
-		add_political_power = 200
-		}
-	}
-
-	#A Progressive-Buddhist State
-	focus = {
-		id = GXC_a_progressivebuddhist_state
-		icon = GFX_GXC_a_progressivebuddhist_state-248360
-		x = 28
-		y = 14
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = GXC_rededicate_communes_to_the_pure_land  }
-		completion_reward = {
-		add_war_support = 0.15
-		}
-	}
-
-	#Organize the Buddhist Realm
-	focus = {
-		id = GXC_organize_the_buddhist_realm
-		icon = GFX_GXC_organize_the_buddhist_realm-248360
-		x = 29
-		y = 15
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = GXC_consolidate_moderate_sanghas  } prerequisite = { focus = GXC_a_progressivebuddhist_state  }
-		completion_reward = {
-		add_ideas = {
-		GXC_organise_buddhist_realm
-		}
-		}
-	}
-
-	#The Legacy of the Predecessors
-	focus = {
-		id = GXC_the_legacy_of_the_predecessors
-		icon = GFX_GXC_the_legacy_of_the_predecessors-248360
-		x = 34
-		y = 15
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_consolidate_party_control  }
-		completion_reward = {
-		add_political_power = 100
-		add_war_support = 0.12
-		}
-	}
-
-	#Pragmatic Isolationism
-	focus = {
-		id = GXC_pragmatic_isolationism
-		icon = GFX_GXC_pragmatic_isolationism-248360
-		x = 39
-		y = 15
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_awritersrepublic  } prerequisite = { focus = GXC_fully_break_with_ba_jin_thought  }
-		completion_reward = {
-		add_political_power = 200
-		add_stability = 0.12
-		}
-	}
+	
 
 	#Now Is The Hour!
 	focus = {
@@ -4015,7 +3608,7 @@ focus_tree = {
 	focus = {
 		id = GXC_writersoftheworldunite
 		icon = GFX_GXC_writersoftheworldunite-248360
-		x = 61
+		x = 62
 		y = 14
 		cost = 5
 		search_filters = {
@@ -4043,7 +3636,7 @@ focus_tree = {
 	focus = {
 		id = GXC_establish_sinoamerican_guilds
 		icon = GFX_GXC_establish_sinoamerican_guilds-248360
-		x = 63
+		x = 61
 		y = 15
 		cost = 5
 		search_filters = {
@@ -4167,7 +3760,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_writersoftheworldunite focus = GXC_establish_sinoamerican_guilds } 
+		prerequisite = { focus = GXC_establish_sinoamerican_guilds } 
 		completion_reward = {
 		unlock_decision_tooltip = GXC_conquer_africa
 		}
@@ -4189,7 +3782,7 @@ focus_tree = {
 		ruling_only = yes
 		}
 		}
-		prerequisite = { focus = GXC_returntokropotkinsbirthplace  } prerequisite = { focus = GXC_bring_true_liberation_to_africa  }
+		prerequisite = { focus = GXC_returntokropotkinsbirthplace focus = GXC_bring_true_liberation_to_africa }
 		mutually_exclusive = { focus = GXC_the_world_is_my_alma_mater  } mutually_exclusive = { focus = GXC_consolidate_asian_anarchism  }
 		completion_reward = {
 		add_stability = -0.5
@@ -4217,7 +3810,7 @@ focus_tree = {
 		ruling_only = yes
 		}
 		}
-		prerequisite = { focus = GXC_returntokropotkinsbirthplace  } prerequisite = { focus = GXC_bring_true_liberation_to_africa  }
+		prerequisite = { focus = GXC_returntokropotkinsbirthplace focus = GXC_bring_true_liberation_to_africa }
 		mutually_exclusive = { focus = GXC_the_abolution_of_the_nation_itself  } mutually_exclusive = { focus = GXC_consolidate_asian_anarchism  }
 		completion_reward = {
 		add_ideas = {
