@@ -4,7 +4,6 @@ focus_tree = {
 	country = {
 		factor = 0
 	}
-	shared_focus = GXC_shared_edging_economy
 	#Organize a Communal Conference
 	focus = {
 		id = GXC_organize_a_communal_conference
@@ -897,8 +896,8 @@ focus_tree = {
 		add_stability = 0.1
 		add_manpower = 7000
 		swap_ideas = {
-		remove_idea = GXC_power_turmoil_1
-		add_idea = GXC_power_turmoil_2
+		remove_idea = GXC_power_turmoil
+		add_idea = GXC_power_turmoil_1
 		}
 		}
 	}
@@ -996,10 +995,10 @@ focus_tree = {
 		
 	}
 
-	#Push Into The North and East
+	#push to the west
 	focus = {
 		id = GXC_push_into_the_north_and_east
-		icon = GFX_GXC_push_into_the_north_and_east-248360
+		icon = GFX_GXC_reenvision_the_west_frontiers-248360
 		x = 53
 		y = 3
 		cost = 5
@@ -1008,43 +1007,22 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_claim_the_may_fourth_mantle  }
 		completion_reward = {
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = ANQ
-			}
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = CNH
-			}
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = LEP
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = CHI
-			}
-			
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = HKP
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = LEC
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = TIA
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = SQI
-			}
+		if = {
+			limit = { can_declare_war_on = HNN }
+			activate_targeted_decision = { decision = china_demand_submission target = HNN }
+		}	
+		if = {
+			limit = { can_declare_war_on = YUN }
+			activate_targeted_decision = { decision = china_demand_submission target = YUN }
+		}
+		if = {
+			limit = { can_declare_war_on = SZC }
+			activate_targeted_decision = { decision = china_demand_submission target = SZC }
+		}	
 		}
 	}
 
-	#Radicalize the Western Minorities
+	#Radicalize the failure of the league
 	focus = {
 		id = GXC_radicalize_the_western_minorities
 		icon = GFX_GXC_radicalize_the_western_minorities-248360
@@ -1056,18 +1034,27 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_claim_the_may_fourth_mantle  }
 		completion_reward = {
-		create_wargoal = {
-				type = puppet_wargoal_focus
-				target = YUN
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = HNN
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = SZC
-			}
+		if = {
+			limit = { can_declare_war_on = LEP }
+			activate_targeted_decision = { decision = china_demand_submission target = LEP }
+		}
+		if = {
+			limit = { can_declare_war_on = ANQ }
+			activate_targeted_decision = { decision = china_demand_submission target = ANQ }
+		}
+		if = {
+			limit = { can_declare_war_on = CHI }
+			activate_targeted_decision = { decision = china_demand_submission target = CHI }
+		}
+		if = {
+			limit = { can_declare_war_on = SQI }
+			activate_targeted_decision = { decision = china_demand_submission target = SQI }
+		}
+		if = {
+			limit = { can_declare_war_on = QIO }
+			activate_targeted_decision = { decision = china_demand_submission target = QIO }
+		}
+
 		}
 	}
 
@@ -1321,10 +1308,10 @@ focus_tree = {
 		}
 	}
 
-	#Re-envision the West Frontiers
+	#Attacking the governments of the north
 	focus = {
 		id = GXC_reenvision_the_west_frontiers
-		icon = GFX_GXC_reenvision_the_west_frontiers-248360
+		icon = GFX_GXC_push_into_the_north_and_east-248360
 		x = 52
 		y = 4
 		cost = 5
@@ -1333,33 +1320,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_radicalize_the_western_minorities  } prerequisite = { focus = GXC_push_into_the_north_and_east  }
 		completion_reward = {
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = SHX
+		if = {
+			limit = { can_declare_war_on = QIE }
+			activate_targeted_decision = { decision = china_demand_submission target = QIE }
 		}
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = MON
-		}
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = XSM
-		}
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = SIK
-		}
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = TAN
-		}
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = ETS
-		}
-		create_wargoal = {
-			type = puppet_wargoal_focus
-			target = TIB
+		if = {
+			limit = { can_declare_war_on = FNG }
+			activate_targeted_decision = { decision = china_demand_submission target = FNG }
 		}
 		}
 	}
