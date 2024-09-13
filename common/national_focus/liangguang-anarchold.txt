@@ -909,6 +909,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_caiyuanpeislaborists  }
 		completion_reward = {
+				add_tech_bonus = {
+   		 bonus = 0.5
+   		 uses = 2
+   		 category = electronics
+		}
+
 		}
 	}
 
@@ -1196,8 +1202,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_oldidealsnewscience  }
 		completion_reward = {
-		add_ideas = {
-		GXC_borrow_from_taixu
+		add_timed_idea = {
+		idea = GXC_borrow_from_taixu
+		days = 180
 		}
 		add_political_power = -20
 		}
@@ -1594,8 +1601,9 @@ focus_tree = {
 		prerequisite = { focus = GXC_build_communal_research_facilities  } prerequisite = { focus = GXC_reach_unto_utopia  }
 		mutually_exclusive = { focus = GXC_thesanghatakesover  }
 		completion_reward = {
-		add_ideas = {
-		GXC_common_revolution
+		add_timed_idea = {
+		idea = GXC_common_revolution
+		days = 200
 		}
 		}
 	}
@@ -1898,7 +1906,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
-		prerequisite = { focus = GXC_intellectualize_collectives  }
+		prerequisite = { focus = GXC_intellectualize_collectives  } prerequisite = { focus = GXC_an_appeal_to_international_youth }
 		completion_reward = {
 		add_ideas = {
 		GXC_art_integration
@@ -1917,8 +1925,8 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_integrate_art_and_industry } prerequisite = { focus = GXC_begin_the_universal_revolution }
+		available = { has_country_flag = has_united_china }
 		completion_reward = {
-		custom_effect_tooltip = china_free_tt
 		}
 	}
 
@@ -2122,11 +2130,8 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_revamp_our_factories  } prerequisite = { focus = GXC_a_great_hall_for_the_people  }
+		available = { has_country_flag = has_united_china }
 		completion_reward = {
-		add_popularity = {
-		ideology = ROOT
-		popularity = 0.1
-		}
 		}
 	}
 
@@ -2141,14 +2146,8 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_accelerate_the_glorious_transition  } prerequisite = { focus = GXC_turnonalltradition  }
+		available = { has_country_flag = has_united_china }
 		completion_reward = {
-		custom_effect_tooltip = moderate_gxc_tt
-		hidden_effect = {
-		country_event = {
-		id = anarcho_china.12
-		days = 3
-		}
-		}
 		}
 	}
 
