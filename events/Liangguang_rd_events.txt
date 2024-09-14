@@ -1950,19 +1950,52 @@ country_event = { #Question of the Militias
 		}
 	}
 }
-
-country_event = { #
+###Post-Unification Events###
+country_event = { #The Benefactor Awaits
 	id = liangguang_rd.55
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.55"}
 	title = liangguang_rd.55.title
 	desc = liangguang_rd.55.desc
+	
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Wen Zongyao
 		name = liangguang_rd.55.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+		OR = {
+		is_in_faction_with = JAP
+		is_subject_of  = JAP
+		is_guaranteed_by = JAP
+		}
+		}
+		complete_national_focus = GXC_uni_merc_letter
+		create_country_leader = {
+				name = "Wen Zongyao"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Wen_Zongyao.png"
+				expire = "1.1.1"
+				ideology = pan_asianism_subtype
+			}
+	}
+	option = { #Chen Lianbo
+		name = liangguang_rd.55.b
+		ai_chance = { base = 100 }
+		complete_national_focus = GXC_uni_merc_lianbo
+		set_country_leader_ideology = free_market_capitalist_subtype
+	}
+	option = { #Ma Yingbiao
+		name = liangguang_rd.55.c
+		ai_chance = { base = 100 }
+		complete_national_focus = GXC_uni_merc_national_business
+		create_country_leader = {
+				name = "Ma Yingbiao"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Ma_Yingbiao.png"
+				expire = "1.1.1"
+				ideology = marlib_classical_liberalism_subtype
+			}
 	}
 }
 

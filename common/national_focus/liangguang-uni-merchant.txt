@@ -12,7 +12,7 @@ focus_tree = {
 		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
 		x = 6
 		y = 0
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -30,12 +30,13 @@ focus_tree = {
 		relative_position_id = GXC_uni_merc_flag
 		x = 0
 		y = 1
-		cost = 5
+		cost = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = GXC_uni_merc_flag } 
 		completion_reward = {
+		country_event = liangguang_rd.55
 		}
 	}
 	#A letter to peoples of east asia
@@ -49,9 +50,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = GXC_uni_merc_face } 
 		mutually_exclusive = { focus = GXC_uni_merc_national_business focus = GXC_uni_merc_lianbo }
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#lianbo remains at the helm
@@ -65,9 +70,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = GXC_uni_merc_face } 
 		mutually_exclusive = { focus = GXC_uni_merc_national_business focus = GXC_uni_merc_letter }
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#a nation of business
@@ -81,9 +90,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = GXC_uni_merc_face } 
 		mutually_exclusive = { focus = GXC_uni_merc_lianbo focus = GXC_uni_merc_letter }
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#promote charities
@@ -99,6 +112,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_lianbo } 
 		completion_reward = {
+		add_ideas = {
+		GXC_charity_outreach
+		}
 		}
 	}
 	#secure shanghai elite support
@@ -114,6 +130,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_national_business focus = GXC_uni_merc_lianbo } 
 		completion_reward = {
+		add_ideas = {
+		HNN_shanghai_dealings
+		}
 		}
 	}
 	#national grain relief association
@@ -129,6 +148,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_shanghai_elite } prerequisite = { focus = GXC_uni_merc_charities } 
 		completion_reward = {
+		add_ideas = {
+		GXC_the_grain_relief
+		}
 		}
 	}
 	#breaking from the burning of the rising wtf does this mean
@@ -144,6 +166,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_national_business } 
 		completion_reward = {
+		if = {
+			limit = {
+				has_idea = GXC_sun_hiding_in_darkness_1
+			}
+			swap_ideas = {
+			remove_idea = GXC_sun_hiding_in_darkness_1
+			add_idea = GXC_sun_hiding_in_darkness_2
+			}
+		}
 		}
 	}
 	#land of malls and casinos
@@ -159,6 +190,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_rising } prerequisite = { focus = GXC_uni_merc_shanghai_elite } 
 		completion_reward = {
+		add_ideas = {
+		GXC_the_casinos
+		}
 		}
 	}
 	#protect consumer
@@ -174,6 +208,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_rising } 
 		completion_reward = {
+		add_ideas = {
+		GXC_consumer_protections
+		}
 		}
 	}
 	#let the cash flow
@@ -189,6 +226,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_protect_consumer } prerequisite = { focus = GXC_uni_merc_malls_casinos } 
 		completion_reward = {
+		swap_ideas = {
+		remove_idea = China_Unified_economic_recovery
+		add_idea = GXC_Merhcant_Yingbiao_economic_recovery
+		}
 		}
 	}
 	#comrades with zaibatsu
@@ -204,6 +245,25 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_letter } 
 		completion_reward = {
+		if = {
+			limit = {
+				has_idea = GXC_sun_hiding_in_darkness_1
+			}
+			swap_ideas = {
+			remove_idea = GXC_sun_hiding_in_darkness_1
+			add_idea = GXC_sun_hiding_in_darkness_3
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_idea =GXC_sun_hiding_in_darkness_1
+				}
+			}
+			add_ideas = {
+			GXC_sun_hiding_in_darkness_3
+			}
+		}
 		}
 	}
 	#establish china representative council
@@ -219,6 +279,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_letter focus = GXC_uni_merc_lianbo } 
 		completion_reward = {
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
 		}
 	}
 	#yuquan's law revisement
@@ -234,6 +301,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_zaibatsu } 
 		completion_reward = {
+		add_timed_idea = {
+		idea = GXC_yuquan_law_revisment
+		days = 180
+		}
 		}
 	}
 	#enact wtf relief deparment
@@ -249,6 +320,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_zaibatsu } prerequisite = { focus = GXC_uni_merc_representative_council } 
 		completion_reward = {
+		swap_ideas = {
+		remove_idea = China_Unified_economic_recovery
+		add_idea = GXC_Merhcant_zhongyao_economic_recovery
+		}
 		}
 	}
 	#two sisters united as one
@@ -264,6 +339,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_relief_depart } prerequisite = { focus = GXC_uni_merc_revise_law } 
 		completion_reward = {
+		swap_ideas = {
+		remove_idea = GXC_sun_hiding_in_darkness_3
+		add_idea = GXC_sun_hiding_in_darkness_4
+		}
 		}
 	}
 	#sieze European assets
@@ -279,6 +358,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_representative_council } prerequisite = { focus = GXC_uni_merc_charities } 
 		completion_reward = {
+		add_timed_idea = {
+		idea = GXC_seize_euro_assets
+		days = 360
+		}
 		}
 	}
 	#wealth flowing down yangtze
@@ -294,6 +377,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_merc_euro_death } prerequisite = { focus = GXC_uni_merc_grain_relief } 
 		completion_reward = {
+		swap_ideas = {
+		remove_idea = China_Unified_economic_recovery
+		add_idea = GXC_Merhcant_lianbo_economic_recovery
+		}
 		}
 	}
 
