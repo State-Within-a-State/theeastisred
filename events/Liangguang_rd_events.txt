@@ -1967,7 +1967,6 @@ country_event = { #The Benefactor Awaits
 		OR = {
 		is_in_faction_with = JAP
 		is_subject_of  = JAP
-		is_guaranteed_by = JAP
 		}
 		}
 		complete_national_focus = GXC_uni_merc_letter
@@ -1983,11 +1982,31 @@ country_event = { #The Benefactor Awaits
 		name = liangguang_rd.55.b
 		ai_chance = { base = 100 }
 		complete_national_focus = GXC_uni_merc_lianbo
+		create_country_leader = {
+		name = "Chen Lianbo"
+		desc = "POLITICS_GXC_CHEN_LIANBO_DESC"
+		picture = "gfx/leaders/GXC/Portrait_GXC_Chen_Lianbo.png"
+		expire = "1.1.1"
+		ideology = marlib_warlordism_subtype
+		}
+		if = { 
+		limit = { has_idea = GXC_sun_hiding_in_darkness_1 } 
+		set_country_leader_ideology = pan_asianism_subtype
+		}
+		else = {
 		set_country_leader_ideology = free_market_capitalist_subtype
+		}
 	}
 	option = { #Ma Yingbiao
 		name = liangguang_rd.55.c
 		ai_chance = { base = 100 }
+		trigger = { 
+		OR = {
+		has_idea = GXC_going_alone_2
+		has_idea = GXC_going_alone_2_JSR 
+		}
+		NOT = { is_subject_of  = JAP }
+		}
 		complete_national_focus = GXC_uni_merc_national_business
 		create_country_leader = {
 				name = "Ma Yingbiao"
