@@ -2102,7 +2102,7 @@ country_event = { #The Death of Ma Yingbiao
 	}
 }
 
-country_event = { #
+country_event = { #Meeting of the United People's Congress of the Zhi Gong Party
 	id = liangguang_rd.58
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.58"}
 	title = liangguang_rd.58.title
@@ -2110,14 +2110,25 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Let the struggle commence.
+		country_event = {
+		id = liangguang_rd.59
+		days = 7
+		}
 		name = liangguang_rd.58.a
 		ai_chance = { base = 100 }
-		
+		set_variable = {
+			var = fed_jiongming
+			value = 0
+		}
+		set_variable = {
+			var = fed_hongmen
+			value = 0
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of Provincial Governance
 	id = liangguang_rd.59
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.59"}
 	title = liangguang_rd.59.title
@@ -2125,29 +2136,76 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Support the warlords right to their domains.
 		name = liangguang_rd.59.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = fed_jiongming
+			value = 1
+			tooltip = add_to_fed_jiongming_tt
+		}
+		set_country_flag = GXC_warlord_provinces
+		country_event = {
+		id = liangguang_rd.60
+		days = 7
+		}
+	}
+	option = { #We must support democracy no matter what.
+		name = liangguang_rd.59.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = fed_hongmen
+			value = 1
+			tooltip = add_to_fed_hongmen_tt
+		}
+		set_country_flag = GXC_democratic_provinces
+		country_event = {
+		id = liangguang_rd.60
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #National Flag Debate
 	id = liangguang_rd.60
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.60"}
-	title = liangguang_rd.60.title
-	desc = liangguang_rd.60.desc
+	title = lngupc.8.t
+	desc = lngupc.8.d
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
-		name = liangguang_rd.60.a
+	option = { #Five-Races Flag
+		name = lngupc.8.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = fed_jiongming
+			value = 1
+			tooltip = add_to_fed_jiongming_tt
+		}
 		
+		country_event = {
+		id = liangguang_rd.61
+		days = 7
+		}
+		hidden_effect = { set_cosmetic_tag = UPC_united_china_five_races }
+	}
+	option = { #Keep federalist Flag
+		name = lngupc.8.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = fed_hongmen
+			value = 1
+			tooltip = add_to_fed_hongmen_tt
+		}
+		
+		country_event = {
+		id = liangguang_rd.61
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Question of the Kuomintang
 	id = liangguang_rd.61
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.61"}
 	title = liangguang_rd.61.title
@@ -2155,14 +2213,39 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #To hell with them, they are still traitors.
 		name = liangguang_rd.61.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = fed_jiongming
+			value = 1
+			tooltip = add_to_fed_jiongming_tt
+		}
+		add_political_power = -50
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -0.3
+		}
+		
+	}
+	option = { #We are still chinese, we must be united as one.
+		name = liangguang_rd.61.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = fed_hongmen
+			value = 1
+			tooltip = add_to_fed_hongmen_tt
+		}
+		add_political_power = 50
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.1
+		}
 		
 	}
 }
 
-country_event = { #
+country_event = { #The Zhi-Gong Party Conference Closes
 	id = liangguang_rd.62
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.62"}
 	title = liangguang_rd.62.title
@@ -2170,14 +2253,44 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #The mainlanders secure the vote.
 		name = liangguang_rd.62.a
+		trigger = {
+		check_variable = {
+				var = fed_jiongming
+				value = fed_hongmen
+				compare = greater_than_or_equals
+			}
+		}
 		ai_chance = { base = 100 }
+		country_event = {
+		id = liangguang_rd.63
+		days = 7
+		}
+		custom_effect_tooltip = mainlander_lead_party_in_elections_tt
+		set_country_flag = GXC_mainlander_CZGP
 		
+	}
+	option = { #The overseas faction leads the way.
+		name = liangguang_rd.62.b
+		ai_chance = { base = 100 }
+		trigger = {
+		check_variable = {
+				var = fed_hongmen
+				value = fed_jiongming
+				compare = greater_than_or_equals
+			}
+		}
+		custom_effect_tooltip = overseas_lead_party_in_elections_tt
+		set_country_flag = GXC_overseas_CZGP
+		country_event = {
+		id = liangguang_rd.63
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Fall of a Master
 	id = liangguang_rd.63
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.63"}
 	title = liangguang_rd.63.title
@@ -2185,14 +2298,51 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #This great man shall be missed.
 		name = liangguang_rd.63.a
 		ai_chance = { base = 100 }
-		
+		add_war_support = -0.1
+		add_manpower = -1
+		if = {
+			limit = {
+				has_country_flag = GXC_mainlander_CZGP
+				has_country_leader = {
+				name = "Chen Jiongming"
+				ruling_only = yes
+				}
+				
+			}
+			create_country_leader = {
+				name = "Chen Qiyou"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Chen_Qiyou.png"
+				expire = "1.1.1"
+				ideology = soclib_jiongmingism_subtype
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_flag = GXC_overseas_CZGP
+			}
+			create_country_leader = {
+				name = "Situ Meitang"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Situ_Meitang.png"
+				expire = "1.1.1"
+				ideology = soclib_jiongmingism_subtype
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				GXC_Situ_Meitang_hog_sli
+				GXC_Chen_Yansheng_eco_sde
+				GXC_Guan_Wensen_for_sli
+				GXC_Huang_Sande_sec_sli
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The First National Election
 	id = liangguang_rd.64
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.64"}
 	title = liangguang_rd.64.title
@@ -2200,10 +2350,57 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Constiutional Democratic Party
 		name = liangguang_rd.64.a
 		ai_chance = { base = 100 }
-		
+		set_party_name = {
+				ideology = social_liberal
+				long_name = GXC_hu_shih_party_long
+				name = GXC_hu_shih_party
+			}
+		complete_national_focus = GXC_hu_victory
+		remove_all_ministers = yes
+			add_ideas = {
+				GXC_Hu_Shih_hog_sli
+				GXC_Tao_Xisheng_eco_sde
+				GXC_Xu_Zhimo_for_sli
+				GXC_Zhu_Jiahua_sec_sli
+			}
+	}
+	option = { #Constiutional Democratic Party
+		name = liangguang_rd.64.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = GXC_mainlander_CZGP
+			}
+			complete_national_focus = GXC_upc_victory
+			complete_national_focus = GXC_upc_continued
+		}
+		else_if = {
+			limit = {
+				has_country_flag = GXC_overseas_CZGP
+			}
+			complete_national_focus = GXC_upc_victory
+			complete_national_focus = GXC_upc_continued
+		}
+	}
+	option = { #CADP
+		name = liangguang_rd.64.c
+		ai_chance = { base = 100 }
+		set_party_name = {
+				ideology = social_liberal
+				long_name = GXC_hu_shih_party_long
+				name = GXC_hu_shih_party
+			}
+		complete_national_focus = GXC_hu_victory
+		remove_all_ministers = yes
+			add_ideas = {
+				GXC_Hu_Shih_hog_sli
+				GXC_Tao_Xisheng_eco_sde
+				GXC_Xu_Zhimo_for_sli
+				GXC_Zhu_Jiahua_sec_sli
+			}
 	}
 }
 
