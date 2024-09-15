@@ -2106,7 +2106,14 @@ country_event = { #Meeting of the United People's Congress of the Zhi Gong Party
 	id = liangguang_rd.58
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.58"}
 	title = liangguang_rd.58.title
-	desc = liangguang_rd.58.desc
+	desc = { 
+		text = liangguang_rd.58.desc_not_gxc
+		trigger = { NOT = { tag = GXC } }
+	}
+	desc = { 
+		text = liangguang_rd.58.desc
+		trigger = { tag = GXC }
+	}
 	#picture = 
 	
 	is_triggered_only = yes
@@ -2226,6 +2233,10 @@ country_event = { #The Question of the Kuomintang
 		ideology = radical_socialist
 		popularity = -0.3
 		}
+		country_event = {
+		id = liangguang_rd.62
+		days = 7
+		}
 		
 	}
 	option = { #We are still chinese, we must be united as one.
@@ -2241,7 +2252,11 @@ country_event = { #The Question of the Kuomintang
 		ideology = radical_socialist
 		popularity = 0.1
 		}
-		
+		country_event = {
+		id = liangguang_rd.62
+		days = 7
+		}
+
 	}
 }
 
@@ -2353,7 +2368,7 @@ country_event = { #The First National Election
 	option = { #Constiutional Democratic Party
 		name = liangguang_rd.64.a
 		ai_chance = { base = 100 }
-		set_party_name = {
+		set_party_name = { #create a leader dude
 				ideology = social_liberal
 				long_name = GXC_hu_shih_party_long
 				name = GXC_hu_shih_party
