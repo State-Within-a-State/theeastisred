@@ -1972,7 +1972,7 @@ country_event = { #The Benefactor Awaits
 		complete_national_focus = GXC_uni_merc_letter
 		create_country_leader = {
 				name = "Wen Zongyao"
-				desc = "-"
+				desc = "POLITICS_GXC_WEN_ZONGYAO_DESC"
 				picture = "gfx/leaders/GXC/Portrait_GXC_Wen_Zongyao.png"
 				expire = "1.1.1"
 				ideology = pan_asianism_subtype
@@ -2001,6 +2001,12 @@ country_event = { #The Benefactor Awaits
 		has_idea = GXC_going_alone_2_JSR 
 		}
 		NOT = { is_subject_of  = JAP }
+		}
+		hidden_effect = {
+			country_event = {
+				id = liangguang_rd.57
+				days = 180
+				}
 		}
 		complete_national_focus = GXC_uni_merc_national_business
 		create_country_leader = {
@@ -2042,7 +2048,7 @@ country_event = { #Direction of the Yangtze's Flow
 	}
 }
 
-country_event = { #
+country_event = { #The Death of Ma Yingbiao
 	id = liangguang_rd.57
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.57"}
 	title = liangguang_rd.57.title
@@ -2050,10 +2056,37 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Ma Maifan
 		name = liangguang_rd.57.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = social_liberal }
+		create_country_leader = {
+				name = "Ma Maifan"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Ma_Yingbiao.png"
+				expire = "1.1.1"
+				ideology = classical_liberalism_subtype
+			}
+			swap_ideas = {
+		remove_idea = GXC_Ma_Yingbiao_hog_mli
+		add_idea = GXC_Ma_Maifan_hog_mli
+		}
+	}
+	option = { #Wu Dizhou
+		name = liangguang_rd.57.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = {
+				name = "Wu Dizhou"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Ma_Yingbiao.png"
+				expire = "1.1.1"
+				ideology = socdem_humanistic_capitalism_subtype
+			}
+		swap_ideas = {
+		remove_idea = GXC_Ma_Yingbiao_hog_mli
+		add_idea = GXC_Wu_Dizhou_hog_sde
+		}
 	}
 }
 
