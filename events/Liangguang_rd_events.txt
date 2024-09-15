@@ -2118,12 +2118,13 @@ country_event = { #Meeting of the United People's Congress of the Zhi Gong Party
 	
 	is_triggered_only = yes
 	option = { #Let the struggle commence.
+		name = liangguang_rd.58.a
+		ai_chance = { base = 100 }
+		hidden_effect = { end_coalition = yes }
 		country_event = {
 		id = liangguang_rd.59
 		days = 7
 		}
-		name = liangguang_rd.58.a
-		ai_chance = { base = 100 }
 		set_variable = {
 			var = fed_jiongming
 			value = 0
@@ -2321,11 +2322,13 @@ country_event = { #The Fall of a Master
 		if = {
 			limit = {
 				has_country_flag = GXC_mainlander_CZGP
+				}
+				country_event = liangguang_rd.65
+				if = { limit = {
 				has_country_leader = {
 				name = "Chen Jiongming"
 				ruling_only = yes
 				}
-				
 			}
 			create_country_leader = {
 				name = "Chen Qiyou"
@@ -2335,10 +2338,17 @@ country_event = { #The Fall of a Master
 				ideology = soclib_jiongmingism_subtype
 			}
 		}
+		}
 		else_if = {
-			limit = {
+			limit = { 
 				has_country_flag = GXC_overseas_CZGP
 			}
+		set_party_name = { #set the party name
+				ideology = social_liberal
+				long_name = GXC_hu_shih_party_long #need to change it 
+				name = GXC_hu_shih_party
+			}
+		set_politics = { ruling_party = social_liberal }
 			create_country_leader = {
 				name = "Situ Meitang"
 				desc = "-"
@@ -2373,6 +2383,7 @@ country_event = { #The First National Election
 				long_name = GXC_hu_shih_party_long
 				name = GXC_hu_shih_party
 			}
+		set_politics = { ruling_party = social_liberal }
 		complete_national_focus = GXC_hu_victory
 		remove_all_ministers = yes
 			add_ideas = {
@@ -2382,7 +2393,7 @@ country_event = { #The First National Election
 				GXC_Zhu_Jiahua_sec_sli
 			}
 	}
-	option = { #Constiutional Democratic Party
+	option = { #public interest party
 		name = liangguang_rd.64.b
 		ai_chance = { base = 100 }
 		if = {
@@ -2419,7 +2430,7 @@ country_event = { #The First National Election
 	}
 }
 
-country_event = { #
+country_event = { #public interest party leader 
 	id = liangguang_rd.65
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.65"}
 	title = liangguang_rd.65.title
@@ -2427,11 +2438,89 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Chen Qiyou makes the most sense
 		name = liangguang_rd.65.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+			NOT = {
+				has_country_leader = {
+				name = "Chen Qiyou"
+				ruling_only = yes
+				}
+			}
+			}
+		set_party_name = { 
+				ideology = social_liberal
+				long_name = GXC_hu_shih_party_long #need to change it 
+				name = GXC_hu_shih_party
+			}
+		set_politics = { ruling_party = social_liberal }
+			create_country_leader = {
+				name = "Chen Qiyou"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Chen_Qiyou.png"
+				expire = "1.1.1"
+				ideology = soclib_jiongmingism_subtype
+			}
+			}
 	}
+	option = { #set soccon and party name etc zhao
+		name = liangguang_rd.65.b
+		ai_chance = { base = 100 }
+		trigger = { has_country_flag = hnn_zhao_real_political_force }
+		set_politics = { ruling_party = social_conservative }
+		set_party_name = { 
+				ideology = social_conservative
+				long_name = GXC_hu_shih_party_long #need to change it 
+				name = GXC_hu_shih_party
+			}
+		create_country_leader = {
+		name = "Zhao Hengti"
+		desc = "POLITICS_HNN_ZHAO_HENGTI_DESC"
+		picture = "gfx/leaders/HNN/Portrait_Hunan_Zhao_Hengti_Civilian.png"
+		expire = "1.1.1"
+		ideology = soccon_jiongmingism_subtype
+	}
+
+	}
+	option = { #tang
+		name = liangguang_rd.65.c
+		ai_chance = { base = 100 }
+		trigger = { has_country_flag = UPC_tang_is_a_good_boi }
+		set_politics = { ruling_party = social_conservative }
+		set_party_name = { 
+				ideology = social_conservative
+				long_name = GXC_hu_shih_party_long #need to change it 
+				name = GXC_hu_shih_party
+			}
+		create_country_leader = { #make the leader
+		name = "tang"
+		desc = "POLITICS_HNN_ZHAO_HENGTI_DESC"
+		picture = "gfx/leaders/HNN/Portrait_Hunan_Zhao_Hengti_Civilian.png"
+		expire = "1.1.1"
+		ideology = soccon_warlordism_subtype
+	}
+	option = { #sichuan leader decide later
+		name = liangguang_rd.65.d
+		ai_chance = { base = 100 }
+		trigger = { has_country_flag = sichuan_bullshit_not_done }
+		set_politics = { ruling_party = social_democrat }
+		set_party_name = { 
+				ideology = social_democrat
+				long_name = GXC_hu_shih_party_long #need to change it 
+				name = GXC_hu_shih_party
+			}
+		create_country_leader = { #make the leader
+		name = "xiong idk"
+		desc = "POLITICS_HNN_ZHAO_HENGTI_DESC"
+		picture = "gfx/leaders/HNN/Portrait_Hunan_Zhao_Hengti_Civilian.png"
+		expire = "1.1.1"
+		ideology = soccon_warlordism_subtype
+	}
+
+	}
+
 }
 
 country_event = { #
