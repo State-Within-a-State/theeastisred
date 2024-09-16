@@ -2415,18 +2415,17 @@ country_event = { #The First National Election
 		name = liangguang_rd.64.c
 		ai_chance = { base = 100 }
 		set_party_name = {
-				ideology = social_liberal
-				long_name = GXC_hu_shih_party_long
-				name = GXC_hu_shih_party
+				ideology = social_democrat
+				long_name = GXC_cadp_party_long
+				name = GXC_cadp_party
 			}
-		complete_national_focus = GXC_hu_victory
-		remove_all_ministers = yes
-			add_ideas = {
-				GXC_Hu_Shih_hog_sli
-				GXC_Tao_Xisheng_eco_sde
-				GXC_Xu_Zhimo_for_sli
-				GXC_Zhu_Jiahua_sec_sli
+		set_party_name = {
+				ideology = radical_socialist
+				long_name = GXC_cadp_party_long
+				name = GXC_cadp_party
 			}
+		complete_national_focus = GXC_cadp_vict
+		country_event = liangguang_rd.66
 	}
 }
 
@@ -2501,6 +2500,7 @@ country_event = { #public interest party leader
 		expire = "1.1.1"
 		ideology = soccon_warlordism_subtype
 	}
+	}
 	option = { #sichuan leader decide later
 		name = liangguang_rd.65.d
 		ai_chance = { base = 100 }
@@ -2517,13 +2517,14 @@ country_event = { #public interest party leader
 		picture = "gfx/leaders/HNN/Portrait_Hunan_Zhao_Hengti_Civilian.png"
 		expire = "1.1.1"
 		ideology = soccon_warlordism_subtype
-	}
+		}
 
-	}
+		}
 
+	
 }
 
-country_event = { #
+country_event = { #Meeting of the CADP
 	id = liangguang_rd.66
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.66"}
 	title = liangguang_rd.66.title
@@ -2531,10 +2532,45 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Ma Xulun
 		name = liangguang_rd.66.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = { #make the leader
+			name = "Ma Xulun"
+			desc = "-"
+			picture = "gfx/leaders/GXC/Portrait_GXC_Ma_Xulun.png"
+			expire = "1.1.1"
+			ideology = socdem_radical_progressivism_subtype
+		}
+		complete_national_focus = GXC_xulun_wins
+		remove_all_ministers = yes
+			add_ideas = {
+				GXC_Ma_Xulun_hog_sde
+				GXC_Chen_Yibai_eco_sde
+				GXC_Bing_Xin_for_sde
+				GXC_Lei_Jieqiong_sec_sde
+			}
+	}
+	option = { #Zhou Jiaren
+		name = liangguang_rd.66.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		create_country_leader = { 
+			name = "Zhou Jianren"
+			desc = "-"
+			picture = "gfx/leaders/GXC/Portrait_GXC_Zhou_Jianren.png"
+			expire = "1.1.1"
+			ideology = lu_xun_thought_subtype
+		}
+		complete_national_focus = GXC_jianren_wins
+		remove_all_ministers = yes
+			add_ideas = {
+				GXC_Zhou_Jianren_hog_rso
+				GXC_Chen_Sisheng_eco_rso
+				GXC_Lin_Handa_for_rso
+				GXC_Xu_Boxin_sec_rso
+			}
 	}
 }
 
