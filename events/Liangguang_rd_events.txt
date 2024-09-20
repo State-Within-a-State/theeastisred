@@ -2622,7 +2622,7 @@ country_event = { #The Revolution of Freedom and Democracy
 	}
 }
 
-country_event = { #
+country_event = { #Ten Newspapers Declaration
 	id = liangguang_rd.68
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.68"}
 	title = liangguang_rd.68.title
@@ -2637,7 +2637,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Free Love & Federalism
 	id = liangguang_rd.69
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.69"}
 	title = liangguang_rd.69.title
@@ -2645,14 +2645,56 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Stays Same
 		name = liangguang_rd.69.a
 		ai_chance = { base = 100 }
-		
+		add_socdem_to_coalition = yes
+	}
+	option = { #Comprimise
+		name = liangguang_rd.69.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = { 
+			name = "Situ Meitang"
+			desc = "-"
+			picture = "gfx/leaders/GXC/Portrait_GXC_Situ_Meitang.png"
+			expire = "1.1.1"
+			ideology = socdem_jiongmingism_subtype
+		}
+		swap_ideas = {
+		remove_idea = GXC_Situ_Meitang_hog_sli
+		add_idea = GXC_Chen_Yansheng_hog_sde
+		}
+		add_soclib_to_coalition = yes
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.4
+		}
+	}
+	option = { #Chen Yansheng Victory
+		name = liangguang_rd.69.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = { 
+			name = "Chen Yansheng"
+			desc = "-"
+			picture = "gfx/leaders/GXC/Portrait_GXC_Chen_Yansheng.png"
+			expire = "1.1.1"
+			ideology = socdem_jiongmingism_subtype
+		}
+		swap_ideas = {
+		remove_idea = GXC_Situ_Meitang_hog_sli
+		add_idea = GXC_Chen_Yansheng_hog_sde
+		}
+		add_soclib_to_coalition = yes
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.4
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Shining Light of Chinese Liberalism
 	id = liangguang_rd.70
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.70"}
 	title = liangguang_rd.70.title
@@ -2660,10 +2702,15 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Progressive Democracy
 		name = liangguang_rd.70.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = soclib_progressive_democracy_subtype
+	}
+	option = { #Radical Progressivism
+		name = liangguang_rd.70.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = soclib_radical_progressivism_subtype
 	}
 }
 
