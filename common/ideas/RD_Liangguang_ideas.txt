@@ -349,8 +349,7 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				production_factory_efficiency_gain_factor = 0.05
-				production_factory_max_efficiency_factor = 0.025
-				production_lack_of_resource_penalty_factor = 0.075
+				production_lack_of_resource_penalty_factor = -0.025
 				consumer_goods_factor = 0.05
 			}
 		}
@@ -359,11 +358,9 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea FRA_military_academy_idea"}
 			allowed = { always = no }
 			modifier = {
-				production_factory_efficiency_gain_factor = 0.075
+				production_factory_efficiency_gain_factor = 0.05
 				production_factory_max_efficiency_factor = 0.05
-				production_lack_of_resource_penalty_factor = -0.025
-				consumer_goods_factor = 0.025
-				political_power_cost = 0.5
+				production_lack_of_resource_penalty_factor = -0.05
 			}
 		}
 		
@@ -371,13 +368,9 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea FRA_military_academy_idea"}
 			allowed = { always = no }
 			modifier = {
-				production_factory_efficiency_gain_factor = -0.05
-				production_factory_max_efficiency_factor = -0.025
-				production_lack_of_resource_penalty_factor = 0.015
-				consumer_goods_factor = -0.1
-				stability_factor = 0.05
-				war_stability_factor = -0.1
-				radical_socialist_drift = 0.05
+				production_factory_start_efficiency_factor = 0.05
+				line_change_production_efficiency_factor = 0.1
+				monthly_population = 0.075
 			}
 		}
 		
@@ -385,13 +378,9 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea FRA_military_academy_idea"}
 			allowed = { always = no }
 			modifier = {
-				consumer_goods_factor = 0.025
-				stability_factor = -0.1
-				army_org_factor = -0.02
-				political_power_cost = 0.02
-				manpower_weekly = -100
-				production_factory_efficiency_start_factor = 0.05
-				production_speed_buildings_factor = 0.025
+				consumer_goods_factor = -0.15
+				political_power_cost = 0.05
+				party_popularity_stability_factor = 0.10
 			}
 		}
 		
@@ -400,16 +389,14 @@ ideas = {
 			allowed = { always = no }
 			modifier = {
 				radical_socialist_drift = 0.1
-				social_liberal_drift = -0.5
-				market_liberal_drift = -0.5
-				social_conservative_drift = -0.5
-				authoritarian_democrat_drift = -0.5
-				paternal_autocrat_drift = -0.5
-				national_populist_drift = -0.5
-				manpower_weekly = -100
-				stability_factor = 0.1
-				war_stability_factor = 0.15
-				political_power_cost = 0.5
+				market_liberal_drift = -0.05
+				social_conservative_drift = -0.05
+				authoritarian_democrat_drift = -0.05
+				paternal_autocrat_drift = -0.05
+				national_populist_drift = -0.05
+				resistance_target = -0.05
+				war_stability_factor = 0.10
+				political_power_gain = 0.05
 			}
 		}
 		
@@ -417,8 +404,8 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea FRA_military_academy_idea"}
 			allowed = { always = no }
 			modifier = {
-				radical_socialist_drift = 0.1
-				political_power_gain = 0.2
+			compliance_growth = 0.10
+			political_power_cost = -0.05
 			}
 		}
 		
@@ -426,12 +413,8 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea FRA_military_academy_idea"}
 			allowed = { always = no }
 			modifier = {
-				radical_socialist_drift = 0.1
-				political_power_gain = 0.2
-				war_stability_factor = 0.1
-				research_speed_factor = 0.05
-				military_industrial_organization_funds_gain = 0.05
-				military_industrial_organization_research_bonus = 0.05
+				research_speed_factor = 0.1
+				production_speed_buildings_factor = 0.05
 			}
 		}
 		
@@ -439,10 +422,9 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea FRA_military_academy_idea"}
 			allowed = { always = no }
 			modifier = {
-				research_speed_factor = 0.1
-				consumer_goods_factor = -0.05
-				production_speed_buildings_factor = 0.05
-				production_speed_infrastructure_factor = 0.025
+				research_speed_factor = 0.05
+				military_industrial_organization_research_bonus = 0.05
+				consumer_goods_factor = -0.07
 			}
 		}
 		
@@ -450,11 +432,10 @@ ideas = {
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea FRA_military_academy_idea"}
 			allowed = { always = no }
 			modifier = {
-				research_speed_factor = 0.1
-				war_stability_factor = 0.1
-				political_power_gain = 0.5
-				radical_socialist_drift = 0.5
-				army_morale_factor = 0.1
+				no_supply_grace = 20
+				cas_damage_reduction = 0.05
+				max_dig_in_factor = 0.05
+				army_morale_factor = 0.05
 			}
 		}
 		GXC_Peng_Pai_economic_recovery_1 = {
@@ -2256,7 +2237,7 @@ ideas = {
 			}
 		}
 		
-		GXC_the_grain_relief = {
+		GXC_the_grain_relief = {#for both merchants and peng pai
 			on_add = { log = "[GetDateText]: [Root.GetName]: add idea arm_ottoman_occupation"}
 			modifier = {
 				production_factory_efficiency_gain_factor = 0.05
