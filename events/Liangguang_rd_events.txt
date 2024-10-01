@@ -1732,6 +1732,31 @@ country_event = { #The Revolutionary base victorious
 				expire = "1.1.1"
 				ideology = socdem_tridemism_subtype
 			}
+		hidden_effect = {
+		create_corps_commander = { #Guangdong
+	name = "Jiang Guangnai"
+	desc = "POLITICS_GXC_JIANG_GUANGNAI_ARMY_DESC"
+	portrait_path = "gfx/leaders/GXC/Portrait_GXC_Jiang_Guangnai.png"
+	traits = { career_officer infantry_officer war_hero }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+}
+create_corps_commander = { #Guangdong
+	name = "Cai Tingkai"
+	desc = "POLITICS_GXC_CAI_TINGKAI_ARMY_DESC"
+	portrait_path = "gfx/leaders/GXC/Portrait_GXC_Cai_Tingkai.png"
+	traits = { career_officer infantry_officer }
+	skill = 3
+	attack_skill = 3
+	defense_skill = 3
+	planning_skill = 2
+	logistics_skill = 2
+}
+
+		}
 		set_cosmetic_tag = GXC_government_left_kmt
 	}
 }
@@ -2638,7 +2663,6 @@ country_event = { #Ten Newspapers Declaration
 	title = liangguang_rd.68.title
 	desc = liangguang_rd.68.desc
 	#picture = 
-	
 	is_triggered_only = yes
 	option = { #
 		name = liangguang_rd.68.a
@@ -2662,7 +2686,6 @@ country_event = { #Free Love & Federalism
 	title = liangguang_rd.69.title
 	desc = liangguang_rd.69.desc
 	#picture = 
-	
 	is_triggered_only = yes
 	option = { #Stays Same
 		name = liangguang_rd.69.a
@@ -2790,7 +2813,7 @@ country_event = { #Socialism Achieved For the Peasants
 	title = liangguang_rd.72.title
 	desc = liangguang_rd.72.desc
 	#picture = 
-	
+	fire_only_once = yes
 	is_triggered_only = yes
 	option = { #
 		name = liangguang_rd.72.a
@@ -2801,18 +2824,34 @@ country_event = { #Socialism Achieved For the Peasants
 	}
 }
 
-country_event = { #
+country_event = { #joiners for the PPP revolution
 	id = liangguang_rd.73
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.73"}
 	title = liangguang_rd.73.title
 	desc = liangguang_rd.73.desc
 	#picture = 
-	
-	is_triggered_only = yes
-	option = { #
+	fire_only_once = yes
+	trigger = { 
+	tag = PRC
+	has_country_leader = {
+		name = "Chen Mingshu"
+		ruling_only = yes
+		}
+	CHI = { exists = no }
+	}
+	option = { #welcome
 		name = liangguang_rd.73.a
 		ai_chance = { base = 100 }
-		
+		CHI = { 
+		random_unit_leader = {
+		limit = { has_id = 2297 }
+		set_nationality = PRC
+		}
+		random_unit_leader = {
+		limit = { has_id = 2294 }
+		set_nationality = PRC
+		}
+		}
 	}
 }
 
