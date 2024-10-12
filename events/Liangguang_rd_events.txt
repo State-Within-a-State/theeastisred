@@ -2907,7 +2907,7 @@ country_event = { #National Congress of the People's Productive Party
 	}
 }
 
-country_event = { #
+country_event = { #Deliberation on the Socialist System
 	id = liangguang_rd.75
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.75"}
 	title = liangguang_rd.75.title
@@ -2915,10 +2915,41 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Peng Zemin Stays
 		name = liangguang_rd.75.a
 		ai_chance = { base = 100 }
 		
+	}
+	option = { #The Market Shall Guide Socialism
+		name = liangguang_rd.75.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+				name = "Yan Xinmin"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Guo_Zechen.png"
+				expire = "1.1.1"
+				ideology = socdem_market_socialist_subtype
+			}
+		swap_ideas = {
+		remove_idea = GXC_Peng_Zemin_hog_sde
+		add_idea = GXC_Yan_Xinmin_hog_sde
+		}
+	}
+	option = { #Tan Pingshan shall shine the light of communism.
+		name = liangguang_rd.75.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		swap_ideas = {
+		remove_idea = GXC_Peng_Zemin_hog_sde
+		add_idea = GXC_Tan_Pingshan_hog_rso
+		}
+		create_country_leader = {
+				name = "Tan Pingshan"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Guo_Zechen.png"
+				expire = "1.1.1"
+				ideology = radsoc_communism_subtype
+			}
 	}
 }
 

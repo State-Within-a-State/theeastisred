@@ -54,7 +54,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_peng_nlac } 
 		completion_reward = {
-
+		add_ideas = {
+		GXC_overseas_community_overtures
+		}
 		}
 	}
 	#cooperation with syndicalism
@@ -70,7 +72,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_peng_diaspora } 
 		completion_reward = {
-
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.1
+		}
+		add_synd_to_coalition = yes
+		add_political_power = 20
 		}
 	}
 	#subsummation of the CDL
@@ -86,7 +93,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_peng_diaspora } 
 		completion_reward = {
-
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.1
+		}
+		add_soclib_to_coalition = yes
+		add_stability = 0.1
 		}
 	}
 	#a nation of enery and euthusiam
@@ -102,7 +114,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_peng_syndicalism } prerequisite = { focus = GXC_uni_peng_CDL } 
 		completion_reward = {
-
+		add_timed_idea = {
+		add_idea = GXC_national_enthusiasm
+		days = 360
+		}
 		}
 	}
 	#upholding democratic constituationism
@@ -118,7 +133,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_peng_syndicalism } 
 		completion_reward = {
-
+		add_stability = 0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_war_support = 0.1
 		}
 	}
 
@@ -135,7 +155,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_peng_CDL } 
 		completion_reward = {
-
+			add_research_slot = 1
 		}
 	}
 	#deliberation upon socialist system
@@ -151,7 +171,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_peng_nation } prerequisite = { focus = GXC_uni_peng_democratic } prerequisite = { focus = GXC_uni_peng_energy } 
 		completion_reward = {
-
+		country_event = liangguang_rd.75
 		}
 	}
 	#socialism with a new passion
@@ -165,10 +185,43 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+				has_country_leader = {
+				name = "Tan Pingshan"
+				ruling_only = yes
+				}
+				has_country_leader = {
+				name = "Yan Xinmin"
+				ruling_only = yes
+				}
+			}
+		}
 		prerequisite = { focus = GXC_uni_peng_deliberation } 
 		mutually_exclusive = { focus = GXC_uni_peng_zemin } 
 		completion_reward = {
-
+		if = {
+			limit = {
+				has_country_leader = {
+					name = "Tan Pingshan"
+					ruling_only = yes
+					}
+			}
+			add_ideas = {
+			GXC_socialism_a_new
+			}
+		}
+		else_if = {
+			limit = {
+				has_country_leader = {
+					name = "Tan Pingshan"
+					ruling_only = yes
+					}
+			}
+			add_ideas = {
+			GXC_socialism_market_a_new
+			}
+		}
 		}
 	}
 	#zemin continues the mantle
@@ -182,10 +235,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+				name = "Peng Zemin"
+				ruling_only = yes
+				}
+		}
 		prerequisite = { focus = GXC_uni_peng_deliberation } 
 		mutually_exclusive = { focus = GXC_uni_peng_passion } 
 		completion_reward = {
-
+		add_ideas = {
+			GXC_zemin_mantle
+			}
 		}
 	}
 
