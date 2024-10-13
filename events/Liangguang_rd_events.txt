@@ -2927,7 +2927,7 @@ country_event = { #Deliberation on the Socialist System
 		create_country_leader = {
 				name = "Yan Xinmin"
 				desc = "-"
-				picture = "gfx/leaders/GXC/Portrait_GXC_Guo_Zechen.png"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Yan_Xinmin.png"
 				expire = "1.1.1"
 				ideology = socdem_market_socialist_subtype
 			}
@@ -2962,7 +2962,7 @@ country_event = { #Deliberation on the Socialist System
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Kuomintang Remnants
 	id = liangguang_rd.76
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.76"}
 	title = liangguang_rd.76.title
@@ -2970,14 +2970,42 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We shan't support these failures
 		name = liangguang_rd.76.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = GXC_against_kmt_ppp
+		if = {
+			limit = {
+				has_country_leader = {
+					name = "Guo Zechen"
+					ruling_only = yes
+				}
+			}
+			add_ideas = {
+			GXC_support_three_principles
+			}
+		}
+	}
+	option = { #We shan't support these failures
+		name = liangguang_rd.76.a
+		ai_chance = { base = 100 }
+		set_country_flag = GXC_reconcile_kmt_ppp
+		if = {
+			limit = {
+				has_country_leader = {
+					name = "Guo Zechen"
+					ruling_only = yes
+				}
+			}
+			add_timed_idea = {
+			idea = GXC_anti_kmt_ppp
+			days = 180
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #3 Pillars On top opf the 3 Principles
 	id = liangguang_rd.77
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.77"}
 	title = liangguang_rd.77.title
@@ -2985,14 +3013,25 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Mingshu Leads the Path
 		name = liangguang_rd.77.a
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #Yanda Pushes For Victory
+		name = liangguang_rd.77.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+				name = "Deng Yanda"
+				desc = "-"
+				picture = "gfx/leaders/CHI/Portrait_CHI_Deng_Yanda.png"
+				expire = "1.1.1"
+				ideology = socdem_tridemism_subtype
+			}
+	}
 }
 
-country_event = { #
+country_event = { #In the Era of New-Patriotism
 	id = liangguang_rd.78
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.78"}
 	title = liangguang_rd.78.title
@@ -3000,10 +3039,37 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Yanda Leads us on the correct path.
 		name = liangguang_rd.78.a
 		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = GXC_reconcile_kmt_ppp
+		}
+		create_country_leader = {
+				name = "Deng Yanda"
+				desc = "-"
+				picture = "gfx/leaders/CHI/Portrait_CHI_Deng_Yanda.png"
+				expire = "1.1.1"
+				ideology = socdem_tridemism_subtype
+			}
+	}
+	option = { #Guo Zechen Continues the status quo.
+		name = liangguang_rd.78.b
+		ai_chance = { base = 100 }
 		
+	}
+	option = { #Guo Zechen moves to internationalism.
+		name = liangguang_rd.78.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = socdem_internationalism_subtype
+	}
+	option = { #Yanda Leads us on the correct path.
+		name = liangguang_rd.78.d
+		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = GXC_anti_kmt_ppp
+		}
+		set_politics = { ruling_party = syndicalist }
 	}
 }
 

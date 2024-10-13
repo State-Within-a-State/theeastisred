@@ -273,7 +273,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_chen_course } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_anti_feudalism
+			}
 		}
 	}
 	#hand to ethnic autonomy
@@ -289,7 +291,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_chen_feudal } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_integration_democracy
+			}
 		}
 	}
 	#creation of local and central cadre committes
@@ -305,7 +309,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_chen_autonomy } 
 		completion_reward = {
-
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.1
+		}
+		add_stability = 0.1
+		add_political_power = 75
 		}
 	}
 
@@ -322,7 +331,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_chen_course } 
 		completion_reward = {
-
+		country_event = liangguang_rd.76
 		}
 	}
 	#reconcile with PAc
@@ -336,10 +345,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = GXC_reconcile_kmt_ppp
+		}
 		prerequisite = { focus = GXC_uni_chen_kmt } 
 		mutually_exclusive = { focus = GXC_uni_chen_failure } 
 		completion_reward = {
-
+			add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.1
+			}
+			add_radsoc_to_coalition = yes
 		}
 	}
 	#ailure no more
@@ -353,10 +369,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = GXC_against_kmt_ppp
+		}
 		prerequisite = { focus = GXC_uni_chen_kmt } 
 		mutually_exclusive = { focus = GXC_uni_chen_pac } 
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = GXC_anti_kmt_ppp
+			days = 180
+			}
 		}
 	}
 	#upholding a new era for three principles
@@ -372,7 +394,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_chen_pac focus = GXC_uni_chen_failure } 
 		completion_reward = {
-
+			add_ideas = {
+				GXC_support_three_principles
+			}
 		}
 	}
 	#revive revolutionary patriotism
@@ -388,7 +412,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_chen_committee } prerequisite = { focus = GXC_uni_chen_principles } 
 		completion_reward = {
-
+			add_war_support = 0.15
+			add_political_power = 25
 		}
 	}
 	#new culture movement
@@ -404,7 +429,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_chen_committee } prerequisite = { focus = GXC_uni_chen_principles } 
 		completion_reward = {
-
+			add_research_slot = 1
 		}
 	}
 	#3 pillars of prosperity
@@ -420,7 +445,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_chen_culture } prerequisite = { focus = GXC_uni_chen_patriotism } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_support_three_pillars
+			}
+			if = {
+				limit = {
+					has_country_flag = GXC_reconcile_kmt_ppp
+				}
+				country_event = liangguang_rd.77
+			}
 		}
 	}
 	#zerchin's victory for organized labor
@@ -455,7 +488,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_organized } 
 		completion_reward = {
-
+			add_popularity = {
+			ideology = syndicalist
+			popularity = 0.1
+			}
+			add_synd_to_coalition = yes
 		}
 	}
 	#legacy of the new youth
@@ -471,7 +508,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_organized } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_new_youth_legacy
+			}
 		}
 	}
 	#comrades in the cdl
@@ -487,7 +526,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_ACTU } 
 		completion_reward = {
-
+			add_popularity = {
+			ideology = social_liberal
+			popularity = 0.1
+			}
+			add_soclib_to_coalition = yes
 		}
 	}
 	#supporting children of china
@@ -503,7 +546,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_ACTU } prerequisite = { focus = GXC_uni_guo_youth } 
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = GXC_suport_youth
+			days = 180
+			}
 		}
 	}
 	#question of deng yanda
@@ -519,7 +565,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_children } prerequisite = { focus = GXC_uni_guo_cdl } 
 		completion_reward = {
-
+			country_event = liangguang_rd.76
 		}
 	}
 
@@ -536,7 +582,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_youth } 
 		completion_reward = {
-
+			add_research_slot = 1
 		}
 	}
 	#support national unification association
@@ -552,7 +598,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_modernization } 
 		completion_reward = {
-
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.15
+			
+			}
+			add_political_power = 25
 		}
 	}
 	#construct all china women's federation
@@ -568,7 +619,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_modernization } 
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = GXC_suport_women
+			days = 365
+			}
 		}
 	}
 	#opposing ethnocentrism
@@ -584,7 +638,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_deng } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_new_autonomy
+			}
 		}
 	}
 	#attacking the dogmatists
@@ -600,7 +656,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_women } prerequisite = { focus = GXC_uni_guo_association } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_anti_radicalism
+			}
 		}
 	}
 	#building upon theera of neo patriotism
@@ -616,7 +674,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_uni_guo_dogmatists } prerequisite = { focus = GXC_uni_guo_ethnocentrism } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_neo_patriotism
+			}
+			country_event = liangguang_rd.78
 		}
 	}
 
