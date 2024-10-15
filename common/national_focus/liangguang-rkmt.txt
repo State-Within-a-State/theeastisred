@@ -500,6 +500,22 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_land_reform } prerequisite = { focus = PRC_rkmt_new_life } 
 		completion_reward = {
+			if = { 
+			limit = {
+			NOT = { has_global_flag = RKMT_leader_exists }
+			}
+		custom_effect_tooltip = GXC_KMT_take_over_tt
+		hidden_effect = {
+		set_global_flag = RKMT_leader_exists 
+		save_global_event_target_as = RKMT_leader
+			set_potential_national_government = yes
+			add_to_array = { china_possible_allies_array = YUN }
+			add_to_array = { china_possible_allies_array = SZC }
+			add_to_array = { china_possible_allies_array = HNN }
+			add_to_array = { china_possible_allies_array = SHX }
+			add_to_array = { china_possible_allies_array_northwest = XSM }
+		}
+		}
 		if = {
 			limit = { can_declare_war_on = YUN }
 			activate_targeted_decision = { decision = china_demand_submission target = YUN }
@@ -612,13 +628,6 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_shanghai_underworld } prerequisite = { focus = PRC_rkmt_eastern_expedition } 
 		completion_reward = {
-			set_potential_national_government = yes
-			add_to_array = { china_possible_allies_array = YUN }
-			add_to_array = { china_possible_allies_array = SZC }
-			add_to_array = { china_possible_allies_array = HNN }
-			add_to_array = { china_possible_allies_array = SHX }
-			add_to_array = { china_possible_allies_array_northwest = XSM }
-
 		if = {
 			limit = { can_declare_war_on = QIE }
 			activate_targeted_decision = { decision = china_demand_submission target = QIE }

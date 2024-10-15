@@ -164,30 +164,13 @@ focus_tree = {
 		}
 		AND = {
 		has_completed_focus = HNNKMT_an_olive_branch_with_the_right
-		OR = {
-		YUN = {
-				exists = yes
-				has_country_leader = {
-						name = "Zhu Peide"
-						ruling_only = yes
-					}
-				is_subject = no
-				NOT = {
-					has_war_with = HNN
-				}
-			}
-		PRC = {
-				exists = yes
-				has_country_leader = {
-						name = "Li Zongren"
-						ruling_only = yes
-					}
-				is_subject = no
-				NOT = {
-					has_war_with = HNN
-				}
-			}
-		}
+		custom_trigger_tooltip = {
+		tooltip = rd_rkmt_central_committee_real_tt
+		has_global_flag = RKMT_leader_exists 
+		NOT = { 
+		has_country_flag = rd_is_rmt_rn
+		}	
+		}	
 		}
 		}
 		}
@@ -216,24 +199,13 @@ focus_tree = {
 		}
 		}
 		else = {
-		if = { limit = { YUN = { exists = yes KR_is_liberal = yes is_subject = no NOT = { has_war_with = HNN } } }
-		YUN = {
-		set_autonomy = {
-		target = HNN
-		autonomy_state = kr_governorate
-		end_wars = no
-		}
-		}
-		}
-		else = {
- 		PRC = {
-		set_autonomy = {
-		target = HNN
-		autonomy_state = kr_governorate
-		end_wars = no
-		}
-		}
-		}
+					RMT = {
+						set_autonomy = {
+							target = HNN
+								autonomy_state = kr_governorate
+									end_wars = no
+										}
+											}		
 		}
 		}
 	}
@@ -420,6 +392,23 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNKMT_distancing_from_the_united_front  }
 		completion_reward = {
+			if = { 
+			limit = {
+			NOT = { has_global_flag = RKMT_leader_exists }
+			}
+		custom_effect_tooltip = GXC_KMT_take_over_tt
+		hidden_effect = {
+		set_global_flag = RKMT_leader_exists 
+		save_global_event_target_as = RKMT_leader
+		set_country_flag = rd_is_rmt_rn
+			set_potential_national_government = yes
+			add_to_array = { china_possible_allies_array = YUN }
+			add_to_array = { china_possible_allies_array = SZC }
+			add_to_array = { china_possible_allies_array = PRC }
+			add_to_array = { china_possible_allies_array = SHX }
+			add_to_array = { china_possible_allies_array_northwest = XSM }
+		}
+		}
 		remove_ideas = {
 		HNN_socialist_resistance
 		}
@@ -754,6 +743,23 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNKMT_fengjiesconfucianrevival  } prerequisite = { focus = HNNKMT_county_reorganization  } prerequisite = { focus = HNNKMT_connections_to_the_yiguandao  } prerequisite = { focus = HNNKMT_crushing_the_peasant_council_excesses  }
 		completion_reward = {
+			if = { 
+			limit = {
+			NOT = { has_global_flag = RKMT_leader_exists }
+			}
+		custom_effect_tooltip = GXC_KMT_take_over_tt
+		hidden_effect = {
+		set_global_flag = RKMT_leader_exists 
+		save_global_event_target_as = RKMT_leader
+		set_country_flag = rd_is_rmt_rn
+			set_potential_national_government = yes
+			add_to_array = { china_possible_allies_array = YUN }
+			add_to_array = { china_possible_allies_array = SZC }
+			add_to_array = { china_possible_allies_array = PRC }
+			add_to_array = { china_possible_allies_array = SHX }
+			add_to_array = { china_possible_allies_array_northwest = XSM }
+		}
+		}
 		add_popularity = {
 		ideology = social_liberal
 		popularity = 0.1
@@ -833,56 +839,25 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
-		
-		
-		OR = {
-		YUN = {
-				exists = yes
-				has_country_leader = {
-						name = "Zhu Peide"
-						ruling_only = yes
-					}
-				is_subject = no
-				NOT = {
-					has_war_with = HNN
-				}
-			}
-		PRC = {
-				exists = yes
-				has_country_leader = {
-						name = "Li Zongren"
-						ruling_only = yes
-					}
-				is_subject = no
-				NOT = {
-					has_war_with = HNN
-				}
-			}
+		custom_trigger_tooltip = {
+		tooltip = rd_rkmt_central_committee_real_tt
+		has_global_flag = RKMT_leader_exists 
+		NOT = { 
+		has_country_flag = rd_is_rmt_rn
+		}		
 		}
-		
 		}
 		prerequisite = { focus = HNNKMT_reach_out_to_kuomintang_rightists  } prerequisite = { focus = HNNKMT_work_with_the_whampoa_cliques  }
 		mutually_exclusive = { focus = HNNKMT_proclaim_the_rival_government  }
 		completion_reward = {
 		set_cosmetic_tag = HNN_KMT
-		if = { limit = { YUN = { exists = yes KR_is_liberal = yes is_subject = no NOT = { has_war_with = HNN } } }
-					YUN = {
+					RMT = {
 						set_autonomy = {
 							target = HNN
 								autonomy_state = kr_governorate
 									end_wars = no
 										}
-											}
-												}
-													else = {
-												PRC = {
-											set_autonomy = {
-										target = HNN
-								autonomy_state = kr_governorate
-							end_wars = no
-						}
-					}
-				}
+											}		
 		}
 	}
 
