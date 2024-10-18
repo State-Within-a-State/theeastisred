@@ -1335,7 +1335,15 @@ country_event = { #
 
 country_event = { #A Dragon Riding Across the Guangzhou Skyline
 	id = liangguang_rd.39
-	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.39"}
+	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.39"
+			hidden_effect = {
+			country_event = {
+				id = china_shared.1000
+				days = 15
+			}
+		}
+
+	}
 	title = liangguang_rd.39.title
 	desc = liangguang_rd.39.desc
 	#picture = 
@@ -1354,8 +1362,23 @@ country_event = { #A Dragon Riding Across the Guangzhou Skyline
 	set_cosmetic_tag = QIE_unified
 	set_country_flag = RD_puyi_monarch_gui_flag
 	}
-	option = { #something else idk restore yuan 
+	option = { #We shall restore the qing but under pujie
 		name = liangguang_rd.39.b
+		ai_chance = { base = 100 }
+		trigger = {
+			QIE = {
+				exists = no
+				NOT = { has_country_flag = QIE_manchu_restoration }
+				NOT = { has_country_flag = QIE_coup_failed }
+			}
+		}
+
+	set_cosmetic_tag = QIE_unified
+	set_country_flag = RD_pujie_monarch_gui_flag
+	}
+
+	option = { #something else idk restore yuan 
+		name = liangguang_rd.39.c
 		ai_chance = { base = 100 }
 		hidden_effect = { remove_ideas = GXC_Bastion_of_Zhili }
 		set_country_flag = RD_yuan_monarch_gui_flag
@@ -3069,7 +3092,7 @@ country_event = { #In the Era of New-Patriotism
 		ai_chance = { base = 100 }
 		set_country_leader_ideology = socdem_internationalism_subtype
 	}
-	option = { #Yanda Leads us on the correct path.
+	option = { #wang syndie guy.
 		name = liangguang_rd.78.d
 		ai_chance = { base = 100 }
 		trigger = {
@@ -3081,7 +3104,7 @@ country_event = { #In the Era of New-Patriotism
 	}
 }
 
-country_event = { #
+country_event = { #the future of our empire
 	id = liangguang_rd.79
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.79"}
 	title = liangguang_rd.79.title
@@ -3094,6 +3117,12 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #
+		name = liangguang_rd.79.a
+		ai_chance = { base = 100 }
+		
+	}
+
 }
 
 country_event = { #
