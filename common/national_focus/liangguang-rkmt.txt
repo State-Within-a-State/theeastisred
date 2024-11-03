@@ -823,9 +823,32 @@ focus_tree = {
 		custom_effect_tooltip = CHI_focus_tree_will_change_tt
 		set_cosmetic_tag = GXC_united_china_kuomintang_guangxi
 		hidden_effect = {
+		#put this all in an event that decides what options they get
+		PRC_update_rkmt_factions = yes
+		if = {
+		limit = { 
+		check_variable = { rkmt_rightist_radicals > western_hills_group }
+		check_variable = { rkmt_rightist_radicals > huangpu_faction }
+		check_variable = { rkmt_rightist_radicals > central_club_clique }
+		}
+		load_focus_tree = GXC-rkmt-raduni-tree
+		}
+		else = {
+		load_focus_tree = GXC-rkmt-uni-tree
+		complete_national_focus = GXC_rkmt_factions
+		if = {
+		limit = { 
+		check_variable = { central_club_clique > western_hills_group } 
+		check_variable = { central_club_clique > huangpu_faction } 
+		}
+		complete_national_focus = GXC_cc_control
+		}
+		
+
+ 
+		}
 		news_event = china_events.309
 		country_event = { id = lngkmt.70 days = 3 }
-		#if blah blah the variables stuff go to blah balh
 		}
 
 		}
