@@ -345,8 +345,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = GXC_tang_new_hope } 
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#dveelopment of people's livelihood
@@ -362,6 +366,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_unity } 
 		completion_reward = {
+		add_ideas = {
+		GXC_kemin_peoples_livelihood
+		}
 		}
 	}
 	#keeping torch of panasianism alight
@@ -377,6 +384,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_unity } 
 		completion_reward = {
+		add_ideas = {
+		GXC_kemin_pan_asianism
+		}
 		}
 	}
 	#requesting Japanese advisors
@@ -392,6 +402,25 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_panasianism } 
 		completion_reward = {
+		if = {
+				limit = { has_country_flag = strengthen_army }
+				hidden_effect = { add_political_power = 50 }
+				custom_effect_tooltip = BONUS_PP_50
+			}
+			army_experience = 50
+			add_war_support = 0.05
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			JAP = {
+				add_intel = {
+					target = GXC
+					army_intel = 15
+				}
+			}
 		}
 	}
 	#enocrage zaibatsu investment
@@ -407,6 +436,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_advisors } 
 		completion_reward = {
+		add_ideas = {
+		GXC_zaibatsu_investment
+		}
 		}
 	}
 	#north china security army
@@ -422,6 +454,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_advisors } 
 		completion_reward = {
+		add_timed_idea = {
+		idea = GXC_north_china_army_plan
+		days = 180
+		}
 		}
 	}
 	#eliminate syndicalism promote morality
@@ -437,6 +473,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_north_china }  prerequisite = { focus = GXC_kemin_zaibatsu }  
 		completion_reward = {
+		add_timed_idea = {
+		idea = GXC_strengthened_antisoc
+		days = 180
+		}
 		}
 	}
 	#united bank bonds
@@ -452,6 +492,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_north_china }  prerequisite = { focus = GXC_kemin_zaibatsu }  
 		completion_reward = {
+		add_ideas = {
+		GXC_united_bank_bonds
+		}
 		}
 	}
 	#rural youth training association
@@ -467,6 +510,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_livelihood } 
 		completion_reward = {
+		add_research_slot = 1
 		}
 	}
 	#public security strengthening
@@ -482,6 +526,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_livelihood } prerequisite = { focus = GXC_kemin_panasianism } 
 		completion_reward = {
+		add_ideas = {
+		GXC_increased_public_security
+		}
 		}
 	}
 	#anti syndicalist volunteer force
@@ -497,6 +544,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_public_security } prerequisite = { focus = GXC_kemin_youth_training } 
 		completion_reward = {
+		add_ideas = {
+		GXC_anti_socialist_volunteers
+		}
 		}
 	}
 	#enacting the Baojia system
@@ -512,6 +562,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_public_security } prerequisite = { focus = GXC_kemin_youth_training } 
 		completion_reward = {
+		add_stability = 0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_political_power = 50
 		}
 	}
 	#freidns across the continent wtf do you mean ocean or around continent
@@ -527,6 +583,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_baojia } prerequisite = { focus = GXC_kemin_antisyndie } 
 		completion_reward = {
+		add_ideas = {
+		GXC_friends_across_asia
+		}
 		}
 	}
 	#a republic loyal to its empire
@@ -542,6 +601,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_kemin_continent }  prerequisite = { focus = GXC_kemin_bonds }  prerequisite = { focus = GXC_kemin_morality }  
 		completion_reward = {
+		swap_ideas = {
+		remove_idea = GXC_kemin_peoples_livelihood
+		add_idea = GXC_kemin_peoples_livelihood_1
+		}
 		}
 	}
 
@@ -555,8 +618,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = GXC_tang_five_races } 
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#create new safety regulations
@@ -572,6 +639,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_tang_progressive } 
 		completion_reward = {
+		add_stability = 0.1
+		add_political_power = 50
 		}
 	}
 	#pursue additional pensions
@@ -587,6 +656,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_tang_progressive } 
 		completion_reward = {
+		add_ideas = {
+		GXC_pension_program
+		}
 		}
 	}
 	#rethink our stance on japan
@@ -602,6 +674,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_tang_regulations } 
 		completion_reward = {
+		add_opinion_modifier = {
+			target = GXC
+			modifier = GXC_frenemies
+		}
+		add_opinion_modifier = {
+			target = JAP
+			modifier = GXC_frenemies
+		}
+		add_war_support = 0.05
 		}
 	}
 	#legacy of cao kun
@@ -617,6 +698,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_tang_pensions } 
 		completion_reward = {
+		add_ideas = {
+		GXC_cao_kun_legacy
+		}
 		}
 	}
 	#national economy committee
@@ -632,6 +716,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_tang_pensions } prerequisite = { focus = GXC_tang_regulations } 
 		completion_reward = {
+		add_ideas = {
+		GXC_national_economic_committee
+		}
 		}
 	}
 	#dealing with the unions
@@ -648,6 +735,10 @@ focus_tree = {
 		prerequisite = { focus = GXC_tang_committee } prerequisite = { focus = GXC_tang_caokun } prerequisite = { focus = GXC_tang_japan_stance } 
 
 		completion_reward = {
+		add_timed_idea = {
+		idea = GXC_strengthened_antisoc
+		days = 180
+		}
 		}
 	}
 	#emphasizing practicality
@@ -664,6 +755,9 @@ focus_tree = {
 		prerequisite = { focus = GXC_tang_unions } 
 
 		completion_reward = {
+		add_ideas = {
+		GXC_practicallity
+		}
 		}
 	}
 	#extending the hand of public support
@@ -680,6 +774,9 @@ focus_tree = {
 		prerequisite = { focus = GXC_tang_unions } 
 
 		completion_reward = {
+		add_ideas = {
+		GXC_extending_public_support
+		}
 		}
 	}
 
@@ -696,6 +793,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_tang_public_support } prerequisite = { focus = GXC_tang_practicality } 
 		completion_reward = {
+		add_ideas = {
+		GXC_under_thumb_anfu
+		}
 		}
 	}
 
