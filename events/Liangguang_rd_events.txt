@@ -3464,17 +3464,85 @@ country_event = { #A Meeting of the Qiongya Special Committee
 	}
 }
 
-country_event = { #
+country_event = { #The Five Races Standard Peking
 	id = liangguang_rd.84
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.84"}
 	title = liangguang_rd.84.title
-	desc = liangguang_rd.84.desc
+	desc = {
+		text = liangguang_rd.84.desc.projapan
+		trigger = {
+			has_country_flag = GXC_bathing_cherry_blossoms_align_with_japan
+		}
+	}
+	desc = {
+		text = liangguang_rd.84.desc.independent
+		trigger = {
+			has_country_flag = GXC_enlightened_republic_independent
+		}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Tang Shaoyi Secures the Ballot
 		name = liangguang_rd.84.a
 		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = GXC_bathing_cherry_blossoms_align_with_japan
+			}
+			complete_national_focus = GXC_tang_shaoyi_cabinet
+		}
+		if = {
+			limit = {
+				has_country_flag = GXC_enlightened_republic_independent
+			}
+			complete_national_focus = GXC_tang_xinhai
+		}
+		
+		
+	}
+	
+	option = { #Yitang Secures Victory
+		name = liangguang_rd.84.b
+		ai_chance = { base = 100 }
+		complete_national_focus = GXC_tang_progressive
+		set_politics = { ruling_party = social_conservative }
+		create_country_leader = {
+				name = "Wang Yitang"
+				desc = "-"
+				picture = "gfx/leaders/MON/Portrait_MON_Wang_Yitang.png"
+				expire = "1.1.1"
+				ideology = soccon_oligarchy_subtype
+			}
+		remove_all_ministers = yes
+		add_ideas = {
+		GXC_Wang_Yitang_hog_sco
+		GXC_Sun_Wu_eco_sco
+		GXC_Sun_Hongyi_for_sco
+		GXC_Liu_Chengyou_sec_sco
+		}
+		
+	}
+	
+	option = { #Wang Kemin Shines a New Light of Pan-Asianism
+		name = liangguang_rd.84.c
+		ai_chance = { base = 100 }
+		complete_national_focus = GXC_kemin_unity
+		set_politics = { ruling_party = national_populist }
+		create_country_leader = {
+				name = "Wang Kemin"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Wang_Kemin_Glasses.png"
+				expire = "1.1.1"
+				ideology = natpop_pan_asianism_subtype
+			}
+		remove_all_ministers = yes
+		add_ideas = {
+		GXC_Wang_Kemin_hog_npo
+		GXC_Wang_Shijing_eco_pau
+		GXC_Wang_Yintai_for_pau
+		GXC_Tang_Erhe_sec_npo
+		}
 		
 	}
 }
