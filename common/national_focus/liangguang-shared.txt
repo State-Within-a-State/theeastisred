@@ -369,6 +369,26 @@ shared_focus = {
 		date > 1937.1.1
 		}
 	completion_reward = {
+		if = { limit = { tag = QIO }
+			owner = {
+					create_wargoal = {
+						type = annex_everything
+						target = 592.owner
+					}
+				}
+		if = { limit = { GXC = { exists = yes } } 
+		add_timed_idea = {
+		idea = QIO_fuck_up_gxc 
+		days = 100
+		}
+		}
+		else = {
+		add_timed_idea = {
+		idea = QIO_fuck_up_prc 
+		days = 100
+		}
+		}
+		}
 		if = {
 			limit = { can_declare_war_on = HNN }
 			activate_targeted_decision = { decision = china_demand_submission target = HNN }
@@ -391,6 +411,9 @@ shared_focus = {
 	y = 1
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_unification }
+	available = { 
+	owns_state = 592
+	}
 	completion_reward = {
 		if = {
 			limit = { can_declare_war_on = LEP }
@@ -420,6 +443,9 @@ shared_focus = {
 	y = 1
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_shared_unification }
+	available = { 
+	owns_state = 594
+	}
 	completion_reward = {
 		if = {
 			limit = { can_declare_war_on = YUN }
