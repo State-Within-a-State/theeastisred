@@ -599,6 +599,10 @@ country_event = { #The Kuomintang Rise Up in Guangxi
 	}
 	release = PRC
 	PRC = {
+	country_event = {
+	id = liangguang_rd.86
+	days = 30
+	}
 	inherit_technology = GXC
 	add_timed_idea = {
 	idea = PRC_revival_of_forgotten_faction
@@ -3580,7 +3584,9 @@ country_event = { #The Five Races Standard Peking
 	}
 }
 
-country_event = { #
+###RKMT Events###
+
+country_event = { #Sun Li-Jen Offers to Join Our Ranks
 	id = liangguang_rd.85
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.85"}
 	title = liangguang_rd.85.title
@@ -3588,14 +3594,34 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Welcome Back Sun Lijen
 		name = liangguang_rd.85.a
 		ai_chance = { base = 100 }
+		create_corps_commander = {
+			name = "Sun Liren"
+			desc = "POLITICS_CHI_SUN_LIREN_ARMY_DESC"
+			portrait_path = "gfx/leaders/ANQ/Portrait_ANQ_Sun_Liren.png"
+			traits = { brilliant_strategist career_officer organizer urban_assault_specialist }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2	
+			id = 2272
+		}
+		set_country_flag = PRC_sun_liren_saved
+		PRC_increase_wh_faction_small = yes
+	}
+	option = { #Denounce Him As a Warlord Traitor
+		name = liangguang_rd.85.b
+		ai_chance = { base = 100 }
+		PRC_increase_huangpu_faction_small = yes
+		PRC_increase_cc_faction_small = yes
 		
 	}
 }
 
-country_event = { #
+country_event = { #Return of the Provisional Executive Committee
 	id = liangguang_rd.86
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.86"}
 	title = liangguang_rd.86.title
@@ -3603,14 +3629,19 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Huzzah!
 		name = liangguang_rd.86.a
 		ai_chance = { base = 100 }
-		
+		PRC_increase_wh_faction_small = yes
+		add_political_power = 20
+		country_event = {
+		id = liangguang_rd.87
+		days = 10
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Decision of the President
 	id = liangguang_rd.87
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.87"}
 	title = liangguang_rd.87.title
@@ -3618,10 +3649,52 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Xu Chongzhi Remains the Incumbent
 		name = liangguang_rd.87.a
 		ai_chance = { base = 100 }
+		PRC_increase_huangpu_faction_small = yes
 		
+	}
+	
+	option = { #Lin Sen is Chosen
+		name = liangguang_rd.87.b
+		ai_chance = { base = 100 }
+		PRC_increase_wh_faction_small = yes
+		create_country_leader = {
+				name = "Lin Sen"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Lin_Sen.png"
+				expire = "1.1.1"
+				ideology = authdem_tridemism_subtype
+			}
+		
+	}
+	
+	option = { #Gu Zhutong Wins Unexpectedly
+		name = liangguang_rd.87.c
+		ai_chance = { base = 100 }
+		PRC_increase_cc_faction_small = yes
+		PRC_radicalism_increase = yes
+		create_country_leader = {
+				name = "Gu Zhutong"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Gu_Zhutong.png"
+				expire = "1.1.1"
+				ideology = authdem_tridemism_subtype
+			}
+	}
+	
+	option = { #Xiong Shihui Is Made as a Comprimise
+		name = liangguang_rd.87.d
+		ai_chance = { base = 100 }
+		PRC_radicalism_decrease = yes
+		create_country_leader = {
+				name = "Xiong Shihui"
+				desc = "-"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Xiong_Shihui.png"
+				expire = "1.1.1"
+				ideology = authdem_tridemism_subtype
+			}
 	}
 }
 
