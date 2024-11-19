@@ -827,28 +827,24 @@ focus_tree = {
 		PRC_update_rkmt_factions = yes
 		if = {
 		limit = { 
-		check_variable = { rkmt_rightist_radicals > western_hills_group }
-		check_variable = { rkmt_rightist_radicals > huangpu_faction }
-		check_variable = { rkmt_rightist_radicals > central_club_clique }
+		check_variable = { western_hills_group > huangpu_faction }
+		check_variable = { western_hills_group > central_club_clique }
 		}
-		load_focus_tree = GXC-rkmt-raduni-tree
+		set_variable = { largest_kmt_faction = western_hills_group }
+		}
+		else_if = {
+		limit = { 
+		check_variable = { central_club_clique > huangpu_faction }
+		check_variable = { central_club_clique > western_hills_group }
+		}
+		set_variable = { largest_kmt_faction = central_club_clique }		
 		}
 		else = {
-		load_focus_tree = GXC-rkmt-uni-tree
-		complete_national_focus = GXC_rkmt_factions
-		if = {
-		limit = { 
-		check_variable = { central_club_clique > western_hills_group } 
-		check_variable = { central_club_clique > huangpu_faction } 
-		}
-		complete_national_focus = GXC_cc_control
-		}
-		
-
- 
+		set_variable = { largest_kmt_faction = huangpu_faction }
 		}
 		news_event = china_events.309
 		country_event = { id = lngkmt.70 days = 3 }
+		load_focus_tree = GXC-rkmt-uni-tree
 		}
 
 		}

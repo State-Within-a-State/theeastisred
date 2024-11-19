@@ -3698,17 +3698,68 @@ country_event = { #A Decision of the President
 	}
 }
 
-country_event = { #
+country_event = { #KMT party congress
 	id = liangguang_rd.88
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.88"}
 	title = liangguang_rd.88.title
 	desc = liangguang_rd.88.desc
 	#picture = 
-	
+	#the current leader (1 of 4) can be replaced by someone based on the current factionalism. Say go to the factions or radicalalism rises
 	is_triggered_only = yes
-	option = { #
+	option = { #western hills
 		name = liangguang_rd.88.a
 		ai_chance = { base = 100 }
+		trigger = { 
+		check_variable = { largest_kmt_faction > rkmt_rightist_radicals }
+		check_variable = { western_hills_group > huangpu_faction }
+		check_variable = { western_hills_group > huangpu_faction }
+		}
+
+		
+	}
+	option = { #wampaoo function also allows a switch to the coalition between the two but for later
+		name = liangguang_rd.88.b
+		ai_chance = { base = 100 }
+		trigger = { 
+		check_variable = { largest_kmt_faction > rkmt_rightist_radicals }
+		check_variable = {
+    		var = huangpu_faction
+   		value = central_club_clique
+   		compare = greater_than_or_equals
+		}
+		check_variable = {
+    		var = huangpu_faction
+   		value = western_hills_group 
+   		compare = greater_than_or_equals
+		}
+		}
+		#do effects later
+		
+	}
+	option = { #central club clique
+		name = liangguang_rd.88.c
+		ai_chance = { base = 100 }
+		trigger = { 
+		check_variable = { largest_kmt_faction > rkmt_rightist_radicals }
+		check_variable = { central_club_clique > huangpu_faction }
+		check_variable = { central_club_clique > western_hills_group }
+		}
+
+		
+	}
+	option = { #natpop switch
+		name = liangguang_rd.88.d
+		ai_chance = { base = 100 }
+		trigger = { 
+		check_variable = {
+   		 var = rkmt_rightist_radicals 
+   		 value = largest_kmt_faction 
+    		compare = greater_than_or_equals
+		}
+		}
+		load_focus_tree = GXC-rkmt-raduni-tree
+		#do shit like party stuff
+		
 		
 	}
 }
