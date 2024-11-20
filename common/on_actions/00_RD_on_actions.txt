@@ -3,6 +3,7 @@ on_actions = {
 		effect = {
 			if = {
 				limit = {
+				NOT = { has_global_flag = rd_laos_released_once }
 				OR = {
 				VIN = {
 				owns_state = 670
@@ -24,6 +25,7 @@ on_actions = {
 			country_event = laos.0
 			}
 			LAO = {
+			set_global_flag = rd_laos_released_once
 			country_event = laos.1
 			}			
 			}
@@ -32,20 +34,13 @@ on_actions = {
 	}
 	
 	
-	on_release_as_free = {
-		effect = {
-			LAO = {
-			country_event = laos.1
-			}
-		
-		}
-	}
 	
 	on_peaceconference_ended = {
 		effect = {
 			if = {
 				limit = {
 				AND = {
+				has_global_flag = indochina_civil_war
 				INC = {
 				exists = no
 				}
