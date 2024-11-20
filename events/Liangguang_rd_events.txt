@@ -3705,6 +3705,7 @@ country_event = { #KMT party congress
 	desc = liangguang_rd.88.desc
 	#picture = 
 	#the current leader (1 of 4) can be replaced by someone based on the current factionalism. Say go to the factions or radicalalism rises
+	#desc should use scripted loc of get current leader otherwise fucky
 	is_triggered_only = yes
 	option = { #western hills
 		name = liangguang_rd.88.a
@@ -3714,7 +3715,7 @@ country_event = { #KMT party congress
 		check_variable = { western_hills_group > huangpu_faction }
 		check_variable = { western_hills_group > huangpu_faction }
 		}
-
+		
 		
 	}
 	option = { #wampaoo function also allows a switch to the coalition between the two but for later
@@ -3722,7 +3723,7 @@ country_event = { #KMT party congress
 		ai_chance = { base = 100 }
 		trigger = { 
 		check_variable = { largest_kmt_faction > rkmt_rightist_radicals }
-		check_variable = {
+		check_variable = { #wampao wins if all are equal
     		var = huangpu_faction
    		value = central_club_clique
    		compare = greater_than_or_equals
