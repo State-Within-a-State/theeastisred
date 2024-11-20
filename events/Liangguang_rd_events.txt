@@ -3764,7 +3764,7 @@ country_event = { #KMT party congress
 	}
 }
 
-country_event = { #
+country_event = { #The Wenxi Incident
 	id = liangguang_rd.89
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.89"}
 	title = liangguang_rd.89.title
@@ -3775,11 +3775,33 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.89.a
 		ai_chance = { base = 100 }
-		
+		PRC_radicalism_increase = yes
+		add_timed_idea = {
+		idea = PRC_wenxi_investigation
+		days = 60
+		}
+		country_event = {
+		id = liangguang_rd.90
+		days = 7
+		}
+	}
+	
+	option = { #
+		name = liangguang_rd.89.b
+		ai_chance = { base = 100 }
+		add_political_power = -50
+		add_timed_idea = {
+		idea = PRC_wenxi_investigation
+		days = 60
+		}
+		country_event = {
+		id = liangguang_rd.90
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Disapearing Witnesses and Files
 	id = liangguang_rd.90
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.90"}
 	title = liangguang_rd.90.title
@@ -3787,10 +3809,24 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Something looks fishy...
 		name = liangguang_rd.90.a
 		ai_chance = { base = 100 }
-		
+		PRC_radicalism_decrease = yes
+		country_event = {
+		id = liangguang_rd.91
+		days = 7
+		}
+	}
+	option = { #Well, if they offered to investigate, clear they are innocent.
+		name = liangguang_rd.90.b
+		ai_chance = { base = 100 }
+		add_political_power = 40
+		add_stability = 0.05
+		country_event = {
+		id = liangguang_rd.91
+		days = 7
+		}
 	}
 }
 
