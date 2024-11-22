@@ -3843,6 +3843,7 @@ country_event = { #An End to the Investigation
 		ai_chance = { base = 100 }
 		add_stability = -0.01
 		PRC_radicalism_increase = yes
+		PRC_preleader_fuck_up = yes
 		country_event = {
 		id = liangguang_rd.96
 		days = 7
@@ -3861,6 +3862,7 @@ country_event = { #investigation mib but interfere by outsiders
 	option = { #
 		name = liangguang_rd.92.a
 		ai_chance = { base = 100 }
+		PRC_radicalism_decrease = yes
 		country_event = {
 		id = liangguang_rd.96
 		days = 7
@@ -3878,23 +3880,34 @@ country_event = { #local forces
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #help from mib
 		name = liangguang_rd.93.a
 		ai_chance = { base = 100 }
+		add_political_power = 15
+		country_event = {
+		id = liangguang_rd.94
+		days = 7
+		}
+
 		
 	}
-	option = { #
+	option = { #on own
 		name = liangguang_rd.93.b
 		ai_chance = { base = 100 }
-		
+		add_stability = 0.01
+		country_event = {
+		id = liangguang_rd.91
+		days = 7
+		}
+
 	}
 
 }
 
-country_event = { #local forces with no mib help
+country_event = { #local forces with mib help
 	id = liangguang_rd.94
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.94"}
-	title = liangguang_rd.94.title
+	title = liangguang_rd.91.title
 	desc = liangguang_rd.94.desc
 	#picture = 
 	
@@ -3902,6 +3915,7 @@ country_event = { #local forces with no mib help
 	option = { #
 		name = liangguang_rd.94.a
 		ai_chance = { base = 100 }
+		PRC_radicalism_increase = yes
 		country_event = {
 		id = liangguang_rd.96
 		days = 7
@@ -3911,7 +3925,7 @@ country_event = { #local forces with no mib help
 	}
 }
 
-country_event = { #local forces mib help
+country_event = { #use this for something plz 
 	id = liangguang_rd.95
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.95"}
 	title = liangguang_rd.95.title
@@ -3922,11 +3936,6 @@ country_event = { #local forces mib help
 	option = { #
 		name = liangguang_rd.95.a
 		ai_chance = { base = 100 }
-		country_event = {
-		id = liangguang_rd.96
-		days = 7
-		}
-
 		
 	}
 }
