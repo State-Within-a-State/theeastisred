@@ -3776,7 +3776,7 @@ country_event = { #The Wenxi Incident
 	option = { #
 		name = liangguang_rd.89.a
 		ai_chance = { base = 100 }
-		PRC_radicalism_increase = yes
+		PRC_preleader_fuck_up = yes
 		add_timed_idea = {
 		idea = PRC_wenxi_investigation
 		days = 60
@@ -3790,13 +3790,13 @@ country_event = { #The Wenxi Incident
 	option = { #
 		name = liangguang_rd.89.b
 		ai_chance = { base = 100 }
-		add_political_power = -50
+		PRC_preleader_fuck_up = yes
 		add_timed_idea = {
 		idea = PRC_wenxi_investigation
 		days = 60
 		}
 		country_event = {
-		id = liangguang_rd.90
+		id = liangguang_rd.93
 		days = 7
 		}
 	}
@@ -3813,17 +3813,16 @@ country_event = { #Disapearing Witnesses and Files
 	option = { #Something looks fishy...
 		name = liangguang_rd.90.a
 		ai_chance = { base = 100 }
-		PRC_radicalism_decrease = yes
+		add_stability = 0.01
 		country_event = {
-		id = liangguang_rd.91
+		id = liangguang_rd.92
 		days = 7
 		}
 	}
 	option = { #Well, if they offered to investigate, clear they are innocent.
 		name = liangguang_rd.90.b
 		ai_chance = { base = 100 }
-		add_political_power = 40
-		add_stability = 0.05
+		add_political_power = 15
 		country_event = {
 		id = liangguang_rd.91
 		days = 7
@@ -3842,16 +3841,19 @@ country_event = { #An End to the Investigation
 	option = { #
 		name = liangguang_rd.91.a
 		ai_chance = { base = 100 }
-		add_stability = -0.1
-		add_political_power = -100
+		add_stability = -0.01
 		PRC_radicalism_increase = yes
+		country_event = {
+		id = liangguang_rd.89
+		days = 14
+		}
 	}
 }
 
-country_event = { #
+country_event = { #investigation mib but interfere by outsiders
 	id = liangguang_rd.92
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.92"}
-	title = liangguang_rd.92.title
+	title = liangguang_rd.91.title
 	desc = liangguang_rd.92.desc
 	#picture = 
 	
@@ -3863,7 +3865,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #local forces
 	id = liangguang_rd.93
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.93"}
 	title = liangguang_rd.93.title
