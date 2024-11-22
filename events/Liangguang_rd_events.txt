@@ -3844,8 +3844,8 @@ country_event = { #An End to the Investigation
 		add_stability = -0.01
 		PRC_radicalism_increase = yes
 		country_event = {
-		id = liangguang_rd.89
-		days = 14
+		id = liangguang_rd.96
+		days = 7
 		}
 	}
 }
@@ -3861,6 +3861,11 @@ country_event = { #investigation mib but interfere by outsiders
 	option = { #
 		name = liangguang_rd.92.a
 		ai_chance = { base = 100 }
+		country_event = {
+		id = liangguang_rd.96
+		days = 7
+		}
+
 		
 	}
 }
@@ -3878,9 +3883,15 @@ country_event = { #local forces
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #
+		name = liangguang_rd.93.b
+		ai_chance = { base = 100 }
+		
+	}
+
 }
 
-country_event = { #
+country_event = { #local forces with no mib help
 	id = liangguang_rd.94
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.94"}
 	title = liangguang_rd.94.title
@@ -3891,11 +3902,16 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.94.a
 		ai_chance = { base = 100 }
+		country_event = {
+		id = liangguang_rd.96
+		days = 7
+		}
+
 		
 	}
 }
 
-country_event = { #
+country_event = { #local forces mib help
 	id = liangguang_rd.95
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.95"}
 	title = liangguang_rd.95.title
@@ -3906,11 +3922,16 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.95.a
 		ai_chance = { base = 100 }
+		country_event = {
+		id = liangguang_rd.96
+		days = 7
+		}
+
 		
 	}
 }
 
-country_event = { #
+country_event = { #start of the congress
 	id = liangguang_rd.96
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.96"}
 	title = liangguang_rd.96.title
@@ -3921,7 +3942,31 @@ country_event = { #
 	option = { #
 		name = liangguang_rd.96.a
 		ai_chance = { base = 100 }
-		
+		hidden_effect = {
+		PRC_update_rkmt_factions = yes
+		if = {
+		limit = { 
+		check_variable = { western_hills_group > huangpu_faction }
+		check_variable = { western_hills_group > central_club_clique }
+		}
+		set_variable = { largest_kmt_faction = western_hills_group }
+		}
+		else_if = {
+		limit = { 
+		check_variable = { central_club_clique > huangpu_faction }
+		check_variable = { central_club_clique > western_hills_group }
+		}
+		set_variable = { largest_kmt_faction = central_club_clique }		
+		}
+		else = {
+		set_variable = { largest_kmt_faction = huangpu_faction }
+		}
+		}
+		country_event = {
+		id = liangguang_rd.89
+		days = 7
+		}
+
 	}
 }
 
