@@ -18,11 +18,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = { controls_state = 39 } #seacrh for changsha
+		available = { controls_state = 602 } #seacrh for changsha
 		cancel_if_invalid = no
 		select_effect = {
 		country_event = {
-		id = liangguang_rd.89
+		id = liangguang_rd.96
 		days = 7
 		}
 		}
@@ -45,9 +45,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = GXC_rkmt_factions }
 		completion_reward = {
-
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#securing the youth leagues
@@ -63,7 +66,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_cc_control }
 		completion_reward = {
-
+			add_ideas = {
+			PRC_youth_league_overtures
+			}
 		}
 	}
 	#alliance with the radicals
@@ -79,7 +84,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_cc_youth }
 		completion_reward = {
-
+		add_natpop_to_coalition = yes
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.05
+		}
+		add_political_power = 50
+		add_stability = -0.1
 		}
 	}
 	#pushing forward the idea of vitalism
@@ -95,7 +106,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_cc_youth }
 		completion_reward = {
-
+			add_ideas = {
+			PRC_new_vitalism
+			}
 		}
 	}
 	#riding the radio waves
@@ -111,7 +124,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_cc_vitalism } prerequisite = { focus = GXC_cc_radicals }
 		completion_reward = {
-
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = radar_tech
+		}
 		}
 	}
 	#securing the party interior
@@ -127,7 +144,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_cc_radicals }
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = PRC_secure_the_party
+			days = 365
+			}
 		}
 	}
 	#propagating the dream of rebirth
@@ -143,7 +163,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_cc_interior } prerequisite = { focus = GXC_cc_radio }
 		completion_reward = {
-
+		
 		}
 	}
 	#centralized local self governance
