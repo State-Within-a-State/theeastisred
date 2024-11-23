@@ -3715,7 +3715,7 @@ country_event = { #KMT party congress
 		check_variable = { western_hills_group > huangpu_faction }
 		check_variable = { western_hills_group > huangpu_faction }
 		}
-		
+		country_event = liangguang_rd.97
 		
 	}
 	option = { #wampaoo function also allows a switch to the coalition between the two but for later
@@ -3734,7 +3734,7 @@ country_event = { #KMT party congress
    		compare = greater_than_or_equals
 		}
 		}
-		#do effects later
+		country_event = liangguang_rd.98
 		
 	}
 	option = { #central club clique
@@ -3745,7 +3745,7 @@ country_event = { #KMT party congress
 		check_variable = { central_club_clique > huangpu_faction }
 		check_variable = { central_club_clique > western_hills_group }
 		}
-
+		country_event = liangguang_rd.99
 		
 	}
 	option = { #natpop switch
@@ -3758,8 +3758,7 @@ country_event = { #KMT party congress
     		compare = greater_than_or_equals
 		}
 		}
-		load_focus_tree = GXC-rkmt-raduni-tree
-		#do shit like party stuff
+		country_event = liangguang_rd.95
 		
 		
 	}
@@ -3925,7 +3924,7 @@ country_event = { #local forces with mib help
 	}
 }
 
-country_event = { #use this for something plz 
+country_event = { #mib coup 
 	id = liangguang_rd.95
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.95"}
 	title = liangguang_rd.95.title
@@ -3936,7 +3935,19 @@ country_event = { #use this for something plz
 	option = { #
 		name = liangguang_rd.95.a
 		ai_chance = { base = 100 }
-		
+		hidden_effect = {
+		load_focus_tree = GXC-rkmt-raduni-tree
+		}
+		custom_effect_tooltip = CHI_focus_tree_will_change_tt
+		set_politics = { ruling_party = national_populist }
+		remove_all_ministers = yes
+		add_ideas = {
+		PRC_Feng_Ti_hog_npo
+		PRC_H_H_Kung_eco_pau
+		PRC_Xiao_Zanyu_for_npo
+		PRC_Teng_Jie_sec_npo
+		}
+
 	}
 }
 
@@ -4032,6 +4043,11 @@ country_event = { #Huangpu Wins on a Split
 	option = { #Dai Jitao shall restore China to moral purity.
 		name = liangguang_rd.98.b
 		ai_chance = { base = 100 }
+		trigger = { 
+		set_temp_variable = { half_wampou_factcion = huangpu_faction }
+		divide_variable = { half_wampou_factcion = 2 }.
+		check_variable = { western_hills_group > half_wampou_factcion }
+		}
 		add_soccon_to_coalition = yes
 		set_politics = { ruling_party = authoritarian_democrat }
 		create_country_leader = {
@@ -4074,7 +4090,7 @@ country_event = { #The Club Clicks into Place
 	}
 }
 
-country_event = { #The Shadows Eclipse the Light
+country_event = { #
 	id = liangguang_rd.100
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.100"}
 	title = liangguang_rd.100.title
@@ -4085,14 +4101,6 @@ country_event = { #The Shadows Eclipse the Light
 	option = { #
 		name = liangguang_rd.100.a
 		ai_chance = { base = 100 }
-		set_politics = { ruling_party = national_populist }
-		remove_all_ministers = yes
-		add_ideas = {
-		PRC_Feng_Ti_hog_npo
-		PRC_H_H_Kung_eco_pau
-		PRC_Xiao_Zanyu_for_npo
-		PRC_Teng_Jie_sec_npo
-		}
 	}
 }
 
