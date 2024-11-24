@@ -4060,6 +4060,12 @@ country_event = { #Huangpu Wins on a Split
 			expire = "1.1.1"
 			ideology = neo_tridemism_subtype
 		}
+		hidden_effect = {
+		country_event = { 
+		id = liangguang_rd.101
+		days = 30
+		}
+		}
 		remove_all_ministers = yes
 		add_ideas = {
 		PRC_Ju_Zheng_hog_sco
@@ -4088,6 +4094,12 @@ country_event = { #The Club Clicks into Place
 		PRC_Yu_Jingtang_eco_pau
 		PRC_Chen_Lifu_for_pau
 		PRC_Peng_Zhaoxian_sec_pau
+		}
+		hidden_effect = {
+		country_event = { 
+		id = liangguang_rd.101
+		days = 30
+		}
 		}
 		complete_national_focus = GXC_cc_control
 	}
@@ -4124,13 +4136,20 @@ country_event = { #
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.101"}
 	title = liangguang_rd.101.title
 	desc = liangguang_rd.101.desc
+	fire_only_once = yes
 	#picture = 
 	
 	is_triggered_only = yes
+	trigger = { CHI = { exists = no } }
 	option = { #
 		name = liangguang_rd.101.a
 		ai_chance = { base = 100 }
-		
+		CHI = {
+		random_unit_leader = {
+		limit = { has_id = 3005 }
+		set_nationality = ROOT
+		}
+		}
 	}
 }
 
