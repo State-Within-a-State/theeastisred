@@ -11,7 +11,7 @@ focus_tree = {
 	#meeting the factions at the rounmd table
 	focus = {
 		id = GXC_rkmt_factions
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Meeting_the_factions
 		x = 15
 		y = 1
 		cost = 5
@@ -797,7 +797,7 @@ focus_tree = {
 	#a struggle against the late generalissimo
 	focus = {
 		id = GXC_wh_chiang
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Struggle_against_generalissimo
 		x = 9
 		y = 3
 		cost = 5
@@ -823,7 +823,7 @@ focus_tree = {
 	#revisiting the Confucian issue
 	focus = {
 		id = GXC_wh_confucian
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Revisit_confucian_issue
 		relative_position_id = GXC_wh_chiang
 		x = 0
 		y = 1
@@ -841,7 +841,7 @@ focus_tree = {
 	#revival of the classics
 	focus = {
 		id = GXC_wh_classics
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Revival_of_classics
 		relative_position_id = GXC_wh_chiang
 		x = -1
 		y = 2
@@ -857,7 +857,7 @@ focus_tree = {
 	#a beam of tradition
 	focus = {
 		id = GXC_wh_tradition
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Beam_of_tradition
 		relative_position_id = GXC_wh_chiang
 		x = 1
 		y = 2
@@ -875,7 +875,7 @@ focus_tree = {
 	#promoting han buddhism
 	focus = {
 		id = GXC_wh_buddhism
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Promote_han_buddhism
 		relative_position_id = GXC_wh_chiang
 		x = 1
 		y = 3
@@ -893,7 +893,7 @@ focus_tree = {
 	#ending undue Christian influence
 	focus = {
 		id = GXC_wh_christian
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_End_christian_infiltration
 		relative_position_id = GXC_wh_chiang
 		x = -1
 		y = 3
@@ -912,7 +912,7 @@ focus_tree = {
 	#keeping the sky blue 
 	focus = {
 		id = GXC_wh_blue_sky
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Keeping_the_sky_blue
 		relative_position_id = GXC_wh_chiang
 		x = -2
 		y = 4
@@ -930,7 +930,7 @@ focus_tree = {
 	#return of the mentor 
 	focus = {
 		id = GXC_wh_mentor
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Return_of_lost_mentor
 		relative_position_id = GXC_wh_chiang
 		x = 2
 		y = 4
@@ -950,7 +950,7 @@ focus_tree = {
 	#support the national literature publishing house 
 	focus = {
 		id = GXC_wh_publishing
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Support_national_publishing
 		relative_position_id = GXC_wh_chiang
 		x = 0
 		y = 4
@@ -968,7 +968,7 @@ focus_tree = {
 	#a party of nationalism and morality 
 	focus = {
 		id = GXC_wh_nationalism_morality
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Nationalism_and_morality
 		relative_position_id = GXC_wh_chiang
 		x = 0
 		y = 5
@@ -998,8 +998,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_whampoa_vict } 
 		mutually_exclusive = { focus = GXC_whampoa_kexin } 
+		available = {
+		always = no
+		}
 		completion_reward = {
-
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#upholding sun's pan Asian legacy
@@ -1015,7 +1018,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_whampoa_wh } 
 		completion_reward = {
-
+			add_ideas = {
+			PRC_sun_yat_sen_panasianism
+			}
 		}
 	}
 	#enact the three virtues
@@ -1031,7 +1036,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_whampoa_pan_asian } 
 		completion_reward = {
-
+			add_ideas = {
+			PRC_three_virtues
+			}
 		}
 	}
 	#striving against mutual assistance
@@ -1047,7 +1054,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_whampoa_three_virtues } 
 		completion_reward = {
-
+			add_ideas = {
+			PRC_against_mutual_assisstance
+			}
 		}
 	}
 	#promoting Buddhist nationalism
@@ -1063,7 +1072,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_whampoa_three_virtues } 
 		completion_reward = {
-
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
+			add_war_support = 0.1
+			add_political_power = 50
 		}
 	}
 	#a virtuous republic
