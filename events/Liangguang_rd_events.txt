@@ -4188,7 +4188,7 @@ country_event = { #
 
 }
 
-country_event = { #
+country_event = { #Revisiting Tutelage
 	id = liangguang_rd.102
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.102"}
 	title = liangguang_rd.102.title
@@ -4196,14 +4196,41 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Li Zongren succeeds, Xu Chongzhi is overthrown.
 		name = liangguang_rd.102.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = social_liberal }
+		create_country_leader = {
+			name = "Li Zongren"
+			desc = "-"
+			picture = "gfx/leaders/GXC/Portrait_GXC_Li_Zongren.png"
+			expire = "1.1.1"
+			ideology = soclib_tridemism_subtype
+		}
+		set_country_flag = PRC_Li_zongren_in_charge
+		remove_all_ministers = yes
+		add_ideas = {
+		PRC_Wang_Wenhao_hog_sli
+		PRC_Song_Ziwen_eco_sli
+		PRC_Deng_Zeru_for_sco
+		PRC_Zhang_Lisheng_sec_ade
+		}
+	}
+	
+	option = { #Zongren is repelled, the coup is crushed.
+		name = liangguang_rd.102.b
+		set_country_flag = PRC_Xu_Chongxi_in_charge
+		ai_chance = { base = 100 }
+		add_political_power = 50
+		add_manpower = -100
+		swap_ideas = {
+		remove_idea = PRC_Li_Zongren_hog_ade
+		add_idea = PRC_Bai_Chongxi_hog_ade
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Eternal President
 	id = liangguang_rd.103
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.103"}
 	title = liangguang_rd.103.title
@@ -4211,10 +4238,16 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must not be puppets of a dead man.
 		name = liangguang_rd.103.a
 		ai_chance = { base = 100 }
 		
+	}
+	
+	option = { #Blood brothers are always bonded.
+		name = liangguang_rd.103.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = pataut_chiangism_subtype
 	}
 }
 
