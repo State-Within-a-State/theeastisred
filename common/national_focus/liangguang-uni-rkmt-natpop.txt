@@ -11,7 +11,7 @@ focus_tree = {
 	#darkness rising would they call themselves darkness? seems too negative to them for a focus name
 	focus = {
 		id = PRC_rkmt_uni_dark
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Darkness_rising_from_light
 		x = 15
 		y = 0
 		cost = 5
@@ -28,7 +28,7 @@ focus_tree = {
 	#bring fuxing society back together
 	focus = {
 		id = PRC_rkmt_uni_fuxing
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Fuxing_society_back_together
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 0
 		y = 1
@@ -38,13 +38,39 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_dark }
 		completion_reward = {
-
+			add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+			}
+			add_popularity = {
+			ideology = patneral_autocrat
+			popularity = 0.05
+			}
+			add_political_power = 30
+			add_tot_to_coalition = yes
+			add_pataut_to_coalition  = yes
+			set_party_name = {
+				ideology = totalist
+				long_name = PRC_fuxing_society_long
+				name = PRC_fuxing_society
+			}
+			set_party_name = {
+				ideology = patneral_autocrat
+				long_name = PRC_fuxing_society_long
+				name = PRC_fuxing_society
+			}
+			
+			set_party_name = {
+				ideology = national_populist
+				long_name = PRC_fuxing_society_long
+				name = PRC_fuxing_society
+			}
 		}
 	}
 	#End to the red beasts and liberal devils
 	focus = {
 		id = PRC_rkmt_uni_red_beasts 
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Red_beasts_and_lib_devils
 		relative_position_id = PRC_rkmt_uni_dark
 		x = -2
 		y = 2
@@ -54,13 +80,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_fuxing }
 		completion_reward = {
-
+		add_timed_idea = {
+		idea = PRC_anti_syndicalist_rage_1
+		days = 180
+		}
 		}
 	}
 	#enstrin cult of generallmossio
 	focus = {
 		id = PRC_rkmt_uni_cult
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Cult_of_generalissimo
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 0
 		y = 2
@@ -70,13 +99,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_fuxing }
 		completion_reward = {
-
+			add_ideas = {
+			PRC_cks_legacy
+			}
 		}
 	}
 	#cultrual rennecaince
 	focus = {
 		id = PRC_rkmt_uni_culture
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Begin_cultural_renaissance
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 2
 		y = 2
@@ -86,13 +117,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_fuxing }
 		completion_reward = {
-
+			add_ideas = {
+			PRC_cultural_revival
+			}
 		}
 	}
 	#six ethics six morals
 	focus = {
 		id = PRC_rkmt_uni_six
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Six_ethics_six_moral
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 1
 		y = 3
@@ -102,13 +135,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_culture } prerequisite = { focus = PRC_rkmt_uni_cult }
 		completion_reward = {
-
+			add_ideas = {
+			PRC_six_morals
+			}
 		}
 	}
 	#national life guidance
 	focus = {
 		id = PRC_rkmt_uni_guidance
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_National_life_guidance
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 0
 		y = 4
@@ -118,13 +153,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_six }
 		completion_reward = {
-
+			add_ideas = {
+			PRC_new_life_organizations
+			}
 		}
 	}
 	#six aspects of living
 	focus = {
 		id = PRC_rkmt_uni_aspects
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Six_aspects_of_living
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 3
 		y = 3
@@ -134,13 +171,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_culture } 
 		completion_reward = {
-
+			add_ideas = {
+			PRC_public_health_priority
+			}
 		}
 	}
 	#founding national arts foundation
 	focus = {
 		id = PRC_rkmt_uni_arts
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_National_arts_foundation
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 2
 		y = 4
@@ -150,13 +189,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_aspects } prerequisite = { focus = PRC_rkmt_uni_six }
 		completion_reward = {
-
+			add_research_slot = 1
 		}
 	}
 	#harmony between mind and matter
 	focus = {
 		id = PRC_rkmt_uni_harmony
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Mind_and_matter
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 4
 		y = 4
@@ -166,13 +205,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_aspects } 
 		completion_reward = {
-
+			add_ideas = {
+			PRC_harmony_with_matter
+			}
 		}
 	}
 	#adherance to classics
 	focus = {
 		id = PRC_rkmt_uni_classics
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Adherence_to_classics
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 1
 		y = 5
@@ -182,13 +223,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_arts } prerequisite = { focus = PRC_rkmt_uni_guidance } 
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = PRC_adhereing_to_classics
+			days = 180
+			}
 		}
 	}
 	#muo zhongsan thought
 	focus = {
 		id = PRC_rkmt_uni_muo
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Muo_zongsan_thought
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 3
 		y = 5
@@ -198,14 +242,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_arts } prerequisite = { focus = PRC_rkmt_uni_harmony } 
 		completion_reward = {
-
+			add_ideas = {
+			PRC_muo_zhongsan
+			}
 		}
 	}
 
 	#attack foreign imperialists
 	focus = {
 		id = PRC_rkmt_uni_foreign
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Attack_foreign_imperialists
 		relative_position_id = PRC_rkmt_uni_dark
 		x = -1
 		y = 3
@@ -215,13 +261,18 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_cult } prerequisite = { focus = PRC_rkmt_uni_red_beasts }
 		completion_reward = {
-
+			add_war_support = 0.15
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
+			add_political_power = 50
 		}
 	}
 	#a day for youthful growth
 	focus = {
 		id = PRC_rkmt_uni_youth
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Day_for_youthful_growth
 		relative_position_id = PRC_rkmt_uni_dark
 		x = -2
 		y = 4
@@ -231,13 +282,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_cult } prerequisite = { focus = PRC_rkmt_uni_red_beasts }
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = PRC_youthful_outreach
+			days = 180
+			}
 		}
 	}
 	#revive sun wenshi society
 	focus = {
 		id = PRC_rkmt_uni_wenshi
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Sun_Wenshi_society
 		relative_position_id = PRC_rkmt_uni_dark
 		x = -2
 		y = 5
@@ -247,13 +301,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_youth }
 		completion_reward = {
-
+			add_ideas = {
+			PRC_wneshi_society
+			}
 		}
 	}
 	#republic strong moral and grand
 	focus = {
 		id = PRC_rkmt_uni_moral
-		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
+		icon = GFX_goal_GXC_Republic_strong_moral_and_grand
 		relative_position_id = PRC_rkmt_uni_dark
 		x = 0
 		y = 6
@@ -263,7 +319,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = PRC_rkmt_uni_muo } prerequisite = { focus = PRC_rkmt_uni_wenshi } prerequisite = { focus = PRC_rkmt_uni_classics } 
 		completion_reward = {
-
+			add_ideas = {
+			PRC_moral_republic
+			}
+			country_event = liangguang_rd.105
 		}
 	}
 
