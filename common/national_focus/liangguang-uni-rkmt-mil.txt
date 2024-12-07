@@ -566,7 +566,7 @@ shared_focus = {
 #Sun Li-Jen's doctrine
 shared_focus = {
 	id = GXC_rkmt_lijen
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Sun_Li_Jen
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -7
@@ -575,13 +575,18 @@ shared_focus = {
 	prerequisite = { focus = GXC_rkmt_nra }
 	mutually_exclusive = { focus = GXC_rkmt_modernitity }
 	completion_reward = {
-
+		add_doctrine_cost_reduction = {
+			name = RUS_Extensive_Planning
+			cost_reduction = 0.5
+			uses = 2
+			category = land_doctrine
+		}
 	}
 }
 #enact strict dispiline
 shared_focus = {
 	id = GXC_rkmt_strictdispiline
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Enact_strict_discipline
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -9
@@ -589,13 +594,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_lijen }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_strict_discipline_sun_li_jen
+		}
 	}
 }
 #stubborn resistance
 shared_focus = {
 	id = GXC_rkmt_stubborn
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Stubborn_resistance
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -9
@@ -603,13 +610,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_strictdispiline }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_stubborn_resistance
+		}
 	}
 }
 #under blanket of darkness
 shared_focus = {
 	id = GXC_rkmt_blanket
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Under_blanket_of_darkness
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -10
@@ -617,13 +626,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_stubborn }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_in_the_night
+		}
 	}
 }
 #focus on sport training
 shared_focus = {
 	id = GXC_rkmt_sportball
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Sports_training
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -8
@@ -631,14 +642,17 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_stubborn }
 	completion_reward = {
-
+		swap_ideas = {
+		remove_idea = PRC_strict_discipline_sun_li_jen
+		add_idea = PRC_strict_discipline_sun_li_jen_1
+		}
 	}
 }
 
 #the eight departments
 shared_focus = {
 	id = GXC_rkmt_eight_departments
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Eight_departments
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -6
@@ -646,13 +660,28 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_lijen }
 	completion_reward = {
-
+		random_owned_controlled_state = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+				type = arms_factory
+				level = 2
+				instant_build = yes
+			}
+		}
 	}
 }
 #chinese expindiitonary force
 shared_focus = {
 	id = GXC_rkmt_expindiitonary
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Chinese_expeditionary_force
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -7
@@ -660,13 +689,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_eight_departments }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_chinese_expedition_force
+		}
 	}
 }
 #abolish military political work
 shared_focus = {
 	id = GXC_rkmt_military_political 
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Abolish_military_political_work
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -5
@@ -674,13 +705,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_eight_departments }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_political_work
+		}
 	}
 }
 #legacy of the tax corps
 shared_focus = {
 	id = GXC_rkmt_tax_corps
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Legacy_of_tax_corps
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -6
@@ -688,13 +721,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_military_political } prerequisite = { focus = GXC_rkmt_expindiitonary }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_tax_corps
+		}
 	}
 }
 #an army of heavan
 shared_focus = {
 	id = GXC_rkmt_army_heaven
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_An_army_of_heacen
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -7
@@ -702,14 +737,16 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_tax_corps } prerequisite = { focus = GXC_rkmt_sportball } prerequisite = { focus = GXC_rkmt_blanket }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_an_army_under_heavan
+		}
 	}
 }
 
 #modernitity above all
 shared_focus = {
 	id = GXC_rkmt_modernitity
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Modernity_above_all_2
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 0
@@ -718,13 +755,31 @@ shared_focus = {
 	prerequisite = { focus = GXC_rkmt_nra }
 	mutually_exclusive = { focus = GXC_rkmt_lijen }
 	completion_reward = {
-
+		add_doctrine_cost_reduction = {
+			name = RUS_Spearhead_Doctrine
+			cost_reduction = 0.5
+			uses = 2
+			category = land_doctrine
+		}
+		add_ai_strategy = {
+			type = role_ratio
+			id = infantry
+			value = -10
+		}
+		add_ai_strategy = {
+			type = role_ratio
+			id = armor
+			value = 30
+		}
+		add_ideas = {
+		PRC_modernization_funding
+		}
 	}
 }
 #focus on weapons' upgrades
 shared_focus = {
 	id = GXC_rkmt_weapon_upgrades
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Focus_on_weapons_upgrades
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -2
@@ -732,13 +787,30 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_modernitity }
 	completion_reward = {
-
+		add_tech_bonus = {
+			name = RUS_Equipment_Modernisation 
+			bonus = 1
+			uses = 2
+			category = infantry_weapons
+			category = artillery
+		}
+		if = {
+			limit = {
+				has_completed_focus = RUS_Overwhelming_Firepower
+			}
+			add_tech_bonus = {
+				name = RUS_Equipment_Modernisation
+				bonus = 1
+				uses = 2
+				category = support_tech
+			}
+		}
 	}
 }
 #modern supply lines
 shared_focus = {
 	id = GXC_rkmt_supplylines
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Modern_supply_lines
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 0
@@ -746,13 +818,44 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_modernitity }
 	completion_reward = {
-
+		add_ideas = {
+		RUS_military_infrastructure_focus
+		}
+		if = {
+			limit = { 
+				NOT = { has_tech = tech_logistics_company }
+			}
+			set_technology = { tech_logistics_company = 1 }
+		}
+		else = {
+			add_tech_bonus = {
+				name = RUS_Military_Infrastructure
+				bonus = 1
+				uses = 1
+				category = logistics_tech
+			}
+		}
+		if = {
+			limit = { 
+				NOT = { has_tech = tech_maintenance_company }
+			}
+			set_technology = { tech_maintenance_company = 1 }
+		}
+		else = {
+			add_tech_bonus = {
+				name = RUS_Military_Infrastructure
+				bonus = 1
+				uses = 1
+				category = maintenance_company_tech
+			}
+			
+		}
 	}
 }
 #any eye to foreign partners
 shared_focus = {
 	id = GXC_rkmt_foreignpartners
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Eye_to_foreign_partners
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -1
@@ -760,13 +863,19 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_supplylines }prerequisite = { focus = GXC_rkmt_weapon_upgrades } 
 	completion_reward = {
-
+		add_tech_bonus = {
+			name = RUS_Import_Foreign_Specialists
+			bonus = 0.5
+			uses = 2
+			ahead_reduction = 2
+			category = armor
+		}
 	}
 }
 #tanks roll in
 shared_focus = {
 	id = GXC_rkmt_tankies
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Tanks_shall_roll_in
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = -1
@@ -774,13 +883,18 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_foreignpartners } 
 	completion_reward = {
-
+		add_tech_bonus = {
+			name = RUS_Armour_Modernisation
+			bonus = 0.5
+			uses = 2
+			category = armor
+		}
 	}
 }
 #strategic defense
 shared_focus = {
 	id = GXC_rkmt_stratdef
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Strategic_defense
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 2
@@ -788,13 +902,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_modernitity }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_strategic_defence
+		}
 	}
 }
 #lessons from years of resistsnace
 shared_focus = {
 	id = GXC_rkmt_resistanceyears
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Lessons_from_years_of_resistance
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 1
@@ -802,13 +918,19 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_stratdef }
 	completion_reward = {
-
+			add_doctrine_cost_reduction = {
+			name = RUS_War_Of_Numbers
+			cost_reduction = 0.5
+			uses = 2
+			category = land_doctrine
+		}
+		army_experience = 25
 	}
 }
 #a happy solide ris a good soldier
 shared_focus = {
 	id = GXC_rkmt_happyhappy
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Happy_soldier_good_soldier
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 3
@@ -816,13 +938,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_stratdef }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_happy_army
+		}
 	}
 }
 #unused name no clue special project thing plz some tank design or whatever
 shared_focus = {
 	id = GXC_rkmt_sussy
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Modernity_above_all
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 1
@@ -830,13 +954,30 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_happyhappy } prerequisite = { focus = GXC_rkmt_resistanceyears } 
 	completion_reward = {
-
+		if = {
+				limit = {
+					NOT = { has_tech = atomic_research }
+					NOT = { is_researching_technology = atomic_research }
+				}
+				add_tech_bonus = {
+					name = RUS_Project_Kremlin
+					bonus = 0.5
+					uses = 1
+					technology = atomic_research
+				}
+			}
+			else = {
+				add_breakthrough_progress = {
+					specialization = specialization_nuclear
+					value = 0.5
+				}
+			}
 	}
 }
 #preperation for the long war
 shared_focus = {
 	id = GXC_rkmt_longwarprep
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Prep_for_long_war
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 3
@@ -844,13 +985,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_happyhappy } prerequisite = { focus = GXC_rkmt_resistanceyears } 
 	completion_reward = {
-
+		add_ideas = {
+		PRC_long_war
+		}
 	}
 }
 #the tiger leaps
 shared_focus = {
 	id = GXC_rkmt_tigerleaps
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Tiger_leaps
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 0
@@ -859,13 +1002,16 @@ shared_focus = {
 	prerequisite = { focus = GXC_rkmt_longwarprep } prerequisite = { focus = GXC_rkmt_sussy } prerequisite = { focus = GXC_rkmt_tankies } 
 	mutually_exclusive = { focus = GXC_rkmt_nothinghappens }
 	completion_reward = {
-
+		swap_ideas = {
+		remove_idea = PRC_strategic_defence
+		add_idea = PRC_strategic_defence_1
+		}
 	}
 }
 #holding the line until death
 shared_focus = {
 	id = GXC_rkmt_nothinghappens
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Holding_the_line
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 2
@@ -874,7 +1020,10 @@ shared_focus = {
 	prerequisite = { focus = GXC_rkmt_longwarprep } prerequisite = { focus = GXC_rkmt_sussy } prerequisite = { focus = GXC_rkmt_tankies } 
 	mutually_exclusive = { focus = GXC_rkmt_tigerleaps }
 	completion_reward = {
-
+		swap_ideas = {
+		remove_idea = PRC_strategic_defence
+		add_idea = PRC_strategic_defence_2
+		}
 	}
 }
 
