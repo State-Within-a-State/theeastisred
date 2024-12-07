@@ -2,7 +2,7 @@
 #Revival of the NRA
 shared_focus = {
 	id = GXC_rkmt_nra
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_NRA_revival
 	cost = 5
 	x = 11
 	y = 10
@@ -14,13 +14,14 @@ shared_focus = {
 
 	search_filters = { FOCUS_FILTER_MILITARY }
 	completion_reward = {
-
+		add_command_power = 25
+		army_experience = 50
 	}
 }
 #blue flag on blue seas
 shared_focus = {
 	id = GXC_rkmt_blue_seas
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Blue_flag_on_blue_sea
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 15
@@ -28,13 +29,13 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_nra }
 	completion_reward = {
-
+		navy_experience = 50
 	}
 }
 #landing on the beaches
 shared_focus = {
 	id = GXC_rkmt_beaches
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Landing_on_beaches
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 13
@@ -42,13 +43,23 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_blue_seas }
 	completion_reward = {
-
+		add_equipment_to_stockpile = {
+				type = convoy
+				amount = 25
+				producer = CSA
+			}
+			add_tech_bonus = {
+				name = marines_bonus
+				bonus = 1
+				uses = 1
+				category = marine_tech
+			}
 	}
 }
 #securing the surface
 shared_focus = {
 	id = GXC_rkmt_surfaces
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Securing_the_surface
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 15
@@ -56,13 +67,25 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_blue_seas }
 	completion_reward = {
-
+		add_tech_bonus = {
+			name = RUS_Commerce_Raiders
+			bonus = 0.5
+			uses = 2
+			category = cat_torpedoes
+			category = cat_targeting
+		}
+		add_tech_bonus = {
+			name = RUS_Commerce_Raiders
+			bonus = 0.5
+			uses = 1
+			category = ca_tech
+		}
 	}
 }
 #form the navalequipment department
 shared_focus = {
 	id = GXC_rkmt_navalequipment
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Naval_equipment_dept
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 13
@@ -70,13 +93,18 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_beaches } prerequisite = { focus = GXC_rkmt_surfaces }
 	completion_reward = {
-
+			add_doctrine_cost_reduction = {
+			name = RUS_Naval_Infantry
+			cost_reduction = 0.5
+			uses = 2
+			category = naval_doctrine
+		}
 	}
 }
 #preperation for the storm
 shared_focus = {
 	id = GXC_rkmt_storm_prep
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Prep_for_the_storm
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 12
@@ -84,13 +112,19 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_navalequipment }
 	completion_reward = {
-
+			add_tech_bonus = {
+			name = RUS_Fleet_Protectors
+			bonus = 0.5
+			uses = 2
+			category = asw_tech
+			category = cat_anti_air
+		}
 	}
 }
 #school of electric and mine science
 shared_focus = {
 	id = GXC_rkmt_mine_science
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Electronic_and_mine_science
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 14
@@ -98,14 +132,38 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_navalequipment }
 	completion_reward = {
-
+			if = {
+			limit = { has_dlc_mtg = yes }
+			add_tech_bonus = {
+				name = RUS_Fleet_Vanguards
+				bonus = 0.75
+				uses = 3
+				category = cat_gunnery
+				category = cat_targeting
+			}
+			add_tech_bonus = {
+				name = RUS_Fleet_Vanguards
+				bonus = 0.75
+				uses = 2
+				category = ca_tech
+			}
+		}
+		else = {
+			add_tech_bonus = {
+				name = RUS_Fleet_Vanguards
+				bonus = 1
+				uses = 2
+				category = ca_tech
+				category = bc_tech
+			}
+		}
 	}
 }
 
 #creation of the republican naval acadamy
 shared_focus = {
 	id = GXC_rkmt_naval_school
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Republican_naval_academy
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 17
@@ -113,13 +171,20 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_blue_seas }
 	completion_reward = {
-
+		1066 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+		}
+		}
 	}
 }
 #legacy of the Xiamen garrison
 shared_focus = {
 	id = GXC_rkmt_xiamen
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Xiamen_garrison
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 16
@@ -127,13 +192,15 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_naval_school } prerequisite = { focus = GXC_rkmt_surfaces }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_xiamen_garrison
+		}
 	}
 }
 #studying britihs naval tactics
 shared_focus = {
 	id = GXC_rkmt_british
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_British_naval_tactics
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 16
@@ -141,13 +208,21 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_xiamen }
 	completion_reward = {
+		add_tech_bonus = {
+			name = RUS_Recover_Foreign_Blueprints
+			bonus = 1
+			uses = 1
+			ahead_reduction = 3
+			category = cv_tech
+			category = bb_tech
 
+		}
 	}
 }
 #last voyage of the beyiang admirals
 shared_focus = {
 	id = GXC_rkmt_beyiang_admirals
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Last_voyage_of_beiyang_admirals
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 15
@@ -155,14 +230,57 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_storm_prep } prerequisite = { focus = GXC_rkmt_british } prerequisite = { focus = GXC_rkmt_mine_science }
 	completion_reward = {
-
-	}
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_scavenge_the_beiyang_fleet"
+			if = {
+				limit = { has_dlc = "Man the Guns" }
+				if = {
+					limit = { NOT = { has_tech = early_ship_hull_light } }
+					set_technology = { early_ship_hull_light = 1 }
+				}
+				if = {
+					limit = { NOT = { has_tech = early_ship_hull_cruiser } }
+					set_technology = { early_ship_hull_cruiser = 1 }
+				}
+				if = {
+					limit = { NOT = { has_tech = coastal_defense_ships } }
+					set_technology = { coastal_defense_ships = 1 }
+				}
+				if = {
+					limit = { NOT = { has_tech = coastal_defense_ships } }
+					set_technology = { coastal_defense_ships = 1 }
+				}
+				if = {
+					limit = { NOT = { has_tech = basic_naval_mines } }
+					set_technology = { basic_naval_mines = 1 }
+				}
+				if = {
+					limit = { NOT = { has_tech = basic_battery } }
+					set_technology = { basic_battery = 1 }
+				}
+				if = {
+					limit = { NOT = { has_tech = basic_torpedo } }
+					set_technology = { basic_torpedo = 1 }
+				}
+			}
+			else = {
+				if = {
+					limit = { NOT = { has_tech = early_destroyer } }
+					set_technology = { early_destroyer = 1 }
+				}
+				if = {
+					limit = { NOT = { has_tech = early_submarine } }
+					set_technology = { early_submarine = 1 }
+				}
+			}
+			navy_experience = 50
+			
+		}
 }
 
 #tiger roam skys
 shared_focus = {
 	id = GXC_rkmt_skyroam
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_roaming_Flying_tigers
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 8
@@ -170,13 +288,13 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_nra }
 	completion_reward = {
-
+		air_experience = 50
 	}
 }
 #central aviation school
 shared_focus = {
 	id = GXC_rkmt_central_aviation
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Central_aviation_school
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 7
@@ -184,13 +302,19 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_skyroam }
 	completion_reward = {
-
+		add_doctrine_cost_reduction = {
+			name = RUS_Standardise_Pilot_Training
+			uses = 1
+			cost_reduction = 1 
+			category = air_doctrine		}
+		
+		add_ideas = RUS_improved_pilot_training_1
 	}
 }
 #etsbalish aireforce military discrcit 
 shared_focus = {
 	id = GXC_rkmt_airforce_district
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Airforce_military_district
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 9
@@ -198,13 +322,20 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_skyroam }
 	completion_reward = {
-
+		random_owned_state = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = air_base
+			level = 2
+			instant_build = yes
+		}
+		}
 	}
 }
 #black cat squadran 
 shared_focus = {
 	id = GXC_rkmt_black_mao
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Black_cat_squad
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 10
@@ -212,14 +343,45 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_airforce_district }
 	completion_reward = {
-
-	}
+			log = "[GetDateText]: [Root.GetName]: Focus CHI_study_european_air"
+			613 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				add_equipment_to_stockpile = {
+					type = small_plane_airframe_0
+					amount = 25
+					producer = FRA
+				}
+			}
+			else = {
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_0
+					amount = 25
+					producer = FRA
+				}
+			}
+			add_doctrine_cost_reduction = {
+				name = CHI_study_european_air
+				cost_reduction = 0.25
+				uses = 2
+				category = air_doctrine
+			}
+			custom_effect_tooltip = tooltip_white_line
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = central_aircraft_manufacturing_company
+		}
 }
 
 #revive the central aeronautical engineering school
 shared_focus = {
 	id = GXC_rkmt_engineeringshool
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Central_aeronautical_engineering
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 6
@@ -227,13 +389,26 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_central_aviation }
 	completion_reward = {
-
+	add_tech_bonus = {
+			name = RUS_Aviation_Bureaus
+			bonus = 0.25
+			uses = 4
+			category = air_equipment
+		}
+		random_owned_controlled_state = {
+				
+				limit = {
+					is_core_of = ROOT
+					can_construct_building = air_facility
+				}
+				construct_building_in_random_province = { air_facility = 1 }
+			}
 	}
 }
 #import foreign desings
 shared_focus = {
 	id = GXC_rkmt_foreigndesigns
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Foreign_designs
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 8
@@ -241,13 +416,53 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_central_aviation } prerequisite = { focus = GXC_rkmt_airforce_district }
 	completion_reward = {
-
+		if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "Hawker Fury"
+					type = small_plane_airframe_0
+					modules = {
+						fixed_main_weapon_slot = light_mg_2x
+						engine_type_slot = engine_1_1x
+						special_type_slot_1 = empty
+					}
+				}
+			}
+			if = {
+				limit = { has_dlc = "By Blood Alone" }
+				create_equipment_variant = {
+					name = "Br. 19"
+					type = small_plane_cas_airframe_0
+					modules = {
+						fixed_main_weapon_slot = bomb_locks
+						engine_type_slot = engine_1_1x
+						special_type_slot_1 = lmg_defense_turret
+					}
+					obsolete = yes
+				}
+			}
+			else_if = {
+				limit = { NOT = { has_dlc = "By Blood Alone" } }
+				add_equipment_to_stockpile = {
+					type = fighter_equipment_1
+					producer = FRA
+					amount = 100
+				}
+				add_tech_bonus = {
+					name = CHI_purchase_foreign_blueprints
+					bonus = 0.5
+					uses = 1
+					category = light_fighter
+					category = cat_heavy_fighter
+				}
+				air_experience = 30
+			}
 	}
 }
 #air self defense school 
 shared_focus = {
 	id = GXC_rkmt_airself_defense
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Examples_air_self_defense_school
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 9
@@ -255,14 +470,38 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_engineeringshool } prerequisite = { focus = GXC_rkmt_black_mao }
 	completion_reward = {
-
+		if = {
+			limit = { has_dlc_bba = yes }
+			add_tech_bonus = {
+				name = RUS_Airspace_Defence
+				bonus = 1
+				uses = 1
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+			add_tech_bonus = {
+				name = RUS_Airspace_Defence
+				bonus = 1
+				uses = 1
+				category = plane_modules_tech
+			}
+		}
+		else = {
+			add_tech_bonus = {
+				name = RUS_Airspace_Defence
+				bonus = 0.75
+				uses = 2
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+		}
 	}
 }
 
 #advancing to the stratoshoehre
 shared_focus = {
 	id = GXC_rkmt_stratosphere
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Advance_to_stratosphere
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 7
@@ -270,28 +509,47 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_engineeringshool } prerequisite = { focus = GXC_rkmt_foreigndesigns }
 	completion_reward = {
-
+		add_tech_bonus = {
+			name = RUS_Project_Kostikov
+			bonus = 1
+			uses = 1
+			category = rocketry
+		}
+		add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.5
+			}
 	}
 }
 
 #the leiyun manufacturing plant
 shared_focus = {
 	id = GXC_rkmt_leiyun
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Leiyun_manufacturing_plant
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 5
 	y = 4
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_engineeringshool }
+	available = {
+	owns_state = 816
+	}
 	completion_reward = {
-
+		816 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = arms_factory
+			level = 2
+			instant_build = yes
+		}
+		}
 	}
 }
 #a nation of aaces
 shared_focus = {
 	id = GXC_rkmt_aces
-	icon = GFX_goal_HOL_black_monday
+	icon = GFX_goal_GXC_Nation_of_aces
 	cost = 5
 	relative_position_id = GXC_rkmt_nra
 	x = 8
@@ -299,7 +557,9 @@ shared_focus = {
 	search_filters = { FOCUS_FILTER_MILITARY }
 	prerequisite = { focus = GXC_rkmt_leiyun } prerequisite = { focus = GXC_rkmt_stratosphere } prerequisite = { focus = GXC_rkmt_airself_defense }
 	completion_reward = {
-
+		add_ideas = {
+		PRC_nation_of_aces
+		}
 	}
 }
 
