@@ -1,0 +1,1504 @@
+focus_tree = {
+	id = gxc-uni-anarch-tree
+	continuous_focus_position = { x = 40 y = 2000 } 
+	country = {
+		factor = 0
+	}
+	#foreign policy and mil and navy tree
+	#Now Is The Hour!
+	focus = {
+		id = GXC_nowisthehour
+		icon = GFX_GXC_nowisthehour-248360
+		x = 59
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	
+		completion_reward = {
+		}
+	}
+
+	#A Sinitic Anarchist Theory
+	focus = {
+		id = GXC_a_sinitic_anarchist_theory
+		icon = GFX_GXC_a_sinitic_anarchist_theory-248360
+		x = 56
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		}
+		}
+		prerequisite = { focus = GXC_nowisthehour  }
+		mutually_exclusive = { focus = GXC_an_internationalist_focus  } mutually_exclusive = { focus = GXC_a_revolt_by_scythe_and_pen  }
+		completion_reward = {
+		custom_effect_tooltip = united_asia_gxc_tt
+		hidden_effect = {
+		add_state_core = 527
+		add_state_core = 525
+		add_state_core = 408
+		add_state_core = 1246
+		add_state_core = 409
+		add_state_core = 560
+		add_state_core = 561
+		add_state_core = 657
+		add_state_core = 563
+		add_state_core = 564
+		add_state_core = 565
+		add_state_core = 574
+		add_state_core = 562
+		add_state_core = 637
+		add_state_core = 537
+		add_state_core = 555
+		add_state_core = 536
+		add_state_core = 533
+		add_state_core = 534
+		add_state_core = 535
+		add_state_core = 532
+		add_state_core = 531
+		add_state_core = 529
+		add_state_core = 530
+		add_state_core = 528
+		add_state_core = 526
+		}
+		}
+	}
+
+	#An Internationalist Focus
+	focus = {
+		id = GXC_an_internationalist_focus
+		icon = GFX_GXC_an_internationalist_focus-248360
+		x = 59
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		prerequisite = { focus = GXC_nowisthehour  }
+		mutually_exclusive = { focus = GXC_a_sinitic_anarchist_theory  } mutually_exclusive = { focus = GXC_a_revolt_by_scythe_and_pen  }
+		completion_reward = {
+		every_state = { add_core_of = GXC }
+		}
+	}
+
+	#A Revolt By Scythe and Pen
+	focus = {
+		id = GXC_a_revolt_by_scythe_and_pen
+		icon = GFX_GXC_a_revolt_by_scythe_and_pen-248360
+		x = 62
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		}
+		prerequisite = { focus = GXC_nowisthehour  }
+		mutually_exclusive = { focus = GXC_a_sinitic_anarchist_theory  } mutually_exclusive = { focus = GXC_an_internationalist_focus  }
+		completion_reward = {
+		every_state = { add_core_of = GXC }
+		}
+	}
+
+	#Mass Artillery Movement
+	focus = {
+		id = GXC_mass_artillery_movement
+		icon = GFX_GXC_mass_artillery_movement-248360
+		x = 68
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GXC_nowisthehour  }
+		completion_reward = {
+		add_equipment_to_stockpile = {
+				type = artilery
+				amount = 300
+				producer = GER
+			}
+		}
+	}
+
+	#Building A People's Navy
+	focus = {
+		id = GXC_buildingapeoplesnavy
+		icon = GFX_GXC_buildingapeoplesnavy-248360
+		x = 72
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_nowisthehour  }
+		completion_reward = {
+		add_building_construction = {
+			type = naval_base
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+		}
+		}
+	}
+
+	#Sailors as Masters
+	focus = {
+		id = GXC_sailors_as_masters
+		icon = GFX_GXC_sailors_as_masters-248360
+		x = 74
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GXC_buildingapeoplesnavy  }
+		completion_reward = {
+		add_manpower = 19292
+		}
+	}
+
+	#Voluntarist Shipyards
+	focus = {
+		id = GXC_voluntarist_shipyards
+		icon = GFX_GXC_voluntarist_shipyards-248360
+		x = 72
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = GXC_buildingapeoplesnavy  }
+		completion_reward = {
+		add_building_construction = {
+			type = naval_base
+			level = 2
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = dockyard
+			level = 2
+			instant_build = yes
+		}
+		}
+	}
+
+	#Military Transportation Initiatives
+	focus = {
+		id = GXC_military_transportation_initiatives
+		icon = GFX_GXC_military_transportation_initiatives-248360
+		x = 70
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_mass_artillery_movement  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = motorized_equipment
+		}
+		}
+	}
+
+	#Urban Tank Corps
+	focus = {
+		id = GXC_urban_tank_corps
+		icon = GFX_GXC_urban_tank_corps-248360
+		x = 68
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_mass_artillery_movement  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 3
+			category = armor
+		}
+		}
+	}
+
+	#Prize Initiative
+	focus = {
+		id = GXC_prize_initiative
+		icon = GFX_GXC_prize_initiative-248360
+		x = 66
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_mass_artillery_movement  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 3
+			category = armor
+		}
+		}
+	}
+
+	#Reach Directly Into the West
+	focus = {
+		id = GXC_reach_directly_into_the_west
+		icon = GFX_GXC_reach_directly_into_the_west-248360
+		x = 63
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		NOT = {
+		OR = {
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		}
+		}
+		
+		}
+		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		completion_reward = {
+		custom_effect_tooltip = spread_gxc_middle_east
+		hidden_effect = {
+		add_state_core = 1217
+		add_state_core = 267
+		add_state_core = 1218
+		add_state_core = 415
+		add_state_core = 1211
+		add_state_core = 586
+		add_state_core = 1042
+		add_state_core = 589
+		add_state_core = 404
+		add_state_core = 810
+		add_state_core = 590
+		add_state_core = 1203
+		add_state_core = 1279
+		add_state_core = 407
+		add_state_core = 1209
+		add_state_core = 732
+		add_state_core = 1210
+		add_state_core = 1277
+		add_state_core = 1276
+		add_state_core = 405
+		add_state_core = 585
+		add_state_core = 712
+		add_state_core = 1212
+		add_state_core = 402
+		add_state_core = 1278
+		add_state_core = 1275
+		add_state_core = 1281
+		add_state_core = 587
+		add_state_core = 406
+		add_state_core = 410
+		add_state_core = 416
+		add_state_core = 804
+		add_state_core = 418
+		add_state_core = 412
+		add_state_core = 414
+		add_state_core = 266
+		add_state_core = 411
+		add_state_core = 420
+		add_state_core = 413
+		add_state_core = 421
+		add_state_core = 419
+		add_state_core = 417
+		}
+		}
+	}
+
+	#Break the Back of Japan
+	focus = {
+		id = GXC_break_the_back_of_japan
+		icon = GFX_GXC_break_the_back_of_japan-248360
+		x = 61
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = JAP
+		}
+		
+		}
+	}
+
+	#Push Into Australasia
+	focus = {
+		id = GXC_push_into_australasia
+		icon = GFX_GXC_push_into_australasia-248360
+		x = 57
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = AST
+		}
+		hidden_effect = {
+		add_state_core = 522
+		add_state_core = 988
+		add_state_core = 674
+		add_state_core = 987
+		add_state_core = 520
+		add_state_core = 519
+		add_state_core = 517
+		add_state_core = 985
+		add_state_core = 285
+		add_state_core = 521
+		add_state_core = 986
+		add_state_core = 518
+		add_state_core = 284
+		add_state_core = 723
+		add_state_core = 523
+		add_state_core = 757
+		add_state_core = 669
+		add_state_core = 843
+		}
+		}
+	}
+
+	#Union with Japanese and Korean Anarchists
+	focus = {
+		id = GXC_union_with_japanese_and_korean_anarchists
+		icon = GFX_GXC_union_with_japanese_and_korean_anarchists-248360
+		x = 55
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_a_sinitic_anarchist_theory  focus = GXC_an_internationalist_focus  focus = GXC_a_revolt_by_scythe_and_pen  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = KOR
+		}
+		}
+	
+	}
+
+	#Break the Shackles of India
+	focus = {
+		id = GXC_break_the_shackles_of_india
+		icon = GFX_GXC_break_the_shackles_of_india-248360
+		x = 54
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BHC
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PRF
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = DEI
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = NEP
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = BHU
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SKM
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = MAD
+		}
+		hidden_effect = {
+		add_state_core = 432
+		add_state_core = 434
+		add_state_core = 430
+		add_state_core = 324
+		add_state_core = 887
+		add_state_core = 888
+		add_state_core = 431
+		add_state_core = 435
+		add_state_core = 426
+		add_state_core = 436
+		add_state_core = 1093
+		add_state_core = 323
+		add_state_core = 438
+		add_state_core = 1057
+		add_state_core = 437
+		add_state_core = 1092
+		add_state_core = 439
+		add_state_core = 814
+		add_state_core = 889
+		add_state_core = 893
+		add_state_core = 427
+		add_state_core = 424
+		add_state_core = 320
+		add_state_core = 425
+		add_state_core = 423
+		add_state_core = 867
+		add_state_core = 1034
+		add_state_core = 868
+		add_state_core = 429
+		add_state_core = 422
+		add_state_core = 321
+		add_state_core = 1094
+		add_state_core = 428
+		add_state_core = 433
+		add_state_core = 815
+		add_state_core = 440
+		add_state_core = 890
+		add_state_core = 441
+		add_state_core = 891
+		add_state_core = 443
+		add_state_core = 444
+		}
+		
+		}
+	}
+
+	#Southeast Asia Beckons!
+	focus = {
+		id = GXC_southeastasiabeckons
+		icon = GFX_GXC_southeastasiabeckons-248360
+		x = 56
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+		completion_reward = {
+		custom_effect_tooltip = south_e_asia_gxc_tt
+		hidden_effect = {
+		add_state_core = 857
+		add_state_core = 671
+		add_state_core = 670
+		add_state_core = 827
+		add_state_core = 826
+		add_state_core = 286
+		add_state_core = 856
+		add_state_core = 750
+		add_state_core = 825
+		add_state_core = 823
+		add_state_core = 882
+		add_state_core = 756
+		add_state_core = 822
+		add_state_core = 824
+		add_state_core = 289
+		add_state_core = 831
+		add_state_core = 749
+		add_state_core = 724
+		add_state_core = 999
+		add_state_core = 830
+		add_state_core = 751
+		add_state_core = 846
+		add_state_core = 336
+		add_state_core = 288
+		add_state_core = 790
+		add_state_core = 640
+		add_state_core = 72
+		add_state_core = 701
+		add_state_core = 1023
+		add_state_core = 672
+		add_state_core = 1022
+		add_state_core = 1021
+		add_state_core = 335
+		add_state_core = 1020
+		add_state_core = 1019
+		add_state_core = 667
+		add_state_core = 1018
+		add_state_core = 1017
+		add_state_core = 972
+		add_state_core = 721
+		add_state_core = 673
+		add_state_core = 1016
+		add_state_core = 334
+		add_state_core = 333
+		add_state_core = 828
+		add_state_core = 668
+		add_state_core = 626
+		add_state_core = 627
+		add_state_core = 628
+		add_state_core = 625
+		add_state_core = 624
+		add_state_core = 327
+		add_state_core = 623
+		}
+		}
+	}
+
+	#Appeal to the Old World
+	focus = {
+		id = GXC_appeal_to_the_old_world
+		icon = GFX_GXC_appeal_to_the_old_world-248360
+		x = 58
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		}
+		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+		mutually_exclusive = { focus = GXC_tohellwitheurope  }
+		completion_reward = {
+		unlock_decision_tooltip = GXC_conquer_europe
+		}
+	}
+
+	#To Hell With Europe!
+	focus = {
+		id = GXC_tohellwitheurope
+		icon = GFX_GXC_tohellwitheurope-248360
+		x = 60
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		}
+		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+		mutually_exclusive = { focus = GXC_appeal_to_the_old_world  }
+		completion_reward = {
+		unlock_decision_tooltip = GXC_conquer_europe_2
+		}
+	}
+
+	#Challenge America
+	focus = {
+		id = GXC_challenge_america
+		icon = GFX_GXC_challenge_america-248360
+		x = 62
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		}
+		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+		mutually_exclusive = { focus = GXC_our_american_allies  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CAL
+		}
+				create_wargoal = {
+			type = puppet_wargoal_focus
+			target = CSA
+		}
+		
+				create_wargoal = {
+			type = puppet_wargoal_focus
+			target = USA
+		}
+				create_wargoal = {
+			type = puppet_wargoal_focus
+			target = COR
+		}
+		}
+	}
+
+	#Our American Allies
+	focus = {
+		id = GXC_our_american_allies
+		icon = GFX_GXC_our_american_allies-248360
+		x = 64
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		country_exists = CSA
+		CSA = {
+		has_government = syndicalist
+		}
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		}
+		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+		mutually_exclusive = { focus = GXC_challenge_america  }
+		completion_reward = {
+		create_faction = "Sino American Guild"
+		GXC = { add_to_faction = CSA }
+		}
+	}
+
+	#Find Military Collaborators
+	focus = {
+		id = GXC_find_military_collaborators
+		icon = GFX_GXC_find_military_collaborators-248360
+		x = 66
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GXC_prize_initiative  } 
+		completion_reward = {
+		add_political_power = 300
+		}
+	}
+
+	#Defensive Naval Aviation
+	focus = {
+		id = GXC_defensive_naval_aviation
+		icon = GFX_GXC_defensive_naval_aviation-248360
+		x = 68
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_voluntarist_shipyards  } prerequisite = { focus = GXC_urban_tank_corps  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = naval_air
+		}
+		}
+	}
+
+	#Stealth is our Ally
+	focus = {
+		id = GXC_stealth_is_our_ally
+		icon = GFX_GXC_stealth_is_our_ally-248360
+		x = 72
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_voluntarist_shipyards  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = encryption_tech
+		}
+		}
+	}
+
+	#Strength is our Salvation
+	focus = {
+		id = GXC_strength_is_our_salvation
+		icon = GFX_GXC_strength_is_our_salvation-248360
+		x = 74
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GXC_sailors_as_masters  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.15
+		}
+	}
+
+	#Offensive Carriers and Cruisers
+	focus = {
+		id = GXC_offensive_carriers_and_cruisers
+		icon = GFX_GXC_offensive_carriers_and_cruisers-248360
+		x = 76
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_sailors_as_masters  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = cv_tech
+		}
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = bc_tech
+		}
+		}
+	}
+
+	#Naval Landing On Mass
+	focus = {
+		id = GXC_naval_landing_on_mass
+		icon = GFX_GXC_naval_landing_on_mass-248360
+		x = 74
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_strength_is_our_salvation  } prerequisite = { focus = GXC_offensive_carriers_and_cruisers  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 2
+			category = naval_doctrine
+		}
+		}
+	}
+
+	#Develop Full Academies
+	focus = {
+		id = GXC_develop_full_academies
+		icon = GFX_GXC_develop_full_academies-248360
+		x = 72
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_stealth_is_our_ally  }
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+
+	#A Spirit of Common Liberty
+	focus = {
+		id = GXC_a_spirit_of_common_liberty
+		icon = GFX_GXC_a_spirit_of_common_liberty-248360
+		x = 64
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		CSA = {
+		is_in_faction_with = GXC
+		}
+		}
+		
+		prerequisite = { focus = GXC_our_american_allies  }
+		completion_reward = {
+		add_political_power = 100
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.15
+		
+		CSA = {
+		add_political_power = 100
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.15
+		}
+		}
+		}
+	}
+	}	
+
+	#Destroy the False Prophets
+	focus = {
+		id = GXC_destroy_the_false_prophets
+		icon = GFX_GXC_destroy_the_false_prophets-248360
+		x = 60
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = GXC_tohellwitheurope  }
+		completion_reward = {
+		add_manpower = -20000
+		}
+	}
+
+	#A Great Intervention
+	focus = {
+		id = GXC_a_great_intervention
+		icon = GFX_GXC_a_great_intervention-248360
+		x = 58
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_appeal_to_the_old_world  }
+		completion_reward = {
+		add_ideas = {
+		GXC_great_intervetion
+		}
+		}
+	}
+
+	#Form a Great Asian Union
+	focus = {
+		id = GXC_form_a_great_asian_union
+		icon = GFX_GXC_form_a_great_asian_union-248360
+		x = 56
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		owns_state = 527
+		owns_state = 282
+		AND = {
+		OR = {
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		}
+		}
+		}
+		immediate = {
+		hidden_effect = {
+		BHC = {
+		add_state_core = 432
+		add_state_core = 434
+		add_state_core = 430
+		add_state_core = 324
+		add_state_core = 887
+		add_state_core = 888
+		add_state_core = 431
+		add_state_core = 435
+		add_state_core = 426
+		add_state_core = 436
+		add_state_core = 1093
+		add_state_core = 323
+		add_state_core = 438
+		add_state_core = 1057
+		add_state_core = 437
+		add_state_core = 1092
+		add_state_core = 439
+		add_state_core = 814
+		add_state_core = 889
+		add_state_core = 893
+		add_state_core = 427
+		add_state_core = 424
+		add_state_core = 320
+		add_state_core = 425
+		add_state_core = 423
+		add_state_core = 867
+		add_state_core = 1034
+		add_state_core = 868
+		add_state_core = 429
+		add_state_core = 422
+		add_state_core = 321
+		add_state_core = 1094
+		add_state_core = 428
+		add_state_core = 433
+		add_state_core = 815
+		add_state_core = 440
+		add_state_core = 890
+		add_state_core = 441
+		add_state_core = 891
+		add_state_core = 443
+		add_state_core = 444
+		}
+		INC = {
+		add_state_core = 857
+		add_state_core = 671
+		add_state_core = 670
+		add_state_core = 827
+		add_state_core = 826
+		add_state_core = 286
+		add_state_core = 856
+		add_state_core = 750
+		add_state_core = 825
+		add_state_core = 823
+		add_state_core = 882
+		add_state_core = 756
+		add_state_core = 822
+		add_state_core = 824
+		add_state_core = 289
+		add_state_core = 831
+		add_state_core = 749
+		add_state_core = 724
+		add_state_core = 999
+		add_state_core = 830
+		add_state_core = 751
+		add_state_core = 846
+		add_state_core = 336
+		add_state_core = 288
+		add_state_core = 790
+		add_state_core = 640
+		add_state_core = 72
+		add_state_core = 701
+		add_state_core = 1023
+		add_state_core = 672
+		add_state_core = 1022
+		add_state_core = 1021
+		add_state_core = 335
+		add_state_core = 1020
+		add_state_core = 1019
+		add_state_core = 667
+		add_state_core = 1018
+		add_state_core = 1017
+		add_state_core = 972
+		add_state_core = 721
+		add_state_core = 673
+		add_state_core = 1016
+		add_state_core = 334
+		add_state_core = 333
+		add_state_core = 828
+		add_state_core = 668
+		add_state_core = 626
+		add_state_core = 627
+		add_state_core = 628
+		add_state_core = 625
+		add_state_core = 624
+		add_state_core = 327
+		add_state_core = 623
+		}
+		
+		}
+		
+		}
+		prerequisite = { focus = GXC_break_the_shackles_of_india  } prerequisite = { focus = GXC_southeastasiabeckons  }
+		mutually_exclusive = { focus = GXC_fulfil_the_datong_dream  }
+		completion_reward = {
+		set_cosmetic_tag = GXC_ASIAUNION
+		hidden_effect = {
+		release = BHC
+		puppet = BHC
+		BHC = {
+		set_country_leader_name = {
+			ideology = radical_socialist
+			name = "Bhagat Singh"
+		}
+		set_country_leader_portrait = {
+			ideology = radical_socialist
+			portrait = "gfx/leaders/GXCA/Portrait_Bengal_Baghat_Singh.png"
+		}
+		set_country_leader_ideology = anarchism_subtype
+		}
+		release = INC
+		puppet = INC
+		INC = {
+		set_country_leader_name = {
+			ideology = radical_socialist
+			name = "Truong Thi Sau"
+		}
+		set_country_leader_portrait = {
+			ideology = radical_socialist
+			portrait = "gfx/leaders/GXCA/Portrait_Bengal_Baghat_Singh.png"
+		}
+		set_country_leader_ideology = anarchism_subtype
+		}
+		
+		}
+		}
+	}
+
+	#Fulfil the Datong Dream
+	focus = {
+		id = GXC_fulfil_the_datong_dream
+		icon = GFX_GXC_fulfil_the_datong_dream-248360
+		x = 54
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		}
+		}
+		immediate = {
+		hidden_effect = {
+		BHC = {
+		add_state_core = 432
+		add_state_core = 434
+		add_state_core = 430
+		add_state_core = 324
+		add_state_core = 887
+		add_state_core = 888
+		add_state_core = 431
+		add_state_core = 435
+		add_state_core = 426
+		add_state_core = 436
+		add_state_core = 1093
+		add_state_core = 323
+		add_state_core = 438
+		add_state_core = 1057
+		add_state_core = 437
+		add_state_core = 1092
+		add_state_core = 439
+		add_state_core = 814
+		add_state_core = 889
+		add_state_core = 893
+		add_state_core = 427
+		add_state_core = 424
+		add_state_core = 320
+		add_state_core = 425
+		add_state_core = 423
+		add_state_core = 867
+		add_state_core = 1034
+		add_state_core = 868
+		add_state_core = 429
+		add_state_core = 422
+		add_state_core = 321
+		add_state_core = 1094
+		add_state_core = 428
+		add_state_core = 433
+		add_state_core = 815
+		add_state_core = 440
+		add_state_core = 890
+		add_state_core = 441
+		add_state_core = 891
+		add_state_core = 443
+		add_state_core = 444
+		}
+		INC = {
+		add_state_core = 857
+		add_state_core = 671
+		add_state_core = 670
+		add_state_core = 827
+		add_state_core = 826
+		add_state_core = 286
+		add_state_core = 856
+		add_state_core = 750
+		add_state_core = 825
+		add_state_core = 823
+		add_state_core = 882
+		add_state_core = 756
+		add_state_core = 822
+		add_state_core = 824
+		add_state_core = 289
+		add_state_core = 831
+		add_state_core = 749
+		add_state_core = 724
+		add_state_core = 999
+		add_state_core = 830
+		add_state_core = 751
+		add_state_core = 846
+		add_state_core = 336
+		add_state_core = 288
+		add_state_core = 790
+		add_state_core = 640
+		add_state_core = 72
+		add_state_core = 701
+		add_state_core = 1023
+		add_state_core = 672
+		add_state_core = 1022
+		add_state_core = 1021
+		add_state_core = 335
+		add_state_core = 1020
+		add_state_core = 1019
+		add_state_core = 667
+		add_state_core = 1018
+		add_state_core = 1017
+		add_state_core = 972
+		add_state_core = 721
+		add_state_core = 673
+		add_state_core = 1016
+		add_state_core = 334
+		add_state_core = 333
+		add_state_core = 828
+		add_state_core = 668
+		add_state_core = 626
+		add_state_core = 627
+		add_state_core = 628
+		add_state_core = 625
+		add_state_core = 624
+		add_state_core = 327
+		add_state_core = 623
+		}
+		
+		}
+		
+		}
+		prerequisite = { focus = GXC_break_the_shackles_of_india  } prerequisite = { focus = GXC_southeastasiabeckons  }
+		mutually_exclusive = { focus = GXC_form_a_great_asian_union  }
+		completion_reward = {
+		set_cosmetic_tag = GXC_DATONG
+		hidden_effect = {
+		release = JAP
+		puppet = JAP
+		release = KOR
+		puppet = KOR
+		release = BHC
+		puppet = BHC
+		BHC = {
+		set_country_leader_name = {
+			ideology = radical_socialist
+			name = "Bhagat Singh"
+		}
+		set_country_leader_portrait = {
+			ideology = radical_socialist
+			portrait = "gfx/leaders/GXCA/Portrait_Bengal_Baghat_Singh.png"
+		}
+		set_country_leader_ideology = anarchism_subtype
+		}
+		release = INC
+		puppet = INC
+		INC = {
+		set_country_leader_name = {
+			ideology = radical_socialist
+			name = "Truong Thi Sau"
+		}
+		set_country_leader_portrait = {
+			ideology = radical_socialist
+			portrait = "gfx/leaders/GXCA/Portrait_Bengal_Baghat_Singh.png"
+		}
+		set_country_leader_ideology = anarchism_subtype
+		}
+		
+		}
+		}
+	}
+
+	#Writers of the World, Unite!
+	focus = {
+		id = GXC_writersoftheworldunite
+		icon = GFX_GXC_writersoftheworldunite-248360
+		x = 62
+		y = 14
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		}
+		prerequisite = { focus = GXC_challenge_america  }
+		completion_reward = {
+		add_war_support = 0.15
+		}
+	}
+
+	#Establish Sino-American Guilds
+	focus = {
+		id = GXC_establish_sinoamerican_guilds
+		icon = GFX_GXC_establish_sinoamerican_guilds-248360
+		x = 61
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		CSA = {
+		is_in_faction_with = GXC
+		}
+		}
+		prerequisite = { focus = GXC_a_spirit_of_common_liberty focus = GXC_writersoftheworldunite  }
+		completion_reward = {
+		CSA = {
+		set_cosmetic_tag = CSA_GXCANA
+		set_country_leader_name = {
+			ideology = radical_socialist
+			name = "Lu Jianbo"
+		}
+		set_politics = {
+				ruling_party = radical_socialist
+			}
+			
+			set_party_name = {
+			ideology = radical_socialist
+			name = "Sino American Guild Association"
+		}
+		}
+		}
+	}
+
+	#A Great Leap Into The Pacific
+	focus = {
+		id = GXC_a_great_leap_into_the_pacific
+		icon = GFX_GXC_a_great_leap_into_the_pacific-248360
+		x = 63
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_a_spirit_of_common_liberty focus = GXC_writersoftheworldunite  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = fleet_in_being_tree
+		}
+		}
+	}
+
+	#Researching Special Forces
+	focus = {
+		id = GXC_researching_special_forces
+		icon = GFX_GXC_researching_special_forces-248360
+		x = 73
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_naval_landing_on_mass  } prerequisite = { focus = GXC_develop_full_academies  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = mountaineers_tech
+		}
+		}
+	}
+
+	#The People's Marines
+	focus = {
+		id = GXC_thepeoplesmarines
+		icon = GFX_GXC_thepeoplesmarines-248360
+		x = 75
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = GXC_naval_landing_on_mass  } prerequisite = { focus = GXC_develop_full_academies  }
+		completion_reward = {
+		add_tech_bonus = {
+			bonus = 0.5
+			uses = 1
+			category = marine_tech
+		}
+		}
+	}
+
+	#Return to Kropotkin's Birthplace
+	focus = {
+		id = GXC_returntokropotkinsbirthplace
+		icon = GFX_GXC_returntokropotkinsbirthplace-248360
+		x = 59
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = GXC_destroy_the_false_prophets focus = GXC_a_great_intervention focus = GXC_GXC_form_a_great_asian_union focus = GXC_fulfil_the_datong_dream focus = GXC_form_a_great_asian_union  }
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = RUS
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = TRM
+		}
+		}
+	}
+
+	#Bring True Liberation to Africa
+	focus = {
+		id = GXC_bring_true_liberation_to_africa
+		icon = GFX_GXC_bring_true_liberation_to_africa-248360
+		x = 61
+		y = 16
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_establish_sinoamerican_guilds } prerequisite { focus = GXC_a_great_leap_into_the_pacific }
+		completion_reward = {
+		unlock_decision_tooltip = GXC_conquer_africa
+		}
+	}
+
+	#The Abolution of the Nation Itself
+	focus = {
+		id = GXC_the_abolution_of_the_nation_itself
+		icon = GFX_GXC_the_abolution_of_the_nation_itself-248360
+		x = 62
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Ba Jin"
+		ruling_only = yes
+		}
+		}
+		prerequisite = { focus = GXC_returntokropotkinsbirthplace focus = GXC_bring_true_liberation_to_africa }
+		mutually_exclusive = { focus = GXC_the_world_is_my_alma_mater  } mutually_exclusive = { focus = GXC_consolidate_asian_anarchism  }
+		completion_reward = {
+		add_stability = -0.5
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.5
+		}
+		}
+	}
+
+	#The World Is My Alma Mater
+	focus = {
+		id = GXC_the_world_is_my_alma_mater
+		icon = GFX_GXC_the_world_is_my_alma_mater-248360
+		x = 60
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
+		prerequisite = { focus = GXC_returntokropotkinsbirthplace focus = GXC_bring_true_liberation_to_africa }
+		mutually_exclusive = { focus = GXC_the_abolution_of_the_nation_itself  } mutually_exclusive = { focus = GXC_consolidate_asian_anarchism  }
+		completion_reward = {
+		add_ideas = {
+		GXC_alam_mater
+		}
+		}
+	}
+
+	#Consolidate Asian Anarchism
+	focus = {
+		id = GXC_consolidate_asian_anarchism
+		icon = GFX_GXC_consolidate_asian_anarchism-248360
+		x = 58
+		y = 17
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		OR = {
+		has_country_leader = {
+		name = "Liu Shifu"
+		ruling_only = yes
+		}
+		has_country_leader = {
+		name = "Li Shizeng"
+		ruling_only = yes
+		}
+		}
+		}
+		prerequisite = { focus = GXC_returntokropotkinsbirthplace  } 
+		mutually_exclusive = { focus = GXC_the_abolution_of_the_nation_itself  } mutually_exclusive = { focus = GXC_the_world_is_my_alma_mater  }
+		completion_reward = {
+		add_ideas = {
+		GXC_asian_anarchism
+		}
+		}
+	}
+
+
+}
