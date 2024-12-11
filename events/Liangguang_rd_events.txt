@@ -4396,12 +4396,18 @@ country_event = { #join with the Kuomintang in guanxi?
 	trigger = { PRC = { exists = yes } }
 	option = { #ask them gets anarchists annexed by prc btw
 		name = liangguang_rd.106.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 50 
+		modifier = { 
+		factor = 100
+		PRC = { is_ai = no } 
+		}
+		PRC = { country_event = { id = liangguang_rd.107 days = 5 } }
 		
 	}
 	option = { #no bruh
 		name = liangguang_rd.106.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 50 }
+		add_political_power = -50
 		
 	}
 }
@@ -4418,12 +4424,24 @@ country_event = { #kmt reponse
 	option = { #fuck no bruh
 		name = liangguang_rd.107.a
 		ai_chance = { base = 100 }
-		
+		GXC = { country_event = { id = liangguang_rd.108 days = 5 } }
 		
 	}
 	option = { #ultrarightists get cucked again
 		name = liangguang_rd.107.a
 		ai_chance = { base = 100 }
+		add_stability = -0.05
+		PRC_increase_cc_faction_small = yes
+		PRC_increase_cc_faction_small = yes
+		PRC = {
+		if = { limit = { GXC = { is_ai = no } }
+		change_tag_from = GXC
+		}
+		annex_country = {
+    		target = GXC
+		}
+		}
+
 		
 	}
 
@@ -4441,7 +4459,7 @@ country_event = { #rkmt say no
 	option = { #then we must win as ba jin says as they betray suns revolution
 		name = liangguang_rd.108.a
 		ai_chance = { base = 100 }
-		
+		add_war_support = -0.05
 	}
 }
 
