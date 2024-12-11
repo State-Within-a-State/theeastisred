@@ -227,7 +227,7 @@ country_event = { #The Bandit Offenssive
 	is_triggered_only = yes
 	trigger = { not = { has_country_flag = stopped_guangxi_revo } }
 	option = { #We shall crush Xu Chongzhi
-		name = liangguang_rd.7.a
+		name = liangguang_rd.7.b
 		ai_chance = { base = 100 }
 		add_to_variable = {
 				var = rkmt_uprising_status
@@ -241,7 +241,7 @@ country_event = { #The Bandit Offenssive
 	}
 	
 	option = { #Focus on the Socialists
-		name = liangguang_rd.7.b
+		name = liangguang_rd.7.a
 		ai_chance = { base = 100 }
 		add_to_variable = {
 				var = baise_uprising_status
@@ -595,7 +595,13 @@ country_event = { #The Kuomintang Rise Up in Guangxi
 	title = liangguang_rd.16.title
 	desc = liangguang_rd.16.desc
 	immediate = {
-	hidden_effect = {
+	hidden_effect = { 
+	if = { limit = { has_government = radical_socialist } #anarchist joing rkmt
+	country_event = {
+	id = liangguang_rd.106
+	days = 10
+	}
+	}
 	PRC = {
 	add_state_core = 1056
 	add_state_core = 594
@@ -4379,7 +4385,7 @@ country_event = { #Ideology Picker(can choose Soong Mei-Ling to lead) for Feng T
 	}
 }
 
-country_event = { #
+country_event = { #join with the Kuomintang in guanxi?
 	id = liangguang_rd.106
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.106"}
 	title = liangguang_rd.106.title
@@ -4387,14 +4393,20 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	trigger = { PRC = { exists = yes } }
+	option = { #ask them gets anarchists annexed by prc btw
+		name = liangguang_rd.106.a
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #no bruh
 		name = liangguang_rd.106.a
 		ai_chance = { base = 100 }
 		
 	}
 }
 
-country_event = { #
+country_event = { #kmt reponse
 	id = liangguang_rd.107
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.107"}
 	title = liangguang_rd.107.title
@@ -4402,14 +4414,22 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	trigger = { GXC = { exists = yes } }
+	option = { #fuck no bruh
+		name = liangguang_rd.107.a
+		ai_chance = { base = 100 }
+		
+		
+	}
+	option = { #ultrarightists get cucked again
 		name = liangguang_rd.107.a
 		ai_chance = { base = 100 }
 		
 	}
+
 }
 
-country_event = { #
+country_event = { #rkmt say no 
 	id = liangguang_rd.108
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.108"}
 	title = liangguang_rd.108.title
@@ -4417,7 +4437,8 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	trigger = { PRC = { exists = yes } }
+	option = { #then we must win as ba jin says as they betray suns revolution
 		name = liangguang_rd.108.a
 		ai_chance = { base = 100 }
 		
