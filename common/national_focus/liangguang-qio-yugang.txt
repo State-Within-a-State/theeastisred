@@ -22,6 +22,9 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		completion_reward = {
 		custom_effect_tooltip = unlock_focuses
 		}
@@ -40,7 +43,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_yugang_in_qiongya } 
 		completion_reward = {
-		
+			add_ideas = {
+			QIO_local_militias
+			}
 		}
 	}
 	#Appoint the Special Military Affairs Advisor
@@ -56,7 +61,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_organize_militias } 
 		completion_reward = {
-		
+		add_ideas = {
+		QIO_special_military_advisor_council
+		}
 		}
 	}
 	
@@ -73,7 +80,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_special_advisor_affairs } 
 		completion_reward = {
-		
+		load_oob = "QIO_vagrant_bandits"
 		}
 	}
 	#Fighting Against Internal Banditry
@@ -89,7 +96,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_special_advisor_affairs } 
 		completion_reward = {
-		
+			add_timed_idea = {
+			idea = QIO_attacking_internal_bandits
+			time = 180
+			}
 		}
 	}
 	
@@ -106,7 +116,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_internal_bandits } prerequisite = { focus = QIO_vagrant_bandits } 
 		completion_reward = {
-		
+			add_ideas = {
+			QIO_rongting_legacy
+			}
 		}
 	}
 	#Study Foreign Guns
@@ -122,7 +134,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_internal_bandits } prerequisite = { focus = QIO_vagrant_bandits } 
 		completion_reward = {
-		
+		add_tech_bonus = {
+			name = RUS_Import_Foreign_Specialists
+			bonus = 0.5
+			uses = 2
+			ahead_reduction = 2
+			category = infantry_weapons
+		}
 		}
 	}
 	
@@ -139,7 +157,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_internal_bandits } prerequisite = { focus = QIO_vagrant_bandits } 
 		completion_reward = {
-		
+		591 = {
+		add_extra_state_shared_building_slots = 3
+		add_building_construction = {
+			type = arms_factory
+			level = 3
+			instant_build = yes
+		}
+		}
 		}
 	}
 	
@@ -156,7 +181,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_new_military_camps } prerequisite = { focus = QIO_study_foreign_arms } prerequisite = { focus = QIO_legacy_of_father } 
 		completion_reward = {
-		
+		add_ideas = {
+		QIO_grand_reorg
+		}
 		}
 	}
 	
@@ -173,7 +200,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_yugang_in_qiongya } 
 		completion_reward = {
-		
+		swap_ideas = {
+		remove_idea = QIO_a_baron_wasteland
+		add_idea = QIO_infrastructure_revival
+		}
 		}
 	}
 	
@@ -190,7 +220,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_revive_infrastructure } 
 		completion_reward = {
-		
+		591 = {
+		add_extra_state_shared_building_slots = 1
+		add_building_construction = {
+			type = infrastructure
+			level = 1
+			instant_build = yes
+		}
+		}
 		}
 	}
 	
@@ -207,7 +244,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_haikuo } 
 		completion_reward = {
-		
+		add_ideas = {
+		QIO_building_roads
+		}
+		591 = {
+		add_extra_state_shared_building_slots = 3
+		}
 		}
 	}
 	
@@ -224,7 +266,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_haikuo } 
 		completion_reward = {
-		
+		591 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = dockyard
+			level = 1
+			instant_build = yes
+		}
+		add_building_construction = {
+			type = naval_base
+			level = 1
+			instant_build = yes
+		}
+		}
 		}
 	}
 	
@@ -241,7 +295,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_haikuo } 
 		completion_reward = {
-		
+		add_ideas = {
+		QIO_south_bank
+		}
 		}
 	}
 	
@@ -258,7 +314,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_south_bank } prerequisite = { focus = QIO_xiuying_port } prerequisite = { focus = QIO_expand_roads } 
 		completion_reward = {
+		591 = {
+		add_extra_state_shared_building_slots = 2
+		add_building_construction = {
+			type = industrial_complex
+			level = 2
+			instant_build = yes
+		}
 		
+		}
+		swap_ideas = {
+		remove_idea = QIO_infrastructure_revival
+		add_idea = QIO_infrastructure_revival_1
+		}
 		}
 	}
 	
@@ -275,7 +343,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_south_bank } prerequisite = { focus = QIO_xiuying_port } prerequisite = { focus = QIO_expand_roads } 
 		completion_reward = {
-		
+		add_research_slot = 1
 		}
 	}
 	
@@ -292,7 +360,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_review_education } prerequisite = { focus = QIO_industrial_workshops } prerequisite = { focus = QIO_qiong_people } 
 		completion_reward = {
-		
+		add_ideas = {
+		QIO_qiongya_forward
+		}
 		}
 	}
 	
@@ -309,7 +379,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_yugang_in_qiongya } 
 		completion_reward = {
-		
+		add_political_power = 100
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
 		}
 	}
 	
@@ -327,7 +401,10 @@ focus_tree = {
 		prerequisite = { focus = QIO_securing_politics } 
 		mutually_exclusive = { focus = QIO_attack_gains }
 		completion_reward = {
-		
+		add_timed_idea = {
+		idea = QIO_funneling_opium
+		days = 180
+		}
 		}
 	}
 	
@@ -345,7 +422,10 @@ focus_tree = {
 		prerequisite = { focus = QIO_securing_politics } 
 		mutually_exclusive = { focus = QIO_opium_and_rice }
 		completion_reward = {
-		
+		add_timed_idea = {
+		idea = QIO_attack_opium
+		days = 180
+		}
 		}
 	}
 	
@@ -362,7 +442,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_securing_politics } 
 		completion_reward = {
-		
+		add_ideas = {
+		QIO_li_committee
+		}
 		}
 	}
 	
@@ -379,7 +461,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_securing_politics } 
 		completion_reward = {
-		
+		add_timed_idea = {
+		idea = PRC_anti_syndie_zeal
+		days = 90
+		}
 		}
 	}
 	#Securing Food Aid
@@ -395,7 +480,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_socialists_dead } prerequisite = { focus = QIO_Li_Fu } prerequisite = { focus = QIO_attack_gains focus = QIO_opium_and_rice } 
 		completion_reward = {
-		
+			add_ideas = {
+			QIO_food_aid
+			}
 		}
 	}
 	
@@ -412,7 +499,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_attack_gains focus = QIO_opium_and_rice } 
 		completion_reward = {
-		
+		add_ideas = {
+		QIO_admin_payments
+		}
 		}
 	}
 	
@@ -429,7 +518,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = QIO_admin_payments } prerequisite = { focus = QIO_secure_food } 
 		completion_reward = {
-		
+		add_political_power = 100
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.1
+		}
+		add_ideas = {
+		QIO_qiongya_people
+		}
 		}
 	}
 	
@@ -444,9 +540,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_flag = has_united_china
+		}
 		prerequisite = { focus = QIO_qiongya_marches } prerequisite = { focus = QIO_grand_reorg } 
 		completion_reward = {
-		
+		set_cosmetic_tag = ROC
+		custom_effect_tooltip = switch_focus_unification_china_tt
+		hidden_effect = {
+		load_focus_tree = hnn-unification-authoritarian
+		}
 		}
 	}
 
