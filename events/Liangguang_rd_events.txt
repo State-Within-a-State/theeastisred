@@ -2268,12 +2268,22 @@ country_event = { #National Flag Debate
 	id = liangguang_rd.60
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.60"}
 	title = lngupc.8.t
-	desc = lngupc.8.d
+	desc = liangguang_rd.60.desc
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #Five-Races Flag
 		name = lngupc.8.a
+		ai_chance = { base = 100 }
+		add_stability = 0.05
+		country_event = {
+		id = liangguang_rd.61
+		days = 7
+		}
+		hidden_effect = { set_cosmetic_tag = UPC_wuzu }
+	}
+	option = { #Keep federalist Flag
+		name = lngupc.8.b
 		ai_chance = { base = 100 }
 		add_to_variable = {
 			var = fed_jiongming
@@ -2285,10 +2295,9 @@ country_event = { #National Flag Debate
 		id = liangguang_rd.61
 		days = 7
 		}
-		hidden_effect = { set_cosmetic_tag = UPC_wuzu }
 	}
 	option = { #Keep federalist Flag
-		name = lngupc.8.b
+		name = liangguang_rd.60.c
 		ai_chance = { base = 100 }
 		add_to_variable = {
 			var = fed_hongmen
@@ -2300,7 +2309,10 @@ country_event = { #National Flag Debate
 		id = liangguang_rd.61
 		days = 7
 		}
+		hidden_effect = { set_cosmetic_tag = UPC_FREEMASON }
+
 	}
+
 }
 
 country_event = { #The Question of the Kuomintang
@@ -2384,7 +2396,7 @@ country_event = { #The Zhi-Gong Party Conference Closes
 		check_variable = {
 				var = fed_hongmen
 				value = fed_jiongming
-				compare = greater_than_or_equals
+				compare = greater_than
 			}
 		}
 		custom_effect_tooltip = overseas_lead_party_in_elections_tt
