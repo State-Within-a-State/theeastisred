@@ -246,9 +246,147 @@ country_event = { #Nomination of the Republican Candidate
 	name = anarcho_china.4.a
 	complete_national_focus = GXC_shifushixinsmoralists
 	}
-	
-	
-	
 
-	
 }
+
+country_event = { #A Pearl In the South
+	id = anarcho_china.10
+	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.0"}
+	title = anarcho_china.10.title
+	desc = anarcho_china.10.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = anarcho_china.10.a
+		trigger = {
+		NOT = {
+			has_war_with = INT
+		}
+		INT = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+		not = { has_government = totalist } 
+		}
+		}
+		ai_chance = { base = 100 }
+		INT = { add_to_faction = ROOT }
+
+	}
+	option = { #
+		name = anarcho_china.10.b
+		trigger = {
+		NOT = {
+			has_war_with = SOV
+		}
+		SOV = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+			OR = { plsr_in_power = yes has_completed_focus = SOV_Dybenko_Restores_Stability } 
+		}
+		}
+
+		ai_chance = { base = 100 }
+		SOV = { add_to_faction = ROOT }
+
+		
+	}
+	option = { #
+		name = anarcho_china.10.c
+		trigger = {
+		NOT = {
+			has_war_with = JSR
+		}
+		JSR = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+		not = { has_completed_focus = JAPCOMMUNIST_the_struggle_of_2 } 
+		}
+		}
+		ai_chance = { base = 100 }
+		JSR = { add_to_faction = ROOT }
+
+		
+	}
+	option = { #
+		name = anarcho_china.10.d
+		trigger = {
+		NOT = {
+			has_war_with = CSA
+		}
+		CSA = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_government = syndicalist 
+		}
+		}
+		ai_chance = { base = 100 }
+		CSA = { add_to_faction = ROOT }
+
+		
+	}
+
+}
+country_event = { #taixu cores
+	id = anarcho_china.11
+	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.291"}
+	title = anarcho_china.11.title
+	desc = anarcho_china.11.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = anarcho_china.11.a
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = anarcho_china.11.b
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = anarcho_china.11.c
+		ai_chance = { base = 100 }
+		
+	}
+
+}
+country_event = { #ba jin cores
+	id = anarcho_china.12
+	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.291"}
+	title = anarcho_china.12.title
+	desc = anarcho_china.12.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = anarcho_china.12.a
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = anarcho_china.12.b
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = anarcho_china.12.c
+		ai_chance = { base = 100 }
+		GXC = { 
+		every_subject_country = {
+		GXC = {
+		annex_country = {
+    		target = PREV
+		}
+		}
+		}	
+		}
+		
+	}
+
+}
+

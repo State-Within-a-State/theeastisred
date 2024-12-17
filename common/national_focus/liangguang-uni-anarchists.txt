@@ -1005,7 +1005,6 @@ focus_tree = {
 		prerequisite = { focus = GXC_nowisthehour  }
 		mutually_exclusive = { focus = GXC_a_sinitic_anarchist_theory  } mutually_exclusive = { focus = GXC_a_revolt_by_scythe_and_pen  }
 		completion_reward = {
-		every_state = { add_core_of = GXC }
 		}
 	}
 
@@ -1053,10 +1052,10 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		}
 		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  }
+		mutually_exclusive = {  focus = GXC_ana_pure_lands_annex focus = GXC_ana_allies_all_over focus = GXC_ana_chinese_cause }
 		completion_reward = {
- 
+ 		country_event = anarcho_china.12
 		}
 	}
 
@@ -1070,9 +1069,61 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		available = {
+		is_in_faction = no
+		custom_trigger_tooltip = {
+		tooltip = GXC_ana_a_faction_exists_for_you_tt
+		OR = {
+		AND = { 
+				NOT = {
+			has_war_with = INT
+		}
+		INT = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+		not = { has_government = totalist } 
+		}
+		}
+		AND = {
+				NOT = {
+			has_war_with = SOV
+		}
+		SOV = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+			OR = { plsr_in_power = yes has_completed_focus = SOV_Dybenko_Restores_Stability } 
+		}
+		}
+		AND = {
+		NOT = {
+			has_war_with = JSR
+		}
+		JSR = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+		not = { has_completed_focus = JAPCOMMUNIST_the_struggle_of_2 } 
+		}
+		}
+		AND = {
+		NOT = {
+			has_war_with = CSA
+		}
+		CSA = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_government = syndicalist 
+		}
+		}
+		}
+		}
+		}
+		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus }
+		mutually_exclusive = {  focus = GXC_ana_pure_lands_annex focus = GXC_ana_new_shit focus = GXC_ana_chinese_cause }
 		completion_reward = {
-		#here be deicioisns
+		country_event = anarcho_china.10
 		}
 	}
 
@@ -1086,14 +1137,26 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		available = {
+		NOT = { 
+		has_country_leader = {
+		name = "Taixu"
+		ruling_only = yes
+		}
+		}
+		check_variable = {
+   		GXC_anarchist_foreign_policy > 3
+		}
+		}
+		prerequisite = { focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		mutually_exclusive = {  focus = GXC_ana_pure_lands_annex focus = GXC_ana_allies_all_over focus = GXC_ana_new_shit }
 		completion_reward = {
-		#create_faction = 
+		#create_faction = GXC_ana_faction_name
 		#other shit
 		}
 	}
 
-	#Union with Japanese and Korean Anarchists
+	#showing the truth of purity of the lands
 	focus = {
 		id = GXC_ana_pure_lands_annex
 		icon = GFX_GXC_union_with_japanese_and_korean_anarchists-248360
@@ -1110,8 +1173,9 @@ focus_tree = {
 		}
 		}
 		prerequisite = { focus = GXC_a_sinitic_anarchist_theory }
+		mutually_exclusive = {  focus = GXC_ana_allies_all_over focus = GXC_ana_new_shit focus = GXC_ana_chinese_cause }
 		completion_reward = {
-		#event 
+		country_event = anarcho_china.11
 		}
 	
 	}
@@ -1432,7 +1496,6 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		completion_reward = {
 		create_wargoal = {
 			type = puppet_wargoal_focus
@@ -1519,7 +1582,6 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		completion_reward = {
 		custom_effect_tooltip = south_e_asia_gxc_tt
 		hidden_effect = {
@@ -1602,7 +1664,6 @@ focus_tree = {
 		}
 		}
 		}
-		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_tohellwitheurope  }
 		completion_reward = {
 		unlock_decision_tooltip = GXC_conquer_europe
@@ -1631,7 +1692,6 @@ focus_tree = {
 		}
 		}
 		}
-		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_appeal_to_the_old_world  }
 		completion_reward = {
 		unlock_decision_tooltip = GXC_conquer_europe_2
@@ -1660,7 +1720,7 @@ focus_tree = {
 		}
 		}
 		}
-		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
+
 		mutually_exclusive = { focus = GXC_our_american_allies  }
 		completion_reward = {
 		create_wargoal = {
@@ -1709,7 +1769,6 @@ focus_tree = {
 		}
 		}
 		}
-		prerequisite = { focus = GXC_reach_directly_into_the_west  } prerequisite = { focus = GXC_break_the_back_of_japan  } prerequisite = { focus = GXC_push_into_australasia  } prerequisite = { focus = GXC_union_with_japanese_and_korean_anarchists  }
 		mutually_exclusive = { focus = GXC_challenge_america  }
 		completion_reward = {
 		create_faction = "Sino American Guild"
