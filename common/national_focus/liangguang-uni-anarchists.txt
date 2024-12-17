@@ -941,6 +941,10 @@ focus_tree = {
 		}
 	
 		completion_reward = {
+		set_variable = {
+    		var = GXC_anarchist_foreign_policy
+    		value = 0
+		}
 		}
 	}
 
@@ -973,35 +977,6 @@ focus_tree = {
 		prerequisite = { focus = GXC_nowisthehour  }
 		mutually_exclusive = { focus = GXC_an_internationalist_focus  } mutually_exclusive = { focus = GXC_a_revolt_by_scythe_and_pen  }
 		completion_reward = {
-		custom_effect_tooltip = united_asia_gxc_tt
-		hidden_effect = {
-		add_state_core = 527
-		add_state_core = 525
-		add_state_core = 408
-		add_state_core = 1246
-		add_state_core = 409
-		add_state_core = 560
-		add_state_core = 561
-		add_state_core = 657
-		add_state_core = 563
-		add_state_core = 564
-		add_state_core = 565
-		add_state_core = 574
-		add_state_core = 562
-		add_state_core = 637
-		add_state_core = 537
-		add_state_core = 555
-		add_state_core = 536
-		add_state_core = 533
-		add_state_core = 534
-		add_state_core = 535
-		add_state_core = 532
-		add_state_core = 531
-		add_state_core = 529
-		add_state_core = 530
-		add_state_core = 528
-		add_state_core = 526
-		}
 		}
 	}
 
@@ -1054,15 +1029,93 @@ focus_tree = {
 		name = "Ye Feiying"
 		ruling_only = yes
 		}
-
 		}
 		}
 		prerequisite = { focus = GXC_nowisthehour  }
 		mutually_exclusive = { focus = GXC_a_sinitic_anarchist_theory  } mutually_exclusive = { focus = GXC_an_internationalist_focus  }
 		completion_reward = {
-		every_state = { add_core_of = GXC }
+		add_stability = 0.5
+		add_war_support = 0.1
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.5
+		}
+
 		}
 	}
+	#the first of its kind
+	focus = {
+		id = GXC_ana_new_shit
+		icon = GFX_GXC_reach_directly_into_the_west-248360
+		x = 23
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		}
+		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  }
+		completion_reward = {
+ 
+		}
+	}
+
+	#International alies
+	focus = {
+		id = GXC_ana_allies_all_over
+		icon = GFX_GXC_break_the_back_of_japan-248360
+		x = 21
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		completion_reward = {
+		#here be deicioisns
+		}
+	}
+
+	#chinse cause
+	focus = {
+		id = GXC_ana_chinese_cause
+		icon = GFX_GXC_push_into_australasia-248360
+		x = 17
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
+		completion_reward = {
+		#create_faction = 
+		#other shit
+		}
+	}
+
+	#Union with Japanese and Korean Anarchists
+	focus = {
+		id = GXC_ana_pure_lands_annex
+		icon = GFX_GXC_union_with_japanese_and_korean_anarchists-248360
+		x = 15
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		available = {
+		has_country_leader = {
+		name = "Taixu"
+		ruling_only = yes
+		}
+		}
+		prerequisite = { focus = GXC_a_sinitic_anarchist_theory }
+		completion_reward = {
+		#event 
+		}
+	
+	}
+
 
 	#Mass Artillery Movement
 	focus = {
@@ -1215,7 +1268,7 @@ focus_tree = {
 		id = GXC_reach_directly_into_the_west
 		icon = GFX_GXC_reach_directly_into_the_west-248360
 		x = 23
-		y = 2
+		y = 15
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -1290,13 +1343,18 @@ focus_tree = {
 		id = GXC_break_the_back_of_japan
 		icon = GFX_GXC_break_the_back_of_japan-248360
 		x = 21
-		y = 2
+		y = 15
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
 		completion_reward = {
+		add_to_variable = {
+    		var = GXC_anarchist_foreign_policy
+   		value = 1
+		}
+
 		create_wargoal = {
 			type = puppet_wargoal_focus
 			target = JAP
@@ -1310,7 +1368,7 @@ focus_tree = {
 		id = GXC_push_into_australasia
 		icon = GFX_GXC_push_into_australasia-248360
 		x = 17
-		y = 2
+		y = 15
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
@@ -1349,7 +1407,7 @@ focus_tree = {
 		id = GXC_union_with_japanese_and_korean_anarchists
 		icon = GFX_GXC_union_with_japanese_and_korean_anarchists-248360
 		x = 15
-		y = 2
+		y = 15
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
@@ -2376,6 +2434,8 @@ focus_tree = {
 		prerequisite = { focus = GXC_returntokropotkinsbirthplace focus = GXC_bring_true_liberation_to_africa }
 		mutually_exclusive = { focus = GXC_the_world_is_my_alma_mater  } mutually_exclusive = { focus = GXC_consolidate_asian_anarchism  }
 		completion_reward = {
+every_state = { add_core_of = GXC }
+
 		add_stability = 0.5
 		add_war_support = 0.1
 		add_popularity = {
