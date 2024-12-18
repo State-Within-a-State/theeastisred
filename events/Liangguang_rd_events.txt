@@ -5067,22 +5067,38 @@ country_event = { #ba jin cores
 
 }
 
-country_event = { #
+country_event = { #Qiongya Declares Independence(Occurs if federalists takeoever)
 	id = liangguang_rd.110
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.110"}
 	title = liangguang_rd.110.title
 	desc = liangguang_rd.110.desc
+	immediate = {
+	end_puppet = QIO
+	}
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
 		name = liangguang_rd.110.a
 		ai_chance = { base = 100 }
-		
+		QIO = {
+		change_tag_from = GXC
+		complete_national_focus = QIO_yugang_in_qiongya
+		set_state_owner = 591
+		}
+	}
+	
+	option = { #
+		name = liangguang_rd.110.a
+		ai_chance = { base = 100 }
+		QIO = {
+		complete_national_focus = QIO_yugang_in_qiongya
+		set_state_owner = 591
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Ideology Picker for Lu Yugang
 	id = liangguang_rd.111
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.111"}
 	title = liangguang_rd.111.title
@@ -5090,10 +5106,16 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Pataut Oligarcy
 		name = liangguang_rd.111.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = pataut_oligarchy_subtype
+	}
+	
+	option = { #Kleptroacy
+		name = liangguang_rd.111.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = kleptocracy_subtype
 	}
 }
 
