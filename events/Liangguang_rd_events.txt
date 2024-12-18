@@ -1,4 +1,6 @@
 add_namespace = liangguang_rd
+add_namespace = anarcho_china
+
 country_event = { #A Pearl In the South
 	id = liangguang_rd.0
 	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.0"}
@@ -4557,6 +4559,504 @@ country_event = { #lu yugang annex veitnam?
 		add_political_power = 150
 		
 	}
+}
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.4
+	title = anarcho_china.4.title
+	picture = GFX_report_event_GXC_anarchist_succeed
+	desc = anarcho_china.4.desc
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event taiwan.0"
+	}
+
+	
+	
+	option = { #Cortes
+	name = anarcho_china.4.a
+	hidden_effect = {
+	load_focus_tree = anarchist-guangxi
+	}
+	set_cosmetic_tag = GXC_ANA
+	set_politics = { ruling_party = radical_socialist }
+	create_country_leader = {
+				name = "Li Shizeng"
+				picture = "gfx/leaders/GXCA/Portrait_GXC_Li_Shizeng.png"
+				expire = "1.1.1"
+				ideology = anarchism_subtype
+			}
+		set_party_name = {
+			ideology = radical_socialist
+				long_name = GXC_anarchist_cuck_party_long
+				name = GXC_anarchist_cuck_party
+			}
+	hidden_effect = { 
+		add_popularity = {
+			ideology = social_liberal
+			popularity = -0.05
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.08
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.075
+		}	
+		create_country_leader = {
+				name = "Cai Yuanpai"
+				picture = "gfx/leaders/GXCA/Portrait_GXC_Cai_Yuanpai.png"
+				expire = "1.1.1"
+				ideology = anarcho_syndicalist_subtype
+			}
+		set_party_name = {
+			ideology = syndicalist
+				long_name = GXC_anarchist_cuck_party_long
+				name = GXC_anarchist_cuck_party
+			}
+
+	}
+		
+	}
+	
+	
+
+	
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.5
+	title = anarcho_china.5.title
+	picture = GFX_report_event_GXC_anarchist_fails
+	desc = anarcho_china.5.desc
+
+	is_triggered_only = yes
+
+	
+
+	
+	
+	option = { #Cortes
+	name = anarcho_china.5.a
+		custom_effect_tooltip = SHI_ANA_tt
+		set_variable = { SHI_ANA = 0 }
+		
+		custom_effect_tooltip = CAI_ANA_tt
+		set_variable = { CAI_ANA = 0 }
+		
+		custom_effect_tooltip = JIN_ANA_tt
+		set_variable = { JIN_ANA = 0 }
+		hidden_effect = {
+		set_country_flag = guangxi_anarchist_conference_start
+		
+		}
+	}
+	
+	
+
+	
+}
+
+
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.6
+	title = anarcho_china.6.title
+	picture = "GFX_report_event_GXC_anarchist_succeed"
+	desc = anarcho_china.6.desc
+
+	is_triggered_only = yes
+
+	
+
+	
+	
+	option = { #Cortes
+	name = anarcho_china.6.a
+	trigger = {
+		check_variable = {
+						var = JIN_ANA
+						value = CAI_ANA 
+						compare = greater_than
+					}
+
+		check_variable = {
+						var = JIN_ANA
+						value = SHI_ANA
+						compare = greater_than
+					}
+	}
+
+		country_event = anarcho_china.7
+	}
+	option = { #Cortes
+	name = anarcho_china.6.b
+	trigger = {
+		check_variable = {
+						var = CAI_ANA 
+						value = JIN_ANA
+						compare = greater_than
+					}
+
+		check_variable = {
+						var = CAI_ANA 
+						value = SHI_ANA
+						compare = greater_than
+					}
+	}
+		country_event = anarcho_china.8
+	}
+	option = { #Cortes
+	name = anarcho_china.6.c
+	trigger = {
+		check_variable = {
+						var = SHI_ANA
+						value = JIN_ANA
+						compare = greater_than
+					}
+
+		check_variable = {
+						var = SHI_ANA
+						value = CAI_ANA 
+						compare = greater_than
+					}
+	}
+		country_event = anarcho_china.9
+	}
+
+	
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.7
+	title = anarcho_china.7.title
+	picture = "GFX_report_event_GXC_anarchist_succeed"
+	desc = anarcho_china.7.desc
+
+	is_triggered_only = yes
+
+	
+
+	
+	
+	option = { #Cortes
+	name = anarcho_china.4.a
+	
+	
+	
+		complete_national_focus = GXC_bajinsindividualists
+		set_country_flag = gxc_anarchists_ba_jin_leads
+		set_country_flag = RD_commies_love_each_other
+		
+		create_country_leader = {
+				name = "Ba Jin"
+				picture = "gfx/leaders/GXCA/Portrait_GXC_Ba_Jin.png"
+				expire = "1.1.1"
+				ideology = radsoc_social_anarchism_subtype
+			}
+		
+	}
+	
+	
+
+	
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.8
+	title = anarcho_china.8.title
+	picture = "GFX_report_event_GXC_anarchist_succeed"
+	desc = anarcho_china.8.desc
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "[GetDateText]: [Root.GetName]: event taiwan.0"
+	}
+
+	
+	
+	option = { #Cortes
+	name = anarcho_china.4.a
+	
+	
+	
+		complete_national_focus = GXC_caiyuanpeislaborists		
+		set_politics = { ruling_party = syndicalist }
+		
+	}
+	
+	
+
+	
+}
+
+country_event = { #Nomination of the Republican Candidate
+	id = anarcho_china.9
+	title = anarcho_china.9.title
+	picture = "GFX_report_event_GXC_anarchist_succeed"
+	desc = anarcho_china.9.desc
+
+	is_triggered_only = yes
+
+	option = {
+	name = anarcho_china.4.a
+	complete_national_focus = GXC_shifushixinsmoralists
+	}
+
+}
+
+country_event = { #A Pearl In the South
+	id = anarcho_china.10
+	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.0"}
+	title = anarcho_china.10.title
+	desc = anarcho_china.10.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = anarcho_china.10.a
+		trigger = {
+		NOT = {
+			has_war_with = INT
+		}
+		INT = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+		not = { has_government = totalist } 
+		}
+		}
+		ai_chance = { base = 100 }
+		INT = { add_to_faction = ROOT }
+
+	}
+	option = { #
+		name = anarcho_china.10.b
+		trigger = {
+		NOT = {
+			has_war_with = SOV
+		}
+		SOV = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+			OR = { plsr_in_power = yes has_completed_focus = SOV_Dybenko_Restores_Stability } 
+		}
+		}
+
+		ai_chance = { base = 100 }
+		SOV = { add_to_faction = ROOT }
+
+		
+	}
+	option = { #
+		name = anarcho_china.10.c
+		trigger = {
+		NOT = {
+			has_war_with = JSR
+		}
+		JSR = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_socialist_government = yes
+		not = { has_completed_focus = JAPCOMMUNIST_the_struggle_of_2 } 
+		}
+		}
+		ai_chance = { base = 100 }
+		JSR = { add_to_faction = ROOT }
+
+		
+	}
+	option = { #
+		name = anarcho_china.10.d
+		trigger = {
+		NOT = {
+			has_war_with = CSA
+		}
+		CSA = { 
+			exists = yes 
+			is_faction_leader = yes
+			has_government = syndicalist 
+		}
+		}
+		ai_chance = { base = 100 }
+		CSA = { add_to_faction = ROOT }
+
+		
+	}
+
+}
+country_event = { #taixu cores
+	id = anarcho_china.11
+	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.291"}
+	title = anarcho_china.11.title
+	desc = anarcho_china.11.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = anarcho_china.11.a
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = anarcho_china.11.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = GXC_TAIXUANA_ASIAOREARTH
+		every_state = { 
+		limit = { 
+		OR = { 
+		region = 154
+		region = 191
+		region = 87
+		region = 196
+		region = 142
+		region = 194
+		region = 195
+		region = 146
+		state = 422
+		}
+		}
+		add_core_of = GXC 
+		GXC = {
+		create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+		}
+		}
+		
+		GXC = { 
+		every_subject_country = {
+		limit = { 
+		OR = { 
+		tag = JAP
+		tag = KOR
+		tag = SIA
+		tag = INC
+		tag = VIN
+		tag = LAO
+		tag = CAM
+		tag = BRM
+		tag = SHA
+		tag = KAC
+		tag = MLY
+		tag = CEY
+		tag = NEP
+		tag = BHU
+		tag = SKM
+		}
+		}
+		GXC = {
+		annex_country = {
+    		target = PREV
+		}
+		}
+		}	
+		}
+
+		
+	}
+	option = { #
+		name = anarcho_china.11.c
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = GXC_TAIXUANA_ASIAOREARTH
+		every_state = { add_core_of = GXC }
+		GXC = { 
+		every_subject_country = {
+		GXC = {
+		annex_country = {
+    		target = PREV
+		}
+		}
+		}	
+		}
+
+		
+	}
+
+}
+country_event = { #ba jin cores
+	id = anarcho_china.12
+	immediate = {log = "[GetDateText]: [Root.GetName]: event liangguang_rd.291"}
+	title = anarcho_china.12.title
+	desc = anarcho_china.12.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #
+		name = anarcho_china.12.a
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = anarcho_china.12.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = GXC_JINANA_ASIA
+		every_state = { 
+		limit = { 
+		OR = { 
+		is_on_continent = asia
+		is_on_continent = india
+		}
+		}
+		add_core_of = GXC 
+	
+		GXC = {
+		create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+		}
+
+		}
+
+		GXC = { 
+		every_subject_country = {
+		limit = { 
+		OR = { 
+		is_in_asia = yes
+		is_in_india = yes
+		}
+		}
+		GXC = {
+		annex_country = {
+    		target = PREV
+		}
+		}
+		}	
+		}
+		
+
+	}
+	option = { #
+		name = anarcho_china.12.c
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = GXC_JINANA_INT
+		every_state = { add_core_of = GXC 
+		
+		GXC = {
+		create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+		}
+
+		}
+		GXC = { 
+		every_subject_country = {
+		GXC = {
+		annex_country = {
+    		target = PREV
+		}
+		}
+		}	
+		}
+		
+	}
+
 }
 
 country_event = { #
