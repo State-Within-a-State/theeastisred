@@ -1332,7 +1332,7 @@ focus_tree = {
 		id = GXC_free_the_consessions
 		icon = GFX_GXC_reach_directly_into_the_west-248360
 		x = 23
-		y = 15
+		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -1341,7 +1341,6 @@ focus_tree = {
 		NOT = { can_declare_war_on = LEC }
 		has_global_flag = LEC_bankrupt
 		}
-		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
 		completion_reward = {
 		add_to_variable = {
     		var = GXC_anarchist_foreign_policy
@@ -1361,12 +1360,11 @@ focus_tree = {
 		id = GXC_break_the_back_of_japan
 		icon = GFX_GXC_break_the_back_of_japan-248360
 		x = 21
-		y = 15
+		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
 		completion_reward = {
 		add_to_variable = {
     		var = GXC_anarchist_foreign_policy
@@ -1376,7 +1374,6 @@ focus_tree = {
 			type = puppet_wargoal_focus
 			target = JAP
 		}
-		
 		}
 	}
 
@@ -1385,12 +1382,11 @@ focus_tree = {
 		id = GXC_push_into_australasia
 		icon = GFX_GXC_push_into_australasia-248360
 		x = 17
-		y = 15
+		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
 		completion_reward = {
 		add_to_variable = {
     		var = GXC_anarchist_foreign_policy
@@ -1409,12 +1405,11 @@ focus_tree = {
 		id = GXC_burma_problem
 		icon = GFX_GXC_union_with_japanese_and_korean_anarchists-248360
 		x = 15
-		y = 15
+		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = GXC_a_sinitic_anarchist_theory  focus = GXC_an_internationalist_focus  focus = GXC_a_revolt_by_scythe_and_pen  }
 		completion_reward = {
 		add_to_variable = {
     		var = GXC_anarchist_foreign_policy
@@ -1474,10 +1469,9 @@ focus_tree = {
 		
 		}
 	}
-
-	#Southeast Asia Beckons!
+	#indochina!
 	focus = {
-		id = GXC_southeastasiabeckons
+		id = GXC_indochina_help
 		icon = GFX_GXC_southeastasiabeckons-248360
 		x = 16
 		y = 3
@@ -1486,6 +1480,42 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = INC
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = GEA
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = VIN
+		}
+
+
+		}
+	}
+
+	#Southeast Asia Beckons!
+	focus = {
+		id = GXC_southeastasiabeckons
+		icon = GFX_GXC_southeastasiabeckons-248360
+		x = 16
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		completion_reward = {
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = DEI
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = INS
+		}
 
 
 		}
@@ -1625,35 +1655,7 @@ focus_tree = {
 		}
 	}
 
-	#Writers of the World, Unite!
-	focus = {
-		id = GXC_writersoftheworldunite
-		icon = GFX_GXC_writersoftheworldunite-248360
-		x = 22
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		OR = {
-		has_country_leader = {
-		name = "Ba Jin"
-		ruling_only = yes
-		}
-		has_country_leader = {
-		name = "Cai Yuanpai"
-		ruling_only = yes
-		}
-		}
-		}
-		prerequisite = { focus = GXC_challenge_america  }
-		completion_reward = {
-		add_war_support = 0.15
-		}
-	}
-
-	#A Great Leap Into The Pacific
+	#philiplines
 	focus = {
 		id = GXC_a_great_leap_into_the_pacific
 		icon = GFX_GXC_a_great_leap_into_the_pacific-248360
@@ -1665,11 +1667,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_a_spirit_of_common_liberty focus = GXC_writersoftheworldunite  }
 		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 1
-			category = fleet_in_being_tree
+		add_to_variable = {
+    		var = GXC_anarchist_foreign_policy
+   		value = 1
 		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = PHI
+		}
+
 		}
 	}
 
@@ -1742,7 +1748,7 @@ focus_tree = {
 
 	#thailand
 	focus = {
-		id = GXC_bring_true_liberation_to_africa
+		id = GXC_siam_help
 		icon = GFX_GXC_bring_true_liberation_to_africa-248360
 		x = 21
 		y = 6
@@ -1783,8 +1789,6 @@ focus_tree = {
 		prerequisite = { focus = GXC_returntokropotkinsbirthplace focus = GXC_bring_true_liberation_to_africa }
 		mutually_exclusive = { focus = GXC_the_world_is_my_alma_mater  } mutually_exclusive = { focus = GXC_consolidate_asian_anarchism  }
 		completion_reward = {
-every_state = { add_core_of = GXC }
-
 		add_stability = 0.5
 		add_war_support = 0.1
 		add_popularity = {
