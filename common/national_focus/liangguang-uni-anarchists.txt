@@ -1327,9 +1327,9 @@ focus_tree = {
 		}
 	}
 
-	#Reach Directly Into the West
+	#free the concessions from foreign rule
 	focus = {
-		id = GXC_reach_directly_into_the_west
+		id = GXC_free_the_consessions
 		icon = GFX_GXC_reach_directly_into_the_west-248360
 		x = 23
 		y = 15
@@ -1337,23 +1337,21 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-		NOT = {
-		OR = {
-		has_country_leader = {
-		name = "Li Shizeng"
-		ruling_only = yes
-		}
-		has_country_leader = {
-		name = "Liu Shifu"
-		ruling_only = yes
-		}
-		}
-		}
-		
+		bypass = {
+		NOT = { can_declare_war_on = LEC }
+		has_global_flag = LEC_bankrupt
 		}
 		prerequisite = { focus = GXC_a_revolt_by_scythe_and_pen  focus = GXC_an_internationalist_focus  focus = GXC_a_sinitic_anarchist_theory  }
 		completion_reward = {
+		add_to_variable = {
+    		var = GXC_anarchist_foreign_policy
+   		value = 1
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = LEC
+		}
+
 
 		}
 	}
@@ -1374,7 +1372,6 @@ focus_tree = {
     		var = GXC_anarchist_foreign_policy
    		value = 1
 		}
-
 		create_wargoal = {
 			type = puppet_wargoal_focus
 			target = JAP
@@ -1407,9 +1404,9 @@ focus_tree = {
 		}
 	}
 
-	#Union with Japanese and Korean Anarchists
+	#burma invade
 	focus = {
-		id = GXC_union_with_japanese_and_korean_anarchists
+		id = GXC_burma_problem
 		icon = GFX_GXC_union_with_japanese_and_korean_anarchists-248360
 		x = 15
 		y = 15
@@ -1425,7 +1422,7 @@ focus_tree = {
 		}
 		create_wargoal = {
 			type = puppet_wargoal_focus
-			target = KOR
+			target = BRM
 		}
 		}
 	
@@ -1442,6 +1439,10 @@ focus_tree = {
 			FOCUS_FILTER_ANNEXATION
 		}
 		completion_reward = {
+		add_to_variable = {
+    		var = GXC_anarchist_foreign_policy
+   		value = 1
+		}
 		create_wargoal = {
 			type = puppet_wargoal_focus
 			target = BHC
@@ -1739,7 +1740,7 @@ focus_tree = {
 		}
 	}
 
-	#Bring True Liberation to Africa
+	#thailand
 	focus = {
 		id = GXC_bring_true_liberation_to_africa
 		icon = GFX_GXC_bring_true_liberation_to_africa-248360
@@ -1751,7 +1752,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_establish_sinoamerican_guilds } prerequisite { focus = GXC_a_great_leap_into_the_pacific }
 		completion_reward = {
-		unlock_decision_tooltip = GXC_conquer_africa
+		add_to_variable = {
+    		var = GXC_anarchist_foreign_policy
+   		value = 1
+		}
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = SIA
+		}
+
 		}
 	}
 
