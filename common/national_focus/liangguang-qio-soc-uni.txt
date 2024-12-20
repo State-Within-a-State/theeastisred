@@ -1,0 +1,228 @@
+focus_tree = {
+	id = QIO-soc-tree
+	country = {
+		factor = 0
+	modifier = {
+			add = 10
+			tag = QIO
+		}
+	}
+	default = no
+	continuous_focus_position = { x = 0 y = 3050 }
+	shared_focus = GXC_shared_unification
+
+
+	#some first focus rebuilding shouting at new capiutal idk
+	focus = {
+		id = QIO_cap 
+		icon = GFX_goal_QIO_revolution
+		x = 15
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	#minority pluralism and development of conciousness
+	focus = {
+		id = QIO_minority
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = -3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_cap } 
+		mutually_exclusive = { focus = QIO_soldier_councils focus = QIO_continue }
+		completion_reward = {
+
+		}
+	}
+	#baiju legacy of wang
+	focus = {
+		id = QIO_continue
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_cap } 
+		mutually_exclusive = { focus = QIO_minority focus = QIO_soldier_councils }
+		completion_reward = {
+
+		}
+	}
+	#experience of soldier councils
+	focus = {
+		id = QIO_soldier_councils
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = 3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_cap } 
+		mutually_exclusive = { focus = QIO_minority focus = QIO_continue }
+		completion_reward = {
+
+		}
+	}
+	#six gaunarantees
+	focus = {
+		id = QIO_gaurantees
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = -2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_minority focus = QIO_continue focus = QIO_soldier_councils } 
+		completion_reward = {
+
+		}
+	}
+	#industrial and commerce refrms
+	focus = {
+		id = QIO_commerce_reforms
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_minority focus = QIO_continue focus = QIO_soldier_councils } 
+		completion_reward = {
+
+		}
+	}
+	#teacher selection movement
+	focus = {
+		id = QIO_teacher_select
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_commerce_reforms } prerequisite = { focus = QIO_gaurantees  } 
+		completion_reward = {
+
+		}
+	}
+	#dispelling supersititions
+	focus = {
+		id = QIO_supersititions_bad
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = -1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_teacher_select } 
+		completion_reward = {
+
+		}
+	}
+
+	#upholding party reorg
+	focus = {
+		id = QIO_party_reorgs
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = -2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_minority focus = QIO_continue focus = QIO_soldier_councils } 
+		completion_reward = {
+
+		}
+	}
+	#qiuju's owmen liberation association
+	focus = {
+		id = QIO_qiuju_women
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_party_reorgs } 
+		completion_reward = {
+
+		}
+	}
+	#learning from local experience. theyre not gonna purge for being too focused on local cause they come from fucken qiongya 
+	focus = {
+		id = QIO_localism_thingy
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_party_reorgs } 
+		completion_reward = {
+
+		}
+	}
+	#rooting out the weeds amongst the flowers 
+	focus = {
+		id = QIO_weed_flowers
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_localism_thingy} prerequisite = { focus = QIO_qiuju_women } 
+		completion_reward = {
+
+		}
+	}
+	#liberation by our own hand  
+	focus = {
+		id = QIO_hand_liberate
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = QIO_cap
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = QIO_weed_flowers } prerequisite = { focus = QIO_supersititions_bad } 
+		completion_reward = {
+
+		}
+	}
+
+
+
+}	
