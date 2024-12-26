@@ -38,7 +38,9 @@ chinese_unification = {
 		days_remove = 1
 		cost = 0
 		fire_only_once = yes
-		
+		ai_will_do = {
+			factor = 100
+		}
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision assume_chinese_leadership"
@@ -49,6 +51,59 @@ chinese_unification = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove assume_chinese_leadership"
 			add_stability = 0.15
 			RD_superevent_china = yes
+		}
+	}
+
+	China_deal_with_yakutian_land = { #for stupid ass border
+		icon = generic_form_nation
+
+		priority = 4000
+		allowed = {
+			OR = {
+				is_han_chinese_tag = yes
+				tag = TAN
+				tag = TAI
+				tag = TIB
+			}
+		}
+		activation = {
+			china_is_potential_government = yes
+				574 = {
+					is_owned_and_controlled_by = ROOT
+					is_claim_or_core_of_ROOT = no
+				}
+			NOT = { has_country_flag = RD_fucken_annex_yukutia } 
+		}
+
+		cost = 0
+		fire_only_once = no
+		selectable_mission = yes
+		days_mission_timeout = 60
+		ai_will_do = {
+			factor = 100
+		}
+		is_good = no
+		cancel_trigger = {
+			NOT = {
+				574 = {
+					is_owned_and_controlled_by = ROOT
+					is_claim_or_core_of_ROOT = no
+				}
+			}
+		}
+
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision assume_chinese_leadership"
+			#make it an event 
+			country_event = annex_peace.12
+		}
+
+		timeout_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove assume_chinese_leadership"
+		set_country_flag = RD_fucken_annex_yukutia
+		occupy_medium_country = yes
+
 		}
 	}
 

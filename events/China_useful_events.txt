@@ -1,6 +1,87 @@
 add_namespace = annex_peace
 add_namespace = china_socialistgenerals
 
+country_event = { #Fate of yakutia for Chinese only
+
+	id = annex_peace.12
+	immediate = { log = "[GetDateText]: [Root.GetName]: event annex_peace.12" 
+			hidden_effect = {
+			YAK = { add_state_core = 574 }
+			every_state = {
+			limit = {
+				OR = {
+					is_core_of = YAK
+					is_claimed_by = YAK
+				}
+				NOT = { region = 147 } #northeast siberia
+			}
+			remove_core_of = YAK
+			remove_claim_by = YAK
+		}
+		}
+	}
+	title = China_deal_with_yakutian_land
+	desc = China_deal_with_yakutian_land_desc
+	is_triggered_only = yes
+
+	option = { #puppet
+		name = annex_peace.12.a
+		ai_chance = { factor = 10 }
+		set_temp_variable = { tag_to_release = YAK }
+		release_targeted_tag = yes
+		hidden_effect = {
+			if = { 
+			limit = { 
+			has_socialist_government = yes
+			}
+			YAK = { set_government = radical_socialist }
+			}
+			else_if = { 
+			limit = { 
+			has_government = paternal_autocrat
+			}
+			YAK = { set_government = authoritarian_democrat }
+			}
+			else_if = { 
+			limit = { 
+			has_government = market_liberal
+			}
+			YAK = { set_government = social_liberal unlock_national_focus = YAK_First_Yakut_Elections }
+			}
+			else_if = {
+			limit = {
+			OR = {
+			has_government = social_democrat
+			has_government = social_liberal
+			has_government = social_conservative
+			has_government = national_populist
+			}
+			}
+			YAK = { unlock_national_focus = YAK_First_Yakut_Elections }
+			}
+			YAK = {
+				set_country_flag = YAK_secured_its_independence
+				add_state_core = 644 #ne sib
+				add_state_core = 1202 #chukolta
+				add_state_core = 562 #okhotosk
+				add_state_claim = 637 #kamchatka
+
+			}
+		}
+
+		
+	}
+
+
+	option = { #occupation
+		name = annex.occupation
+		ai_chance = { factor = 0 }
+		set_country_flag = RD_fucken_annex_yukutia
+		occupy_medium_country = yes
+	}
+}
+
+
 country_event = { #peace out
 	id = annex_peace.2
 	immediate = { log = "[GetDateText]: [Root.GetName]: event dei.100" }
