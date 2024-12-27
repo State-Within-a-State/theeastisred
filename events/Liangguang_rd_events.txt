@@ -4585,6 +4585,13 @@ country_event = { #Nomination of the Republican Candidate
 	hidden_effect = {
 	load_focus_tree = anarchist-guangxi
 	}
+	remove_all_ministers = yes
+	add_ideas = {
+	GXC_Li_Shizeng_hog_rso
+	GXC_Wu_Zhihui_eco_rso
+	GXC_Liang_Xueyu_for_rso
+	GXC_Gao_Jianfu_sec_rso
+	}
 	set_cosmetic_tag = GXC_ANA
 	set_politics = { ruling_party = radical_socialist }
 	create_country_leader = {
@@ -4754,7 +4761,13 @@ country_event = { #Nomination of the Republican Candidate
 		complete_national_focus = GXC_bajinsindividualists
 		set_country_flag = gxc_anarchists_ba_jin_leads
 		set_country_flag = RD_commies_love_each_other
-		
+		remove_all_ministers = yes
+			add_ideas = {
+			GXC_Ba_Jin_hog_ade
+			GXC_Yuan_Zhenying_eco_rso
+			GXC_Lu_Jianbo_for_rso
+			GXC_Gao_Jianfu_sec_rso
+			}
 		create_country_leader = {
 				name = "Ba Jin"
 				picture = "gfx/leaders/GXCA/Portrait_GXC_Ba_Jin.png"
@@ -4790,7 +4803,13 @@ country_event = { #Nomination of the Republican Candidate
 	
 		complete_national_focus = GXC_caiyuanpeislaborists		
 		set_politics = { ruling_party = syndicalist }
-		
+		remove_all_ministers = yes
+			add_ideas = {
+			GXC_Cai_Yuanpai_hog_rso
+			GXC_Wu_Zhihui_eco_rso
+			GXC_Liang_Xueyu_for_rso
+			GXC_Gao_Jianfu_sec_rso
+			}
 	}
 	
 	
@@ -5092,11 +5111,56 @@ country_event = { #choose between taixu and shizeng
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = GXC_TAIXUANA
 		complete_national_focus = GXC_taixu_man
+		remove_all_ministers = yes
+			add_ideas = {
+			GXC_Taixu_hog_rso
+			GXC_Zhu_Qianzhi_eco_rso
+			GXC_Taixu_for_rso
+			GXC_Huang_Wenshan_sec_rso
+			}
 		create_country_leader = {
 				name = "Taixu"
 				picture = "gfx/leaders/GXCA/Portrait_GXC_Taixu.png"
 				expire = "1.1.1"
 				ideology = buddhist_socialism_subtype
+			}
+
+		
+	}
+
+}
+
+country_event = { #choose between Yuanpei & Zhihui
+	id = anarcho_china.14
+	immediate = {log = "[GetDateText]: [Root.GetName]: event anarcho_china.13"}
+	title = anarcho_china.14.title
+	desc = anarcho_china.14.desc
+	#picture = 
+	
+	is_triggered_only = yes
+	option = { #stay same 
+		name = anarcho_china.14.a
+		ai_chance = { base = 100 }
+		
+		
+	}
+	option = { #Wu Zhihui
+		name = anarcho_china.14.b
+		ai_chance = { base = 100 }
+		
+		remove_all_ministers = yes
+			add_ideas = {
+			GXC_Wu_Zhihui_hog_rso
+			GXC_Wu_Zhihui_eco_rso
+			GXC_Liang_Xueyu_for_rso
+			GXC_Gao_Jianfu_sec_rso
+			}
+			
+		create_country_leader = {
+				name = "Wu Zhihui"
+				picture = "gfx/leaders/GXCA/Portrait_GXC_Taixu.png"
+				expire = "1.1.1"
+				ideology = syn_anarchism_subtype #Temp Ideology
 			}
 
 		
