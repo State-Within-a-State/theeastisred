@@ -793,7 +793,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_labor } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_cooperatiing_with_world
+			}
 		}
 	}
 	#6 points of ethnology
@@ -809,7 +811,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_labor } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_ethnology
+			}
 		}
 	}
 	#reforming the Chinese language? wtf is han language
@@ -825,7 +829,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_ethnology } 
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = GXC_languang_reforms
+			days = 180
+			}
 		}
 	}
 	#an end to feudal thoughts
@@ -841,7 +848,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_ethnology } 
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = GXC_anti_feudlaism
+			days = 180
+			}
 		}
 	}
 	#creation of worker-intellectuals less dead learning
@@ -857,7 +867,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_feudal_end } prerequisite = { focus = GXC_anar_language_reform } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_worker_intellectualism
+			}
 		}
 	}
 	#upgrading mutual assinstance
@@ -873,7 +885,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_worker_intellectual } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_mutalism
+			}
 		}
 	}
 
@@ -891,7 +905,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_labor } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_mutual_assistance_loyalty
+			}
 		}
 	}
 	#supporting education independence
@@ -907,7 +923,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_fraternal_love } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_education_independence
+			}
 		}
 	}
 	#labour education
@@ -923,7 +941,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_education_independence } 
 		completion_reward = {
-
+			add_research_slot = 1
 		}
 	}
 
@@ -940,7 +958,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_fraternal_love } prerequisite = { focus = GXC_anar_world_culture }
 		completion_reward = {
-
+			add_ideas = {
+			GXC_education_politics_balance
+			}
 		}
 	}
 	#five pronged education
@@ -956,7 +976,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_education_politics } 
 		completion_reward = {
-
+			add_ideas = {
+			GXC_five_pronged_education
+			}
 		}
 	}
 	#legacy of the reformers
@@ -972,7 +994,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_five_education } prerequisite = { focus = GXC_anar_education_labor } 
 		completion_reward = {
-
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
+			add_political_power = 25
 		}
 	}
 	#anarchist social system
@@ -988,7 +1014,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = GXC_anar_worker_intellectual } prerequisite = { focus = GXC_anar_five_education } 
 		completion_reward = {
-
+		country_event = anarcho_china.14
 		}
 	}
 	#victory through Living Education
@@ -1002,10 +1028,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Cai Yuanpai"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = GXC_anar_social_system } prerequisite = { focus = GXC_anar_reformer_legacy } 
 		mutually_exclusive = { focus = GXC_anar_thousand_steps_utopia }
 		completion_reward = {
-
+			add_ideas = {
+			GXC_victory_through_education
+			}
 		}
 	}
 	#For 3000 years towards utopia wu
@@ -1019,10 +1053,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_leader = {
+		name = "Wu Zhihui"
+		ruling_only = yes
+		}
+		}
 		prerequisite = { focus = GXC_anar_social_system } prerequisite = { focus = GXC_anar_mutual_help } 
 		mutually_exclusive = { focus = GXC_anar_living_education }
 		completion_reward = {
-
+			add_ideas = {
+			GXC_three_thousand_utopia
+			}
 		}
 	}
 
@@ -1304,151 +1346,7 @@ focus_tree = {
 	}
 
 
-	#Mass Artillery Movement
-	focus = {
-		id = GXC_mass_artillery_movement
-		icon = GFX_GXC_mass_artillery_movement-248360
-		x = 28
-		y = 1
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = GXC_nowisthehour  }
-		completion_reward = {
-		add_equipment_to_stockpile = {
-				type = artilery
-				amount = 300
-				producer = GER
-			}
-		}
-	}
-
-	#Building A People's Navy
-	focus = {
-		id = GXC_buildingapeoplesnavy
-		icon = GFX_GXC_buildingapeoplesnavy-248360
-		x = 32
-		y = 1
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_nowisthehour  }
-		completion_reward = {
-		add_building_construction = {
-			type = naval_base
-			level = 2
-			instant_build = yes
-		}
-		add_building_construction = {
-			type = dockyard
-			level = 2
-			instant_build = yes
-		}
-		}
-	}
-
-	#Sailors as Masters
-	focus = {
-		id = GXC_sailors_as_masters
-		icon = GFX_GXC_sailors_as_masters-248360
-		x = 34
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		prerequisite = { focus = GXC_buildingapeoplesnavy  }
-		completion_reward = {
-		add_manpower = 19292
-		}
-	}
-
-	#Voluntarist Shipyards
-	focus = {
-		id = GXC_voluntarist_shipyards
-		icon = GFX_GXC_voluntarist_shipyards-248360
-		x = 32
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = GXC_buildingapeoplesnavy  }
-		completion_reward = {
-		add_building_construction = {
-			type = naval_base
-			level = 2
-			instant_build = yes
-		}
-		add_building_construction = {
-			type = dockyard
-			level = 2
-			instant_build = yes
-		}
-		}
-	}
-
-	#Military Transportation Initiatives
-	focus = {
-		id = GXC_military_transportation_initiatives
-		icon = GFX_GXC_military_transportation_initiatives-248360
-		x = 30
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_mass_artillery_movement  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 1
-			category = motorized_equipment
-		}
-		}
-	}
-
-	#Urban Tank Corps
-	focus = {
-		id = GXC_urban_tank_corps
-		icon = GFX_GXC_urban_tank_corps-248360
-		x = 28
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_mass_artillery_movement  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 3
-			category = armor
-		}
-		}
-	}
-
-	#Prize Initiative
-	focus = {
-		id = GXC_prize_initiative
-		icon = GFX_GXC_prize_initiative-248360
-		x = 26
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_mass_artillery_movement  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 3
-			category = armor
-		}
-		}
-	}
+	
 
 	#free the concessions from foreign rule
 	focus = {
@@ -1659,138 +1557,7 @@ focus_tree = {
 		}
 	}
 
-	#Find Military Collaborators
-	focus = {
-		id = GXC_find_military_collaborators
-		icon = GFX_GXC_find_military_collaborators-248360
-		x = 26
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_prize_initiative  } 
-		completion_reward = {
-		add_political_power = 300
-		}
-	}
-
-	#Defensive Naval Aviation
-	focus = {
-		id = GXC_defensive_naval_aviation
-		icon = GFX_GXC_defensive_naval_aviation-248360
-		x = 28
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_voluntarist_shipyards  } prerequisite = { focus = GXC_urban_tank_corps  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 2
-			category = naval_air
-		}
-		}
-	}
-
-	#Stealth is our Ally
-	focus = {
-		id = GXC_stealth_is_our_ally
-		icon = GFX_GXC_stealth_is_our_ally-248360
-		x = 32
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_voluntarist_shipyards  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 2
-			category = encryption_tech
-		}
-		}
-	}
-
-	#Strength is our Salvation
-	focus = {
-		id = GXC_strength_is_our_salvation
-		icon = GFX_GXC_strength_is_our_salvation-248360
-		x = 34
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = GXC_sailors_as_masters  }
-		completion_reward = {
-		add_political_power = 100
-		add_war_support = 0.15
-		}
-	}
-
-	#Offensive Carriers and Cruisers
-	focus = {
-		id = GXC_offensive_carriers_and_cruisers
-		icon = GFX_GXC_offensive_carriers_and_cruisers-248360
-		x = 36
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_sailors_as_masters  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 2
-			category = cv_tech
-		}
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 2
-			category = bc_tech
-		}
-		}
-	}
-
-	#Naval Landing On Mass
-	focus = {
-		id = GXC_naval_landing_on_mass
-		icon = GFX_GXC_naval_landing_on_mass-248360
-		x = 34
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_strength_is_our_salvation  } prerequisite = { focus = GXC_offensive_carriers_and_cruisers  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 2
-			category = naval_doctrine
-		}
-		}
-	}
-
-	#Develop Full Academies
-	focus = {
-		id = GXC_develop_full_academies
-		icon = GFX_GXC_develop_full_academies-248360
-		x = 32
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_stealth_is_our_ally  }
-		completion_reward = {
-		}
-	}
+	
 
 	#philiplines
 	focus = {
@@ -1816,45 +1583,7 @@ focus_tree = {
 		}
 	}
 
-	#Researching Special Forces
-	focus = {
-		id = GXC_researching_special_forces
-		icon = GFX_GXC_researching_special_forces-248360
-		x = 33
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_naval_landing_on_mass  } prerequisite = { focus = GXC_develop_full_academies  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 1
-			category = mountaineers_tech
-		}
-		}
-	}
-
-	#The People's Marines
-	focus = {
-		id = GXC_thepeoplesmarines
-		icon = GFX_GXC_thepeoplesmarines-248360
-		x = 35
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = GXC_naval_landing_on_mass  } prerequisite = { focus = GXC_develop_full_academies  }
-		completion_reward = {
-		add_tech_bonus = {
-			bonus = 0.5
-			uses = 1
-			category = marine_tech
-		}
-		}
-	}
+	
 
 	#Return to Kropotkin's Birthplace
 	focus = {
