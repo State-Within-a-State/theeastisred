@@ -55,6 +55,7 @@ country_event = { #1937 election called after us collapse or 1941 election
 		name = phil.2.a
 		ai_chance = { base = 100 }
 		country_event = { id = phil.4 days = 2190 }
+		#he dies sometime in so country_event phil.7
 	}
 	option = { #popular front wins
 		name = phil.2.b
@@ -154,7 +155,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		ai_chance = { base = 100 }
 		
 	}
-	option = { #independent Pascual Racuyal (may change it so there's a limited way to get him but idk yet)
+	option = { #independent Pascual Racuyal (may change it so there's a limited way to get him but idk yet) could be Quezon still rules and mental asylum dude comes
 		name = phil.4.h
 		ai_chance = { base = 100 }
 		
@@ -189,14 +190,20 @@ country_event = { #peace with Japan check the on actions
 	option = { #elections coming soon (they never fired once Japan went to war with you)
 		name = phil.6.a
 		ai_chance = { base = 100 }
-		hidden_effect = {
+		if = { 
+		limit = {
+		NOT = { has_country_flag = PHI_no_second_election }
+		NOT = {
+                    has_country_flag = PHI_second_elections #won't fire twice
+		}
+		}
 		country_event = { id = phil.4 days = 120 }
 		}
 
 	}
 }
 
-country_event = { #
+country_event = { #rest in oeace Quezon (only occurs if he was relected)
 	id = phil.7
 	immediate = {log = "[GetDateText]: [Root.GetName]: event phil.7"}
 	title = phil.7.title
@@ -207,7 +214,8 @@ country_event = { #
 	option = { #
 		name = phil.7.a
 		ai_chance = { base = 100 }
-		
+		#make vincinte soclib as a slot filler?
+		#set govt soccon
 	}
 }
 
