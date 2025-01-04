@@ -8,1538 +8,225 @@ focus_tree = {
 			tag = PHI
 		}
 	}
-	#Defence Against Asian Imperialism
+	#starting tree
+	#The Stars, Stripes & the Sun
 	focus = {
-		id = PHI_defence_against_asian_imperialism
-		icon = GFX_PHI_defence_against_asian_imperialism-5
-		x = 11
-		y = 2
+		id = PHI_start
+		icon = GFX_goal_QIO_revolution
+		x = 3
+		y = 0
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_the_sun_amongst_the_stars  }
-		completion_reward = { add_opinion_modifier = {
-				target = USA
-				modifier = IMPROVE_RELA_PHI_USA
-			}
-			
-			add_opinion_modifier = {
-				target = JAP
-				modifier = PHI_expelled_japs
-			}
+		completion_reward = {
 		}
 	}
-
-	#The Sun Amongst the Stars
+	#creation of new ministies 
 	focus = {
-		id = PHI_the_sun_amongst_the_stars
-		icon = GFX_PHI_the_sun_amongst_the_stars-81047
-		x = 11
+		id = PHI_start_ministries
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = 1
 		y = 1
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		
+		prerequisite = { focus = PHI_start } 
 		completion_reward = {
-		add_political_power = 100
-		add_war_support = 0.2
 		}
 	}
-
-	#Limit the Press
+	#womens sufferage 
 	focus = {
-		id = PHI_limit_the_press
-		icon = GFX_PHI_limit_the_press-81046
-		x = 9
+		id = PHI_start_women
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = 3
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_the_sun_amongst_the_stars  }
+		prerequisite = { focus = PHI_start_ministries } 
 		completion_reward = {
-		add_stability = -0.32
 		}
-		
-		
+	}
+	#denounce left wing radicalism 
+	focus = {
+		id = PHI_start_left_radicals
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start_women } 
+		mutually_exclusive = { focus = PHI_start_learn_sakdal }
+		completion_reward = {
+		}
+	}
+	#failure of sakdal 
+	focus = {
+		id = PHI_start_learn_sakdal
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start_women } 
+		mutually_exclusive = { focus = PHI_start_left_radicals }
+		completion_reward = {
+		}
+	}
+	#army 
+	focus = {
+		id = PHI_start_army
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = 3
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start_learn_sakdal focus = PHI_start_left_radicals } 
+		completion_reward = {
+		}
 	}
 
-	#Uphold American Loyalism
+	#more government less politics 
 	focus = {
-		id = PHI_uphold_american_loyalism
-		icon = GFX_PHI_uphold_american_loyalism-81045
-		x = 13
+		id = PHI_start_less_politics
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start } 
+		completion_reward = {
+		}
+	}
+	#social justice 
+	focus = {
+		id = PHI_start_social_justice 
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = -3
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_the_sun_amongst_the_stars  }
+		prerequisite = { focus = PHI_start_less_politics } 
 		completion_reward = {
-		add_opinion_modifier = {
-				target = USA
-				modifier = IMPROVE_RELA_PHI_USA
-			}
 		}
 	}
-
-	#Cracking on Ganap
+	#national relief 
 	focus = {
-		id = PHI_cracking_on_ganap
-		icon = GFX_PHI_cracking_on_ganap-72617
-		x = 12
+		id = PHI_start_national_relief
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start_less_politics } 
+		completion_reward = {
+		}
+	}
+	#enact minimum wage 
+	focus = {
+		id = PHI_start_minimum_wage
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = -2
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_uphold_american_loyalism  } prerequisite = { focus = PHI_defence_against_asian_imperialism  }
+		prerequisite = { focus = PHI_start_social_justice } prerequisite = { PHI_start_national_relief }
 		completion_reward = {
-		add_popularity = {
-			ideology = national_populist
-			popularity = -1
-		}
-		}
-	
-	}
-	
-
-	#The Huk Menace
-	focus = {
-		id = PHI_the_huk_menace
-		icon = GFX_PHI_the_huk_menace-72615
-		x = 14
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_uphold_american_loyalism  }
-		completion_reward = {
-		add_popularity = {
-			ideology = totalist
-			popularity = -1
-		}
-		completion_reward = {
-		add_popularity = {
-			ideology = syndicalist
-			popularity = -1
-		}
-		}
-	
-		}
-	
-	}
-
-	#Requesting Further Aid
-	focus = {
-		id = PHI_requesting_further_aid
-		icon = GFX_PHI_requesting_further_aid-81043
-		x = 10
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_limit_the_press  } prerequisite = { focus = PHI_defence_against_asian_imperialism  }
-		completion_reward = {
-		add_opinion_modifier = {
-				target = USA
-				modifier = IMPROVE_RELA_PHI_USA
-			}
-		add_equipment_to_stockpile = {
-				type = infantry_equipment
-				amount = 2000
-				producer = USA
-			}
 		}
 	}
-
-	#Rule of a General
+	#create nce 
 	focus = {
-		id = PHI_rule_of_a_general
-		icon = GFX_PHI_rule_of_a_general-445
-		x = 8
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_limit_the_press  }
-		completion_reward = {
-		add_war_support = 0.4
-		add_command_power = 15
-		}
-	}
-
-	#Rule of a General
-	focus = {
-		id = PHI_rule_of_a_general
-		icon = GFX_PHI_rule_of_a_general-81042
-		x = 8
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_limit_the_press  }
-		completion_reward = {
-		add_war_support = 0.4
-		add_command_power = 15
-		}
-	}
-
-	#Increasing Instability?
-	focus = {
-		id = PHI_increasinginstability
-		icon = GFX_PHI_increasinginstability-81044
-		x = 9
+		id = PHI_start_nce
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = -2
 		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_requesting_further_aid  } prerequisite = { focus = PHI_rule_of_a_general  }
+		prerequisite = { focus = PHI_start_minimum_wage }
 		completion_reward = {
-		add_stability = -1
 		}
 	}
-
-	#The Chains Are Melting
+	#create nce 
 	focus = {
-		id = PHI_the_chains_are_melting
-		icon = GFX_PHI_the_chains_are_melting-81048
-		x = 13
+		id = PHI_start_nce
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = -2
 		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_cracking_on_ganap  } prerequisite = { focus = PHI_the_huk_menace  }
+		prerequisite = { focus = PHI_start_minimum_wage }
 		completion_reward = {
-		add_stability = -0.15
-		add_war_support = -0.5
 		}
 	}
-
-	#Right on the Edge
+	#stars and stripes at half mast 
 	focus = {
-		id = PHI_right_on_the_edge
-		icon = GFX_PHI_right_on_the_edge-298
-		x = 11
+		id = PHI_start_rip_bozo
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = -1
 		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_increasinginstability  } prerequisite = { focus = PHI_the_chains_are_melting  }
-		
-	}
-
-	#Collapse of an Empire
-	focus = {
-		id = PHI_collapse_of_an_empire
-		icon = GFX_goal_generic_military_deal
-		x = 15
-		y = 7
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		always = no
+		prerequisite = { focus = PHI_start_nce } prerequisite = { focus = PHI_start_army } 
+		mututally_exclusive = { focus = PHI_start_cuck }
+		completion_reward = {
 		}
 	}
-
-	#Nationalists Secure the Realm
+	#retain 10 year course 
 	focus = {
-		id = PHI_nationalists_secure_the_realm
-		icon = GFX_PHI_nationalists_secure_the_realm-72611
-		x = 7
-		y = 8
+		id = PHI_start_cuck
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start
+		x = -1
+		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_collapse_of_an_empire  }
-		available = {
-		has_government = national_populist
-		has_government = paternal_autocrat
-		
-		}
-		available = {
-		always = no
-		}
-	}
-
-	#The Syndicalist Revolution
-	focus = {
-		id = PHI_the_syndicalist_revolution
-		icon = GFX_PHI_the_syndicalist_revolution-73552
-		x = 25
-		y = 8
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_collapse_of_an_empire  }
-		available = {
-		has_government = syndicalist
-		has_government = totalist
-		}
-		available = {
-		always = no
-		}
-	}
-
-	#Democracy Restored
-	focus = {
-		id = PHI_democracy_restored
-		icon = GFX_PHI_democracy_restored-78074
-		x = 15
-		y = 8
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_collapse_of_an_empire  }
-		available = {
-		has_government = social_conservative
-		has_government = social_liberal
-		
-		}
-		available = {
-		always = no
-		}
-	}
-
-	#Crisanto's Syndicalists
-	focus = {
-		id = PHI_crisantossyndicalists
-		icon = GFX_PHI_crisantossyndicalists-81027
-		x = 22
-		y = 9
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_the_syndicalist_revolution  }
-		available = {
-		has_government = syndicalist
-		}
-	}
-
-	#Hukalap Victory
-	focus = {
-		id = PHI_hukalap_victory
-		icon = GFX_PHI_hukalap_victory-81029
-		x = 28
-		y = 9
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_the_syndicalist_revolution  }
-		available = {
-		has_government = totalist
-		}
-	}
-	
-
-	#The Ideas of Liberalism
-	focus = {
-		id = PHI_the_ideas_of_liberalism
-		icon = GFX_PHI_the_ideas_of_liberalism-78092
-		x = 16
-		y = 9
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_democracy_restored  }
-		available = {
-		has_government = social_liberal
-		}
-	}
-
-	#Traditional Society
-	focus = {
-		id = PHI_traditional_society
-		icon = GFX_PHI_traditional_society-78091
-		x = 14
-		y = 9
-		cost = 4
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_democracy_restored  }
-		available = {
-		has_government = social_conservative
-		}
-	}
-
-	#The Militarist Future
-	focus = {
-		id = PHI_the_militarist_future
-		icon = GFX_PHI_the_militarist_future-81032
-		x = 9
-		y = 9
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_nationalists_secure_the_realm  }
-		available = {
-		has_government = paternal_autocrat
-		}
-	}
-
-	#Philippines For Filipino's
-	focus = {
-		id = PHI_philippinesforfilipinos
-		icon = GFX_PHI_philippinesforfilipinos-81033
-		x = 5
-		y = 9
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_nationalists_secure_the_realm  }
-		available = {
-		has_government = national_populist
-		}
-	}
-
-	#The Red Island
-	focus = {
-		id = PHI_the_red_island
-		icon = GFX_PHI_the_red_island-81041
-		x = 20
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_crisantossyndicalists  }
+		prerequisite = { focus = PHI_start_nce } prerequisite = { focus = PHI_start_army } 
+		mututally_exclusive = { focus = PHI_start_rip_bozo }
 		completion_reward = {
-		add_stability = 0.5
 		}
 	}
 
-	#The Union's Factory
-	focus = {
-		id = PHI_theunionsfactory
-		icon = GFX_PHI_theunionsfactory-81023
-		x = 24
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_crisantossyndicalists  }
-		completion_reward = {
-		add_offsite_building = { type = arms_factory level = 2 }
-		}
-	}
 
-	#Communal Housing
-	focus = {
-		id = PHI_communal_housing
-		icon = GFX_PHI_communal_housing-81024
-		x = 22
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_crisantossyndicalists  }
-		completion_reward = {
-		add_extra_state_shared_building_slots = 3
-		}
-	}
 
-	#Every Worker For Every Factory
-	focus = {
-		id = PHI_every_worker_for_every_factory
-		icon = GFX_PHI_every_worker_for_every_factory-81026
-		x = 26
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_hukalap_victory  }
-		completion_reward = {
-		add_building_construction = {
-				type = arms_factory
-				level = 5
-				instant_build = yes
-			}
-		}
-	}
 
-	#An International Declaration
-	focus = {
-		id = PHI_an_international_declaration
-		icon = GFX_PHI_an_international_declaration-81022
-		x = 30
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_hukalap_victory  }
-		add_opinion_modifier = {
-				target = BHC
-				modifier = PHI_synrev_FRA
-			}
-			
-			add_opinion_modifier = {
-			target = FRA
-			modifier = PHI_synrev_FRA
-		}
-		
-				add_opinion_modifier = {
-			target = ENG
-			modifier = PHI_synrev_FRA
-		}
-	}
 
-	#Following the Red Guards
-	focus = {
-		id = PHI_following_the_red_guards
-		icon = GFX_PHI_following_the_red_guards-78465
-		x = 28
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_hukalap_victory  }
-		completion_reward = {
-			add_popularity = {
-				ideology = totalist
-				popularity = 0.05
-			}
-		}
-	}
-
-	#The New Power
-	focus = {
-		id = PHI_the_new_power
-		icon = GFX_focus_spa_no_compromise_on_carlist_ideals
-		x = 5
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_philippinesforfilipinos  }
-		completion_reward = {
-		add_political_power = 10
-		add_stability = 0.35
-		}
-		
-	}
-
-	#Democracy At its Worst
-	focus = {
-		id = PHI_democracy_at_its_worst
-		icon = GFX_PHI_democracy_at_its_worst-81034
-		x = 9
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_the_militarist_future  }
-		completion_reward = {
-			add_popularity = {
-				ideology = paternal_autocrat
-				popularity = 0.05
-			}
-		}
-	}
-
-	#Manila Industrial Program
-	focus = {
-		id = PHI_manila_industrial_program
-		icon = GFX_focus_generic_industry_2
-		x = 7
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_the_militarist_future  focus = PHI_philippinesforfilipinos  }
-		completion_reward = {
-			add_building_construction = {
-				type = industrial_complex
-				level = 2
-				instant_build = yes
-			}
-			add_building_construction = {
-				type = arms_factory
-				level = 2
-				instant_build = yes
-			}
-			
-			
-		}
-	}
-
-	#Enforcing Tagalog
-	focus = {
-		id = PHI_enforcing_tagalog
-		icon = GFX_PHI_enforcing_tagalog-81035
-		x = 5
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_the_new_power  }
-		completion_reward = {
-		add_popularity = {
-				ideology = national_populist
-				popularity = 0.05
-			}
-		add_stability = -0.1
-		add_political_power = 25
-		
-		
-		}
-	}
-
-	#A Multi-lingual Society
-	focus = {
-		id = PHI_a_multilingual_society
-		icon = GFX_goal_generic_national_unity
-		x = 9
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_democracy_at_its_worst  } 
-		completion_reward = {
-		add_stability = 0.1
-		add_political_power = 25
-		}
-	}
-
-	#New Farming Firms
-	focus = {
-		id = PHI_new_farming_firms
-		icon = GFX_PHI_new_farming_firms-78089
-		x = 7
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_manila_industrial_program  }
-		completion_reward = {
-		add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
-			}
-		add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
-			}
-		add_building_construction = {
-				type = infrastructure
-				level = 2
-				instant_build = yes
-			}
-		
-		}
-	}
-
-	#Crackdown on Minorities
-	focus = {
-		id = PHI_crackdown_on_minorities
-		icon = GFX_PHI_crackdown_on_minorities-72611
-		x = 5
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_enforcing_tagalog  }
-		completion_reward = {
-		add_stability = 0.1
-		add_political_power = 25
-		add_war_support = 0.25
-		add_manpower = -50000
-		
-		}
-	}
-
-	#A United Society
-	focus = {
-		id = PHI_a_united_society
-		icon = GFX_PHI_a_united_society-72619
-		x = 9
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_a_multilingual_society  }
-		completion_reward = {
-		add_stability = 0.1
-		add_political_power = 25
-		add_war_support = 0.25
-		add_manpower = 20000
-		
-		}
-	}
-
-	#New Education Policies
-	focus = {
-		id = PHI_new_education_policies
-		icon = GFX_focus_research
-		x = 7
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_new_farming_firms  }
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-
-	#Crushing Opponents
-	focus = {
-		id = PHI_crushing_opponents
-		icon = GFX_PHI_crushing_opponents-422
-		x = 6
-		y = 13
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_crackdown_on_minorities  } prerequisite = { focus = PHI_new_education_policies  }
-		completion_reward = {
-		add_stability = -0.21
-		add_manpower = -20000
-		
-		}
-	}
-
-	#Crackdown on the Workers
-	focus = {
-		id = PHI_crackdown_on_the_workers
-		icon = GFX_PHI_crackdown_on_the_workers-72615
-		x = 8
-		y = 13
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_a_united_society  } prerequisite = { focus = PHI_new_education_policies  }
-		completion_reward = {
-			add_stability = -0.15
-			add_manpower = -30000
-		}		
-	}
-
-	#Limiting Regulations
-	focus = {
-		id = PHI_limiting_regulations
-		icon = GFX_focus_eng_concessions_to_the_trade_unions
-		x = 13
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_retaining_catholic_ideals  }
-		completion_reward = {
-			add_stability = 0.1
-			add_political_power = 20
-		}
-	}
-
-	#Secular Society
-	focus = {
-		id = PHI_secular_society
-		icon = GFX_goal_generic_improve_relations
-		x = 17
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_limited_healthcare  }
-		completion_reward = {
-			add_political_power = 50
-			add add_stability = -0.1
-		}
-	}
-
-	#Manila Railway
-	focus = {
-		id = PHI_manila_railway
-		icon = GFX_PHI_manila_railway-33359
-		x = 14
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_new_research_project  focus = PHI_limiting_regulations  }
-		completion_reward = {
-			add_political_power = 100
-			add_war_support = 0.15
-		}
-	}
-
-	#New Ports
-	focus = {
-		id = PHI_new_ports
-		icon = GFX_PHI_new_ports-61826
-		x = 16
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_new_research_project  focus = PHI_secular_society  }
-		completion_reward = {
-			add_building_construction = {
-				type = naval_dockyard
-				level = 5
-				instant_build = yes
-			}
-			add_stability = 0.15
-		    add_political_power = 20
-		}
-	}
-
-	#Democracy Restored
-	focus = {
-		id = PHI_democracy_restored
-		icon = GFX_PHI_democracy_restored-71161
-		x = 15
-		y = 13
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_manila_railway  } prerequisite = { focus = PHI_new_ports  }
-		completion_reward = {
-			add_stability = 0.25
-			add_war_support = 0.15
-			add_manpower = 35000
-			add_political_power = 100
-		}
-	}
-
-	#Private Industry
-	focus = {
-		id = PHI_private_industry
-		icon = GFX_focus_generic_industry_3
-		x = 15
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_the_ideas_of_liberalism  focus = PHI_traditional_society  }
-		completion_reward = {
-			add_political_power = 20
-			add_building_construction = {
-				type = civilian_factory
-				level = 5
-				instant_build = yes
-		}
-	}
-	
-	}
-
-	#Limited Healthcare
-	focus = {
-		id = PHI_limited_healthcare
-		icon = GFX_PHI_limited_healthcare-73534
-		x = 17
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_the_ideas_of_liberalism  }
-		completion_reward = {
-			add_stability = -0.15
-			add_political_power = 20
-		}
-	}
-
-	#Retaining Catholic Ideals
-	focus = {
-		id = PHI_retaining_catholic_ideals
-		icon = GFX_focus_mex_restore_the_army_of_christ
-		x = 13
-		y = 10
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_traditional_society  }
-		completion_reward = {
-			add_political_power = 30
-			add_war_support = 0.2
-		}
-	}
-
-	#New Research Project
-	focus = {
-		id = PHI_new_research_project
-		icon = GFX_focus_research
-		x = 15
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_private_industry  }
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-
-	#Religious Tolerance
-	focus = {
-		id = PHI_religious_tolerance
-		icon = GFX_PHI_religious_tolerance-81025
-		x = 20
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_the_red_island  }
-		completion_reward = {
-			add_stability = 0.15
-			add_political_power = 20
-		}
-	}
-
-	#The Red Railway
-	focus = {
-		id = PHI_the_red_railway
-		icon = GFX_PHI_the_red_railway-81040
-		x = 22
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_communal_housing  }
-		completion_reward = {
-			add_political_power = 20
-			add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
-		}
-	}
-	}
-
-	#Luzon Universities
-	focus = {
-		id = PHI_luzon_universities
-		icon = GFX_focus_generic_socialist_science
-		x = 24
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_theunionsfactory  }
-		completion_reward = {
-			add_research_slot = 1
-			add_political_power = 25
-		}
-	}
-	
-	#The 2 Year Plan
-	focus = {
-		id = PHI_the_2_year_plan
-		icon = GFX_PHI_the_2_year_plan-81021
-		x = 26
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_every_worker_for_every_factory  }
-		completion_reward = {
-			add_research_slot = 0.15
-			add_war_support = 0.05
-			add_building_construction = {
-				type = infrastructure
-				level = 5
-				instant_build = yes
-		}
-	}
-	}
-
-	#Our Own Cultural Revolution
-	focus = {
-		id = PHI_our_own_cultural_revolution
-		icon = GFX_PHI_our_own_cultural_revolution-33973
-		x = 28
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_following_the_red_guards  }
-		completion_reward = {
-			add_stability = 0.1
-			add_war_support = 0.15
-			add_political_power = 40
-		}
-	}
-
-	#Red Ports
-	focus = {
-		id = PHI_red_ports
-		icon = GFX_PHI_red_ports-61826
-		x = 30
-		y = 11
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_an_international_declaration  }
-		completion_reward = {
-			add_war_support = 0.15
-			add_building_construction = {
-			type = naval_dockyard
-				level = 5
-				instant_build = yes
-		}
-	}
-	}
-
-	#Red Study Clubs
-	focus = {
-		id = PHI_red_study_clubs
-		icon = GFX_PHI_red_study_clubs-81031
-		x = 26
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_the_2_year_plan  }
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-
-	#A New Red Star
-	focus = {
-		id = PHI_a_new_red_star
-		icon = GFX_PHI_a_new_red_star-81036
-		x = 28
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_our_own_cultural_revolution  }
-		completion_reward = {
-			add_war_support = 0.2
-			add_political_power = 35
-			add_manpower = 20000
-		}
-	}
-
-	#Anti-Capitalist Laws
-	focus = {
-		id = PHI_anticapitalist_laws
-		icon = GFX_PHI_anticapitalist_laws-81038
-		x = 30
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_red_ports  }
-		completion_reward = {
-			add_stability = -0.1
-			add_political_power = 35
-
-		}
-	}
-
-	#Red Democracy
-	focus = {
-		id = PHI_red_democracy
-		icon = GFX_PHI_red_democracy-66812
-		x = 20
-		y = 12
-		cost = 8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_religious_tolerance  }
-		completion_reward = {
-			add_stability = 0.3
-			add_war_support = 0.25
-			add_political_power = 50
-		}
-	}
-
-	#Anti Landlordism
-	focus = {
-		id = PHI_anti_landlordism
-		icon = GFX_focus_eng_concessions_to_the_trade_unions
-		x = 22
-		y = 12
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_the_red_railway  }
-		completion_reward = {
-			add_stability = 0.15
-			add_political_power = 35
-		}
-	}
-
-	#The Red Guns
-	focus = {
-		id = PHI_the_red_guns
-		icon = GFX_focus_generic_industry_2
-		x = 24
-		y = 12
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_luzon_universities  }
-		completion_reward = {
-			add_building_construction = {
-				type = arms_factory
-				level = 5
-				instant_build = yes
-		}
-	}
-	}
-
-	#The New Army
-	focus = {
-		id = PHI_the_new_army
-		icon = GFX_PHI_the_new_army-61805
-		x = 21
-		y = 1
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		completion_reward = {
-		add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-		}
-	}
-
-	#The Manila Fleet
-	focus = {
-		id = PHI_the_manila_fleet
-		icon = GFX_goal_generic_navy_cruiser
-		x = 19
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_the_new_army  }
-		completion_reward = {
-		add_building_construction = {
-				type = dockyard
-				level = 2
-				instant_build = yes
-			}
-		
-		}
-	}
-
-	#Lessons of the Great War
-	focus = {
-		id = PHI_lessons_of_the_great_war
-		icon = GFX_focus_chi_army_reform
-		x = 21
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_the_new_army  }
-		completion_reward = {
-		add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				category = infantry_tech
-			}
-		
-		}
-	}
-
-	#Up In the Sky
-	focus = {
-		id = PHI_up_in_the_sky
-		icon = GFX_PHI_up_in_the_sky-342
-		x = 23
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = PHI_the_new_army  }
-		completion_reward = {
-		add_building_construction = {
-				type = air_base
-				level = 2
-				instant_build = yes
-			}
-		
-		}
-	}
-
-	#New Subs
-	focus = {
-		id = PHI_new_subs
-		icon = GFX_goal_generic_navy_submarine
-		x = 19
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_the_manila_fleet  }
-		completion_reward = {
-		add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				category = submarine_doctrine
-			}
-		
-		}
-	}
-
-	#Jungle Calvary
-	focus = {
-		id = PHI_jungle_calvary
-		icon = GFX_goal_generic_army_motorized
-		x = 21
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_lessons_of_the_great_war  }
-		completion_reward = {
-		add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				category = motorized_equipment
-			}
-		
-		}
-	}
-
-	#Fighter Focus
-	focus = {
-		id = PHI_fighter_focus
-		icon = GFX_goal_generic_air_fighter
-		x = 23
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_up_in_the_sky  }
-		completion_reward = {
-		add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				category = air_equipment
-			}
-		
-		}
-	}
-
-	#The Filo Marines
-	focus = {
-		id = PHI_the_filo_marines
-		icon = GFX_goal_generic_navy_doctrines_tactics
-		x = 19
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_new_subs  }
-		completion_reward = {
-		add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				category = marine_tech
-			}
-		
-		}
-	}
-
-	#Climbing To the Sky
-	focus = {
-		id = PHI_climbing_to_the_sky
-		icon = GFX_focus_GRE_a_land_of_mountains
-		x = 21
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_jungle_calvary  }
-		completion_reward = {
-		add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				category = cas_bomber
-			}
-		
-		}
-	}
-
-	#Its Raining Men
-	focus = {
-		id = PHI_its_raining_men
-		icon = GFX_focus_generic_paratrooper
-		x = 23
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = PHI_fighter_focus  }
-		completion_reward = {
-		add_tech_bonus = {
-				bonus = 0.5
-				uses = 1
-				category = para_tech
-			}
-		
-		}
-	}
-
-	#A New Sun
-	focus = {
-		id = PHI_a_new_sun
-		icon = GFX_PHI_a_new_sun-445
-		x = 25
-		y = 13
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_a_new_red_star  focus = PHI_anti_landlordism  }
-	}
-
-	#The New World
-	focus = {
-		id = PHI_the_new_world
-		icon = GFX_PHI_the_new_world-81047
-		x = 33
-		y = 1
-		cost = 1
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-	}
-
-	#The Co-prosperity Sphere
-	focus = {
-		id = PHI_the_coprosperity_sphere
-		icon = GFX_focus_chi_collaboration_with_the_japanese
-		x = 27
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		JAP = {
-		is_faction_leader = yes
-		}
-		OR = {
-		has_government = national_populist
-		has_government = paternal_autocrat
-			}
-			is_puppet = no
-		}
-		ai_will_do = { base = 100 }
-		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  } mutually_exclusive = { focus = PHI_fuck_off_on_own } 
-		completion_reward = {
-		JAP = { add_to_faction = PHI }
-		}
-	}
-
-	
-
-	#Looking to Canada
-	focus = {
-		id = PHI_looking_to_canada
-		icon = GFX_PHI_looking_to_canada-75120
-		x = 31
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		CAN = {
-		is_faction_leader = yes
-		}
-		OR = {
-		has_government = national_populist
-		has_government = paternal_autocrat
-		has_government social_conservative
-		has_government = social_liberal
-		has_government = market_liberal
-			}
-			is_puppet = no
-		}
-		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  } mutually_exclusive = { focus = PHI_fuck_off_on_own } 
-		completion_reward = {
-		CAN = { add_to_faction = PHI }
-		}
-	}
-
-	#German Relations
-	focus = {
-		id = PHI_german_relations
-		icon = GFX_PHI_german_relations-75128
-		x = 33
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		GER = {
-		is_faction_leader = yes
-		}
-		OR = {
-		has_government = national_populist
-		has_government = paternal_autocrat
-		has_government social_conservative
-		has_government = social_liberal
-		has_government = market_liberal
-			}
-			is_puppet = no
-		}
-		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  } mutually_exclusive = { focus = PHI_fuck_off_on_own } 
-		completion_reward = {
-		GER = { add_to_faction = PHI }
-		}
-	}
-
-	#The Internationale
-	focus = {
-		id = PHI_the_internationale
-		icon = GFX_PHI_the_internationale-78837
-		x = 37
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		FRA = {
-			is_faction_leader = yes
-		
-		}
-		OR = {
-		has_government = syndicalist
-		has_government = totalist
-		has_government = radical_socialist
-		}
-		is_puppet = no
-		}
-		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  } mutually_exclusive = { focus = PHI_fuck_off_on_own } 
-		completion_reward = {
-		FRA = { add_to_faction = PHI }
-		}
-	}
-
-	
-
-	#Indian Comrades
-	focus = {
-		id = PHI_indian_comrades
-		icon = GFX_PHI_indian_comrades-73599
-		x = 39
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		BHC = {
-			is_faction_leader = yes
-		
-		}
-		OR = {
-		has_government = syndicalist
-		has_government = totalist
-		has_government = radical_socialist
-		}
-		is_puppet = no
-		}
-		ai_will_do = { base = 100 }
-		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_the_coprosperity_sphere  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_fuck_off_on_own } 
-		completion_reward = {
-		BHC = { add_to_faction = PHI }
-		
-		}
-	}
-	#so doesn't join halfway around block
-	focus = {
-		id = PHI_fuck_off_on_own 
-		icon = GFX_goal_HOL_sustain_neutrality
-		x = 41
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		ai_will_do = { base = 100 }
-		prerequisite = { focus = PHI_the_new_world  }
-		mutually_exclusive = { focus = PHI_back_with_the_old  } mutually_exclusive = { focus = PHI_looking_to_canada  } mutually_exclusive = { focus = PHI_german_relations  } mutually_exclusive = { focus = PHI_the_internationale  } mutually_exclusive = { focus = PHI_chinese_alignment  } mutually_exclusive = { focus = PHI_indian_comrades  }
-		completion_reward = {
-		add_political_power = 100
-		}
-	}
 
 
 }
