@@ -113,7 +113,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	fire_only_once = yes 
 	immediate = { 
 	hidden_effect = { set_country_flag = PHI_second_elections 
-	#if is subject of us and us didn't collapse seen by u doing that stuff, then country event for independence
+	#if is subject of us and us didn't collapse seen by u doing that stuff, then country event for independence rd_phil.8
 	} 
 	}
 
@@ -203,7 +203,7 @@ country_event = { #peace with Japan check the on actions
 	}
 }
 
-country_event = { #rest in oeace Quezon (only occurs if he was relected)
+country_event = { #rest in peace Quezon (only occurs if he was relected)
 	id = rd_phil.7
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.7"}
 	title = rd_phil.7.title
@@ -214,12 +214,12 @@ country_event = { #rest in oeace Quezon (only occurs if he was relected)
 	option = { #
 		name = rd_phil.7.a
 		ai_chance = { base = 100 }
-		#make vincinte soclib as a slot filler?
+		#make vincinte soclib as a slot filler? obv will be socdem
 		#set govt soccon
 	}
 }
 
-country_event = { #
+country_event = { #freedom from commonwealth only if us didn't civil war. Happens either 2nd elections or Emilio. Santos has something different
 	id = rd_phil.8
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.8"}
 	title = rd_phil.8.title
@@ -230,6 +230,14 @@ country_event = { #
 	option = { #
 		name = rd_phil.8.a
 		ai_chance = { base = 100 }
+		rd_phil_commonwealth_to_republic = yes
+		USA = {
+		set_autonomy = {
+   		target = PHI
+   		autonomous_state = autonomy_free
+    		end_wars = no
+		}
+		}
 		
 	}
 }
