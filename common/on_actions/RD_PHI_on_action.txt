@@ -1,0 +1,28 @@
+	on_war = { #copied over the template for now just change it apply to cosmetic tags instead
+		effect = {
+			if = {
+				limit = {
+					tag = PHI
+					NOT = {
+						has_country_flag = PHI_at_war
+						has_global_flag = PHI_SOCIALIST
+					}
+				}
+				set_cosmetic_tag = PHW
+				set_country_flag = PHI_at_war
+			}
+		}
+	}
+	on_peace = {
+		effect = {
+			if = {
+				limit = {
+					tag = PHI
+					has_country_flag = PHI_at_war
+					NOT = { has_global_flag = PHI_SOCIALIST }
+				}
+				drop_cosmetic_tag = yes
+				clr_country_flag = PHI_at_war
+			}
+		}
+	}
