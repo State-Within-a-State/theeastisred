@@ -32,7 +32,7 @@ country_event = { #Executive Order No. 23, s. 1936 which was signed on March 25,
 	option = { #One step closer to independence 
 		name = rd_phil.1.a
 		ai_chance = { base = 100 }
-		drop_cosmetic_tag = yes
+		set_cosmetic_tag = PHI
 	}
 }
 
@@ -78,8 +78,8 @@ country_event = { #1937 election called after us collapse or 1941 election
 			}
 			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
 		}
-		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } }
-		country_event = { id = rd_phil.7 days = 730 }
+		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } 
+		country_event = { id = rd_phil.7 days = 730 } }
 	}
 	option = { #popular front wins
 		name = rd_phil.2.b
@@ -92,6 +92,14 @@ country_event = { #1937 election called after us collapse or 1941 election
 		}
 
 		#set the soclib leader as juan cause Quezon dies
+		hidden_effect = {
+		#create_country_leader
+		set_party_name = {
+   			 ideology = social_liberal
+   			 long_name = PHI_popular_front_party_long
+   			 name = PHI_popular_front_party
+			}
+		}
 		country_event = rd_phil.3
 		
 	}
@@ -121,7 +129,6 @@ country_event = { #popular front factions and splits (popular front party still 
 		}
 		#ministers
 		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } }
-
 		
 	}
 	option = { #Santos
@@ -142,7 +149,13 @@ country_event = { #popular front factions and splits (popular front party still 
 	}
 	option = { #Emilio
 		name = rd_phil.3.c
-		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } }
+		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } 
+		set_party_name = {
+   			 ideology = radical_socialist
+   			 long_name = PHI_filipinista_party_long
+   			 name = PHI_filipinista_party
+			}
+		}
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -167,7 +180,7 @@ country_event = { #popular front factions and splits (popular front party still 
 		meta_effect = {
 			text = {
 				set_politics = {
-					ruling_party = social_democratic
+					ruling_party = social_democrat
 					last_election = "[CURRENT_DATE]"
 					election_frequency = 72
 					elections_allowed = yes
@@ -349,14 +362,17 @@ country_event = { #leave faction after being freed from commonwealth?
 	is_triggered_only = yes
 	option = { #yeas
 		name = rd_phil.10.a
-		ai_chance = { base = 100 }
-		leave_faction = yes #idk about this maybe only if soc?
-
+		ai_chance = { base = 100
+		modifier = { has_government = market_liberal factor = 0 }
+		}
+		leave_faction = yes 
 	}
 	option = { #no
 		name = rd_phil.10.b
-		ai_chance = { base = 100 }
-
+		ai_chance = { base = 100 
+		modifier = { OR = { has_government = radical_socialist has_government = social_democrat } factor = 0 }
+		}
+		add_political_power = -50
 	}
 }
 

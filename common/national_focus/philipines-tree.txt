@@ -202,13 +202,13 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_start_nce } prerequisite = { focus = PHI_start_army } 
-		available = { has_country_flag = USA_civil_war_begun_flag }
+		available = { has_global_flag = USA_civil_war_begun_flag }
 		mutually_exclusive = { focus = PHI_start_cuck }
 		completion_reward = {
 		rd_phil_commonwealth_to_republic = yes #just flags
 		custom_effect_tooltip = PHI_elections_held_soon_tt
 		hidden_effect = { country_event = { id = rd_phil.3 days = 120 } }
-		#need to see how this happens in game before doing anything else
+		#auto get freed once civl war ends so no need to change the puppet autonomy
 		}
 	}
 	#retain 10 year course 
@@ -227,7 +227,8 @@ focus_tree = {
 		mutually_exclusive = { focus = PHI_start_rip_bozo }
 		completion_reward = {
 		#quezon's regime survives add your minigame stuff here instead? and then at the end call the election
-		country_event = { id = rd_phil.2 days = 1500 } #1941 elections probably? 
+		custom_effect_tooltip = PHI_elections_held_as_normal_tt
+		hidden_effect = { country_event = { id = rd_phil.2 days = 1500 } #1941 elections probably? }
 		}
 	}
 	#sugar admin 
@@ -396,7 +397,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_start_stack_court } prerequisite = { focus = PHI_start_foreign_resource } 
+		prerequisite = { focus = PHI_start_stack_court } prerequisite = { focus = PHI_start_foreign_resource } prerequisite = { focus = PHI_start_assistance_service }
 		available = { not = { has_country_flag = PHI_first_election_occurred } } 
 		completion_reward = {
 
@@ -502,7 +503,7 @@ focus_tree = {
 	}
 	#remember flag of first republic 
 	focus = {
-		id = PHI_emilio_flag 
+		id = PHI_emilio_flag_focus
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_emilio
 		x = 0
@@ -539,7 +540,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_emilio_flag } 
+		prerequisite = { focus = PHI_emilio_flag_focus } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
 		
@@ -607,7 +608,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_emilio_flag } 
+		prerequisite = { focus = PHI_emilio_flag_focus } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
 		
@@ -624,7 +625,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_emilio_flag } 
+		prerequisite = { focus = PHI_emilio_flag_focus } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
 		
@@ -641,7 +642,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_emilio_unemployment focus = PHI_emilio_NBSCRT } 
+		prerequisite = { focus = PHI_emilio_unemployment } prerequisite = { focus = PHI_emilio_NBSCRT } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
 		
@@ -664,7 +665,7 @@ focus_tree = {
 		
 		}
 	}
-	#education
+	#glorious first republic
 	focus = {
 		id = PHI_emilio_first_republic
 		icon = GFX_goal_QIO_revolutionary_zone
@@ -676,6 +677,208 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_emilio_education_expand } prerequisite = { focus = PHI_emilio_tax_revise } prerequisite = { focus = PHI_emilio_slash_govt_salary} 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#legacy of the democrata party
+	focus = {
+		id = PHI_democrata
+		icon = GFX_goal_QIO_revolution
+		x = 25
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		}
+	}
+	#social_justice
+	focus = {
+		id = PHI_democrata_social_justice
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata } 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#wanring against radicalism
+	focus = {
+		id = PHI_democrata_against_radicalism
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata } 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#form filipino welfare org
+	focus = {
+		id = PHI_democrata_welfare_org
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = -2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_social_justice } 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#national labor commission
+	focus = {
+		id = PHI_democrata_labor_commission
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_social_justice } prerequisite = { focus = PHI_democrata_against_radicalism } 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#subdue monopolies
+	focus = {
+		id = PHI_democrata_subdue_monopolies
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_labor_commission } prerequisite = { focus = PHI_democrata_welfare_org  } 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#a focus on public utilities
+	focus = {
+		id = PHI_democrata_public_utilities
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_against_radicalism } 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#strike down belo act
+	focus = {
+		id = PHI_democrata_belo_act
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_public_utilities } 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#pursue protectionist policies
+	focus = {
+		id = PHI_democrata_protectionist_policies
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = -1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_belo_act } prerequisite = { focus = PHI_democrata_subdue_monopolies }
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+
+	#enactment of sotto law
+	focus = {
+		id = PHI_democrata_sotto_law
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_belo_act } prerequisite = { focus = PHI_democrata_subdue_monopolies }
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+
+	#down with  hare haws act
+	focus = {
+		id = PHI_democrata_hare_haws 
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = 3
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_belo_act } prerequisite = { focus = PHI_democrata_subdue_monopolies }
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+	#a man of prestige for a great nation
+	focus = {
+		id = PHI_democrata_great_man 
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_democrata
+		x = 1
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_democrata_hare_haws } prerequisite = { focus = PHI_democrata_sotto_law } prerequisite = { focus = PHI_democrata_protectionist_policies }
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
 		
