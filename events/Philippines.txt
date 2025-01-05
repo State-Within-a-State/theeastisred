@@ -42,17 +42,30 @@ country_event = { #1937 election called after us collapse or 1941 election
 	title = rd_phil.2.title
 	desc = {
 	trigger = {
-	#1937 election
+	has_completed_focus = PHI_start_rip_bozo
 	}
-	text = rd_phil.2.desc.a
+	text = rd_phil.2.desc.a #us fell
 	}
 	desc = {
 	text = rd_phil.2.desc
 	}
+	immediate = { 
+	hidden_effect = { set_country_flag = PHI_first_election_occurred 
+	} 
+	}
+
 	fire_only_once = yes 	
 	is_triggered_only = yes
+	trigger = { not = { has_country_flag = PHI_first_election_occurred } }
+
 	option = { #Quezon gets reelected under nationaista
 		name = rd_phil.2.a
+		trigger = {
+		OR = {
+		has_completed_focus = PHI_start_rip_bozo
+		#whatever check var that you did for 1941 minigame start that from the focus where us lives cuck
+		}
+		}
 		ai_chance = { base = 100 }
 		country_event = { id = rd_phil.4 days = 2190 }
 		#he dies sometime in so country_event rd_phil.7
@@ -60,6 +73,13 @@ country_event = { #1937 election called after us collapse or 1941 election
 	option = { #popular front wins
 		name = rd_phil.2.b
 		ai_chance = { base = 100 }
+		trigger = {
+		OR = {
+		has_completed_focus = PHI_start_rip_bozo
+		#whatever check var that you did for 1941 minigame 
+		}
+		}
+
 		#set the soclib leader as juan cause Quezon dies
 		country_event = rd_phil.3
 		
@@ -89,7 +109,7 @@ country_event = { #popular front factions and splits (popular front party still 
 	option = { #Emilio
 		name = rd_phil.3.c
 		country_event = { id = rd_phil.4 days = 2190 }
-		#make it so he can't do rev if elections happened and make it so rev focus makes it so no elcetions can happen
+		#make it so he can't do rev if seond elections happened and make it so rev focus makes it so no elcetions can happen
 		create_country_leader = {
 			name = "Emilio Aguinaldo"
 			picture = "gfx/leaders/PHI/Portrait_rd_philippines_Emilio_Aguinaldo.png"
@@ -116,7 +136,7 @@ country_event = { #popular front factions and splits (popular front party still 
 
 }
 
-country_event = { #1943/1947/whenever the fuck a war with Japan ends check on actions
+country_event = { #1943/1947/whenever the fuck a war with Japan ends check on actions whichever first
 	id = rd_phil.4
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.4" }
 	title = rd_phil.4.title
@@ -131,7 +151,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	is_triggered_only = yes
 	trigger = {
 	NOT = { has_country_flag = PHI_no_second_election }
-	NOT = { has_war_with = JAP }
+	
 		NOT = {
                     has_country_flag = PHI_second_elections #won't fire twice
 		}
