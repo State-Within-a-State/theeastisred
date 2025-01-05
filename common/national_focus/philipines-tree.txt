@@ -490,8 +490,8 @@ focus_tree = {
 		not = { has_country_flag = PHI_second_elections } 
 		} 
 		completion_reward = {
-		set_country_flag = PHI_no_second_election #no second election and only possible before second elcetion
-		#socialist rev things like leaving America guaranteed and new state
+		set_country_flag = PHI_no_second_election #no second election and only possible before second election
+		#socialist rev things like leaving America guaranteed if still puppet and new flag, complete focus, new govt immediate not 4 months like other side 
 		}
 	}
 	#remember flag of first republic 
@@ -948,7 +948,17 @@ focus_tree = {
 		prerequisite = { focus = PHI_gregorio } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-		
+		if = { 
+		limit = { 
+		is_subject = yes
+		}
+		country_event = { id = rd_phil.8 days = 103 } #idk time
+		}
+		else = {
+		#if not commonwealth do something else cool idk
+	
+		}
+
 		}
 	}
 
