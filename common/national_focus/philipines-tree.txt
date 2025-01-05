@@ -175,21 +175,6 @@ focus_tree = {
 		completion_reward = {
 		}
 	}
-	#create nce 
-	focus = {
-		id = PHI_start_nce
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_start
-		x = -2
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_start_minimum_wage }
-		completion_reward = {
-		}
-	}
 	#stars and stripes at half mast 
 	focus = {
 		id = PHI_start_rip_bozo
@@ -205,6 +190,7 @@ focus_tree = {
 		available = { has_global_flag = USA_civil_war_begun_flag }
 		mutually_exclusive = { focus = PHI_start_cuck }
 		completion_reward = {
+		set_variable = { phi_quick_election  = 1 }
 		rd_phil_commonwealth_to_republic = yes #just flags
 		custom_effect_tooltip = PHI_elections_held_soon_tt
 		hidden_effect = { country_event = { id = rd_phil.3 days = 120 } }
@@ -227,8 +213,11 @@ focus_tree = {
 		mutually_exclusive = { focus = PHI_start_rip_bozo }
 		completion_reward = {
 		#quezon's regime survives add your minigame stuff here instead? and then at the end call the election
+		set_variable = { phi_quick_election = 0 }
 		custom_effect_tooltip = PHI_elections_held_as_normal_tt
-		hidden_effect = { country_event = { id = rd_phil.2 days = 1500 } #1941 elections probably? }
+		add_stability = 0.05
+		#quezon's regime survives add your minigame stuff here instead? and then at the end call the election
+		hidden_effect = { country_event = { id = rd_phil.2 days = 1500 } } #1941 elections probably?
 		}
 	}
 	#sugar admin 
@@ -410,11 +399,15 @@ focus_tree = {
 	focus = {
 		id = PHI_emilio
 		icon = GFX_goal_QIO_revolution
-		x = 15
+		x = 20
 		y = 0
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = { 
+		has_country_flag = PHI_emilio_finally_wins_now
+		not = { has_country_flag = PHI_second_elections } 
 		}
 		completion_reward = {
 		}
@@ -497,7 +490,7 @@ focus_tree = {
 		not = { has_country_flag = PHI_second_elections } 
 		} 
 		completion_reward = {
-		set_country_flag = PHI_no_second_election
+		set_country_flag = PHI_no_second_election #no second election and only possible before second elcetion
 		#socialist rev things like leaving America guaranteed and new state
 		}
 	}
@@ -686,11 +679,15 @@ focus_tree = {
 	focus = {
 		id = PHI_democrata
 		icon = GFX_goal_QIO_revolution
-		x = 25
+		x = 27
 		y = 0
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		has_country_flag = PHI_pop_front_win
+		not = { has_country_flag = PHI_second_elections } 
 		}
 		completion_reward = {
 		}
@@ -879,6 +876,76 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_democrata_hare_haws } prerequisite = { focus = PHI_democrata_sotto_law } prerequisite = { focus = PHI_democrata_protectionist_policies }
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+#quezon do later
+	#quezon beats back the popular front
+	focus = {
+		id = PHI_quezon
+		icon = GFX_goal_QIO_revolution
+		x = 34
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = { 
+		has_country_flag = PHI_nationalista_survives_again
+		not = { has_country_flag = PHI_second_elections } 
+		}
+		completion_reward = {
+		}
+	}
+	#expand state council
+	focus = {
+		id = PHI_quezon_state_council
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_quezon
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_quezon } 
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		
+		}
+	}
+#republican
+	#a victory for the republicans
+	focus = {
+		id = PHI_gregorio
+		icon = GFX_goal_QIO_revolution
+		x = 41
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = { 
+		has_country_flag = PHI_republican_party_win
+		not = { has_country_flag = PHI_second_elections } 
+		}
+		completion_reward = {
+		}
+	}
+	#happiness of freedom
+	focus = {
+		id = PHI_gregorio_happiness
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_gregorio
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_gregorio } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
 		

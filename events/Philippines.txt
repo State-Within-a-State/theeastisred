@@ -67,6 +67,7 @@ country_event = { #1937 election called after us collapse or 1941 election
 		}
 		}
 		ai_chance = { base = 100 }
+		set_country_flag = PHI_nationalista_survives_again
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -79,7 +80,7 @@ country_event = { #1937 election called after us collapse or 1941 election
 			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
 		}
 		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } 
-		country_event = { id = rd_phil.7 days = 730 } }
+		country_event = { id = rd_phil.7 days = 1093 } }
 	}
 	option = { #popular front wins
 		name = rd_phil.2.b
@@ -116,6 +117,7 @@ country_event = { #popular front factions and splits (popular front party still 
 	is_triggered_only = yes
 	option = { #Juan
 		name = rd_phil.3.a
+			set_country_flag = PHI_pop_front_win
 			meta_effect = {
 			text = {
 				set_politics = {
@@ -133,6 +135,7 @@ country_event = { #popular front factions and splits (popular front party still 
 	}
 	option = { #Santos
 		name = rd_phil.3.b
+		set_country_flag = PHI_santos_party_win
 		#if santos leads then no next elections
 		meta_effect = {
 			text = {
@@ -149,6 +152,7 @@ country_event = { #popular front factions and splits (popular front party still 
 	}
 	option = { #Emilio
 		name = rd_phil.3.c
+		set_country_flag = PHI_emilio_finally_wins_now
 		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } 
 		set_party_name = {
    			 ideology = radical_socialist
@@ -176,6 +180,7 @@ country_event = { #popular front factions and splits (popular front party still 
 	}
 	option = { #Gregorio Aglipay
 		name = rd_phil.3.d
+		set_country_flag = PHI_republican_party_win
 		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } }
 		meta_effect = {
 			text = {
@@ -284,8 +289,10 @@ country_event = { #peace with Japan check the on actions
 		NOT = {
                     has_country_flag = PHI_second_elections #won't fire twice
 		}
+		has_country_flag = PHI_first_election_occurred 
 		}
-		country_event = { id = rd_phil.4 days = 120 }
+		custom_effect_tooltip = PHI_elections_held_soon_tt
+		hidden_effect = { country_event = { id = rd_phil.4 days = 120 } }
 		}
 
 	}
@@ -303,8 +310,18 @@ country_event = { #rest in peace Quezon (only occurs if he was relected)
 	option = { #
 		name = rd_phil.7.a
 		ai_chance = { base = 100 }
-		#make vincinte soclib as a slot filler? obv will be socdem
-		#set govt soccon
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_conservative
+					last_election = "[PREVIOUS_DATE]"
+					election_frequency = 72
+					elections_allowed = yes
+				}
+			}
+			PREVIOUS_DATE = "[THIS.PhiFirstElectionDate]"
+		}
+		#make vincinte soclib as a slot filler? obv will be socdem or whatever we decide to be popfront lib as long as not Jose Avelino cause he would be nationsta until 2nd election
 	}
 }
 
