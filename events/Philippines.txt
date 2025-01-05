@@ -67,8 +67,19 @@ country_event = { #1937 election called after us collapse or 1941 election
 		}
 		}
 		ai_chance = { base = 100 }
-		country_event = { id = rd_phil.4 days = 2190 }
-		#he dies sometime in so country_event rd_phil.7
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 72
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } }
+		country_event = { id = rd_phil.7 days = 730 }
 	}
 	option = { #popular front wins
 		name = rd_phil.2.b
@@ -97,19 +108,52 @@ country_event = { #popular front factions and splits (popular front party still 
 	is_triggered_only = yes
 	option = { #Juan
 		name = rd_phil.3.a
-		country_event = { id = rd_phil.4 days = 2190 }
+			meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 72
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+		#ministers
+		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } }
 
 		
 	}
 	option = { #Santos
 		name = rd_phil.3.b
 		#if santos leads then no next elections
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = radical_socialist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 72
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
 		set_country_flag = PHI_no_second_election
 	}
 	option = { #Emilio
 		name = rd_phil.3.c
-		country_event = { id = rd_phil.4 days = 2190 }
-		#make it so he can't do rev if seond elections happened and make it so rev focus makes it so no elcetions can happen
+		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } }
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = radical_socialist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 72
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
 		create_country_leader = {
 			name = "Emilio Aguinaldo"
 			picture = "gfx/leaders/PHI/Portrait_rd_philippines_Emilio_Aguinaldo.png"
@@ -119,7 +163,7 @@ country_event = { #popular front factions and splits (popular front party still 
 	}
 	option = { #Gregorio Aglipay
 		name = rd_phil.3.d
-		country_event = { id = rd_phil.4 days = 2190 }
+		hidden_effect = { country_event = { id = rd_phil.4 days = 2190 } }
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -144,7 +188,12 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	fire_only_once = yes 
 	immediate = { 
 	hidden_effect = { set_country_flag = PHI_second_elections 
-	#if is subject of us and us didn't collapse seen by u doing that stuff, then country event for independence rd_phil.8
+	if = { limit = { 
+	has_completed_focus = PHI_start_cuck 
+	is_subject_of = USA
+	}
+	country_event = { id = rd_phil.8 days = 33 }
+	}
 	} 
 	}
 
@@ -176,7 +225,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		ai_chance = { base = 100 }
 		
 	}
-	option = { #republican Gregorio Aglipay
+	option = { #republican not Gregorio Aglipay
 		name = rd_phil.4.e
 		ai_chance = { base = 100 }
 		
@@ -201,7 +250,7 @@ country_event = { #invaded by with Japan dangerous cause so close by
 		name = rd_phil.5.a
 		ai_chance = { base = 100 }
 		add_stability = -0.10
-		add_war_support = 0.15
+		add_war_support = 0.10
 	}
 }
 
@@ -237,6 +286,7 @@ country_event = { #rest in peace Quezon (only occurs if he was relected)
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
+	trigger = { not = { has_country_flag = PHI_second_elections } }
 	option = { #
 		name = rd_phil.7.a
 		ai_chance = { base = 100 }
@@ -264,6 +314,7 @@ country_event = { #freedom from commonwealth only if us didn't civil war. Happen
     		end_wars = no
 		}
 		}
+		country_event = rd_phil.10
 		#shouldnt peace you out if youre at war with fucken Japan or whatever. i dont think you'd ever get to war with Europe cause of us
 	}
 }
@@ -288,7 +339,7 @@ country_event = { #second election parties but the freaky ones
 	}
 }
 
-country_event = { #
+country_event = { #leave faction after being freed from commonwealth?
 	id = rd_phil.10
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.10"}
 	title = rd_phil.10.title
@@ -296,10 +347,16 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yeas
 		name = rd_phil.10.a
 		ai_chance = { base = 100 }
-		
+		leave_faction = yes #idk about this maybe only if soc?
+
+	}
+	option = { #no
+		name = rd_phil.10.b
+		ai_chance = { base = 100 }
+
 	}
 }
 
