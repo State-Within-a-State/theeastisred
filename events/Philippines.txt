@@ -100,7 +100,18 @@ country_event = { #popular front factions and splits (popular front party still 
 	option = { #Gregorio Aglipay
 		name = rd_phil.3.d
 		country_event = { id = rd_phil.4 days = 2190 }
-		
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_democratic
+					last_election = "[CURRENT_DATE]"
+					election_frequency = 72
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+		}
+
 	}
 
 }
@@ -130,7 +141,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		ai_chance = { base = 100 }
 		
 	}
-	option = { #nationsta roxas
+	option = { #liberal roxas
 		name = rd_phil.4.b
 		ai_chance = { base = 100 }
 		
@@ -150,15 +161,10 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		ai_chance = { base = 100 }
 		
 	}
-	option = { #Hilario Moncado modernista
+	option = { #the main parties have been rejected by the populace...
 		name = rd_phil.4.g
 		ai_chance = { base = 100 }
-		
-	}
-	option = { #independent Pascual Racuyal (may change it so there's a limited way to get him but idk yet) could be Quezon still rules and mental asylum dude comes
-		name = rd_phil.4.h
-		ai_chance = { base = 100 }
-		
+		country_event = rd_phil.9
 	}
 
 }
@@ -192,7 +198,7 @@ country_event = { #peace with Japan check the on actions
 		ai_chance = { base = 100 }
 		if = { 
 		limit = {
-		NOT = { has_country_flag = PHI_no_second_election }
+		NOT = { has_country_flag = PHI_no_second_election } #nothing for mil or soc
 		NOT = {
                     has_country_flag = PHI_second_elections #won't fire twice
 		}
@@ -219,7 +225,7 @@ country_event = { #rest in peace Quezon (only occurs if he was relected)
 	}
 }
 
-country_event = { #freedom from commonwealth only if us didn't civil war. Happens either 2nd elections or Emilio. Santos has something different
+country_event = { #freedom from commonwealth only if us didn't civil war. Happens either 2nd elections or Emilio. Santos and mil has something different
 	id = rd_phil.8
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.8"}
 	title = rd_phil.8.title
@@ -242,7 +248,7 @@ country_event = { #freedom from commonwealth only if us didn't civil war. Happen
 	}
 }
 
-country_event = { #
+country_event = { #second election parties but the freaky ones
 	id = rd_phil.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.9"}
 	title = rd_phil.9.title
@@ -250,8 +256,13 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Hilario Moncado modernista
 		name = rd_phil.9.a
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #independent Pascual Racuyal (may change it so there's a limited way to get him but idk yet) could be Quezon still rules and mental asylum dude comes
+		name = rd_phil.9.b
 		ai_chance = { base = 100 }
 		
 	}
