@@ -504,7 +504,7 @@ country_event = { #georgio dead
 	}
 }
 
-country_event = { #
+country_event = { #what should isabelo jr go towards. Done after last foicyus of branch
 	id = rd_phil.14
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.14"}
 	title = rd_phil.14.title
@@ -512,11 +512,64 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #stay socdem
 		name = rd_phil.14.a
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #go radsoc
+		name = rd_phil.14.b
+		trigger = { has_completed_focus = PHI_gregorio_isabelo_legacy }
+		ai_chance = { base = 100 }
+		set_country_flag = PHI_REP_IS_RADSOC
+		#create radsoc isabelo with christian_socialism_subtype
+		set_party_name = {
+   			 ideology = radical_socialist
+   			 long_name = PHI_social_democrat_party_long
+   			 name = PHI_social_democrat_party
+			}
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = radical_socialist
+					last_election = "[PREVIOUS_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			PREVIOUS_DATE = "[THIS.PhiFirstElectionDate]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+
+
+	}
+	option = { #go syndie
+		name = rd_phil.14.b
+		ai_chance = { base = 100 }
+		trigger = { has_completed_focus = PHI_gregorio_evangelista_learn } 
+		set_country_flag = PHI_REP_IS_SYNDIE
+		#create syndie isabelo with christian_syndicalism_subtype
+		set_party_name = {
+   			 ideology = syndicalist
+   			 long_name = PHI_social_democrat_party_long
+   			 name = PHI_social_democrat_party
+			}
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = syndicalist
+					last_election = "[PREVIOUS_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			PREVIOUS_DATE = "[THIS.PhiFirstElectionDate]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+
+		
+	}
+
 }
 
 country_event = { #
