@@ -202,7 +202,18 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	id = rd_phil.4
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.4" }
 	title = rd_phil.4.title
-	desc = rd_phil.4.desc
+	desc = {
+	trigger = {
+	has_country_flag = {
+ 	flag = RD_PHI_JAP_DONE_WAR 
+    	days < 150
+	}
+	}
+	text = rd_phil.4.desc.a #if elections come cause of war aftermath and quick do it now big thing here
+	}
+	desc = {
+	text = rd_phil.4.desc #normal 6 years election
+	}
 	fire_only_once = yes 
 	immediate = { 
 	hidden_effect = { set_country_flag = PHI_second_elections 
