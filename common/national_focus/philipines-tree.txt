@@ -464,7 +464,8 @@ focus_tree = {
 		completion_reward = {
 		if = { 
 		limit = { 
-		is_subject = yes
+		is_subject_of = USA
+		has_completed_focus = PHI_start_cuck
 		}
 		country_event = { id = rd_phil.8 days = 41 }
 		}
@@ -1177,7 +1178,8 @@ focus_tree = {
 		completion_reward = {
 		if = { 
 		limit = { 
-		is_subject = yes
+		is_subject_of = USA
+		has_completed_focus = PHI_start_cuck
 		}
 		country_event = { id = rd_phil.8 days = 103 } #idk time
 		}
@@ -1565,7 +1567,24 @@ focus_tree = {
 		prerequisite = { focus = PHI_santos_monopoly_break } prerequisite = { focus = PHI_santos_peasant_aid } prerequisite = { focus = PHI_santos_union_power } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-
+		if = { 
+		limit = { 
+		is_subject_of = USA
+		has_completed_focus = PHI_start_cuck
+		}
+		rd_phil_commonwealth_to_republic = yes
+		USA = {
+		set_autonomy = {
+   		target = PHI
+   		autonomous_state = autonomy_free
+    		end_wars = no
+		}
+		}
+		leave_faction = yes 
+		}
+		else = {
+		#do something cool idk
+		}
 		}
 	}
  	#the revolution is afoot
@@ -1582,7 +1601,7 @@ focus_tree = {
 		prerequisite = { focus = PHI_santos_break_empire } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-
+		#country event bout rev and mil and shit
 		}
 	}
 #second elections
