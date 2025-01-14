@@ -1102,9 +1102,9 @@ country_event = { #Japanese Civil War
 		set_country_flag = japan_civil_war
 		load_focus_tree = japan-military-civilwar
 		#spawn units
-		capital_scope = {
-			destroy_unit = yes
-		}
+		#capital_scope = {
+		#	destroy_unit = yes
+		#}
 		delete_units = {
 				division_template = "Chindaishidan"
 				disband = yes
@@ -1148,9 +1148,9 @@ country_event = { #Japanese Civil War
 			
 			load_focus_tree = japan-military-civilwar
 			#spawn units
-			capital_scope = {
-				destroy_unit = yes
-			}
+			#capital_scope = {
+			#	destroy_unit = yes
+			#}
 			delete_units = {
 					division_template = "Chindaishidan"
 					disband = yes
@@ -6081,7 +6081,6 @@ country_event = { #Japan Demands Our Submission
 		country_event = japan_new_event.81
 		}
 	}
-}
 
 country_event = { #Refusal But Alliance?
 	id = japan_new_event.76
@@ -6125,10 +6124,6 @@ country_event = { #Japan Demands Our Submission
 				add_state_claim = 562
 				add_state_claim = 637
 			}
-			has_country_leader = {
-				name = "Yui Mitsue"
-				ruling_only = yes
-				}
 		}
 	}
 	is_triggered_only = yes
@@ -6137,6 +6132,12 @@ country_event = { #Japan Demands Our Submission
 		ai_chance = { base = 100 }
 		trigger = {
 			TRM = {
+				NOT = {
+				has_country_leader = {
+				name = "Yui Mitsue"
+				ruling_only = yes
+				}
+				}
 				NOT = {
 					is_subject_of = JAP
 				}
@@ -8218,7 +8219,6 @@ country_event = { #Japanese Socialists Propose an Alliance
 		JSR = { add_to_faction = FROM }
 		}
 		set_country_flag = JSR_chose_china_leader
-		}
 	}
 	option = { #
 		name = japan_new_event.76.b
@@ -8756,7 +8756,7 @@ country_event = { #Taiwan Slips Through Our Fingers
 	option = { #
 		name = japan_new_event.137.a
 		ai_chance = { base = 100 }
-		add_stability = = -0.05
+		add_stability = -0.05
 		add_war_support = -0.1
 		
 	}

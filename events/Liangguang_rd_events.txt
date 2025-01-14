@@ -1317,7 +1317,7 @@ country_event = { #
 				value = 2
 			}
 		add_equipment_to_stockpile = {
-				type = light_tank_equipment
+				type = light_tank_equipment_1
 				amount = 80
 				producer = GER
 			}
@@ -4085,7 +4085,6 @@ country_event = { #Huangpu Wins on a Split
 	title = liangguang_rd.98.title
 	desc = liangguang_rd.98.desc
 	#picture = 
-	
 	is_triggered_only = yes
 	option = { #The Kexin Movement is delcared, Xu Chongzhi is elected.
 		name = liangguang_rd.98.a
@@ -4114,7 +4113,7 @@ country_event = { #Huangpu Wins on a Split
 		ai_chance = { base = 100 }
 		trigger = { 
 		set_temp_variable = { half_wampou_factcion = huangpu_faction }
-		divide_variable = { half_wampou_factcion = 2 }
+		divide_temp_variable = { half_wampou_factcion = 2 }
 		check_variable = { western_hills_group > half_wampou_factcion }
 		}
 		complete_national_focus = GXC_whampoa_vict
@@ -4434,10 +4433,12 @@ country_event = { #join with the Kuomintang in guanxi?
 	trigger = { PRC = { exists = yes } }
 	option = { #ask them gets anarchists annexed by prc btw
 		name = liangguang_rd.106.a
-		ai_chance = { base = 50 
+		ai_chance = { 
+		base = 50 
 		modifier = { 
 		factor = 100
 		PRC = { is_ai = no } 
+		}
 		}
 		PRC = { country_event = { id = liangguang_rd.107 days = 5 } }
 		
