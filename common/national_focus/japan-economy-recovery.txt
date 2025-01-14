@@ -94,34 +94,32 @@
 		}
 	
 
-	#The 3 Week Holiday For the Bank
+
+
+	#Extend Loans For the Bank of Taiwan
 	shared_focus = {
-		id = JAPECON_the_3_week_holiday_for_the_bank
-		icon = GFX_JAPECON_the_3_week_holiday_for_the_bank-248360
-		relative_position_id = JAPECON_reaffirm_a_focus_on_the_zaibatsu
-		x = 0
+		id = JAPECON_extend_loans_for_the_bank_of_taiwan
+		icon = GFX_JAPECON_extend_loans_for_the_bank_of_taiwan-248360
+		relative_position_id = JAPECON_save_the_colonies
+		x = 1
 		y = 1
 		cost = 5
 		search_filters = {
-			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_INDUSTRY
 		}
-		prerequisite = { focus = JAPECON_reaffirm_a_focus_on_the_zaibatsu  }
+		prerequisite = { focus = JAPECON_save_the_colonies  }
 		completion_reward = {
-		add_stability = -0.05
-		add_political_power = 10
-		add_to_variable = {
-			var = zaibatsu_corporations
-			value = 0.05
-			tooltip = add_zaibatsu_corporations_tt
+		add_timed_idea = {
+		idea = JAP_colonial_loans days = 365
 		}
-		add_to_variable = {
-			var = civilian_government
-			value = -0.05
-			tooltip = remove_civilian_government_tt
+		TAI = {
+			add_timed_idea = {
+			idea = JAP_recieving_colonial_loans
+			days = 365
+			}
 		}
 		}
 	}
-
 	#Further Korean Investments
 	shared_focus = {
 		id = JAPECON_further_korean_investments
@@ -155,31 +153,6 @@
 		}
 	}
 
-	#Extend Loans For the Bank of Taiwan
-	shared_focus = {
-		id = JAPECON_extend_loans_for_the_bank_of_taiwan
-		icon = GFX_JAPECON_extend_loans_for_the_bank_of_taiwan-248360
-		relative_position_id = JAPECON_save_the_colonies
-		x = 1
-		y = 1
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = JAPECON_save_the_colonies  }
-		completion_reward = {
-		add_timed_idea = {
-		idea = JAP_colonial_loans days = 365
-		}
-		TAI = {
-			add_timed_idea = {
-			idea = JAP_recieving_colonial_loans
-			days = 365
-			}
-		}
-		}
-	}
-
 	#Re-Affirm a Focus on the Zaibatsu
 	shared_focus = {
 		id = JAPECON_reaffirm_a_focus_on_the_zaibatsu
@@ -210,6 +183,33 @@
 		swap_ideas = {
 		remove_idea = JAP_black_monday_1
 		add_idea = JAP_black_monday_zaibatsu
+		}
+		}
+	}
+	#The 3 Week Holiday For the Bank
+	shared_focus = {
+		id = JAPECON_the_3_week_holiday_for_the_bank
+		icon = GFX_JAPECON_the_3_week_holiday_for_the_bank-248360
+		relative_position_id = JAPECON_reaffirm_a_focus_on_the_zaibatsu
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = JAPECON_reaffirm_a_focus_on_the_zaibatsu  }
+		completion_reward = {
+		add_stability = -0.05
+		add_political_power = 10
+		add_to_variable = {
+			var = zaibatsu_corporations
+			value = 0.05
+			tooltip = add_zaibatsu_corporations_tt
+		}
+		add_to_variable = {
+			var = civilian_government
+			value = -0.05
+			tooltip = remove_civilian_government_tt
 		}
 		}
 	}
