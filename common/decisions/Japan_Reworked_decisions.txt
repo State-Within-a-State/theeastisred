@@ -3902,7 +3902,7 @@ JAP_deal_with_south_east_decision_category = {
 		available = {
 		custom_trigger_tooltip = {
 					tooltip = colonize_SEA_tt		
-					hidden_effect = {
+					hidden_trigger = {
 						JAP_south_seas_trigger = yes
 						}
 				}
@@ -5199,7 +5199,6 @@ JAP_banzai_charges = {
 			remove_ideas = {
 				JAP_banzai
 			}
-			remove_idea = JAP_banzai
 			add_to_variable = {
 				var = JAP_military_leap
 				value = 10
@@ -5434,17 +5433,12 @@ JAP_conquer_manchuria = {
 			FNG = {
 				market_liberal > 0.85
 			}
-			
-			AND = {
-				FNG = {
-					exists = no
-				}
+							
+			FNG = {
+			exists = no
 				
-				every_state = {
-					limit = {
-						is_core_of = FNG
-					}
-						is_owned_by = JAP
+				all_core_state = {
+					is_owned_by = JAP
 				}
 			
 			}
