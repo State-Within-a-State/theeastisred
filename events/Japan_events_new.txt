@@ -295,15 +295,11 @@ country_event = { #1936 Elections
 				factor = 100
 				OR = {
 				has_game_rule = { rule = JAP_path option = JAP_PATH_KOKUMIN_DEADLOCK_1936 }
-				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_NOBURO }
-				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_KODAMA }
-				
+				has_game_rule = { rule = JAP_two_jackals option = JAP_TWO_JACKLES_NOBURO }
+				has_game_rule = { rule = JAP_two_jackals option = JAP_TWO_JACKLES_KODAMA }
 				}
 				NOT = {
-					OR = {
-						has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_YES }
-						has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
-					}
+						has_game_rule = { rule = RULE_OPTION_JAP_END_OF_DEMOCRACY option = DEFAULT }
 				}
 			}
 		}
@@ -523,7 +519,7 @@ country_event = { #The Jackal's Two Heads
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_NOBURO }
+				has_game_rule = { rule = JAP_two_jackals option = JAP_TWO_JACKLES_NOBURO }
 			}
 		}
 		complete_national_focus = JAP_YAKUZA_maintaining_tradition
@@ -535,7 +531,7 @@ country_event = { #The Jackal's Two Heads
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_KODAMA }
+				has_game_rule = { rule = JAP_two_jackals option = JAP_TWO_JACKLES_KODAMA }
 			}
 		}
 		complete_national_focus = JAP_YAKUZA_yoshiospresence
@@ -1210,7 +1206,7 @@ country_event = { #Syndicalist Victory
 		set_capital = { state = 282 remember_old_capital = no }
 		if = {
 		limit = {
-				has_game_rule = { rule = JAP_japanese_cw_buff option = RULE_OPTION_JAP_CW_BUFFS_JSR }
+				has_game_rule = { rule = JAP_japanese_cw_buff option = JAP_CW_BUFFS_JSR }
 		}
 		JSR = {
 		remove_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
@@ -1255,7 +1251,7 @@ country_event = { #Military Victory
 		}
 		if = {
 		limit = {
-				has_game_rule = { rule = JAP_japanese_cw_buff option = RULE_OPTION_JAP_CW_BUFFS_JSR }
+				has_game_rule = { rule = JAP_japanese_cw_buff option = JAP_CW_BUFFS_JSR }
 		}
 		JSR = {
 		remove_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
