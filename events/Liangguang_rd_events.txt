@@ -124,7 +124,12 @@ country_event = { #Focusing On an Enemy in Guangxi
 	trigger = { not = { has_country_flag = stopped_guangxi_revo } }
 	option = { #Peng Pai
 		name = liangguang_rd.4.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = PRC_path option = PRC_PATH_RKMT }
+			}
+		 }
 		set_country_flag = GXC_focus_on_baise_revolt
 		country_event = {
 		id = liangguang_rd.5
@@ -134,7 +139,15 @@ country_event = { #Focusing On an Enemy in Guangxi
 	
 	option = { #RKMT
 		name = liangguang_rd.4.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = PRC_path option = PRC_PATH_PENG }
+				has_game_rule = { rule = PRC_path option = PRC_PATH_LKMT }
+				}
+			}
+		}
 		set_country_flag = GXC_focus_on_rkmt_revolt
 		country_event = {
 		id = liangguang_rd.5
@@ -154,7 +167,12 @@ country_event = { #Handling the Peasantry
 	trigger = { not = { has_country_flag = stopped_guangxi_revo } }
 	option = { #Collaborate With the Landlords
 		name = liangguang_rd.5.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = PRC_path option = PRC_PATH_RKMT }
+			}
+		 }
 		add_to_variable = {
 				var = rkmt_uprising_status
 				value = 1
@@ -168,7 +186,15 @@ country_event = { #Handling the Peasantry
 	
 	option = { #Give Mercy to No One
 		name = liangguang_rd.5.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = PRC_path option = PRC_PATH_PENG }
+				has_game_rule = { rule = PRC_path option = PRC_PATH_LKMT }
+				}
+			}
+		}
 		add_to_variable = {
 				var = baise_uprising_status
 				value = 1
@@ -192,7 +218,12 @@ country_event = { #Worries of Peasant Radicalzation
 	trigger = { not = { has_country_flag = stopped_guangxi_revo } }
 	option = { #Start the Dis-Information Campaign
 		name = liangguang_rd.6.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = PRC_path option = PRC_PATH_RKMT }
+			}
+		 }
 		add_to_variable = {
 				var = rkmt_uprising_status
 				value = 1
@@ -206,7 +237,15 @@ country_event = { #Worries of Peasant Radicalzation
 	
 	option = { #Their Black Blood Shall Stain Their Red Banners
 		name = liangguang_rd.6.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = PRC_path option = PRC_PATH_PENG }
+				has_game_rule = { rule = PRC_path option = PRC_PATH_LKMT }
+				}
+			}
+		}
 		add_to_variable = {
 				var = baise_uprising_status
 				value = 1
@@ -228,9 +267,14 @@ country_event = { #The Bandit Offenssive
 	
 	is_triggered_only = yes
 	trigger = { not = { has_country_flag = stopped_guangxi_revo } }
-	option = { #We shall crush Xu Chongzhi
+	option = { #We shall crush penge
 		name = liangguang_rd.7.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = PRC_path option = PRC_PATH_RKMT }
+			}
+		 }
 		add_to_variable = {
 				var = rkmt_uprising_status
 				value = 1
@@ -242,9 +286,17 @@ country_event = { #The Bandit Offenssive
 		}
 	}
 	
-	option = { #Focus on the Socialists
+	option = { #Focus on the rkmt
 		name = liangguang_rd.7.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = PRC_path option = PRC_PATH_PENG }
+				has_game_rule = { rule = PRC_path option = PRC_PATH_LKMT }
+				}
+			}
+		}
 		add_to_variable = {
 				var = baise_uprising_status
 				value = 1
@@ -1049,13 +1101,26 @@ country_event = { #The Dust Settles no war or war won
 	is_triggered_only = yes
 	option = { #zhang stays
 		name = liangguang_rd.25.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = GXC_path option = GXC_PATH_PATAUT }
+			}
+		}
 		complete_national_focus = GXC_loyalty_azure_crown
 		set_country_flag = RD_Monarch_Larp
 	}
 	option = { #tang takes over
 		name = liangguang_rd.25.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = RULE_OPTION_GXC_PATH_AUTDEM_INDE }
+				has_game_rule = { rule = GXC_path option = RULE_OPTION_GXC_PATH_AUTDEM_JAP }
+				}
+			}
+		 }
 		complete_national_focus = GXC_shaoyi_rise
 		set_politics = {
 			ruling_party = authoritarian_democrat
@@ -1128,7 +1193,12 @@ country_event = { #Legacy of the Enlightened Party
 		}
 		}
 		}
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_JAP }
+			}
+		}
 		set_country_flag = GXC_under_rays_of_the_sun
 		set_party_name = {
 			ideology = authoritarian_democrat
@@ -1140,7 +1210,12 @@ country_event = { #Legacy of the Enlightened Party
 	
 	option = { #The Five Races Shall Rise Alone(Indpendent Path)
 		name = liangguang_rd.28.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_JAP }
+			}
+		}
 		set_country_flag = GXC_five_races_unity
 		set_party_name = {
 			ideology = authoritarian_democrat
@@ -1788,14 +1863,24 @@ country_event = { #The Revolutionary base victorious
 	is_triggered_only = yes
 	option = { #Peng Pai Wins Over the Committee
 		name = liangguang_rd.47.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = PRC_path option = PRC_PATH_PENG }
+			}
+		}
 		complete_national_focus = GXC_pai_victory
 		set_country_flag = RD_commies_love_each_other
 
 	}
 	option = { #Chen Mingshu Wins Over the Committee
 		name = liangguang_rd.47.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+		modifier = {
+				factor = 100
+				has_game_rule = { rule = PRC_path option = PRC_PATH_LKMT }
+			}
+		}
 		complete_national_focus = GXC_chen_victory
 		set_ppp_ministers = yes
 		set_politics = { ruling_party = social_democrat }
