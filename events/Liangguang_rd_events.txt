@@ -395,7 +395,12 @@ country_event = { #Battle of Junliao Village
 	is_triggered_only = yes
 	option = { #Beseige the City
 		name = liangguang_rd.10.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = QIO_path option = QIO_PATH_YUGANG }
+			}
+		}
 		add_to_variable = {
 				var = qiongya_peasant_counter
 				value = 1
@@ -409,7 +414,12 @@ country_event = { #Battle of Junliao Village
 	
 	option = { #Just Push Them Out
 		name = liangguang_rd.10.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = QIO_path option = QIO_PATH_SOC }
+			}
+		}
 		add_to_variable = {
 				var = qiongya_peasant_uprising
 				value = 1
@@ -432,7 +442,12 @@ country_event = { #Lehui Campaign
 	is_triggered_only = yes
 	option = { #Bombard the Mountains Til Oblivion
 		name = liangguang_rd.11.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = QIO_path option = QIO_PATH_YUGANG }
+			}
+		}
 		add_to_variable = {
 				var = qiongya_peasant_counter
 				value = 1
@@ -446,7 +461,12 @@ country_event = { #Lehui Campaign
 	
 	option = { #We Shall Climb Those Goddam Mountains
 		name = liangguang_rd.11.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = QIO_path option = QIO_PATH_SOC }
+			}
+		}
 		add_to_variable = {
 				var = qiongya_peasant_uprising
 				value = 1
@@ -469,7 +489,12 @@ country_event = { #Battle of Xicun Port
 	is_triggered_only = yes
 	option = { #Surround Xicun
 		name = liangguang_rd.12.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = QIO_path option = QIO_PATH_YUGANG }
+			}
+		}
 		add_to_variable = {
 				var = qiongya_peasant_counter
 				value = 1
@@ -483,7 +508,12 @@ country_event = { #Battle of Xicun Port
 	
 	option = { #Screw that, we shall catch them off guard...
 		name = liangguang_rd.12.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = QIO_path option = QIO_PATH_SOC }
+			}
+		}
 		add_to_variable = {
 				var = qiongya_peasant_uprising
 				value = 1
@@ -553,7 +583,12 @@ country_event = { #Holding Onto Qiongya
 	is_triggered_only = yes
 	option = { #For Now We Need to Give Yuguang Some Autonomy
 		name = liangguang_rd.14.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = QIO_path option = QIO_PATH_YUGANG }
+			}
+		}
 		hidden_effect = {
 		GXC = {
 		random_unit_leader = {
@@ -587,7 +622,7 @@ country_event = { #Holding Onto Qiongya
 	
 	option = { #We Must Keep a Firm hand
 		name = liangguang_rd.14.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 }
 		add_stability = -0.1
 		add_political_power = 50
 		
@@ -844,7 +879,16 @@ country_event = { #Suspicious Movements From Young Officers
 	is_triggered_only = yes
 	option = { #Hmm This is a little suspicious...
 		name = liangguang_rd.19.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_PATAUT }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_INDE }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_JAP }
+				}
+			}
+		}
 		add_to_variable = {
 				var = zhili_liangguang_power
 				value = 1
@@ -853,7 +897,19 @@ country_event = { #Suspicious Movements From Young Officers
 	}
 	option = { #Who cares about a bunch of low ranking officers.
 		name = liangguang_rd.19.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_SOCLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB_JAP }	
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_SHIZENG }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_CAI }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_JIN }
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_jiongming_power
 				value = 1
@@ -880,7 +936,16 @@ country_event = { #Anarchist Bomb Plot
 	is_triggered_only = yes
 	option = { #Raid their houses.
 		name = liangguang_rd.20.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_PATAUT }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_INDE }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_JAP }
+				}
+			}
+		}
 		add_to_variable = {
 				var = zhili_liangguang_power
 				value = 1
@@ -889,7 +954,19 @@ country_event = { #Anarchist Bomb Plot
 	}
 	option = { #We'll worry about them later, we have bigger fish to fry.
 		name = liangguang_rd.20.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_SOCLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB_JAP }	
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_SHIZENG }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_CAI }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_JIN }
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_jiongming_power
 				value = 1
@@ -909,7 +986,16 @@ country_event = { #Officers Plot Exposed
 	is_triggered_only = yes
 	option = { #Raid their houses.
 		name = liangguang_rd.21.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_PATAUT }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_INDE }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_JAP }
+				}
+			}
+		}
 		add_to_variable = {
 				var = zhili_liangguang_power
 				value = 1
@@ -946,7 +1032,19 @@ country_event = { #Officers Plot Exposed
 	}
 	option = { #We'll worry about them later, we have bigger fish to fry.
 		name = liangguang_rd.21.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_SOCLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB_JAP }	
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_SHIZENG }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_CAI }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_JIN }
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_jiongming_power
 				value = 1
@@ -1116,8 +1214,8 @@ country_event = { #The Dust Settles no war or war won
 			modifier = {
 				factor = 100
 				OR = {
-				has_game_rule = { rule = GXC_path option = RULE_OPTION_GXC_PATH_AUTDEM_INDE }
-				has_game_rule = { rule = GXC_path option = RULE_OPTION_GXC_PATH_AUTDEM_JAP }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_INDE }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_AUTDEM_JAP }
 				}
 			}
 		 }
@@ -1530,7 +1628,17 @@ country_event = { #Handling the Peasant Movement
 	is_triggered_only = yes
 	option = { #
 		name = liangguang_rd.40.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_SOCLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_SHIZENG }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_CAI }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_JIN }
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_anarchist_power
 				value = 2
@@ -1545,7 +1653,15 @@ country_event = { #Handling the Peasant Movement
 	
 	option = { #
 		name = liangguang_rd.40.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB_JAP }	
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_merchant_power
 				value = 2
@@ -1565,7 +1681,12 @@ country_event = { #Dealing With the Strikers
 	is_triggered_only = yes
 	option = { #Strike a Deal With the Strikers
 		name = liangguang_rd.41.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = GXC_path option = GXC_PATH_SOCLIB }
+			}
+		}
 		add_to_variable = {
 				var = chen_federalist_power
 				value = 2
@@ -1581,7 +1702,15 @@ country_event = { #Dealing With the Strikers
 	
 	option = { #Crush Them with Merchant Backing
 		name = liangguang_rd.41.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB_JAP }	
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_merchant_power
 				value = 2
@@ -1597,7 +1726,16 @@ country_event = { #Dealing With the Strikers
 	}
 	option = { #Crush Both the Workers and Merchants
 		name = liangguang_rd.41.c
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_SHIZENG }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_CAI }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_JIN }
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_anarchist_power
 				value = 2
@@ -1631,26 +1769,41 @@ country_event = { #Merchants Request a Bailout
 	is_triggered_only = yes
 	option = { #Sure Thing
 		name = liangguang_rd.42.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_SHIZENG }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_CAI }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_JIN }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB_JAP }	
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_merchant_power
 				value = 2
 				tooltip = merchant_power_expand_tt
 			}
 		add_to_variable = {
-				var = chen_federalist_power
+				var = chen_anarchist_power
 				value = 2
-				tooltip = federalist_power_expand_tt
+				tooltip = anarchist_power_expand_tt
 			}
 	}
 	option = { #We are in rough times.
 		name = liangguang_rd.42.b
-		ai_chance = { base = 100 }
-		
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				has_game_rule = { rule = GXC_path option = GXC_PATH_SOCLIB }
+			}
+		}
 		add_to_variable = {
-				var = chen_anarchist_power
+				var = chen_federalist_power
 				value = 2
-				tooltip = anarchist_power_expand_tt
+				tooltip = federalist_power_expand_tt
 			}
 	}
 }
@@ -1673,7 +1826,16 @@ country_event = { #Ba Jin Writes Critically of Governor Chen
 	is_triggered_only = yes
 	option = { #Crush these radicals.
 		name = liangguang_rd.43.a
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_SOCLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_MARLIB_JAP }	
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_merchant_power
 				value = 2
@@ -1688,7 +1850,16 @@ country_event = { #Ba Jin Writes Critically of Governor Chen
 	
 	option = { #Show some restraint, we need to prove to our people that we are a true democratic force in China.
 		name = liangguang_rd.43.b
-		ai_chance = { base = 100 }
+		ai_chance = { factor = 50 
+			modifier = {
+				factor = 100
+				OR = {
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_SHIZENG }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_CAI }
+				has_game_rule = { rule = GXC_path option = GXC_PATH_RADSOC_JIN }
+				}
+			}
+		}
 		add_to_variable = {
 				var = chen_anarchist_power
 				value = 2
