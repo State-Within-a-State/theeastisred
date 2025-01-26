@@ -97,7 +97,16 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		days_remove = 15
 		fire_only_once = yes
 		ai_will_do = {
-		factor = 5
+		factor = 10
+				modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PRC_path option = PRC_PATH_RKMT }
+				has_game_rule = { rule = PRC_path option = PRC_PATH_PENG }
+				has_game_rule = { rule = PRC_path option = PRC_PATH_LKMT }
+				}
+			}
+
 		}
 		complete_effect = {
 			add_ideas = {
@@ -133,7 +142,7 @@ GXC_internal_dvisions_decision_category = { #dont forget to add a category
 		days_remove = 15
 		fire_only_once = yes
 		ai_will_do = {
-		factor = 5
+		factor = 10
 		}
 		complete_effect = {
 			add_ideas = {
@@ -223,7 +232,7 @@ GXC_buy_german_guns = {
 			
 		}
 		available = {
-		GER {
+		GER = {
 		exists = yes
 		is_subject = no
 		}
@@ -258,7 +267,7 @@ GXC_buy_german_artillery = {
 		}
 		}
 		available = {
-		GER {
+		GER = {
 		exists = yes
 		is_subject = no
 		}
@@ -294,7 +303,7 @@ GXC_buy_german_artillery = {
 	
 		}
 		available = {
-		GER {
+		GER = {
 		exists = yes
 		is_subject = no
 		}
@@ -326,7 +335,7 @@ GXC_buy_german_artillery = {
 		}
 		}
 		available = {
-		GER {
+		GER = {
 		exists = yes
 		is_subject = no
 		}
@@ -366,6 +375,7 @@ GXC_join_japan_attack_fengtian = {
 		exists = yes
 		is_faction_leader = yes 
 		NOT = { is_in_faction_with = FNG }
+		NOT = { has_country_flag = JAP_Chose_A_Faction }
 		}
 		}
 		cost = 25
@@ -893,7 +903,7 @@ PRC_RKMT_Factionalism_decision_category = {
 		}
 		remove_effect = {
 			PRC_increase_huangpu_faction_small = yes
-			PRC_radicalism_increasee = yes
+			PRC_radicalism_increase = yes
 		}
 	}
 }

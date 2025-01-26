@@ -295,15 +295,11 @@ country_event = { #1936 Elections
 				factor = 100
 				OR = {
 				has_game_rule = { rule = JAP_path option = JAP_PATH_KOKUMIN_DEADLOCK_1936 }
-				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_NOBURO }
-				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_KODAMA }
-				
+				has_game_rule = { rule = JAP_two_jackals option = JAP_TWO_JACKLES_NOBURO }
+				has_game_rule = { rule = JAP_two_jackals option = JAP_TWO_JACKLES_KODAMA }
 				}
 				NOT = {
-					OR = {
-						has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_YES }
-						has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
-					}
+						has_game_rule = { rule = RULE_OPTION_JAP_END_OF_DEMOCRACY option = DEFAULT }
 				}
 			}
 		}
@@ -523,7 +519,7 @@ country_event = { #The Jackal's Two Heads
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_NOBURO }
+				has_game_rule = { rule = JAP_two_jackals option = JAP_TWO_JACKLES_NOBURO }
 			}
 		}
 		complete_national_focus = JAP_YAKUZA_maintaining_tradition
@@ -535,7 +531,7 @@ country_event = { #The Jackal's Two Heads
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_path option = JAP_TWO_JACKLES_KODAMA }
+				has_game_rule = { rule = JAP_two_jackals option = JAP_TWO_JACKLES_KODAMA }
 			}
 		}
 		complete_national_focus = JAP_YAKUZA_yoshiospresence
@@ -1102,9 +1098,9 @@ country_event = { #Japanese Civil War
 		set_country_flag = japan_civil_war
 		load_focus_tree = japan-military-civilwar
 		#spawn units
-		capital_scope = {
-			destroy_unit = yes
-		}
+		#capital_scope = {
+		#	destroy_unit = yes
+		#}
 		delete_units = {
 				division_template = "Chindaishidan"
 				disband = yes
@@ -1148,9 +1144,9 @@ country_event = { #Japanese Civil War
 			
 			load_focus_tree = japan-military-civilwar
 			#spawn units
-			capital_scope = {
-				destroy_unit = yes
-			}
+			#capital_scope = {
+			#	destroy_unit = yes
+			#}
 			delete_units = {
 					division_template = "Chindaishidan"
 					disband = yes
@@ -1210,7 +1206,7 @@ country_event = { #Syndicalist Victory
 		set_capital = { state = 282 remember_old_capital = no }
 		if = {
 		limit = {
-				has_game_rule = { rule = JAP_japanese_cw_buff option = RULE_OPTION_JAP_CW_BUFFS_JSR }
+				has_game_rule = { rule = JAP_japanese_cw_buff option = JAP_CW_BUFFS_JSR }
 		}
 		JSR = {
 		remove_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
@@ -1255,7 +1251,7 @@ country_event = { #Military Victory
 		}
 		if = {
 		limit = {
-				has_game_rule = { rule = JAP_japanese_cw_buff option = RULE_OPTION_JAP_CW_BUFFS_JSR }
+				has_game_rule = { rule = JAP_japanese_cw_buff option = JAP_CW_BUFFS_JSR }
 		}
 		JSR = {
 		remove_dynamic_modifier = { modifier = JAP_japanese_empire_buff_modifier }
@@ -1294,7 +1290,11 @@ country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
 		factor = 50
 		modifier = {
 				factor = 0
-				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+				OR = {
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_TOSEIHA_COUP }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_DEMOCRACY_SURVIVES }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KODOHA_COUP }
+				}
 			}
 		}
 		country_event = {
@@ -1327,7 +1327,11 @@ country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
 		factor = 50
 		modifier = {
 				factor = 0
-				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_NO }
+				OR = {
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_TOSEIHA_COUP }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_DEMOCRACY_SURVIVES }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KODOHA_COUP }
+				}
 			}
 		}
 		trigger = {
@@ -1368,7 +1372,14 @@ country_event = { #Aftermath of May 15th - Seiyukai, Minseito &
 		factor = 50
 		modifier = {
 				factor = 0
-				has_game_rule = { rule = JAP_RELIGIOUS_COUP option = JAP_RELIGIOUS_COUP_YES }
+				OR = {
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_NICHIREN_KANJI }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_NICHIREN_INOUE }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_NICHIREN_SENOO }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_BLACK_DRAGON_UCHIDA }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_BLACK_DRAGON_DEGUCHI }
+				has_game_rule = { rule = JAP_END_OF_DEMOCRACY option = JAP_KOZABURO }
+				}
 			}
 		}
 		country_event = {
@@ -2214,8 +2225,8 @@ country_event = { #Siding With a Faction
 		modifier = {
 				factor = 100
 				OR = {
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_IKKI_KITA }
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_SHUMEI }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_IKKI_KITA }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_SHUMEI }
 				
 				}
 			}
@@ -2264,8 +2275,8 @@ country_event = { #Siding With a Faction
 		modifier = {
 				factor = 100
 				OR = {
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_ARAKI }
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_HASHIMOTO }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_ARAKI }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_HASHIMOTO }
 				
 				}
 			}
@@ -2280,7 +2291,7 @@ country_event = { #Siding With a Faction
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_IRAA }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_IRAA }
 			}
 		}
 		set_politics = {
@@ -2401,7 +2412,7 @@ country_event = { #Shumei or Kita
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_IKKI_KITA }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_IKKI_KITA }
 				
 			}
 		}
@@ -2442,7 +2453,7 @@ country_event = { #Shumei or Kita
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_SHUMEI }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_SHUMEI }
 				
 			}
 		}
@@ -2478,7 +2489,7 @@ country_event = { #The Kokuhonsha & The Sakurakai
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_ARAKI }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_ARAKI }
 				
 			}
 		}
@@ -2506,7 +2517,7 @@ country_event = { #The Kokuhonsha & The Sakurakai
 		factor = 50
 		modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_KODOHA_FACTIONS option = JAP_KODOHA_HASHIMOTO }
+				has_game_rule = { rule = JAP_kodoha_factionalism option = JAP_KODOHA_HASHIMOTO }
 				
 			}
 		}
@@ -4305,7 +4316,7 @@ country_event = { #Struggle of the Toseiha
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_TOSEIHA_FACTIONS option = JAP_TOSEIHA_TURAN }
+				has_game_rule = { rule = JAP_toseiha_factionalism option = JAP_TOSEIHA_TURAN }
 			}
 		}
 		set_party_name = {
@@ -4350,7 +4361,7 @@ country_event = { #Struggle of the Toseiha
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_TOSEIHA_FACTIONS option = JAP_TOSEIHA_TOJO }
+				has_game_rule = { rule = JAP_toseiha_factionalism option = JAP_TOSEIHA_TOJO }
 			}
 		}
 		set_party_name = {
@@ -4394,7 +4405,7 @@ country_event = { #Struggle of the Toseiha
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_TOSEIHA_FACTIONS option = JAP_TOSEIHA_NAGATA }
+				has_game_rule = { rule = JAP_toseiha_factionalism option = JAP_TOSEIHA_NAGATA }
 			}
 		}
 		set_party_name = {
@@ -5235,10 +5246,10 @@ country_event = { #Meeting of National Revolutionary Congress
 			modifier = {
 				factor = 100
 				OR = {
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_BURAKU }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_JIICHIRO }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_SANSHIRO }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_SCHZIO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_BURAKU }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_JIICHIRO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_SANSHIRO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_SCHZIO }
 				}
 			}
 		}
@@ -5252,12 +5263,12 @@ country_event = { #Meeting of National Revolutionary Congress
 			modifier = {
 				factor = 100
 				OR = {
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_NOSAKA }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAKAWA }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAMOTO }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_MIYAMOTO }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_TOKUDA }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_FUKUMOTO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_NOSAKA }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_YAMAKAWA }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_YAMAMOTO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_MIYAMOTO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_TOKUDA }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_FUKUMOTO }
 				}
 			}
 		}
@@ -5290,7 +5301,7 @@ country_event = { #Anarchism in Japan
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_BURAKU }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_BURAKU }
 			}
 		}
 		complete_national_focus = JAPANA_rule_of_the_council
@@ -5323,7 +5334,7 @@ country_event = { #Anarchism in Japan
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_JIICHIRO }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_JIICHIRO }
 			}
 		}
 		remove_all_ministers = yes
@@ -5356,7 +5367,7 @@ country_event = { #Anarchism in Japan
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_SANSHIRO }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_SANSHIRO }
 			}
 		}
 		set_cosmetic_tag = JAP_SANSHIRO
@@ -5390,7 +5401,7 @@ country_event = { #Anarchism in Japan
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_SCHZIO }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_SCHZIO }
 			}
 		}
 		set_cosmetic_tag = JAP_SCHIZO
@@ -5434,9 +5445,9 @@ country_event = { #The Struggle of 2
 			modifier = {
 				factor = 100
 				OR = {
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_NOSAKA }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAKAWA }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAMOTO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_NOSAKA }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_YAMAKAWA }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_YAMAMOTO }
 					
 				}
 			}
@@ -5456,9 +5467,9 @@ country_event = { #The Struggle of 2
 				factor = 100
 				OR = {
 					
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_MIYAMOTO }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_TOKUDA }
-					has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_FUKUMOTO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_MIYAMOTO }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_TOKUDA }
+					has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_FUKUMOTO }
 				}
 			}
 		}
@@ -5484,7 +5495,7 @@ country_event = { #A United Front Victory
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_NOSAKA }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_NOSAKA }
 			}
 		}
 		complete_national_focus = JAPCOMMUNIST_militant_syndicalists_take_over_the_party
@@ -5522,7 +5533,7 @@ country_event = { #A United Front Victory
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAKAWA }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_YAMAKAWA }
 			}
 		}
 		complete_national_focus = JAPCOMMUNIST_changingthecourseofjapansproletariat
@@ -5560,7 +5571,7 @@ country_event = { #A United Front Victory
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_YAMAMOTO }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_YAMAMOTO }
 			}
 		}
 		complete_national_focus = JAPCOMMUNIST_paris_syndicalists_secure_the_party
@@ -5683,6 +5694,10 @@ country_event = { #Legacy of Yamakawaism
 	option = { #anarcho_syndicalism Hitoshi
 		name = japan_new_event.69.a
 		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
 		create_country_leader = {
 						name = "Hitoshi Yamakawa"
 						desc = "-"
@@ -5697,7 +5712,7 @@ country_event = { #Legacy of Yamakawaism
 		ai_chance = { base = 100 }
 		add_popularity = {
 			ideology = radical_socialist
-			popularity = 0.15
+			popularity = 0.05
 		}
 	}
 	
@@ -5706,17 +5721,16 @@ country_event = { #Legacy of Yamakawaism
 		ai_chance = { base = 100 }
 		add_popularity = {
 			ideology = radical_socialist
-			popularity = 0.15
+			popularity = 0.05
 		}
 		create_country_leader = {
 						name = "Kikue Yamakawa"
 						desc = "-"
 						picture = "gfx/leaders/JAP/Portrait_JAP_Kikue_Yamakawa.png"
 						expire = "1965.1.1"
-						ideology = red_socialist_feminism_subtype
+						ideology = radsoc_socialist_feminism_subtype
 					}
 					
-		set_country_leader_ideology = socialist_feminism_subtype	
 	}
 	
 	option = { #Ansyn Kikue
@@ -5724,7 +5738,7 @@ country_event = { #Legacy of Yamakawaism
 		ai_chance = { base = 100 }
 		add_popularity = {
 			ideology = radical_socialist
-			popularity = 0.15
+			popularity = 0.05
 		}
 		create_country_leader = {
 						name = "Kikue Yamakawa"
@@ -5750,7 +5764,7 @@ country_event = { #Leading the True Revolutionary Vanguard
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_MIYAMOTO }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_MIYAMOTO }
 			}
 		}
 		complete_national_focus = JAPCOMMUNIST_embracing_smiling_communism
@@ -5786,7 +5800,7 @@ country_event = { #Leading the True Revolutionary Vanguard
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_TOKUDA }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_TOKUDA }
 			}
 		}
 		complete_national_focus = JAPCOMMUNIST_formation_of_a_grass_roots_faction
@@ -5822,7 +5836,7 @@ country_event = { #Leading the True Revolutionary Vanguard
 			base = 50
 			modifier = {
 				factor = 100
-				has_game_rule = { rule = JAP_SOCIALIST_LEADERS option = JAP_SOCIALIST_FUKUMOTO }
+				has_game_rule = { rule = JAP_socialist_leader option = JAP_SOCIALIST_FUKUMOTO }
 			}
 		}
 		complete_national_focus = JAPCOMMUNIST_victory_of_the_communist_hardliners
@@ -6078,7 +6092,6 @@ country_event = { #Japan Demands Our Submission
 		country_event = japan_new_event.81
 		}
 	}
-}
 
 country_event = { #Refusal But Alliance?
 	id = japan_new_event.76
@@ -6122,10 +6135,6 @@ country_event = { #Japan Demands Our Submission
 				add_state_claim = 562
 				add_state_claim = 637
 			}
-			has_country_leader = {
-				name = "Yui Mitsue"
-				ruling_only = yes
-				}
 		}
 	}
 	is_triggered_only = yes
@@ -6134,6 +6143,12 @@ country_event = { #Japan Demands Our Submission
 		ai_chance = { base = 100 }
 		trigger = {
 			TRM = {
+				NOT = {
+				has_country_leader = {
+				name = "Yui Mitsue"
+				ruling_only = yes
+				}
+				}
 				NOT = {
 					is_subject_of = JAP
 				}
@@ -8215,7 +8230,6 @@ country_event = { #Japanese Socialists Propose an Alliance
 		JSR = { add_to_faction = FROM }
 		}
 		set_country_flag = JSR_chose_china_leader
-		}
 	}
 	option = { #
 		name = japan_new_event.76.b
@@ -8753,7 +8767,7 @@ country_event = { #Taiwan Slips Through Our Fingers
 	option = { #
 		name = japan_new_event.137.a
 		ai_chance = { base = 100 }
-		add_stability = = -0.05
+		add_stability = -0.05
 		add_war_support = -0.1
 		
 	}
