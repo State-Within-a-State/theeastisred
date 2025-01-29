@@ -14,7 +14,7 @@ add_namespace = CHI.earlygame #League War
 add_namespace = CHI.midgame   #Reconstruction + Northern Expedition
 add_namespace = CHI.lategame  #Second Sino-Japanese War and Unification
 add_namespace = CHI.endgame   #Post-Unification Content
-add_namespace = lin_biao
+add_namespace = CHI.JDPONmeme
 
 ###- Table of Contents -###
 
@@ -17420,10 +17420,21 @@ country_event = { #leadership
 			picture = "gfx/leaders/CHI/Portrait_CHI_Lin_Biao.png"
 			expire = "1.1.1"
 			ideology = internationalism_subtype
-			traits = { disciplined_soldier CSA_fervent_revolutionary }
+			traits = { disciplined_soldier }
 		}
-	hidden_effect = { country_event = { id = lin_biao.1 days = 30 } }
 	}
+	option = { #
+		name = "The Internationalist, Yet Nationalist, Liang Ganqiao" #trot to blueshirt otl
+		create_country_leader = {
+			name = "Liang Ganqiao"
+			picture = "gfx/leaders/CHI/Portrait_CHI_Lin_Biao.png"
+			expire = "1.1.1"
+			ideology = internationalism_subtype
+			#trait ive him new one Yama Raja King Yama death king? cause brutal 活阎王 whether in dai li or hu zhongon
+		}
+	hidden_effect = { country_event = { id = CHI.JDPONmeme.1 days = 30 } }
+	}
+
 	option = { #
 		name = chi_leader.3.e
 		hidden_effect = {
@@ -17433,25 +17444,26 @@ country_event = { #leadership
 }
 
 country_event = {
-	id = lin_biao.1
-	immediate = { log = "[GetDateText]: [Root.GetName]: event lin_biao.1" }
+	id = CHI.JDPONmeme.1
+	immediate = { log = "[GetDateText]: [Root.GetName]: event CHI.JDPONmeme.1" }
 	title = "The Ambitions of Our State"
-	desc = "With Lin Biao in control of the new Chinese republic, his desire to liberate the masses of China has led him to the realization that China and its masses can only be free once the imperialists who dominated China can no longer plot in the shadows to loot China once more. This is not something unique to China but rather a issue every nationalist who emerges from a colonized country must face. Inspired by the tactics of encircling the rich and densely populated cities by gaining popular support in the surrounding countryside that led to the victory of the KMT, Lin Biao has formulated a new idea of how fight the core first world and defeat it. By gaining support in the newly emerging colonized countries, the large mass of people and land working together will be able to encircle and defeat the 'cities' of the world. In such a way, international revolution will be achieved and capitalism defeated."
+	desc = "With Liang Ganqiao having finally become victorious after the years of political maneuvering, the question of what his politics and policies represent needs to be answered. It was in his days at the Whampoa Military Academy, where his desire for a new society was radicalized by syndicalism and its adherents, leading to his membership in the party. Yet after becoming dissatisfied enough to leave the organization, he would join back directly under the Kuomintang, where he had been politicking and making connections with many of the factions of the United Front, whilst never fully committing to any one faction. The time of unity is now, where all peoples of society work together, each in their proper position, all bounded by their ultimate common interest. The question now is which direction on the scale of international versus national will the Chinese revolution land on?"
 	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {
-		name = "Though we support revolutionary struggles, China cannot fight other people's wars."
+		name = "We must rejuvenate the Chinese nation."
 		ai_chance = {
 			factor = 100
 		}
 		add_political_power = 50
-		add_stability = 0.10
+		add_stability = 0.12
+		add_war_support = 0.05
 	}
 	option = {
-		name = "We will free the international working class!"
+		name = "The other nations should experience rejuvenation just like China."
 		ai_chance = { factor = 0 }
-		add_named_threat = { threat = 100 name = "Global Communism" }
+		add_named_threat = { threat = 100 name = "Chinese Revolution" }
 		set_cosmetic_tag = LIN_JDPON
 		every_other_country = {
 		 CHI = {
@@ -17465,10 +17477,10 @@ country_event = {
 	}
 
 	option = {
-		name = "We will free the international working class, but labor aristocrats will need to be integrated in the correct conditions."
+		name = "The other nations should experience rejuvenation just like China, but the imperialists have to be properly suppressed."
 		ai_chance = { factor = 0 }
-		add_named_threat = { threat = 100 name = "Global Communism" }
-		set_country_flag = LinBiao_Puppets
+		add_named_threat = { threat = 100 name = "Chinese Revolution" }
+		set_country_flag = CHI_JDPON_puppets
 		set_cosmetic_tag = LIN_JDPON
 		every_other_country = {
 		 CHI = {
@@ -17483,15 +17495,15 @@ country_event = {
 }
 
 country_event = {
-	id = lin_biao.2
-	immediate = { log = "[GetDateText]: [Root.GetName]: event lin_biao.2" }
+	id = CHI.JDPONmeme.2
+	immediate = { log = "[GetDateText]: [Root.GetName]: event CHI.JDPONmeme.2" }
 	title = "Victory All Over the Globe"
 	desc = "You shouldn't see this"
 	fire_only_once = yes
 	hidden = yes
 	trigger = {
 		tag = CHI
-		has_country_flag = LinBiao_Puppets
+		has_country_flag = CHI_JDPON_puppets
 		all_other_country = {
 			if = { limit = {
 			is_in_europe = yes	
