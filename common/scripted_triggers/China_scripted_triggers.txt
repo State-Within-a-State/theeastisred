@@ -1036,6 +1036,17 @@ china_no_rival_governments_left = {
 	}
 	if = {
 		limit = {
+			PRC = { china_is_potential_government = yes }
+			NOT = { original_tag = PRC }
+		}
+		OR = {
+			NOT = { country_exists = PRC }
+			PRC = { has_capitulated = yes }
+			PRC = { is_subject_of = ROOT }
+		}
+	}
+	if = {
+		limit = {
 			HNN = { china_is_potential_government = yes }
 			NOT = { original_tag = HNN }
 		}
@@ -1054,6 +1065,17 @@ china_no_rival_governments_left = {
 			NOT = { country_exists = LEP }
 			LEP = { has_capitulated = yes }
 			LEP = { is_subject_of = ROOT }
+		}
+	}
+	if = {
+		limit = {
+			LEC = { china_is_potential_government = yes }
+			NOT = { original_tag = LEC }
+		}
+		OR = {
+			NOT = { country_exists = LEC }
+			LEC = { has_capitulated = yes }
+			LEC = { is_subject_of = ROOT }
 		}
 	}
 	if = {
@@ -1111,6 +1133,18 @@ china_no_rival_governments_left = {
 			YUN = { is_subject_of = ROOT }
 		}
 	}
+	if = {
+		limit = {
+			QIO = { china_is_potential_government = yes }
+			NOT = { original_tag = QIO }
+		}
+		OR = {
+			NOT = { country_exists = QIO }
+			QIO = { has_capitulated = yes }
+			QIO = { is_subject_of = ROOT }
+		}
+	}
+
 }
 
 china_stronger_than_existing_governments = {
@@ -1160,6 +1194,17 @@ china_stronger_than_existing_governments = {
 	}
 	if = {
 		limit = {
+			PRC = {
+				china_is_potential_government = yes
+				exists = yes
+				is_subject = no
+				NOT = { original_tag = ROOT }
+			}
+		}
+		strength_ratio = { tag = PRC ratio > 1.2 }
+	}
+	if = {
+		limit = {
 			HNN = {
 				china_is_potential_government = yes
 				exists = yes
@@ -1179,6 +1224,17 @@ china_stronger_than_existing_governments = {
 			}
 		}
 		strength_ratio = { tag = LEP ratio > 1.2 }
+	}
+	if = {
+		limit = {
+			LEC = {
+				china_is_potential_government = yes
+				exists = yes
+				is_subject = no
+				NOT = { original_tag = ROOT }
+			}
+		}
+		strength_ratio = { tag = LEC ratio > 1.2 }
 	}
 	if = {
 		limit = {
@@ -1235,6 +1291,18 @@ china_stronger_than_existing_governments = {
 		}
 		strength_ratio = { tag = YUN ratio > 1.2 }
 	}
+	if = {
+		limit = {
+			QIO = {
+				china_is_potential_government = yes
+				exists = yes
+				is_subject = no
+				NOT = { original_tag = ROOT }
+			}
+		}
+		strength_ratio = { tag = QIO ratio > 1.2 }
+	}
+
 }
 
 is_controlled_by_ROOT_owner_or_defeated_japan = {
