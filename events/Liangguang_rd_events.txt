@@ -3946,7 +3946,6 @@ country_event = { #Sun Li-Jen Offers to Join Our Ranks
 			defense_skill = 1
 			planning_skill = 2
 			logistics_skill = 2	
-			id = 2272
 		}
 		set_country_flag = PRC_sun_liren_saved
 		PRC_increase_wh_faction_small = yes
@@ -4590,14 +4589,13 @@ country_event = { #Revisiting Tutelage
 		name = "Li Pinxian"
 		portrait_path = "gfx/leaders/HNN/HNN_Portrait_Li_Pinxian.png"
 		traits = {
-		CHI_right_kuomintang_officer
+		GXC_right_kuomintang_officer
 		}
 		skill = 3
 		attack_skill = 2
 		defense_skill = 3
 		planning_skill = 3
 		logistics_skill = 2
-		id = 1409
 		}
 		random_unit_leader = {
 			limit = {
@@ -4758,10 +4756,6 @@ country_event = { #kmt reponse
 		ai_chance = { base = 100 }
 		hidden_effect = { 
 		GXC = {
-		random_unit_leader = {
-		limit = { has_id = 1234 }
-		set_nationality = NSW
-		}
 		every_unit_leader = {
 		set_nationality = PRC
 		}
@@ -4944,18 +4938,6 @@ country_event = { #Nomination of the Republican Candidate
 			planning_skill = 3
 			logistics_skill = 3
 		}
-	create_corps_commander = { 
-			name = "Ye Feiying"
-			desc = "-"
-			portrait_path = "gfx/leaders/GXC/Portrait_GXC_Ye_Feiying.png"
-			traits = { politically_connected militias_officer }
-			skill = 2
-			attack_skill = 2
-			defense_skill = 1
-			planning_skill = 2
-			logistics_skill = 2
-			id = 1234 #doesn't matter cause only one with any id
-		}
 		create_corps_commander = { 
 			name = "Ou Shengbai"
 			desc = "-"
@@ -5121,10 +5103,21 @@ country_event = { #Nomination of the Republican Candidate
 				expire = "1.1.1"
 				ideology = radsoc_social_anarchism_subtype
 			}
-			set_party_name = {
+		set_party_name = {
 			ideology = radical_socialist
 			long_name = GXC_ba_jin_party_long
 			name = GXC_ba_jin_party
+		}
+	create_corps_commander = { 
+			name = "Ye Feiying"
+			desc = "-"
+			portrait_path = "gfx/leaders/GXC/Portrait_GXC_Ye_Feiying.png"
+			traits = { politically_connected militias_officer }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 1
+			planning_skill = 2
+			logistics_skill = 2
 		}
 
 		
@@ -5232,15 +5225,7 @@ country_event = { #A Pearl In the South
 	option = { #
 		name = anarcho_china.10.c
 		trigger = {
-		NOT = {
-			has_war_with = JSR
-		}
-		JSR = { 
-			exists = yes 
-			is_faction_leader = yes
-			has_socialist_government = yes
-		not = { has_completed_focus = JAPCOMMUNIST_the_struggle_of_2 } 
-		}
+		JSR_anarchist_govt_rules_for_allies = yes
 		}
 		ai_chance = { base = 100 }
 		JSR = { add_to_faction = ROOT }
