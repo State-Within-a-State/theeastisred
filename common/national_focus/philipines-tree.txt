@@ -294,35 +294,19 @@ focus_tree = {
 		id = PHI_start_deportation_board  
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_start
-		x = 1
+		x = 2
 		y = 8
 		cost = 5.8
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_start_tagalog } 
-		mutually_exclusive = { focus = PHI_start_refuge_refugees }
 		available = { not = { has_country_flag = PHI_first_election_occurred } }
 		completion_reward = {
-
+		add_timed_idea = {
+		idea = PHI_quez_deportee_board
+		days = 180
 		}
-	}
-	#promising refugee to refugees 
-	focus = {
-		id = PHI_start_refuge_refugees 
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_start
-		x = 3
-		y = 8
-		cost = 5.8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_start_tagalog } 
-		mutually_exclusive = { focus = PHI_start_deportation_board }
-		available = { not = { has_country_flag = PHI_first_election_occurred } }
-		completion_reward = {
-
 		}
 	}
 	#stacking the court 
@@ -336,10 +320,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_start_deportation_board focus = PHI_start_refuge_refugees } 
+		prerequisite = { focus = PHI_start_deportation_board } 
 		available = { not = { has_country_flag = PHI_first_election_occurred } }
 		completion_reward = {
-
+		add_political_power = 50
+		add_war_support = 0.05
 		}
 	}
 	#pension committee 
@@ -440,6 +425,7 @@ focus_tree = {
 		prerequisite = { focus = PHI_start_stack_court } prerequisite = { focus = PHI_start_foreign_resource } prerequisite = { focus = PHI_start_assistance_service }
 		available = { not = { has_country_flag = PHI_first_election_occurred } } 
 		completion_reward = {
+		add_country_leader_trait = PHI_first_indepednent_president
 
 		}
 	}
