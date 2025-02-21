@@ -316,6 +316,12 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	option = { #nationsta osemna
 		name = rd_phil.4.a
 		ai_chance = { base = 100 }
+		hidden_effect = {
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.05
+		}
+		}
 		complete_national_focus = PHI_osemna
 		meta_effect = {
 			text = {
@@ -341,6 +347,13 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	option = { #liberal roxas
 		name = rd_phil.4.b
 		ai_chance = { base = 100 }
+		hidden_effect = {
+		add_popularity = {
+		ideology = market_liberal
+		popularity = 0.1
+		}
+		}
+
 		complete_national_focus = PHI_roxas_lib
 		meta_effect = {
 			text = {
@@ -368,18 +381,48 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		ai_chance = { base = 100 }
 		complete_national_focus = PHI_pop_vict
 		country_event = rd_phil.16
-		#country event to choose slot make leader, party name and politics
 	}
 	option = { #emilio
 		name = rd_phil.4.d
 		ai_chance = { base = 100 }
-		#create leader again set party name and then radsoc politics and focus
+		hidden_effect = {
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.075
+		}
+		}
+
+		set_party_name = {
+   			 ideology = radical_socialist
+   			 long_name = PHI_filipinista_party_long
+   			 name = PHI_filipinista_party
+			}
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = radical_socialist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		create_country_leader = {
+			name = "Emilio Aguinaldo"
+			picture = "gfx/leaders/PHI/Portrait_rd_philippines_Emilio_Aguinaldo.png"
+			expire = "1.1.1"
+			ideology = radsoc_popular_patriotism_subtype
+		}
+
+		#still need the scnd term focus and the ministers
 	}
 	option = { #republican not Gregorio Aglipay
 		name = rd_phil.4.e
 		ai_chance = { base = 100 }
 		#complete_focus
-		if = { limit = { has_country_flag = PHI_REP_IS_RADSOC } #means they were elected first time no need to create leader in choice ministers? 
+		if = { limit = { has_country_flag = PHI_REP_IS_RADSOC } #means they were elected first time no need to create leader in choice  
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -408,7 +451,19 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		}
 		}
 		else = { 
+		hidden_effect = {
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = -0.05
+		}
+		}
+
 		#create country leader isabelo jr (cause could be 1st election didn't elect repub so still has georgio
+
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -551,8 +606,26 @@ country_event = { #second election parties but the freaky ones
 	option = { #Hilario Moncado modernista
 		name = rd_phil.9.a
 		ai_chance = { base = 100 }
+		hidden_effect = {
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.2
+		}
+		}
+
 		complete_national_focus = PHI_hilario_god
-		#set to natpop and politics elections 
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = national_populist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
 		set_country_leader_ideology = autdem_christian_democracy_subtype
 		
 	}
@@ -560,7 +633,19 @@ country_event = { #second election parties but the freaky ones
 		name = rd_phil.9.b
 		ai_chance = { base = 100 }
 		complete_national_focus = PHI_lincoln
-		
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+
 	}
 }
 
