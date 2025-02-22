@@ -48,6 +48,7 @@
 		prerequisite = { focus = JAPFOR_japansplaceintheworld  }
 		completion_reward = {
 		country_event = japan_new_event.146
+		set_country_flag = JAP_fp_decision_menu
 		}
 	}
 	
@@ -59,13 +60,14 @@
 		relative_position_id = JAPFOR_japansplaceintheworld
 		x = 12
 		y = 2
-		cost = 3
+		cost = 2
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_sword_prepares_to_swing  }
 		completion_reward = {
-		
+		custom_effect_tooltip = JAP_unlock_south_asia_decisions
+		add_political_power = 25
 		}
 	}
 	
@@ -82,7 +84,7 @@
 		}
 		prerequisite = { focus = JAP_southern_squabbles  }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_down_in_manila
 		}
 	}
 	
@@ -99,7 +101,7 @@
 		}
 		prerequisite = { focus = JAP_southern_squabbles  }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_siamese_twins_attack
 		}
 	}
 	#A Hand Into Indochina
@@ -115,7 +117,7 @@
 		}
 		prerequisite = { focus = JAP_southern_squabbles  }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_into_indochina_we_go
 		}
 	}
 	
@@ -132,7 +134,7 @@
 		}
 		prerequisite = { focus = JAP_secure_indochina  } prerequisite = { focus = JAP_deal_siamese_twins } prerequisite = { focus = JAP_dropping_down_manila }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_securing_east_indies
 		}
 	}
 	
@@ -149,7 +151,7 @@
 		}
 		prerequisite = { focus = JAP_secure_indochina  } prerequisite = { focus = JAP_deal_siamese_twins } prerequisite = { focus = JAP_dropping_down_manila }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_securing_oceania
 		}
 	}
 	
@@ -166,7 +168,35 @@
 		}
 		prerequisite = { focus = JAP_shadow_over_southern_cross  } prerequisite = { focus = JAP_secure_indonesian_rubber } 
 		completion_reward = {
-		
+		if = {
+			limit = {
+				PHI = {
+				is_subject = yes
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = USA
+			}
+		}
+		if = {
+			limit = {
+				POR = {
+					OR = {
+					owns_state = 721
+					owns_state = 972
+					}
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = POR
+			}
+		}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GEA
+			}
 		}
 	}
 	
@@ -202,7 +232,7 @@
 		}
 		prerequisite = { focus = JAP_sword_prepares_to_swing  }
 		completion_reward = {
-		
+		add_political_power = 20
 		}
 	}
 	
@@ -219,7 +249,7 @@
 		}
 		prerequisite = { focus = JAP_sailing_across_pacific  }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_taming_alaskan_tundra
 		}
 	}
 	
@@ -236,7 +266,7 @@
 		}
 		prerequisite = { focus = JAP_sailing_across_pacific  }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_trip_to_hawaii
 		}
 	}
 	
@@ -253,7 +283,8 @@
 		}
 		prerequisite = { focus = JAP_sailing_across_pacific  } prerequisite = { focus = JAP_trip_to_hawaii  }  prerequisite = { focus = JAP_taming_alaska  }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_securing_north_america
+		unlock_decision_tooltip = JAP_crush_north_america
 		}
 	}
 	
@@ -270,7 +301,7 @@
 		}
 		prerequisite = { focus = JAP_eagles_nest  } 
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_securing_south_america
 		}
 	}
 	
