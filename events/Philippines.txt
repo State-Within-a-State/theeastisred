@@ -916,7 +916,7 @@ country_event = { #socdem or soclib popular front choose jose or vinctinte sotto
 
 }
 
-country_event = { #
+country_event = { #moncado golfing event
 	id = rd_phil.17
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.17"}
 	title = rd_phil.17.title
@@ -931,7 +931,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #moncado end state formable
 	id = rd_phil.18
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.18"}
 	title = rd_phil.18.title
@@ -942,9 +942,31 @@ country_event = { #
 	option = { #
 		name = rd_phil.18.a
 		ai_chance = { base = 100 }
+		add_stability = 0.05
 		
+		if = { 
+		limit = { has_war = yes }
+		set_cosmetic_tag = PHI_moncado_flag_war
+		}
+		else = { set_cosmetic_tag = PHI_moncado_flag }
+
 	}
+	option = { #
+		name = rd_phil.18.a
+		ai_chance = { base = 100 }
+		add_stability = -0.1
+		add_political_power = -50
+		set_cosmetic_tag = PHI_moncado_usa_flag
+		every_state = { 
+		limit = { 
+		OR = { is_mainland_america = yes is_american_pacific_islands = yes }
+		} 
+		add_core_of = PHI
+		}
+	}
+
 }
+
 
 country_event = { #
 	id = rd_phil.19
