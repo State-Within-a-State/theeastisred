@@ -938,7 +938,8 @@ country_event = { #moncado end state formable
 	}
 	option = { #
 		name = rd_phil.18.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 0 }
+		trigger = { not = { is_subject_of = USA } }
 		add_stability = -0.1
 		add_political_power = -50
 		set_cosmetic_tag = PHI_moncado_usa_flag
@@ -946,6 +947,12 @@ country_event = { #moncado end state formable
 		limit = { 
 		OR = { is_mainland_america = yes is_american_pacific_islands = yes }
 		} 
+			PHI = {
+				create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+			}
 		add_core_of = PHI
 		}
 	}
