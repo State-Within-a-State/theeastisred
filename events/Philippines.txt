@@ -202,7 +202,7 @@ country_event = { #popular front factions and splits (popular front party still 
 	option = { #Emilio
 		name = rd_phil.3.c
 		set_country_flag = PHI_emilio_finally_wins_now
-		rd_phil_calculate_length_second_election = yes		
+		set_country_flag = PHI_no_second_election
 		set_party_name = {
    			 ideology = radical_socialist
    			 long_name = PHI_filipinista_party_long
@@ -382,51 +382,8 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		complete_national_focus = PHI_pop_vict
 		country_event = rd_phil.16
 	}
-	option = { #emilio
-		name = rd_phil.4.d
-		ai_chance = { base = 100 }
-		hidden_effect = {
-		add_popularity = {
-		ideology = radical_socialist
-		popularity = 0.075
-		}
-		}
-
-		set_party_name = {
-   			 ideology = radical_socialist
-   			 long_name = PHI_filipinista_party_long
-   			 name = PHI_filipinista_party
-			}
-		meta_effect = {
-			text = {
-				set_politics = {
-					ruling_party = radical_socialist
-					last_election = "[CURRENT_DATE]"
-					election_frequency = "[MONTH_ELECTIONS]"
-					elections_allowed = yes
-				}
-			}
-			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
-			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
-		}
-		create_country_leader = {
-			name = "Emilio Aguinaldo"
-			picture = "gfx/leaders/PHI/Portrait_rd_philippines_Emilio_Aguinaldo.png"
-			expire = "1.1.1"
-			ideology = radsoc_popular_patriotism_subtype
-		}
-		remove_all_ministers = yes
-		add_ideas = {
-		PHI_Emilio_Aguinaldo_hog_rso
-		PHI_Jose_Timog_eco_tot
-		PHI_Raymundo_Melliza_for_sde
-		PHI_Celerino_Tiongcco_sec_rso
-		}
-
-		#still need the scnd term focus and the ministers
-	}
 	option = { #republican not Gregorio Aglipay
-		name = rd_phil.4.e
+		name = rd_phil.4.d
 		ai_chance = { base = 100 }
 		#complete_focus
 		if = { limit = { has_country_flag = PHI_REP_IS_RADSOC } #means they were elected first time no need to create leader in choice  
@@ -495,7 +452,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		
 	}
 	option = { #the main parties have been rejected by the populace...
-		name = rd_phil.4.g
+		name = rd_phil.4.e
 		ai_chance = { base = 100 }
 		country_event = rd_phil.9
 	}
@@ -617,7 +574,7 @@ country_event = { #second election parties but the freaky ones
 		hidden_effect = {
 		add_popularity = {
 		ideology = national_populist
-		popularity = 0.2
+		popularity = 0.1
 		}
 		}
 
@@ -952,10 +909,10 @@ country_event = { #moncado golfing event
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #to golfing
 		name = rd_phil.17.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = PHI_moncado_golf
 	}
 }
 
