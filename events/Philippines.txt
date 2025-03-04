@@ -525,7 +525,19 @@ country_event = { #rest in peace Quezon (only occurs if he was relected)
 			PREVIOUS_DATE = "[THIS.PhiFirstElectionDate]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
-		#make vincinte soclib as a slot filler with party name? obv will be socdem or whatever we decide to be popfront lib as long as not Jose Avelino cause he would be nationsta until 2nd election or could be the way to get pascul if we wanted to lean into the meme as a trigger of has_ruler
+	hidden_effect = {
+	create_country_leader = {
+		name = "Pascual Racuyal"
+		picture = "gfx/leaders/PHI/Portrait_Philippines_Pascual_Racuyal.png"
+		expire = "1.1.1"
+		ideology = soclib_progressive_democracy_subtype
+	}
+			set_party_name = {
+   			 ideology = social_liberal
+   			 long_name = PHI_independent_party_long
+   			 name = PHI_independent_party
+			}
+	}
 	#the coalitions end here 
 	}
 }
@@ -603,6 +615,12 @@ country_event = { #second election parties but the freaky ones
 	}
 	option = { #independent Pascual Racuyal (may change it so there's a limited way to get him but idk yet) could be Quezon still rules and mental asylum dude comes
 		name = rd_phil.9.b
+		trigger = { 
+		has_country_leader = {
+   		 name = "Pascual Racuyal"
+  		  ruling_only = no
+		}
+		}
 		ai_chance = { base = 100 }
 		complete_national_focus = PHI_lincoln
 		meta_effect = {
