@@ -1067,7 +1067,7 @@ focus_tree = {
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_quezon
 		x = 5
-		y = 
+		y = 3
 		cost = 5.8
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -1951,11 +1951,13 @@ focus_tree = {
 				level = 1
 				instant_build = yes
 			}
+			}
 			random_owned_controlled_state = {
 			add_building_construction = {
 				type = infrastructure
 				level = 1
 				instant_build = yes
+			}
 			}
 
 		}
@@ -1973,6 +1975,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = PHI_osemna_court_appeals }
 		completion_reward = {
+		add_ideas = PHI_os_inqury_board
 
 		}
 	}
@@ -2046,7 +2049,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = PHI_osemna_sedition_law } prerequisite = { focus = PHI_osemna_local_government }
 		completion_reward = {
-
+		add_ideas = PHI_osemna_land_ref
 		}
 	}
  	#urban planning commission
@@ -2061,8 +2064,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_osemna_land_reform } prerequisite = { focus = PHI_osemna_wireless_press }
+		available = { has_full_control_of_state = 327 }
 		completion_reward = {
-
+		country_event = rd_phil.19
 		}
 	}
  	#executive order 25
@@ -2292,8 +2296,14 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_roxas_foreign_market } prerequisite = { focus = PHI_roxas_ban_demalliance } 
+		available = { has_full_control_of_state = 327 
+		has_country_leader = {
+		    name = "Elpidio Quirino"
+		    ruling_only = yes
+		}
+		}
 		completion_reward = {
-
+		country_event = rd_phil.19
 		}
 	}
 	#popular front at a crossroads
@@ -2380,7 +2390,7 @@ focus_tree = {
 		completion_reward = {
 		add_popularity = {
 		ideology = social_liberal
-		popularity = -0.075
+		popularity = 0.075
 		}
 		add_political_power = 25
 		}
