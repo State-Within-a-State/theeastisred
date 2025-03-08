@@ -13040,7 +13040,7 @@ country_event = { # Triads Seize Power
 		remove_all_ministers = yes
 		add_ideas = {
 			LEC_Huang_Jinrong_hog_pau
-			LEC_Jiang_Qing_for_pau
+			LEC_Jiang_Qing_for_pau #change this
 			LEC_Zhang_Xiaolin_boss_sli
 			LEC_Huang_Jinrong_sec_pau
 		}
@@ -13093,16 +13093,6 @@ country_event = { # Triads Seize Power
 			logistics_skill = 1
 		}
 
-		create_corps_commander = {
-			name = "Jiang Qing"
-			portrait_path = "gfx/leaders/LEC/Portrait_LEC_Jiang_Qing.png"
-			traits = { LEC_triad_commander }
-			skill = 1
-			attack_skill = 1
-			defense_skill = 1
-			planning_skill = 1
-			logistics_skill = 1
-		}
 
 		create_corps_commander = {
 			name = "Du Yuesheng"
@@ -14491,45 +14481,6 @@ country_event = { #The Syndicate Splits
 	is_triggered_only = yes
 	
 	option = {
-		name = legcities.104.a
-		ai_chance = {
-			factor = 25
-			modifier = {
-				factor = 0
-				OR = {
-					has_game_rule = {
-						rule = LEC_path
-						option = LEC_TRIADS_SEN
-					}
-					has_game_rule = {
-						rule = LEC_path
-						option = LEC_TRIADS_JINRONG
-					}
-					has_game_rule = {
-						rule = LEC_path
-						option = LEC_TRIADS_ZHANG
-					}
-				}
-			}
-		}
-		hidden_effect = {
-
-			retire_country_leader = yes
-
-			create_country_leader = {
-				name = "Jiang Qing"
-				desc = "POLITICS_QING_DESC"
-				female = yes
-				picture = "gfx/leaders/LEC/Portrait_LEC_Jiang_Qing.png"
-				expire = "1.1.1"
-				ideology = crime_syndicate_subtype
-				traits = {}
-			}
-		}
-		country_event = legcities.47
-		complete_national_focus = LEC_madame_jiang_qing_steals_show
-	}
-	option = {
 		name = legcities.104.b
 		ai_chance = {
 			factor = 25
@@ -14539,10 +14490,6 @@ country_event = { #The Syndicate Splits
 					has_game_rule = {
 						rule = LEC_path
 						option = LEC_TRIADS_SEN
-					}
-					has_game_rule = {
-						rule = LEC_path
-						option = LEC_TRIADS_JIANG
 					}
 					has_game_rule = {
 						rule = LEC_path
@@ -14580,10 +14527,6 @@ country_event = { #The Syndicate Splits
 					}
 					has_game_rule = {
 						rule = LEC_path
-						option = LEC_TRIADS_JIANG
-					}
-					has_game_rule = {
-						rule = LEC_path
 						option = LEC_TRIADS_ZHANG
 					}
 				}
@@ -14615,10 +14558,6 @@ country_event = { #The Syndicate Splits
 					has_game_rule = {
 						rule = LEC_path
 						option = LEC_TRIADS_SEN
-					}
-					has_game_rule = {
-						rule = LEC_path
-						option = LEC_TRIADS_JIANG
 					}
 					has_game_rule = {
 						rule = LEC_path
@@ -14658,9 +14597,15 @@ country_event = { #
 			factor = 50
 			modifier = {
 				factor = 0
+				OR = {
 				has_game_rule = {
 					rule = LEC_path
 					option = LEC_TRIADS_SHUNTIAN
+				}
+					has_game_rule = {
+						rule = LEC_path
+						option = LEC_TRIADS_JIANG
+					}
 				}
 			}
 		}
@@ -14689,10 +14634,6 @@ country_event = { #
 					has_game_rule = {
 						rule = LEC_path
 						option = LEC_TRIADS
-					}
-					has_game_rule = {
-						rule = LEC_path
-						option = LEC_TRIADS_JIANG
 					}
 					has_game_rule = {
 						rule = LEC_path
@@ -14730,6 +14671,17 @@ country_event = { #
 	
 	option = {
 		name = legcities.107.a
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+					has_game_rule = {
+						rule = LEC_path
+						option = LEC_TRIADS_JIANG
+					}
+			}
+		}
+
 		hidden_effect = {
 		country_event = {
 			days = 7
@@ -14740,6 +14692,33 @@ country_event = { #
 			id = legcities.59
 			}
 		}
+	option = {#llw content
+		name = legcities.107.b
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_TRIADS_SHUNTIAN
+				}
+			}
+		}
+
+		hidden_effect = {
+		country_event = {
+			days = 7
+			id = lu_xun.1
+		}
+		country_event = {
+			days = 14
+			id = legcities.59
+			}
+		}
+
+
+
+
 	}
 }
 
@@ -17811,147 +17790,6 @@ country_event = { #Did you know that we have tigers?
 	}
 }
 
-country_event = { #Jiang/Mao
-	id = legcities.150
-	title = legcities.150.t
-	desc = legcities.150.d
-	picture = GFX_report_event_LEC_jiang_mao
-	
-	fire_only_once = yes
-	trigger = {
-	tag = LEC
-	LEC = { is_ai = no }
-	has_completed_focus = LEC_madame_jiang_qing_steals_show
-	OR = {
-	CHI = { has_country_leader = { name = "Mao Zedong" } }
-	MON = { has_country_leader = { name = "Mao Zedong" } }
-		}
-	}
-	
-	option = {
-		name = legcities.150.a
-		add_political_power = 50
-		if = {
-		limit = {
-		CHI = { has_country_leader = { name = "Mao Zedong" } }
-		}
-		every_state = {
-                limit = {
-					is_core_of = CHI
-					}
-				add_core_of = LEC
-			}
-		create_wargoal = {
-			type = annex_everything
-			target = CHI
-			}
-		}
-		if = {
-		limit = {
-		MON = { has_country_leader = { name = "Mao Zedong" } }
-		}
-		every_state = {
-                limit = {
-					is_core_of = MON
-					}
-				add_core_of = LEC
-			}
-		create_wargoal = {
-			type = annex_everything
-			target = MON
-			}
-		}
-		set_country_flag = LEC_jiang_mao
-	}
-	option = {
-		name = legcities.150.b
-		add_political_power = -100
-		remove_ideas_with_trait = head_of_government
-		add_ideas = LEC_Mao_Zedong_hog_tot
-		if = {
-		limit = {
-		CHI = { has_country_leader = { name = "Mao Zedong" } }
-		}
-		annex_country = {
-			target = CHI
-			transfer_troops = yes
-			}
-			CHI = {
-				every_unit_leader = {
-					set_nationality = LEC
-				}
-			}
-		CHI = { transfer_technology = yes }
-		every_state = {
-                limit = {
-					is_core_of = CHI
-					}
-				add_core_of = LEC
-			}
-		}
-		if = {
-		limit = {
-		MON = { has_country_leader = { name = "Mao Zedong" } }
-		}
-		annex_country = {
-			target = MON
-			transfer_troops = yes
-			}
-			MON = {
-				every_unit_leader = {
-					set_nationality = LEC
-				}
-			}
-		MON = { transfer_technology = yes }
-		every_state = {
-                limit = {
-					is_core_of = MON
-					}
-				add_core_of = LEC
-			}
-		}
-		set_country_flag = LEC_jiang_mao
-	}
-}
-
-country_event = { #Jiang/Mao
-	id = legcities.151
-	title = legcities.151.t
-	desc = legcities.151.d
-	picture = GFX_report_event_LEC_jiang_mao
-	
-	fire_only_once = yes
-	trigger = {
-	tag = LEC
-	LEC = { NOT = { has_country_flag = LEC_jiang_mao } }
-	has_completed_focus = LEC_madame_jiang_qing_steals_show
-	owns_state = 602
-	NOT = {
-	CHI = { has_country_leader = { name = "Mao Zedong" } }
-	MON = { has_country_leader = { name = "Mao Zedong" } }
-		}
-	}
-	
-	option = {
-		name = legcities.151.a
-		add_political_power = 50
-		add_stability = 0.05
-		increase_ruling_party_popularity_by_2 = yes
-	}
-	option = {
-		name = legcities.151.b
-		add_command_power = 50
-		add_war_support = 0.05
-		add_manpower = -1
-		602 = {
-		add_manpower = -500
-			damage_building = {
-				type = infrastructure
-				damage = 0.2
-			}
-		}
-	}
-}
 
 country_event = { #Carlos Garcia
 	id = legcities.152
