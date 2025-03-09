@@ -339,10 +339,48 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+		custom_trigger_tooltip = {
+				tooltip = JAP_chosen_out_saving_asia_tt		
+				has_country_flag = JAP_east_asia_monroe_doctrine
+			}
+		}
 		mutually_exclusive = { focus = JAP_pursue_our_goal_in_china }
 		prerequisite = { focus = JAP_China_Seishin_ron  }
 		completion_reward = {
-		
+		add_political_power = 50
+			add_opinion_modifier = {
+				target = GER
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = DEH
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = RUS
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = AUS
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = CAN
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = POR
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = LEC
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = GEA
+				modifier = JAP_saving_china_against
+			}
 		}
 	}
 	
@@ -357,9 +395,60 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+		custom_trigger_tooltip = {
+				tooltip = JAP_chosen_out_own_ambitions_tt		
+				has_country_flag = JAP_no_east_asia_monroe_doctrine
+			}
+		}
 		mutually_exclusive = { focus = JAP_save_china_from_europe }
 		prerequisite = { focus = JAP_China_Seishin_ron  }
 		completion_reward = {
+		country_event = japan_new_event.147
+		add_opinion_modifier = {
+				target = QIE
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = SHX
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = SQI
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = ANQ
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = LEP
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = CHI
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = HNN
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = GXC
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = PRC
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = YUN
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = SZC
+				modifier = JAP_against_china_claims
+			}
 		
 		}
 	}
@@ -378,7 +467,99 @@
 		mutually_exclusive = { focus = JAP_save_china_from_europe }
 		prerequisite = { focus = JAP_pursue_our_goal_in_china focus = JAP_save_china_from_europe  }
 		completion_reward = {
-		
+		if = {
+			limit = {
+				QIE = {
+					exists = yes
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIE
+			}
+		}
+		if = {
+			limit = {
+				CHI = {
+					exists = yes
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIE
+			}
+		}
+		if = {
+			limit = {
+				GXC = {
+					exists = yes
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = QIE
+			}
+		}
+		if = {
+				limit = {
+					NOT = { has_completed_focus = JAPFOR_focus_on_our_allies }
+				}
+				add_timed_idea = { idea = JAP_continental_warfare days = 100 }
+			}
+			else = {
+				add_timed_idea = { idea = JAP_continental_warfare_2 days = 200 }
+			}
+			if = {
+				limit = { has_global_flag = JAP_sino_japanese_war_threat }
+				add_named_threat = {
+					threat = 3
+					name = JAP_continental_warfare
+				}
+			}
+			else = {
+				add_named_threat = {
+					threat = 8
+					name = JAP_continental_warfare
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			every_other_country = {
+				limit = {
+					is_chinese_tag = yes
+					is_valid_peace_target = yes
+					can_declare_war_on = ROOT
+					is_ruled_by_pro_fengtian = no
+				}
+				ROOT = {
+					add_ai_strategy = {
+						type = declare_war
+						id = PREV
+						value = 500
+					}
+					create_wargoal = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+			if = {
+				limit = {
+					FNG_JAP_hostile = no
+					FNG = {
+						exists = yes
+						is_subject = no
+						is_in_faction = no
+						at_war_with_or_justifying_wargoal_against_PREV = no
+					}
+					NOT = {
+						any_allied_country = { FNG = { at_war_with_or_justifying_wargoal_against_PREV = yes } }
+					}
+				}
+				custom_effect_tooltip = tooltip_white_line
+				effect_tooltip = { add_to_faction = FNG }
+				FNG = { country_event = japfeng.4 }
+			}
+
 		}
 	}
 	
@@ -395,7 +576,10 @@
 		}
 		prerequisite = { focus = JAP_China_Seishin_ron  }
 		completion_reward = {
-		
+		create_wargoal = {
+						target = LEC
+						type = annex_everything
+					}
 		}
 	}
 	
@@ -412,7 +596,7 @@
 		}
 		prerequisite = { focus = JAP_China_Seishin_ron  }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_unlock_west_china_section
 		}
 	}
 	

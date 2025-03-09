@@ -1197,7 +1197,143 @@ JAP_unlock_east_seas_section = {
 	}
 	
 	
+	JAP_unlock_west_china_section = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_advance_western_frontiers
+		}
+		
+		visible = {
+			tag = JAP
+			OR = {
+			has_country_flag = JAP_fp_north_china_decisions
+			has_country_flag = JAP_fp_south_china_decisions
+			
+			}
+			is_ai = no
+			NOT = {
+				OR = {
+					has_country_flag = JAP_fp_russia_decisions
+					has_country_flag = JAP_fp_central_asia_decisions
+					has_country_flag = JAP_fp_east_seas_japan_decisions
+					has_country_flag = JAP_fp_india_japan_decisions
+					has_country_flag = JAP_fp_south_east_decisions
+					has_country_flag = JAP_fp_outside_east_asia_decisions
+					has_country_flag = JAP_fp_west_china_decisions
+				}
+			}
+		}
+		
+		
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			clr_country_flag = JAP_fp_south_china_decisions
+			clr_country_flag = JAP_fp_north_china_decisions
+			set_country_flag = JAP_fp_west_china_decisions
+		}
+	}
 	
+	JAP_back_to_north_china_section = {
+		icon = no_votei_icon
+		
+		available = {
+			
+		}
+		
+		visible = {
+			tag = JAP
+			has_country_flag = JAP_fp_west_china_decisions
+			is_ai = no
+			NOT = {
+				OR = {
+					has_country_flag = JAP_fp_russia_decisions
+					has_country_flag = JAP_fp_central_asia_decisions
+					has_country_flag = JAP_fp_east_seas_japan_decisions
+					has_country_flag = JAP_fp_india_japan_decisions
+					has_country_flag = JAP_fp_south_east_decisions
+					has_country_flag = JAP_fp_north_china_decisions
+					has_country_flag = JAP_fp_outside_east_asia_decisions
+					has_country_flag = JAP_fp_south_china_decisions
+				}
+			}
+		}
+		
+		
+		fire_only_once = no
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			clr_country_flag = JAP_fp_west_china_decisions
+			set_country_flag = JAP_fp_north_china_decisions
+		}
+	}
+	
+	JAP_securing_west_china = {
+		icon = ger_military_buildup
+		available = {
+			has_completed_focus = JAP_advance_western_frontiers
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					has_country_flag = JAP_fp_west_china_decisions
+					is_ai = no
+					NOT = {
+						OR = {
+							has_country_flag = JAP_fp_russia_decisions
+							has_country_flag = JAP_fp_central_asia_decisions
+							has_country_flag = JAP_fp_east_seas_japan_decisions
+							has_country_flag = JAP_fp_india_japan_decisions
+							has_country_flag = JAP_fp_south_east_decisions
+							has_country_flag = JAP_fp_north_china_decisions
+							has_country_flag = JAP_fp_outside_east_asia_decisions
+							has_country_flag = JAP_fp_south_china_decisions
+						}
+					}
+				}
+			}
+		}
+		
+
+		cost = 30
+		targets = { TIB ETS SIK TAN XSM }
+		target_trigger = {
+			NOT = {
+				OR = {
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
+				}
+			}
+			FROM = {
+			exists = yes
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
 
 
 
