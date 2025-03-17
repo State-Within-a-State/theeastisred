@@ -3691,9 +3691,481 @@ JAP_send_arms_to_zhili = {
 	
 	}
 	
+	###Russia Section####
 	
 	
+	JAP_offer_vladivostock_alliance = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_vladivostock_holding
+			TRM = {
+			exists = yes
+				NOT = {
+					OR = {
+						is_in_faction_with = JAP
+						is_subject_of = JAP
+					}
+				}
+			}
+			
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_russia_decisions
+					
+				}
+			}
+		}
+		cost = 10
+		fire_only_once = yes
+		days_remove = 15
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			TRM = {
+			country_event = japan_new_event.81
+			}
+		}
+	}
 	
+	JAP_offer_vladivostock_submission = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_vladivostock_holding
+			TRM = {
+			exists = yes
+				NOT = {
+					OR = {
+						is_in_faction_with = JAP
+						is_subject_of = JAP
+					}
+				}
+			}
+			
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_russia_decisions
+					
+				}
+			}
+		}
+		cost = 10
+		fire_only_once = yes
+		days_remove = 15
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			TRM = {
+			country_event = japan_new_event.75
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = TRM
+			}
+		}
+	}
+	
+	JAP_securing_steppe_mongolia = {
+		icon = ger_military_buildup
+		available = {
+			has_completed_focus = JAP_east_asia_steppe
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_russia_decisions
+					
+				}
+			}
+		}
+		
+
+		cost = 30
+		targets = { YAK MON BYR SIB }
+		target_trigger = {
+			NOT = {
+				OR = {
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
+				}
+			}
+			FROM = {
+			exists = yes
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
+	
+	JAP_securing_india = {
+		icon = ger_military_buildup
+		available = {
+			has_completed_focus = JAP_sub_continent_overture
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_india_japan_decisions
+					
+				}
+			}
+		}
+		
+
+		cost = 30
+		targets = { DEH BHC MAD TRV PRF }
+		target_trigger = {
+			NOT = {
+				OR = {
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
+				}
+			}
+			FROM = {
+			exists = yes
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
+	
+	JAP_scaling_himalayas = {
+		icon = ger_military_buildup
+		available = {
+			has_completed_focus = JAP_road_to_burma
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_india_japan_decisions
+					
+				}
+			}
+		}
+		
+
+		cost = 30
+		targets = { NEP SKM BHU }
+		target_trigger = {
+			NOT = {
+				OR = {
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
+				}
+			}
+			FROM = {
+			exists = yes
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
+	
+	JAP_burma_submission = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_vladivostock_holding
+			BRM = {
+			exists = yes
+				NOT = {
+					OR = {
+						is_in_faction_with = JAP
+						is_subject_of = JAP
+					}
+				}
+			}
+			
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_india_japan_decisions
+					
+				}
+			}
+		}
+		cost = 10
+		fire_only_once = yes
+		days_remove = 15
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			BRM = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
+	
+	JAP_afghanistani_submission = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_shaking_hands_kabul
+			AFG = {
+			exists = yes
+				NOT = {
+					OR = {
+						is_in_faction_with = JAP
+						is_subject_of = JAP
+					}
+				}
+			}
+			
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_india_japan_decisions
+					
+				}
+			}
+		}
+		cost = 10
+		fire_only_once = yes
+		days_remove = 15
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			AFG = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
+	
+	JAP_persia_submission = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_meet_persian_princes
+			PER = {
+			exists = yes
+				NOT = {
+					OR = {
+						is_in_faction_with = JAP
+						is_subject_of = JAP
+					}
+				}
+			}
+			
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_india_japan_decisions
+					
+				}
+			}
+		}
+		cost = 10
+		fire_only_once = yes
+		days_remove = 15
+		
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			PER = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
+	
+	JAP_barrel_central_asia = {
+		icon = ger_military_buildup
+		available = {
+			has_completed_focus = JAP_barrelling_across_central_asia
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_central_asia_decisions
+					
+				}
+			}
+		}
+		
+
+		cost = 30
+		targets = { ALO KYR TRK UZB }
+		target_trigger = {
+			NOT = {
+				OR = {
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
+				}
+			}
+			FROM = {
+			exists = yes
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
+	
+	
+	JAP_barrel_middle_east = {
+		icon = ger_military_buildup
+		available = {
+			has_completed_focus = JAP_hands_out_across_desert
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_outside_east_asia_decisions
+					
+				}
+			}
+		}
+		
+
+		cost = 30
+		targets = { EGY YEM OMA TRU SYR IRQ TUR KUR AZE GEO ARM SAU JBS HEJ }
+		target_trigger = {
+			NOT = {
+				OR = {
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
+				}
+			}
+			FROM = {
+			exists = yes
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			FROM = {
+			country_event = japan_new_event.75
+			}
+			
+		}
+	}
 
 }
 

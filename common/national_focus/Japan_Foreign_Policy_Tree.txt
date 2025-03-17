@@ -926,7 +926,11 @@
 		}
 		prerequisite = { focus = JAP_sword_prepares_to_swing  }
 		completion_reward = {
-		
+		add_political_power = 50
+		add_opinion_modifier = {
+				target = RUS
+				modifier = JAP_against_claims_russia
+			}
 		}
 	}
 	
@@ -941,9 +945,17 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		bypass = {
+		TRM = {
+			OR = {
+			is_in_faction_with = JAP
+			is_subject_of = JAP
+			}
+		}
+		}
 		prerequisite = { focus = JAP_bears_forest  }
 		completion_reward = {
-		
+		 unlock_decision_tooltip = JAP_offer_vladivostock_alliance
 		}
 	}
 	
@@ -960,7 +972,7 @@
 		}
 		prerequisite = { focus = JAP_bears_forest  }
 		completion_reward = {
-		
+			unlock_decision_tooltip = JAP_securing_steppe_mongolia
 		}
 	}
 	
@@ -977,7 +989,10 @@
 		}
 		prerequisite = { focus = JAP_east_asia_steppe  } prerequisite = { focus = JAP_vladivostock_holding }
 		completion_reward = {
-		
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = RUS
+			}
 		}
 	}
 	
@@ -997,7 +1012,21 @@
 		}
 		prerequisite = { focus = JAP_sword_prepares_to_swing  }
 		completion_reward = {
-		
+			if = {
+				limit = {
+					PRF = {
+						is_in_faction = no
+						is_subject = no
+						exists = yes
+					}
+				
+				}
+				PRF = {
+				country_event = japan_new_event.81
+				}
+			}
+			add_political_power = 25
+			unlock_decision_tooltip = JAP_securing_india
 		}
 	}
 	
@@ -1014,7 +1043,7 @@
 		}
 		prerequisite = { focus = JAP_sub_continent_overture  }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_scaling_himalayas
 		}
 	}
 	
@@ -1031,7 +1060,7 @@
 		}
 		prerequisite = { focus = JAP_sub_continent_overture  }
 		completion_reward = {
-		
+			unlock_decision_tooltip =JAP_scaling_himalayas
 		}
 	}
 	
@@ -1048,7 +1077,7 @@
 		}
 		prerequisite = { focus = JAP_road_to_burma  } prerequisite = { focus = JAP_climbing_himalayas  }
 		completion_reward = {
-		
+			unlock_decision_tooltip = JAP_persia_submission
 		}
 	}
 	
@@ -1065,7 +1094,7 @@
 		}
 		prerequisite = { focus = JAP_road_to_burma  } prerequisite = { focus = JAP_climbing_himalayas  }
 		completion_reward = {
-		
+			unlock_decision_tooltip = JAP_afghanistani_submission
 		}
 	}
 	
@@ -1082,7 +1111,7 @@
 		}
 		prerequisite = { focus = JAP_shaking_hands_kabul  } prerequisite = { focus = JAP_subdue_bear  } prerequisite = { focus = JAP_meet_persian_princes  }
 		completion_reward = {
-		
+			unlock_decision_tooltip = JAP_barrel_central_asia
 		}
 	}
 	
@@ -1099,7 +1128,7 @@
 		}
 		prerequisite = { focus = JAP_barrelling_across_central_asia  } 
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_barrel_middle_east
 		}
 	}
 	
