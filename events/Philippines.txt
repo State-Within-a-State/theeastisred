@@ -426,8 +426,12 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		}
 		}
 
-		#create country leader isabelo jr (cause could be 1st election didn't elect repub so still has georgio
-
+		create_country_leader = {
+			name = "Santiago Fonacier"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Santiago_Fonacier.png"
+			expire = "1.1.1"
+			ideology = socdem_christian_socialism_subtype
+		}
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -444,7 +448,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		}
 		remove_all_ministers = yes
 		add_ideas = {
-		PHI_Isebelo_de_los_Reyes_Jr_hog_rso #needs picture
+		PHI_Isebelo_de_los_Reyes_Jr_hog_rso #wrong hog needs to change
 		PHI_Isebelo_de_los_Reyes_Jr_eco_rso
 		PHI_Santiago_Fonacier_for_sde
 		PHI_Juan_Cailles_sec_sde
@@ -721,7 +725,12 @@ country_event = { #georgio dead
 	option = { #
 		name = rd_phil.13.a
 		ai_chance = { base = 100 }
-		#create country leader isabelo jr
+		create_country_leader = {
+			name = "Santiago Fonacier"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Santiago_Fonacier.png"
+			expire = "1.1.1"
+			ideology = socdem_christian_socialism_subtype
+		}
 	}
 }
 
@@ -743,7 +752,12 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 		trigger = { has_completed_focus = PHI_gregorio_isabelo_legacy }
 		ai_chance = { base = 100 }
 		set_country_flag = PHI_REP_IS_RADSOC ##very important, syndie can be republic so make sure can't just join international until 2nd election?
-		#create radsoc isabelo with christian_socialism_subtype
+		create_country_leader = {
+			name = "Isebelo de los Reyes Jr."
+			picture = "gfx/leaders/PHI/Portrait_PHI_Isebelo_de_los_Reyes_Jr.png"
+			expire = "1.1.1"
+			ideology = christian_socialism_subtype
+		}
 		set_party_name = {
    			 ideology = radical_socialist
    			 long_name = PHI_social_democrat_party_long
@@ -761,15 +775,29 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 			PREVIOUS_DATE = "[THIS.PhiFirstElectionDate]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
-
-
+		hidden_effect = { 
+		add_popularity = {
+    		ideology = social_democrat
+    		popularity = -0.075
+		}
+		add_popularity = {
+    		ideology = radical_socialist
+    		popularity = 0.075
+		}
+		}
 	}
-	option = { #go syndie
+	option = { #go syndie as the syndies of the oppressed lead the way under the banner of the party
 		name = rd_phil.14.b
 		ai_chance = { base = 100 }
 		trigger = { has_completed_focus = PHI_gregorio_evangelista_learn } 
 		set_country_flag = PHI_REP_IS_SYNDIE #very important, syndie can be republic so make sure can't just join international 
-		#create syndie isabelo with christian_syndicalism_subtype
+
+		create_country_leader = {
+			name = "Norberto Nabong"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Norberto_Nabong.png"
+			expire = "1.1.1"
+			ideology = christian_syndicalism_subtype
+		}
 		set_party_name = {
    			 ideology = syndicalist
    			 long_name = PHI_social_democrat_party_long
@@ -786,6 +814,16 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 			}
 			PREVIOUS_DATE = "[THIS.PhiFirstElectionDate]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		hidden_effect = { 
+		add_popularity = {
+    		ideology = social_democrat
+    		popularity = -0.075
+		}
+		add_popularity = {
+    		ideology = syndicalist
+    		popularity = 0.1
+		}
 		}
 
 		
