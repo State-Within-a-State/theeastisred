@@ -1250,6 +1250,10 @@ focus_tree = {
 		not = { has_country_flag = PHI_second_elections } 
 		}
 		completion_reward = {
+		add_timed_idea = {
+		idea = PHI_repub_coal
+		days = 200
+		}
 		}
 	}
 	#happiness of freedom
@@ -1299,7 +1303,7 @@ focus_tree = {
 		prerequisite = { focus = PHI_gregorio_happiness } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-
+		
 		}
 	}
 	#attack buerocratuc octpus
@@ -1368,7 +1372,7 @@ focus_tree = {
 		prerequisite = { focus = PHI_gregorio } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-
+		add_ideas = PHI_repub_mass
 		}
 	}
 	#reforms for the peasantry like land reform
@@ -1385,25 +1389,10 @@ focus_tree = {
 		prerequisite = { focus = PHI_gregorio_enhance_lives } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-
+		swap_ideas = {
+		remove_idea = PHI_repub_mass
+		add_idea = PHI_repub_mass_1
 		}
-	}
-	#learning like evangelista
-	focus = {
-		id = PHI_gregorio_evangelista_learn
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_gregorio
-		x = 0
-		y = 3
-		cost = 5.8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_gregorio_peasantry_reforms } 
-		mutually_exclusive = { focus = PHI_gregorio_isabelo_legacy }
-		available = { not = { has_country_flag = PHI_second_elections } }
-		completion_reward = {
-
 		}
 	}
 
@@ -1419,14 +1408,35 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_gregorio_enhance_lives } 
-		available = { not = { has_country_flag = PHI_second_elections } }
+		available = { has_completed_focus = PHI_gregorio_peasantry_reforms not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-
+		swap_ideas = {
+		remove_idea = PHI_repub_mass_1
+		add_idea = PHI_repub_mass_2
+		}
 		}
 	}
 	#legacy of isabelo
 	focus = {
 		id = PHI_gregorio_isabelo_legacy
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_gregorio
+		x = 0
+		y = 3
+		cost = 5.8
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_gregorio_peasantry_reforms } prerequisite = { focus = PHI_gregorio_new_industries } 
+		mutually_exclusive = { focus = PHI_gregorio_evangelista_learn }
+		available = { not = { has_country_flag = PHI_second_elections } }
+		completion_reward = {
+		add_ideas = PHI_repub_anar
+		}
+	}
+	#learning like evangelista
+	focus = {
+		id = PHI_gregorio_evangelista_learn
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_gregorio
 		x = 2
@@ -1435,10 +1445,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_gregorio_new_industries } 
-		mutually_exclusive = { focus = PHI_gregorio_evangelista_learn }
+		prerequisite = { focus = PHI_gregorio_peasantry_reforms } prerequisite = { focus = PHI_gregorio_new_industries } 
+		mutually_exclusive = { focus = PHI_gregorio_isabelo_legacy }
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
+		add_ideas = PHI_repub_synd
 
 		}
 	}
@@ -1456,7 +1467,10 @@ focus_tree = {
 		prerequisite = { focus = PHI_gregorio_isabelo_legacy focus = PHI_gregorio_evangelista_learn } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-
+		swap_ideas = {
+		remove_idea = PHI_repub_mass_2
+		add_idea = PHI_repub_mass_3
+		}
 		}
 	}
 	#For god and fatherland
