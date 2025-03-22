@@ -259,6 +259,7 @@ country_event = { #popular front factions and splits (popular front party still 
 		PHI_Santiago_Fonacier_for_sde
 		PHI_Juan_Cailles_sec_sde
 		}
+		add_synd_to_coalition = yes
 		hidden_effect = {
 		add_popularity = {
 		ideology = social_democrat
@@ -387,11 +388,11 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		name = rd_phil.4.d
 		ai_chance = { base = 100 }
 		#complete_focus
-		if = { limit = { has_country_flag = PHI_REP_IS_RADSOC } #means they were elected first time no need to create leader in choice  
+		if = { limit = { has_country_flag = PHI_REP_IS_SOCLIB } #means they were elected first time no need to create leader in choice  
 		meta_effect = {
 			text = {
 				set_politics = {
-					ruling_party = radical_socialist
+					ruling_party = social_liberal
 					last_election = "[CURRENT_DATE]"
 					election_frequency = "[MONTH_ELECTIONS]"
 					elections_allowed = yes
@@ -400,6 +401,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
+		add_socdem_to_coalition = yes
 		}
 		else_if = { limit = { has_country_flag = PHI_REP_IS_SYNDIE } #means they were elected first time ministers? if they change next term
 		meta_effect = {
@@ -414,8 +416,10 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
+		add_socdem_to_coalition = yes
 		}
 		else = { 
+		add_synd_to_coalition = yes
 		hidden_effect = {
 		add_popularity = {
 		ideology = social_democrat
@@ -658,15 +662,19 @@ country_event = { #leave faction after being freed from commonwealth?
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #yeas
+	option = { #yeas no need for military bases and military cooperation with usa cause populace fucking hates you
 		name = rd_phil.10.a
 		ai_chance = { base = 100
 		modifier = { or = { has_government = market_liberal has_government = national_populist } factor = 0 }
 		}
+		if = {
+		limit = { is_in_faction = yes }
 		leave_faction = yes 
+		}
 	}
 	option = { #no
 		name = rd_phil.10.b
+		trigger = { USA = { is_in_faction = yes } } 
 		ai_chance = { base = 100 
 		modifier = { OR = { has_government = radical_socialist has_government = social_democrat has_government = syndicalist } factor = 0 }
 		}
@@ -756,13 +764,15 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 	option = { #stay socdem
 		name = rd_phil.14.a
 		ai_chance = { base = 100 }
+		add_stability = 0.05
+		add_political_power = 50
 		
 	}
-	option = { #go radsoc
+	option = { #go soclib
 		name = rd_phil.14.b
 		trigger = { has_completed_focus = PHI_gregorio_isabelo_legacy }
 		ai_chance = { base = 100 }
-		set_country_flag = PHI_REP_IS_RADSOC ##very important, syndie can be republic so make sure can't just join international until 2nd election?
+		set_country_flag = PHI_REP_IS_SOCLIB ##very important, syndie can be republic so make sure can't just join international until 2nd election?
 		swap_ideas = {
 			remove_idea = PHI_Santiago_Fonacier_hog_sde
 			add_idea = PHI_Isebelo_de_los_Reyes_Jr_hog_rso
@@ -771,17 +781,17 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 			name = "Isebelo de los Reyes Jr."
 			picture = "gfx/leaders/PHI/Portrait_PHI_Isebelo_de_los_Reyes_Jr.png"
 			expire = "1.1.1"
-			ideology = christian_socialism_subtype
+			ideology = soclib_christian_socialism_subtype
 		}
 		set_party_name = {
-   			 ideology = radical_socialist
+   			 ideology = social_liberal
    			 long_name = PHI_social_democrat_party_long
    			 name = PHI_social_democrat_party
 			}
 		meta_effect = {
 			text = {
 				set_politics = {
-					ruling_party = radical_socialist
+					ruling_party = social_liberal
 					last_election = "[PREVIOUS_DATE]"
 					election_frequency = "[MONTH_ELECTIONS]"
 					elections_allowed = yes
@@ -790,16 +800,7 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 			PREVIOUS_DATE = "[THIS.PhiFirstElectionDate]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
-		hidden_effect = { 
-		add_popularity = {
-    		ideology = social_democrat
-    		popularity = -0.075
-		}
-		add_popularity = {
-    		ideology = radical_socialist
-    		popularity = 0.075
-		}
-		}
+		add_socdem_to_coalition = yes
 	}
 	option = { #go syndie as the syndies of the oppressed lead the way under the banner of the party
 		name = rd_phil.14.b
@@ -833,14 +834,15 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 			PREVIOUS_DATE = "[THIS.PhiFirstElectionDate]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
+		add_socdem_to_coalition = yes
 		hidden_effect = { 
 		add_popularity = {
     		ideology = social_democrat
-    		popularity = -0.075
+    		popularity = -0.05
 		}
 		add_popularity = {
     		ideology = syndicalist
-    		popularity = 0.1
+    		popularity = 0.075
 		}
 		}
 
