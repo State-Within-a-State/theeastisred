@@ -559,7 +559,8 @@ focus_tree = {
 		bypass = {
 			OR = {
 				has_country_flag = LEC_bankrupt
-				has_country_flag = LEC_Triad_Power # Wasn't sure if you wanted the Triads also but here they are
+				has_country_flag = LEC_Triad_Power
+				has_country_flag = LEC_Shuntian_Power
 			}
 		}
 		x = 1
@@ -717,6 +718,12 @@ focus_tree = {
 		icon = GFX_focus_HKG_Victoria_Port
 		cost = 7.20
 		prerequisite = { focus = LEC_improving_shipping_lanes }
+		bypass = {
+			OR = {
+				has_country_flag = LEC_Triad_Power 
+				has_country_flag = LEC_Shuntian_Power
+			}
+		}
 		x = 3
 		y = 2
 		relative_position_id = LEC_jardines
@@ -1957,11 +1964,15 @@ focus_tree = {
 		prerequisite = { focus = LEC_improving_shipping_lanes }
 		prerequisite = { focus = LEC_improving_port_facilities }
 		bypass = {
-			NOT = {
-			   OR = {
-				has_idea = LEC_black_monday3
-				has_idea = LEC_black_monday2
-			   }
+			OR = {
+				NOT = {
+					OR = {
+					 has_idea = LEC_black_monday3
+					 has_idea = LEC_black_monday2
+					}
+			    }
+				has_country_flag = LEC_Triad_Power 
+				has_country_flag = LEC_Shuntian_Power
 			}
 		}
 		x = 5
@@ -4286,7 +4297,7 @@ focus_tree = {
 	
 	focus = {
 		id = LEC_republican_connection
-		icon = GFX_goal_LEC_republican_connection
+		icon = GFX_goal_GXC_Kexin_movement
 		cost = 5.00
 		x = 1
 		y = 1
@@ -4300,14 +4311,14 @@ focus_tree = {
 		relative_position_id = LEC_big_ears_du_yuesheng_wins_big
 		completion_reward = {
 		add_political_power = 75
-		add_ideas = LEC_TV_Soong_for_sde
+		add_ideas = LEC_Lu_Jingshi_for_sco
 		add_ideas =	LEC_Yuan_Kewen_boss_sli
 		hidden_effect = {
 		remove_all_ministers = yes
 		remove_ideas_with_trait = underworld_boss
 		add_ideas = {
 			LEC_Tu_Yueh_sen_hog_pau
-			LEC_TV_Soong_for_sde
+			LEC_Lu_Jingshi_for_sco
 			LEC_Yuan_Kewen_boss_sli
 			LEC_Huang_Jinrong_sec_pau
 			}
@@ -4316,11 +4327,9 @@ focus_tree = {
 					id = legcities.128
 			}
 		}
-		add_popularity = { ideology = social_democrat popularity = 0.06 }
-		add_popularity = { ideology = social_liberal popularity = 0.06 }
-		add_popularity = { ideology = social_conservative popularity = 0.06 }
-		add_socdem_to_coalition = yes
-		add_soclib_to_coalition = yes
+		add_popularity = { ideology = social_democrat popularity = 0.03 }
+		add_popularity = { ideology = social_liberal popularity = 0.03 }
+		add_popularity = { ideology = social_conservative popularity = 0.09 }
 		add_soccon_to_coalition = yes
 		log = "[GetDateText]: [Root.GetName]: Focus LEC_green_gang_syndicate_split"
 		}
@@ -4509,7 +4518,7 @@ focus_tree = {
 	
 	focus = {
 		id = LEC_talks_anhui_communications_clique
-		icon = GFX_goal_MON_Communications_Clique
+		icon = GFX_goal_japanese_investment
 		cost = 5.00
 		x = 1
 		y = 1
