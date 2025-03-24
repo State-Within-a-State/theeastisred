@@ -454,7 +454,7 @@ focus_tree = {
 		id = PHI_emilio_influence 
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_emilio
-		x = -1
+		x = -2
 		y = 1
 		cost = 5.8
 		search_filters = {
@@ -472,7 +472,7 @@ focus_tree = {
 		id = PHI_emilio_sakdalista 
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_emilio
-		x = 1
+		x = 2
 		y = 1
 		cost = 5.8
 		search_filters = {
@@ -483,75 +483,6 @@ focus_tree = {
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
 
-		}
-	}
-	#shorten transition period 
-	focus = {
-		id = PHI_emilio_transition 
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_emilio
-		x = -3
-		y = 2
-		cost = 5.8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_emilio_influence } 
-		available = { has_completed_focus = PHI_emilio_first_republic  not = { has_country_flag = PHI_second_elections }  } 
-		completion_reward = {
-		if = { 
-		limit = { 
-		is_subject_of = USA
-		has_completed_focus = PHI_start_cuck
-		}
-		country_event = { id = rd_phil.8 days = 41 }
-		}
-		else = {
-		#if not commonwealth do something else cool idk
-		army_experience = 50
-		add_stability = 0.05
-		add_popularity = {
-    		ideology = ROOT
-    		popularity = 0.05
-		}
-
-		}
-		}
-	}
-	#declaring victory 
-	focus = {
-		id = PHI_emilio_soc_victory 
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_emilio
-		x = 3
-		y = 2
-		cost = 5.8
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_emilio_sakdalista } 
-		available = { has_completed_focus = PHI_emilio_first_republic 
-		not = { has_country_flag = PHI_second_elections } 
-		is_subject = no
-		} 
-		completion_reward = {
-		if = { 
-		limit = { 
-		is_subject_of = USA
-		has_completed_focus = PHI_start_cuck
-		}
-		USA = {
-		set_autonomy = {
-   		target = PHI
-   		autonomous_state = autonomy_free
-    		end_wars = no
-		}
-		}
-		leave_faction = yes 
-		}
-		#socialist rev things like new flag, 
-		complete_national_focus = PHI_skadal
-		set_politics = { ruling_party = radical_socialist } #this changes the election screen
 		}
 	}
 	#remember flag of first republic 
@@ -569,6 +500,8 @@ focus_tree = {
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
 		#add something
+
+		hidden_effect = {
 		if = { 
 		limit = { has_war = yes }
 		set_cosmetic_tag = PHI_emilio_flag_commonwealth_war
@@ -579,6 +512,7 @@ focus_tree = {
 		is_subject = no
 		}
 		rd_phil_commonwealth_to_republic = yes
+		}
 		}
 		}
 	}
@@ -596,6 +530,22 @@ focus_tree = {
 		prerequisite = { focus = PHI_emilio_flag_focus } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
+		if = { 
+		limit = { 
+		is_subject_of = USA
+		has_completed_focus = PHI_start_cuck
+		}
+		country_event = { id = rd_phil.8 days = 41 }
+		}
+		else = {
+		#if not commonwealth do something else cool idk
+		army_experience = 50
+		add_stability = 0.05
+		add_popularity = {
+    		ideology = ROOT
+    		popularity = 0.05
+		}
+		}
 		
 		}
 	}
@@ -1303,7 +1253,7 @@ focus_tree = {
 		prerequisite = { focus = PHI_gregorio_happiness } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-		
+		add_ideas = PHI_repub_goo
 		}
 	}
 	#attack buerocratuc octpus
@@ -1320,6 +1270,10 @@ focus_tree = {
 		prerequisite = { focus = PHI_gregorio_public_welfare } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
+		swap_ideas = {
+		remove_idea = PHI_repub_goo
+		add_idea = PHI_repub_bad
+		}
 
 		}
 	}
@@ -1354,7 +1308,10 @@ focus_tree = {
 		prerequisite = { focus = PHI_gregorio_octopus } prerequisite = { focus = PHI_gregorio_tagalog_revive } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-
+		swap_ideas = {
+		remove_idea = PHI_repub_bad
+		add_idea = PHI_repub_life
+		}
 		}
 	}
 
@@ -1496,6 +1453,74 @@ focus_tree = {
 		random_owned_state = { add_extra_state_shared_building_slots = 1 }
 		}
 	}
+	#second victory repub aglipay
+	focus = {
+		id = PHI_repub_second
+		icon = GFX_goal_QIO_revolution
+		x = 38
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = { 
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+ 	#power to supreme court
+	focus = {
+		id = PHI_aglipay_liberty
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_repub_second
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_repub_second }
+		completion_reward = {
+
+		}
+	}
+ 	#reason
+	focus = {
+		id = PHI_aglipay_fonocier
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_repub_second
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_repub_second }
+		completion_reward = {
+
+		}
+	}
+ 	#apprecient labor and 
+	focus = {
+		id = PHI_aglipay_norbeto
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_repub_second
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_repub_second }
+		completion_reward = {
+
+		}
+	}
+
+
+
 	#The Abad Santos wing wins
 	focus = {
 		id = PHI_santos
