@@ -213,7 +213,8 @@
 		}
 		prerequisite = { focus = JAP_masters_of_south_east  } prerequisite = { focus = JAP_liberat_south_american_migrants } 
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_re_organize_south_seas
+		unlock_decision_tooltip = JAP_annex_hawaii
 		}
 	}
 	
@@ -1145,7 +1146,9 @@
 		}
 		prerequisite = { focus = JAP_hands_out_across_desert  } prerequisite = { focus = JAP_hideyoshi_vindicated  } prerequisite = { focus = JAP_octupus_grip  } 
 		completion_reward = {
-		
+		add_ideas = {
+		JAP_eight_corners
+		}
 		}
 	}
 	
@@ -1160,9 +1163,38 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
+		available = {
+			is_faction_leader = yes
+		}
 		prerequisite = { focus = JAP_eight_corners_of_world  } 
+		select_effect = {
+			log = "[GetDateText]: [Root.GetName]: Select Focus JAP_tokyo_conference"
+			every_other_country = {
+				limit = {
+					is_co_prosperity_candidate = yes
+					has_socialist_government = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							NOT = { is_in_faction_with = ROOT }
+						}
+					}
+				}
+				country_event = japfor.21
+			}
+		}
 		completion_reward = {
-		
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_tokyo_conference"
+			custom_effect_tooltip = JAP_tokyo_conference_tt
+			hidden_effect = {
+				country_event = japfor.24
+			}
+			for_each_scope_loop = {
+				array = global.JAP_possible_allies_array
+
+				log = "This scope = [THIS.GetName]"
+				PREV = { activate_targeted_decision = { target = PREV decision = JAP_invite_into_faction } }
+			}
 		}
 	}
 	
@@ -1179,6 +1211,21 @@
 		}
 		prerequisite = { focus = JAP_eight_corners_of_world  } 
 		completion_reward = {
+		custom_effect_tooltip = japan_strike_into_europe_tt
+		
+				
+					
+					every_country = {####needs wargoals on European nations idk what else to do fir it
+						
+						JAP = {
+							create_wargoal = {
+								type = annex_everything
+								target = PREV
+							}
+						}	
+			
+					}
+				
 		
 		}
 	}
@@ -1196,6 +1243,21 @@
 		}
 		prerequisite = { focus = JAP_belly_of_the_beast  } prerequisite = { focus = JAP_co_prosperity_sphere  } 
 		completion_reward = {
+		custom_effect_tooltip = japan_strike_into_africa_tt
+		
+				
+					
+					every_country = {####needs wargoals on African nations idk what else to do fir it
+						
+						JAP = {
+							create_wargoal = {
+								type = annex_everything
+								target = PREV
+							}
+						}	
+			
+					}
+				
 		
 		}
 	}
@@ -1213,7 +1275,10 @@
 		}
 		prerequisite = { focus = JAP_belly_of_the_beast  } prerequisite = { focus = JAP_co_prosperity_sphere  } 
 		completion_reward = {
-		
+		swap_ideas = {
+		remove_idea = JAP_eight_corners
+		add_idea = JAP_eight_corners_1
+		}
 		}
 	}
 	
