@@ -13,7 +13,30 @@ JAP_fading_sun = {
 		allowed = { always = no } #activated by japfor.229
 
 		available = {
-			KOR = { all_core_state = { owner = { has_full_control_of_state = PREV } } }
+			OR = {
+				AND = {
+					OR = {
+						KOR = {
+							exists = yes
+							is_in_faction_with = JAP
+						}
+						KOR = { exists = no }
+					}
+					KOR = { all_core_state = { owner = { has_full_control_of_state = PREV } } }
+				}
+				AND = {
+					KOR = {
+						exists = yes
+						NOT = {
+							is_in_faction_with = JAP
+						}
+					}
+					JAP = {
+						525 = { is_controlled_by_ROOT_or_ally = yes }
+						527 = { is_controlled_by_ROOT_or_ally = yes }
+					}
+				}
+			}
 			if = {
 				limit = { has_subject = MAN }
 				MAN = { has_capitulated = yes }
@@ -94,7 +117,30 @@ JAP_fading_sun = {
 		allowed = { always = no } #activated by japfor.229
 
 		available = {
-			KOR = { all_core_state = { owner = { has_full_control_of_state = PREV } } }
+			OR = {
+				AND = {
+					OR = {
+						KOR = {
+							exists = yes
+							is_in_faction_with = JAP
+						}
+						KOR = { exists = no }
+					}
+					KOR = { all_core_state = { owner = { has_full_control_of_state = PREV } } }
+				}
+				AND = {
+					KOR = {
+						exists = yes
+						NOT = {
+							is_in_faction_with = JAP
+						}
+					}
+					JAP = {
+						525 = { is_controlled_by_ROOT_or_ally = yes }
+						527 = { is_controlled_by_ROOT_or_ally = yes }
+					}
+				}
+			}
 			if = {
 				limit = {
 					country_exists = MAN
@@ -184,7 +230,30 @@ JAP_fading_sun = {
 		icon = peace_dove
 
 		available = {
-			NOT = { KOR = { any_core_state = { controller = { is_ally_with = PREV.PREV } } } }
+			OR = {
+				AND = {
+					OR = {
+						KOR = {
+							exists = yes
+							is_in_faction_with = JAP
+						}
+						KOR = { exists = no }
+					}
+					NOT = { KOR = { any_core_state = { controller = { is_ally_with = PREV.PREV } } } }
+				}
+				AND = {
+					KOR = {
+						exists = yes
+						NOT = {
+							is_in_faction_with = JAP
+						}
+					}
+					JAP = {
+						525 = { is_controlled_by_ROOT_or_ally = no }
+						527 = { is_controlled_by_ROOT_or_ally = no }
+					}
+				}
+			}
 			if = {
 				limit = {
 					country_exists = MAN
@@ -284,7 +353,30 @@ JAP_fading_sun = {
 
 		available = {
 			FROM = { surrender_progress < 0.2 }
-			NOT = { KOR = { any_core_state = { controller = { is_ally_with = PREV.PREV } } } }
+			OR = {
+				AND = {
+					OR = {
+						KOR = {
+							exists = yes
+							is_in_faction_with = JAP
+						}
+						KOR = { exists = no }
+					}
+					NOT = { KOR = { any_core_state = { controller = { is_ally_with = PREV.PREV } } } }
+				}
+				AND = {
+					KOR = {
+						exists = yes
+						NOT = {
+							is_in_faction_with = JAP
+						}
+					}
+					JAP = {
+						525 = { is_controlled_by_ROOT_or_ally = no }
+						527 = { is_controlled_by_ROOT_or_ally = no }
+					}
+				}
+			}
 			if = {
 				limit = {
 					country_exists = MAN
@@ -620,57 +712,6 @@ JAP_land_reform = {
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision complete JAP_agriculture_land_control"
 			add_stability = -0.05
-			add_to_variable = {
-				var = JAP_land_reform_variable
-				value = 1
-			}
-			custom_effect_tooltip = JAP_land_reform_progress
-		}
-	}
-	
-	JAP_agriculture_reserve = {
-		icon = GFX_decision_generic_decision
-
-		allowed = { always = no }
-		visible = {
-		has_completed_focus = JAPNAK_formation_of_selfrule_cooperatives
-		}
-		available = {
-			NOT = { has_country_flag = JAP_land_reform_in_progress }
-			has_stability > 0.05
-		}
-
-		cost = JAP_land_reform_pp_2
-		fire_only_once = yes
-
-		ai_will_do = {
-			factor = 10
-			modifier = {
-				has_political_power < 35
-				factor = 0
-			}
-			modifier = {
-				has_political_power > 35
-				add = 40
-			}
-			modifier = {
-				has_political_power > 60
-				add = 90
-			}
-		}
-
-		priority = 100
-
-		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision complete JAP_agriculture_land_control"
-			random_owned_state = {
-				add_extra_state_shared_building_slots = 1
-				add_building_construction = {
-						type = industrial_complex
-						level = 1
-						instant_build = yes
-					}
-			}
 			add_to_variable = {
 				var = JAP_land_reform_variable
 				value = 1
@@ -1654,7 +1695,7 @@ JAP_mantetsu_projects = {
 				random_owned_controlled_state = {
 					limit = {
 						is_core_of = PREV
-						free_building_slots = { building = infrastructure size > 0 }
+						free_building_slots = { building = infrastructure size > 0  }
 					}
 					add_building_construction = {
 						type = infrastructure
@@ -1665,7 +1706,7 @@ JAP_mantetsu_projects = {
 				random_owned_controlled_state = {
 					limit = {
 						is_core_of = PREV
-						free_building_slots = { building = infrastructure size > 0 }
+						free_building_slots = { building = infrastructure size > 0  }
 					}
 					add_building_construction = {
 						type = infrastructure
@@ -1696,7 +1737,7 @@ JAP_mantetsu_projects = {
 				}
 				any_owned_state = {
 					is_core_of = PREV
-					free_building_slots = { building = infrastructure size > 0 }
+					free_building_slots = { building = infrastructure size > 0  }
 				}
 			}
 		}
@@ -1737,7 +1778,7 @@ JAP_mantetsu_projects = {
 				random_owned_controlled_state = {
 					limit = {
 						is_core_of = PREV
-						free_building_slots = { building = infrastructure size > 0 }
+						free_building_slots = { building = infrastructure size > 0  }
 					}
 					add_building_construction = {
 						type = infrastructure
@@ -2659,7 +2700,7 @@ JAP_co_prosperity_decisions = {
 		fire_only_once = no
 
 		priority = 5
-		targets = { ANQ AST BRM CAM CEY ETS MAN GXC HAW INC INS KAC KOR LAO LEC MAL MON NZL PHI PNG SAR SHA SHX SIA SQI SZC TIB TRM XSM VIN NEP AFG ALO TRK BUK KHI }
+		targets = { ANQ AST BRM CAM CEY ETS MAN GXC HAW INC INS KAC KOR LAO LEC MLY MON NZL PHI PNG SAR SHA SHX SIA SQI SZC TIB TRM XSM VIN NEP AFG ALO TRK BUK UZB }
 		target_array = subjects
 		target_array = faction_members
 		target_array = global.indian_tags_array
@@ -4081,7 +4122,18 @@ JAP_co_prosperity_member_decisions = {
 			is_ai = no
 			is_in_faction_with = JAP
 			JAP = { is_faction_leader = yes }
-			NOT = { has_country_leader = { character = FNG_yang_yuting } }
+			NOT = {
+				OR = {
+					has_country_leader = {
+						name = "Yang Yuting "
+						ruling_only = yes
+					}
+					has_country_leader = {
+						name = "Yang Yuting"
+						ruling_only = yes
+					}
+				}
+			}
 		}
 
 		cost = 0
@@ -4636,7 +4688,7 @@ JAP_foreign_policy_decisions = {
 			can_declare_war_on = FROM
 		}
 
-		targets = { CSA NEE PSA TEX USA }
+		targets = { CSA NEE CAL TEX USA }
 		target_trigger = {
 			FROM = {
 				is_american_tag = yes
@@ -4670,8 +4722,13 @@ JAP_foreign_policy_decisions = {
 			}
 			modifier = {
 				factor = 0
-				FROM = { tag = PSA }
-				has_country_flag = ACW_supported_PSA
+				FROM = { tag = CAL }
+				OR = {
+					has_country_flag = ACW_supported_PSA
+					has_game_rule = { rule = CAL_political option = CAL_POLITICAL_PATH_JAPAN }
+					has_game_rule = { rule = CAL_political option = CAL_POLITICAL_PATH_AISO }
+					has_game_rule = { rule = CAL_political option = CAL_POLITICAL_PATH_AISO_YAMAGUCHI }
+				}			
 			}
 			modifier = {
 				factor = 5
