@@ -506,8 +506,22 @@ focus_tree = {
 		prerequisite = { focus = PHI_emilio_sakdalista focus = PHI_emilio_influence } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-		#add something
+		add_popularity = {
+    		ideology = ROOT
+    		popularity = 0.025
+		}
 		add_war_support = 0.05
+		if = { 
+		limit = { 
+		is_subject_of = USA
+		has_completed_focus = PHI_start_cuck
+		}
+		country_event = { id = rd_phil.8 days = 41 }
+		}
+		else = {
+		army_experience = 50
+		add_stability = 0.05
+		}
 		hidden_effect = {
 		if = { 
 		limit = { has_war = yes }
@@ -537,22 +551,6 @@ focus_tree = {
 		prerequisite = { focus = PHI_emilio_flag_focus } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-		if = { 
-		limit = { 
-		is_subject_of = USA
-		has_completed_focus = PHI_start_cuck
-		}
-		country_event = { id = rd_phil.8 days = 41 }
-		}
-		else = {
-		#if not commonwealth do something else cool idk
-		army_experience = 50
-		add_stability = 0.05
-		add_popularity = {
-    		ideology = ROOT
-    		popularity = 0.05
-		}
-		}
 		
 		}
 	}
@@ -1621,7 +1619,7 @@ focus_tree = {
 		id = PHI_aglipay_sec_labr
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_repub_second
-		x = 4
+		x = 2
 		y = 2
 		cost = 5
 		search_filters = {
@@ -1736,6 +1734,7 @@ focus_tree = {
 		swap_ideas = {
 		remove_idea = PHI_repub_marxist_labor
 		add_idea = PHI_repub_marxist_labor_1
+		}
 		}
 	}
  	#reldeas
