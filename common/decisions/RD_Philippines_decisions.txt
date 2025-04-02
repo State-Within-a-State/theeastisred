@@ -97,6 +97,11 @@ PHI_emilio_politics_decisions = {
 			PHI_improve_left_influence_small_bop = yes
 			add_political_power = -60
 			add_stability = 0.05
+		add_to_variable = {
+  		  var = PHI_rizalite_cults_times
+   		 value = 1
+			}
+
 		}
 
 		ai_will_do = {
@@ -104,6 +109,47 @@ PHI_emilio_politics_decisions = {
 		}
 	}
 	PHI_emilio_left_aglipay = { #decision once for aglipay and skadal connection haha 
+		icon = GFX_decision_generic_independence
+
+		available = {
+			NOT = {
+				has_country_flag = PHI_doing_decision
+			}
+		}
+
+		visible = {
+		check_variable = {
+   		 PHI_rizalite_cults_times > 5
+		}
+
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		cost = 50
+		days_re_enable = 20
+		fire_only_once = yes
+		days_remove = 35
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
+			set_country_flag = PHI_doing_decision
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
+			clr_country_flag = PHI_doing_decision
+			PHI_improve_left_influence_bop = yes
+			add_political_power = -60
+			add_stability = 0.05
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	PHI_emilio_left_boycott_peaceful = { #
 		icon = GFX_decision_generic_independence
 
 		available = {
@@ -131,7 +177,7 @@ PHI_emilio_politics_decisions = {
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
 			clr_country_flag = PHI_doing_decision
-			PHI_improve_left_influence_bop = yes
+			PHI_improve_left_influence_small_bop = yes
 			add_political_power = -60
 			add_stability = 0.05
 		}
@@ -140,7 +186,7 @@ PHI_emilio_politics_decisions = {
 			factor = 50
 		}
 	}
-	PHI_emilio_left_boycott_peaceful = { #
+	PHI_emilio_left_mutual_aid = { #
 		icon = GFX_decision_generic_independence
 
 		available = {
@@ -252,6 +298,42 @@ PHI_emilio_politics_decisions = {
 		}
 	}
 
+	PHI_emilio_middle_sacrafice_for = {
+		icon = GFX_decision_generic_military
+
+		available = {
+			NOT = {
+				has_country_flag = PHI_doing_decision
+			}
+		}
+
+		visible = {
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+
+		cost = 50
+		days_re_enable = 30
+		fire_only_once = no
+		days_remove = 40
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
+			set_country_flag = PHI_doing_decision
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
+			clr_country_flag = PHI_doing_decision
+			PHI_improve_right_influence_small_bop = yes
+			add_manpower = 1200
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
 
 
 
