@@ -83,14 +83,11 @@ PHI_emilio_politics_decisions = {
 
 		}
 		
-		ai_will_do = {
-			factor = 0
-		}
 
-		cost = 50
-		days_re_enable = 20
+		cost = 40
+		days_re_enable = 10
 		fire_only_once = no
-		days_remove = 35
+		days_remove = 25
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -133,14 +130,9 @@ PHI_emilio_politics_decisions = {
 
 		}
 		
-		ai_will_do = {
-			factor = 0
-		}
-
 		cost = 50
-		days_re_enable = 20
 		fire_only_once = yes
-		days_remove = 35
+		days_remove = 40
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -149,9 +141,11 @@ PHI_emilio_politics_decisions = {
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
 			clr_country_flag = PHI_doing_decision
-			PHI_improve_left_influence_bop = yes
-			add_political_power = -60
-			add_stability = 0.05
+			PHI_improve_left_influence_big_bop = yes
+		add_popularity = {
+  	  ideology = social_democrat
+   		 popularity = 0.13
+		}
 		}
 
 		ai_will_do = {
@@ -175,14 +169,10 @@ PHI_emilio_politics_decisions = {
 
 		}
 		
-		ai_will_do = {
-			factor = 0
-		}
-
 		cost = 50
 		days_re_enable = 20
 		fire_only_once = no
-		days_remove = 35
+		days_remove = 30
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -192,8 +182,7 @@ PHI_emilio_politics_decisions = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
 			clr_country_flag = PHI_doing_decision
 			PHI_improve_left_influence_small_bop = yes
-			add_political_power = -60
-			add_stability = 0.05
+			add_stability = 0.025
 		}
 
 		ai_will_do = {
@@ -217,9 +206,6 @@ PHI_emilio_politics_decisions = {
 
 		}
 		
-		ai_will_do = {
-			factor = 0
-		}
 
 		cost = 50
 		days_re_enable = 20
@@ -233,7 +219,7 @@ PHI_emilio_politics_decisions = {
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
 			clr_country_flag = PHI_doing_decision
-			PHI_improve_left_influence_small_bop = yes
+			PHI_improve_left_influence_bop = yes
 			add_political_power = -60
 			add_stability = 0.05
 		}
@@ -260,15 +246,13 @@ PHI_emilio_politics_decisions = {
 		}
 
 		}
-		
-		ai_will_do = {
-			factor = 0
-		}
-
-		cost = 50
-		days_re_enable = 30
+		cost = 55
+		days_re_enable = 20
 		fire_only_once = no
 		days_remove = 40
+        	modifier = {
+            syndicalist_drift = -0.025
+        	}
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -277,8 +261,8 @@ PHI_emilio_politics_decisions = {
 		remove_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
 			clr_country_flag = PHI_doing_decision
-			PHI_improve_right_influence_small_bop = yes
-			add_manpower = 1200
+			PHI_improve_right_influence_bop = yes
+			add_command_power = 25
 		}
 
 		ai_will_do = {
@@ -302,14 +286,15 @@ PHI_emilio_politics_decisions = {
 
 		}
 		
-		ai_will_do = {
-			factor = 0
-		}
 
-		cost = 50
+		cost = 60
 		days_re_enable = 30
 		fire_only_once = no
 		days_remove = 40
+        	modifier = {
+            grant_medal_cost_factor = 0.2
+		field_officer_promotion_penalty = -0.2
+        	}
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -319,7 +304,6 @@ PHI_emilio_politics_decisions = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
 			clr_country_flag = PHI_doing_decision
 			PHI_improve_right_influence_small_bop = yes
-			add_manpower = 1200
 		}
 
 		ai_will_do = {
@@ -344,14 +328,14 @@ PHI_emilio_politics_decisions = {
 
 		}
 		
-		ai_will_do = {
-			factor = 0
-		}
 
 		cost = 50
 		days_re_enable = 30
 		fire_only_once = no
 		days_remove = 40
+        	modifier = {
+            training_time_factor = -0.05
+        	}
 
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -361,6 +345,87 @@ PHI_emilio_politics_decisions = {
 			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
 			clr_country_flag = PHI_doing_decision
 			PHI_improve_right_influence_small_bop = yes
+			add_manpower = 1200
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	PHI_emilio_vinzons_go_left_moderate = {
+		icon = GFX_decision_generic_military
+
+		available = {
+			NOT = {
+				has_country_flag = PHI_doing_decision
+			}
+		}
+
+		visible = {
+		is_power_balance_side_active = {
+   		 id = PHI_emil_left_right_balance 
+   		 side = PHI_vinzons_democracy_side
+		}
+
+		}
+		
+		cost = 50
+		days_re_enable = 30
+		fire_only_once = no
+		days_remove = 40
+        	modifier = {
+            training_time_factor = -0.05
+        	}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
+			set_country_flag = PHI_doing_decision
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
+			clr_country_flag = PHI_doing_decision
+			PHI_improve_left_influence_bop = yes
+			add_manpower = 1200
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	PHI_emilio_raymond_go_right_moderate = {
+		icon = GFX_decision_generic_military
+
+		available = {
+			NOT = {
+				has_country_flag = PHI_doing_decision
+			}
+		}
+
+		visible = {
+		is_power_balance_side_active = {
+   		 id = PHI_emil_left_right_balance 
+   		 side = PHI_raymundo_democracy_side
+		}
+
+		}
+		
+
+		cost = 50
+		days_re_enable = 30
+		fire_only_once = no
+		days_remove = 40
+        	modifier = {
+            training_time_factor = -0.05
+        	}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
+			set_country_flag = PHI_doing_decision
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
+			clr_country_flag = PHI_doing_decision
+			PHI_improve_right_influence_bop = yes
 			add_manpower = 1200
 		}
 
