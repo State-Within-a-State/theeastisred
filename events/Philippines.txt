@@ -303,7 +303,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	has_completed_focus = PHI_start_cuck 
 	is_subject_of = USA
 	}
-	country_event = { id = rd_phil.8 days = 43 }
+	country_event = { id = rd_phil.8 days = 75 }
 	}
 	} 
 	}
@@ -593,6 +593,7 @@ country_event = { #second election parties but the freaky ones
 		name = rd_phil.9.a
 		ai_chance = { base = 100 }
 		hidden_effect = {
+		country_event = { id = rd_phil.24 days = 14 }
 		add_popularity = {
 		ideology = national_populist
 		popularity = 0.1
@@ -676,7 +677,7 @@ country_event = { #leave faction after being freed from commonwealth?
 		name = rd_phil.10.b
 		trigger = { USA = { is_in_faction = yes } } 
 		ai_chance = { base = 100 
-		modifier = { OR = { has_government = radical_socialist has_government = social_democrat has_government = syndicalist } factor = 0 }
+		modifier = { OR = { has_government = radical_socialist has_government = social_liberal has_government = authoritarian_democrat has_government = social_democrat has_government = syndicalist } factor = 0 }
 		}
 		add_political_power = -50
 	}
@@ -1175,11 +1176,11 @@ country_event = { #heli event part 2
 	option = { #not very cool bruh
 		name = rd_phil.23.a
 		ai_chance = { base = 100 }
-		add_ideas = PHI_Pascual_Racuyal_cair
+		add_ideas = PHI_Pascual_Racuyal_cair #check to see if this effect is fucky
 	}
 }
 
-country_event = { #
+country_event = { #coup against hilario
 	id = rd_phil.24
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.24"}
 	title = rd_phil.24.title
@@ -1187,11 +1188,26 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #coup defeated
 		name = rd_phil.24.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 30 }
 		
 	}
+	option = { #coup wins
+		name = rd_phil.24.a
+		ai_chance = { base = 70 }
+		hidden_effect = {
+		set_party_name = {
+    		ideology = authoritarian_democrat
+    		long_name = PHI_skadal_remnants_party_long
+    		name = PHI_skadal_remnants_party
+		}
+		#etc
+		}
+		complete_national_focus = PHI_cult_start
+
+	}
+
 }
 
 country_event = { #
