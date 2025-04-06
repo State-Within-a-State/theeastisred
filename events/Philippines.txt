@@ -1198,17 +1198,19 @@ country_event = { #coup against hilario
 		ai_chance = { base = 70 }
 		hidden_effect = {
 		set_party_name = {
-    		ideology = authoritarian_democrat
+    		ideology = national_populist
     		long_name = PHI_skadal_remnants_party_long
     		name = PHI_skadal_remnants_party
 		}
-		set_party_name = {
-    		ideology = radical_socialist
-    		long_name = PHI_skadal_remnants_party_long
-    		name = PHI_skadal_remnants_party
+		
+		#etc ministers and stuff
+		create_country_leader = {
+			name = "Jeremias Adia"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Juan_Sumulong.png"
+			expire = "1.1.1"
+			ideology = lapiang_malaya_subtype
 		}
 
-		#etc
 		}
 		complete_national_focus = PHI_cult_start
 		uncomplete_national_focus = {
@@ -1239,12 +1241,31 @@ country_event = { #who is leader?
 		name = rd_phil.25.a
 		ai_chance = { base = 100 }
 		unlock_national_focus = PHI_emi_avenge_poor
+		create_country_leader = { #minister
+			name = "Salud Algabre"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Juan_Sumulong.png"
+			expire = "1.1.1"
+			ideology = lapiang_malaya_subtype
+		}
+
 		
 	}
 	option = { #valintin
 		name = rd_phil.25.a
 		ai_chance = { base = 100 }
-		
+		create_country_leader = { #ministers
+			name = "Valentin de los Santos"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Juan_Sumulong.png"
+			expire = "1.1.1"
+			ideology = lapiang_malaya_subtype
+		}
+		set_party_name = {
+    		ideology = national_populist
+    		long_name = PHI_real_malaya_party_long
+    		name = PHI_real_malaya_party
+		}
+
+
 	}
 
 
@@ -1258,17 +1279,34 @@ country_event = { #radsoc or autdem
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #autdem
+	option = { #natpop
 		name = rd_phil.26.a
 		ai_chance = { base = 100 }
 				add_socdem_to_coalition = yes #ifi is always pro nationalism
-
+				add_radsoc_to_coalition = yes
 	}
 	option = { #radsoc
 		name = rd_phil.26.a
 		ai_chance = { base = 100 }
+		set_politics = {
+   		ruling_party = radical_socialist
+    		elections_allowed = no
+		}
+		add_natpop_to_coalition = yes
 		add_socdem_to_coalition = yes #ifi is always pro nationalism
-	 #if = { limit = { has_country_leader blah
+		hidden_effect = {
+		add_popularity = {
+		    ideology = radical_socialist
+		    popularity = 0.1
+		}
+		}
+		#do the if else if create country leader also set the radsoc slot to valtinin's party name for him and the other names for the other guys
+		set_party_name = {
+    		ideology = radical_socialist
+    		long_name = PHI_skadal_remnants_party_long
+    		name = PHI_skadal_remnants_party
+		}
+
 
 	}
 
