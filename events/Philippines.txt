@@ -416,7 +416,19 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
+		add_radsoc_to_coalition = yes
 		add_socdem_to_coalition = yes
+		create_country_leader = { #he's in the syndie party name actually now.
+			name = "Norberto Nabong"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Norberto_Nabong.png"
+			expire = "1.1.1"
+			ideology = christian_syndicalism_subtype 
+		}
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.025
+		}
+		clr_country_flag = rad_socs_arent_syndie
 		}
 		else = { 
 		add_synd_to_coalition = yes
@@ -431,7 +443,7 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		}
 		}
 
-		create_country_leader = {
+		create_country_leader = { #give him an event for radsoc chrisitan ocialism or colorum i guess
 			name = "Santiago Fonacier"
 			picture = "gfx/leaders/PHI/Portrait_PHI_Santiago_Fonacier.png"
 			expire = "1.1.1"
@@ -600,6 +612,10 @@ country_event = { #second election parties but the freaky ones
 		}
 		}
 
+		if = { 		
+		limit = { has_country_flag = rad_socs_arent_syndie }
+		clr_country_flag = rad_socs_arent_syndie
+		}
 		complete_national_focus = PHI_hilario_god
 		meta_effect = {
 			text = {
@@ -802,12 +818,14 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
 		add_socdem_to_coalition = yes
+		add_synd_to_coalition = yes
 	}
 	option = { #go syndie as the syndies of the oppressed lead the way under the banner of the party
 		name = rd_phil.14.b
 		ai_chance = { base = 100 }
 		trigger = { has_completed_focus = PHI_gregorio_evangelista_learn } 
 		set_country_flag = PHI_REP_IS_SYNDIE #very important, syndie can be republic so make sure can't just join international 
+		set_country_flag = rad_socs_arent_syndie
 		swap_ideas = {
 			remove_idea = PHI_Santiago_Fonacier_hog_sde
 			add_idea = PHI_Noberto_Nabong_hog_rso
@@ -816,17 +834,17 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 			name = "Norberto Nabong"
 			picture = "gfx/leaders/PHI/Portrait_PHI_Norberto_Nabong.png"
 			expire = "1.1.1"
-			ideology = christian_syndicalism_subtype
+			ideology = radsoc_syndicalist_subtype
 		}
 		set_party_name = {
-   			 ideology = syndicalist
+   			 ideology = radical_socialist
    			 long_name = PHI_social_democrat_party_long
    			 name = PHI_social_democrat_party
 			}
 		meta_effect = {
 			text = {
 				set_politics = {
-					ruling_party = syndicalist
+					ruling_party = radical_socialist
 					last_election = "[PREVIOUS_DATE]"
 					election_frequency = "[MONTH_ELECTIONS]"
 					elections_allowed = yes
@@ -836,14 +854,15 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
 		add_socdem_to_coalition = yes
+		add_synd_to_coalition = yes
 		hidden_effect = { 
 		add_popularity = {
     		ideology = social_democrat
     		popularity = -0.05
 		}
 		add_popularity = {
-    		ideology = syndicalist
-    		popularity = 0.075
+    		ideology = radical_socialist
+    		popularity = 0.05
 		}
 		}
 
