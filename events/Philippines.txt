@@ -402,8 +402,9 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
 		add_socdem_to_coalition = yes
+		add_synd_to_coalition = yes
 		}
-		else_if = { limit = { has_country_flag = PHI_REP_IS_SYNDIE } #means they were elected first time ministers? if they change next term
+		else_if = { limit = { has_country_flag = PHI_REP_IS_SYNDIE } #means they were elected first time also this is under the syndie party name
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -824,8 +825,8 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 		name = rd_phil.14.b
 		ai_chance = { base = 100 }
 		trigger = { has_completed_focus = PHI_gregorio_evangelista_learn } 
-		set_country_flag = PHI_REP_IS_SYNDIE #very important, syndie can be republic so make sure can't just join international 
-		set_country_flag = rad_socs_arent_syndie
+		set_country_flag = PHI_REP_IS_SYNDIE  
+		set_country_flag = rad_socs_arent_syndie #right now radsoc under repub but turns syndie under progressive workers in second election and country flag removed. means needs second election for joining internationale
 		swap_ideas = {
 			remove_idea = PHI_Santiago_Fonacier_hog_sde
 			add_idea = PHI_Noberto_Nabong_hog_rso
@@ -1221,7 +1222,7 @@ country_event = { #coup against hilario
     		long_name = PHI_skadal_remnants_party_long
     		name = PHI_skadal_remnants_party
 		}
-		
+		set_cosmetic_tag = PHI_rizal_new_flag
 		#etc ministers and stuff like deleting genrals and giving new ones
 		create_country_leader = {
 			name = "Jeremias Adia"
@@ -1252,13 +1253,13 @@ country_event = { #who is leader?
 	option = { #stay dude
 		name = rd_phil.25.a
 		ai_chance = { base = 100 }
-		#create both radsoc nd autdem leaders
 		unlock_national_focus = PHI_emi_avenge_poor
 
 	}
 	option = { #the woman
 		name = rd_phil.25.a
 		ai_chance = { base = 100 }
+		#give ministers? and stuff idk
 		unlock_national_focus = PHI_emi_avenge_poor
 		create_country_leader = { #minister
 			name = "Salud Algabre"
@@ -1290,7 +1291,7 @@ country_event = { #who is leader?
 
 }
 
-country_event = { #radsoc or autdem
+country_event = { #radsoc or natpop
 	id = rd_phil.26
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.26"}
 	title = rd_phil.26.title
@@ -1302,7 +1303,7 @@ country_event = { #radsoc or autdem
 		name = rd_phil.26.a
 		ai_chance = { base = 100 }
 				add_socdem_to_coalition = yes #ifi is always pro nationalism
-				add_radsoc_to_coalition = yes
+				add_radsoc_to_coalition = yes #ifi if nabong or santos either way works
 	}
 	option = { #radsoc
 		name = rd_phil.26.a
@@ -1320,10 +1321,15 @@ country_event = { #radsoc or autdem
 		}
 		}
 		#do the if else if create country leader also set the radsoc slot to valtinin's party name for him and the other names for the other guys
-		set_party_name = {
+		set_party_name = {#for the other 2
     		ideology = radical_socialist
     		long_name = PHI_skadal_remnants_party_long
     		name = PHI_skadal_remnants_party
+		}
+		set_party_name = {#for valtinine
+    		ideology = radical_socialist
+    		long_name = PHI_real_malaya_party_long
+    		name = PHI_real_malaya_party
 		}
 
 
