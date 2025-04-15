@@ -2341,6 +2341,8 @@ focus_tree = {
 		prerequisite = { focus = PHI_cult_beauty }
 		completion_reward = {
 		country_event = rd_phil.26
+		add_war_support = 0.05
+		army_experience = 50
 		#do a scripted effect to add a bunch of socialist generals
 		}
 	}
@@ -3668,6 +3670,11 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = PHI_emi_ramos focus = PHI_emi_miguel}
 		completion_reward = {
+		add_timed_idea = {
+		idea = PHI_repub_release
+		days = 200
+		}
+
 		}
 	}
 	#ramos 
@@ -3693,7 +3700,10 @@ focus_tree = {
 		}
 		mutually_exclusive = { focus = PHI_emi_first_pres focus = PHI_emi_miguel}
 		completion_reward = {
-
+		add_timed_idea = {
+		idea = PHI_emil_anarchist_hitler
+		days = 200
+		}
 		}
 	}
 	#lapi 
@@ -3734,7 +3744,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_emi_ramos focus = PHI_emi_first_pres focus = PHI_emi_miguel} 
 		completion_reward = {
-
+		swap_ideas = {
+		remove_idea = PHI_quez_social_justice
+		add_idea = PHI_emil_social_justice
+		}
 		}
 	}
 	#hear the students 
@@ -3832,7 +3845,7 @@ has_country_leader = {
 		prerequisite = { focus = PHI_emi_ramos } 
 		available = { has_government = totalist }
 		completion_reward = {
-
+		add_ideas = PHI_emil_little_people
 		}
 	}
 	#fili govt 
@@ -3848,7 +3861,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_emi_avenge_poor } 
 		completion_reward = {
-
+		add_ideas = PHI_emil_new_govt_not_commie
 		}
 	}
 	#wildcat 
@@ -3864,7 +3877,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_emi_fili_govt } 
 		completion_reward = {
-
+		add_ideas = PHI_emil_anarchist
 		}
 	}
 	#avenge opprsed 
@@ -3881,7 +3894,7 @@ has_country_leader = {
 		prerequisite = { focus = PHI_emi_ramos focus = PHI_emi_first_pres } 
 		available = { has_government = radical_socialist }
 		completion_reward = {
-
+		add_ideas = PHI_emil_oppressed_people
 		}
 	}
 	#santos and the socialists 
@@ -3897,7 +3910,18 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_emi_avenge_opprsed } 
 		completion_reward = {
-
+		#give some idea from the santos tree/socialist generals 
+		add_popularity = {
+	    ideology = radical_socialist
+	    popularity = 0.03
+		}
+		add_popularity = {
+	    ideology = social_democrat
+	    popularity = 0.05
+		}
+		add_tot_to_coalition = yes #this is probably also fine ngl because ramos had connections to the syndies beforehand
+		add_synd_to_coalition = yes #this is also fine ngl because ramos had connections to the syndies beforehand
+		add_socdem_to_coalition = yes #ifi is always here
 		}
 	}
 	#completing rev 
@@ -3913,7 +3937,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_emi_quest_socialists } 
 		completion_reward = {
-
+		add_ideas = PHI_emil_peaceful_rev
 		}
 	}
 	#equal_rights 
@@ -3929,7 +3953,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_emi_fili_govt focus = PHI_emi_quest_socialists } 
 		completion_reward = {
+		random_owned_state = { add_extra_state_shared_building_slots = 1 }
 
+		add_political_power = 100
+		add_stability = 0.05
 		}
 	}
 	#traiditional woman 
@@ -3945,7 +3972,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_emi_equal_rights } prerequisite = { focus = PHI_emi_wildcat } 
 		completion_reward = {
-
+		add_ideas = PHI_emil_women
 		}
 	}
 	#fruit child 
@@ -3961,7 +3988,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_emi_equal_rights } prerequisite = { focus = PHI_emi_completing_rev } 
 		completion_reward = {
-
+		add_ideas = PHI_emil_future_gens
 		}
 	}
 	#national protection 
@@ -4175,6 +4202,10 @@ has_country_leader = {
 		}
 		}
 		completion_reward = {
+		add_tot_to_coalition = yes #this is probably also fine ngl because ramos had connections to the syndies beforehand
+		add_synd_to_coalition = yes #this is also fine ngl because ramos had connections to the syndies beforehand
+		add_radsoc_to_coalition = yes #ifi is always here
+		add_soclib_to_coalition # create a vinzons leader here so as to not have sumulong living forever, btw this should all be in event but im leaving it here for now 
 
 		}
 	}
