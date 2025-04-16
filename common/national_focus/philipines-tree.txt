@@ -3883,7 +3883,7 @@ has_country_leader = {
 		add_ideas = PHI_emil_anarchist
 		}
 	}
-	#avenge opprsed 
+	#santos and the socialists
 	focus = {
 		id = PHI_emi_avenge_opprsed
 		icon = GFX_goal_QIO_revolutionary_zone
@@ -3897,22 +3897,6 @@ has_country_leader = {
 		prerequisite = { focus = PHI_emi_ramos focus = PHI_emi_first_pres } 
 		available = { has_government = radical_socialist }
 		completion_reward = {
-		add_ideas = PHI_emil_oppressed_people
-		}
-	}
-	#santos and the socialists 
-	focus = {
-		id = PHI_emi_quest_socialists
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_emi_new
-		x = 4
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_emi_avenge_opprsed } 
-		completion_reward = {
 		#give some idea from the santos tree/socialist generals 
 		add_popularity = {
 	    ideology = radical_socialist
@@ -3925,6 +3909,27 @@ has_country_leader = {
 		add_tot_to_coalition = yes #this is probably also fine ngl because ramos had connections to the syndies beforehand
 		add_synd_to_coalition = yes #this is also fine ngl because ramos had connections to the syndies beforehand
 		add_socdem_to_coalition = yes #ifi is always here
+		if = { limit = { has_completed_focus = PHI_emi_first_pres  } 
+		unlock_decision_tooltip = PHI_emilio_raymond_go_right_moderate
+		}
+
+		}
+	}
+	#  avenge opprsed 
+	focus = {
+		id = PHI_emi_quest_socialists
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_emi_new
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_emi_avenge_opprsed } 
+		completion_reward = {
+		add_ideas = PHI_emil_oppressed_people
+
 		}
 	}
 	#completing rev 
@@ -4066,6 +4071,9 @@ has_country_leader = {
 		available = { has_government = paternal_autocrat }
 		completion_reward = {
 		add_ideas = PHI_emil_new_govt
+		if = { limit = { has_completed_focus = PHI_emi_first_pres  } 
+		unlock_decision_tooltip = PHI_emilio_vinzons_go_left_moderate 
+		}
 		}
 	}
 	#fruits of nation 
