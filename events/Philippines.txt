@@ -1226,7 +1226,7 @@ country_event = { #coup against hilario
 		#etc ministers and stuff like deleting genrals and giving new ones
 		create_country_leader = {
 			name = "Jeremias Adia"
-			picture = "gfx/leaders/PHI/Portrait_PHI_Juan_Sumulong.png"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Jeremias_Adia.png"
 			expire = "1.1.1"
 			ideology = lapiang_malaya_subtype
 		}
@@ -1263,7 +1263,7 @@ country_event = { #who is leader?
 		unlock_national_focus = PHI_emi_avenge_poor
 		create_country_leader = { #minister
 			name = "Salud Algabre"
-			picture = "gfx/leaders/PHI/Portrait_PHI_Juan_Sumulong.png"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Salud_Algabre.png"
 			expire = "1.1.1"
 			ideology = lapiang_malaya_subtype
 		}
@@ -1275,7 +1275,7 @@ country_event = { #who is leader?
 		ai_chance = { base = 100 }
 		create_country_leader = { #ministers
 			name = "Valentin de los Santos"
-			picture = "gfx/leaders/PHI/Portrait_PHI_Juan_Sumulong.png"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Valentin_de_los_Santos.png"
 			expire = "1.1.1"
 			ideology = lapiang_malaya_subtype
 		}
@@ -1320,18 +1320,56 @@ country_event = { #radsoc or natpop
 		    popularity = 0.1
 		}
 		}
-		#do the if else if create country leader also set the radsoc slot to valtinin's party name for him and the other names for the other guys
-		set_party_name = {#for the other 2
+		if = {
+		limit = {
+				has_country_leader = {
+					name = "Jeremias Adia"
+				}
+		 }
+		create_country_leader = {
+			name = "Jeremias Adia"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Jeremias_Adia.png"
+			expire = "1.1.1"
+			ideology = radsoc_lapiang_malaya_subtype
+		}
+		set_party_name = {
     		ideology = radical_socialist
     		long_name = PHI_skadal_remnants_party_long
     		name = PHI_skadal_remnants_party
 		}
+		}
+		else_if = {
+		limit = {
+				has_country_leader = {
+					name = "Salud Algabre"
+				}
+		 }
+		create_country_leader = { #minister
+			name = "Salud Algabre"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Salud_Algabre.png"
+			expire = "1.1.1"
+			ideology = radsoc_lapiang_malaya_subtype
+		}
+		set_party_name = {
+    		ideology = radical_socialist
+    		long_name = PHI_skadal_remnants_party_long
+    		name = PHI_skadal_remnants_party
+		}
+		}
+		else = {
 		set_party_name = {#for valtinine
     		ideology = radical_socialist
     		long_name = PHI_real_malaya_party_long
     		name = PHI_real_malaya_party
 		}
+		create_country_leader = { #ministers
+			name = "Valentin de los Santos"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Valentin_de_los_Santos.png"
+			expire = "1.1.1"
+			ideology = radsoc_lapiang_malaya_subtype
+		}
 
+		}
 
 	}
 
