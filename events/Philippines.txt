@@ -1375,9 +1375,22 @@ country_event = { #radsoc or natpop
 
 }
 
-country_event = { #
+country_event = { # fonocier election 2 swapper to radsoc
 	id = rd_phil.27
-	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.27"}
+	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.27"
+		set_party_name = {
+   			 ideology = radical_socialist
+   			 long_name = PHI_social_democrat_party_long
+   			 name = PHI_social_democrat_party
+			}
+			create_country_leader = { 
+			name = "Santiago Fonacier"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Santiago_Fonacier.png"
+			expire = "1.1.1"
+			ideology = christian_socialism_subtype
+		}
+
+	}
 	title = rd_phil.27.title
 	desc = rd_phil.27.desc
 	fire_only_once = yes 
@@ -1386,11 +1399,48 @@ country_event = { #
 	option = { #
 		name = rd_phil.27.a
 		ai_chance = { base = 100 }
+		add_radsoc_to_coalition = yes
 		
 	}
+	option = { #
+		name = rd_phil.27.b
+		ai_chance = { base = 100 }
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = radical_socialist
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		add_socdem_to_coalition = yes
+		add_synd_to_coalition = yes
+		
+	}
+	option = { #
+		name = rd_phil.27.c
+		ai_chance = { base = 100 }
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = radical_socialist
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		add_socdem_to_coalition = yes
+		add_synd_to_coalition = yes
+		set_country_leader_ideology = radsoc_lapiang_malaya_subtype 
+		
+	}
+
 }
 
-country_event = { #
+country_event = { #the new leader of the the new republic Emilio
 	id = rd_phil.28
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.28"}
 	title = rd_phil.28.title
@@ -1398,14 +1448,42 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #emilio left
 		name = rd_phil.28.a
+		trigger = { }
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #emilio right
+		name = rd_phil.28.b
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #moderate ganap
+		name = rd_phil.28.c
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #totalist ganap
+		name = rd_phil.28.d
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #moderate lapi
+		name = rd_phil.28.e
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #natpop lapi
+		name = rd_phil.28.f
+		ai_chance = { base = 100 }
+		
+	}
+
+
 }
 
-country_event = { #
+country_event = { #moderate vinzons takeover
 	id = rd_phil.29
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.29"}
 	title = rd_phil.29.title
@@ -1420,7 +1498,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #moderate Raymundo takeover
 	id = rd_phil.30
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.30"}
 	title = rd_phil.30.title
