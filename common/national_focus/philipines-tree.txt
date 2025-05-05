@@ -4199,9 +4199,62 @@ has_country_leader = {
 		}
 		completion_reward = {
 		add_ideas = PHI_emil_new_society
+		if = { 
+		limit = {
+		has_completed_focus = PHI_emi_filipino_authority
+		power_balance_value = {
+   		 id = PHI_emil_left_right_balance 
+   		 value < -0.14
+		}
+		}
+		set_politics = {
+   		ruling_party = social_liberal
+    		elections_allowed = no
+		}
+		create_country_leader = {
+			name = "Emilio Aguinaldo"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Emilio_Aguinaldo.png"
+			expire = "1.1.1"
+			ideology = soclib_popular_patriotism_subtype
+		}
+		set_party_name = {
+   			 ideology = social_liberal
+   			 long_name = PHI_filipinista_party_long
+   			 name = PHI_filipinista_party
+			}
+		add_autdem_to_coalition = yes
+		add_pataut_to_coalition = yes
+		}
+		else_if = {
+		limit = { 
+		has_completed_focus = PHI_emi_avenge_opprsed
+		power_balance_value = {
+   		 id = PHI_emil_left_right_balance 
+   		 value > 0.14
+		}
+		}
+		create_country_leader = {
+			name = "Emilio Aguinaldo"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Emilio_Aguinaldo.png"
+			expire = "1.1.1"
+			ideology = popular_patriotism_subtype
+		}
+		set_party_name = {
+   			 ideology = social_democrat
+   			 long_name = PHI_filipinista_party_long
+   			 name = PHI_filipinista_party
+			}
+		add_tot_to_coalition = yes
+		add_synd_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		add_autdem_to_coalition = yes
+		
+		}
 		remove_power_balance = {
 		    id = PHI_emil_left_right_balance
 		}
+
+
 
 		}
 	}
@@ -4249,12 +4302,6 @@ has_country_leader = {
 		}
 		completion_reward = {
 		add_ideas = PHI_sotto_phil
-		add_tot_to_coalition = yes #maybe this could be removed now that new govt
-		add_synd_to_coalition = yes #maybe this could be removed now that new govt
-		add_radsoc_to_coalition = yes #ifi is always here
-		add_autdem_to_coalition = yes #idk bruh
-		add_soclib_to_coalition = yes #create a vinzons leader or sotto here so as to not have sumulong living forever, btw this should all be in event but im leaving it here for now 
-
 		}
 	}
 	#rizal and christ
