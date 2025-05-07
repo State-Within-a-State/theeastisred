@@ -1319,10 +1319,7 @@ country_event = { #radsoc or natpop
 	option = { #radsoc
 		name = rd_phil.26.a
 		ai_chance = { base = 100 }
-		set_politics = {
-   		ruling_party = radical_socialist
-    		elections_allowed = no
-		}
+		
 		add_natpop_to_coalition = yes
 		add_socdem_to_coalition = yes #ifi is always pro nationalism
 		hidden_effect = {
@@ -1335,6 +1332,7 @@ country_event = { #radsoc or natpop
 		limit = {
 				has_country_leader = {
 					name = "Jeremias Adia"
+					ruling_only = yes
 				}
 		 }
 		create_country_leader = {
@@ -1348,11 +1346,16 @@ country_event = { #radsoc or natpop
     		long_name = PHI_skadal_remnants_party_long
     		name = PHI_skadal_remnants_party
 		}
+		set_politics = {
+   		ruling_party = radical_socialist
+    		elections_allowed = no
 		}
-		else_if = {
+		}
+		if = {
 		limit = {
 				has_country_leader = {
 					name = "Salud Algabre"
+					ruling_only = yes
 				}
 		 }
 		create_country_leader = { #minister
@@ -1366,12 +1369,26 @@ country_event = { #radsoc or natpop
     		long_name = PHI_skadal_remnants_party_long
     		name = PHI_skadal_remnants_party
 		}
+		set_politics = {
+   		ruling_party = radical_socialist
+    		elections_allowed = no
 		}
-		else = {
+		}
+		if = {
+		limit = {
+				has_country_leader = {
+					name = "Valentin de los Santos"
+					ruling_only = yes
+				}
+		 }
 		set_party_name = {#for valtinine
     		ideology = radical_socialist
     		long_name = PHI_real_malaya_party_long
     		name = PHI_real_malaya_party
+		}
+		set_politics = {
+   		ruling_party = radical_socialist
+    		elections_allowed = no
 		}
 		create_country_leader = { #ministers
 			name = "Valentin de los Santos"
