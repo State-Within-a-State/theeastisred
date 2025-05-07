@@ -1264,14 +1264,14 @@ country_event = { #who is leader?
 	option = { #stay dude
 		name = rd_phil.25.a
 		ai_chance = { base = 100 }
-		unlock_national_focus = PHI_emi_avenge_poor
+		complete_national_focus = PHI_emi_avenge_poor
 
 	}
 	option = { #the woman
 		name = rd_phil.25.a
 		ai_chance = { base = 100 }
 		#give ministers? and stuff idk
-		unlock_national_focus = PHI_emi_avenge_poor
+		complete_national_focus = PHI_emi_avenge_poor
 		create_country_leader = { #minister
 			name = "Salud Algabre"
 			picture = "gfx/leaders/PHI/Portrait_PHI_Salud_Algabre.png"
@@ -1406,6 +1406,7 @@ country_event = { #radsoc or natpop
 country_event = { # fonocier election 2 swapper to radsoc
 	id = rd_phil.27
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.27"
+	hidden_effect = {
 		set_party_name = {
    			 ideology = radical_socialist
    			 long_name = PHI_social_democrat_party_long
@@ -1416,6 +1417,7 @@ country_event = { # fonocier election 2 swapper to radsoc
 			picture = "gfx/leaders/PHI/Portrait_PHI_Santiago_Fonacier.png"
 			expire = "1.1.1"
 			ideology = christian_socialism_subtype
+		}
 		}
 
 	}
@@ -1433,16 +1435,10 @@ country_event = { # fonocier election 2 swapper to radsoc
 	option = { #
 		name = rd_phil.27.b
 		ai_chance = { base = 100 }
-		meta_effect = {
-			text = {
 				set_politics = {
 					ruling_party = radical_socialist
-					election_frequency = "[MONTH_ELECTIONS]"
-					elections_allowed = yes
+					elections_allowed = no
 				}
-			}
-			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
-		}
 		add_socdem_to_coalition = yes
 		add_synd_to_coalition = yes
 		
@@ -1450,16 +1446,10 @@ country_event = { # fonocier election 2 swapper to radsoc
 	option = { #
 		name = rd_phil.27.c
 		ai_chance = { base = 100 }
-		meta_effect = {
-			text = {
 				set_politics = {
 					ruling_party = radical_socialist
-					election_frequency = "[MONTH_ELECTIONS]"
-					elections_allowed = yes
+					elections_allowed = no
 				}
-			}
-			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
-		}
 		add_socdem_to_coalition = yes
 		add_synd_to_coalition = yes
 		set_country_leader_ideology = radsoc_lapiang_malaya_subtype 
@@ -1506,7 +1496,7 @@ country_event = { #the new leader of the the new republic Emilio
    			 long_name = PHI_filipinista_party_long
    			 name = PHI_filipinista_party
 			}
-		add_autdem_to_coalition = yes
+		add_authdem_to_coalition = yes
 		add_popularity = {
 		ideology = radical_socialist
 		popularity = 0.05
@@ -1543,7 +1533,7 @@ country_event = { #the new leader of the the new republic Emilio
    			 long_name = PHI_filipinista_party_long
    			 name = PHI_filipinista_party
 			}
-		add_autdem_to_coalition = yes
+		add_authdem_to_coalition = yes
 		add_popularity = {
 		ideology = paternal_autocrat
 		popularity = 0.05
@@ -1584,7 +1574,7 @@ country_event = { #the new leader of the the new republic Emilio
    			 name = PHI_ganap_party
 			}
 
-		add_autdem_to_coalition = yes
+		add_authdem_to_coalition = yes
 		add_popularity = {
 		ideology = radical_socialist
 		popularity = 0.05
@@ -1622,7 +1612,7 @@ country_event = { #the new leader of the the new republic Emilio
 			}
 
 
-		add_autdem_to_coalition = yes
+		add_authdem_to_coalition = yes
 		add_popularity = {
 		ideology = totalist
 		popularity = 0.05
@@ -1664,7 +1654,7 @@ country_event = { #the new leader of the the new republic Emilio
 			}
 
 
-		add_autdem_to_coalition = yes
+		add_authdem_to_coalition = yes
 		add_popularity = {
 		ideology = paternal_autocrat
 		popularity = 0.05
@@ -1700,7 +1690,7 @@ country_event = { #the new leader of the the new republic Emilio
    			 name = PHI_lapi_larp_party
 			}
 
-		add_autdem_to_coalition = yes
+		add_authdem_to_coalition = yes
 		add_popularity = {
 		ideology = national_populist
 		popularity = 0.05
@@ -1740,7 +1730,7 @@ country_event = { #moderate vinzons takeover
    			 long_name = PHI_young_party_long
    			 name = PHI_young_party
 			}
-		add_autdem_to_coalition = yes
+		add_authdem_to_coalition = yes
 		add_popularity = {
 		ideology = social_liberal
 		popularity = 0.05
@@ -1779,7 +1769,7 @@ country_event = { #moderate Raymundo takeover
    			 name = PHI_filipinista_party
 			}
 		add_radsoc_to_coalition = yes
-		add_autdem_to_coalition = yes
+		add_authdem_to_coalition = yes
 		add_soclib_to_coalition = yes
 		add_popularity = {
 		ideology = social_democrat
