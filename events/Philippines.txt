@@ -1228,6 +1228,10 @@ country_event = { #coup against hilario
 		name = rd_phil.24.a
 		ai_chance = { base = 50 }
 		hidden_effect = {
+		set_politics = {
+   		ruling_party = national_populist
+    		elections_allowed = no
+		}
 		set_party_name = {
     		ideology = national_populist
     		long_name = PHI_skadal_remnants_party_long
@@ -1923,7 +1927,7 @@ country_event = { #miguel subideos
 
 }
 
-country_event = { #
+country_event = { #what to do with nationalista politicians
 	id = rd_phil.33
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.33"}
 	title = rd_phil.33.title
@@ -1931,11 +1935,26 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #work with those willing to help and create social justice left
 		name = rd_phil.33.a
 		ai_chance = { base = 100 }
+	add_power_balance_value = {
+		id = PHI_emil_left_right_balance
+		value = -0.025
+	}
+
 		
 	}
+	option = { #fuck em they enemies right
+		name = rd_phil.33.a
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+		id = PHI_emil_left_right_balance
+		value = 0.025
+	}
+
+	}
+
 }
 
 country_event = { #
