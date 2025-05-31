@@ -484,10 +484,73 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		}
 		
 	}
-	option = { #the main parties have been rejected by the populace...
+	option = { #Hilario Moncado modernista
 		name = rd_phil.4.e
 		ai_chance = { base = 100 }
-		country_event = rd_phil.9
+		hidden_effect = {
+		country_event = { id = rd_phil.24 days = 14 }
+		add_popularity = {
+		ideology = national_populist
+		popularity = 0.1
+		}
+		}
+
+		if = { 		
+		limit = { has_country_flag = rad_socs_arent_syndie }
+		clr_country_flag = rad_socs_arent_syndie
+		}
+		complete_national_focus = PHI_hilario_god
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = national_populist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Hilario_Moncado_hog_npo
+		PHI_Federico_E_Jayme_eco_npo
+		PHI_Hilario_Moncado_for_npo
+		PHI_Federico_E_Jayme_sec_npo
+		}
+		
+	}
+	option = { #independent Pascual Racuyal (may change it so there's a limited way to get him but idk yet) could be Quezon still rules and mental asylum dude comes
+		name = rd_phil.4.f
+		trigger = { 
+		has_country_leader = {
+   		 name = "Pascual Racuyal"
+  		  ruling_only = no
+		}
+		}
+		ai_chance = { base = 100 }
+		complete_national_focus = PHI_lincoln
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Pascual_Racuyal_hog_sli
+		PHI_Rogelio_de_la_Rosa_eco_sli #need pic
+		PHI_Pascual_Racuyal_for_sli
+		PHI_Arsenio_Lacson_sec_sli #need pic
+		}
+
 	}
 
 }
@@ -605,7 +668,7 @@ country_event = { #freedom from commonwealth only if us didn't civil war. Happen
 	}
 }
 
-country_event = { #second election parties but the freaky ones
+country_event = { #not used rn cause lol give it some flavor
 	id = rd_phil.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.9"}
 	title = rd_phil.9.title
@@ -613,73 +676,9 @@ country_event = { #second election parties but the freaky ones
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #Hilario Moncado modernista
-		name = rd_phil.9.a
+	option = {
+		name = rd_phil.9
 		ai_chance = { base = 100 }
-		hidden_effect = {
-		country_event = { id = rd_phil.24 days = 14 }
-		add_popularity = {
-		ideology = national_populist
-		popularity = 0.1
-		}
-		}
-
-		if = { 		
-		limit = { has_country_flag = rad_socs_arent_syndie }
-		clr_country_flag = rad_socs_arent_syndie
-		}
-		complete_national_focus = PHI_hilario_god
-		meta_effect = {
-			text = {
-				set_politics = {
-					ruling_party = national_populist
-					last_election = "[CURRENT_DATE]"
-					election_frequency = "[MONTH_ELECTIONS]"
-					elections_allowed = yes
-				}
-			}
-			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
-			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
-		}
-		remove_all_ministers = yes
-		add_ideas = {
-		PHI_Hilario_Moncado_hog_npo
-		PHI_Federico_E_Jayme_eco_npo
-		PHI_Hilario_Moncado_for_npo
-		PHI_Federico_E_Jayme_sec_npo
-		}
-		
-	}
-	option = { #independent Pascual Racuyal (may change it so there's a limited way to get him but idk yet) could be Quezon still rules and mental asylum dude comes
-		name = rd_phil.9.b
-		trigger = { 
-		has_country_leader = {
-   		 name = "Pascual Racuyal"
-  		  ruling_only = no
-		}
-		}
-		ai_chance = { base = 100 }
-		complete_national_focus = PHI_lincoln
-		meta_effect = {
-			text = {
-				set_politics = {
-					ruling_party = social_liberal
-					last_election = "[CURRENT_DATE]"
-					election_frequency = "[MONTH_ELECTIONS]"
-					elections_allowed = yes
-				}
-			}
-			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
-			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
-		}
-		remove_all_ministers = yes
-		add_ideas = {
-		PHI_Pascual_Racuyal_hog_sli
-		PHI_Rogelio_de_la_Rosa_eco_sli #need pic
-		PHI_Pascual_Racuyal_for_sli
-		PHI_Arsenio_Lacson_sec_sli #need pic
-		}
-
 	}
 }
 
@@ -700,6 +699,7 @@ country_event = { #leave faction after being freed from commonwealth?
 		limit = { is_in_faction = yes }
 		leave_faction = yes 
 		}
+		add_stability = -0.025
 	}
 	option = { #no
 		name = rd_phil.10.b
@@ -833,7 +833,7 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 		add_synd_to_coalition = yes
 	}
 	option = { #go syndie as the syndies of the oppressed lead the way under the banner of the party
-		name = rd_phil.14.b
+		name = rd_phil.14.c
 		ai_chance = { base = 100 }
 		trigger = { has_completed_focus = PHI_gregorio_evangelista_learn } 
 		set_country_flag = PHI_REP_IS_SYNDIE  
