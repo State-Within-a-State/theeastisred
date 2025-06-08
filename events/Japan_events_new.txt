@@ -6080,7 +6080,7 @@ country_event = { #Japan Demands Our Submission
 		set_country_flag = JAP_Chose_A_Faction
 		puppet = {
 				target = ROOT
-				end_wars = yes
+				end_wars = no
 			}
 		}
 	}
@@ -6088,7 +6088,6 @@ country_event = { #Japan Demands Our Submission
 	option = { #No
 		name = japan_new_event.75.b
 		ai_chance = { base = 100 }
-		
 		country_event = japan_new_event.81
 		}
 	}
@@ -6111,6 +6110,7 @@ country_event = { #Refusal But Alliance?
 		name = japan_new_event.76.b
 		ai_chance = { base = 100 }
 		JAP = {
+			country_event = { id = japan_new_event.150 days = 2 }
 			create_wargoal = {
 				type = annex_everything
 				target = FROM
@@ -9236,6 +9236,7 @@ country_event = { #foreign policy event for fuck you countries that should alway
 	option = { #How About No ai will never do
 		name = japan_new_event.76.b
 		JAP = {
+			country_event = { id = japan_new_event.150 days = 2 }
 			create_wargoal = {
 				type = annex_everything
 				target = FROM
@@ -9259,4 +9260,35 @@ country_event = { #rejected bruh
 	
 }
 
+country_event = { #Japan Demands Our Submission
+	id = japan_new_event.151
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.75"}
+	title = japan_new_event.75.title
+	desc = japan_new_event.75.desc
+	picture = "GFX_japan_foreign_minister_2"
+	
+	is_triggered_only = yes
+	option = { #Yes
+		name = japan_new_event.75.a
+		ai_chance = { base = 100 }
+		JAP = {
+		puppet = {
+				target = ROOT
+				end_wars = no
+			}
+		}
+	}
+	
+	option = { #No
+		name = japan_new_event.75.b
+		ai_chance = { base = 100 }
+		JAP = {
+			country_event = { id = japan_new_event.150 days = 2 }
+			create_wargoal = {
+				type = annex_everything
+				target = FROM
+			}
+			}
+		}
+	}
 
