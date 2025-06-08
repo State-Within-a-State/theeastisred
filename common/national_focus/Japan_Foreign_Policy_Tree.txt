@@ -999,49 +999,19 @@
 	
 	###India Expansion###
 	
-	#Overtures to the Subcontinent
-	shared_focus = {
-		id = JAP_sub_continent_overture
-		icon = GFX_JAPFOR_seishinron-248360
-		relative_position_id = JAPFOR_japansplaceintheworld
-		x = -7
-		y = 2
-		cost = 3
-		search_filters = {
-			shared_focus_FILTER_ANNEXATION
-		}
-		prerequisite = { focus = JAP_sword_prepares_to_swing  }
-		completion_reward = {
-			if = {
-				limit = {
-					PRF = {
-						is_in_faction = no
-						is_subject = no
-						exists = yes
-					}
-				
-				}
-				PRF = {
-				country_event = japan_new_event.81
-				}
-			}
-			add_political_power = 25
-			unlock_decision_tooltip = JAP_securing_india
-		}
-	}
 	
 	#Climbing the Himalayas 
 	shared_focus = {
 		id = JAP_climbing_himalayas
 		icon = GFX_JAPFOR_seishinron-248360
-		relative_position_id = JAP_sub_continent_overture
-		x = -2
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -8
 		y = 1
 		cost = 3
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = JAP_sub_continent_overture  }
+		prerequisite = { focus = JAP_sword_prepares_to_swing  }
 		completion_reward = {
 		unlock_decision_tooltip = JAP_scaling_himalayas
 		}
@@ -1051,14 +1021,14 @@
 	shared_focus = {
 		id = JAP_road_to_burma
 		icon = GFX_JAPFOR_seishinron-248360
-		relative_position_id = JAP_sub_continent_overture
-		x = 2
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -6
 		y = 1
 		cost = 3
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = JAP_sub_continent_overture  }
+		prerequisite = { focus = JAP_sword_prepares_to_swing  }
 		completion_reward = {
 			unlock_decision_tooltip =JAP_scaling_himalayas
 		}
@@ -1068,8 +1038,8 @@
 	shared_focus = {
 		id = JAP_meet_persian_princes
 		icon = GFX_JAPFOR_seishinron-248360
-		relative_position_id = JAP_sub_continent_overture
-		x = 1
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -5
 		y = 2
 		cost = 3
 		search_filters = {
@@ -1085,8 +1055,8 @@
 	shared_focus = {
 		id = JAP_shaking_hands_kabul
 		icon = GFX_JAPFOR_seishinron-248360
-		relative_position_id = JAP_sub_continent_overture
-		x = -1
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -9
 		y = 2
 		cost = 3
 		search_filters = {
@@ -1095,6 +1065,94 @@
 		prerequisite = { focus = JAP_road_to_burma  } prerequisite = { focus = JAP_climbing_himalayas  }
 		completion_reward = {
 			unlock_decision_tooltip = JAP_afghanistani_submission
+		}
+	}
+	#Overtures to the Subcontinent
+	shared_focus = {
+		id = JAP_sub_continent_overture
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -7
+		y = 3
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_shaking_hands_kabul } prerequisite = { focus = JAP_meet_persian_princes }
+		available = {
+		OR = {
+		AND = { BHC = { exists = no } DEH = { exists = no } PRF = { exists = yes } }
+		AND = { BHC = { exists = yes } DEH = { exists = no } PRF = { exists = no } }
+		AND = { BHC = { exists = no } DEH = { exists = no } PRF = { exists = no } }
+		}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					PRF = {
+						is_in_faction = no
+						is_subject = no
+						exists = yes
+					}
+				}
+				PRF = {
+				country_event = japan_new_event.81
+				}
+			}
+			else_if = {
+				limit = {
+					BHC = {
+						is_in_faction = no
+						is_subject = no
+						exists = yes
+					}
+				}
+				BHC = {
+				country_event = japan_new_event.81
+				}
+			}
+			else = {
+				if = {
+				limit = {
+					DEH = {
+						exists = yes
+					}
+				}
+				JAP = {
+				create_wargoal = {
+				type = annex_everything
+				target = DEH
+				}
+				}
+				}
+				else_if = {
+				limit = {
+					BHC = {
+						exists = yes
+					}
+				}
+				JAP = {
+				create_wargoal = {
+				type = annex_everything
+				target = BHC
+				}
+				}
+				}
+				else_if = {
+				limit = {
+					PRF = {
+						exists = yes
+					}
+				}
+				JAP = {
+				create_wargoal = {
+				type = annex_everything
+				target = PRF
+				}
+				}
+				}
+			}
+			add_political_power = 25
 		}
 	}
 	
@@ -1109,7 +1167,7 @@
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = JAP_shaking_hands_kabul  } prerequisite = { focus = JAP_subdue_bear  } prerequisite = { focus = JAP_meet_persian_princes  }
+		prerequisite = { focus = JAP_subdue_bear focus = JAP_sub_continent_overture } 
 		completion_reward = {
 			unlock_decision_tooltip = JAP_barrel_central_asia
 		}
