@@ -22,6 +22,136 @@ focus_tree = {
 	shared_focus = KMT_expand_dockyard	
 	shared_focus = CHINA_FOREIGN_POLICY_beyond_the_walls_of_the_middle_kingdom
 	
+
+focus = {
+		id = hnn_kmtuni_tangshen
+		icon = GFX_RDHNNKMTUNI_helongsvictory-248360
+		allow_branch = {
+			has_country_leader = { ruling_only = yes name = "Tang Shengzhi" }
+		}
+		available = {
+		has_completed_focus = KMT_triumphant_revolution
+		}
+		x = 15
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+focus = {
+		id = hnn_kmtuni_tangnorth
+		icon = GFX_RDHNNKMTUNI_a_new_army-248360
+		relative_position_id = hnn_kmtuni_tangshen
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tangshen
+		}
+		completion_reward = {
+
+		}
+	}
+focus = {
+		id = hnn_kmtuni_tang_tradeunions
+		icon = GFX_RDHNNKMTUNI_a_new_army-248360
+		relative_position_id = hnn_kmtuni_tangshen
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tangshen
+		}
+		completion_reward = {
+
+		}
+	}
+focus = {
+		id = hnn_kmtuni_tang_willeople
+		icon = GFX_RDHNNKMTUNI_a_new_army-248360
+		relative_position_id = hnn_kmtuni_tangshen
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tangshen
+		}
+		completion_reward = {
+
+		}
+	}
+focus = {
+		id = hnn_kmtuni_tang_militarydisc
+		icon = GFX_RDHNNKMTUNI_a_new_army-248360
+		relative_position_id = hnn_kmtuni_tangshen
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tang_tradeunions
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tangnorth
+		}
+		completion_reward = {
+
+		}
+	}
+focus = {
+		id = hnn_kmtuni_tang_mututrust
+		icon = GFX_RDHNNKMTUNI_a_new_army-248360
+		relative_position_id = hnn_kmtuni_tangshen
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tang_tradeunions
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tang_willeople
+		}
+		completion_reward = {
+
+		}
+	}
+focus = {
+		id = hnn_kmtuni_tang_greatpower
+		icon = GFX_RDHNNKMTUNI_a_new_army-248360
+		relative_position_id = hnn_kmtuni_tangshen
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tang_militarydisc
+		}
+		prerequisite = {
+		focus = hnn_kmtuni_tang_mututrust
+		}
+		completion_reward = {
+
+		}
+	}
+
+
 focus = {
 		id = hnn_kmtuni_helong
 		icon = GFX_RDHNNKMTUNI_helongsvictory-248360
@@ -115,7 +245,7 @@ focus = {
 
 focus = {
 		id = hnnunilong_commie
-		icon = GFX_RDHNNKMTUNI_chaos_among_the_communists-248360
+		icon = GFX_ZHU_realization_of_a_new_republican_dream-246383
 		relative_position_id = hnn_kmtuni_helong
 		x = 0
 		y = 3
@@ -125,92 +255,12 @@ focus = {
 		}
 		prerequisite = { focus = hnnunilong_reform } 
 		completion_reward = {
-		add_political_power = -200
-		country_event = hunan_rework.82
-		kill_ideology_leader = totalist
+		add_command_power = 50
+		add_political_power = 100
+		add_synd_to_coalition = yes		
 		}
 	}
 
-focus = {
-		id = hnnunilong_commiepurge
-		icon = GFX_RDHNNKMTUNI_hnnunilong_commiepurge-248360
-		relative_position_id = hnn_kmtuni_helong
-		x = 1
-		y = 4
-		cost = 5
-		dynamic = yes
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = { has_country_flag = HNN_purge_commies }
-		mutually_exclusive = { focus = hnnunilong_commiewholesome }
-		prerequisite = {
-		focus = hnnunilong_commie
-		}
-		completion_reward = {
-		swap_ideas = {
-		remove_idea = HNN_marxist_integration
-		add_idea = HNN_kill_commies
-		}
-		hidden_effect = {
-		add_stability = -0.15
-		news_event = hunan_rework.84
-		set_politics = {
-			ruling_party = radical_socialist
-		}
-		set_country_leader_ideology = radsoc_red_junta_subtype
-		}
-		}
-	}
-focus = {
-		id = hnnunilong_commiewholesome
-		icon = GFX_RDHNNKMTUNI_a_truly_united_front-248360
-		relative_position_id = hnn_kmtuni_helong
-		x = -1
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = { has_country_flag = HNN_unify_commies }
-		mutually_exclusive = { focus = hnnunilong_commiepurge }
-		prerequisite = {
-		focus = hnnunilong_commie
-		}
-		completion_reward = {
-		add_stability = -0.05
-		add_ideas = HNN_long_commies
-		country_event = hunan_rework.83
-		hidden_effect = {
-		set_country_flag = RD_commies_love_each_other
-		NSW = {
-		every_unit_leader = {
-			limit = {
-			has_trait = HNN_socialist_officer
-			}
-			set_nationality = HNN
-			}
-		}
-		create_country_leader = {
-			name = "He Long"
-			desc = "HE_LONG_LEADER_DESC"
-			picture = "gfx/leaders/HNN/Portrait_Hunan_He_Long.png"
-			expire = "1965.1.1"
-			ideology = broad_communism_subtype
-		}
-		set_party_name = {
-			ideology = totalist
-			long_name = HNN_kmtcpc_long
-			name = HNN_kmtcpc
-		}
-		set_party_name = {
-			ideology = radical_socialist
-			long_name = HNN_kmtcpc_long
-			name = HNN_kmtcpc
-		}
-		}
-		}
-	}
 
 
 #li lisan
