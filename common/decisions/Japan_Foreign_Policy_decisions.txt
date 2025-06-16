@@ -1249,6 +1249,67 @@ JAP_unlock_east_seas_section = {
 		}
 	}
 	
+	JAP_crush_horn_of_africa = {
+		icon = ger_military_buildup
+		available = {
+			has_completed_focus = JAP_dealings_in_africa
+		}
+		
+		visible = {
+			tag = JAP
+			
+			OR = {
+			is_ai = yes
+			
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_outside_east_asia_decisions
+					NOT = {
+						OR = {
+							has_country_flag = JAP_fp_russia_decisions
+							has_country_flag = JAP_fp_central_asia_decisions
+							has_country_flag = JAP_fp_east_seas_japan_decisions
+							has_country_flag = JAP_fp_india_japan_decisions
+							has_country_flag = JAP_fp_decision_menu
+							has_country_flag = JAP_fp_north_china_decisions
+							has_country_flag = JAP_fp_south_east_decisions
+						}
+					}
+				}
+			}
+		}
+		
+
+		cost = 30
+		targets = { ETH SOM ERI }
+		target_trigger = {
+			NOT = {
+				OR = {
+				has_war_with = FROM
+				is_subject_of = FROM
+				is_in_faction_with = FROM
+				}
+			}
+			FROM = {
+			exists = yes
+			}
+		}
+		days_remove = 14
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			JAP = {
+			create_wargoal = {
+				type = annex_everything
+				target = FROM
+			}
+			}
+		}
+	}
+	
 	
 	
 	
