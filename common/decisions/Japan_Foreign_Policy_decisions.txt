@@ -1199,11 +1199,17 @@ JAP_unlock_east_seas_section = {
 		}
 	}
 	
-	
-	JAP_securing_south_america = {
-		icon = ger_military_buildup
+	JAP_ethiopia_japanizers = {
+		icon = no_votei_icon
+		
 		available = {
-			has_completed_focus = JAP_liberat_south_american_migrants
+			has_completed_focus = JAP_dealings_in_africa
+			ETH = {
+			exists = yes
+			}
+			ETH = {
+			has_idea = ETH_Hailu_Tekle_Haymanot_hog_sco
+			}
 		}
 		
 		visible = {
@@ -1214,7 +1220,7 @@ JAP_unlock_east_seas_section = {
 			
 				AND = {
 					is_ai = no
-					has_country_flag = JAP_fp_outside_east_asia_decisions 
+					has_country_flag = JAP_fp_outside_east_asia_decisions
 					NOT = {
 						OR = {
 							has_country_flag = JAP_fp_russia_decisions
@@ -1229,36 +1235,20 @@ JAP_unlock_east_seas_section = {
 				}
 			}
 		}
-		
-
-		cost = 30
-		targets = { ARG BOL CHL COL ECU FOP PAR PRU URG VEN BRA }
-		target_trigger = {
-			NOT = {
-				OR = {
-				has_war_with = FROM
-				is_subject_of = FROM
-				is_in_faction_with = FROM
-				}
-			}
-			FROM = {
-			exists = yes
-			}
-		}
-		days_remove = 14
+		cost = 10
 		fire_only_once = yes
-		war_with_target_on_remove = yes
+		days_remove = 15
+		
 		complete_effect = {
 			
 		}
 		remove_effect = {
-			create_wargoal = {
-				type = annex_everything
-				target = FROM
+			ETH = {
+			country_event = japan_new_event.75
 			}
-			
 		}
 	}
+	
 	
 	
 	
