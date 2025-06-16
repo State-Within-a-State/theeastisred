@@ -3830,7 +3830,7 @@ JAP_send_arms_to_zhili = {
 		
 		visible = {
 			tag = JAP
-			
+			NOT = { has_country_flag = JAP_no_moretrmstuff }
 			OR = {
 			is_ai = yes
 			
@@ -3841,16 +3841,23 @@ JAP_send_arms_to_zhili = {
 				}
 			}
 		}
-		cost = 10
+		cost = 30
 		fire_only_once = yes
 		days_remove = 15
 		
 		complete_effect = {
-			
+			set_country_flag = JAP_no_moretrmstuff
 		}
 		remove_effect = {
+			if = { limit = { TRM = { has_socialist_government = no } } 
 			TRM = {
-			country_event = japan_new_event.81
+			country_event = japan_new_event.149
+			}
+			}
+			else = {
+			TRM = {
+			country_event = japan_new_event.76
+			}
 			}
 		}
 	}
@@ -3874,7 +3881,7 @@ JAP_send_arms_to_zhili = {
 		
 		visible = {
 			tag = JAP
-			
+			NOT = { has_country_flag = JAP_no_moretrmstuff }
 			OR = {
 			is_ai = yes
 			
@@ -3885,20 +3892,16 @@ JAP_send_arms_to_zhili = {
 				}
 			}
 		}
-		cost = 10
+		cost = 30
 		fire_only_once = yes
 		days_remove = 15
 		
 		complete_effect = {
-			
+			set_country_flag = JAP_no_moretrmstuff
 		}
 		remove_effect = {
 			TRM = {
 			country_event = japan_new_event.151
-			}
-			create_wargoal = {
-				type = annex_everything
-				target = TRM
 			}
 		}
 	}
@@ -3995,8 +3998,9 @@ JAP_send_arms_to_zhili = {
 			
 		}
 		remove_effect = {
-			FROM = {
-			country_event = japan_new_event.151
+			create_wargoal = {
+				type = annex_everything
+				target = FROM
 			}
 			
 		}
@@ -4040,9 +4044,11 @@ JAP_send_arms_to_zhili = {
 			
 		}
 		remove_effect = {
-			BRM = {
-			country_event = japan_new_event.151
+			create_wargoal = {
+				type = annex_everything
+				target = BRM
 			}
+
 			
 		}
 	}
