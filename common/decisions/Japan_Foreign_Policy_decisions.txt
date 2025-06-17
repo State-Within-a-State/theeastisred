@@ -894,8 +894,11 @@ JAP_unlock_east_seas_section = {
 			
 		}
 		remove_effect = {
-			FROM = {
-			country_event = japan_new_event.151
+			JAP = {
+			create_wargoal = {
+				type = annex_everything
+				target = FROM
+			}
 			}
 			
 		}
@@ -3960,7 +3963,58 @@ JAP_send_arms_to_zhili = {
 			}
 		}
 	}
-	
+	JAP_alliance_with_mongolia = {
+		icon = ger_military_buildup
+		available = {
+			has_completed_focus = JAP_east_asia_steppe
+		}
+		
+		visible = {
+			tag = JAP
+			NOT = {
+				OR = {
+				has_war_with = MON
+				is_subject_of = MON
+				is_in_faction_with = MON
+				}
+			}
+			MON = {
+			exists = yes
+			is_subject = no
+			has_completed_focus = MON_nobles_take_power
+			}
+
+			OR = {
+			is_ai = yes
+		
+				AND = {
+					is_ai = no
+					has_country_flag = JAP_fp_russia_decisions
+					
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 75
+		}
+
+		cost = 30
+		target_trigger = {
+		}
+		days_remove = 14
+		fire_only_once = yes
+		war_with_target_on_remove = yes
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			MON = {
+			country_event = japan_new_event.149
+			}
+			
+		}
+	}
+
 	JAP_securing_steppe_mongolia = {
 		icon = ger_military_buildup
 		available = {
@@ -4202,7 +4256,7 @@ JAP_send_arms_to_zhili = {
 		}
 		remove_effect = {
 			PER = {
-			country_event = japan_new_event.151
+			country_event = japan_new_event.76 #just alliance? 
 			}
 			
 		}
