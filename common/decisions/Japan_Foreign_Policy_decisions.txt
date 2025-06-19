@@ -967,7 +967,7 @@ JAP_unlock_east_seas_section = {
 		icon = no_votei_icon
 		
 		available = {
-			has_completed_focus = JAP_trip_to_hawaii
+			has_completed_focus = JAP_taming_alaska
 			HAW = {
 			exists = yes
 			}
@@ -1118,7 +1118,7 @@ JAP_unlock_east_seas_section = {
 	JAP_securing_north_america = { #make this get allies in the case of a civil war on the mainland like bbr and cal
 		icon = ger_military_buildup
 		available = {
-			has_completed_focus = JAP_eagles_nest
+			has_completed_focus = JAP_trip_to_hawaii
 		}
 		
 		visible = {
@@ -1170,8 +1170,28 @@ JAP_unlock_east_seas_section = {
 			
 		}
 		remove_effect = {
+			if = { limit = { FROM = { tag = CAL has_war = yes NOT = { has_government = authoritarian_democrat } } } #hearst and mil junta
+			FROM = {
+			country_event = japan_new_event.149
+			}
+			}
+			else_if = { limit = { FROM = { tag = BBR 
+			OR = {
+				has_socialist_government = yes
+				has_government = national_populist
+				has_government = paternal_autocrat
+				has_country_flag = BBR_sun_ra_flag
+			}
+			} 
+			}
+			FROM = {
+			country_event = japan_new_event.149
+			}
+			}
+			else = { 
 			FROM = {
 			country_event = japan_new_event.151
+			}
 			}
 			
 		}
@@ -1211,19 +1231,6 @@ JAP_unlock_east_seas_section = {
 		}
 
 		cost = 100
-		targets = { CAN BBR CSA COR NYC NEE USA TXS TEX WCC AML DSR ARZ NVN AFT ATD IKE UOT CGL FSA ENC NFL }
-		target_trigger = {
-			NOT = {
-				OR = {
-				has_war_with = FROM
-				is_subject_of = FROM
-				is_in_faction_with = FROM
-				}
-			}
-			FROM = {
-			exists = yes
-			}
-		}
 		days_remove = 14
 		fire_only_once = yes
 		war_with_target_on_remove = yes
@@ -1234,7 +1241,7 @@ JAP_unlock_east_seas_section = {
 			JAP = {
 			create_wargoal = {
 				type = annex_everything
-				target = FROM
+				target = USA
 			}
 			}
 		}

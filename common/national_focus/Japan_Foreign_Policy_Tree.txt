@@ -170,17 +170,6 @@
 		completion_reward = {
 		if = {
 			limit = {
-				PHI = {
-				is_subject = yes
-				}
-			}
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = USA
-			}
-		}
-		if = {
-			limit = {
 				POR = {
 					OR = {
 					owns_state = 721
@@ -239,7 +228,7 @@
 		}
 	}
 	
-	#Taming the Frozen Tundra
+	#Taming the Frozen Tundra // really going to the outposts of the pacific
 	shared_focus = {
 		id = JAP_taming_alaska
 		icon = GFX_goal_ALA_Japanese_Language_Publications
@@ -251,25 +240,28 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_sailing_across_pacific  }
+		mutually_exclusive = { focus = JAP_taming_alaska }
+		available = { has_global_flag = USA_civil_war_begun_flag }
 		completion_reward = {
+		unlock_decision_tooltip = JAP_trip_to_hawaii
 		unlock_decision_tooltip = JAP_taming_alaskan_tundra
 		}
 	}
 	
-	#Tripping it to Honolulu
+	#Tripping it to Honolulu //really interventing for allies in the Americas without hte us
 	shared_focus = {
 		id = JAP_trip_to_hawaii
 		icon = GFX_JAPFOR_seishinron-248360
 		relative_position_id = JAP_sailing_across_pacific
-		x = 1
-		y = 1
+		x = -1
+		y = 2
 		cost = 3
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = JAP_sailing_across_pacific  }
+		prerequisite = { focus = JAP_taming_alaska }
 		completion_reward = {
-		unlock_decision_tooltip = JAP_trip_to_hawaii
+		unlock_decision_tooltip = JAP_securing_north_america
 		}
 	}
 	
@@ -278,15 +270,16 @@
 		id = JAP_eagles_nest
 		icon = GFX_JAPFOR_seishinron-248360
 		relative_position_id = JAP_sailing_across_pacific
-		x = 0
-		y = 2
+		x = 1
+		y = 1
 		cost = 3
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
-		prerequisite = { focus = JAP_sailing_across_pacific  } prerequisite = { focus = JAP_trip_to_hawaii  }  prerequisite = { focus = JAP_taming_alaska  }
+		prerequisite = { focus = JAP_sailing_across_pacific  } 
+		mutually_exclusive = { focus = JAP_taming_alaska }
+		available = { has_global_flag = USA_civil_war_avoided_flag }
 		completion_reward = {
-		unlock_decision_tooltip = JAP_securing_north_america
 		unlock_decision_tooltip = JAP_crush_north_america
 		}
 	}
