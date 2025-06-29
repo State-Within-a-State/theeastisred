@@ -319,8 +319,7 @@
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_support_allies"
 			custom_effect_tooltip = JAP_influence_china_tt
 			hidden_effect = { JAP_open_JAP_influence_china_JAP_support_allies = yes }
-			set_country_flag = JAP_fp_north_china_decisions
-			set_country_flag = JAP_fp_south_china_decisions
+			
 		}
 	}
 	
@@ -537,23 +536,23 @@
 					}
 				}
 			}
-			if = {
-				limit = {
-					FNG_JAP_hostile = no
-					FNG = {
-						exists = yes
-						is_subject = no
-						is_in_faction = no
-						at_war_with_or_justifying_wargoal_against_PREV = no
-					}
-					NOT = {
-						any_allied_country = { FNG = { at_war_with_or_justifying_wargoal_against_PREV = yes } }
-					}
-				}
-				custom_effect_tooltip = tooltip_white_line
-				effect_tooltip = { add_to_faction = FNG }
-				FNG = { country_event = japfeng.4 }
-			}
+			#if = {
+			#	limit = {
+			#		FNG_JAP_hostile = no
+			#		FNG = {
+			#			exists = yes
+			#			is_subject = no
+			#			is_in_faction = no
+			#			at_war_with_or_justifying_wargoal_against_PREV = no
+			#		}
+			#		NOT = {
+			#			any_allied_country = { FNG = { at_war_with_or_justifying_wargoal_against_PREV = yes } }
+			#		}
+			#	}
+			#	custom_effect_tooltip = tooltip_white_line
+			#	effect_tooltip = { add_to_faction = FNG }
+			#	FNG = { country_event = japfeng.4 }
+			#}
 
 		}
 	}
@@ -613,6 +612,7 @@
 		}
 		available = {
 			
+			OR = {
 			custom_trigger_tooltip = {
 				tooltip = JAP_china_is_now_our_puppet_tt		
 				JAP_puppet_china = yes
@@ -620,6 +620,7 @@
 			custom_trigger_tooltip = {
 				tooltip = JAP_chosen_asia_path_anexation_tt		
 				has_country_flag = JAP_unify_asia
+			}
 			}
 		}
 		mutually_exclusive = { focus = JAP_peace_reconstruction_china }
