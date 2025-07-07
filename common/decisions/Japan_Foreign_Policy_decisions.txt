@@ -336,8 +336,15 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -385,8 +392,15 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -437,13 +451,28 @@ JAP_unlock_east_seas_section = {
 				is_in_faction_with = FROM
 				}
 			}
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
 			FROM = {
 			exists = yes
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		days_remove = 14
 		fire_only_once = yes
 		war_with_target_on_remove = yes
@@ -504,8 +533,15 @@ JAP_unlock_east_seas_section = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		days_remove = 14
 		fire_only_once = yes
 		war_with_target_on_remove = yes
@@ -557,10 +593,13 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+        }
 		complete_effect = {
-			
+			VIN = {
+			set_cosmetic_tag = VIN_EMP
+			country_event = viet-empire.6
+			}
 		}
 		remove_effect = {
 			
@@ -603,10 +642,21 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+        }
 		complete_effect = {
-			
+			CAM = {
+			set_cosmetic_tag = CAM_JAP
+			set_politics = { ruling_party = authoritarian_democrat }
+			create_country_leader = { 
+				name = "Son Ngoc Thanh"
+				desc = "-"
+				picture = "gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Thanh.png"
+				expire = "2012.10.15"
+				ideology = authdem_pan_asianism_subtype
+			}
+			complete_national_focus = CAMJAP_khmer_serei_victory
+			}
 		}
 		remove_effect = {
 			
@@ -650,62 +700,64 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+        }
 		complete_effect = {
-			
+			LAO = {
+			set_cosmetic_tag = LAO_JAP
+			}
 		}
 		remove_effect = {
 			
 		}
 	}
 	
-	JAP_formation_of_the_indochinese_union = {
-		icon = no_votei_icon
-		
-		available = {
-			INC = {
-			is_subject_of = JAP
-			}
-			
-		}
-		
-		visible = {
-			tag = JAP
-			
-			OR = {
-			is_ai = yes
-			
-				AND = {
-					is_ai = no
-					has_country_flag = JAP_fp_south_east_decisions
-					NOT = {
-						OR = {
-							has_country_flag = JAP_fp_russia_decisions
-							has_country_flag = JAP_fp_central_asia_decisions
-							has_country_flag = JAP_fp_east_seas_japan_decisions
-							has_country_flag = JAP_fp_india_japan_decisions
-							has_country_flag = JAP_fp_decision_menu
-							has_country_flag = JAP_fp_north_china_decisions
-							has_country_flag = JAP_fp_outside_east_asia_decisions
-						}
-					}
-				}
-			}
-		}
-		cost = 25
-		fire_only_once = yes
-		days_remove = 15
-		ai_will_do = {
-			factor = 75
-		}
-		complete_effect = {
-			
-		}
-		remove_effect = {
-			
-		}
-	}
+	#JAP_formation_of_the_indochinese_union = { #Will delete, useless decision.
+	#	icon = no_votei_icon
+	#	
+	#	available = {
+	#		INC = {
+	#		is_subject_of = JAP
+	#		}
+	#		
+	#	}
+	#	
+	#	visible = {
+	#		tag = JAP
+	#		
+	#		OR = {
+	#		is_ai = yes
+	#		
+	#			AND = {
+	#				is_ai = no
+	#				has_country_flag = JAP_fp_south_east_decisions
+	#				NOT = {
+	#					OR = {
+	#						has_country_flag = JAP_fp_russia_decisions
+	#						has_country_flag = JAP_fp_central_asia_decisions
+	#						has_country_flag = JAP_fp_east_seas_japan_decisions
+	#						has_country_flag = JAP_fp_india_japan_decisions
+	#						has_country_flag = JAP_fp_decision_menu
+	#						has_country_flag = JAP_fp_north_china_decisions
+	#						has_country_flag = JAP_fp_outside_east_asia_decisions
+	#					}
+	#				}
+	#			}
+	#		}
+	#	}
+	#	cost = 25
+	#	fire_only_once = yes
+	#	days_remove = 15
+	#	ai_will_do = {
+    #        factor = 100
+    #    }
+	#	complete_effect = {
+	#		
+	#	}
+	#	remove_effect = {
+	#		
+	#	}
+	#}
 	
 	JAP_securing_east_indies = {
 		icon = ger_military_buildup
@@ -737,8 +789,15 @@ JAP_unlock_east_seas_section = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 35
 		targets = { INS MLY SAR }
@@ -818,8 +877,15 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			every_state = {
 				limit = {
@@ -871,8 +937,15 @@ JAP_unlock_east_seas_section = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 65
 		targets = { AST NZL PNG }
@@ -951,8 +1024,15 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -1000,8 +1080,15 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -1052,8 +1139,15 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 150
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -1103,8 +1197,15 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -1161,8 +1262,15 @@ JAP_unlock_east_seas_section = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		days_remove = 14
 		fire_only_once = yes
 		war_with_target_on_remove = yes
@@ -1227,8 +1335,15 @@ JAP_unlock_east_seas_section = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 100
 		days_remove = 14
@@ -1287,8 +1402,15 @@ JAP_unlock_east_seas_section = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -1329,8 +1451,15 @@ JAP_unlock_east_seas_section = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 75
 		targets = { ETH SOM ERI }
@@ -1475,8 +1604,15 @@ JAP_unlock_east_seas_section = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 30
 		targets = { TIB ETS SIK TAN XSM }
@@ -1486,6 +1622,14 @@ JAP_unlock_east_seas_section = {
 				has_war_with = FROM
 				is_subject_of = FROM
 				is_in_faction_with = FROM
+				}
+			}
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
 				}
 			}
 			FROM = {
@@ -3668,7 +3812,7 @@ JAP_send_arms_to_zhili = {
 
 		}
 		ai_will_do = {
-			factor = 75
+			factor = 100
 		}
 		fire_only_once = yes
 		visible = {		
@@ -3726,7 +3870,7 @@ JAP_send_arms_to_zhili = {
 
 		}
 		ai_will_do = {
-			factor = 75
+			factor = 100
 		}
 		fire_only_once = yes
 		visible = {		
@@ -3786,7 +3930,7 @@ JAP_send_arms_to_zhili = {
 			owns_state = 788
 		}
 		ai_will_do = {
-			factor = 75
+			factor = 100
 		}
 		fire_only_once = yes
 		visible = {		
@@ -3857,7 +4001,7 @@ JAP_send_arms_to_zhili = {
 
 		cost = 200		
 		ai_will_do = {
-			factor = 75
+			factor = 100
 		}
 		
 
@@ -3960,8 +4104,15 @@ JAP_send_arms_to_zhili = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			set_country_flag = JAP_no_moretrmstuff
 		}
@@ -3989,6 +4140,14 @@ JAP_send_arms_to_zhili = {
 			MON = {
 			exists = yes
 			is_subject = no
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
 			has_completed_focus = MON_nobles_take_power
 			}
 
@@ -4043,8 +4202,15 @@ JAP_send_arms_to_zhili = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 35
 		targets = { YAK MON BYR SIB }
@@ -4095,8 +4261,15 @@ JAP_send_arms_to_zhili = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 25
 		targets = { NEP SKM BHU }
@@ -4108,6 +4281,15 @@ JAP_send_arms_to_zhili = {
 				is_in_faction_with = FROM
 				}
 			}
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
+ 
 			FROM = {
 			exists = yes
 			}
@@ -4133,6 +4315,14 @@ JAP_send_arms_to_zhili = {
 		available = {
 			has_completed_focus = JAP_vladivostock_holding
 			BRM = {
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
 			exists = yes
 				NOT = {
 					OR = {
@@ -4161,8 +4351,15 @@ JAP_send_arms_to_zhili = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -4182,6 +4379,14 @@ JAP_send_arms_to_zhili = {
 		available = {
 			has_completed_focus = JAP_shaking_hands_kabul
 			AFG = {
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
 			exists = yes
 				NOT = {
 					OR = {
@@ -4210,8 +4415,15 @@ JAP_send_arms_to_zhili = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -4229,6 +4441,14 @@ JAP_send_arms_to_zhili = {
 		available = {
 			has_completed_focus = JAP_meet_persian_princes
 			PER = {
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
 			exists = yes
 				NOT = {
 					OR = {
@@ -4257,8 +4477,15 @@ JAP_send_arms_to_zhili = {
 		fire_only_once = yes
 		days_remove = 15
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 		complete_effect = {
 			
 		}
@@ -4290,8 +4517,15 @@ JAP_send_arms_to_zhili = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 50
 		targets = { ALO KYR TRK UZB }
@@ -4301,6 +4535,14 @@ JAP_send_arms_to_zhili = {
 				has_war_with = FROM
 				is_subject_of = FROM
 				is_in_faction_with = FROM
+				}
+			}
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
 				}
 			}
 			FROM = {
@@ -4343,8 +4585,15 @@ JAP_send_arms_to_zhili = {
 			}
 		}
 		ai_will_do = {
-			factor = 75
-		}
+            factor = 100
+            modifier = {
+                factor = 0
+                strength_ratio = {
+                    tag = FROM
+                    ratio < 0.7
+                }
+            }
+        }
 
 		cost = 60
 		targets = { EGY YEM OMA TRU SYR IRQ TUR KUR AZE GEO ARM SAU JBS HEJ LEB }
@@ -4354,6 +4603,14 @@ JAP_send_arms_to_zhili = {
 				has_war_with = FROM
 				is_subject_of = FROM
 				is_in_faction_with = FROM
+				}
+			}
+			OR = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
 				}
 			}
 			FROM = {
