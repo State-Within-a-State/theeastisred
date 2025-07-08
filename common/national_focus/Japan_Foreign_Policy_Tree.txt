@@ -160,7 +160,7 @@
 		id = JAP_masters_of_south_east
 		icon = GFX_JAPFOR_seishinron-248360
 		relative_position_id = JAP_southern_squabbles
-		x = -2
+		x = 0
 		y = 3
 		cost = 3
 		search_filters = {
@@ -201,7 +201,6 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_masters_of_south_east  }
-		prerequisite = { focus = JAP_eagles_nest  } 		
 		#prerequisite = { focus = JAP_liberat_south_american_migrants } 
 		completion_reward = {
 		unlock_decision_tooltip = JAP_re_organize_south_seas
@@ -234,13 +233,13 @@
 		icon = GFX_goal_ALA_Japanese_Language_Publications
 		relative_position_id = JAP_sailing_across_pacific
 		x = -1
-		y = 1
+		y = 2
 		cost = 3
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_sailing_across_pacific  }
-		mutually_exclusive = { focus = JAP_taming_alaska }
+		mutually_exclusive = { focus = JAP_eagles_nest }
 		available = { has_global_flag = USA_civil_war_begun_flag }
 		completion_reward = {
 		unlock_decision_tooltip = JAP_trip_to_hawaii
@@ -253,8 +252,8 @@
 		id = JAP_trip_to_hawaii
 		icon = GFX_JAPFOR_seishinron-248360
 		relative_position_id = JAP_sailing_across_pacific
-		x = -1
-		y = 2
+		x = -2
+		y = 3
 		cost = 3
 		search_filters = {
 			shared_focus_FILTER_ANNEXATION
@@ -270,7 +269,7 @@
 		id = JAP_eagles_nest
 		icon = GFX_JAPFOR_seishinron-248360
 		relative_position_id = JAP_sailing_across_pacific
-		x = 1
+		x = 2
 		y = 1
 		cost = 3
 		search_filters = {
@@ -536,23 +535,23 @@
 					}
 				}
 			}
-			#if = {
-			#	limit = {
-			#		FNG_JAP_hostile = no
-			#		FNG = {
-			#			exists = yes
-			#			is_subject = no
-			#			is_in_faction = no
-			#			at_war_with_or_justifying_wargoal_against_PREV = no
-			#		}
-			#		NOT = {
-			#			any_allied_country = { FNG = { at_war_with_or_justifying_wargoal_against_PREV = yes } }
-			#		}
-			#	}
-			#	custom_effect_tooltip = tooltip_white_line
-			#	effect_tooltip = { add_to_faction = FNG }
-			#	FNG = { country_event = japfeng.4 }
-			#}
+			if = {
+				limit = {
+					FNG_JAP_hostile = no # not has_global_flag = FNG_relations_JAP_broke
+					FNG = {
+						exists = yes
+						is_subject = no
+						is_in_faction = no
+						at_war_with_or_justifying_wargoal_against_PREV = no
+					}
+					NOT = {
+						any_allied_country = { FNG = { at_war_with_or_justifying_wargoal_against_PREV = yes } }
+					}
+				}
+				custom_effect_tooltip = tooltip_white_line
+				effect_tooltip = { add_to_faction = FNG }
+				FNG = { country_event = japfeng.4 }
+			}
 
 		}
 	}
@@ -569,7 +568,7 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_China_Seishin_ron  }
-		bypass = { LEC = { exists = no } }
+		bypass = { LEC = { OR = { is_in_faction_with = JAP exists = no } } }
 		completion_reward = {
 		if = {
 		limit = { LEC = { has_completed_focus = LEC_arch_collaborator_zhang_xiaolin_zones_in } } 
