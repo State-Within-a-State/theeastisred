@@ -340,7 +340,7 @@ JAP_unlock_east_seas_section = {
             modifier = {
                 factor = 0
                 strength_ratio = {
-                    tag = FROM
+                    tag = PHI
                     ratio < 0.7
                 }
             }
@@ -393,13 +393,6 @@ JAP_unlock_east_seas_section = {
 		days_remove = 15
 		ai_will_do = {
             factor = 100
-            modifier = {
-                factor = 0
-                strength_ratio = {
-                    tag = FROM
-                    ratio < 0.7
-                }
-            }
         }
 		complete_effect = {
 			
@@ -878,13 +871,6 @@ JAP_unlock_east_seas_section = {
 		days_remove = 15
 		ai_will_do = {
             factor = 100
-            modifier = {
-                factor = 0
-                strength_ratio = {
-                    tag = FROM
-                    ratio < 0.7
-                }
-            }
         }
 		complete_effect = {
 			every_state = {
@@ -1025,13 +1011,6 @@ JAP_unlock_east_seas_section = {
 		days_remove = 15
 		ai_will_do = {
             factor = 100
-            modifier = {
-                factor = 0
-                strength_ratio = {
-                    tag = FROM
-                    ratio < 0.7
-                }
-            }
         }
 		complete_effect = {
 			
@@ -1084,7 +1063,7 @@ JAP_unlock_east_seas_section = {
             modifier = {
                 factor = 0
                 strength_ratio = {
-                    tag = FROM
+                    tag = HAW
                     ratio < 0.7
                 }
             }
@@ -1140,13 +1119,6 @@ JAP_unlock_east_seas_section = {
 		days_remove = 150
 		ai_will_do = {
             factor = 100
-            modifier = {
-                factor = 0
-                strength_ratio = {
-                    tag = FROM
-                    ratio < 0.7
-                }
-            }
         }
 		complete_effect = {
 			
@@ -1201,7 +1173,7 @@ JAP_unlock_east_seas_section = {
             modifier = {
                 factor = 0
                 strength_ratio = {
-                    tag = FROM
+                    tag = ALA
                     ratio < 0.7
                 }
             }
@@ -1339,7 +1311,7 @@ JAP_unlock_east_seas_section = {
             modifier = {
                 factor = 0
                 strength_ratio = {
-                    tag = FROM
+                    tag = USA
                     ratio < 0.7
                 }
             }
@@ -1406,7 +1378,7 @@ JAP_unlock_east_seas_section = {
             modifier = {
                 factor = 0
                 strength_ratio = {
-                    tag = FROM
+                    tag = ETH
                     ratio < 0.7
                 }
             }
@@ -1606,6 +1578,17 @@ JAP_unlock_east_seas_section = {
 		ai_will_do = {
             factor = 100
             modifier = {
+			factor = 0
+			AND = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
+		}
+            modifier = {
                 factor = 0
                 strength_ratio = {
                     tag = FROM
@@ -1622,14 +1605,6 @@ JAP_unlock_east_seas_section = {
 				has_war_with = FROM
 				is_subject_of = FROM
 				is_in_faction_with = FROM
-				}
-			}
-			OR = { 	
-				NOT = { 
-					is_neighbor_of = FROM 
-				}
-				NOT = { 
-					any_allied_country = { is_neighbor_of = FROM } 
 				}
 			}
 			FROM = {
@@ -4140,14 +4115,6 @@ JAP_send_arms_to_zhili = {
 			MON = {
 			exists = yes
 			is_subject = no
-			OR = { 	
-				NOT = { 
-					is_neighbor_of = FROM 
-				}
-				NOT = { 
-					any_allied_country = { is_neighbor_of = FROM } 
-				}
-			}
 			has_completed_focus = MON_nobles_take_power
 			}
 
@@ -4203,6 +4170,17 @@ JAP_send_arms_to_zhili = {
 		}
 		ai_will_do = {
             factor = 100
+            modifier = {
+			factor = 0
+			AND = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
+		}
             modifier = {
                 factor = 0
                 strength_ratio = {
@@ -4263,6 +4241,17 @@ JAP_send_arms_to_zhili = {
 		ai_will_do = {
             factor = 100
             modifier = {
+			factor = 0
+			AND = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
+		}
+            modifier = {
                 factor = 0
                 strength_ratio = {
                     tag = FROM
@@ -4279,14 +4268,6 @@ JAP_send_arms_to_zhili = {
 				has_war_with = FROM
 				is_subject_of = FROM
 				is_in_faction_with = FROM
-				}
-			}
-			OR = { 	
-				NOT = { 
-					is_neighbor_of = FROM 
-				}
-				NOT = { 
-					any_allied_country = { is_neighbor_of = FROM } 
 				}
 			}
  
@@ -4315,14 +4296,6 @@ JAP_send_arms_to_zhili = {
 		available = {
 			has_completed_focus = JAP_vladivostock_holding
 			BRM = {
-			OR = { 	
-				NOT = { 
-					is_neighbor_of = FROM 
-				}
-				NOT = { 
-					any_allied_country = { is_neighbor_of = FROM } 
-				}
-			}
 			exists = yes
 				NOT = {
 					OR = {
@@ -4379,14 +4352,6 @@ JAP_send_arms_to_zhili = {
 		available = {
 			has_completed_focus = JAP_shaking_hands_kabul
 			AFG = {
-			OR = { 	
-				NOT = { 
-					is_neighbor_of = FROM 
-				}
-				NOT = { 
-					any_allied_country = { is_neighbor_of = FROM } 
-				}
-			}
 			exists = yes
 				NOT = {
 					OR = {
@@ -4417,6 +4382,17 @@ JAP_send_arms_to_zhili = {
 		ai_will_do = {
             factor = 100
             modifier = {
+			factor = 0
+			AND = { 	
+				NOT = { 
+					is_neighbor_of = AFG 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = AFG } 
+				}
+			}
+		}
+            modifier = {
                 factor = 0
                 strength_ratio = {
                     tag = FROM
@@ -4441,14 +4417,6 @@ JAP_send_arms_to_zhili = {
 		available = {
 			has_completed_focus = JAP_meet_persian_princes
 			PER = {
-			OR = { 	
-				NOT = { 
-					is_neighbor_of = FROM 
-				}
-				NOT = { 
-					any_allied_country = { is_neighbor_of = FROM } 
-				}
-			}
 			exists = yes
 				NOT = {
 					OR = {
@@ -4519,6 +4487,17 @@ JAP_send_arms_to_zhili = {
 		ai_will_do = {
             factor = 100
             modifier = {
+			factor = 0
+			AND = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
+		}
+            modifier = {
                 factor = 0
                 strength_ratio = {
                     tag = FROM
@@ -4535,14 +4514,6 @@ JAP_send_arms_to_zhili = {
 				has_war_with = FROM
 				is_subject_of = FROM
 				is_in_faction_with = FROM
-				}
-			}
-			OR = { 	
-				NOT = { 
-					is_neighbor_of = FROM 
-				}
-				NOT = { 
-					any_allied_country = { is_neighbor_of = FROM } 
 				}
 			}
 			FROM = {
@@ -4587,6 +4558,17 @@ JAP_send_arms_to_zhili = {
 		ai_will_do = {
             factor = 100
             modifier = {
+			factor = 0
+			AND = { 	
+				NOT = { 
+					is_neighbor_of = FROM 
+				}
+				NOT = { 
+					any_allied_country = { is_neighbor_of = FROM } 
+				}
+			}
+		}
+            modifier = {
                 factor = 0
                 strength_ratio = {
                     tag = FROM
@@ -4603,14 +4585,6 @@ JAP_send_arms_to_zhili = {
 				has_war_with = FROM
 				is_subject_of = FROM
 				is_in_faction_with = FROM
-				}
-			}
-			OR = { 	
-				NOT = { 
-					is_neighbor_of = FROM 
-				}
-				NOT = { 
-					any_allied_country = { is_neighbor_of = FROM } 
 				}
 			}
 			FROM = {
