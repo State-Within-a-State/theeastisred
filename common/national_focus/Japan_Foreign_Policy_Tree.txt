@@ -398,9 +398,14 @@
 		mutually_exclusive = { focus = JAP_save_china_from_europe }
 		prerequisite = { focus = JAP_China_Seishin_ron  }
 		completion_reward = {
+		set_global_flag = FNG_relations_JAP_broke
 		country_event = japan_new_event.147
 		add_opinion_modifier = {
 				target = QIE
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = FNG
 				modifier = JAP_against_china_claims
 			}
 		add_opinion_modifier = {
@@ -464,6 +469,8 @@
 			limit = {
 				QIE = {
 					exists = yes
+					NOT = { is_in_faction_with = JAP }
+
 				}
 			}
 			create_wargoal = {
@@ -473,8 +480,25 @@
 		}
 		if = {
 			limit = {
+				has_completed_focus = JAP_pursue_our_goal_in_china
+				FNG = {
+					exists = yes
+					NOT = { is_in_faction_with = JAP }
+
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = FNG
+			}
+		}
+
+		if = {
+			limit = {
 				CHI = {
 					exists = yes
+					NOT = { is_in_faction_with = JAP }
+
 				}
 			}
 			create_wargoal = {
@@ -486,6 +510,7 @@
 			limit = {
 				GXC = {
 					exists = yes
+					NOT = { is_in_faction_with = JAP }
 				}
 			}
 			create_wargoal = {
@@ -537,6 +562,7 @@
 			}
 			if = {
 				limit = {
+					has_completed_focus = JAP_save_china_from_europe
 					FNG_JAP_hostile = no # not has_global_flag = FNG_relations_JAP_broke
 					FNG = {
 						exists = yes
@@ -610,10 +636,10 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		available = {
-			
+			JAP_all_of_china_under_ours = yes
 			OR = {
 			custom_trigger_tooltip = {
-				tooltip = JAP_china_is_now_our_puppet_tt		
+				tooltip = JAP_china_is_now_our_puppet_tt #actually just ally	
 				JAP_puppet_china = yes
 			}
 			custom_trigger_tooltip = {
@@ -641,7 +667,7 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		available = {
-			
+			JAP_all_of_china_under_ours = yes
 			custom_trigger_tooltip = {
 				tooltip = JAP_china_is_now_our_puppet_tt		
 				JAP_puppet_china = yes
@@ -652,7 +678,7 @@
 		completion_reward = {
 			log = "[GetDateText]: [Root.GetName]: Focus JAP_the_fruits_of_loyalty"
 			custom_effect_tooltip = JAP_returns_land
-			JAP_fruits_loyalty_rewarded = yes
+			JAP_fruits_loyalty_rewarded = yes #idk what this is
 		}
 	}
 	
