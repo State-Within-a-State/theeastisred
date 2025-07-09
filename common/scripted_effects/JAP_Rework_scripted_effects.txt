@@ -1257,6 +1257,17 @@ add_state_core = 326
 
 
 JAP_fruits_loyalty_rewarded = {
+			every_state = {
+					limit = {
+						is_possible_legation_cities_state = yes
+						NOT = { state = 326 } #Hong Kong
+						NOT = { state = 729 } #Macao
+						NOT = { state = 745 } #Port Arthur
+					}
+					clear_variable = ambition_area_@ROOT
+					remove_claim_by = ROOT
+				}
+	set_temp_variable = { JAP_checkdoneonce = 0 }
 	if = {
 		limit = {
 			FNG = {
@@ -1293,21 +1304,12 @@ JAP_fruits_loyalty_rewarded = {
 				}
 				transfer_state_to = FNG
 			}
+			set_temp_variable = { JAP_checkdoneonce = 1 }
 			FNG = {
 				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
 				
 				country_event = japfor.464
 			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
 	}
 	
 	if = {
@@ -1329,6 +1331,7 @@ JAP_fruits_loyalty_rewarded = {
 				}
 		
 		}
+		if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
 		every_state = {
 				limit = {
 					OR = {
@@ -1346,339 +1349,13 @@ JAP_fruits_loyalty_rewarded = {
 				}
 				transfer_state_to = QIE
 			}
+			set_temp_variable = { JAP_checkdoneonce = 1 }	
+			}
 			QIE = {
 				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
 				
 				country_event = japfor.464
 			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
-	}
-	
-	if = {
-		limit = {
-			SHX = {
-					exists = yes
-					
-					OR = {
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = yes
-						}
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = no
-						}
-					}
-					NOT = { has_war_with = ROOT }
-				}
-		
-		}
-		every_state = {
-				limit = {
-					OR = {
-						is_core_of = SHX
-						is_claimed_by = SHX
-					}
-					is_claim_or_core_of_ROOT = no
-					OR = {
-						is_owned_by = ROOT
-						owner = {
-							is_subject_of = ROOT
-							NOT = { tag = LEC }
-						}
-					}
-				}
-				transfer_state_to = SHX
-			}
-			SHX = {
-				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
-				
-				country_event = japfor.464
-			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
-	}
-	
-	if = {
-		limit = {
-			SQI = {
-					exists = yes
-					
-					OR = {
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = yes
-						}
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = no
-						}
-					}
-					NOT = { has_war_with = ROOT }
-				}
-		
-		}
-		every_state = {
-				limit = {
-					OR = {
-						is_core_of = SQI
-						is_claimed_by = SQI
-					}
-					is_claim_or_core_of_ROOT = no
-					OR = {
-						is_owned_by = ROOT
-						owner = {
-							is_subject_of = ROOT
-							NOT = { tag = LEC }
-						}
-					}
-				}
-				transfer_state_to = SQI
-			}
-			SQI = {
-				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
-				
-				country_event = japfor.464
-			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
-	}
-	
-	if = {
-		limit = {
-			LEP = {
-					exists = yes
-					
-					OR = {
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = yes
-						}
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = no
-						}
-					}
-					NOT = { has_war_with = ROOT }
-				}
-		
-		}
-		every_state = {
-				limit = {
-					OR = {
-						is_core_of = LEP
-						is_claimed_by = LEP
-					}
-					is_claim_or_core_of_ROOT = no
-					OR = {
-						is_owned_by = ROOT
-						owner = {
-							is_subject_of = ROOT
-							NOT = { tag = LEC }
-						}
-					}
-				}
-				transfer_state_to = LEP
-			}
-			LEP = {
-				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
-				
-				country_event = japfor.464
-			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
-	}
-	
-	if = {
-		limit = {
-			ANQ = {
-					exists = yes
-					
-					OR = {
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = yes
-						}
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = no
-						}
-					}
-					NOT = { has_war_with = ROOT }
-				}
-		
-		}
-		every_state = {
-				limit = {
-					OR = {
-						is_core_of = ANQ
-						is_claimed_by = ANQ
-					}
-					is_claim_or_core_of_ROOT = no
-					OR = {
-						is_owned_by = ROOT
-						owner = {
-							is_subject_of = ROOT
-							NOT = { tag = LEC }
-						}
-					}
-				}
-				transfer_state_to = ANQ
-			}
-			ANQ = {
-				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
-				
-				country_event = japfor.464
-			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
-	}
-	
-	if = {
-		limit = {
-			CHI = {
-					exists = yes
-					
-					OR = {
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = yes
-						}
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = no
-						}
-					}
-					NOT = { has_war_with = ROOT }
-				}
-		
-		}
-		every_state = {
-				limit = {
-					OR = {
-						is_core_of = CHI
-						is_claimed_by = CHI
-					}
-					is_claim_or_core_of_ROOT = no
-					OR = {
-						is_owned_by = ROOT
-						owner = {
-							is_subject_of = ROOT
-							NOT = { tag = LEC }
-						}
-					}
-				}
-				transfer_state_to = CHI
-			}
-			CHI = {
-				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
-				
-				country_event = japfor.464
-			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
-	}
-	
-	if = {
-		limit = {
-			LEC = {
-					exists = yes
-					
-					OR = {
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = yes
-						}
-						AND = {
-						is_in_faction_with = JAP
-						is_subject = no
-						}
-					}
-					NOT = { has_war_with = ROOT }
-				}
-		
-		}
-		every_state = {
-				limit = {
-					OR = {
-						is_core_of = LEC
-						is_claimed_by = LEC
-					}
-					is_claim_or_core_of_ROOT = no
-					OR = {
-						is_owned_by = ROOT
-						owner = {
-							is_subject_of = ROOT
-							NOT = { tag = LEC }
-						}
-					}
-				}
-				transfer_state_to = LEC
-			}
-			LEC = {
-				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
-				
-				country_event = japfor.464
-			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
 	}
 	
 	if = {
@@ -1705,6 +1382,10 @@ JAP_fruits_loyalty_rewarded = {
 					OR = {
 						is_core_of = GXC
 						is_claimed_by = GXC
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
 					}
 					is_claim_or_core_of_ROOT = no
 					OR = {
@@ -1722,17 +1403,297 @@ JAP_fruits_loyalty_rewarded = {
 				
 				country_event = japfor.464
 			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
 	}
+
+	if = {
+		limit = {
+			LEC = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = LEC
+						is_claimed_by = LEC
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = LEC
+			}
+			LEC = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+
+	if = {
+		limit = {
+			SHX = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = SHX
+						is_claimed_by = SHX
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = SHX
+			}
+			SHX = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			SQI = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = SQI
+						is_claimed_by = SQI
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = SQI
+			}
+			SQI = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			LEP = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = LEP
+						is_claimed_by = LEP
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = LEP
+			}
+			LEP = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			ANQ = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = ANQ
+						is_claimed_by = ANQ
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = ANQ
+			}
+			ANQ = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			CHI = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = CHI
+						is_claimed_by = CHI
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = CHI
+			}
+			CHI = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	
 	
 	if = {
 		limit = {
@@ -1758,6 +1719,11 @@ JAP_fruits_loyalty_rewarded = {
 					OR = {
 						is_core_of = HNN
 						is_claimed_by = HNN
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
 					}
 					is_claim_or_core_of_ROOT = no
 					OR = {
@@ -1775,16 +1741,6 @@ JAP_fruits_loyalty_rewarded = {
 				
 				country_event = japfor.464
 			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
 	}
 	
 	if = {
@@ -1811,6 +1767,11 @@ JAP_fruits_loyalty_rewarded = {
 					OR = {
 						is_core_of = SZC
 						is_claimed_by = SZC
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
 					}
 					is_claim_or_core_of_ROOT = no
 					OR = {
@@ -1828,16 +1789,6 @@ JAP_fruits_loyalty_rewarded = {
 				
 				country_event = japfor.464
 			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
 	}
 	
 	if = {
@@ -1864,6 +1815,11 @@ JAP_fruits_loyalty_rewarded = {
 					OR = {
 						is_core_of = YUN
 						is_claimed_by = YUN
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
 					}
 					is_claim_or_core_of_ROOT = no
 					OR = {
@@ -1881,16 +1837,6 @@ JAP_fruits_loyalty_rewarded = {
 				
 				country_event = japfor.464
 			}
-			every_state = {
-					limit = {
-						is_possible_legation_cities_state = yes
-						NOT = { state = 326 } #Hong Kong
-						NOT = { state = 729 } #Macao
-						NOT = { state = 745 } #Port Arthur
-					}
-					clear_variable = ambition_area_@ROOT
-					remove_claim_by = ROOT
-				}
 	}
 }
 

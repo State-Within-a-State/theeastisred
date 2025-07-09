@@ -582,10 +582,11 @@
 		}
 	}
 	
-	#Influence the Shanghai Underworld
+	
+	#Advancing On the Western Frontiers
 	shared_focus = {
-		id = JAP_influence_shanghai_underworld
-		icon = GFX_goal_LEC_model_prefecture
+		id = JAP_advance_western_frontiers
+		icon = GFX_JAPFOR_seishinron-248360
 		relative_position_id = JAP_China_Seishin_ron
 		x = 2
 		y = 1
@@ -594,31 +595,6 @@
 			shared_focus_FILTER_ANNEXATION
 		}
 		prerequisite = { focus = JAP_China_Seishin_ron  }
-		bypass = { LEC = { OR = { is_in_faction_with = JAP exists = no } } }
-		completion_reward = {
-		if = {
-		limit = { LEC = { has_completed_focus = LEC_arch_collaborator_zhang_xiaolin_zones_in } } 
-		LEC = { country_event = japan_new_event.149 }
-		}
-		create_wargoal = {
-						target = LEC
-						type = annex_everything
-					}
-		}
-	}
-	
-	#Advancing On the Western Frontiers
-	shared_focus = {
-		id = JAP_advance_western_frontiers
-		icon = GFX_JAPFOR_seishinron-248360
-		relative_position_id = JAP_China_Seishin_ron
-		x = 2
-		y = 2
-		cost = 3
-		search_filters = {
-			shared_focus_FILTER_ANNEXATION
-		}
-		prerequisite = { focus = JAP_influence_shanghai_underworld }
 		completion_reward = {
 		unlock_decision_tooltip = JAP_unlock_west_china_section
 		}
@@ -681,6 +657,33 @@
 		}
 	}
 	
+
+	#Influence the Shanghai Underworld
+	shared_focus = {
+		id = JAP_influence_shanghai_underworld
+		icon = GFX_goal_LEC_model_prefecture
+		relative_position_id = JAP_China_Seishin_ron
+		x = 2
+		y = 4
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_advance_western_frontiers } prerequisite = { focus = JAP_two_dragons_one_master focus = JAP_peace_reconstruction_china }
+
+		bypass = { LEC = { OR = { is_in_faction_with = JAP exists = no } } }
+		completion_reward = {
+		if = {
+		limit = { LEC = { has_completed_focus = LEC_arch_collaborator_zhang_xiaolin_zones_in } } 
+		LEC = { country_event = japan_new_event.149 }
+		}
+		create_wargoal = {
+						target = LEC
+						type = annex_everything
+					}
+		}
+	}
+
 	#Hideyoshi Vindicated
 	shared_focus = {
 		id = JAP_hideyoshi_vindicated
