@@ -367,10 +367,31 @@ JAP_puppet_china = {
 
 
 JAP_all_of_china_under_ours = {
-	every_state = {
-	limit = { is_core_china = yes } 
-	is_owned_by_ROOT_or_ally = yes
+	all_state = {
+	if = {
+	limit = { is_china_proper = yes JAP_annoying_legation_states = no } 
+		owner = {
+			OR = {
+			tag = JAP
+			is_in_faction_with = JAP
+			is_subject_of = JAP
+			}
+		}
+	}
 	}
 
 }
+
+
+JAP_annoying_legation_states = {
+	OR = {
+	state = 326
+	state = 729
+	state = 744
+	state = 996
+	state = 745
+	state = 728
+	}
+}
+
 
