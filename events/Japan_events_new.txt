@@ -9306,3 +9306,97 @@ country_event = { #Japan Demands Our Submission replace .75
 		}
 	}
 
+
+country_event = { #custom option for fengtian leadership
+	id = japan_new_event.152
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.75"}
+	title = japan_new_event.152.title
+	desc = japan_new_event.152.desc
+	picture = "GFX_japan_foreign_minister_2"
+	
+	is_triggered_only = yes
+
+	option = { #Lets Keep the current 1 should be marlib yang yutin?
+		name = japan_new_event.152.a
+		ai_chance = { base = 100 }
+
+
+
+		}
+
+	option = { #No
+		name = japan_new_event.152.b
+		ai_chance = { base = 100 }
+		trigger = { OR = { has_government = social_democrat has_socialist_government = yes } }
+				FNG = {
+					set_politics = { ruling_party = totalist }
+					create_country_leader = {
+								name = "Luo Junqiang"
+								desc = "-"
+								picture = "gfx/leaders/JAP/Portrait_JAP_Luo Junqiang.png"
+								expire = "1965.1.1"
+								ideology = socialist_security_state_subtype
+							}
+					set_cosmetic_tag = CHINA_SOCIALIST_JAPANESE_PUPPET
+				}	
+		}
+	option = { #ou shenbai
+		name = japan_new_event.152.c
+		ai_chance = { base = 100 }
+		trigger = { OR = { has_government = social_democrat has_socialist_government = yes } }
+				FNG = {
+					set_politics = { ruling_party = radical_socialist }
+					create_country_leader = {
+								name = "Ou Shengbai"
+								desc = "-"
+								picture = "gfx/leaders/PRC/Portrait_GXC_Ou_Shengbai.png"
+								expire = "1965.1.1"
+								ideology = anarchism_subtype
+							}
+					set_cosmetic_tag = CHINA_SOCIALIST_JAPANESE_PUPPET
+				}
+	}
+	
+	option = { #No
+		name = japan_new_event.152.d
+		ai_chance = { base = 100 }
+				FNG = {
+					set_politics = { ruling_party = authoritarian_democrat }
+					create_country_leader = {
+								name = "Liang Hongzhi"
+								desc = "-"
+								picture = "gfx/leaders/JAP/Portrait_JAP_Liang_Hongzhi.png"
+								expire = "1965.1.1"
+								ideology = authdem_pan_asianism_subtype
+							}
+					set_cosmetic_tag = CHINA_JAPANESE_PUPPET
+				}
+
+		}
+	option = { #No
+		name = japan_new_event.152.e
+		ai_chance = { base = 100 }
+				FNG = {
+					set_politics = { ruling_party = paternal_autocrat }
+					create_country_leader = {
+								name = "Li Shouxin"
+								desc = "-"
+								picture = "gfx/leaders/MON/Portrait_MON_Li_Shouxin.png"
+								expire = "1965.1.1"
+								ideology = pataut_pan_asianism_subtype
+							}
+					set_cosmetic_tag = CHINA_JAPANESE_PUPPET
+				}
+
+		}
+	#option = { # if adding 7 or more, make sure the 7th option of event is to go to next event for choices as otherwise cant be seen
+		#name = japan_new_event.152.f
+		#ai_chance = { base = 100 }
+
+		#}
+
+
+	}
+
+
+
