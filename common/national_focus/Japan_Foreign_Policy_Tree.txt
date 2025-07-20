@@ -1,0 +1,1372 @@
+
+	#The Sun Rises Unto a New Horizon
+	shared_focus = {
+		id = JAPFOR_japansplaceintheworld
+		icon = GFX_JAPFOR_japansplaceintheworld-248360
+		x = 60
+		y = 0
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_POLITICAL
+		}
+		available = {
+			is_faction_leader = yes
+			OR = {
+				has_global_flag = USA_civil_war_begun_flag
+				has_global_flag = USA_civil_war_avoided_flag
+			}
+			has_country_flag = factionalism_japan_no
+			NOT = {
+			has_country_flag = JAP_no_foreign_policy
+			}
+		}
+		completion_reward = {
+		country_event = japan_new_event.74
+		add_ideas = JAP_rising_sun_idea_1
+			add_named_threat = {
+				threat = 4
+				name = JAP_rising_sun_threat
+			}
+			hidden_effect = {
+				news_event = { id = japfor.471 days = 2 }
+			}
+		}
+	}
+
+	
+	#The Sword Prepares to Swing
+	shared_focus = {
+		id = JAP_sword_prepares_to_swing
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = 0
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAPFOR_japansplaceintheworld  }
+		completion_reward = {
+		country_event = japan_new_event.146
+		set_country_flag = JAP_fp_decision_menu
+		}
+	}
+	
+	###South East Asia###
+	#Squabbles in the South
+	shared_focus = {
+		id = JAP_southern_squabbles
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = 12
+		y = 2
+		cost = 2
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_sword_prepares_to_swing  }
+		completion_reward = {
+		custom_effect_tooltip = JAP_unlock_south_asia_decisions
+		add_political_power = 25
+		}
+	}
+	
+	#Dropping Down in Manila
+	shared_focus = {
+		id = JAP_dropping_down_manila
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_southern_squabbles
+		x = -2
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_southern_squabbles  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_down_in_manila
+		}
+	}
+	
+	#Dealing With the Siamese Twins
+	shared_focus = {
+		id = JAP_deal_siamese_twins
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_southern_squabbles
+		x = 0
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_southern_squabbles  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_siamese_twins_attack
+		}
+	}
+	#A Hand Into Indochina
+	shared_focus = {
+		id = JAP_secure_indochina
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_southern_squabbles
+		x = 2
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_southern_squabbles  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_into_indochina_we_go
+		}
+	}
+	
+	#Securing the Rubber of the Indies
+	shared_focus = {
+		id = JAP_secure_indonesian_rubber
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_southern_squabbles
+		x = 1
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_secure_indochina  } prerequisite = { focus = JAP_deal_siamese_twins } prerequisite = { focus = JAP_dropping_down_manila }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_securing_east_indies
+		}
+	}
+	
+	#Shadowing Over the Southern Cross
+	shared_focus = {
+		id = JAP_shadow_over_southern_cross
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_southern_squabbles
+		x = -1
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_secure_indochina  } prerequisite = { focus = JAP_deal_siamese_twins } prerequisite = { focus = JAP_dropping_down_manila }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_securing_oceania
+		}
+	}
+	
+	#Masters of the South East
+	shared_focus = {
+		id = JAP_masters_of_south_east
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_southern_squabbles
+		x = 0
+		y = 3
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_shadow_over_southern_cross  } prerequisite = { focus = JAP_secure_indonesian_rubber } 
+		completion_reward = {
+		if = {
+			limit = {
+				POR = {
+					OR = {
+					owns_state = 721
+					owns_state = 972
+					}
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = POR
+			}
+		}
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GEA
+			}
+		}
+	}
+	
+	#The Octopus Tighten's Its Grip
+	shared_focus = {
+		id = JAP_octupus_grip
+		icon = GFX_goal_FNG_Japanese_Culture
+		relative_position_id = JAP_southern_squabbles
+		x = -2
+		y = 4
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_masters_of_south_east  }
+		#prerequisite = { focus = JAP_liberat_south_american_migrants } 
+		completion_reward = {
+		unlock_decision_tooltip = JAP_re_organize_south_seas
+		unlock_decision_tooltip = JAP_annex_hawaii
+		}
+	}
+	
+	
+	###Pacific###
+	#Sailing Across the Pacific
+	shared_focus = {
+		id = JAP_sailing_across_pacific
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = 7
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_sword_prepares_to_swing  }
+		completion_reward = {
+		add_political_power = 20
+		}
+	}
+	
+	#Taming the Frozen Tundra // really going to the outposts of the pacific
+	shared_focus = {
+		id = JAP_taming_alaska
+		icon = GFX_goal_ALA_Japanese_Language_Publications
+		relative_position_id = JAP_sailing_across_pacific
+		x = -1
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_sailing_across_pacific  }
+		mutually_exclusive = { focus = JAP_eagles_nest }
+		available = { has_global_flag = USA_civil_war_begun_flag }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_trip_to_hawaii
+		unlock_decision_tooltip = JAP_taming_alaskan_tundra
+		}
+	}
+	
+	#Tripping it to Honolulu //really interventing for allies in the Americas without hte us
+	shared_focus = {
+		id = JAP_trip_to_hawaii
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_sailing_across_pacific
+		x = -2
+		y = 3
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_taming_alaska }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_securing_north_america
+		}
+	}
+	
+	#Landing in the Eagle's Nest
+	shared_focus = {
+		id = JAP_eagles_nest
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_sailing_across_pacific
+		x = 1
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_sailing_across_pacific  } 
+		mutually_exclusive = { focus = JAP_taming_alaska }
+		available = { has_global_flag = USA_civil_war_avoided_flag }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_crush_north_america
+		}
+	}
+	
+	#Liberation of the Southern American Migrants
+	#shared_focus = {
+	#	id = JAP_liberat_south_american_migrants
+	#	icon = GFX_JAPFOR_seishinron-248360
+	#	relative_position_id = JAP_sailing_across_pacific
+	#	x = 0
+	#	y = 3
+	#	cost = 3
+	#	search_filters = {
+	#		shared_focus_FILTER_ANNEXATION
+	#	}
+	#	prerequisite = { focus = JAP_eagles_nest  } 
+	#	completion_reward = {
+	#	unlock_decision_tooltip = JAP_securing_south_america
+	#	}
+	#}
+	
+	
+	###China###
+	#Seishin-Ron
+	shared_focus = {
+		id = JAP_China_Seishin_ron
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = 0
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_sword_prepares_to_swing  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_support_allies"
+			custom_effect_tooltip = JAP_influence_china_tt
+			hidden_effect = { JAP_open_JAP_influence_china_JAP_support_allies = yes }
+			
+		}
+	}
+	
+	#Saving China from the Europeans
+	shared_focus = {
+		id = JAP_save_china_from_europe
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_China_Seishin_ron
+		x = -2
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		available = {
+		custom_trigger_tooltip = {
+				tooltip = JAP_chosen_out_saving_asia_tt		
+				has_country_flag = JAP_east_asia_monroe_doctrine
+			}
+		}
+		mutually_exclusive = { focus = JAP_pursue_our_goal_in_china }
+		prerequisite = { focus = JAP_China_Seishin_ron  }
+		completion_reward = {
+		add_political_power = 50
+			add_opinion_modifier = {
+				target = GER
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = DEH
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = RUS
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = AUS
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = CAN
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = POR
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = LEC
+				modifier = JAP_saving_china_against
+			}
+			add_opinion_modifier = {
+				target = GEA
+				modifier = JAP_saving_china_against
+			}
+		}
+	}
+	
+	#In Pursuit Of Our Own Goal 
+	shared_focus = {
+		id = JAP_pursue_our_goal_in_china
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_China_Seishin_ron
+		x = 0
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		available = {
+		custom_trigger_tooltip = {
+				tooltip = JAP_chosen_out_own_ambitions_tt		
+				has_country_flag = JAP_no_east_asia_monroe_doctrine
+			}
+		}
+		mutually_exclusive = { focus = JAP_save_china_from_europe }
+		prerequisite = { focus = JAP_China_Seishin_ron  }
+		completion_reward = {
+		set_global_flag = FNG_relations_JAP_broke
+		country_event = japan_new_event.147
+		add_opinion_modifier = {
+				target = QIE
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = FNG
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = SHX
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = SQI
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = ANQ
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = LEP
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = CHI
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = HNN
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = GXC
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = PRC
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = YUN
+				modifier = JAP_against_china_claims
+			}
+		add_opinion_modifier = {
+				target = SZC
+				modifier = JAP_against_china_claims
+			}
+		
+		}
+	}
+	
+	#A Continent Set A Blaze
+	shared_focus = {
+		id = JAP_continent_a_blaze
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_China_Seishin_ron
+		x = -1
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_pursue_our_goal_in_china focus = JAP_save_china_from_europe  }
+		completion_reward = {
+		if = {
+			limit = {
+				QIE = {
+					exists = yes
+					NOT = { is_in_faction_with = JAP }
+
+				}
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = QIE
+			}
+		}
+		if = {
+			limit = {
+				has_completed_focus = JAP_pursue_our_goal_in_china
+				FNG = {
+					exists = yes
+					NOT = { is_in_faction_with = JAP }
+
+				}
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = FNG
+			}
+		}
+
+		if = {
+			limit = {
+				CHI = {
+					exists = yes
+					NOT = { is_in_faction_with = JAP }
+
+				}
+			}
+			create_wargoal = {
+				type = annex_everything
+				target = CHI
+			}
+		}
+		if = {
+			limit = {
+				GXC = {
+					exists = yes
+					NOT = { is_in_faction_with = JAP }
+				}
+			}
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = GXC
+			}
+		}
+		if = {
+				limit = {
+					NOT = { has_completed_focus = JAPFOR_focus_on_our_allies }
+				}
+				add_timed_idea = { idea = JAP_continental_warfare days = 100 }
+			}
+			else = {
+				add_timed_idea = { idea = JAP_continental_warfare_2 days = 200 }
+			}
+			if = {
+				limit = { has_global_flag = JAP_sino_japanese_war_threat }
+				add_named_threat = {
+					threat = 3
+					name = JAP_continental_warfare
+				}
+			}
+			else = {
+				add_named_threat = {
+					threat = 8
+					name = JAP_continental_warfare
+				}
+			}
+			custom_effect_tooltip = tooltip_white_line
+			every_other_country = {
+				limit = {
+					is_chinese_tag = yes
+					is_valid_peace_target = yes
+					can_declare_war_on = ROOT
+					is_ruled_by_pro_fengtian = no
+				}
+				ROOT = {
+					add_ai_strategy = {
+						type = declare_war
+						id = PREV
+						value = 500
+					}
+					create_wargoal = {
+						target = PREV
+						type = annex_everything
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_completed_focus = JAP_save_china_from_europe
+					FNG_JAP_hostile = no # not has_global_flag = FNG_relations_JAP_broke
+					FNG = {
+						exists = yes
+						is_subject = no
+						is_in_faction = no
+						at_war_with_or_justifying_wargoal_against_PREV = no
+					}
+					NOT = {
+						any_allied_country = { FNG = { at_war_with_or_justifying_wargoal_against_PREV = yes } }
+					}
+				}
+				custom_effect_tooltip = tooltip_white_line
+				effect_tooltip = { add_to_faction = FNG }
+				FNG = { country_event = japfeng.4 }
+			}
+
+		}
+	}
+	
+	
+	#Advancing On the Western Frontiers
+	shared_focus = {
+		id = JAP_advance_western_frontiers
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_China_Seishin_ron
+		x = 2
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_China_Seishin_ron  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_unlock_west_china_section
+		}
+	}
+	
+	#Two Dragons Under One Master
+	shared_focus = {
+		id = JAP_two_dragons_one_master
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_China_Seishin_ron
+		x = 0
+		y = 3
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		available = {
+			OR = {
+			custom_trigger_tooltip = {
+				tooltip = JAP_china_is_now_our_puppet_tt #actually just ally	
+				JAP_all_of_china_under_ours = yes
+			}
+			custom_trigger_tooltip = { #idk what this does
+				tooltip = JAP_chosen_asia_path_anexation_tt		
+				has_country_flag = JAP_unify_asia
+			}
+			}
+		}
+		mutually_exclusive = { focus = JAP_peace_reconstruction_china }
+		prerequisite = { focus = JAP_advance_western_frontiers  } prerequisite = { focus = JAP_continent_a_blaze  }
+		completion_reward = {
+		custom_effect_tooltip = JAP_integrate_chinese_states
+		}
+	}
+	
+	#Peace & Reconstruction
+	shared_focus = {
+		id = JAP_peace_reconstruction_china
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_China_Seishin_ron
+		x = -2
+		y = 3
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = JAP_china_is_now_our_puppet_tt		
+				JAP_puppet_china = yes
+				JAP_all_of_china_under_ours = yes
+			}
+		}
+		mutually_exclusive = { focus = JAP_two_dragons_one_master }
+		prerequisite = { focus = JAP_advance_western_frontiers  } prerequisite = { focus = JAP_continent_a_blaze  }
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_the_fruits_of_loyalty"
+			custom_effect_tooltip = JAP_returns_land
+			JAP_fruits_loyalty_rewarded = yes #idk what this is
+		}
+	}
+	
+
+	#Influence the Shanghai Underworld
+	shared_focus = {
+		id = JAP_influence_shanghai_underworld
+		icon = GFX_goal_LEC_model_prefecture
+		relative_position_id = JAP_China_Seishin_ron
+		x = 2
+		y = 4
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_advance_western_frontiers } prerequisite = { focus = JAP_two_dragons_one_master focus = JAP_peace_reconstruction_china }
+
+		bypass = { LEC = { OR = { is_in_faction_with = JAP exists = no } } }
+		completion_reward = {
+		if = {
+		limit = { LEC = { has_completed_focus = LEC_arch_collaborator_zhang_xiaolin_zones_in } } 
+		LEC = { country_event = japan_new_event.149 }
+		}
+		create_wargoal = {
+						target = LEC
+						type = annex_everything
+					}
+		}
+	}
+
+	#Hideyoshi Vindicated
+	shared_focus = {
+		id = JAP_hideyoshi_vindicated
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_China_Seishin_ron
+		x = -1
+		y = 4
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		mutually_exclusive = { focus = JAP_two_dragons_one_master }
+		prerequisite = { focus = JAP_peace_reconstruction_china focus = JAP_two_dragons_one_master  } 
+		completion_reward = {
+			add_ideas = {
+			JAP_chinese_resources
+			}
+		
+			if = {
+				limit = {
+					FNG = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				FNG = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					QIE = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				QIE = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					SHX = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				SHX = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					SQI = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				SQI = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					LEP = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				LEP = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					ANQ = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				ANQ = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					LEC = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				LEC = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					CHI = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				CHI = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					GXC = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				GXC = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					HNN = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				HNN = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					YUN = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				YUN = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					SZC = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				SZC = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+			if = {
+				limit = {
+					XSM = {
+						exists = yes
+							OR = {
+							is_in_faction_with = JAP
+							is_subject_of = JAP
+							}
+						}
+				
+				}
+				XSM = {
+				add_ideas = {
+				JAP_chinese_exploitation
+				}
+				}
+			
+			}
+		}
+	}
+	
+	###Russia###
+	
+	#Adventures into the Bear's Forest
+	shared_focus = {
+		id = JAP_bears_forest
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = -12
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_sword_prepares_to_swing  }
+		completion_reward = {
+		add_political_power = 50
+		add_opinion_modifier = {
+				target = RUS
+				modifier = JAP_against_claims_russia
+			}
+		}
+	}
+	
+	#Holding Onto Vladivostok
+	shared_focus = {
+		id = JAP_vladivostock_holding
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_bears_forest
+		x = -1
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		bypass = {
+		TRM = {
+			OR = {
+			is_in_faction_with = JAP
+			is_subject_of = JAP
+			}
+		}
+		}
+		prerequisite = { focus = JAP_bears_forest  }
+		completion_reward = {
+		 unlock_decision_tooltip = JAP_offer_vladivostock_alliance
+		}
+	}
+	
+	#Riding the East Asian Steppe
+	shared_focus = {
+		id = JAP_east_asia_steppe
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_bears_forest
+		x = 1
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_bears_forest  }
+		completion_reward = {
+			unlock_decision_tooltip = JAP_securing_steppe_mongolia
+		}
+	}
+	
+	#Subduing the Bear
+	shared_focus = {
+		id = JAP_subdue_bear
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_bears_forest
+		x = 0
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_east_asia_steppe  } prerequisite = { focus = JAP_vladivostock_holding }
+		completion_reward = {
+		create_wargoal = {
+				type = puppet_wargoal_focus
+				target = RUS
+			}
+		}
+	}
+	
+	
+	###India Expansion###
+	
+	
+	#Climbing the Himalayas 
+	shared_focus = {
+		id = JAP_climbing_himalayas
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -8
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_sword_prepares_to_swing  }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_scaling_himalayas
+		}
+	}
+	
+	#On the Road to Burma
+	shared_focus = {
+		id = JAP_road_to_burma
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -6
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_sword_prepares_to_swing  }
+		completion_reward = {
+			unlock_decision_tooltip =JAP_scaling_himalayas
+		}
+	}
+	
+	#Meeting the Persian Princes
+	shared_focus = {
+		id = JAP_meet_persian_princes
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -5
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_road_to_burma  } prerequisite = { focus = JAP_climbing_himalayas  }
+		completion_reward = {
+			unlock_decision_tooltip = JAP_persia_submission
+		}
+	}
+	
+	#Shaking Hands in Kabul
+	shared_focus = {
+		id = JAP_shaking_hands_kabul
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -9
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_road_to_burma  } prerequisite = { focus = JAP_climbing_himalayas  }
+		completion_reward = {
+			unlock_decision_tooltip = JAP_afghanistani_submission
+		}
+	}
+	#Overtures to the Subcontinent
+	shared_focus = {
+		id = JAP_sub_continent_overture
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_sword_prepares_to_swing  
+		x = -7
+		y = 3
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_shaking_hands_kabul } prerequisite = { focus = JAP_meet_persian_princes }
+		available = {
+		OR = {
+		AND = { BHC = { exists = no } DEH = { exists = no } PRF = { exists = yes } }
+		AND = { BHC = { exists = yes } DEH = { exists = no } PRF = { exists = no } }
+		AND = { BHC = { exists = no } DEH = { exists = no } PRF = { exists = yes } }
+		}
+		}
+		completion_reward = {
+			if = {
+				limit = {
+					PRF = {
+						is_in_faction = no
+						is_subject = no
+						exists = yes
+					}
+				}
+				PRF = {
+				country_event = japan_new_event.81
+				}
+			}
+			else_if = {
+				limit = {
+					BHC = {
+						is_in_faction = no
+						is_subject = no
+						exists = yes
+					}
+				}
+				BHC = {
+				country_event = japan_new_event.81
+				}
+			}
+			else = {
+				if = {
+				limit = {
+					DEH = {
+						exists = yes
+					}
+				}
+				JAP = {
+				create_wargoal = {
+				type = annex_everything
+				target = DEH
+				}
+				}
+				}
+				else_if = {
+				limit = {
+					BHC = {
+						exists = yes
+					}
+				}
+				JAP = {
+				create_wargoal = {
+				type = annex_everything
+				target = BHC
+				}
+				}
+				}
+				else_if = {
+				limit = {
+					PRF = {
+						exists = yes
+					}
+				}
+				JAP = {
+				create_wargoal = {
+				type = annex_everything
+				target = PRF
+				}
+				}
+				}
+			}
+			add_political_power = 25
+		}
+	}
+	
+	#Barrelling Across Central Asia
+	shared_focus = {
+		id = JAP_barrelling_across_central_asia
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = -8
+		y = 5
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_subdue_bear focus = JAP_sub_continent_overture } 
+		completion_reward = {
+			unlock_decision_tooltip = JAP_barrel_central_asia
+		}
+	}
+	
+	#Hands Out Across the Desert
+	shared_focus = {
+		id = JAP_hands_out_across_desert
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = -8
+		y = 6
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_barrelling_across_central_asia  } 
+		completion_reward = {
+		unlock_decision_tooltip = JAP_barrel_middle_east
+		}
+	}
+	
+	#Hakko Ichiu
+	shared_focus = {
+		id = JAP_eight_corners_of_world
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = 0
+		y = 7
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_hands_out_across_desert  } prerequisite = { focus = JAP_hideyoshi_vindicated  } prerequisite = { focus = JAP_octupus_grip  } 
+		available = { 
+				owns_state = 608
+				owns_state = 336
+				owns_state = 408
+		}
+		completion_reward = {
+		add_ideas = {
+		JAP_eight_corners
+		}
+		}
+	}
+	
+	#Enact the Co-Prosperity Conference
+	shared_focus = {
+		id = JAP_co_prosperity_sphere
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_eight_corners_of_world
+		x = -1
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		available = {
+			is_faction_leader = yes
+		}
+		prerequisite = { focus = JAP_eight_corners_of_world  } 
+		select_effect = {
+			log = "[GetDateText]: [Root.GetName]: Select Focus JAP_tokyo_conference"
+			every_other_country = {
+				limit = {
+					is_co_prosperity_candidate = yes
+					has_socialist_government = no
+					NOT = {
+						AND = {
+							is_in_faction = yes
+							NOT = { is_in_faction_with = ROOT }
+						}
+					}
+				}
+				country_event = japfor.21
+			}
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_tokyo_conference"
+			custom_effect_tooltip = JAP_tokyo_conference_tt
+			hidden_effect = {
+				country_event = japfor.24
+			}
+			for_each_scope_loop = {
+				array = global.JAP_possible_allies_array
+
+				log = "This scope = [THIS.GetName]"
+				PREV = { activate_targeted_decision = { target = PREV decision = JAP_invite_into_faction } }
+			}
+		}
+	}
+	
+	#Running Into the Belly of the Beast
+	#shared_focus = {
+	#	id = JAP_belly_of_the_beast
+	#	icon = GFX_JAPFOR_seishinron-248360
+	#	relative_position_id = JAP_eight_corners_of_world
+	#	x = 1
+	#	y = 1
+	#	cost = 3
+	#	search_filters = {
+	#		shared_focus_FILTER_ANNEXATION
+	#	}
+	#	prerequisite = { focus = JAP_eight_corners_of_world  } 
+	#	completion_reward = {
+	#	custom_effect_tooltip = japan_strike_into_europe_tt
+	#	
+	#			
+	#				
+	#				every_country = {####needs wargoals on European nations idk what else to do fir it
+	#					
+	#					JAP = {
+	#						create_wargoal = {
+	#							type = annex_everything
+	#							target = PREV
+	#						}
+	#					}	
+	#		
+	#				}
+	#			
+	#	
+	#	}
+	#}
+	
+	#(Formerly :Dealings in Africa) - Reach Out to the Ethiopian Japanizers 
+	shared_focus = {
+		id = JAP_dealings_in_africa
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_eight_corners_of_world
+		x = 1
+		y = 1
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = JAP_eight_corners_of_world  } 
+		completion_reward = {
+		custom_effect_tooltip = japan_strike_into_africa_tt
+		unlock_decision_tooltip = JAP_ethiopia_japanizers
+		unlock_decision_tooltip = JAP_crush_horn_of_africa
+					
+					
+				
+		
+		}
+	}
+	
+	#The Rays of the Sun Shine Around the World
+	shared_focus = {
+		id = JAP_rays_around_the_world
+		icon = GFX_JAPFOR_seishinron-248360
+		relative_position_id = JAP_eight_corners_of_world
+		x = 0
+		y = 2
+		cost = 3
+		search_filters = {
+			shared_focus_FILTER_ANNEXATION
+		}
+		#prerequisite = { focus = JAP_belly_of_the_beast  }#
+		prerequisite = { focus = JAP_dealings_in_africa  } 
+		prerequisite = { focus = JAP_co_prosperity_sphere  } 
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = JAP_eight_corners
+		add_idea = JAP_eight_corners_1
+		}
+		}
+	}
+	
+	
+
+	
+
+

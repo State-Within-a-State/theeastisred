@@ -531,13 +531,13 @@ JAP_puppet_china_socialist = {
 					}
 				}
 				GXC = {
-					set_politics = { ruling_party = totalist }
+					set_politics = { ruling_party = radical_socialist }
 					create_country_leader = {
-								name = "Gao Zongwu"
+								name = "Ou Shengbai"
 								desc = "-"
-								picture = "gfx/leaders/JAP/Portrait_JAP_Gao_Zongwu.png"
+								picture = "gfx/leaders/PRC/Portrait_GXC_Ou_Shengbai.png"
 								expire = "1965.1.1"
-								ideology = socialist_security_state_subtype
+								ideology = anarchism_subtype
 							}
 					set_cosmetic_tag = CHINA_SOCIALIST_JAPANESE_PUPPET
 				}
@@ -1253,4 +1253,699 @@ add_state_core = 1012
 add_state_core = 592
 add_state_core = 729
 add_state_core = 326
+}
+
+
+JAP_fruits_loyalty_rewarded = {
+			every_state = {
+					limit = {
+						is_possible_legation_cities_state = yes
+						NOT = { state = 326 } #Hong Kong
+						NOT = { state = 729 } #Macao
+						NOT = { state = 745 } #Port Arthur
+					}
+					clear_variable = ambition_area_@ROOT
+					remove_claim_by = ROOT
+				}
+	set_temp_variable = { JAP_checkdoneonce = 0 }
+	if = {
+		limit = {
+			FNG = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = FNG
+						is_claimed_by = FNG
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = FNG
+			}
+			set_temp_variable = { JAP_checkdoneonce = 1 }
+			FNG = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			QIE = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = QIE
+						is_claimed_by = QIE
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = QIE
+			}
+			set_temp_variable = { JAP_checkdoneonce = 1 }	
+			}
+			QIE = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			GXC = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = GXC
+						is_claimed_by = GXC
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = GXC
+			}
+			GXC = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+
+	if = {
+		limit = {
+			LEC = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = LEC
+						is_claimed_by = LEC
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = LEC
+			}
+			LEC = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+
+	if = {
+		limit = {
+			SHX = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = SHX
+						is_claimed_by = SHX
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = SHX
+			}
+			SHX = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			SQI = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = SQI
+						is_claimed_by = SQI
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = SQI
+			}
+			SQI = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			LEP = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = LEP
+						is_claimed_by = LEP
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = LEP
+			}
+			LEP = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			ANQ = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = ANQ
+						is_claimed_by = ANQ
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = ANQ
+			}
+			ANQ = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			CHI = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = CHI
+						is_claimed_by = CHI
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = CHI
+			}
+			CHI = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	
+	
+	if = {
+		limit = {
+			HNN = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = HNN
+						is_claimed_by = HNN
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = HNN
+			}
+			HNN = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			SZC = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = SZC
+						is_claimed_by = SZC
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = SZC
+			}
+			SZC = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+	
+	if = {
+		limit = {
+			YUN = {
+					exists = yes
+					
+					OR = {
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = yes
+						}
+						AND = {
+						is_in_faction_with = JAP
+						is_subject = no
+						}
+					}
+					NOT = { has_war_with = ROOT }
+				}
+		
+		}
+		every_state = {
+				limit = {
+					OR = {
+						is_core_of = YUN
+						is_claimed_by = YUN
+						if = { limit = { check_variable = { JAP_checkdoneonce = 0 } }
+						is_mainland_china = yes
+						set_temp_variable = { JAP_checkdoneonce = 1 }
+						}
+
+					}
+					is_claim_or_core_of_ROOT = no
+					OR = {
+						is_owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+							NOT = { tag = LEC }
+						}
+					}
+				}
+				transfer_state_to = YUN
+			}
+			YUN = {
+				add_opinion_modifier = { target = ROOT modifier = KR_close_allies }
+				
+				country_event = japfor.464
+			}
+	}
+}
+
+JAP_core_north_china_states = {
+	add_state_core  = 883 
+	add_state_core  = 884 
+	add_state_core  = 714 
+	add_state_core  = 717 
+	add_state_core  = 886 
+	add_state_core  = 715 
+	add_state_core  = 328 
+	add_state_core  = 716 
+	add_state_core  = 610 
+	add_state_core  = 614 
+	add_state_core  = 609 
+	add_state_core  = 608 
+	add_state_core  = 611 
+	add_state_core  = 615 
+	add_state_core  = 1062 
+	add_state_core  = 1063 
+	add_state_core  = 1061 
+	add_state_core  = 1060 
+	add_state_core  = 1059 
+	add_state_core  = 607 
+	add_state_core  = 799 
+	add_state_core  = 1058 
+	add_state_core  = 1048 
+	add_state_core  = 620 
+	add_state_core  = 1072 
+	add_state_core  = 1015 
+
+}
+
+JAP_core_east_china_states = {
+			add_state_core  = 597 
+			add_state_core  = 1065 
+			add_state_core  = 1064 
+			add_state_core  = 1047 
+			add_state_core  = 1050 
+			add_state_core  = 598 
+			add_state_core  = 1075 
+			add_state_core  = 606 
+			add_state_core  = 613 
+			add_state_core  = 1014 
+			add_state_core  = 596 
+			add_state_core  = 1068 
+			add_state_core  = 1067 
+			add_state_core  = 1044 
+			add_state_core  = 1069 
+			add_state_core  = 1066 
+			add_state_core  = 595 
+			add_state_core  = 1045 
+			add_state_core  = 600 
+			add_state_core  = 1046
+}
+
+JAP_core_south_china_states = {
+	add_state_core  = 591 
+			add_state_core  = 1056 
+			add_state_core  = 594 
+			add_state_core  = 1053 
+			add_state_core  = 1054 
+			add_state_core  = 1055
+			add_state_core  = 599 
+			add_state_core  = 593 
+			add_state_core  = 592 
+			add_state_core  = 800 
+			add_state_core  = 1012 
+			add_state_core  = 602 
+			add_state_core  = 1013 
+			add_state_core  = 1052 
+			add_state_core  = 1049 
+			add_state_core  = 603 
+			add_state_core  = 1051 
+			add_state_core  = 325 
+			add_state_core  = 816 
+			add_state_core  = 601
+			add_state_core  = 605
+			add_state_core  = 661
+			add_state_core  = 650
+			add_state_core  = 788
+
+
+}
+
+JAP_core_west_china_states = {
+add_state_core  = 693
+			add_state_core  = 748 
+			add_state_core  = 322 
+			add_state_core  = 1086 
+			add_state_core  = 353 
+			add_state_core  = 604
+			add_state_core  = 283 
+			add_state_core  = 774 
+			add_state_core  = 348 
+			add_state_core  = 616 
+			add_state_core  = 621 
+			add_state_core  = 612 
+			add_state_core  = 330 
+			add_state_core  = 1084 
+			add_state_core  = 329 
+			add_state_core  = 654 
+			add_state_core  = 1293 
+			add_state_core  = 811
+			add_state_core  = 1083 
+			add_state_core  = 618
+			add_state_core  = 617
+			add_state_core  = 287
+			add_state_core  = 1085
+			add_state_core  = 619
+			add_state_core  = 897
 }
