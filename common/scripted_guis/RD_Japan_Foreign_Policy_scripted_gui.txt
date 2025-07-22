@@ -4,46 +4,13 @@ scripted_gui = {
     context_type = player_context
 	triggers = {
 		korea_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						KOR = {
-						is_in_faction_with = JAP
-						}
-						KOR = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 527
-						NOT = {
-						owns_state = 525
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						KOR = {
-						is_in_faction_with = JAP
-						}
-						KOR = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 525
-						NOT = {
-						owns_state = 527
-						}
-					}
-				}
-				
-				}
-			}
+		525 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		527 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
 		}
 		
 		korea_japanese_japanese_owned_visible = {
@@ -58,106 +25,17 @@ scripted_gui = {
 		
 		
 		transamur_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						TRM = {
-						is_in_faction_with = JAP
-						}
-						TRM = {
-						is_subject_of = JAP
-						}
-						YAK = {
-						is_in_faction_with = JAP
-						}
-						YAK = {
-						is_subject_of = JAP
-						}
-						BRY = {
-						is_in_faction_with = JAP
-						}
-						BRY = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 562
-						NOT = {
-						owns_state = 408
-						owns_state = 563
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						TRM = {
-						is_in_faction_with = JAP
-						}
-						TRM = {
-						is_subject_of = JAP
-						}
-						YAK = {
-						is_in_faction_with = JAP
-						}
-						YAK = {
-						is_subject_of = JAP
-						}
-						BRY = {
-						is_in_faction_with = JAP
-						}
-						BRY = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 408
-						NOT = {
-						owns_state = 562
-						owns_state = 563
-						}
-					}
-				}
-				
-				}
-				
-				AND = {
-				OR = {
-						TRM = {
-						is_in_faction_with = JAP
-						}
-						TRM = {
-						is_subject_of = JAP
-						}
-						YAK = {
-						is_in_faction_with = JAP
-						}
-						YAK = {
-						is_subject_of = JAP
-						}
-						BRY = {
-						is_in_faction_with = JAP
-						}
-						BRY = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						
-						owns_state = 563
-						NOT = {
-						owns_state = 562
-						owns_state = 408
-						}
-					}
-				}
-				
-				}
-			}
+		408 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		562 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		563 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
+
 		}
 		
 		transamur_japanese_owned_visible = {
@@ -172,65 +50,20 @@ scripted_gui = {
 		}
 		
 		manchuria_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						FNG = {
-						is_in_faction_with = JAP
-						}
-						FNG = {
-						is_subject_of = JAP
-						}
-						MAN = {
-						is_in_faction_with = JAP
-						}
-						MAN = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 883
-						NOT = {
-						owns_state = 716
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						FNG = {
-						is_in_faction_with = JAP
-						}
-						FNG = {
-						is_subject_of = JAP
-						}
-						MAN = {
-						is_in_faction_with = JAP
-						}
-						MAN = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 716
-						NOT = {
-						owns_state = 883
-						}
-					}
-				}
-				
-				}
-			}
+		716 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		883 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
 		}
 		
 		manchuria_japanese_japanese_owned_visible = {
 			JAP = {
 			owns_state = 716
 			owns_state = 883
-			FNG = { exists = no }
+			FNG = { OR = { exists = no is_subject_of = JAP } } #if Japan creates new puppet fng out of it
 			MAN = { exists = no }
 			}
 		}
@@ -240,48 +73,13 @@ scripted_gui = {
 	
 	
 	mongolia_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						MON = {
-						is_in_faction_with = JAP
-						}
-						MON = {
-						is_subject_of = JAP
-						}
-						
-					}
-				JAP = {
-					OR = {
-						owns_state = 330
-						NOT = {
-						owns_state = 811
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						MON = {
-						is_in_faction_with = JAP
-						}
-						MON = {
-						is_subject_of = JAP
-						}
-						
-					}
-				JAP = {
-					OR = {
-						owns_state = 811
-						NOT = {
-						owns_state = 330
-						}
-					}
-				}
-				
-				}
-			}
+		811 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		330 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
 		}
 		
 		mongolia_japanese_owned_visible = {
@@ -295,58 +93,14 @@ scripted_gui = {
 		
 		
 		siberia_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						SIB = {
-						is_in_faction_with = JAP
-						}
-						SIB = {
-						is_subject_of = JAP
-						}
-						RUS = {
-						is_in_faction_with = JAP
-						}
-						RUS = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 653
-						NOT = {
-						owns_state = 566
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						SIB = {
-						is_in_faction_with = JAP
-						}
-						SIB = {
-						is_subject_of = JAP
-						}
-						RUS = {
-						is_in_faction_with = JAP
-						}
-						RUS = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 566
-						NOT = {
-						owns_state = 653
-						}
-					}
-				}
-				
-				}
-			}
+		566 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		653 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
+
 		}
 		
 		siberia_japanese_owned_visible = {
@@ -360,48 +114,14 @@ scripted_gui = {
 		
 		
 		qing_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						QIE = {
-						is_in_faction_with = JAP
-						}
-						QIE = {
-						is_subject_of = JAP
-						}
-						
-					}
-				JAP = {
-					OR = {
-						owns_state = 608
-						NOT = {
-						owns_state = 799
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						QIE = {
-						is_in_faction_with = JAP
-						}
-						QIE = {
-						is_subject_of = JAP
-						}
-						
-					}
-				JAP = {
-					OR = {
-						owns_state = 799
-						NOT = {
-						owns_state = 608
-						}
-					}
-				}
-				
-				}
-			}
+
+		799 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		608 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
 		}
 		
 		qing_japanese_owned_visible = {
@@ -411,146 +131,21 @@ scripted_gui = {
 			
 			}
 			QIE = { exists = no }
+			TIA = { OR = { exists = no is_subject_of = JAP } }
 		}
 		
 		
 		east_china_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						SQI = {
-						is_in_faction_with = JAP
-						}
-						SQI = {
-						is_subject_of = JAP
-						}
-						LEP = {
-						is_in_faction_with = JAP
-						}
-						LEP = {
-						is_subject_of = JAP
-						}
-						ANQ = {
-						is_in_faction_with = JAP
-						}
-						ANQ = {
-						is_subject_of = JAP
-						}
-						CHI = {
-						is_in_faction_with = JAP
-						}
-						CHI = {
-						is_subject_of = JAP
-						}
-						LEC = {
-						is_in_faction_with = JAP
-						}
-						LEC = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 1044
-						NOT = {
-						owns_state = 597
-						owns_state = 743
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						SQI = {
-						is_in_faction_with = JAP
-						}
-						SQI = {
-						is_subject_of = JAP
-						}
-						LEP = {
-						is_in_faction_with = JAP
-						}
-						LEP = {
-						is_subject_of = JAP
-						}
-						ANQ = {
-						is_in_faction_with = JAP
-						}
-						ANQ = {
-						is_subject_of = JAP
-						}
-						CHI = {
-						is_in_faction_with = JAP
-						}
-						CHI = {
-						is_subject_of = JAP
-						}
-						LEC = {
-						is_in_faction_with = JAP
-						}
-						LEC = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						owns_state = 597
-						NOT = {
-						owns_state = 1044
-						owns_state = 743
-						}
-					}
-				}
-				
-				}
-				
-				AND = {
-				OR = {
-						SQI = {
-						is_in_faction_with = JAP
-						}
-						SQI = {
-						is_subject_of = JAP
-						}
-						LEP = {
-						is_in_faction_with = JAP
-						}
-						LEP = {
-						is_subject_of = JAP
-						}
-						ANQ = {
-						is_in_faction_with = JAP
-						}
-						ANQ = {
-						is_subject_of = JAP
-						}
-						CHI = {
-						is_in_faction_with = JAP
-						}
-						CHI = {
-						is_subject_of = JAP
-						}
-						LEC = {
-						is_in_faction_with = JAP
-						}
-						LEC = {
-						is_subject_of = JAP
-						}
-					}
-				JAP = {
-					OR = {
-						
-						owns_state = 743
-						NOT = {
-						owns_state = 1044
-						owns_state = 597
-						}
-					}
-				}
-				
-				}
-			}
+		597 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		743 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		1044 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
 		}
 		
 		east_china_japanese_owned_visible = {
@@ -566,9 +161,7 @@ scripted_gui = {
 			}
 		}
 		
-		taiwan_japanese_influenced_visible = {
-			OR = {
-				
+		taiwan_japanese_influenced_visible = {				
 					OR = {
 						TAI = {
 						is_in_faction_with = JAP
@@ -578,7 +171,6 @@ scripted_gui = {
 						}
 						
 					}
-			}
 		}
 		
 		taiwan_japanese_owned_visible = {
@@ -590,48 +182,13 @@ scripted_gui = {
 		}
 		
 		shanxi_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						SHX = {
-						is_in_faction_with = JAP
-						}
-						SHX = {
-						is_subject_of = JAP
-						}
-						
-					}
-				JAP = {
-					OR = {
-						owns_state = 1072
-						NOT = {
-						owns_state = 622
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						SHX = {
-						is_in_faction_with = JAP
-						}
-						SHX = {
-						is_subject_of = JAP
-						}
-						
-					}
-				JAP = {
-					OR = {
-						owns_state = 622
-						NOT = {
-						owns_state = 1072
-						}
-					}
-				}
-				
-				}
-			}
+		622 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		1072 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
 		}
 		
 		shanxi_japanese_owned_visible = {
@@ -645,48 +202,13 @@ scripted_gui = {
 		
 		
 		ma_clique_japanese_influenced_visible = {
-			OR = {
-				AND = {
-					OR = {
-						XSM = {
-						is_in_faction_with = JAP
-						}
-						XSM = {
-						is_subject_of = JAP
-						}
-						
-					}
-				JAP = {
-					OR = {
-						owns_state = 283
-						NOT = {
-						owns_state = 604
-						}
-					}
-				}
-				
-				}
-				AND = {
-				OR = {
-						XSM = {
-						is_in_faction_with = JAP
-						}
-						XSM = {
-						is_subject_of = JAP
-						}
-						
-					}
-				JAP = {
-					OR = {
-						owns_state = 604
-						NOT = {
-						owns_state = 283
-						}
-					}
-				}
-				
-				}
-			}
+		604 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+		283 = { 
+		owner = { or = { is_subject_of = JAP is_in_faction_with = JAP } }
+		}
+
 		}
 		
 		ma_clique_japanese_owned_visible = {
@@ -699,7 +221,7 @@ scripted_gui = {
 		}
 		
 		
-		xinjiang_japanese_influenced_visible = {
+		xinjiang_japanese_influenced_visible = { #start here nextx
 			OR = {
 				AND = {
 					OR = {
