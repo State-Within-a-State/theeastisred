@@ -593,7 +593,6 @@
 		prerequisite = { focus = JAP_advance_western_frontiers  } prerequisite = { focus = JAP_continent_a_blaze  }
 		completion_reward = {
 		custom_effect_tooltip = JAP_integrate_chinese_states
-		add_state_core = 745
 		}
 	}
 	
@@ -995,8 +994,8 @@
 	shared_focus = {
 		id = JAP_co_prosperity_sphere
 		icon = GFX_JAPFOR_seishinron-248360
-		relative_position_id = JAP_eight_corners_of_world
-		x = -1
+		relative_position_id = JAPFOR_japansplaceintheworld
+		x = 18
 		y = 1
 		cost = 3
 		search_filters = {
@@ -1005,7 +1004,7 @@
 		available = {
 			is_faction_leader = yes
 		}
-		prerequisite = { focus = JAP_eight_corners_of_world  } 
+		prerequisite = { focus = JAPFOR_japansplaceintheworld  } 
 		select_effect = {
 			log = "[GetDateText]: [Root.GetName]: Select Focus JAP_tokyo_conference"
 			every_other_country = {
@@ -1035,6 +1034,166 @@
 				PREV = { activate_targeted_decision = { target = PREV decision = JAP_invite_into_faction } }
 			}
 		}
+	}
+
+
+	focus = { #Economic integration conference
+		id = JAP_osaka_conference_new
+		icon = GFX_goal_JAP_yen
+		cost = 5
+
+		relative_position_id = JAP_co_prosperity_sphere
+		x = 0
+		y = 1
+
+		available = {
+			is_faction_leader = yes
+		}
+		prerequisite = {
+			focus = JAP_co_prosperity_sphere
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_osaka_conference"
+			set_country_flag = JAP_economic_sphere_member
+			custom_effect_tooltip = JAP_may_now_invite_sphere
+			hidden_effect = {
+				country_event = japfor.400
+				JAP_open_JAP_co_prosperity_decisions_JAP_osaka_conference = yes
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+	}
+
+	focus = { #Open the process of puppetting the sphere members
+		id = JAP_integrate_asian_economies_new
+		icon = GFX_goal_USA_embargo_japan
+		cost = 5
+
+		relative_position_id = JAP_osaka_conference_new
+		x = 0
+		y = 1
+
+		available = {
+			is_faction_leader = yes
+		}
+		prerequisite = {
+			focus = JAP_osaka_conference_new
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_integrate_asian_economies"
+			add_political_power = 100
+			custom_effect_tooltip = JAP_may_now_invest_sphere
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = { activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_member1 } }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+	}
+
+	focus = {
+		id = JAP_copro_development_plan_new
+		icon = GFX_goal_MAG_naval_research_department
+		cost = 5
+
+		relative_position_id = JAP_integrate_asian_economies_new
+		x = 0
+		y = 1
+
+		prerequisite = {
+			focus = JAP_integrate_asian_economies_new
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_copro_development_plan"
+			custom_effect_tooltip = JAP_naval_investment
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = { activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_member_docks } }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_BONUS }
+	}
+
+	focus = {
+		id = JAP_prosperity_ships_new
+		icon = GFX_goal_CAL_trade_fleet
+		cost = 5
+
+		relative_position_id = JAP_copro_development_plan_new
+		x = -1
+		y = 1
+
+		prerequisite = {
+			focus = JAP_copro_development_plan_new
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_prosperity_ships"
+			add_ideas = JAP_nav_tra_idea
+			custom_effect_tooltip = JAP_naval_prosperity_ships
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = { activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_prosperity_ships } }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_NAVY_BONUS }
+	}
+
+	focus = {
+		id = JAP_naval_engineering_assistance_new
+		icon = GFX_goal_generic_naval_industry
+		cost = 5
+
+		relative_position_id = JAP_copro_development_plan_new
+		x = 1
+		y = 1
+
+		prerequisite = {
+			focus = JAP_copro_development_plan_new
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_naval_engineering_assistance"
+			custom_effect_tooltip = JAP_naval_advisors
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = {
+						activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_naval_advisors }
+					}
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_NAVY_BONUS }
+	}
+
+	focus = {
+		id = JAP_unified_production_new
+		icon = GFX_goal_generic_shipyard
+		cost = 5
+
+		relative_position_id = JAP_copro_development_plan_new
+		x = 0
+		y = 2
+
+		prerequisite = {
+			focus = JAP_copro_development_plan_new
+		}
+		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_unified_production"
+			custom_effect_tooltip = JAP_naval_seize_docks
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.asian_economic_sphere
+					FROM = { activate_targeted_decision = { target = PREV decision = JAP_invest_in_sphere_take_dockyards } }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_BONUS }
 	}
 	
 	#Running Into the Belly of the Beast
@@ -1074,7 +1233,7 @@
 		id = JAP_dealings_in_africa
 		icon = GFX_JAPFOR_seishinron-248360
 		relative_position_id = JAP_eight_corners_of_world
-		x = 1
+		x = 0
 		y = 1
 		cost = 3
 		search_filters = {
@@ -1105,7 +1264,6 @@
 		}
 		#prerequisite = { focus = JAP_belly_of_the_beast  }#
 		prerequisite = { focus = JAP_dealings_in_africa  } 
-		prerequisite = { focus = JAP_co_prosperity_sphere  } 
 		completion_reward = {
 		swap_ideas = {
 		remove_idea = JAP_eight_corners
