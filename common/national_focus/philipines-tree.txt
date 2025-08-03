@@ -2078,7 +2078,9 @@ focus_tree = {
 		leave_faction = yes 
 		}
 		else = {
-		add_political_power = 100
+		add_political_power = 50
+		add_command_power = 50
+		add_war_support = 0.05
 		add_popularity = {
 		ideology = radical_socialist
 		popularity = 0.05
@@ -2091,8 +2093,6 @@ focus_tree = {
 		ideology = totalist
 		popularity = 0.025
 		}
-
-		#do something cool idk
 		}
 		}
 	}
@@ -2110,7 +2110,7 @@ focus_tree = {
 		prerequisite = { focus = PHI_santos_break_empire } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-		#country event bout rev and mil and shit
+		country_event = rd_phil.34 #rev event for unlocking the correct focus
 		}
 	}
 #second elections
@@ -3710,7 +3710,6 @@ focus_tree = {
 		}
 		completion_reward = {
 		custom_effect_tooltip = unlock_focuses	
-		#do the checks of the sides	country_event = idk
 		}
 	}
 	#first president 
@@ -4418,6 +4417,304 @@ has_country_leader = {
 		country_event = rd_phil.32
 		}
 	}
+	#soc nd anti soc paths
+	#Hands of the Revolution Raised by the Fruits of Labour
+	focus = {
+		id = PHI_soc_victoryyay
+		icon = GFX_goal_QIO_revolution
+		x = 25
+		y = 18
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		}
+		completion_reward = {
+
+
+		}
+	}
+	#Mentoring the Socialist Path
+	focus = {
+		id = PHI_soc_second_santos
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_victoryyay
+		x = -4
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_victoryyay } 
+		completion_reward = {
+
+		}
+	}
+	#spirit of labor
+	focus = {
+		id = PHI_soc_second_labor
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_santos } 
+		completion_reward = {
+
+		}
+	}
+
+	#nationalista
+	focus = {
+		id = PHI_soc_second_santos_nationalista
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = -2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_labor } 
+		completion_reward = {
+
+		}
+	}
+	#marxist struggle
+	focus = {
+		id = PHI_soc_second_marxism
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_labor } 
+		completion_reward = {
+
+		}
+	}
+	#socialist humanism
+	focus = {
+		id = PHI_soc_second_humanism
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_marxism } 
+		completion_reward = {
+
+		}
+	}
+	#A Showdown Against Radicals
+	focus = {
+		id = PHI_soc_second_no_rads
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = -4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_santos_nationalista } 
+		completion_reward = {
+
+		}
+	}
+	#over pacisif
+	focus = {
+		id = PHI_soc_second_pacific
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_marxism focus = PHI_soc_second_santos_nationalista } 
+		completion_reward = {
+
+		}
+	}
+	#cygan welfare
+	focus = {
+		id = PHI_soc_second_welfare
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_humanism } prerequisite = { focus = PHI_soc_second_pacific }
+		completion_reward = {
+
+		}
+	}
+	#mutual aid
+	focus = {
+		id = PHI_soc_second_mutual_aid
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_humanism } 
+		completion_reward = {
+
+		}
+	}
+	#strengthen labor
+	focus = {
+		id = PHI_soc_second_labor_strength
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 3
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_mutual_aid } prerequisite = { focus = PHI_soc_second_welfare } 
+		completion_reward = {
+
+		}
+	}
+
+	#ppttus
+	focus = {
+		id = PHI_soc_second_ppttus
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_no_rads focus = PHI_soc_second_humanism } prerequisite = { focus = PHI_soc_second_pacific }
+		completion_reward = {
+
+		}
+	}
+	#tobbacco
+	focus = {
+		id = PHI_soc_second_tobbacco
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_ppttus }
+		completion_reward = {
+
+		}
+	}
+
+
+	#oppose militans
+	focus = {
+		id = PHI_soc_second_militans
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = -4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_no_rads  } 
+		completion_reward = {
+
+		}
+	}
+	#guilds and mututal
+	focus = {
+		id = PHI_soc_second_guilds
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = -2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_pacific } prerequisite = { focus = PHI_soc_second_no_rads } 
+		completion_reward = {
+
+		}
+	}
+
+	#social_just
+	focus = {
+		id = PHI_soc_second_social_just
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = -4
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_guilds } prerequisite = { focus = PHI_soc_second_militans } 
+		completion_reward = {
+
+		}
+	}
+
+	#kkk
+	focus = {
+		id = PHI_soc_second_kkk
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = -2
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_social_just } prerequisite = { focus = PHI_soc_second_tobbacco } 
+		completion_reward = {
+
+		}
+	}
+
+	#rev tiger
+	focus = {
+		id = PHI_soc_second_tiger
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_soc_second_santos
+		x = 2
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_soc_second_labor_strength } prerequisite = { focus = PHI_soc_second_tobbacco } 
+		completion_reward = {
+
+		}
+	}
+
 
 	#The Stars, Stripes & the Sun
 	focus = {
