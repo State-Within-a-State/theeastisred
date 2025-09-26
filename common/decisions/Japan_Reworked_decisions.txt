@@ -4209,7 +4209,7 @@ JAP_reaching_to_the_pan_buddhist_realm = {
 			
 		}
 		remove_effect = {
-			country_event = japan_new_event.81
+			FROM = { country_event = japan_new_event.149 } 
 			
 			
 			
@@ -4231,16 +4231,18 @@ JAP_reaching_to_the_pan_buddhist_realm = {
 		
 		targets = {  BHU TIB MON NEP THM }
 		target_trigger = {
-			FROM = { exists = yes }
+			FROM = { 
+			exists = yes 
 			OR = {
-			is_puppet_of = PREV
-			is_in_faction_with = PREV
+			is_puppet_of = JAP
+			is_in_faction_with = JAP
 			}
 			NOT = {
 				
-				has_war_with = PREV
+				has_war_with = JAP
 			
 			}
+		}
 		}
 		cost = 200
 		
@@ -4253,7 +4255,7 @@ JAP_reaching_to_the_pan_buddhist_realm = {
 		remove_effect = {
 			annex_country = {
 				target = FROM
-				transfer_troops = yes
+				transfer_troops = no
 			}
 			
 			every_state = {
