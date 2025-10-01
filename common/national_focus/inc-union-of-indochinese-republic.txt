@@ -2279,6 +2279,7 @@ focus_tree = {
 		remove_idea = INC_hcmt_3
 		add_idea = INC_hcmt_5
 		}
+		country_event = viet.176
 		}
 	}
 
@@ -2502,7 +2503,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC_butnotultranationalist  }
 		completion_reward = {
-			
+			country_event = viet.173
+
 			swap_ideas = {
 				remove_idea = INC_rev_spontaneity_idea
 				add_idea = INC_rev_spontaneity_idea_2
@@ -3347,7 +3349,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC_challenge_siamese_hegemony  }
 		completion_reward = {
-		add_political_power = 25
+		add_stability = 0.05
+		add_war_support = 0.1
+		add_political_power = 100
 		}
 	}
 
@@ -3584,9 +3588,12 @@ focus_tree = {
 		completion_reward = {
 		annex_country = {
 			target = SIA
-			transfer_troops = yes
+			transfer_troops = no
 		}
-		
+		add_stability = -0.05
+		add_political_power = -100
+		country_event = { id = viet.177 days = 30 }
+		hidden_effect = { 
 		add_state_core  = 751
 		add_state_core  = 830
 		add_state_core  = 999
@@ -3598,6 +3605,7 @@ focus_tree = {
 		add_state_core  = 823
 		add_state_core  = 289
 		add_state_core  = 824
+		}
 		}
 	}
 
@@ -3770,9 +3778,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = INC_greatpresidenthochiminhlivesforeverinourcause focus = INC_paradise_of_the_working_class  } 
 		completion_reward = {
+		if = { limit = { not = { has_completed_focus = INC_admit_siam_to_the_union } } 
 		custom_effect_tooltip = indochina_final_stepp_tt
 		hidden_effect = {
 		country_event = inc_rework.8
+		}
+		}
+		}
+		else = { 
+		add_ideas = {
+		INC_uinited_union
 		}
 		}
 	}
