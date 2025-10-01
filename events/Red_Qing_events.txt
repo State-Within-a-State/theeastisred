@@ -2,8 +2,8 @@
 
 country_event = {
 	id = red_qing.1
-	title = "Reeducation Starts for Puyi"
-	desc = red_qing.1.Plz
+	title = red_qing.1.t
+	desc = red_qing.1.d
 		picture = "-"
 		
 		fire_only_once = yes
@@ -11,7 +11,7 @@ country_event = {
 		is_triggered_only = yes
 
 		option = {
-		name = "This needs to work."
+		name = red_qing.1.a
 		hidden_effect = {
 				country_event = {
 					id = red_qing.5
@@ -76,16 +76,20 @@ country_event = {
 		name = red_qing.2.b
 		if = {
 		limit = {
-		has_country_leader_ideology = socdem_paternal_socialism_subtype
+		has_country_leader_ideology = socdem_datong_shu_subtype
 		}
 		set_country_leader_ideology = socdem_mladorossi_subtype
 		}
 		
 		else_if = {
 		limit = {
+		or = {
 		has_country_leader_ideology = authdem_agrarianism_subtype
+		has_country_leader_ideology = authdem_new_legalism_subtype
+		has_country_leader_ideology = yan_xishan_thought_subtype
 		}
-		set_country_leader_ideology = Authdem_monsoc_subtype
+		}
+		set_country_leader_ideology = authdem_monsoc_subtype
 		}
 		else = {
 		set_country_leader_ideology = monsoc_subtype
@@ -104,11 +108,6 @@ country_event = {
 				name = QIE_red_qing_party
 			}
 	set_party_name = {
-				ideology = syndicalist
-				long_name = QIE_red_qing_party_long
-				name = QIE_red_qing_party
-			}
-	set_party_name = {
 				ideology = radical_socialist
 				long_name = QIE_red_qing_party_long
 				name = QIE_red_qing_party
@@ -118,6 +117,17 @@ country_event = {
 				long_name = QIE_red_qing_party_long
 				name = QIE_red_qing_party
 			}
+	set_party_name = {
+				ideology = paternal_autocrat
+				long_name = QIE_red_qing_party_long
+				name = QIE_red_qing_party
+			}
+	set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = QIE_red_qing_party_long
+				name = QIE_red_qing_party
+			}
+
 	set_party_name = {
 				ideology = social_liberal
 				long_name = QIE_red_qing_party_long
@@ -129,6 +139,20 @@ country_event = {
 			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
 			expire = "1965.1.1"
 			ideology = socdem_paternal_socialism_subtype
+	}
+	create_country_leader = {
+			name = "Puyi"
+			desc = "POLITICS_PUYI_RESTORED_DESC"
+			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
+			expire = "1965.1.1"
+			ideology = yan_xishan_thought_subtype
+	}
+	create_country_leader = {
+			name = "Puyi"
+			desc = "POLITICS_PUYI_RESTORED_DESC"
+			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
+			expire = "1965.1.1"
+			ideology = authdem_new_legalism_subtype
 	}
 	create_country_leader = {
 			name = "Puyi"
@@ -157,41 +181,16 @@ country_event = {
 			desc = "POLITICS_PUYI_RESTORED_DESC"
 			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
 			expire = "1965.1.1"
-			ideology = left_nationalism_subtype
+			ideology = radsoc_socialist_confucianism_subtype
 	}
-	set_temp_variable = { coalition_partner_var = token:social_liberal }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:totalist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:syndicalist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:social_democrat }
-	add_to_coalition = yes
-}
-	option = { #if fidel ever happens he's gonna be a syndie 
-	name = red_qing.3.b
-	set_politics = {
-				ruling_party = syndicalist
-				elections_allowed = no
-			}
-	create_country_leader = {
-			name = "Puyi"
-			desc = "POLITICS_PUYI_RESTORED_DESC"
-			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
-			expire = "1965.1.1"
-			ideology = reformed_natsynd_subtype
-	}
-	set_temp_variable = { coalition_partner_var = token:social_liberal }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:radical_socialist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:totalist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:social_democrat }
-	add_to_coalition = yes
+	add_soclib_to_coalition = yes
+	add_tot_to_coalition = yes
+	add_socdem_to_coalition = yes
+	add_pataut_to_coalition = yes
+	add_authdem_to_coalition = yes
 }
 	option = { #Sun Yat Sen spotted rolling in his grave
-	name = red_qing.3.c 
+	name = red_qing.3.b
 	set_politics = {
 				ruling_party = totalist
 				elections_allowed = no
@@ -201,17 +200,41 @@ country_event = {
 			desc = "POLITICS_PUYI_RESTORED_DESC"
 			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
 			expire = "1965.1.1"
-			ideology = tot_tridemism_subtype
+			ideology = tot_datong_shu_subtype
 	}
-	set_temp_variable = { coalition_partner_var = token:social_liberal }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:radical_socialist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:syndicalist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:social_democrat }
-	add_to_coalition = yes
+	add_soclib_to_coalition = yes
+	add_radsoc_to_coalition = yes
+	add_socdem_to_coalition = yes
+	add_pataut_to_coalition = yes
+	add_authdem_to_coalition = yes
 	}
+
+	option = { #
+	name = red_qing.3.c
+	set_politics = {
+				ruling_party = paternal_autocrat
+				elections_allowed = no
+			}
+	add_soclib_to_coalition = yes
+	add_radsoc_to_coalition = yes
+	add_socdem_to_coalition = yes
+	add_tot_to_coalition = yes
+	add_authdem_to_coalition = yes
+	}
+	option = { #
+	name = red_qing.3.e
+	set_politics = {
+				ruling_party = authoritarian_democrat
+				elections_allowed = no
+			}
+	add_soclib_to_coalition = yes
+	add_tot_to_coalition = yes
+	add_radsoc_to_coalition = yes
+	add_socdem_to_coalition = yes
+	add_pataut_to_coalition = yes
+}
+
+
 }
 
 country_event = {
@@ -222,11 +245,6 @@ country_event = {
 				ideology = syndicalist
 				long_name = QIE_red_qing_purged_party
 				name = QIE_red_qing_purged_party
-			}
-	set_party_name = {
-			ideology = totalist
-				long_name = QIE_radical_socialist_party_long
-				name = QIE_radical_socialist_party
 			}
 	}
 	}
@@ -248,12 +266,11 @@ country_event = {
 			desc = "POLITICS_PUYI_RESTORED_DESC"
 			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
 			expire = "1965.1.1"
-			ideology = socdem_paternal_socialism_subtype
+			ideology = socdem_datong_shu_subtype
 	}
-	set_temp_variable = { coalition_partner_var = token:radical_socialist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:social_conservative }
-	add_to_coalition = yes
+	add_radsoc_to_coalition = yes
+	add_soccon_to_coalition = yes
+	add_tot_to_coalition = yes
 }
 	option = { #for the backwards peasants 
 	name = red_qing.4.b 
@@ -266,19 +283,18 @@ country_event = {
 			desc = "POLITICS_PUYI_RESTORED_DESC"
 			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
 			expire = "1965.1.1"
-			ideology = radsoc_popular_patriotism_subtype
+			ideology = radsoc_socialist_confucianism_subtype
 	}
 	create_country_leader = {
 			name = "Puyi"
 			desc = "POLITICS_PUYI_RESTORED_DESC"
 			picture = "gfx/leaders/QIE/Portrait_QIE_Puyi_Uniform.png"
 			expire = "1965.1.1"
-			ideology = occultism_subtype
+			ideology = consistent_way_subtype
 	}
-	set_temp_variable = { coalition_partner_var = token:national_populist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:social_democrat }
-	add_to_coalition = yes
+	add_natpop_to_coalition = yes
+	add_socdem_to_coalition = yes
+	add_tot_to_coalition = yes
 }
 	option = { #for me only 
 	name = red_qing.4.c 
@@ -298,10 +314,9 @@ country_event = {
 			expire = "1965.1.1"
 			ideology = authdem_agrarianism_subtype
 	}
-	set_temp_variable = { coalition_partner_var = token:radical_socialist }
-	add_to_coalition = yes
-	set_temp_variable = { coalition_partner_var = token:social_democrat }
-	add_to_coalition = yes
+	add_radsoc_to_coalition = yes
+	add_socdem_to_coalition = yes
+	add_tot_to_coalition = yes
 }
 }
 
