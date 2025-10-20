@@ -2114,7 +2114,7 @@ country_event = { #Protecting the Republic
 		add_ideas = {
 		PHI_Andres_Soriano_hog_npo
 		PHI_Silvestre_Sancho_for_npo
-		PHI_Martin_Pou_eco_npo
+		PHI_Andres_Soriano_eco_npo
 		PHI_Enrique_Zobel_de_Ayala_sec_npo
 		}
 	}
@@ -2176,10 +2176,27 @@ country_event = { #A Struggle in the Chamber
 		
 	}
 	
-	
-	
-	option = { #Enrique Overthrows Soriano
+	option = { #Compromise With Enrique
 		name = rd_phil.38.b
+		ai_chance = { base = 100 }
+		set_politics = {
+   		ruling_party = national_populist
+    		elections_allowed = no
+		}
+		add_pataut_to_coalition = yes
+		add_popularity = {
+		ideology = national_populist 
+		popularity = 0.2
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -0.2
+		}
+	}
+
+	
+	option = { #Enrique replaces Soriano via winning
+		name = rd_phil.38.c
 		ai_chance = { base = 100 }
 		set_politics = {
    		ruling_party = national_populist
@@ -2197,9 +2214,14 @@ country_event = { #A Struggle in the Chamber
 		}
 		add_pataut_to_coalition = yes
 		add_popularity = {
-		ideology = national_populist
-		popularity = 0.4
+		ideology = national_populist 
+		popularity = 0.2
 		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -0.2
+		}
+
 	}
 }
 
