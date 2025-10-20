@@ -2112,7 +2112,9 @@ focus_tree = {
 		prerequisite = { focus = PHI_santos_break_empire } 
 		available = { not = { has_country_flag = PHI_second_elections } }
 		completion_reward = {
-		#country_event = rd_phil.35 #?idk check which one hasn't been used #rev event for unlocking the correct focus
+		add_war_support = 0.05
+		army_experience = 10
+		country_event = {id = rd_phil.39 days = 30 }#rev event for unlocking the correct focus
 		}
 	}
 #second elections
@@ -4448,8 +4450,10 @@ has_country_leader = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
+		always = no
 		}
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 
 
 		}
@@ -5283,58 +5287,6 @@ has_country_leader = {
 	}
 
 
-	#The Stars, Stripes & the Sun
-	focus = {
-		id = PHI_start_foreign
-		icon = GFX_goal_QIO_revolution
-		x = 70
-		y = 0
-		cost = 2
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		is_subject = no
-		has_country_flag = PHI_first_election_occurred 
-		}
-		completion_reward = {
-
-
-		}
-	}
-	#own faction 
-	focus = {
-		id = PHI_foreign_own
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_start_foreign
-		x = 0
-		y = 1
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_start_foreign} 
-		completion_reward = {
-
-		}
-	}
-	#amerikkka 
-	focus = {
-		id = PHI_foreign_amerikkka
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_start_foreign
-		x = 4
-		y = 1
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = { is_in_faction_with = USA }
-		prerequisite = { focus = PHI_start_foreign} 
-		completion_reward = {
-
-		}
-	}
 
 	#antisoc victory
 	focus = {
@@ -5347,9 +5299,10 @@ has_country_leader = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = {
+		always = no
 		}
 		completion_reward = {
-
+		custom_effect_tooltip = unlock_focuses
 
 		}
 	}
@@ -5366,8 +5319,11 @@ has_country_leader = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_antisoc_vict } 
+		available = {
+		always = no
+		}
 		completion_reward = {
-
+		custom_effect_tooltip = unlock_focuses	
 		}
 	}
 	
@@ -5578,6 +5534,9 @@ has_country_leader = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_antisoc_vict }  
+		available = {
+		always = no
+		}
 		completion_reward = {
 		custom_effect_tooltip = unlock_focuses	
 		}
@@ -5825,8 +5784,11 @@ has_country_leader = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_antisoc_vict }  
+		available = {
+		always = no
+		}
 		completion_reward = {
-
+		custom_effect_tooltip = unlock_focuses	
 		}
 	}
 	
@@ -6056,4 +6018,57 @@ has_country_leader = {
 
 		}
 	}
+	#The Stars, Stripes & the Sun
+	focus = {
+		id = PHI_start_foreign
+		icon = GFX_goal_QIO_revolution
+		x = 70
+		y = 0
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		is_subject = no
+		has_country_flag = PHI_first_election_occurred 
+		}
+		completion_reward = {
+
+
+		}
+	}
+	#own faction 
+	focus = {
+		id = PHI_foreign_own
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start_foreign
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start_foreign} 
+		completion_reward = {
+
+		}
+	}
+	#amerikkka 
+	focus = {
+		id = PHI_foreign_amerikkka
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start_foreign
+		x = 4
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = { is_in_faction_with = USA }
+		prerequisite = { focus = PHI_start_foreign} 
+		completion_reward = {
+
+		}
+	}
+
 }

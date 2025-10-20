@@ -2065,6 +2065,13 @@ country_event = { #Protecting the Republic triggered from event .39
 	option = { #American Junta
 		name = rd_phil.35.b
 		ai_chance = { base = 100 }
+		set_politics = {
+   		ruling_party = paternal_autocrat
+    		elections_allowed = no
+		}
+		#create leader, party name etc
+		complete_national_focus = PHI_antisoc_poisons
+
 		
 	}
 	
@@ -2246,6 +2253,7 @@ country_event = { #resistance to the over taking Constabulary
 	option = { #military obviously tries to stop em Government forces captured all members of the PB still remaining in Manila and their support #staffers. With the head off, 
 		name = rd_phil.40.a
 		ai_chance = { base = 100 }
+		complete_national_focus = PHI_antisoc_vict
 		#create jose leader.
 		country_event = { id = rd_phil.42 days = 10 }
 	}
@@ -2253,6 +2261,7 @@ country_event = { #resistance to the over taking Constabulary
 	option = { #military obviously tries to stop em fails. Jose santos quickly denounces military action
 		name = rd_phil.40.b
 		ai_chance = { base = 100 }
+		complete_national_focus = PHI_soc_victoryyay
 		country_event = { id = rd_phil.41 days = 5 }
 	}
 
@@ -2300,7 +2309,10 @@ country_event = { #Rosters of members were seized, widespread arrests were made,
 	option = { #Military stands down accepts return to apolitical rule
 		name = rd_phil.42.a
 		ai_chance = { base = 100 }
-		country_event = { id = rd_phil.43 days = 30 }
+		complete_national_focus = PHI_antisoc_republicanism_survival
+		hidden_effect = {
+		country_event = { id = rd_phil.43 days = 45 }
+		}
 		
 	}
 	option = { #Don't trust him milit coup the civilian govt. as he was ok with his commie brother
@@ -2343,7 +2355,7 @@ country_event = { #remaining socialists tenitivly support laurel to hopefully re
 	}
 }
 
-country_event = { #flavor about santos or Emilio purging too pro American people from the military police constabary to prevent actions. Wont purge capitalists cause Emilio and santos can still can couped.
+country_event = { #flavor about santos or Emilio purging too pro American people from the military police constabary to prevent actions. Wont purge capitalists cause Emilio and santos can still can couped. get new people in
 	id = rd_phil.45
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.45"}
 	title = rd_phil.45.title
@@ -2354,6 +2366,9 @@ country_event = { #flavor about santos or Emilio purging too pro American people
 	option = { #
 		name = rd_phil.45.a
 		ai_chance = { base = 100 }
+		add_command_power = -100
+		add_manpower = 1000
+
 		
 	}
 }
