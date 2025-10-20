@@ -2054,19 +2054,14 @@ country_event = { #flag for the skadalista
 
 }
 
-country_event = { #Protecting the Republic
-	id = rd_phil.35
+country_event = { #Protecting the Republic triggered from event .39
+	id = rd_phil.35 #military couped jose after defeating socs. Now they are in power. Remain in power or hand power to oligarchs who will be absolutely anti communist? as civilian govt
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.35"}
 	title = rd_phil.35.title
 	desc = rd_phil.35.desc
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #Laurel
-		name = rd_phil.35.a
-		ai_chance = { base = 100 }
-		
-	}
 	option = { #American Junta
 		name = rd_phil.35.b
 		ai_chance = { base = 100 }
@@ -2204,7 +2199,7 @@ country_event = { #A Struggle in the Chamber
 		}
 		create_country_leader = {
 			name = "Enrique Zóbel de Ayala"
-			picture = "gfx/leaders/PHI/Portrait_Philippines_Andres_Soriano.png"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Enrique_Zobel_de_Ayala.png"
 			expire = "1.1.1"
 			ideology = hispanism_subtype
 		}
@@ -2225,37 +2220,45 @@ country_event = { #A Struggle in the Chamber
 	}
 }
 
-country_event = { #
-	id = rd_phil.39
+country_event = { #the revolution is afoot?
+	id = rd_phil.39 #preperations to rid ourselfs of the bad govt, its all been just pushing shit despite enemies in the pop front and establishment. The prev situtaiton couldnt hold
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.39"}
 	title = rd_phil.39.title
 	desc = rd_phil.39.desc
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
-		name = rd_phil.39.a
-		ai_chance = { base = 100 }
-		
+	option = { #working with the pardonded syndicalists and commies as well from before
+		name = rd_phil.39.a #armed struggle through manila, unions and rural peasant support places The armed seizure of state power was planned. #The Hukbong Mapagpalaya ng Bayan (HMB, People's Liberation Army) was formed, and its Regional Commands organized.
+		ai_chance = { base = 100 } 
+		country_event = { id = rd_phil.40 hours = 12 }
 	}
 }
 
-country_event = { #
-	id = rd_phil.40
+country_event = { #resistance to the over taking Constabulary
+	id = rd_phil.40 #santos position is unknown in manila now, as basically civil war military obviously tries to stop em 
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.40"}
 	title = rd_phil.40.title
 	desc = rd_phil.40.desc
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #military obviously tries to stop em Government forces captured all members of the PB still remaining in Manila and their support #staffers. With the head off, 
 		name = rd_phil.40.a
 		ai_chance = { base = 100 }
-		
+		#create jose leader.
+		country_event = { id = rd_phil.42 days = 10 }
 	}
+
+	option = { #military obviously tries to stop em fails. Jose santos quickly denounces military action
+		name = rd_phil.40.b
+		ai_chance = { base = 100 }
+		country_event = { id = rd_phil.41 days = 5 }
+	}
+
 }
 
-country_event = { #
+country_event = { #Jose santos quickly denounces military action and cruelty sides with the poor peasants who rose against politicans and beurocrats acting against their popularly elected government. Military action seen as illegitimate stands down gets defeated in rural places and all that. Now socialists victorious over old order. A congress is held with the masses now victorious
 	id = rd_phil.41
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.41"}
 	title = rd_phil.41.title
@@ -2268,9 +2271,25 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #
+		name = rd_phil.41.b
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = rd_phil.41.c
+		ai_chance = { base = 100 }
+		
+	}
+	option = { #
+		name = rd_phil.41.d
+		ai_chance = { base = 100 }
+		
+	}
+
 }
 
-country_event = { #
+country_event = { #Rosters of members were seized, widespread arrests were made, and a campaign of terror was instituted against the party and #its mass organizations in the provinces. pedro captured and imprisoned. Jose becomes provisional leader with very little power. Jose orders military to stand down and allow restoration of civilian govt. Constabulary
 	id = rd_phil.42
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.42"}
 	title = rd_phil.42.title
@@ -2278,14 +2297,22 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Military stands down accepts return to apolitical rule
 		name = rd_phil.42.a
 		ai_chance = { base = 100 }
+		country_event = { id = rd_phil.43 days = 30 }
 		
 	}
+	option = { #Don't trust him milit coup the civilian govt. as he was ok with his commie brother
+		name = rd_phil.42.b
+		ai_chance = { base = 100 }
+		#create military leader
+		country_event = { id = rd_phil.35 days = 20 }
+	}
+
 }
 
-country_event = { #
+country_event = { #Jose assinitated. Could it be a socialist angry or a military guy angry? no one knows lol
 	id = rd_phil.43
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.43"}
 	title = rd_phil.43.title
@@ -2293,15 +2320,16 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Laurel takes power
 		name = rd_phil.43.a
 		ai_chance = { base = 100 }
+		hidden_effect = { country_event = { id = rd_phil.44 days = 20 } }
 		
 	}
 }
 
-country_event = { #
-	id = rd_phil.44
+country_event = { #remaining socialists tenitivly support laurel to hopefully regain peace and stop military people from dominace flavor
+	id = rd_phil.44 #flavor
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.44"}
 	title = rd_phil.44.title
 	desc = rd_phil.44.desc
@@ -2315,7 +2343,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #flavor about santos or Emilio purging too pro American people from the military police constabary to prevent actions. Wont purge capitalists cause Emilio and santos can still can couped.
 	id = rd_phil.45
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.45"}
 	title = rd_phil.45.title
