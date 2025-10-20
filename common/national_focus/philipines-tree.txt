@@ -5578,7 +5578,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_vict }  
 		completion_reward = {
-
+		custom_effect_tooltip = unlock_focuses	
 		}
 	}
 	
@@ -5594,7 +5594,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_pheonix_rises }  
 		completion_reward = {
-
+		add_ideas = {
+		PHI_hispanic_hacienda_support
+		}
 		}
 	}
 	
@@ -5610,28 +5612,15 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_secure_hacienda }  
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = PHI_hispanic_employee_relations
+			days = 180
+			}
 		}
 	}
 	
 	focus = {
 		id = PHI_antisoc_madrid_cultural_influence
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = PHI_antisoc_secure_hacienda
-		x = 1
-		y = 1
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = PHI_antisoc_secure_hacienda }  
-		completion_reward = {
-
-		}
-	}
-	
-	focus = {
-		id = PHI_antisoc_pension_plan
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_antisoc_secure_hacienda
 		x = 0
@@ -5640,9 +5629,30 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_antisoc_madrid_cultural_influence focus = PHI_antisoc_good_employee_relations }  
+		 prerequisite = { focus = PHI_antisoc_pension_plan  }  prerequisite = { focus = PHI_antisoc_good_employee_relations }
 		completion_reward = {
-
+		add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = PHI_antisoc_pension_plan
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_antisoc_secure_hacienda
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = PHI_antisoc_secure_hacienda } 
+		completion_reward = {
+			add_popularity = {
+			ideology = national_populist
+			popularity = 0.05
+			}
+			add_political_power = 25
 		}
 	}
 	
@@ -5656,9 +5666,11 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_antisoc_pension_plan }  
+		prerequisite = { focus = PHI_antisoc_madrid_cultural_influence }  
 		completion_reward = {
-
+			add_ideas = {
+			PHI_hispanic_charity_fund
+			}
 		}
 	}
 	
@@ -5674,7 +5686,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_pheonix_rises }  
 		completion_reward = {
-
+		add_ideas = {
+		PHI_hispanic_art_cultivation
+		}
+		country_event = rd_phil.36
 		}
 	}
 	
@@ -5690,7 +5705,12 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_art_cultivation }  
 		completion_reward = {
-
+			add_political_power = 50
+			add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.1
+			}
+			add_war_support = 0.1
 		}
 	}
 	
@@ -5706,7 +5726,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_church_ties }  
 		completion_reward = {
-
+			add_ideas = {
+			PHI_hispanic_middle_class
+			}
 		}
 	}
 	
@@ -5722,7 +5744,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_church_ties }  
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = PHI_hispanic_continued
+			days = 180
+			}
 		}
 	}
 	
@@ -5738,7 +5763,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_church_ties }  
 		completion_reward = {
-
+			country_event = rd_phil.37
 		}
 	}
 	
@@ -5754,7 +5779,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_socio_civic_club } prerequisite = { focus = PHI_antisoc_middle_class_support }  prerequisite = { focus = PHI_antisoc_continue_hispanization  }
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = PHI_hispanic_red_purge
+			days = 90
+			}
 		}
 	}
 	
@@ -5771,7 +5799,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_end_red_pests }  prerequisite = { focus = PHI_antisoc_charitable_fund } 
 		completion_reward = {
-
+			country_event = rd_phil.38
 		}
 	}
 	
