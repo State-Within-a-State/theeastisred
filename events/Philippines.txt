@@ -711,7 +711,7 @@ country_event = { #leave faction after being freed from commonwealth?
 	}
 }
 
-country_event = { #roxas died (only if you elected liberals)
+country_event = { #roxas died (only if you elected liberals)//this could also happen if roxas was brought by the milttary so keep that in mind
 	id = rd_phil.11
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.11"}
 	title = rd_phil.11.title
@@ -2076,7 +2076,6 @@ country_event = { #Protecting the Republic triggered from event .39
 		ideology = paternal_autocrat
 		popularity = 0.4
 		}
-		
 		remove_all_ministers = yes
 		add_ideas = {
 		PHI_Guillermo_B_Francisco_hog_pau
@@ -2090,7 +2089,6 @@ country_event = { #Protecting the Republic triggered from event .39
 			expire = "1.1.1"
 			ideology = junta_subtype
 		}
-		
 		
 	}
 	
@@ -2404,7 +2402,7 @@ country_event = { #Operation Knockout
 		name = rd_phil.46.a
 		ai_chance = { base = 100 }
 		add_timed_idea = {
-		idea = 
+		idea = PHI_junta_knockout
 		days = 180
 		}
 	}
@@ -2437,9 +2435,12 @@ country_event = { #Question of the Transition to Democracy
 		}
 		add_popularity = {
 		ideology = authoritarian_democrat
-		popularity = 0.4
+		popularity = 0.45
 		}
-		
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -0.4
+		}
 		remove_all_ministers = yes
 		add_ideas = {
 		PHI_Paulino_Santos_hog_ade
@@ -2450,7 +2451,7 @@ country_event = { #Question of the Transition to Democracy
 	}
 }
 
-country_event = { #Restoration of Democracy
+country_event = { #Restoration of Democracy choose between either roxas or osemna as the nationalisa guy they get their tree
 	id = rd_phil.48
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.48"}
 	title = rd_phil.48.title
@@ -2461,10 +2462,21 @@ country_event = { #Restoration of Democracy
 	option = { #
 		name = rd_phil.48.a
 		ai_chance = { base = 100 }
+		hidden_effect = {
+		add_popularity = {
+		ideology = market_liberal
+		popularity = 0.3
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -0.3
+		}
+		}
+		#complete_national_focus = PHI_roxas_lib #i think its fun but could be annoying for loc?
 		meta_effect = {
 			text = {
 				set_politics = {
-					ruling_party = social_liberal
+					ruling_party = market_liberal
 					last_election = "[CURRENT_DATE]"
 					election_frequency = "[MONTH_ELECTIONS]"
 					elections_allowed = yes
@@ -2473,18 +2485,54 @@ country_event = { #Restoration of Democracy
 			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
 			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
-		rd_phil_calculate_length_second_election = yes		
-		hidden_effect = { country_event = { id = rd_phil.7 days = 1093 } # dead
-		add_soccon_to_coalition = yes
-		add_marlib_to_coalition = yes
+		hidden_effect = { country_event = { id = rd_phil.11 days = 1000 } } #dead roxas and roxas dies here
 		remove_all_ministers = yes
 		add_ideas = {
-		PHI_Manuel_Quezon_hog_sli
+		PHI_Manuel_Roxas_hog_mli
+		PHI_Miguel_Cuaderno_eco_mli
+		PHI_Elpidio_Quirino_for_mli
+		PHI_Jose_Zulueta_sec_mli
+		}
+
+	}
+
+	option = { #
+		name = rd_phil.48.b
+		ai_chance = { base = 100 }
+		hidden_effect = {
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.2
+		}
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = -0.2
+		}
+		}
+		#complete_national_focus = PHI_osemna #idk whether we should do this
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_conservative
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Sergio_Osmena_hog_sco
+		PHI_Jamie_Hernandez_eco_sco
 		PHI_Sergio_Osmena_for_sco
-		PHI_Elpidio_Quirino_eco_mli
-		PHI_Jose_Yulo_sec_sli
+		PHI_Thomas_Confesor_sec_sco
 		}
-		}
+	
+
+
 	}
 }
 
