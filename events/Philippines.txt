@@ -2071,7 +2071,26 @@ country_event = { #Protecting the Republic triggered from event .39
 		}
 		#create leader, party name etc
 		complete_national_focus = PHI_antisoc_poisons
-
+		add_authdem_to_coalition = yes
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.4
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Guillermo_B_Francisco_hog_pau
+		PHI_Silvestre_Sancho_for_npo
+		PHI_Jose_Abad_Santos_eco_pau
+		PHI_Ruperto_Kangleon_sec_ade
+		}
+		create_country_leader = {
+			name = "Guillermo B. Francisco"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Paulino_Santos.png"
+			expire = "1.1.1"
+			ideology = junta_subtype
+		}
+		
 		
 	}
 	
@@ -2373,7 +2392,7 @@ country_event = { #flavor about santos or Emilio purging too pro American people
 	}
 }
 
-country_event = { #
+country_event = { #Operation Knockout
 	id = rd_phil.46
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.46"}
 	title = rd_phil.46.title
@@ -2384,11 +2403,14 @@ country_event = { #
 	option = { #
 		name = rd_phil.46.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+		idea = 
+		days = 180
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Transition to Democracy
 	id = rd_phil.47
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.47"}
 	title = rd_phil.47.title
@@ -2396,14 +2418,39 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Liberalism Has Failed us, We Must Keep a Strong Philippines
 		name = rd_phil.47.a
 		ai_chance = { base = 100 }
+		set_country_flag = PHI_coup_no_democracy
+		add_popularity = {
+		ideology = paternal_autocrat
+		popularity = 0.05
+		}
 		
+	}
+	option = { #Democracy shall return.
+		name = rd_phil.47.b
+		ai_chance = { base = 100 }
+		set_country_flag = PHI_coup_democracy
+		set_politics = {
+		ruling_party = authoritarian_democrat
+		}
+		add_popularity = {
+		ideology = authoritarian_democrat
+		popularity = 0.4
+		}
+		
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Paulino_Santos_hog_ade
+		PHI_Silvestre_Sancho_for_npo
+		PHI_Jose_Abad_Santos_eco_pau
+		PHI_Ruperto_Kangleon_sec_ade
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Restoration of Democracy
 	id = rd_phil.48
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.48"}
 	title = rd_phil.48.title
@@ -2414,7 +2461,30 @@ country_event = { #
 	option = { #
 		name = rd_phil.48.a
 		ai_chance = { base = 100 }
-		
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = social_liberal
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		rd_phil_calculate_length_second_election = yes		
+		hidden_effect = { country_event = { id = rd_phil.7 days = 1093 } # dead
+		add_soccon_to_coalition = yes
+		add_marlib_to_coalition = yes
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Manuel_Quezon_hog_sli
+		PHI_Sergio_Osmena_for_sco
+		PHI_Elpidio_Quirino_eco_mli
+		PHI_Jose_Yulo_sec_sli
+		}
+		}
 	}
 }
 
