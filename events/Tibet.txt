@@ -99,57 +99,57 @@ country_event = { #Restoration of the Dalai Lama
 			}
 			retire_country_leader = yes
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
-			ideology = theocracy_subtype
+			ideology = chosid_nyi_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
-			ideology = authoritarian_democrat_subtype
+			ideology = authdem_chosid_nyi_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
-			ideology = social_conservative_subtype
+			ideology = soccon_chosid_nyi_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
-			ideology = market_liberal_subtype
+			ideology = marlib_radical_progressivism_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
-			ideology = soclib_tridemism_subtype
+			ideology = soclib_radical_progressivism_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "14th Dalai Lama"
+			name = "14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -159,7 +159,7 @@ country_event = { #Restoration of the Dalai Lama
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -930,7 +930,13 @@ country_event = { # Tibet Improvment  soldiers defeat Dob Dobs, appear to retrea
 		}
 		add_political_power = 10
 		hidden_effect = {
-			CHI = { country_event = { id = tib.40 days = 7 } }
+			if = {
+				limit = { country_exists = CHI }
+				CHI = { country_event = { id = tib.40 days = 7 } }
+			}
+			else = {
+				TIB = { country_event = { id = tib.41 days = 7 } }
+			}
 		}
 	}
 
@@ -1033,7 +1039,7 @@ country_event = { # Tibet Improvment  soldiers arrive in KMT, recieve general an
 				days = 7
 			}
 			create_field_marshal = {
-				name = "Huang Musong"
+				name = "Huáng Mùsōng"
 				desc = "TIB_HUANG_MUSONG_DESC"
 				portrait_path = "gfx/leaders/TIB/Portrait_TIB_Huang_Musong.png"
 				traits = {
@@ -1100,7 +1106,9 @@ country_event = { # Tibet Improvment military returns to Tibet, with modernized 
 	option = { # Our Country is Free!
 		name = tib.41.a
 		add_stability = -0.20
+		hidden_effect = {
 		load_oob = "TIB_KMT"
+		}
 		add_popularity = {
 			ideology = social_democrat
 			popularity = 0.10
@@ -1110,8 +1118,8 @@ country_event = { # Tibet Improvment military returns to Tibet, with modernized 
 			create_country_leader = {
 				name = "He Guoguang"
 				picture = "gfx/leaders/SZC/Portrait_SZC_He_Guoguang.png"
-				expire = "1965.1.1"
-				ideology = paternal_autocrat_subtype
+				expire = "1.1.1"
+				ideology = pataut_warlordism_subtype
 			}
 		}
 		add_ideas = {
@@ -1290,7 +1298,7 @@ country_event = { # Dob Dobs arrive in Lhasa with Tsarong Dzasa, who carries the
 		}
 		TIB = {
 			create_field_marshal = {
-				name = "Tsarong Dzasa"
+				name = "Tsha-rong Zla-bzang Dgra-'dul"
 				desc = "POLITICS_TSARONG_DZASA_DESC"
 				picture = "gfx/leaders/TIB/Portrait_TIB_tsarong_tsaza.png"
 				traits = {
@@ -1303,7 +1311,9 @@ country_event = { # Dob Dobs arrive in Lhasa with Tsarong Dzasa, who carries the
 				logistics_skill = 2
 			}
 		}
+		hidden_effect = {
 		load_oob = "TIB_British_regulars"
+		}
 		hidden_effect = {
 			country_event = {
 				id = tib.47
@@ -1332,8 +1342,8 @@ country_event = { # Prime Minister Trimön has mental breakdown, walks out to cr
 			create_country_leader = {
 				name = "He Guoguang"
 				picture = "gfx/leaders/SZC/Portrait_SZC_He_Guoguang.png"
-				expire = "1965.1.1"
-				ideology = paternal_autocrat_subtype
+				expire = "1.1.1"
+				ideology = pataut_warlordism_subtype
 			}
 			set_country_flag = TIB_Authdem_path
 			add_ideas = {
@@ -2831,11 +2841,13 @@ country_event = { #
 				limit = { has_id = 21422 }
 				set_nationality = NSW
 			}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = TIB_Helena_Roerich_hog_tot	
 		create_country_leader = {
 			name = "Helena Roerich"
 			desc = ""
 			picture = "gfx/leaders/TIB/Portrait_TIB_Helena_Roerich.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = esoteric_leninism_subtype
 			traits = {
 			}
@@ -2872,7 +2884,7 @@ country_event = { #
 			desc = ""
 			picture = "gfx/leaders/TIB/Portrait_TIB_Helena_Roerich.png"
 			expire = "2019.1.1"
-			ideology = authdem_roerichism_subtype
+			ideology = authdem_theosophy_subtype
 			traits = {
 			}
 		}
@@ -2881,7 +2893,7 @@ country_event = { #
 			desc = ""
 			picture = "gfx/leaders/TIB/Portrait_TIB_Helena_Roerich.png"
 			expire = "2019.1.1"
-			ideology = roerichism_subtype
+			ideology = pataut_theosophy_subtype
 			traits = {
 			}
 		}
@@ -2890,7 +2902,7 @@ country_event = { #
 			desc = ""
 			picture = "gfx/leaders/TIB/Portrait_TIB_Helena_Roerich.png"
 			expire = "2019.1.1"
-			ideology = natpop_roerichism_subtype
+			ideology = theosophy_subtype
 			traits = {
 				}
 			}
@@ -2904,11 +2916,13 @@ country_event = { #
 				limit = { has_id = 21422 }
 				set_nationality = NSW
 		}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = TIB_George_Roerich_hog_tot	
 		create_country_leader = {
 			name = "George de Roerich"
 			desc = ""
 			picture = "gfx/leaders/TIB/Portrait_TIB_George_Roerich.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = esoteric_leninism_subtype
 			traits = {
 			}
@@ -2977,11 +2991,13 @@ country_event = { #
 				limit = { has_id = 21422 }
 				set_nationality = NSW
 			}
+		remove_ideas_with_trait = head_of_government
+		add_ideas = TIB_Svetoslav_Roerich_hog_tot	
 		create_country_leader = {
 			name = "Svetoslav Roerich"
 			desc = ""
 			picture = "gfx/leaders/TIB/Portrait_TIB_Svetoslav_Roerich.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = esoteric_leninism_subtype
 			traits = {
 			}
@@ -3062,6 +3078,9 @@ country_event = { #
 	}
 	option = { # 
 		name = tib.127.b
+		trigger = {
+			is_subject = no
+		}
 		add_political_power = -50
 		create_faction =  "Roerich Pact"
 	}
@@ -3104,6 +3123,12 @@ country_event = { #
 			ideology = national_populist
 			popularity = 0.03
 		}
+		hidden_effect = {
+			country_event = {
+				id = tib.139
+				days = 33
+			}
+		}
 	}
 }
 
@@ -3126,19 +3151,35 @@ country_event = { #
 		}
 		set_party_name = {
 			ideology = authoritarian_democrat
-			long_name = "Sacred Union Party"
-			name = "Sacred Union Party"
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
 		}
 		create_country_leader = {
 			name = "Nicholas Roerich"
 			desc = "POLITICS_NICHOLAS_ROERICH_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Nicholas_Roerich.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = authdem_roerichism_subtype
 			traits = {
 				mahatma
 			}
 		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.35
+	    }
+		add_pataut_to_coalition = yes
+		add_natpop_to_coalition = yes
 	}
 	option = { # 
 		name = tib.138.b
@@ -3147,20 +3188,36 @@ country_event = { #
 				elections_allowed = no
 		}
 		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
 			ideology = paternal_autocrat
-			long_name = "Sacred Union Party"
-			name = "Sacred Union Party"
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
 		}
 		create_country_leader = {
 			name = "Nicholas Roerich"
 			desc = "POLITICS_NICHOLAS_ROERICH_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Nicholas_Roerich.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = roerichism_subtype
 			traits = {
 				mahatma
 			}
 		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.35
+	    }
+		add_authdem_to_coalition = yes
+		add_natpop_to_coalition = yes
 	}
 	option = { # 
 		name = tib.138.c
@@ -3169,20 +3226,36 @@ country_event = { #
 				elections_allowed = no
 		}
 		set_party_name = {
+			ideology = authoritarian_democrat
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
 			ideology = national_populist
-			long_name = "Sacred Union Party"
-			name = "Sacred Union Party"
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
 		}
 		create_country_leader = {
 			name = "Nicholas Roerich"
 			desc = "POLITICS_NICHOLAS_ROERICH_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Nicholas_Roerich.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = natpop_roerichism_subtype
 			traits = {
 				mahatma
 			}
 		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.35
+	    }
+		add_authdem_to_coalition = yes
+		add_pataut_to_coalition = yes
 		hidden_effect = {
 		country_event = {
 			days = 30
@@ -3209,7 +3282,7 @@ country_event = { #
 	name = "Avatar of the Red Mahatma"
 	desc = ""
 	picture = "gfx/leaders/TIB/Portrait_TIB_Ghost_Lenin.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3219,7 +3292,7 @@ country_event = { #
 	name = "Avatar of the Red Mahatma"
 	desc = ""
 	picture = "gfx/leaders/TIB/Portrait_TIB_Ghost_Lenin.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = syn_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3229,7 +3302,7 @@ country_event = { #
 	name = "Avatar of the Red Mahatma"
 	desc = ""
 	picture = "gfx/leaders/TIB/Portrait_TIB_Ghost_Lenin.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = radsoc_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3239,7 +3312,7 @@ country_event = { #
 	name = "Avatar of the Red Mahatma"
 	desc = ""
 	picture = "gfx/leaders/TIB/Portrait_TIB_Ghost_Lenin.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = socdem_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3249,6 +3322,7 @@ country_event = { #
 			name = "Avatar of the Red Mahatma"
 			portrait_path = "gfx/leaders/TIB/Portrait_TIB_Ghost_Lenin.png"
 			traits = {
+				incorporeal
 				politically_connected
 			}
 			skill = 1
@@ -3263,8 +3337,8 @@ country_event = { #
 	create_country_leader = {
 	name = "Dmitriy Ulyanov"
 	desc = "POLITICS_DMITRIY_ULYANOV_DESC"
-	picture = "gfx/leaders/UKR/Portrait_CRM_Dmitry_Ulyanov.png"
-	expire = "1965.1.1"
+	picture = "gfx/leaders/CRM/Portrait_CRM_Dmitry_Ulyanov.png"
+	expire = "1.1.1"
 	ideology = esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3273,8 +3347,8 @@ country_event = { #
 	create_country_leader = {
 	name = "Dmitriy Ulyanov"
 	desc = "POLITICS_DMITRIY_ULYANOV_DESC"
-	picture = "gfx/leaders/UKR/Portrait_CRM_Dmitry_Ulyanov.png"
-	expire = "1965.1.1"
+	picture = "gfx/leaders/CRM/Portrait_CRM_Dmitry_Ulyanov.png"
+	expire = "1.1.1"
 	ideology = syn_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3283,8 +3357,8 @@ country_event = { #
 	create_country_leader = {
 	name = "Dmitriy Ulyanov"
 	desc = "POLITICS_DMITRIY_ULYANOV_DESC"
-	picture = "gfx/leaders/UKR/Portrait_CRM_Dmitry_Ulyanov.png"
-	expire = "1965.1.1"
+	picture = "gfx/leaders/CRM/Portrait_CRM_Dmitry_Ulyanov.png"
+	expire = "1.1.1"
 	ideology = radsoc_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3293,8 +3367,8 @@ country_event = { #
 	create_country_leader = {
 	name = "Dmitriy Ulyanov"
 	desc = "POLITICS_DMITRIY_ULYANOV_DESC"
-	picture = "gfx/leaders/UKR/Portrait_CRM_Dmitry_Ulyanov.png"
-	expire = "1965.1.1"
+	picture = "gfx/leaders/CRM/Portrait_CRM_Dmitry_Ulyanov.png"
+	expire = "1.1.1"
 	ideology = socdem_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3302,7 +3376,7 @@ country_event = { #
 		}
 	create_field_marshal = {
 			name = "Dmitriy Ulyanov"
-			portrait_path = "gfx/leaders/UKR/Portrait_CRM_Dmitry_Ulyanov.png"
+			portrait_path = "gfx/leaders/CRM/Portrait_CRM_Dmitry_Ulyanov.png"
 			traits = {
 				politically_connected
 			}
@@ -3318,7 +3392,7 @@ country_event = { #
 	create_country_leader = {
 	name = "Nadezhda Krupskaya"
 	picture = "gfx/leaders/MON/Portrait_MON_Nadezhda_Krupskaya.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3327,7 +3401,7 @@ country_event = { #
 	create_country_leader = {
 	name = "Nadezhda Krupskaya"
 	picture = "gfx/leaders/MON/Portrait_MON_Nadezhda_Krupskaya.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = syn_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3336,7 +3410,7 @@ country_event = { #
 	create_country_leader = {
 	name = "Nadezhda Krupskaya"
 	picture = "gfx/leaders/MON/Portrait_MON_Nadezhda_Krupskaya.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = radsoc_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3345,7 +3419,7 @@ country_event = { #
 	create_country_leader = {
 	name = "Nadezhda Krupskaya"
 	picture = "gfx/leaders/MON/Portrait_MON_Nadezhda_Krupskaya.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = socdem_esoteric_leninism_subtype
 	traits = {
 		mahatma
@@ -3494,20 +3568,32 @@ country_event = { #
 				elections_allowed = no
 		}
 		set_party_name = {
+			ideology = social_democrat
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
 			ideology = radical_socialist
-			long_name = "Sacred Union Party"
-			name = "Sacred Union Party"
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
 		}
 		create_country_leader = {
 			name = "Nicholas Roerich"
 			desc = "POLITICS_NICHOLAS_ROERICH_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Nicholas_Roerich.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = radsoc_esoteric_leninism_subtype
 			traits = {
 				mahatma
 			}
 		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.35
+	    }
+		add_tot_to_coalition = yes
+		add_synd_to_coalition = yes
+		add_socdem_to_coalition = yes
 	}
 	option = { # 
 		name = tib.136.b
@@ -3515,9 +3601,39 @@ country_event = { #
 				ruling_party = syndicalist
 				elections_allowed = no
 		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.35
+	    }
+		add_tot_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		add_socdem_to_coalition = yes
 	}
 	option = { # 
 		name = tib.136.c
+		set_party_name = {
+			ideology = social_democrat
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		add_synd_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		add_socdem_to_coalition = yes
 	}
 	option = { # 
 		name = tib.136.e
@@ -3527,19 +3643,31 @@ country_event = { #
 		}
 		set_party_name = {
 			ideology = social_democrat
-			long_name = "Sacred Union Party"
-			name = "Sacred Union Party"
+			long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+		long_name = TIB_totalist_party_long
+			name = TIB_totalist_party
 		}
 		create_country_leader = {
 			name = "Nicholas Roerich"
 			desc = "POLITICS_NICHOLAS_ROERICH_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Nicholas_Roerich.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = socdem_esoteric_leninism_subtype
 			traits = {
 				mahatma
 			}
 		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.35
+	    }
+		add_tot_to_coalition = yes
+		add_synd_to_coalition = yes
+		add_radsoc_to_coalition = yes
 	}
 }
 
@@ -3607,17 +3735,30 @@ country_event = { #
 	create_country_leader = {
 	name = "Chao Kung"
 	picture = "gfx/leaders/TIB/Portrait_TIB_chao_kung.png"
-	expire = "1965.1.1"
+	expire = "1.1.1"
 	ideology = natpop_roerichism_subtype
 	traits = {
 		backroom_backstabber
 			}
 		}
+	set_party_name = {
+			ideology = national_populist
+			long_name = TIB_kung_party_long
+			name = TIB_kung_party
+	}	
 	hidden_effect = {
 			country_event = {
 				id = tib.149
 				days = 7
 			}
+			remove_all_ministers = yes
+			add_ideas = {
+				TIB_Ignaz_Trebitsch_Lincoln_hog_npo
+				TIB_Ernst_Schafer_for_npo
+				TIB_Hans_FK_Gunther_eco_npo
+				TIB_Karl_Maria_Wiligut_sec_npo
+			}
+			end_coalition = yes
 		}
 	}
 	option = { # 
@@ -3668,7 +3809,7 @@ country_event = { #
 	option = { # 
 		name = tib.141.a
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -3678,7 +3819,7 @@ country_event = { #
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -3688,7 +3829,7 @@ country_event = { #
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -3698,7 +3839,7 @@ country_event = { #
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -3708,7 +3849,7 @@ country_event = { #
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -3718,7 +3859,7 @@ country_event = { #
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -3728,7 +3869,7 @@ country_event = { #
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama.png"
 			expire = "2019.1.1"
@@ -3858,6 +3999,7 @@ country_event = { #
 						add_state_core = PREV 
 			}
 		}
+		add_state_core = 406
 	}
 }
 
@@ -4001,19 +4143,19 @@ country_event = { #
 		}
 		every_state = {
 				limit = {
-					is_core_of = KYR
+					is_core_of = TRK
+				}
+				add_core_of = TIB
+		}
+		every_state = {
+				limit = {
+					is_core_of = KHI
 				}
 				add_core_of = TIB
 		}
 		every_state = {
 				limit = {
 					is_core_of = UZB
-				}
-				add_core_of = TIB
-		}
-		every_state = {
-				limit = {
-					is_core_of = TRK
 				}
 				add_core_of = TIB
 		}
@@ -4085,7 +4227,7 @@ country_event = { #
 		}
 		hidden_effect = {
 		add_state_core = 537
-                add_state_core = 1218
+        add_state_core = 555
 		}
 		every_country = {
 				limit = {
@@ -4154,6 +4296,37 @@ country_event = { #
 				type = annex_everything
 				target = ABK
 		}
+		create_wargoal = {
+			type = annex_everything
+			target = RUS
+	    }
+		if = {
+			limit = { RUS_cw_ongoing = yes }
+			create_wargoal = {
+			type = annex_everything
+			target = RRF
+	        }
+			create_wargoal = {
+			type = annex_everything
+			target = RVA
+	        }
+			create_wargoal = {
+			type = annex_everything
+			target = WRA
+	        }
+			create_wargoal = {
+			type = annex_everything
+			target = ORE
+	        }
+			create_wargoal = {
+			type = annex_everything
+			target = BKN
+	        }
+			create_wargoal = {
+			type = annex_everything
+			target = TTR
+	        }
+		}
 	}
 }
 
@@ -4201,6 +4374,9 @@ country_event = { #
 	add_state_core = 1042
 	add_state_core = 1211
 	add_state_core = 441
+	add_state_core = 890
+	add_state_core = 1210
+	add_state_core = 732
 	add_state_core = 890
 	}
 		every_state = {
@@ -4259,6 +4435,9 @@ country_event = { #
 	add_state_core = 1211
 	add_state_core = 441
 	add_state_core = 890
+	add_state_core = 1210
+	add_state_core = 732
+	add_state_core = 890
 	}
 	every_state = {
 		limit = { is_core_of = SIK }
@@ -4315,6 +4494,9 @@ country_event = { #
 	add_state_core = 1042
 	add_state_core = 1211
 	add_state_core = 441
+	add_state_core = 890
+	add_state_core = 1210
+	add_state_core = 732
 	add_state_core = 890
 	}
 	every_state = {
@@ -4373,6 +4555,9 @@ country_event = { #
 	add_state_core = 1211
 	add_state_core = 441
 	add_state_core = 890
+	add_state_core = 1210
+	add_state_core = 732
+	add_state_core = 890
 	}
 	every_state = {
 		limit = { is_core_of = SIK }
@@ -4430,6 +4615,9 @@ country_event = { #
 	add_state_core = 1211
 	add_state_core = 441
 	add_state_core = 890
+	add_state_core = 1210
+	add_state_core = 732
+	add_state_core = 890
 	}
 	every_state = {
 		limit = { is_core_of = SIK }
@@ -4485,6 +4673,9 @@ country_event = { #
 	add_state_core = 1042
 	add_state_core = 1211
 	add_state_core = 441
+	add_state_core = 890
+	add_state_core = 1210
+	add_state_core = 732
 	add_state_core = 890
 	}
 		every_state = {
@@ -4574,13 +4765,13 @@ country_event = { #
 	set_cosmetic_tag = TIB_GERMAN
 	set_party_name = {
 			ideology = national_populist
-			long_name = "Arisch-Tibetische Ahnenforschungsstiftung"
-			name = "Arisch-Tibetische Ahnenforschungsstiftung"
+			long_name = TIB_ariosophy_party_long
+			name = TIB_ariosophy_party
 	}
 	create_country_leader = {
 		name = "Karl Maria Wiligut"
 		picture = "gfx/leaders/TIB/Portrait_TIB_Karl_Maria_Wiligut.png"
-		expire = "1965.1.1"
+		expire = "1.1.1"
 		ideology = ariosophy_subtype
 		traits = {}
 		}
@@ -4590,13 +4781,13 @@ country_event = { #
 	set_cosmetic_tag = TIB_GERMAN
 	set_party_name = {
 			ideology = national_populist
-			long_name = "Arisch-Tibetische Ahnenforschungsstiftung"
-			name = "Arisch-Tibetische Ahnenforschungsstiftung"
+			long_name = TIB_ariosophy_party_long
+			name = TIB_ariosophy_party
 	}
 	create_country_leader = {
 		name = "Ernst Schäfer"
 		picture = "gfx/leaders/TIB/Portrait_TIB_Ernst_Schafer.png"
-		expire = "1965.1.1"
+		expire = "1.1.1"
 		ideology = occultism_subtype
 		traits = {}
 		}
@@ -4606,13 +4797,13 @@ country_event = { #
 	set_cosmetic_tag = TIB_GERMAN
 	set_party_name = {
 			ideology = national_populist
-			long_name = "Arisch-Tibetische Ahnenforschungsstiftung"
-			name = "Arisch-Tibetische Ahnenforschungsstiftung"
+			long_name = TIB_ariosophy_party_long
+			name = TIB_ariosophy_party
 	}
 	create_country_leader = {
 		name = "Hans F. K. Günther"
 		picture = "gfx/leaders/TIB/Portrait_TIB_Hans_Gunther.png"
-		expire = "1965.1.1"
+		expire = "1.1.1"
 		ideology = ariosophy_subtype
 		traits = {}
 		}
@@ -4641,12 +4832,12 @@ country_event = { #
 	name = tib.150.a
 	if = {
 		limit = {
-		USA = {
+		TIB = {
 			is_faction_leader = yes
 				}
 			}
-			USA = {
-			add_to_faction = TIB
+			TIB = {
+			add_to_faction = USA
 			}
 		}
 		add_political_power = -75
@@ -4702,7 +4893,7 @@ country_event = { #
 	}
 }
 
-country_event = { #s
+country_event = { #
 	id = tib.152
 	immediate = { log = "[GetDateText]: [Root.GetName]: event tib.152" }
 	title = tib.152.t
@@ -4793,12 +4984,12 @@ country_event = { #
 	option = { # 
 	name = tib.155.a
 	trigger = {
-	has_country_leader = { name = "The 14th Dalai Lama" ruling_only = yes }
+	has_country_leader = { name = "The 14th Ta-la'i Bla-ma" ruling_only = yes }
 	}
 	increase_ruling_party_popularity_by_5 = yes
 	add_political_power = 75
 	if = {	
-			limit = { has_country_leader = { name = "The 14th Dalai Lama" ruling_only = yes } }
+			limit = { has_country_leader = { name = "The 14th Ta-la'i Bla-ma" ruling_only = yes } }
 			set_country_leader_portrait = {
 				portrait = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama_Old.png"
 			}
@@ -4808,7 +4999,7 @@ country_event = { #
 	name = tib.155.b
 	trigger = {
 	NOT = {
-	has_country_leader = { name = "The 14th Dalai Lama" ruling_only = yes }
+	has_country_leader = { name = "The 14th Ta-la'i Bla-ma" ruling_only = yes }
 		}
 	}
 	increase_ruling_party_popularity_by_5 = yes
@@ -4818,53 +5009,53 @@ country_event = { #
 	name = tib.155.c
 	trigger = {
 	NOT = {
-	has_country_leader = { name = "The 14th Dalai Lama" ruling_only = yes }
+	has_country_leader = { name = "The 14th Ta-la'i Bla-ma" ruling_only = yes }
 		}
 	}
 	increase_ruling_party_popularity_by_5 = yes
 	add_political_power = 75
 	create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama_Old.png"
 			expire = "2019.1.1"
-			ideology = theocracy_subtype
+			ideology = chosid_nyi_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama_Old.png"
 			expire = "2019.1.1"
-			ideology = authoritarian_democrat_subtype
+			ideology = authdem_chosid_nyi_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama_Old.png"
 			expire = "2019.1.1"
-			ideology = social_conservative_subtype
+			ideology = soccon_chosid_nyi_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama_Old.png"
 			expire = "2019.1.1"
-			ideology = market_liberal_subtype
+			ideology = marlib_radical_progressivism_subtype
 			traits = {
 				great_survivor
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama_Old.png"
 			expire = "2019.1.1"
@@ -4874,7 +5065,7 @@ country_event = { #
 			}
 		}
 		create_country_leader = {
-			name = "14th Dalai Lama"
+			name = "14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama_Old.png"
 			expire = "2019.1.1"
@@ -4884,7 +5075,7 @@ country_event = { #
 			}
 		}
 		create_country_leader = {
-			name = "The 14th Dalai Lama"
+			name = "The 14th Ta-la'i Bla-ma"
 			desc = "POLITICS_DALAI_LAMA_DESC"
 			picture = "gfx/leaders/TIB/Portrait_TIB_Dalai_Lama_Old.png"
 			expire = "2019.1.1"
@@ -4895,6 +5086,7 @@ country_event = { #
 		}
 	}
 }
+
 country_event = { #
 	id = tib.156
 	immediate = { log = "[GetDateText]: [Root.GetName]: event tib.150" }
@@ -4962,6 +5154,10 @@ country_event = { #
 		category = rocketry
 		category = jet_technology
 	}
+	add_breakthrough_progress = {
+		specialization = specialization_air
+		value = 0.5
+	}
 	add_tech_bonus = {
 		name = industrial_bonus
 		bonus = 1
@@ -4970,6 +5166,7 @@ country_event = { #
 	}
 	}
 }
+
 country_event = { #
 	id = tib.158
 	immediate = { log = "[GetDateText]: [Root.GetName]: event tib.158" }
