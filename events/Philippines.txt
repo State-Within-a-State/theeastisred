@@ -2536,7 +2536,7 @@ country_event = { #Restoration of Democracy choose between either roxas or osemn
 	}
 }
 
-country_event = { #
+country_event = { #laurel event to ask other countries to work with him
 	id = rd_phil.49
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.49"}
 	title = rd_phil.49.title
@@ -2544,14 +2544,37 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes
 		name = rd_phil.49.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 50 
+		modifier = {
+		add = 10 PHI = { has_completed_focus = PHI_antisoc_mother_asia_civilization }
+		}
+		}
+		if = { limit = { PHI = { has_completed_focus = PHI_antisoc_mother_asia_civilization } } 
+		add_ideas = PHI_laurel_asia_allies 
+		}
+		else = { add_ideas = PHI_laurel_rest_allies } 
 		
 	}
+	option = { #no lol
+		name = rd_phil.49.b
+		ai_chance = { base = 50 
+		modifier = {
+		factor = 1.5 has_government = totalist
+		}
+		modifier = {
+		factor = 1.5 has_government = syndicalist
+		}
+		}
+		add_political_power = 25
+		
+
+	}
+
 }
 
-country_event = { #
+country_event = { #laurel special event to the countries who accepted hey join my faction after doing all that deal before
 	id = rd_phil.50
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.50"}
 	title = rd_phil.50.title
@@ -2559,11 +2582,19 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes
 		name = rd_phil.50.a
 		ai_chance = { base = 100 }
-		
+		PHI = { add_to_faction = ROOT }
+		add_stability = -0.025
+
 	}
+	option = { #no
+		name = rd_phil.50.a
+		ai_chance = { base = 0 }
+
+	}
+
 }
 
 country_event = { #

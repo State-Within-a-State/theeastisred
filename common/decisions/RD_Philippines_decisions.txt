@@ -1,4 +1,4 @@
-political_actions = { 
+PHI_foreign_decision_category = { 
 	PHI_soc_csa_puppet_des = { # america
 		icon = GFX_decision_generic_nationalism
 		fire_only_once = yes
@@ -31,6 +31,8 @@ political_actions = {
 	}
 	}
 
+
+
 PHI_form_malaysia = { #just testing for now, no loc no behavior, no conception should later be a separate decision category
 		icon = ger_military_buildup
 		allowed = {tag = PHI }
@@ -61,6 +63,191 @@ PHI_form_malaysia = { #just testing for now, no loc no behavior, no conception s
 		}
 	}
 	
+PHI_laurel_unique_asia = { #
+		icon = ger_military_buildup
+		allowed = { tag = PHI }
+		visible = { OR = { has_completed_focus = PHI_antisoc_mother_asia_civilization has_completed_focus = PHI_antisoc_divine_principle_humanity } }
+
+
+		cost = 200
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+			}
+
+		days_remove = 100
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		every_other_country = {
+		limit = {
+		NOT = { has_war_with = PHI }
+		is_major = no
+		is_in_faction = no
+		is_subject = no
+		num_subjects < 2
+		OR = {
+		is_on_continent = asia	
+		is_on_continent = india
+		is_on_continent = australia
+		is_on_continent = middle_east
+		}	
+		}
+		country_event = rd_phil.49
+		}
+		
+
+		}
+	}
+
+PHI_laurel_unique_africa = { #
+		icon = ger_military_buildup
+		allowed = { tag = PHI }
+		visible = { has_completed_focus = PHI_antisoc_divine_principle_humanity }
+
+
+		cost = 150
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+			}
+
+		days_remove = 100
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		every_other_country = {
+		limit = {
+		NOT = { has_war_with = PHI }
+		is_major = no
+		is_in_faction = no
+		is_subject = no
+		num_subjects < 2
+		is_on_continent = africa
+		}
+		country_event = rd_phil.49
+		}
+		
+
+		}
+	}
+
+PHI_laurel_unique_europe = { #
+		icon = ger_military_buildup
+		allowed = { tag = PHI }
+		visible = { has_completed_focus = PHI_antisoc_divine_principle_humanity }
+
+
+		cost = 150
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+			}
+
+		days_remove = 100
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		every_other_country = {
+		limit = {
+		NOT = { has_war_with = PHI }
+		is_major = no
+		is_in_faction = no
+		is_subject = no
+		num_subjects < 2
+		is_on_continent = europe
+		}
+		country_event = rd_phil.49
+		}
+		
+
+		}
+	}
+
+PHI_laurel_unique_americas = { #
+		icon = ger_military_buildup
+		allowed = { tag = PHI }
+		visible = { has_completed_focus = PHI_antisoc_divine_principle_humanity }
+
+
+		cost = 150
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+			}
+		days_remove = 100
+
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		every_other_country = {
+		limit = {
+		NOT = { has_war_with = PHI }
+		is_major = no
+		is_in_faction = no
+		is_subject = no
+		num_subjects < 2
+		OR = { 	
+		is_on_continent = south_america
+		is_on_continent = north_america
+		is_on_continent = central_america
+		}
+		}
+		country_event = rd_phil.49
+		}
+		
+
+		}
+	}
+
+
+PHI_laurel_unite_faction = { #
+		icon = ger_military_buildup
+		allowed = { tag = PHI }
+		available = {
+		is_faction_leader = yes
+		is_independent = yes
+		}
+		visible = { has_completed_focus = PHI_antisoc_common_happiness }
+
+
+		cost = 200
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+			}
+		days_remove = 10
+		complete_effect = {
+			
+		}
+		remove_effect = {
+		set_faction_name = PHI_laurel_faction
+		every_other_country = {
+		limit = {
+		is_subject = no
+		NOT = { has_war_with = PHI }
+		OR = { 
+		is_in_faction = no
+		is_faction_leader = yes
+		}
+		OR = {
+		has_idea = PHI_laurel_rest_allies
+		has_idea = PHI_laurel_asia_allies 
+		}
+		}
+		country_event = rd_phil.50
+		}
+		
+
+		}
+	}
+
+
+
 }
 
 
