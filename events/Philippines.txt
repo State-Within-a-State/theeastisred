@@ -2223,7 +2223,7 @@ country_event = { #A Struggle in the Chamber
 		}
 		create_country_leader = {
 			name = "Enrique Zóbel de Ayala"
-			picture = "gfx/leaders/PHI/Portrait_Philippines_Enrique_Zobel_de_Ayala.png"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Enrique_Zobel_de_Ayala.png"
 			expire = "1.1.1"
 			ideology = hispanism_subtype
 		}
@@ -2271,7 +2271,22 @@ country_event = { #resistance to the over taking Constabulary
 		name = rd_phil.40.a
 		ai_chance = { base = 100 }
 		complete_national_focus = PHI_antisoc_vict
-		#create jose leader.
+		set_politics = {
+   		ruling_party = social_liberal
+    		elections_allowed = no
+		}
+
+		create_country_leader = {
+			name = "José Abad Santos"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Jose_Abad_Santos.png"
+			expire = "1.1.1"
+			ideology = kritarchy_subtype
+		}
+		set_party_name = {
+   			 ideology = social_liberal
+   			 long_name = PHI_pro_jap_party_long
+   			 name = PHI_pro_jap_party
+			}
 		country_event = { id = rd_phil.42 days = 10 }
 	}
 
@@ -2353,7 +2368,12 @@ country_event = { #Jose assinitated. Could it be a socialist angry or a military
 		name = rd_phil.43.a
 		ai_chance = { base = 100 }
 		hidden_effect = { country_event = { id = rd_phil.44 days = 20 } }
-		
+		set_party_name = {
+   			 ideology = social_liberal
+   			 long_name = PHI_nationalisa_party_long
+   			 name = PHI_nationalisa_party
+		}
+		#create leader laurel
 	}
 }
 
@@ -2472,7 +2492,6 @@ country_event = { #Restoration of Democracy choose between either roxas or osemn
 		popularity = -0.3
 		}
 		}
-		#complete_national_focus = PHI_roxas_lib #i think its fun but could be annoying for loc?
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -2509,7 +2528,6 @@ country_event = { #Restoration of Democracy choose between either roxas or osemn
 		popularity = -0.2
 		}
 		}
-		#complete_national_focus = PHI_osemna #idk whether we should do this
 		meta_effect = {
 			text = {
 				set_politics = {
@@ -2541,7 +2559,6 @@ country_event = { #laurel event to ask other countries to work with him
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.49"}
 	title = rd_phil.49.title
 	desc = rd_phil.49.desc
-	fire_only_once = yes 
 	
 	is_triggered_only = yes
 	option = { #yes
@@ -2579,7 +2596,6 @@ country_event = { #laurel special event to the countries who accepted hey join m
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.50"}
 	title = rd_phil.50.title
 	desc = rd_phil.50.desc
-	fire_only_once = yes 
 	
 	is_triggered_only = yes
 	option = { #yes
