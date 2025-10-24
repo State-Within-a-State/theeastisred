@@ -3168,7 +3168,7 @@ country_event = { #leftist Election
 		
 		remove_all_ministers = yes
 		add_ideas = {
-			JAP_Inejiro_Asanuma_hog_rso
+			JAP_inejiro_asanuma_hog_rso
 			JAP_Akamatsu_Katsumaro_for_tot
 			JAP_Atsutaro_Suyama_eco_tot
 			JAP_Miwa_Juso_sec_tot
@@ -6080,7 +6080,7 @@ country_event = { #Japan Demands Our Submission
 		set_country_flag = JAP_Chose_A_Faction
 		puppet = {
 				target = ROOT
-				end_wars = yes
+				end_wars = no
 			}
 		}
 	}
@@ -6088,7 +6088,6 @@ country_event = { #Japan Demands Our Submission
 	option = { #No
 		name = japan_new_event.75.b
 		ai_chance = { base = 100 }
-		
 		country_event = japan_new_event.81
 		}
 	}
@@ -6103,18 +6102,24 @@ country_event = { #Refusal But Alliance?
 	is_triggered_only = yes
 	option = { #Sure
 		name = japan_new_event.76.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { is_subject = yes factor = 0 }
+		modifier = { is_in_faction = yes base = 0 }
+		}
 		JAP = { add_to_faction = ROOT }
+		add_to_array = { global.asian_economic_sphere = ROOT }	
+
 	}
 	
 	option = { #How About No
 		name = japan_new_event.76.b
 		ai_chance = { base = 100 }
 		JAP = {
+			country_event = { id = japan_new_event.150 days = 2 }
 			create_wargoal = {
-					type = puppet_wargoal_focus
-					target = FROM
-				}
+				type = annex_everything
+				target = ROOT
+			}
 			}
 	}
 }
@@ -8591,7 +8596,7 @@ country_event = { #
 		name = japan_new_event.132.a
 		ai_chance = { base = 100 }
 		trigger = {
-		has_idea = JAP_Inejiro_Asanuma_hog_rso
+		has_idea = JAP_inejiro_asanuma_hog_rso
 		}
 		load_focus_tree = socdem-japan
 		set_country_flag = japan_social_totalitarian
@@ -9137,7 +9142,7 @@ country_event = { #anarchist cores
 
 }
 
-country_event = { #
+country_event = { #A New Order for East Asia
 	id = japan_new_event.146
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.146"}
 	title = japan_new_event.146.title
@@ -9145,14 +9150,22 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We shall Continue the Defence of Asia
 		name = japan_new_event.146.a
 		ai_chance = { base = 100 }
-		
+		trigger = { FNG_JAP_hostile = no } 
+		custom_effect_tooltip = guarantee_un_colonized_asian_power_tt
+		set_country_flag = JAP_east_asia_monroe_doctrine
+	}
+	option = { #Look at these weaklings, they stand only in the way of our national interests.
+		name = japan_new_event.146.b
+		ai_chance = { base = 100 }
+		custom_effect_tooltip = no_guarantee_un_colonized_asian_power_tt
+		set_country_flag = JAP_no_east_asia_monroe_doctrine
 	}
 }
 
-country_event = { #
+country_event = { #Our Ambitions In the Chinese Coast
 	id = japan_new_event.147
 	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.147"}
 	title = japan_new_event.147.title
@@ -9160,10 +9173,31 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Get Resource Rights From our Allies
 		name = japan_new_event.147.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = JAP_east_seas_allies_support
+	}
+	option = { #We shall claim the East China Sea
+		name = japan_new_event.147.b
+		ai_chance = { base = 100 }
+		set_country_flag = JAP_east_seas_annex
+		JAP = {
+		add_state_claim = 743
+		add_state_claim = 613
+		add_state_claim = 598
+		add_state_claim = 1075
+		add_state_claim = 1047
+		add_state_claim = 1064
+		add_state_claim = 597
+		add_state_claim = 1065
+		add_state_claim = 744
+		add_state_claim = 996
+		add_state_claim = 591
+		add_state_claim = 1063
+		add_state_claim = 609
+		add_state_claim = 614
+		}
 	}
 }
 
@@ -9179,6 +9213,217 @@ country_event = { #
 		name = japan_new_event.148.a
 		ai_chance = { base = 100 }
 		
+		
+	}
+	
+	option = { #Uniting the Lands Under the Emperor
+		name = japan_new_event.148.b
+		ai_chance = { base = 100 }
+		
+		
 	}
 }
+
+
+country_event = { #foreign policy event for fuck you countries that should always join japan
+	id = japan_new_event.149
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.149"}
+	title = japan_new_event.76.title
+	desc = japan_new_event.76.desc
+	picture = "GFX_japan_foreign_minister_2"
+	
+	is_triggered_only = yes
+	option = { #Sure
+		name = japan_new_event.76.a
+		ai_chance = { base = 100 
+		modifier = { is_subject = yes factor = 0 }
+		modifier = { is_in_faction = yes factor = 0 }
+		}
+		JAP = { add_to_faction = ROOT }
+		add_to_array = { global.asian_economic_sphere = ROOT }	
+
+	}
+	
+	option = { #How About No ai will never do
+		name = japan_new_event.76.b
+		ai_chance = { base = 0 
+		modifier = { is_subject = yes base = 100 }
+		modifier = { is_in_faction = yes base = 100 }
+		}
+		JAP = {
+			country_event = { id = japan_new_event.150 days = 2 }
+			create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+			}
+	}
+}
+
+country_event = { #rejected bruh
+	id = japan_new_event.150
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.150"}
+	title = japan_new_event.150.title
+	desc = japan_new_event.150.desc
+	picture = "GFX_japan_foreign_minister_2"
+	
+	is_triggered_only = yes
+	option = { #Sure
+		name = japan_new_event.150.a
+		ai_chance = { base = 100 }
+	}
+	
+}
+
+country_event = { #Japan Demands Our Submission replace .75
+	id = japan_new_event.151
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.75"}
+	title = japan_new_event.75.title
+	desc = japan_new_event.75.desc
+	picture = "GFX_japan_foreign_minister_2"
+	
+	is_triggered_only = yes
+	option = { #Yes
+		name = japan_new_event.75.a
+		ai_chance = { base = 100 
+		modifier = { is_subject = yes factor = 0 }
+		modifier = { is_in_faction = yes base = 0 }
+		}
+		JAP = {
+		puppet = {
+				target = ROOT
+				end_wars = no
+			}
+		}
+	}
+	
+	option = { #No
+		name = japan_new_event.75.b
+		ai_chance = { base = 100 }
+		JAP = {
+			country_event = { id = japan_new_event.150 days = 2 }
+			create_wargoal = {
+				type = annex_everything
+				target = ROOT
+			}
+			}
+		}
+	}
+
+
+country_event = { #custom option for fengtian leadership
+	id = japan_new_event.152
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.75"}
+	title = japan_new_event.152.title
+	desc = japan_new_event.152.desc
+	picture = "GFX_japan_foreign_minister_2"
+	
+	is_triggered_only = yes
+
+	option = { #Lets Keep the current 1 should be marlib yang yutin?
+		name = japan_new_event.152.a
+		ai_chance = { base = 100 }
+
+
+
+		}
+
+	option = { #No
+		name = japan_new_event.152.b
+		ai_chance = { base = 100 }
+		trigger = { OR = { has_government = social_democrat has_socialist_government = yes } }
+				FNG = {
+					set_politics = { ruling_party = totalist }
+					create_country_leader = {
+								name = "Luo Junqiang"
+								desc = "-"
+								picture = "gfx/leaders/JAP/Portrait_JAP_Luo Junqiang.png"
+								expire = "1965.1.1"
+								ideology = socialist_security_state_subtype
+							}
+					set_cosmetic_tag = CHINA_SOCIALIST_JAPANESE_PUPPET
+					set_party_name = {
+    					ideology = totalist
+   					 long_name = GXC_kemin_party_long
+    					name = GXC_kemin_party
+					}
+				}	
+		}
+	option = { #ou shenbai
+		name = japan_new_event.152.c
+		ai_chance = { base = 100 }
+		trigger = { OR = { has_government = social_democrat has_socialist_government = yes } }
+				FNG = {
+					set_politics = { ruling_party = radical_socialist }
+					create_country_leader = {
+								name = "Ou Shengbai"
+								desc = "-"
+								picture = "gfx/leaders/GXC/Portrait_GXC_Ou_Shengbai.png"
+								expire = "1965.1.1"
+								ideology = anarchism_subtype
+							}
+					set_cosmetic_tag = CHINA_SOCIALIST_JAPANESE_PUPPET
+					set_party_name = {
+    					ideology = radical_socialist
+   					 long_name = GXC_kemin_party_long
+    					name = GXC_kemin_party
+					}
+
+				}
+	}
+	
+	option = { #No
+		name = japan_new_event.152.d
+		ai_chance = { base = 100 }
+				FNG = {
+					set_politics = { ruling_party = authoritarian_democrat }
+					create_country_leader = {
+								name = "Liang Hongzhi"
+								desc = "-"
+								picture = "gfx/leaders/JAP/Portrait_JAP_Liang_Hongzhi.png"
+								expire = "1965.1.1"
+								ideology = authdem_pan_asianism_subtype
+							}
+					set_cosmetic_tag = CHINA_JAPANESE_PUPPET
+					set_party_name = {
+    					ideology = authoritarian_democrat
+   					 long_name = GXC_kemin_party_long
+    					name = GXC_kemin_party
+					}
+
+				}
+
+		}
+	option = { #No
+		name = japan_new_event.152.e
+		ai_chance = { base = 100 }
+				FNG = {
+					set_politics = { ruling_party = paternal_autocrat }
+					create_country_leader = {
+								name = "Li Shouxin"
+								desc = "-"
+								picture = "gfx/leaders/MON/Portrait_MON_Li_Shouxin.png"
+								expire = "1965.1.1"
+								ideology = pataut_pan_asianism_subtype
+							}
+					set_cosmetic_tag = CHINA_JAPANESE_PUPPET
+					set_party_name = {
+    					ideology = paternal_autocrat
+   					 long_name = GXC_kemin_party_long
+    					name = GXC_kemin_party
+					}
+
+				}
+
+		}
+	#option = { # if adding 7 or more, make sure the 7th option of event is to go to next event for choices as otherwise cant be seen
+		#name = japan_new_event.152.f
+		#ai_chance = { base = 100 }
+
+		#}
+
+
+	}
+
+
 

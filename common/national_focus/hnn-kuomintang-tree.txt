@@ -23,6 +23,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 	}
 
 	#Power By the Ballot
@@ -39,6 +43,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 	}
 
 	#Meeting of the Hunan Central Committee
@@ -71,6 +79,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 	}
 
 	#An Olive Branch With the Right
@@ -88,6 +100,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 		
 	}
 
@@ -106,6 +122,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 	}
 
 	#Forever Enshrining the Three Principles of the People
@@ -540,6 +560,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 	}
 
 	#Be-Rid the Socialist Menace
@@ -876,6 +900,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 	}
 
 	#Unification of Hunan's Red Banners
@@ -959,6 +987,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 	}
 
 	#Mao's Ascension
@@ -976,6 +1008,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = HNNKMT_a_true_party_of_the_masses  }
 		mutually_exclusive = { focus = HNNKMT_ridinghelongshorse  }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
 	}
 
 	#Riding He Long's Horse
@@ -991,14 +1026,120 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		allow_branch = { NOT = { has_country_leader = {
+   		 name = "Tang Shengzhi"
+  		 ruling_only = yes
+		}
+		} }
 		prerequisite = { focus = HNNKMT_a_true_party_of_the_masses  }
 		mutually_exclusive = { focus = HNNKMT_maosascension  }
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		hidden_effect = {	
 		country_event = { id = hunan_rework.88 days = 35 }
 		}
 		}
 		}
+
+	#tang kmt path finally
+	focus = {
+		id = HNNKMT_tangbackintokmt
+		icon = GFX_HNNKMT_shakingtangshengzhishand-248360
+		x = 22
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		allow_branch = { has_country_leader = {
+   		 name = "Tang Shengzhi"
+  		 ruling_only = yes
+		} }
+		prerequisite = { focus = HNNKMT_a_true_party_of_the_masses  }
+		mutually_exclusive = { focus = HNNKMT_maosascension  }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+		}
+	#politiking of the ktm
+	focus = {
+		id = HNNKMT_tangkmtpolitcs
+		icon = GFX_goal_HNNKMT_tangkmtpolitcs
+		x = 23
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNKMT_tangbackintokmt }
+		completion_reward = {
+		add_political_power = 50
+		add_ideas = {
+		HNN_buddhist_general
+		}
+
+		}
+	}
+	#peoples self defense forces
+	focus = {
+		id = HNNKMT_tangpeopleselfdefence
+		icon = GFX_goal_HNNKMT_tangpeopleselfdefence
+		x = 23
+		y = 6
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNKMT_tangkmtpolitcs }
+		completion_reward = {
+		army_experience = 50
+		remove_ideas = {
+		HNN_hengti_resistance_resistance
+		}
+
+		}
+	}
+	#legacy of the northen expedition
+	focus = {
+		id = HNNKMT_tangnorthernexpedition
+		icon = GFX_goal_HNNKMT_tangnorthernexpedition
+		x = 25
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = HNNKMT_tangkmtpolitcs }
+		completion_reward = {
+		add_ideas = HNN_tang_Hunan_onw_province
+		1013 = {	
+				add_extra_state_shared_building_slots = 1
+				add_state_modifier = {
+					modifier = {
+						local_manpower = 0.05
+						local_factories = 0.025
+						mobilization_speed = 0.05
+					}
+				}
+			}
+		602 = {	
+				add_extra_state_shared_building_slots = 1
+				add_state_modifier = {
+					modifier = {
+						local_manpower = 0.05
+						local_factories = 0.025
+						mobilization_speed = 0.05
+					}
+				}
+			}
+
+
+
+		}
+	}
 
 	#Shaking Tang Shengzhi's Hand
 	focus = {
@@ -1038,7 +1179,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
-		prerequisite = { focus = HNNKMT_maosascension  focus = HNNKMT_ridinghelongshorse  }
+		prerequisite = { focus = HNNKMT_maosascension  focus = HNNKMT_ridinghelongshorse focus = HNNKMT_tangbackintokmt }
 		completion_reward = {
 		custom_effect_tooltip = HNN_revolutionary_miltia_tt
 		hidden_effect = {
@@ -1120,7 +1261,8 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_STABILITY
 		}
-		prerequisite = { focus = HNNKMT_marxist_integration  } prerequisite = { focus = HNNKMT_unificationofhunansredbanners  }
+		allow_branch = { }
+		prerequisite = { focus = HNNKMT_marxist_integration focus = HNNKMT_tangpeopleselfdefence } prerequisite = { focus = HNNKMT_unificationofhunansredbanners focus = HNNKMT_tangnorthernexpedition }
 		completion_reward = {
 		add_research_slot = 1
 		add_ideas = {
@@ -1293,6 +1435,10 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+
 	}
 
 	#A Power Hold In the United Front

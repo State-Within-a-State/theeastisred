@@ -115,7 +115,7 @@ country_event = { # Introduction
 country_event = { # Introduction
 	id = lu_xun.1
 	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
-	title = "Lu Xun Takes Power in Shanghai"
+	title = lu_xun.1.t
 	desc = lu_xun.1.desc
 	picture = "GFX_report_event_picture_ku_xun_league"
 
@@ -136,11 +136,17 @@ country_event = { # Introduction
 		id = lu_xun.2
 		days = 100
 		}
-		remove_ideas = {
-		LEC_currency_6
-		LEC_volunteer_force
-		LEC_black_monday
-		}
+			remove_ideas = LEC_black_monday
+			remove_ideas = LEC_black_monday2
+			remove_ideas = LEC_black_monday3
+			remove_ideas = LEC_volunteer_force
+			remove_ideas = LEC_volunteer_force_expanded
+			remove_ideas = LEC_volunteer_force_natives
+			remove_ideas = LEC_volunteer_force_mechanised
+			remove_ideas = LEC_volunteer_force_glorious
+			remove_ideas_with_trait = underworld_boss
+			complete_national_focus = LEC_night_of_monkeys_head
+			set_country_flag = LEC_Shuntian_Power
 		remove_ideas = {
 		LEC_Du_Yuesheng_boss_sli
 		LEC_Zhang_Xiaolin_boss_sli
@@ -155,31 +161,13 @@ country_event = { # Introduction
 			expire = "1936.11.19"
 			ideology = lu_xun_thought_subtype
 			}
-		set_country_flag = shanghai_chaos
-		set_country_flag = LEC_Triad_Power
 		set_cosmetic_tag = LEC_LUXUN
-		every_other_country = { 
-		limit = { has_idea = unequal_treaties }
-		swap_ideas = {
-				remove_idea = unequal_treaties
-				add_idea = limited_exports
-				}
-		}
-		every_other_country = { 
-		limit = { has_idea = unequal_treaties_lesser }
-		swap_ideas = {
-				remove_idea = unequal_treaties_lesser
-				add_idea = limited_exports
-				}
-		}
 		load_focus_tree = luxun-tree
 		add_ideas = {
 		LEC_support_from_unions_0
 		LEC_raise_the_militias
 		LEC_local_study_groups_0
 		LEC_economic_recovery_0
-		}
-		add_ideas = {
 		LEC_lu_xun_hog_rso
 		LEC_yin_fu_eco_rso
 		LEC_chen_jue_for_rso
@@ -197,38 +185,48 @@ country_event = { # Introduction
 		paternal_autocrat = 0
 		national_populist = 0
 	}
-		every_other_country = {
-			limit = {
-				OR = {
-					has_guaranteed = LEC
-					has_non_aggression_pact_with = LEC
-					has_military_access_to = LEC
-					gives_military_access_to = LEC
+				division_template = {
+					name = "Leftist Militia"
+					division_names_group = LEC_GAR_01
+
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+					}
+					priority = 1
 				}
+		743 = {
+			create_unit = {
+					division = "division_template = \"Leftist Militia\" start_experience_factor = 0.3"
+					owner = LEC
 			}
-			diplomatic_relation = {
-				country = FROM
-				relation = guarantee
-				active = no
+			create_unit = {
+					division = "division_template = \"Leftist Militia\" start_experience_factor = 0.3"
+					owner = LEC
 			}
-			diplomatic_relation = {
-				country = FROM
-				relation = non_aggression_pact
-				active = no
-			}
-			diplomatic_relation = {
-				country = FROM
-				relation = military_access
-				active = no
-			}
-			LEC = {
-				diplomatic_relation = {
-					country = PREV
-					relation = military_access
-					active = no
-				}
+			create_unit = {
+					division = "division_template = \"Leftist Militia\" start_experience_factor = 0.3"
+					owner = LEC
 			}
 		}
+
+		every_unit_leader = {
+			limit = {
+				OR = {
+					has_trait = LEC_british_commander
+					has_trait = LEC_international_commander
+					has_trait = LEC_british_commander
+					has_trait = LEC_japanese_commander
+					has_trait = LEC_german_commander
+				}
+			}
+			set_nationality = NSW
+		}
+
 		set_variable = {
 				var = control_tianjin
 				value = 25
@@ -297,17 +295,6 @@ country_event = { # Introduction
 				var = legation_commie_land_reform
 				value = 0
 			}
-		326 = {
-		set_demilitarized_zone = yes
-			}
-		609 = {
-		set_demilitarized_zone = yes
-			}
-		remove_unit_leader = 1350
-		remove_unit_leader = 1351
-		remove_unit_leader = 1352
-		remove_unit_leader = 1353
-		remove_unit_leader = 1354
 		NSW = {
 		every_unit_leader = {
 			limit = {
@@ -651,25 +638,7 @@ country_event = { # Introduction
 
 country_event = { # Introduction
 	id = lu_xun.8
-	immediate = { 
-	hidden_effect = {
-			every_other_country = { 
-		limit = { has_idea = unequal_treaties }
-		swap_ideas = {
-				remove_idea = unequal_treaties
-				add_idea = limited_exports
-				}
-		}
-		every_other_country = { 
-		limit = { has_idea = unequal_treaties_lesser }
-		swap_ideas = {
-				remove_idea = unequal_treaties_lesser
-				add_idea = limited_exports
-				}
-		}
-
-	}
-	log = "[GetDateText]: [Root.GetName]: event phil.1" }
+	immediate = { log = "[GetDateText]: [Root.GetName]: event phil.1" }
 	title = "Conclusion of the Congress"
 	desc = lu_xun.8.desc
 	picture = "GFX_report_event_LEC_congress_shanghai_1"
@@ -2272,3 +2241,41 @@ country_event = { # Introduction
 	
 	
 }
+
+
+country_event = { #rev literature
+	id = lu_xun.19
+	immediate = { log = "[GetDateText]: [Root.GetName]: event lec.119" }
+	title = lu_xun.19.t
+	desc = lu_xun.19.d
+	#picture = GFX_report_event_LEC_shanghai_police_patrol
+	is_triggered_only = yes
+	option = {	#enough idc
+		name = lu_xun.19.a
+		add_political_power = 25
+	}
+	option = {#tell me more stories
+		name = lu_xun.19.a
+		add_political_power = 25
+		country_event = lu_xun.20
+	}
+
+}
+
+country_event = { #Hassan by Jiang Guanci
+	id = lu_xun.20
+	immediate = { log = "[GetDateText]: [Root.GetName]: event lec.119" }
+	title = lu_xun.20.t
+	desc = lu_xun.20.d
+	#picture = GFX_report_event_LEC_shanghai_police_patrol
+	is_triggered_only = yes
+	option = {	#enough idc
+		name = lu_xun.20.a
+	}
+	option = {#tell me more stories
+		name = lu_xun.20.a
+
+	}
+}
+
+

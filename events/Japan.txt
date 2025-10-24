@@ -368,13 +368,13 @@ country_event = { #The Election of Mizuno Rentaro
 	desc = {
 		text = japdom.14.dead
 		trigger = {
-			NOT = { has_character = JAP_suzuki_kisaburo }
+			NOT = { has_country_flag = Suzuki_Kisaburo_dead }
 		}
 	}
 	desc = {
 		text = japdom.14.notdead
 		trigger = {
-			has_character = JAP_suzuki_kisaburo
+			has_country_flag = Suzuki_Kisaburo_dead
 		}
 	}
 
@@ -475,8 +475,14 @@ country_event = { #Army coups fails, triggered by disagreeing with emperor when 
 		log = "[GetLogInfo]: event japdom.17 option japdom.17.a"
 		name = japdom.17.a
 		add_stability = -0.03
-		retire_character = JAP_koiso_kuniaki
-		retire_character = JAP_muto_akira
+		every_unit_leader = {
+			limit = { has_id = 18001 }
+			remove_unit_leader = yes
+		}
+		every_unit_leader = {
+			limit = { has_id = 2508 }
+			remove_unit_leader = yes
+		}
 		add_popularity = {
 			ideology = paternal_autocrat
 			popularity = -0.05
@@ -518,8 +524,14 @@ country_event = { #The restorationist counter-coup, triggered by previous event,
 		log = "[GetLogInfo]: event japdom.19 option japdom.19.a"
 		name = japdom.19.a
 		add_stability = -0.05
-		retire_character = JAP_koiso_kuniaki
-		retire_character = JAP_muto_akira
+		every_unit_leader = {
+			limit = { has_id = 18001 }
+			remove_unit_leader = yes
+		}
+		every_unit_leader = {
+			limit = { has_id = 2508 }
+			remove_unit_leader = yes
+		}
 		set_politics = {
 			ruling_party = national_populist
 			elections_allowed = no
@@ -538,13 +550,7 @@ country_event = { #The restorationist counter-coup, triggered by previous event,
 		set_country_flag = JAP_path_decided
 		set_country_flag = JAP_showa_tree
 		clr_country_flag = JAP_elected_soccon
-		hidden_effect = { news_event = worldnews.479 }
-		hidden_effect = {
-		country_event = {
-		id = rework_japan.0
-		days = 10
-		}
-		}
+		#hidden_effect = { news_event = worldnews.479 }
 	}
 }
 country_event = { #Army coup fails, centralist incoming, triggered by focus "Military Centralism"
@@ -559,7 +565,10 @@ country_event = { #Army coup fails, centralist incoming, triggered by focus "Mil
 		log = "[GetLogInfo]: event japdom.20 option japdom.20.a"
 		name = japdom.20.a
 		add_stability = -0.05
-		retire_character = JAP_araki_sadao
+		every_unit_leader = {
+			limit = { has_id = 2504 }
+			remove_unit_leader = yes
+		}
 		country_event = japdom.21
 	}
 }
@@ -590,12 +599,7 @@ country_event = { #The Centralists counter-coup is successful, triggered by prev
 			JAP_Godo_Takuo_eco_pau
 		}
 		hidden_effect = { news_event = worldnews.480 }
-		hidden_effect = {
-		country_event = {
-		id = rework_japan.4
-		days = 30
-		}
-		}
+
 		set_country_flag = JAP_path_decided
 		set_country_flag = JAP_milcentralism_tree
 		clr_country_flag = JAP_elected_soccon
@@ -1087,6 +1091,9 @@ country_event = { #Colonisation of Korea
 		has_completed_focus = JAP_COL_KOREA
 		controls_state = 525
 		controls_state = 527
+		controls_state = 1345
+		controls_state = 1346
+		controls_state = 1347
 	}
 
 	option = {
@@ -1118,6 +1125,9 @@ country_event = { #Economic Integration of Korea
 			is_subject_of = JAP
 			controls_state = 525
 			controls_state = 527
+			controls_state = 1345
+			controls_state = 1346
+			controls_state = 1347
 		}
 	}
 
@@ -1148,6 +1158,30 @@ country_event = { #Economic Integration of Korea
 			}
 		}
 		527 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		1345 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		1346 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		1347 = {
 			add_extra_state_shared_building_slots = 1
 			add_building_construction = {
 				type = industrial_complex
@@ -2050,12 +2084,11 @@ country_event = { #The Emperor has been shot!
 				}
 			}
 		}
-		set_country_flag = hirohito_shot
 		add_stability = -0.05
 		create_country_leader = {
 			name = "Yasuhito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = socdem_agrarianism_subtype
 			traits = { 
 				JAP_imperial_regent
@@ -2064,7 +2097,7 @@ country_event = { #The Emperor has been shot!
 		create_country_leader = {
 			name = "Yasuhito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = soclib_progressive_democracy_subtype
 			traits = { 
 				JAP_imperial_regent
@@ -2073,7 +2106,7 @@ country_event = { #The Emperor has been shot!
 		create_country_leader = {
 			name = "Yasuhito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = progressive_democracy_subtype
 			traits = { 
 				JAP_imperial_regent
@@ -2082,7 +2115,7 @@ country_event = { #The Emperor has been shot!
 		create_country_leader = {
 			name = "Yasuhito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = social_conservative_subtype
 			traits = { 
 				JAP_imperial_regent
@@ -2091,7 +2124,7 @@ country_event = { #The Emperor has been shot!
 		create_country_leader = {
 			name = "Yasuhito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = authdem_national_conservative_subtype
 			traits = { 
 				JAP_imperial_regent
@@ -2100,7 +2133,7 @@ country_event = { #The Emperor has been shot!
 		create_country_leader = {
 			name = "Yasuhito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = junta_subtype
 			traits = { 
 				JAP_imperial_regent
@@ -2109,7 +2142,7 @@ country_event = { #The Emperor has been shot!
 		create_country_leader = {
 			name = "Yasuhito"
 			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito.png"
-			expire = "1965.1.1"
+			expire = "1.1.1"
 			ideology = right_syndicalism_subtype
 			traits = { 
 				JAP_imperial_regent
@@ -2196,10 +2229,8 @@ country_event = { #Hayashi Senjuro is dead!
 	}
 
 	option = { #Gomeifuku wo inorimasu
-		log = "[GetLogInfo]: event japdom.58 option japdom.58.b"
-		name = japdom.58.b
+		name = japdom.58.c
 		trigger = { NOT = { has_idea = JAP_Hayashi_Senjuro_hog_pau } }
-		#retire_character = JAP_hayashi_senjuro
 	}
 }
 
@@ -2698,7 +2729,7 @@ country_event = { #Fate of the Imperial Family - Socialist
 	option = {
 		log = "[GetLogInfo]: event japdom.241 option japdom.241.a"
 		name = japdom.241.a
-		ai_chance = { base = 80 }
+		ai_chance = { base = 50 }
 		JAP = {
 			add_stability = 0.1
 			add_ideas = JAP_Imperial_Family_powerless
@@ -2715,18 +2746,35 @@ country_event = { #Fate of the Imperial Family - Socialist
 	option = {
 		log = "[GetLogInfo]: event japdom.241 option japdom.241.b"
 		name = japdom.241.b
-		ai_chance = { base = 15 }
+		ai_chance = { base = 35 }
 		JAP = {
 			effect_tooltip = {
 				if = {
-					limit = { has_character = JAP_hirohito }
-					retire_character = JAP_hirohito
+					limit = { has_country_leader = { name = "Hirohito" ruling_only = yes } }
+					retire_country_leader = yes
 				}
 			}
 			add_ideas = JAP_Imperial_Family_exiled
 			add_timed_idea = {
 				idea = JAP_country_unrest
 				days = 160
+			}
+		}
+		hidden_effect = {
+			news_event = { id = worldnews.245 days = 1 }
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event japdom.241 option japdom.241.a"
+		name = japdom.241.c
+		ai_chance = { base = 15 }
+		JAP = {
+			add_stability = -0.1
+			add_ideas = JAP_Imperial_Family_dead
+			add_timed_idea = {
+				idea = JAP_country_unrest
+				days = 300
 			}
 		}
 		hidden_effect = {
@@ -2752,6 +2800,7 @@ country_event = { #Black Monday
 		id = japan_new_event.6
 		days = 3
 		}
+
 	}
 }
 
@@ -3958,7 +4007,7 @@ country_event = { #GEA accepts our conditions
 				is_subject_of = GER
 				OR = {
 					tag = GEA
-					tag = MAL
+					tag = MLY
 					tag = SAR
 					tag = VIN
 					tag = CAM
@@ -4399,7 +4448,10 @@ country_event = { #Philippines Surrenders!
 			puppet_country_without_changing_government = yes
 		}
 		else = {
-			puppet = PHI
+			puppet = {
+				target = PHI
+				end_wars = no
+			}
 		}
 	}
 
@@ -4521,7 +4573,10 @@ country_event = { #Hawaii Surrenders!
 			puppet_country_without_changing_government = yes
 		}
 		else = {
-			puppet = HAW
+			puppet = {
+				target = HAW
+				end_wars = no
+			}
 		}
 	}
 
@@ -4708,6 +4763,7 @@ country_event = { # Kitei Son and Nan Shoryu
 
 	fire_only_once = yes
 	is_triggered_only = yes
+	trigger = { KOR = { exists = no } }
 
 	option = { # How unfortunate.
 		log = "[GetLogInfo]: event japfor.500 option japfor.500.a"
@@ -4879,6 +4935,9 @@ country_event = { #Second Negotiation - Korean Culture, they wanted more autonom
 		KOR = {
 			transfer_state = 525
 			transfer_state = 527
+			transfer_state = 1345
+			transfer_state = 1346
+			transfer_state = 1347
 			country_event = japfor.82 #Puppet Korea, event for Korea
 			set_popularities = {
 				totalist = 2
@@ -4907,7 +4966,7 @@ country_event = { #Second Negotiation - Korean Culture, they wanted more autonom
 			create_country_leader = {
 				name = "Kim Suk-won"
 				picture = "gfx/leaders/KOR/Portrait_KOR_Kim_Suk_won.png"
-				expire = "1965.1.1"
+				expire = "1.1.1"
 				ideology = junta_subtype
 				traits = {}
 			}
@@ -4917,8 +4976,14 @@ country_event = { #Second Negotiation - Korean Culture, they wanted more autonom
 		set_global_flag = kor_japfree
 		remove_state_claim = 525
 		remove_state_claim = 527
+		remove_state_claim = 1345
+		remove_state_claim = 1346
+		remove_state_claim = 1347
 		remove_state_core = 525
 		remove_state_core = 527
+		remove_state_core = 1345
+		remove_state_core = 1346
+		remove_state_core = 1347
 		news_event = {
 			id = worldnews.246
 		}
@@ -4932,6 +4997,9 @@ country_event = { #Second Negotiation - Korean Culture, they wanted more autonom
 		KOR = {
 			transfer_state = 525
 			transfer_state = 527
+			transfer_state = 1345
+			transfer_state = 1346
+			transfer_state = 1347
 			country_event = japfor.82 #Puppet Korea, event for Korea
 			set_popularities = {
 				totalist = 2
@@ -4960,7 +5028,7 @@ country_event = { #Second Negotiation - Korean Culture, they wanted more autonom
 			create_country_leader = {
 				name = "Kim Suk-won"
 				picture = "gfx/leaders/KOR/Portrait_KOR_Kim_Suk_won.png"
-				expire = "1965.1.1"
+				expire = "1.1.1"
 				ideology = junta_subtype
 				traits = {}
 			}
@@ -4970,8 +5038,14 @@ country_event = { #Second Negotiation - Korean Culture, they wanted more autonom
 		set_global_flag = kor_japfree
 		remove_state_claim = 525
 		remove_state_claim = 527
+		remove_state_claim = 1345
+		remove_state_claim = 1346
+		remove_state_claim = 1347
 		remove_state_core = 525
 		remove_state_core = 527
+		remove_state_core = 1345
+		remove_state_core = 1346
+		remove_state_core = 1347
 		news_event = {
 			id = worldnews.246
 		}
@@ -5306,7 +5380,7 @@ country_event = { #Korea asks for aid - Germany, Australasia, Russia
 	}
 
 	option = { #Light support
-		name = japfor.69.a
+		name = japfor.69.b
 		ai_chance = {
 			factor = 35
 		}
@@ -5636,7 +5710,7 @@ country_event = { #Rebellion time in Korea?
 		text = japfor.83.yay
 		trigger = {
 			check_variable = {
-				JAP_KOR_INT > 80
+				global.KORsupport < 3
 			}
 		}
 	}
@@ -5644,7 +5718,7 @@ country_event = { #Rebellion time in Korea?
 		text = japfor.83.nay
 		trigger = {
 			check_variable = {
-				JAP_KOR_INT < 80
+				global.KORsupport > 2
 			}
 		}
 	}
@@ -5657,7 +5731,7 @@ country_event = { #Rebellion time in Korea?
 		name = japfor.83.a
 		trigger = {
 			check_variable = {
-				JAP_KOR_INT > 80
+				global.KORsupport < 3
 			}
 			NOT = {
 				has_game_rule = {
@@ -5679,7 +5753,7 @@ country_event = { #Rebellion time in Korea?
 		trigger = {
 			OR = {
 				check_variable = {
-					JAP_KOR_INT < 80
+					global.KORsupport > 2
 				}
 				has_game_rule = {
 					rule = KOR_rebellion
@@ -5695,10 +5769,15 @@ country_event = { #Rebellion time in Korea?
 		add_stability = -0.15
 		remove_state_core = 525
 		remove_state_core = 527
+		remove_state_core = 1345
+		remove_state_core = 1346
+		remove_state_core = 1347
 		country_event = { id = japfor.86 days = 3 }
 		KOR = {
 			transfer_state = 525
-			set_country_flag = { flag = KOR_rebellion days = 5 value = 1 }
+			transfer_state = 1345
+			transfer_state = 1346
+			set_country_flag = KOR_rebellion_flag
 			country_event = { id = japfor.85 days = 1 }
 		}
 	}
@@ -5708,7 +5787,7 @@ country_event = { #Rebellion time in Korea?
 		trigger = {
 			OR = {
 				check_variable = {
-					JAP_KOR_INT < 80
+					global.KORsupport > 2
 				}
 				has_game_rule = {
 					rule = KOR_rebellion
@@ -5724,10 +5803,15 @@ country_event = { #Rebellion time in Korea?
 		add_stability = -0.15
 		remove_state_core = 525
 		remove_state_core = 527
+		remove_state_core = 1345
+		remove_state_core = 1346
+		remove_state_core = 1347
 		country_event = { id = japfor.86 days = 3 }
 		KOR = {
 			transfer_state = 525
-			set_country_flag = { flag = KOR_rebellion days = 5 value = 1 }
+			transfer_state = 1345
+			transfer_state = 1346
+			set_country_flag = KOR_rebellion_flag
 			country_event = { id = japfor.85 days = 1 }
 			change_tag_from = ROOT
 		}
@@ -6728,16 +6812,31 @@ country_event = { #hidden event to fire the peace mission
 			is_ai = no
 			NOT = { has_global_flag = JAP_will_surrender }
 		}
-		KOR = {
-			any_core_state = { is_owned_by_ROOT_or_ally = yes }
-			all_core_state = {
-				OR = {
-					is_owned_by_ROOT_or_ally = no
-					is_controlled_by_ROOT_or_ally = no
+		OR = {
+			KOR = {
+				any_core_state = { is_owned_by_ROOT_or_ally = yes }
+				all_core_state = {
+					OR = {
+						is_owned_by_ROOT_or_ally = no
+						is_controlled_by_ROOT_or_ally = no
+					}
+				}
+			}
+			KOR = {
+				exists = yes
+				NOT = {
+					is_in_faction_with = JAP
+				}
+				all_core_state = {
+					OR = {
+						is_owned_by_ROOT_or_ally = no
+						is_controlled_by_ROOT_or_ally = no
+					}
 				}
 			}
 		}
 		OR = {
+			surrender_progress > 0.3
 			AND = {
 				any_enemy_country = {
 					is_chinese_tag = yes
@@ -6776,15 +6875,9 @@ country_event = { #hidden event to fire the peace mission
 				}
 			}
 			AND = {
-				OR = {
-					RUS = {
-						has_war_with = ROOT
-						is_valid_peace_target = yes
-					}
-					SOV = {
-						has_war_with = ROOT
-						is_valid_peace_target = yes
-					}
+				RUS = {
+					has_war_with = ROOT
+					is_valid_peace_target = yes
 				}
 				if = {
 					limit = {
@@ -6795,10 +6888,7 @@ country_event = { #hidden event to fire the peace mission
 				}
 				if = {
 					limit = {
-						OR = {
-							RUS = { has_war_with = FNG }
-							SOV = { has_war_with = FNG }
-						}
+						RUS = { has_war_with = FNG }
 						FNG = { has_capitulated = yes }
 					}
 				}
@@ -6834,6 +6924,16 @@ country_event = { #hidden event to fire the peace mission
 country_event = { #Japan Offers Peace
 	id = japfor.230
 	title = japfor.230.t
+	immediate = {
+		hidden_effect = {
+			event_target:current_china_leader = {
+				clr_country_flag = is_chinese_national_leader
+			}
+			clear_global_event_target = current_china_leader
+			set_country_flag = is_chinese_national_leader
+		    save_global_event_target_as = current_china_leader
+		}
+	}
 
 	desc = {
 		text = japfor.230.d.taiwan_kept
@@ -7003,17 +7103,6 @@ country_event = { #Japan Offers Peace
 				limit = {
 					JAP = {
 						owns_state = 524
-						OR = {
-							enemies_naval_strength_ratio > 4
-							AND = {
-								surrender_progress > 0.15
-								any_home_area_neighbor_country = { is_ally_with = ROOT }
-							}
-							var:524.controller = {
-								is_tag_in_china_area = yes
-								has_war_with = event_target:japan
-							}
-						}
 					}
 				}
 				event_target:japan = { remove_state_claim = 524 }
@@ -7397,6 +7486,50 @@ country_event = { #Peace Goes Into Effect
 				clr_country_flag = JAP_refused_peace
 			}
 		}
+
+		### Collapse the United Front, if it exists ###
+		disable_united_front_AI = yes
+		every_other_country = {
+			limit = { has_country_flag = was_chinese_faction_leader }
+			add_to_temp_array = { global.chinese_faction_leaders = THIS }
+		}
+		if = {
+			limit = {
+				event_target:chinese_united_front_leader = {
+					all_allied_country = {
+						OR = {
+							tag = ROOT
+							is_subject_of = ROOT
+							has_country_flag = original_front_faction_member
+						}
+					}
+				}
+			}
+			event_target:chinese_united_front_leader = {
+				country_event = {
+					id = china_shared.11
+					days = 6
+				}
+			}
+		}
+		else = {
+			every_other_country = {
+				limit = {
+					is_in_faction_with = event_target:chinese_united_front_leader
+					OR = {
+						has_country_flag = was_chinese_faction_leader
+						NOT = {
+							any_of_scopes = {
+								array = global.chinese_faction_leaders
+								is_in_array = { chinese_faction_members = PREV }
+							}
+						}
+					}
+					NOT = { has_country_flag = original_front_faction_member }
+				}
+				activate_decision = leave_chinese_united_front
+			}
+		}
 	}
 
 	option = {
@@ -7437,6 +7570,9 @@ country_event = { #End of the Sino-Japanese War
 		name = japfor.232.a
 		effect_tooltip = {
 			set_truce = { target = FROM days = 730 }
+		}
+		JAP = {
+		set_global_flag = JAP_Fading_Sun
 		}
 	}
 }
@@ -7985,7 +8121,7 @@ country_event = { #The American islands are ours!
 		FROM = {
 			every_owned_state = {
 				limit = { is_american_pacific_islands = yes }
-				transfer_state_to = FROM
+				transfer_state_to = JAP
 			}
 		}
 	}
@@ -9155,7 +9291,7 @@ country_event = { #Japan and the Asian Economic Sphere embargo us!
 		trigger = {
 			tag = AST
 			has_government = paternal_autocrat
-			NOT = { has_completed_focus = AST_ties_with_japan }
+			NOT = { has_completed_focus = AST_restore_the_anglo-japanese_alliance }
 		}
 		ai_chance = { base = 100 }
 		set_country_flag = AST_has_ties_with_japan
@@ -9174,7 +9310,7 @@ country_event = { #Japan and the Asian Economic Sphere embargo us!
 				factor = 0.2
 			}
 			modifier = {
-				has_completed_focus = AST_anderson_doctrine
+				has_completed_focus = AST_oppose_pan_asian_imperial_ambition
 				factor = 5
 			}
 			modifier = {
@@ -9766,7 +9902,7 @@ news_event = { #The Rising Sun
 		trigger = { has_global_flag = JAP_defeated_by_china }
 	}
 
-	picture = GFX_news_event_japanese_parade
+	picture = GFX_news_event_JAP_parade
 
 	major = yes
 	fire_for_sender = no
@@ -9810,6 +9946,27 @@ country_event = { #Puppet Military Exercise Event
 	}
 }
 
+country_event = { #Playing puppet Japan
+	id = japdom.2400
+	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.2400" }
+	title = japdom.2400.t
+	desc = japdom.2400.d
+	picture = GFX_report_event_QIE_cardgame
+
+	is_triggered_only = yes
+
+	option = {
+		name = japdom.2400.a
+		ai_chance = { base = 0 }
+		custom_effect_tooltip = JAP_puppet_play_tt
+		JAP = { change_tag_from = ROOT }
+	}
+	option = {
+		name = japdom.2400.b
+		ai_chance = { base = 100 }
+	}
+}
+
 country_event = {
 	id = japdom.3050
 	immediate = { log = "[GetDateText]: [Root.GetName]: event japdom.3050" }
@@ -9817,27 +9974,32 @@ country_event = {
 	desc = japdom.3050.d
 	picture = GFX_report_event_KSV_helicopters
 
-	trigger = {
-		tag = JAP
-		has_global_flag = heli_time_worldwide
-	}
+	is_triggered_only = yes
 	
 	fire_only_once = yes	
 
 	option = {
 		name = japdom.3050.a
-		set_technology = {
-			helicopter = 1
+		if = {
+			limit = { has_dlc_got = yes }
+			complete_special_project = sp:sp_air_helicopter
+			add_equipment_to_stockpile = { type = helicopter_equipment_1 amount = 100 }
 		}
-		add_equipment_to_stockpile = { type = helicopter_1 amount = 100 }
+		else = {
+			set_technology = {
+				helicopter = 1
+			}
+			add_equipment_to_stockpile = { type = helicopter_1 amount = 100 }
+		}
 		hidden_effect = {
 			every_country = {
 				limit = {
 					is_in_faction_with = JAP
+					NOT = { tag = ROOT }
 				}
 			}
 			country_event = {
-				id = japdom.306
+				id = japdom.3051
 				days = 15
 			}
 		}
@@ -9856,10 +10018,19 @@ country_event = {
 
 	option = {
 		name = japdom.3051.a
-		set_technology = {
-			helicopter = 1
+		if = {
+			limit = { has_dlc_got = yes }
+			add_breakthrough_progress = {
+				specialization = specialization_air
+				value = 0.25
+			}
 		}
-		add_equipment_to_stockpile = { type = helicopter_1 amount = 25 }
+		else = {
+			set_technology = {
+				helicopter = 1
+			}
+			add_equipment_to_stockpile = { type = helicopter_1 amount = 25 }
+		}
 	}
 }	
 
