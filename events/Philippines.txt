@@ -2307,15 +2307,47 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Pedro Abad Santos
 		name = rd_phil.41.a
 		ai_chance = { base = 100 }
+		complete_national_focus = PHI_soc_second_santos
+		set_country_flag = PHI_Pedro_Elected
+		set_politics = {
+   		ruling_party = radical_socialist
+    		elections_allowed = no
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Pedro_Abad_Santos_hog_rso
+		PHI_Lius_Taruc_eco_rso
+		PHI_Pedro_Abad_Santos_for_rso
+		PHI_Vivencio_Cuyugan_sec_rso
+		}
+		
 		
 	}
-	option = { #
+	option = { #José Abad Santos
 		name = rd_phil.41.b
 		ai_chance = { base = 100 }
-		
+		complete_national_focus = PHI_soc_second_santos
+		set_country_flag = PHI_Jose_Elected
+		set_politics = {
+   		ruling_party = social_democrat
+    		elections_allowed = no
+		}
+		create_country_leader = {
+			name = "José Abad Santos"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Jose_Abad_Santos.png"
+			expire = "1.1.1"
+			ideology = socdem_agrarianism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Jose_Abad_Santos_hog_sde
+		PHI_Lope_K_Santos_eco_sde
+		PHI_Faustino_Aguilar_for_sde
+		PHI_Pablo_Manlapit_sec_sde
+		}
 	}
 	option = { #
 		name = rd_phil.41.c
@@ -2613,7 +2645,7 @@ country_event = { #laurel special event to the countries who accepted hey join m
 
 }
 
-country_event = { #
+country_event = { #Revival of the Pan-Pacific Trade Union Section
 	id = rd_phil.51
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.51"}
 	title = rd_phil.51.title
@@ -2624,11 +2656,14 @@ country_event = { #
 	option = { #
 		name = rd_phil.51.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 25
+		add_ideas = {
+		PHI_santos_pptus
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Katipunan - Relived
 	id = rd_phil.52
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.52"}
 	title = rd_phil.52.title
@@ -2636,10 +2671,20 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Keep Jose
 		name = rd_phil.52.a
 		ai_chance = { base = 100 }
 		
+	}
+	option = { #Keep Bring Lope
+		name = rd_phil.52.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Lope K. Santos"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Lope_K_Santos.png"
+			expire = "1.1.1"
+			ideology = liberal_socialism_subtype
+		}
 	}
 }
 
@@ -2649,16 +2694,34 @@ country_event = { #
 	title = rd_phil.53.title
 	desc = rd_phil.53.desc
 	fire_only_once = yes 
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = rd_phil.54
+				days = 180
+			}
+		}
+	}
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Keep Santos(Radsoc)
 		name = rd_phil.53.a
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #Keep Santos(Georgeism)
+		name = rd_phil.53.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Pedro Abad Santos"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Pedro_Abad_Santos.png"
+			expire = "1.1.1"
+			ideology = radsoc_georgism_subtype
+		}
+	}
 }
 
-country_event = { #
+country_event = { #Pedro Dies = Luis Takes Over
 	id = rd_phil.54
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.54"}
 	title = rd_phil.54.title
@@ -2666,10 +2729,26 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Agrarian Socialism
 		name = rd_phil.54.a
 		ai_chance = { base = 100 }
-		
+		create_country_leader = {
+			name = "Luis Taruc"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Luis_Taruc.png"
+			expire = "1.1.1"
+			ideology = agrarian_socialism_subtype
+		}
+	}
+	
+	option = { #Christian Socialism
+		name = rd_phil.54.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Luis Taruc"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Luis_Taruc.png"
+			expire = "1.1.1"
+			ideology = christian_socialism_subtype
+		}
 	}
 }
 

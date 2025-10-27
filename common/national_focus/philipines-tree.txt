@@ -4900,7 +4900,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_victoryyay } 
 		completion_reward = {
-
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#spirit of labor
@@ -4916,7 +4916,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_santos } 
 		completion_reward = {
-
+			add_ideas = {
+			PHI_santos_spirit_of_labour
+			}
 		}
 	}
 
@@ -4931,9 +4933,30 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = PHI_Jose_Elected
+		}
 		prerequisite = { focus = PHI_soc_second_labor } 
 		completion_reward = {
-
+		add_soclib_to_coalition = yes
+		add_soccon_to_coalition = yes
+		add_popularity = {
+		ideology = social_liberal
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.05
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.15
+		}
+		add_political_power = 25
+		swap_ideas = {
+		remove_idea = PHI_santos_get_others_in_1
+		add_idea = PHI_santos_get_others_in_3
+		}
 		}
 	}
 	#marxist struggle
@@ -4947,9 +4970,16 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_country_flag = PHI_Pedro_Elected
+		}
 		prerequisite = { focus = PHI_soc_second_labor } 
 		completion_reward = {
-
+		add_political_power = 25
+		swap_ideas = {
+		remove_idea = PHI_santos_get_others_in_1
+		add_idea = PHI_santos_get_others_in_2
+		}
 		}
 	}
 	#socialist humanism
@@ -4983,7 +5013,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_santos_nationalista } 
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = PHI_santos_anti_radicalism
+			days = 90
+			}
 		}
 	}
 	#over pacisif
@@ -4999,7 +5032,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_marxism focus = PHI_soc_second_santos_nationalista } 
 		completion_reward = {
-
+			add_political_power = 25
+			add_ideas = {
+			PHI_santos_reach_pacific
+			}
 		}
 	}
 	#cygan welfare
@@ -5015,7 +5051,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_humanism } prerequisite = { focus = PHI_soc_second_pacific }
 		completion_reward = {
-
+			add_ideas = {
+			PHI_santos_welfare_cuyugan
+			}
 		}
 	}
 	#mutual aid
@@ -5031,7 +5069,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_humanism } 
 		completion_reward = {
-
+			add_ideas = {
+			PHI_santos_mutual_aid
+			}
 		}
 	}
 	#strengthen labor
@@ -5047,7 +5087,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_mutual_aid } prerequisite = { focus = PHI_soc_second_welfare } 
 		completion_reward = {
-
+			swap_ideas = {
+			remove_idea = PHI_santos_real_social_jus_1
+			add_idea = PHI_santos_real_social_jus_2
+			}
 		}
 	}
 
@@ -5064,7 +5107,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_no_rads focus = PHI_soc_second_humanism } prerequisite = { focus = PHI_soc_second_pacific }
 		completion_reward = {
-
+			country_event = rd_phil.51
 		}
 	}
 	#tobbacco
@@ -5080,7 +5123,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_ppttus }
 		completion_reward = {
-
+			add_ideas = {
+			PHI_santos_tobbacco
+			}
 		}
 	}
 
@@ -5098,7 +5143,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_no_rads  } 
 		completion_reward = {
-
+			add_ideas = {
+			PHI_santos_anti_militancy
+			}
 		}
 	}
 	#guilds and mututal
@@ -5132,7 +5179,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_guilds } prerequisite = { focus = PHI_soc_second_militans } 
 		completion_reward = {
-
+			swap_ideas = {
+			remove_idea = PHI_santos_real_social_jus_1
+			add_idea = PHI_santos_real_social_jus_3
+			}
 		}
 	}
 
@@ -5149,7 +5199,13 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_social_just } prerequisite = { focus = PHI_soc_second_tobbacco } 
 		completion_reward = {
-
+			country_event = rd_phil.52
+			add_political_power = 50
+			add_stability = 0.1
+			add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+			}
 		}
 	}
 
@@ -5166,7 +5222,11 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_labor_strength } prerequisite = { focus = PHI_soc_second_tobbacco } 
 		completion_reward = {
-
+			country_event = rd_phil.53
+			swap_ideas = {
+			remove_idea = PHI_santos_jose_do_shit
+			add_idea = PHI_santos_jose_do_shit_1
+			}
 		}
 	}
 	#land reform
