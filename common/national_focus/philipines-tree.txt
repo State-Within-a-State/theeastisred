@@ -1771,7 +1771,7 @@ focus_tree = {
 			}
 			add_timed_idea = {
 			idea = generic_research_advances
-			days = 100
+			days = 360
 			}
 			random_owned_controlled_state = {
 			add_building_construction = {
@@ -4938,13 +4938,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_labor } 
 		completion_reward = {
-		add_soclib_to_coalition = yes
-		add_soccon_to_coalition = yes
 		add_popularity = {
 		ideology = social_democrat
-		popularity = 0.15
+		popularity = 0.10
 		}
-		add_political_power = 25
 		swap_ideas = {
 		remove_idea = PHI_santos_get_others_in_1
 		add_idea = PHI_santos_get_others_in_3
@@ -4987,9 +4984,8 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_marxism } 
 		completion_reward = {
-		hidden_effect = { country_event = {id = rd_phil.53 days = 21 } }
-		add_research_slot = 1
 		add_country_leader_trait = PHI_don_porico
+		hidden_effect = { country_event = {id = rd_phil.53 days = 21 } }
 
 		}
 	}
@@ -5091,10 +5087,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_soc_second_mutual_aid } prerequisite = { focus = PHI_soc_second_welfare } 
 		completion_reward = {
-			swap_ideas = {
-			remove_idea = PHI_santos_real_social_jus_1
-			add_idea = PHI_santos_real_social_jus_2
-			}
+		add_research_slot = 1
 		}
 	}
 
@@ -5184,8 +5177,8 @@ has_country_leader = {
 		prerequisite = { focus = PHI_soc_second_guilds } prerequisite = { focus = PHI_soc_second_militans } 
 		completion_reward = {
 			swap_ideas = {
-			remove_idea = PHI_santos_real_social_jus_1
-			add_idea = PHI_santos_real_social_jus_3
+			remove_idea = PHI_santos_jose_do_shit
+			add_idea = PHI_santos_jose_real_socialism
 			}
 		}
 	}
@@ -5204,12 +5197,8 @@ has_country_leader = {
 		prerequisite = { focus = PHI_soc_second_social_just } prerequisite = { focus = PHI_soc_second_tobbacco } 
 		completion_reward = {
 			country_event = rd_phil.52
-			add_political_power = 50
-			add_stability = 0.1
-			add_popularity = {
-			ideology = social_democrat
-			popularity = 0.1
-			}
+			        army_experience = 50
+			add_offsite_building = { type = arms_factory level = 1 }
 		}
 	}
 
@@ -5442,7 +5431,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_poisons } 
 		completion_reward = {
-			add_political_power = 25
+			add_political_power = 100
 			add_popularity = {
 			ideology = paternal_autocrat
 			popularity = 0.075
@@ -5500,16 +5489,21 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_antisoc_national_reorganization } 
 		completion_reward = {
+		add_research_slot = 1
 			add_popularity = {
 			ideology = national_populist 
 			popularity = -0.05
 			}
-			add_war_support = 0.1
-			add_political_power = 10
+			add_war_support = 0.05
 			add_opinion_modifier = {
 				target = JAP
-				modifier = faction_traitor
+				modifier = KR_hostile
 			}
+			reverse_add_opinion_modifier = {
+				target = JAP
+				modifier = KR_hostile
+			}
+
 		}
 	}
 	
