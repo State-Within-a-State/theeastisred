@@ -4469,9 +4469,12 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			always = no
+		}
 		prerequisite = { focus = PHI_soc_victoryyay } 
 		completion_reward = {
-
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	#resist eactcionaries
@@ -4487,7 +4490,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_syndie_fivepri } 
 		completion_reward = {
-
+			add_timed_idea = {
+			idea = PHI_syndie_anti_reactionary
+			days = 90
+			}
 		}
 	}
 	#read the works of the commune
@@ -4520,7 +4526,12 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_syndie_resist } 
 		completion_reward = {
-
+			add_popularity = {
+			ideology = syndicalist
+			popularity = 0.05
+			}
+			add_political_power = 25
+			add_stability = 0.1
 		}
 	}
 	#rural struggle
@@ -4536,7 +4547,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_syndie_unions_proles } prerequisite = { focus = PHI_syndie_read_french } 
 		completion_reward = {
-
+			swap_ideas = {
+			remove_idea = PHI_santos_real_social_jus
+			add_idea = PHI_syndie_from_town_to_province
+			}
 		}
 	}
 	#evanglista rev
@@ -4571,7 +4585,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_syndie_fivepri } 
 		completion_reward = {
-
+			country_event = rd_phil.55
 		}
 	}
 	#nationalism
@@ -4587,7 +4601,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_syndie_malaka } 
 		completion_reward = {
-
+			country_event = rd_phil.56
 		}
 	}
 	#aglipyan support
@@ -4604,7 +4618,15 @@ has_country_leader = {
 		prerequisite = { focus = PHI_syndie_nationalism } 
 		mutually_exclusive = { focus = PHI_syndie_athiesm } 
 		completion_reward = {
-
+			remove_ideas = {
+			PHI_santos_get_others_in
+			}
+			add_timed_idea = {
+			idea = PHI_syndie_get_others_in
+			days = 90
+			}
+			add_socdem_to_coalition = yes
+			add_radsoc_to_coalition = yes
 		}
 	}
 	#aethisim
@@ -4621,7 +4643,14 @@ has_country_leader = {
 		prerequisite = { focus = PHI_syndie_nationalism } 
 		mutually_exclusive = { focus = PHI_syndie_aglipyan } 
 		completion_reward = {
-
+			remove_ideas = {
+			PHI_santos_get_others_in
+			}
+			add_timed_idea = {
+			idea = PHI_syndie_get_others_in_1
+			days = 90
+			}
+			add_tot_to_coalition = yes
 		}
 	}
 	#anti imperailsim
@@ -4637,7 +4666,22 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_syndie_athiesm focus = PHI_syndie_aglipyan } 
 		completion_reward = {
-
+			add_political_power = 25
+			add_popularity = {
+			ideology = syndicalist
+			popularity = 0.05
+			}
+			add_popularity = {
+			ideology = totalist
+			popularity = 0.025
+			}
+			add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.025
+			}
+			add_ideas = {
+			PHI_syndie_anti_imperialism
+			}
 		}
 	}
 	#south_seas
@@ -4653,7 +4697,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_syndie_anti_imperialism } prerequisite = { focus = PHI_syndie_evanglista_rev } 
 		completion_reward = {
-
+			add_ideas = {
+			PHI_syndie_south_seas
+			}
 		}
 	}
 

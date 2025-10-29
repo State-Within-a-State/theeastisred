@@ -2358,15 +2358,26 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 		PHI_Pablo_Manlapit_sec_sde
 		}
 	}
-	option = { #
+	option = { #Communist 
 		name = rd_phil.41.c
 		ai_chance = { base = 100 }
 		
 	}
-	option = { #
+	option = { #Syndicalist
 		name = rd_phil.41.d
 		ai_chance = { base = 100 }
-		
+		complete_national_focus = PHI_syndie_fivepri
+		set_politics = {
+   		ruling_party = syndicalist
+    		elections_allowed = no
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Crisanto_Evangelista_hog_syn
+		PHI_Cirilo_Bognot_eco_syn
+		PHI_Mariano_Balgos_for_syn
+		PHI_Juan_Feleo_sec_syn #Will change this to Tot, and replace him with someone else soon
+		}
 	}
 
 }
@@ -2768,7 +2779,7 @@ country_event = { #Pedro Dies = Luis Takes Over
 	}
 }
 
-country_event = { #
+country_event = { #Tan Malaka Flavour Event
 	id = rd_phil.55
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.55"}
 	title = rd_phil.55.title
@@ -2779,11 +2790,13 @@ country_event = { #
 	option = { #
 		name = rd_phil.55.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+			PHI_syndie_legacy_tan_malaka
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Nasyonalismo-Proteksiyonismo vs. Internasyonalismo-Radikalismo"
 	id = rd_phil.56
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.56"}
 	title = rd_phil.56.title
@@ -2791,10 +2804,21 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Develop Domestic Industries
 		name = rd_phil.56.a
 		ai_chance = { base = 100 }
-		
+		swap_ideas = {
+		remove_idea = PHI_santos_get_others_in
+		add_idea = PHI_syndie_develop_domestic_industry
+		}
+	}
+	option = { #Push Forward International Cooperation
+		name = rd_phil.56.b
+		ai_chance = { base = 100 }
+		swap_ideas = {
+		remove_idea = PHI_santos_get_others_in
+		add_idea = PHI_syndie_radical_international_cooperation
+		}
 	}
 }
 
