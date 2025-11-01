@@ -2361,6 +2361,21 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 	option = { #Communist 
 		name = rd_phil.41.c
 		ai_chance = { base = 100 }
+		complete_national_focus = PHI_com_dotp
+		set_politics = {
+   		ruling_party = totalist
+    		elections_allowed = no
+		}
+		add_synd_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Guillermo_Capodocia_hog_tot
+		PHI_Ka_Antos_eco_tot
+		PHI_Vincente_Lava_sec_tot #change him to foreign policy
+		PHI_Juan_Feleo_sec_syn 
+		}
+
 		
 	}
 	option = { #Syndicalist
@@ -2371,12 +2386,14 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
    		ruling_party = syndicalist
     		elections_allowed = no
 		}
+		add_tot_to_coalition = yes
+		add_radsoc_to_coalition = yes
 		remove_all_ministers = yes
 		add_ideas = {
 		PHI_Crisanto_Evangelista_hog_syn
 		PHI_Cirilo_Bognot_eco_syn
 		PHI_Mariano_Balgos_for_syn
-		PHI_Juan_Feleo_sec_syn #Will change this to Tot, and replace him with someone else soon
+		PHI_Juan_Feleo_sec_syn #Will change this to Tot, and replace him with someone else soon PHI_Antonion_D_Ora_for_tot make this guy the sec synd instead
 		}
 	}
 
@@ -2761,7 +2778,9 @@ country_event = { #Pedro Dies = Luis Takes Over
 			expire = "1.1.1"
 			ideology = agrarian_socialism_subtype
 		}
+		if = { limit = { has_government = radical_socialist }
 		add_country_leader_trait = PHI_alipato
+		}
 	}
 	
 	option = { #Christian Socialism
@@ -2775,7 +2794,9 @@ country_event = { #Pedro Dies = Luis Takes Over
 			expire = "1.1.1"
 			ideology = christian_socialism_subtype
 		}
+		if = { limit = { has_government = radical_socialist }
 		add_country_leader_trait = PHI_alipato
+		}
 	}
 }
 
@@ -2807,18 +2828,12 @@ country_event = { #Nasyonalismo-Proteksiyonismo vs. Internasyonalismo-Radikalism
 	option = { #Develop Domestic Industries
 		name = rd_phil.56.a
 		ai_chance = { base = 100 }
-		swap_ideas = {
-		remove_idea = PHI_santos_get_others_in
-		add_idea = PHI_syndie_develop_domestic_industry
-		}
+		add_ideas = PHI_syndie_develop_domestic_industry
 	}
 	option = { #Push Forward International Cooperation
 		name = rd_phil.56.b
 		ai_chance = { base = 100 }
-		swap_ideas = {
-		remove_idea = PHI_santos_get_others_in
-		add_idea = PHI_syndie_radical_international_cooperation
-		}
+		add_ideas = PHI_syndie_radical_international_cooperation
 	}
 }
 
