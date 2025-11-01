@@ -2312,10 +2312,20 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 		ai_chance = { base = 100 }
 		complete_national_focus = PHI_soc_second_santos
 		set_country_flag = PHI_Pedro_Elected
-		set_politics = {
-   		ruling_party = radical_socialist
-    		elections_allowed = no
+
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = radical_socialist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
+		rd_phil_soc_calculate_length_second_election = yes
 		add_synd_to_coalition = yes
 		add_tot_to_coalition = yes
 		remove_all_ministers = yes
@@ -2358,14 +2368,51 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 		PHI_Pablo_Manlapit_sec_sde
 		}
 	}
-	option = { #Communist 
+		
+	option = { #Syndicalist
 		name = rd_phil.41.c
 		ai_chance = { base = 100 }
-		complete_national_focus = PHI_com_dotp
-		set_politics = {
-   		ruling_party = totalist
-    		elections_allowed = no
+		complete_national_focus = PHI_syndie_fivepri
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = syndicalist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
 		}
+		rd_phil_soc_calculate_length_second_election = yes
+		add_tot_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Crisanto_Evangelista_hog_syn
+		PHI_Cirilo_Bognot_eco_syn
+		PHI_Mariano_Balgos_for_syn
+		PHI_Juan_Feleo_sec_syn #Will change this to Tot, and replace him with someone else soon PHI_Antonion_D_Ora_for_tot make this guy the sec synd instead
+		}
+	}
+	option = { #Communist 
+		name = rd_phil.41.d
+		ai_chance = { base = 100 }
+		complete_national_focus = PHI_com_dotp
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = totalist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		rd_phil_soc_calculate_length_second_election = yes
 		add_synd_to_coalition = yes
 		add_radsoc_to_coalition = yes
 		remove_all_ministers = yes
@@ -2376,25 +2423,6 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 		PHI_Juan_Feleo_sec_syn 
 		}
 
-		
-	}
-	option = { #Syndicalist
-		name = rd_phil.41.d
-		ai_chance = { base = 100 }
-		complete_national_focus = PHI_syndie_fivepri
-		set_politics = {
-   		ruling_party = syndicalist
-    		elections_allowed = no
-		}
-		add_tot_to_coalition = yes
-		add_radsoc_to_coalition = yes
-		remove_all_ministers = yes
-		add_ideas = {
-		PHI_Crisanto_Evangelista_hog_syn
-		PHI_Cirilo_Bognot_eco_syn
-		PHI_Mariano_Balgos_for_syn
-		PHI_Juan_Feleo_sec_syn #Will change this to Tot, and replace him with someone else soon PHI_Antonion_D_Ora_for_tot make this guy the sec synd instead
-		}
 	}
 
 }
@@ -2722,6 +2750,10 @@ country_event = { #Katipunan - Relived use lope as a figurehead?
 			expire = "1.1.1"
 			ideology = liberal_socialism_subtype
 		}
+		swap_ideas = { 
+		remove_idea = PHI_Jose_Abad_Santos_hog_sde
+		add_idea = PHI_Lope_K_Santos_hog_sde
+		}
 	}
 }
 
@@ -2837,19 +2869,92 @@ country_event = { #Nasyonalismo-Proteksiyonismo vs. Internasyonalismo-Radikalism
 	}
 }
 
-country_event = { #
+country_event = { #repeating elections of the socialists
 	id = rd_phil.57
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.57"}
 	title = rd_phil.57.title
-	desc = rd_phil.57.desc
-	fire_only_once = yes 
+	desc = rd_phil.57.desc #never create any leaders do add the ministers though because rn they need to be updated
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #socs 
 		name = rd_phil.57.a
 		ai_chance = { base = 100 }
+		if = { limit = { not = { has_completed_focus = PHI_soc_second_santos } }
+		complete_national_focus = PHI_soc_second_santos
+		}
+		if = { limit = { not = { has_country_flag = PHI_Pedro_Elected } }
+		set_country_flag = PHI_Pedro_Elected
+		}
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = radical_socialist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		rd_phil_soc_calculate_length_second_election = yes
+		add_synd_to_coalition = yes
+		add_tot_to_coalition = yes
+
 		
 	}
+	option = { #syndes
+		name = rd_phil.57.b
+		ai_chance = { base = 100 }
+		if = { limit = { not = { has_completed_focus = PHI_syndie_fivepri } }
+		complete_national_focus = PHI_syndie_fivepri
+		}
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = syndicalist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		rd_phil_soc_calculate_length_second_election = yes
+		add_tot_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		if = { 
+		limit = { has_completed_focus = PHI_syndie_aglipyan }
+		add_socdem_to_coalition = yes
+		}
+		
+	}
+	option = { #comms
+		name = rd_phil.57.c
+		ai_chance = { base = 100 }
+		if = { limit = { not = { has_completed_focus = PHI_com_dotp } }
+		complete_national_focus = PHI_com_dotp
+		}
+		meta_effect = {
+			text = {
+				set_politics = {
+					ruling_party = totalist
+					last_election = "[CURRENT_DATE]"
+					election_frequency = "[MONTH_ELECTIONS]"
+					elections_allowed = yes
+				}
+			}
+			CURRENT_DATE = "[?global.date.GetDateStringNoHour]"
+			MONTH_ELECTIONS = "[THIS.PHILengthTerm]"
+		}
+		rd_phil_soc_calculate_length_second_election = yes
+		add_synd_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		
+		
+	}
+
 }
 
 country_event = { #
