@@ -627,3 +627,245 @@ PHI_emilio_politics_decisions = {
 
 
 }
+
+PHI_land_reform_movement_decision_category = {
+PHI_land_reform_mission = {
+		activation = {
+			has_completed_focus = PHI_soc_reforms
+		}
+		available = {
+			
+			
+			custom_trigger_tooltip = {
+				tooltip = land_reform_completed_tt		
+				check_variable = { PHI_land_reform_progress > 89 }
+			}
+			
+		}
+		cancel_trigger = {
+			
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 730
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+		set_country_flag = PHI_socialist_land_reform_success
+		add_political_power = 50
+		add_stability = 0.25
+		add_war_support = 0.1
+		}
+		timeout_effect = {
+		set_country_flag = PHI_socialist_land_reform_failed
+		if = { limit = { is_ai = no } 
+		add_stability = -0.5
+		add_war_support = -0.25
+		add_political_power = -200
+		}
+		}
+	}
+	
+	
+	PHI_rural_restribution = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = PHI_soc_distriube
+		}
+		
+		visible = {
+			tag = PHI
+			
+		}
+		cost = 10
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 50
+		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+			random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = PHI_land_reform_progress
+				value = 5
+				tooltip = add_PHI_land_reform_var_tt
+			}
+		}
+	}
+	
+	PHI_rural_restribution = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = PHI_soc_distriube
+		}
+		
+		visible = {
+			tag = PHI
+			
+		}
+		cost = 10
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 50
+		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+			random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = PHI_land_reform_progress
+				value = 5
+				tooltip = add_PHI_land_reform_var_tt
+			}
+		}
+	}
+	
+	PHI_establish_coops = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = PHI_soc_rural_coop
+		}
+		
+		visible = {
+			tag = PHI
+			
+		}
+		cost = 10
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 60
+		days_re_enable = 5
+		fire_only_once = no
+		modifier = {
+			production_lack_of_resource_penalty_factor = -0.05
+			production_speed_buildings_factor = 0.05
+			production_speed_industrial_complex_factor = 0.1
+			consumer_goods_factor = -0.05
+			research_speed_factor = 0.01
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = PHI_land_reform_progress
+				value = 7
+				tooltip = add_PHI_land_reform_var_tt
+			}
+		}
+	}
+	
+	PHI_anti_land_lord_campaign = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = PHI_soc_crush_em
+		}
+		
+		visible = {
+			tag = PHI
+			
+		}
+		cost = 25
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 100
+		days_re_enable = 20
+		fire_only_once = no
+		modifier = {
+			consumer_goods_factor = -0.05
+			stability_factor = -0.1
+			political_power_gain = 0.3
+			war_support_factor = 0.05
+			weekly_manpower = -100
+			conscription_factor = -0.01
+		}
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = PHI_land_reform_mission
+				days = -30
+			}
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = PHI_land_reform_progress
+				value = 7
+				tooltip = add_PHI_land_reform_var_tt
+			}
+		}
+	}
+	
+	PHI_anti_land_lord_campaign_moderate = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = PHI_soc_work_landlords
+		}
+		
+		visible = {
+			tag = PHI
+			
+		}
+		cost = 25
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 75
+		days_re_enable = 20
+		fire_only_once = no
+		modifier = {
+			consumer_goods_factor = 0.025
+			stability_factor = -0.15
+			political_power_gain = 0.2
+			war_support_factor = -0.05
+			production_speed_buildings_factor = 0.05
+			conscription_factor = 0.05
+		}
+		complete_effect = {
+			add_days_mission_timeout = {
+				mission = PHI_land_reform_mission
+				days = 30
+			}
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = PHI_land_reform_progress
+				value = 10
+				tooltip = add_PHI_land_reform_var_tt
+			}
+		}
+	}
+}

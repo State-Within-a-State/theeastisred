@@ -5314,7 +5314,12 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_soc_victoryyay } 
 		completion_reward = {
-
+			unlock_decision_category_tooltip = PHI_land_reform_movement_decision_category
+			set_variable = {
+				var = PHI_land_reform_progress
+				value = 0
+				tooltip = add_PHI_land_reform_var_tt
+			}
 		}
 	}
 	#distriube in rura
@@ -5330,7 +5335,12 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_soc_reforms } 
 		completion_reward = {
-
+			add_to_variable = {
+				var = PHI_land_reform_progress
+				value = 8
+				tooltip = add_PHI_land_reform_var_tt
+			}
+			
 		}
 	}
 	#crush landowners
@@ -5347,7 +5357,7 @@ add_doctrine_cost_reduction = {
 		prerequisite = { focus = PHI_soc_distriube } 
 		mutually_exclusive = { focus = PHI_soc_work_landlords }
 		completion_reward = {
-
+			unlock_decision_tooltip = PHI_anti_land_lord_campaign
 		}
 	}
 	#work wthe em landowners
@@ -5364,7 +5374,7 @@ add_doctrine_cost_reduction = {
 		prerequisite = { focus = PHI_soc_distriube } 
 		mutually_exclusive = { focus = PHI_soc_crush_em }
 		completion_reward = {
-
+			unlock_decision_tooltip = PHI_anti_land_lord_campaign_moderate
 		}
 	}
 
@@ -5381,7 +5391,7 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_soc_reforms } 
 		completion_reward = {
-
+			unlock_decision_tooltip = PHI_establish_coops
 		}
 	}
 	#rice tenancy
@@ -5397,7 +5407,25 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_soc_rural_coop } 
 		completion_reward = {
-
+			if = {
+				limit = {
+					has_idea = PHI_quezon_rice_share_tenacy
+				}
+				swap_ideas = {
+				remove_idea = PHI_quezon_rice_share_tenacy
+				add_idea = PHI_sco_rice_share_tenacy
+				}
+			}
+			else = {
+				add_ideas = {
+					PHI_sco_rice_share_tenacy
+				}
+			}
+			add_to_variable = {
+				var = PHI_land_reform_progress
+				value = 10
+				tooltip = add_PHI_land_reform_var_tt
+			}
 		}
 	}
 	#rev land
@@ -5414,7 +5442,19 @@ add_doctrine_cost_reduction = {
 		prerequisite = { focus = PHI_soc_tenancy } prerequisite = { focus = PHI_soc_crush_em } prerequisite = { focus = PHI_soc_work_landlords }  
 		mutually_exclusive = { focus = PHI_soc_crush_em }
 		completion_reward = {
-
+			add_to_variable = {
+				var = PHI_land_reform_progress
+				value = 15
+				tooltip = add_PHI_land_reform_var_tt
+			}
+			add_political_power = 50
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
+			add_ideas = {
+				PHI_soc_revolution_tiller
+			}
 		}
 	}
 
