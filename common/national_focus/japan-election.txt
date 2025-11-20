@@ -18,12 +18,13 @@ focus_tree = {
 		icon = GFX_JAP_ELECTION_1936_elections-248360
 		x = 1
 		y = 0
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-		
+		completion_reward = {
+		country_event = rd_japan_event.0
+		add_political_power = 10
 		}
 	}
 	
@@ -34,11 +35,14 @@ focus_tree = {
 		relative_position_id = JAP_End_Reijiro_Term
 		x = -1
 		y = 1
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_End_Reijiro_Term }
+		completion_reward = {
+		country_event = rd_japan_event.1
+		}
 	}
 	
 	focus = {
@@ -47,11 +51,22 @@ focus_tree = {
 		relative_position_id = JAP_End_Reijiro_Term
 		x = 1
 		y = 1
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_End_Reijiro_Term }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_recovery_from_showa_financial_crisis
+				add_idea = JAP_recovery_from_showa_financial_crisis_1
+			}
+			add_power_balance_value = {
+			id = JAP_civilian_army_balance
+			value = -0.025
+			tooltip_side = army_gov_influence_bop_side
+		}
+		}
 	}
 	
 	focus = {
@@ -60,11 +75,17 @@ focus_tree = {
 		relative_position_id = JAP_End_Reijiro_Term
 		x = 2
 		y = 2
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_continue_austerity }
+		completion_reward = {
+			add_timed_idea = {
+			idea = JAP_chukin_bank
+			days = 60
+			}
+		}
 	}
 	
 	focus = {
@@ -73,12 +94,18 @@ focus_tree = {
 		relative_position_id = JAP_End_Reijiro_Term
 		x = 0
 		y = 2
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_continue_austerity }
 		prerequisite = { focus = JAP_deal_with_cooperative_movement }
+		completion_reward = {
+			add_ideas = {
+				JAP_strengthen_japanese_business_group
+			}
+			add_war_support = -0.1
+		}
 	}
 	
 	focus = {
@@ -87,11 +114,22 @@ focus_tree = {
 		relative_position_id = JAP_End_Reijiro_Term
 		x = -2
 		y = 2
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = JAP_deal_with_cooperative_movement }
+		completion_reward = {
+			add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.05
+			}
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.05
+				tooltip_side = army_gov_influence_bop_side
+			}
+		}
 	}
 	
 	focus = {
@@ -100,13 +138,31 @@ focus_tree = {
 		relative_position_id = JAP_End_Reijiro_Term
 		x = -2
 		y = 3
-		cost = 2
+		cost = 8
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			OR = {
+				has_completed_focus = JAP_zaibatsu_support
+				has_completed_focus = JAP_aspire_national_reform
+			}
+		}
+		select_effect = {
+			hidden_effect = {
+				country_event = {
+					id = rd_japan_event.2
+					days = 14
+				}
+			}
 		}
 		prerequisite = { focus = JAP_attack_the_domei_split }
 		prerequisite = { focus = JAP_strengthen_jbf }
 		prerequisite = { focus = JAP_open_chukin_bank }
+		completion_reward = {
+			custom_effect_tooltip = JAP_kodoha_chain_tt
+			
+		}
 	}
 	
 	focus = {
@@ -115,7 +171,7 @@ focus_tree = {
 		relative_position_id = JAP_End_Reijiro_Term
 		x = 1
 		y = 3
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -123,6 +179,17 @@ focus_tree = {
 		prerequisite = { focus = JAP_strengthen_jbf }
 		prerequisite = { focus = JAP_open_chukin_bank }
 		mutually_exclusive = {focus = JAP_aspire_national_reform }
+		completion_reward = {
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.05
+				tooltip_side = army_gov_influence_bop_side
+			}
+			swap_ideas = {
+			remove_idea = JAP_recovery_from_showa_financial_crisis_1
+			add_idea = JAP_recovery_from_showa_financial_crisis_2
+			}
+		}
 	}
 	focus = {
 		id = JAP_aspire_national_reform
@@ -130,7 +197,7 @@ focus_tree = {
 		relative_position_id = JAP_End_Reijiro_Term
 		x = 3
 		y = 3
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
@@ -138,8 +205,719 @@ focus_tree = {
 		prerequisite = { focus = JAP_strengthen_jbf }
 		prerequisite = { focus = JAP_open_chukin_bank }
 		mutually_exclusive = {focus = JAP_zaibatsu_support }
+		completion_reward = {
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.05
+				tooltip_side = army_gov_influence_bop_side
+			}
+			swap_ideas = {
+			remove_idea = JAP_recovery_from_showa_financial_crisis_1
+			add_idea = JAP_recovery_from_showa_financial_crisis_3
+			}
+		}
 	}
 
 	
 
+}
+
+focus_tree = {
+	id = japan-election-kokumin-domei
+	continuous_focus_position = { x = -40 y = 1050 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = JAP
+		}
+	}
+	shared_focus = JAPFOR_japansplaceintheworld
+	shared_focus = JAP_the_raising_of_the_sword
+	shared_focus = JAP_recovering_from_black_monday
+	
+	#1936 Elections
+	focus = {
+		id = JAP_Kokumin_Victory_Alliance
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		x = 1
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_Dirigisme
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = -3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_Victory_Alliance }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_Protectionist
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_Dirigisme }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_Village_Relief
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = -4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_Protectionist }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_aid_industrial_labour
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = -2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_Protectionist }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_third_way
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = -3
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_aid_industrial_labour }
+		prerequisite = { focus = JAP_Kokumin_Village_Relief }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_coop_cabinet
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_Victory_Alliance }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_coop_natsoc
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Kokumin_coop_seiyukai }
+		prerequisite = { focus = JAP_Kokumin_coop_cabinet }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_coop_seiyukai
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Kokumin_coop_natsoc }
+		prerequisite = { focus = JAP_Kokumin_coop_cabinet }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_class_collab_unity
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_coop_seiyukai }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_Tojinha_reach_out
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_coop_seiyukai focus = JAP_Kokumin_coop_natsoc }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_rapproach_labour
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_coop_natsoc }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_popular_politics_realization
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_Tojinha_reach_out }
+		prerequisite = { focus = JAP_Kokumin_rapproach_labour focus = JAP_Kokumin_class_collab_unity }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_rocked_division_nationalism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_popular_politics_realization }
+		prerequisite = { focus = JAP_Kokumin_third_way}
+		completion_reward = {
+		
+		}
+	}
+	
+	##1940 Election
+	
+	focus = {
+		id = JAP_Kokumin_new_nat_unity_term
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 15
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_continue_coop_movement
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_new_nat_unity_term
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_new_nat_unity_term }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_support_bill_grants
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_continue_coop_movement
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Kokumin_review_local_finance }
+		prerequisite = { focus = JAP_Kokumin_continue_coop_movement }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_review_local_finance
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_continue_coop_movement
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Kokumin_support_bill_grants }
+		prerequisite = { focus = JAP_Kokumin_continue_coop_movement }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_equalisation_agriculture
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_continue_coop_movement
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_support_bill_grants focus = JAP_Kokumin_review_local_finance }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_support_women
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_continue_coop_movement
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_equalisation_agriculture }
+		completion_reward = {
+		
+		}
+	}
+	
+	##Tohokai
+	
+	focus = {
+		id = JAP_Tohokai_rise_far_east_society
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 10
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Tohokai_support_natsoc
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_rise_far_east_society
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_rise_far_east_society }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Tohokai_dissolve_upper_house
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_rise_far_east_society
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_support_natsoc }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Tohokai_anti_liberalism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_rise_far_east_society
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_dissolve_upper_house }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Tohokai_increase_radicalism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_rise_far_east_society
+		x = -3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_dissolve_upper_house }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Tohokai_worker_coop_syndicates
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_rise_far_east_society
+		x = -1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_increase_radicalism }
+		prerequisite = { focus = JAP_Tohokai_anti_liberalism }
+		completion_reward = {
+		
+		}
+	}
+	##Shared Tree
+	focus = {
+		id = JAP_Tohokai_Domei_Asia_Security
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_rise_far_east_society
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_rise_far_east_society focus = JAP_Kokumin_new_nat_unity_term }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Tohokai_Domei_resource_grip
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_Domei_Asia_Security
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_Domei_Asia_Security }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Tohokai_Domei_secure_foreign_exchange
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_Domei_Asia_Security
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_Domei_Asia_Security }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Tohokai_Domei_self_sufficiency
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_Domei_Asia_Security
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_Domei_secure_foreign_exchange }
+		prerequisite = { focus = JAP_Tohokai_Domei_resource_grip }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Tohokai_Domei_security_laws_strengthened
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_Domei_Asia_Security
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_Domei_secure_foreign_exchange }
+		prerequisite = { focus = JAP_Tohokai_Domei_resource_grip }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Tohokai_Domei_propose_nat_unity_cabinet
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_Domei_Asia_Security
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_Domei_security_laws_strengthened }
+		prerequisite = { focus = JAP_Tohokai_Domei_self_sufficiency }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Tohokai_Domei_sword_liberalism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_Domei_Asia_Security
+		x = -1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_Domei_propose_nat_unity_cabinet }
+		prerequisite = { focus = JAP_Tohokai_worker_coop_syndicates focus = JAP_Kokumin_support_women }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Tohokai_Domei_failure_nat_unity_gov
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Tohokai_Domei_Asia_Security
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Tohokai_Domei_propose_nat_unity_cabinet }
+		prerequisite = { focus = JAP_Tohokai_worker_coop_syndicates focus = JAP_Kokumin_support_women }
+		completion_reward = {
+		
+		}
+	}
+	
+	##1944 Election
+	focus = {
+		id = JAP_Kokumin_loyal_strong_gov
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_Victory_Alliance
+		x = 23
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_Adachi_legacy
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_loyal_strong_gov
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_loyal_strong_gov }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_socialism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_loyal_strong_gov
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Kokumin_original_way }
+		prerequisite = { focus = JAP_Kokumin_Adachi_legacy }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_marxist_flirt
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_loyal_strong_gov
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_socialism }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_original_way
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_loyal_strong_gov
+		x = -2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Kokumin_socialism }
+		prerequisite = { focus = JAP_Kokumin_Adachi_legacy }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_work_former_bureaucrats
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_loyal_strong_gov
+		x = -3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_original_way }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_east_asia_monroe_continue
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_loyal_strong_gov
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_original_way focus = JAP_Kokumin_socialism }
+		completion_reward = {
+		
+		}
+	}
+	
+	focus = {
+		id = JAP_Kokumin_japan_strong_anti_syndicalist
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_loyal_strong_gov
+		x = -2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_work_former_bureaucrats }
+		prerequisite = { focus = JAP_Kokumin_east_asia_monroe_continue }
+		completion_reward = {
+		
+		}
+	}
+	focus = {
+		id = JAP_Kokumin_natdem_mantle
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Kokumin_loyal_strong_gov
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Kokumin_marxist_flirt }
+		prerequisite = { focus = JAP_Kokumin_east_asia_monroe_continue }
+		completion_reward = {
+		
+		}
+	}
+	
 }
