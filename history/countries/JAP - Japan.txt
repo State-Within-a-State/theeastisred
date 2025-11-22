@@ -110,11 +110,14 @@ if = {
 			early_bombs = 1
 			engines_1 = 1
 			engines_2 = 1
+			aircraft_construction = 1
 			iw_small_airframe = 1
 			basic_small_airframe = 1
 			iw_medium_airframe = 1
 			basic_medium_airframe = 1
 			iw_large_airframe = 1
+			air_torpedoe_1 = 1
+			bba_early_transport_plane = 1
 		}
 		JAP_BBA_air_variants = yes
 	else = {
@@ -131,6 +134,7 @@ if = {
 			cv_early_fighter = 1
 			cv_naval_bomber1 = 1
 			cv_CAS1 = 1
+			early_transport_plane = 1
 		}
 	}
 }
@@ -164,8 +168,8 @@ if = {
 		basic_ship_hull_carrier = 1
 		early_ship_hull_heavy = 1
 		basic_ship_hull_heavy = 1
-		ship_hull_super_heavy = 1
 		coastal_defense_ships = 1
+		ship_hull_super_heavy = 1
 		
 		basic_naval_mines = 1
 		submarine_mine_laying = 1
@@ -173,7 +177,7 @@ if = {
 		## Modules##
 		basic_battery = 1
 		basic_light_battery = 1
-		basic_medium_battery = 1
+		
 		basic_heavy_battery = 1
 		basic_depth_charges = 1
 		basic_torpedo = 1
@@ -215,6 +219,13 @@ if = {
 		### Transport ###
 		transport = 1
 	}
+}
+
+complete_special_project = {
+	project = sp:sp_naval_cruiser_submarine
+}
+complete_special_project = {
+	project = sp:sp_naval_super_heavy_battleship
 }
 
 set_convoys = 300
@@ -291,7 +302,6 @@ add_ideas = {
 	low_economic_mobilisation
 }
 
-
 add_dynamic_modifier = {
 	modifier = FNG_mantetsu_profits_modifier
 	scope = FNG
@@ -313,13 +323,18 @@ add_opinion_modifier = { target = QIE modifier = embargo }
 add_opinion_modifier = { target = LEC modifier = LEC_member }
 LEC = { give_military_access = JAP }
 give_guarantee = LEC
+diplomatic_relation = {
+	country = TRM
+	relation = docking_rights
+	active = yes
+}
 set_country_flag = legation_council_vote
 set_country_flag = JAP_EMPEROR_HIRO
 set_country_flag = HOG_veiw
 
 set_politics = {
 	ruling_party = social_conservative
-	last_election = "1932.3.20"
+	last_election = "1932.2.20"
 	election_frequency = 48
 	elections_allowed = yes
 }
@@ -337,9 +352,7 @@ set_popularities = {
 	national_populist = 4
 }
 
-create_faction = co_prosperity_sphere
-
-
+create_faction_from_template = faction_template_co_prosperity_sphere
 
 
 if = {
