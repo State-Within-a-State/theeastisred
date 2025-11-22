@@ -306,7 +306,10 @@ country_event = { #enter faction?
 	is_triggered_only = yes
 	option = { 
 		name = annex_peace.5.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100
+		modifier = { is_subject = yes factor = 0 }
+		modifier = { is_in_faction = yes is_faction_leader = no base = 0 }
+		}
 			if = { 
 			limit = {
 			FROM = { is_faction_leader = yes }
@@ -320,7 +323,15 @@ country_event = { #enter faction?
 	}
 	option = { 
 		name = annex_peace.5.b
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { has_opinion = {
+    		target = FROM
+    		value > 80
+		}
+		factor = 0.3
+		} 
+		}
+
 		FROM = { country_event = annex_peace.7 }
 	}
 
@@ -335,7 +346,24 @@ country_event = { #wlecome china?
 	is_triggered_only = yes
 	option = { 
 		name = annex_peace.6.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { has_opinion = {
+    		target = FROM
+    		value > 80
+		}
+		add = 100
+		} 
+		modifier = { 
+		FROM = {
+		OR = { 
+		all_enemy_country = { has_war_with = ROOT }
+		has_war = no
+		}
+		}
+		factor = 1.4
+		}
+		modifier = { is_faction_leader = no base = 0 }
+		}
 		ROOT = { add_to_faction = FROM }
 
 	}

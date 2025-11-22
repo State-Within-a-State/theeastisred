@@ -6113,7 +6113,14 @@ country_event = { #Refusal But Alliance?
 	
 	option = { #How About No
 		name = japan_new_event.76.b
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { has_opinion = {
+    		target = FROM
+    		value > 95
+		}
+		factor = 0.3
+		} 
+		}
 		JAP = {
 			country_event = { id = japan_new_event.150 days = 2 }
 			create_wargoal = {
@@ -6435,7 +6442,14 @@ country_event = { #Refusal But Alliance
 	}
 	option = { #
 		name = japan_new_event.76.b
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { has_opinion = {
+    		target = FROM
+    		value > 95
+		}
+		factor = 0.35
+		} 
+		}
 		JAP = {
 			create_wargoal = {
 					type = puppet_wargoal_focus
@@ -8200,14 +8214,14 @@ country_event = { #Japanese Socialists Propose an Alliance
 					JSR = { is_in_faction_with = FRA }
 					FRA = { is_faction_leader = yes }
 				}
-				FRA = { add_to_faction = FROM }
+				FRA = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = ENG }
 					ENG = { is_faction_leader = yes }
 				}
-				ENG = { add_to_faction = FROM }
+				ENG = { add_to_faction = ROOT }
 			} 
 
 		else_if = {
@@ -8215,24 +8229,24 @@ country_event = { #Japanese Socialists Propose an Alliance
 					JSR = { is_in_faction_with = RUS }
 					RUS = { is_faction_leader = yes }
 				}
-				RUS = { add_to_faction = FROM }
+				RUS = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = BHC }
 					BHC = { is_faction_leader = yes }
 				}
-				BHC = { add_to_faction = FROM }
+				BHC = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = CSA }
 					CSA = { is_faction_leader = yes }
 				}
-				CSA = { add_to_faction = FROM }
+				CSA = { add_to_faction = ROOT }
 			} 
 		else = {
-		JSR = { add_to_faction = FROM }
+		JSR = { add_to_faction = ROOT }
 		}
 		set_country_flag = JSR_chose_china_leader
 	}
@@ -9049,14 +9063,14 @@ country_event = { #
 					JSR = { is_in_faction_with = FRA }
 					FRA = { is_faction_leader = yes }
 				}
-				FRA = { add_to_faction = FROM }
+				FRA = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = ENG }
 					ENG = { is_faction_leader = yes }
 				}
-				ENG = { add_to_faction = FROM }
+				ENG = { add_to_faction = ROOT }
 			} 
 
 		else_if = {
@@ -9064,29 +9078,36 @@ country_event = { #
 					JSR = { is_in_faction_with = RUS }
 					RUS = { is_faction_leader = yes }
 				}
-				RUS = { add_to_faction = FROM }
+				RUS = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = BHC }
 					BHC = { is_faction_leader = yes }
 				}
-				BHC = { add_to_faction = FROM }
+				BHC = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = CSA }
 					CSA = { is_faction_leader = yes }
 				}
-				CSA = { add_to_faction = FROM }
+				CSA = { add_to_faction = ROOT }
 			} 
 		else = {
-		JSR = { add_to_faction = FROM }
+		JSR = { add_to_faction = ROOT }
 		}	
 	}
 		option = { #
 		name = japan_new_event.76.b
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { has_opinion = {
+    		target = FROM
+    		value > 95
+		}
+		factor = 0.3
+		} 
+		}
 		JSR = {
 			create_wargoal = {
 					type = puppet_wargoal_focus
