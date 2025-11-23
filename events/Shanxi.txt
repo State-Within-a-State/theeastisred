@@ -11349,101 +11349,22 @@ country_event = {
 
  #### Endgame Military
 country_event = {
-	id = shx_endgame.1 #Reform the Central Army
+	id = shx_endgame.1 #A Rising Power in the North
 	title = shx_endgame.1.t
 	desc = shx_endgame.1.d
-	picture = GFX_report_event_QIE_zhili_soldiers
-	is_triggered_only = yes
+	picture = GFX_report_event_generic_beijing_map
+	is_triggered_only = yes #Triggered by one of two on_actions - either you captured Beijing/Wuhan/Nanjing OR you've ended a war with more than
+	fire_only_once = yes
+
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.1 option shx_endgame.1.a"
-		name = shx_endgame.1.a
-		ai_chance = {
-			base = 50
-			modifier = {
-				factor = 1.5 #Gotta draft those soldiers
-				has_war = yes
-			}
-			modifier = {
-				factor = 1.5 #Still Enemy Unifiers on the Loose
-				OR = {
-					country_exists = CHI
-					country_exists = FNG
-					AND = {
-						country_exists = GXC
-						strength_ratio = {
-							tag = SHX
-							ratio > 0.75
-						}
-					}
-					AND = {
-						country_exists = YUN
-						strength_ratio = {
-							tag = SHX
-							ratio > 0.75
-						}
-					}
-					AND = {
-						country_exists = SZC
-						strength_ratio = {
-							tag = SHX
-							ratio > 0.75
-						}
-					}
-					AND = {
-						country_exists = ANQ
-						strength_ratio = {
-							tag = SHX
-							ratio > 0.75
-						}
-					}
-					AND = {
-						country_exists = LEP
-						strength_ratio = {
-							tag = SHX
-							ratio > 0.75
-						}
-					}
-				}
-			}
-		}
-		swap_ideas = {
-			remove_idea = SHX_disorganised_national_army_idea
-			add_idea = SHX_regional_army_idea
-		}
-	}
-	option = {
-		log = "[GetLogInfo]: event shx_endgame.1 option shx_endgame.1.b"
-		name = shx_endgame.1.b
-		ai_chance = {
-			base = 50
-			modifier = {
-				factor = 1.5 #More Likely to Go Small if Controls All Major Cities
-				owns_state = 608 #Beijing
-				owns_state = 613 #Nanjing
-				owns_state = 1048 #Wuhan
-				owns_state = 592 #Canton
-				owns_state = 605 #Chengdu (Chongqing presumably conquered alongside it)
-			}
-			modifier = {
-				factor = 1.5 #More Likely to Go Small if All Concessions Returned
-				owns_state = 609 #Tianjian
-				owns_state = 743 #Shanghai
-				owns_state = 996 #Wenhaiwei
-				owns_state = 744 #Qingdao
-				owns_state = 728 #Guangzhouwan
-				owns_state = 729 #Macao
-				owns_state = 326 #Hong Kong
-				owns_state = 524 #Formosa
-				owns_state = 745 #Kwantang
-			}
-		}
-		swap_ideas = {
-			remove_idea = SHX_disorganised_national_army_idea
-			add_idea = SHX_new_central_army
-		}
-		add_political_power = 75
+		name = shx_endgame.1.a #Victory brings new hope, and new challenges...
+		add_stability = -0.25
+		add_war_support = -0.25
+		SHX_lategame_transition_effect = yes
 	}
 }
+
 country_event = {
 	id = shx_endgame.2 #Proclaim RoC
 	title = shx_endgame.2.t
@@ -11455,9 +11376,9 @@ country_event = {
 		text = shx_endgame.2.d.2
 		trigger = { has_country_flag = SHX_feng_victory_over_yan }
 	}
-	picture = GFX_report_event_CHI_new_government
+	picture = GFX_report_event_CHN_china_five_colour_speech
 	is_triggered_only = yes
-	immediate = { hidden_effect = { country_event = { id = shx_endgame.3 days = 8 }}}
+	immediate = { hidden_effect = { country_event = { id = shx_endgame.3 days = 8 } } }
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.2 option shx_endgame.2.a"
 		name = shx_endgame.2.a #Let's Revive the Chinese Republic once more!
@@ -11465,14 +11386,18 @@ country_event = {
 			limit = { has_country_flag = SHX_feng_victory_over_yan }
 			hidden_effect = {
 				set_party_name = { #Rename Feng's Party from GMJ to National Revolutionary Party
-					ideology = radical_socialist
-					long_name = SHX_feng_unification_party_long
-					name = SHX_feng_unification_party
-				}
-				set_party_name = { #Rename Feng's Party from GMJ to National Revolutionary Party
 					ideology = authoritarian_democrat
 					long_name = SHX_feng_unification_party_long
 					name = SHX_feng_unification_party
+				}
+			}
+		}
+		else = {
+			hidden_effect = {
+				set_party_name = { #Rename Yan's Party from Yan Clique to Xinhai Club
+					ideology = paternal_autocrat
+					long_name = SHX_yan_unification_party_long
+					name = SHX_yan_unification_party
 				}
 			}
 		}
@@ -11482,9 +11407,9 @@ country_event = {
 	id = shx_endgame.3 #The Constitution (Section I and II )
 	title = shx_endgame.3.t
 	desc = shx_endgame.3.d
-	picture = GFX_report_event_CHI_new_government
+	picture = GFX_report_event_CHN_china_five_colour_confrence
 	is_triggered_only = yes
-	immediate = { hidden_effect = { country_event = { id = shx_endgame.4 days = 8 }}}
+	immediate = { hidden_effect = { country_event = { id = shx_endgame.4 days = 8 } } }
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.3 option shx_endgame.3.a"
 		name = shx_endgame.3.a #Cool!
@@ -11494,9 +11419,9 @@ country_event = {
 	id = shx_endgame.4 #The Constitution (Section III and IV)
 	title = shx_endgame.4.t
 	desc = shx_endgame.4.d
-	picture = GFX_report_event_CHI_new_government
+	picture = GFX_report_event_CHN_china_five_colour_confrence
 	is_triggered_only = yes
-	immediate = { hidden_effect = { country_event = { id = shx_endgame.5 days = 8 }}}
+	immediate = { hidden_effect = { country_event = { id = shx_endgame.5 days = 8 } } }
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.4 option shx_endgame.4.a"
 		name = shx_endgame.4.a #Cool!
@@ -11506,9 +11431,9 @@ country_event = {
 	id = shx_endgame.5 #The Constitution (V and VI)
 	title = shx_endgame.5.t
 	desc = shx_endgame.5.d
-	picture = GFX_report_event_CHI_new_government
+	picture = GFX_report_event_CHN_china_five_colour_confrence
 	is_triggered_only = yes
-	immediate = { hidden_effect = { country_event = { id = shx_endgame.6 days = 12 }}}
+	immediate = { hidden_effect = { country_event = { id = shx_endgame.6 days = 12 } } }
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.5 option shx_endgame.5.a"
 		name = shx_endgame.5.a #Cool!
@@ -11518,7 +11443,7 @@ country_event = {
 	id = shx_endgame.6 #Ratification
 	title = shx_endgame.6.t
 	desc = shx_endgame.6.d
-	picture = GFX_report_event_CHI_new_government
+	picture = GFX_report_event_CHN_china_five_colour_confrence
 	is_triggered_only = yes
 	immediate = {
 		hidden_effect = {
@@ -11539,8 +11464,47 @@ country_event = {
 	id = shx_endgame.7 #The National Convention Opens
 	title = shx_endgame.7.t
 	desc = shx_endgame.7.d
-	picture = GFX_report_event_CHI_speech
+	picture = GFX_report_event_CHN_China_five_colour_flags
 	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_leader = { character = SHX_feng_yuxiang } }
+				#Feng is more likely to go party-state
+				random_list = {
+					#45% Goes Party-State
+					15 = { set_country_flag = SHX_ai_chooses_YCP_ending_flag }
+					30 = { set_country_flag = SHX_ai_chooses_KMT_ending_flag }
+					#55% Goes New Beiyang
+					35 = { set_country_flag = SHX_ai_chooses_DCP_ending_flag }
+					5 = { set_country_flag = SHX_ai_chooses_RP_ending_flag }
+					15 = { set_country_flag = SHX_ai_chooses_Hu_ending_flag }
+				}
+				random_list = {
+					35 = { set_country_flag = SHX_ai_chooses_southern_ending_flag }
+					65 = { set_country_flag = SHX_ai_chooses_northern_ending_flag }
+				}
+			}
+			else = {
+				#Yan is more likely to go hard-line on Southerners
+				random_list = {
+					#35% Goes Party-State
+					25 = { set_country_flag = SHX_ai_chooses_YCP_ending_flag }
+					10 = { set_country_flag = SHX_ai_chooses_KMT_ending_flag }
+					#65% Goes New Beiyang
+					35 = { set_country_flag = SHX_ai_chooses_DCP_ending_flag }
+					20 = { set_country_flag = SHX_ai_chooses_RP_ending_flag }
+					10 = { set_country_flag = SHX_ai_chooses_Hu_ending_flag }
+				}
+				random_list = {
+					25 = { set_country_flag = SHX_ai_chooses_southern_ending_flag }
+					75 = { set_country_flag = SHX_ai_chooses_northern_ending_flag }
+				}
+			}
+		}
+	}
+
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.7 option shx_endgame.7.a"
 		name = shx_endgame.7.a
@@ -11548,133 +11512,66 @@ country_event = {
 			country_event = { id = shx_endgame.8 days = 3 } #The Northern Parties Rally
 		}
 	}
-
 }
 
 country_event = {
 	id = shx_endgame.8 #A New Beiyang
 	title = shx_endgame.8.t
 	desc = shx_endgame.8.d
-	picture = GFX_report_event_QIE_hu_shih_speech
+	picture = GFX_report_event_QIE_beiyang_assembly
 	is_triggered_only = yes
 
 	immediate = {
 		hidden_effect = {
 			country_event = { id = shx_endgame.9 days = 7 } #The Southern Republicans Rally
 			QIE = {
-				QIE_james_yen = {
-					remove_civilian_advisor_roles = yes
-					set_nationality = ROOT
-				}
-				QIE_hu_shih = {
-					remove_civilian_advisor_roles = yes
-					set_nationality = ROOT
-				}
+				QIE_wu_xianzi = { set_nationality = ROOT }
+				QIE_hu_shih = { set_nationality = ROOT }
+				QIE_wellington_koo = { set_nationality = ROOT }
 			}
-			FNG = {
-				FNG_liang_shiyi = {
-					remove_civilian_advisor_roles = yes
-					set_nationality = ROOT
-				}
-			}
-			QIE_james_yen = { promote_character = { ideology = social_democrat_subtype }}
-			QIE_hu_shih = {
+			FNG = { FNG_liang_shiyi = { set_nationality = ROOT } }
+			QIE_hu_shih = { promote_character = { ideology = social_liberal_subtype } }
+			FNG_liang_shiyi = { promote_character = { ideology = market_liberal_subtype } }
+			QIE_wu_xianzi = {
 				add_country_leader_role = {
-					country_leader = { ideology = social_conservative_subtype }
+					country_leader = {
+						desc = QIE_wu_xianzi_leader_desc
+						ideology = social_conservative_subtype
+					}
 					promote_leader = yes
 				}
 			}
-			FNG_liang_shiyi = {
-				promote_character = { ideology = market_liberal_subtype }
+			set_party_name = {
+				ideology = social_liberal
+				long_name = SHX_independent_republicans_party_long
+				name = SHX_independent_republicans_party
 			}
-			hidden_effect = {
-				set_party_name = {
-					ideology = social_democrat
-					long_name = SHX_rural_reconstruction_party_long
-					name = SHX_rural_reconstruction_party
-				}
-				set_party_name = {
-					ideology = market_liberal
-					long_name = SHX_recovery_party_long
-					name = SHX_recovery_party
-				}
-				set_party_name = {
-					ideology = social_conservative
-					long_name = SHX_democratic_constitutionalist_party_long
-					name = SHX_democratic_constitutionalist_party
-				}
+			set_party_name = {
+				ideology = market_liberal
+				long_name = SHX_recovery_party_long
+				name = SHX_recovery_party
+			}
+			set_party_name = {
+				ideology = social_conservative
+				long_name = SHX_democratic_constitutionalist_party_long
+				name = SHX_democratic_constitutionalist_party
 			}
 		}
 	}
 
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.8 option shx_endgame.8.a"
-		name = shx_endgame.8.a #We will work more closely with James Yen
-		QIE_james_yen = {
-			add_advisor_role = {
-				advisor = {
-					slot = political_advisor
-					cost = 100
-					idea_token = SHX_james_yen_pol
-					traits = { KR_education_reformer }
-				}
+		name = shx_endgame.8.a #We ought to work with aligned minds like the reformist Wu Xianzi.
+		ai_chance = {
+			base = 3
+			modifier = {
+				factor = 100
+				has_country_flag = SHX_ai_chooses_DCP_ending_flag
 			}
 		}
 		add_popularity = {
-			ideology = social_democrat
-			popularity = 0.10
-		}
-		set_temp_variable = { coalition_partner_var = token:social_democrat }
-		add_to_coalition = yes
-	}
-
-	option = {
-		log = "[GetLogInfo]: event shx_endgame.8 option shx_endgame.8.b"
-		name = shx_endgame.8.b #We will work more closely with Hu Shih
-		QIE_hu_shih = {
-			add_advisor_role = {
-				advisor = {
-					slot = political_advisor
-					cost = 100
-					idea_token = SHX_hu_shih_pol
-					traits = { KR_pragmatic_statesman }
-				}
-			}
-		}
-		add_popularity = {
-			ideology = social_conservative
-			popularity = 0.10
-		}
-		set_temp_variable = { coalition_partner_var = token:social_conservative }
-		add_to_coalition = yes
-	}
-	option = {
-		log = "[GetLogInfo]: event shx_endgame.8 option shx_endgame.8.c"
-		name = shx_endgame.8.c #Let us maintain a sense of neutrality
-		add_stability = 0.10
-		QIE_james_yen = {
-			add_advisor_role = {
-				advisor = {
-					slot = political_advisor
-					cost = 150
-					idea_token = SHX_james_yen_pol
-					traits = { KR_education_reformer }
-				}
-			}
-		}
-		QIE_hu_shih = {
-			add_advisor_role = {
-				advisor = {
-					slot = political_advisor
-					cost = 150
-					idea_token = SHX_hu_shih_pol
-					traits = { KR_pragmatic_statesman }
-				}
-			}
-		}
-		add_popularity = {
-			ideology = social_democrat
-			popularity = 0.02
+			ideology = social_liberal
+			popularity = 0.01
 		}
 		add_popularity = {
 			ideology = market_liberal
@@ -11682,7 +11579,54 @@ country_event = {
 		}
 		add_popularity = {
 			ideology = social_conservative
-			popularity = 0.02
+			popularity = 0.03
+		}
+	}
+
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.8 option shx_endgame.8.b"
+		name = shx_endgame.8.b #An alliance with the pragmatic Liang Shiyi will be easy to control.
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 100
+				has_country_flag = SHX_ai_chooses_RP_ending_flag
+			}
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.01
+		}
+	}
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.8 option shx_endgame.8.c"
+		name = shx_endgame.8.c #We will maintain amicable relationships with the idealistic Hu Shih.
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 100
+				has_country_flag = SHX_ai_chooses_Hu_ending_flag
+			}
+		}
+		add_popularity = {
+			ideology = social_liberal
+			popularity = 0.03
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.01
 		}
 	}
 }
@@ -11697,22 +11641,12 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			country_event = { id = shx_endgame.10 days = 7 } #The Young China Party Radicalises
-			if = {
-				limit = { NOT = { country_exists = GXC } }
-				GXC = {
-					GXC_zhang_junmai = {
-						remove_civilian_advisor_roles = yes
-						set_nationality = ROOT
-					}
-				}
-				GXC_zhang_junmai = { promote_character = { ideology = social_liberal_subtype }}
-			}
-			hidden_effect = {
-				set_party_name = {
-					ideology = social_liberal
-					long_name = SHX_chinese_democratic_league_long
-					name = SHX_chinese_democratic_league
-				}
+			GXC = { GXC_zhang_junmai = { set_nationality = ROOT } }
+			GXC_zhang_junmai = { promote_character = { ideology = social_democrat_subtype } }
+			set_party_name = {
+				ideology = social_democrat
+				long_name = SHX_china_democratic_league_long
+				name = SHX_china_democratic_league
 			}
 		}
 	}
@@ -11720,31 +11654,40 @@ country_event = {
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.9 option shx_endgame.9.a"
 		name = shx_endgame.9.a #Their enduring idealism impress us
-		GXC_zhang_junmai = {
-			add_advisor_role = {
-				advisor = {
-					slot = political_advisor
-					cost = 150
-					idea_token = SHX_zhang_junmai_pol
-					traits = { KR_great_compromiser }
-				}
+		ai_chance = {
+			base = 1
+			modifier = {
+				factor = 100
+				has_country_flag = SHX_ai_chooses_southern_ending_flag
 			}
 		}
 		add_popularity = {
-			ideology = social_liberal
+			ideology = social_democrat
 			popularity = 0.05
 		}
-		set_temp_variable = { coalition_partner_var = token:social_liberal }
-		add_to_coalition = yes
 	}
 
 	option = {
 		log = "[GetLogInfo]: event shx_endgame.9 option shx_endgame.9.b"
 		name = shx_endgame.9.b #They threaten to destabilise our new Republic!
-		add_political_power = 100
+		ai_chance = {
+			base = 9
+			modifier = {
+				factor = 100
+				has_country_flag = SHX_ai_chooses_northern_ending_flag
+			}
+		}
 		add_popularity = {
-			ideology = social_liberal
+			ideology = social_democrat
 			popularity = 0.01
+		}
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.02
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.02
 		}
 	}
 }
@@ -11753,28 +11696,28 @@ country_event = {
 	id = shx_endgame.10 #The Young China Party Radicalises
 	title = shx_endgame.10.t
 	desc = shx_endgame.10.d
-	picture = GFX_report_event_CHI_new_government
+	picture = GFX_report_event_CHN_new_government
 	is_triggered_only = yes #Triggered by shx_endgame.9
 
 	immediate = {
 		hidden_effect = {
 			country_event = { id = shx_endgame.11 days = 7 } #The Fate of KMT
 			QIE = {
-				QIE_zeng_qi = {
-					remove_civilian_advisor_roles = yes
-					set_nationality = ROOT
-				}
+				QIE_zeng_qi = { set_nationality = ROOT }
+				QIE_zhang_yinwu = { set_nationality = ROOT }
 			}
-			QIE_zeng_qi = {
-				add_country_leader_role = { country_leader = { ideology = national_populist_subtype }}
-				promote_character = { ideology = national_populist_subtype }
+			if = {
+				limit = { has_country_leader = { character = SHX_feng_yuxiang } }
+				HNN = { HNN_zhao_yusong = { set_nationality = ROOT } }
 			}
-			hidden_effect = {
-				set_party_name = {
-					ideology = national_populist
-					long_name = SHX_young_china_party_long
-					name = SHX_young_china_party
-				}
+			else = {
+				SHX_chang_yansheng = { set_nationality = ROOT }
+			}
+			QIE_zeng_qi = { promote_character = { ideology = national_populist_subtype } }
+			set_party_name = {
+				ideology = national_populist
+				long_name = SHX_young_china_party_long
+				name = SHX_young_china_party
 			}
 		}
 	}
@@ -11782,47 +11725,29 @@ country_event = {
 	option = { #We have plenty in common with them.
 		log = "[GetLogInfo]: event shx_endgame.10 option shx_endgame.10.a"
 		name = shx_endgame.10.a
-		QIE_zeng_qi = {
-			add_advisor_role = {
-				advisor = {
-					slot = political_advisor
-					cost = 150
-					idea_token = SHX_zeng_qi_pol
-					traits = { KR_economic_reformer }
-				}
-			}
-		}
-		QIE_zhang_yinwu = {
-			remove_civilian_advisor_roles = yes
-			set_nationality = ROOT
-		}
-		end_coalition = yes
-		custom_effect_tooltip = SHX_end_coalition_tooltip
-		set_temp_variable = { coalition_partner_var = token:national_populist }
-		add_to_coalition = yes
 		add_popularity = {
 			ideology = national_populist
-			popularity = 0.15
+			popularity = 0.05
 		}
 		add_popularity = {
 			ideology = radical_socialist
-			popularity = -0.05
+			popularity = -0.01
 		}
 		add_popularity = {
 			ideology = social_democrat
-			popularity = -0.05
+			popularity = -0.01
 		}
 		add_popularity = {
 			ideology = social_liberal
-			popularity = -0.05
+			popularity = -0.01
 		}
 		add_popularity = {
 			ideology = market_liberal
-			popularity = -0.05
+			popularity = -0.01
 		}
 		add_popularity = {
 			ideology = social_conservative
-			popularity = -0.05
+			popularity = -0.01
 		}
 	}
 	option = { #They are too extreme for our tastes.
@@ -11852,129 +11777,56 @@ country_event = {
 	immediate = {
 		hidden_effect = {
 			country_event = { id = shx_endgame.12 days = 7 } #The Legacy of the Warlord Era
-			hidden_effect = {
-				set_party_name = {
-					ideology = totalist
-					long_name = SHX_kuomintang_long
-					name = SHX_kuomintang
-				}
+			CHI = { CHI_wang_jingwei = { set_nationality = ROOT } }
+			if = {
+				limit = { has_country_leader = { character = SHX_yan_xishan } }
+				GXC = { GXC_kong_xiangxi = { set_nationality = ROOT } }
+			}
+			else = {
+				QIE = { QIE_li_dazhao = { set_nationality = ROOT } }
+			}
+			CHI_wang_jingwei = { promote_character = { ideology = radical_socialist_subtype } }
+			set_party_name = {
+				ideology = radical_socialist
+				long_name = SHX_kuomintang_long
+				name = SHX_kuomintang
 			}
 		}
 	}
-	option = { #Forgive the KMT, Song becomes an advisor
+	option = { #We share a common revolutionary cause.
 		log = "[GetLogInfo]: event shx_endgame.11 option shx_endgame.11.a"
 		name = shx_endgame.11.a
-		CHI = {
-			hidden_effect = {
-				CHI_song_qingling = {
-					remove_civilian_advisor_roles = yes
-					set_nationality = ROOT
-					promote_character = { ideology = radical_socialist_subtype }
-				}
-			}
-			CHI_song_qingling = {
-				add_advisor_role = {
-					advisor = {
-						slot = political_advisor
-						cost = 150
-						idea_token = SHX_song_qingling_pol
-						traits = { KR_popular_figurehead }
-					}
-				}
-			}
-		}
-		end_coalition = yes
-		custom_effect_tooltip = SHX_end_coalition_tooltip
-		set_temp_variable = { coalition_partner_var = token:totalist }
-		add_to_coalition = yes
 		add_popularity = {
-			ideology = totalist
-			popularity = 0.15
-		}
-		add_popularity = {
-			ideology = national_populist
-			popularity = -0.05
+			ideology = radical_socialist
+			popularity = 0.05
 		}
 		add_popularity = {
 			ideology = social_democrat
-			popularity = -0.05
+			popularity = -0.01
 		}
 		add_popularity = {
 			ideology = social_liberal
-			popularity = -0.05
+			popularity = -0.01
 		}
 		add_popularity = {
 			ideology = market_liberal
-			popularity = -0.05
+			popularity = -0.01
 		}
 		add_popularity = {
 			ideology = social_conservative
-			popularity = -0.05
-		}
-	}
-	option = { #Wang becomes an advisor
-		log = "[GetLogInfo]: event shx_endgame.11 option shx_endgame.11.b"
-		name = shx_endgame.11.b
-		CHI = {
-			hidden_effect = {
-				CHI_song_qingling = { promote_character = { ideology = radical_socialist_subtype } }
-				CHI_wang_jingwei = {
-					remove_civilian_advisor_roles = yes
-					set_nationality = ROOT
-					promote_character = { ideology = radical_socialist_subtype }
-				}
-			}
-			CHI_wang_jingwei = {
-				add_advisor_role = {
-					advisor = {
-						slot = political_advisor
-						cost = 150
-						idea_token = SHX_wang_jingwei_pol
-						traits = { KR_heir_to_the_revolution }
-					}
-				}
-			}
-		}
-		end_coalition = yes
-		custom_effect_tooltip = SHX_end_coalition_tooltip
-		set_temp_variable = { coalition_partner_var = token:totalist }
-		add_to_coalition = yes
-		add_popularity = {
-			ideology = totalist
-			popularity = 0.15
+			popularity = -0.01
 		}
 		add_popularity = {
 			ideology = national_populist
-			popularity = -0.05
-		}
-		add_popularity = {
-			ideology = social_democrat
-			popularity = -0.05
-		}
-		add_popularity = {
-			ideology = social_liberal
-			popularity = -0.05
-		}
-		add_popularity = {
-			ideology = market_liberal
-			popularity = -0.05
-		}
-		add_popularity = {
-			ideology = social_conservative
-			popularity = -0.05
+			popularity = -0.01
 		}
 	}
 	option = { #Guomindang? More like Guomin-gone!
-		log = "[GetLogInfo]: event shx_endgame.11 option shx_endgame.11.c"
-		name = shx_endgame.11.c
+		log = "[GetLogInfo]: event shx_endgame.11 option shx_endgame.11.b"
+		name = shx_endgame.11.b
 		add_popularity = {
-			ideology = totalist
+			ideology = radical_socialist
 			popularity = 0.01
-		}
-		set_party_name = {
-				ideology = totalist
-				long_name = SHX_fringe_radicals_long
-				name = SHX_fringe_radicals
 		}
 	}
 }
@@ -12013,25 +11865,31 @@ country_event = {
 	picture = GFX_report_event_LEP_sun_chuanfang_troops
 	is_triggered_only = yes #Triggered by shx_endgame.11
 
+	immediate = {
+		hidden_effect = {
+			country_event = { id = shanxi_advisor_events.41 days = 7 } #A New Prime Minister
+		}
+	}
+
 	option = { #Tragic, Really
 		log = "[GetLogInfo]: event shx_endgame.12 option shx_endgame.12.a"
 		name = shx_endgame.12.a
 		trigger = { has_country_flag = SHX_yan_victory_over_gmj }
 		custom_effect_tooltip = SHX_epilogue_tooltip
 		add_popularity = {
-			ideology = radical_socialist
+			ideology = authoritarian_democrat
 			popularity = 0.03
 		}
 		hidden_effect = {
 			set_party_name = {
-				ideology = radical_socialist
+				ideology = authoritarian_democrat
 				long_name = SHX_feng_unification_party_bad_long
 				name = SHX_feng_unification_party
 			}
 			set_party_name = {
-				ideology = authoritarian_democrat
-				long_name = SHX_feng_unification_party_bad_long
-				name = SHX_feng_unification_party
+				ideology = totalist
+				long_name = SHX_fringe_radicals_long
+				name = SHX_fringe_radicals
 			}
 			set_party_name = {
 				ideology = syndicalist
@@ -12051,19 +11909,22 @@ country_event = {
 			popularity = 0.03
 		}
 		hidden_effect = {
-			set_party_name = {
+			if = {
+				limit = { NOT = { has_character = SHX_yan_xishan } }
+				set_party_name = {
+					ideology = paternal_autocrat
+					long_name = SHX_assorted_warlords_long
+					name = SHX_assorted_warlords
+				}
+				set_party_name = {
+					ideology = totalist
+					long_name = SHX_fringe_radicals_long
+					name = SHX_fringe_radicals
+				}
+				set_party_name = {
 					ideology = syndicalist
 					long_name = SHX_chinese_syndicalist_party_long
 					name = SHX_chinese_syndicalist_party
-					}
-			if = {
-				limit = { NOT = { has_character = SHX_yan_xishan }}
-				hidden_effect = {
-					set_party_name = {
-						ideology = paternal_autocrat
-						long_name = SHX_assorted_warlords_long
-						name = SHX_assorted_warlords
-					}
 				}
 			}
 		}
@@ -12073,7 +11934,7 @@ country_event = { #A new national flag
 	id = shx_endgame.13
 	title = shx_endgame.13.t
 	desc = shx_endgame.13.d
-	picture = GFX_report_event_CHI_beijing_beiyang_flag
+	picture = GFX_report_event_CHN_beijing_beiyang_flag
 
 	fire_only_once = yes
 	is_triggered_only = yes
@@ -12143,7 +12004,7 @@ country_event = { #A National Vice
 		if = {
 			limit = { has_country_flag = SHX_feng_victory_over_yan }
 			add_popularity = {
-				ideology = radical_socialist
+				ideology = authoritarian_democrat
 				popularity = -0.05
 			}
 		}
@@ -12161,7 +12022,7 @@ country_event = { #A National Vice
 		if = {
 			limit = { has_country_flag = SHX_feng_victory_over_yan }
 			add_popularity = {
-				ideology = radical_socialist
+				ideology = authoritarian_democrat
 				popularity = 0.03
 			}
 		}
@@ -12269,11 +12130,11 @@ country_event = { #Wang's New Post
 		name = shx_endgame.21.a
 		reverse_add_opinion_modifier = {
 			target = FRA
-			modifier = CHI_SYND
+			modifier = KR_approves_of_govt
 		}
 		add_opinion_modifier = {
 			target = FRA
-			modifier = CHI_SYND
+			modifier = KR_approves_of_govt
 		}
 	}
 }
@@ -12332,5 +12193,297 @@ country_event = { #Keep Your Friends Close...
 		name = shx_endgame.24.b  #Be circumspect.
 		set_temp_variable = { ideology_change_var = 5 }
 		change_ruling_party_popularity = yes
+	}
+}
+country_event = { #The National Army and the Nationalist Party
+	id = shx_endgame.25
+	title = shx_endgame.25.t
+	desc = shx_endgame.25.d
+	is_triggered_only = yes #Triggered by Focus: SHX_kindle_the_mass_movement_focus
+	picture = GFX_report_event_SHX_feng_kmt
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.25 option shx_endgame.25.a"
+		name = shx_endgame.25.a  #Join the KMT
+		ai_chance = { base = 100 }
+		add_stability = -0.10
+		add_political_power = -100
+		promote_character = {
+			character = SHX_feng_yuxiang
+			ideology = radical_socialist_subtype
+		}
+		SHX_feng_yuxiang = { china_set_character_alignment_left_kuomintang = yes }
+		set_politics = {
+			ruling_party = radical_socialist
+			elections_allowed = no
+			name = SHX_kuomintang_feng
+			long_name = SHX_kuomintang_feng_long
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = authoritarian_democrat
+				long_name = SHX_kuomintang_feng_long
+				name = SHX_kuomintang_feng
+			}
+		}
+
+		#Converts 75% of Auth Dem Popularity into Rad SOc
+		set_temp_variable = { SHX_auth_dem_popularity_temp_var = party_popularity@authoritarian_democrat }
+		multiply_temp_variable = { SHX_auth_dem_popularity_temp_var = 0.75 }
+		set_temp_variable = { SHX_neg_auth_dem_popularity_temp_var = SHX_auth_dem_popularity_temp_var }
+		multiply_temp_variable = { SHX_neg_auth_dem_popularity_temp_var = -1 }
+		add_popularity = { ideology = authoritarian_democrat popularity = SHX_neg_auth_dem_popularity_temp_var }
+		add_popularity = { ideology = radical_socialist popularity = SHX_auth_dem_popularity_temp_var }
+
+		#Adds Auth Dems into Faction
+		set_temp_variable = { coalition_partner_var = token:authoritarian_democrat }
+		add_to_coalition = yes
+
+		#Sets Cosmetic tag to KMT
+		set_cosmetic_tag = LKT_united_china
+		custom_effect_tooltip = SHX_this_may_unlock_some_allies_in_the_future_tt
+		hidden_effect = {
+			country_event = { id = shx_endgame.26 days = 400 } #Deng Xiaoping Event
+			every_subject_country = {
+				limit = {
+					has_socialist_government = no
+					NOT = {
+						original_tag = JAP
+						original_tag = KOR
+					}
+				}
+				set_politics = {
+					ruling_party = radical_socialist
+					elections_allowed = no
+				}
+			}
+			if = {
+				limit = { has_subject = JAP }
+				JAP_socialist_government = yes
+			}
+			if = {
+				limit = { has_subject = KOR }
+				KOR = {
+					drop_cosmetic_tag = yes
+					KOR_socialist_government = yes
+				}
+			}
+			if = {
+				limit = { has_subject = INC }
+				INC = {
+					INC_puppet_setup = yes
+				}
+			}
+		}
+	}
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.25 option shx_endgame.25.b"
+		name = shx_endgame.25.b  #Keep the movements separate.
+		ai_chance = { base = 0 }
+		add_popularity = { ideology = authoritarian_democrat popularity = 0.05 }
+	}
+}
+country_event = { #Deng Xiaoping
+	id = shx_endgame.26
+	title = shx_endgame.26.t
+	desc = shx_endgame.26.d
+	is_triggered_only = yes #Fired from focus
+	picture = GFX_report_event_SHX_deng_xiaoping
+	fire_only_once = yes
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.26 option shx_endgame.26.a"
+		name = shx_endgame.26.a
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.03
+		}
+		hidden_effect = { set_country_flag = SHX_deng_xiaoping_flag }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = SHX_deng_xiaoping_advisor
+	}
+}
+country_event = { #Yan can flip nat pop if they feel like
+	id = shx_endgame.27
+	title = shx_endgame.27.t
+	desc = shx_endgame.27.d
+	is_triggered_only = yes #Triggered by Focus: SHX_kindle_the_mass_movement_focus
+	picture = GFX_report_event_SHX_yan_uniform
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.27 option shx_endgame.27.a"
+		name = shx_endgame.27.a  #Join the YCP
+		ai_chance = { base = 100 }
+		add_stability = -0.10
+		add_political_power = -100
+		promote_character = {
+			character = SHX_yan_xishan
+			ideology = national_populist_subtype
+		}
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		hidden_effect = {
+			set_party_name = {
+				ideology = national_populist
+				long_name = SHX_young_china_party_yan_long
+				name = SHX_young_china_party_yan
+			}
+			set_party_name = {
+				ideology = paternal_autocrat
+				long_name = SHX_young_china_party_yan_long
+				name = SHX_young_china_party_yan
+			}
+		}
+
+		#Converts 75% of Auth Dem Popularity into Rad SOc
+		set_temp_variable = { SHX_pat_aut_popularity_temp_var = party_popularity@paternal_autocrat }
+		multiply_temp_variable = { SHX_pat_aut_popularity_temp_var = 0.75 }
+		set_temp_variable = { SHX_neg_pat_aut_popularity_temp_var = SHX_pat_aut_popularity_temp_var }
+		multiply_temp_variable = { SHX_neg_pat_aut_popularity_temp_var = -1 }
+		add_popularity = { ideology = paternal_autocrat popularity = SHX_neg_pat_aut_popularity_temp_var }
+		add_popularity = { ideology = national_populist popularity = SHX_pat_aut_popularity_temp_var }
+
+		#Adds Auth Dems into Faction
+		set_temp_variable = { coalition_partner_var = token:paternal_autocrat }
+		add_to_coalition = yes
+
+		hidden_effect = { set_country_flag = QIE_zhang_yinwu_flag }
+		custom_effect_tooltip = tooltip_white_line
+		custom_effect_tooltip = available_political_advisor
+		show_ideas_tooltip = QIE_zhang_yinwu_advisor
+	}
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.27 option shx_endgame.27.b"
+		name = shx_endgame.27.b  #Keep the movements separate.
+		ai_chance = { base = 0 }
+		add_popularity = { ideology = paternal_autocrat popularity = 0.05 }
+	}
+}
+
+country_event = {
+	id = shx_endgame.100 #Reform the Central Army
+	title = shx_endgame.100.t
+	desc = shx_endgame.100.d
+	picture = GFX_report_event_QIE_zhili_soldiers
+	is_triggered_only = yes
+
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.100 option shx_endgame.100.a"
+		name = shx_endgame.100.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_idea = SHX_integrated_army
+			}
+		}
+		if = {
+			limit = { has_idea = SHX_dual_armies2 }
+			swap_ideas = {
+				remove_idea = SHX_dual_armies2
+				add_idea = SHX_regional_army_idea
+			}
+		}
+		else_if = {
+			limit = { has_idea = SHX_integrated_army }
+			add_command_power = -100
+			swap_ideas = {
+				remove_idea = SHX_integrated_army
+				add_idea = SHX_regional_army_idea
+			}
+			add_timed_idea = {
+				idea = CHN_an_army_in_transition_idea
+				days = 365
+			}
+			custom_effect_tooltip = SHX_harder_to_switch_tracks_tt
+		}
+	}
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.100 option shx_endgame.100.b"
+		name = shx_endgame.100.b
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_idea = SHX_dual_armies2
+			}
+		}
+		if = {
+			limit = { has_idea = SHX_integrated_army }
+			swap_ideas = {
+				remove_idea = SHX_integrated_army
+				add_idea = SHX_new_central_army
+			}
+		}
+		else_if = {
+			limit = { has_idea = SHX_dual_armies2 }
+			add_command_power = -100
+			swap_ideas = {
+				remove_idea = SHX_dual_armies2
+				add_idea = SHX_new_central_army
+			}
+			add_timed_idea = {
+				idea = CHN_an_army_in_transition_idea
+				days = 365
+			}
+			custom_effect_tooltip = SHX_harder_to_switch_tracks_tt
+		}
+	}
+}
+
+country_event = {
+	id = shx_endgame.101  #Amnesty for Pioneering Generals
+	title = shx_endgame.101.t
+	desc = shx_endgame.101.d
+
+	fire_only_once = yes #Prevents Spam
+	is_triggered_only = yes
+	picture = GFX_report_event_QIE_warlord_soldiers
+
+	option = {
+		log = "[GetLogInfo]: event shx_endgame.101 option shx_endgame.101.a"
+		name = shx_endgame.101.a #A new generation of commanders for the New China.
+		if = {
+			limit = {
+				NOT = { country_exists = QIE }
+				NOT = {
+					SZC = {
+						SZC_zhili_in_exile = yes
+						exists = yes
+					}
+				}
+			}
+			QIE = {
+				set_temp_variable = { qin_dechun = QIE_qin_dechun }
+				set_temp_variable = { du_xijun = QIE_du_xijun }
+				set_temp_variable = { guo_jijiao = QIE_guo_jijiao }
+				set_temp_variable = { li_shuchun = QIE_li_shuchun }
+			}
+			effect_tooltip = {
+				add_corps_commander_role = { character = var:qin_dechun }
+				add_corps_commander_role = { character = var:du_xijun }
+				add_corps_commander_role = { character = var:guo_jijiao }
+				add_corps_commander_role = { character = var:li_shuchun }
+			}
+			hidden_effect = {
+				if = {
+					limit = { SZC = { has_character = QIE_du_xijun } }
+					SZC = {
+						QIE_qin_dechun = { set_nationality = SHX }
+						QIE_du_xijun = { set_nationality = SHX }
+						QIE_guo_jijiao = { set_nationality = SHX }
+						QIE_li_shuchun = { set_nationality = SHX }
+					}
+				}
+				else = {
+					QIE = {
+						QIE_qin_dechun = { set_nationality = SHX }
+						QIE_du_xijun = { set_nationality = SHX }
+						QIE_guo_jijiao = { set_nationality = SHX }
+						QIE_li_shuchun = { set_nationality = SHX }
+					}
+				}
+			}
+		}
 	}
 }
