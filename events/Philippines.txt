@@ -2971,6 +2971,12 @@ country_event = { #communist leadership
 		name = rd_phil.58.b
 		trigger = { has_completed_focus = PHI_com_country_side }
 		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Juan Feleo"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Juan_Feleo.png"
+			expire = "1.1.1"
+			ideology = tot_agrarian_socialism_subtype
+		}
 		
 	}
 	option = { #Vincinte Lava go pop/broad idk
@@ -2978,12 +2984,54 @@ country_event = { #communist leadership
 		trigger = { has_completed_focus = PHI_com_democractic_misson }
 		ai_chance = { base = 100 }
 		
+		if = {
+			limit = {
+				has_completed_focus = PHI_com_democractic_misson 
+				CSA = {
+				has_global_flag = USA_civil_war_over_flag
+					NOT = {
+						country_exists = COR
+						country_exists = USA
+						country_exists = TEX
+						has_global_flag = PSA_rockies_ceasefire
+						has_war_with = CAL
+					}
+				OR = {
+				has_country_flag = CSA_syndicalist_victory
+				has_country_flag = CSA_social_patriot_victory
+				has_country_flag = CSA_capone_acw_flag
+				has_country_flag = CSA_Foster_coup
+				has_country_flag = CSA_Peaceful_Browder
+				}
+				}
+			}
+			create_country_leader = {
+				name = "Vincinte Lava"
+				picture = "gfx/leaders/PHI/PHI_Portrait_Vincente_Lava.png"
+				expire = "1.1.1"
+				ideology = popcom_subtype
+			}
+		}
+		else = {
+			create_country_leader = {
+				name = "Vincinte Lava"
+				picture = "gfx/leaders/PHI/PHI_Portrait_Vincente_Lava.png"
+				expire = "1.1.1"
+				ideology = broad_communism_subtype
+			}
+		}
 	}
+	
 	option = { #sison lol
 		name = rd_phil.58.d
 		trigger = { date > 1959.12.30 }
 		ai_chance = { base = 100 }
-		
+		create_country_leader = {
+				name = "Jose Maria Sison"
+				picture = "gfx/leaders/PHI/Portrait_PHI_Jose_Maria_Sison.png"
+				expire = "1.1.1"
+				ideology = left_nationalism_subtype #Temp Subideology
+			}
 	}
 
 }
