@@ -946,7 +946,7 @@ country_event = { #Japanese Civil War
 						ideology = radical_socialist_subtype
 					}
 					create_field_marshal = {
-						name = "Sanzo Nosaka"
+						name = "Sanzo Nosaka "
 						portrait_path = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo_LKMT.png"
 						traits = {
 						
@@ -958,7 +958,7 @@ country_event = { #Japanese Civil War
 						logistics_skill = 2
 					}
 					create_field_marshal = {
-						name = "Kyuchi Tokuda"
+						name = "Kyuchi Tokuda "
 						portrait_path = "gfx/leaders/JAP/Portrait_JAP_Tokuda_Kyuichi.png"
 						traits = {
 						
@@ -970,7 +970,7 @@ country_event = { #Japanese Civil War
 						logistics_skill = 2
 					}
 					create_field_marshal = {
-						name = "Saiko Mankichi"
+						name = "Saiko Mankichi "
 						portrait_path = "gfx/leaders/JAP/Portrait_JAP_Saiko_Mankichi.png"
 						traits = {
 						
@@ -1270,7 +1270,7 @@ country_event = { #Military Victory
 			set_global_flag = JAP_civil_war_over
 			set_capital = { state = 282 remember_old_capital = no }
 			set_country_flag = JAP_army_victory
-			create_faction = co_prosperity_sphere
+			create_faction_from_template = faction_template_co_prosperity_sphere
 	}
 }
 
@@ -6113,7 +6113,14 @@ country_event = { #Refusal But Alliance?
 	
 	option = { #How About No
 		name = japan_new_event.76.b
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { has_opinion = {
+    		target = FROM
+    		value > 95
+		}
+		factor = 0.3
+		} 
+		}
 		JAP = {
 			country_event = { id = japan_new_event.150 days = 2 }
 			create_wargoal = {
@@ -6435,7 +6442,14 @@ country_event = { #Refusal But Alliance
 	}
 	option = { #
 		name = japan_new_event.76.b
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { has_opinion = {
+    		target = FROM
+    		value > 95
+		}
+		factor = 0.35
+		} 
+		}
 		JAP = {
 			create_wargoal = {
 					type = puppet_wargoal_focus
@@ -8200,14 +8214,14 @@ country_event = { #Japanese Socialists Propose an Alliance
 					JSR = { is_in_faction_with = FRA }
 					FRA = { is_faction_leader = yes }
 				}
-				FRA = { add_to_faction = FROM }
+				FRA = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = ENG }
 					ENG = { is_faction_leader = yes }
 				}
-				ENG = { add_to_faction = FROM }
+				ENG = { add_to_faction = ROOT }
 			} 
 
 		else_if = {
@@ -8215,24 +8229,24 @@ country_event = { #Japanese Socialists Propose an Alliance
 					JSR = { is_in_faction_with = RUS }
 					RUS = { is_faction_leader = yes }
 				}
-				RUS = { add_to_faction = FROM }
+				RUS = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = BHC }
 					BHC = { is_faction_leader = yes }
 				}
-				BHC = { add_to_faction = FROM }
+				BHC = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = CSA }
 					CSA = { is_faction_leader = yes }
 				}
-				CSA = { add_to_faction = FROM }
+				CSA = { add_to_faction = ROOT }
 			} 
 		else = {
-		JSR = { add_to_faction = FROM }
+		JSR = { add_to_faction = ROOT }
 		}
 		set_country_flag = JSR_chose_china_leader
 	}
@@ -8580,7 +8594,7 @@ country_event = { #Taiwan is the real Japan
 				expire = "1965.1.1"
 				ideology = pataut_showa_statism_subtype
 			}
-		create_faction = co_prosperity_sphere
+		create_faction_from_template = faction_template_co_prosperity_sphere
 	}
 }
 
@@ -9049,14 +9063,14 @@ country_event = { #
 					JSR = { is_in_faction_with = FRA }
 					FRA = { is_faction_leader = yes }
 				}
-				FRA = { add_to_faction = FROM }
+				FRA = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = ENG }
 					ENG = { is_faction_leader = yes }
 				}
-				ENG = { add_to_faction = FROM }
+				ENG = { add_to_faction = ROOT }
 			} 
 
 		else_if = {
@@ -9064,29 +9078,36 @@ country_event = { #
 					JSR = { is_in_faction_with = RUS }
 					RUS = { is_faction_leader = yes }
 				}
-				RUS = { add_to_faction = FROM }
+				RUS = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = BHC }
 					BHC = { is_faction_leader = yes }
 				}
-				BHC = { add_to_faction = FROM }
+				BHC = { add_to_faction = ROOT }
 			} 
 		else_if = {
 				limit = {
 					JSR = { is_in_faction_with = CSA }
 					CSA = { is_faction_leader = yes }
 				}
-				CSA = { add_to_faction = FROM }
+				CSA = { add_to_faction = ROOT }
 			} 
 		else = {
-		JSR = { add_to_faction = FROM }
+		JSR = { add_to_faction = ROOT }
 		}	
 	}
 		option = { #
 		name = japan_new_event.76.b
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		modifier = { has_opinion = {
+    		target = FROM
+    		value > 95
+		}
+		factor = 0.3
+		} 
+		}
 		JSR = {
 			create_wargoal = {
 					type = puppet_wargoal_focus

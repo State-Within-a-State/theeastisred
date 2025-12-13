@@ -1,0 +1,48 @@
+
+neighbors_of_china_rd = {
+	input = game:all_countries
+	name = collection_neighbors_of_china_rd
+	operators = {
+		limit = {
+			is_neighbor_of = ROOT
+		}
+	}
+}
+
+allied_neighbors_of_china_rd = {
+	input = collection:collection_neighbors_of_china_rd
+	name = collection_allied_neighbors_of_china_rd
+	operators = {
+		limit = { is_ally_with = ROOT }
+	}
+}
+
+
+######################
+### COUNTRY CHECKS ###
+######################
+
+world_at_ally_countries_rd = {
+	input = game:all_countries
+	operators = {
+		limit = {
+			is_ally_with = ROOT 
+		}
+	}
+	name = collection_all_ally_rd 
+}
+
+
+neighbors_of_china_at_peace_rd = {
+	input = collection:neighbors_of_china_rd
+	operators = {
+		limit = {
+			or = {
+			is_ally_with = ROOT
+			has_war = no 
+			}
+		}
+	}
+	name = collection_neighbors_of_china_at_peace_rd 
+}
+
