@@ -1575,6 +1575,12 @@ country_event = { #1936 Election
 		JAP_Akira_Kazami_for_ade
 		JAP_Yoshitaka_Furuya_sec_ade
 		}
+		set_power_balance = {
+				id = JAP_National_Alliance_balance
+				left_side = JAP_Nakano_left_side
+				right_side = JAP_Kenzo_right_side
+			}
+		set_country_flag = JAP_tohokai_domei_struggle
 	}
 	option = { #Seiyukai
 		name = rd_japan_event.32.b
@@ -2446,6 +2452,11 @@ country_event = { #1940 Election
 		JAP_Akira_Kazami_for_ade
 		JAP_Yoshitaka_Furuya_sec_ade
 		}
+		set_variable = {
+			var = JAP_nat_unity_gov
+			value = 0
+			tooltip = JAP_we_need_to_form_nat_unity_gov_tt
+		}
 	}
 	option = { #Seiyukai
 		name = rd_japan_event.45.c
@@ -2511,7 +2522,7 @@ country_event = { #1940 Election
 	}
 }
 
-country_event = { #
+country_event = { #Direction of the Rural Relief
 	id = rd_japan_event.46
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.46"}
 	title = rd_japan_event.46.title
@@ -2519,14 +2530,27 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Side With the Land Owners
 		name = rd_japan_event.46.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+			id = JAP_National_Alliance_balance
+			value = 0.05
+			tooltip_side = JAP_National_Alliance_balance_left_bop_side
+		}
+	}
+	option = { #Side With Radical Rural Officers
+		name = rd_japan_event.46.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+			id = JAP_National_Alliance_balance
+			value = -0.05
+			tooltip_side = JAP_National_Alliance_balance_left_bop_side
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Cooperative Cabinent
 	id = rd_japan_event.47
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.47"}
 	title = rd_japan_event.47.title
@@ -2534,10 +2558,37 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Side With Seiyukai
 		name = rd_japan_event.47.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = JAP_side_soccon_coop
+		add_popularity = {
+		ideology = social_conservative
+		popularity = 0.05
+		}
+		add_power_balance_value = {
+			id = JAP_National_Alliance_balance
+			value = 0.05
+			tooltip_side = JAP_National_Alliance_balance_left_bop_side
+		}
+	}
+	option = { #Side With Radical Rural Officers
+		name = rd_japan_event.47.b
+		ai_chance = { base = 100 }
+		set_country_flag = JAP_side_natsoc_coop
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.025
+		}
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.025
+		}
+		add_power_balance_value = {
+			id = JAP_National_Alliance_balance
+			value = -0.05
+			tooltip_side = JAP_National_Alliance_balance_left_bop_side
+		}
 	}
 }
 

@@ -246,8 +246,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		completion_reward = {
-		
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -263,7 +266,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kokumin_Victory_Alliance }
 		completion_reward = {
-		
+			add_timed_idea = {
+				idea = JAP_dirigisme_1
+				days = 180
+			}
 		}
 	}
 	
@@ -279,7 +285,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kokumin_Dirigisme }
 		completion_reward = {
-		
+			add_ideas = {
+				JAP_protectionism
+			}
 		}
 	}
 	
@@ -295,7 +303,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kokumin_Protectionist }
 		completion_reward = {
-		
+			country_event = rd_japan_event.46
 		}
 	}
 	focus = {
@@ -310,7 +318,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kokumin_Protectionist }
 		completion_reward = {
-		
+			add_timed_idea = {
+			idea = JAP_industrial_aid
+			days = 180
+			}
 		}
 	}
 	focus = {
@@ -326,7 +337,8 @@ focus_tree = {
 		prerequisite = { focus = JAP_Kokumin_aid_industrial_labour }
 		prerequisite = { focus = JAP_Kokumin_Village_Relief }
 		completion_reward = {
-		
+			add_political_power = 25
+			add_stability = 0.05
 		}
 	}
 	
@@ -340,9 +352,10 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		
 		prerequisite = { focus = JAP_Kokumin_Victory_Alliance }
 		completion_reward = {
-		
+			country_event = rd_japan_event.47
 		}
 	}
 	
@@ -356,10 +369,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_flag = JAP_side_natsoc_coop
+		}
 		mutually_exclusive = { focus = JAP_Kokumin_coop_seiyukai }
 		prerequisite = { focus = JAP_Kokumin_coop_cabinet }
 		completion_reward = {
-		
+		add_tot_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		add_socdem_to_coalition = yes
+		add_ideas = {
+		JAP_natsoc_cooperation
+		}
 		}
 	}
 	focus = {
@@ -372,10 +393,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_flag = JAP_side_soccon_coop
+		}
 		mutually_exclusive = { focus = JAP_Kokumin_coop_natsoc }
 		prerequisite = { focus = JAP_Kokumin_coop_cabinet }
 		completion_reward = {
-		
+		add_marlib_to_coalition = yes
+		add_soccon_to_coalition = yes
+		add_ideas = {
+		JAP_soccon_cooperation
+		}
 		}
 	}
 	
@@ -391,7 +419,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kokumin_coop_seiyukai }
 		completion_reward = {
-		
+			add_ideas = {
+			JAP_class_collab
+			}
+			add_power_balance_value = {
+			id = JAP_National_Alliance_balance
+			value = 0.05
+			tooltip_side = JAP_National_Alliance_balance_left_bop_side
+			}
 		}
 	}
 	focus = {
@@ -406,7 +441,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kokumin_coop_seiyukai focus = JAP_Kokumin_coop_natsoc }
 		completion_reward = {
-		
+		add_soclib_to_coalition = yes
+		add_political_power = 10
+		add_war_support = 0.025
 		}
 	}
 	focus = {
@@ -421,7 +458,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kokumin_coop_natsoc }
 		completion_reward = {
-		
+			add_power_balance_value = {
+			id = JAP_National_Alliance_balance
+			value = -0.05
+			tooltip_side = JAP_National_Alliance_balance_left_bop_side
+			}
+			add_ideas = {
+			JAP_labour_reapproach
+			}
 		}
 	}
 	
@@ -438,7 +482,8 @@ focus_tree = {
 		prerequisite = { focus = JAP_Kokumin_Tojinha_reach_out }
 		prerequisite = { focus = JAP_Kokumin_rapproach_labour focus = JAP_Kokumin_class_collab_unity }
 		completion_reward = {
-		
+		unlock_decision_tooltip = JAP_nakano_gives_a_rousing_speech
+		unlock_decision_tooltip = JAP_Kenzo_makes_a_speech
 		}
 	}
 	
@@ -452,10 +497,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = JAP_Kokumin_popular_politics_realization }
 		prerequisite = { focus = JAP_Kokumin_third_way}
 		completion_reward = {
-		
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -471,9 +519,11 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		
+		available = {
+		always = no
+		}
 		completion_reward = {
-		
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	focus = {
