@@ -6352,7 +6352,7 @@ add_doctrine_cost_reduction = {
 			FOCUS_FILTER_POLITICAL
 		}
 		completion_reward = {
-
+		navy_experience = 35
 		}
 	}
 	
@@ -6369,7 +6369,62 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_navy_swimming_between_islands} 
 		completion_reward = {
-
+			log = "[GetLogRoot]: Focus Completed PHI_found_the_marine_corps"
+			add_tech_bonus = {
+				name = PHI_found_the_marine_corps
+				bonus = 0.5
+				uses = 1
+				category = marine_tech
+			}
+			add_tech_bonus = {
+				name = PHI_found_the_marine_corps
+				bonus = 0.5
+				uses = 1
+				category = tp_tech
+			}
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Filipino Marines"
+					LINE_1 = { localization_key = line_battalion_tt NAME = marine ICON = GFX_unit_marine_icon_small COUNT = 4 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+				}
+				if = {
+					limit = { has_template = "Filipino Marines" }
+					delete_unit_template_and_units = { division_template = "Filipino Marines" disband = yes } #no cheating
+				}
+				division_template = {
+					name = "Filipino Marines" #Marine Corps
+					division_names_group = PHI_INF_01
+					regiments = {
+						marine = { x = 0 y = 0 }
+						marine = { x = 0 y = 1 }
+						marine = { x = 1 y = 0 }
+						marine = { x = 1 y = 1 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 327 }
+				limit = {
+					is_in_home_area = yes
+					impassable = no
+				}
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Filipino Marines"
+					}
+					create_unit = {
+						division = "name = \"Filipino Marines\" division_template = \"Filipino Marines\" start_experience_factor = 1.0"
+						prioritize_location = 12213
+						owner = ROOT
+					}
+				}
+			}
 		}
 	}
 	focus = {
@@ -6384,7 +6439,25 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_navy_swimming_between_islands} 
 		completion_reward = {
-
+			log = "[GetLogRoot]: Focus Completed PHI_a_fleet_of_mosquitos"
+			add_tech_bonus = {
+				name = PHI_a_fleet_of_mosquitos
+				bonus = 1
+				uses = 1
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = PHI_a_fleet_of_mosquitos
+				bonus = 1
+				uses = 1
+				category = naval_mines
+			}
+			add_tech_bonus = {
+				name = PHI_a_fleet_of_mosquitos
+				bonus = 1
+				uses = 1
+				category = cat_torpedoes
+			}
 		}
 	}
 	focus = {
@@ -6399,7 +6472,34 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_navy_mosi_storm} 
 		completion_reward = {
-
+			log = "[GetLogRoot]: Focus Completed PHI_revitalise_the_cavite_naval_yard"
+			random_owned_controlled_state = {
+				prioritize = { 327 }
+				limit = {
+					is_coastal = yes
+					is_valid_state_for_development = yes
+					free_building_slots = { building = industrial_complex size > 0 include_locked = yes }
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_timed_idea = {
+				idea = PHI_expand_naval_production_idea
+				days = 1080
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_NSSC
+			}
+			else = {
+				mio:PHI_NSSC_organization = { add_mio_size = 1 }
+			}
 		}
 	}
 	focus = {
@@ -6415,7 +6515,19 @@ add_doctrine_cost_reduction = {
 		prerequisite = { focus = PHI_navy_mosi_storm } 
 		prerequisite = { focus = PHI_navy_pmc }
 		completion_reward = {
-
+		add_tech_bonus = {
+			name = navy_bonus
+			bonus = 0.5
+			uses = 2
+			category = cat_torpedoes
+			category = cat_targeting
+		}
+		add_tech_bonus = {
+			name = navy_bonus
+			bonus = 0.5
+			uses = 1
+			category = ca_tech
+		}
 		}
 	}
 	
@@ -6431,7 +6543,18 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_navy_pmc } 
 		completion_reward = {
-
+		add_tech_bonus = {
+				name = PHI_naval_air_integration
+				bonus = 0.75
+				uses = 1
+				category = mio_cat_all_light_fighter_and_modules
+			}
+			add_tech_bonus = {
+				name = PHI_naval_air_integration
+				bonus = 0.75
+				uses = 2
+				category = cat_torpedoes
+			}
 		}
 	}
 	focus = {
@@ -6448,7 +6571,25 @@ add_doctrine_cost_reduction = {
 		prerequisite = { focus = PHI_navy_pt_boats }
 		mutually_exclusive = { focus = PHI_navy_refurbish_american_ship }
 		completion_reward = {
-
+		navy_experience = 35
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_electric_boat
+			}
+			else = {
+				mio:PHI_electric_boat_organization = { add_mio_size = 2 }
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_sasebo_naval_arsenal
+			}
+			else = {
+				mio:PHI_sasebo_naval_arsenal_organization = { add_mio_size = 2 }
+			}
 		}
 	}
 	focus = {
@@ -6465,7 +6606,43 @@ add_doctrine_cost_reduction = {
 		prerequisite = { focus = PHI_navy_pt_boats }
 		mutually_exclusive = { focus = PHI_navy_new_fleet_design }
 		completion_reward = {
-
+			USA = {
+				create_production_license = {
+				target = PHI
+				equipment = {
+					type = capital_ship
+					version = 0
+					new_prioritised = no
+				}
+				cost_factor = 0
+				}
+				create_production_license = {
+				target = PHI
+				equipment = {
+					type = naval_transport
+					version = 0
+					new_prioritised = no
+				}
+				cost_factor = 0
+				}
+				create_production_license = {
+				target = PHI
+				equipment = {
+					type = submarine
+					version = 0
+					new_prioritised = no
+				}
+				cost_factor = 0
+				}
+			}
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_electric_boat
+			}
+			else = {
+				mio:PHI_electric_boat_organization = { add_mio_size = 2 }
+			}
 		}
 	}
 	
@@ -6481,7 +6658,19 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_navy_davao_port} 
 		completion_reward = {
-
+			626 = {
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = dockyard
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = naval_base
+				level = 2
+				instant_build = yes
+			}
+			}
 		}
 	}
 	
@@ -6498,7 +6687,30 @@ add_doctrine_cost_reduction = {
 		prerequisite = { focus = PHI_navy_pueto_princesa } 
 		prerequisite = { focus = PHI_navy_new_fleet_design focus = PHI_navy_refurbish_american_ship }
 		completion_reward = {
-
+		add_ideas = PHI_navy_spirit_idea
+		every_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					is_in_home_area = yes
+					is_coastal = yes
+				}
+				custom_override_tooltip = {
+					add_building_construction = {
+						type = coastal_bunker
+						province = {
+							all_provinces = yes
+							limit_to_coastal = yes
+						}
+						level = 1
+						instant_build = yes
+					}
+					tooltip = {
+						localization_key = tooltip_add_building_on_coastal_provinces
+						BUILDING = coastal_bunker
+						NUMBER = 1
+					}
+				}
+			}
 		}
 	}
 	
