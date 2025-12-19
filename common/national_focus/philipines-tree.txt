@@ -4512,6 +4512,11 @@ has_country_leader = {
 		available = { has_government = syndicalist }
 		completion_reward = {
 		add_research_slot_until_five = yes
+			add_equipment_to_stockpile = {
+				type = small_plane_airframe
+				amount = 100
+				producer = INT
+			}
 
 		}
 	}
@@ -4813,6 +4818,17 @@ add_doctrine_cost_reduction = {
 		available = { has_government = totalist }
 		completion_reward = {
 		add_research_slot_until_five = yes
+
+		add_tech_bonus = {
+    		bonus = 0.5
+    		uses = 1
+    		category = artillery
+		}
+		add_tech_bonus = {
+    		bonus = 0.75
+    		uses = 2
+    		category = armor
+		}
 		}
 	}
 
@@ -4918,6 +4934,18 @@ add_doctrine_cost_reduction = {
 		prerequisite = { focus = PHI_com_democractic_misson focus = PHI_com_country_side } 
 		available = { has_government = totalist }
 		completion_reward = {
+		add_equipment_to_stockpile = {
+    		type = infantry_equipment_1
+    		amount = 1000
+		}
+		add_equipment_to_stockpile = {
+    		type = infantry_equipment_2
+    		amount = 750
+		}
+		add_equipment_to_stockpile = {
+    		type = infantry_equipment_3
+    		amount = 500
+		}
 		country_event = rd_phil.58
 		}
 	}
@@ -5036,7 +5064,7 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_soc_second_labor } 
 		completion_reward = {
-		add_political_power = 25
+		add_political_power = 50
 		swap_ideas = {
 		remove_idea = PHI_santos_get_others_in_1
 		add_idea = PHI_santos_get_others_in_2
@@ -5165,6 +5193,17 @@ add_doctrine_cost_reduction = {
 		available = { has_government = radical_socialist }
 		completion_reward = {
 		add_research_slot_until_five = yes
+		add_tech_bonus = {
+    bonus = 0.5
+    uses = 1
+    category = industry
+		}
+		add_tech_bonus = {
+    		bonus = 0.5
+    		uses = 1
+    		category = electronics
+		}
+
 		}
 	}
 
@@ -6103,17 +6142,7 @@ add_doctrine_cost_reduction = {
 
 		if = { 
 		limit = { has_completed_focus = PHI_antisoc_mother_asia_civilization } 
-		set_politics = {
-   		ruling_party = authoritarian_democrat
-    		elections_allowed = no
-		}
-		add_soclib_to_coalition = yes
-		set_party_name = {
-   			 ideology = authoritarian_democrat
-   			 long_name = PHI_pro_jap_party_long
-   			 name = PHI_pro_jap_party
-			}
-		#create the new laurel etc for authdem panasianism
+		set_country_leader_ideology = pan_asianism_subtype
 		}
 		}
 	}
@@ -6141,6 +6170,10 @@ add_doctrine_cost_reduction = {
 		limit = { has_completed_focus = PHI_antisoc_two_party } 
 		set_country_leader_ideology = soclib_internationalism_subtype
 		}
+		if = { 
+		limit = { has_completed_focus = PHI_antisoc_transformation_society } 
+		set_country_leader_ideology = soclib_authoritarian_liberalism_subtype
+		}
 
 		}
 	}
@@ -6162,21 +6195,11 @@ add_doctrine_cost_reduction = {
 
 		if = { 
 		limit = { has_completed_focus = PHI_antisoc_two_party } 
-		set_country_leader_ideology = soclib_progressive_democracy_subtype
+		set_country_leader_ideology = soclib_christian_democracy_subtype
 		}
 		else_if = { 
 		limit = { has_completed_focus = PHI_antisoc_transformation_society } 
-		set_politics = {
-   		ruling_party = authoritarian_democrat
-    		elections_allowed = no
-		}
-		add_soclib_to_coalition = yes
-		set_party_name = {
-   			 ideology = authoritarian_democrat
-   			 long_name = PHI_pro_jap_party_long
-   			 name = PHI_pro_jap_party
-			}
-		#create the new laurel etc for authdem panasianism
+		set_country_leader_ideology = pan_asianism_subtype
 		}
 
 
