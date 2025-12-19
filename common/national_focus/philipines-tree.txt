@@ -6290,7 +6290,7 @@ add_doctrine_cost_reduction = {
 	focus = {
 		id = PHI_start_foreign
 		icon = GFX_goal_QIO_revolution
-		x = 70
+		x = 90
 		y = 0
 		cost = 2
 		search_filters = {
@@ -6338,5 +6338,453 @@ add_doctrine_cost_reduction = {
 
 		}
 	}
+	
+	##Navy##
+	
+	#amerikkka 
+	focus = {
+		id = PHI_navy_swimming_between_islands
+		icon = GFX_goal_QIO_revolutionary_zone
+		x = 70
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+
+		}
+	}
+	
+	#amerikkka 
+	focus = {
+		id = PHI_navy_pmc
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_swimming_between_islands} 
+		completion_reward = {
+
+		}
+	}
+	focus = {
+		id = PHI_navy_mosi_storm
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_swimming_between_islands} 
+		completion_reward = {
+
+		}
+	}
+	focus = {
+		id = PHI_navy_davao_port
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_mosi_storm} 
+		completion_reward = {
+
+		}
+	}
+	focus = {
+		id = PHI_navy_pt_boats
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_mosi_storm } 
+		prerequisite = { focus = PHI_navy_pmc }
+		completion_reward = {
+
+		}
+	}
+	
+	focus = {
+		id = PHI_navy_naval_air_group
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_pmc } 
+		completion_reward = {
+
+		}
+	}
+	focus = {
+		id = PHI_navy_new_fleet_design
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_naval_air_group } 
+		prerequisite = { focus = PHI_navy_pt_boats }
+		mutually_exclusive = { focus = PHI_navy_refurbish_american_ship }
+		completion_reward = {
+
+		}
+	}
+	focus = {
+		id = PHI_navy_refurbish_american_ship
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_naval_air_group } 
+		prerequisite = { focus = PHI_navy_pt_boats }
+		mutually_exclusive = { focus = PHI_navy_new_fleet_design }
+		completion_reward = {
+
+		}
+	}
+	
+	focus = {
+		id = PHI_navy_pueto_princesa
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = -3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_davao_port} 
+		completion_reward = {
+
+		}
+	}
+	
+	focus = {
+		id = PHI_navy_safe_guard_coast
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_navy_swimming_between_islands
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_navy_pueto_princesa } 
+		prerequisite = { focus = PHI_navy_new_fleet_design focus = PHI_navy_refurbish_american_ship }
+		completion_reward = {
+
+		}
+	}
+	
+	##Airforce###
+	#amerikkka 
+	focus = {
+		id = PHI_airforce_pass_paac
+		icon = GFX_goal_QIO_revolutionary_zone
+		x = 60
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		air_experience = 50
+		}
+	}
+	
+	focus = {
+		id = PHI_airforce_skies_output
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_airforce_pass_paac
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_airforce_pass_paac } 
+		completion_reward = {
+			if = {
+				limit = { controls_state = 623 } #Northern Luzon
+				623 = {
+					add_building_construction = { type = air_base level = 1 }
+					add_building_construction = { type = anti_air_building level = 2 }
+				}
+			}
+			if = {
+				limit = { controls_state = 327 } #Central Luzon
+				327 = {
+					add_building_construction = { type = air_base level = 2 }
+					add_building_construction = { type = anti_air_building level = 2 }
+				}
+			}
+			if = {
+				limit = { controls_state = 627 } #Mindanao
+				627 = {
+					add_building_construction = { type = air_base level = 1 }
+					add_building_construction = { type = anti_air_building level = 1 }
+				}
+			}
+		}
+	}
+	focus = {
+		id = PHI_airforce_striking_ground
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_airforce_pass_paac
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_airforce_skies_output } 
+		completion_reward = {
+			add_tech_bonus = {
+				name = PHI_create_the_bomber_wing
+				bonus = 1
+				uses = 2
+				category = mio_cat_all_cas_and_modules
+			}
+		}
+	}
+	focus = {
+		id = PHI_airforce_villamor
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_airforce_pass_paac
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_airforce_skies_output } 
+		completion_reward = {
+		add_timed_idea = {
+				idea = PHI_air_industry_idea
+				days = 720
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_NIST
+			}
+			else = {
+				mio:PHI_NIST_organisation = { add_mio_size = 1 }
+			}
+		}
+	}
+	
+	focus = {
+		id = PHI_airforce_clark_airforce
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_airforce_pass_paac
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_airforce_skies_output } 
+		completion_reward = {
+			if = {
+				limit = { NOT = { is_special_project_completed = sp:sp_air_radar } }
+				complete_special_project = sp:sp_air_radar
+			}
+			else = {
+				add_tech_bonus = {
+					name = PHI_expand_air_defence_installations
+					bonus = 0.5
+					uses = 2
+					category = radar_tech
+				}
+			}
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 623 #Northern Luzon
+						state = 327 #Central Luzon
+						state = 627 #Mindanao
+					}
+					is_controlled_by = ROOT
+				}
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = PHI_airforce_study_foreign_designs
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_airforce_pass_paac
+		x = -2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_airforce_clark_airforce } 
+		prerequisite = { focus = PHI_airforce_villamor } 
+		completion_reward = {
+		air_experience = 35
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_nakajima
+			}
+			else = {
+				mio:PHI_nakajima_organisation = { add_mio_size = 2 }
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_focke_wulf_ost_asien
+			}
+			else = {
+				mio:PHI_focke_wulf_ost_asien_organisation = { add_mio_size = 2 }
+			}
+		}
+	}
+	
+	focus = {
+		id = PHI_airforce_eye_in_the_sky
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_airforce_pass_paac
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_airforce_striking_ground } 
+		completion_reward = {
+			add_tech_bonus = {
+				name = PHI_create_the_bomber_wing
+				bonus = 1
+				uses = 2
+				category = mio_cat_all_cas_and_modules
+			}
+			add_tech_bonus = {
+				name = PHI_naval_air_integration
+				bonus = 0.75
+				uses = 1
+				category = mio_cat_all_light_fighter_and_modules
+			}
+			add_tech_bonus = {
+				name = PHI_naval_air_integration
+				bonus = 0.75
+				uses = 2
+				category = cat_torpedoes
+			}
+		}
+	}
+	focus = {
+		id = PHI_airforce_drop_like_rain
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_airforce_pass_paac
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_airforce_striking_ground } 
+		completion_reward = {
+			if = {
+				limit = { NOT = { has_tech = paratroopers } }
+				set_technology = { paratroopers = 1 }
+			}
+			custom_override_tooltip = {
+				tooltip = {
+					localization_key = tooltip_create_division_template
+					NAME = "Special Forces Regiment"
+					LINE_1 = { localization_key = line_battalion_tt NAME = paratrooper ICON = GFX_unit_paratrooper_icon_small COUNT = 4 }
+					SUPPORT_1 = { localization_key = support_battalion_tt NAME = engineer ICON = GFX_unit_engineer_icon_small }
+				}
+				if = {
+					limit = { has_template = "Special Forces Regiment" }
+					delete_unit_template_and_units = { division_template = "Special Forces Regiment" disband = yes } #no cheating
+				}
+				division_template = {
+					name = "Special Forces Regiment" #Paratroopers
+					division_names_group = PHI_INF_01
+					regiments = {
+						paratrooper = { x = 0 y = 0 }
+						paratrooper = { x = 0 y = 1 }
+						paratrooper = { x = 1 y = 0 }
+						paratrooper = { x = 1 y = 1 }
+					}
+					support = {
+						engineer = { x = 0 y = 0 }
+					}
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 627 } #Davao
+				limit = {
+					is_in_home_area = yes
+					impassable = no
+				}
+				custom_override_tooltip = {
+					tooltip = {
+						localization_key = tooltip_spawn_unit
+						TYPE = "Special Forces Regiment"
+					}
+					create_unit = {
+						division = "name = \"Special Forces Regiment\" division_template = \"Special Forces Regiment\" start_experience_factor = 1.0"
+						prioritize_location = 627
+						owner = ROOT
+					}
+				}
+			}
+		}
+	}
+	focus = {
+		id = PHI_airforce_evolve_PAF
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_airforce_pass_paac
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_airforce_drop_like_rain } prerequisite = { focus = PHI_airforce_eye_in_the_sky }  prerequisite = { focus = PHI_airforce_study_foreign_designs } 
+		completion_reward = {
+			add_ideas = PHI_guardians_of_our_precious_skies_idea
+		}
+	}
+	
 
 }
