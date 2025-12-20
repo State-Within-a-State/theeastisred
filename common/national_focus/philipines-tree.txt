@@ -7061,5 +7061,561 @@ add_doctrine_cost_reduction = {
 		}
 	}
 	
-
+	##Army##
+	#amerikkka 
+	focus = {
+		id = PHI_army_army_beyond_scouts
+		icon = GFX_goal_QIO_revolutionary_zone
+		x = 82
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		army_experience = 50
+		}
+	}
+	
+	focus = {
+		id = PHI_army_east_point_west
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_army_beyond_scouts } 
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = PHI_new_nothing_army_0
+		add_idea = PHI_new_nothing_army_1a
+		}
+		}
+	}
+	focus = {
+		id = PHI_army_among_lands_and_seas
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_army_beyond_scouts } 
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = PHI_new_nothing_army_0
+		add_idea = PHI_new_nothing_army_1b
+		}
+		
+		}
+	}
+	focus = {
+		id = PHI_army_strengthen_domestic_production
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 5
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_among_lands_and_seas } 
+		completion_reward = {
+		add_timed_idea = {
+				days = 720
+				idea = PHI_domestic_rifle_production_idea
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_smoke_forests
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 6
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_strengthen_domestic_production } 
+		completion_reward = {
+		custom_effect_tooltip = forest_warfare_effect
+			hidden_effect = {
+				set_technology = { forest_warfare = 1 popup = no }
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_luna_legacy
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_strengthen_domestic_production } prerequisite = { focus = PHI_army_smoke_forests }
+		completion_reward = {
+		add_timed_idea = {
+				days = 720
+				idea = PHI_lessons_from_the_revolution_idea
+			}
+			add_war_support = 0.15
+		}
+	}
+	focus = {
+		id = PHI_army_enact_moblization
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 3
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_luna_legacy } 
+		completion_reward = {
+		add_ideas = {
+		PHI_mobilisation
+		}
+		}
+	}
+	focus = {
+		id = PHI_army_special_regiments
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 5
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_luna_legacy } 
+		completion_reward = {
+		add_tech_bonus = {
+				name = PHI_expertise_of_the_scouts
+				bonus = 0.5
+				uses = 2
+				category = mountaineers_tech
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_know_land_people
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 7
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_luna_legacy } 
+		completion_reward = {
+		every_unit_leader = {
+				add_logistics = 1
+				add_defense = 1
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_paglaban
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_know_land_people } prerequisite = { focus = PHI_army_special_regiments } prerequisite = { focus = PHI_army_enact_moblization } prerequisite = { focus = PHI_army_storm_clouds }
+		completion_reward = {
+		add_stability = 0.075
+		add_war_support = 0.075
+		swap_ideas = {
+		remove_idea = PHI_new_nothing_army_1b
+		add_idea = PHI_new_nothing_army_2b
+		}
+		}
+	}
+	focus = {
+		id = PHI_army_complete_defence_act
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_among_lands_and_seas focus = PHI_army_east_point_west } 
+		completion_reward = {
+		add_doctrine_cost_reduction = {
+				name = PHI_finish_the_nineteen_twenty_defence_act
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_national_defence_plan
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_complete_defence_act } 
+		completion_reward = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_sandatahang
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_complete_defence_act } 
+		completion_reward = {
+		627 = { 
+					create_unit = {
+						division = "division_template = \"People's Milita\" start_experience_factor = 0.1"
+						prioritize_location = 4241
+						owner = PHI
+					}
+				}
+		division_template = {
+							name = "People's Milita"
+							division_names_group = PHI_INF_04
+							regiments = {
+								militia = { x = 0 y = 0 }
+								militia = { x = 0 y = 1 }
+								militia = { x = 0 y = 2 }
+								militia = { x = 1 y = 0 }
+								militia = { x = 1 y = 1 }
+								militia = { x = 1 y = 2 }
+							}
+							support = {
+								artillery = { x = 0 y = 0 }
+								signal_company = { x = 0 y = 1 }
+								recon = { x = 0 y = 2 }
+							}
+						}
+		}
+	}
+	focus = {
+		id = PHI_army_struggle_archepeligo
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_sandatahang } prerequisite = { focus = PHI_army_national_defence_plan }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PHI_the_archipelagic_struggle"
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 100
+				producer = USA
+			}
+			add_equipment_to_stockpile = {
+				type = train_equipment
+				amount = 50
+				producer = USA
+			}
+			add_tech_bonus = {
+				name = PHI_the_archipelagic_struggle
+				bonus = 1
+				uses = 1
+				category = support_tech
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_constabulary
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_sandatahang } prerequisite = { focus = PHI_army_national_defence_plan }
+		completion_reward = {
+			add_ideas = {
+			PHI_new_constabulary
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_storm_clouds
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_constabulary } prerequisite = { focus = PHI_army_struggle_archepeligo }
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PHI_prepare_for_the_storm"
+			add_war_support = 0.15
+			add_timed_idea = {
+				days = 720
+				idea = PHI_prepare_for_the_storm_idea
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_yutivo_corporation
+			}
+			else = {
+				mio:PHI_yutivo_corporation_organisation = { add_mio_size = 1 }
+			}
+			custom_effect_tooltip = tooltip_white_line
+			if = {
+				limit = { has_dlc_aat = no }
+				custom_effect_tooltip = available_designer
+				show_ideas_tooltip = PHI_government_arsenal
+			}
+			else = {
+				mio:PHI_government_arsenal_organisation = { add_mio_size = 1 }
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_new_service_rifles
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -4
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_east_point_west } 
+		completion_reward = {
+		add_tech_bonus = {
+				name = PHI_a_new_service_rifle
+				bonus = 0.75
+				uses = 2
+				category = infantry_weapons
+			}
+		}
+	}
+	
+	focus = {
+		id = PHI_army_tangke
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -6
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_new_service_rifles } 
+		completion_reward = {
+		add_tech_bonus = {
+				name = PHI_tangke_de_guerras
+				bonus = 0.25
+				uses = 4
+				category = armor
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_foreign_licensing
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_tangke } 
+		completion_reward = {
+			log = "[GetLogRoot]: Focus Completed PHI_approach_the_foreign_arms_market"
+			if = {
+				limit = {
+					NOT = {
+						has_war_with = JAP
+						JAP = { exists = no }
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 500
+					producer = JAP
+				}
+				custom_effect_tooltip = tooltip_white_line
+			}
+			if = {
+				limit = {
+					NOT = {
+						AND = {
+							has_war_with = 361.owner
+							361.owner = { is_american_tag = yes }
+						}
+						AND = {
+							USA = { exists = no }
+							APG = { exists = no }
+							WCA = { exists = no }
+							NEE = { exists = no }
+							ACC = { exists = no }
+						}
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment
+					amount = 100
+					producer = USA
+				}
+				if = {
+					limit = { has_dlc_aat = no }
+					custom_effect_tooltip = available_designer
+					show_ideas_tooltip = PHI_ford_motor_company
+				}
+				else = {
+					mio:PHI_ford_motor_company_organisation = { add_mio_size = 2 }
+				}
+				custom_effect_tooltip = tooltip_white_line
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_war_with = GER
+						GER = { exists = no }
+					}
+				}
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = 75
+					producer = GER
+				}
+				if = {
+					limit = { has_dlc_aat = no }
+					custom_effect_tooltip = available_designer
+					show_ideas_tooltip = PHI_krupp_ost_asien_artillery
+				}
+				else = {
+					mio:PHI_krupp_ost_asien_artillery_organisation = { add_mio_size = 2 }
+				}
+				if = {
+					limit = { has_dlc_aat = no }
+					custom_effect_tooltip = available_designer
+					show_ideas_tooltip = PHI_krupp_ost_asien_tanks
+				}
+				else = {
+					mio:PHI_krupp_ost_asien_tanks_organisation = { add_mio_size = 2 }
+				}
+				custom_effect_tooltip = tooltip_white_line
+			}
+			PHI_sub_IND_alignment_large_effect = yes
+		}
+	}
+	focus = {
+		id = PHI_army_modernized_rangers
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -6
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_tangke } 
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = mountaineers_tech
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_special_forces_regiment
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -8
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_tangke } 
+		completion_reward = {
+		add_tech_bonus = {
+				bonus = 1
+				uses = 2
+				technology = tech_special_forces
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_tiradores
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_modernized_rangers } prerequisite = { focus = PHI_army_special_forces_regiment } prerequisite = {focus = PHI_army_foreign_licensing }
+		completion_reward = {
+			add_tech_bonus = {
+				name = PHI_tiradores_de_la_muerte
+				bonus = 1
+				uses = 1
+				category = cat_special_forces_generic
+			}
+		}
+	}
+	focus = {
+		id = PHI_army_pacific_vanguard
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = -6
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_army_tiradores } prerequisite = { focus = PHI_army_storm_clouds }
+		completion_reward = {
+		swap_ideas = {
+		remove_idea = PHI_new_nothing_army_1a
+		add_idea = PHI_new_nothing_army_2a
+		}
+		}
+	}
 }
