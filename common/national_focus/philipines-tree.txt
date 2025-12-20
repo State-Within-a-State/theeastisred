@@ -6115,6 +6115,15 @@ add_doctrine_cost_reduction = {
 		mutually_exclusive = { focus = PHI_antisoc_transformation_society }
 		prerequisite = { focus = PHI_antisoc_pink_liberalism }  prerequisite = { focus = PHI_antisoc_rizal_law } prerequisite = { focus = PHI_antisoc_social_justice_stability }   
 		completion_reward = {
+		every_state = { 
+		limit = { is_fully_controlled_by_ROOT_and_is_core_of_ROOT = yes }
+		add_state_modifier = {
+    		modifier = {
+        	local_factories = 0.05
+		local_supplies = 0.025
+    		}
+		}
+		}
 
 		set_party_name = {
    			 ideology = social_liberal
@@ -6148,6 +6157,23 @@ add_doctrine_cost_reduction = {
 		mutually_exclusive = { focus = PHI_antisoc_two_party }
 		prerequisite = { focus = PHI_antisoc_pink_liberalism }  prerequisite = { focus = PHI_antisoc_rizal_law } prerequisite = { focus = PHI_antisoc_social_justice_stability }   
 		completion_reward = {
+			add_political_power = 25
+			random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+ 			random_owned_controlled_state = {
+ 			add_extra_state_shared_building_slots = 1
+ 			add_building_construction = {
+ 				type = arms_factory
+ 				level = 1
+ 				instant_build = yes
+ 			}
+ 		}
 
 		if = { 
 		limit = { has_completed_focus = PHI_antisoc_mother_asia_civilization } 
@@ -6169,7 +6195,10 @@ add_doctrine_cost_reduction = {
 		mutually_exclusive = { focus = PHI_antisoc_mother_asia_civilization }
 		prerequisite = { focus = PHI_antisoc_pink_liberalism }  prerequisite = { focus = PHI_antisoc_rizal_law } prerequisite = { focus = PHI_antisoc_social_justice_stability }   
 		completion_reward = {
-
+		add_breakthrough_points = {
+  		specialization = all
+  		value = 1
+		}
 		unlock_decision_tooltip = PHI_laurel_unique_asia
 		unlock_decision_tooltip = PHI_laurel_unique_africa
 		unlock_decision_tooltip = PHI_laurel_unique_europe
@@ -6200,6 +6229,11 @@ add_doctrine_cost_reduction = {
 		mutually_exclusive = { focus = PHI_antisoc_divine_principle_humanity }
 		prerequisite = { focus = PHI_antisoc_pink_liberalism }  prerequisite = { focus = PHI_antisoc_rizal_law } prerequisite = { focus = PHI_antisoc_social_justice_stability }   
 		completion_reward = {
+		 add_command_power = 50
+		add_breakthrough_progress = {
+  		specialization = specialization_land
+ 		 value = 2
+		}
 		unlock_decision_tooltip = PHI_laurel_unique_asia
 
 		if = { 
@@ -6227,7 +6261,12 @@ add_doctrine_cost_reduction = {
 		}
 		prerequisite = { focus = PHI_antisoc_divine_principle_humanity focus = PHI_antisoc_mother_asia_civilization }  
 		completion_reward = {
-
+		add_manpower = 10000
+		add_mastery = {
+    		amount = 100
+    		# FILTERS:
+    		folder = land
+		}
 		}
 	}
 	
