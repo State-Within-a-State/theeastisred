@@ -7619,4 +7619,506 @@ has_country_leader = {
 		}
 		}
 	}
+	
+	###Economy###
+	
+	focus = {
+		id = PHI_economy_crisis_america
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_army_army_beyond_scouts
+		x = 0
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		completion_reward = {
+		army_experience = 50
+		}
+	}
+	
+	focus = {
+		id = PHI_economy_small_bankruptcies
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_crisis_america
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_crisis_america } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_diversification_crops
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_crisis_america
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_crisis_america } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_employment_outside_rural_economy
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_crisis_america
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_small_bankruptcies } prerequisite = { focus = PHI_economy_diversification_crops }
+		completion_reward = {
+		}
+	}
+	
+	###Export-Economy###
+	focus = {
+		id = PHI_economy_export_focus
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_crisis_america
+		x = -3
+		y = 3
+		cost = 5
+		mutually_exclusive = { focus = PHI_economy_austerity }
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_employment_outside_rural_economy } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_revoke_sugar
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_export_focus } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_review_trade
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -5
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_revoke_sugar } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_enact_bell_trade_act
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = PHI_economy_attack_bell }
+		prerequisite = { focus = PHI_economy_review_trade } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_attack_bell
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -6
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = PHI_economy_enact_bell_trade_act }
+		prerequisite = { focus = PHI_economy_review_trade } 
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = PHI_economy_subsidize_farms
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_attack_bell focus = PHI_economy_enact_bell_trade_act } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_reorg_nat_depart_company
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_revoke_sugar } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_tie_peso_to_dollar
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_revoke_sugar } 
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = PHI_economy_expand_agricultural_colonies
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_tie_peso_to_dollar } prerequisite = { focus = PHI_economy_reorg_nat_depart_company }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_national_electrification
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_expand_agricultural_colonies } 
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = PHI_economy_nec_vindicated
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_export_focus
+		x = -3
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_national_electrification } prerequisite = { focus = PHI_economy_subsidize_farms } 
+		completion_reward = {
+		}
+	}
+	
+	
+	###Austerity-Economy###
+	focus = {
+		id = PHI_economy_austerity
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_crisis_america
+		x = 3
+		y = 3
+		cost = 5
+		mutually_exclusive = { focus = PHI_economy_export_focus }
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_employment_outside_rural_economy } 
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = PHI_economy_sugar_act_strengthen
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_austerity } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_rice_distrbution_corp
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_sugar_act_strengthen } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_anti_graft_corruption
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_rice_distrbution_corp } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_building_fertilizer_plants
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_rice_distrbution_corp } prerequisite = { focus = PHI_economy_nat_dev_bank }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_price_controls
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_anti_graft_corruption } prerequisite = { focus = PHI_economy_building_fertilizer_plants }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_nat_dev_bank
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 6
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_sugar_act_strengthen } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_workercomp_law
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 6
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_nat_dev_bank } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_nat_distribution
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = PHI_economy_coop_reliance } prerequisite = { focus = PHI_economy_building_fertilizer_plants }
+		prerequisite = { focus = PHI_economy_workercomp_law } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_coop_reliance
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 7
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = PHI_economy_nat_distribution } prerequisite = { focus = PHI_economy_building_fertilizer_plants }
+		prerequisite = { focus = PHI_economy_workercomp_law } 
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = PHI_economy_protectionism
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_austerity
+		x = 4
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {focus = PHI_economy_price_controls }
+		prerequisite = { focus = PHI_economy_coop_reliance focus = PHI_economy_nat_distribution } 
+		completion_reward = {
+		}
+	}
+	
+	###Developland-Economy###
+	focus = {
+		id = PHI_economy_pan_filipino_highway
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_crisis_america
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_employment_outside_rural_economy } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_peel_payne_act
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_pan_filipino_highway
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_pan_filipino_highway } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_develop_local_coalmines
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_pan_filipino_highway
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_peel_payne_act } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_develop_surigao_iron
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_pan_filipino_highway
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_peel_payne_act } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_exploit_zambales_chromium
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_pan_filipino_highway
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_develop_surigao_iron } prerequisite = { focus = PHI_economy_develop_local_coalmines } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_zamboanga_plantations
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_pan_filipino_highway
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_develop_surigao_iron } prerequisite = { focus = PHI_economy_develop_local_coalmines } 
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = PHI_economy_expand_luzon_university
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_pan_filipino_highway
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_zamboanga_plantations } prerequisite = { focus = PHI_economy_exploit_zambales_chromium } 
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = PHI_economy_pearl_of_pacific
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_economy_pan_filipino_highway
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_economy_expand_luzon_university } 
+		prerequisite = { focus = PHI_economy_protectionism focus = PHI_economy_nec_vindicated } 
+		completion_reward = {
+		}
+	}
+	
 }
