@@ -6358,12 +6358,18 @@ has_country_leader = {
 		is_subject = no
 		has_country_flag = PHI_first_election_occurred 
 		}
+		bypass = { 
+		is_subject = no
+		has_country_flag = PHI_first_election_occurred 
+		is_in_faction = yes
+		}
 		completion_reward = {
+		country_event = rd_phil.60
 
 
 		}
 	}
-	#own faction 
+	#more neutral not into factions 
 	focus = {
 		id = PHI_foreign_own
 		icon = GFX_goal_QIO_revolutionary_zone
@@ -6390,8 +6396,8 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = { is_in_faction_with = USA }
-		prerequisite = { focus = PHI_start_foreign} 
+		available = { is_in_faction_with = USA USA = { is_faction_leader = yes } }
+		prerequisite = { focus = PHI_start_foreign } 
 		completion_reward = {
 
 		}

@@ -3112,49 +3112,158 @@ country_event = { #flag picker for socialists, only triggers once because lol th
 
 }
 
-country_event = { #
-	id = rd_phil.60
+country_event = { #first event for deciding a faction to try and join
+	id = rd_phil.60 #usa not included because they're already part of their leadership
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.60"}
 	title = rd_phil.60.title
 	desc = rd_phil.60.desc
 	fire_only_once = yes 
-	
+
 	is_triggered_only = yes
-	option = { #
+	option = { #japan probably the closest to most likely option if America is screwed
 		name = rd_phil.60.a
+		trigger = { JAP = { is_faction_leader = yes } }
 		ai_chance = { base = 100 }
-		
+		JAP = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_jap
 	}
+
+	option = { #germany
+		name = rd_phil.60.b
+		trigger = { GER = { is_faction_leader = yes } NOT = { has_socialist_government = yes OR = { has_completed_focus = PHI_santos has_completed_focus = PHI_gregorio } } }
+		ai_chance = { base = 100 }
+		GER = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_ger
+
+	}
+
+	option = { #entente
+		name = rd_phil.60.c
+		trigger = { ENT = { is_faction_leader = yes } NOT = { OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio } } }
+		ai_chance = { base = 100 }
+		ENT = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_ent
+
+	}
+
+	option = { #spain
+		name = rd_phil.60.d
+		trigger = { SPR = { is_faction_leader = yes } OR = { NOT = { has_socialist_government = yes has_completed_focus = PHI_santos } SPR = { has_socialist_government = yes } } }
+		ai_chance = { base = 100 }
+		SPR = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_spr
+
+	}
+	option = { #bhc
+		name = rd_phil.60.e
+		trigger = { BHC = { is_faction_leader = yes } NOT = { has_government = national_populist } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio has_completed_focus = PHI_aglipay_fonocier } }
+		ai_chance = { base = 100 }
+		BHC = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_bhc
+
+	}
+	option = { #internaitonale
+		name = rd_phil.60.f
+		trigger = { INT = { is_faction_leader = yes } OR = { has_socialist_government = yes has_completed_focus = PHI_aglipay_fonocier } }
+		ai_chance = { base = 100 }
+		INT = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_int
+
+	}
+
+	option = { #ourselves
+		name = rd_phil.60.g
+		ai_chance = { base = 100 }
+	}
+
+
 }
 
-country_event = { #
+country_event = { #ask the country to have you as ally
 	id = rd_phil.61
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.61"}
 	title = rd_phil.61.title
 	desc = rd_phil.61.desc
-	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes 
 		name = rd_phil.61.a
 		ai_chance = { base = 100 }
+		add_to_faction = PHI
 		
 	}
+	option = { #no fuck you phil
+		name = rd_phil.61.a
+		ai_chance = { base = 100 }
+		PHI = { 
+		country_event = { id = rd_phil.62 days = 5 } }
+	}
+
 }
 
-country_event = { #
+country_event = { #same thing as 60 but just a different name and loc and choices being removed
 	id = rd_phil.62
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.62"}
 	title = rd_phil.62.title
 	desc = rd_phil.62.desc
-	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
-		name = rd_phil.62.a
+	option = { #japan probably the closest to most likely option if America is screwed
+		name = rd_phil.60.a
+		trigger = { NOT = { has_country_flag = PHI_tried_jap } JAP = { is_faction_leader = yes } }
 		ai_chance = { base = 100 }
-		
+		JAP = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_jap
 	}
+
+	option = { #germany
+		name = rd_phil.60.b
+		trigger = { NOT = { has_country_flag = PHI_tried_ger } GER = { is_faction_leader = yes } NOT = { has_socialist_government = yes OR = { has_completed_focus = PHI_santos has_completed_focus = PHI_gregorio } } }
+		ai_chance = { base = 100 }
+		GER = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_ger
+
+	}
+
+	option = { #entente
+		name = rd_phil.60.c
+		trigger = { NOT = { has_country_flag = PHI_tried_ent } ENT = { is_faction_leader = yes } NOT = { OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio } } }
+		ai_chance = { base = 100 }
+		ENT = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_ent
+
+	}
+
+	option = { #spain
+		name = rd_phil.60.d
+		trigger = { NOT = { has_country_flag = PHI_tried_spr } SPR = { is_faction_leader = yes } OR = { NOT = { has_socialist_government = yes has_completed_focus = PHI_santos } SPR = { has_socialist_government = yes } } }
+		ai_chance = { base = 100 }
+		SPR = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_spr
+
+	}
+	option = { #bhc
+		name = rd_phil.60.e
+		trigger = { NOT = { has_country_flag = PHI_tried_bhc } BHC = { is_faction_leader = yes } NOT = { has_government = national_populist } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio has_completed_focus = PHI_aglipay_fonocier } }
+		ai_chance = { base = 100 }
+		BHC = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_bhc
+
+	}
+	option = { #internaitonale
+		name = rd_phil.60.f
+		trigger = { NOT = { has_country_flag = PHI_tried_int } INT = { is_faction_leader = yes } OR = { has_socialist_government = yes has_completed_focus = PHI_aglipay_fonocier } }
+		ai_chance = { base = 100 }
+		INT = { country_event = { id = rd_phil.61 days = 5 } }
+		set_country_flag = PHI_tried_int
+
+	}
+
+	option = { #ourselves
+		name = rd_phil.60.g
+		ai_chance = { base = 100 }
+	}
+
 }
 
 country_event = { #
