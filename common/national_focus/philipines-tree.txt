@@ -7665,13 +7665,10 @@ has_country_leader = {
 			FOCUS_FILTER_POLITICAL
 		}
 		available = { 
-		OR = {
-		has_completed_focus = PHI_start_rip_bozo
-		has_completed_focus = PHI_start_cuck 
-		}
+		always = no
 		}
 		completion_reward = {
-		army_experience = 50
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -7701,6 +7698,17 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_crisis_america } 
 		completion_reward = {
+		add_stability = -0.1
+		random_owned_controlled_state  = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			
+			
+			}
 		}
 	}
 	focus = {
@@ -7862,6 +7870,31 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_expand_agricultural_colonies } 
 		completion_reward = {
+		add_tech_bonus = {
+				name = PHI_expand_the_electrical_grid
+				bonus = 0.25
+				uses = 4
+				category = industry
+			}
+			random_owned_controlled_state  = {
+			add_extra_state_shared_building_slots = 3
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = radar_station
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = energy_infrastructure
+				level = 1
+				instant_build = yes
+			}
+			
+			}
 		}
 	}
 	
@@ -7952,6 +7985,21 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_rice_distrbution_corp } prerequisite = { focus = PHI_economy_nat_dev_bank }
 		completion_reward = {
+			add_tech_bonus = {
+				name = PHI_national_trading_corporation
+				bonus = 0.75
+				uses = 2
+				category = industry
+			}
+			add_stability = -0.05
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	focus = {
@@ -8056,6 +8104,37 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_employment_outside_rural_economy } 
 		completion_reward = {
+		random_owned_controlled_state = {
+				prioritize = { 623 } #Northern Luzon
+				limit = {
+					is_core_of = PHI
+					non_damaged_building_level = {
+						building = infrastructure
+						level < 5
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				prioritize = { 327 } #Central Luzon
+				limit = {
+					is_core_of = PHI
+					non_damaged_building_level = {
+						building = infrastructure
+						level < 5
+					}
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			
 		}
 	}
 	focus = {
@@ -8070,6 +8149,12 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_pan_filipino_highway } 
 		completion_reward = {
+		add_tech_bonus = {
+				name = PHI_roads_in_the_cordillera
+				category = excavation_tech
+				bonus = 1
+				uses = 1
+			}
 		}
 	}
 	focus = {
@@ -8084,6 +8169,24 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_peel_payne_act } 
 		completion_reward = {
+		add_resource = {
+				type = coal
+				amount = 8
+				state = 627
+			}
+			add_tech_bonus = {
+				name = PHI_develop_domestic_coalfields
+				bonus = 1
+				uses = 1
+				category = synth_resources
+			}
+			627 = { #Mindanao
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	focus = {
@@ -8098,6 +8201,11 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_peel_payne_act } 
 		completion_reward = {
+		add_resource = {
+				type = steel
+				amount = 8
+				state = 627
+			}
 		}
 	}
 	focus = {
@@ -8112,6 +8220,11 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_develop_surigao_iron } prerequisite = { focus = PHI_economy_develop_local_coalmines } 
 		completion_reward = {
+		add_resource = {
+				type = chromium
+				amount = 12
+				state = 625
+			}
 		}
 	}
 	focus = {
@@ -8126,6 +8239,11 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_develop_surigao_iron } prerequisite = { focus = PHI_economy_develop_local_coalmines } 
 		completion_reward = {
+		add_resource = {
+				type = rubber
+				amount = 8
+				state = 627
+			}
 		}
 	}
 	focus = {
@@ -8140,6 +8258,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_zamboanga_plantations } prerequisite = { focus = PHI_economy_exploit_zambales_chromium } 
 		completion_reward = {
+		add_research_slot_until_five = yes
 		}
 	}
 	
