@@ -5586,3 +5586,137 @@ JAP_conquer_manchuria = {
 			
 		}
 	}
+	
+JAP_national_unity_gov_decision_category = {
+	JAP_support_womens_associations = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_Kokumin_support_women
+		}
+		
+		visible = {
+			tag = JAP
+			
+		}
+		
+		
+		cost = 25
+		
+		days_remove = 50
+		days_re_enable = 25
+		fire_only_once = no
+		modifier = {
+			production_factory_efficiency_gain_factor = 0.05
+			weekly_manpower = 10
+			conscription = 0.01
+			political_power_factor = -0.5
+			stability_weekly = -0.025
+			war_support_factor = -0.025
+		}
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			add_manpower = 1000
+			add_political_power = 5
+			add_war_support = 0.05
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.01
+			}
+			add_to_variable = {
+				var = JAP_nat_unity_gov
+				value = 5
+				tooltip = increase_nat_unity_support_tt
+			}
+			
+		}
+			
+		}
+	JAP_radical_agitation = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_Tohokai_increase_radicalism
+		}
+		
+		visible = {
+			tag = JAP
+			
+		}
+		
+		
+		cost = 25
+		
+		days_remove = 50
+		days_re_enable = 25
+		fire_only_once = no
+		modifier = {
+			war_support_weekly = 0.025
+			research_speed_factor = -0.025
+			political_power_factor = -0.2
+		}
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			add_political_power = 5
+			add_to_variable = {
+				var = JAP_nat_unity_gov
+				value = 5
+				tooltip = increase_nat_unity_support_tt
+			}
+			
+		}
+			
+		}
+		
+		JAP_achieve_sulf_sufficiency = {
+		activation = {
+			has_completed_focus = JAP_Tohokai_Domei_self_sufficiency
+		}
+		available = {
+			num_of_factories > 90
+			has_tech = improved_machine_tools
+				has_tech = construction2
+				OR = {
+					has_tech = concentrated_industry2
+					has_tech = dispersed_industry2
+				}
+			
+			
+		}
+		
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 120
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = {
+			JAP_independent_economics
+			}
+			add_to_variable = {
+				var = JAP_nat_unity_gov
+				value = 20
+				tooltip = increase_nat_unity_support_tt
+			}
+			set_country_flag = JAP_self_sufficiency_completed
+		}
+		timeout_effect = {
+			add_to_variable = {
+				var = JAP_nat_unity_gov
+				value = -40
+				tooltip = decrease_nat_unity_support_tt
+			}
+			add_timed_idea = {
+			idea = JAP_non_independent_economics
+			days = 180
+			}
+			set_country_flag = JAP_self_sufficiency_completed
+		}
+	}
+}

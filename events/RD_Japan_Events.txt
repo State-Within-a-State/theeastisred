@@ -2445,6 +2445,7 @@ country_event = { #1940 Election
 		set_politics = {
 			ruling_party = authoritarian_democrat
 		}
+		complete_national_focus = JAP_Kokumin_new_nat_unity_term
 		remove_all_ministers = yes
 		add_ideas = {
 		JAP_Adachi_Kenzo_hog_ade
@@ -2592,7 +2593,7 @@ country_event = { #Cooperative Cabinent
 	}
 }
 
-country_event = { #
+country_event = { #On the Dissolution of the Upper House
 	id = rd_japan_event.48
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.48"}
 	title = rd_japan_event.48.title
@@ -2600,14 +2601,35 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Maybe We can Ease Them Into It
 		name = rd_japan_event.48.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = JAP_nat_unity_gov
+				value = 5
+				tooltip = increase_nat_unity_support_tt
+			}
+			add_timed_idea = {
+			idea = JAP_parliamentary_ease
+			days = 90
+			}
+	}
+	option = { #We must wipe out this outdated institution
+		name = rd_japan_event.48.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = JAP_nat_unity_gov
+				value = -5
+				tooltip = decrease_nat_unity_support_tt
+			}
+		add_timed_idea = {
+			idea = JAP_parliamentary_instant
+			days = 90
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Dealing With the Unions
 	id = rd_japan_event.49
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.49"}
 	title = rd_japan_event.49.title
@@ -2615,14 +2637,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Absorb them
 		name = rd_japan_event.49.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+			idea = JAP_trade_union_absorption
+			days = 90
+			}
+		add_to_variable = {
+				var = JAP_nat_unity_gov
+				value = -7
+				tooltip = decrease_nat_unity_support_tt
+			}
+	}
+	
+	option = { #We should form an alliance
+		name = rd_japan_event.49.b
+		ai_chance = { base = 100 }
+		add_timed_idea = {
+			idea = JAP_trade_union_alliance
+			days = 90
+			}
+		add_to_variable = {
+				var = JAP_nat_unity_gov
+				value = 3
+				tooltip = increase_nat_unity_support_tt
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Nakano Secures His Rule
 	id = rd_japan_event.50
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.50"}
 	title = rd_japan_event.50.title
@@ -2633,11 +2677,14 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.50.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+		id = rd_japan_event.44
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Collapse of Kenzo's Government
 	id = rd_japan_event.51
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.51"}
 	title = rd_japan_event.51.title
@@ -2648,11 +2695,15 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.51.a
 		ai_chance = { base = 100 }
-		
+		swap_ideas = {
+		remove_idea = JAP_Adachi_Kenzo_hog_ade
+		add_idea = JAP_Akira_Kazami_hog_ade
+		}
+		set_country_flag = JAP_Kenzo_Collapse
 	}
 }
 
-country_event = { #
+country_event = { #Success of Nat Unity Gov
 	id = rd_japan_event.52
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.52"}
 	title = rd_japan_event.52.title
@@ -2663,11 +2714,12 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.52.a
 		ai_chance = { base = 100 }
-		
+		complete_national_focus = JAP_Kokumin_loyal_strong_gov
+		country_event = rd_japan_event.53
 	}
 }
 
-country_event = { #
+country_event = { #Selecting Nat-Unity Gov
 	id = rd_japan_event.53
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.53"}
 	title = rd_japan_event.53.title
@@ -2678,11 +2730,42 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.53.a
 		ai_chance = { base = 100 }
+		trigger = {
+			NOT = {
+				OR = {
+					has_country_flag = JAP_Kenzo_Collapse
+					has_country_flag = JAP_Kenzo_Adachi_Dead
+				}
+			}
+		}
+		complete_national_focus = JAP_Kokumin_maintaining_hand
+		set_country_leader_ideology = authdem_showa_statism_subtype
+		
+	}
+	option = { #
+		name = rd_japan_event.53.b
+		ai_chance = { base = 100 }
+		complete_national_focus = JAP_Kokumin_national_reform
+		swap_ideas = {
+		remove_idea = JAP_Adachi_Kenzo_hog_ade
+		add_idea = JAP_Joichi_Yamado_hog_ade
+		}
+		set_country_leader_ideology = oligarchy_subtype
+	}
+	
+	option = { #
+		name = rd_japan_event.53.c
+		ai_chance = { base = 100 }
+		complete_national_focus = JAP_Kokumin_Akira_kazami
+		swap_ideas = {
+		remove_idea = JAP_Adachi_Kenzo_hog_ade
+		add_idea = JAP_Akira_Kazami_hog_ade
+		}
 		
 	}
 }
 
-country_event = { #
+country_event = { #Harmonious Empire
 	id = rd_japan_event.54
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.54"}
 	title = rd_japan_event.54.title
@@ -2690,10 +2773,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Showa Statism
 		name = rd_japan_event.54.a
 		ai_chance = { base = 100 }
 		
+		if = {
+			limit = {
+				has_completed_focus = JAP_Kokumin_Wear_Red_Masks
+			}
+			set_country_leader_ideology = tot_showa_statism_subtype
+		}
+		else = {
+			set_country_leader_ideology = authdem_showa_statism_subtype
+		}
+	}
+	option = { #Tot Kleptocracy
+		name = rd_japan_event.54.b
+		trigger = {
+		has_completed_focus = JAP_Kokumin_Wear_Red_Masks
+		}
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = tot_kleptocracy_subtype
+	}
+	
+	option = { #Social Nationalism
+		name = rd_japan_event.54.c
+		trigger = {
+		has_completed_focus = JAP_Kokumin_Burn_Red_Masks
+		}
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = social_nationalism_subtype
 	}
 }
 
