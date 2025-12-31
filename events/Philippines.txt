@@ -682,7 +682,7 @@ country_event = { #not used rn cause lol give it some flavor
 	}
 }
 
-country_event = { #leave faction after being freed from commonwealth?
+country_event = { #leave faction after being freed from commonwealth? remember sometimes us doesn't have faction so just leave
 	id = rd_phil.10
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.10"}
 	title = rd_phil.10.title
@@ -698,15 +698,13 @@ country_event = { #leave faction after being freed from commonwealth?
 		if = {
 		limit = { is_in_faction = yes }
 		leave_faction = yes 
-		}
 		add_stability = -0.025
+		}
 	}
 	option = { #no
 		name = rd_phil.10.b
-		trigger = { USA = { is_in_faction = yes } } 
-		ai_chance = { base = 100 
-		modifier = { OR = { has_government = radical_socialist has_completed_focus = PHI_repub_second has_government = authoritarian_democrat  has_government = syndicalist } factor = 0 }
-		}
+		trigger = { USA = { is_in_faction = yes } not = { OR = { has_government = radical_socialist has_completed_focus = PHI_repub_second has_government = authoritarian_democrat  has_government = syndicalist } } } 
+		ai_chance = { base = 100 }
 		add_political_power = -50
 	}
 }
@@ -3122,7 +3120,7 @@ country_event = { #first event for deciding a faction to try and join
 	is_triggered_only = yes
 	option = { #japan probably the closest to most likely option if America is screwed
 		name = rd_phil.60.a
-		trigger = { JAP = { is_faction_leader = yes } }
+		trigger = { JAP = { is_faction_leader = yes } NOT = { has_completed_focus = PHI_antisoc_poisons } }
 		ai_chance = { base = 100 }
 		JAP = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_jap
@@ -3139,7 +3137,7 @@ country_event = { #first event for deciding a faction to try and join
 
 	option = { #entente
 		name = rd_phil.60.c
-		trigger = { ENT = { is_faction_leader = yes } NOT = { OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio } } }
+		trigger = { ENT = { is_faction_leader = yes } NOT = { OR = { has_completed_focus = PHI_antisoc_republicanism_survival has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio } } }
 		ai_chance = { base = 100 }
 		ENT = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_ent
@@ -3156,7 +3154,7 @@ country_event = { #first event for deciding a faction to try and join
 	}
 	option = { #bhc
 		name = rd_phil.60.e
-		trigger = { BHC = { is_faction_leader = yes } NOT = { has_government = national_populist } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio has_completed_focus = PHI_aglipay_fonocier } }
+		trigger = { BHC = { is_faction_leader = yes } NOT = { has_government = national_populist has_completed_focus = PHI_emilio } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio has_completed_focus = PHI_aglipay_fonocier } }
 		ai_chance = { base = 100 }
 		BHC = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_bhc
@@ -3164,7 +3162,7 @@ country_event = { #first event for deciding a faction to try and join
 	}
 	option = { #internaitonale
 		name = rd_phil.60.f
-		trigger = { INT = { is_faction_leader = yes } OR = { has_socialist_government = yes has_completed_focus = PHI_aglipay_fonocier } }
+		trigger = { INT = { is_faction_leader = yes } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start  has_completed_focus = PHI_aglipay_fonocier } }
 		ai_chance = { base = 100 }
 		INT = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_int
@@ -3211,7 +3209,7 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	is_triggered_only = yes
 	option = { #japan probably the closest to most likely option if America is screwed
 		name = rd_phil.60.a
-		trigger = { NOT = { has_country_flag = PHI_tried_jap } JAP = { is_faction_leader = yes } }
+		trigger = { NOT = { has_country_flag = PHI_tried_jap } JAP = { is_faction_leader = yes } NOT = { has_completed_focus = PHI_antisoc_poisons } }
 		ai_chance = { base = 100 }
 		JAP = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_jap
@@ -3228,7 +3226,7 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 
 	option = { #entente
 		name = rd_phil.60.c
-		trigger = { NOT = { has_country_flag = PHI_tried_ent } ENT = { is_faction_leader = yes } NOT = { OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio } } }
+		trigger = { NOT = { has_country_flag = PHI_tried_ent } ENT = { is_faction_leader = yes } NOT = { OR = { has_completed_focus = PHI_antisoc_republicanism_survival has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio } } }
 		ai_chance = { base = 100 }
 		ENT = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_ent
@@ -3245,7 +3243,7 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	}
 	option = { #bhc
 		name = rd_phil.60.e
-		trigger = { NOT = { has_country_flag = PHI_tried_bhc } BHC = { is_faction_leader = yes } NOT = { has_government = national_populist } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio has_completed_focus = PHI_aglipay_fonocier } }
+		trigger = { NOT = { has_country_flag = PHI_tried_bhc } BHC = { is_faction_leader = yes } NOT = { has_government = national_populist has_completed_focus = PHI_emilio } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio has_completed_focus = PHI_aglipay_fonocier } }
 		ai_chance = { base = 100 }
 		BHC = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_bhc
@@ -3253,7 +3251,7 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	}
 	option = { #internaitonale
 		name = rd_phil.60.f
-		trigger = { NOT = { has_country_flag = PHI_tried_int } INT = { is_faction_leader = yes } OR = { has_socialist_government = yes has_completed_focus = PHI_aglipay_fonocier } }
+		trigger = { NOT = { has_country_flag = PHI_tried_int } INT = { is_faction_leader = yes } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_aglipay_fonocier } }
 		ai_chance = { base = 100 }
 		INT = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_int
