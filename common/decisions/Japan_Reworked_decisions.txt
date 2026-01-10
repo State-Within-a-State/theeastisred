@@ -5720,3 +5720,193 @@ JAP_national_unity_gov_decision_category = {
 		}
 	}
 }
+
+JAP_civilian_army_decision_category = {
+JAP_maintain_army_influence = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_Shakai_Taishuto_maintain_army_influence
+		}
+		
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_Shakai_Taishuto_maintain_army_influence
+		}
+		
+		
+		cost = 10
+		
+		days_remove = 50
+		days_re_enable = 25
+		fire_only_once = no
+		modifier = {
+			war_support_weekly = 0.025
+			research_speed_factor = -0.025
+			political_power_factor = -0.2
+		}
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			add_political_power = 5
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.025
+			}
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.075
+			}
+			
+		}
+			
+		}
+		
+		JAP_denounce_moderate_left_opposition = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_Shakai_Taishuto_attack_opposition
+		}
+		
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_Shakai_Taishuto_attack_opposition
+		}
+		
+		
+		cost = 10
+		
+		days_remove = 40
+		days_re_enable = 25
+		fire_only_once = no
+		modifier = {
+			social_democrat_drift = -0.1
+			political_power_factor = -0.1
+			weekly_manpower = -100
+		}
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			add_stability = -0.1
+			add_popularity = {
+				ideology = social_democrat
+				popularity = -0.025
+			}
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.05
+			}
+			
+		}
+			
+		}
+		
+		JAP_raiding_armouries = {
+		icon = no_votei_icon
+		
+		available = {
+			OR = {
+				has_completed_focus = JAP_Shakai_Taishuto_grasping_gun
+				has_completed_focus = JAP_Shakai_Taishuto_rifle_hammer
+			}
+		}
+		
+		visible = {
+			tag = JAP
+			OR = {
+				has_completed_focus = JAP_Shakai_Taishuto_grasping_gun
+				has_completed_focus = JAP_Shakai_Taishuto_rifle_hammer
+			}
+		}
+		
+		
+		cost = 10
+		
+		days_remove = 20
+		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 500
+				producer = JAP
+			}
+			if = {
+				limit = {
+					has_completed_focus = JAP_Shakai_Taishuto_grasping_gun
+				}
+					add_popularity = {
+					ideology = totalist
+					popularity = 0.05
+				}
+				add_power_balance_value = {
+					id = JAP_civilian_army_balance
+					value = 0.025
+				}
+			}
+			else = {
+				
+					add_popularity = {
+					ideology = paternal_autocrat
+					popularity = 0.05
+				}
+				add_power_balance_value = {
+					id = JAP_civilian_army_balance
+					value = -0.025
+				}
+			}
+			
+		}
+			
+		}
+		
+		
+		JAP_anti_army_radicalism = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_Shakai_Taishuto_attack_army_radicalism
+		}
+		
+		visible = {
+			tag = JAP
+			has_completed_focus = JAP_Shakai_Taishuto_attack_army_radicalism
+		}
+		
+		
+		cost = 10
+		
+		days_remove = 50
+		days_re_enable = 20
+		fire_only_once = no
+		modifier = {
+			army_org = -0.05
+			army_morale_factor = -0.025
+			army_speed_factor = -0.025
+		}
+		complete_effect = {
+		
+		}
+		remove_effect = {
+			
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.05
+			}
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.05
+			}
+			
+		}
+			
+		}
+
+}

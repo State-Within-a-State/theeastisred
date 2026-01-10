@@ -1567,7 +1567,7 @@ country_event = { #1936 Election
 		set_politics = {
 			ruling_party = authoritarian_democrat
 		}
-		load_focus_tree = japan-election-kokumin-domei
+		
 		remove_all_ministers = yes
 		add_ideas = {
 		JAP_Adachi_Kenzo_hog_ade
@@ -1585,7 +1585,7 @@ country_event = { #1936 Election
 	option = { #Seiyukai
 		name = rd_japan_event.32.b
 		ai_chance = { base = 100 }
-		load_focus_tree = japan-election-seiyukai
+		
 		remove_power_balance = {
 			id = JAP_civilian_army_balance
 		}
@@ -1618,6 +1618,7 @@ country_event = { #1936 Election
 		JAP_Inoue_Junnosuke_eco_mli
 		JAP_Keijiro_Nakamura_sec_sli
 		}
+		
 	}
 	
 	option = { #Shakai Taishuto
@@ -1808,6 +1809,7 @@ country_event = { #The End of a Party Struggle
 		remove_power_balance = {
 			id = JAP_civilian_army_balance
 		}
+		complete_national_focus = JAP_Shakai_Taishuto_Isoo_holds
 	}
 	option = { #Aso Secures the Party
 		name = rd_japan_event.36.b
@@ -1835,6 +1837,7 @@ country_event = { #The End of a Party Struggle
 		JAP_Masashi_Ishibashi_for_rso
 		JAP_Bin_Akao_sec_tot
 		}
+		complete_national_focus = JAP_Shakai_Taishuto_Aso_National_socialist
 	}
 	option = { #Oyama Wins Over the Party
 		name = rd_japan_event.36.c
@@ -1912,6 +1915,7 @@ country_event = { #
 				value < -0.29
 			}
 		}
+		complete_national_focus = JAP_Shakai_Taishuto_empire_fire
 		country_event = rd_japan_event.42
 	}
 	option = { #Peaceful Against Moderates
@@ -1923,6 +1927,7 @@ country_event = { #
 				value > -0.3
 			}
 		}
+		complete_national_focus = JAP_Shakai_Taishuto_olive_branch_revolution
 		country_event = rd_japan_event.43
 	}
 }
@@ -2490,7 +2495,7 @@ country_event = { #1940 Election
 		ai_chance = { base = 100 }
 		if = {
 			limit = {
-				has_country_flag = JAP_Soclib_Minseito_win
+				has_country_flag = JAP_side_with_tojinha
 			}
 			set_politics = {
 			ruling_party = social_liberal
@@ -2532,6 +2537,8 @@ country_event = { #1940 Election
 		JAP_Shigeo_abe_for_sde
 		JAP_Chozaburo_Mizutani_sec_sde
 		}
+		country_event = rd_japan_event.73
+		complete_national_focus = JAP_Shakai_Taishuto_Ballot_Heads_Left
 	}
 }
 
@@ -2987,7 +2994,7 @@ country_event = { #1944 Election
 		ai_chance = { base = 100 }
 		if = {
 			limit = {
-				has_country_flag = JAP_Soclib_Minseito_win
+				has_country_flag = JAP_side_with_tojinha
 			}
 			set_politics = {
 			ruling_party = social_liberal
@@ -2995,7 +3002,7 @@ country_event = { #1944 Election
 			add_marlib_to_coalition = yes
 			remove_all_ministers = yes
 			add_ideas = {
-			JAP_Wakatsuki_Reijiro_hog_mli
+			JAP_Ryutaro_Nagai_hog_sli
 			JAP_Shidehara_Kijuro_for_mli
 			JAP_Inoue_Junnosuke_eco_mli
 			JAP_Keijiro_Nakamura_sec_sli
@@ -3014,6 +3021,7 @@ country_event = { #1944 Election
 			JAP_Keijiro_Nakamura_sec_sli
 			}
 		}
+		complete_national_focus = JAP_Minseito_unfied_term
 	}
 	option = { #Shakai Taishuto
 		name = rd_japan_event.58.d
@@ -3215,7 +3223,7 @@ country_event = { #Supporting the new Women's Assoication
 	}
 }
 
-country_event = { #
+country_event = { #Struggle With Tojinha
 	id = rd_japan_event.65
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.65"}
 	title = rd_japan_event.65.title
@@ -3223,14 +3231,25 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Extend Olive Branch
 		name = rd_japan_event.65.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+			idea = JAP_oliver_branch
+			days = 60
+		}
+	}
+	option = { #Split Continues Olive Branch
+		name = rd_japan_event.65.b
+		ai_chance = { base = 100 }
+		add_timed_idea = {
+			idea = JAP_factionalism_continued
+			days = 60
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Split in the Party
 	id = rd_japan_event.66
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.66"}
 	title = rd_japan_event.66.title
@@ -3241,11 +3260,40 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.66.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = JAP_side_with_tojinha
+		set_politics = {
+			ruling_party = social_liberal
+			}
+			add_marlib_to_coalition = yes
+			remove_all_ministers = yes
+			add_ideas = {
+			JAP_Ryutaro_Nagai_hog_sli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Keijiro_Nakamura_sec_sli
+			}
+		complete_national_focus = JAP_Minseito_tojinha_victory
+	}
+	option = { #
+		name = rd_japan_event.66.b
+		ai_chance = { base = 100 }
+		set_country_flag = JAP_side_with_kanroyha
+		set_politics = {
+			ruling_party = market_liberal
+			}
+			add_soclib_to_coalition = yes
+			remove_all_ministers = yes
+			add_ideas = {
+			JAP_Wakatsuki_Reijiro_hog_mli
+			JAP_Shidehara_Kijuro_for_mli
+			JAP_Inoue_Junnosuke_eco_mli
+			JAP_Keijiro_Nakamura_sec_sli
+			}
+		complete_national_focus = JAP_Minseito_kanryoha_victory
 	}
 }
 
-country_event = { #
+country_event = { #Legacy of Katayama
 	id = rd_japan_event.67
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.67"}
 	title = rd_japan_event.67.title
@@ -3256,11 +3304,27 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.67.a
 		ai_chance = { base = 100 }
-		
+		add_radsoc_to_coalition = yes
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.15
+		}
+		add_political_power = 25
+		add_war_support = -0.1
+	}
+	option = { #
+		name = rd_japan_event.67.b
+		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.15
+		}
+		add_political_power = 25
+		add_stability = 0.1
 	}
 }
 
-country_event = { #
+country_event = { #Merger of the Kokumin Domei
 	id = rd_japan_event.68
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.68"}
 	title = rd_japan_event.68.title
@@ -3268,10 +3332,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We should Welcome Them With Open Arms
 		name = rd_japan_event.68.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.05
+			}
+		add_authdem_to_coalition = yes
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.1
+		}
+		add_stability = -0.1
+	}
+	option = { #We won;t align with these guys
+		name = rd_japan_event.68.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.05
+			}
+		add_political_power = 25
 	}
 }
 
@@ -3286,11 +3368,31 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.69.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.05
+			}
+		add_syn_to_coalition = yes
+		add_timed_idea = {
+			idea = JAP_trade_union_alliance
+			days = 180
+		}
+	}
+	option = { #
+		name = rd_japan_event.69.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.05
+			}
+		add_timed_idea = {
+			idea = JAP_trade_union_absorption
+			days = 180
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Peasants
 	id = rd_japan_event.70
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.70"}
 	title = rd_japan_event.70.title
@@ -3298,14 +3400,31 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Promise Land Reforms
 		name = rd_japan_event.70.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.05
+			}
+		add_ideas = {
+		JAP_peasant_support
+		}
+	}
+	option = { #our Focus is the Workers
+		name = rd_japan_event.70.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.05
+			}
+		add_ideas = {
+		JAP_peasant_alliance
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Reaching out to Colonial Left
 	id = rd_japan_event.71
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.71"}
 	title = rd_japan_event.71.title
@@ -3313,14 +3432,29 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #To What Concern Are They?
 		name = rd_japan_event.71.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.15
+			}
+		add_political_power = 25
+		add_war_support = 0.1
+	}
+	option = { #We must support International Solidarity
+		name = rd_japan_event.71.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.075
+			}
+		add_political_power = 25
+		add_stability = -0.1
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Unions
 	id = rd_japan_event.72
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.72"}
 	title = rd_japan_event.72.title
@@ -3328,14 +3462,34 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must take over the Sodomei
 		name = rd_japan_event.72.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.05
+			}
+		add_timed_idea = {
+			idea = JAP_trade_union_absorption
+			days = 180
+		}
+	}
+	option = { #We strike a deal with the Unions
+		name = rd_japan_event.72.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.1
+			}
+		add_syn_to_coalition = yes
+		add_timed_idea = {
+			idea = JAP_trade_union_alliance
+			days = 180
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Splitting Three Heads
 	id = rd_japan_event.73
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.73"}
 	title = rd_japan_event.73.title
@@ -3343,14 +3497,57 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Abe Isoo
 		name = rd_japan_event.73.a
 		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Abe_Iso_hog_sde
+		JAP_Katayama_Tetsu_for_sde
+		JAP_Shigeo_abe_for_sde
+		JAP_Chozaburo_Mizutani_sec_sde
+		}
+		set_country_leader_ideology = liberal_socialism_subtype
+		complete_national_focus = JAP_Shakai_Taishuto_center_path
+	}
+	option = { #Nishio
+		name = rd_japan_event.73.b
+		ai_chance = { base = 100 }
 		
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Nishio_Suehiro_hog_syn
+		JAP_Ushiro_Ito_eco_sde
+		JAP_Jotaro_Kawakami_for_sde
+		JAP_Chozaburo_Mizutani_sec_sde
+		}
+		set_country_leader_ideology = socdem_paternal_socialism_subtype
+		complete_national_focus = JAP_Shakai_Taishuto_Rightist_Route
+	}
+	option = { #Mosaburo
+		name = rd_japan_event.73.c
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Suzuki_Mosaburo_hog_rso
+		JAP_Azuma_Suzuki_eco_sde
+		JAP_Adachi_Umeichi_for_rso
+		JAP_Hisao_Kuroda_sec_rso
+		}
+		set_politics = {
+			ruling_party = radical_socialist
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.25
+		}
+		add_socdem_to_coalition = yes
+		set_country_leader_ideology = radsoc_revisionist_marxism_subtype
+		complete_national_focus = JAP_Shakai_Taishuto_yield_great_strength
 	}
 }
 
-country_event = { #
+country_event = { #Breaking With Oyama?
 	id = rd_japan_event.74
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.74"}
 	title = rd_japan_event.74.title
@@ -3358,14 +3555,34 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We have no place for radicalism
 		name = rd_japan_event.74.a
 		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
+		add_political_power = 25
+		add_stability = 0.1
+	}
+	option = { #Revolution shall be embraced
+		name = rd_japan_event.74.b
+		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.1
+		}
 		
+		add_political_power = 25
+		add_stability = 0.1
 	}
 }
 
-country_event = { #
+country_event = { #The Time is now
 	id = rd_japan_event.75
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.75"}
 	title = rd_japan_event.75.title
@@ -3373,10 +3590,23 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Lets Ignore This
 		name = rd_japan_event.75.a
 		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_japan_event.76
+			days = 21
+		}
+		set_country_flag = JAP_peaceful_revolution
 		
+	}
+	option = { #Somethings Up - Seize the Prime Minister
+		name = rd_japan_event.75.b
+		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_japan_event.77
+			days = 21
+		}
 	}
 }
 
@@ -3391,11 +3621,11 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.76.a
 		ai_chance = { base = 100 }
-		
+		country_event = rd_japan_event.39
 	}
 }
 
-country_event = { #
+country_event = { #Popular Front Incident
 	id = rd_japan_event.77
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.77"}
 	title = rd_japan_event.77.title
@@ -3403,10 +3633,29 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must make sure this doesn't get out of hand
 		name = rd_japan_event.77.a
 		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Abe_Iso_hog_sde
+		JAP_Katayama_Tetsu_for_sde
+		JAP_Shigeo_abe_for_sde
+		JAP_Chozaburo_Mizutani_sec_sde
+		}
+		set_politics = {
+			ruling_party = social_democrat
+		}
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.25
+		}
 		
+	}
+	option = { #
+		name = rd_japan_event.77.b
+		ai_chance = { base = 100 }
+		country_event = rd_japan_event.14
 	}
 }
 
@@ -3421,7 +3670,20 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.78.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+				has_idea = JAP_female_empowerment
+			}
+			swap_ideas = {
+			remove_idea = JAP_female_empowerment
+			add_idea = JAP_female_empowerment_1
+			}
+		}
+		else = {
+			add_ideas = {
+				JAP_female_empowerment_1
+			}
+		}
 	}
 }
 
@@ -3433,14 +3695,48 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Katayama
 		name = rd_japan_event.79.a
 		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Katayama_Tetsu_hog_sde
+		JAP_Tetsu_Katayama_eco_sde
+		JAP_Shigeo_abe_for_sde
+		JAP_Chozaburo_Mizutani_sec_sde
+		}
+		set_country_leader_ideology = liberal_socialism_subtype
 		
+	}
+	option = { #Nishio
+		name = rd_japan_event.79.b
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Nishio_Suehiro_hog_syn
+		JAP_Ushiro_Ito_eco_sde
+		JAP_Jotaro_Kawakami_for_sde
+		JAP_Chozaburo_Mizutani_sec_sde
+		}
+		set_country_leader_ideology = socdem_paternal_socialism_subtype
+		complete_national_focus = JAP_Shakai_Taishuto_shedding_blood
+	}
+	option = { #Hirano
+		name = rd_japan_event.79.c
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Hirano_Rikizo_hog_sde
+		JAP_Azuma_Takashi_eco_sde
+		JAP_Komakichi_Matsuoka_for_rso
+		JAP_Haruki_Satake_sec_sde
+		}
+		set_country_leader_ideology = socdem_agrarianism_subtype
+		complete_national_focus = JAP_Shakai_Taishuto_farmers_party
 	}
 }
 
-country_event = { #
+country_event = { #The Question of One World Government
 	id = rd_japan_event.80
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.80"}
 	title = rd_japan_event.80.title
@@ -3448,14 +3744,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We need to focus on our nation only
 		name = rd_japan_event.80.a
 		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.05
+		}
+		add_stability = 0.1
+	}
+	option = { #We Shall Unite the World
+		name = rd_japan_event.80.b
+		ai_chance = { base = 100 }
+		add_political_power = -100
+		add_stability = -0.1
+		every_state = {
+			add_core_of = JAP
+		}
 		
+		every_country = {
+			JAP = {
+				create_wargoal = {
+					type = annex_everything
+					target = PREV
+				}
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Thriving Under Democratic Socialism
 	id = rd_japan_event.81
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.81"}
 	title = rd_japan_event.81.title
@@ -3466,7 +3784,40 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.81.a
 		ai_chance = { base = 100 }
-		
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Nishio_Suehiro_hog_syn
+		JAP_Ushiro_Ito_eco_sde
+		JAP_Jotaro_Kawakami_for_sde
+		JAP_Chozaburo_Mizutani_sec_sde
+		}
+		set_country_leader_ideology = socdem_democratic_socialism_subtype
+	}
+	option = { #
+		name = rd_japan_event.81.b
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Chozaburo_Mizutani_hog_sde
+		JAP_Ushiro_Ito_eco_sde
+		JAP_Katayama_Tetsu_for_sde
+		JAP_Suehiro_Nishio_sec_sde
+		}
+		set_country_leader_ideology = socdem_paternal_socialism_subtype
+	}
+	option = { #
+		name = rd_japan_event.81.c
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_jotaro_kawakami_hog_sde
+		JAP_Ota_Kaoru_eco_syn
+		JAP_Eda_Saburo_for_rso
+		JAP_Komakichi_Matsuoka_sec_syn
+		}
+		set_country_leader_ideology = socdem_christian_socialism_subtype
+		add_syn_to_coalition = yes
+		add_radsoc_to_coalition = yes
 	}
 }
 
@@ -3481,11 +3832,28 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.82.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		JAP_Katayama_Tetsu_hog_sde
+		JAP_Tetsu_Katayama_eco_sde
+		JAP_Shigeo_abe_for_sde
+		JAP_Chozaburo_Mizutani_sec_sde
+		}
+		set_country_leader_ideology = liberal_socialism_subtype
+	}
+	option = { #
+		name = rd_japan_event.82.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_inejiro_asanuma_hog_rso
+		JAP_Tetsu_Katayama_eco_sde
+		JAP_Shigeo_abe_for_sde
+		JAP_Chozaburo_Mizutani_sec_sde
+		}
+		set_country_leader_ideology = socdem_national_socialism_subtype
 	}
 }
 
-country_event = { #
+country_event = { #Freedom For the New Society
 	id = rd_japan_event.83
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.83"}
 	title = rd_japan_event.83.title
@@ -3496,7 +3864,26 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.83.a
 		ai_chance = { base = 100 }
-		
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Hirano_Rikizo_hog_sde
+		JAP_Azuma_Takashi_eco_sde
+		JAP_Komakichi_Matsuoka_for_rso
+		JAP_Haruki_Satake_sec_sde
+		}
+		set_country_leader_ideology = socdem_agrarianism_subtype
+	}
+	option = { #
+		name = rd_japan_event.83.b
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Yoichi_Kawaguchi_hog_sde
+		JAP_Azuma_Takashi_eco_sde
+		JAP_Komakichi_Matsuoka_for_rso
+		JAP_Haruki_Satake_sec_sde
+		}
+		set_country_leader_ideology = socdem_agrarianism_subtype
 	}
 }
 

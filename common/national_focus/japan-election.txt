@@ -1,6 +1,6 @@
 focus_tree = {
 	id = japan-election
-	continuous_focus_position = { x = -40 y = 1050 } 
+	continuous_focus_position = { x = -40 y = 5000 } 
 	country = {
 		factor = 0
 		modifier = {
@@ -218,30 +218,1502 @@ focus_tree = {
 		}
 	}
 
-	
-
-}
-
-focus_tree = {
-	id = japan-election-kokumin-domei
-	continuous_focus_position = { x = -40 y = 1050 } 
-	country = {
-		factor = 0
-		modifier = {
-			add = 10
-			tag = JAP
+	#Minseito 1936
+	focus = {
+		id = JAP_Minseito_third_term
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_End_Reijiro_Term
+		x = 10
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
-	shared_focus = JAPFOR_japansplaceintheworld
-	shared_focus = JAP_the_raising_of_the_sword
-	shared_focus = JAP_recovering_from_black_monday
 	
-	#1936 Elections
+	focus = {
+		id = JAP_Minseito_naval_officer_purge
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_third_term } 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_naval_purge
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_imperial_way_purge
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = {	focus = JAP_Minseito_control_faction_purge }
+		prerequisite = { focus = JAP_Minseito_naval_officer_purge } 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_kodoha_purge
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_control_faction_purge
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Minseito_imperial_way_purge }
+		prerequisite = { focus = JAP_Minseito_naval_officer_purge } 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_toseiha_purge
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_union_leash
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = -2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_imperial_way_purge focus = JAP_Minseito_control_faction_purge} 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_banning_unions
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_peace_preservation_law
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = -2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_union_leash } 
+		completion_reward = {
+			add_ideas = {
+				JAP_new_peace_laws
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_strengthen_party_politics
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_third_term } 
+		completion_reward = {
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.05
+			}
+			add_political_power = 25
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_handle_trojnha
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_third_term } 
+		completion_reward = {
+			country_event = rd_japan_event.65
+		}
+	}
+	focus = {
+		id = JAP_Minseito_Shoko_bank
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_handle_trojnha } prerequisite = { focus = JAP_Minseito_strengthen_party_politics }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_chukin_bank
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_education_support
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_Shoko_bank }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = JAP_Minseito_local_democratic_autonomy
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_Shoko_bank }
+		completion_reward = {
+			add_ideas = {
+				JAP_parliament_centric_system
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_equal_opportunity
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_local_democratic_autonomy } prerequisite = { focus = JAP_Minseito_education_support }
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = -0.05
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.1
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_peoples_gov_victory
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_equal_opportunity } prerequisite = { focus = JAP_Minseito_peace_preservation_law }
+		completion_reward = {
+			add_ideas = {
+				JAP_popular_democracy
+			}
+		}
+	}
+	
+	###Minseito 1940 Election
+	focus = {
+		id = JAP_Minseito_return_party
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 10
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_kanryoha_victory
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		mutually_exclusive = { focus = JAP_Minseito_tojinha_victory }
+		prerequisite = { focus = JAP_Minseito_return_party } 
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = JAP_Minseito_revive_seven_policies
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Minseito_kanryoha_victory } 
+		completion_reward = {
+			add_ideas = {
+				JAP_seven_policies
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_union_chip_away
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = -3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_revive_seven_policies } 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_union_chip_away
+				days = 60
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_new_economic_production
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = -3
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_union_chip_away } 
+		completion_reward = {
+			add_ideas = {
+				JAP_new_production
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_fair_distribution
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = -5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_union_chip_away } 
+		completion_reward = {
+			add_ideas = {
+				JAP_fair_distribution
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_liberty_progress
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = -3
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_fair_distribution } prerequisite = { focus = JAP_Minseito_new_economic_production }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_liberty_progress
+				days = 180
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_tojinha_victory
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			always = no
+		}
+		mutually_exclusive = { focus = JAP_Minseito_kanryoha_victory }
+		prerequisite = { focus = JAP_Minseito_return_party } 
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = JAP_Minseito_mending_military_ties
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Minseito_tojinha_victory } 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_support_army
+				days = 180
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_national_alliance_reach_out
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_mending_military_ties } 
+		completion_reward = {
+			add_authdem_to_coalition = yes
+			add_political_power = 25
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = JAP_Minseito_pan_asianism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 5
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_mending_military_ties } 
+		completion_reward = {
+			add_ideas = {
+				JAP_pan_asianist_backing
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_repeal_nsa
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 3
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_pan_asianism } prerequisite = { focus = JAP_Minseito_national_alliance_reach_out } 
+		completion_reward = {
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = syndicalist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = national_populist
+				popularity = 0.05
+			}
+			add_political_power = 50
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		id = JAP_Minseito_education_expansion
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 3
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_repeal_nsa } 
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_middle_class
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_return_party } 
+		completion_reward = {
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.05
+			}
+			add_ideas = {
+				JAP_party_factionalism_minseito
+			}
+			
+		}
+	}
+	focus = {
+		id = JAP_Minseito_backers
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Minseito_abe_reach_out }
+		prerequisite = { focus = JAP_Minseito_middle_class }
+		completion_reward = {
+			add_ideas = {
+				JAP_zaibatsu_backing_minseito
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_abe_reach_out
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Minseito_backers }
+		prerequisite = { focus = JAP_Minseito_middle_class }
+		completion_reward = {
+			add_socdem_to_coalition = yes
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
+			add_war_support = -0.1
+			add_timed_idea = {
+				idea = JAP_support_abe
+				days = 180
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_universal_suffrage
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_abe_reach_out focus = JAP_Minseito_backers }
+		completion_reward = {
+			add_ideas = {
+				JAP_suffrage
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_party_centred
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = -1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_abe_reach_out focus = JAP_Minseito_backers }
+		completion_reward = {
+			add_ideas = {
+				JAP_parliament_centric_system
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_ending_party_factionalism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_party_centred } prerequisite = { focus = JAP_Minseito_universal_suffrage }
+		completion_reward = {
+			remove_ideas = {
+				JAP_party_factionalism_minseito
+			}
+			country_event = rd_japan_event.66
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_unified_and_ready
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_return_party
+		x = 0
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_ending_party_factionalism } prerequisite = { focus = JAP_Minseito_education_expansion focus = JAP_Minseito_liberty_progress }
+		completion_reward = {
+			add_ideas = {
+				JAP_peace_minseito_promotion
+			}
+		}
+	}
+	
+	###Minseito 1944 Election
+	focus = {
+		id = JAP_Minseito_unfied_term
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_third_term
+		x = 20
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_countryside_support
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_unfied_term
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_unfied_term }
+		completion_reward = {
+			add_ideas = {
+				JAP_new_farmer_laws
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_speak_for_people
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_unfied_term
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_unfied_term }
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = JAP_seven_policies
+				}
+				swap_ideas = {
+					remove_idea = JAP_seven_policies
+					add_idea = JAP_seven_policies_1
+				}
+			}
+			else = {
+				add_ideas = {
+					JAP_seven_policies_1
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_scholarship_foundation
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_unfied_term
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_speak_for_people } prerequisite = { focus = JAP_Minseito_countryside_support }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = JAP_Minseito_special_science_classes
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_unfied_term
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_speak_for_people } prerequisite = { focus = JAP_Minseito_countryside_support }
+		completion_reward = {
+			add_ideas = {
+				JAP_special_science
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Minseito_nation_peace
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_unfied_term
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_unfied_term }
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = JAP_peace_minseito_promotion
+				}
+				swap_ideas = {
+					remove_idea = JAP_peace_minseito_promotion
+					add_idea = JAP_peace_support
+				}
+			}
+			else = {
+				add_ideas = {
+					JAP_peace_minseito_promotion
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_Minseito_protection_imperial_democracy
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_unfied_term
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_nation_peace }
+		completion_reward = {
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.1
+			}
+			add_political_power = 50
+		}
+		
+
+	}
+	
+	focus = {
+		id = JAP_Minseito_national_mission
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Minseito_unfied_term
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Minseito_scholarship_foundation } prerequisite = { focus = JAP_Minseito_protection_imperial_democracy } prerequisite = { focus = JAP_Minseito_special_science_classes }
+		completion_reward = {
+			add_ideas = {
+				JAP_our_goal_minseito
+			}
+		}
+	}
+	
+	
+	
+	#1936 Seiyukai
+	focus = {
+		id = JAP_Seikyukai_Return_of_Seiyukai
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_End_Reijiro_Term
+		x = 0
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Seikyukai_establish_austerity
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_Return_of_Seiyukai } 
+		completion_reward = {
+			add_timed_idea = {
+			idea = JAP_austerity
+			days = 120
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_internal_split
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = -2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_establish_austerity } 
+		completion_reward = {
+		country_event = rd_japan_event.55
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_reformist_support
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = -3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Seikyukai_kuharaism }
+		prerequisite = { focus = JAP_Seikyukai_internal_split } 
+		completion_reward = {
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.05
+			}
+			add_ideas = {
+			JAP_seiyukai_reformism
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_kuharaism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Seikyukai_reformist_support }
+		prerequisite = { focus = JAP_Seikyukai_internal_split } 
+		completion_reward = {
+			add_authdem_to_coalition = yes
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.025
+			}
+			add_ideas = {
+			JAP_seiyukai_kuhara
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_national_economic_research_foundation
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = -2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_kuharaism focus = JAP_Seikyukai_reformist_support } 
+		completion_reward = {
+		add_research_slot = 1
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_hold_against_militarism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_establish_austerity } 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_no_militarism
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_crush_reds
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_hold_against_militarism } 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_united_against_syndies
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_denounce_minseito
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 2
+		y = 4
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_crush_reds } 
+		completion_reward = {
+			country_event = rd_japan_event.56
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_zaibatsu_projects
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_crush_reds } 
+		completion_reward = {
+			add_ideas = {
+				JAP_industrialists_favoured
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_the_fire_is_contained
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 0
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_zaibatsu_projects } prerequisite = { focus = JAP_Seikyukai_denounce_minseito } prerequisite = { focus = JAP_Seikyukai_national_economic_research_foundation }
+		completion_reward = {
+			add_ideas = {
+				JAP_fire_contained
+			}
+		}
+	}
+	###1940 Election###
+	focus = {
+		id = JAP_Seikyukai_new_term
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 10
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Seikyukai_orthodox_faction
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		mutually_exclusive = { focus = JAP_Seikyukai_party_of_people }
+		prerequisite = { focus = JAP_Seikyukai_new_term } 
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_party_tradition
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Seikyukai_orthodox_faction } 
+		completion_reward = {
+		add_political_power = 25
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_appease_land_owners
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = -4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_party_tradition } 
+		completion_reward = {
+			add_timed_idea = {
+			idea = JAP_land_owner_appeasement
+			days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_nippon_kao_domei
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = -2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_party_tradition } prerequisite = { focus = JAP_Seikyukai_end_to_radicalism }
+		completion_reward = {
+			add_ideas = {
+			JAP_nippon_kao_domei
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_national_admin_law
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = -3
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_appease_land_owners } prerequisite = { focus = JAP_Seikyukai_nippon_kao_domei }
+		completion_reward = {
+			add_ideas = {
+				JAP_national_admin_law
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_loyalty_to_shareholders
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = -3
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_national_admin_law } prerequisite = { focus = JAP_Seikyukai_zaibatsu_lift }
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = JAP_fire_contained
+				}
+				swap_ideas = {
+					remove_idea = JAP_fire_contained
+					add_idea = JAP_fire_contained_1
+				}
+			}
+			else = {
+				add_ideas = {
+					JAP_fire_contained_1
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_party_of_people
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		mutually_exclusive = { focus = JAP_Seikyukai_orthodox_faction }
+		prerequisite = { focus = JAP_Seikyukai_new_term } 
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_local_club_reachout
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_party_of_people } 
+		completion_reward = {
+			add_ideas = {
+				JAP_new_clubs_reachout
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_moderate_land_reforms
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_local_club_reachout } 
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_land_owner_moderate
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_inovation_alliance
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 4
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_local_club_reachout } 
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {#Adherence to Collective Self-Governance
+		id = JAP_Seikyukai_limiting_army_power
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 4
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_inovation_alliance } prerequisite = { focus = JAP_Seikyukai_moderate_land_reforms } prerequisite = { focus = JAP_Seikyukai_end_to_unions }
+		completion_reward = {
+			add_political_power = 25
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.05
+			}
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_end_ichiro_corruption
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 2
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_inovation_alliance } prerequisite = { focus = JAP_Seikyukai_moderate_land_reforms } prerequisite = { focus = JAP_Seikyukai_end_to_unions }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_anti_corruption
+				days = 180
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_masses_keep_status_quo
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 2
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_limiting_army_power } prerequisite = { focus = JAP_Seikyukai_end_ichiro_corruption } prerequisite = { focus = JAP_Seikyukai_zaibatsu_lift }
+		completion_reward = {
+			add_ideas = {
+				JAP_masses_status_quo
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_end_to_radicalism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_party_of_people focus = JAP_Seikyukai_orthodox_faction } 
+		completion_reward = {
+			country_event = rd_japan_event.59
+		}
+	}
+	focus = {#Fighting Against False National Polity
+		id = JAP_Seikyukai_end_to_unions
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_end_to_radicalism } 
+		completion_reward = {
+			country_event = rd_japan_event.60
+		}
+	}
+	focus = {#Striving For New Production Goals
+		id = JAP_Seikyukai_zaibatsu_lift
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_new_term
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_end_to_unions } 
+		completion_reward = {
+			add_ideas = {
+				JAP_advancing_production_goals
+			}
+		}
+	}
+	###1944 Election###
+	focus = {
+		id = JAP_Seikyukai_orthodox_holds_on
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 20
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Seikyukai_lassie
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		x = 3
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_orthodox_holds_on focus = JAP_Seikyukai_continuance_populism } 
+		completion_reward = {
+			add_ideas = {
+				JAP_laissie
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_inukai_legacy
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_orthodox_holds_on } 
+		completion_reward = {
+			add_ideas = {
+				JAP_inukai_legacy_idea
+			}
+		}
+	}
+	focus = {#Foundation of the Coal Agency
+		id = JAP_Seikyukai_removing_red_paint
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_inukai_legacy } prerequisite = { focus = JAP_Seikyukai_lassie }
+		completion_reward = {
+			add_ideas = {
+				JAP_coal_agency
+			}
+		}
+	}
+	focus = {#Promoting a People's Fraternity
+		id = JAP_Seikyukai_east_economic_union
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_inukai_legacy } prerequisite = { focus = JAP_Seikyukai_lassie }
+		completion_reward = {
+			add_ideas = {
+				JAP_fraternity
+			}
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_strong_future
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_east_economic_union } prerequisite = { focus = JAP_Seikyukai_removing_red_paint }
+		completion_reward = {
+			country_event = rd_japan_event.62
+		}
+	}
+	
+	
+	
+	focus = {
+		id = JAP_Seikyukai_continuance_populism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		x = 26
+		y = 0
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Seikyukai_return_of_democracy_god
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_continuance_populism
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_continuance_populism } 
+		completion_reward = {
+			country_event = rd_japan_event.63
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_support_shop_keeper
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_continuance_populism
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_return_of_democracy_god } prerequisite = { focus = JAP_Seikyukai_lassie }
+		completion_reward = {
+			add_ideas = {
+				JAP_support_small_shops
+			}
+		}
+	}
+	focus = {#Support the New Women's Association
+		id = JAP_Seikyukai_sagainst_bureaucrats
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_continuance_populism
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_return_of_democracy_god } prerequisite = { focus = JAP_Seikyukai_lassie }
+		completion_reward = {
+			country_event = rd_japan_event.64
+		}
+	}
+	focus = {
+		id = JAP_Seikyukai_revived_liberalism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Seikyukai_continuance_populism
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Seikyukai_support_shop_keeper } prerequisite = { focus = JAP_Seikyukai_sagainst_bureaucrats }
+		completion_reward = {
+			add_ideas = {
+				JAP_revived_liberalism
+			}
+		}
+	}
+	
+	
+	#1936 Kokumin Domei Election
 	focus = {
 		id = JAP_Kokumin_Victory_Alliance
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		x = 1
-		y = 0
+		relative_position_id = JAP_End_Reijiro_Term
+		x = 0
+		y = 15
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -1379,31 +2851,13 @@ focus_tree = {
 		}
 	}
 	
-	
-}
-
-
-
-focus_tree = {
-	id = japan-election-seiyukai
-	continuous_focus_position = { x = -40 y = 1050 } 
-	country = {
-		factor = 0
-		modifier = {
-			add = 10
-			tag = JAP
-		}
-	}
-	shared_focus = JAPFOR_japansplaceintheworld
-	shared_focus = JAP_the_raising_of_the_sword
-	shared_focus = JAP_recovering_from_black_monday
-	
-	#1936 Elections
+	#1936 Shakai Taishuto Election
 	focus = {
-		id = JAP_Seikyukai_Return_of_Seiyukai
+		id = JAP_Shakai_Taishuto_victory_labour
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		x = 1
-		y = 0
+		relative_position_id = JAP_End_Reijiro_Term
+		x = 7
+		y = 23
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -1417,330 +2871,440 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = JAP_Seikyukai_establish_austerity
+		id = JAP_Shakai_Taishuto_Isoo_holds
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -8
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_victory_labour }
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_Pacifism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -8
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Isoo_holds }
+		completion_reward = {
+			add_ideas = {
+				JAP_peace_support
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_center_faction_denounce
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -7
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Pacifism }
+		completion_reward = {
+			add_popularity = {
+				ideology = totalist
+				popularity = -0.1
+			}
+			add_war_support = -0.1
+			add_political_power = 25
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_deradicalise_unions
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -6
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_center_faction_denounce }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_union_de_radicalism
+				days = 180
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_deradicalise_army
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -6
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_deradicalise_unions }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_army_de_radicalism
+				days = 120
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_suffrage
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -9
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Pacifism }
+		completion_reward = {
+			add_ideas = {
+				JAP_suffrage
+			}
+		}
+	}
+	
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_agrarian_stability
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -10
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_suffrage }
+		completion_reward = {
+			add_ideas = {
+				JAP_land_stabilization
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_katayama_legacy
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -10
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_agrarian_stability }
+		completion_reward = {
+			country_event = rd_japan_event.67
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_control_zaibatsu
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -8
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_suffrage } prerequisite = { focus = JAP_Shakai_Taishuto_center_faction_denounce }
+		completion_reward = {
+			add_ideas = {
+				JAP_zaibatsu_nationalization_1
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_polity_reforms
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -8
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_control_zaibatsu } 
+		completion_reward = {
+			add_ideas = {
+				JAP_new_polity
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_social_parliamentarianism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -8
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_polity_reforms } prerequisite = { focus = JAP_Shakai_Taishuto_katayama_legacy } prerequisite = { focus = JAP_Shakai_Taishuto_deradicalise_army }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_new_parliament
+				days = 120
+			}
+		}
+	}
+	
+	###Aso
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_Aso_National_socialist
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
 		x = 0
 		y = 1
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_Return_of_Seiyukai } 
+		available = {
+			always = no
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_victory_labour }
 		completion_reward = {
-			add_timed_idea = {
-			idea = JAP_austerity
-			days = 120
-			}
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_internal_split
+		id = JAP_Shakai_Taishuto_retain_core_support
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = -2
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = 0
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_establish_austerity } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_Aso_National_socialist }
 		completion_reward = {
-		country_event = rd_japan_event.55
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_reformist_support
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = -3
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		mutually_exclusive = { focus = JAP_Seikyukai_kuharaism }
-		prerequisite = { focus = JAP_Seikyukai_internal_split } 
-		completion_reward = {
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.05
+			}
 			add_popularity = {
-				ideology = social_conservative
+				ideology = totalist
 				popularity = 0.05
 			}
-			add_ideas = {
-			JAP_seiyukai_reformism
+			add_popularity = {
+				ideology = syndicalist
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = -0.05
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.025
 			}
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_kuharaism
+		id = JAP_Shakai_Taishuto_domei_merger
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
 		x = -1
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		mutually_exclusive = { focus = JAP_Seikyukai_reformist_support }
-		prerequisite = { focus = JAP_Seikyukai_internal_split } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_retain_core_support }
 		completion_reward = {
-			add_authdem_to_coalition = yes
-			add_popularity = {
-				ideology = social_conservative
-				popularity = 0.05
-			}
-			add_popularity = {
-				ideology = authoritarian_democrat
-				popularity = 0.025
-			}
-			add_ideas = {
-			JAP_seiyukai_kuhara
-			}
+			country_event = rd_japan_event.68
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_national_economic_research_foundation
+		id = JAP_Shakai_Taishuto_maintain_army_influence
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
 		x = -2
 		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_kuharaism focus = JAP_Seikyukai_reformist_support } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_domei_merger } prerequisite = { focus = JAP_Shakai_Taishuto_embrace_authoritarianism }
 		completion_reward = {
-		add_research_slot = 1
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_hold_against_militarism
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = 2
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_establish_austerity } 
-		completion_reward = {
-			add_timed_idea = {
-				idea = JAP_no_militarism
-				days = 90
-			}
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_crush_reds
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = 3
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_hold_against_militarism } 
-		completion_reward = {
-			add_timed_idea = {
-				idea = JAP_united_against_syndies
-				days = 90
-			}
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_denounce_minseito
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = 2
-		y = 4
-		cost = 3
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_crush_reds } 
-		completion_reward = {
-			country_event = rd_japan_event.56
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_zaibatsu_projects
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = 4
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_crush_reds } 
-		completion_reward = {
-			add_ideas = {
-				JAP_industrialists_favoured
-			}
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_the_fire_is_contained
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = 0
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_zaibatsu_projects } prerequisite = { focus = JAP_Seikyukai_denounce_minseito } prerequisite = { focus = JAP_Seikyukai_national_economic_research_foundation }
-		completion_reward = {
-			add_ideas = {
-				JAP_fire_contained
-			}
-		}
-	}
-	###1940 Election###
-	focus = {
-		id = JAP_Seikyukai_new_term
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = 10
-		y = 0
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		always = no
-		}
-		completion_reward = {
-		custom_effect_tooltip = unlock_focuses
+			unlock_decision_tooltip = JAP_maintain_army_influence
 		}
 	}
 	
 	focus = {
-		id = JAP_Seikyukai_orthodox_faction
+		id = JAP_Shakai_Taishuto_embrace_authoritarianism
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = -2
-		y = 1
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		available = {
-		always = no
-		}
-		mutually_exclusive = { focus = JAP_Seikyukai_party_of_people }
-		prerequisite = { focus = JAP_Seikyukai_new_term } 
-		completion_reward = {
-		custom_effect_tooltip = unlock_focuses
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_party_tradition
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = -3
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		
-		prerequisite = { focus = JAP_Seikyukai_orthodox_faction } 
-		completion_reward = {
-		add_political_power = 25
-		add_popularity = {
-			ideology = ROOT
-			popularity = 0.05
-		}
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_appease_land_owners
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = -4
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = 1
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_party_tradition } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_retain_core_support }
 		completion_reward = {
-			add_timed_idea = {
-			idea = JAP_land_owner_appeasement
-			days = 90
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.1
+			}
+			add_stability = -0.1
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.05
 			}
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_nippon_kao_domei
+		id = JAP_Shakai_Taishuto_attack_opposition
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = -2
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_party_tradition } prerequisite = { focus = JAP_Seikyukai_end_to_radicalism }
-		completion_reward = {
-			add_ideas = {
-			JAP_nippon_kao_domei
-			}
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_national_admin_law
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = -3
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = 2
 		y = 4
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_appease_land_owners } prerequisite = { focus = JAP_Seikyukai_nippon_kao_domei }
+		prerequisite = { focus = JAP_Shakai_Taishuto_domei_merger } prerequisite = { focus = JAP_Shakai_Taishuto_embrace_authoritarianism }
 		completion_reward = {
-			add_ideas = {
-				JAP_national_admin_law
-			}
+			unlock_decision_tooltip = JAP_denounce_moderate_left_opposition
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_loyalty_to_shareholders
+		id = JAP_Shakai_Taishuto_grasping_gun
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = -3
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = 2
 		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_national_admin_law } prerequisite = { focus = JAP_Seikyukai_zaibatsu_lift }
+		prerequisite = { focus = JAP_Shakai_Taishuto_attack_opposition } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_maintain_federation_labour_control }
+		prerequisite = { focus = JAP_Shakai_Taishuto_maintain_army_influence }
 		completion_reward = {
-			if = {
-				limit = {
-					has_idea = JAP_fire_contained
-				}
-				swap_ideas = {
-					remove_idea = JAP_fire_contained
-					add_idea = JAP_fire_contained_1
-				}
+			unlock_decision_tooltip = JAP_raiding_armouries
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_maintain_federation_labour_control
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_domei_merger } prerequisite = { focus = JAP_Shakai_Taishuto_embrace_authoritarianism }
+		completion_reward = {
+			country_event = rd_japan_event.69
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_cherry_blossoms
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -2
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Shakai_Taishuto_nagata }
+		prerequisite = { focus = JAP_Shakai_Taishuto_attack_opposition } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_maintain_federation_labour_control }
+		prerequisite = { focus = JAP_Shakai_Taishuto_maintain_army_influence }
+		completion_reward = {
+			add_natpop_to_coalition = yes
+			add_popularity = {
+				 ideology = national_populist
+				 popularity = 0.05
 			}
-			else = {
-				add_ideas = {
-					JAP_fire_contained_1
-				}
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.15
+			}
+			add_ideas = {
+				JAP_nationalist_strengthening
 			}
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_party_of_people
+		id = JAP_Shakai_Taishuto_nagata
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 2
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = -4
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Shakai_Taishuto_cherry_blossoms }
+		prerequisite = { focus = JAP_Shakai_Taishuto_attack_opposition } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_maintain_federation_labour_control }
+		prerequisite = { focus = JAP_Shakai_Taishuto_maintain_army_influence }
+		completion_reward = {
+			add_pataut_to_coalition = yes
+			add_popularity = {
+				 ideology = paternal_autocrat
+				 popularity = 0.05
+			}
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = -0.025
+			}
+			add_ideas = {
+				JAP_nationalist_undertones
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_seizing_opportunity
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = 0
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_nagata focus = JAP_Shakai_Taishuto_cherry_blossoms } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_grasping_gun }
+		completion_reward = {
+			country_event = rd_japan_event.38
+		}
+	}
+	
+	###Oyama
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_Victory_on_left
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
+		x = 7
 		y = 1
 		cost = 5
 		search_filters = {
@@ -1749,169 +3313,181 @@ focus_tree = {
 		available = {
 		always = no
 		}
-		mutually_exclusive = { focus = JAP_Seikyukai_orthodox_faction }
-		prerequisite = { focus = JAP_Seikyukai_new_term } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_victory_labour }
 		completion_reward = {
-		custom_effect_tooltip = unlock_focuses
+		custom_effect_tooltip = unlock_focuses	
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_local_club_reachout
+		id = JAP_Shakai_Taishuto_attack_army_radicalism
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 3
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Victory_on_left }
+		completion_reward = {
+			unlock_decision_tooltip = JAP_anti_army_radicalism
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_peasant_interests
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = -1
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_party_of_people } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_attack_army_radicalism }
 		completion_reward = {
-			add_ideas = {
-				JAP_new_clubs_reachout
-			}
+			country_event = rd_japan_event.70
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_moderate_land_reforms
+		id = JAP_Shakai_Taishuto_rifle_hammer
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 2
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_attack_army_radicalism }
+		completion_reward = {
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.1
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -2000
+				producer = JAP
+			}
+			unlock_decision_tooltip = JAP_raiding_armouries
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_colonial_left
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = 0
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_local_club_reachout } 
+		prerequisite = { focus = JAP_Shakai_Taishuto_peasant_interests }
+		prerequisite = { focus = JAP_Shakai_Taishuto_rifle_hammer }
 		completion_reward = {
+			country_event = rd_japan_event.71
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_struggle_with_unions
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = -1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_peasant_interests }
+		prerequisite = { focus = JAP_Shakai_Taishuto_colonial_left }
+		completion_reward = {
+			country_event = rd_japan_event.72
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_attack_army_adventurism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_colonial_left }
+		completion_reward = {
+			add_power_balance_value = {
+				id = JAP_civilian_army_balance
+				value = 0.025
+			}
 			add_timed_idea = {
-				idea = JAP_land_owner_moderate
+				idea = JAP_army_adventurism
 				days = 90
 			}
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_inovation_alliance
+		id = JAP_Shakai_Taishuto_extra_meeting
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 4
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_local_club_reachout } 
-		completion_reward = {
-			add_research_slot = 1
-		}
-	}
-	focus = {#Adherence to Collective Self-Governance
-		id = JAP_Seikyukai_limiting_army_power
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 4
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_inovation_alliance } prerequisite = { focus = JAP_Seikyukai_moderate_land_reforms } prerequisite = { focus = JAP_Seikyukai_end_to_unions }
-		completion_reward = {
-			add_political_power = 25
-			add_popularity = {
-				ideology = ROOT
-				popularity = 0.05
-			}
-			add_stability = 0.05
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_end_ichiro_corruption
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 2
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_inovation_alliance } prerequisite = { focus = JAP_Seikyukai_moderate_land_reforms } prerequisite = { focus = JAP_Seikyukai_end_to_unions }
-		completion_reward = {
-			add_timed_idea = {
-				idea = JAP_anti_corruption
-				days = 180
-			}
-		}
-	}
-	focus = {
-		id = JAP_Seikyukai_masses_keep_status_quo
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 2
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = 0
 		y = 5
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_limiting_army_power } prerequisite = { focus = JAP_Seikyukai_end_ichiro_corruption } prerequisite = { focus = JAP_Seikyukai_zaibatsu_lift }
+		prerequisite = { focus = JAP_Shakai_Taishuto_attack_army_adventurism }
+		prerequisite = { focus = JAP_Shakai_Taishuto_struggle_with_unions }
 		completion_reward = {
-			add_ideas = {
-				JAP_masses_status_quo
-			}
+			country_event = rd_japan_event.39
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_end_to_radicalism
+		id = JAP_Shakai_Taishuto_olive_branch_revolution
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 0
-		y = 2
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = -1
+		y = 6
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_party_of_people focus = JAP_Seikyukai_orthodox_faction } 
+		available = {
+			always = no
+		}
+		mutually_exclusive = { focus = JAP_Shakai_Taishuto_empire_fire }
+		prerequisite = { focus = JAP_Shakai_Taishuto_extra_meeting }
 		completion_reward = {
-			country_event = rd_japan_event.59
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
-	focus = {#Fighting Against False National Polity
-		id = JAP_Seikyukai_end_to_unions
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 0
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_end_to_radicalism } 
-		completion_reward = {
-			country_event = rd_japan_event.60
-		}
-	}
-	focus = {#Striving For New Production Goals
-		id = JAP_Seikyukai_zaibatsu_lift
-		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_new_term
-		x = 0
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAP_Seikyukai_end_to_unions } 
-		completion_reward = {
-			add_ideas = {
-				JAP_advancing_production_goals
-			}
-		}
-	}
-	###1944 Election###
 	focus = {
-		id = JAP_Seikyukai_orthodox_holds_on
+		id = JAP_Shakai_Taishuto_empire_fire
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
+		relative_position_id = JAP_Shakai_Taishuto_Victory_on_left
+		x = 1
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			always = no
+		}
+		mutually_exclusive = { focus = JAP_Shakai_Taishuto_olive_branch_revolution }
+		prerequisite = { focus = JAP_Shakai_Taishuto_extra_meeting }
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	
+	#1940 Shakai Taishuto Election
+	focus = {
+		id = JAP_Shakai_Taishuto_Ballot_Heads_Left
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_victory_labour
 		x = 20
 		y = 0
 		cost = 5
@@ -1925,99 +3501,386 @@ focus_tree = {
 		custom_effect_tooltip = unlock_focuses
 		}
 	}
+	focus = {
+		id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Ballot_Heads_Left
+		x = 0
+		y = 1
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Ballot_Heads_Left }
+		completion_reward = {
+			country_event = rd_japan_event.73
+		}
+	}
 	
 	focus = {
-		id = JAP_Seikyukai_lassie
+		id = JAP_Shakai_Taishuto_anti_syndicalism
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Rightist_Route focus = JAP_Shakai_Taishuto_center_path }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_united_against_syndies
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_locking_rifles
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = -3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_anti_syndicalism }
+		completion_reward = {
+			add_ideas = {
+				JAP_locking_rifles
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_revive_marxism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
 		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_yield_great_strength focus = JAP_Shakai_Taishuto_center_path }
+		completion_reward = {
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.15
+			}
+			if = {
+				limit = {
+					has_government = social_democrat
+				}
+				add_radsoc_to_coalition = yes
+			}
+			add_political_power = 25
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_break_zensanren
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_revive_marxism }
+		completion_reward = {
+			add_ideas = {
+			JAP_zaibatsu_nationalization_1
+			}
+		}
+	}
+	
+	###Nishio 1940
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_Rightist_Route
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = -5
 		y = 1
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_orthodox_holds_on focus = JAP_Seikyukai_continuance_populism } 
+		available = {
+			always = no
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Spliting_Three_Heads }
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_praying_socialism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = -5
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Rightist_Route }
 		completion_reward = {
 			add_ideas = {
-				JAP_laissie
+			JAP_socialist_prayers
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_evolutionism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = -7
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_praying_socialism }
+		completion_reward = {
+			add_ideas = {
+				JAP_socialist_evolution_theory
 			}
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_inukai_legacy
+		id = JAP_Shakai_Taishuto_reign_in_sodoumei
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = -5
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_praying_socialism }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_union_chip_away
+				days = 90
+			}
+			add_synd_to_coalition = yes
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_cat_catching_mice
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = -5
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_reign_in_sodoumei }
+		prerequisite = { focus = JAP_Shakai_Taishuto_evolutionism }
+		prerequisite = { focus = JAP_Shakai_Taishuto_locking_rifles }
+		completion_reward = {
+			add_ideas = {
+				JAP_socialist_evolution
+			}
+			
+		}
+	}
+	
+	###Isoo 1940
+	focus = {
+		id = JAP_Shakai_Taishuto_center_path
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
 		x = 0
 		y = 1
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_orthodox_holds_on } 
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Spliting_Three_Heads }
 		completion_reward = {
-			add_ideas = {
-				JAP_inukai_legacy_idea
-			}
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
-	focus = {#Foundation of the Coal Agency
-		id = JAP_Seikyukai_removing_red_paint
+	focus = {
+		id = JAP_Shakai_Taishuto_one_union_federation
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		relative_position_id = JAP_Shakai_Taishuto_center_path
 		x = -1
-		y = 2
+		y = 1
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_inukai_legacy } prerequisite = { focus = JAP_Seikyukai_lassie }
+		prerequisite = { focus = JAP_Shakai_Taishuto_center_path }
 		completion_reward = {
 			add_ideas = {
-				JAP_coal_agency
+			JAP_one_union
 			}
 		}
 	}
-	focus = {#Promoting a People's Fraternity
-		id = JAP_Seikyukai_east_economic_union
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_limited_options_controlled_solutions
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		relative_position_id = JAP_Shakai_Taishuto_center_path
 		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_center_path }
+		completion_reward = {
+			add_ideas = {
+				JAP_controlled_options
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_strike_three_down
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_center_path
+		x = 0
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_inukai_legacy } prerequisite = { focus = JAP_Seikyukai_lassie }
+		prerequisite = { focus = JAP_Shakai_Taishuto_limited_options_controlled_solutions }
+		prerequisite = { focus = JAP_Shakai_Taishuto_one_union_federation }
 		completion_reward = {
-			add_ideas = {
-				JAP_fraternity
+			add_timed_idea = {
+				idea = JAP_against_big_three
+				days = 90
 			}
 		}
 	}
 	focus = {
-		id = JAP_Seikyukai_strong_future
+		id = JAP_Shakai_Taishuto_realist_socialism
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_orthodox_holds_on
+		relative_position_id = JAP_Shakai_Taishuto_center_path
 		x = 0
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_east_economic_union } prerequisite = { focus = JAP_Seikyukai_removing_red_paint }
+		prerequisite = { focus = JAP_Shakai_Taishuto_strike_three_down }
+		prerequisite = { focus = JAP_Shakai_Taishuto_locking_rifles focus = JAP_Shakai_Taishuto_break_zensanren }
 		completion_reward = {
-			country_event = rd_japan_event.62
+			add_ideas = {
+				JAP_socialist_realization
+			}
 		}
 	}
 	
-	
+	###Mosaburo 1940
+	focus = {
+		id = JAP_Shakai_Taishuto_yield_great_strength
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Spliting_Three_Heads
+		x = 5
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			always = no
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Spliting_Three_Heads }
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
 	
 	focus = {
-		id = JAP_Seikyukai_continuance_populism
+		id = JAP_Shakai_Taishuto_break_oyama
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_Return_of_Seiyukai
-		x = 26
-		y = 0
+		relative_position_id = JAP_Shakai_Taishuto_yield_great_strength
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_yield_great_strength }
+		completion_reward = {
+			country_event = rd_japan_event.74
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_progressive_class_party
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_yield_great_strength
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_break_oyama }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_women_world_unite
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_yield_great_strength
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_break_oyama }
+		completion_reward = {
+			add_ideas = {
+				JAP_female_empowerment
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_lining_up_road_socialism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_yield_great_strength
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_progressive_class_party }
+		prerequisite = { focus = JAP_Shakai_Taishuto_women_world_unite }
+		prerequisite = { focus = JAP_Shakai_Taishuto_break_zensanren }
+		completion_reward = {
+			country_event = {
+				id = rd_japan_event.75
+				days = 14
+			}
+		}
+	}
+	
+	#1944 Shakai Taishuto Election
+	focus = {
+		id = JAP_Shakai_Taishuto_Bell_tolls
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Ballot_Heads_Left
+		x = 0
+		y = 7
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
@@ -2031,67 +3894,388 @@ focus_tree = {
 	}
 	
 	focus = {
-		id = JAP_Seikyukai_return_of_democracy_god
+		id = JAP_Shakai_Taishuto_pragmatic_alignments
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_continuance_populism
-		x = 0
+		relative_position_id = JAP_Shakai_Taishuto_Bell_tolls
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_shedding_blood focus = JAP_Shakai_Taishuto_labour_study_sessions focus = JAP_Shakai_Taishuto_farmers_party }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_pragmatic_alignments
+				days = 120
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_women_divisions
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Bell_tolls
+		x = -3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_pragmatic_alignments }
+		completion_reward = {
+			country_event = rd_japan_event.78
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_welfare_nation
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Bell_tolls
+		x = 4
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_shedding_blood focus = JAP_Shakai_Taishuto_labour_study_sessions focus = JAP_Shakai_Taishuto_farmers_party }
+		completion_reward = {
+			add_ideas = {
+				JAP_welfare
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_farmers_unionize
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Bell_tolls
+		x = 2
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_welfare_nation }
+		completion_reward = {
+			add_ideas = {
+				JAP_farmers_unionize
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_weaving_basket
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Bell_tolls
+		x = 5
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_welfare_nation }
+		completion_reward = {
+			add_ideas = {
+				JAP_weaving_basket
+			}
+		}
+	}
+	
+	##Nishio 1944
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_shedding_blood
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Bell_tolls
+		x = -5
 		y = 1
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_continuance_populism } 
+		available = {
+			always = no
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Bell_tolls }
 		completion_reward = {
-			country_event = rd_japan_event.63
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
+	
 	focus = {
-		id = JAP_Seikyukai_support_shop_keeper
+		id = JAP_Shakai_Taishuto_personal_idealism
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_continuance_populism
-		x = -1
+		relative_position_id = JAP_Shakai_Taishuto_shedding_blood
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_shedding_blood }
+		completion_reward = {
+			add_political_power = 25
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.1
+			}
+			add_stability = 0.1
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_rally_rightist_peasants
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_shedding_blood
+		x = -2
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_return_of_democracy_god } prerequisite = { focus = JAP_Seikyukai_lassie }
+		prerequisite = { focus = JAP_Shakai_Taishuto_personal_idealism }
 		completion_reward = {
-			add_ideas = {
-				JAP_support_small_shops
+			if = {
+				limit = {
+					has_idea = JAP_farmers_unionize
+				}
+				swap_ideas = {
+					remove_idea = JAP_farmers_unionize
+					add_idea = JAP_farmers_unionize_1
+				}
+			}
+			else = {
+				add_ideas = {
+					JAP_farmers_unionize_1
+				}
 			}
 		}
 	}
-	focus = {#Support the New Women's Association
-		id = JAP_Seikyukai_sagainst_bureaucrats
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_world_federalism
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_continuance_populism
-		x = 1
+		relative_position_id = JAP_Shakai_Taishuto_shedding_blood
+		x = 0
 		y = 2
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_return_of_democracy_god } prerequisite = { focus = JAP_Seikyukai_lassie }
+		prerequisite = { focus = JAP_Shakai_Taishuto_personal_idealism }
 		completion_reward = {
-			country_event = rd_japan_event.64
+			country_event = rd_japan_event.80
 		}
 	}
+	
 	focus = {
-		id = JAP_Seikyukai_revived_liberalism
+		id = JAP_Shakai_Taishuto_thriving_under_demsoc
 		icon = GFX_JAP_ELECTION_1936_elections-248360
-		relative_position_id = JAP_Seikyukai_continuance_populism
+		relative_position_id = JAP_Shakai_Taishuto_shedding_blood
 		x = 0
 		y = 3
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAP_Seikyukai_support_shop_keeper } prerequisite = { focus = JAP_Seikyukai_sagainst_bureaucrats }
+		prerequisite = { focus = JAP_Shakai_Taishuto_rally_rightist_peasants }
+		prerequisite = { focus = JAP_Shakai_Taishuto_world_federalism }
+		prerequisite = { focus = JAP_Shakai_Taishuto_women_divisions }
+		prerequisite = { focus = JAP_Shakai_Taishuto_farmers_unionize }
+		prerequisite = { focus = JAP_Shakai_Taishuto_weaving_basket }
+		completion_reward = {
+			country_event = rd_japan_event.81
+		}
+	}
+	
+	###Katayama 1944
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_labour_study_sessions
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Bell_tolls
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			has_idea = JAP_Katayama_Tetsu_hog_sde
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Bell_tolls }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {#Change this to Labour Study Sessions
+		id = JAP_Shakai_Taishuto_reconcile_left_faction
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_labour_study_sessions
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_labour_study_sessions }
+		completion_reward = {
+			add_radsoc_to_coalition = yes
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.1
+			}
+			add_stability = -0.1
+			add_war_support = 0.05
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_compensate_unemployed
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_labour_study_sessions
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_reconcile_left_faction }
 		completion_reward = {
 			add_ideas = {
-				JAP_revived_liberalism
+				JAP_unemployment
 			}
 		}
 	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_parliamentry_socialism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_labour_study_sessions
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_reconcile_left_faction }
+		prerequisite = { focus = JAP_Shakai_Taishuto_women_divisions }
+		prerequisite = { focus = JAP_Shakai_Taishuto_farmers_unionize }
+		prerequisite = { focus = JAP_Shakai_Taishuto_weaving_basket }
+		completion_reward = {
+			country_event = rd_japan_event.82
+			add_ideas = {
+			JAP_parliamentary_socialism
+			}
+		}
+	}
+	
+	
+	###Hirano 1944
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_farmers_party
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_Bell_tolls
+		x = 6
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			always = no
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_Bell_tolls }
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Shakai_Taishuto_coop_committees
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_farmers_party
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_farmers_party }
+		completion_reward = {
+			if = {
+				limit = {
+					has_idea = JAP_farmers_unionize
+				}
+				swap_ideas = {
+					remove_idea = JAP_farmers_unionize
+					add_idea = JAP_farmers_unionize_2
+				}
+			}
+			if = {
+				limit = {
+					has_idea = JAP_farmers_unionize_1
+				}
+				swap_ideas = {
+					remove_idea = JAP_farmers_unionize_1
+					add_idea = JAP_farmers_unionize_2
+				}
+			}
+			else = {
+				add_ideas = {
+					JAP_farmers_unionize_2
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_credit_associations
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_farmers_party
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_coop_committees }
+		completion_reward = {
+			add_ideas = {
+				JAP_credit_associations
+			}
+		}
+	}
+	focus = {
+		id = JAP_Shakai_Taishuto_free_grain_old_society
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Shakai_Taishuto_farmers_party
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Shakai_Taishuto_credit_associations }
+		prerequisite = { focus = JAP_Shakai_Taishuto_women_divisions }
+		prerequisite = { focus = JAP_Shakai_Taishuto_farmers_unionize }
+		prerequisite = { focus = JAP_Shakai_Taishuto_weaving_basket }
+		completion_reward = {
+			add_research_slot = 1
+			country_event = rd_japan_event.83
+			add_ideas = {
+				JAP_liberation_of_the_grain
+			}
+		}
+	}
+
 }
+
+
+	
+
+
+	
+
+
+
+	
+	
