@@ -6365,13 +6365,172 @@ has_country_leader = {
 		}
 		completion_reward = {
 		country_event = rd_phil.60
-
-
 		}
 	}
 	#more neutral not into factions 
 	focus = {
 		id = PHI_foreign_own
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start_foreign
+		x = -18
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start_foreign } 
+		available = { is_subject = no has_country_flag = PHI_ourselfs_neutral }
+		completion_reward = {
+
+		}
+	}
+
+	#providing aid to independent peoples 
+	focus = {
+		id = PHI_foreign_aid_to_asia
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_own
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_own } 
+		mutually_exclusive = { focus = PHI_foreign_amerikkka focus = PHI_foreign_japan focus = PHI_foreign_socialism_fact focus = PHI_foreign_western_powers } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#octopus chokehold Japan? idk what this means
+	focus = {
+		id = PHI_foreign_octopus_chokehold
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_own
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_own } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#national self determination 
+	focus = {
+		id = PHI_foreign_self_determination 
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_own
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_octopus_chokehold } prerequisite = { focus = PHI_foreign_aid_to_asia } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#red flag either int or bhc 
+	focus = {
+		id = PHI_foreign_socialism_fact
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start_foreign
+		x = -14
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start_foreign } 
+		mutually_exclusive = { focus = PHI_foreign_amerikkka focus = PHI_foreign_japan focus = PHI_foreign_own focus = PHI_foreign_western_powers } 
+		available = { is_subject = no OR = { AND = { is_in_faction_with = BHC BHC = { is_faction_leader = yes } } AND = { is_in_faction_with = INT INT = { is_faction_leader = yes } } } }
+		completion_reward = {
+
+		}
+	}
+
+	#against_colonialization
+	focus = {
+		id = PHI_foreign_against_colonialization
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_socialism_fact
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_socialism_fact } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#support south seas revolutionaries
+	focus = {
+		id = PHI_foreign_octopus_chokehold
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_socialism_fact
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_socialism_fact } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#surfing red waves 
+	focus = {
+		id = PHI_foreign_self_determination 
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_socialism_fact
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_octopus_chokehold } prerequisite = { focus = PHI_foreign_against_colonialization } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+
+	#japan 
+	focus = {
+		id = PHI_foreign_japan
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_start_foreign
+		x = -10
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_start_foreign } 
+		mutually_exclusive = { focus = PHI_foreign_amerikkka focus = PHI_foreign_socialism_fact focus = PHI_foreign_own focus = PHI_foreign_western_powers } 
+		available = { is_subject = no is_in_faction_with = JAP JAP = { is_faction_leader = yes } }
+		completion_reward = {
+
+		}
+	}
+
+
+	#amerikkka 
+	focus = {
+		id = PHI_foreign_amerikkka
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_start_foreign
 		x = 0
@@ -6380,33 +6539,36 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = PHI_start_foreign} 
-		available = { has_country_flag = PHI_ourselfs_neutral }
+		prerequisite = { focus = PHI_start_foreign } 
+		mutually_exclusive = { focus = PHI_foreign_japan focus = PHI_foreign_socialism_fact focus = PHI_foreign_own focus = PHI_foreign_western_powers } 
+		available = { is_subject = no is_in_faction_with = USA USA = { is_faction_leader = yes } }
 		completion_reward = {
 
 		}
 	}
-	#amerikkka 
+	
+	#friends in the west 
 	focus = {
-		id = PHI_foreign_amerikkka
+		id = PHI_foreign_western_powers
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_start_foreign
-		x = 4
+		x = 3
 		y = 1
 		cost = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = { is_in_faction_with = USA USA = { is_faction_leader = yes } }
 		prerequisite = { focus = PHI_start_foreign } 
+		mutually_exclusive = { focus = PHI_foreign_amerikkka focus = PHI_foreign_japan focus = PHI_foreign_socialism_fact focus = PHI_foreign_own } 
+		available = { is_subject = no OR = { AND = { is_in_faction_with = SPR SPR = { is_faction_leader = yes } } AND = { is_in_faction_with = ENT ENT = { is_faction_leader = yes } }  AND = { is_in_faction_with = GER GER = { is_faction_leader = yes } } } }
 		completion_reward = {
 
 		}
 	}
-	
+
 	##Navy##
 	
-	#amerikkka 
+	#somethign 
 	focus = {
 		id = PHI_navy_swimming_between_islands
 		icon = GFX_PHI_navy

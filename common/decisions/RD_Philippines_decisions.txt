@@ -205,10 +205,13 @@ PHI_laurel_unite_faction = { #
 		icon = ger_military_buildup
 		allowed = { tag = PHI }
 		available = {
+		OR = {
 		is_faction_leader = yes
+		is_in_faction = no
+		}
 		is_independent = yes
 		}
-		visible = { has_completed_focus = PHI_antisoc_common_happiness }
+		visible = { has_completed_focus = PHI_antisoc_common_happiness has_completed_focus = PHI_foreign_own }
 
 
 		cost = 200
@@ -221,7 +224,16 @@ PHI_laurel_unite_faction = { #
 			
 		}
 		remove_effect = {
+		if = { limit = { is_in_faction = yes } 
 		set_faction_name = PHI_laurel_faction
+		}
+		else = { 
+		create_faction_from_template = {
+   		template = faction_template_rd_china_world_faction
+   			name = PHI_laurel_faction
+   			icon = GFX_faction_logo_generic_2 #give this a faction icon bro
+		}
+		}
 		every_other_country = {
 		limit = {
 		is_subject = no
