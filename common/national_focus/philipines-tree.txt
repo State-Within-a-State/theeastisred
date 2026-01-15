@@ -6528,6 +6528,58 @@ has_country_leader = {
 	}
 
 
+	#stronger friends
+	focus = {
+		id = PHI_foreign_stronger_friends
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_japan
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_japan } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#economic bondage
+	focus = {
+		id = PHI_foreign_economic_bondage
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_japan
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_japan } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#apostate orienta
+	focus = {
+		id = PHI_foreign_apostate_orienta
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_japan
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_economic_bondage } prerequisite = { focus = PHI_foreign_stronger_friends }
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+
 	#amerikkka 
 	focus = {
 		id = PHI_foreign_amerikkka
@@ -6561,6 +6613,235 @@ has_country_leader = {
 		prerequisite = { focus = PHI_start_foreign } 
 		mutually_exclusive = { focus = PHI_foreign_amerikkka focus = PHI_foreign_japan focus = PHI_foreign_socialism_fact focus = PHI_foreign_own } 
 		available = { is_subject = no OR = { AND = { is_in_faction_with = SPR SPR = { is_faction_leader = yes } } AND = { is_in_faction_with = ENT ENT = { is_faction_leader = yes } }  AND = { is_in_faction_with = GER GER = { is_faction_leader = yes } } } }
+		completion_reward = {
+
+		}
+	}
+
+	#bell_trade
+	focus = {
+		id = PHI_foreign_bell_trade
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_amerikkka
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_amerikkka }
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#pacific islands
+	focus = {
+		id = PHI_foreign_pacific_islands
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_amerikkka
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_amerikkka focus = PHI_foreign_western_powers }
+		available = { is_subject = no is_in_faction_with = USA }
+		completion_reward = {
+
+		}
+	}
+	#american bases
+	focus = {
+		id = PHI_foreign_american_bases
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_amerikkka
+		x = 0
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_bell_trade } prerequisite = { focus = PHI_foreign_pacific_islands }
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+
+	#against Japan and syndies
+	focus = {
+		id = PHI_foreign_japan_syndies
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_western_powers
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_western_powers }
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#germany
+	focus = {
+		id = PHI_foreign_germany_fact
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_western_powers
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_japan_syndies }
+		mutually_exclusive = { focus = PHI_foreign_entente_fact focus = PHI_foreign_spain_fact }
+		available = { is_subject = no is_in_faction_with = GER GER = { is_faction_leader = yes } }
+		completion_reward = {
+
+		}
+	}
+	#entente
+	focus = {
+		id = PHI_foreign_entente_fact
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_western_powers
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_japan_syndies }
+		mutually_exclusive = { focus = PHI_foreign_spain_fact focus = PHI_foreign_germany_fact }
+		available = { is_subject = no is_in_faction_with = ENT ENT = { is_faction_leader = yes } }
+		completion_reward = {
+
+		}
+	}
+	#spain
+	focus = {
+		id = PHI_foreign_spain_fact
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_western_powers
+		x = 4
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_japan_syndies }
+		mutually_exclusive = { focus = PHI_foreign_entente_fact focus = PHI_foreign_germany_fact }
+		available = { is_subject = no is_in_faction_with = SPR SPR = { is_faction_leader = yes } }
+		completion_reward = {
+
+		}
+	}
+	#american bases
+	focus = {
+		id = PHI_foreign_american_bases
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_amerikkka
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_american_bases focus = PHI_foreign_spain_fact focus = PHI_foreign_entente_fact focus = PHI_foreign_germany_fact } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#pan Malaya dream
+	focus = {
+		id = PHI_foreign_pan_malaya 
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_amerikkka
+		x = -4
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_western_powers focus = PHI_foreign_amerikkka focus = PHI_foreign_japan focus = PHI_foreign_socialism_fact focus = PHI_foreign_own } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+
+	#sulu land
+	focus = { 
+		id = PHI_foreign_sulu_land 
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_pan_malaya 
+		x = -1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_pan_malaya } 
+		mutually_exclusive = { focus = PHI_foreign_borneo_offer } 
+		available = { is_subject = no }
+		completion_reward = {
+
+		}
+	}
+	#borneo_offer
+	focus = { 
+		id = PHI_foreign_borneo_offer 
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_pan_malaya 
+		x = 1
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_pan_malaya } 
+		mutually_exclusive = { focus = PHI_foreign_sulu_land  } 
+		available = { is_subject = no } #fuck you some things i dont wanna do rn
+		completion_reward = {
+
+		}
+	}
+	#chinese pirates
+	focus = { 
+		id = PHI_foreign_chinese_pirates
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_pan_malaya 
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_borneo_offer focus = PHI_foreign_sulu_land  } 
+		available = { is_subject = no } 
+		completion_reward = {
+
+		}
+	}
+	#australia_intervention
+	focus = { 
+		id = PHI_foreign_australia_intervention
+		icon = GFX_goal_QIO_revolutionary_zone
+		relative_position_id = PHI_foreign_pan_malaya 
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = PHI_foreign_borneo_offer focus = PHI_foreign_sulu_land  } 
+		available = { is_subject = no } #probably needs something idk
 		completion_reward = {
 
 		}
