@@ -37,10 +37,9 @@ PHI_form_malaysia = { #just testing for now, no loc no behavior, no conception s
 		icon = ger_military_buildup
 		allowed = {tag = PHI }
 		available = {
-		MAL = { exists = no }
-		INS = { exists = no }	
+		has_full_control_of_state = 39 #fuck 
 		}
-		
+		visible = { is_subject = no has_country_flag =  PHI_claimed_pan_malaysia }
 		cost = 100
 		fire_only_once = yes
 		days_remove = 120
@@ -66,7 +65,7 @@ PHI_form_malaysia = { #just testing for now, no loc no behavior, no conception s
 PHI_laurel_unique_asia = { #
 		icon = ger_military_buildup
 		allowed = { tag = PHI }
-		visible = { OR = { has_completed_focus = PHI_antisoc_mother_asia_civilization has_completed_focus = PHI_antisoc_divine_principle_humanity } }
+		visible = { is_subject = no OR = { has_completed_focus = PHI_antisoc_mother_asia_civilization has_completed_focus = PHI_antisoc_divine_principle_humanity } }
 
 
 		cost = 200
@@ -104,7 +103,7 @@ PHI_laurel_unique_asia = { #
 PHI_laurel_unique_africa = { #
 		icon = ger_military_buildup
 		allowed = { tag = PHI }
-		visible = { has_completed_focus = PHI_antisoc_divine_principle_humanity }
+		visible = { is_subject = no has_completed_focus = PHI_antisoc_divine_principle_humanity }
 
 
 		cost = 150
@@ -137,7 +136,7 @@ PHI_laurel_unique_africa = { #
 PHI_laurel_unique_europe = { #
 		icon = ger_military_buildup
 		allowed = { tag = PHI }
-		visible = { has_completed_focus = PHI_antisoc_divine_principle_humanity }
+		visible = { is_subject = no has_completed_focus = PHI_antisoc_divine_principle_humanity }
 
 
 		cost = 150
@@ -170,7 +169,7 @@ PHI_laurel_unique_europe = { #
 PHI_laurel_unique_americas = { #
 		icon = ger_military_buildup
 		allowed = { tag = PHI }
-		visible = { has_completed_focus = PHI_antisoc_divine_principle_humanity }
+		visible = { is_subject = no has_completed_focus = PHI_antisoc_divine_principle_humanity }
 
 
 		cost = 150
@@ -209,9 +208,8 @@ PHI_laurel_unite_faction = { #
 		is_faction_leader = yes
 		is_in_faction = no
 		}
-		is_independent = yes
 		}
-		visible = { has_completed_focus = PHI_antisoc_common_happiness has_completed_focus = PHI_foreign_own }
+		visible = { is_subject = no has_completed_focus = PHI_antisoc_common_happiness has_completed_focus = PHI_foreign_own }
 
 
 		cost = 200
@@ -254,6 +252,56 @@ PHI_laurel_unite_faction = { #
 		}
 	}
 
+
+
+PHI_create_with_indonesia = { #
+		icon = ger_military_buildup #add a icon for Indonesia flag idk how to do that
+		allowed = { tag = PHI }
+		available = {
+		is_in_faction = no
+		}
+		visible = { is_subject = no INS = { exists = yes is_subject = no }  has_completed_focus = PHI_foreign_own }
+
+		cost = 75
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+			}
+		complete_effect = {
+		INS = { country_event = rd_phil.63 }
+
+		}
+	}
+
+PHI_annex_indonesia_descition = { #
+		icon = ger_military_buildup #add a icon for Indonesia flag idk how to do that
+		allowed = { tag = PHI }
+		available = {
+		is_subject = no
+		}
+		visible = { is_subject = no INS = { exists = yes is_in_faction_with = PHI }  has_country_flag = PHI_created_malphido has_country_flag =  PHI_claimed_pan_malaysia }
+
+		cost = 150
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 10
+			}
+		complete_effect = {
+		INS = { 
+			every_unit_leader = {
+			set_nationality = PHI
+			}
+		}
+		annex_country = {
+   		target = INS
+    		transfer_troops = yes
+		}
+
+		}
+	}
+
+
+#when phi does the event for Malaysia claims give it a country flag so then visible cores on Malaysia and also annexIndonesia PHI_created_malphido
 
 
 }

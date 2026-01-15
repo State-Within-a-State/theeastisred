@@ -3267,7 +3267,7 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 
 }
 
-country_event = { #
+country_event = { #ask Indonesia to work with us (can later annex Indonesia if you do pan malay claims for now just a alliance)
 	id = rd_phil.63
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.63"}
 	title = rd_phil.63.title
@@ -3278,11 +3278,26 @@ country_event = { #
 	option = { #
 		name = rd_phil.63.a
 		ai_chance = { base = 100 }
+		PHI = { 
+		create_faction_from_template = {
+   		template = faction_template_regional
+   			name = PHI_indonesia_faction
+   			icon = GFX_faction_logo_generic_2 #give this a faction icon bro
+		}
+		add_to_faction = INS
+		set_country_flag = PHI_created_malphido
+		}
 		
 	}
+	option = { #
+		name = rd_phil.63.b
+		ai_chance = { base = 0 }
+		
+	}
+
 }
 
-country_event = { #
+country_event = { #do we claim all the places of the malay race
 	id = rd_phil.64
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.64"}
 	title = rd_phil.64.title
@@ -3290,11 +3305,21 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes
 		name = rd_phil.64.a
+		ai_chance = { base = 100 }
+		set_country_flag = PHI_claimed_pan_malaysia
+		#add_state_claim = 345
+		add_stability = -0.15
+		
+		
+	}
+	option = { #no cause we're lame
+		name = rd_phil.64.b
 		ai_chance = { base = 100 }
 		
 	}
+
 }
 
 country_event = { #
