@@ -37,27 +37,45 @@ PHI_form_malaysia = { #just testing for now, no loc no behavior, no conception s
 		icon = ger_military_buildup
 		allowed = {tag = PHI }
 		available = {
-		has_full_control_of_state = 39 #fuck 
+		all_state = { 
+		limit = { 
+		OR = { is_indonesia = yes state = 336 state = 846 state = 751 state = 999 } NOT = { OR = { state = 721 state = 972 state = 757 state = 523 state = 669 843 } } #checking only these states you need to control
+		}
+		is_owned_and_controlled_by_ROOT_or_subject = yes
+		}
 		}
 		visible = { is_subject = no has_country_flag =  PHI_claimed_pan_malaysia }
 		cost = 100
 		fire_only_once = yes
 		days_remove = 120
 		ai_will_do = {
-			factor = 10
+			factor = 100
 			}
 
 		complete_effect = {
 			
 		}
 		remove_effect = {
+		if = { limit = { has_subject = INS }
+		annex_country = {
+   		 target = INS
+  		  transfer_troops = no
+		}
+		}
+		if = { limit = { has_subject = MLY } #what tag is malaysia
+		annex_country = {
+   		 target = MLY
+  		  transfer_troops = no
+		}
+		}
+
 		every_state = {
 		limit = {
-		OR = { is_indonesia = yes state = 336 state = 846}
+		OR = { is_indonesia = yes region = 194 } }
 		}
 		add_core_of = PHI
 		}
-		
+		#needs a event for a new cosmetic tag btw 
 
 		}
 	}
