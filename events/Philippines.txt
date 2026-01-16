@@ -3328,7 +3328,7 @@ country_event = { #do we claim all the places of the malay race
 
 }
 
-country_event = { #
+country_event = { #madgascar do we go for it as true Malayan race
 	id = rd_phil.65
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.65"}
 	title = rd_phil.65.title
@@ -3336,11 +3336,38 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes
 		name = rd_phil.65.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 0 }
+	add_political_power = -75
+	every_state = {
+	limit = { or = { region = 193 state = 707 state = 706 state = 708 } }
+	add_claim_by = PHI
+	}
+	if = { 
+	limit = { not = { owns_state = 543 } }
+
+
+	543 = { 
+	owner = { 
+	PHI = {
+	create_wargoal = {
+    	type = annex_everything
+    	target = PREV
+	}
+	}
+	}
+	}
+
+	} 
 		
 	}
+	option = { #fuck you bro im ai im stupid i cant go to war with that
+		name = rd_phil.65.a
+		ai_chance = { base = 100 }
+		add_political_power = 25
+	}
+
 }
 
 country_event = { #

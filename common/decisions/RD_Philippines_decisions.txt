@@ -33,15 +33,17 @@ PHI_foreign_decision_category = {
 
 
 
-PHI_form_malaysia = { #just testing for now, no loc no behavior, no conception should later be a separate decision category
+PHI_form_malaysia = { 
 		icon = ger_military_buildup
 		allowed = {tag = PHI }
 		available = {
-		all_state = { 
-		limit = { 
-		OR = { is_indonesia = yes state = 336 state = 846 state = 751 state = 999 } NOT = { OR = { state = 721 state = 972 state = 757 state = 523 state = 669 843 } } #checking only these states you need to control
+		NOT = {
+		any_state = { 
+		OR = { is_indonesia = yes state = 336 state = 846 state = 751 state = 999 } NOT = { OR = { state = 721 state = 972 state = 757 state = 523 state = 669 state = 843 } } 
+		is_owned_and_controlled_by_ROOT_or_subject = no
 		}
-		is_owned_and_controlled_by_ROOT_or_subject = yes
+
+
 		}
 		}
 		visible = { has_country_flag =  PHI_claimed_pan_malaysia }
@@ -62,7 +64,7 @@ PHI_form_malaysia = { #just testing for now, no loc no behavior, no conception s
   		  transfer_troops = no
 		}
 		}
-		if = { limit = { has_subject = MLY } #what tag is malaysia
+		if = { limit = { has_subject = MLY } 
 		annex_country = {
    		 target = MLY
   		  transfer_troops = no
@@ -76,6 +78,10 @@ PHI_form_malaysia = { #just testing for now, no loc no behavior, no conception s
 		add_core_of = PHI
 		}
 		#needs a event for a new cosmetic tag btw 
+
+		country_event = rd_phil.65
+
+
 
 		}
 	}
@@ -343,6 +349,31 @@ PHI_core_taiwan_descition = { #
 
 	}
 
+
+PHI_core_borneo_descition = { #
+		icon = ger_military_buildup #add a icon idk how to do that
+		allowed = { tag = PHI }
+		available = {
+		controls_state = 828
+		828 = { compliance > 50 }
+		}
+		visible = { owns_state = 828 828 = { NOT = { is_core_of = PHI } } }
+
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 100
+			}
+		days_remove = 50
+		complete_effect = {
+		
+		}
+		remove_effect = {
+		add_state_core = 828
+		}
+
+	}
 
 
 
