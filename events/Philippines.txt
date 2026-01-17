@@ -3339,6 +3339,7 @@ country_event = { #madgascar do we go for it as true Malayan race
 	option = { #yes
 		name = rd_phil.65.a
 		ai_chance = { base = 0 }
+	set_country_flag = PHI_take_madagascar
 	add_political_power = -75
 	every_state = {
 	limit = { or = { region = 193 state = 707 state = 706 state = 708 } }
@@ -3370,7 +3371,7 @@ country_event = { #madgascar do we go for it as true Malayan race
 
 }
 
-country_event = { #
+country_event = { #asking a deal for sabah
 	id = rd_phil.66
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.66"}
 	title = rd_phil.66.title
@@ -3378,14 +3379,49 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yeah give phil it
 		name = rd_phil.66.a
-		ai_chance = { base = 100 }
-		
+		ai_chance = {
+			factor = 20
+		}
+		PHI = {
+			remove_state_claim = 828 # Sabah
+			add_state_core = 828
+			transfer_state = 828
+		}
+	add_political_power = -20
+
 	}
+	option = { #pay me bruh
+		name = rd_phil.66.b
+		ai_chance = {
+			factor = 40
+		}
+			PHI = {
+				country_event = rd_phil.67
+			}
+
+	}
+	option = { #no
+		name = rd_phil.66.c
+		ai_chance = {
+			factor = 40
+		modifier = { is_ally_with = PHI factor = 0 }
+
+		}
+			PHI = {
+				uncomplete_national_focus = {
+  			focus = PHI_foreign_borneo_offer
+  			uncomplete_children = no
+  			refund_political_power = no
+				}
+			complete_national_focus = PHI_foreign_sulu_land 
+			}
+	}
+
 }
 
-country_event = { #
+country_event = { #67 67 67 67 67 phi has to pay if it wants sabah without war
 	id = rd_phil.67
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.67"}
 	title = rd_phil.67.title
@@ -3393,11 +3429,42 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes
 		name = rd_phil.67.a
 		ai_chance = { base = 100 }
+			remove_state_claim = 828 # Sabah
+			add_state_core = 828
+			transfer_state = 828
+			828 = { 
+			owner = {
+				add_timed_idea = {
+				idea = PHI_Sabah_income
+				days = 100
+			}
+			}
+			}
+			add_timed_idea = {
+				idea = PHI_Sabah_purchase
+				days = 100
+			}
+			add_political_power = -20
+
 		
 	}
+	option = { #no we'll kill you
+		name = rd_phil.67.b
+		trigger = { 828 = { owner = { not = { is_ally_with = PHI } } } }
+		ai_chance = { base = 0 }
+		uncomplete_national_focus = {
+  			focus = PHI_foreign_borneo_offer
+  			uncomplete_children = no
+  			refund_political_power = no
+				}
+			complete_national_focus = PHI_foreign_sulu_land 
+
+		
+	}
+
 }
 
 country_event = { #
