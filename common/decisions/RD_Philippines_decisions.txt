@@ -37,17 +37,26 @@ PHI_form_malaysia = {
 		icon = ger_military_buildup
 		allowed = {tag = PHI }
 		available = {
-		all_state = { 
-		if = { 
+		NOT = {
+        any_state = {
+            OR = {
+                region = 91 #Arafura Sea
+                region = 158 #Sunda Islands
+                region = 159 #Borneo
+                region = 192 #Sumatra
+		state = 673
+		state = 1333
+                state = 336 
+                state = 846 
 
-		limit = {
-		OR = { is_indonesia = yes state = 336 state = 846 state = 751 state = 999 } NOT = { OR = { state = 721 state = 972 state = 757 state = 523 state = 669 state = 843 } } 
-		}
-		is_owned_and_controlled_by_ROOT_or_subject = yes
-		}
+            }
+            NOT = {
+                is_owned_and_controlled_by_ROOT_or_subject = yes
+            }
+        }
+    }
 
-		}
-		}
+	}
 		visible = { has_country_flag =  PHI_claimed_pan_malaysia }
 		cost = 100
 		fire_only_once = yes
