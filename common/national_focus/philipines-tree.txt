@@ -8146,6 +8146,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_crisis_america } 
 		completion_reward = {
+		add_ideas = {
+			PHI_small_sacrifices
+		}
 		}
 	}
 	focus = {
@@ -8185,6 +8188,7 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_small_bankruptcies } prerequisite = { focus = PHI_economy_diversification_crops }
 		completion_reward = {
+			country_event = rd_phil.68
 		}
 	}
 	
@@ -8200,8 +8204,12 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = PHI_economy_employment_outside_rural_economy } 
 		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	focus = {
@@ -8216,6 +8224,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_export_focus } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = PHI_poor_as_fuck
+				add_idea = PHI_poor_as_fuck_1a
+			}
 		}
 	}
 	focus = {
@@ -8230,6 +8242,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_revoke_sugar } 
 		completion_reward = {
+			add_timed_idea = {
+				idea = PHI_trade_review
+				days = 90
+			}
 		}
 	}
 	focus = {
@@ -8242,9 +8258,19 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+				is_in_faction_with = USA
+				is_subject_of = USA
+			}
+		}
 		mutually_exclusive = { focus = PHI_economy_attack_bell }
 		prerequisite = { focus = PHI_economy_review_trade } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = PHI_american_black_monday
+				add_idea = PHI_american_bell_trade
+			}
 		}
 	}
 	focus = {
@@ -8260,6 +8286,34 @@ has_country_leader = {
 		mutually_exclusive = { focus = PHI_economy_enact_bell_trade_act }
 		prerequisite = { focus = PHI_economy_review_trade } 
 		completion_reward = {
+			if = {
+				limit = {
+					USA = {
+						exists = yes
+					}
+				}
+				add_opinion_modifier = {
+					target = USA
+					modifier = faction_traitor
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				add_building_construction = {
+						type = infrastructure
+						level = 1
+						instant_build = yes
+					}
+			}
+			swap_ideas = {
+				remove_idea = PHI_american_black_monday
+				add_idea = PHI_attack_american_bell_trade
+			}
 		}
 	}
 	
@@ -8275,6 +8329,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_attack_bell focus = PHI_economy_enact_bell_trade_act } 
 		completion_reward = {
+			add_timed_idea = {
+				idea = PHI_farm_subsidies_act
+				days = 90
+			}
 		}
 	}
 	focus = {
@@ -8289,6 +8347,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_revoke_sugar } 
 		completion_reward = {
+			add_timed_idea = {
+				idea = PHI_reprg_nat_department
+				days = 120
+			}
 		}
 	}
 	focus = {
@@ -8303,6 +8365,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_revoke_sugar } 
 		completion_reward = {
+			add_ideas = {
+				PHI_peso_to_dollar
+			}
 		}
 	}
 	
@@ -8318,6 +8383,21 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_tie_peso_to_dollar } prerequisite = { focus = PHI_economy_reorg_nat_depart_company }
 		completion_reward = {
+			random_owned_controlled_state  = {
+			add_extra_state_shared_building_slots = 4
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 2
+				instant_build = yes
+			}
+			add_political_power = 50
+			
+			}
 		}
 	}
 	focus = {
@@ -8372,6 +8452,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_national_electrification } prerequisite = { focus = PHI_economy_subsidize_farms } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = PHI_poor_as_fuck_1a
+				add_idea = PHI_poor_as_fuck_1b
+			}
 		}
 	}
 	
@@ -8388,8 +8472,12 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		always = no
+		}
 		prerequisite = { focus = PHI_economy_employment_outside_rural_economy } 
 		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -8405,6 +8493,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_austerity } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = PHI_poor_as_fuck
+				add_idea = PHI_poor_as_fuck_2a
+			}
 		}
 	}
 	focus = {
@@ -8419,6 +8511,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_sugar_act_strengthen } 
 		completion_reward = {
+			add_timed_idea = {
+				idea = PHI_farm_corps
+				days = 180
+			}
 		}
 	}
 	focus = {
@@ -8433,6 +8529,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_rice_distrbution_corp } 
 		completion_reward = {
+			add_timed_idea = {
+				idea = PHI_farm_corruption
+				days = 120
+			}
 		}
 	}
 	focus = {
@@ -8476,6 +8576,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_anti_graft_corruption } prerequisite = { focus = PHI_economy_building_fertilizer_plants }
 		completion_reward = {
+			add_ideas = {
+				PHI_price_controls
+			}
 		}
 	}
 	focus = {
@@ -8490,6 +8593,10 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_sugar_act_strengthen } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = PHI_american_black_monday
+				add_idea = PHI_attack_american_bell_trade
+			}
 		}
 	}
 	focus = {
@@ -8504,6 +8611,13 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_nat_dev_bank } 
 		completion_reward = {
+			add_ideas = {
+				PHI_worker_comp_law
+			}
+			add_popularity = {
+				ideology = syndicalist
+				popularity = 0.025
+			}
 		}
 	}
 	focus = {
@@ -8519,6 +8633,9 @@ has_country_leader = {
 		mutually_exclusive = { focus = PHI_economy_coop_reliance } prerequisite = { focus = PHI_economy_building_fertilizer_plants }
 		prerequisite = { focus = PHI_economy_workercomp_law } 
 		completion_reward = {
+			add_ideas = {
+				PHI_national_corp_distribution
+			}
 		}
 	}
 	focus = {
@@ -8534,6 +8651,22 @@ has_country_leader = {
 		mutually_exclusive = { focus = PHI_economy_nat_distribution } prerequisite = { focus = PHI_economy_building_fertilizer_plants }
 		prerequisite = { focus = PHI_economy_workercomp_law } 
 		completion_reward = {
+			add_ideas = {
+				PHI_coop_reliance
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = supply_node
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
@@ -8550,6 +8683,10 @@ has_country_leader = {
 		prerequisite = {focus = PHI_economy_price_controls }
 		prerequisite = { focus = PHI_economy_coop_reliance focus = PHI_economy_nat_distribution } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = PHI_poor_as_fuck_2a
+				add_idea = PHI_poor_as_fuck_2b
+			}
 		}
 	}
 	
@@ -8737,6 +8874,24 @@ has_country_leader = {
 		prerequisite = { focus = PHI_economy_expand_luzon_university } 
 		prerequisite = { focus = PHI_economy_protectionism focus = PHI_economy_nec_vindicated } 
 		completion_reward = {
+			if = {
+				limit = {
+					has_idea = PHI_poor_as_fuck_2b
+				}
+				swap_ideas = {
+					remove_idea = PHI_poor_as_fuck_2b
+					add_idea = PHI_poor_as_fuck_2c
+				}
+			}
+			else = {
+				limit = {
+					has_idea = PHI_poor_as_fuck_1b
+				}
+				swap_ideas = {
+					remove_idea = PHI_poor_as_fuck_1b
+					add_idea = PHI_poor_as_fuck_1c
+				}
+			}
 		}
 	}
 	
