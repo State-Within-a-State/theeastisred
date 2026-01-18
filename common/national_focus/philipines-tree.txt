@@ -4750,7 +4750,10 @@ has_country_leader = {
 		prerequisite = { focus = PHI_com_dotp } 
 		available = { has_government = totalist }
 		completion_reward = {
-
+			add_timed_idea = {
+				idea = PHI_syndie_get_others_in_1
+				days = 360
+			}
 		}
 	}
 	#Removing the Yellow Labor Leaders
@@ -4784,7 +4787,9 @@ has_country_leader = {
 		prerequisite = { focus = PHI_com_labor_code } 
 		available = { has_government = totalist }
 		completion_reward = {
-
+				add_ideas = {
+					PHI_com_national_labour_code
+				}
 		}
 	}
 	#overcome secertarians
@@ -4881,7 +4886,9 @@ has_country_leader = {
 		prerequisite = { focus = PHI_com_right_unions } 
 		available = { has_government = totalist }
 		completion_reward = {
-
+			add_ideas = {
+				PHI_com_eight_hours
+			}
 		}
 	}
 	#political_power in country_side
@@ -4961,10 +4968,27 @@ has_country_leader = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_completed_focus = PHI_soc_reforms
+		}
 		prerequisite = { focus = PHI_com_democractic_misson focus = PHI_com_country_side } 
 		available = { has_government = totalist }
 		completion_reward = {
-
+			if = {
+				limit = {
+					has_active_mission = PHI_land_reform_mission
+				}
+				add_to_variable = {
+					var = PHI_land_reform_progress
+					value = 6
+					tooltip = add_PHI_land_reform_var_tt
+				}
+			}
+			add_timed_idea = {
+				idea = PHI_com_taking_our_lands
+				days = 180
+			}
+			
 		}
 	}
 	#class liberation worldwide
@@ -5696,6 +5720,10 @@ has_country_leader = {
 		prerequisite = { focus = PHI_antisoc_attack_pan_asianists }  prerequisite = { focus = PHI_antisoc_america_lean }
 		completion_reward = {
 			#Will link it to the Sulut stuff
+			add_timed_idea = {
+				idea = PHI_junta_attack_moro
+				days = 90
+			}
 		}
 	}
 	
