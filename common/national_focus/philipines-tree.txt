@@ -6462,7 +6462,9 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_octopus_chokehold } prerequisite = { focus = PHI_foreign_aid_to_asia } 
 		available = { is_subject = no }
 		completion_reward = {
-
+		unlock_decision_tooltip = PHI_end_dei #give something unique for the focus other than these
+		unlock_decision_tooltip = PHI_invade_gea
+		
 		}
 	}
 	#red flag either int or bhc 
@@ -6532,6 +6534,8 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_south_revolutionaries } prerequisite = { focus = PHI_foreign_against_colonialization } 
 		available = { is_subject = no }
 		completion_reward = {
+		unlock_decision_tooltip = PHI_end_dei #give something unique for the focus other than these
+		unlock_decision_tooltip = PHI_invade_gea
 
 		}
 	}
@@ -6604,6 +6608,8 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_economic_bondage } prerequisite = { focus = PHI_foreign_stronger_friends }
 		available = { is_subject = no }
 		completion_reward = {
+		unlock_decision_tooltip = PHI_end_dei #give something unique for the focus other than these
+		unlock_decision_tooltip = PHI_invade_gea
 
 		}
 	}
@@ -6769,9 +6775,9 @@ has_country_leader = {
 		add_state_claim = 524
 		}
 	}
-	#american bases
+	#post war deals
 	focus = {
-		id = PHI_foreign_american_bases
+		id = PHI_foreign_post_war_deals
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = PHI_foreign_amerikkka
 		x = 1
@@ -6781,8 +6787,10 @@ has_country_leader = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_foreign_american_bases focus = PHI_foreign_spain_fact focus = PHI_foreign_entente_fact focus = PHI_foreign_germany_fact } 
-		available = { is_subject = no }
+		available = { is_subject = no JAP = { or = { exists = no is_subject = yes } }
 		completion_reward = {
+		unlock_decision_tooltip = PHI_end_dei #give something unique for the focus other than these
+		unlock_decision_tooltip = PHI_invade_gea
 
 		}
 	}
@@ -6819,6 +6827,13 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_pan_malaya } 
 		mutually_exclusive = { focus = PHI_foreign_borneo_offer } 
 		available = { is_subject = no }
+		ai_will_do = {
+  		  base = 0
+ 		   modifier = {
+   		     add = 5
+ 		       828 = { owner = { OR = { has_defensive_war = yes  strength_ratio = { tag = ROOT ratio < 1 }  } } }
+   		 }
+		}
 		bypass = { owns_state = 828 }
 		completion_reward = {
 	828 = { 
@@ -6850,6 +6865,13 @@ has_country_leader = {
 		bypass = { owns_state = 828 }
 		available = { is_subject = no 828 = { owner = { or = { is_ally_with = PHI AND = { tag = DEI is_in_faction = no not = { has_war_with = PHI } } AND = { tag = GEA not = { has_war_with = PHI } PHI = { not = { or = { has_completed_focus = PHI_foreign_socialism_fact has_completed_focus = PHI_foreign_japan } } }  } } 
 		 } } } 
+		ai_will_do = {
+  		  base = 0
+ 		   modifier = {
+   		     add = 5
+ 		       828 = { owner = { OR = { has_defensive_war = yes  strength_ratio = { tag = ROOT ratio < 1 }  } } }
+   		 }
+		}
 		completion_reward = {
 		828 = {
 		owner = { 

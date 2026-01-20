@@ -420,7 +420,68 @@ PHI_core_borneo_descition = { #
 		}
 
 	}
+PHI_end_dei = { #maybe these should also be unlocked for the americans and he other western factions idk?
+		icon = ger_military_buildup #add a icon idk how to do that
+		allowed = { tag = PHI }
+		available = {
+		}
+		visible = { country_exists = DEI NOT = { is_in_faction_with = DEI }  OR = { has_completed_focus = PHI_foreign_apostate_orienta has_completed_focus = PHI_foreign_surfing_red_waves has_completed_focus = PHI_foreign_self_determination has_completed_focus = PHI_foreign_post_war_deals } }
 
+		cost = 50
+		cancel_if_not_visible = yes
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+		modifier = { or = { strength_ratio = {
+    		tag = DEI
+    			ratio > 1.2
+		}
+		DEI = { has_defensive_war = yes }
+ 		} add = 5 }
+			}
+		days_remove = 14
+		complete_effect = {
+		
+		}
+		remove_effect = {
+	create_wargoal = {
+    	type = annex_everything
+    	target = DEI
+	}
+		}
+
+	}
+
+PHI_invade_gea = { #
+		icon = ger_military_buildup #add a icon idk how to do that
+		allowed = { tag = PHI }
+		available = {
+		}
+		visible = { country_exists = GEA NOT = { is_in_faction_with = GEA } OR = { has_completed_focus = PHI_foreign_apostate_orienta has_completed_focus = PHI_foreign_surfing_red_waves has_completed_focus = PHI_foreign_self_determination has_completed_focus = PHI_foreign_post_war_deals  } }
+
+		cost = 50
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+		modifier = { or = { strength_ratio = {
+    		tag = GEA
+    			ratio > 1.2
+		}
+		GEA = { has_defensive_war = yes }
+ 		} add = 5 }
+			}
+		days_remove = 14
+		complete_effect = {
+		
+		}
+		remove_effect = {
+	create_wargoal = {
+    	type = annex_everything
+    	target = GEA
+	}
+		}
+
+	}
 
 
 
