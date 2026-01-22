@@ -295,7 +295,7 @@ PHI_create_with_indonesia = { #
 		available = {
 		is_in_faction = no
 		}
-		visible = { INS = { exists = yes is_subject = no }  has_completed_focus = PHI_foreign_own }
+		visible = { INS = { exists = yes is_subject = no not = {has_war_with = PHI} }  has_completed_focus = PHI_foreign_own }
 
 		cost = 75
 		fire_only_once = yes
@@ -420,12 +420,47 @@ PHI_core_borneo_descition = { #
 		}
 
 	}
+
+PHI_invade_ins = { #
+		icon = ger_military_buildup #add a icon idk how to do that
+		allowed = { tag = PHI }
+		available = {
+		not = {has_war_with = INS} 
+		}
+		visible = { country_exists = INS NOT = { is_ally_with = INS } has_country_flag =  PHI_claimed_pan_malaysia }
+
+		cost = 50
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+		modifier = { or = { strength_ratio = {
+    		tag = INS
+    			ratio > 1
+		}
+		INS = { has_defensive_war = yes }
+ 		} add = 5 }
+			}
+		days_remove = 14
+		complete_effect = {
+		
+		}
+		remove_effect = {
+	create_wargoal = {
+    	type = annex_everything
+    	target = INS
+	}
+		}
+
+	}
+
+
 PHI_end_dei = { #maybe these should also be unlocked for the americans and he other western factions idk?
 		icon = ger_military_buildup #add a icon idk how to do that
 		allowed = { tag = PHI }
 		available = {
+		not = {has_war_with = DEI} 
 		}
-		visible = { country_exists = DEI NOT = { is_in_faction_with = DEI }  OR = { has_completed_focus = PHI_foreign_apostate_orienta has_completed_focus = PHI_foreign_surfing_red_waves has_completed_focus = PHI_foreign_self_determination has_completed_focus = PHI_foreign_post_war_deals } }
+		visible = { country_exists = DEI NOT = { is_ally_with  = DEI }  OR = { has_completed_focus = PHI_foreign_apostate_orienta has_completed_focus = PHI_foreign_surfing_red_waves has_completed_focus = PHI_foreign_self_determination has_completed_focus = PHI_foreign_post_war_deals } }
 
 		cost = 50
 		cancel_if_not_visible = yes
@@ -456,8 +491,9 @@ PHI_invade_gea = { #
 		icon = ger_military_buildup #add a icon idk how to do that
 		allowed = { tag = PHI }
 		available = {
+		not = {has_war_with = GEA} 
 		}
-		visible = { country_exists = GEA NOT = { is_in_faction_with = GEA } OR = { has_completed_focus = PHI_foreign_apostate_orienta has_completed_focus = PHI_foreign_surfing_red_waves has_completed_focus = PHI_foreign_self_determination has_completed_focus = PHI_foreign_post_war_deals  } }
+		visible = { country_exists = GEA NOT = { is_ally_with = GEA } OR = { has_completed_focus = PHI_foreign_apostate_orienta has_completed_focus = PHI_foreign_surfing_red_waves has_completed_focus = PHI_foreign_self_determination has_completed_focus = PHI_foreign_post_war_deals  } }
 
 		cost = 50
 		fire_only_once = yes
@@ -483,6 +519,38 @@ PHI_invade_gea = { #
 
 	}
 
+
+PHI_invade_JAP = { #
+		icon = ger_military_buildup #add a icon idk how to do that
+		allowed = { tag = PHI }
+		available = {
+		not = {has_war_with = JAP} 
+		}
+		visible = { country_exists = JAP JAP = { is_subject = no } NOT = { is_ally_with = JAP } date > 1941.12.31 }
+
+		cost = 50
+		fire_only_once = yes
+		ai_will_do = {
+			base = 0
+		modifier = { or = { strength_ratio = {
+    		tag = JAP
+    			ratio > 1.2
+		}
+		JAP = { has_defensive_war = yes }
+ 		} add = 5 }
+			}
+		days_remove = 14
+		complete_effect = {
+		
+		}
+		remove_effect = {
+	create_wargoal = {
+    	type = annex_everything
+    	target = JAP
+	}
+		}
+
+	}
 
 
 }
