@@ -3487,7 +3487,7 @@ country_event = { #Direction of Economic Reconstruction
 	}
 }
 
-country_event = { #
+country_event = { #asking gea/ger for giving up their colony, only if post war with Japan and gea is puppet and has no war
 	id = rd_phil.69
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.69"}
 	title = rd_phil.69.title
@@ -3495,14 +3495,28 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes
 		name = rd_phil.69.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+		
+		}
+		PHI = { annex_country = {
+    target = GEA
+    transfer_troops = no
+	}
+	}
 		
 	}
+	option = { #no
+		name = rd_phil.69.b
+		ai_chance = { base = 100 
+		}
+		
+	}
+
 }
 
-country_event = { #
+country_event = { #for dutch and dei same thing
 	id = rd_phil.70
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.70"}
 	title = rd_phil.70.title
@@ -3513,11 +3527,23 @@ country_event = { #
 	option = { #
 		name = rd_phil.70.a
 		ai_chance = { base = 100 }
+		PHI = { annex_country = {
+    		target = DEI
+    		transfer_troops = no
+		}
+		}
+
 		
 	}
+	option = { #
+		name = rd_phil.70.b
+		ai_chance = { base = 100 }
+
+	}
+
 }
 
-country_event = { #
+country_event = { #first of the chain of 70,69 ask the player hey whos land do you want to contest? dei or gea or both
 	id = rd_phil.71
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.71"}
 	title = rd_phil.71.title
@@ -3525,11 +3551,52 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #both
 		name = rd_phil.71.a
+		trigger = { GEA = { exists = yes is_subject_of = GER has_war = no }  DEI = { exists = yes is_subject_of = HOL has_war = no } }
 		ai_chance = { base = 100 }
+		    add_stability = -0.2
+		if = { limit = { GEA = { is_ai = no } } GEA = { country_event = { id = rd_phil.69 days = 5 } } }
+		else = { GER = {country_event = { id = rd_phil.69 days = 5 }  } }
+		}
+		if = { limit = { DEI = { is_ai = no } } DEI = { country_event = { id = rd_phil.70 days = 5 } } }
+		else = { HOL = {country_event = { id = rd_phil.70 days = 5 }  } }
+		}
+
 		
 	}
+	option = { #dei only
+		name = rd_phil.71.b
+		trigger = { DEI = { exists = yes is_subject_of = HOL has_war = no } }
+		ai_chance = { base = 100 }
+		    add_stability = -0.1
+
+		if = { limit = { DEI = { is_ai = no } } DEI = { country_event = { id = rd_phil.70 days = 5 } } }
+		else = { HOL = {country_event = { id = rd_phil.70 days = 5 }  } }
+		}
+
+		
+	}
+	option = { #gea only
+		name = rd_phil.71.c
+		trigger = { GEA = { exists = yes is_subject_of = GER has_war = no }  }
+		ai_chance = { base = 100 }
+		    add_stability = -0.1
+
+		if = { limit = { GEA = { is_ai = no } } GEA = { country_event = { id = rd_phil.69 days = 5 } } }
+		else = { GER = {country_event = { id = rd_phil.69 days = 5 }  } }
+		}
+
+		
+	}
+	option = { #noone
+		name = rd_phil.71.d
+		ai_chance = { base = 100 }
+		    add_stability = 0.05
+		add_cic = 1500
+
+	}
+
 }
 
 country_event = { #

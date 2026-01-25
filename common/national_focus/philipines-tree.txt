@@ -6794,12 +6794,17 @@ has_country_leader = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = PHI_foreign_american_bases focus = PHI_foreign_spain_fact focus = PHI_foreign_entente_fact focus = PHI_foreign_germany_fact } 
-		available = { is_subject = no JAP = { or = { exists = no is_subject = yes } } }
+		available = { is_subject = no has_war = no JAP = { or = { exists = no is_subject = yes } } }
 		completion_reward = {
 		unlock_decision_tooltip = PHI_end_dei #give something unique for the focus other than these
 		unlock_decision_tooltip = PHI_invade_gea
-		#if gea exists is ally or neutral subject of Germany send event to Germany or gea if gea is player
-		#same idea for dei
+		
+
+		custom_effect_tooltip = PHI_post_wardeal_tt
+		hidden_effect = {
+		country_event = { id = rd_phil.71 days = 10 }
+
+		}
 		}
 	}
 	#pan Malaya dream
