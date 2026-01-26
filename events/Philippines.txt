@@ -3497,13 +3497,29 @@ country_event = { #asking gea/ger for giving up their colony, only if post war w
 	is_triggered_only = yes
 	option = { #yes
 		name = rd_phil.69.a
-		ai_chance = { base = 100 
+		ai_chance = { base = 20 
+		modifier = { 
+    		GER = { has_stability > 0.5 }
+		add = 20 }
+		modifier = { 
+    		GER = { has_war_support < 0.5 }
+		add = 20 }
+		modifier = { GER = { has_opinion = {
+    		target = PHI
+    		value > 50
+		} } factor = 2 }
+		modifier = { GER = { has_opinion = {
+    		target = PHI
+    		value > 80
+		} } factor = 5 }
+		modifier = { is_ally_of = PHI factor = 10 }
+
 		
 		}
 		PHI = { annex_country = {
-    target = GEA
-    transfer_troops = no
-	}
+    		target = GEA
+    		transfer_troops = no
+		}
 	}
 		
 	}
@@ -3511,6 +3527,8 @@ country_event = { #asking gea/ger for giving up their colony, only if post war w
 		name = rd_phil.69.b
 		ai_chance = { base = 100 
 		}
+		GEA = { add_stability = -0.1 }
+
 		
 	}
 
@@ -3526,7 +3544,25 @@ country_event = { #for dutch and dei same thing
 	is_triggered_only = yes
 	option = { #
 		name = rd_phil.70.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 20 
+		modifier = { 
+    		HOL = { has_stability > 0.5 }
+		add = 20 }
+		modifier = { 
+    		HOL = { has_war_support < 0.5 }
+		add = 20 }
+		modifier = { HOL = { has_opinion = {
+    		target = PHI
+    		value > 50
+		} } factor = 2 }
+		modifier = { HOL = { has_opinion = {
+    		target = PHI
+    		value > 80
+		} } factor = 5 }
+		modifier = { is_ally_of = PHI factor = 10 }
+
+		}
+
 		PHI = { annex_country = {
     		target = DEI
     		transfer_troops = no
@@ -3538,6 +3574,7 @@ country_event = { #for dutch and dei same thing
 	option = { #
 		name = rd_phil.70.b
 		ai_chance = { base = 100 }
+		DEI = { add_stability = -0.1 }
 
 	}
 
@@ -3554,7 +3591,7 @@ country_event = { #first of the chain of 70,69 ask the player hey whos land do y
 	option = { #both
 		name = rd_phil.71.a
 		trigger = { GEA = { exists = yes is_subject_of = GER has_war = no }  DEI = { exists = yes is_subject_of = HOL has_war = no } }
-		ai_chance = { base = 100 }
+		ai_chance = { base = 25 }
 		    add_stability = -0.2
 		if = { limit = { GEA = { is_ai = no } } GEA = { country_event = { id = rd_phil.69 days = 5 } } }
 		else = { GER = {country_event = { id = rd_phil.69 days = 5 }  } }
@@ -3568,7 +3605,7 @@ country_event = { #first of the chain of 70,69 ask the player hey whos land do y
 	option = { #dei only
 		name = rd_phil.71.b
 		trigger = { DEI = { exists = yes is_subject_of = HOL has_war = no } }
-		ai_chance = { base = 100 }
+		ai_chance = { base = 50 }
 		    add_stability = -0.1
 
 		if = { limit = { DEI = { is_ai = no } } DEI = { country_event = { id = rd_phil.70 days = 5 } } }
@@ -3580,7 +3617,7 @@ country_event = { #first of the chain of 70,69 ask the player hey whos land do y
 	option = { #gea only
 		name = rd_phil.71.c
 		trigger = { GEA = { exists = yes is_subject_of = GER has_war = no }  }
-		ai_chance = { base = 100 }
+		ai_chance = { base = 50 }
 		    add_stability = -0.1
 
 		if = { limit = { GEA = { is_ai = no } } GEA = { country_event = { id = rd_phil.69 days = 5 } } }
