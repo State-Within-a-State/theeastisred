@@ -1141,3 +1141,53 @@ PHI_land_reform_mission = {
 		}
 	}
 }
+
+PHI_supoort_revolution_decision_category = {
+	PHI_support_revolution = { #
+		icon = ger_military_buildup #add a icon idk how to do that
+		allowed = { tag = PHI }
+		target_root_trigger = {
+			has_completed_focus = PHI_foreign_south_revolutionaries
+		}
+		targets = { INS VIN LAO CAM INC SIA SIR THM BRM MLY BOR KAC SHA SAR PNG }
+		target_trigger = {
+			FROM = {
+				has_socialist_government = yes
+			}
+		}
+		#visible = { has_completed_focus = PHI_foreign_south_revolutionaries  }
+
+		cost = 25
+		fire_only_once = no
+		days_re_enable = 50
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 14
+		complete_effect = {
+			FROM = {
+				add_timed_idea = {
+					idea = .PHI_fp_support_revolution_international
+					days = 90
+				}
+			}
+		}
+		remove_effect = {
+			FROM = {
+				add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = PHI
+				}
+			}
+			PHI = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = -1000
+					producer = PHI
+				}
+			}
+		}
+
+	}
+}

@@ -6410,7 +6410,9 @@ has_country_leader = {
 		mutually_exclusive = { focus = PHI_foreign_amerikkka focus = PHI_foreign_japan focus = PHI_foreign_socialism_fact focus = PHI_foreign_western_powers } 
 		available = { is_subject = no has_country_flag = PHI_ourselfs_neutral }
 		completion_reward = {
-
+			add_ideas = {
+				PHI_fp_neutrality
+			}
 		}
 	}
 
@@ -6428,7 +6430,9 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_own } 
 		available = { is_subject = no }
 		completion_reward = {
-
+			add_ideas = {
+				PHI_fp_support_asia_struggles
+			}
 		}
 	}
 	#octopus chokehold Japan? idk what this means
@@ -6445,7 +6449,11 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_own } 
 		available = { is_subject = no }
 		completion_reward = {
-
+			send_embargo = JAP
+			create_wargoal = {
+				type = puppet_wargoal_focus
+				target = JAP
+			}
 		}
 	}
 	#national self determination 
@@ -6482,7 +6490,10 @@ has_country_leader = {
 		mutually_exclusive = { focus = PHI_foreign_amerikkka focus = PHI_foreign_japan focus = PHI_foreign_own focus = PHI_foreign_western_powers } 
 		available = { is_subject = no OR = { AND = { is_in_faction_with = BHC BHC = { is_faction_leader = yes } } AND = { is_in_faction_with = INT INT = { is_faction_leader = yes } } } }
 		completion_reward = {
-
+			add_ideas = {
+				PHI_fp_support_international
+			}
+			
 		}
 	}
 
@@ -6500,7 +6511,31 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_socialism_fact } 
 		available = { is_subject = no }
 		completion_reward = {
-
+			add_opinion_modifier = {
+				target = GER
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = RUS
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = USA
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = CAN
+				modifier = faction_traitor
+			}
+			add_opinion_modifier = {
+				target = JAP
+				modifier = faction_traitor
+			}
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.1
+			}
+			add_political_power = 50
 		}
 	}
 	#support south seas revolutionaries
@@ -6517,7 +6552,7 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_socialism_fact } 
 		available = { is_subject = no }
 		completion_reward = {
-
+			unlock_decision_category_tooltip = PHI_supoort_revolution_decision_category
 		}
 	}
 	#surfing red waves 
