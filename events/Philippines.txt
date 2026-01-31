@@ -3636,7 +3636,7 @@ country_event = { #first of the chain of 70,69 ask the player hey whos land do y
 
 }
 
-country_event = { #
+country_event = { #Stronger Friendship With Pan-Asian Allies
 	id = rd_phil.72
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.72"}
 	title = rd_phil.72.title
@@ -3647,11 +3647,20 @@ country_event = { #
 	option = { #
 		name = rd_phil.72.a
 		ai_chance = { base = 100 }
-		
+		create_corps_commander = {
+			name = "Homma Masaharu "
+			portrait_path = "gfx/leaders/JAP/Portrait_JAP_Masaharu_Homma.png"
+			traits = { media_personality trait_cautious }
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 1
+			logistics_skill = 2
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Philippines Requests Islands
 	id = rd_phil.73
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.73"}
 	title = rd_phil.73.title
@@ -3662,11 +3671,26 @@ country_event = { #
 	option = { #
 		name = rd_phil.73.a
 		ai_chance = { base = 100 }
-		
+		PHI = {
+			country_event = {
+				id = rd_phil.74
+				days = 7
+			}
+		}
+	}
+	option = { #
+		name = rd_phil.73.b
+		ai_chance = { base = 100 }
+		PHI = {
+			country_event = {
+				id = rd_phil.75
+				days = 7
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #USA Said No
 	id = rd_phil.74
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.74"}
 	title = rd_phil.74.title
@@ -3677,11 +3701,11 @@ country_event = { #
 	option = { #
 		name = rd_phil.74.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = -20
 	}
 }
 
-country_event = { #
+country_event = { #They said yes
 	id = rd_phil.75
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.75"}
 	title = rd_phil.75.title
@@ -3692,7 +3716,16 @@ country_event = { #
 	option = { #
 		name = rd_phil.75.a
 		ai_chance = { base = 100 }
-		
+		add_state_core = 638
+		add_state_core = 642
+		add_state_core = 727
+		add_state_core = 726
+		PHI = {
+		set_state_owner = 638
+		set_state_owner = 642
+		set_state_owner = 727
+		set_state_owner = 726
+		}
 	}
 }
 

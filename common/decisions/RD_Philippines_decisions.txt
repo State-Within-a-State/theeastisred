@@ -551,7 +551,47 @@ PHI_invade_JAP = { #
 		}
 
 	}
+	
+	
+	PHI_Chinese_Pirates = { #
+		icon = ger_military_buildup #add a icon idk how to do that
+		allowed = { tag = PHI }
+		target_root_trigger = {
+			has_completed_focus = PHI_foreign_chinese_pirates
+		}
+		targets = { TAI GXC HNN LEP ANQ SQI LEC YUN SZC QIE CHI SHX FNG MAN XSM SIK ETS TAN TIB MON }
+		target_trigger = {
+			FROM = {
+				OR = {
+					exists = yes
+					NOT = {
+						is_ally_with = PHI
+					}
+					NOT = {
+						is_subject_of = PHI
+					}
+				}
+			}
+		}
+		#visible = { has_completed_focus = PHI_foreign_south_revolutionaries  }
 
+		cost = 25
+		fire_only_once = yes
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 20
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			create_wargoal = {
+				type = annex_everything
+				target = FROM
+			}
+		}
+
+	}
 
 }
 
