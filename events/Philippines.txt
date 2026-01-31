@@ -3668,9 +3668,28 @@ country_event = { #Philippines Requests Islands
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes
 		name = rd_phil.73.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 		
+
+		modifier = { 
+    		USA = { has_stability < 0.5 }
+		add = 20 }
+		modifier = { 
+    		USA = { has_war_support < 0.5 }
+		add = 20 }
+		modifier = { USA = { has_opinion = {
+    		target = PHI
+    		value > 50
+		} } add = 20 }
+		modifier = { USA = { has_opinion = {
+    		target = PHI
+    		value > 80
+		} } add = 20 }
+		modifier = { has_war = yes factor = 1.5 }
+
+		}
+
 		PHI = {
 			country_event = {
 				id = rd_phil.74
@@ -3678,7 +3697,7 @@ country_event = { #Philippines Requests Islands
 			}
 		}
 	}
-	option = { #
+	option = { #no lol
 		name = rd_phil.73.b
 		ai_chance = { base = 100 }
 		PHI = {
@@ -3716,16 +3735,11 @@ country_event = { #They said yes
 	option = { #
 		name = rd_phil.75.a
 		ai_chance = { base = 100 }
-		add_state_core = 638
-		add_state_core = 642
-		add_state_core = 727
-		add_state_core = 726
-		PHI = {
-		set_state_owner = 638
-		set_state_owner = 642
-		set_state_owner = 727
-		set_state_owner = 726
-		}
+		if = {	limit = { USA = { owns_state = 638 } }   add_state_core = 638 set_state_owner = 638 }
+		if = {	limit = { USA = { owns_state = 642 } }   add_state_core = 638 set_state_owner = 642 }
+		if = {	limit = { USA = { owns_state = 727 } }   add_state_core = 638 set_state_owner = 727 }
+		if = {	limit = { USA = { owns_state = 726 } }   add_state_core = 638 set_state_owner = 726 }
+
 	}
 }
 
