@@ -6470,6 +6470,7 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_octopus_chokehold } prerequisite = { focus = PHI_foreign_aid_to_asia } 
 		available = { is_subject = no }
 		completion_reward = {
+		add_ideas = PHI_neutrality_idea_focus
 		unlock_decision_tooltip = PHI_end_dei #give something unique for the focus other than these
 		unlock_decision_tooltip = PHI_invade_gea
 		
@@ -6512,25 +6513,23 @@ has_country_leader = {
 		available = { is_subject = no }
 		completion_reward = {
 			add_opinion_modifier = {
-				target = GER
-				modifier = faction_traitor
+				target = GEA
+				modifier = KR_hostile
 			}
 			add_opinion_modifier = {
-				target = RUS
-				modifier = faction_traitor
+				target = DEI
+				modifier = KR_hostile
 			}
-			add_opinion_modifier = {
-				target = USA
-				modifier = faction_traitor
+			reverse_add_opinion_modifier = {
+				target = GEA
+				modifier = KR_hostile
 			}
-			add_opinion_modifier = {
-				target = CAN
-				modifier = faction_traitor
+			reverse_add_opinion_modifier  = {
+				target = DEI
+				modifier = KR_hostile
 			}
-			add_opinion_modifier = {
-				target = JAP
-				modifier = faction_traitor
-			}
+
+			add_manpower = 7500
 			add_popularity = {
 				ideology = ROOT
 				popularity = 0.1
@@ -6569,6 +6568,39 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_south_revolutionaries } prerequisite = { focus = PHI_foreign_against_colonialization } 
 		available = { is_subject = no }
 		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 1
+				uses = 1
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = BHC_red_marines
+				bonus = 1
+				uses = 1
+				category = marine_tech
+			}
+			every_owned_state = {
+				limit = { is_in_home_area = yes }
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
+			}
+
+			add_tech_bonus = {
+				name = BHC_submarine_focus
+				bonus = 1
+				uses = 1
+				category = ss_tech
+				category = cat_torpedoes
+			}
+
 		unlock_decision_tooltip = PHI_end_dei #give something unique for the focus other than these
 		unlock_decision_tooltip = PHI_invade_gea
 
@@ -6648,6 +6680,16 @@ has_country_leader = {
 		prerequisite = { focus = PHI_foreign_economic_bondage } prerequisite = { focus = PHI_foreign_stronger_friends }
 		available = { is_subject = no }
 		completion_reward = {
+			random_owned_controlled_state = {
+				increase_state_category_by_one_level = yes
+			}		
+			random_owned_controlled_state = {
+				increase_state_category_by_one_level = yes
+			}		
+			random_owned_controlled_state = {
+				increase_state_category_by_one_level = yes
+			}		
+
 		unlock_decision_tooltip = PHI_end_dei #give something unique for the focus other than these
 		unlock_decision_tooltip = PHI_invade_gea
 
@@ -8342,8 +8384,9 @@ has_country_leader = {
 		}
 		prerequisite = { focus = PHI_economy_crisis_america } 
 		completion_reward = {
-		add_ideas = {
-			PHI_small_sacrifices
+		add_timed_idea = {
+			idea = PHI_small_sacrifices
+			days = 780
 		}
 		}
 	}
