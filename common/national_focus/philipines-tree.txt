@@ -6450,10 +6450,19 @@ has_country_leader = {
 		available = { is_subject = no }
 		completion_reward = {
 			send_embargo = JAP
-			create_wargoal = {
-				type = puppet_wargoal_focus
-				target = JAP
+			every_owned_state = {
+				limit = { is_in_home_area = yes }
+				add_building_construction = {
+					type = coastal_bunker
+					province = {
+						all_provinces = yes
+						limit_to_naval_base = yes
+					}
+					level = 2
+					instant_build = yes
+				}
 			}
+
 		}
 	}
 	#national self determination 
@@ -6579,18 +6588,6 @@ has_country_leader = {
 				bonus = 1
 				uses = 1
 				category = marine_tech
-			}
-			every_owned_state = {
-				limit = { is_in_home_area = yes }
-				add_building_construction = {
-					type = coastal_bunker
-					province = {
-						all_provinces = yes
-						limit_to_naval_base = yes
-					}
-					level = 2
-					instant_build = yes
-				}
 			}
 
 			add_tech_bonus = {
