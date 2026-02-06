@@ -308,7 +308,7 @@ country_event = { #enter faction?
 		name = annex_peace.5.a
 		ai_chance = { base = 100
 		modifier = { is_subject = yes factor = 0 }
-		modifier = { is_in_faction = yes is_faction_leader = no base = 0 }
+		modifier = { is_in_faction = yes is_faction_leader = no factor = 0 }
 		}
 			if = { 
 			limit = {
@@ -326,9 +326,15 @@ country_event = { #enter faction?
 		ai_chance = { base = 100 
 		modifier = { has_opinion = {
     		target = FROM
+    		value > 50
+		}
+		factor = 0.8
+		} 
+		modifier = { has_opinion = {
+    		target = FROM
     		value > 80
 		}
-		factor = 0.3
+		factor = 0.4
 		} 
 		}
 
