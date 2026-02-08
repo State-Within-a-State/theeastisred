@@ -1256,7 +1256,7 @@ country_event = { #coup against hilario
 		
 	}
 	option = { #coup wins
-		name = rd_phil.24.a
+		name = rd_phil.24.b
 		ai_chance = { base = 50 }
 		hidden_effect = {
 		set_politics = {
@@ -3764,31 +3764,72 @@ country_event = { #
 	title = rd_phil.77.title
 	desc = rd_phil.77.desc
 	fire_only_once = yes 
-	
-	is_triggered_only = yes
+
+	trigger = { 
+	tag = PHI
+	OR = {
+	AND = {
+	date > 1940.6.28
+	date < 1940.7.6
+	}
+	AND = {
+	date > 1941.6.28
+	date < 1941.7.6
+	}
+	AND = {
+	date > 1942.6.28
+	date < 1942.7.6
+	}
+	AND = {
+	date > 1943.6.28
+	date < 1943.7.6
+	}
+	AND = {
+	date > 1944.6.28
+	date < 1944.7.6
+	}
+	AND = {
+	date > 1945.6.28
+	date < 1945.7.8
+	}
+	AND = {
+	date > 1946.6.28
+	date < 1946.7.8
+	}
+	}
+	has_completed_focus = PHI_hilario_god
+	has_country_leader = { name = "Hilario Moncado" ruling_only = yes }
+	}
 	option = { #
 		name = rd_phil.77.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 5
+		hidden_effect = { country_event = { id = rd_phil.78 days = 365 } }
 	}
 }
 
 country_event = { #
 	id = rd_phil.78
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.78"}
-	title = rd_phil.78.title
-	desc = rd_phil.78.desc
-	fire_only_once = yes 
+	title = rd_phil.77.title
+	desc = rd_phil.77.desc
+	fire_only_once = no 
 	
 	is_triggered_only = yes
+	trigger = {
+	has_completed_focus = PHI_hilario_god
+	has_country_leader = { name = "Hilario Moncado" ruling_only = yes }
+	}
 	option = { #
-		name = rd_phil.78.a
+		name = rd_phil.77.a
 		ai_chance = { base = 100 }
+		add_political_power = 5
+		hidden_effect = { country_event = { id = rd_phil.78 days = 365 } }
 		
 	}
 }
 
-country_event = { #
+country_event = { #women plebiscite to vote 
 	id = rd_phil.79
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.79"}
 	title = rd_phil.79.title
@@ -3799,7 +3840,7 @@ country_event = { #
 	option = { #
 		name = rd_phil.79.a
 		ai_chance = { base = 100 }
-		
+		#add a event for results idk 30 days later
 	}
 }
 
