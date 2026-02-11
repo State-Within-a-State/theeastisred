@@ -3111,6 +3111,11 @@ country_event = { #flag picker for socialists, only triggers once because lol th
 		ai_chance = { base = 100 }
 		set_cosmetic_tag = PHI_com_flag_2
 	}
+	option = { #keep the same flag they already have they can do that makes sense even for the Philippine flag because they origjnally did just want that flag (it is kinda lame but fair)
+		name = rd_phil.59.d
+		ai_chance = { base = 100 }
+	}
+
 
 }
 
@@ -3843,7 +3848,7 @@ country_event = { #women plebiscite to vote
 	}
 }
 
-country_event = { #
+country_event = { #flag for Malaysia formable event fired by decision
 	id = rd_phil.80
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.80"}
 	title = rd_phil.80.title
@@ -3851,11 +3856,50 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #republic of Malaysia
+		trigger = { not = { or = { has_cosmetic_tag = PHI_com_flag_1 has_cosmetic_tag = PHI_com_flag_2 has_cosmetic_tag = PHI_com_flag_3 } } }
 		name = rd_phil.80.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 modifier = { or = { has_cosmetic_tag = PHI_moncado_usa_flag has_cosmetic_tag = PHI_rizal_new_flag has_cosmetic_tag = PHI_rizal_new_repub_flag has_cosmetic_tag = PHI_rizal_new_repub_red_flag } factor = 0 } }
+
+		set_cosmetic_tag = PHI_mal_flag
 		
 	}
+
+	option = { #fuck yeah new flag for malysia but for communists
+		name = rd_phil.80.a
+		trigger = { or = { has_cosmetic_tag = PHI_com_flag_1 has_cosmetic_tag = PHI_com_flag_2 has_cosmetic_tag = PHI_com_flag_3 } }
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = PHI_com_mal_flag_new
+		
+	}
+
+	option = { #keep our red banner but new name
+		name = rd_phil.80.a
+		trigger = { or = { has_cosmetic_tag = PHI_com_flag_1 has_cosmetic_tag = PHI_com_flag_2 has_cosmetic_tag = PHI_com_flag_3 } }
+		ai_chance = { base = 100 }
+		if = { limit = { has_cosmetic_tag = PHI_com_flag_1 }
+		set_cosmetic_tag = PHI_com_mal_flag_1 
+		}
+		else_if = { limit = { has_cosmetic_tag = PHI_com_flag_2 }
+		set_cosmetic_tag = PHI_com_mal_flag_2
+		}
+		else = { 
+		set_cosmetic_tag = PHI_com_mal_flag_3
+		}
+
+		
+	}
+
+
+	option = { #keep the same identity we have currently
+		name = rd_phil.80.a
+		ai_chance = { base = 0 		modifier = { or = { has_cosmetic_tag = PHI_moncado_usa_flag has_cosmetic_tag = PHI_rizal_new_flag has_cosmetic_tag = PHI_rizal_new_repub_flag has_cosmetic_tag = PHI_rizal_new_repub_red_flag } base = 100 } }
+		
+
+		#no new flag for you honestly player could want to just have Philippines coring all that for larp larp larp sahur reasons idc
+	}
+
+
 }
 
 country_event = { #
