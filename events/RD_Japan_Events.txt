@@ -407,7 +407,9 @@ country_event = { #Kodoha Coup Successful
 		JAP_Kiichiro_Hiranuma_for_pau
 		JAP_Gunzo_Kayaba_sec_npo
 		}
-		
+		load_focus_tree = japan-kodoha-tree
+		country_event = rd_japan_event.15
+		complete_national_focus = JAP_Kodoha_Radical_Concesus
 	}
 }
 
@@ -529,6 +531,7 @@ country_event = { #Who Shall Officers Side With
 		name = rd_japan_event.15.a
 		ai_chance = { base = 100 }
 		country_event = rd_japan_event.16
+		complete_national_focus = JAP_Kodoha_Military_Cliques_Gather
 	}
 	option = { #Meetup With the Pan-Asianist Coalition
 		name = rd_japan_event.15.b
@@ -592,11 +595,12 @@ country_event = { #The Military Cliques Gather
 		add_pataut_to_coalition = yes
 		remove_all_ministers = yes
 		add_ideas = {
-		JAP_Kingoro_Hashimoto_hog_npo
+		JAP_Kingoro_Hashimoto_hog_tot
 		JAP_Nishida_Sei_eco_npo
 		JAP_Kiichiro_Higuchi_for_npo
 		JAP_Renya_Mutaguchi_sec_npo
 		}
+		complete_national_focus = JAP_Kodoha_Hashimoto_Leadership_From_Youth_League
 	}
 	option = { #
 		name = rd_japan_event.16.c
@@ -1916,7 +1920,7 @@ country_event = { #
 			}
 		}
 		complete_national_focus = JAP_Shakai_Taishuto_empire_fire
-		country_event = rd_japan_event.42
+		country_event = rd_japan_event.44
 	}
 	option = { #Peaceful Against Moderates
 		name = rd_japan_event.38.b
@@ -2369,6 +2373,12 @@ country_event = { #Consolidation of the National Socialist Factions
 	title = rd_japan_event.44.title
 	desc = rd_japan_event.44.desc
 	#picture = 
+	immediate = {
+		hidden_effect = {
+			load_focus_tree = japan-national-socialists-tree
+			complete_national_focus = JAP_Natsoc_workers_military_revolution
+		}
+	}
 	
 	is_triggered_only = yes
 	option = { #Nakano
@@ -2377,7 +2387,7 @@ country_event = { #Consolidation of the National Socialist Factions
 		set_politics = {
 			ruling_party = paternal_autocrat
 		}
-		add_tot_to_coalition = yes
+		
 		add_natpop_to_coalition = yes
 		set_country_leader_ideology = pataut_right_syndicalism_subtype
 		remove_all_ministers = yes
@@ -2387,6 +2397,18 @@ country_event = { #Consolidation of the National Socialist Factions
 		JAP_Yasukuni_Watanabe_for_tot
 		JAP_Takeo_Kimura_sec_npo
 		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_tokohai_long
+			name = JAP_party_tokohai 
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_tokohai_long
+			name = JAP_party_tokohai 
+		}
+		
+		complete_national_focus = JAP_Natsoc_nakano_rise
 		
 	}
 	option = { #Aso
@@ -2395,7 +2417,14 @@ country_event = { #Consolidation of the National Socialist Factions
 		set_politics = {
 			ruling_party = totalist
 		}
-		
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Aso_Hisashi_hog_tot
+		JAP_Asanuma_Inejiro_eco_tot
+		JAP_Kinjiro_Ishikawa_for_tot
+		JAP_Suehiro_Nishio_sec_sde
+		}
+		complete_national_focus = JAP_Natsoc_aso_leaderhsip
 		
 	}
 	
@@ -2415,6 +2444,22 @@ country_event = { #Consolidation of the National Socialist Factions
 		JAP_Kanichiro_Kamei_for_tot
 		JAP_Tetsuzan_Nagata_sec_pau
 		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_paternal_autocrat_party_long
+			name = JAP_paternal_autocrat_party 
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_paternal_autocrat_party_long
+			name = JAP_paternal_autocrat_party 
+		}
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_paternal_autocrat_party_long
+			name = JAP_paternal_autocrat_party 
+		}
+		complete_national_focus = JAP_Natsoc_ikedas_rise
 		
 	}
 }
@@ -3887,7 +3932,7 @@ country_event = { #Freedom For the New Society
 	}
 }
 
-country_event = { #
+country_event = { #A Deal With Aso
 	id = rd_japan_event.84
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.84"}
 	title = rd_japan_event.84.title
@@ -3898,11 +3943,20 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.84.a
 		ai_chance = { base = 100 }
+		add_tot_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		add_socdem_to_coalition = yes
+		add_political_power = 50
+		set_party_name = {
+			ideology = totalist
+			long_name = JAP_party_tokohai_long
+			name = JAP_party_tokohai 
+		}
 		
 	}
 }
 
-country_event = { #
+country_event = { #Legacy of he Visit to Europe
 	id = rd_japan_event.85
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.85"}
 	title = rd_japan_event.85.title
@@ -3913,11 +3967,38 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.85.a
 		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.25
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Yasukuni_Watanabe_for_tot
+			JAP_Dai_Oishi_eco_tot
+			JAP_Akita_Kiyoshi_sec_ade
+		}
+		set_country_leader_ideology = natsynd_subtype
+	}
+	
+	option = { #
+		name = rd_japan_event.85.b
+		ai_chance = { base = 100 }
 		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Nakano_Seigo_hog_npo
+			JAP_Kazuma_Shindo_for_npo
+			JAP_Matashiro_Nakamura_eco_npo
+			JAP_Torao_Miura_sec_npo
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Totalism In Japan
 	id = rd_japan_event.86
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.86"}
 	title = rd_japan_event.86.title
@@ -3928,11 +4009,14 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.86.a
 		ai_chance = { base = 100 }
-		
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Empire's Heart Must Beat
 	id = rd_japan_event.87
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.87"}
 	title = rd_japan_event.87.title
@@ -3940,14 +4024,50 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We shall Continue the National Socialist Course
 		name = rd_japan_event.87.a
 		ai_chance = { base = 100 }
-		
+		set_cosmetic_tag = JAP_AKAMATSU
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Katsumaro_Akamatsu_hog_tot
+		JAP_Shiro_Koike_eco_tot
+		JAP_Shunhide_Suga_for_tot
+		JAP_Genkuro_Eto_sec_tot
+		}
+		set_country_flag = JAP_national_socialist_course
+	}
+	option = { #The Peasants Shall Lead the Nation
+		name = rd_japan_event.87.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_HIRANO
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Hirano_Rikizo_hog_tot
+		JAP_Minoru_Mizuno_eco_tot
+		JAP_Tadashi_Kodaira_for_tot
+		JAP_Azuma_Takashi_sec_tot
+		}
+		set_country_leader_ideology = tot_agrarian_socialism_subtype
+		set_country_flag = JAP_peasant_natsoc
+	}
+	option = { #Long Live the Conservative Revolution
+		name = rd_japan_event.87.c
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_YAMANA
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Yoshikuru_Yamana_hog_tot
+		JAP_Shoichi_Miyake_eco_tot
+		JAP_Kanichiro_Kamei_for_tot
+		JAP_Kazuyuki_Kasuga_sec_tot
+		}
+		set_country_leader_ideology = sorelianism_subtype
+		set_country_flag = JAP_conservative_revolution
 	}
 }
 
-country_event = { #
+country_event = { #Continuing National Socialism
 	id = rd_japan_event.88
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.88"}
 	title = rd_japan_event.88.title
@@ -3958,11 +4078,31 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.88.a
 		ai_chance = { base = 100 }
-		
+		set_cosmetic_tag = JAP_AKAMATSU
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Katsumaro_Akamatsu_hog_tot
+		JAP_Shiro_Koike_eco_tot
+		JAP_Shunhide_Suga_for_tot
+		JAP_Genkuro_Eto_sec_tot
+		}
+	}
+	option = { #
+		name = rd_japan_event.88.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_ASANUMA
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_inejiro_asanuma_hog_rso
+		JAP_Kono_Mitsu_for_tot
+		JAP_Sugiyama_Motojiro_eco_tot
+		JAP_Miwa_Juso_sec_tot
+		}
+		set_country_leader_ideology = massimalismo_subtype
 	}
 }
 
-country_event = { #
+country_event = { #Speaking For the Peasants
 	id = rd_japan_event.89
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.89"}
 	title = rd_japan_event.89.title
@@ -3973,11 +4113,32 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.89.a
 		ai_chance = { base = 100 }
-		
+		set_cosmetic_tag = JAP_HIRANO
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Hirano_Rikizo_hog_tot
+		JAP_Minoru_Mizuno_eco_tot
+		JAP_Tadashi_Kodaira_for_tot
+		JAP_Azuma_Takashi_sec_tot
+		}
+		set_country_leader_ideology = tot_agrarian_socialism_subtype
+	}
+	option = { #
+		name = rd_japan_event.89.b
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Bin_Akao_hog_npo
+		JAP_Minoru_Mizuno_eco_tot
+		JAP_Tadashi_Kodaira_for_tot
+		JAP_Bin_Akao_sec_tot
+		}
+		set_country_leader_ideology = tot_agrarian_socialism_subtype
+		add_natpop_to_coalition = yes
 	}
 }
 
-country_event = { #
+country_event = { #The Conservative Revolution
 	id = rd_japan_event.90
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.90"}
 	title = rd_japan_event.90.title
@@ -3988,11 +4149,31 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.90.a
 		ai_chance = { base = 100 }
-		
+		set_cosmetic_tag = JAP_YAMANA
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Yoshikuru_Yamana_hog_tot
+		JAP_Shoichi_Miyake_eco_tot
+		JAP_Kanichiro_Kamei_for_tot
+		JAP_Kazuyuki_Kasuga_sec_tot
+		}
+		set_country_leader_ideology = sorelianism_subtype
+	}
+	option = { #
+		name = rd_japan_event.90.b
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Kawakami_Jotaro_hog_tot
+		JAP_Shoichi_Miyake_eco_tot
+		JAP_Kanichiro_Kamei_for_tot
+		JAP_Kazuyuki_Kasuga_sec_tot
+		}
+		set_country_leader_ideology = tot_left_nationalism_subtype
 	}
 }
 
-country_event = { #
+country_event = { #Legacy of the Army Pamphlet
 	id = rd_japan_event.91
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.91"}
 	title = rd_japan_event.91.title
@@ -4003,11 +4184,13 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.91.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		JAP_army_pamphlet
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Embracing The Military & Socialism
 	id = rd_japan_event.92
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.92"}
 	title = rd_japan_event.92.title
@@ -4015,10 +4198,24 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Keep Ikeda
 		name = rd_japan_event.92.a
 		ai_chance = { base = 100 }
 		
+	}
+	option = { #The Planning Board Takes Over
+		name = rd_japan_event.92.b
+		trigger = {
+			has_government = totalist
+		}
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Wada_Hiroo_hog_rso
+		JAP_Shoichi_Miyake_eco_tot
+		JAP_Kanichiro_Kamei_for_tot
+		JAP_Kazuyuki_Kasuga_sec_tot
+		}
 	}
 }
 

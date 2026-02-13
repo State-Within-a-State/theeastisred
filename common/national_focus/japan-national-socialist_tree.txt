@@ -1,0 +1,984 @@
+focus_tree = {
+	id = japan-national-socialists-tree
+	continuous_focus_position = { x = -40 y = 5000 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = JAP
+		}
+	}
+	shared_focus = JAPFOR_japansplaceintheworld
+	shared_focus = JAP_the_raising_of_the_sword
+	shared_focus = JAP_recovering_from_black_monday
+	
+	#1936 Elections
+	focus = {
+		id = JAP_Natsoc_workers_military_revolution
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		x = 7
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	
+	##Nakano Branch
+	focus = {
+		id = JAP_Natsoc_nakano_rise
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_workers_military_revolution
+		x = -10
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Natsoc_workers_military_revolution }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_revive_new_system_movement
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = -2
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_nakano_rise }
+		completion_reward = {
+			add_ideas = {
+				JAP_popular_support
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_absorb_shakai_taishuto
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = -4
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_revive_new_system_movement }
+		completion_reward = {
+			country_event = rd_japan_event.84
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_end_diet_system
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = -1
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_revive_new_system_movement }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_finish_off_diet
+				days = 120
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_realize_popular_government
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = -4
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_absorb_shakai_taishuto } prerequisite = { focus = JAP_Natsoc_end_diet_system }
+		completion_reward = {
+			add_ideas = {
+				JAP_popular_support_1
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_agarian_reforms
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = -1
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_absorb_shakai_taishuto } prerequisite = { focus = JAP_Natsoc_end_diet_system }
+		completion_reward = {
+			add_ideas = {
+				JAP_nation_agriculture_reserve
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_glory_upon_asia
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = -5
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_realize_popular_government }
+		completion_reward = {
+			add_war_support = 0.1
+			add_ideas = {
+			JAP_pan_asian_guidelines_2
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_visit_to_europe
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = -3
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_realize_popular_government }
+		completion_reward = {
+			add_popularity = {
+			ideology = totalist
+			popularity = 0.05
+			}
+			add_ideas = {
+			JAP_nakano_visit_europe
+			}
+			country_event = rd_japan_event.85
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_satsuma_legacy
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = 2
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_nakano_rise }
+		completion_reward = {
+			add_ideas = {
+				JAP_satsuma_nakano_1
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_eye_on_emperor
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = 2
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_satsuma_legacy }
+		completion_reward = {
+			add_ideas = {
+				JAP_eye_on_emperor
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Natsoc_crush_privy_council
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = 0
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_eye_on_emperor } prerequisite = { focus = JAP_Natsoc_agarian_reforms }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_crush_privy_council
+				days = 120
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Natsoc_Nakano_Above_all
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_nakano_rise
+		x = 0
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_crush_privy_council } prerequisite = { focus = JAP_Natsoc_visit_to_europe } prerequisite = { focus = JAP_Natsoc_glory_upon_asia }
+		completion_reward = {
+			country_event = japan_new_event.109
+		}
+	}
+	
+	###Hisashi Aso
+	
+	focus = {
+		id = JAP_Natsoc_aso_leaderhsip
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_workers_military_revolution
+		x = 0
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Natsoc_workers_military_revolution }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Natsoc_union_consolidation
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = -2
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_aso_leaderhsip }
+		completion_reward = {
+			add_political_power = 25
+			add_synd_to_coalition = yes
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_socialist_rebranding
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = 0
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_aso_leaderhsip }
+		completion_reward = {
+			add_ideas = {
+				JAP_socialist_rebranding
+			}
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_hand_technocrats
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = 2
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_aso_leaderhsip }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_totalist_influences
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = 1
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_hand_technocrats }
+		prerequisite = { focus = JAP_Natsoc_socialist_rebranding }
+		prerequisite = { focus = JAP_Natsoc_union_consolidation }
+		completion_reward = {
+			country_event = rd_japan_event.86
+			add_ideas = {
+			JAP_new_age_japanese_socialism
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_end_syndicalist_folly
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = -1
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_hand_technocrats }
+		prerequisite = { focus = JAP_Natsoc_socialist_rebranding }
+		prerequisite = { focus = JAP_Natsoc_union_consolidation }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_against_socialist_liberals
+				days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_encourage_social_progression
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = 0
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		
+		prerequisite = { focus = JAP_Natsoc_end_syndicalist_folly }
+		prerequisite = { focus = JAP_Natsoc_totalist_influences }
+		completion_reward = {
+			add_ideas = {
+				JAP_social_progress
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_heart_of_empire_stopped
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = 0
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			has_country_flag = JAP_Aso_Died
+		}
+		prerequisite = { focus = JAP_Natsoc_encourage_social_progression }
+		completion_reward = {
+			country_event = rd_japan_event.87
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_continue_national_socialism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = -2
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			has_country_flag = JAP_national_socialist_course
+		}
+		prerequisite = { focus = JAP_Natsoc_heart_of_empire_stopped }
+		completion_reward = {
+		add_ideas = {
+		JAP_Vanguard_proles
+		}
+		country_event = rd_japan_event.88
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_speak_for_peasants
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = 0
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			has_country_flag = JAP_peasant_natsoc
+		}
+		prerequisite = { focus = JAP_Natsoc_heart_of_empire_stopped }
+		completion_reward = {
+		add_ideas = {
+		JAP_peasant_corruption 
+		}
+		country_event = rd_japan_event.89
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_conservative_revolution
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_aso_leaderhsip
+		x = 2
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			has_country_flag = JAP_conservative_revolution
+		}
+		prerequisite = { focus = JAP_Natsoc_heart_of_empire_stopped }
+		completion_reward = {
+		add_ideas = {
+		JAP_love_owners
+		}
+		country_event = rd_japan_event.90
+		}
+	}
+	
+	###Ikeda
+	focus = {
+		id = JAP_Natsoc_ikedas_rise
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_workers_military_revolution
+		x = 9
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Natsoc_workers_military_revolution }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_army_pamphlet
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_ikedas_rise
+		x = 0
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_ikedas_rise }
+		completion_reward = {
+			country_event = rd_japan_event.91
+		}
+	}
+	
+	focus = {
+		id = JAP_Natsoc_remove_weeds
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_ikedas_rise
+		x = 0
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_army_pamphlet }
+		mutually_exclusive = { focus = JAP_Natsoc_continued_toseiha_support }
+		completion_reward = {
+		set_politics = {
+		ruling_party = totalist
+		}
+		add_natpop_to_coalition = yes
+		set_country_leader_ideology = tot_ikedaism_subtype
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.35
+		}
+		add_timed_idea = {
+		idea = JAP_weeding_out_toseiha
+		days = 90
+		}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_continued_toseiha_support
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_ikedas_rise
+		x = 2
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_army_pamphlet }
+		mutually_exclusive = { focus = JAP_Natsoc_continued_toseiha_support }
+		completion_reward = {
+			add_timed_idea = {
+			idea = JAP_weeding_out_planning_board
+			days = 90
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Natsoc_form_kikakuin
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_ikedas_rise
+		x = 0
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_remove_weeds focus = JAP_Natsoc_continued_toseiha_support }
+		completion_reward = {
+			add_ideas = {
+				JAP_planning_council
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_establish_tao_kenkyujo
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_ikedas_rise
+		x = 2
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_remove_weeds focus = JAP_Natsoc_continued_toseiha_support }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_end_radical_parasites
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_ikedas_rise
+		x = 1
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_form_kikakuin }
+		prerequisite = { focus = JAP_Natsoc_establish_tao_kenkyujo }
+		completion_reward = {
+		add_timed_idea = {
+			idea = JAP_weeding_out_radical_nationalists
+			days = 90
+		}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_promote_sacred_unity
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_ikedas_rise
+		x = 3
+		y = 4
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_form_kikakuin }
+		prerequisite = { focus = JAP_Natsoc_establish_tao_kenkyujo }
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 50
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.1
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_embrace_socialism_militarism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_ikedas_rise
+		x = 1
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_promote_sacred_unity }
+		prerequisite = { focus = JAP_Natsoc_end_radical_parasites }
+		completion_reward = {
+			swap_ideas = {
+			remove_idea = JAP_army_pamphlet
+			add_idea = JAP_army_pamphlet_1
+			}
+			country_event = rd_japan_event.92
+		}
+	}
+	
+	###Economy Parts###
+	focus = {
+		id = JAP_Natsoc_economic_revising
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_workers_military_revolution
+		x = -5
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			NOT = {
+				has_completed_focus = JAP_Natsoc_economic_restructuring
+			}
+		}
+		prerequisite = { focus = JAP_Natsoc_nakano_rise focus = JAP_Natsoc_aso_leaderhsip }
+		completion_reward = {
+			add_ideas = {
+				JAP_economic_revising
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_zaibatsu_monsters
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_revising
+		x = 0
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_economic_revising }
+		completion_reward = {
+		set_country_flag = JAP_smash_zaibatsu
+		hidden_effect = {
+			country_event = {
+			id = japan_new_event.142
+			days = 100
+			}
+		}
+		set_variable = {
+				var = zaibatsu_nationalization
+				value = 0
+				tooltip = zaibatsu_nationalization_tt
+			}
+		set_variable = {
+				var = sumitomo_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsui_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsubishi_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = yasuda_nationalization
+				value = 0
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_self_rule_coops
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_revising
+		x = -1
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_zaibatsu_monsters }
+		completion_reward = {
+		unlock_decision_tooltip = JAP_agriculture_reserve
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_fabian_influences
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_revising
+		x = 1
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_zaibatsu_monsters }
+		completion_reward = {
+			add_ideas = {
+				JAP_maximist_japan
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_national_planning_board
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_revising
+		x = 0
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		
+		}
+		prerequisite = { focus = JAP_Natsoc_fabian_influences }
+		prerequisite = { focus = JAP_Natsoc_self_rule_coops }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_economic_revising
+				add_idea = JAP_economic_revising_1
+			}
+		}
+	}
+	
+	
+	focus = {
+		id = JAP_Natsoc_economic_restructuring
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_workers_military_revolution
+		x = 5
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			NOT = {
+				has_completed_focus = JAP_Natsoc_economic_revising
+			}
+		}
+		prerequisite = { focus = JAP_Natsoc_ikedas_rise focus = JAP_Natsoc_aso_leaderhsip }
+		completion_reward = {
+			add_ideas = {
+				JAP_economic_restructuring
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Natsoc_agrarian_reforms
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_restructuring
+		x = -1
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			
+		}
+		prerequisite = { focus = JAP_Natsoc_economic_restructuring }
+		completion_reward = {
+		add_to_variable = {
+				var = JAP_land_reform_variable
+				value = 1
+			}
+		custom_effect_tooltip = JAP_land_reform_progress
+		add_ideas = {
+		JAP_farming_for_the_nation
+		}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_reform_bureaucrats
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_restructuring
+		x = 1
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			
+		}
+		prerequisite = { focus = JAP_Natsoc_economic_restructuring }
+		completion_reward = {
+			add_ideas = {
+				JAP_reform_bureaucracy_lessons
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Natsoc_rural_mechanization
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_restructuring
+		x = -1
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			
+		}
+		prerequisite = { focus = JAP_Natsoc_agrarian_reforms }
+		prerequisite = { focus = JAP_Natsoc_reform_bureaucrats }
+		completion_reward = {
+		add_ideas = {
+		JAP_peasant_wage_increase
+		}
+		add_to_variable = {
+				var = JAP_land_reform_variable
+				value = 1
+			}
+		custom_effect_tooltip = JAP_land_reform_progress
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_lesson_plannisme
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_restructuring
+		x = 1
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			
+		}
+		prerequisite = { focus = JAP_Natsoc_agrarian_reforms }
+		prerequisite = { focus = JAP_Natsoc_reform_bureaucrats }
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = JAP_economic_restructuring
+				add_idea = JAP_economic_restructuring_1
+			}
+		}
+	}
+	focus = {
+		id = JAP_Natsoc_strike_zaibatsu
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Natsoc_economic_restructuring
+		x = 0
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+			
+		}
+		prerequisite = { focus = JAP_Natsoc_rural_mechanization }
+		prerequisite = { focus = JAP_Natsoc_lesson_plannisme }
+		completion_reward = {
+		set_country_flag = JAP_smash_zaibatsu
+		hidden_effect = {
+			country_event = {
+			id = japan_new_event.142
+			days = 100
+			}
+		}
+		set_variable = {
+				var = zaibatsu_nationalization
+				value = 0
+				tooltip = zaibatsu_nationalization_tt
+			}
+		set_variable = {
+				var = sumitomo_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsui_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = mitsubishi_nationalization
+				value = 0
+			}
+		set_variable = {
+				var = yasuda_nationalization
+				value = 0
+			}
+		}
+	}
+	
+
+}
+
+
+	
+
+
+	
+
+
+
+	
+	
