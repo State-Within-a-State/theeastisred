@@ -440,10 +440,16 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		ideology = syndicalist
 		popularity = 0.025
 		}
+		hidden_effect = {
+		PHI_nationalist_generals = yes
+		PHI_leftist_generals = yes
+		}
 		clr_country_flag = rad_socs_arent_syndie
 		}
 		else = { 
 		hidden_effect = {
+		PHI_nationalist_generals = yes
+		PHI_leftist_generals = yes
 		add_popularity = {
 		ideology = social_democrat
 		popularity = 0.05
@@ -474,8 +480,6 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 		}
 		add_synd_to_coalition = yes
 		set_country_flag = soc_dems_are_socialists
-
-		
 		}
 		remove_all_ministers = yes
 		add_ideas = {
@@ -1271,6 +1275,14 @@ country_event = { #coup against hilario
     		name = PHI_skadal_remnants_party
 		}
 		country_event = { id = rd_phil.81 days = 10 }  #flag event
+		hidden_effect = {
+		every_unit_leader = {
+		set_nationality = NSW
+		}	
+		
+		PHI_nationalist_generals = yes
+		}
+		
 		# stuff like deleting genrals and giving new ones
 		remove_all_ministers = yes
 		add_ideas = {
@@ -1511,7 +1523,19 @@ country_event = { # fonocier election 2 swapper to radsoc
 
 country_event = { #the new leader of the the new republic Emilio
 	id = rd_phil.28
-	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.28"}
+	immediate = {
+
+	hidden_effect = { 
+		every_unit_leader = {
+		set_nationality = NSW
+		}	
+		
+		PHI_nationalist_generals = yes		
+
+		}
+
+		
+	log = "[GetDateText]: [Root.GetName]: event rd_phil.28"}
 	title = rd_phil.28.title
 	desc = rd_phil.28.desc
 	fire_only_once = yes 
@@ -2311,7 +2335,17 @@ country_event = { #resistance to the over taking Constabulary
 
 country_event = { #Jose santos quickly denounces military action and cruelty sides with the poor peasants who rose against politicans and beurocrats acting against their popularly elected government. Military action seen as illegitimate stands down gets defeated in rural places and all that. Now socialists victorious over old order. A congress is held with the masses now victorious
 	id = rd_phil.41
-	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.41"}
+	immediate = {
+		hidden_effect = {
+		every_unit_leader = {
+		set_nationality = NSW
+		}	
+		
+		PHI_leftist_generals = yes
+		}
+		
+
+		log = "[GetDateText]: [Root.GetName]: event rd_phil.41"}
 	title = rd_phil.41.title
 	desc = rd_phil.41.desc
 	fire_only_once = yes 
@@ -3662,10 +3696,10 @@ country_event = { #Stronger Friendship With Pan-Asian Allies
 		create_corps_commander = {
 			name = "Homma Masaharu "
 			portrait_path = "gfx/leaders/JAP/Portrait_JAP_Masaharu_Homma.png"
-			traits = { media_personality trait_cautious }
-			skill = 2
-			attack_skill = 2
-			defense_skill = 2
+			traits = { trait_cautious just_visiting }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
 			planning_skill = 1
 			logistics_skill = 2
 		}
