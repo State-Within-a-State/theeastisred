@@ -79,8 +79,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		has_completed_focus = JAP_Kodoha_Hashimoto_three_leaps
+		}
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_Leadership_From_Youth_League }
 		completion_reward = {
+		unlock_decision_tooltip = JAP_domestic_market_expansion
 		}
 	}
 	focus = {
@@ -95,6 +99,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_Leadership_From_Youth_League }
 		completion_reward = {
+		unlock_decision_category_tooltip = JAP_three_leaps_decision_category
+		country_event = rd_japan_event.93
 		}
 	}
 	
@@ -110,6 +116,25 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_three_leaps  } prerequisite = { focus = JAP_Kodoha_Hashimoto_Control_Domestic_Affairs }
 		completion_reward = {
+		unlock_decision_tooltip = JAP_banzai_charges
+		add_to_variable = {
+				var = JAP_military_leap
+				value = 5
+				tooltip = increase_military_leap_tt
+			}
+		add_war_support = 0.10
+			529 = {
+				increase_state_category_by_one_level = yes
+			}
+			532 = {
+				increase_state_category_by_one_level = yes
+			}
+			533 = {
+				increase_state_category_by_one_level = yes
+			}
+			1352 = {
+				increase_state_category_by_one_level = yes
+			}
 		}
 	}
 	focus = {
@@ -125,6 +150,25 @@ focus_tree = {
 		mutually_exclusive = { focus = JAP_Kodoha_Hashimoto_reach_out_to_aso }
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_western_degen_purge  } 
 		completion_reward = {
+		add_ideas = {
+		JAP_Clean_Gardens_Idea1
+		}
+		add_to_variable = {
+				var = JAP_military_leap
+				value = 5
+				tooltip = increase_military_leap_tt
+			}
+		add_to_variable = {
+				var = JAP_spiritual_leap
+				value = 3
+				tooltip = increase_spiritual_leap_tt
+			}
+		add_to_variable = {
+				var = JAP_economic_leap
+				value = -3
+				tooltip = decrease_economic_leap_tt
+			}
+		
 		}
 	}
 	focus = {
@@ -140,6 +184,15 @@ focus_tree = {
 		mutually_exclusive = { focus = JAP_Kodoha_Hashimoto_control_unions }
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_western_degen_purge  } 
 		completion_reward = {
+			add_ideas = {
+			JAP_Clean_Gardens_Idea2A
+			}
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 1
+				category = construction_tech
+			}
+			add_radsoc_to_coalition = yes
 		}
 	}
 	
@@ -155,6 +208,16 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_reach_out_to_aso focus = JAP_Kodoha_Hashimoto_control_unions } 
 		completion_reward = {
+			add_to_variable = {
+				var = JAP_spiritual_leap
+				value = 3
+				tooltip = increase_spiritual_leap_tt
+			}
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.15
+			}
+			add_political_power = 25
 		}
 	}
 	
@@ -171,6 +234,14 @@ focus_tree = {
 		mutually_exclusive = { focus = JAP_Kodoha_Hashimoto_Shumei_doctrine }
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_three_leaps  } prerequisite = { focus = JAP_Kodoha_Hashimoto_Control_Domestic_Affairs }
 		completion_reward = {
+			add_to_variable = {
+				var = JAP_economic_leap
+				value = 7
+				tooltip = increase_economic_leap_tt
+			}
+			add_ideas = {
+			JAP_kitanomics
+			}
 		}
 	}
 	focus = {
@@ -186,6 +257,14 @@ focus_tree = {
 		mutually_exclusive = { focus = JAP_Kodoha_Hashimoto_borrow_from_Kita }
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_three_leaps  } prerequisite = { focus = JAP_Kodoha_Hashimoto_Control_Domestic_Affairs }
 		completion_reward = {
+		add_to_variable = {
+				var = JAP_spiritual_leap
+				value = 5
+				tooltip = increase_spiritual_leap_tt
+			}
+		add_ideas = {
+		JAP_shumei_ism
+		}
 		}
 	}
 	
@@ -201,6 +280,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_Shumei_doctrine focus = JAP_Kodoha_Hashimoto_borrow_from_Kita } 
 		completion_reward = {
+		unlock_decision_tooltip = JAP_nationalist_propaganda
 		}
 	}
 	focus = {
@@ -215,6 +295,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_militaristic_social_justice } 
 		completion_reward = {
+		add_research_slot = 1
+		add_to_variable = {
+				var = JAP_spiritual_leap
+				value = 2
+				tooltip = increase_spiritual_leap_tt
+			}
 		}
 	}
 	focus = {
@@ -231,6 +317,7 @@ focus_tree = {
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_one_nation_one_party }
 		prerequisite = { focus = JAP_Kodoha_Kokutai_Question_Imperial_Authority }
 		completion_reward = {
+			country_event = rd_japan_event.94
 		}
 	}
 	
@@ -264,9 +351,18 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_maintaing_control }
 		completion_reward = {
-		
+		add_timed_idea = {
+		idea = JAP_against_socialist_liberals
+		days = 120
+		}
+		unlock_decision_tooltip = JAP_speech_against_syndicalism
 		}
 	}
 	focus = {
@@ -279,9 +375,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_bulwark_against_syndicalism }
 		completion_reward = {
-		
+			add_opinion_modifier = {
+				target = RUS
+				modifier = faction_traitor
+			}
+			add_ideas = {
+			JAP_against_russian_aggression
+			}
 		}
 	}
 	focus = {
@@ -294,9 +401,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_bulwark_against_syndicalism }
 		completion_reward = {
-		
+			add_ideas = {
+			JAP_spiritual_army
+			}
 		}
 	}
 	
@@ -310,9 +424,21 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_bulwark_against_syndicalism }
 		completion_reward = {
-		
+			add_ideas = {
+			JAP_State_Shinto_Idea1
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 7
+				tooltip = increase_zeal_leap_tt
+			}
 		}
 	}
 	focus = {
@@ -325,11 +451,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_fear_the_bear }
 		prerequisite = { focus = JAP_Kodoha_Araki_samurai_honour }
 		prerequisite = { focus = JAP_Kodoha_Araki_japaneseism_mission }
 		completion_reward = {
-		
+		add_research_slot = 1
 		}
 	}
 	focus = {
@@ -342,11 +473,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_fear_the_bear }
 		prerequisite = { focus = JAP_Kodoha_Araki_samurai_honour }
 		prerequisite = { focus = JAP_Kodoha_Araki_japaneseism_mission }
 		completion_reward = {
-		
+			unlock_decision_tooltip = JAP_hiraga_purge
 		}
 	}
 	focus = {
@@ -359,9 +495,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_hiraga_purge }
 		completion_reward = {
-		
+			add_political_power = 25
+			add_popularity = {
+			ideology = ROOT
+			popularity = 0.1
+			}
+			add_stability = 0.05
 		}
 	}
 	focus = {
@@ -374,9 +520,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_promotion_imperial_education }
 		completion_reward = {
-		
+			add_ideas = {
+				JAP_Kodoha_Idea1
+			}
 		}
 	}
 	focus = {
@@ -389,9 +542,16 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_promotion_imperial_education }
 		completion_reward = {
-		
+			add_ideas = {
+				JAP_bamboo_army
+			}
 		}
 	}
 	focus = {
@@ -404,12 +564,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_zeal_failled
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Araki_three_million_spears }
 		prerequisite = { focus = JAP_Kodoha_Araki_promotion_imperial_way }
 		prerequisite = { focus = JAP_Kodoha_Araki_National_polity }
 		prerequisite = { focus = JAP_Kodoha_Kokutai_Question_Imperial_Authority focus = JAP_Kodoha_Showa_Glorious_Yamato_Throne }
 		completion_reward = {
-		
+			add_ideas = {
+			JAP_peoples_showa_connections
+			}
 		}
 	}
 	
@@ -442,8 +609,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_royal_lineage }
 		completion_reward = {
+		add_political_power = 25
+		add_stability = 0.05
+		add_to_variable = {
+				var = imperial_legitimacy
+				value = 7
+				tooltip = increase_legitimacy_leap_tt
+			}
 		}
 	}
 	focus = {
@@ -456,8 +635,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_royal_lineage }
 		completion_reward = {
+			country_event = rd_japan_event.98
 		}
 	}
 	focus = {
@@ -470,9 +655,64 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Censor_Dissenters }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Direct_rule }
 		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_Exalt_the_Virtuous_Soldier"
+			division_template = {
+				name = "Imperial Guards"
+				division_names_group = JAP_INF_01
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					artillery_brigade = { x = 3 y = 0 }
+					artillery_brigade = { x = 3 y = 1 }
+				}
+				support = {
+					signal_company = { x = 0 y = 0 }
+					field_hospital = { x = 0 y = 1 }
+					logistics_company = { x = 0 y = 2 }
+					engineer = { x = 0 y = 3 }
+					anti_air = { x = 0 y = 4 }
+				}
+			}
+			282 = {
+				create_unit = {
+					division = "name = \"1st Guards Division\" division_template = \"Imperial Guards\" start_experience_factor = 1.0 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+				create_unit = {
+					division = "name = \"2nd Guards Division\" division_template = \"Imperial Guards\" start_experience_factor = 1.0 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+				create_unit = {
+					division = "name = \"3rd Guards Division\" division_template = \"Imperial Guards\" start_experience_factor = 1.0 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+			}
+			add_tech_bonus = {
+				ahead_reduction = 1
+				uses = 1
+				category = light_air
+			}
+			every_unit_leader = {
+				add_defense = 1
+			}
 		}
 	}
 	focus = {
@@ -485,9 +725,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Censor_Dissenters }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Direct_rule }
 		completion_reward = {
+			unlock_decision_tooltip = JAP_conduct_local_sport_programs
 		}
 	}
 	focus = {
@@ -500,10 +746,24 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		mutually_exclusive = { focus = JAP_Kodoha_Yasuhito_denounce_socialists_internally }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Young_Officers }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Sports_Prince }
 		completion_reward = {
+		add_ideas = {
+		JAP_kitanomics
+		}
+		add_to_variable = {
+				var = imperial_legitimacy
+				value = -10
+				tooltip = decrease_legitimacy_leap_tt
+			}
+		add_tot_to_coalition = yes
 		}
 	}
 	focus = {
@@ -516,10 +776,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		mutually_exclusive = { focus = JAP_Kodoha_Yasuhito_Kitas_words }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Young_Officers }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Sports_Prince }
 		completion_reward = {
+		unlock_decision_tooltip = JAP_hiraga_purge
+		unlock_decision_tooltip = JAP_speech_against_syndicalism
 		}
 	}
 	focus = {
@@ -532,8 +799,85 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_denounce_socialists_internally focus = JAP_Kodoha_Yasuhito_Kitas_words }
 		completion_reward = {
+			log = "[GetDateText]: [Root.GetName]: Focus JAP_Way_of_Death"
+			division_template = {
+				name = "Sadaoshidan"
+				division_names_group = JAP_INF_01
+				regiments = {
+					infantry = { x = 0 y = 0 }
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 0 y = 3 }
+					infantry = { x = 0 y = 4 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+					infantry = { x = 1 y = 3 }
+					infantry = { x = 1 y = 4 }
+					infantry = { x = 2 y = 0 }
+					infantry = { x = 2 y = 1 }
+					infantry = { x = 2 y = 2 }
+					infantry = { x = 2 y = 3 }
+					infantry = { x = 2 y = 4 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+					signal_company = { x = 0 y = 2 }
+				}
+			}
+			282 = {
+				create_unit = {
+					division = "name = \"1st Sadaoshidan\" division_template = \"Sadaoshidan\" start_experience_factor = 0.75 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+				create_unit = {
+					division = "name = \"2nd Sadaoshidan\" division_template = \"Sadaoshidan\" start_experience_factor = 0.75 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+				create_unit = {
+					division = "name = \"3rd Sadaoshidan\" division_template = \"Sadaoshidan\" start_experience_factor = 0.75 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+				create_unit = {
+					division = "name = \"4th Sadaoshidan\" division_template = \"Sadaoshidan\" start_experience_factor = 0.75 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+				create_unit = {
+					division = "name = \"5th Sadaoshidan\" division_template = \"Sadaoshidan\" start_experience_factor = 0.75 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+				create_unit = {
+					division = "name = \"6th Sadaoshidan\" division_template = \"Sadaoshidan\" start_experience_factor = 0.75 start_equipment_factor = 1.0"
+					prioritize_location = 1182
+					owner = JAP
+				}
+			}
+			add_tech_bonus = {
+				ahead_reduction = 1
+				uses = 1
+				category = artillery
+			}
+			every_unit_leader = {
+				add_attack = 1
+			}
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = 5
+				tooltip = increase_legitimacy_leap_tt
+			}
 		}
 	}
 	
@@ -547,9 +891,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Young_Officers }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_Sports_Prince }
 		completion_reward = {
+			add_ideas = {
+			JAP_the_military_bureau_reshuffle
+			}
 		}
 	}
 	focus = {
@@ -562,8 +914,14 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_military_affairs_bureau }
 		completion_reward = {
+		country_event = rd_japan_event.99
 		}
 	}
 	focus = {
@@ -576,8 +934,29 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_military_affairs_bureau }
 		completion_reward = {
+			add_war_support = 0.10
+				524 = {
+					add_extra_state_shared_building_slots = 1
+				}
+				525 = {
+					add_extra_state_shared_building_slots = 2
+				}
+				527 = {
+					add_extra_state_shared_building_slots = 2
+				}
+				1345 = {
+					add_extra_state_shared_building_slots = 1
+				}
+				537 = {
+					add_extra_state_shared_building_slots = 1
+				}
 		}
 	}
 	focus = {
@@ -590,11 +969,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_Yasuhito_Gone
+			}
+			OR = {
+				has_country_flag = JAP_yasuhito_legit
+				has_country_flag = JAP_hirohito_legit
+			}
+		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_end_seigunha }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_misaki_legacy }
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_punishment_divine }
 		prerequisite = { focus = JAP_Kodoha_Showa_Glorious_Yamato_Throne }
 		completion_reward = {
+			add_ideas = {
+			JAP_riding_sun_glory
+			}
 		}
 	}
 	###Kokutai Branch
@@ -615,7 +1006,27 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kodoha_Hashimoto_Leadership_From_Youth_League focus = JAP_Kodoha_Araki_maintaing_control  }
 		completion_reward = {
-		
+		#has_country_flag = JAP_imperial_legit_monarchy - use this for later reference
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 5
+				tooltip = increase_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = JAP_spiritual_leap
+				value = 5
+				tooltip = increase_spiritual_leap_tt
+			}
+		}
+		add_ideas = {
+			JAP_Imperial_Family_Idea1
+			}
 		}
 	}
 	focus = {
@@ -631,7 +1042,7 @@ focus_tree = {
 		
 		prerequisite = { focus = JAP_Kodoha_Kokutai_Revival }
 		completion_reward = {
-		
+			country_event = rd_japan_event.100
 		}
 	}
 	focus = {
@@ -647,7 +1058,33 @@ focus_tree = {
 		
 		prerequisite = { focus = JAP_Kodoha_Kokutai_End_Parliamentarians }
 		completion_reward = {
+		add_timed_idea = {
+		idea = JAP_crush_privy_council
+		days 60
+		}
 		
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = -3
+				tooltip = decrease_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = JAP_economic_leap
+				value = -4
+				tooltip = decrease_economic_leap_tt
+			}
+			add_to_variable = {
+				var = JAP_spiritual_leap
+				value = 2
+				tooltip = increase_spiritual_leap_tt
+			}
+		}
 		}
 	}
 	
@@ -664,7 +1101,15 @@ focus_tree = {
 		
 		prerequisite = { focus = JAP_Kodoha_Kokutai_End_Parliamentarians }
 		completion_reward = {
-		
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			unlock_decision_tooltip = JAP_conduct_military_execrise_araki
+		}
+		else = {
+			unlock_decision_tooltip = JAP_conduct_military_execrise_hashimoto
+		}
 		}
 	}
 	focus = {
@@ -681,7 +1126,7 @@ focus_tree = {
 		prerequisite = { focus = JAP_Kodoha_Kokutai_Secure_Army_political_position }
 		prerequisite = { focus = JAP_Kodoha_Kokutai_Reorg_Privy_Council }
 		completion_reward = {
-		
+		country_event = rd_japan_event.101
 		}
 	}
 	
@@ -703,7 +1148,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kodoha_Yasuhito_royal_lineage focus = JAP_Kodoha_Araki_maintaing_control  }
 		completion_reward = {
-		
+		country_event = rd_japan_event.102
+		add_ideas = {
+		JAP_Imperial_Family_Idea1
+		}
 		}
 	}
 	
@@ -720,7 +1168,27 @@ focus_tree = {
 		mutually_exclusive = {focus = JAP_Kodoha_Showa_true_acension }
 		prerequisite = { focus = JAP_Kodoha_Showa_Proclaim_Restoration }
 		completion_reward = {
-		
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = -7
+				tooltip = decrease_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = -5
+				tooltip = decrease_legitimacy_leap_tt
+			}
+			
+		}
+		add_ideas = {
+		JAP_gun_to_head
+		}
 		}
 	}
 	focus = {
@@ -736,7 +1204,28 @@ focus_tree = {
 		mutually_exclusive = {focus = JAP_Kodoha_Showa_Gun_to_head }
 		prerequisite = { focus = JAP_Kodoha_Showa_Proclaim_Restoration }
 		completion_reward = {
-		
+			swap_ideas = {
+				remove_idea = JAP_Imperial_Family_Idea1
+				add_idea = JAP_Imperial_Family_Idea2
+			}
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 4
+				tooltip = increase_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = 3
+				tooltip = increase_legitimacy_leap_tt
+			}
+			
+		}
 		}
 	}
 	focus = {
@@ -752,7 +1241,28 @@ focus_tree = {
 		mutually_exclusive = {focus = JAP_Kodoha_Showa_End_Privy_Council }
 		prerequisite = { focus = JAP_Kodoha_Showa_Gun_to_head focus = JAP_Kodoha_Showa_true_acension }
 		completion_reward = {
-		
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = -7
+				tooltip = decrease_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = -5
+				tooltip = decrease_legitimacy_leap_tt
+			}
+			
+		}
+		add_timed_idea = {
+		idea = JAP_work_privy_council
+		days = 120
+		}
 		}
 	}
 	focus = {
@@ -768,7 +1278,28 @@ focus_tree = {
 		mutually_exclusive = {focus = JAP_Kodoha_Showa_Loyalty_Stockup }
 		prerequisite = { focus = JAP_Kodoha_Showa_Gun_to_head focus = JAP_Kodoha_Showa_true_acension }
 		completion_reward = {
-		
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 4
+				tooltip = increase_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = 3
+				tooltip = increase_legitimacy_leap_tt
+			}
+			
+		}
+		add_timed_idea = {
+		idea = JAP_crush_privy_council
+		days = 120
+		}
 		}
 	}
 	focus = {
@@ -783,7 +1314,24 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Kodoha_Showa_End_Privy_Council focus = JAP_Kodoha_Showa_Loyalty_Stockup }
 		completion_reward = {
-		
+		if = {
+			limit = {
+				has_idea = JAP_Imperial_Family_Idea1
+			}
+			swap_ideas = {
+				remove_idea = JAP_Imperial_Family_Idea1
+				add_idea = JAP_Imperial_Family_Idea2
+			}
+		}
+		else = {
+			limit = {
+				has_idea = JAP_Imperial_Family_Idea2
+			}
+			swap_ideas = {
+				remove_idea = JAP_Imperial_Family_Idea2
+				add_idea = JAP_Imperial_Family_Idea3
+			}
+		}
 		}
 	}
 	
@@ -840,6 +1388,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Lotus_Flower }
 		completion_reward = {
+			add_ideas = {
+			JAP_sun_calling
+			}
+			
 		}
 	}
 	focus = {
@@ -854,6 +1406,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Yamato_Disciples }
 		completion_reward = {
+			add_timed_idea = {
+			idea = JAP_weeding_out_toseiha
+			days = 90
+			}
 		}
 	}
 	
@@ -870,6 +1426,10 @@ focus_tree = {
 		mutually_exclusive = { focus = JAP_Pan_Asianists_Nichirenism_support_Kita }
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_End_Impure }
 		completion_reward = {
+			add_timed_idea = {
+			idea = JAP_against_socialist_liberals
+			days = 90
+			}
 		}
 	}
 	focus = {
@@ -885,6 +1445,10 @@ focus_tree = {
 		mutually_exclusive = { focus = JAP_Pan_Asianists_Nichirenism_Fighting_Red_Disease }
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_End_Impure }
 		completion_reward = {
+			add_ideas = {
+			JAP_kitanomics
+			}
+			country_event = rd_japan_event.109
 		}
 	}
 	focus = {
@@ -899,6 +1463,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_support_Kita focus = JAP_Pan_Asianists_Nichirenism_Fighting_Red_Disease }
 		completion_reward = {
+		add_ideas = {
+		JAP_new_polity
+		}
 		}
 	}
 	focus = {
@@ -911,8 +1478,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+		
+		has_country_flag = JAP_liberate_nichiren_asia
+		}
+		bypass = {
+			has_country_flag = JAP_uniting_world
+		}
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Yamato_Disciples }
 		completion_reward = {
+		unlock_decision_tooltip = JAP_uniting_the_pan_buddhist_realm
+		add_ideas = JAP_save_world_buddha
 		}
 	}
 	
@@ -929,6 +1505,9 @@ focus_tree = {
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Priests_of_asia }
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Fund_East_Asia_League }
 		completion_reward = {
+			add_ideas = {
+			JAP_toarenmeiundo
+			}
 		}
 	}
 	
@@ -944,6 +1523,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Lotus_Flower }
 		completion_reward = {
+			add_ideas = {
+			JAP_hand_guiding_us_forwards
+			}
 		}
 	}
 	focus = {
@@ -958,6 +1540,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Supress_Desires }
 		completion_reward = {
+		add_ideas = {
+		JAP_Pan_Asianism_Idea2C
+		}
 		}
 	}
 	focus = {
@@ -973,6 +1558,43 @@ focus_tree = {
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Priests_of_asia }
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Fund_East_Asia_League }
 		completion_reward = {
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		add_war_support = 0.1
+		add_political_power = 25
+		if = {
+			limit = {
+				COR = {
+					exists = yes
+				}
+			}
+			add_opinion_modifier = {
+			target = COR
+			modifier = faction_traitor
+			}
+		}
+		if = {
+			limit = {
+				CSA = {
+					exists = yes
+				}
+			}
+			add_opinion_modifier = {
+			target = CSA
+			modifier = faction_traitor
+			}
+		}
+		else = {
+			add_opinion_modifier = {
+			target = USA
+			modifier = faction_traitor
+			}
+		}
+		add_ideas = {
+				JAP_ethnic_unity
+			}
 		}
 	}
 	
@@ -989,6 +1611,9 @@ focus_tree = {
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Anti_America }
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Handle_Officers }
 		completion_reward = {
+			add_ideas = {
+			JAP_save_world_buddha
+			}
 		}
 	}
 	focus = {
@@ -1004,6 +1629,16 @@ focus_tree = {
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Review_polity }
 		prerequisite = { focus = JAP_Pan_Asianists_Nichirenism_Jimmu_Legacy }
 		completion_reward = {
+			add_ideas = {
+				JAP_zen_imperalism
+			}
+			country_event = rd_japan_event.110
+			hidden_effect = {
+				country_event = {
+					id = rd_japan_event.111
+					days = 10
+				}
+			}
 		}
 	}
 	

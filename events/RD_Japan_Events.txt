@@ -537,6 +537,7 @@ country_event = { #Who Shall Officers Side With
 		name = rd_japan_event.15.b
 		ai_chance = { base = 100 }
 		country_event = rd_japan_event.17
+		complete_national_focus = JAP_Pan_Asianists_Taking_Course
 	}
 }
 
@@ -564,6 +565,13 @@ country_event = { #The Military Cliques Gather
 		set_politics = {
 			ruling_party = paternal_autocrat
 			elections_allowed = no
+		}
+		complete_national_focus = JAP_Kodoha_Araki_maintaing_control
+		set_country_flag = JAP_shogun_zeal_flag
+		set_variable = {
+			var = shogunate_zeal
+			value = 10
+			tooltip = set_zeal_meter_tt
 		}
 		add_natpop_to_coalition = yes
 		remove_all_ministers = yes
@@ -619,6 +627,13 @@ country_event = { #The Military Cliques Gather
 			ruling_party = national_populist
 			elections_allowed = no
 		}
+		complete_national_focus = JAP_Kodoha_Yasuhito_royal_lineage
+		set_variable = {
+			var = imperial_legitimacy
+			value = 10
+			tooltip = set_imperial_legitimacy_tt
+		}
+		set_country_flag = JAP_imperial_legit_monarchy
 		add_pataut_to_coalition = yes
 		remove_all_ministers = yes
 		add_ideas = {
@@ -658,6 +673,7 @@ country_event = { #
 		JAP_Kozaburo_Tachibana_for_npo
 		JAP_Tadashi_Onuma_sec_npo
 		}
+		complete_national_focus = JAP_Pan_Asianists_Nichirenism_Lotus_Flower
 	}
 	option = { #
 		name = rd_japan_event.17.b
@@ -718,35 +734,7 @@ country_event = { #
 		}
 	}
 	
-	option = { #
-		name = rd_japan_event.17.d
-		ai_chance = { base = 100 }
-		set_party_name = {
-			ideology = national_populist
-			long_name = JAP_party_futabakai_long
-			name = JAP_party_futabakai 
-		}
-		set_party_name = {
-			ideology = paternal_autocrat
-			long_name = JAP_party_futabakai_long
-			name = JAP_party_futabakai 
-		}
-		
-		set_politics = {
-			ruling_party = paternal_autocrat
-			elections_allowed = no
-		}
-		add_natpop_to_coalition = yes
-		set_country_leader_ideology = crime_syndicate_subtype
-		remove_all_ministers = yes
-		add_ideas = {
-		JAP_Yoshio_Kodama_hog_pau
-		JAP_Karoku_Tsuji_eco_pau
-		JAP_Tatsuo_Kawai_for_npo
-		JAP_Tsukui_Tatsuo_sec_npo
-		}
-		country_event = rd_japan_event.18
-	}
+	
 }
 
 country_event = { #Fixing the Political & Financial World
@@ -4219,7 +4207,7 @@ country_event = { #Embracing The Military & Socialism
 	}
 }
 
-country_event = { #
+country_event = { #Hashimoto's Declaration of the Three Leaps
 	id = rd_japan_event.93
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.93"}
 	title = rd_japan_event.93.title
@@ -4230,22 +4218,87 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.93.a
 		ai_chance = { base = 100 }
-		
+		custom_effect_tooltip = hashimoto_declare_three_leaps_tt
+		hidden_effect = {
+			set_country_flag = JAP_three_leaps_flag
+			set_variable = {
+					var = JAP_spiritual_leap
+					value = 2
+				}
+				set_variable = {
+					var = JAP_military_leap
+					value = 5
+				}
+				set_variable = {
+					var = JAP_economic_leap
+					value = 3
+				}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Shogunate of the Youth
 	id = rd_japan_event.94
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.94"}
 	title = rd_japan_event.94.title
 	desc = rd_japan_event.94.desc
+	immediate = {
+	hidden_effect = {
+	country_event = rd_japan_event.95
+	}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
 	option = { #
 		name = rd_japan_event.94.a
 		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Kingoro_Hashimoto_hog_tot
+		JAP_Nishida_Sei_eco_npo
+		JAP_Kiichiro_Higuchi_for_npo
+		JAP_Renya_Mutaguchi_sec_npo
+		}
+	}
+	option = { #
+		name = rd_japan_event.94.a
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Isamu_Cho_hog_pau
+		JAP_Nishida_Sei_eco_npo
+		JAP_Kiichiro_Higuchi_for_npo
+		JAP_Renya_Mutaguchi_sec_npo
+		}
+	}
+	option = { #We shall Side With Kita Socialism
+		name = rd_japan_event.94.a
+		ai_chance = { base = 100 }
+		trigger = {
+		NOT = {
+		has_government = totalist
+		}
+		has_completed_focus = JAP_Kodoha_Hashimoto_borrow_from_Kita
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = tot_showa_statism_subtype
+		}
+		set_politics = {
+			ruling_party = totalist
+			elections_allowed = no
+		}
 		
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kingoro_Hashimoto_hog_tot
+			JAP_Akamatsu_Katsumaro_for_tot
+			JAP_Atsutaro_Suyama_eco_tot
+			JAP_Kingoro_Hashimoto_sec_tot
+		}
 	}
 }
 
@@ -4260,11 +4313,59 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.95.a
 		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = JAP_puppet_asia
+		}
+	}
+	option = { #
+		name = rd_japan_event.95.a
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = JAP_unify_asia
+			}
+			every_state = {
+			add_core_of = JAP
+			JAP = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = PREV
+				}
+			
+			}
+			
+			}
+			
+			
+			set_cosmetic_tag = JAP_HASHIMOTO_WORLD
+			
+		}
 		
+		else_if = {
+			limit = {
+			has_country_flag = JAP_puppet_asia
+			}
+		every_country = {
+		JAP = {
+			create_wargoal = {
+					type = puppet_wargoal_focus
+					target = PREV
+				}
+			}
+		}
+		}
+	}
+	option = { #
+		name = rd_japan_event.95.a
+		ai_chance = { base = 100 }
+		trigger = {
+		has_country_flag = JAP_unify_asia
+		}
+		set_cosmetic_tag = JAP_HASHIMOTO_ASIA
 	}
 }
 
-country_event = { #
+country_event = { #Suspension of Professor Kawai Eijiro and Hijikata Shigeyoshi
 	id = rd_japan_event.96
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.96"}
 	title = rd_japan_event.96.title
@@ -4275,11 +4376,14 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.96.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+			id = rd_japan_event.97
+			days = 20
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Purging of the Academy
 	id = rd_japan_event.97
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.97"}
 	title = rd_japan_event.97.title
@@ -4287,14 +4391,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Attack the Innovation Facaulty
 		name = rd_japan_event.97.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = shogunate_zeal
+				value = 7
+				tooltip = increase_zeal_leap_tt
+				
+				add_timed_idea = {
+				idea = JAP_attack_technocrats
+				days = 60
+				}
+			}
+	}
+	option = { #Attack the Pure Theory Facaulty
+		name = rd_japan_event.97.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = shogunate_zeal
+				value = -7
+				tooltip = decrease_zeal_leap_tt
+			}
+		add_timed_idea = {
+		idea = JAP_attack_pure_theory
+		days = 60
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Dissenters
 	id = rd_japan_event.98
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.98"}
 	title = rd_japan_event.98.title
@@ -4302,14 +4428,31 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Purge the Toseiha
 		name = rd_japan_event.98.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+		idea = JAP_toseiha_purge
+		days = 90
+		}
+		add_to_variable = {
+				var = imperial_legitimacy
+				value = 7
+				tooltip = increase_legitimacy_leap_tt
+			}
+	}
+	option = { #
+		name = rd_japan_event.98.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = imperial_legitimacy
+				value = -7
+				tooltip = decrease_legitimacy_leap_tt
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Admirals
 	id = rd_japan_event.99
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.99"}
 	title = rd_japan_event.99.title
@@ -4320,11 +4463,28 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.99.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = imperial_legitimacy
+				value = -7
+				tooltip = decrease_legitimacy_leap_tt
+			}
+	}
+	option = { #We must deal with these admirals
+		name = rd_japan_event.99.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = imperial_legitimacy
+				value = 7
+				tooltip = increase_legitimacy_leap_tt
+			}
+		add_timed_idea = {
+		idea = JAP_naval_purge
+		days = 90
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Handling the Political Remnants
 	id = rd_japan_event.100
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.100"}
 	title = rd_japan_event.100.title
@@ -4332,14 +4492,58 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We shall Reshuffle the Government Around Them
 		name = rd_japan_event.100.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		JAP_Spiritual_Mobilization_Idea1
+		}
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 5
+				tooltip = increase_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = JAP_military_leap
+				value = 5
+				tooltip = increase_military_leap_tt
+			}
+		}
+	}
+	option = { #We must cut this red tape
+		name = rd_japan_event.100.b
+		ai_chance = { base = 100 }
+		add_timed_idea = {
+		idea = JAP_cutting_red_tape
+		days = 60
+		}
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = -5
+				tooltip = decrease_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = JAP_military_leap
+				value = -5
+				tooltip = decrease_military_leap_tt
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of Imperial Authority
 	id = rd_japan_event.101
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.101"}
 	title = rd_japan_event.101.title
@@ -4347,14 +4551,71 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #The Emperor shall recieve a better say
 		name = rd_japan_event.101.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 5
+				tooltip = increase_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = JAP_military_leap
+				value = -5
+				tooltip = decrease_military_leap_tt
+			}
+			add_to_variable = {
+				var = JAP_spiritual_leap
+				value = 7
+				tooltip = increase_spiritual_leap_tt
+			}
+			add_to_variable = {
+				var = JAP_economic_leap
+				value = 3
+				tooltip = increase_economic_leap_tt
+			}
+		}
+	}
+	option = { #We must Control Him Better
+		name = rd_japan_event.101.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = -7
+				tooltip = decrease_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = JAP_military_leap
+				value = -5
+				tooltip = decrease_military_leap_tt
+			}
+			add_to_variable = {
+				var = JAP_spiritual_leap
+				value = -10
+				tooltip = decrease_spiritual_leap_tt
+			}
+			add_to_variable = {
+				var = JAP_economic_leap
+				value = -5
+				tooltip = decrease_economic_leap_tt
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Showa Restoration
 	id = rd_japan_event.102
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.102"}
 	title = rd_japan_event.102.title
@@ -4365,11 +4626,28 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.102.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+				has_country_flag = JAP_shogun_zeal_flag
+			}
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 7
+				tooltip = increase_zeal_leap_tt
+			}
+		}
+		else = {
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = 5
+				tooltip = increase_legitimacy_leap_tt
+			}
+			
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Collapse of Yasuhito's Authority
 	id = rd_japan_event.103
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.103"}
 	title = rd_japan_event.103.title
@@ -4377,14 +4655,54 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Theospohists Take Over
 		name = rd_japan_event.103.a
 		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = national_populist
+		}
+		set_country_leader_ideology = theosophy_subtype
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Sekizo_Miura_hog_npo
+		JAP_Shimonaka_Yasaburo_for_tot
+		JAP_Ryuo_Bunko_eco_npo
+		JAP_Inuzuka_Koreshige_sec_npo
+		}
 		
+	}
+	option = { #We shall fix the political world. (Yakuza)
+		name = rd_japan_event.103.b
+		ai_chance = { base = 100 }
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_party_futabakai_long
+			name = JAP_party_futabakai 
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = JAP_party_futabakai_long
+			name = JAP_party_futabakai 
+		}
+		
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
+		add_natpop_to_coalition = yes
+		set_country_leader_ideology = crime_syndicate_subtype
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Yoshio_Kodama_hog_pau
+		JAP_Karoku_Tsuji_eco_pau
+		JAP_Tatsuo_Kawai_for_npo
+		JAP_Tsukui_Tatsuo_sec_npo
+		}
+		country_event = rd_japan_event.18
 	}
 }
 
-country_event = { #
+country_event = { #The Fate of the Emperor Will
 	id = rd_japan_event.104
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.104"}
 	title = rd_japan_event.104.title
@@ -4392,14 +4710,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Merely an Organ to Our Plans
 		name = rd_japan_event.104.a
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #Yasuhito Shall Represent the True Ambitions of Amaterasu
+		name = rd_japan_event.104.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_yasuhito_legit
+		}
+		create_country_leader = {
+			name = "Yasuhito"
+			desc = "-"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito_Military.png"
+			expire = "1965.1.1"
+			ideology = natpop_showa_statism_subtype
+		}
+	}
 }
 
-country_event = { #
+country_event = { #A Lack of Authority
 	id = rd_japan_event.105
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.105"}
 	title = rd_japan_event.105.title
@@ -4410,11 +4742,84 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.105.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = national_populist
+		}
+		set_country_leader_ideology = theosophy_subtype
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Sekizo_Miura_hog_npo
+		JAP_Shimonaka_Yasaburo_for_tot
+		JAP_Ryuo_Bunko_eco_npo
+		JAP_Inuzuka_Koreshige_sec_npo
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_Theosophy_party_long
+			name = JAP_Theosophy_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_Theosophy_party_long
+			name = JAP_Theosophy_party
+		}
+		add_radsoc_to_coalition = yes
+	}
+	option = { #We shall end these modernists!
+		name = rd_japan_event.105.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = national_populist
+		}
+		set_country_leader_ideology = natpop_datong_shu_subtype
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Seikyo_Gondo_hog_npo
+		JAP_Inuia_U_for_npo
+		JAP_Tsuneo_Wago_eco_npo
+		JAP_Kozaburo_Tachibana_sec_npo
+		}
+		add_radsoc_to_coalition = yes
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_self_governing_farmers_party_long
+			name = JAP_self_governing_farmers_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_self_governing_farmers_party_long
+			name = JAP_self_governing_farmers_party
+		}
+	}
+	option = { #We shall live off the land once again!
+		name = rd_japan_event.105.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+		}
+		set_country_leader_ideology = agrarian_socialism_subtype
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Mushanokoji_Saneatsu_hog_rso
+		JAP_Muneyoshi_Yanagi_for_rso
+		JAP_Tsuneo_Wago_eco_npo
+		JAP_Kurata_Hyakuzo_sec_npo
+		}
+		add_natpop_to_coalition = yes
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_new_village_party_long
+			name = JAP_new_village_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_new_village_party_long
+			name = JAP_new_village_party
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Choice of Divine Will
 	id = rd_japan_event.106
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.106"}
 	title = rd_japan_event.106.title
@@ -4422,14 +4827,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Keep Hirohito
 		name = rd_japan_event.106.a
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #Yasuhito Shall Control the Stage
+		name = rd_japan_event.106.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Yasuhito"
+			desc = "-"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Yasuhito_Military.png"
+			expire = "1965.1.1"
+			ideology = pataut_showa_statism_subtype
+		}
+	}
+	option = { #These Two the Pretenders
+		name = rd_japan_event.106.c
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Kumazawa"
+			desc = "-"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = pataut_showa_statism_subtype
+		}
+	}
 }
 
-country_event = { #
+country_event = { #The Death of the Zeal
 	id = rd_japan_event.107
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.107"}
 	title = rd_japan_event.107.title
@@ -4437,14 +4864,61 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Japanese People Must Unite Against the Unzealous Actions of Hashimoto
 		name = rd_japan_event.107.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = national_populist
+		}
+		set_country_leader_ideology = natpop_datong_shu_subtype
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Seikyo_Gondo_hog_npo
+		JAP_Inuia_U_for_npo
+		JAP_Tsuneo_Wago_eco_npo
+		JAP_Kozaburo_Tachibana_sec_npo
+		}
+		add_radsoc_to_coalition = yes
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_self_governing_farmers_party_long
+			name = JAP_self_governing_farmers_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_self_governing_farmers_party_long
+			name = JAP_self_governing_farmers_party
+		}
+	}
+	option = { #Rural Soldiers take back their promises.
+		name = rd_japan_event.107.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+		}
+		set_country_leader_ideology = agrarian_socialism_subtype
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Mushanokoji_Saneatsu_hog_rso
+		JAP_Muneyoshi_Yanagi_for_rso
+		JAP_Tsuneo_Wago_eco_npo
+		JAP_Kurata_Hyakuzo_sec_npo
+		}
+		add_natpop_to_coalition = yes
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_new_village_party_long
+			name = JAP_new_village_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_new_village_party_long
+			name = JAP_new_village_party
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Leap of the Spirit and the Nation
 	id = rd_japan_event.108
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.108"}
 	title = rd_japan_event.108.title
@@ -4455,11 +4929,15 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.108.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 100
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.2
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Marxism With Nichirenism!?
 	id = rd_japan_event.109
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.109"}
 	title = rd_japan_event.109.title
@@ -4467,14 +4945,21 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We shall reach out to Giro
 		name = rd_japan_event.109.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = JAP_support_Giro
+		custom_effect_tooltip = JAP_support_Giro_tt
+	}
+	option = { #We shall reach out to Gokkai
+		name = rd_japan_event.109.b
+		ai_chance = { base = 100 }
+		set_country_flag = JAP_support_Gokkai
+		custom_effect_tooltip = JAP_support_Gokkai_tt
 	}
 }
 
-country_event = { #
+country_event = { #A State of Zen Reached
 	id = rd_japan_event.110
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.110"}
 	title = rd_japan_event.110.title
@@ -4482,14 +4967,92 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We shall remain under Innuoe
 		name = rd_japan_event.110.a
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #Ishiwara secures support from the officers
+		name = rd_japan_event.110.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_completed_focus = JAP_Pan_Asianists_Nichirenism_Fighting_Red_Disease
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Kanji_Ishiwara_hog_npo
+			JAP_Shigeru_Honjō_for_npo
+			JAP_Tanaka_Chigaku_eco_npo
+			JAP_Yasuhide_Kurihara_sec_tot
+		}
+		
+	}
+	option = { #Giro Senoo Takes Over
+		name = rd_japan_event.110.c
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_support_Giro
+		}
+		set_country_leader_ideology = radsoc_nichiren_buddhism_subtype
+		set_politics = { ruling_party = radical_socialist }
+		add_socdem_to_coalition = yes
+		add_natpop_to_coalition = yes
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Giro_Senoo_hog_rso
+			JAP_Tsunesaburo_Makiguchi_for_rso
+			JAP_Kenji_Miyazawa_eco_rso
+			JAP_Yasuhide_Kurihara_sec_tot
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_Giro_Senoo_party_long
+			name = JAP_Giro_Senoo_party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = JAP_Giro_Senoo_party_long
+			name = JAP_Giro_Senoo_party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_Giro_Senoo_party_long
+			name = JAP_Giro_Senoo_party
+		}
+	}
+	
+	option = { #Gokkai  Takes Over
+		name = rd_japan_event.110.d
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = JAP_support_Gokkai
+		}
+		set_cosmetic_tag = JAP_Soka_Gakkai
+		set_politics = { ruling_party = social_democrat }
+		set_country_leader_ideology = socdem_nichiren_buddhism_subtype
+		add_natpop_to_coalition = yes
+		set_party_name = {
+			ideology = national_populist
+			long_name = JAP_Soka_Gakkai_party_long
+			name = JAP_Soka_Gakkai_party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = JAP_Soka_Gakkai_party_long
+			name = JAP_Soka_Gakkai_party
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			JAP_Tsunesaburo_Makiguchi_hog_tot
+			JAP_Tsunesaburo_Makiguchi_for_rso
+			JAP_Kenji_Miyazawa_eco_rso
+			JAP_Yasuhide_Kurihara_sec_tot
+		}
+		
+	}
 }
 
-country_event = { #
+country_event = { #True Emperor Event
 	id = rd_japan_event.111
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.111"}
 	title = rd_japan_event.111.title
@@ -4499,6 +5062,35 @@ country_event = { #
 	is_triggered_only = yes
 	option = { #
 		name = rd_japan_event.111.a
+		ai_chance = { base = 100 }
+		add_stability = -0.1
+		create_country_leader = {
+			name = "Kumazawa Hiromichi"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = natpop_nichiren_buddhism_subtype
+		}
+		create_country_leader = {
+			name = "Kumazawa Hiromichi"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = socdem_nichiren_buddhism_subtype
+		}
+		create_country_leader = {
+			name = "Kumazawa Hiromichi"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = radsoc_nichiren_buddhism_subtype
+		}
+		create_country_leader = {
+			name = "Kumazawa Hiromichi"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Kumazawa_Hiromichi.png"
+			expire = "1965.1.1"
+			ideology = tot_nichiren_buddhism_subtype
+		}
+	}
+	option = { #
+		name = rd_japan_event.111.b
 		ai_chance = { base = 100 }
 		
 	}

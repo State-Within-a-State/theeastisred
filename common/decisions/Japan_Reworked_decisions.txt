@@ -4239,7 +4239,7 @@ JAP_reaching_to_the_pan_buddhist_realm = {
 		visible = {
 			tag = JAP
 			OR = {
-			has_completed_focus = JAPNICH_reach_out_to_the_buddhist_world
+			has_completed_focus = JAP_Pan_Asianists_Nichirenism_Priests_of_asia
 			
 			}
 			has_country_flag = JAP_liberate_nichiren_asia
@@ -5226,18 +5226,119 @@ JAP_invest_into_yasuda = {
 
 JAP_three_leaps_decision_category = {
 
-JAP_banzai_charges = {
+JAP_three_leaps_mission = {
+    activation = {
+        has_country_flag = JAP_three_leaps_flag
+    }
+    available = {
+		OR = {
+			AND = {
+				check_variable = { JAP_military_leap > 89 }
+				check_variable = { JAP_spiritual_leap > 89 }
+			}
+			AND = {
+				check_variable = { JAP_military_leap > 89 }
+				check_variable = { JAP_economic_leap > 89 }
+			}
+			AND = {
+				check_variable = { JAP_spiritual_leap > 89 }
+				check_variable = { JAP_economic_leap > 89 }
+			}
+		}
+        
+    }
+    
+    icon = mission_icon     # For GFX_decision_mission_icon
+    is_good = yes
+    days_mission_timeout = 500
+    selectable_mission = yes
+	fire_only_once = yes
+    complete_effect = {
+       custom_effect_tooltip = finished_great_leaps_tt
+	   set_country_flag = JAP_great_leap_finished
+	   country_event = rd_japan_event.108
+	   if = {
+			limit = {
+				check_variable = { JAP_spiritual_leap > 90 }
+			}
+			add_ideas = {
+				JAP_spiritual_leap_finished
+			}
+	   }
+	   if = {
+			limit = {
+				check_variable = { JAP_military_leap > 90 }
+			}
+			add_ideas = {
+				JAP_military_leap_finished
+			}
+	   }
+    }
+    timeout_effect = {
+        custom_effect_tooltip = our_country_will_not_like_this_tt
+		 set_country_flag = JAP_great_leap_failed
+			country_event = rd_japan_event.107
+    }
+}
+	JAP_domestic_market_expansion = {
 		icon = no_votei_icon
 		
 		available = {
-			has_completed_focus = JAPARAKI_the_military_leap
+			has_completed_focus = JAP_Kodoha_Hashimoto_Control_Domestic_Affairs
+		}
+		
+		visible = {
+			tag = JAP
+			NOT = {
+				OR = {
+					has_country_flag = JAP_great_leap_failed
+					has_country_flag = JAP_great_leap_finished
+				}
+			}
+			
+		}
+		
+		
+		cost = 25
+		
+		days_remove = 100
+		fire_only_once = no
+		days_re_enable = 25
+		modifier = {
+		license_infantry_eq_production_speed_factor  = 0.025
+		consumer_goods_factor = -0.05
+		production_speed_buildings_factor = 0.025
+		industrial_capacity_factory = 0.05
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = JAP_economic_leap
+				value = 5
+				tooltip = increase_military_leap_tt
+			}
+			
+		}
+	}
+	 
+	JAP_banzai_charges = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_Kodoha_Hashimoto_western_degen_purge
 			has_war = yes
 		}
 		
 		visible = {
 			tag = JAP
 			NOT = {
-			has_idea = JAP_military_leap_finished
+				OR = {
+					has_country_flag = JAP_great_leap_failed
+					has_country_flag = JAP_great_leap_finished
+				}
 			}
 			
 		}
@@ -5270,13 +5371,16 @@ JAP_banzai_charges = {
 		icon = no_votei_icon
 		
 		available = {
-			has_completed_focus = JAPARAKI_nationalist_propagation
+			has_completed_focus = JAP_Kodoha_Hashimoto_militaristic_social_justice
 		}
 		
 		visible = {
 			tag = JAP
 			NOT = {
-			has_idea = JAP_spiritual_leap_finished
+				OR = {
+					has_country_flag = JAP_great_leap_failed
+					has_country_flag = JAP_great_leap_finished
+				}
 			}
 			
 		}
@@ -5304,64 +5408,304 @@ JAP_banzai_charges = {
 		}
 	}
 	
-	JAP_military_leap_finished = {
+	JAP_conduct_military_execrise_hashimoto = {
 		icon = no_votei_icon
 		
 		available = {
-			check_variable = { JAP_spiritual_leap > 90 }
+			has_completed_focus = JAP_Kodoha_Kokutai_Secure_Army_political_position
 		}
 		
 		visible = {
 			tag = JAP
-			check_variable = { JAP_spiritual_leap > 90 }
+			NOT = {
+				OR = {
+					has_country_flag = JAP_great_leap_failed
+					has_country_flag = JAP_great_leap_finished
+				}
+			}
 			
 		}
 		
 		
-		cost = 20
+		cost = 50
 		
-		days_remove = 1
-		fire_only_once = yes
+		days_remove = 60
+		fire_only_once = no
+		 days_re_enable = 20
+		 modifier = {
+			army_org_factor = 0.05
+			minimum_training_level = 0.1
+			training_time_army_factor = 0.05
+		 }
 		complete_effect = {
-		
 		}
 		remove_effect = {
-			add_ideas = {
-				JAP_military_leap_finished
+			
+			add_to_variable = {
+				var = JAP_military_leap
+				value = 6
+				tooltip = increase_military_leap_tt
+			}
+		}
+	}
+	
+	
+}
+
+JAP_shogunate_zeal_decision_category = {
+	JAP_zeal_support_mission = {
+		activation = {
+			has_country_flag = JAP_shogun_zeal_flag
+		}
+		available = {
+			check_variable = { shogunate_zeal > 89 }
+			
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = yes
+		days_mission_timeout = 300
+		selectable_mission = yes
+		fire_only_once = yes
+		complete_effect = {
+		   custom_effect_tooltip = finished_zeal_low_tt
+		   set_country_flag = JAP_zeal_finished
+		   country_event = rd_japan_event.106
+		   
+		}
+		timeout_effect = {
+			custom_effect_tooltip = our_country_will_not_like_this_tt
+			 set_country_flag = JAP_zeal_failled
+			 country_event = rd_japan_event.105
+		}
+	}
+	
+	JAP_emperor_support_mission = {
+		activation = {
+			has_country_flag = JAP_imperial_legit_monarchy
+		}
+		available = {
+			always = no
+			
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = yes
+		days_mission_timeout = 300
+		selectable_mission = yes
+		fire_only_once = yes
+		complete_effect = {
+		   
+		}
+		timeout_effect = {
+			custom_effect_tooltip = our_country_will_not_like_this_tt
+			 set_country_flag = JAP_imperial_legit_monarchy_finished
+			if = {
+				limit = {
+					check_variable = { imperial_legitimacy > 89 }
+				}
+				country_event = rd_japan_event.104
+				set_country_flag = JAP_yasuhito_legit
+			}
+			if = {
+				limit = {
+					check_variable = { imperial_legitimacy < 90 }
+					check_variable = { imperial_legitimacy > 59 }
+				}
+				country_event = rd_japan_event.104
+				set_country_flag = JAP_hirohito_legit
+			}
+			if = {
+				limit = {
+					check_variable = { imperial_legitimacy < 60 }
+				}
+				country_event = rd_japan_event.103
+			}
+		}
+	}
+	
+	JAP_speech_against_syndicalism = {
+		icon = no_votei_icon
+		
+		available = {
+			OR = {
+			has_completed_focus = JAP_Kodoha_Araki_bulwark_against_syndicalism
+			has_completed_focus = JAP_Kodoha_Yasuhito_denounce_socialists_internally
+			}
+			
+		}
+		
+		visible = {
+			tag = JAP
+			NOT = {
+				OR = {
+					has_country_flag = JAP_zeal_finished
+					has_country_flag = JAP_zeal_failled
+					has_country_flag = JAP_imperial_legit_monarchy_finished
+				}
+			}
+			
+		}
+		
+		
+		cost = 10
+		
+		days_remove = 50
+		fire_only_once = no
+		 days_re_enable = 12
+		complete_effect = {
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 7
+				tooltip = increase_zeal_leap_tt
+			}
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = 7
+				tooltip = increase_legitimacy_leap_tt
+			}
+			
+		}
+	}
+	JAP_conduct_local_sport_programs = {
+		icon = no_votei_icon
+		
+		available = {
+			has_completed_focus = JAP_Kodoha_Yasuhito_Sports_Prince
+			
+		}
+		
+		visible = {
+			tag = JAP
+			NOT = {
+				has_country_flag = JAP_imperial_legit_monarchy_finished
+			}
+			
+		}
+		
+		
+		cost = 10
+		
+		days_remove = 50
+		fire_only_once = no
+		 days_re_enable = 12
+		 modifier = {
+		 army_morale_factor = 0.05
+		 army_org_factor = 0.05
+		 political_power_factor = -0.4
+		 national_populist_drift = 0.05
+		 }
+		complete_effect = {
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = 5
+				tooltip = increase_legitimacy_leap_tt
+			}
+			
+		}
+	}
+	JAP_hiraga_purge = {
+		icon = no_votei_icon
+		
+		available = {
+			OR = {
+			has_completed_focus = JAP_Kodoha_Araki_hiraga_purge
+			has_completed_focus = JAP_Kodoha_Yasuhito_denounce_socialists_internally
+			}
+		}
+		
+		visible = {
+			tag = JAP
+			NOT = {
+				OR = {
+					has_country_flag = JAP_zeal_finished
+					has_country_flag = JAP_zeal_failled
+					has_country_flag = JAP_imperial_legit_monarchy_finished
+				}
+			}
+			
+		}
+		
+		
+		cost = 10
+		
+		days_remove = 60
+		fire_only_once = yes
+		modifier = {
+		social_democrat_drift = -0.5
+		social_liberal_drift = -0.5
+		research_speed_factor = -0.1
+		political_power_factor = 0.5
+		weekly_manpower = -100
+		stability_weekly = 0.025
+		}
+		complete_effect = {
+			country_event = rd_japan_event.96
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 15
+				tooltip = increase_zeal_leap_tt
+			}
+			add_to_variable = {
+				var = imperial_legitimacy
+				value = 15
+				tooltip = increase_legitimacy_leap_tt
 			}
 			
 		}
 	}
 	
-	JAP_spiritual_leap_finished = {
+	
+	JAP_conduct_military_execrise_araki = {
 		icon = no_votei_icon
 		
 		available = {
-			check_variable = { JAP_spiritual_leap > 90 }
+			has_completed_focus = JAP_Kodoha_Kokutai_Secure_Army_political_position
 		}
 		
 		visible = {
 			tag = JAP
-			check_variable = { JAP_spiritual_leap > 90 }
-			
-		}
-		
-		
-		cost = 20
-		
-		days_remove = 1
-		fire_only_once = yes
-		complete_effect = {
-		
-		}
-		remove_effect = {
-			add_ideas = {
-				JAP_spiritual_leap_finished
+			NOT = {
+				OR = {
+					has_country_flag = JAP_zeal_finished
+					has_country_flag = JAP_zeal_failled
+				}
 			}
 			
 		}
+		
+		
+		cost = 50
+		
+		days_remove = 60
+		fire_only_once = no
+		 days_re_enable = 20
+		 modifier = {
+			army_org_factor = 0.05
+			minimum_training_level = 0.1
+			training_time_army_factor = 0.05
+		 }
+		complete_effect = {
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = shogunate_zeal
+				value = 6
+				tooltip = increase_zeal_leap_tt
+			}
+		}
 	}
 }
+
+
 
 JAP_uniting_with_manchuria_decision_category = {
 JAP_conquer_manchuria = {
