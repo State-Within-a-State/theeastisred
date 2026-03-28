@@ -3989,7 +3989,7 @@ country_event = { #cult option choice to swap flags/identity to rizalia
 
 }
 
-country_event = { #
+country_event = { #laurel portrait picker
 	id = rd_phil.82
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.82"}
 	title = rd_phil.82.title
@@ -3997,11 +3997,32 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #no hat
 		name = rd_phil.82.a
 		ai_chance = { base = 100 }
-		
+		if = {	
+			limit = { 
+					has_country_leader = { name = "Jose P. Laurel" ruling_only = yes }
+			}
+			set_country_leader_portrait = {
+				portrait = "gfx/leaders/PHI/Portrait_PHI_Jose_P_Laurel.png"
+			}
+		}
+
 	}
+
+	option = { #hat
+		name = portrait_picker.79.b
+		if = {	
+			limit = { 
+					has_country_leader = { name = "Jose P. Laurel" ruling_only = yes }
+			}
+			set_country_leader_portrait = {
+				portrait = "gfx/leaders/PHI/Portrait_PHI_Jose_P_Laurel_Hat.png"
+			}
+		}
+	}
+
 }
 
 country_event = { #
