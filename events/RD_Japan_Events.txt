@@ -702,11 +702,12 @@ country_event = { #
 		set_country_leader_ideology = ikki_kita_thought_subtype
 		remove_all_ministers = yes
 		add_ideas = {
-		JAP_Kita_Ikki_hog_rso
+		JAP_Kita_Ikki_hog_tot
 		JAP_Okawa_Shumei_for_npo
 		JAP_Yukinosuke_Shimizu_eco_tot
 		JAP_Kazunobu_Kanokogi_sec_npo
 		}
+		complete_national_focus = JAP_Pan_Asianists_Kita_Usher_National_Reorg
 	}
 	
 	option = { #
@@ -732,6 +733,7 @@ country_event = { #
 		JAP_Masuzo_Yoshida_eco_npo
 		JAP_Yoshida_Shigeru_sec_npo
 		}
+		complete_national_focus = JAP_Pan_Asianists_Black_Ocean_Appearing_From_Shadows
 	}
 	
 	
@@ -5096,7 +5098,7 @@ country_event = { #True Emperor Event
 	}
 }
 
-country_event = { #
+country_event = { #The Path of Pure Socialism
 	id = rd_japan_event.112
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.112"}
 	title = rd_japan_event.112.title
@@ -5104,14 +5106,32 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Socialism Shall Be Guided By the Hand of the Divine - Kita
 		name = rd_japan_event.112.a
 		ai_chance = { base = 100 }
+		add_ideas = {
+		JAP_pure_socialism
+		}
 		
+	}
+	option = { #Socialism is the Sign the Devilish Syndicalism
+		name = rd_japan_event.112.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = national_populist }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Okawa_Shumei_hog_npo
+		JAP_Nishida_Sei_eco_npo
+		JAP_Masahiro_Yasuoka_for_npo
+		JAP_Kazunobu_Kanokogi_sec_npo
+		}
+		add_ideas = {
+		JAP_social_folkdings
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Legacy of the Meiji Restoration
 	id = rd_japan_event.113
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.113"}
 	title = rd_japan_event.113.title
@@ -5122,11 +5142,37 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.113.a
 		ai_chance = { base = 100 }
-		
+		swap_ideas = {
+			remove_idea = JAP_Kita_Ikki_hog_tot
+			add_idea = JAP_Kita_Ikki_hog_rso
+		}
+		create_country_leader = {
+			name = "Ikki Kita"
+			desc = "-"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Nosaka_Sanzo_LKMT.png"
+			expire = "1965.1.1"
+			ideology = radical_socialist_subtype
+		}
+		set_country_leader_ideology = ikki_kita_thought_subtype
+		set_country_flag = JAP_organ_of_state
+	}
+	
+	option = { #
+		name = rd_japan_event.113.b
+		ai_chance = { base = 100 }
+		trigger = {
+		has_idea = JAP_Okawa_Shumei_hog_npo
+		}
+		set_country_flag = JAP_not_organ_of_state
+		add_political_power = -50
+		add_popularity = {
+		ideology = ROOT
+		popularity = -0.05
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Pan-Asian State
 	id = rd_japan_event.114
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.114"}
 	title = rd_japan_event.114.title
@@ -5137,7 +5183,29 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.114.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 50
+	}
+	option = { #
+		name = rd_japan_event.114.b
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_KITA_ASIA
+		set_country_flag = JAP_Kita_Pan_Asia
+		unlock_decision_category_tooltip = JAP_pan_asia_program_decision_category
+	}
+	option = { #We shall go into the world
+		name = rd_japan_event.114.c
+		ai_chance = { base = 100 }
+		set_cosmetic_tag = JAP_IKKI_KITA_WORLD
+		every_state = {
+			
+			JAP = {
+				add_state_core = PREV
+				create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+			}
+		}
 	}
 }
 
