@@ -70,7 +70,18 @@ country_event = { #1937 election called after us collapse or 1941 election
 		has_completed_focus = PHI_start_cuck #delete this once you add the minigame
 		}
 		}
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_DEMOCRATA }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_REPUBLICAN }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_NATIONAL_SOCIALIST }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_SOCIALIST_PARTY }
+				}
+			}
+		}
 		set_country_flag = PHI_nationalista_survives_again
 		meta_effect = {
 			text = {
@@ -99,7 +110,14 @@ country_event = { #1937 election called after us collapse or 1941 election
 	}
 	option = { #popular front wins
 		name = rd_phil.2.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_NATIONALISTA }
+			}
+
+		}
 		trigger = {
 		OR = {
 		has_completed_focus = PHI_start_rip_bozo
@@ -153,6 +171,18 @@ country_event = { #popular front factions and splits (popular front party still 
 	is_triggered_only = yes
 	option = { #Juan
 		name = rd_phil.3.a
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = { 
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_NATIONAL_SOCIALIST }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_SOCIALIST_PARTY }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_REPUBLICAN }
+				}
+			}
+		}
+		
 			set_country_flag = PHI_pop_front_win
 			meta_effect = {
 			text = {
@@ -179,6 +209,18 @@ country_event = { #popular front factions and splits (popular front party still 
 	}
 	option = { #Santos
 		name = rd_phil.3.b
+		
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = { 
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_NATIONAL_SOCIALIST }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_REPUBLICAN }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_DEMOCRATA }
+				}
+			}
+		}
 		set_country_flag = PHI_santos_party_win
 		#if santos leads then no next elections
 		meta_effect = {
@@ -204,6 +246,18 @@ country_event = { #popular front factions and splits (popular front party still 
 	}
 	option = { #Emilio
 		name = rd_phil.3.c
+		
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = { 
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_SOCIALIST_PARTY }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_REPUBLICAN }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_DEMOCRATA }
+				}
+			}
+		}
 		set_country_flag = PHI_emilio_finally_wins_now
 		set_country_flag = PHI_no_second_election
 		set_party_name = {
@@ -250,6 +304,18 @@ country_event = { #popular front factions and splits (popular front party still 
 	}
 	option = { #Gregorio Aglipay
 		name = rd_phil.3.d
+		
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = { 
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_NATIONAL_SOCIALIST }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_SOCIALIST_PARTY }
+				has_game_rule = { rule = PHI_politic option = PHI_POLITIC_DEMOCRACY_DEMOCRATA }
+				}
+			}
+		}
 		set_country_flag = PHI_republican_party_win
 		rd_phil_calculate_length_second_election = yes		
 		meta_effect = {
@@ -329,7 +395,20 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	}
 	option = { #nationsta osemna
 		name = rd_phil.4.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_LIBERAL }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_TWO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_REPUBLICAN }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_MONCADO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_RAYCUAL }
+				}
+			}
+		}
 		hidden_effect = {
 		add_popularity = {
 		ideology = social_conservative
@@ -360,7 +439,20 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	}
 	option = { #liberal roxas
 		name = rd_phil.4.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_NATIONALISTA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_TWO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_REPUBLICAN }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_MONCADO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_RAYCUAL }
+				}
+			}
+		}
 		hidden_effect = {
 		add_popularity = {
 		ideology = market_liberal
@@ -392,13 +484,38 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	}
 	option = { #popular front (two options for you to choose)
 		name = rd_phil.4.c
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_NATIONALISTA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_LIBERAL }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_REPUBLICAN }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_MONCADO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_RAYCUAL }
+				}
+			}
+		}
 		complete_national_focus = PHI_pop_vict
 		country_event = rd_phil.16
 	}
 	option = { #republican not Gregorio Aglipay
 		name = rd_phil.4.d
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_NATIONALISTA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_LIBERAL }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_TWO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_MONCADO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_RAYCUAL }
+				}
+			}
+		}
 		complete_national_focus = PHI_repub_second
 		if = { limit = { has_country_flag = PHI_REP_IS_SOCLIB } #means they were elected first time no need to create leader in choice  
 		meta_effect = {
@@ -493,7 +610,20 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
 	}
 	option = { #Hilario Moncado modernista
 		name = rd_phil.4.e
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_NATIONALISTA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_LIBERAL }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_TWO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_REPUBLICAN }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_RAYCUAL }
+				}
+			}
+		}
 		hidden_effect = {
 		country_event = { id = rd_phil.24 days = 14 }
 		add_popularity = {
@@ -536,7 +666,20 @@ country_event = { #1943/1947/whenever the fuck a war with Japan ends check on ac
   		  ruling_only = no
 		}
 		}
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_NATIONALISTA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_LIBERAL }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_ONE }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_TWO }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_REPUBLICAN }
+				has_game_rule = { rule = PHI_politic_two option = PHI_POLITIC_TWO_DEMOCRACY_MONCADO }
+				}
+			}
+		}
 		complete_national_focus = PHI_lincoln
 		meta_effect = {
 			text = {
@@ -801,7 +944,9 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 	is_triggered_only = yes
 	option = { #stay socdem
 		name = rd_phil.14.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		add_stability = 0.05
 		add_political_power = 50
 		
@@ -809,7 +954,9 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 	option = { #go soclib
 		name = rd_phil.14.b
 		trigger = { has_completed_focus = PHI_gregorio_isabelo_legacy }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		set_country_flag = PHI_REP_IS_SOCLIB ##very important, syndie can be republic so make sure can't just join international until 2nd election?
 		swap_ideas = {
 			remove_idea = PHI_Santiago_Fonacier_hog_sde
@@ -843,7 +990,9 @@ country_event = { #what should isabelo jr go towards. Done after last foicyus of
 	}
 	option = { #go syndie as the syndies of the oppressed lead the way under the banner of the party
 		name = rd_phil.14.c
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		trigger = { has_completed_focus = PHI_gregorio_evangelista_learn } 
 		set_country_flag = PHI_REP_IS_SYNDIE  
 		set_country_flag = rad_socs_arent_syndie #right now radsoc under repub but turns syndie under progressive workers in second election and country flag removed. means needs second election for joining internationale
@@ -942,7 +1091,13 @@ country_event = { #socdem or soclib popular front choose jose or vinctinte sotto
 	is_triggered_only = yes
 	option = { #
 		name = rd_phil.16.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_politic_two option = RULE_OPTION_PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_ONE }
+			}
+		}
 		add_popularity = {
 		ideology = social_democrat
 		popularity = 0.075 #idk
@@ -983,7 +1138,13 @@ country_event = { #socdem or soclib popular front choose jose or vinctinte sotto
 	}
 	option = { #
 		name = rd_phil.16.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_politic_two option = RULE_OPTION_PHI_POLITIC_TWO_DEMOCRACY_DEMOCRATA_TWO }
+			}
+		}
 		add_popularity = {
 		ideology = social_liberal
 		popularity = 0.075
@@ -1270,12 +1431,24 @@ country_event = { #coup against hilario
 	is_triggered_only = yes
 	option = { #coup defeated
 		name = rd_phil.24.a
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_POLITIC_TWO option = PHI_LAPIANG_COUP }
+			}
+		}
 		
 	}
 	option = { #coup wins
 		name = rd_phil.24.b
-		ai_chance = { base = 50 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_POLITIC_TWO option = PHI_POLITIC_TWO_DEMOCRACY_MONCADO }
+			}
+		}
 		hidden_effect = {
 		set_politics = {
    		ruling_party = national_populist
@@ -1567,7 +1740,9 @@ country_event = { #the new leader of the the new republic Emilio
 
 		}
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		set_politics = {
    		ruling_party = radical_socialist
     		elections_allowed = no
@@ -1608,7 +1783,9 @@ country_event = { #the new leader of the the new republic Emilio
 		}
 		}
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		set_politics = {
    		ruling_party = paternal_autocrat
     		elections_allowed = no
@@ -1650,7 +1827,9 @@ country_event = { #the new leader of the the new republic Emilio
 
 		}
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		remove_power_balance = {
     		id = PHI_emil_left_right_balance 
 		}
@@ -1695,7 +1874,9 @@ country_event = { #the new leader of the the new republic Emilio
 
 		}
 
-		ai_chance = { base = 100 }	
+		ai_chance = {
+			base = 50
+		}
 		remove_power_balance = {
     		id = PHI_emil_left_right_balance 
 		}
@@ -1744,7 +1925,9 @@ country_event = { #the new leader of the the new republic Emilio
 		}
 		}
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		remove_power_balance = {
     		id = PHI_emil_left_right_balance 
 		}
@@ -1790,7 +1973,9 @@ country_event = { #the new leader of the the new republic Emilio
 		}
 		}
 
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		remove_power_balance = {
     		id = PHI_emil_left_right_balance 
 		}
@@ -2104,7 +2289,13 @@ country_event = { #Protecting the Republic triggered from event .39
 	is_triggered_only = yes
 	option = { #American Junta
 		name = rd_phil.35.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_SPANISH }
+			}
+		}
 		set_politics = {
    		ruling_party = paternal_autocrat
     		elections_allowed = no
@@ -2134,7 +2325,13 @@ country_event = { #Protecting the Republic triggered from event .39
 	
 	option = { #Corporaists - Soriano
 		name = rd_phil.35.c
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_JUNTA }
+			}
+		}
 		complete_national_focus = PHI_antisoc_pheonix_rises
 		set_politics = {
    		ruling_party = paternal_autocrat
@@ -2315,7 +2512,13 @@ country_event = { #resistance to the over taking Constabulary
 	is_triggered_only = yes
 	option = { #military obviously tries to stop em Government forces captured all members of the PB still remaining in Manila and their support #staffers. With the head off, 
 		name = rd_phil.40.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_SOCIALISM }
+			}
+		}
 		complete_national_focus = PHI_antisoc_vict
 		set_politics = {
    		ruling_party = social_liberal
@@ -2338,7 +2541,17 @@ country_event = { #resistance to the over taking Constabulary
 
 	option = { #military obviously tries to stop em fails. Jose santos quickly denounces military action
 		name = rd_phil.40.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_JUNTA }
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_LAUREL }
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_SPANISH }
+				}
+			}
+		}
 		complete_national_focus = PHI_soc_victoryyay
 		country_event = { id = rd_phil.41 days = 5 }
 	}
@@ -2365,7 +2578,9 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 	is_triggered_only = yes
 	option = { #Pedro Abad Santos is dominant, sweeps thorugh massive reforms for hte new order
 		name = rd_phil.41.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		complete_national_focus = PHI_soc_second_santos
 		set_country_flag = PHI_Pedro_Elected
 
@@ -2397,7 +2612,9 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 	}
 	option = { #Pedro takes a moderate stance and nominates José Abad Santos as a figurehead
 		name = rd_phil.41.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		complete_national_focus = PHI_soc_second_santos
 		set_country_flag = PHI_Jose_Elected
 		set_politics = {
@@ -2428,7 +2645,9 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 		
 	option = { #Syndicalist
 		name = rd_phil.41.c
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		complete_national_focus = PHI_syndie_fivepri
 		meta_effect = {
 			text = {
@@ -2456,7 +2675,9 @@ country_event = { #Jose santos quickly denounces military action and cruelty sid
 	}
 	option = { #Communist 
 		name = rd_phil.41.d
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		complete_national_focus = PHI_com_dotp
 		meta_effect = {
 			text = {
@@ -2496,7 +2717,16 @@ country_event = { #Rosters of members were seized, widespread arrests were made,
 	is_triggered_only = yes
 	option = { #Military stands down accepts return to apolitical rule
 		name = rd_phil.42.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_JUNTA }
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_SPANISH }
+				}
+			}
+		}
 		complete_national_focus = PHI_antisoc_republicanism_survival
 		hidden_effect = {
 		country_event = { id = rd_phil.43 days = 45 }
@@ -2505,7 +2735,13 @@ country_event = { #Rosters of members were seized, widespread arrests were made,
 	}
 	option = { #Don't trust him milit coup the civilian govt. as he was ok with his commie brother
 		name = rd_phil.42.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_socialist_or_coup option = PHI_SOCIALIST_OR_COUP_LAUREL }
+			}
+		}
 		#create military leader
 		country_event = { id = rd_phil.35 days = 20 }
 	}
@@ -2529,6 +2765,13 @@ country_event = { #Jose assinitated. Could it be a socialist angry or a military
 			picture = "gfx/leaders/PHI/Portrait_PHI_Jose_P_Laurel.png"
 			expire = "1.1.1"
 			ideology = kritarchy_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		PHI_Jose_P_Laurel_hog_ade
+		PHI_Emiliano_Tria_Tirona_eco_ade
+		PHI_Claro_M_Recto_for_ade
+		PHI_Jorge_B_Vargas_sec_pau
 		}
 
 	}
@@ -2595,7 +2838,9 @@ country_event = { #Question of the Transition to Democracy
 	is_triggered_only = yes
 	option = { #Liberalism Has Failed us, We Must Keep a Strong Philippines
 		name = rd_phil.47.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		set_country_flag = PHI_coup_no_democracy
 		add_popularity = {
 		ideology = paternal_autocrat
@@ -2605,7 +2850,9 @@ country_event = { #Question of the Transition to Democracy
 	}
 	option = { #Democracy shall return.
 		name = rd_phil.47.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		set_country_flag = PHI_coup_democracy
 		set_politics = {
 		ruling_party = authoritarian_democrat
@@ -2638,7 +2885,9 @@ country_event = { #Restoration of Democracy choose between either roxas or osemn
 	is_triggered_only = yes
 	option = { #
 		name = rd_phil.48.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		complete_national_focus = PHI_roxas_lib
 		hidden_effect = {
 		add_popularity = {
@@ -2675,7 +2924,9 @@ country_event = { #Restoration of Democracy choose between either roxas or osemn
 
 	option = { #
 		name = rd_phil.48.b
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		complete_national_focus = PHI_osemna
 		hidden_effect = {
 		add_popularity = {
@@ -3062,13 +3313,17 @@ country_event = { #communist leadership
 	is_triggered_only = yes
 	option = { #stay the main guy
 		name = rd_phil.58.a
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		
 	}
 	option = { #go agrarian under juan feleo
 		name = rd_phil.58.b
 		trigger = { has_completed_focus = PHI_com_country_side }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		create_country_leader = {
 			name = "Juan Feleo"
 			picture = "gfx/leaders/PHI/Portrait_Philippines_Juan_Feleo.png"
@@ -3083,7 +3338,9 @@ country_event = { #communist leadership
 	option = { #Vincinte Lava go pop/broad idk
 		name = rd_phil.58.c
 		trigger = { has_completed_focus = PHI_com_democractic_misson }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+		}
 		
 		if = {
 			limit = {
@@ -3187,7 +3444,13 @@ country_event = { #first event for deciding a faction to try and join
 	option = { #japan probably the closest to most likely option if America is screwed
 		name = rd_phil.60.a
 		trigger = { JAP = { is_faction_leader = yes } NOT = { has_completed_focus = PHI_antisoc_poisons } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+			}
+		}
 		JAP = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_jap
 	}
@@ -3195,7 +3458,13 @@ country_event = { #first event for deciding a faction to try and join
 	option = { #germany
 		name = rd_phil.60.b
 		trigger = { GER = { is_faction_leader = yes } NOT = { has_socialist_government = yes OR = { has_completed_focus = PHI_santos has_completed_focus = PHI_gregorio } } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+			}
+		}
 		GER = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_ger
 
@@ -3204,7 +3473,13 @@ country_event = { #first event for deciding a faction to try and join
 	option = { #entente
 		name = rd_phil.60.c
 		trigger = { ENT = { is_faction_leader = yes } NOT = { OR = { has_completed_focus = PHI_antisoc_republicanism_survival has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio } } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+			}
+		}
 		ENT = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_ent
 
@@ -3213,7 +3488,13 @@ country_event = { #first event for deciding a faction to try and join
 	option = { #spain
 		name = rd_phil.60.d
 		trigger = { SPR = { is_faction_leader = yes } OR = { NOT = { has_socialist_government = yes has_completed_focus = PHI_santos } SPR = { has_socialist_government = yes } } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+			}
+		}
 		SPR = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_spr
 
@@ -3221,7 +3502,13 @@ country_event = { #first event for deciding a faction to try and join
 	option = { #bhc
 		name = rd_phil.60.e
 		trigger = { BHC = { is_faction_leader = yes } NOT = { has_government = national_populist has_completed_focus = PHI_emilio } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio has_completed_focus = PHI_aglipay_fonocier } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+			}
+		}
 		BHC = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_bhc
 
@@ -3229,7 +3516,13 @@ country_event = { #first event for deciding a faction to try and join
 	option = { #internaitonale
 		name = rd_phil.60.f
 		trigger = { INT = { is_faction_leader = yes } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start  has_completed_focus = PHI_aglipay_fonocier } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+			}
+		}
 		INT = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_int
 
@@ -3237,7 +3530,13 @@ country_event = { #first event for deciding a faction to try and join
 
 	option = { #ourselves
 		name = rd_phil.60.g
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+			}
+		}
 		set_country_flag = PHI_ourselfs_neutral
 	}
 
@@ -3276,7 +3575,13 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	option = { #japan probably the closest to most likely option if America is screwed
 		name = rd_phil.60.a
 		trigger = { NOT = { has_country_flag = PHI_tried_jap } JAP = { is_faction_leader = yes } NOT = { has_completed_focus = PHI_antisoc_poisons } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+			}
+		}
 		JAP = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_jap
 	}
@@ -3284,7 +3589,13 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	option = { #germany
 		name = rd_phil.60.b
 		trigger = { NOT = { has_country_flag = PHI_tried_ger } GER = { is_faction_leader = yes } NOT = { has_socialist_government = yes OR = { has_completed_focus = PHI_santos has_completed_focus = PHI_gregorio } } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+			}
+		}
 		GER = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_ger
 
@@ -3293,7 +3604,13 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	option = { #entente
 		name = rd_phil.60.c
 		trigger = { NOT = { has_country_flag = PHI_tried_ent } ENT = { is_faction_leader = yes } NOT = { OR = { has_completed_focus = PHI_antisoc_republicanism_survival has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio } } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+			}
+		}
 		ENT = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_ent
 
@@ -3302,7 +3619,13 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	option = { #spain
 		name = rd_phil.60.d
 		trigger = { NOT = { has_country_flag = PHI_tried_spr } SPR = { is_faction_leader = yes } OR = { NOT = { has_socialist_government = yes has_completed_focus = PHI_santos } SPR = { has_socialist_government = yes } } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+			}
+		}
 		SPR = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_spr
 
@@ -3310,7 +3633,13 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	option = { #bhc
 		name = rd_phil.60.e
 		trigger = { NOT = { has_country_flag = PHI_tried_bhc } BHC = { is_faction_leader = yes } NOT = { has_government = national_populist has_completed_focus = PHI_emilio } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_emilio has_completed_focus = PHI_aglipay_fonocier } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+			}
+		}
 		BHC = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_bhc
 
@@ -3318,7 +3647,13 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 	option = { #internaitonale
 		name = rd_phil.60.f
 		trigger = { NOT = { has_country_flag = PHI_tried_int } INT = { is_faction_leader = yes } OR = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_completed_focus = PHI_aglipay_fonocier } }
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+			}
+		}
 		INT = { country_event = { id = rd_phil.61 days = 5 } }
 		set_country_flag = PHI_tried_int
 
@@ -3326,7 +3661,13 @@ country_event = { #same thing as 60 but just a different name and loc and choice
 
 	option = { #ourselves
 		name = rd_phil.60.g
-		ai_chance = { base = 100 }
+		ai_chance = {
+			base = 50
+			modifier = {
+				factor = 0
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+			}
+		}
 		set_country_flag = PHI_ourselfs_neutral
 
 	}
@@ -4070,7 +4411,7 @@ country_event = { #ricarte flavor event
 	}
 }
 
-country_event = { #Agapito Illustrisimo flavor
+country_event = { #protestant flavor
 	id = rd_phil.86
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.86"}
 	title = rd_phil.86.title
@@ -4078,14 +4419,21 @@ country_event = { #Agapito Illustrisimo flavor
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #yes
 		name = rd_phil.86.a
 		ai_chance = { base = 100 }
+		add_manpower = 50
 		
 	}
+	option = { #no
+		name = rd_phil.86.b
+		ai_chance = { base = 100 }
+		add_political_power = 3
+	}
+
 }
 
-country_event = { #
+country_event = { #Agapito Illustrisimo flavor
 	id = rd_phil.87
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.87"}
 	title = rd_phil.87.title
@@ -4093,7 +4441,7 @@ country_event = { #
 	fire_only_once = yes 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #ok
 		name = rd_phil.87.a
 		ai_chance = { base = 100 }
 		
