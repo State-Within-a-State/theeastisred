@@ -847,7 +847,7 @@ country_event = { #leave faction after being freed from commonwealth? remember s
 	option = { #yeas no need for military bases and military cooperation with usa cause populace fucking hates you
 		name = rd_phil.10.a
 		ai_chance = { base = 100
-		modifier = { or = { has_government = market_liberal has_government = national_populist } factor = 0 }
+		modifier = { or = { has_government = market_liberal has_government = national_populist has_game_rule = { rule = PHI_politic_two option = RULE_OPTION_PHI_FOREIGN_POLICY_AMERICA } } factor = 0 }
 		}
 		if = {
 		limit = { is_in_faction = yes }
@@ -3448,7 +3448,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		JAP = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3462,7 +3469,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		GER = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3477,7 +3491,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		ENT = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3492,7 +3513,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		SPR = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3506,7 +3534,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		BHC = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3520,7 +3555,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		INT = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3534,7 +3576,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				}
 			}
 		}
 		set_country_flag = PHI_ourselfs_neutral
@@ -3558,7 +3607,21 @@ country_event = { #ask the country to have you as ally
 	}
 	option = { #no fuck you phil
 		name = rd_phil.61.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
+			}
+
+		}
 		PHI = { 
 		country_event = { id = rd_phil.62 days = 5 } }
 	}
