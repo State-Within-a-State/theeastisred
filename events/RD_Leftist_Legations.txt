@@ -11,7 +11,7 @@ country_event = { ##Success of the Shanghai Uprising##
 		name = leftist_legations_event.0.a
 		ai_chance = { base = 100 }
 		set_politics = { ruling_party = syndicalist }
-		remove_all_minsters = yes
+		remove_all_ministers = yes
 		add_ideas = {
 		LEC_Wang_Shouhua_hog_syn
 		LEC_Li_Da_eco_rso
@@ -52,7 +52,7 @@ country_event = { ##Success of the Shanghai Uprising##
 	}
 }
 
-country_event = { 
+country_event = { #The Pen Against the Hammer
 	id = leftist_legations_event.1
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.1"}
 	title = leftist_legations_event.1.title
@@ -60,19 +60,27 @@ country_event = {
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #The Workers Lead the Movement
 		name = leftist_legations_event.1.a
 		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Wang_Shouhua_hog_syn
+		LEC_Luo_Yinong_eco_syn
+		LEC_Yu_Xiusong_for_syn
+		LEC_Gu_Shunzhang_sec_syn
+		}
 	}
 	
-	option = { #
+	option = { #Power to the League
 		name = leftist_legations_event.1.b
 		ai_chance = { base = 100 }
-		set_country_flag = KOR_support_integration
+		country_event = leftist_legations_event.3
 	}
 }
 
-country_event = { #Starting Lore Event | The Sun Rises - Stability At Last?
+country_event = { #A Choice of the League
 	id = leftist_legations_event.2
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.2"}
 	title = leftist_legations_event.2.title
@@ -80,9 +88,58 @@ country_event = { #Starting Lore Event | The Sun Rises - Stability At Last?
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #A Ying
 		name = leftist_legations_event.2.a
 		ai_chance = { base = 100 }
+		set_politics = { ruling_party = totalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Qian_Xingcun_hog_tot
+		LEC_Du_Guoxiang_eco_tot
+		LEC_Li_Kenong_for_tot
+		LEC_Luo_Shiyi_sec_tot
+		}
+		add_radsoc_to_coalition = yes
+		
+	}
+	option = { #Guo Moruo
+		name = leftist_legations_event.2.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = totalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Guo_Moruo_hog_tot
+		LEC_Zhang_Ziping_eco_rso
+		LEC_Zhou_Libo_for_rso
+		LEC_Xia_Yan_sec_tot
+		}
+		add_radsoc_to_coalition = yes
+		create_country_leader = { 
+			name = "Guo Moruo"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Guo_Moruo.png"
+			expire = "1.1.1"
+			ideology = technocratic_socialism_subtype
+		}
+		
+	}
+	option = { #Feng Xuefeng
+		name = leftist_legations_event.2.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Feng_Xuefeng_hog_rso
+		LEC_Ruo_Shi_eco_rso
+		LEC_Zhou_Yang_for_rso
+		LEC_pan_hannian_sec_rso
+		}
+		add_tot_to_coalition = yes
+		create_country_leader = { 
+			name = "Feng Xuefeng"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Feng_Xuefeng.png"
+			expire = "1.1.1"
+			ideology = lu_xun_thought_subtype
+		}
 		
 	}
 }
