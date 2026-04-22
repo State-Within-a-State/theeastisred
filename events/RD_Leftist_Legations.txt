@@ -78,11 +78,13 @@ country_event = { #The Pen Against the Hammer
 		LEC_Yu_Xiusong_for_syn
 		LEC_Gu_Shunzhang_sec_syn
 		}
+		complete_national_focus = LEC_hammer_strikes_iron
 	}
 	
 	option = { #Power to the League
 		name = leftist_legations_event.1.b
 		ai_chance = { base = 100 }
+		complete_national_focus = LEC_power_to_zuolian
 		country_event = leftist_legations_event.2
 	}
 }
@@ -107,6 +109,7 @@ country_event = { #A Choice of the League
 		LEC_Luo_Shiyi_sec_tot
 		}
 		add_radsoc_to_coalition = yes
+		complete_national_focus = LEC_world_for_poor
 		
 	}
 	option = { #Guo Moruo
@@ -127,6 +130,7 @@ country_event = { #A Choice of the League
 			expire = "1.1.1"
 			ideology = technocratic_socialism_subtype
 		}
+		complete_national_focus = LEC_rev_romanticism
 		
 	}
 	option = { #Feng Xuefeng
@@ -147,11 +151,12 @@ country_event = { #A Choice of the League
 			expire = "1.1.1"
 			ideology = lu_xun_thought_subtype
 		}
+		complete_national_focus = LEC_legacy_of_pen
 		
 	}
 }
 
-country_event = { #Black Monday Hits Korea
+country_event = { #The Pen Strikes the Presses - Start event chain to elect League or Workers
 	id = leftist_legations_event.3
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.3"}
 	title = leftist_legations_event.3.title
@@ -161,7 +166,19 @@ country_event = { #Black Monday Hits Korea
 	is_triggered_only = yes
 	option = { #
 		name = leftist_legations_event.3.a
-		
+		set_variable = {
+			var = LEC_empower_workers_variable
+			value = 0
+			tooltip = LEC_shanghai_leftist_struggle_tt
+		}
+		set_variable = {
+			var = LEC_empower_writers_variable
+			value = 0
+		}
+		country_event = {
+		id = leftist_legations_event.4
+		days = 7
+		}
 	}
 }
 
@@ -176,7 +193,29 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.4.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_empower_workers_variable
+			value = 5
+			tooltip = LEC_empower_workers_variable_tt
+		}
+		country_event = {
+		id = leftist_legations_event.5
+		days = 7
+		}
 		
+	}
+	option = { #
+		name = leftist_legations_event.4.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_empower_writers_variable
+			value = 5
+			tooltip = LEC_empower_writers_variable_tt
+		}
+		country_event = {
+		id = leftist_legations_event.5
+		days = 7
+		}
 	}
 }
 
@@ -191,7 +230,29 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.5.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_empower_workers_variable
+			value = 5
+			tooltip = LEC_empower_workers_variable_tt
+		}
+		country_event = {
+		id = leftist_legations_event.6
+		days = 7
+		}
 		
+	}
+	option = { #
+		name = leftist_legations_event.5.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_empower_writers_variable
+			value = 5
+			tooltip = LEC_empower_writers_variable_tt
+		}
+		country_event = {
+		id = leftist_legations_event.6
+		days = 7
+		}
 	}
 }
 
@@ -206,7 +267,29 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.6.a
 		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_empower_workers_variable
+			value = 5
+			tooltip = LEC_empower_workers_variable_tt
+		}
+		country_event = {
+		id = leftist_legations_event.1
+		days = 7
+		}
 		
+	}
+	option = { #
+		name = leftist_legations_event.6.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_empower_writers_variable
+			value = 5
+			tooltip = LEC_empower_writers_variable_tt
+		}
+		country_event = {
+		id = leftist_legations_event.1
+		days = 7
+		}
 	}
 }
 
