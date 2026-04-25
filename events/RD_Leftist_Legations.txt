@@ -100,6 +100,10 @@ country_event = { #A Choice of the League
 	option = { #A Ying
 		name = leftist_legations_event.2.a
 		ai_chance = { base = 100 }
+		#trigger = {
+		#	check_variable = { LEC_ying_variable > LEC_xuefeng_variable }
+		#	check_variable = { LEC_ying_variable > LEC_moruo_variable }
+		#}
 		set_politics = { ruling_party = totalist }
 		remove_all_ministers = yes
 		add_ideas = {
@@ -115,6 +119,10 @@ country_event = { #A Choice of the League
 	option = { #Guo Moruo
 		name = leftist_legations_event.2.b
 		ai_chance = { base = 100 }
+		#trigger = {
+		#	check_variable = { LEC_moruo_variable > LEC_xuefeng_variable }
+		#	check_variable = { LEC_moruo_variable > LEC_ying_variable }
+		#}
 		set_politics = { ruling_party = totalist }
 		remove_all_ministers = yes
 		add_ideas = {
@@ -136,6 +144,10 @@ country_event = { #A Choice of the League
 	option = { #Feng Xuefeng
 		name = leftist_legations_event.2.c
 		ai_chance = { base = 100 }
+		#trigger = {
+		#	check_variable = { LEC_xuefeng_variable > LEC_ying_variable }
+		#	check_variable = { LEC_xuefeng_variable > LEC_moruo_variable }
+		#}
 		set_politics = { ruling_party = radical_socialist }
 		remove_all_ministers = yes
 		add_ideas = {
@@ -156,7 +168,7 @@ country_event = { #A Choice of the League
 	}
 }
 
-country_event = { #The Pen Strikes the Presses - Start event chain to elect League or Workers
+country_event = { #The Pen Runs out of Ink
 	id = leftist_legations_event.3
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.3"}
 	title = leftist_legations_event.3.title
@@ -167,22 +179,25 @@ country_event = { #The Pen Strikes the Presses - Start event chain to elect Leag
 	option = { #
 		name = leftist_legations_event.3.a
 		set_variable = {
-			var = LEC_empower_workers_variable
+			var = LEC_xuefeng_variable
 			value = 0
-			tooltip = LEC_shanghai_leftist_struggle_tt
 		}
 		set_variable = {
-			var = LEC_empower_writers_variable
+			var = LEC_moruo_variable
+			value = 0
+		}
+		set_variable = {
+			var = LEC_ying_variable
 			value = 0
 		}
 		country_event = {
 		id = leftist_legations_event.4
-		days = 7
+		days = 14
 		}
 	}
 }
 
-country_event = { #
+country_event = { #A Eulogy For a Giant
 	id = leftist_legations_event.4
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.4"}
 	title = leftist_legations_event.4.title
@@ -194,9 +209,8 @@ country_event = { #
 		name = leftist_legations_event.4.a
 		ai_chance = { base = 100 }
 		add_to_variable = {
-			var = LEC_empower_workers_variable
+			var = LEC_xuefeng_variable
 			value = 5
-			tooltip = LEC_empower_workers_variable_tt
 		}
 		country_event = {
 		id = leftist_legations_event.5
@@ -208,9 +222,20 @@ country_event = { #
 		name = leftist_legations_event.4.b
 		ai_chance = { base = 100 }
 		add_to_variable = {
-			var = LEC_empower_writers_variable
+			var = LEC_moruo_variable
 			value = 5
-			tooltip = LEC_empower_writers_variable_tt
+		}
+		country_event = {
+		id = leftist_legations_event.5
+		days = 7
+		}
+	}
+	option = { #
+		name = leftist_legations_event.4.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_ying_variable
+			value = 5
 		}
 		country_event = {
 		id = leftist_legations_event.5
@@ -219,7 +244,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #A Debate On the Two Slogans
 	id = leftist_legations_event.5
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.5"}
 	title = leftist_legations_event.5.title
@@ -231,9 +256,8 @@ country_event = { #
 		name = leftist_legations_event.5.a
 		ai_chance = { base = 100 }
 		add_to_variable = {
-			var = LEC_empower_workers_variable
+			var = LEC_xuefeng_variable
 			value = 5
-			tooltip = LEC_empower_workers_variable_tt
 		}
 		country_event = {
 		id = leftist_legations_event.6
@@ -245,9 +269,12 @@ country_event = { #
 		name = leftist_legations_event.5.b
 		ai_chance = { base = 100 }
 		add_to_variable = {
-			var = LEC_empower_writers_variable
+			var = LEC_moruo_variable
 			value = 5
-			tooltip = LEC_empower_writers_variable_tt
+		}
+		add_to_variable = {
+			var = LEC_ying_variable
+			value = 5
 		}
 		country_event = {
 		id = leftist_legations_event.6
@@ -256,7 +283,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #On the Advocation of Revolutionary Literature
 	id = leftist_legations_event.6
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.6"}
 	title = leftist_legations_event.6.title
@@ -268,12 +295,15 @@ country_event = { #
 		name = leftist_legations_event.6.a
 		ai_chance = { base = 100 }
 		add_to_variable = {
-			var = LEC_empower_workers_variable
+			var = LEC_ying_variable
 			value = 5
-			tooltip = LEC_empower_workers_variable_tt
+		}
+		add_to_variable = {
+			var = LEC_xuefeng_variable
+			value = 5
 		}
 		country_event = {
-		id = leftist_legations_event.1
+		id = leftist_legations_event.7
 		days = 7
 		}
 		
@@ -282,18 +312,17 @@ country_event = { #
 		name = leftist_legations_event.6.b
 		ai_chance = { base = 100 }
 		add_to_variable = {
-			var = LEC_empower_writers_variable
+			var = LEC_moruo_variable
 			value = 5
-			tooltip = LEC_empower_writers_variable_tt
 		}
 		country_event = {
-		id = leftist_legations_event.1
+		id = leftist_legations_event.7
 		days = 7
 		}
 	}
 }
 
-country_event = { #
+country_event = { #On the Question of Sectarianism
 	id = leftist_legations_event.7
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.7"}
 	title = leftist_legations_event.7.title
@@ -305,10 +334,43 @@ country_event = { #
 		name = leftist_legations_event.7.a
 		ai_chance = { base = 100 }
 		
+		add_to_variable = {
+			var = LEC_xuefeng_variable
+			value = 5
+		}
+		country_event = {
+		id = leftist_legations_event.8
+		days = 7
+		}
+		
+	}
+	option = { #
+		name = leftist_legations_event.7.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_ying_variable
+			value = 5
+		}
+		country_event = {
+		id = leftist_legations_event.8
+		days = 7
+		}
+	}
+	option = { #
+		name = leftist_legations_event.7.c
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_moruo_variable
+			value = 5
+		}
+		country_event = {
+		id = leftist_legations_event.8
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #On Handprint On the Workers Movement
 	id = leftist_legations_event.8
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.8"}
 	title = leftist_legations_event.8.title
@@ -319,7 +381,22 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.8.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = LEC_moruo_variable
+			value = 5
+		}
+		add_to_variable = {
+			var = LEC_xuefeng_variable
+			value = 5
+		}
+	}
+	option = { #
+		name = leftist_legations_event.8.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_ying_variable
+			value = 5
+		}
 	}
 }
 
