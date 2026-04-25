@@ -4519,34 +4519,98 @@ country_event = { #Agapito Illustrisimo flavor
 	}
 }
 
-country_event = { #
+country_event = { #spain cucks rise up thank you paradox
 	id = rd_phil.88
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.88"}
 	title = rd_phil.88.title
-	desc = rd_phil.88.desc
+
+    	desc = {
+        text = rd_phil.88.desc.demi
+        trigger = {
+           	has_completed_focus = PHI_emilio
+        }
+    }
+
+    	desc = {
+        text = rd_phil.88.desc
+        trigger = {
+            has_socialist_government = no
+        }
+    }
+ 
+    	desc = {
+        text = rd_phil.88.desc.soc
+        trigger = {
+           	or = { has_socialist_government = yes has_government = social_democrat  has_completed_focus = PHI_cult_start  }
+        }
+    }
+
 	fire_only_once = yes 
 	
-	is_triggered_only = yes
-	option = { #
+	is_triggered_only = no
+	trigger = {
+	tag = PHI
+	has_global_flag = spanish_civil_war_happened
+	}
+	option = { #CNT
 		name = rd_phil.88.a
+		trigger = { or = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_government = social_democrat  has_completed_focus = PHI_emilio }  }
+		ai_chance = { base = 100 }
+		CNT = { add_manpower = 2000  add_war_support = 0.01  }
+	}
+	option = { #SPR generic guys fuck the carlists btw who wants them 
+		name = rd_phil.88.b
+		trigger = { has_socialist_government = no not = { has_completed_focus = PHI_cult_start  }  }
+		ai_chance = { base = 100 }
+		SPR = { add_manpower = 2000 add_war_support = 0.01 }
+		set_country_flag = PHI_helped_spr_out_lol
+
+		
+	}
+	option = { #wtf bro why am i helping 
+		name = rd_phil.88.c
 		ai_chance = { base = 100 }
 		
 	}
 }
 
-country_event = { #
+country_event = { #exiles from our backing guys of spr after their loss
 	id = rd_phil.89
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.89"}
 	title = rd_phil.89.title
 	desc = rd_phil.89.desc
 	fire_only_once = yes 
 	
-	is_triggered_only = yes
-	option = { #
+	is_triggered_only = no
+	trigger = {
+	tag = PHI
+	is_subject = no
+	SPR = { exists = no not = { has_country_flag = aftermath_of_the_civil_war } }
+	has_completed_focus = PHI_antisoc_church_ties
+	has_country_flag = PHI_helped_spr_out_lol
+	}
+	option = { #fuck yeah larp larp larp sahur
 		name = rd_phil.89.a
+		ai_chance = { base = 0 }
+		every_state = {
+		limit = {
+			OR = { 
+			is_core_of = SPR
+			is_core_of = CAR
+			is_core_of = CNT
+			}
+		}
+		add_core_of = PHI
+	}
+		set_cosmetic_tag = SPR_kingdom
+		
+	}
+	option = { #no
+		name = rd_phil.89.b
 		ai_chance = { base = 100 }
 		
 	}
+
 }
 
 country_event = { #
