@@ -406,7 +406,7 @@ country_event = { #On Handprint On the Workers Movement
 	}
 }
 
-country_event = { #
+country_event = { #On the United Front
 	id = leftist_legations_event.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.9"}
 	title = leftist_legations_event.9.title
@@ -414,14 +414,43 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Form a United Front With All Patriots
 		name = leftist_legations_event.9.a
 		ai_chance = { base = 100 }
+		add_radsoc_to_coalition = yes
+		add_socdem_to_coalition = yes
+		add_soclib_to_coalition = yes
+		add_marlib_to_coalition = yes
+		create_country_leader = { 
+			name = "Yu Qiaqing"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Yu_Qiaqing.png"
+			expire = "1.1.1"
+			ideology = marlib_national_liberalism_subtype
+		}
+		create_country_leader = { 
+			name = "Wu Kaixian"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Yang_Xingfo.png"
+			expire = "1.1.1"
+			ideology = soclib_tridemism_subtype
+		}
+		add_ideas = {
+		LEC_coalition_of_equals
+		}
+	}
+	
+	option = { #We must not give into these reactionaries
+		name = leftist_legations_event.9.b
+		ai_chance = { base = 100 }
+		add_tot_to_coalition = yes
+		add_radsoc_to_coalition = yes
 		
+		add_ideas = {
+		LEC_thw_workers_lead
+		}
 	}
 }
 
-country_event = { #
+country_event = { #New Citizen's Government
 	id = leftist_legations_event.10
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.10"}
 	title = leftist_legations_event.10.title
@@ -432,11 +461,15 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.10.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = 100
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.15
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Exiled Communities Gather
 	id = leftist_legations_event.11
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.11"}
 	title = leftist_legations_event.11.title
@@ -444,10 +477,17 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Korea
 		name = leftist_legations_event.11.a
 		ai_chance = { base = 100 }
-		
+		custuom_effect_tooltip = LEC_form_korea_puppet_tt
+		set_country_flag = LEC_form_korea_puppet
+	}
+	option = { #Taiwan
+		name = leftist_legations_event.11.b
+		ai_chance = { base = 100 }
+		custuom_effect_tooltip = LEC_form_taiwan_puppet_tt
+		set_country_flag = LEC_form_taiwan_puppet
 	}
 }
 

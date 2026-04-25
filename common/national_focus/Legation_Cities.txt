@@ -6102,7 +6102,10 @@ create_country_leader = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_hammer_strikes_iron }
 		completion_reward = {
-		
+		swap_ideas = {
+			remove_idea = LEC_dis_organized_worker_militias
+			add_idea = LEC_dis_organized_worker_militias_1
+		}
 		}
 	}
 	
@@ -6121,7 +6124,7 @@ create_country_leader = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_workers_raise_weapons }
 		completion_reward = {
-		
+		country_event = leftist_legations_event.9
 		}
 	}
 	
@@ -6141,7 +6144,14 @@ create_country_leader = {
 		prerequisite = {focus = LEC_new_united_front }
 		mutually_exclusive = { focus = LEC_union_focus }
 		completion_reward = {
-		
+			add_ideas = {
+			LEC_student_power_idea
+			}
+			add_research_slot = 1
+			add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+			}
 		}
 	}
 	
@@ -6161,7 +6171,13 @@ create_country_leader = {
 		prerequisite = {focus = LEC_new_united_front }
 		mutually_exclusive = { focus = LEC_student_power }
 		completion_reward = {
-		
+			add_ideas = {
+			LEC_worker_power
+			}
+			add_popularity = {
+			ideology = syndicalist
+			popularity = 0.05
+			}
 		}
 	}
 	
@@ -6180,7 +6196,34 @@ create_country_leader = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_union_focus focus = LEC_student_power  }
 		completion_reward = {
+		if = {
+			limit = {
+				has_idea = LEC_an_isolated_commune_1
+				has_completed_focus = LEC_gongjinhui
+			}
+			swap_ideas = {
+			remove_idea = LEC_an_isolated_commune_1
+			add_idea = LEC_an_isolated_commune_2
+			}
+		}
 		
+		if = {
+			limit = {
+				has_idea = LEC_an_isolated_commune_1
+				has_completed_focus = LEC_handle_gangs
+			}
+			swap_ideas = {
+			remove_idea = LEC_an_isolated_commune_1
+			add_idea = LEC_an_isolated_commune_3
+			}
+		}
+		
+		else = {
+			swap_ideas = {
+			remove_idea = LEC_an_isolated_commune
+			add_idea = LEC_an_isolated_commune_1
+			}
+		}
 		}
 	}
 	
@@ -6200,7 +6243,38 @@ create_country_leader = {
 		prerequisite = {focus = LEC_hammer_strikes_iron }
 		mutually_exclusive = { focus = LEC_handle_gangs }
 		completion_reward = {
-		
+		add_pataut_to_coalition = yes
+		create_country_leader = {
+				name = "Xu Langxi"
+				picture = "gfx/leaders/LEC/Portrait_LEC_Xu_Langxi.png"
+				expire = "1.1.1"
+				ideology = crime_syndicate_subtype
+				traits = {}
+			}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = LEC_triad_paternal_autocrat_party_long
+			name = LEC_triad_paternal_autocrat_party
+		}
+		if = {
+				limit = {
+					has_idea = LEC_an_isolated_commune_1
+				}
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune_1
+					add_idea = LEC_an_isolated_commune_2
+				}
+			}
+		else = {
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune
+					add_idea = LEC_an_isolated_commune_1
+				}
+			}
+			add_timed_idea = {
+				idea = LEC_friends_with_gangs
+				days = 90
+			}
 		}
 	}
 	
@@ -6220,7 +6294,25 @@ create_country_leader = {
 		prerequisite = {focus = LEC_hammer_strikes_iron }
 		mutually_exclusive = { focus = LEC_gongjinhui }
 		completion_reward = {
-		
+		if = {
+				limit = {
+					has_idea = LEC_an_isolated_commune_1
+				}
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune_1
+					add_idea = LEC_an_isolated_commune_3
+				}
+			}
+		else = {
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune
+					add_idea = LEC_an_isolated_commune_1
+				}
+			}
+			add_timed_idea = {
+				idea = LEC_purge_the_reactionary_green
+				days = 90
+			}
 		}
 	}
 	
@@ -6239,7 +6331,7 @@ create_country_leader = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_handle_gangs focus = LEC_gongjinhui }
 		completion_reward = {
-		
+			country_event = leftist_legations_event.10
 		}
 	}
 	
@@ -6258,7 +6350,10 @@ create_country_leader = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_citizens_gov_constitution }
 		completion_reward = {
-		
+			add_timed_idea = {
+				idea = LEC_the_union_grows
+				days = 180
+			}
 		}
 	}
 	
@@ -6277,7 +6372,10 @@ create_country_leader = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_union_growth }
 		completion_reward = {
-		
+			country_event = leftist_legations_event.11
+			add_ideas = {
+			LEC_the_exiles_join_ranks
+			}
 		}
 	}
 	
@@ -6296,7 +6394,14 @@ create_country_leader = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_union_growth }
 		completion_reward = {
-		
+			add_ideas = {
+				LEC_the_legal_marxists
+			}
+			add_socdem_to_coalition = yes
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.05
+			}
 		}
 	}
 	
@@ -6317,7 +6422,21 @@ create_country_leader = {
 		prerequisite = {focus = LEC_exile_reachout }
 		prerequisite = {focus = LEC_red_banners_across_bund }
 		completion_reward = {
-		
+			if = {
+				limit = {
+					has_idea = LEC_an_isolated_commune_2
+				}
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune_2
+					add_idea = LEC_an_isolated_commune_4
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune_3
+					add_idea = LEC_an_isolated_commune_5
+				}
+			}
 		}
 	}
 	
