@@ -847,7 +847,7 @@ country_event = { #leave faction after being freed from commonwealth? remember s
 	option = { #yeas no need for military bases and military cooperation with usa cause populace fucking hates you
 		name = rd_phil.10.a
 		ai_chance = { base = 100
-		modifier = { or = { has_government = market_liberal has_government = national_populist } factor = 0 }
+		modifier = { or = { has_government = market_liberal has_government = national_populist has_game_rule = { rule = PHI_politic_two option = RULE_OPTION_PHI_FOREIGN_POLICY_AMERICA } } factor = 0 }
 		}
 		if = {
 		limit = { is_in_faction = yes }
@@ -1517,6 +1517,7 @@ country_event = { #who is leader?
 		create_country_leader = { #minister
 			name = "Salud Algabre"
 			picture = "gfx/leaders/PHI/Portrait_PHI_Salud_Algabre.png"
+			female = yes
 			expire = "1.1.1"
 			ideology = natpop_agrarianism_subtype
 		}
@@ -1607,6 +1608,7 @@ country_event = { #radsoc or natpop
 		create_country_leader = { #minister
 			name = "Salud Algabre"
 			picture = "gfx/leaders/PHI/Portrait_PHI_Salud_Algabre.png"
+			female = yes
 			expire = "1.1.1"
 			ideology = agrarian_socialism_subtype
 		}
@@ -2552,6 +2554,29 @@ country_event = { #resistance to the over taking Constabulary
 				}
 			}
 		}
+		 
+		clr_country_flag = Luis_Taruc_dead 
+		clr_country_flag = Jesus_Lava_dead 
+		set_country_flag = Augusto_Jurado_dead
+		set_country_flag = Paulino_Santos_dead
+		set_country_flag = Quirinto_P_Evangelista_dead
+		set_country_flag = Basilio_J_Valdez_dead
+		set_country_flag = Benito_N_Ebuen_dead
+		set_country_flag = Heraclio_Alano_dead
+		set_country_flag = Leoncio_S_Tan_dead
+		set_country_flag = Mateo_M_Capinpin_dead
+		set_country_flag = Rafael_Jalandoni_dead
+		set_country_flag = Vicente_P_Lim_dead
+		set_country_flag = Jose_V_Andrada_dead
+		set_country_flag = Ramon_A_Alcaraz_dead
+		set_country_flag = Santiago_Nuval_dead
+		set_country_flag = Eustacio_Orobia_dead
+		set_country_flag = Joe_Rogers_dead
+		set_country_flag = Basilio_Fernando_dead
+		set_country_flag = Edwin_Andrews_dead
+		set_country_flag = Pelagio_Cruz_dead
+		set_country_flag = Victor_H_Dizon_dead
+		set_country_flag = Felix_Pestana_dead
 		complete_national_focus = PHI_soc_victoryyay
 		country_event = { id = rd_phil.41 days = 5 }
 	}
@@ -3448,7 +3473,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		JAP = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3462,7 +3494,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		GER = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3477,7 +3516,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		ENT = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3492,7 +3538,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		SPR = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3506,7 +3559,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		BHC = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3520,7 +3580,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
 			}
 		}
 		INT = { country_event = { id = rd_phil.61 days = 5 } }
@@ -3534,7 +3601,14 @@ country_event = { #first event for deciding a faction to try and join
 			base = 50
 			modifier = {
 				factor = 0
-				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				}
 			}
 		}
 		set_country_flag = PHI_ourselfs_neutral
@@ -3558,7 +3632,21 @@ country_event = { #ask the country to have you as ally
 	}
 	option = { #no fuck you phil
 		name = rd_phil.61.a
-		ai_chance = { base = 100 }
+		ai_chance = { base = 100 
+			modifier = {
+				factor = 0
+				OR = {
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_JAPAN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_GERMANY }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_ENTENTE }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_SPAIN }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL_EAST }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_INTERNATIONAL }
+				has_game_rule = { rule = PHI_foreign_policy option = PHI_FOREIGN_POLICY_OWN }
+				}
+			}
+
+		}
 		PHI = { 
 		country_event = { id = rd_phil.62 days = 5 } }
 	}
@@ -4336,6 +4424,7 @@ country_event = { #laurel portrait picker
 	title = rd_phil.82.title
 	desc = rd_phil.82.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_56"
 	
 	is_triggered_only = yes
 	option = { #no hat
@@ -4370,15 +4459,40 @@ country_event = { #marcos event do later
 	id = rd_phil.83
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.83"}
 	title = rd_phil.83.title
+    	desc = {
+        text = rd_phil.83.desc.soc
+        trigger = {
+           	has_completed_focus = PHI_soc_victoryyay 
+        }
+    }
+
 	desc = rd_phil.83.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_61"
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #freed thanks to laruel
 		name = rd_phil.83.a
 		ai_chance = { base = 100 }
+		add_manpower = 2
+		add_political_power = 10
+
 		
 	}
+	option = { #no lol
+		name = rd_phil.83.b
+		trigger = { not = { 		has_country_leader = {
+   		 name = "Jose P. Laurel"
+  		  ruling_only = yes
+		}
+
+			} } 
+		ai_chance = { base = 100 }
+		add_stability = 0.01
+
+		
+	}
+
 }
 
 country_event = { #A Sakdal Leader
@@ -4387,6 +4501,7 @@ country_event = { #A Sakdal Leader
 	title = rd_phil.84.title
 	desc = rd_phil.84.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_59"
 	
 	is_triggered_only = yes
 	option = { #cool
@@ -4401,7 +4516,8 @@ country_event = { #ricarte flavor event
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.85"}
 	title = rd_phil.85.title
 	desc = rd_phil.85.desc
-	fire_only_once = yes 
+	fire_only_once = yes
+	picture = "GFX_report_event_philippines_60"
 	
 	is_triggered_only = yes
 	option = { #
@@ -4416,7 +4532,8 @@ country_event = { #protestant flavor
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.86"}
 	title = rd_phil.86.title
 	desc = rd_phil.86.desc
-	fire_only_once = yes 
+	fire_only_once = yes
+	picture = "GFX_report_event_philippines_57"
 	
 	is_triggered_only = yes
 	option = { #yes
@@ -4439,6 +4556,7 @@ country_event = { #Agapito Illustrisimo flavor
 	title = rd_phil.87.title
 	desc = rd_phil.87.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_57"
 	
 	is_triggered_only = yes
 	option = { #ok
@@ -4448,48 +4566,113 @@ country_event = { #Agapito Illustrisimo flavor
 	}
 }
 
-country_event = { #
+country_event = { #spain cucks rise up thank you paradox
 	id = rd_phil.88
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.88"}
 	title = rd_phil.88.title
-	desc = rd_phil.88.desc
+
+    	desc = {
+        text = rd_phil.88.desc.demi
+        trigger = {
+           	has_completed_focus = PHI_emilio
+        }
+    }
+
+    	desc = {
+        text = rd_phil.88.desc
+        trigger = {
+            has_socialist_government = no
+        }
+    }
+ 
+    	desc = {
+        text = rd_phil.88.desc.soc
+        trigger = {
+           	or = { has_socialist_government = yes has_government = social_democrat  has_completed_focus = PHI_cult_start  }
+        }
+    }
+
 	fire_only_once = yes 
 	
-	is_triggered_only = yes
-	option = { #
+	is_triggered_only = no
+	trigger = {
+	tag = PHI
+	has_global_flag = spanish_civil_war_happened
+	}
+	option = { #CNT
 		name = rd_phil.88.a
+		trigger = { or = { has_socialist_government = yes has_completed_focus = PHI_cult_start has_government = social_democrat  has_completed_focus = PHI_emilio }  }
+		ai_chance = { base = 100 }
+		CNT = { add_manpower = 2000  add_war_support = 0.01  }
+	}
+	option = { #SPR generic guys fuck the carlists btw who wants them 
+		name = rd_phil.88.b
+		trigger = { has_socialist_government = no not = { has_completed_focus = PHI_cult_start  }  }
+		ai_chance = { base = 100 }
+		SPR = { add_manpower = 2000 add_war_support = 0.01 }
+		set_country_flag = PHI_helped_spr_out_lol
+
+		
+	}
+	option = { #wtf bro why am i helping 
+		name = rd_phil.88.c
 		ai_chance = { base = 100 }
 		
 	}
 }
 
-country_event = { #
+country_event = { #exiles from our backing guys of spr after their loss
 	id = rd_phil.89
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.89"}
 	title = rd_phil.89.title
 	desc = rd_phil.89.desc
 	fire_only_once = yes 
 	
-	is_triggered_only = yes
-	option = { #
+	is_triggered_only = no
+	trigger = {
+	tag = PHI
+	is_subject = no
+	SPR = { exists = no not = { has_country_flag = aftermath_of_the_civil_war } }
+	has_completed_focus = PHI_antisoc_church_ties
+	has_country_flag = PHI_helped_spr_out_lol
+	}
+	option = { #fuck yeah larp larp larp sahur
 		name = rd_phil.89.a
+		ai_chance = { base = 0 }
+		every_state = {
+		limit = {
+			OR = { 
+			is_core_of = SPR
+			is_core_of = CAR
+			is_core_of = CNT
+			}
+		}
+		add_core_of = PHI
+	}
+		set_cosmetic_tag = SPR_kingdom
+		
+	}
+	option = { #no
+		name = rd_phil.89.b
 		ai_chance = { base = 100 }
 		
 	}
+
 }
 
-country_event = { #
+country_event = { #laurel first case conviction
 	id = rd_phil.90
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.90"}
 	title = rd_phil.90.title
 	desc = rd_phil.90.desc
 	fire_only_once = yes 
-	
+	picture = "GFX_report_event_philippines_61"
+
 	is_triggered_only = yes
 	option = { #
 		name = rd_phil.90.a
 		ai_chance = { base = 100 }
-		
+		hidden_effect = { country_event = { id = rd_phil.83 days = 286 } }
 	}
 }
 
