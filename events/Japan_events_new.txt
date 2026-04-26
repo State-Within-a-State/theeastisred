@@ -9447,4 +9447,125 @@ country_event = { #custom option for fengtian leadership
 	}
 
 
+country_event = { #Formation of a Filo-Gov
+	id = japan_new_event.153
+	immediate = {log = "[GetDateText]: [Root.GetName]: event japan_new_event.75"}
+	title = japan_new_event.153.title
+	desc = japan_new_event.153.desc
+	picture = "GFX_japan_foreign_minister_2"
+	
+	is_triggered_only = yes
+	option = { #laurel collabing
+		name = japan_new_event.153.a
+		ai_chance = { base = 100 }
+		PHI = {
+		create_country_leader = {
+			name = "Jose P. Laurel"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Jose_P_Laurel.png"
+			expire = "1.1.1"
+			ideology = kritarchy_subtype
+		}
+		set_party_name = {
+   			 ideology = social_liberal
+   			 long_name = PHI_nationalisa_party_long
+   			 name = PHI_nationalisa_party
+		}
+
+		set_politics = {
+			ruling_party = social_liberal
+			elections_allowed = no
+		}
+
+		set_country_leader_ideology = pan_asianism_subtype
+
+		}
+	}
+	option = { #roxas collabing
+		name = japan_new_event.153.d
+		ai_chance = { base = 100 }
+		trigger = { PHI = { not = { has_completed_focus = PHI_roxas_lib } } }
+		PHI = {
+		set_politics = {
+			ruling_party = market_liberal
+			elections_allowed = no
+		}
+
+		}
+
+	}
+
+	option = { #Avilero
+		name = japan_new_event.153.b
+		ai_chance = { base = 100 }
+		PHI = {
+		create_country_leader = {
+			name = "Aurelio Alvero"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Aurelio_Alvero.png"
+			expire = "1.1.1"
+			ideology = pataut_pan_asianism_subtype
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+			elections_allowed = no
+		}
+		set_party_name = {
+			ideology = paternal_autocrat
+			long_name = PHI_Avilero_party_long
+			name = PHI_Avilero_party
+		}
+		}
+	}
+	option = { #Keep Current Government
+		name = japan_new_event.153.c
+		ai_chance = { base = 100 }
+		PHI = {
+		create_country_leader = {
+			name = "Pio Duran"
+			picture = "gfx/leaders/PHI/Portrait_PHI_Pio_Duran.png"
+			expire = "1.1.1"
+			ideology = natpop_pan_asianism_subtype
+		}
+		set_politics = {
+			ruling_party = national_populist
+			elections_allowed = no
+		}
+		set_party_name = {
+			ideology = national_populist
+			long_name = PHI_Duran_party_long
+			name = PHI_Duran_party
+		}
+		}
+	}
+
+	option = { #ganap collabing
+		name = japan_new_event.153.e
+		ai_chance = { base = 100 }
+		trigger = { PHI = { not = { has_completed_focus = PHI_emilio } not = { has_completed_focus = PHI_cult_start  }  }  }
+		PHI = {
+		set_politics = {
+   		ruling_party = radical_socialist
+    		elections_allowed = no
+		}
+		create_country_leader = {
+			name = "Benigno Ramos"
+			picture = "gfx/leaders/PHI/Portrait_Philippines_Benigno_Ramos.png"
+			expire = "1.1.1"
+			ideology = left_nationalism_subtype
+		}
+		set_party_name = {
+   			 ideology = radical_socialist
+   			 long_name = PHI_ganap_party_long
+   			 name = PHI_ganap_party
+			}
+
+		}
+
+	}
+
+	
+
+
+}
+
+
 
