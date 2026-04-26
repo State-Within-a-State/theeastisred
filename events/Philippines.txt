@@ -2290,7 +2290,7 @@ country_event = { #Protecting the Republic triggered from event .39
 	picture = "GFX_report_event_philippines_14"
 	is_triggered_only = yes
 	option = { #American Junta
-		name = rd_phil.35.b
+		name = rd_phil.35.a
 		ai_chance = {
 			base = 50
 			modifier = {
@@ -2318,7 +2318,7 @@ country_event = { #Protecting the Republic triggered from event .39
 		}
 		create_country_leader = {
 			name = "Guillermo B. Francisco"
-			picture = "gfx/leaders/PHI/Portrait_PHI_Paulino_Santos.png"
+			picture = "gfx/leaders/PHI/PHI_Francisco_B_Guillermo.png"
 			expire = "1.1.1"
 			ideology = junta_subtype
 		}
@@ -2326,7 +2326,7 @@ country_event = { #Protecting the Republic triggered from event .39
 	}
 	
 	option = { #Corporaists - Soriano
-		name = rd_phil.35.c
+		name = rd_phil.35.b
 		ai_chance = {
 			base = 50
 			modifier = {
@@ -2468,7 +2468,7 @@ country_event = { #A Struggle in the Chamber
 		}
 		create_country_leader = {
 			name = "Enrique Zóbel de Ayala"
-			picture = "gfx/leaders/PHI/Portrait_PHI_Enrique_Zobel_de_Ayala.png"
+			picture = "gfx/leaders/PHI/PHI_Enrique_Zóbel_de_Ayala.png"
 			expire = "1.1.1"
 			ideology = hispanism_subtype
 		}
@@ -4562,6 +4562,11 @@ country_event = { #Agapito Illustrisimo flavor
 	option = { #ok
 		name = rd_phil.87.a
 		ai_chance = { base = 100 }
+		add_popularity = {
+    		ideology = national_populist
+    popularity = 0.025
+}
+
 		
 	}
 }
@@ -4591,7 +4596,7 @@ country_event = { #spain cucks rise up thank you paradox
            	or = { has_socialist_government = yes has_government = social_democrat  has_completed_focus = PHI_cult_start  }
         }
     }
-
+	picture = "GFX_report_event_philippines_19"
 	fire_only_once = yes 
 	
 	is_triggered_only = no
@@ -4627,6 +4632,7 @@ country_event = { #exiles from our backing guys of spr after their loss
 	title = rd_phil.89.title
 	desc = rd_phil.89.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_32"
 	
 	is_triggered_only = no
 	trigger = {
@@ -4676,24 +4682,27 @@ country_event = { #laurel first case conviction
 	}
 }
 
-country_event = { #
+country_event = { #sumulong denounces longism and populism
 	id = rd_phil.91
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.91"}
 	title = rd_phil.91.title
 	desc = rd_phil.91.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_44"
 	
 	is_triggered_only = yes
 	option = { #
 		name = rd_phil.91.a
 		ai_chance = { base = 100 }
+		add_stability = 0.01
 		
 	}
 }
 
-country_event = { #
+country_event = { #a rally held by Quezon organized with santos
 	id = rd_phil.92
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.92"}
+	picture = "GFX_report_event_philippines_8"
 	title = rd_phil.92.title
 	desc = rd_phil.92.desc
 	fire_only_once = yes 
@@ -4702,67 +4711,84 @@ country_event = { #
 	option = { #
 		name = rd_phil.92.a
 		ai_chance = { base = 100 }
+		add_popularity = {
+    		ideology = radical_socialist
+    popularity = 0.025
+}
 		
 	}
 }
 
-country_event = { #
+country_event = { #lava invents the oil palm thingy give a ffect
 	id = rd_phil.93
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.93"}
 	title = rd_phil.93.title
 	desc = rd_phil.93.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_21"
 	
 	is_triggered_only = yes
 	option = { #
 		name = rd_phil.93.a
 		ai_chance = { base = 100 }
+add_tech_bonus = {
+    bonus = 0.5
+    uses = 1
+    category = synth_resources
+}
 		
 	}
 }
 
-country_event = { #
+country_event = { #chaos around new elections
 	id = rd_phil.94
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.94"}
 	title = rd_phil.94.title
 	desc = rd_phil.94.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_13"
 	
 	is_triggered_only = yes
 	option = { #
 		name = rd_phil.94.a
 		ai_chance = { base = 100 }
+		hidden_effect = { country_event = { id = rd_phil.95 days = 30 } }
 		
 	}
 }
 
-country_event = { #
+country_event = { #radicalism spreading? /anti Americanism? /anti nactionalista? idk if i mentioned this before check
 	id = rd_phil.95
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.95"}
 	title = rd_phil.95.title
 	desc = rd_phil.95.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_50"
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #mannnn
 		name = rd_phil.95.a
 		ai_chance = { base = 100 }
+		hidden_effect = { country_event = { id = rd_phil.96 days = 34 } }
+		add_stability = -0.025
 		
 	}
 }
 
-country_event = { #
+country_event = { #filipino americans refugees (maybe a mention of moncado probably not tbh
 	id = rd_phil.96
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_phil.96"}
 	title = rd_phil.96.title
 	desc = rd_phil.96.desc
 	fire_only_once = yes 
+	picture = "GFX_report_event_philippines_21"
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #cool
 		name = rd_phil.96.a
 		ai_chance = { base = 100 }
-		
+		add_manpower = 1000
+		add_stability = -0.025
 	}
 }
 
