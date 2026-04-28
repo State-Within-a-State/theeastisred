@@ -7146,11 +7146,21 @@ has_country_leader = {
 		prerequisite = { focus = PHI_navy_swimming_between_islands} 
 		completion_reward = {
 			log = "[GetLogRoot]: Focus Completed PHI_found_the_marine_corps"
+			if = {
+			limit = { has_tech = marines }
 			add_tech_bonus = {
 				name = PHI_found_the_marine_corps
 				bonus = 0.5
 				uses = 1
 				category = marine_tech
+			}
+
+			}
+			else = { 
+			set_technology = {
+    			marines = 1
+			}
+
 			}
 			add_tech_bonus = {
 				name = PHI_found_the_marine_corps
