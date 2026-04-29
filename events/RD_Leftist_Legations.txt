@@ -554,7 +554,7 @@ country_event = { #Cresent Moon Debate Flavour
 	}
 }
 
-country_event = { #
+country_event = { #Post-Unification Syndicalists
 	id = leftist_legations_event.14
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.14"}
 	title = leftist_legations_event.14.title
@@ -562,14 +562,45 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Wang Shouhua
 		name = leftist_legations_event.14.a
 		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Wang_Shouhua_hog_syn
+		LEC_Luo_Yinong_eco_syn
+		LEC_Yu_Xiusong_for_syn
+		LEC_Gu_Shunzhang_sec_syn
+		}
 		
+	}
+	option = { #Zhang Wentian/Wang Jiaxiang
+		name = leftist_legations_event.14.b
+		ai_chance = { base = 100 }
+		country_event = leftist_legations_event.15
+	}
+	option = { #Zheng Chaolin
+		name = leftist_legations_event.14.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Zheng_Chaolin_hog_syn
+		LEC_Peng_Shuzhi_eco_syn
+		LEC_Yu_Xiusong_for_syn
+		LEC_Yun_Yutang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Zheng Chaolin"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Zhang_Chaolin.png"
+			expire = "1.1.1"
+			ideology = syn_internationalism_subtype
+		}
 	}
 }
 
-country_event = { #
+country_event = { ##Wang Jiaxiang/Zhang Wentian
 	id = leftist_legations_event.15
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.15"}
 	title = leftist_legations_event.15.title
@@ -577,14 +608,46 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Wang Jiaxiang
 		name = leftist_legations_event.15.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Wang_Jiaxiang_hog_syn
+		LEC_Zhang_Wentian_eco_syn
+		LEC_Shen_Zemin_for_syn
+		LEC_Wang_Shengrong_sec_syn
+		}
+		create_country_leader = { 
+			name = "Wang Jiaxiang"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Wang_Jiaxing.png"
+			expire = "1.1.1"
+			ideology = liberalized_syndicalism_subtype
+		}
+	}
+	
+	option = { #Zhang Wentian
+		name = leftist_legations_event.15.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Zhang_Wentian_hog_syn
+		LEC_Wang_Jiaxiang_eco_syn
+		LEC_Shen_Zemin_for_syn
+		LEC_Dong_Yixiang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Zhang Wentian"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Zhang_Wentian.png"
+			expire = "1.1.1"
+			ideology = liberalized_syndicalism_subtype
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Chaolin or Kuan
 	id = leftist_legations_event.16
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.16"}
 	title = leftist_legations_event.16.title
@@ -595,7 +658,38 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.16.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Zheng_Chaolin_hog_syn
+		LEC_Peng_Shuzhi_eco_syn
+		LEC_Yu_Xiusong_for_syn
+		LEC_Yun_Yutang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Zheng Chaolin"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Zhang_Chaolin.png"
+			expire = "1.1.1"
+			ideology = syn_internationalism_subtype
+		}
+	}
+	option = { #
+		name = leftist_legations_event.16.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Yin_Kuan_hog_syn
+		LEC_Peng_Shuzhi_eco_syn
+		LEC_Yu_Xiusong_for_syn
+		LEC_Yun_Yutang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Yin Kuan"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Yin_Kuan.png"
+			expire = "1.1.1"
+			ideology = syn_internationalism_subtype
+		}
 	}
 }
 
@@ -610,11 +704,72 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.17.a
 		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_idea = LEC_Zhang_Wentian_hog_syn
+			}
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Zhang_Wentian_hog_syn
+		LEC_Wang_Jiaxiang_eco_syn
+		LEC_Shen_Zemin_for_syn
+		LEC_Dong_Yixiang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Zhang Wentian"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Zhang_Wentian.png"
+			expire = "1.1.1"
+			ideology = liberalized_syndicalism_subtype
+		}
+		}
+		else = {
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Wang_Jiaxiang_hog_syn
+		LEC_Zhang_Wentian_eco_syn
+		LEC_Shen_Zemin_for_syn
+		LEC_Wang_Shengrong_sec_syn
+		}
+		create_country_leader = { 
+			name = "Wang Jiaxiang"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Wang_Jiaxing.png"
+			expire = "1.1.1"
+			ideology = liberalized_syndicalism_subtype
+		}
+		}
 		
+	}
+	
+	is_triggered_only = yes
+	option = { #Li Hanjun
+		name = leftist_legations_event.17.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Li_Hanjun_hog_rso
+		LEC_Li_Da_eco_rso
+		LEC_Yun_Yutang_for_syn
+		LEC_Dong_Yixiang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Li Hanjun"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Li_Hanjun.png"
+			expire = "1.1.1"
+			ideology = radsoc_revisionist_marxism_subtype
+		}
+	}
+	
+	option = { #Yang or Hou
+		name = leftist_legations_event.17.c
+		ai_chance = { base = 100 }
+		country_event = leftist_legations_event.18
 	}
 }
 
-country_event = { #
+country_event = { #Yang Xingfo or Hou Shaoqiu
 	id = leftist_legations_event.18
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.18"}
 	title = leftist_legations_event.18.title
@@ -625,11 +780,67 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.18.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = social_democrat }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Yang_Xingfo_hog_sde
+		LEC_Chen_Wengdao_eco_rso
+		LEC_Liu_Yazi_for_rso
+		LEC_Gao_Yuhan_sec_rso
+		}
+		create_country_leader = { 
+			name = "Yang Xingfo"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Yang_Xingfo.png"
+			expire = "1.1.1"
+			ideology = socdem_utopian_technocracy_subtype
+		}
+		add_syn_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		set_party_name = {
+		ideology = syndicalist
+		name = LEC_social_democrat_party
+		name_long = LEC_social_democrat_party_long
+		}
+		set_party_name = {
+		ideology = radical_socialist
+		name = LEC_social_democrat_party
+		name_long = LEC_social_democrat_party_long
+		}
+	}
+	
+	option = { #
+		name = leftist_legations_event.18.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Hou_Shaoqiu_hog_syn
+		LEC_Chen_Wengdao_eco_rso
+		LEC_Yang_Xianjiang_for_rso
+		LEC_Gao_Yuhan_sec_rso
+		}
+		add_socdem_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		create_country_leader = { 
+			name = "Hou Shaoqiu"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Hou_Shaoqiu.png"
+			expire = "1.1.1"
+			ideology = syn_utopian_technocracy_subtype
+		}
+		set_party_name = {
+		ideology = syndicalist
+		name = LEC_social_democrat_party
+		name_long = LEC_social_democrat_party_long
+		}
+		set_party_name = {
+		ideology = radical_socialist
+		name = LEC_social_democrat_party
+		name_long = LEC_social_democrat_party_long
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Syndicalist Elections
 	id = leftist_legations_event.19
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.19"}
 	title = leftist_legations_event.19.title
@@ -637,10 +848,77 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Wang Shouhua
 		name = leftist_legations_event.19.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Wang_Shouhua_hog_syn
+		LEC_Luo_Yinong_eco_syn
+		LEC_Lu_Dingyi_for_syn
+		LEC_Gu_Shunzhang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Wang Shouhua"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Wang_Shouhua.png"
+			expire = "1.1.1"
+			ideology = centralized_syndicalism_subtype
+		}
+	}
+	option = { #Luo Yinong
+		name = leftist_legations_event.19.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Luo_Yinong_hog_syn
+		LEC_Ke_Qingshi_eco_syn
+		LEC_Kang_Sheng_for_syn
+		LEC_Gu_Shunzhang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Luo Yinong"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Luo_Yinong .png"
+			expire = "1.1.1"
+			ideology = centralized_syndicalism_subtype
+		}
+	}
+	option = { #Ke Qingshi
+		name = leftist_legations_event.19.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Ke_Qingshi_hog_syn
+		LEC_Chen_Boda_eco_syn
+		LEC_Kang_Sheng_for_syn
+		LEC_Zhang_Chunqiao_sec_syn
+		}
+		create_country_leader = { 
+			name = "Ke Qingshi"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Ke_Qingshi.png"
+			expire = "1.1.1"
+			ideology = centralized_syndicalism_subtype
+		}
+	}
+	option = { #Liu Ningyi
+		name = leftist_legations_event.19.d
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Liu_Ningyi_hog_syn
+		LEC_Zhu_Xuefan_eco_syn
+		LEC_Lu_Dingyi_for_syn
+		LEC_Gu_Shunzhang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Liu Ningyi"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Liu_Ningyi.png"
+			expire = "1.1.1"
+			ideology = syn_internationalism_subtype
+		}
 	}
 }
 
