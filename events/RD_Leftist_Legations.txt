@@ -991,7 +991,6 @@ country_event = { #Feng Xuefeng Post-Uni
 		LEC_Zhou_Yang_for_rso
 		LEC_pan_hannian_sec_rso
 		}
-		add_tot_to_coalition = yes
 		create_country_leader = { 
 			name = "Feng Xuefeng"
 			picture = "gfx/leaders/LEC/Portrait_LEC_Feng_Xuefeng.png"
@@ -999,23 +998,22 @@ country_event = { #Feng Xuefeng Post-Uni
 			ideology = lu_xun_thought_subtype
 		}
 	}
-	option = { #Mao Dun
+	option = { #Hu Feng
 		name = leftist_legations_event.21.b
 		ai_chance = { base = 100 }
 		set_politics = { ruling_party = radical_socialist }
 		remove_all_ministers = yes
 		add_ideas = {
-		LEC_Mao_Dun_hog_rso
-		LEC_Ruo_Shi_eco_rso
-		LEC_Zhou_Yang_for_rso
-		LEC_pan_hannian_sec_rso
+		LEC_Hu_Feng_hog_rso
+		LEC_Hu_Yepin_eco_rso
+		LEC_Lu_Heruo_for_rso
+		LEC_Chen_Qixia_sec_rso
 		}
-		add_tot_to_coalition = yes
 		create_country_leader = { 
-			name = "Mao Dun"
-			picture = "gfx/leaders/LEC/Portrait_LEC_Mao_Dun.png"
+			name = "Hu Feng"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Hu_Feng.png"
 			expire = "1.1.1"
-			ideology = radical_progressivism_subtype
+			ideology = utopian_technocracy_subtype
 		}
 	}
 	
@@ -1035,13 +1033,32 @@ country_event = { #Feng Xuefeng Post-Uni
 		name = LEC_radical_socialist_party
 		name_long = LEC_radical_socialist_party_long
 		}
-		add_radsoc_to_coalition = yes
 		add_tot_to_coalition = yes
 		create_country_leader = { 
 			name = "Wang Jingzhi"
 			picture = "gfx/leaders/LEC/Portrait_LEC_Wang_Jingzhi.png"
 			expire = "1.1.1"
 			ideology = syn_technocratic_socialism_subtype
+		}
+	}
+	
+	option = { #Ding Ling
+		name = leftist_legations_event.21.d
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Ding_Ling_hog_rso
+		LEC_Hu_Yepin_eco_rso
+		LEC_Ai_Qing_for_rso
+		LEC_Chen_Qixia_sec_rso
+		}
+		create_country_leader = { 
+			name = "Ding Ling"
+			picture = "gfx/leaders/LEC/Portrait_LEC_leader_Ding_Ling2.png"
+			expire = "1.1.1"
+			ideology = radsoc_socialist_feminism_subtype
+			female = yes
 		}
 	}
 }
@@ -1108,6 +1125,26 @@ country_event = { #Zhou Yang - Can Get Him Before unification - Post-Uni
 			picture = "gfx/leaders/LEC/Portrait_LEC_Tian_Han_new.png"
 			expire = "1.1.1"
 			ideology = radsoc_communism_subtype
+		}
+	}
+	
+	option = { #Mao Dun
+		name = leftist_legations_event.22.d
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Mao_Dun_hog_rso
+		LEC_Ruo_Shi_eco_rso
+		LEC_Zhou_Yang_for_rso
+		LEC_pan_hannian_sec_rso
+		}
+		add_tot_to_coalition = yes
+		create_country_leader = { 
+			name = "Mao Dun"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Mao_Dun.png"
+			expire = "1.1.1"
+			ideology = radical_progressivism_subtype
 		}
 	}
 }
@@ -1253,7 +1290,7 @@ country_event = { #Feng Naichou vs Cheng Fangwu
 	}
 }
 
-country_event = { #
+country_event = { #Event Chain For Zhou Yang - A Debate on Art For the People
 	id = leftist_legations_event.26
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.26"}
 	title = leftist_legations_event.26.title
@@ -1261,14 +1298,42 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Art is a River that Molds the Flower of the Stream - Zhou Yang
 		name = leftist_legations_event.26.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+		id = leftist_legations_event.27
+		days = 21
+		}
+		set_variable = {
+			var = LEC_empower_Zhou_Yang
+			value = 5
+		}
+		set_variable = {
+			var = LEC_empower_Feng_Xuefeng
+			value = 0
+		}
+	}
+	
+	option = { #Art Shall be Created For the Masses By the Masses - Feng Xuefeng, Ai Qing, Ding Ling
+		name = leftist_legations_event.26.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = leftist_legations_event.27
+		days = 21
+		}
+		set_variable = {
+			var = LEC_empower_Feng_Xuefeng
+			value = 5
+		}
+		set_variable = {
+			var = LEC_empower_Zhou_Yang
+			value = 0
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Zhou Yang Raises the Voice (Sectarianism) - Criticises Hu Feng
 	id = leftist_legations_event.27
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.27"}
 	title = leftist_legations_event.27.title
@@ -1276,14 +1341,42 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must denounce Hu Feng's Treachrey 
 		name = leftist_legations_event.27.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+		id = leftist_legations_event.28
+		days = 21
+		}
+		add_to_variable = {
+			var = LEC_empower_Zhou_Yang
+			value = 5
+		}
+		add_to_variable = {
+			var = LEC_empower_Feng_Xuefeng
+			value = 0
+		}
+	}
+	
+	option = { #Ok Mr Zhou, Lets Keep This Civil
+		name = leftist_legations_event.27.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = leftist_legations_event.28
+		days = 21
+		}
+		add_to_variable = {
+			var = LEC_empower_Zhou_Yang
+			value = 0
+		}
+		add_to_variable = {
+			var = LEC_empower_Feng_Xuefeng
+			value = 5
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Denouncing Silent Oppression
 	id = leftist_legations_event.28
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.28"}
 	title = leftist_legations_event.28.title
@@ -1291,10 +1384,37 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #How Can a Flock be Guided Without a Shepherd?
 		name = leftist_legations_event.28.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+			var = LEC_empower_Zhou_Yang
+			value = 5
+		}
+		add_to_variable = {
+			var = LEC_empower_Feng_Xuefeng
+			value = 0
+		}
+		country_event = {
+		id = leftist_legations_event.29
+		days = 21
+		}
+	}
+	option = { #For an Artistic Democracy, We Must Have a Political Democracy!
+		name = leftist_legations_event.28.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+			var = LEC_empower_Zhou_Yang
+			value = 0
+		}
+		add_to_variable = {
+			var = LEC_empower_Feng_Xuefeng
+			value = 5
+		}
+		country_event = {
+		id = leftist_legations_event.29
+		days = 21
+		}
 	}
 }
 
@@ -1306,14 +1426,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Zhou Yang Removes Feng
 		name = leftist_legations_event.29.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+				check_variable = {	LEC_empower_Zhou_Yang > LEC_empower_Feng_Xuefeng }
+			}
+			country_event = {
+				id = leftist_legations_event.30
+				days = 7
+			}
+		}
+		else = {
+			country_event = {
+			id = leftist_legations_event.31
+			days = 21
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Unity of Art and the Line - Mao Dun
 	id = leftist_legations_event.30
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.30"}
 	title = leftist_legations_event.30.title
@@ -1321,14 +1455,27 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #A Hand Held By the Party
 		name = leftist_legations_event.30.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = radical_socialist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Zhou_Yang_hog_rso
+		LEC_Ruo_Shi_eco_rso
+		LEC_Zhou_Libo_for_rso
+		LEC_Tian_Han_sec_rso
+		}
+		create_country_leader = { 
+			name = "Zhou Yang"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Zhou_Yang.png"
+			expire = "1.1.1"
+			ideology = radsoc_communism_subtype
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Struggle Against Sectarian Thinking
 	id = leftist_legations_event.31
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.31"}
 	title = leftist_legations_event.31.title
@@ -1336,10 +1483,24 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Zhou Yang Know Your Place!
 		name = leftist_legations_event.31.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = radical_socialist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Feng_Xuefeng_hog_rso
+		LEC_Ruo_Shi_eco_rso
+		LEC_Pan_Mohua_for_rso
+		LEC_pan_hannian_sec_rso
+		}
+		add_tot_to_coalition = yes
+		create_country_leader = { 
+			name = "Feng Xuefeng"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Feng_Xuefeng.png"
+			expire = "1.1.1"
+			ideology = lu_xun_thought_subtype
+		}
 	}
 }
 
