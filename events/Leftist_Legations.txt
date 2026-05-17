@@ -590,12 +590,14 @@ country_event = { #Post-Unification Syndicalists
 		LEC_Yu_Xiusong_for_syn
 		LEC_Gu_Shunzhang_sec_syn
 		}
+		complete_national_focus = LEC_red_wave_china_rev
 		
 	}
 	option = { #Zhang Wentian/Wang Jiaxiang
 		name = leftist_legations_event.14.b
 		ai_chance = { base = 100 }
 		country_event = leftist_legations_event.15
+		complete_national_focus = LEC_productive_forces_world
 	}
 	option = { #Zheng Chaolin
 		name = leftist_legations_event.14.c
@@ -614,6 +616,7 @@ country_event = { #Post-Unification Syndicalists
 			expire = "1.1.1"
 			ideology = syn_internationalism_subtype
 		}
+		complete_national_focus = LEC_cause_international_labour
 	}
 	#if we want a corrupt triad associated path
 	#trigger has complted labor rackets, met some checks in flavor events etc or maybe make it in Wang Shouhua path and unlock 1 focus or some shit
@@ -691,6 +694,10 @@ country_event = { #Chaolin or Kuan
 			expire = "1.1.1"
 			ideology = syn_internationalism_subtype
 		}
+		swap_ideas = {
+		remove_idea = LEC_the_world_calls_for_revolution
+		add_idea = LEC_the_world_calls_for_revolution_1
+		}
 	}
 	option = { #
 		name = leftist_legations_event.16.b
@@ -708,6 +715,10 @@ country_event = { #Chaolin or Kuan
 			picture = "gfx/leaders/LEC/Portrait_LEC_Yin_Kuan.png"
 			expire = "1.1.1"
 			ideology = syn_internationalism_subtype
+		}
+		swap_ideas = {
+		remove_idea = LEC_the_world_calls_for_revolution
+		add_idea = LEC_the_world_calls_for_revolution_2
 		}
 	}
 }
@@ -1623,7 +1634,7 @@ country_event = { #Meeting With Japanese Exiles
 	}
 }
 
-country_event = { #
+country_event = { #The Fight Against Cadre Elitism
 	id = leftist_legations_event.35
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.35"}
 	title = leftist_legations_event.35.title
@@ -1634,11 +1645,14 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.35.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+		idea = LEC_the_fight_against_elitism
+		days = 120
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Lessons From Hajime
 	id = leftist_legations_event.36
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.36"}
 	title = leftist_legations_event.36.title
@@ -1649,11 +1663,13 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.36.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		LEC_hajime_lessons
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Eight Point Program
 	id = leftist_legations_event.37
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.37"}
 	title = leftist_legations_event.37.title
@@ -1664,7 +1680,10 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.37.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+			idea = LEC_eight_point_program
+			days = 180
+		}
 	}
 }
 
