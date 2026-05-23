@@ -6418,7 +6418,7 @@ create_country_leader = {
 		ai_will_do = {
 			factor = 70
 		}
-		
+		available = { has_country_flag = has_united_china }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_legal_marxism_friends }
 		prerequisite = {focus = LEC_exile_reachout }
@@ -6438,6 +6438,10 @@ create_country_leader = {
 					remove_idea = LEC_an_isolated_commune_3
 					add_idea = LEC_an_isolated_commune_5
 				}
+			}
+			custom_effect_tooltip = CHI_focus_tree_will_change_tt
+			hidden_effect = {
+			load_focus_tree = Legation_Cities_Syndie_Unification
 			}
 		}
 	}
@@ -6606,7 +6610,7 @@ create_country_leader = {
 		ai_will_do = {
 			factor = 70
 		}
-		
+		available = { has_country_flag = has_united_china }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_new_literature_mission }
 		prerequisite = {focus = LEC_against_moon }
@@ -6615,6 +6619,11 @@ create_country_leader = {
 			swap_ideas = {
 			remove_idea = LEC_an_isolated_commune_7
 			add_idea = LEC_an_isolated_commune_8
+			}
+			custom_effect_tooltip = CHI_focus_tree_will_change_tt
+			hidden_effect = {
+			load_focus_tree = Legation_Cities_Leftist_Writer_Unification
+			complete_national_focus = LEC_pen_to_revolution
 			}
 		}
 	}
@@ -6770,7 +6779,7 @@ create_country_leader = {
 		ai_will_do = {
 			factor = 70
 		}
-		
+		available = { has_country_flag = has_united_china }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_weapon_understanding_realisitc }
 		prerequisite = {focus = LEC_against_moon }
@@ -6779,6 +6788,11 @@ create_country_leader = {
 			swap_ideas = {
 				remove_idea = LEC_an_isolated_commune_9
 				add_idea = LEC_an_isolated_commune_10
+			}
+			custom_effect_tooltip = CHI_focus_tree_will_change_tt
+			hidden_effect = {
+			load_focus_tree = Legation_Cities_Leftist_Writer_Unification
+			complete_national_focus = LEC_pen_to_revolution
 			}
 		}
 	}
@@ -6927,7 +6941,7 @@ create_country_leader = {
 		ai_will_do = {
 			factor = 70
 		}
-		
+		available = { has_country_flag = has_united_china }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_light_in_the_dark }
 		prerequisite = {focus = LEC_against_moon }
@@ -6936,6 +6950,11 @@ create_country_leader = {
 			add_research_slot = 1
 			add_ideas = {
 				LEC_san_culoutes
+			}
+			custom_effect_tooltip = CHI_focus_tree_will_change_tt
+			hidden_effect = {
+			load_focus_tree = Legation_Cities_Leftist_Writer_Unification
+			complete_national_focus = LEC_pen_to_revolution
 			}
 		}
 	}
@@ -7703,18 +7722,21 @@ focus_tree = {
 		relative_position_id = LEC_pen_to_revolution
 		x = -7
 		y = 1
-		cost = 5
+		cost = 2
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 70
 		}
 		available = {
-		always = no
+			has_country_leader = {
+				name = "Guo Moruo"
+				ruling_only = yes
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_pen_to_revolution }
 		completion_reward = {
-		custom_effect_tooltip = unlock_focuses
+		country_event = leftist_legations_event.20
 		}
 	}
 	
@@ -7754,7 +7776,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_creating_society_revolution }
 		completion_reward = {
-		
+			swap_ideas = {
+				remove_idea = LEC_an_isolated_commune_8
+				add_idea = LEC_no_middle_ground
+			}
 		}
 	}
 	focus = {
@@ -7772,7 +7797,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_creating_society_revolution }
 		completion_reward = {
-		
+			add_research_slot = 1
 		}
 	}
 	
@@ -7792,7 +7817,9 @@ focus_tree = {
 		prerequisite = { focus = LEC_concious_struggle }
 		prerequisite = { focus = LEC_stand_middle_no }
 		completion_reward = {
-		
+			add_ideas = {
+				LEC_back_stage_work
+			}
 		}
 	}
 	focus = {
@@ -7811,7 +7838,10 @@ focus_tree = {
 		prerequisite = { focus = LEC_concious_struggle }
 		prerequisite = { focus = LEC_stand_middle_no }
 		completion_reward = {
-		
+			add_timed_idea = {
+				idea = LEC_anti_romanticism
+				days = 120
+			}
 		}
 	}
 	focus = {
@@ -7830,7 +7860,9 @@ focus_tree = {
 		prerequisite = { focus = LEC_denounce_romanticism }
 		prerequisite = { focus = LEC_backstage_work }
 		completion_reward = {
-		
+			add_ideas = {
+				LEC_self_work
+			}
 		}
 	}
 	focus = {
@@ -7848,7 +7880,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_do_your_self_work }
 		completion_reward = {
-		
+			add_ideas = {
+			LEC_red_lantern_in_world
+			}
+			country_event = leftist_legations_event.25
 		}
 	}
 	
@@ -7889,7 +7924,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_land_beyond_ancients }
 		completion_reward = {
-		
+			swap_ideas = {
+				remove_idea = LEC_an_isolated_commune_8
+				add_idea = LEC_steel_hardens_people
+			}
 		}
 	}
 	focus = {
@@ -7907,7 +7945,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_land_beyond_ancients }
 		completion_reward = {
-		
+			country_event = leftist_legations_event.38
 		}
 	}
 	focus = {
@@ -7926,7 +7964,9 @@ focus_tree = {
 		prerequisite = { focus = LEC_rivulets_steel }
 		prerequisite = { focus = LEC_thought_life_form }
 		completion_reward = {
-		
+			add_ideas = {
+			LEC_art_for_the_party
+			}
 		}
 	}
 	focus = {
@@ -7944,7 +7984,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_art_not_art_sake }
 		completion_reward = {
-		
+			add_research_slot = 1
 		}
 	}
 	focus = {
@@ -7962,7 +8002,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_art_not_art_sake }
 		completion_reward = {
-		
+			country_event = leftist_legations_event.39
 		}
 	}
 	focus = {
@@ -7981,7 +8021,11 @@ focus_tree = {
 		prerequisite = { focus = LEC_attack_backwards_literature }
 		prerequisite = { focus = LEC_work_dilligence }
 		completion_reward = {
-		
+			swap_ideas = {
+			remove_idea = LEC_steel_hardens_people
+			add_idea = LEC_steel_hardens_people_1
+			}
+			country_event = leftist_legations_event.24
 		}
 	}
 	
@@ -7997,12 +8041,39 @@ focus_tree = {
 			factor = 70
 		}
 		available = {
-		always = no
+			OR = {
+				has_country_leader = {
+					name = "A Ying"
+					ruling_only = yes
+				}
+				has_country_leader = {
+					name = "Feng Xuefeng"
+					ruling_only = yes
+				}
+				has_country_leader = {
+					name = "Zhou Yang"
+					ruling_only = yes
+				}
+			}
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_pen_to_revolution }
 		completion_reward = {
-		custom_effect_tooltip = unlock_focuses
+			if  = {
+				limit = {
+					has_idea = LEC_an_isolated_commune_10
+				}
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune_10
+					add_idea = LEC_hazy_vision
+				}
+			}
+			else = {
+			swap_ideas = {
+					remove_idea = LEC_san_culoutes
+					add_idea = LEC_san_culoutes_1
+				}
+			}
 		}
 	}
 	
@@ -8020,6 +8091,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_see_through_haze }
 		completion_reward = {
+			add_ideas = {
+			LEC_invite_onlookers
+			}
 		}
 	}
 	focus = {
@@ -8036,6 +8110,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_see_through_haze }
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = LEC_dis_organized_worker_militias_2
+				add_idea = LEC_dis_organized_worker_militias_3
+			}
 		}
 	}
 	
@@ -8053,6 +8131,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_see_through_haze }
 		completion_reward = {
+			add_ideas = {
+			LEC_peoples_culture
+			}
 		}
 	}
 	
@@ -8067,12 +8148,27 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = {
+			OR = {
+			has_country_leader = {
+				name = "Feng Xuefeng"
+				ruling_only = yes
+			}
+			has_country_leader = {
+				name = "Zhou Yang"
+				ruling_only = yes
+			}
+			}
+		}
 		mutually_exclusive = { focus = LEC_world_of_poor_time }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_peopele_culture_hands }
 		prerequisite = { focus = LEC_battelfield_fighting_era }
 		prerequisite = { focus = LEC_invite_onlookers }
 		completion_reward = {
+			add_ideas = {
+			LEC_lu_xun_legacy
+			}
 		}
 	}
 	focus = {
@@ -8085,6 +8181,11 @@ focus_tree = {
 		available_if_capitulated = yes
 		ai_will_do = {
 			factor = 70
+		}available = {
+			has_country_leader = {
+				name = "A Ying"
+				ruling_only = yes
+			}
 		}
 		mutually_exclusive = { focus = LEC_larger_figure_lu_xun }
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -8092,6 +8193,9 @@ focus_tree = {
 		prerequisite = { focus = LEC_battelfield_fighting_era }
 		prerequisite = { focus = LEC_invite_onlookers }
 		completion_reward = {
+			add_ideas = {
+			LEC_vanguard_secured
+			}
 		}
 	}
 	
@@ -8109,6 +8213,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_world_of_poor_time focus = LEC_larger_figure_lu_xun }
 		completion_reward = {
+			add_research_slot = 1
 		}
 	}
 	
@@ -8126,6 +8231,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_world_of_poor_time }
 		completion_reward = {
+			add_timed_idea = {
+				idea = LEC_folk_red
+				days = 120
+			}
 		}
 	}
 	
@@ -8144,6 +8253,12 @@ focus_tree = {
 		prerequisite = { focus = LEC_red_folk }
 		prerequisite = { focus = LEC_chinese_writers_association }
 		completion_reward = {
+			add_political_power = 20
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.05
+			}
+			add_stability = 0.025
 		}
 	}
 	focus = {
@@ -8161,6 +8276,14 @@ focus_tree = {
 		prerequisite = { focus = LEC_red_folk }
 		prerequisite = { focus = LEC_chinese_writers_association }
 		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = radar_tech
+			}
+			add_ideas = {
+			LEC_sounds_of_revolution
+			}
 		}
 	}
 	
@@ -8180,6 +8303,11 @@ focus_tree = {
 		prerequisite = { focus = LEC_all_deserve_freedom }
 		prerequisite = { focus = LEC_actions_sounds_revolution }
 		completion_reward = {
+			swap_ideas = {
+					remove_idea = LEC_san_culoutes_1
+					add_idea = LEC_san_culoutes_2
+				}
+			country_event = leftist_legations_event.23
 		}
 	}
 	
@@ -8197,6 +8325,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_larger_figure_lu_xun }
 		completion_reward = {
+		add_ideas = {
+		LEC_socialist_realism
+		}
 		}
 	}
 	
@@ -8215,6 +8346,10 @@ focus_tree = {
 		prerequisite = { focus = LEC_socialist_realist_frontier }
 		prerequisite = { focus = LEC_chinese_writers_association }
 		completion_reward = {
+			add_timed_idea = {
+			idea = LEC_breaking_closed_door
+			days = 120
+			}
 		}
 	}
 	
@@ -8233,6 +8368,12 @@ focus_tree = {
 		prerequisite = { focus = LEC_socialist_realist_frontier }
 		prerequisite = { focus = LEC_chinese_writers_association }
 		completion_reward = {
+		add_war_support = 0.05
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
+		add_command_power = 30
 		}
 	}
 	
@@ -8251,6 +8392,26 @@ focus_tree = {
 		prerequisite = { focus = LEC_writers_standing_up }
 		prerequisite = { focus = LEC_break_closed_door }
 		completion_reward = {
+			if = {
+				limit = {
+					has_country_leader = {
+						name = "Zhou Yang"
+						ruling_only = yes
+					}
+				}
+				swap_ideas = {
+					remove_idea = LEC_hazy_vision
+					add_idea = LEC_hazy_vision_1
+				}
+				country_event = leftist_legations_event.22
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = LEC_hazy_vision
+					add_idea = LEC_hazy_vision_2
+				}
+				country_event = leftist_legations_event.21
+			}
 		}
 	}
 }
