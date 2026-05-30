@@ -686,6 +686,7 @@ country_event = { ##Wang Jiaxiang/Zhang Wentian
 		name = leftist_legations_event.15.a
 		ai_chance = { base = 100 }
 		set_politics = { ruling_party = syndicalist }
+		set_country_flag = LEC_soc_chose_jiaxiang
 		remove_all_ministers = yes
 		add_ideas = {
 		LEC_Wang_Jiaxiang_hog_syn
@@ -777,36 +778,20 @@ country_event = { #Chaolin or Kuan
 
 country_event = { #
 	id = leftist_legations_event.17
-	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.17"}
+	immediate = { log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.17"}
 	title = leftist_legations_event.17.title
 	desc = leftist_legations_event.17.desc
 	#picture = 
-	
+	fire_only_once = no
 	is_triggered_only = yes
 	option = { #
 		name = leftist_legations_event.17.a
 		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
 		if = {
 			limit = {
-				has_idea = LEC_Zhang_Wentian_hog_syn
+				has_country_flag = set_country_flag = LEC_soc_chose_jiaxiang
 			}
-		set_politics = { ruling_party = syndicalist }
-		remove_all_ministers = yes
-		add_ideas = {
-		LEC_Zhang_Wentian_hog_syn
-		LEC_Wang_Jiaxiang_eco_syn
-		LEC_Shen_Zemin_for_syn
-		LEC_Dong_Yixiang_sec_syn
-		}
-		create_country_leader = { 
-			name = "Zhang Wentian"
-			picture = "gfx/leaders/LEC/Portrait_LEC_Zhang_Wentian.png"
-			expire = "1.1.1"
-			ideology = liberalized_syndicalism_subtype
-		}
-		}
-		else = {
-		set_politics = { ruling_party = syndicalist }
 		remove_all_ministers = yes
 		add_ideas = {
 		LEC_Wang_Jiaxiang_hog_syn
@@ -814,17 +799,29 @@ country_event = { #
 		LEC_Shen_Zemin_for_syn
 		LEC_Wang_Shengrong_sec_syn
 		}
-		create_country_leader = { 
-			name = "Wang Jiaxiang"
-			picture = "gfx/leaders/LEC/Portrait_LEC_Wang_Jiaxing.png"
-			expire = "1.1.1"
-			ideology = liberalized_syndicalism_subtype
+		}
+		else = {
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Zhang_Wentian_hog_syn
+		LEC_Wang_Jiaxiang_eco_syn
+		LEC_Shen_Zemin_for_syn
+		LEC_Dong_Yixiang_sec_syn
+		}
+
+		}
+
+		if = { limit = { syndicalist_plurality = no }
+		add_popularity = {
+		ideology = syndicalist
+		popularity = 0.10
 		}
 		}
+		hidden_effect = { country_event = { id = leftist_legations_event.17 days = 1460 } }
 		
+
 	}
 	
-	is_triggered_only = yes
 	option = { #Li Hanjun
 		name = leftist_legations_event.17.b
 		ai_chance = { base = 100 }
@@ -836,15 +833,17 @@ country_event = { #
 		LEC_Yun_Yutang_for_syn
 		LEC_Dong_Yixiang_sec_syn
 		}
-		create_country_leader = { 
-			name = "Li Hanjun"
-			picture = "gfx/leaders/LEC/Portrait_LEC_Li_Hanjun.png"
-			expire = "1.1.1"
-			ideology = radsoc_revisionist_marxism_subtype
+		add_popularity = {
+		ideology = radical_socialist
+		popularity = 0.20
 		}
+		hidden_effect = { country_event = { id = leftist_legations_event.17 days = 1460 } }
+
+
+
 	}
 	
-	option = { #Yang or Hou
+	option = { #Yang
 		name = leftist_legations_event.17.c
 		ai_chance = { base = 100 }
 		set_politics = { ruling_party = social_democrat }
@@ -855,28 +854,19 @@ country_event = { #
 		LEC_Liu_Yazi_for_rso
 		LEC_Gao_Yuhan_sec_rso
 		}
-		create_country_leader = { 
-			name = "Yang Xingfo"
-			picture = "gfx/leaders/LEC/Portrait_LEC_Yang_Xingfo.png"
-			expire = "1.1.1"
-			ideology = socdem_utopian_technocracy_subtype
+		add_popularity = {
+		ideology = social_democrat
+		popularity = 0.20
 		}
-		add_syn_to_coalition = yes
-		add_radsoc_to_coalition = yes
-		set_party_name = {
-		ideology = syndicalist
-		name = LEC_social_democrat_party
-		name_long = LEC_social_democrat_party_long
-		}
-		set_party_name = {
-		ideology = radical_socialist
-		name = LEC_social_democrat_party
-		name_long = LEC_social_democrat_party_long
-		}
+		hidden_effect = { country_event = { id = leftist_legations_event.17 days = 1460 } }
+
+
+
+
 	}
 }
 
-country_event = { #Repeating Elections
+country_event = { #ideo swap
 	id = leftist_legations_event.18
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.18"}
 	title = leftist_legations_event.18.title
@@ -887,12 +877,20 @@ country_event = { #Repeating Elections
 	option = { #
 		name = leftist_legations_event.18.a
 		ai_chance = { base = 100 }
-		
+
+
 	}
-	
-	
+	option = { #
+		name = leftist_legations_event.18.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = socdem_utopian_technocracy_subtype 
+
+
+	}
+
 }
 
+	
 country_event = { #Syndicalist Elections
 	id = leftist_legations_event.19
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.19"}
