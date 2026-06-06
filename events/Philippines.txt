@@ -2355,12 +2355,12 @@ country_event = { #Protecting the Republic triggered from event .39
 		set_party_name = {
    			 ideology = national_populist
    			 long_name = PHI_spanish_hispanic_party_long
-   			 name = PHI_spanish_hispanic_party_long
+   			 name = PHI_spanish_hispanic_party
 			}
 		set_party_name = {
    			 ideology = paternal_autocrat
    			 long_name = PHI_spanish_hispanic_party_long
-   			 name = PHI_spanish_hispanic_party_long
+   			 name = PHI_spanish_hispanic_party
 			}
 		add_natpop_to_coalition = yes
 		add_popularity = {
@@ -4645,6 +4645,11 @@ country_event = { #exiles from our backing guys of spr after their loss
 	option = { #fuck yeah larp larp larp sahur
 		name = rd_phil.89.a
 		ai_chance = { base = 0 }
+		if = { limit = { CAR = { exists = yes } }
+		create_wargoal = { type = annex_everything target = CAR } }
+
+		if = { limit = { CNT = { exists = yes } }
+		create_wargoal = { type = annex_everything target = CNT } }
 		every_state = {
 		limit = {
 			OR = { 
