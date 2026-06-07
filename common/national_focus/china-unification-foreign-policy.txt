@@ -12,8 +12,7 @@
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_in_the_hands_of_global_revolution  }
 		completion_reward = {
-		unlock_decision_tooltip = China_conquer_far_east
-		unlock_decision_tooltip = China_ally_far_east
+		custom_effect_tooltip = rd_China_unification_descitions_tt
 		}
 	}
 
@@ -30,8 +29,7 @@
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_eastern_subjugation  focus = CHINA_FOREIGN_POLICY_focus_on_the_liberation_of_the_far_east  }
 		completion_reward = {
-		unlock_decision_tooltip = China_conquer_south_east
-		unlock_decision_tooltip = China_ally_south_east
+		custom_effect_tooltip = rd_China_unification_descitions_tt
 			if = {
 				limit = {
 					has_completed_focus = CHINA_FOREIGN_POLICY_imperial_legacy
@@ -58,8 +56,7 @@
 		}
 		prerequisite = { focus = CHINA_FOREIGN_POLICY_secure_the_mcmahon_line  focus = CHINA_FOREIGN_POLICY_extending_the_5_tibetan_fingers  }
 		completion_reward = {
-		unlock_decision_tooltip = China_conquer_central_asia
-		unlock_decision_tooltip = China_ally_central_asia
+		custom_effect_tooltip = rd_China_unification_descitions_tt
 		if = {
 				limit = {
 					has_completed_focus = CHINA_FOREIGN_POLICY_imperial_legacy
@@ -218,6 +215,7 @@
 		add_state_claim = 408
 		every_country = {
 			limit = {
+					not = { tag = ROOT }
 					OR = {
 					owns_state = 1246
 					owns_state = 409
@@ -253,7 +251,7 @@
 		completion_reward = {
 			if = {
 				limit = {
-					ETS = { exists = yes}
+					ETS = { exists = yes not = { tag = ETS } }
 				}
 				create_wargoal = {
 					type = puppet_wargoal_focus
@@ -263,7 +261,7 @@
 			
 			if = {
 				limit = {
-					SIK = { exists = yes}
+					SIK = { exists = yes not = { tag = SIK }  }
 				}
 				create_wargoal = {
 					type = puppet_wargoal_focus
@@ -272,7 +270,7 @@
 			}
 			if = {
 				limit = {
-					TAN = { exists = yes}
+					TAN = { exists = yes not = { tag = TAN }  }
 				}
 				create_wargoal = {
 					type = puppet_wargoal_focus
@@ -282,7 +280,7 @@
 			
 			if = {
 				limit = {
-					XSM = { exists = yes}
+					XSM = { exists = yes not = { tag = XSM } }
 				}
 				create_wargoal = {
 					type = puppet_wargoal_focus
@@ -308,15 +306,14 @@
 		completion_reward = {
 			
 			if = {
-				limit = { 858 = { NOT = { is_claimed_by = FROM } } } #Tawang
+				limit = { 858 = { NOT = { is_claimed_by = ROOT } } } #Tawang
 				add_state_claim = 858
 			}
 			if = {
-				limit = { 897 = { NOT = { is_claimed_by = FROM } } } #Askai Chin
+				limit = { 897 = { NOT = { is_claimed_by = ROOT } } } #Askai Chin
 				add_state_claim = 897
 			}
-			unlock_decision_tooltip = China_conquer_india
-			unlock_decision_tooltip = China_ally_india
+		custom_effect_tooltip = rd_China_unification_descitions_tt
 		}
 	}
 
@@ -336,11 +333,11 @@
 		completion_reward = {
 			
 			if = {
-				limit = { 858 = { NOT = { is_claimed_by = FROM } } } #Tawang
+				limit = { 858 = { NOT = { is_claimed_by = ROOT } } } #Tawang
 				add_state_claim = 858
 			}
 			if = {
-				limit = { 897 = { NOT = { is_claimed_by = FROM } } } #Askai Chin
+				limit = { 897 = { NOT = { is_claimed_by = ROOT } } } #Askai Chin
 				add_state_claim = 897
 			}
 			
@@ -348,7 +345,7 @@
 			add_state_core = 888
 			add_state_core = 323
 			add_state_core = 814
-			unlock_decision_tooltip = China_conquer_india
+			custom_effect_tooltip = rd_China_unification_conquer_descitions_tt
 			}
 	}
 
