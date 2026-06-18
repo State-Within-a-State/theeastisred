@@ -1,0 +1,308 @@
+
+BRM_military_increase = {
+		add_to_variable = {
+			var = burma_army 
+			value = 5
+			tooltip = add_to_burma_army _faction_tt
+		}
+		clamp_variable = {
+   		var = burma_army 
+		max = 100
+}
+}
+
+BRM_military_decrease = {
+		add_to_variable = {
+			var = burma_army 
+			value = -5
+			tooltip = less_to_burma_army _faction_tt
+
+		}
+		clamp_variable = {
+   		var = burma_army 
+  		min = 0
+}
+}
+BRM_update_burma_factions = {
+	#Get the Total Strength Points of faction Mechanic
+	set_temp_variable = { BRM_total_strength_temp_var = burma_trad  }
+	add_to_temp_variable = { BRM_total_strength_temp_var = burma_int  }
+	add_to_temp_variable = { BRM_total_strength_temp_var = burma_ubca }
+	add_to_temp_variable = { BRM_total_strength_temp_var = burma_thak }
+	#Get the % traditionalists
+	set_variable = { traditionalists = burma_trad  }
+	divide_variable = { traditionalists = BRM_total_strength_temp_var }
+	multiply_variable = { traditionalists = 100 }
+	#Get the % international traders
+	set_variable = { international_traders = burma_int  }
+	divide_variable = { international_traders = BRM_total_strength_temp_var }
+	multiply_variable = { international_traders = 100 }
+	#Get the % gbca_nationalists
+	set_variable = { gbca_nationalists = burma_ubca }
+	divide_variable = { gbca_nationalists = BRM_total_strength_temp_var }
+	multiply_variable = { gbca_nationalists = 100 }
+	#Get the % thakin_radicals
+	set_variable = { thakin_radicals = burma_thak }
+	divide_variable = { thakin_radicals = BRM_total_strength_temp_var }
+	multiply_variable = { thakin_radicals = 100 }
+}
+
+BRM_increase_burma_trad_faction_small = { #could just do it on the event the specific amount just include update after adding
+		add_to_variable = {
+			var = burma_trad
+			value = 5
+			tooltip = add_to_burma_trad_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_decrease_burma_trad_faction_small = { 
+		add_to_variable = {
+			var = burma_trad
+			value = -5
+			tooltip = less_to_burma_trad_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_trad
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_increase_burma_int_faction_small = { 
+		add_to_variable = {
+			var = burma_int 
+			value = 5
+			tooltip = add_to_burma_int_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_int_faction_small = { # use a mix of both increases and ddecreases otherwise it becomes impossible to change the numbs very much
+		add_to_variable = {
+			var = burma_int 
+			value = -5
+			tooltip = less_to_burma_int_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_int 
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+
+BRM_increase_burma_ubca_faction_small = { 
+		add_to_variable = {
+			var = burma_ubca 
+			value = 5
+			tooltip = add_to_burma_ubca_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_ubca_faction_small = { 
+		add_to_variable = {
+			var = burma_ubca 
+			value = -5
+			tooltip = less_to_burma_ubca_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_ubca
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_increase_burma_thak_faction_small = { 
+		add_to_variable = {
+			var = burma_thak 
+			value = 5
+			tooltip = add_to_burma_thak_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_thak_faction_small = { 
+		add_to_variable = {
+			var = burma_thak 
+			value = -5
+			tooltip = less_to_burma_thak_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_thak
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_increase_burma_trad_faction_medium = { #could just do it on the event the specific amount just include update after adding
+		add_to_variable = {
+			var = burma_trad
+			value = 10
+			tooltip = add_to_burma_trad_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_decrease_burma_trad_faction_medium = { 
+		add_to_variable = {
+			var = burma_trad
+			value = -10
+			tooltip = less_to_burma_trad_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_trad
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_increase_burma_int_faction_medium = { 
+		add_to_variable = {
+			var = burma_int 
+			value = 10
+			tooltip = add_to_burma_int_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_int_faction_medium = { # use a mix of both increases and ddecreases otherwise it becomes impossible to change the numbs very much
+		add_to_variable = {
+			var = burma_int 
+			value = -10
+			tooltip = less_to_burma_int_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_int 
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+
+BRM_increase_burma_ubca_faction_medium = { 
+		add_to_variable = {
+			var = burma_ubca 
+			value = 10
+			tooltip = add_to_burma_ubca_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_ubca_faction_medium = { 
+		add_to_variable = {
+			var = burma_ubca 
+			value = -10
+			tooltip = less_to_burma_ubca_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_ubca
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_increase_burma_thak_faction_medium = { 
+		add_to_variable = {
+			var = burma_thak 
+			value = 10
+			tooltip = add_to_burma_thak_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_thak_faction_medium = { 
+		add_to_variable = {
+			var = burma_thak 
+			value = -10
+			tooltip = less_to_burma_thak_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_thak
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+
+BRM_increase_burma_trad_faction_large = { #could just do it on the event the specific amount just include update after adding
+		add_to_variable = {
+			var = burma_trad
+			value = 20
+			tooltip = add_to_burma_trad_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_decrease_burma_trad_faction_large = { 
+		add_to_variable = {
+			var = burma_trad
+			value = -20
+			tooltip = less_to_burma_trad_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_trad
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_increase_burma_int_faction_large = { 
+		add_to_variable = {
+			var = burma_int 
+			value = 20
+			tooltip = add_to_burma_int_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_int_faction_large = { # use a mix of both increases and ddecreases otherwise it becomes impossible to change the numbs very much
+		add_to_variable = {
+			var = burma_int 
+			value = -20
+			tooltip = less_to_burma_int_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_int 
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+
+BRM_increase_burma_ubca_faction_large = { 
+		add_to_variable = {
+			var = burma_ubca 
+			value = 20
+			tooltip = add_to_burma_ubca_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_ubca_faction_large = { 
+		add_to_variable = {
+			var = burma_ubca 
+			value = -20
+			tooltip = less_to_burma_ubca_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_ubca
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
+BRM_increase_burma_thak_faction_large = { 
+		add_to_variable = {
+			var = burma_thak 
+			value = 20
+			tooltip = add_to_burma_thak_faction_tt
+		}
+BRM_update_burma_factions = yes
+}
+BRM_decrease_burma_thak_faction_large = { 
+		add_to_variable = {
+			var = burma_thak 
+			value = -20
+			tooltip = less_to_burma_thak_faction_tt
+		}
+		clamp_variable = {
+   		var = burma_thak
+		min = 0
+		}
+BRM_update_burma_factions = yes
+}
+
