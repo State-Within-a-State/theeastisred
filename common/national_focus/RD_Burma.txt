@@ -19,7 +19,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		completion_reward = {
-			
+			country_event = rd_burma.0
 
 		}
 	}
@@ -36,6 +36,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_assessing_our_crisis } 
 		completion_reward = {
+		add_command_power = 30
+		add_popularity = {
+		ideology = ROOT
+		popularity = 0.05
+		}
 		}
 	}
 	
@@ -51,6 +56,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_Shepherd_the_Council } 
 		completion_reward = {
+		add_political_power = 50
 		}
 	}
 	
@@ -496,6 +502,11 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_burma_for_burmans }
 		prerequisite = { focus = BRM_Issues_of_the_day } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = BRM_rangoon_export
+				add_idea = BRM_rangoon_export_1
+			}
+			BRM_increase_burma_trad_faction_small = yes
 		}
 	}
 	
@@ -511,6 +522,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_prioritize_business } 
 		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_idea = free_trade
+					}
+				}
+				add_ideas = {
+				free_trade
+				}
+			}
+		add_ideas = {
+			BRM_expand_exports
+		}
 		}
 	}
 	
@@ -526,6 +550,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_prioritize_business } 
 		completion_reward = {
+			BRM_increase_burma_trad_faction_small = yes
+			add_timed_idea = {
+			idea = BRM_trade_incorporation
+			days = 90
+			}
 		}
 	}
 	focus = {
@@ -541,6 +570,14 @@ focus_tree = {
 		prerequisite = { focus = BRM_incorporating_international_traders } 
 		prerequisite = { focus = BRM_expanding_goods_exports } 
 		completion_reward = {
+		288 = {
+			add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	focus = {
@@ -661,7 +698,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = BRM_work_with_thakins } 
+		prerequisite = { focus = BRM_work_with_thakins focus = BRM_subsidies_nascent_factories } 
 		completion_reward = {
 		}
 	}
@@ -675,7 +712,7 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = BRM_work_with_thakins } 
+		prerequisite = { focus = BRM_work_with_thakins focus = BRM_subsidies_nascent_factories } 
 		completion_reward = {
 		}
 	}
