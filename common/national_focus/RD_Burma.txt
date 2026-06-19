@@ -506,7 +506,7 @@ focus_tree = {
 				remove_idea = BRM_rangoon_export
 				add_idea = BRM_rangoon_export_1
 			}
-			BRM_increase_burma_trad_faction_small = yes
+			BRM_increase_burma_int_faction_small = yes
 		}
 	}
 	
@@ -550,7 +550,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_prioritize_business } 
 		completion_reward = {
-			BRM_increase_burma_trad_faction_small = yes
+			BRM_increase_burma_int_faction_small = yes
 			add_timed_idea = {
 			idea = BRM_trade_incorporation
 			days = 90
@@ -593,6 +593,11 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_prioritize_business }
 		prerequisite = { focus = BRM_Issues_of_the_day } 
 		completion_reward = {
+		BRM_increase_burma_thak_faction_small = yes
+		BRM_increase_burma_ubca_faction_small = yes
+		add_ideas = {
+		BRM_economic_nationalism
+		}
 		}
 	}
 	#creation of new ministies 
@@ -608,6 +613,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_assessing_our_crisis } 
 		completion_reward = {
+		unlock_decision_tooltip = BRM_lobby_export_firms_decision
 		}
 	}
 	
@@ -623,6 +629,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_assessing_our_crisis } 
 		completion_reward = {
+			unlock_decision_tooltip = BRM_rice_exporter_decision
 		}
 	}
 	focus = {
@@ -638,6 +645,10 @@ focus_tree = {
 		prerequisite = { focus = BRM_Reach_Out_Rice_Markets } 
 		prerequisite = { focus = BRM_Lobby_Export_Firms } 
 		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.1
+			BRM_increase_burma_ubca_faction_medium = yes
+			BRM_increase_burma_trad_faction_small = yes
 		}
 	}
 	
@@ -653,6 +664,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_GCBA_rumblings } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = BRM_rangoon_export
+				add_idea = BRM_rangoon_export_2
+			}
 		}
 	}
 	
@@ -669,6 +684,12 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_traditionalist_appeals }
 		prerequisite = { focus = BRM_set_a_new_Balance } 
 		completion_reward = {
+			add_timed_idea = {
+				idea = BRM_bureaucracy_expansion
+				days = 120
+			}
+			BRM_increase_burma_trad_faction_small  = yes
+			BRM_decrease_burma_int_faction_small  = yes
 		}
 	}
 	
@@ -686,6 +707,13 @@ focus_tree = {
 		prerequisite = { focus = BRM_burma_for_burmans } 
 		mutually_exclusive = { focus = BRM_royal_bureaucrats }
 		completion_reward = {
+		add_timed_idea = {
+				idea = BRM_thakin_working_with
+				days = 120
+			}
+		BRM_increase_burma_thak_faction_small = yes
+		BRM_military_increase = yes
+		BRM_decrease_burma_int_faction_small  = yes
 		}
 	}
 	focus = {
@@ -700,6 +728,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_work_with_thakins focus = BRM_subsidies_nascent_factories } 
 		completion_reward = {
+		add_research_slot = 1
 		}
 	}
 	focus = {
@@ -714,6 +743,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_work_with_thakins focus = BRM_subsidies_nascent_factories } 
 		completion_reward = {
+			 unlock_decision_tooltip = BRM_traditionalist_rural_campaign_decision
+			 unlock_decision_tooltip = BRM_traders_rural_campaign_decision
+			 unlock_decision_tooltip = BRM_gbca_rural_campaign_decision
+			 unlock_decision_tooltip = BRM_thakin_rural_campaign_decision
 		}
 	}
 	focus = {
@@ -729,6 +762,12 @@ focus_tree = {
 		prerequisite = { focus = BRM_expand_university } 
 		prerequisite = { focus = BRM_rural_political_campaigns } 
 		completion_reward = {
+		BRM_increase_burma_trad_faction_medium = yes
+		BRM_military_increase = yes
+		BRM_decrease_burma_thak_faction_small = yes
+		BRM_increase_burma_ubca_faction_small = yes
+		add_war_support = 0.1
+		add_political_power = 10
 		}
 	}
 	focus = {
@@ -745,6 +784,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_burma_for_burmans } 
 		mutually_exclusive = { focus = BRM_work_with_thakins }
 		completion_reward = {
+		BRM_increase_burma_trad_faction_small = yes
+		BRM_military_increase = yes
+		unlock_decision_tooltip = BRM_bureaucracy_expansion_decision
 		}
 	}
 	
@@ -761,6 +803,9 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_bureaucratic_solutions }
 		prerequisite = { focus = BRM_set_a_new_Balance } 
 		completion_reward = {
+			add_ideas = {
+				BRM_appealing_to_tradition
+			}
 		}
 	}
 	
@@ -774,14 +819,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = BRM_traditionalist_appeals focus = BRM_bureaucratic_solutions } 
-		prerequisite = { focus = BRM_royal_bureaucrats } 
+		prerequisite = { focus = BRM_traditionalist_appeals focus = BRM_bureaucratic_solutions focus = BRM_royal_bureaucrats } 
 		prerequisite = { focus = BRM_industrial_planning_revamp } 
 		completion_reward = {
+			unlock_decision_tooltip = BRM_prayers_from_sangha_decision
 		}
 	}
+	
 	focus = {
-		id = BRM_ymba_reachout
+		id = BRM_work_trade_guilds
 		icon = GFX_goal_QIO_revolutionary_zone
 		relative_position_id = BRM_assessing_our_crisis
 		x = 2
@@ -792,20 +838,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_reaffirm_buddhism } 
 		completion_reward = {
+		BRM_increase_burma_thak_faction_small = yes
+		BRM_increase_burma_int_faction_small = yes
+		add_ideas = {
+		BRM_worker_guilding
 		}
-	}
-	focus = {
-		id = BRM_work_trade_guilds
-		icon = GFX_goal_QIO_revolutionary_zone
-		relative_position_id = BRM_assessing_our_crisis
-		x = 0
-		y = 7
-		cost = 3
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = BRM_reaffirm_buddhism } 
-		completion_reward = {
+		
 		}
 	}
 	focus = {
@@ -818,8 +856,23 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = BRM_work_trade_guilds focus = BRM_ymba_reachout focus = BRM_coopt_nationalism } 
+		prerequisite = { focus = BRM_work_trade_guilds focus = BRM_coopt_nationalism } 
 		completion_reward = {
+			if = {
+				limit = {
+					has_idea = BRM_rangoon_export_2
+				}
+				swap_ideas = {
+					remove_idea = BRM_rangoon_export_2
+					add_idea = BRM_rangoon_export_4
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = BRM_rangoon_export_1
+					add_idea = BRM_rangoon_export_3
+				}
+			}
 		}
 	}
 	
@@ -836,6 +889,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_Reach_Out_Rice_Markets } 
 		prerequisite = { focus = BRM_Lobby_Export_Firms } 
 		completion_reward = {
+			add_ideas = {
+			BRM_expand_exports_1
+			}
 		}
 	}
 	
@@ -852,6 +908,7 @@ focus_tree = {
 		prerequisite = { focus = BRM_so_called_free_market } 
 		mutually_exclusive = { focus = BRM_export_diversification }
 		completion_reward = {
+			unlock_decision_tooltip = BRM_planation_exploitation_decision
 		}
 	}
 	
@@ -868,6 +925,7 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_reinforce_planations }
 		prerequisite = { focus = BRM_so_called_free_market } 
 		completion_reward = {
+		unlock_decision_tooltip = BRM_diversify_export_decision
 		}
 	}
 	
@@ -883,6 +941,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_reinforce_planations focus = BRM_export_diversification } 
 		completion_reward = {
+			add_ideas = {
+			BRM_industry_revamp
+			}
 		}
 	}
 	
@@ -900,6 +961,20 @@ focus_tree = {
 		prerequisite = { focus = BRM_industrial_planning_revamp } 
 		prerequisite = { focus = BRM_traditionalist_appeals } 
 		completion_reward = {
+			BRM_increase_burma_int_faction_small = yes
+			288 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			}
 		}
 	}
 	
@@ -917,6 +992,21 @@ focus_tree = {
 		prerequisite = { focus = BRM_industrial_planning_revamp } 
 		prerequisite = { focus = BRM_traditionalist_appeals } 
 		completion_reward = {
+		BRM_increase_burma_thak_faction_small = yes
+		BRM_increase_burma_ubca_faction_small = yes
+		640 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+			}
 		}
 	}
 	
@@ -932,6 +1022,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_focus_on_rural_areas focus = BRM_focus_on_cities } 
 		completion_reward = {
+		unlock_decision_tooltip = BRM_public_association_mobilise_decision
 		}
 	}
 	focus = {
@@ -946,6 +1037,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_focus_on_rural_areas focus = BRM_focus_on_cities } 
 		completion_reward = {
+			BRM_decrease_burma_int_faction_medium = yes
+			add_timed_idea = {
+			idea = BRM_industry_revamp_1
+			days = 90
+			}
 		}
 	}
 	focus = {
@@ -960,6 +1056,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_moblises_public_associations } 
 		completion_reward = {
+		country_event = rd_burma.1
 		}
 	}
 	focus = {
@@ -974,6 +1071,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_reform_industry_departments } 
 		completion_reward = {
+			add_timed_idea = {
+			idea = BRM_rice_reforms
+			days = 90
+			}
 		}
 	}
 	focus = {
@@ -988,6 +1089,22 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_reform_industry_departments } 
 		completion_reward = {
+		288 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
+		640 = {
+			add_extra_state_shared_building_slots = 2
+			add_building_construction = {
+				type = infrastructure
+				level = 2
+				instant_build = yes
+			}
+		}
 		}
 	}
 	
@@ -1007,6 +1124,21 @@ focus_tree = {
 		prerequisite = { focus = BRM_reform_rice_policy } 
 		prerequisite = { focus = BRM_flag_prayer_wheel } 
 		completion_reward = {
+			build_railway = {
+				level = 4
+				build_only_on_allied = yes
+				controller_priority = {
+					base = 1
+					modifier = {
+						tag = BRM
+						add = 2
+					}
+				}
+				fallback = yes
+				path = { 1330 10154 10283 12256 4626 4585 1492  }
+				start_province = 1330
+				target_province = 1492
+			}
 		}
 	}
 	focus = {
@@ -1025,6 +1157,32 @@ focus_tree = {
 		prerequisite = { focus = BRM_reform_rice_policy } 
 		prerequisite = { focus = BRM_flag_prayer_wheel } 
 		completion_reward = {
+			640 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = energy_infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			288 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = energy_infrastructure
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
@@ -1044,6 +1202,32 @@ focus_tree = {
 		prerequisite = { focus = BRM_reform_rice_policy } 
 		prerequisite = { focus = BRM_flag_prayer_wheel } 
 		completion_reward = {
+			640 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dam
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			288 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dam
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
