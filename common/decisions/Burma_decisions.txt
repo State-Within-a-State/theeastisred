@@ -79,7 +79,8 @@ BRM_lobby_export_firms_decision = {
 			
 		}
 		remove_effect = {
-			
+			BRM_increase_burma_ubca_faction_small = yes
+			BRM_decrease_burma_int_faction_small = yes
 		}
 	}
 	
@@ -357,5 +358,120 @@ BRM_lobby_export_firms_decision = {
 			BRM_military_increase = yes
 		}
 	}
+	BRM_expand_poor_houses_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_expand_poorhouses
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 20
+		
+		days_remove = 100
+		days_re_enable = 20
+		fire_only_once = no
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.02
+				production_speed_buildings_factor = 0.025
+				production_lack_of_resource_penalty_factor = 0.075
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			BRM_increase_burma_thak_faction_medium = yes
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	BRM_reclamation_project_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_land_reclamation_projects
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 20
+		
+		days_remove = 100
+		days_re_enable = 20
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_lack_of_resource_penalty_factor = 0.075
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			BRM_increase_burma_ubca_faction_small = yes
+			random_list = {
+				34 = {
+					BRM_shan_resistance_increase = yes
+				}
+				33 = {
+					BRM_kachin_resistance_increase = yes
+				}
+				33 = {
+					BRM_rakhine_resistance_increase = yes
+				}
+			}
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	BRM_rural_relief_campaign_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_rural_citizen_relief
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 20
+		
+		days_remove = 100
+		days_re_enable = 20
+		fire_only_once = no
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.025
+				production_lack_of_resource_penalty_factor = 0.05
+				political_power_factor = 0.05
+				stability_weekly = 0.025
+				radical_socialist_drift = 0.05
+				social_democrat_drift - 0.05
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			BRM_increase_burma_thak_faction_medium = yes
+		}
+	}
+	
+	
 
 }

@@ -39,7 +39,7 @@ country_event = { #Flag or Prayer Wheel
 	}
 }
 
-country_event = { #Starting Lore Event | The Sun Rises - Stability At Last?
+country_event = { #Black Monday Hits Burma
 	id = rd_burma.2
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.2"}
 	title = rd_burma.2.title
@@ -50,11 +50,14 @@ country_event = { #Starting Lore Event | The Sun Rises - Stability At Last?
 	option = { #
 		name = rd_burma.2.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+		BRM_black_monday
+		}
+		complete_national_focus = BRM_emergency_edicts
 	}
 }
 
-country_event = { #Black Monday Hits Korea
+country_event = { #Aid From Monks or Aid From the Burmese Businessmen
 	id = rd_burma.3
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.3"}
 	title = rd_burma.3.title
@@ -62,9 +65,21 @@ country_event = { #Black Monday Hits Korea
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Buddhist Aid
 		name = rd_burma.3.a
-		
+		BRM_increase_burma_ubca_faction_small  = yes
+		add_timed_idea = {
+		idea = BRM_buddhist_aid
+		days = 90
+		}
+	}
+	option = { #Burmese Aid
+		name = rd_burma.3.b
+		BRM_increase_burma_int_faction_small = yes
+		add_timed_idea = {
+		idea = BRM_burmese_aid
+		days = 90
+		}
 	}
 }
 
