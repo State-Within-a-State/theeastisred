@@ -475,3 +475,43 @@ BRM_lobby_export_firms_decision = {
 	
 
 }
+
+BRM_minority_integration_decision_category = {
+BRM_Shan_Rebellion_mission = {
+		activation = {
+			check_variable = {
+				var = shan_anger
+				value > 0.74
+			}
+		}
+		available = {
+			always = no
+			
+		}
+		cancel_trigger = {
+			check_variable = {
+				var = shan_anger
+				value < 0.75
+			}
+		}
+		visible = {
+			OR = {
+				has_country_flag = BRM_integrated_shan
+				NOT = {
+					owns_state = 72
+				}
+			}
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 730
+		selectable_mission = no
+		fire_only_once = no
+		complete_effect = {
+		}
+		timeout_effect = {
+		}
+	}
+}
