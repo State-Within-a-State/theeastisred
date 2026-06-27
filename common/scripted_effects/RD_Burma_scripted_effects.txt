@@ -314,11 +314,233 @@ BRM_update_burma_factions = yes
 #will add a specific thing to handle making all the dynamic modifiers one single thing rather than 6
 
 BRM_shan_dynamic_modifer_update = {
-
-		#if = { limit = { }
+		if = { limit = { 
+		check_variable = { 
+		var = shan_anger	
+		value > 0.90 
+		}
+		}
+	set_variable = { BRM_shan_attrition_for_controller = 0.125 }
+	set_variable = { BRM_shan_compliance_gain = -0.035 }
+	set_variable = {  BRM_shan_local_factory_energy_consumption = 0.15 }
+	set_variable = { BRM_shan_local_non_core_manpower = -0.15 }
+	set_variable = { BRM_shan_local_resource_gain_efficiency = -0.075 }
+	set_variable = { BRM_shan_local_supplies_for_controller = -0.15 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = shan_anger	
+		value > 0.70 
+		}
+		}
+	set_variable = { BRM_shan_attrition_for_controller = 0.1 }
+	set_variable = { BRM_shan_compliance_gain = -0.015 }
+	set_variable = {  BRM_shan_local_factory_energy_consumption = 0.125 }
+	set_variable = { BRM_shan_local_non_core_manpower = -0.125 }
+	set_variable = { BRM_shan_local_resource_gain_efficiency = -0.025 }
+	set_variable = { BRM_shan_local_supplies_for_controller = -0.125 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = shan_anger	
+		value > 0.50 
+		}
+		}
+	set_variable = { BRM_shan_attrition_for_controller = 0.05 }
+	set_variable = { BRM_shan_compliance_gain = 0.015 }
+	set_variable = {  BRM_shan_local_factory_energy_consumption = 0.125 }
+	set_variable = { BRM_shan_local_non_core_manpower = -0.125 }
+	set_variable = { BRM_shan_local_resource_gain_efficiency = -0.025 }
+	set_variable = { BRM_shan_local_supplies_for_controller = -0.125 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = shan_anger	
+		value > 0.30 
+		}
+		}
+	set_variable = { BRM_shan_attrition_for_controller = 0.025 }
+	set_variable = { BRM_shan_compliance_gain = 0.02 }
+	set_variable = {  BRM_shan_local_factory_energy_consumption = 0.1 }
+	set_variable = { BRM_shan_local_non_core_manpower = -0.1 }
+	set_variable = { BRM_shan_local_resource_gain_efficiency = 0.025 }
+	set_variable = { BRM_shan_local_supplies_for_controller = -0.075 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = shan_anger	
+		value > 0.10 
+		}
+		}
+	set_variable = { BRM_shan_attrition_for_controller = 0.01 }
+	set_variable = { BRM_shan_compliance_gain = 0.025 }
+	set_variable = {  BRM_shan_local_factory_energy_consumption = 0.075 }
+	set_variable = { BRM_shan_local_non_core_manpower = -0.08 }
+	set_variable = { BRM_shan_local_resource_gain_efficiency = 0.01 }
+	set_variable = { BRM_shan_local_supplies_for_controller = -0.05 }
+		}
+	else = {
+	set_variable = { BRM_shan_attrition_for_controller = -0.05 }
+	set_variable = { BRM_shan_compliance_gain = 0.05 }
+	set_variable = {  BRM_shan_local_factory_energy_consumption = 0.01 }
+	set_variable = { BRM_shan_local_non_core_manpower = 0.025 }
+	set_variable = { BRM_shan_local_resource_gain_efficiency = 0.075 }
+	set_variable = { BRM_shan_local_supplies_for_controller = 0.025 }
+	}
 }
 
-BRM_shan_resistance_increase = {
+BRM_kachin_dynamic_modifer_update = {
+		if = { limit = { 
+		check_variable = { 
+		var = kachin_anger	
+		value > 0.90 
+		}
+		}
+	set_variable = { BRM_kachin_attrition_for_controller = 0.125 }
+	set_variable = { BRM_kachin_compliance_gain = -0.035 }
+	set_variable = {  BRM_kachin_local_factory_energy_consumption = 0.15 }
+	set_variable = { BRM_kachin_local_non_core_manpower = -0.15 }
+	set_variable = { BRM_kachin_local_resource_gain_efficiency = -0.075 }
+	set_variable = { BRM_kachin_local_supplies_for_controller = -0.15 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = kachin_anger	
+		value > 0.70 
+		}
+		}
+	set_variable = { BRM_kachin_attrition_for_controller = 0.1 }
+	set_variable = { BRM_kachin_compliance_gain = -0.015 }
+	set_variable = {  BRM_kachin_local_factory_energy_consumption = 0.125 }
+	set_variable = { BRM_kachin_local_non_core_manpower = -0.125 }
+	set_variable = { BRM_kachin_local_resource_gain_efficiency = -0.025 }
+	set_variable = { BRM_kachin_local_supplies_for_controller = -0.125 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = kachin_anger	
+		value > 0.50 
+		}
+		}
+	set_variable = { BRM_kachin_attrition_for_controller = 0.05 }
+	set_variable = { BRM_kachin_compliance_gain = 0.015 }
+	set_variable = {  BRM_kachin_local_factory_energy_consumption = 0.125 }
+	set_variable = { BRM_kachin_local_non_core_manpower = -0.125 }
+	set_variable = { BRM_kachin_local_resource_gain_efficiency = -0.025 }
+	set_variable = { BRM_kachin_local_supplies_for_controller = -0.125 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = kachin_anger	
+		value > 0.30 
+		}
+		}
+	set_variable = { BRM_kachin_attrition_for_controller = 0.025 }
+	set_variable = { BRM_kachin_compliance_gain = 0.02 }
+	set_variable = {  BRM_kachin_local_factory_energy_consumption = 0.1 }
+	set_variable = { BRM_kachin_local_non_core_manpower = -0.1 }
+	set_variable = { BRM_kachin_local_resource_gain_efficiency = 0.025 }
+	set_variable = { BRM_kachin_local_supplies_for_controller = -0.075 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = kachin_anger	
+		value > 0.10 
+		}
+		}
+	set_variable = { BRM_kachin_attrition_for_controller = 0.01 }
+	set_variable = { BRM_kachin_compliance_gain = 0.025 }
+	set_variable = {  BRM_kachin_local_factory_energy_consumption = 0.075 }
+	set_variable = { BRM_kachin_local_non_core_manpower = -0.08 }
+	set_variable = { BRM_kachin_local_resource_gain_efficiency = 0.01 }
+	set_variable = { BRM_kachin_local_supplies_for_controller = -0.05 }
+		}
+	else = {
+	set_variable = { BRM_kachin_attrition_for_controller = -0.05 }
+	set_variable = { BRM_kachin_compliance_gain = 0.05 }
+	set_variable = {  BRM_kachin_local_factory_energy_consumption = 0.01 }
+	set_variable = { BRM_kachin_local_non_core_manpower = 0.025 }
+	set_variable = { BRM_kachin_local_resource_gain_efficiency = 0.075 }
+	set_variable = { BRM_kachin_local_supplies_for_controller = 0.025 }
+	}
+}
+
+BRM_rakhine_dynamic_modifer_update = {
+		if = { limit = { 
+		check_variable = { 
+		var = rakhine_anger	
+		value > 0.90 
+		}
+		}
+	set_variable = { BRM_rakhine_attrition_for_controller = 0.125 }
+	set_variable = { BRM_rakhine_compliance_gain = -0.035 }
+	set_variable = {  BRM_rakhine_local_factory_energy_consumption = 0.15 }
+	set_variable = { BRM_rakhine_local_non_core_manpower = -0.15 }
+	set_variable = { BRM_rakhine_local_resource_gain_efficiency = -0.075 }
+	set_variable = { BRM_rakhine_local_supplies_for_controller = -0.15 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = rakhine_anger	
+		value > 0.70 
+		}
+		}
+	set_variable = { BRM_rakhine_attrition_for_controller = 0.1 }
+	set_variable = { BRM_rakhine_compliance_gain = -0.015 }
+	set_variable = {  BRM_rakhine_local_factory_energy_consumption = 0.125 }
+	set_variable = { BRM_rakhine_local_non_core_manpower = -0.125 }
+	set_variable = { BRM_rakhine_local_resource_gain_efficiency = -0.025 }
+	set_variable = { BRM_rakhine_local_supplies_for_controller = -0.125 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = rakhine_anger	
+		value > 0.50 
+		}
+		}
+	set_variable = { BRM_rakhine_attrition_for_controller = 0.05 }
+	set_variable = { BRM_rakhine_compliance_gain = 0.015 }
+	set_variable = {  BRM_rakhine_local_factory_energy_consumption = 0.125 }
+	set_variable = { BRM_rakhine_local_non_core_manpower = -0.125 }
+	set_variable = { BRM_rakhine_local_resource_gain_efficiency = -0.025 }
+	set_variable = { BRM_rakhine_local_supplies_for_controller = -0.125 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = rakhine_anger	
+		value > 0.30 
+		}
+		}
+	set_variable = { BRM_rakhine_attrition_for_controller = 0.025 }
+	set_variable = { BRM_rakhine_compliance_gain = 0.02 }
+	set_variable = {  BRM_rakhine_local_factory_energy_consumption = 0.1 }
+	set_variable = { BRM_rakhine_local_non_core_manpower = -0.1 }
+	set_variable = { BRM_rakhine_local_resource_gain_efficiency = 0.025 }
+	set_variable = { BRM_rakhine_local_supplies_for_controller = -0.075 }
+		}
+		else_if = { limit = { 
+		check_variable = { 
+		var = rakhine_anger	
+		value > 0.10 
+		}
+		}
+	set_variable = { BRM_rakhine_attrition_for_controller = 0.01 }
+	set_variable = { BRM_rakhine_compliance_gain = 0.025 }
+	set_variable = {  BRM_rakhine_local_factory_energy_consumption = 0.075 }
+	set_variable = { BRM_rakhine_local_non_core_manpower = -0.08 }
+	set_variable = { BRM_rakhine_local_resource_gain_efficiency = 0.01 }
+	set_variable = { BRM_rakhine_local_supplies_for_controller = -0.05 }
+		}
+	else = {
+	set_variable = { BRM_rakhine_attrition_for_controller = -0.05 }
+	set_variable = { BRM_rakhine_compliance_gain = 0.05 }
+	set_variable = {  BRM_rakhine_local_factory_energy_consumption = 0.01 }
+	set_variable = { BRM_rakhine_local_non_core_manpower = 0.025 }
+	set_variable = { BRM_rakhine_local_resource_gain_efficiency = 0.075 }
+	set_variable = { BRM_rakhine_local_supplies_for_controller = 0.025 }
+	}
+}
+BRM_shan_resistance_increase = { #this should always be scoped to occur in BRM right?
 		add_to_variable = {
 			var = shan_anger 
 			value = 0.05
@@ -328,6 +550,7 @@ BRM_shan_resistance_increase = {
    		var = shan_anger 
 		max = 1
 }
+		BRM_shan_dynamic_modifer_update = yes
 }
 
 BRM_shan_resistance_decrease = {
@@ -341,6 +564,7 @@ BRM_shan_resistance_decrease = {
    		var = shan_anger 
   		min = 0
 }
+		BRM_shan_dynamic_modifer_update = yes
 }
 
 BRM_kachin_resistance_increase = {
@@ -353,6 +577,7 @@ BRM_kachin_resistance_increase = {
    		var = kachin_anger 
 		max = 1
 }
+		BRM_kachin_dynamic_modifer_update = yes
 }
 
 BRM_kachin_resistance_decrease = {
@@ -366,6 +591,7 @@ BRM_kachin_resistance_decrease = {
    		var = kachin_anger 
   		min = 0
 }
+		BRM_kachin_dynamic_modifer_update = yes
 }
 
 BRM_rakhine_resistance_increase = {
@@ -378,6 +604,7 @@ BRM_rakhine_resistance_increase = {
    		var = rakhine_anger 
 		max = 1
 }
+		BRM_rakhine_dynamic_modifer_update = yes
 }
 
 BRM_rakhine_resistance_decrease = {
@@ -391,6 +618,7 @@ BRM_rakhine_resistance_decrease = {
    		var = rakhine_anger 
   		min = 0
 }
+		BRM_rakhine_dynamic_modifer_update = yes
 }
 
 
@@ -405,66 +633,11 @@ BRM_resistance_set_up = {
 			modifier = BRM_no_core_modifier_Shan
 			scope = BRM
 			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Shan_0
-			scope = BRM
 			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Shan_1
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Shan_2
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Shan_3
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Shan_4
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Shan_5
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Shan_6
-			scope = BRM
-			}
-			}
+
 			701 = {
 			add_dynamic_modifier = {
 			modifier = BRM_no_core_modifier_Kachin
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Kachin_0
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Kachin_1
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Kachin_2
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Kachin_3
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Kachin_4
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Kachin_5
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Kachin_6
 			scope = BRM
 			}
 			}
@@ -472,34 +645,6 @@ BRM_resistance_set_up = {
 			790 = {
 			add_dynamic_modifier = {
 			modifier = BRM_no_core_modifier_Rakhine
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Rakhine_0
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Rakhine_1
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Rakhine_2
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Rakhine_3
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Rakhine_4
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Rakhine_5
-			scope = BRM
-			}
-			add_dynamic_modifier = {
-			modifier = BRM_no_core_modifier_Rakhine_6
 			scope = BRM
 			}
 			}
