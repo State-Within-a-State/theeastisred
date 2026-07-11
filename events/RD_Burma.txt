@@ -83,11 +83,21 @@ country_event = { #Aid From Monks or Aid From the Burmese Businessmen
 	}
 }
 
-country_event = { #
+country_event = { #Flag March In Shan
 	id = rd_burma.4
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.4"}
 	title = rd_burma.4.title
 	desc = rd_burma.4.desc
+	trigger = {
+		OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+				BRM = {
+					owns_state = 72
+				}
+			}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
@@ -95,44 +105,72 @@ country_event = { #
 		name = rd_burma.4.a
 		ai_chance = { base = 100 }
 		
+		BRM_shan_resistance_increase = yes
 	}
 }
 
-country_event = { #
+country_event = { #Flag March In Kachin
 	id = rd_burma.5
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.5"}
 	title = rd_burma.5.title
 	desc = rd_burma.5.desc
 	#picture = 
-	
+	trigger = {
+		OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+				BRM = {
+					owns_state = 701
+				}
+			}
+	}
 	is_triggered_only = yes
 	option = { #
 		name = rd_burma.5.a
 		ai_chance = { base = 100 }
 		
+		BRM_kachin_resistance_increase = yes
 	}
 }
 
-country_event = { #
+country_event = { #Flag March In Rakhine
 	id = rd_burma.6
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.6"}
 	title = rd_burma.6.title
 	desc = rd_burma.6.desc
 	#picture = 
-	
+	trigger = {
+		OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+				BRM = {
+					owns_state = 790
+				}
+			}
+	}
 	is_triggered_only = yes
 	option = { #
 		name = rd_burma.6.a
 		ai_chance = { base = 100 }
 		
+		BRM_rakhine_resistance_increase = yes
 	}
 }
 
-country_event = { #
+country_event = { #Shan Independence
 	id = rd_burma.7
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.7"}
 	title = rd_burma.7.title
 	desc = rd_burma.7.desc
+	immediate = {
+		hidden_effect = {
+			SHA = {
+				set_state_owner = 72
+			}
+		}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
@@ -141,13 +179,27 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #
+		name = rd_burma.7.b
+		ai_chance = { base = 100 }
+		SHA = {
+		change_tag_from = BRM
+		}
+	}
 }
 
-country_event = { #
+country_event = { #Kachin Independence
 	id = rd_burma.8
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.8"}
 	title = rd_burma.8.title
 	desc = rd_burma.8.desc
+	immediate = {
+		hidden_effect = {
+			KAC = {
+				set_state_owner = 701
+			}
+		}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
@@ -156,13 +208,27 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #
+		name = rd_burma.8.b
+		ai_chance = { base = 100 }
+		KAC = {
+		change_tag_from = BRM
+		}
+	}
 }
 
-country_event = { #
+country_event = { #Rakhine Independence
 	id = rd_burma.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.9"}
 	title = rd_burma.9.title
 	desc = rd_burma.9.desc
+	immediate = {
+		hidden_effect = {
+			ARK = {
+				set_state_owner = 790
+			}
+		}
+	}
 	#picture = 
 	
 	is_triggered_only = yes
@@ -170,6 +236,13 @@ country_event = { #
 		name = rd_burma.9.a
 		ai_chance = { base = 100 }
 		
+	}
+	option = { #
+		name = rd_burma.9.b
+		ai_chance = { base = 100 }
+		ARK = {
+		change_tag_from = BRM
+		}
 	}
 }
 

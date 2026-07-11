@@ -1,3 +1,678 @@
+BRM_minority_integration_decision_category = {
+BRM_Shan_Rebellion_mission = {
+		activation = {
+			check_variable = {
+				var = shan_anger
+				value > 0.74
+			}
+		}
+		available = {
+			always = no
+			
+		}
+		cancel_trigger = {
+			check_variable = {
+				var = shan_anger
+				value < 0.75
+			}
+		}
+		visible = {
+			OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+				NOT = {
+				owns_state = 72
+				}
+			}
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 120
+		selectable_mission = no
+		fire_only_once = no
+		complete_effect = {
+		}
+		timeout_effect = {
+		country_event = rd_burma.7
+		}
+	}
+BRM_Kachin_Rebellion_mission = {
+		activation = {
+			check_variable = {
+				var = kachin_anger
+				value > 0.74
+			}
+		}
+		available = {
+			always = no
+			
+		}
+		cancel_trigger = {
+			check_variable = {
+				var = kachin_anger
+				value < 0.75
+			}
+		}
+		visible = {
+			OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+				NOT = {
+				owns_state = 701
+				}
+			}
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 730
+		selectable_mission = no
+		fire_only_once = no
+		complete_effect = {
+		}
+		timeout_effect = {
+		country_event = rd_burma.8
+		}
+	}
+BRM_Rakhine_Rebellion_mission = {
+		activation = {
+			check_variable = {
+				var = rakhine_anger
+				value > 0.74
+			}
+		}
+		available = {
+			always = no
+			
+		}
+		cancel_trigger = {
+			check_variable = {
+				var = rakhine_anger
+				value < 0.75
+			}
+		}
+		visible = {
+			OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+				NOT = {
+				owns_state = 790
+				}
+			}
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 730
+		selectable_mission = no
+		fire_only_once = no
+		complete_effect = {
+		}
+		timeout_effect = {
+		country_event = rd_burma.9
+		}
+	}
+	
+	BRM_Shan_flag_march_mission = {
+		activation = {
+			NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+			owns_state = 72
+		}
+		available = {
+			always = no
+			
+		}
+		cancel_trigger = {
+			
+		}
+		visible = {
+			OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+				NOT = {
+				owns_state = 72
+				}
+			}
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 120
+		selectable_mission = no
+		fire_only_once = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			country_event = rd_burma.4
+		}
+	}
+	
+	BRM_Kachin_flag_march_mission = {
+		activation = {
+			NOT = {
+					has_country_flag = BRM_integrated_kachin
+				}
+			owns_state = 701
+		}
+		available = {
+			always = no
+			
+		}
+		cancel_trigger = {
+			
+		}
+		visible = {
+			OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_kachin
+				}
+				NOT = {
+				owns_state = 701
+				}
+			}
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 120
+		selectable_mission = no
+		fire_only_once = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			country_event = rd_burma.5
+		}
+	}
+	
+	BRM_Rakhine_flag_march_mission = {
+		activation = {
+			NOT = {
+					has_country_flag = BRM_integrated_rakhine
+				}
+			owns_state = 790
+		}
+		available = {
+			always = no
+			
+		}
+		cancel_trigger = {
+			
+		}
+		visible = {
+			OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_rakhine
+				}
+				NOT = {
+				owns_state = 790
+				}
+			}
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 120
+		selectable_mission = no
+		fire_only_once = no
+		complete_effect = {
+		}
+		timeout_effect = {
+			country_event = rd_burma.6
+		}
+	}
+	
+	BRM_call_military_crackdown_shan_decision = {
+		icon = ger_military_buildup
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 72 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 72 } 
+		}
+		available = {
+			
+		}
+		
+		visible = {
+			tag = BRM
+			NOT = {
+					has_country_flag = BRM_integrated_shan
+				}
+			owns_state = 72
+		}
+		cost = 25
+		
+		days_remove = 60
+		days_re_enable = 20
+		fire_only_once = no
+			modifier = {
+				army_org_factor = -0.025
+				manpower_weekly = -100
+				political_power_factor = 0.025
+				stability_factor = -0.15
+				stability_weekly = 0.01
+			}
+		complete_effect = {
+			BRM_military_increase = yes
+			random_list = {
+				60 = {
+					BRM_shan_resistance_decrease = yes
+				}
+				40 = {
+					BRM_shan_resistance_increase = yes
+				}
+				
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	BRM_call_military_crackdown_kachin_decision = {
+		icon = ger_military_buildup
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 701 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 701 } 
+		}
+		available = {
+			
+		}
+		
+		visible = {
+			tag = BRM
+			NOT = {
+					has_country_flag = BRM_integrated_kachin
+				}
+			owns_state = 701
+		}
+		cost = 25
+		
+		days_remove = 60
+		days_re_enable = 20
+		fire_only_once = no
+			modifier = {
+				army_org_factor = -0.025
+				manpower_weekly = -100
+				political_power_factor = 0.025
+				stability_factor = -0.15
+				stability_weekly = 0.01
+			}
+		complete_effect = {
+			BRM_military_increase = yes
+			random_list = {
+				60 = {
+					BRM_kachin_resistance_decrease = yes
+				}
+				40 = {
+					BRM_kachin_resistance_increase = yes
+				}
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	BRM_call_military_crackdown_Rakhine_decision = {
+		icon = ger_military_buildup
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 790 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 790 } 
+		}
+		available = {
+			
+		}
+		
+		visible = {
+			tag = BRM
+			NOT = {
+					has_country_flag = BRM_integrated_rakhine
+				}
+			owns_state = 790
+		}
+		cost = 25
+		
+		days_remove = 60
+		days_re_enable = 20
+		fire_only_once = no
+			modifier = {
+				army_org_factor = -0.025
+				manpower_weekly = -100
+				political_power_factor = 0.025
+				stability_factor = -0.15
+				stability_weekly = 0.01
+			}
+		complete_effect = {
+			BRM_military_increase = yes
+			random_list = {
+				
+				60 = {
+					BRM_rakhine_resistance_decrease = yes
+				}
+				40 = {
+					BRM_rakhine_resistance_increase = yes
+				}
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	BRM_increase_trading_on_the_fonteirs_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_prioritize_business
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 25
+		
+		days_remove = 50
+		days_re_enable = 15
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_lack_of_resource_penalty_factor = -0.05
+				production_speed_buildings_factor = 0.02
+			}
+		complete_effect = {
+			
+			random_list = {
+				33 = {
+					BRM_shan_resistance_decrease = yes
+				}
+				34 = {
+					BRM_kachin_resistance_decrease = yes
+				}
+				33 = {
+					BRM_rakhine_resistance_decrease = yes
+				}
+				
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	
+	BRM_increase_trading_rakhine_resources_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_export_diversification
+		}
+		
+		visible = {
+			tag = BRM
+			owns_state = 790
+		}
+		cost = 30
+		
+		days_remove = 90
+		days_re_enable = 30
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_lack_of_resource_penalty_factor = 0.25
+				research_speed_factor = 0.02
+			}
+		complete_effect = {
+			BRM_rakhine_resistance_decrease = yes
+			790 = {
+				add_resource = {
+					type = oil
+					amount = 5
+				}
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+	BRM_increase_trading_kachin_resources_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_export_diversification
+		}
+		
+		visible = {
+			tag = BRM
+			owns_state = 701
+		}
+		cost = 30
+		
+		days_remove = 90
+		days_re_enable = 30
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = -0.025
+				production_lack_of_resource_penalty_factor = 0.25
+				political_power_factor = 0.025
+			}
+		complete_effect = {
+			BRM_kachin_resistance_decrease = yes
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	BRM_increase_trading_shan_resources_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_export_diversification
+		}
+		
+		visible = {
+			tag = BRM
+			owns_state = 72
+		}
+		cost = 30
+		
+		days_remove = 90
+		days_re_enable = 30
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = 0.025
+				production_lack_of_resource_penalty_factor = -0.25
+				political_power_factor = 0.025
+				production_factory_efficiency_gain_factor = 0.02
+			}
+		complete_effect = {
+			BRM_shan_resistance_decrease = yes
+			72 = {
+				add_resource = {
+					type = steel
+					amount = 2
+				}
+			}
+			if = {
+				limit = {
+					BRM = {
+						owns_state = 756
+					}
+				}
+				756 = {
+					add_resource = {
+						type = aluminum
+						amount = 2
+					}
+				}
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	BRM_integrate_shan_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			NOT = {
+					has_country_flag = BRM_integrated_shan
+					
+				}
+			owns_state = 72
+			check_variable = {
+				var = shan_anger
+				value < 0.11
+			}
+		}
+		cancel_trigger = {
+		OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_kachin
+					
+				}
+				NOT = {
+					owns_state = 72
+				}
+			}
+			owns_state = 72
+			check_variable = {
+				var = shan_anger
+				value > 0.09
+			}
+		}
+		
+		visible = {
+			tag = BRM
+			owns_state = 72
+		}
+		cost = 30
+		
+		days_remove = 120
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = BRM_integrated_shan
+			add_state_core = 72
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	BRM_integrate_kachin_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			NOT = {
+					has_country_flag = BRM_integrated_kachin
+					
+				}
+			owns_state = 701
+			check_variable = {
+				var = kachin_anger
+				value < 0.11
+			}
+		}
+		cancel_trigger = {
+			OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_kachin
+					
+				}
+				NOT = {
+					owns_state = 701
+				}
+			}
+			check_variable = {
+				var = kachin_anger
+				value > 0.09
+			}
+		}
+		
+		visible = {
+			tag = BRM
+			owns_state = 701
+		}
+		cost = 30
+		
+		days_remove = 120
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = BRM_integrated_kachin
+			add_state_core = 701
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	BRM_integrate_rakhine_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			NOT = {
+					has_country_flag = BRM_integrated_rakhine
+					
+				}
+			owns_state = 790
+			check_variable = {
+				var = rakhine_anger
+				value < 0.11
+			}
+		}
+		cancel_trigger = {
+		OR = {
+				NOT = {
+					has_country_flag = BRM_integrated_kachin
+					
+				}
+				NOT = {
+					
+				}
+			}
+			check_variable = {
+				var = rakhine_anger
+				value > 0.09
+			}
+		}
+		
+		visible = {
+			tag = BRM
+			owns_state = 790
+		}
+		cost = 30
+		
+		days_remove = 120
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = BRM_integrated_rakhine
+			add_state_core = 790
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	
+}
+
 BRM_the_chettyar_crisis_decision_category = {
 
 BRM_Chettiar_Crisis_mission = {
@@ -474,46 +1149,4 @@ BRM_lobby_export_firms_decision = {
 	
 	
 
-}
-
-BRM_minority_integration_decision_category = {
-BRM_Shan_Rebellion_mission = {
-		activation = {
-			check_variable = {
-				var = shan_anger
-				value > 0.74
-			}
-		}
-		available = {
-			always = no
-			
-		}
-		cancel_trigger = {
-			check_variable = {
-				var = shan_anger
-				value < 0.75
-			}
-		}
-		visible = {
-			OR = {
-				NOT = {
-					has_country_flag = BRM_integrated_shan
-				}
-				NOT = {
-					owns_state = 72
-				}
-			}
-		}
-		
-		icon = mission_icon     # For GFX_decision_mission_icon
-		is_good = no
-	   
-		days_mission_timeout = 730
-		selectable_mission = no
-		fire_only_once = no
-		complete_effect = {
-		}
-		timeout_effect = {
-		}
-	}
 }
