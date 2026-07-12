@@ -378,7 +378,7 @@ country_event = { #Thakin Society In Power
 		set_politics = { ruling_party = radical_socialist }
 		add_popularity = {
 			ideology = radical_socialist
-			popularity = 0.03
+			popularity = 0.3
 		}
 		remove_all_ministers = yes
 		add_ideas = {
@@ -408,7 +408,7 @@ country_event = { #Traditionalists Come to Power
 		set_politics = { ruling_party = paternal_autocrat }
 		add_popularity = {
 			ideology = paternal_autocrat
-			popularity = 0.03
+			popularity = 0.3
 		}
 		remove_all_ministers = yes
 		add_ideas = {
@@ -438,7 +438,7 @@ country_event = { #International Traders
 		set_politics = { ruling_party = authoritarian_democrat }
 		add_popularity = {
 			ideology = authoritarian_democrat
-			popularity = 0.03
+			popularity = 0.3
 		}
 		create_country_leader = {
 			name = "Joseph Augustus Maung Gyi"
@@ -474,7 +474,7 @@ country_event = { #UBCA Nationalists
 		set_politics = { ruling_party = national_populist }
 		add_popularity = {
 			ideology = national_populist
-			popularity = 0.03
+			popularity = 0.3
 		}
 		remove_all_ministers = yes
 		add_ideas = {
@@ -551,7 +551,7 @@ country_event = { #Tradtionalists Election
 		set_politics = { ruling_party = paternal_autocrat }
 		add_popularity = {
 			ideology = paternal_autocrat
-			popularity = 0.03
+			popularity = 0.3
 		}
 		remove_all_ministers = yes
 		add_ideas = {
@@ -569,7 +569,7 @@ country_event = { #Tradtionalists Election
 		set_politics = { ruling_party = authoritarian_democrat }
 		add_popularity = {
 			ideology = authoritarian_democrat
-			popularity = 0.03
+			popularity = 0.3
 		}
 		create_country_leader = {
 			name = "U Pu"
@@ -603,7 +603,7 @@ country_event = { #International Traders Election
 		set_politics = { ruling_party = authoritarian_democrat }
 		add_popularity = {
 			ideology = authoritarian_democrat
-			popularity = 0.03
+			popularity = 0.3
 		}
 		create_country_leader = {
 			name = "Joseph Augustus Maung Gyi"
@@ -625,7 +625,7 @@ country_event = { #International Traders Election
 		set_politics = { ruling_party = market_liberal }
 		add_popularity = {
 			ideology = market_liberal
-			popularity = 0.03
+			popularity = 0.3
 		}
 		remove_all_ministers = yes
 		add_ideas = {
@@ -651,7 +651,7 @@ country_event = { #UBCA Nationalists
 		set_politics = { ruling_party = national_populist }
 		add_popularity = {
 			ideology = national_populist
-			popularity = 0.03
+			popularity = 0.3
 		}
 		remove_all_ministers = yes
 		add_ideas = {
@@ -667,7 +667,7 @@ country_event = { #UBCA Nationalists
 		set_politics = { ruling_party = social_liberal }
 		add_popularity = {
 			ideology = social_liberal
-			popularity = 0.03
+			popularity = 0.3
 		}
 		remove_all_ministers = yes
 		add_ideas = {
@@ -683,7 +683,7 @@ country_event = { #UBCA Nationalists
 		set_politics = { ruling_party = social_democrat }
 		add_popularity = {
 			ideology = social_democrat
-			popularity = 0.03
+			popularity = 0.3
 		}
 		create_country_leader = {
 			name = "U Wisara"
@@ -711,7 +711,7 @@ country_event = { #UBCA Nationalists
 		set_politics = { ruling_party = national_populist }
 		add_popularity = {
 			ideology = national_populist
-			popularity = 0.03
+			popularity = 0.3
 		}
 		create_country_leader = {
 			name = "Saya San"
@@ -743,7 +743,7 @@ country_event = { #Bassein Takes over
 		set_politics = { ruling_party = national_populist }
 		add_popularity = {
 			ideology = national_populist
-			popularity = 0.03
+			popularity = 0.3
 		}
 		create_country_leader = {
 			name = "Ba Sein"
@@ -761,7 +761,7 @@ country_event = { #Bassein Takes over
 	}
 }
 
-country_event = { #
+country_event = { #Mya Tries to Control the Letyon Tat
 	id = rd_burma.21
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.21"}
 	title = rd_burma.21.title
@@ -769,14 +769,26 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Lets See How the Young Officers React
 		name = rd_burma.21.a
 		ai_chance = { base = 100 }
-		
+			if = {
+				limit = {
+					check_variable = {
+						var = burma_army
+						value > 0.7
+					}
+				}
+				country_event = rd_burma.24
+			}
+			else = {
+				country_event = rd_burma.25
+			}
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Hardline is Set - Tradtionalist Election
 	id = rd_burma.22
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.22"}
 	title = rd_burma.22.title
@@ -787,11 +799,65 @@ country_event = { #
 	option = { #
 		name = rd_burma.22.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = paternal_autocrat }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Khin_Maung_Lat_hog_pau
+			BRM_Thein_Maung_eco_ade
+			BRM_U_Tin_for_ade
+			BRM_U_May_Aung_sec_sco
+		}
+	}
+	option = { #
+		name = rd_burma.22.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = authoritarian_democrat }
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.3
+		}
+		create_country_leader = {
+			name = "U Ba Pe"
+			picture = "gfx/leaders/BRM/Portrait_Burma_U_Ba_Pe.png"
+			expire = "1965.1.1"
+			ideology = oligarchy_subtype
+		}
+		add_pataut_to_coalition = yes
+		add_soccon_to_coalition = yes
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_U_Ba_Pe_hog_ade
+			BRM_Thein_Maung_eco_ade
+			BRM_U_Tin_for_ade
+			BRM_U_May_Aung_sec_sco
+		}
+	}
+	
+	option = { #
+		name = rd_burma.22.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_conservative }
+		add_popularity = {
+			ideology = social_conservative
+			popularity = 0.3
+		}
+		add_pataut_to_coalition = yes
+		add_authdem_to_coalition = yes
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Maung_Gyi_hog_sco
+			BRM_Thein_Maung_eco_ade
+			BRM_U_Tin_for_ade
+			BRM_U_May_Aung_sec_sco
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Victory For Hlaing-Myat-Paw's Faction
 	id = rd_burma.23
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.23"}
 	title = rd_burma.23.title
@@ -802,11 +868,53 @@ country_event = { #
 	option = { #
 		name = rd_burma.23.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = authoritarian_democrat }
+		add_popularity = {
+			ideology = authoritarian_democrat
+			popularity = 0.3
+		}
+		create_country_leader = {
+			name = "U Pu"
+			picture = "gfx/leaders/BRM/BRM_tharrawaddy_u_pu.png"
+			expire = "1965.1.1"
+			ideology = oligarchy_subtype
+		}
+		add_marlib_to_coalition = yes
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_U_Pu_hog_ade
+			BRM_U_Su_eco_mli
+			BRM_U_Mya_for_mli
+			BRM_Paw_Tun_sec_ade
+		}
+	}
+	
+	option = { #
+		name = rd_burma.23.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = market_liberal }
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.3
+		}
+		create_country_leader = {
+			name = "Chit Hlaing"
+			picture = "gfx/leaders/BRM/BRM_tharrawaddy_u_pu.png"
+			expire = "1965.1.1"
+			ideology = marlib_agrarianism_subtype
+		}
+		add_authdem_to_coalition = yes
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Chit_U_Hlaing_hog_mli
+			BRM_U_Su_eco_mli
+			BRM_U_Mya_for_mli
+			BRM_Paw_Tun_sec_ade
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Young Officers Launch a Coup
 	id = rd_burma.24
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.24"}
 	title = rd_burma.24.title
@@ -817,7 +925,24 @@ country_event = { #
 	option = { #
 		name = rd_burma.24.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Ne Win "
+			picture = "gfx/leaders/BRM/Portrait_Burma_Ne_Win.png"
+			expire = "1965.1.1"
+			ideology = red_junta_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Ne_Win_hog_tot
+			BRM_San_Yu_eco_tot
+			BRM_Sein_Win_for_tot
+			BRM_Aung_Gyi_sec_tot
+		}
 	}
 }
 
