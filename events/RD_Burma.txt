@@ -946,7 +946,7 @@ country_event = { #Young Officers Launch a Coup
 	}
 }
 
-country_event = { #
+country_event = { #Thakin Elections
 	id = rd_burma.25
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.25"}
 	title = rd_burma.25.title
@@ -954,14 +954,34 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Student Faction
 		name = rd_burma.25.a
 		ai_chance = { base = 100 }
-		
+		country_event = rd_burma.26
+	}
+	option = { #Peasants Faction
+		name = rd_burma.25.b
+		ai_chance = { base = 100 }
+		country_event = rd_burma.27
+	}
+	option = { #Nagani Book Club Faction
+		name = rd_burma.25.c
+		ai_chance = { base = 100 }
+		country_event = rd_burma.28
+	}
+	option = { #Workers Faction
+		name = rd_burma.25.d
+		ai_chance = { base = 100 }
+		country_event = rd_burma.28
+	}
+	option = { #Poor Man's Party
+		name = rd_burma.25.e
+		ai_chance = { base = 100 }
+		country_event = rd_burma.29
 	}
 }
 
-country_event = { #
+country_event = { #Student Faction Elections
 	id = rd_burma.26
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.26"}
 	title = rd_burma.26.title
@@ -969,10 +989,118 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Aung San
 		name = rd_burma.26.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Aung San "
+			picture = "gfx/leaders/BRM/Portrait_Burma_Aung_San.png"
+			expire = "1965.1.1"
+			ideology = left_nationalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Aung_San_hog_rso
+			BRM_Bo_Let_Ya_eco_rso
+			BRM_Thakin_Ba_Hein_for_tot
+			BRM_Thakin_Than_Tun_sec_tot
+		}
+	}
+	option = { #Thakin Kodaw Hmaing
+		name = rd_burma.26.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Kodaw Hmaing"
+			picture = "gfx/leaders/BRM/BRM_thakin_kodaw_hmaing.png"
+			expire = "1965.1.1"
+			ideology = left_nationalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Kodaw_Hmaing_hog_rso
+			BRM_Thakin_Lwin_eco_syn
+			BRM_Thakin_Kodaw_Hmaing_for_rso
+			BRM_Thakin_Po_Hla_Gyi_sec_syn
+		}
+	}
+	
+	option = { #U Ko Ko Gyi
+		name = rd_burma.26.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "U Ko Ko Gyi"
+			picture = "gfx/leaders/BRM/Portrait_BRM_U_Ko_Ko_Gyi.png"
+			expire = "1965.1.1"
+			ideology = radsoc_revisionist_marxism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_U_Ko_Ko_Gyi_hog_rso
+			BRM_Thein_Pe_Myint_eco_rso
+			BRM_Thakin_Kodaw_Hmaing_for_rso
+			BRM_Aung_San_sec_rso
+		}
+	}
+	
+	option = { #Thein Pe Myint
+		name = rd_burma.26.d
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thein Pe Myint"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thein_Pe_Myint.png"
+			expire = "1965.1.1"
+			ideology = radsoc_revisionist_marxism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thein_Pe_Myint_hog_rso
+			BRM_U_Ko_Ko_Gyi_eco_rso
+			BRM_Thakin_Kodaw_Hmaing_for_rso
+			BRM_Aung_San_sec_rso
+		}
+	}
+	
+	option = { #Ba Swe
+		name = rd_burma.26.e
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Ba Swe"
+			picture = "gfx/leaders/BRM/Portrait_Burma_Ba_Swe.png"
+			expire = "1965.1.1"
+			ideology = agrarian_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Ba_Swe_hog_rso
+			BRM_Thakin_Mya_eco_rso
+			BRM_Kyaw_Nein_for_rso
+			BRM_Thakin_Chit_Maung_sec_rso
+		}
 	}
 }
 
@@ -984,14 +1112,75 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Thakin Mya
 		name = rd_burma.27.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Mya"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Mya.png"
+			expire = "1965.1.1"
+			ideology = agrarian_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Mya_hog_rso
+			BRM_Thakin_Mya_eco_rso
+			BRM_Kyaw_Nein_for_rso
+			BRM_Thakin_Chit_Maung_sec_rso
+		}
+	}
+	option = { #Thakin Than Tun
+		name = rd_burma.27.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Than Tun"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Than_Tun.png"
+			expire = "1965.1.1"
+			ideology = hardliner_bolshevism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Than_Tun_hog_tot
+			BRM_H_N_Goshal_eco_tot
+			BRM_Kyaw_Zaw_for_rso
+			BRM_Thakin_Than_Tun_sec_tot
+		}
+	}
+	option = { #Ba Swe
+		name = rd_burma.27.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Ba Swe"
+			picture = "gfx/leaders/BRM/Portrait_Burma_Ba_Swe.png"
+			expire = "1965.1.1"
+			ideology = agrarian_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Ba_Swe_hog_rso
+			BRM_Thakin_Mya_eco_rso
+			BRM_Kyaw_Nein_for_rso
+			BRM_Thakin_Chit_Maung_sec_rso
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Nagani Book Clubs
 	id = rd_burma.28
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.28"}
 	title = rd_burma.28.title
@@ -999,14 +1188,76 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #U Nu
 		name = rd_burma.28.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "U Nu"
+			picture = "gfx/leaders/BRM/Portrait_Burma_U_Nu.png"
+			expire = "1965.1.1"
+			ideology = radsoc_paternal_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_U_Nu_hog_rso
+			BRM_U_Mya_eco_sde
+			BRM_Kyaw_Zaw_for_rso
+			BRM_Ne_Win_sec_tot
+		}
+	}
+	option = { #Shin Ukkattha
+		name = rd_burma.28.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Mya"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Shin_Ukkattha.png"
+			expire = "1965.1.1"
+			ideology = buddhist_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Shin_Ukkattha_hog_rso
+			BRM_Ba_Maw_eco_sde
+			BRM_Addica_Vamsa_for_sde
+			BRM_Sayadaw_U_Seinta_sec_rso
+		}
+	}
+	
+	option = { #Thakin Than Tun
+		name = rd_burma.27.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Than Tun"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Than_Tun.png"
+			expire = "1965.1.1"
+			ideology = hardliner_bolshevism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Than_Tun_hog_tot
+			BRM_H_N_Goshal_eco_tot
+			BRM_Kyaw_Zaw_for_rso
+			BRM_Ba_Thein_Tin_sec_tot
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Syndicalists
 	id = rd_burma.29
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.29"}
 	title = rd_burma.29.title
@@ -1014,14 +1265,75 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Thakin Ba Cho
 		name = rd_burma.29.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = syndicalist }
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Ba Cho"
+			picture = "gfx/leaders/BRM/Portrait_BRM_U_Ba_Cho.png"
+			expire = "1965.1.1"
+			ideology = laskian_syndicalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Deebok_Ba_Cho_hog_syn
+			BRM_Thakin_Lwin_eco_syn
+			BRM_U_Hla_Maung_for_sde
+			BRM_Thakin_Chit_Maung_sec_rso
+		}
+	}
+	option = { #Thakin Soe
+		name = rd_burma.29.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Soe"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Soe.png"
+			expire = "1965.1.1"
+			ideology = syn_internationalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Deebok_Ba_Cho_hog_syn
+			BRM_Thakin_Lwin_eco_syn
+			BRM_Banmaw_Tin_Aung_for_syn
+			BRM_Thakin_Po_Hla_Gyi_sec_syn
+		}
+	}
+	option = { #Thakin Lay Maung
+		name = rd_burma.29.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Lay Maung"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Lay_Maung.png"
+			expire = "1965.1.1"
+			ideology = centralized_syndicalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Lay_Maung_hog_syn
+			BRM_Thakin_Lwin_eco_syn
+			BRM_Banmaw_Tin_Aung_for_syn
+			BRM_Thakin_Po_Hla_Gyi_sec_syn
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Ba Maw
 	id = rd_burma.30
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.30"}
 	title = rd_burma.30.title
@@ -1032,7 +1344,18 @@ country_event = { #
 	option = { #
 		name = rd_burma.30.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = social_democrat }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Ba_Maw_hog_sde
+			BRM_Ba_Maw_eco_sde
+			BRM_Ba_Han_for_sde
+			BRM_Yan_Naing_sec_rso
+		}
 	}
 }
 
