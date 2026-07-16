@@ -552,15 +552,15 @@ RD_superevent_china = {
 			original_tag = LEC
 			has_country_flag = shanghai_revolution
 			}
-		if = {#honestly just do 2 super events
+		if = {
 			limit = {
-				has_country_leader = {
-				name = "Qu Qiubai"
-				ruling_only = yes
+				or = { 
+				has_completed_focus = LEC_gathering_workers_power
+				has_completed_focus = LEC_streets_light_shades_of_red
 				}
 			}
 		set_global_flag = Super_Event_Visible
-		set_global_flag = SHANGHAI_QU_QIUBAI_UNITE_CHINA
+		set_global_flag = SHANGHAI_SYNDIES_UNITE_CHINA
 		every_country = {
 			limit = {
 				NOT = {
@@ -568,42 +568,16 @@ RD_superevent_china = {
 					has_country_flag = KX_superevent_sounds_off
 				}
 			}
-			scoped_sound_effect = "superev_unifed_qu_qiubai_shanghai_china"
+			scoped_sound_effect = "superev_unifed_syndie_shanghai_china"
 		}
 	}
 		else_if = {
 			limit = {
-				has_completed_focus = LEC_CREATION_the_creation_society_heeds_the_revolutionary_call
-			}
-		set_global_flag = Super_Event_Visible
-		set_global_flag = SHANGHAI_CREATION_UNITE_CHINA
-		every_country = {
-			limit = {
-				NOT = {
-					is_ai = yes
-					has_country_flag = KX_superevent_sounds_off
+				OR = {
+				has_completed_focus = LEC_power_to_zuolian
+				has_completed_focus = LEC_pen_to_revolution
 				}
 			}
-			scoped_sound_effect = "superev_unifed_creation_shanghai_china"
-		}
-	}
-		else_if = {
-			limit = {
-				has_completed_focus = LEC_AGRARIAN_the_gang_of_two
-			}
-		set_global_flag = Super_Event_Visible
-		set_global_flag = SHANGHAI_MAOIST_UNITE_CHINA
-		every_country = {
-			limit = {
-				NOT = {
-					is_ai = yes
-					has_country_flag = KX_superevent_sounds_off
-				}
-			}
-			scoped_sound_effect = "superev_unifed_dem_maoist_shanghai_china"
-		}
-	}
-		else = {
 		set_global_flag = Super_Event_Visible
 		set_global_flag = SHANGHAI_LLW_UNITE_CHINA
 		every_country = {
