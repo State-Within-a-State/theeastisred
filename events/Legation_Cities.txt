@@ -14717,15 +14717,67 @@ country_event = { #
 	is_triggered_only = yes
 	
 	option = {
+		name = legcities.106.a
 		ai_chance = {
 			factor = 50
 			modifier = {
 				factor = 0
 				OR = {
+					has_game_rule = {
+						rule = LEC_path
+						option = LEC_TRIADS
+					}
+					has_game_rule = {
+						rule = LEC_path
+						option = LEC_TRIADS_XU
+					}
+					has_game_rule = {
+						rule = LEC_path
+						option = LEC_TRIADS_SEN
+					}
+					has_game_rule = {
+						rule = LEC_path
+						option = LEC_TRIADS_JINRONG
+					}
+					has_game_rule = {
+						rule = LEC_path
+						option = LEC_TRIADS_ZHANG
+					}
 				has_game_rule = {
 					rule = LEC_path
 					option = LEC_TRIADS_SHUNTIAN
 				}
+
+				}
+			}
+		}
+		add_command_power = 25
+		add_popularity = { ideology = syndicalist popularity = 0.025 }
+		hidden_effect = {
+		set_global_flag = LEC_bankrupt #bankcrupt for the leftists
+
+		country_event = {
+			days = 7
+			id = leftist_legations_event.0
+		}
+		country_event = { #flavor event about short stories
+			days = 100
+			id = lu_xun.19
+		}
+
+		country_event = {
+			days = 14
+			id = legcities.59
+			}
+		}
+	}
+
+	option = {
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				OR = {
 					has_game_rule = {
 						rule = LEC_path
 						option = LEC_TRIADS_JIANG
@@ -14733,10 +14785,44 @@ country_event = { #
 				}
 			}
 		}
-		name = legcities.106.a
+		name = legcities.106.b
 		add_political_power = -25
 		add_war_support = 0.025
 		add_stability = 0.025
+		hidden_effect = {
+		country_event = {
+			days = 7
+			id = legcities.107
+		}
+		}
+	}
+
+
+
+}
+
+country_event = { #
+	id = legcities.107
+	title = legcities.107.t
+	desc = legcities.107.d
+	picture = GFX_report_event_LEC_triad_power
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+
+	option = {#triads
+		name = legcities.107.a
+		ai_chance = {
+			factor = 75
+			modifier = {
+				factor = 0
+				has_game_rule = {
+					rule = LEC_path
+					option = LEC_TRIADS_SHUNTIAN
+				}
+			}
+		}
+
 		hidden_effect = {
 		country_event = {
 			days = 7
@@ -14747,11 +14833,13 @@ country_event = { #
 			id = legcities.59
 			}
 		}
+
+
 	}
 	option = {
-		name = legcities.106.b
+		name = legcities.107.b
 		ai_chance = {
-			factor = 50
+			factor = 25
 			modifier = {
 				factor = 0
 				OR = {
@@ -14778,37 +14866,6 @@ country_event = { #
 				}
 			}
 		}
-		add_command_power = 25
-		add_popularity = { ideology = paternal_autocrat popularity = 0.025 }
-		hidden_effect = {
-		country_event = {
-			days = 7
-			id = legcities.107
-			}
-		}
-	}
-}
-
-country_event = { #
-	id = legcities.107
-	title = legcities.107.t
-	desc = legcities.107.d
-	picture = GFX_report_event_LEC_triad_power
-	fire_only_once = yes
-	is_triggered_only = yes
-	
-	option = {
-		name = legcities.107.a
-		ai_chance = {
-			factor = 25
-			modifier = {
-				factor = 0
-					has_game_rule = {
-						rule = LEC_path
-						option = LEC_TRIADS_JIANG
-					}
-			}
-		}
 
 		hidden_effect = {
 		set_global_flag = LEC_bankrupt #because it is fully bankcrupt for these guys taiping
@@ -14821,41 +14878,6 @@ country_event = { #
 			id = legcities.59
 			}
 		}
-	}
-	option = {#llw content
-		name = legcities.107.b
-		ai_chance = {
-			factor = 75
-			modifier = {
-				factor = 0
-				has_game_rule = {
-					rule = LEC_path
-					option = LEC_TRIADS_SHUNTIAN
-				}
-			}
-		}
-
-		hidden_effect = {
-		set_global_flag = LEC_bankrupt #bankcrupt for the leftists
-
-		country_event = {
-			days = 7
-			id = leftist_legations_event.0
-		}
-		country_event = { #flavor event about short stories
-			days = 100
-			id = lu_xun.19
-		}
-
-		country_event = {
-			days = 14
-			id = legcities.59
-			}
-		}
-
-
-
-
 	}
 }
 
