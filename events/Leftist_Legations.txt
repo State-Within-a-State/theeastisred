@@ -1781,7 +1781,7 @@ country_event = { #declaration of independce kinda thing like otl early merchant
 	}
 }
 
-country_event = { #
+country_event = { #Rumours in the Shadows - Gu Shunzheng Coup Attempt
 	id = leftist_legations_event.41
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.41"}
 	title = leftist_legations_event.41.title
@@ -1789,14 +1789,26 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Question Gu directly before these rumours spread further.
 		name = leftist_legations_event.41.a
 		ai_chance = { base = 100 }
+		country_event = {
+		id = leftist_legations_event.43
+		days = 7
+		}
 		
+	}
+	option = { #Increase surveillance, but avoid provoking unnecessary conflict.
+		name = leftist_legations_event.41.b
+		ai_chance = { base = 100 }
+		country_event = {
+		id = leftist_legations_event.42
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Night of the Conspiracy
 	id = leftist_legations_event.42
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.42"}
 	title = leftist_legations_event.42.title
@@ -1804,14 +1816,25 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Move before Gu can act!
 		name = leftist_legations_event.42.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+		id = leftist_legations_event.43
+		days = 7
+		}
+	}
+	option = { #Gu Gains the Upperhand
+		name = leftist_legations_event.42.a
+		ai_chance = { base = 100 }
+		country_event = {
+		id = leftist_legations_event.44
+		days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Conspiracy Crushed
 	id = leftist_legations_event.43
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.43"}
 	title = leftist_legations_event.43.title
@@ -1826,7 +1849,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #The Revolution Redirected
 	id = leftist_legations_event.44
 	immediate = {log = "[GetDateText]: [Root.GetName]: event leftist_legations_event.44"}
 	title = leftist_legations_event.44.title
@@ -1837,7 +1860,22 @@ country_event = { #
 	option = { #
 		name = leftist_legations_event.44.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = syndicalist }
+		remove_all_ministers = yes
+		add_ideas = {
+		LEC_Gu_Shunzhang_hog_syn
+		LEC_Li_Qihan_eco_syn
+		LEC_He_Zhihua_for_syn
+		LEC_Gu_Shunzhang_sec_syn
+		}
+		create_country_leader = { 
+			name = "Gu Shunzheng"
+			picture = "gfx/leaders/LEC/Portrait_LEC_Gu_Shunzhang_Uniform.png"
+			expire = "1.1.1"
+			ideology = syn_police_state_subtype
+		}
+		set_country_flag = LEC_No_Gu_Coup
+		complete_national_focus = LEC_emerge_from_red_curtain
 	}
 }
 

@@ -7234,7 +7234,20 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
-		
+		available = {
+			custom_trigger_tooltip = {
+			tooltip = no_gu_tt
+			NOT = {
+					has_country_flag = LEC_No_Gu_Coup
+				}
+			}
+		}
+		select_effect = {
+			country_event = {
+				id = leftist_legations_event.41
+				days = 3
+			}
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 		country_event = leftist_legations_event.14
@@ -7852,6 +7865,131 @@ focus_tree = {
 				remove_idea =  LEC_theory_to_practise
 				add_idea = LEC_theory_to_practise_1
 			}
+		}
+	}
+	
+	
+	
+	focus = {
+		id = LEC_emerge_from_red_curtain
+		icon = GFX_goal_LEC_reforged_enterprise
+		relative_position_id = LEC_gathering_workers_power
+		x = 0
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 70
+		}
+		available = {
+		always = no
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = LEC_develop_labour_guilds
+		icon = GFX_goal_LEC_reforged_enterprise
+		relative_position_id = LEC_emerge_from_red_curtain
+		x = -1
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 70
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		prerequisite = { focus = LEC_emerge_from_red_curtain }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = LEC_Mobilize_red_Squads
+		icon = GFX_goal_LEC_reforged_enterprise
+		relative_position_id = LEC_emerge_from_red_curtain
+		x = 1
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 70
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		prerequisite = { focus = LEC_emerge_from_red_curtain }
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = LEC_Zhihua_revolutionary_lessons
+		icon = GFX_goal_LEC_reforged_enterprise
+		relative_position_id = LEC_emerge_from_red_curtain
+		x = 2
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 70
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		prerequisite = { focus = LEC_Mobilize_red_Squads }
+		prerequisite = { focus = LEC_develop_labour_guilds }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = LEC_Jianghu_Code
+		icon = GFX_goal_LEC_reforged_enterprise
+		relative_position_id = LEC_emerge_from_red_curtain
+		x = 0
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 70
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		prerequisite = { focus = LEC_Mobilize_red_Squads }
+		prerequisite = { focus = LEC_develop_labour_guilds }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = LEC_wire_cuts_traitors
+		icon = GFX_goal_LEC_reforged_enterprise
+		relative_position_id = LEC_emerge_from_red_curtain
+		x = -2
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 70
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		prerequisite = { focus = LEC_Mobilize_red_Squads }
+		prerequisite = { focus = LEC_develop_labour_guilds }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = LEC_red_gangs_lead_nation
+		icon = GFX_goal_LEC_reforged_enterprise
+		relative_position_id = LEC_emerge_from_red_curtain
+		x = 0
+		y = 3
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 70
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		prerequisite = { focus = LEC_wire_cuts_traitors }
+		prerequisite = { focus = LEC_Jianghu_Code }
+		prerequisite = { focus = LEC_Zhihua_revolutionary_lessons }
+		completion_reward = {
 		}
 	}
 }
