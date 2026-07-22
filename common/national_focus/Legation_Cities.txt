@@ -6492,6 +6492,16 @@ create_country_leader = {
 		owns_state = 613
 		owns_state = 716
 		}
+		select_effect = {
+			if = { 
+			limit = { has_completed_focus = LEC_gongjinhui }
+			country_event = {
+				id = leftist_legations_event.41
+				days = 3
+			}
+			}
+		}
+
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = LEC_legal_marxism_friends }
 		prerequisite = {focus = LEC_exile_reachout }
@@ -7234,20 +7244,15 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		cancel_if_invalid = yes
 		available = {
-			custom_trigger_tooltip = {
-			tooltip = no_gu_tt
+			hidden_trigger = {
 			NOT = {
 					has_country_flag = LEC_No_Gu_Coup
 				}
 			}
 		}
-		select_effect = {
-			country_event = {
-				id = leftist_legations_event.41
-				days = 3
-			}
-		}
+		allow_branch = { not = { has_country_flag = LEC_No_Gu_Coup  } }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 		country_event = leftist_legations_event.14
@@ -7884,6 +7889,8 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		bypass = { has_country_flag = LEC_No_Gu_Coup }
+		allow_branch = { has_country_flag = LEC_No_Gu_Coup  }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
 		custom_effect_tooltip = unlock_focuses
