@@ -7880,7 +7880,7 @@ focus_tree = {
 		icon = GFX_goal_LEC_reforged_enterprise
 		relative_position_id = LEC_gathering_workers_power
 		x = 0
-		y = 8
+		y = 0
 		cost = 5
 		available_if_capitulated = yes
 		ai_will_do = {
@@ -7911,6 +7911,21 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_emerge_from_red_curtain }
 		completion_reward = {
+		if = {
+				limit = {
+					has_idea = LEC_an_isolated_commune_4
+				}
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune_4
+					add_idea = LEC_an_isolated_commune_13
+				}
+			}
+			else = {
+				swap_ideas = {
+					remove_idea = LEC_an_isolated_commune_5
+					add_idea = LEC_an_isolated_commune_13
+				}
+			}
 		}
 	}
 	focus = {
@@ -7927,6 +7942,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_emerge_from_red_curtain }
 		completion_reward = {
+			###Idk what to put here, maybe the decisions for drug smuggling that triads have
 		}
 	}
 	
@@ -7945,6 +7961,9 @@ focus_tree = {
 		prerequisite = { focus = LEC_Mobilize_red_Squads }
 		prerequisite = { focus = LEC_develop_labour_guilds }
 		completion_reward = {
+			add_ideas = {
+			LEC_zhihua_foreign_lessons
+			}
 		}
 	}
 	focus = {
@@ -7962,6 +7981,10 @@ focus_tree = {
 		prerequisite = { focus = LEC_Mobilize_red_Squads }
 		prerequisite = { focus = LEC_develop_labour_guilds }
 		completion_reward = {
+			swap_ideas = {
+			remove_idea = LEC_dis_organized_worker_militias_1
+			add_idea = LEC_dis_organized_worker_militias_4
+			}
 		}
 	}
 	focus = {
@@ -7975,10 +7998,17 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = {
+			has_completed_focus = LEC_Jianghu_Code
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = { focus = LEC_Mobilize_red_Squads }
 		prerequisite = { focus = LEC_develop_labour_guilds }
 		completion_reward = {
+			add_timed_idea = {
+				idea = LEC_an_end_to_traitors
+				days = 90
+			}
 		}
 	}
 	focus = {
@@ -7997,6 +8027,12 @@ focus_tree = {
 		prerequisite = { focus = LEC_Jianghu_Code }
 		prerequisite = { focus = LEC_Zhihua_revolutionary_lessons }
 		completion_reward = {
+			country_event = leftist_legations_event.45
+			add_research_slot = 1
+			swap_ideas = {
+					remove_idea = LEC_an_isolated_commune_13
+					add_idea = LEC_an_isolated_commune_14
+				}
 		}
 	}
 }
