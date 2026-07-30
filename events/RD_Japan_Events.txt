@@ -479,6 +479,8 @@ country_event = { #Okada Removes the Toseiha
 		id = rd_japan_event.20
 		days = 7
 		}
+		load_focus_tree = japan-naval-political-tree
+		complete_national_focus = JAP_Navy_declare_emergency_gov
 	}
 }
 
@@ -511,10 +513,6 @@ country_event = { #Centrist Military Factions Remove Kodoha
 		JAP_Masanobu_Fujii_eco_ade
 		JAP_Hirota_Koki_for_npo
 		JAP_Fumio_Goto_sec_ade
-		}
-		country_event = {
-		id = rd_japan_event.20
-		days = 7
 		}
 	}
 }
@@ -889,6 +887,12 @@ country_event = { #Formation of a Government of National Unity
 		JAP_Hirota_Koki_for_npo
 		JAP_Fumio_Goto_sec_ade
 		}
+		set_variable = {
+			var = JAP_New_System_Movement_Support
+			value = 10
+			tooltip = radicalism_rises_again_tt
+		}
+		complete_national_focus = JAP_Navy_treaty_gov_musketeers
 	}
 	option = { #Maintain a Strong Hand - Yonai
 		name = rd_japan_event.20.b
@@ -905,6 +909,50 @@ country_event = { #Formation of a Government of National Unity
 			var = JAP_New_System_Movement_Support
 			value = 10
 			tooltip = radicalism_rises_again_tt
+		}
+		complete_national_focus = JAP_Navy_treaty_gov_musketeers
+	}
+	
+	option = { #Maintain a Strong Hand - Yamamoto
+		name = rd_japan_event.20.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = authdem_junta_subtype
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Isoroku_Yamamoto_hog_ade
+		JAP_Yukio_Sakurauchi_eco_ade
+		JAP_Hachiro_Arita_for_ade
+		JAP_Naotatsu_Kimura_sec_ade
+		}
+		set_variable = {
+			var = JAP_New_System_Movement_Support
+			value = 10
+			tooltip = radicalism_rises_again_tt
+		}
+		complete_national_focus = JAP_Navy_treaty_gov_musketeers
+	}
+	option = { #Maintain a Strong Hand - Kato Kanji
+		name = rd_japan_event.20.d
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = militarism_subtype
+		}
+		set_politics = { ruling_party = national_populist }
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Kanjo_Kati_hog_npo
+		JAP_Yukinosuke_Shimizu_eco_tot
+		JAP_Okawa_Shumei_for_npo
+		JAP_Naotatsu_Kimura_sec_ade
+		}
+		complete_national_focus = JAP_Navy_fleet_leads_empire
+		set_party_name = {
+			ideology = national_populist
+			name = JAP_radical_navy_party
+			long_name = JAP_radical_navy_party_long
 		}
 	}
 }
@@ -967,6 +1015,7 @@ country_event = { Mounting Pressure
 				id = rd_japan_event.23
 				days = 7
 			}
+			set_country_flag = JAP_konoe_coup
 		}
 		else = {
 			country_event = {
@@ -2466,6 +2515,14 @@ country_event = { #1940 Election
 				id = rd_japan_event.58
 				days = 1462
 			}
+			if = {
+				limit = {
+					NOT = {
+						has_focus_tree  = japan-election
+					}
+				}
+				load_focus_tree = japan-election
+			}
 		}
 	}
 	
@@ -2976,6 +3033,65 @@ country_event = { #Factionalism Takes Hold
 		JAP_Minoru_Togo_eco_sco
 		JAP_Yosuke_Matsuoka_for_pau
 		JAP_Tokugoro_Nakahashi_sec_sco
+		}
+		complete_national_focus = JAP_Seikyukai_orthodox_faction
+	}
+	
+	option = { #
+		name = rd_japan_event.57.d
+		trigger = {
+			has_country_flag = JAP_restore_democracy_navy
+		}
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = paternal_socialism_subtype
+			}
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Mitsumasa_Yonai_hog_ade
+		JAP_Yukio_Sakurauchi_eco_ade
+		JAP_Hachiro_Arita_for_ade
+		JAP_Naotatsu_Kimura_sec_ade
+		}
+		complete_national_focus = JAP_Seikyukai_orthodox_faction
+	}
+	option = { #
+		name = rd_japan_event.57.e
+		trigger = {
+			has_country_flag = JAP_restore_democracy_navy
+		}
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = social_conservative
+		}
+		set_party_name = {
+			ideology = social_conservative
+			long_name = JAP_party_seiyukai_one_long
+			name = JAP_party_seiyukai_one
+		}
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = national_conservative_subtype
+			}
+		remove_all_ministers = yes
+		add_ideas = {
+		JAP_Keisuke_Okada_hog_ade
+		JAP_Yukio_Sakurauchi_eco_ade
+		JAP_Hachiro_Arita_for_ade
+		JAP_Naotatsu_Kimura_sec_ade
 		}
 		complete_national_focus = JAP_Seikyukai_orthodox_faction
 	}

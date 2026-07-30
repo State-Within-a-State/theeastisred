@@ -1,0 +1,564 @@
+focus_tree = {
+	id = japan-naval-political-tree
+	continuous_focus_position = { x = -40 y = 5000 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = JAP
+		}
+	}
+	shared_focus = JAPFOR_japansplaceintheworld
+	shared_focus = JAP_the_raising_of_the_sword
+	shared_focus = JAP_recovering_from_black_monday
+	
+	#1936 Elections
+	focus = {
+		id = JAP_Navy_declare_emergency_gov
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		x = 7
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	
+	focus = {
+		id = JAP_Navy_form_nat_unity_gov
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_declare_emergency_gov
+		x = 0
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Navy_declare_emergency_gov }
+		completion_reward = {
+		country_event = rd_japan_event.20
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_treaty_gov_musketeers
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_declare_emergency_gov
+		x = -5
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Navy_form_nat_unity_gov }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_treaty_empathy_lower_classes
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_treaty_gov_musketeers }
+		completion_reward = {
+			add_ideas = {
+				JAP_poor_empathy
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_treaty_question_new_system
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		select_effect = {
+			country_event = {
+				id = rd_japan_event.21
+				days = 7
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = JAP_konoe_coup
+			}
+		}
+		prerequisite = { focus = JAP_Navy_treaty_gov_musketeers }
+		completion_reward = {
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.1
+			}
+			add_stability = 0.1
+		}
+	}
+	focus = {
+		id = JAP_Navy_treaty_crush_army_extremism
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_treaty_gov_musketeers }
+		completion_reward = {
+			
+			add_timed_idea = {
+			idea = JAP_purgeing_enemies
+			days = 90
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_treaty_strengthen_peace_laws
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = -3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_treaty_crush_army_extremism }
+		prerequisite = { focus = JAP_Navy_treaty_question_new_system }
+		prerequisite = { focus = JAP_Navy_treaty_empathy_lower_classes }
+		completion_reward = {
+			add_ideas = {
+			JAP_new_peace_laws
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_treaty_faction_compromise
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Navy_treaty_blunt_forceful }
+		prerequisite = { focus = JAP_Navy_treaty_crush_army_extremism }
+		prerequisite = { focus = JAP_Navy_treaty_question_new_system }
+		prerequisite = { focus = JAP_Navy_treaty_empathy_lower_classes }
+		completion_reward = {
+			add_popularity = {
+			ideology = market_liberal
+			popularity = 0.05
+			}
+			add_popularity = {
+			ideology = social_conservative
+			popularity = 0.075
+			}
+			add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.075
+			}
+			add_marlib_to_coalition = yes
+			add_soccon_to_coalition = yes
+			add_pataut_to_coalition = yes
+			add_ideas = {
+			JAP_great_compromise
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_treaty_blunt_forceful
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Navy_treaty_faction_compromise }
+		prerequisite = { focus = JAP_Navy_treaty_crush_army_extremism }
+		prerequisite = { focus = JAP_Navy_treaty_question_new_system }
+		prerequisite = { focus = JAP_Navy_treaty_empathy_lower_classes }
+		completion_reward = {
+			add_popularity = {
+			ideology = market_liberal
+			popularity = 0.025
+			}
+			add_popularity = {
+			ideology = social_conservative
+			popularity = 0.025
+			}
+			add_ideas = {
+			JAP_blunt_statesmen
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_treaty_world_exchange
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = 3
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_treaty_crush_army_extremism }
+		prerequisite = { focus = JAP_Navy_treaty_question_new_system }
+		prerequisite = { focus = JAP_Navy_treaty_empathy_lower_classes }
+		completion_reward = {
+			if = {
+				limit = {
+					NOT = {
+						has_idea = free_trade
+					}
+				}
+				add_ideas = {
+					free_trade
+				}
+			}
+			add_ideas = {
+				JAP_world_exchange
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_treaty_welcome_conglomerates
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = 3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_treaty_world_exchange }
+		prerequisite = { focus = JAP_Navy_treaty_strengthen_peace_laws }
+		prerequisite = { focus = JAP_Navy_treaty_blunt_forceful focus = JAP_Navy_treaty_faction_compromise }
+		completion_reward = {
+			add_ideas = {
+			JAP_zaibatsu_investment
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_treaty_beating_imperial_organ
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = 1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_treaty_world_exchange }
+		prerequisite = { focus = JAP_Navy_treaty_strengthen_peace_laws }
+		prerequisite = { focus = JAP_Navy_treaty_blunt_forceful focus = JAP_Navy_treaty_faction_compromise }
+		completion_reward = {
+			add_ideas = {
+				JAP_organ_emperor
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_treaty_Ishiwata_tax_reorg
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = -1
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_treaty_world_exchange }
+		prerequisite = { focus = JAP_Navy_treaty_strengthen_peace_laws }
+		prerequisite = { focus = JAP_Navy_treaty_blunt_forceful focus = JAP_Navy_treaty_faction_compromise }
+		completion_reward = {
+			add_ideas = {
+			JAP_ishiwata_economics
+			}
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = JAP_Navy_treaty_cut_fleet_faction
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = -3
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_treaty_world_exchange }
+		prerequisite = { focus = JAP_Navy_treaty_strengthen_peace_laws }
+		prerequisite = { focus = JAP_Navy_treaty_blunt_forceful focus = JAP_Navy_treaty_faction_compromise }
+		completion_reward = {
+			add_timed_idea = {
+				idea = JAP_naval_extremeism
+				days = 90
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_treaty_admiral_leads_fleet
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = -1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Navy_treaty_restore_democracy }
+		prerequisite = { focus = JAP_Navy_treaty_welcome_conglomerates }
+		prerequisite = { focus = JAP_Navy_treaty_cut_fleet_faction }
+		prerequisite = { focus = JAP_Navy_treaty_beating_imperial_organ }
+		prerequisite = { focus = JAP_Navy_treaty_Ishiwata_tax_reorg }
+		completion_reward = {
+			add_ideas = {
+			JAP_fleet_sails_on
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_treaty_restore_democracy
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_treaty_gov_musketeers
+		x = 1
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = JAP_Navy_treaty_admiral_leads_fleet }
+		prerequisite = { focus = JAP_Navy_treaty_welcome_conglomerates }
+		prerequisite = { focus = JAP_Navy_treaty_cut_fleet_faction }
+		prerequisite = { focus = JAP_Navy_treaty_beating_imperial_organ }
+		prerequisite = { focus = JAP_Navy_treaty_Ishiwata_tax_reorg }
+		completion_reward = {
+			country_event = {
+				id = rd_japan_event.45
+				days = 10
+			}
+			create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = national_conservative_subtype
+			}
+			set_politics = { ruling_party = social_conservative }
+			set_country_flag = JAP_restore_democracy_navy
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_fleet_leads_empire
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_declare_emergency_gov
+		x = 5
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Navy_form_nat_unity_gov }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_fleet_cult_heroes
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_fleet_leads_empire
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_fleet_leads_empire }
+		completion_reward = {
+			add_ideas = {
+			JAP_heros_navy_cult
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_fleet_yamato_damashii
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_fleet_leads_empire
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_fleet_leads_empire }
+		completion_reward = {
+			add_ideas = {
+			JAP_Imperial_Family_Idea2
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_fleet_radical_officers
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_fleet_leads_empire
+		x = -2
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_fleet_leads_empire }
+		completion_reward = {
+			add_pataut_to_coalition = yes
+			add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.1
+			}
+			add_timed_idea = {
+				idea = JAP_support_army_radicalism
+				days = 90
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_fleet_agrarian_colonies
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_fleet_leads_empire
+		x = -1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_fleet_cult_heroes }
+		prerequisite = { focus = JAP_Navy_fleet_radical_officers }
+		prerequisite = { focus = JAP_Navy_fleet_yamato_damashii }
+		completion_reward = {
+			random_owned_state  = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_state  = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_fleet_end_economic_plutocracy
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_fleet_leads_empire
+		x = 1
+		y = 2
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_fleet_cult_heroes }
+		prerequisite = { focus = JAP_Navy_fleet_radical_officers }
+		prerequisite = { focus = JAP_Navy_fleet_yamato_damashii }
+		completion_reward = {
+			add_ideas = {
+				JAP_zaibatsu_end
+			}
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = JAP_Navy_fleet_prepare_total_war
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_fleet_leads_empire
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_fleet_end_economic_plutocracy }
+		prerequisite = { focus = JAP_Navy_fleet_agrarian_colonies }
+		completion_reward = {
+			add_ideas = {
+			JAP_are_ya_ready
+			}
+		}
+	}
+	focus = {
+		id = JAP_Navy_fleet_sword_cuts_waves
+		icon = GFX_JAP_ELECTION_1936_elections-248360
+		relative_position_id = JAP_Navy_fleet_leads_empire
+		x = 0
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Navy_fleet_prepare_total_war }
+		completion_reward = {
+			add_ideas = {
+				JAP_fleet_sails_on
+			}
+		}
+	}
+	
+	
+	
+
+}
+
+
+	
+
+
+	
+
+
+
+	
+	
