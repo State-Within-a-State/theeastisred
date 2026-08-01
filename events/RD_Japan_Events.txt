@@ -442,6 +442,7 @@ country_event = { #Toseiha Counter Coup
 		JAP_Tetsuzan_Nagata_sec_pau
 		}
 		country_event = rd_japan_event.19
+		load_focus_tree = japan-toseiha-tree
 	}
 }
 
@@ -809,6 +810,7 @@ country_event = { #
 		JAP_Nobuyuki_Abe_for_pau
 		JAP_Tetsuzan_Nagata_sec_pau
 		}
+		complete_national_focus = JAP_Toseiha_modern_state_prep
 	}
 	
 	option = { #Tojo
@@ -837,34 +839,32 @@ country_event = { #
 			long_name = JAP_party_tojo_long
 			name = JAP_party_tojo 
 		}
+		complete_national_focus = JAP_Toseiha_tojo_hardliners
 	}
 	
 	option = { #Matsui
 		name = rd_japan_event.19.c
 		ai_chance = { base = 100 }
 		set_politics = {
-			ruling_party = national_populist
+			ruling_party = paternal_autocrat
 			elections_allowed = no
 		}
-		add_pataut_to_coalition = yes
-		set_country_leader_ideology = natpop_pan_asianism_subtype
+		add_natpop_to_coalition = yes
+		create_country_leader = {
+			name = "Hirohito"
+			picture = "gfx/leaders/JAP/Portrait_JAP_Hirohito.png"
+			expire = "1965.1.1"
+			ideology = pataut_japanese_militarism_subtype
+		}
 		remove_all_ministers = yes
 		add_ideas = {
-		JAP_Iwane_Matsui_hog_npo
-		JAP_Suzuki_Teiichi_eco_npo
-		JAP_Kenji_Doihara_for_npo
-		JAP_Iwane_Matsui_sec_pau
+		JAP_Hayashi_Senjuro_hog_pau
+		JAP_Okinori_Kaya_eco_pau
+		JAP_Masayuki_Tani_for_pau
+		JAP_Kisaburo_Ando_sec_npo
 		}
-		set_party_name = {
-			ideology = national_populist
-			long_name = JAP_party_turan_long
-			name = JAP_party_turan
-		}
-		set_party_name = {
-			ideology = paternal_autocrat
-			long_name = JAP_party_turan_long
-			name = JAP_party_turan
-		}
+		complete_national_focus = JAP_Toseiha_bureaucrat_army
+		
 	}
 }
 
@@ -5325,7 +5325,7 @@ country_event = { #The Pan-Asian State
 	}
 }
 
-country_event = { #
+country_event = { #Ikeda's Pamphlet
 	id = rd_japan_event.115
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.115"}
 	title = rd_japan_event.115.title
@@ -5336,11 +5336,14 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.115.a
 		ai_chance = { base = 100 }
-		
+		add_tot_to_coalition = yes
+		add_ideas = {
+		JAP_army_pamphlet
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Saisei Itchi
 	id = rd_japan_event.116
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_japan_event.116"}
 	title = rd_japan_event.116.title
@@ -5351,7 +5354,9 @@ country_event = { #
 	option = { #
 		name = rd_japan_event.116.a
 		ai_chance = { base = 100 }
-		
+		add_ideas = {
+			JAP_Imperial_Family_Idea2
+		}
 	}
 }
 

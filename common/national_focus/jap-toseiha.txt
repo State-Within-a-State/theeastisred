@@ -1,19 +1,19 @@
 focus_tree = {
-	id = jap-toseiha
-	continuous_focus_position = { x = -40 y = 4700 } 
+	id = japan-toseiha-tree
+	continuous_focus_position = { x = -40 y = 5000 } 
 	country = {
 		factor = 0
 		modifier = {
 			add = 10
-			tag = JAPTOSEIHA
+			tag = JAP
 		}
 	}
 	shared_focus = JAPFOR_japansplaceintheworld
-	shared_focus = JAPARMY_jakuniku_kyoshoku
-	shared_focus = JAPECON_recovering_from_black_monday
+	shared_focus = JAP_the_raising_of_the_sword
+	shared_focus = JAP_recovering_from_black_monday
 	#Coup of the Toseiha
 	focus = {
-		id = JAPTOSEIHA_coup_of_the_toseiha
+		id = JAP_Toseiha_coup
 		icon = GFX_JAPTOSEIHA_coup_of_the_toseiha-248360
 		x = 8
 		y = 0
@@ -24,13 +24,17 @@ focus_tree = {
 		available = {
 		always = no
 		}
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
 	}
 
 	#The Tojo Cabinet
 	focus = {
-		id = JAPTOSEIHA_the_tojo_cabinet
+		id = JAP_Toseiha_modern_state_prep
 		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
-		x = 8
+		relative_position_id = JAP_Toseiha_coup
+		x = -7
 		y = 1
 		cost = 1
 		search_filters = {
@@ -39,969 +43,443 @@ focus_tree = {
 		available = {
 		always = no
 		}
-		prerequisite = { focus = JAPTOSEIHA_coup_of_the_toseiha  }
+		prerequisite = { focus = JAP_Toseiha_coup }
+		completion_reward = {
+		custom_effect_tooltip = unlock_focuses
+		}
 	}
-
-	#New Guidelines on Pan-Asianism
 	focus = {
-		id = JAPTOSEIHA_new_guidelines_on_panasianism
-		icon = GFX_JAPTOSEIHA_new_guidelines_on_panasianism-248360
-		x = 8
+		id = JAP_Toseiha_ikeda_pamphlet
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -9
 		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = JAPTOSEIHA_the_tojo_cabinet  }
-		completion_reward = {
-		add_ideas = {
-		JAP_pan_asian_guidelines_1
-		}
-		}
-	}
-
-	#Following the Emperors Will
-	focus = {
-		id = JAPTOSEIHA_following_the_emperors_will
-		icon = GFX_JAPTOSEIHA_following_the_emperors_will-248360
-		x = 6
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_new_guidelines_on_panasianism  }
-		completion_reward = {
-		add_war_support = 0.15
-		}
-	}
-
-	#Embrace Japanese Totalitarianism
-	focus = {
-		id = JAPTOSEIHA_embrace_japanese_totalitarianism
-		icon = GFX_JAPTOSEIHA_embrace_japanese_totalitarianism-248360
-		x = 10
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = JAPTOSEIHA_new_guidelines_on_panasianism  }
-		completion_reward = {
-		add_popularity = {
-		ideology = ROOT
-		popularity = 1
-		}
-		add_stability = 0.15
-		add_political_power = 100
-		}
-	}
-
-	#Appease the Navy
-	focus = {
-		id = JAPTOSEIHA_appease_the_navy
-		icon = GFX_JAPTOSEIHA_appease_the_navy-248360
-		x = 10
-		y = 4
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_following_the_emperors_will  } prerequisite = { focus = JAPTOSEIHA_embrace_japanese_totalitarianism  }
+		prerequisite = { focus = JAP_Toseiha_modern_state_prep }
 		completion_reward = {
-		add_ideas = {
-		JAP_navy_backing
-		}
+			country_event = rd_japan_event.115
 		}
 	}
-
-	#A National Defence State
 	focus = {
-		id = JAPTOSEIHA_a_national_defence_state
-		icon = GFX_JAPTOSEIHA_a_national_defence_state-248360
-		x = 8
-		y = 4
-		cost = 5
+		id = JAP_Toseiha_self_sufficient_empire
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -7
+		y = 2
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_following_the_emperors_will  } prerequisite = { focus = JAPTOSEIHA_embrace_japanese_totalitarianism  }
+		prerequisite = { focus = JAP_Toseiha_modern_state_prep }
 		completion_reward = {
-		add_ideas = {
-		JAP_national_defense_state
-		}
+			add_ideas = {
+				JAP_self_sufficiency
+			}
 		}
 	}
-
-	#Crush the Syndicalist Infiltrators
 	focus = {
-		id = JAPTOSEIHA_crush_the_syndicalist_infiltrators
-		icon = GFX_JAPTOSEIHA_crush_the_syndicalist_infiltrators-248360
-		x = 6
-		y = 4
-		cost = 5
+		id = JAP_Toseiha_bureaucrat_empowerments
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -5
+		y = 2
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_MANPOWER
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_following_the_emperors_will  } prerequisite = { focus = JAPTOSEIHA_embrace_japanese_totalitarianism  }
+		prerequisite = { focus = JAP_Toseiha_modern_state_prep }
 		completion_reward = {
-		remove_ideas = {
-		JAP_red_army_resistance_1
-		}
+			add_research_slot = 1
 		}
 	}
-
-	#Wartime Disaster Protection Act
+	
 	focus = {
-		id = JAPTOSEIHA_wartime_disaster_protection_act
-		icon = GFX_JAPTOSEIHA_wartime_disaster_protection_act-248360
-		x = 6
-		y = 5
-		cost = 5
+		id = JAP_Toseiha_tokko_watching
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -8
+		y = 3
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_a_national_defence_state  } prerequisite = { focus = JAPTOSEIHA_crush_the_syndicalist_infiltrators  }
+		prerequisite = { focus = JAP_Toseiha_ikeda_pamphlet }
+		prerequisite = { focus = JAP_Toseiha_self_sufficient_empire }
+		prerequisite = { focus = JAP_Toseiha_bureaucrat_empowerments }
 		completion_reward = {
-		add_stability = 0.15
-		add_political_power = 50
+			create_intelligence_agency = {
+				name = "Tokko"
+				icon = GFX_intelligence_agency_logo_agency
+			}
+			add_ideas = {
+				JAP_tokko_creation
+			}
 		}
 	}
-
-	#National Will Power
 	focus = {
-		id = JAPTOSEIHA_national_will_power
-		icon = GFX_JAPTOSEIHA_national_will_power-248360
-		x = 8
-		y = 5
-		cost = 5
+		id = JAP_Toseiha_military_union
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -6
+		y = 3
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_appease_the_navy  } prerequisite = { focus = JAPTOSEIHA_a_national_defence_state  }
+		prerequisite = { focus = JAP_Toseiha_ikeda_pamphlet }
+		prerequisite = { focus = JAP_Toseiha_self_sufficient_empire }
+		prerequisite = { focus = JAP_Toseiha_bureaucrat_empowerments }
 		completion_reward = {
-		swap_ideas = {
-		remove_idea = JAP_national_defense_state
-		add_idea = JAP_national_will_power
-		}
+			add_ideas = {
+				JAP_military_union
+			}
 		}
 	}
-
-	#Retraining Political Opponents
+	
+	#The Tojo Cabinet
 	focus = {
-		id = JAPTOSEIHA_retraining_political_opponents
-		icon = GFX_JAPTOSEIHA_retraining_political_opponents-248360
-		x = 10
-		y = 6
-		cost = 5
+		id = JAP_Toseiha_tojo_hardliners
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 0
+		y = 1
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_MANPOWER
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_wartime_disaster_protection_act  } prerequisite = { focus = JAPTOSEIHA_national_will_power  }
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Toseiha_coup }
 		completion_reward = {
-		remove_ideas = {
-		JAP_no_army_focus
-		}
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
-
-	#Strengthen Manetsu Influence
+	
 	focus = {
-		id = JAPTOSEIHA_strengthen_manetsu_influence
-		icon = GFX_JAPTOSEIHA_strengthen_manetsu_influence-248360
-		x = 8
-		y = 6
-		cost = 5
+		id = JAP_Toseiha_unruly_thoughts
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -1
+		y = 2
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_wartime_disaster_protection_act  } prerequisite = { focus = JAPTOSEIHA_national_will_power  }
+		prerequisite = { focus = JAP_Toseiha_tojo_hardliners }
 		completion_reward = {
-		add_ideas = {
-		JAP_industrial_mantetsu
-		}
+			add_ideas = {
+				JAP_cleaving_unruly_thoughts
+			}
 		}
 	}
-
-	#Denounce the German Devil
 	focus = {
-		id = JAPTOSEIHA_denounce_the_german_devil
-		icon = GFX_JAPTOSEIHA_denounce_the_german_devil-248360
-		x = 6
-		y = 6
-		cost = 5
+		id = JAP_Toseiha_yamato_superiority
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 1
+		y = 2
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_wartime_disaster_protection_act  } prerequisite = { focus = JAPTOSEIHA_national_will_power  }
+		prerequisite = { focus = JAP_Toseiha_tojo_hardliners }
 		completion_reward = {
-		add_war_support = 0.25
+			add_popularity = {
+				ideology = ROOT
+				popularity = 0.1
+			}
+			add_political_power = 50
 		}
 	}
-
-	#Prepare for Total War
 	focus = {
-		id = JAPTOSEIHA_prepare_for_total_war
-		icon = GFX_JAPTOSEIHA_prepare_for_total_war-248360
-		x = 6
-		y = 7
-		cost = 5
+		id = JAP_Toseiha_end_moral_decline
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -2
+		y = 3
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_retraining_political_opponents  } prerequisite = { focus = JAPTOSEIHA_strengthen_manetsu_influence  } prerequisite = { focus = JAPTOSEIHA_denounce_the_german_devil  }
+		prerequisite = { focus = JAP_Toseiha_yamato_superiority }
+		prerequisite = { focus = JAP_Toseiha_unruly_thoughts }
 		completion_reward = {
-		add_ideas = {
-		JAP_are_ya_ready
-		}
+			add_ideas = {
+				JAP_united_against_syndies
+			}
 		}
 	}
-
-	#Partner With Technocrats
 	focus = {
-		id = JAPTOSEIHA_partner_with_technocrats
-		icon = GFX_JAPTOSEIHA_partner_with_technocrats-248360
-		x = 8
-		y = 7
-		cost = 5
+		id = JAP_Toseiha_zaibatsu_coop
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 0
+		y = 3
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_RESEARCH
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_retraining_political_opponents  } prerequisite = { focus = JAPTOSEIHA_strengthen_manetsu_influence  } prerequisite = { focus = JAPTOSEIHA_denounce_the_german_devil  }
+		prerequisite = { focus = JAP_Toseiha_yamato_superiority }
+		prerequisite = { focus = JAP_Toseiha_unruly_thoughts }
 		completion_reward = {
-		add_research_slot = 1
+			add_ideas = {
+				JAP_industrial_mantetsu
+			}
 		}
 	}
-
-	#Strengthen the Kempeitai
+	
 	focus = {
-		id = JAPTOSEIHA_strengthen_the_kempeitai
-		icon = GFX_JAPTOSEIHA_strengthen_the_kempeitai-248360
-		x = 10
-		y = 7
-		cost = 5
+		id = JAP_Toseiha_tonarigumi
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 2
+		y = 3
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_STABILITY
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_retraining_political_opponents  }
+		prerequisite = { focus = JAP_Toseiha_yamato_superiority }
+		prerequisite = { focus = JAP_Toseiha_unruly_thoughts }
 		completion_reward = {
-		swap_ideas = {
-		remove_idea = JAP_pan_asian_guidelines_1
-		add_idea = JAP_pan_asian_guidelines_2
-		}
-		
+			add_ideas = {
+				JAP_neighbourhood_association
+			}
 		}
 	}
-
-	#A Military Reign of Terror
+	
+	#The Tojo Cabinet
 	focus = {
-		id = JAPTOSEIHA_a_military_reign_of_terror
-		icon = GFX_JAPTOSEIHA_a_military_reign_of_terror-248360
-		x = 9
-		y = 8
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		prerequisite = { focus = JAPTOSEIHA_partner_with_technocrats  } prerequisite = { focus = JAPTOSEIHA_strengthen_the_kempeitai  }
-		completion_reward = {
-		add_ideas = {
-		JAP_purgeing_enemies
-		}
-		}
-	}
-
-	#Call for Spiritual Mobilization
-	focus = {
-		id = JAPTOSEIHA_call_for_spiritual_mobilization
-		icon = GFX_JAPTOSEIHA_call_for_spiritual_mobilization-248360
+		id = JAP_Toseiha_bureaucrat_army
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
 		x = 7
-		y = 8
-		cost = 5
+		y = 1
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_prepare_for_total_war  } prerequisite = { focus = JAPTOSEIHA_partner_with_technocrats  }
+		available = {
+		always = no
+		}
+		prerequisite = { focus = JAP_Toseiha_coup }
 		completion_reward = {
-		swap_ideas = {
-		remove_idea = JAP_are_ya_ready
-		add_idea = JAP_are_ya_ready_war
-		}
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
-
-	#The Tojo Shogunate
+	
 	focus = {
-		id = JAPTOSEIHA_the_tojo_shogunate
-		icon = GFX_JAPTOSEIHA_the_tojo_shogunate-248360
+		id = JAP_Toseiha_hand_corporations
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 7
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Toseiha_bureaucrat_army }
+		completion_reward = {
+			add_ideas = {
+				JAP_corporation_hands
+			}
+		}
+	}
+	focus = {
+		id = JAP_Toseiha_expand_defence_budget
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 9
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Toseiha_bureaucrat_army }
+		completion_reward = {
+			add_ideas = {
+				JAP_defence_expanded
+			}
+		}
+	}
+	
+	focus = {
+		id = JAP_Toseiha_army_society
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 6
+		y = 3
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = JAP_Toseiha_hand_corporations }
+		prerequisite = { focus = JAP_Toseiha_expand_defence_budget }
+		completion_reward = {
+			add_ideas = {
+				JAP_army_society
+			}
+		}
+	}
+	focus = {
+		id = JAP_Toseiha_hands_over_bureaucracy
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
 		x = 8
-		y = 9
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAPTOSEIHA_a_military_reign_of_terror  } prerequisite = { focus = JAPTOSEIHA_call_for_spiritual_mobilization  }
-		completion_reward = {
-		add_ideas = {
-		JAP_tojo_shogunate
-		}
-		}
-	}
-
-	#Nagata's Path
-	focus = {
-		id = JAPTOSEIHA_nagataspath
-		icon = GFX_JAPTOSEIHA_nagataspath-248360
-		x = 13
-		y = 1
+		y = 3
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-		always = no
-		}
-		prerequisite = { focus = JAPTOSEIHA_coup_of_the_toseiha  }
-	}
-
-	#Japan's Path to Ultra Militarism
-	focus = {
-		id = JAPTOSEIHA_japanspathtoultramilitarism
-		icon = GFX_JAPTOSEIHA_japanspathtoultramilitarism-248360
-		x = 13
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAPTOSEIHA_nagataspath  }
+		prerequisite = { focus = JAP_Toseiha_hand_corporations }
+		prerequisite = { focus = JAP_Toseiha_expand_defence_budget }
 		completion_reward = {
-		add_ideas = {
-		JAP_ultra_militarism
-		}
+			add_political_power = 25
+			add_research_slot = 1
 		}
 	}
-
-	#Increase Militaristic Ideals
+	
 	focus = {
-		id = JAPTOSEIHA_increase_militaristic_ideals
-		icon = GFX_JAPTOSEIHA_increase_militaristic_ideals-248360
-		x = 14
+		id = JAP_Toseiha_saisei_ichichi
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 10
 		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = JAPTOSEIHA_japanspathtoultramilitarism  }
-		completion_reward = {
-		add_ideas = {
-		JAP_military_research
-		}
-		}
-	}
-
-	#Oppose Radical Nationalists
-	focus = {
-		id = JAPTOSEIHA_oppose_radical_nationalists
-		icon = GFX_JAPTOSEIHA_oppose_radical_nationalists-248360
-		x = 12
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_japanspathtoultramilitarism  }
-		completion_reward = {
-		add_popularity = {
-		ideology = national_populist
-		popularity = -1
-		}
-		add_war_support = -0.05
-		add_stability = 0.1
-		add_political_power = 25
-		}
-	}
-
-	#Socialist Crackdown
-	focus = {
-		id = JAPTOSEIHA_socialist_crackdown
-		icon = GFX_JAPTOSEIHA_socialist_crackdown-248360
-		x = 12
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		prerequisite = { focus = JAPTOSEIHA_increase_militaristic_ideals  } prerequisite = { focus = JAPTOSEIHA_oppose_radical_nationalists  }
-		completion_reward = {
-		remove_ideas = {
-		JAP_red_army_resistance_1
-		}
-		}
-	}
-
-	#Controlling the Army
-	focus = {
-		id = JAPTOSEIHA_controlling_the_army
-		icon = GFX_JAPTOSEIHA_controlling_the_army-248360
-		x = 14
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = JAPTOSEIHA_increase_militaristic_ideals  } prerequisite = { focus = JAPTOSEIHA_oppose_radical_nationalists  }
-		completion_reward = {
-		remove_ideas = {
-		JAP_no_army_focus
-		}
-		}
-	}
-
-	#Empower the Technocrats
-	focus = {
-		id = JAPTOSEIHA_empower_the_technocrats
-		icon = GFX_JAPTOSEIHA_empower_the_technocrats-248360
-		x = 16
-		y = 4
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = JAPTOSEIHA_increase_militaristic_ideals  } prerequisite = { focus = JAPTOSEIHA_oppose_radical_nationalists  }
-		completion_reward = {
-		add_research_slot = 1
-		}
-	}
-
-	#Secure Japan's Imperial Legacy
-	focus = {
-		id = JAPTOSEIHA_securejapansimperiallegacy
-		icon = GFX_JAPTOSEIHA_securejapansimperiallegacy-248360
-		x = 16
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAPTOSEIHA_socialist_crackdown  } prerequisite = { focus = JAPTOSEIHA_controlling_the_army  } prerequisite = { focus = JAPTOSEIHA_empower_the_technocrats  }
-		completion_reward = {
-		add_ideas = {
-		JAP_military_legacy
-		}
-		}
-	}
-
-	#Promoting Ikeda's Writings
-	focus = {
-		id = JAPTOSEIHA_promotingikedaswritings
-		icon = GFX_JAPTOSEIHA_promotingikedaswritings-248360
-		x = 14
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAPTOSEIHA_controlling_the_army  } prerequisite = { focus = JAPTOSEIHA_empower_the_technocrats  }
-		completion_reward = {
-		country_event = japan_new_event.102
-		}
-	}
-
-	#Form the National Military Union
-	focus = {
-		id = JAPTOSEIHA_form_the_national_military_union
-		icon = GFX_JAPTOSEIHA_form_the_national_military_union-248360
-		x = 12
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_socialist_crackdown  } prerequisite = { focus = JAPTOSEIHA_controlling_the_army  } prerequisite = { focus = JAPTOSEIHA_empower_the_technocrats  }
-		completion_reward = {
-		add_war_support = 0.15
-		}
-	}
-
-	#Clean Out Army Corruption
-	focus = {
-		id = JAPTOSEIHA_clean_out_army_corruption
-		icon = GFX_JAPTOSEIHA_clean_out_army_corruption-248360
-		x = 15
-		y = 6
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = JAPTOSEIHA_securejapansimperiallegacy  }
-		completion_reward = {
-		add_stability = 0.2
-		}
-	}
-
-	#Increase Manetsu Investments
-	focus = {
-		id = JAPTOSEIHA_increase_manetsu_investments
-		icon = GFX_JAPTOSEIHA_increase_manetsu_investments-248360
-		x = 12
-		y = 6
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = JAPTOSEIHA_promotingikedaswritings  } prerequisite = { focus = JAPTOSEIHA_form_the_national_military_union  }
-		completion_reward = {
-		add_ideas = {
-		JAP_industrial_mantetsu
-		}
-		}
-	}
-
-	#Uphold the Imperial System
-	focus = {
-		id = JAPTOSEIHA_uphold_the_imperial_system
-		icon = GFX_JAPTOSEIHA_uphold_the_imperial_system-248360
-		x = 14
-		y = 7
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAPTOSEIHA_clean_out_army_corruption  } prerequisite = { focus = JAPTOSEIHA_increase_manetsu_investments  }
-		completion_reward = {
-		add_political_power = 100
-		add_popularity = {
-		ideology = ROOT
-		popularity = 0.65
-		}
-		}
-	}
-
-	#Embrace the Self-Strengthening Movement
-	focus = {
-		id = JAPTOSEIHA_embrace_the_selfstrengthening_movement
-		icon = GFX_JAPTOSEIHA_embrace_the_selfstrengthening_movement-248360
-		x = 13
-		y = 8
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = JAPTOSEIHA_uphold_the_imperial_system  }
-		completion_reward = {
-		swap_ideas = {
-		remove_idea = JAP_national_planned_economy
-		add_idea = JAP_national_planned_economy_1
-		}
-		}
-	}
-
-	#Preparation for Total Mobilization
-	focus = {
-		id = JAPTOSEIHA_preparation_for_total_mobilization
-		icon = GFX_JAPTOSEIHA_preparation_for_total_mobilization-248360
-		x = 15
-		y = 8
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_uphold_the_imperial_system  }
-		completion_reward = {
-		add_ideas = {
-		JAP_are_ya_ready
-		}
-		}
-	}
-
-	#Push Forward Modernization
-	focus = {
-		id = JAPTOSEIHA_push_forward_modernization
-		icon = GFX_JAPTOSEIHA_push_forward_modernization-248360
-		x = 15
-		y = 9
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_RESEARCH
-		}
-		prerequisite = { focus = JAPTOSEIHA_embrace_the_selfstrengthening_movement  } prerequisite = { focus = JAPTOSEIHA_preparation_for_total_mobilization  }
-		completion_reward = {
-		add_research_slot = 1
-		}
-	}
-
-	#We Raise Our Rifles to the Emperor!
-	focus = {
-		id = JAPTOSEIHA_weraiseourriflestotheemperor
-		icon = GFX_JAPTOSEIHA_weraiseourriflestotheemperor-248360
-		x = 13
-		y = 9
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_embrace_the_selfstrengthening_movement  } prerequisite = { focus = JAPTOSEIHA_preparation_for_total_mobilization  }
-		completion_reward = {
-		add_ideas = {
-		JAP_national_emperor_support
-		}
-		}
-	}
-
-	#Proclaiming the New Shogun
-	focus = {
-		id = JAPTOSEIHA_proclaiming_the_new_shogun
-		icon = GFX_JAPTOSEIHA_proclaiming_the_new_shogun-248360
-		x = 14
-		y = 10
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_POLITICAL
-		}
-		prerequisite = { focus = JAPTOSEIHA_push_forward_modernization  } prerequisite = { focus = JAPTOSEIHA_weraiseourriflestotheemperor  }
-		completion_reward = {
-		add_ideas = {
-		JAP_nagata_shogunate
-		}
-		}
-	}
-
-	#Turanism Strikes Japan
-	focus = {
-		id = JAPTOSEIHA_turanism_strikes_japan
-		icon = GFX_JAPTOSEIHA_turanism_strikes_japan-248360
-		x = 2
-		y = 1
 		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		available = {
-		always = no
+		prerequisite = { focus = JAP_Toseiha_hand_corporations }
+		prerequisite = { focus = JAP_Toseiha_expand_defence_budget }
+		completion_reward = {
+			country_event = rd_japan_event.116
 		}
-		prerequisite = { focus = JAPTOSEIHA_coup_of_the_toseiha  }
 	}
-
-	#Work with Hungarian Turanists
+	
 	focus = {
-		id = JAPTOSEIHA_work_with_hungarian_turanists
-		icon = GFX_JAPTOSEIHA_work_with_hungarian_turanists-248360
-		x = 0
-		y = 2
-		cost = 5
+		id = JAP_Toseiha_industry_conttrol_act
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 4
+		y = 4
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_turanism_strikes_japan  }
+		prerequisite = { focus = JAP_Toseiha_saisei_ichichi focus = JAP_Toseiha_hands_over_bureaucracy focus = JAP_Toseiha_army_society focus = JAP_Toseiha_tonarigumi focus = JAP_Toseiha_zaibatsu_coop focus = JAP_Toseiha_end_moral_decline focus = JAP_Toseiha_military_union focus = JAP_Toseiha_tokko_watching }
 		completion_reward = {
-		add_political_power = 50
-		add_opinion_modifier = {
-				target = HUN
-				modifier = JAP_japanese_comradery
-			}
-			
-			HUN = {
-			add_opinion_modifier = {
-				target = JAP
-				modifier = JAP_japanese_comradery
-			}
+			add_ideas = {
+				JAP_national_defense_state
 			}
 		}
 	}
-
-	#Eliminate the Army Factions
 	focus = {
-		id = JAPTOSEIHA_eliminate_the_army_factions
-		icon = GFX_JAPTOSEIHA_eliminate_the_army_factions-248360
-		x = 2
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = JAPTOSEIHA_turanism_strikes_japan  }
-		completion_reward = {
-		remove_ideas = {
-		JAP_no_army_focus
-		}
-		}
-	}
-
-	#Rekindling Ideas of Pan-Asianism
-	focus = {
-		id = JAPTOSEIHA_rekindling_ideas_of_panasianism
-		icon = GFX_JAPTOSEIHA_rekindling_ideas_of_panasianism-248360
-		x = 4
-		y = 2
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		prerequisite = { focus = JAPTOSEIHA_turanism_strikes_japan  }
-		completion_reward = {
-		add_ideas = {
-		JAP_pan_asian_guidelines_1
-		}
-		}
-	}
-
-	#Praise to an Old Friend
-	focus = {
-		id = JAPTOSEIHA_praise_to_an_old_friend
-		icon = GFX_JAPTOSEIHA_praise_to_an_old_friend-248360
-		x = 4
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_eliminate_the_army_factions  } prerequisite = { focus = JAPTOSEIHA_rekindling_ideas_of_panasianism  }
-		completion_reward = {
-		swap_ideas = {
-		remove_idea = JAP_Hayashi_Senyuki_for_npo
-		add_idea = JAP_Okawa_Shumei_for_npo
-		}
-		}
-	}
-
-	#Purge the Socialist Degeneration
-	focus = {
-		id = JAPTOSEIHA_purge_the_socialist_degeneration
-		icon = GFX_JAPTOSEIHA_purge_the_socialist_degeneration-248360
-		x = 2
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_MANPOWER
-		}
-		prerequisite = { focus = JAPTOSEIHA_eliminate_the_army_factions  }
-		completion_reward = {
-		remove_ideas = {
-		JAP_red_army_resistance_1
-		}
-		}
-	}
-
-	#A Nation of Co-Prosperity
-	focus = {
-		id = JAPTOSEIHA_a_nation_of_coprosperity
-		icon = GFX_JAPTOSEIHA_a_nation_of_coprosperity-248360
-		x = 0
-		y = 3
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_STABILITY
-		}
-		prerequisite = { focus = JAPTOSEIHA_work_with_hungarian_turanists  }
-		completion_reward = {
-		add_popularity = {
-		ideology = ROOT
-		popularity = 0.1
-		}
-		add_stability = 0.1
-		}
-	}
-
-	#Build the Koa Kannon
-	focus = {
-		id = JAPTOSEIHA_build_the_koa_kannon
-		icon = GFX_JAPTOSEIHA_build_the_koa_kannon-248360
+		id = JAP_Toseiha_imilitary_reserve_fund
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
 		x = 0
 		y = 4
-		cost = 5
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_praise_to_an_old_friend  } prerequisite = { focus = JAPTOSEIHA_purge_the_socialist_degeneration  } prerequisite = { focus = JAPTOSEIHA_a_nation_of_coprosperity  }
+		prerequisite = { focus = JAP_Toseiha_saisei_ichichi focus = JAP_Toseiha_hands_over_bureaucracy focus = JAP_Toseiha_army_society focus = JAP_Toseiha_tonarigumi focus = JAP_Toseiha_zaibatsu_coop focus = JAP_Toseiha_end_moral_decline focus = JAP_Toseiha_military_union focus = JAP_Toseiha_tokko_watching }
 		completion_reward = {
-		add_ideas = {
-		JAP_koa_cannon
-		}
+			add_ideas = {
+				JAP_military_fund
+			}
 		}
 	}
-
-	#Zaibatsu Subjegation
 	focus = {
-		id = JAPTOSEIHA_zaibatsu_subjegation
-		icon = GFX_JAPTOSEIHA_zaibatsu_subjegation-248360
-		x = 2
+		id = JAP_Toseiha_expand_kokubo
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -4
 		y = 4
-		cost = 5
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_INDUSTRY
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_praise_to_an_old_friend  } prerequisite = { focus = JAPTOSEIHA_purge_the_socialist_degeneration  } prerequisite = { focus = JAPTOSEIHA_a_nation_of_coprosperity  }
+		prerequisite = { focus = JAP_Toseiha_saisei_ichichi focus = JAP_Toseiha_hands_over_bureaucracy focus = JAP_Toseiha_army_society focus = JAP_Toseiha_tonarigumi focus = JAP_Toseiha_zaibatsu_coop focus = JAP_Toseiha_end_moral_decline focus = JAP_Toseiha_military_union focus = JAP_Toseiha_tokko_watching }
 		completion_reward = {
-		add_ideas = {
-		JAP_zaibatsu_nationalization_1
-		}
+			if = {
+				limit = {
+					has_idea = JAP_army_pamphlet
+				}
+				swap_ideas = {
+					remove_idea = JAP_army_pamphlet
+					add_idea = JAP_army_pamphlet_1
+				}
+			}
+			else = {
+				add_ideas = {
+					JAP_army_pamphlet_1
+				}
+			}
 		}
 	}
-
-	#Form the Greater Asia Association
+	
 	focus = {
-		id = JAPTOSEIHA_form_the_greater_asia_association
-		icon = GFX_JAPTOSEIHA_form_the_greater_asia_association-248360
-		x = 4
-		y = 4
-		cost = 5
+		id = JAP_Toseiha_fist_raised_banzai
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = -3
+		y = 5
+		cost = 1
 		search_filters = {
-			FOCUS_FILTER_RESEARCH
+			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_praise_to_an_old_friend  }
+		prerequisite = { focus = JAP_Toseiha_expand_kokubo }
+		prerequisite = { focus = JAP_Toseiha_imilitary_reserve_fund }
+		prerequisite = { focus = JAP_Toseiha_industry_conttrol_act }
 		completion_reward = {
-		add_research_slot = 1
+			add_ideas = {
+			JAP_national_will_power
+			}
 		}
 	}
-
-	#Turanian Brotherhood
 	focus = {
-		id = JAPTOSEIHA_turanian_brotherhood
-		icon = GFX_JAPTOSEIHA_turanian_brotherhood-248360
+		id = JAP_Toseiha_disaster_act
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
 		x = 3
 		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_zaibatsu_subjegation  } prerequisite = { focus = JAPTOSEIHA_form_the_greater_asia_association  }
-		completion_reward = {
-		add_political_power = 50
-		add_opinion_modifier = {
-				target = HUN
-				modifier = JAP_japanese_comradery
-			}
-		add_opinion_modifier = {
-				target = TUR
-				modifier = JAP_japanese_comradery
-			}	
-			add_opinion_modifier = {
-				target = MON
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = ALO
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = KYR
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = TRK
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = UZB
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = ETS
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = AZE
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = CRM
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = FIN
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = DKB
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = KUB
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = MTR
-				modifier = JAP_japanese_comradery
-			}
-			add_opinion_modifier = {
-				target = KLY
-				modifier = JAP_japanese_comradery
-			}
-		}
-	}
-
-	#Denounce the European Devils
-	focus = {
-		id = JAPTOSEIHA_denounce_the_european_devils
-		icon = GFX_JAPTOSEIHA_denounce_the_european_devils-248360
-		x = 1
-		y = 5
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_build_the_koa_kannon  } prerequisite = { focus = JAPTOSEIHA_zaibatsu_subjegation  }
-		completion_reward = {
-		add_ideas = {
-		JAP_anti_european_ideas
-		}
-		
-		}
-	}
-
-
-	#The Course Shall Shine For Asia
-	focus = {
-		id = JAPTOSEIHA_the_course_shall_shine_for_asia
-		icon = GFX_JAPTOSEIHA_the_course_shall_shine_for_asia-248360
-		x = 3
-		y = 7
-		cost = 5
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_turanian_brotherhood  } prerequisite = { focus = JAPTOSEIHA_denounce_the_european_devils  }
+		prerequisite = { focus = JAP_Toseiha_expand_kokubo }
+		prerequisite = { focus = JAP_Toseiha_imilitary_reserve_fund }
+		prerequisite = { focus = JAP_Toseiha_industry_conttrol_act }
 		completion_reward = {
-		swap_ideas = {
-		remove_idea = JAP_pan_asian_guidelines_1
-		add_idea = JAP_pan_asian_guidelines_2
-		}
+			add_ideas = {
+				JAP_disaster_act
+			}
 		}
 	}
-
-	#Form the  Ideological National Defence Association
+	
 	focus = {
-		id = JAPTOSEIHA_formtheideologicalnationaldefenceassociation
-		icon = GFX_JAPTOSEIHA_formtheideologicalnationaldefenceassociation-248360
-		x = 1
-		y = 7
-		cost = 5
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = JAPTOSEIHA_turanian_brotherhood  } prerequisite = { focus = JAPTOSEIHA_denounce_the_european_devils  }
-		completion_reward = {
-		add_ideas = {
-		JAP_ideology_research
-		}
-		}
-	}
-
-	#Pan-Turania Calls
-	focus = {
-		id = JAPTOSEIHA_panturania_calls
-		icon = GFX_JAPTOSEIHA_panturania_calls-248360
-		x = 2
-		y = 8
-		cost = 5
+		id = JAP_Toseiha_tora_tora_tora
+		icon = GFX_JAPTOSEIHA_the_tojo_cabinet-248360
+		relative_position_id = JAP_Toseiha_coup
+		x = 0
+		y = 6
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = JAPTOSEIHA_the_course_shall_shine_for_asia  } prerequisite = { focus = JAPTOSEIHA_formtheideologicalnationaldefenceassociation  }
+		prerequisite = { focus = JAP_Toseiha_disaster_act }
+		prerequisite = { focus = JAP_Toseiha_fist_raised_banzai }
 		completion_reward = {
-		country_event = japan_new_event.103
+			add_ideas = {
+				JAP_Spiritual_Mobilization_Idea3A
+			}
 		}
 	}
+
+	
 
 }
