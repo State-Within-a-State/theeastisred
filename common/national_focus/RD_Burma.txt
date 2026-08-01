@@ -1268,7 +1268,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		completion_reward = {
-			
+			army_experience = 50
 
 		}
 	}
@@ -1283,9 +1283,15 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_flag = BRM_thakin_victory
+		}
 		mutually_exclusive = { focus = BRM_army_throne_guards }
 		prerequisite = { focus = BRM_army_claws_on_land } 
 		completion_reward = {
+			add_ideas = {
+				BRM_letyon_tat
+			}
 		}
 	}
 	shared_focus = {
@@ -1298,9 +1304,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = BRM_thakin_victory
+			}
+		}
 		mutually_exclusive = { focus = BRM_army_Letyon_tat }
 		prerequisite = { focus = BRM_army_claws_on_land } 
 		completion_reward = {
+			add_ideas = {
+				BRM_guards_throne
+			}
 		}
 	}
 	
@@ -1316,6 +1330,8 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_army_throne_guards focus = BRM_army_Letyon_tat } 
 		completion_reward = {
+			unlock_decision_tooltip = BRM_rally_rakhine_militias_decision
+			unlock_decision_tooltip = BRM_rally_kachin_militias_decision
 		}
 	}
 	
@@ -1329,9 +1345,13 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_flag = BRM_thakin_victory
+		}
 		mutually_exclusive = { focus = BRM_army_loyal_army }
 		prerequisite = { focus = BRM_army_hill_recruitments } 
 		completion_reward = {
+			country_event = rd_burma.31
 		}
 	}
 	shared_focus = {
@@ -1344,11 +1364,20 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			NOT = {
+				has_country_flag = BRM_thakin_victory
+			}
+		}
 		mutually_exclusive = { focus = BRM_army_independence_army }
 		prerequisite = { focus = BRM_army_hill_recruitments } 
 		prerequisite = { focus = BRM_army_young_officers } 
 		prerequisite = { focus = BRM_army_dha_shay } 
 		completion_reward = {
+			swap_ideas = {
+				remove_idea = BRM_guards_throne
+				add_idea = BRM_guards_throne_1
+			}
 		}
 	}
 	
@@ -1364,6 +1393,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_army_independence_army focus = BRM_army_loyal_army } 
 		completion_reward = {
+			288 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_war_support = 0.05
 		}
 	}
 	
@@ -1379,6 +1417,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_army_claws_on_land } 
 		completion_reward = {
+			add_ideas = {
+				BRM_refined_idea
+			}
 		}
 	}
 	
@@ -1394,6 +1435,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_army_rifle_standards } 
 		completion_reward = {
+			add_ideas = {
+				BRM_new_officers
+			}
 		}
 	}
 	
@@ -1409,6 +1453,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_army_rifle_standards } 
 		completion_reward = {
+		add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
 		}
 	}
 	shared_focus = {
@@ -1425,6 +1475,10 @@ focus_tree = {
 		prerequisite = { focus = BRM_army_young_officers }
 		prerequisite = { focus = BRM_army_hill_recruitments }
 		completion_reward = {
+			custom_effect_tooltip = jungle_warfare_effect
+			hidden_effect = {
+				set_technology = { jungle_warfare = 1 popup = no }
+			}
 		}
 	}
 	
@@ -1442,6 +1496,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_army_young_officers }
 		prerequisite = { focus = BRM_army_hill_recruitments }
 		completion_reward = {
+			add_ideas = {
+				BRM_border_patrols
+			}
 		}
 	}
 	
@@ -1459,6 +1516,13 @@ focus_tree = {
 		prerequisite = { focus = BRM_army_border_patrols }
 		prerequisite = { focus = BRM_army_jungle_machete }
 		completion_reward = {
+			add_tech_bonus = {
+				name = SIA_prototypetankdesign
+				bonus = 1
+				uses = 1
+				category = cat_light_armor
+				category = cat_medium_armor
+			}	
 		}
 	}
 	shared_focus = {
@@ -1475,6 +1539,58 @@ focus_tree = {
 		prerequisite = { focus = BRM_army_border_patrols }
 		prerequisite = { focus = BRM_army_jungle_machete }
 		completion_reward = {
+		72 = {
+			add_building_construction = {
+			type = bunker
+			level = 3
+			province = 4210
+			instant_build = yes
+			}
+			add_building_construction = {
+			type = bunker
+			level = 3
+			province = 2061
+			instant_build = yes
+			}
+			add_building_construction = {
+			type = bunker
+			level = 3
+			province = 7603
+			instant_build = yes
+			}
+			add_building_construction = {
+			type = bunker
+			level = 3
+			province = 1607
+			instant_build = yes
+			}
+			add_building_construction = {
+			type = bunker
+			level = 3
+			province = 4654
+			instant_build = yes
+			}
+		}
+		288 = {
+			add_building_construction = {
+			type = bunker
+			level = 3
+			province = 7441
+			instant_build = yes
+			}
+			add_building_construction = {
+			type = bunker
+			level = 3
+			province = 4293
+			instant_build = yes
+			}
+			add_building_construction = {
+			type = bunker
+			level = 3
+			province = 4336
+			instant_build = yes
+				}			
+			}
 		}
 	}
 	
@@ -1492,6 +1608,40 @@ focus_tree = {
 		prerequisite = { focus = BRM_army_firebases }
 		prerequisite = { focus = BRM_army_konbuang_academy }
 		completion_reward = {
+			add_ideas = BRM_boxers
+            set_technology = {
+                elephantry = 1
+                popup = no
+            }
+
+            division_template = {
+                name = "War Elephantry"
+                is_locked = no
+                #division_names_group = NAMELIST_ID # optional
+                priority = 1 # optional 
+                template_counter = 108 # optional
+                regiments = {
+                    elephantry = { x = 0 y = 0 }
+                    elephantry = { x = 0 y = 1 }
+                    elephantry = { x = 0 y = 2 }
+                    elephantry = { x = 0 y = 3 }
+                    elephantry = { x = 1 y = 0 }
+                    elephantry = { x = 1 y = 1 }
+                    elephantry = { x = 1 y = 2 }
+                    elephantry = { x = 1 y = 3 }
+                }
+                #support = {
+                #    artillery = { x = 0 y = 0 }
+                #}
+            }
+            capital_scope = {
+                create_unit = {
+                    division = "name = \"War Elephantry\" division_template = \"War Elephantry\" start_experience_factor = 0.5 start_equipment_factor = 1 start_manpower_factor = 1"
+                    owner = ROOT
+                    allow_spawning_on_enemy_provs = yes 
+                    count = 2
+                }
+            }
 		}
 	}
 	
@@ -1507,7 +1657,7 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		completion_reward = {
-			
+			navy_experience = 10
 
 		}
 	}
@@ -1524,6 +1674,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_navy_float_irrawaddy } 
 		completion_reward = {
+			add_ideas = {
+				BRM_river_navies
+			}
+			less_to_rakhine_anger_tt = yes
 		}
 	}
 	shared_focus = {
@@ -1538,6 +1692,19 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_navy_river_navies } 
 		completion_reward = {
+			288 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = naval_base
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	shared_focus = {
@@ -1552,6 +1719,25 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_navy_float_irrawaddy } 
 		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = naval_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+			add_tech_bonus = {
+				name = ss_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = ss_tech
+			}
+			add_doctrine_cost_reduction = {
+				name = sub_op_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = naval_doctrine
+			}
 		}
 	}
 	
@@ -1567,6 +1753,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_navy_seven_seas } 
 		completion_reward = {
+			add_tech_bonus = {
+				name = SIA_expandmarinescorps
+				bonus = 1
+				uses = 1
+				category = marine_tech
+			}
 		}
 	}
 	shared_focus = {
@@ -1581,6 +1773,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_navy_seven_seas } 
 		completion_reward = {
+			add_ideas = {
+				BRM_cleanning_the_seas
+			}
 		}
 	}
 	
@@ -1598,6 +1793,35 @@ focus_tree = {
 		prerequisite = { focus = BRM_navy_volunteers } 
 		prerequisite = { focus = BRM_navy_civilian_harbours } 
 		completion_reward = {
+			navy_experience = 25
+			create_equipment_variant = {
+				name = "RBN Mekong"
+				type = ship_hull_heavy_2
+				parent_version = 0
+				modules = {
+					fixed_ship_battery_slot = ship_heavy_battery_2
+					fixed_ship_anti_air_slot = ship_anti_air_2
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+					fixed_ship_engine_slot = heavy_ship_engine_2
+					fixed_ship_secondaries_slot = ship_secondaries_1
+					fixed_ship_armor_slot = ship_armor_bb_1
+					front_1_custom_slot = ship_heavy_battery_2
+					mid_1_custom_slot = ship_anti_air_2
+					mid_2_custom_slot = ship_secondaries_2
+					rear_1_custom_slot = ship_heavy_battery_2
+				}
+			}
+			add_equipment_production = {
+						equipment = {
+							type = ship_hull_heavy_2
+							creator = "BRM"
+							version_name = "RBN Mekong"
+						}
+						name = "Mekong"
+						requested_factories = 3
+						progress = 0.99
+						amount = 1
+			}
 		}
 	}
 	
@@ -1612,6 +1836,61 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		completion_reward = {
+			air_experience = 25
+			if = {
+				limit = {
+					capital_scope = {
+						OR = {
+							NOT = { is_controlled_by = ROOT }
+							NOT = {
+								free_building_slots = {
+									building = air_base
+									size > 1
+								}
+							}
+						}
+					}
+				}
+				random_owned_controlled_state = {
+					limit = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						is_controlled_by = ROOT
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+				capital_scope = {
+					add_building_construction = {
+						type = air_base
+						level = 2
+						instant_build = yes
+					}				
+					ROOT = { set_country_flag = aviation_effort_2_AB }
+				}
+			}
+			add_doctrine_cost_reduction = {
+				name =  air_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = air_doctrine
+			}
 		}
 	}
 	
@@ -1628,6 +1907,12 @@ focus_tree = {
 		prerequisite = { focus = BRM_navy_float_irrawaddy } 
 		prerequisite = { focus = BRM_airforce_bird_spreads_wings } 
 		completion_reward = {
+			add_tech_bonus = {
+				name = SIA_navalbomber
+				bonus = 1
+				uses = 1
+				category = naval_bomber
+			}
 		}
 	}
 	shared_focus = {
@@ -1642,6 +1927,14 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_airforce_bird_spreads_wings } 
 		completion_reward = {
+			288 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 	shared_focus = {
@@ -1657,6 +1950,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_airforce_navy } 
 		prerequisite = { focus = BRM_airforce_laying_out_airfields } 
 		completion_reward = {
+			add_ideas = {
+				BRM_python_strikes
+			}
 		}
 	}
 	shared_focus = {
@@ -1672,6 +1968,21 @@ focus_tree = {
 		prerequisite = { focus = BRM_airforce_navy } 
 		prerequisite = { focus = BRM_airforce_laying_out_airfields } 
 		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = fighter_command_focus
+				bonus = 1.0
+				uses = 1
+				category = light_fighter
+				category = cat_heavy_fighter
+			}
+			add_tech_bonus = {
+				name = CAS_bonus
+				bonus = 1.0
+				ahead_reduction = 2
+				uses = 1
+				category = cas_bomber
+			}
 		}
 	}
 	shared_focus = {
@@ -1687,6 +1998,17 @@ focus_tree = {
 		prerequisite = { focus = BRM_airforce_flying_python } 
 		prerequisite = { focus = BRM_airforce_foreign_fighters } 
 		completion_reward = {
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 1.0
+				uses = 1
+				technology = paratroopers
+				technology = paratroopers2
+				technology = marines
+				technology = marines2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+			}
 		}
 	}
 	

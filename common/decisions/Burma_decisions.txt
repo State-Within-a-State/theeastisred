@@ -374,6 +374,90 @@ BRM_Rakhine_Rebellion_mission = {
 		}
 	}
 	
+	BRM_rally_rakhine_militias_decision = {
+		icon = ger_military_buildup
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 790 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 790 } 
+		}
+		available = {
+			has_completed_focus = BRM_army_hill_recruitments
+		}
+		
+		visible = {
+			tag = BRM
+			NOT = {
+					has_country_flag = BRM_integrated_rakhine
+				}
+			owns_state = 790
+		}
+		cost = 50
+		
+		days_remove = 80
+		days_re_enable = 30
+		fire_only_once = no
+			
+		complete_effect = {
+			BRM_military_decrease = yes
+			load_oob = Rakhine_Militia
+			random_list = {
+				
+				60 = {
+					BRM_rakhine_resistance_decrease = yes
+				}
+				40 = {
+					BRM_rakhine_resistance_increase = yes
+				}
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+	
+	BRM_rally_kachin_militias_decision = {
+		icon = ger_military_buildup
+		on_map_mode = map_and_decisions_view		#Determiens if the decision should only show up as an icon on the world map or as a decision bar in the decision interface too.
+		highlight_states = { state = 701 }		
+		highlight_states = {
+		 highlight_state_targets = { state = 701 } 
+		}
+		available = {
+			has_completed_focus = BRM_army_hill_recruitments
+		}
+		
+		visible = {
+			tag = BRM
+			NOT = {
+					has_country_flag = BRM_integrated_rakhine
+				}
+			owns_state = 701
+		}
+		cost = 50
+		
+		days_remove = 80
+		days_re_enable = 30
+		fire_only_once = no
+			
+		complete_effect = {
+			BRM_military_decrease = yes
+			load_oob = Kachine_Militia
+			random_list = {
+				
+				60 = {
+					BRM_kachin_resistance_decrease = yes
+				}
+				40 = {
+					BRM_kachin_resistance_increase = yes
+				}
+			}
+		}
+		remove_effect = {
+			
+		}
+	}
+	
 	BRM_increase_trading_on_the_fonteirs_decision = {
 		icon = ger_military_buildup
 		
