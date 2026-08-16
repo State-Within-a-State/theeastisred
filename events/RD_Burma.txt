@@ -275,41 +275,19 @@ country_event = { #An End to the Chettyiar Crisis
 		if = {
 			limit = {
 				check_variable = {
-						var = burma_thak
-						value = burma_trad
-						compare = greater_than
-					}
-				check_variable = {
-						var = burma_thak
-						value = burma_int
-						compare = greater_than
-					}
-				check_variable = {
-						var = burma_thak
-						value = burma_ubca
-						compare = greater_than
-					}
-			}
-			country_event = rd_burma.12
-			set_country_flag = BRM_thakin_victory
-		}
-		
-		else_if = {
-			limit = {
-				check_variable = {
 						var = burma_trad
 						value = burma_thak
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 				check_variable = {
 						var = burma_trad
 						value = burma_int
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 				check_variable = {
 						var = burma_trad
 						value = burma_ubca
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 			}
 			country_event = rd_burma.13
@@ -320,38 +298,60 @@ country_event = { #An End to the Chettyiar Crisis
 				check_variable = {
 						var = burma_int
 						value = burma_thak
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 				check_variable = {
 						var = burma_int
 						value = burma_trad
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 				check_variable = {
 						var = burma_int
 						value = burma_ubca
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 			}
 			country_event = rd_burma.14
 		}
-		
+	
+		else_if = {
+			limit = {
+				check_variable = {
+						var = burma_thak
+						value = burma_trad
+						compare = greater_than_or_equals
+					}
+				check_variable = {
+						var = burma_thak
+						value = burma_int
+						compare = greater_than_or_equals
+					}
+				check_variable = {
+						var = burma_thak
+						value = burma_ubca
+						compare = greater_than_or_equals
+					}
+			}
+			country_event = rd_burma.12
+			set_country_flag = BRM_thakin_victory
+		}
+
 		else_if = {
 			limit = {
 				check_variable = {
 						var = burma_ubca
 						value = burma_thak
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 				check_variable = {
 						var = burma_ubca
 						value = burma_trad
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 				check_variable = {
 						var = burma_ubca
 						value = burma_int
-						compare = greater_than
+						compare = greater_than_or_equals
 					}
 			}
 			country_event = rd_burma.15
@@ -523,12 +523,12 @@ country_event = { #Anti-Socialist Coup Attempt
 		check_variable = {
 				var = burma_ubca
 				value = burma_trad
-				compare = less_than 
+				compare = less_than_or_equals
 			}
 		check_variable = {
 				var = burma_ubca
 				value = burma_int
-				compare = less_than 
+				compare = less_than_or_equals
 			}
 		}
 		country_event = {
@@ -975,12 +975,12 @@ country_event = { #Thakin Elections
 	option = { #Workers Faction
 		name = rd_burma.25.d
 		ai_chance = { base = 100 }
-		country_event = rd_burma.28
+		country_event = rd_burma.29
 	}
 	option = { #Poor Man's Party
 		name = rd_burma.25.e
 		ai_chance = { base = 100 }
-		country_event = rd_burma.29
+		country_event = rd_burma.30
 	}
 }
 
@@ -1006,7 +1006,7 @@ country_event = { #Student Faction Elections
 			popularity = 0.4
 		}
 		create_country_leader = {
-			name = "Aung San "
+			name = "Aung San"
 			picture = "gfx/leaders/BRM/Portrait_Burma_Aung_San.png"
 			expire = "1965.1.1"
 			ideology = left_nationalism_subtype
