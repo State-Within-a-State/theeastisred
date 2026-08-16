@@ -1468,7 +1468,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #New Socialist Party
 	id = rd_burma.33
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.33"}
 	title = rd_burma.33.title
@@ -1479,11 +1479,33 @@ country_event = { #
 	option = { #
 		name = rd_burma.33.a
 		ai_chance = { base = 100 }
-		
+		add_syn_to_coalition = yes
+		add_tot_to_coalition = yes
+		add_socdem_to_coalition = yes
+		set_party_name = {
+			ideology = totalist
+			long_name = BRM_Burma_Socialist_Party_long
+			name = BRM_Burma_Socialist_Party
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = BRM_Burma_Socialist_Party_long
+			name = BRM_Burma_Socialist_Party
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = BRM_Burma_Socialist_Party_long
+			name = BRM_Burma_Socialist_Party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = BRM_Burma_Socialist_Party_long
+			name = BRM_Burma_Socialist_Party
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Buddhisization
 	id = rd_burma.34
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.34"}
 	title = rd_burma.34.title
@@ -1491,10 +1513,29 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We are a secular state
 		name = rd_burma.34.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+				var = burmanization_program_burma
+				value = -20
+				tooltip = remove_burmanization_program_burma_tt
+			}
+		set_country_leader_ideology = radsoc_paternal_socialism_subtype
+	}
+	
+	option = { #We are a buddhist_state
+		name = rd_burma.34.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+				var = burmanization_program_burma
+				value = 7
+				tooltip = add_burmanization_program_burma_tt
+			}
+		BRM_shan_resistance_increase = yes
+		BRM_kachin_resistance_increase = yes
+		BRM_rakhine_resistance_increase = yes
+		set_country_leader_ideology = buddhist_socialism_subtype
 	}
 }
 

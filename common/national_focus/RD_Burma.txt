@@ -63,7 +63,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_nu_masses_book_clubs } 
 		completion_reward = {
-		
+			add_ideas = {
+			BRM_democracy_promotion
+			}
 		}
 	}
 	
@@ -79,7 +81,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_nu_burmese_democracy_prep } 
 		completion_reward = {
-		
+			set_country_flag = BRM_the_pyidawtha_plan
+			set_variable = {
+				var = pyidawtha_plan_progress
+				value = 0
+				tooltip = pyidawtha_plan_progress_100_tt
+			}
+			unlock_decision_category_tooltip = BRM_the_pyidawtha_plan_decision_category
 		}
 	}
 	
@@ -95,7 +103,15 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_nu_pyidawtha_plan } 
 		completion_reward = {
-		
+			custom_effect_tooltip = land_reform_burma_progress_100_tt
+			hidden_effect = {
+			set_country_flag = BRM_land_reform
+				set_variable = {
+					var = land_reform_burma_progress
+					value = 0
+					tooltip = land_reform_burma_progress_100_tt
+				}
+			}
 		}
 	}
 	focus = {
@@ -110,7 +126,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_nu_pyidawtha_plan } 
 		completion_reward = {
-		
+			add_research_slot = 1
 		}
 	}
 	
@@ -127,7 +143,10 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_thakin_nu_allies_sympathies }
 		prerequisite = { focus = BRM_thakin_nu_burmese_democracy_prep } 
 		completion_reward = {
-		
+			add_timed_idea = {
+				idea = BRM_cleave_marxist_radicalism
+				days = 180
+			}
 		}
 	}
 	
@@ -144,7 +163,7 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_thakin_nu_cleave_marxism }
 		prerequisite = { focus = BRM_thakin_nu_burmese_democracy_prep } 
 		completion_reward = {
-		
+			country_event = rd_burma.33
 		}
 	}
 	
@@ -158,9 +177,12 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_completed_focus = BRM_thakin_nu_burmanization
+		}
 		prerequisite = { focus = BRM_thakin_nu_cleave_marxism focus = BRM_thakin_nu_allies_sympathies } 
 		completion_reward = {
-		
+			country_event = rd_burma.34
 		}
 	}
 	focus = {
@@ -175,7 +197,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_nu_cleave_marxism focus = BRM_thakin_nu_allies_sympathies } 
 		completion_reward = {
-		
+			set_country_flag = BRM_the_burmanization
+				set_variable = {
+					var = burmanization_program_burma
+					value = 0
+					tooltip = burmanization_program__or_die_tt
+				}
 		}
 	}
 	
@@ -189,12 +216,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_flag = BRM_pyidawtha_done
+		}
 		prerequisite = { focus = BRM_thakin_nu_burmanization } 
 		prerequisite = { focus = BRM_thakin_nu_spiritual_platform } 
 		prerequisite = { focus = BRM_thakin_nu_land_nationalization } 
 		prerequisite = { focus = BRM_thakin_nu_literature_to_people} 
 		completion_reward = {
-		
+			add_ideas = {
+				BRM_united_burma
+			}
 		}
 	}
 
