@@ -1,4 +1,52 @@
+
 BRM_the_pyidawtha_plan_decision_category = {
+BRM_three_year_plan_mission = {
+		activation = {
+			has_country_flag = BRM_three_year_plan_start
+		}
+		available = {
+			num_of_military_factories > 40
+			num_of_civilian_factories > 40
+			
+		}
+		cancel_trigger = {
+			
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 1095
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = {
+				BRM_sucess_pyidawtha_plan
+			}
+			set_country_flag = BRM_three_year_plan_done
+		}
+		timeout_effect = {
+			set_country_flag = BRM_three_year_plan_done
+			add_to_variable = {
+				var = shan_anger
+				value = 10
+				tooltip = add_to_shan_anger_tt 
+			}
+			add_to_variable = {
+				var = kachin_anger
+				value = 10
+				tooltip = add_to_kachin_anger_tt  
+			}
+			add_to_variable = {
+				var = rakhine_anger
+				value = 10
+				tooltip = add_to_rakhine_anger_tt  
+			}
+			add_war_support = -0.2
+			add_stability = -0.2
+			add_political_power = -100
+		}
+	}
 BRM_pyidawtha_plan_mission = {
 		activation = {
 			has_country_flag = BRM_the_pyidawtha_plan
@@ -51,7 +99,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+			OR = {
+				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+				has_country_flag = BRM_three_year_plan_start
+			}
 			owns_state = 288
 		}
 		
@@ -99,7 +150,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+			OR = {
+				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+				has_country_flag = BRM_three_year_plan_start
+			}
 			owns_state = 640
 		}
 		
@@ -146,7 +200,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+			OR = {
+				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+				has_country_flag = BRM_three_year_plan_start
+			}
 			owns_state = 701
 		}
 		
@@ -181,6 +238,20 @@ BRM_build_dam_in_rangoon_decision = {
 				}
 			
 			}
+			
+			if = {
+				limit = {
+					has_country_flag = BRM_three_year_plan_start
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 			add_to_variable = {
 				var = pyidawtha_plan_progress
 				value = 5
@@ -194,7 +265,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+			OR = {
+				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+				has_country_flag = BRM_three_year_plan_start
+			}
 			
 		}
 		
@@ -221,7 +295,19 @@ BRM_build_dam_in_rangoon_decision = {
 			}
 		}
 		remove_effect = {
-			
+			if = {
+				limit = {
+					has_country_flag = BRM_three_year_plan_start
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
 			add_to_variable = {
 				var = pyidawtha_plan_progress
 				value = 5
@@ -235,7 +321,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+			OR = {
+				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+				has_country_flag = BRM_three_year_plan_start
+			}
 			
 		}
 		
@@ -267,6 +356,19 @@ BRM_build_dam_in_rangoon_decision = {
 				}
 			
 			}
+			if = {
+				limit = {
+					has_country_flag = BRM_three_year_plan_start
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 		}
 		remove_effect = {
 			
@@ -283,7 +385,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+			OR = {
+				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
+				has_country_flag = BRM_three_year_plan_start
+			}
 			
 		}
 		
@@ -317,12 +422,121 @@ BRM_build_dam_in_rangoon_decision = {
 			}
 		}
 		remove_effect = {
-			
+			if = {
+				limit = {
+					has_country_flag = BRM_three_year_plan_start
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 			add_to_variable = {
 				var = pyidawtha_plan_progress
 				value = 10
 				tooltip = add_pyidawtha_plan_progress_tt
 			}
+		}
+	}
+	
+	
+	BRM_long_term_industrial_planning_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_thakin_new_win_short_term_long_term
+			
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 15
+		
+		days_remove = 120
+		days_re_enable = 40
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = -0.1
+				production_lack_of_resource_penalty_factor = 0.15
+				production_speed_buildings_factor = 0.15
+				production_speed_industrial_complex_factor = 0.075
+				production_speed_arms_factory_factor = 0.075
+				
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			random_owned_state = {
+					add_extra_state_shared_building_slots = 4
+					add_building_construction = {
+						type = industrial_complex
+						level = 3
+						instant_build = yes
+					}
+				}
+			random_owned_state = {
+					add_extra_state_shared_building_slots = 3
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = yes
+					}
+				}
+		}
+	}
+	
+	BRM_short_term_industrial_planning_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_thakin_new_win_short_term_long_term
+			
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 25
+		
+		days_remove = 60
+		days_re_enable = 20
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = -0.075
+				production_lack_of_resource_penalty_factor = 0.075
+				production_speed_buildings_factor = 0.075
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+				
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = no
+					}
+				}
 		}
 	}
 	
@@ -394,7 +608,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_land_nationalization
+			OR = {
+				has_completed_focus = BRM_thakin_nu_land_nationalization
+				has_completed_focus = BRM_thakin_new_win_land_for_landless
+			}
 		}
 		
 		visible = {
@@ -437,7 +654,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_land_nationalization
+			OR = {
+				has_completed_focus = BRM_thakin_nu_land_nationalization
+				has_completed_focus = BRM_thakin_new_win_land_for_landless
+			}
 		}
 		
 		visible = {
@@ -527,11 +747,60 @@ BRM_build_dam_in_rangoon_decision = {
 		}
 	}
 	
+	BRM_formation_rural_committees_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_thakin_new_win_rural_committees
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 25
+		
+		days_remove = 60
+		days_re_enable = 15
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = 0.025
+				production_lack_of_resource_penalty_factor = -0.05
+				production_factory_efficiency_gain_factor = -0.025
+				production_speed_buildings_factor = -0.025
+				civilian_factory_use = 1
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+				
+			
+			}
+			
+			add_to_variable = {
+				var = land_reform_burma_progress
+				value = 7
+				tooltip = add_land_reform_burma_progress_tt
+			}
+		}
+	}
+	
 	BRM_expand_farmer_education_decision = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_land_nationalization
+			OR = {
+				has_completed_focus = BRM_thakin_nu_land_nationalization
+				has_completed_focus = BRM_thakin_new_win_land_for_landless
+			}
 		}
 		
 		visible = {
@@ -1257,7 +1526,11 @@ BRM_Rakhine_Rebellion_mission = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_burmanization
+			OR = {
+				has_completed_focus = BRM_thakin_nu_burmanization
+				has_completed_focus = BRM_thakin_new_win_true_burmese_nation
+			}
+			
 		}
 		
 		visible = {
@@ -1289,7 +1562,10 @@ BRM_Rakhine_Rebellion_mission = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_burmanization
+			OR = {
+				has_completed_focus = BRM_thakin_nu_burmanization
+				has_completed_focus = BRM_thakin_new_win_true_burmese_nation
+			}
 		}
 		
 		visible = {
@@ -1321,7 +1597,10 @@ BRM_Rakhine_Rebellion_mission = {
 		icon = ger_military_buildup
 		
 		available = {
-			has_completed_focus = BRM_thakin_nu_burmanization
+			OR = {
+				has_completed_focus = BRM_thakin_nu_burmanization
+				has_completed_focus = BRM_thakin_new_win_true_burmese_nation
+			}
 		}
 		
 		visible = {
@@ -1356,6 +1635,40 @@ BRM_Rakhine_Rebellion_mission = {
 					instant_build = yes
 				}
 			}
+		}
+	}
+	
+	BRM_promote_socialist_spiritualism_decision = {
+		icon = ger_military_buildup
+		
+		available = {
+			has_completed_focus = BRM_thakin_new_win_Hsoshalit
+		}
+		
+		visible = {
+			tag = BRM
+			has_completed_focus = BRM_thakin_new_win_Hsoshalit
+		}
+		cost = 30
+		
+		days_remove = 70
+		days_re_enable = 10
+		fire_only_once = no
+			modifier = {
+				research_speed_factor = 0.02
+				stability_weekly = -0.01
+				war_support_weekly = 0.02
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			add_to_variable = {
+				var = burmanization_program_burma
+				value = 10
+				tooltip = add_burmanization_program_burma_tt
+			}
+			add_political_power = 30
 		}
 	}
 	
@@ -1978,5 +2291,7 @@ BRM_lobby_export_firms_decision = {
 	
 
 }
+
+
 
 
