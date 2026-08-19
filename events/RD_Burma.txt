@@ -1595,19 +1595,41 @@ country_event = { #Lanzin Secured
 	}
 }
 
-country_event = { #
+country_event = { #ne win portrait picker
 	id = rd_burma.36
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.36"}
 	title = rd_burma.36.title
 	desc = rd_burma.36.desc
+	fire_only_once = no
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #military
 		name = rd_burma.36.a
 		ai_chance = { base = 100 }
-		
+		if = {	
+			limit = { 
+					has_country_leader = { name = "Ne Win" ruling_only = yes }
+			}
+			set_country_leader_portrait = {
+				portrait = "gfx/leaders/BRM/Portrait_Burma_Ne_Win.png"
+			}
+		}
+
 	}
+
+	option = { #civilian
+		name = rd_burma.36.b
+		if = {	
+			limit = { 
+					has_country_leader = { name = "Ne Win" ruling_only = yes }
+			}
+			set_country_leader_portrait = {
+				portrait = "gfx/leaders/BRM/Portrait_BRM_Ne_Win.png"
+			}
+		}
+	}
+
 }
 
 country_event = { #
