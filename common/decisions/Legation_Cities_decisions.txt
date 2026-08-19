@@ -3901,6 +3901,8 @@ LEC_influence_category = {
 		}
 	}
 }
+
+
 LEC_socialist_puppets_category = { 
 	LEC_taiwan_release = { 
 			icon = GFX_decision_generic_nationalism
@@ -3911,33 +3913,43 @@ LEC_socialist_puppets_category = {
 					TAI = {
 					is_subject_of = LEC
 					}
+					AND = {
 					owns_state = 524
+					NOT = { country_exists = TAI }
+					}
 				}
 			}
 			fire_only_once = yes
-			cost = 50
+			cost = 10
 			ai_will_do = {
 				factor = 10
 				}
 		complete_effect = {
-				TAI = {
-				create_country_leader = {
-				name = "Cai Xiaogan"
-				desc = ""
-				picture = "gfx/leaders/TWI/Portrait_TAI_Cai_Xiaogan.png"
-				expire = "1.1.1"
-				ideology = left_nationalism_subtype
-				traits = { rabble_rouser }
-				}
-				set_politics = {
-				ruling_party = radical_socialist
-				}
+			random_unit_leader = {
+			limit = {
+			has_id = 39913
+			}
+			set_nationality = TAI
+			}
 				if = {
 					limit = {
 						owns_state = 524
 					}
 					release_puppet = TAI
 				}
+				TAI = {
+				create_country_leader = {
+				name = "Cai Xiaogan"
+				desc = ""
+				picture = "gfx/leaders/TWI/Portrait_TAI_Cai_Xiaogan.png"
+				expire = "1.1.1"
+				ideology = syn_red_junta_subtype
+				traits = { sec_efficient_sociopath }
+				}
+				set_politics = {
+				ruling_party = syndicalist
+				}
+
 	
 			}
 		}
@@ -3952,19 +3964,26 @@ LEC_socialist_puppets_category = {
 				}
 			}
 			fire_only_once = yes
-			cost = 50
+			cost = 10
 			ai_will_do = {
 				factor = 10
 				}
 			complete_effect = {
+			random_unit_leader = {
+			limit = {
+			has_id = 39911
+			}
+			set_nationality = JAP
+			}
+
 				JAP = {
 				create_country_leader = {
 				name = "Wataru Kaji"
 				desc = ""
 				picture = "gfx/leaders/LEC/Portrait_LEC_Wataru_Shikaji.png"
 				expire = "1.1.1"
-				ideology = left_nationalism_subtype
-				traits = { rabble_rouser }
+				ideology = lu_xun_thought_subtype 
+				traits = { for_anti_imperialist_crusader }
 				}
 				set_politics = {
 				ruling_party = radical_socialist
@@ -3983,19 +4002,26 @@ LEC_socialist_puppets_category = {
 				}
 			}
 			fire_only_once = yes
-			cost = 50
+			cost = 10
 			ai_will_do = {
 				factor = 10
 				}
 			complete_effect = {
+			random_unit_leader = {
+			limit = {
+			has_id = 39912
+			}
+			set_nationality = KOR
+			}
+
 				KOR = {
 				create_country_leader = {
 				name = "Ryu Ja-Myeong"
 				desc = ""
 				picture = "gfx/leaders/KOR/Portrait_KOR_Ryu_Ja_Myeong.png"
 				expire = "1.1.1"
-				ideology = left_nationalism_subtype
-				traits = { rabble_rouser }
+				ideology = anarchism_subtype #i refuse to fucking invesitage how much rangga fits him so fuck me im lazy
+				traits = { hog_radical_thinker }
 				}
 				set_politics = {
 				ruling_party = radical_socialist
