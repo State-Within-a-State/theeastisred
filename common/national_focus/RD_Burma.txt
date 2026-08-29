@@ -297,7 +297,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_than_tun_struggle_countryside focus = BRM_thakin_than_tun_book_club_struggle } 
 		completion_reward = {
-		
+			custom_effect_tooltip = land_reform_burma_progress_100_tt
+			set_country_flag = BRM_land_reform
+			set_country_flag = BRM_land_reform_than_tun
 		}
 	}
 	focus = {
@@ -312,7 +314,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_than_tun_struggle_countryside focus = BRM_thakin_than_tun_book_club_struggle } 
 		completion_reward = {
-		
+			country_event = rd_burma.40
 		}
 	}
 	focus = {
@@ -327,7 +329,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_than_tun_struggle_countryside focus = BRM_thakin_than_tun_book_club_struggle } 
 		completion_reward = {
-		
+			country_event = rd_burma.41
 		}
 	}
 	
@@ -343,7 +345,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_than_tun_insein_manifesto } 
 		completion_reward = {
-		
+			custom_effect_tooltip = BRM_autonomy_or_federalism_tt
+			hidden_effect = {
+				country_event = rd_burma.42
+			}
+			BRM_shan_resistance_decrease = yes
+			BRM_kachin_resistance_decrease = yes
+			BRM_rakhine_resistance_decrease = yes
 		}
 	}
 	
@@ -361,7 +369,14 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_than_tun_united_front_struggle } 
 		prerequisite = { focus = BRM_thakin_than_tun_strike_chains_landlordism } 
 		completion_reward = {
-		
+			add_ideas = {
+				BRM_hands_with_peasants
+			}
+			add_to_variable = {
+				var = land_reform_burma_progress
+				value = 7
+				tooltip = add_land_reform_burma_progress_tt
+			}
 		}
 	}
 	
@@ -379,7 +394,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_than_tun_united_front_struggle } 
 		prerequisite = { focus = BRM_thakin_than_tun_strike_chains_landlordism } 
 		completion_reward = {
-		
+			add_ideas = {
+				BRM_goshal_thesis
+			}
 		}
 	}
 	
@@ -396,7 +413,22 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_than_tun_goshal_thesis focus = BRM_thakin_than_tun_hands_with_rural_masses } 
 		prerequisite = { focus = BRM_thakin_than_tun_beyond_autonomy } 
 		completion_reward = {
-		
+			random_owned_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = industrial_complex
+						level = 2
+						instant_build = yes
+					}
+				}
+			random_owned_state = {
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = {
+						type = arms_factory
+						level = 2
+						instant_build = no
+					}
+				}
 		}
 	}
 	
@@ -413,7 +445,7 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_than_tun_goshal_thesis focus = BRM_thakin_than_tun_hands_with_rural_masses } 
 		prerequisite = { focus = BRM_thakin_than_tun_beyond_autonomy } 
 		completion_reward = {
-		
+			add_research_slot = 1
 		}
 	}
 	
@@ -430,7 +462,10 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_than_tun_goshal_thesis focus = BRM_thakin_than_tun_hands_with_rural_masses } 
 		prerequisite = { focus = BRM_thakin_than_tun_beyond_autonomy } 
 		completion_reward = {
-		
+			add_timed_idea = {
+				idea = BRM_cultural_rev
+				days = 365
+			}
 		}
 	}
 	
@@ -448,7 +483,10 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_than_tun_urban_hands } 
 		prerequisite = { focus = BRM_thakin_than_tun_words_expand_mass_base } 
 		completion_reward = {
-		
+			add_ideas = {
+				BRM_a_burma_painted_red
+			}
+			country_event = rd_burma.43
 		}
 	}
 	

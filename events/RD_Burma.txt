@@ -1833,7 +1833,7 @@ country_event = { #Subideology Picker For Mya and Kyaw
 	}
 }
 
-country_event = { #
+country_event = { #A Struggle In the United Front
 	id = rd_burma.40
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.40"}
 	title = rd_burma.40.title
@@ -1841,9 +1841,24 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must maintain national unity
 		name = rd_burma.40.a
 		ai_chance = { base = 100 }
+		add_synd_to_coalition = yes
+		add_radsoc_to_coalition = yes
+		add_socdem_to_coalition = yes
+		add_timed_idea = {
+			idea = BRM_the_united_front
+			days = 90
+		}
+	}
+	option = { #The revolution must be purified
+		name = rd_burma.40.b
+		ai_chance = { base = 100 }
+		add_timed_idea = {
+			idea = BRM_party_purity
+			days = 90
+		}
 		
 	}
 }
@@ -1859,11 +1874,18 @@ country_event = { #
 	option = { #
 		name = rd_burma.41.a
 		ai_chance = { base = 100 }
-		
+		set_party_name = {
+			ideology = totalist
+			name = BRM_communist_party_burma
+			long_name = BRM_communist_party_burma_long
+		}
+		add_ideas = {
+			BRM_insein_manifesto
+		}
 	}
 }
 
-country_event = { #
+country_event = { #The Decision on Autonomy
 	id = rd_burma.42
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.42"}
 	title = rd_burma.42.title
@@ -1871,14 +1893,50 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must Encourage Federalism
 		name = rd_burma.42.a
 		ai_chance = { base = 100 }
-		
+		custom_effect_tooltip = BRM_continue_integrate_tt
+			random_list = {
+				50 = {
+					BRM_shan_resistance_decrease = yes
+				}
+				50 = {
+					BRM_shan_resistance_increase = yes
+				}
+				
+			}
+			random_list = {
+				50 = {
+					BRM_kachin_resistance_increase = yes
+				}
+				50 = {
+					BRM_kachin_resistance_decrease = yes
+				}
+				
+			}
+			random_list = {
+				50 = {
+					BRM_rakhine_resistance_increase = yes
+				}
+				50 = {
+					BRM_rakhine_resistance_decrease = yes
+				}
+				
+			}
+			
+	}
+	option = { #Self-Determination is what we must focus on
+		name = rd_burma.42.b
+		ai_chance = { base = 100 }
+		custom_effect_tooltip = BRM_we_will_get_decisions_to_form_puppets_tt
+		set_country_flag = BRM_release_shan
+		set_country_flag = BRM_release_kachin
+		set_country_flag = BRM_release_rakhine
 	}
 }
 
-country_event = { #
+country_event = { #Than Tun and Goshal Event
 	id = rd_burma.43
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.43"}
 	title = rd_burma.43.title
@@ -1889,7 +1947,46 @@ country_event = { #
 	option = { #
 		name = rd_burma.43.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Than Tun"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Than_Tun.png"
+			expire = "1965.1.1"
+			ideology = hardliner_bolshevism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Than_Tun_hog_tot
+			BRM_H_N_Goshal_eco_tot
+			BRM_Kyaw_Zaw_for_rso
+			BRM_Thakin_Than_Tun_sec_tot
+		}
+	}
+	option = { #
+		name = rd_burma.43.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = totalist }
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "H.N. Goshal"
+			picture = "gfx/leaders/BRM/Portrait_BRM_H_N_Goshal.png"
+			expire = "1965.1.1"
+			ideology = authcom_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_H_N_Goshal_hog_tot
+			BRM_Subodh_Mukherjee_eco_tot
+			BRM_Thakin_Ba_Hein_for_tot
+			BRM_Thakin_Than_Tun_sec_tot
+		}
 	}
 }
 
