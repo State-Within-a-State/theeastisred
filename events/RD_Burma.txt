@@ -1652,7 +1652,7 @@ country_event = { #ne win portrait picker
 
 }
 
-country_event = { #
+country_event = { #Worker Enquiry Committee
 	id = rd_burma.37
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.37"}
 	title = rd_burma.37.title
@@ -1663,7 +1663,28 @@ country_event = { #
 	option = { #
 		name = rd_burma.37.a
 		ai_chance = { base = 100 }
-		
+		add_to_variable = {
+					var = smashing_capital_progress
+					value = 8
+					tooltip = add_smashing_capital_progress_tt
+				}
+		add_ideas = {
+			BRM_independent_worker_committee
+		}
+		add_synd_to_coalition = yes
+	}
+	option = { #
+		name = rd_burma.37.b
+		ai_chance = { base = 100 }
+		add_to_variable = {
+					var = smashing_capital_progress
+					value = -15
+					tooltip = remove_smashing_capital_progress_tt
+				}
+		add_ideas = {
+			BRM_party_worker_committee
+		}
+		add_synd_to_coalition = yes
 	}
 }
 
@@ -1678,11 +1699,73 @@ country_event = { #
 	option = { #
 		name = rd_burma.38.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Mya"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Mya.png"
+			expire = "1965.1.1"
+			ideology = agrarian_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Mya_hog_rso
+			BRM_Thakin_Mya_eco_rso
+			BRM_Kyaw_Nein_for_rso
+			BRM_Thakin_Chit_Maung_sec_rso
+		}
+		add_socdem_to_coalition = yes
+		set_party_name = {
+			ideology = radical_socialist
+			name = BRM_Burma_Democratic_Socialist_Party
+			long_name = BRM_Burma_Democratic_Socialist_Party_long
+		}
+		set_party_name = {
+			ideology = social_democrat
+			name = BRM_Burma_Democratic_Socialist_Party
+			long_name = BRM_Burma_Democratic_Socialist_Party_long
+		}
+	}
+	
+	option = { #
+		name = rd_burma.38.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_democrat }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Kyaw Nyein"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Kyaw_Nyein.png"
+			expire = "1965.1.1"
+			ideology = socdem_democratic_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Kyaw_Nein_hog_sde
+			BRM_Thakin_Mya_eco_rso
+			BRM_Kyaw_Nein_for_rso
+			BRM_Thakin_Chit_Maung_sec_rso
+		}
+		add_radsoc_to_coalition = yes
+		set_party_name = {
+			ideology = radical_socialist
+			name = BRM_Burma_Democratic_Socialist_Party
+			long_name = BRM_Burma_Democratic_Socialist_Party_long
+		}
+		set_party_name = {
+			ideology = social_democrat
+			name = BRM_Burma_Democratic_Socialist_Party
+			long_name = BRM_Burma_Democratic_Socialist_Party_long
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Subideology Picker For Mya and Kyaw
 	id = rd_burma.39
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.39"}
 	title = rd_burma.39.title
@@ -1693,7 +1776,60 @@ country_event = { #
 	option = { #
 		name = rd_burma.39.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			has_country_leader = {
+				name = "Kyaw Nyein"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = socdem_democratic_socialism_subtype
+	}
+	option = { #
+		name = rd_burma.39.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Kyaw Nyein"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = guild_socialism_subtype
+	}
+	
+	option = { #
+		name = rd_burma.39.c
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Thakin Mya"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = left_nationalism_subtype
+	}
+	
+	option = { #
+		name = rd_burma.39.d
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Thakin Mya"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = agrarian_socialism_subtype
+	}
+	
+	option = { #
+		name = rd_burma.39.e
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Thakin Mya"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = moderate_socialist_subtype
 	}
 }
 

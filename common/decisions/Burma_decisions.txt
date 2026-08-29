@@ -23,6 +23,36 @@ BRM_Ne_Win_Picker = {
 }
 
 BRM_the_pyidawtha_plan_decision_category = {
+BRM_smashing_capital_mission = {
+		activation = {
+			has_country_flag = BRM_smashing_monopolies
+		}
+		available = {
+			check_variable = {
+				smashing_capital_progress > 74
+			}
+			
+		}
+		cancel_trigger = {
+			
+		}
+		
+		icon = factories     # For GFX_decision_mission_icon
+		is_good = no
+		days_mission_timeout = 1095
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = {
+				BRM_capital_smashed
+			}
+			set_country_flag = BRM_smashing_capital_done
+		}
+		timeout_effect = {
+			set_country_flag = BRM_smashing_capital_done
+			
+		}
+	}
 BRM_three_year_plan_mission = {
 		activation = {
 			has_country_flag = BRM_three_year_plan_start
@@ -124,6 +154,7 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
+				has_country_flag = BRM_smashing_monopolies
 			}
 			owns_state = 288
 		}
@@ -160,10 +191,23 @@ BRM_build_dam_in_rangoon_decision = {
 			
 			}
 			
-			add_to_variable = {
-				var = pyidawtha_plan_progress
-				value = 5
-				tooltip = add_pyidawtha_plan_progress_tt
+			if = {
+				limit = {
+					has_country_flag = BRM_smashing_monopolies
+				}
+				
+				add_to_variable = {
+					var = smashing_capital_progress
+					value = 5
+					tooltip = add_smashing_capital_progress_tt
+				}
+			}
+			else = {
+				add_to_variable = {
+					var = pyidawtha_plan_progress
+					value = 5
+					tooltip = add_pyidawtha_plan_progress_tt
+				}
 			}
 		}
 	}
@@ -175,6 +219,7 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
+				has_country_flag = BRM_smashing_monopolies
 			}
 			owns_state = 640
 		}
@@ -210,10 +255,23 @@ BRM_build_dam_in_rangoon_decision = {
 				}
 			
 			}
-			add_to_variable = {
-				var = pyidawtha_plan_progress
-				value = 5
-				tooltip = add_pyidawtha_plan_progress_tt
+			if = {
+				limit = {
+					has_country_flag = BRM_smashing_monopolies
+				}
+				
+				add_to_variable = {
+					var = smashing_capital_progress
+					value = 5
+					tooltip = add_smashing_capital_progress_tt
+				}
+			}
+			else = {
+				add_to_variable = {
+					var = pyidawtha_plan_progress
+					value = 5
+					tooltip = add_pyidawtha_plan_progress_tt
+				}
 			}
 		}
 	}
@@ -225,6 +283,7 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
+				has_country_flag = BRM_smashing_monopolies
 			}
 			owns_state = 701
 		}
@@ -274,10 +333,30 @@ BRM_build_dam_in_rangoon_decision = {
 					}
 				}
 			}
-			add_to_variable = {
-				var = pyidawtha_plan_progress
-				value = 5
-				tooltip = add_pyidawtha_plan_progress_tt
+			if = {
+				limit = {
+					has_country_flag = BRM_smashing_monopolies
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_to_variable = {
+					var = smashing_capital_progress
+					value = 5
+					tooltip = add_smashing_capital_progress_tt
+				}
+			}
+			else = {
+				add_to_variable = {
+					var = pyidawtha_plan_progress
+					value = 5
+					tooltip = add_pyidawtha_plan_progress_tt
+				}
 			}
 			BRM_kachin_resistance_increase = yes
 		}
@@ -290,6 +369,7 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
+				has_country_flag = BRM_smashing_monopolies
 			}
 			
 		}
@@ -330,10 +410,30 @@ BRM_build_dam_in_rangoon_decision = {
 					}
 				}
 			}
-			add_to_variable = {
-				var = pyidawtha_plan_progress
-				value = 5
-				tooltip = add_pyidawtha_plan_progress_tt
+			if = {
+				limit = {
+					has_country_flag = BRM_smashing_monopolies
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_to_variable = {
+					var = smashing_capital_progress
+					value = 5
+					tooltip = add_smashing_capital_progress_tt
+				}
+			}
+			else = {
+				add_to_variable = {
+					var = pyidawtha_plan_progress
+					value = 5
+					tooltip = add_pyidawtha_plan_progress_tt
+				}
 			}
 		}
 	}
@@ -346,6 +446,7 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
+				has_country_flag = BRM_smashing_monopolies
 			}
 			
 		}
@@ -391,6 +492,19 @@ BRM_build_dam_in_rangoon_decision = {
 					}
 				}
 			}
+			
+			if = {
+				limit = {
+					has_country_flag = BRM_smashing_monopolies
+				}
+				
+				add_to_variable = {
+					var = smashing_capital_progress
+					value = 5
+					tooltip = add_smashing_capital_progress_tt
+				}
+			}
+			
 		}
 		remove_effect = {
 			
@@ -410,6 +524,7 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
+				has_country_flag = BRM_smashing_monopolies
 			}
 			
 		}
@@ -457,10 +572,30 @@ BRM_build_dam_in_rangoon_decision = {
 					}
 				}
 			}
-			add_to_variable = {
-				var = pyidawtha_plan_progress
-				value = 10
-				tooltip = add_pyidawtha_plan_progress_tt
+			if = {
+				limit = {
+					has_country_flag = BRM_smashing_monopolies
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+				add_to_variable = {
+					var = smashing_capital_progress
+					value = 10
+					tooltip = add_smashing_capital_progress_tt
+				}
+			}
+			else = {
+				add_to_variable = {
+					var = pyidawtha_plan_progress
+					value = 10
+					tooltip = add_pyidawtha_plan_progress_tt
+				}
 			}
 		}
 	}
@@ -518,7 +653,10 @@ BRM_build_dam_in_rangoon_decision = {
 		icon = cement_mixer
 		
 		available = {
-			has_completed_focus = BRM_thakin_new_win_short_term_long_term
+			OR = {
+				has_completed_focus = BRM_thakin_new_win_short_term_long_term
+				has_country_flag = BRM_smashing_monopolies
+			}
 			
 		}
 		
@@ -559,6 +697,16 @@ BRM_build_dam_in_rangoon_decision = {
 						instant_build = no
 					}
 				}
+			if = {
+				limit = {
+					has_country_flag = BRM_smashing_monopolies
+				}
+				add_to_variable = {
+					var = smashing_capital_progress
+					value = 5
+					tooltip = add_smashing_capital_progress_tt
+				}
+			}
 		}
 	}
 	
