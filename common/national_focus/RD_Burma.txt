@@ -2621,7 +2621,7 @@ focus_tree = {
 	}
 }
 focus_tree = {
-	id = RD_Burma_U_Thwin_tree
+	id = rd_Burma_U_Thwin_tree
 	continuous_focus_position = { x = 0 y = 3000 } 
 	country = {
 		factor = 0
@@ -2973,6 +2973,410 @@ focus_tree = {
 		}
 	}
 }
+focus_tree = {
+	id = rd_traditionalist_tree
+	continuous_focus_position = { x = 0 y = 3000 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 0
+			tag = BRM
+		}
+	}
+	shared_focus = BRM_assessing_our_crisis
+	shared_focus = BRM_emergency_edicts
+	shared_focus = BRM_army_claws_on_land
+	shared_focus = BRM_navy_float_irrawaddy
+	shared_focus = BRM_airforce_bird_spreads_wings
+
+	focus = {
+		id = BRM_A_traditionalist_victory
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_assessing_our_crisis
+		x = 35
+		y = 0
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = BRM_A_platform_for_reform
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -3
+		y = 1
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_A_traditionalist_victory }
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = BRM_creation_of_the_Wunthanu_Athins
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -5.5
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_A_platform_for_reform }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_reserving_the_cultural_spirit_of_the_nation
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -3
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_A_platform_for_reform }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_A_reducting_of_domestic_costs
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -0.5
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_A_platform_for_reform }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_rally_around_the_rural_people
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -6.5
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_creation_of_the_Wunthanu_Athins }
+		completion_reward = {
+		}
+	}
+		focus = {
+		id = BRM_the_states_man
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -4
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_the_uncrowned_king }
+		prerequisite = { focus = BRM_reserving_the_cultural_spirit_of_the_nation }
+		completion_reward = {
+		}
+	}
+		focus = {
+		id = BRM_the_uncrowned_king
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -2
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_the_states_man }
+		prerequisite = { focus = BRM_reserving_the_cultural_spirit_of_the_nation }
+		completion_reward = {
+		}
+	}
+		focus = {
+		id = BRM_punching_down_upon_chettiar_remnants
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 0.5
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_A_reducting_of_domestic_costs }
+		completion_reward = {
+		}
+	}
+		focus = {
+		id = BRM_accepting_ones_own_sabhava
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -5
+		y = 4
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_rally_around_the_rural_people }
+		prerequisite = { focus = BRM_punching_down_upon_chettiar_remnants }
+		prerequisite = { focus = BRM_the_states_man focus = BRM_the_uncrowned_king }
+		completion_reward = {
+		}
+	}
+		focus = {
+		id = BRM_an_alliance_with_monks
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -1
+		y = 4
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_rally_around_the_rural_people }
+		prerequisite = { focus = BRM_punching_down_upon_chettiar_remnants }
+		prerequisite = { focus = BRM_the_states_man focus = BRM_the_uncrowned_king }
+		completion_reward = {
+		}
+	}
+		focus = {
+		id = BRM_a_holy_and_independent_burma
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = -3
+		y = 5
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_rally_around_the_rural_people }
+		prerequisite = { focus = BRM_punching_down_upon_chettiar_remnants }
+		prerequisite = { focus = BRM_the_states_man focus = BRM_the_uncrowned_king }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_the_hardline_is_set
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 8
+		y = 1
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_A_traditionalist_victory }
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	focus = {
+		id = BRM_power_from_the_gavel
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 4
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_under_the_raja focus = BRM_A_mordern_state }
+		prerequisite = { focus = BRM_the_hardline_is_set }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_protecting_burmese_economic_interests
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 4
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_power_from_the_gavel }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_under_the_raja
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 8
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_power_from_the_gavel focus = BRM_A_mordern_state }
+		prerequisite = { focus = BRM_the_hardline_is_set }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_An_alliance_with_the_Thakins
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 6
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_gaining_support_from_the_millenaries }
+		prerequisite = { focus = BRM_under_the_raja }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_gaining_support_from_the_millenaries
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 10
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_An_alliance_with_the_Thakins }
+		prerequisite = { focus = BRM_under_the_raja }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_A_mordern_state
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 12
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_under_the_raja focus = BRM_power_from_the_gavel }
+		prerequisite = { focus = BRM_the_hardline_is_set }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_enforce_buddhist_rationaly
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 12
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_A_mordern_state }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_upholding_bamar_supremacy
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 5.5
+		y = 4
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_protecting_burmese_economic_interests focus = BRM_An_alliance_with_the_Thakins focus = BRM_gaining_support_from_the_millenaries focus = BRM_enforce_buddhist_rationaly }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_the_wheel_of_the_state_spains_forth
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 5.5
+		y = 5
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_those_european_dogs_shant_boss_us_around focus = BRM_An_Era_of_newfound_stability }
+		prerequisite = { focus = BRM_upholding_bamar_supremacy }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_creation_of_the_nation_education_movement
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 8
+		y = 4
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {  focus = BRM_protecting_burmese_economic_interests focus = BRM_An_alliance_with_the_Thakins focus = BRM_gaining_support_from_the_millenaries focus = BRM_enforce_buddhist_rationaly }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_those_european_dogs_shant_boss_us_around
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 8
+		y = 5
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_An_Era_of_newfound_stability focus = BRM_the_wheel_of_the_state_spains_forth }
+		prerequisite = { focus = BRM_creation_of_the_nation_education_movement }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_push_back_against_chettiars
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 10.5
+		y = 4
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = {  focus = BRM_protecting_burmese_economic_interests focus = BRM_An_alliance_with_the_Thakins focus = BRM_gaining_support_from_the_millenaries focus = BRM_enforce_buddhist_rationaly }
+		completion_reward = {
+		}
+	}
+	focus = {
+		id = BRM_An_Era_of_newfound_stability
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_A_traditionalist_victory
+		x = 10.5
+		y = 5
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_those_european_dogs_shant_boss_us_around focus = BRM_the_wheel_of_the_state_spains_forth }
+		prerequisite = { focus = BRM_push_back_against_chettiars }
+		completion_reward = {
+		}
+	}
+}
+
 	shared_focus = {
 		id = BRM_assessing_our_crisis
 		icon = GFX_goal_QIO_revolution
