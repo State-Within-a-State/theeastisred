@@ -53,6 +53,38 @@ BRM_smashing_capital_mission = {
 			
 		}
 	}
+BRM_yankin_project_mission = {
+		activation = {
+			has_country_flag = BRM_smashing_monopolies
+		}
+		available = {
+			check_variable = {
+				yankin_project_progress > 74
+			}
+			
+		}
+		cancel_trigger = {
+			
+		}
+		
+		icon = factories     # For GFX_decision_mission_icon
+		is_good = no
+		days_mission_timeout = 1095
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+			add_stability = 0.3
+			add_war_support = 0.2
+			add_political_power = 100
+			set_country_flag = BRM_yankin_project_done
+		}
+		timeout_effect = {
+			set_country_flag = BRM_yankin_project_done
+			add_stability = -0.5
+			add_war_support = -0.6
+			add_political_power = -200
+		}
+	}
 BRM_three_year_plan_mission = {
 		activation = {
 			has_country_flag = BRM_three_year_plan_start
@@ -155,6 +187,7 @@ BRM_build_dam_in_rangoon_decision = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
 				has_country_flag = BRM_smashing_monopolies
+				has_country_flag = BRM_the_yankin_project
 			}
 			owns_state = 288
 		}
@@ -204,6 +237,17 @@ BRM_build_dam_in_rangoon_decision = {
 					tooltip = add_smashing_capital_progress_tt
 				}
 			}
+			if = {
+				limit = {
+					has_country_flag = BRM_the_yankin_project
+				}
+				add_to_variable = {
+					var = yankin_project_progress
+					value = 5
+					tooltip = add_yankin_project_progress_tt
+				}
+				
+			}
 			else = {
 				add_to_variable = {
 					var = pyidawtha_plan_progress
@@ -222,6 +266,7 @@ BRM_build_dam_in_rangoon_decision = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
 				has_country_flag = BRM_smashing_monopolies
+				has_country_flag = BRM_the_yankin_project
 			}
 			owns_state = 640
 		}
@@ -261,6 +306,17 @@ BRM_build_dam_in_rangoon_decision = {
 			}
 			if = {
 				limit = {
+					has_country_flag = BRM_the_yankin_project
+				}
+				add_to_variable = {
+					var = yankin_project_progress
+					value = 5
+					tooltip = add_yankin_project_progress_tt
+				}
+				
+			}
+			if = {
+				limit = {
 					has_country_flag = BRM_smashing_monopolies
 				}
 				
@@ -288,6 +344,7 @@ BRM_build_dam_in_rangoon_decision = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
 				has_country_flag = BRM_smashing_monopolies
+				has_country_flag = BRM_the_yankin_project
 			}
 			owns_state = 701
 		}
@@ -357,6 +414,25 @@ BRM_build_dam_in_rangoon_decision = {
 					tooltip = add_smashing_capital_progress_tt
 				}
 			}
+			
+			if = {
+				limit = {
+					has_country_flag = BRM_the_yankin_project
+				}
+				add_to_variable = {
+					var = yankin_project_progress
+					value = 5
+					tooltip = add_yankin_project_progress_tt
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 			else = {
 				add_to_variable = {
 					var = pyidawtha_plan_progress
@@ -376,6 +452,7 @@ BRM_build_dam_in_rangoon_decision = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
 				has_country_flag = BRM_smashing_monopolies
+				has_country_flag = BRM_the_yankin_project
 			}
 			
 		}
@@ -436,6 +513,25 @@ BRM_build_dam_in_rangoon_decision = {
 					tooltip = add_smashing_capital_progress_tt
 				}
 			}
+			
+			if = {
+				limit = {
+					has_country_flag = BRM_the_yankin_project
+				}
+				add_to_variable = {
+					var = yankin_project_progress
+					value = 5
+					tooltip = add_yankin_project_progress_tt
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
 			else = {
 				add_to_variable = {
 					var = pyidawtha_plan_progress
@@ -455,6 +551,7 @@ BRM_build_dam_in_rangoon_decision = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
 				has_country_flag = BRM_smashing_monopolies
+				has_country_flag = BRM_the_yankin_project
 			}
 			
 		}
@@ -515,6 +612,18 @@ BRM_build_dam_in_rangoon_decision = {
 				}
 			}
 			
+			if = {
+				limit = {
+					has_country_flag = BRM_the_yankin_project
+				}
+				add_to_variable = {
+					var = yankin_project_progress
+					value = 5
+					tooltip = add_yankin_project_progress_tt
+				}
+				
+			}
+			
 		}
 		remove_effect = {
 			
@@ -535,6 +644,7 @@ BRM_build_dam_in_rangoon_decision = {
 				has_completed_focus = BRM_thakin_nu_pyidawtha_plan
 				has_country_flag = BRM_three_year_plan_start
 				has_country_flag = BRM_smashing_monopolies
+				has_country_flag = BRM_the_yankin_project
 			}
 			
 		}
@@ -600,6 +710,25 @@ BRM_build_dam_in_rangoon_decision = {
 					var = smashing_capital_progress
 					value = 10
 					tooltip = add_smashing_capital_progress_tt
+				}
+			}
+			
+			if = {
+				limit = {
+					has_country_flag = BRM_the_yankin_project
+				}
+				add_to_variable = {
+					var = yankin_project_progress
+					value = 10
+					tooltip = add_yankin_project_progress_tt
+				}
+				random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
 				}
 			}
 			else = {
@@ -670,6 +799,7 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_new_win_short_term_long_term
 				has_country_flag = BRM_smashing_monopolies
+				has_country_flag = BRM_the_yankin_project
 			}
 			
 		}
@@ -723,6 +853,70 @@ BRM_build_dam_in_rangoon_decision = {
 					tooltip = add_smashing_capital_progress_tt
 				}
 			}
+			
+			if = {
+				limit = {
+					has_country_flag = BRM_the_yankin_project
+				}
+				add_to_variable = {
+					var = yankin_project_progress
+					value = 5
+					tooltip = add_yankin_project_progress_tt
+				}
+			}
+		}
+	}
+	
+	BRM_expand_surburbs_planning_decision = {
+		icon = cement_mixer
+		
+		available = {
+			has_country_flag = BRM_the_yankin_project
+			
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 25
+		
+		days_remove = 30
+		days_re_enable = 10
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = -0.075
+				production_lack_of_resource_penalty_factor = 0.075
+				production_speed_buildings_factor = 0.075
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_arms_factory_factor = 0.05
+				
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = industrial_complex
+						level = 1
+						instant_build = yes
+					}
+				}
+			random_owned_state = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = {
+						type = arms_factory
+						level = 1
+						instant_build = no
+					}
+				}
+			add_to_variable = {
+					var = yankin_project_progress
+					value = 5
+					tooltip = add_yankin_project_progress_tt
+				}
 		}
 	}
 	
