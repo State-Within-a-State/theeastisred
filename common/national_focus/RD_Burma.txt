@@ -2059,7 +2059,7 @@ focus_tree = {
 			add_political_power = 50
 			add_popularity = {
 				ideology = radical_socialist
-				ideology = 0.1
+				popularity = 0.1
 			}
 			add_war_support = 0.1
 		}
@@ -2071,13 +2071,13 @@ focus_tree = {
 		relative_position_id = BRM_thakin_students
 		x = 0
 		y = 2
-		cost = 2
+		cost = 1
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = BRM_thakin_students_broad_appeal_masses focus = BRM_thakin_students_reform_great_change focus = BRM_thakin_students_armed_youth focus = BRM_thakin_students_peacock_feathers }
 		completion_reward = {
-			
+			country_event = rd_burma.44
 		}
 	}
 	focus = {
@@ -2092,7 +2092,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_students_panalong_agreement }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = BRM_crush_anti_marxists
+				days = 90
+			}
 		}
 	}
 	
@@ -2108,7 +2111,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_students_panalong_agreement }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_rent_appeals
+			}
 		}
 	}
 	
@@ -2126,7 +2131,19 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_silence_anti_marxists }
 		prerequisite = { focus = BRM_thakin_students_preserve_languages  focus = BRM_thakin_students_lawka_neikban  focus = BRM_thakin_students_pragmatic_push  focus = BRM_thakin_students_yankin_project  focus = BRM_thakin_students_union_legislative_knot_tied  focus = BRM_thakin_students_popular_free_proletarian_gov }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_nationalization_framwork
+			}
+			if = {
+				limit = {
+					has_country_flag = BRM_the_yankin_project
+				}
+				add_to_variable = {
+					var = yankin_project_progress
+					value = 8
+					tooltip = add_yankin_project_progress_tt
+				}
+			}
 		}
 	}
 	
@@ -2144,7 +2161,8 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_silence_anti_marxists }
 		prerequisite = { focus = BRM_thakin_students_preserve_languages  focus = BRM_thakin_students_lawka_neikban  focus = BRM_thakin_students_pragmatic_push  focus = BRM_thakin_students_yankin_project  focus = BRM_thakin_students_union_legislative_knot_tied  focus = BRM_thakin_students_popular_free_proletarian_gov }
 		completion_reward = {
-			
+			custom_effect_tooltip = land_reform_burma_progress_100_tt
+			set_country_flag = BRM_land_reform
 		}
 	}
 	focus = {
@@ -2161,7 +2179,10 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_silence_anti_marxists }
 		prerequisite = { focus = BRM_thakin_students_preserve_languages  focus = BRM_thakin_students_lawka_neikban  focus = BRM_thakin_students_pragmatic_push  focus = BRM_thakin_students_yankin_project  focus = BRM_thakin_students_union_legislative_knot_tied  focus = BRM_thakin_students_popular_free_proletarian_gov }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = BRM_aspirations_of_hammer
+				days = 180
+			}
 		}
 	}
 	
@@ -2179,7 +2200,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_silence_anti_marxists }
 		prerequisite = { focus = BRM_thakin_students_preserve_languages  focus = BRM_thakin_students_lawka_neikban  focus = BRM_thakin_students_pragmatic_push  focus = BRM_thakin_students_yankin_project  focus = BRM_thakin_students_union_legislative_knot_tied  focus = BRM_thakin_students_popular_free_proletarian_gov }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_social_welfare
+			}
 		}
 	}
 	
@@ -2197,7 +2220,7 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_silence_anti_marxists }
 		prerequisite = { focus = BRM_thakin_students_preserve_languages  focus = BRM_thakin_students_lawka_neikban  focus = BRM_thakin_students_pragmatic_push  focus = BRM_thakin_students_yankin_project  focus = BRM_thakin_students_union_legislative_knot_tied  focus = BRM_thakin_students_popular_free_proletarian_gov }
 		completion_reward = {
-			
+			add_research_slot = 1
 		}
 	}
 	
@@ -2217,7 +2240,22 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_sickle_aspirations }
 		prerequisite = { focus = BRM_thakin_students_economic_nationalization_framework }
 		completion_reward = {
-			
+			set_party_name = {
+			ideology = radical_socialist
+			long_name = BRM_Burma_Socialist_Party_long
+			name = BRM_Burma_Socialist_Party
+			}
+			set_party_name = {
+				ideology = social_democrat
+				long_name = BRM_Burma_Socialist_Party_long
+				name = BRM_Burma_Socialist_Party
+			}
+			add_socdem_to_coalition = yes
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.1
+			}
+			add_political_power = 25
 		}
 	}
 	
@@ -2237,7 +2275,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_sickle_aspirations }
 		prerequisite = { focus = BRM_thakin_students_economic_nationalization_framework }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_anti_colonial_committee
+			}
 		}
 	}
 	
@@ -2257,7 +2297,14 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_sickle_aspirations }
 		prerequisite = { focus = BRM_thakin_students_economic_nationalization_framework }
 		completion_reward = {
-			
+			add_to_variable = {
+				var = land_reform_burma_progress
+				value = 7
+				tooltip = add_land_reform_burma_progress_tt
+			}
+			add_ideas = {
+				BRM_peasant_credit
+			}
 		}
 	}
 	
@@ -2275,7 +2322,7 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_students_peasant_credit }
 		prerequisite = { focus = BRM_thakin_students_asian_anti_colonialism }
 		completion_reward = {
-			
+			country_event = rd_burma.52
 		}
 	}
 	

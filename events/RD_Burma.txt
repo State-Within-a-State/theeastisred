@@ -1992,7 +1992,7 @@ country_event = { #Than Tun and Goshal Event
 	}
 }
 
-country_event = { #
+country_event = { #A Call For the Panglong Conference
 	id = rd_burma.44
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.44"}
 	title = rd_burma.44.title
@@ -2003,11 +2003,14 @@ country_event = { #
 	option = { #
 		name = rd_burma.44.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+			id = rd_burma.45
+			days = 7
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Invite the Shan People's?
 	id = rd_burma.45
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.45"}
 	title = rd_burma.45.title
@@ -2015,14 +2018,30 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Invite Them 
 		name = rd_burma.45.a
 		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_burma.46
+			days = 7
+		}
+		BRM_shan_resistance_decrease = yes
+		custom_effect_tooltip = we_can_integrate_shan_tt
+		set_country_flag = BRM_shan_join_panglong
 		
+	}
+	option = { # Who cares?
+		name = rd_burma.45.b
+		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_burma.46
+			days = 7
+		}
+		add_political_power = 25
 	}
 }
 
-country_event = { #
+country_event = { #Invite Kachin People
 	id = rd_burma.46
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.46"}
 	title = rd_burma.46.title
@@ -2033,11 +2052,26 @@ country_event = { #
 	option = { #
 		name = rd_burma.46.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+			id = rd_burma.47
+			days = 7
+		}
+		BRM_kachin_resistance_decrease = yes
+		custom_effect_tooltip = we_can_integrate_kachin_tt
+		set_country_flag = BRM_kachin_join_panglong
+	}
+	option = { #
+		name = rd_burma.46.b
+		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_burma.47
+			days = 7
+		}
+		add_political_power = 25
 	}
 }
 
-country_event = { #
+country_event = { #Rakhine Invite?
 	id = rd_burma.47
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.47"}
 	title = rd_burma.47.title
@@ -2048,56 +2082,264 @@ country_event = { #
 	option = { #
 		name = rd_burma.47.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+			id = rd_burma.48
+			days = 7
+		}
+		BRM_rakhine_resistance_decrease = yes
+		custom_effect_tooltip = we_can_integrate_rakhine_tt
+		set_country_flag = BRM_rakhine_join_panglong
+	}
+	option = { #
+		name = rd_burma.47.b
+		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_burma.48
+			days = 7
+		}
+		add_political_power = 25
 	}
 }
 
-country_event = { #
+country_event = { #The Sucession Clause
 	id = rd_burma.48
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.48"}
 	title = rd_burma.48.title
 	desc = rd_burma.48.desc
 	#picture = 
-	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = rd_burma.49
+				days = 7
+			}
+		}
+	}
 	is_triggered_only = yes
-	option = { #
+	option = { #Support the Right to Succede
 		name = rd_burma.48.a
 		ai_chance = { base = 100 }
 		
+		if = {
+			limit = {
+				has_country_flag = BRM_kachin_join_panglong
+			}
+			BRM_kachin_resistance_decrease = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_shan_join_panglong
+			}
+			BRM_shan_resistance_decrease = yes
+			
+		}
+		add_stability = -0.1
+		
+	}
+	option = { #Define Proper Lines for Autonomy
+		name = rd_burma.48.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = BRM_kachin_join_panglong
+			}
+			BRM_kachin_resistance_decrease = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_shan_join_panglong
+			}
+			BRM_shan_resistance_increase = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_rakhine_join_panglong
+			}
+			BRM_rakhine_resistance_decrease = yes
+			
+		}
+	}
+	
+	option = { #Unity Above All
+		name = rd_burma.48.c
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = BRM_kachin_join_panglong
+			}
+			BRM_kachin_resistance_increase = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_shan_join_panglong
+			}
+			BRM_shan_resistance_increase = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_rakhine_join_panglong
+			}
+			BRM_rakhine_resistance_increase = yes
+			
+		}
+		add_war_support = -0.1
+		add_timed_idea = {
+				idea = BRM_unity_above_all
+				days = 90
+			}
 	}
 }
 
-country_event = { #
+country_event = { #On Economic Independence
 	id = rd_burma.49
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.49"}
 	title = rd_burma.49.title
 	desc = rd_burma.49.desc
 	#picture = 
-	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = rd_burma.50
+				days = 7
+			}
+		}
+	}
 	is_triggered_only = yes
-	option = { #
+	option = { #We must demand complete financial autonomy
 		name = rd_burma.49.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+				has_country_flag = BRM_kachin_join_panglong
+			}
+			BRM_kachin_resistance_increase = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_shan_join_panglong
+			}
+			BRM_shan_resistance_decrease = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_rakhine_join_panglong
+			}
+			BRM_rakhine_resistance_increase = yes
+			
+		}
+		add_timed_idea = {
+			idea = BRM_economic_autonomy
+			days = 180
+		}
+	}
+	
+	option = { #We must grant equal revenue sharing
+		name = rd_burma.49.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = BRM_kachin_join_panglong
+			}
+			BRM_kachin_resistance_decrease = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_shan_join_panglong
+			}
+			BRM_shan_resistance_increase = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_rakhine_join_panglong
+			}
+			BRM_rakhine_resistance_decrease = yes
+			
+		}
+		add_timed_idea = {
+			idea = BRM_shared_revenue
+			days = 180
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Hill Tribes
 	id = rd_burma.50
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.50"}
 	title = rd_burma.50.title
 	desc = rd_burma.50.desc
 	#picture = 
-	
+	immediate = {
+		hidden_effect = {
+			country_event = {
+				id = rd_burma.51
+				days = 7
+			}
+		}
+	}
 	is_triggered_only = yes
-	option = { #
+	option = { #We must integrate them
 		name = rd_burma.50.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+				has_country_flag = BRM_kachin_join_panglong
+			}
+			BRM_kachin_resistance_decrease = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_shan_join_panglong
+			}
+			BRM_shan_resistance_decrease = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_rakhine_join_panglong
+			}
+			BRM_rakhine_resistance_increase = yes
+			
+		}
+	}
+	
+	option = { #Give them a hand in negotiations
+		name = rd_burma.50.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_country_flag = BRM_kachin_join_panglong
+			}
+			BRM_kachin_resistance_increase = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_shan_join_panglong
+			}
+			BRM_shan_resistance_increase = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_rakhine_join_panglong
+			}
+			BRM_rakhine_resistance_decrease = yes
+			
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Signing of the Panglong Agreement
 	id = rd_burma.51
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.51"}
 	title = rd_burma.51.title
@@ -2108,11 +2350,31 @@ country_event = { #
 	option = { #
 		name = rd_burma.51.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+				has_country_flag = BRM_kachin_join_panglong
+			}
+			BRM_kachin_resistance_decrease = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_shan_join_panglong
+			}
+			BRM_shan_resistance_decrease = yes
+			
+		}
+		if = {
+			limit = {
+				has_country_flag = BRM_rakhine_join_panglong
+			}
+			BRM_rakhine_resistance_decrease = yes
+			
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Reaching Nirvana
 	id = rd_burma.52
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.52"}
 	title = rd_burma.52.title
@@ -2123,7 +2385,79 @@ country_event = { #
 	option = { #
 		name = rd_burma.52.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			OR = {
+				has_country_leader = {
+					name = "Thakin Kodaw Hmaing"
+					ruling_only = yes
+				}
+				has_country_leader = {
+					name = "Aung San"
+					ruling_only = yes
+				}
+			}
+		}
+		set_country_leader_ideology = left_nationalism_subtype
+	}
+	
+	option = { #
+		name = rd_burma.52.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+					name = "Thakin Kodaw Hmaing"
+					ruling_only = yes
+				}
+		}
+		set_country_leader_ideology = buddhist_socialism_subtype
+	}
+	
+	option = { #
+		name = rd_burma.52.c
+		ai_chance = { base = 100 }
+		trigger = {
+			OR = {
+				has_country_leader = {
+					name = "U Ko Ko Gyi"
+					ruling_only = yes
+				}
+				has_country_leader = {
+					name = "Aung San"
+					ruling_only = yes
+				}
+			}
+		}
+		set_country_leader_ideology = radsoc_communism_subtype
+	}
+	
+	option = { #
+		name = rd_burma.52.d
+		ai_chance = { base = 100 }
+		trigger = {
+			OR = {
+				has_country_leader = {
+					name = "U Ko Ko Gyi"
+					ruling_only = yes
+				}
+				has_country_leader = {
+					name = "Thein Pe Myint"
+					ruling_only = yes
+				}
+			}
+		}
+		set_country_leader_ideology = radsoc_revisionist_marxism_subtype
+	}
+	
+	option = { #
+		name = rd_burma.52.e
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+					name = "Thein Pe Myint"
+					ruling_only = yes
+				}
+		}
+		set_country_leader_ideology = radsoc_popcom_subtype
 	}
 }
 
