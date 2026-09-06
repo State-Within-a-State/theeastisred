@@ -2461,22 +2461,63 @@ country_event = { #Reaching Nirvana
 	}
 }
 
-country_event = { #
+country_event = { #Exhaulted One Event
 	id = rd_burma.53
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.53"}
 	title = rd_burma.53.title
 	desc = rd_burma.53.desc
 	#picture = 
-	
 	is_triggered_only = yes
 	option = { #
 		name = rd_burma.53.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = national_populist }
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		create_country_leader = {
+			name = "Ba Sein"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Basein.png"
+			expire = "1965.1.1"
+			ideology = galon_nationalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Bassein_hog_npo
+			BRM_Thakin_Htun_Ok_eco_npo
+			BRM_Bo_Tauk_Htein_for_pau
+			BRM_Bo_Sakya_sec_pau
+		}
+		country_event = rd_burma.54
 	}
+	option = { #
+		name = rd_burma.53.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = paternal_autocrat }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Bo Sakya"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Bo_Sakya.png"
+			expire = "1965.1.1"
+			ideology = pataut_right_syndicalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Bassein_hog_npo
+			BRM_Thakin_Htun_Ok_eco_npo
+			BRM_Bo_Tauk_Htein_for_pau
+			BRM_Thakin_Bassein_sec_npo
+		}
+		country_event = rd_burma.54
+	}
+	
 }
 
-country_event = { #
+country_event = { #Subideology Picker For Ba Sein
 	id = rd_burma.54
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.54"}
 	title = rd_burma.54.title
@@ -2486,8 +2527,60 @@ country_event = { #
 	is_triggered_only = yes
 	option = { #
 		name = rd_burma.54.a
+		trigger = {
+			has_country_leader = {
+				name = "Ba Sein"
+				ruling_only = yes
+			}
+		}
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = galon_nationalism_subtype
+	}
+	option = { #
+		name = rd_burma.54.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Ba Sein"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = right_syndicalism_subtype
+	}
+	option = { #
+		name = rd_burma.54.c
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Ba Sein"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = natpop_pan_asianism_subtype
+	}
+	
+	
+	option = { #
+		name = rd_burma.54.d
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Bo Sakya"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = pataut_right_syndicalism_subtype
+	}
+	option = { #
+		name = rd_burma.54.e
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Bo Sakya"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = pataut_pan_asianism_subtype
 	}
 }
 

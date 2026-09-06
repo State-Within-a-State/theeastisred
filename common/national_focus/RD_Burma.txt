@@ -2379,7 +2379,21 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_bassein_counter_red_disease }
 		completion_reward = {
-			
+			add_popularity = {
+				ideology = national_populist
+				popularity = 0.1
+			}
+			add_pataut_to_coalition = yes
+			set_party_name = {
+				ideology = national_populist
+				name = BRM_Burma_Democrat_party
+				long_name = BRM_Burma_Democrat_party_long
+			}
+			set_party_name = {
+				ideology = paternal_autocrat
+				name = BRM_Burma_Democrat_party
+				long_name = BRM_Burma_Democrat_party_long
+			}
 		}
 	}
 	
@@ -2395,7 +2409,11 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_bassein_totalitarian_polity }
 		completion_reward = {
-			
+			##Use a bit later with gui
+			set_country_flag = BRM_monarchy_restored
+			add_ideas = {
+				BRM_monarchist_restored
+			}
 		}
 	}
 	
@@ -2411,7 +2429,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_bassein_totalitarian_polity }
 		completion_reward = {
-			
+			set_country_flag = BRM_the_burmanization
+				set_variable = {
+					var = burmanization_program_burma
+					value = 0
+					tooltip = burmanization_program__or_die_tt
+				}
 		}
 	}
 	focus = {
@@ -2428,7 +2451,15 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_bassein_bamar_supremacy }
 		prerequisite = { focus = BRM_thakin_bassein_prosperous_asia }
 		completion_reward = {
-			
+			custom_effect_tooltip = land_reform_burma_progress_100_tt
+			hidden_effect = {
+			set_country_flag = BRM_land_reform
+				set_variable = {
+					var = land_reform_burma_progress
+					value = 0
+					tooltip = land_reform_burma_progress_100_tt
+				}
+			}
 		}
 	}
 	
@@ -2445,7 +2476,11 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_thakin_bassein_red_turns_to_dust }
 		prerequisite = { focus = BRM_thakin_bassein_counter_red_disease }
 		completion_reward = {
-			
+			add_socdem_to_coalition = yes
+			add_timed_idea = {
+				idea = BRM_cleave_radicalism
+				days = 120
+			}
 		}
 	}
 	
@@ -2462,7 +2497,10 @@ focus_tree = {
 		mutually_exclusive = { focus = BRM_thakin_bassein_Nu_peace }
 		prerequisite = { focus = BRM_thakin_bassein_counter_red_disease }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = BRM_cleave_radicalism_1
+				days = 120
+			}
 		}
 	}
 	
@@ -2478,7 +2516,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_bassein_red_turns_to_dust focus =  BRM_thakin_bassein_Nu_peace }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_pan_asian_brotherhood
+			}
+			add_opinion_modifier = {
+				target = JAP
+				modifier = BRM_Japanese_frienship
+			}
 		}
 	}
 	
@@ -2496,7 +2540,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_bassein_bamar_supremacy }
 		prerequisite = { focus = BRM_thakin_bassein_prosperous_asia }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_nationalization_under_bamars
+			}
 		}
 	}
 	
@@ -2513,7 +2559,11 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_bassein_burmese_corporatism }
 		prerequisite = { focus = BRM_thakin_bassein_mold_rural_lands }
 		completion_reward = {
-			
+			add_research_slot = 1
+			add_ideas = {
+				BRM_exhaulted_nation
+			}
+			country_event = rd_burma.53
 		}
 	}
 	
