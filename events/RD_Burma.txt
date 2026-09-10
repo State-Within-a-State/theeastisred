@@ -89,7 +89,7 @@ country_event = { #Flag March In Shan
 	title = rd_burma.4.title
 	desc = rd_burma.4.desc
 	trigger = {
-		OR = {
+		AND = {
 				NOT = {
 					has_country_flag = BRM_integrated_shan
 				}
@@ -116,7 +116,7 @@ country_event = { #Flag March In Kachin
 	desc = rd_burma.5.desc
 	#picture = 
 	trigger = {
-		OR = {
+		AND = {
 				NOT = {
 					has_country_flag = BRM_integrated_shan
 				}
@@ -141,7 +141,7 @@ country_event = { #Flag March In Rakhine
 	desc = rd_burma.6.desc
 	#picture = 
 	trigger = {
-		OR = {
+		AND = {
 				NOT = {
 					has_country_flag = BRM_integrated_shan
 				}
@@ -520,6 +520,7 @@ country_event = { #Anti-Socialist Coup Attempt
 		name = rd_burma.16.b
 		ai_chance = { base = 80 }
 		trigger = {
+		or = {
 		check_variable = {
 				var = burma_ubca
 				value = burma_trad
@@ -530,6 +531,7 @@ country_event = { #Anti-Socialist Coup Attempt
 				value = burma_int
 				compare = less_than_or_equals
 			}
+		}
 		}
 		country_event = {
 			id = rd_burma.21
@@ -1000,6 +1002,7 @@ country_event = { #Student Faction Elections
 	immediate = {
 		hidden_effect = {
 			load_focus_tree = rd_burma_thakin_student_tree
+			complete_national_focus = BRM_thakin_students
 		}
 	}
 	#picture = 
@@ -1118,6 +1121,7 @@ country_event = { #Student Faction Elections
 			BRM_Thakin_Chit_Maung_sec_rso
 		}
 		load_focus_tree = rd_burma_ba_swe_tree
+		complete_national_focus = BRM_thakin_ba_swe_peasants_students
 	}
 }
 
@@ -1151,6 +1155,8 @@ country_event = { #
 			BRM_Thakin_Chit_Maung_sec_rso
 		}
 		load_focus_tree = rd_burma_mya_tree
+		complete_national_focus = BRM_thakin_mya_peasants_struggle
+
 	}
 	option = { #Thakin Than Tun
 		name = rd_burma.27.b
@@ -1174,6 +1180,8 @@ country_event = { #
 			BRM_Thakin_Than_Tun_sec_tot
 		}
 		load_focus_tree = rd_burma_than_tun_tree
+		complete_national_focus = BRM_thakin_than_tun_struggle_countryside
+
 	}
 	option = { #Ba Swe
 		name = rd_burma.27.c
@@ -1197,6 +1205,8 @@ country_event = { #
 			BRM_Thakin_Chit_Maung_sec_rso
 		}
 		load_focus_tree = rd_burma_ba_swe_tree
+		complete_national_focus = BRM_thakin_ba_swe_peasants_students
+
 	}
 }
 
@@ -1265,6 +1275,7 @@ country_event = { #Nagani Book Clubs
 			BRM_Sayadaw_U_Seinta_sec_rso
 		}
 		load_focus_tree = rd_burma_buddhist_socialist_tree
+		complete_national_focus = BRM_thakin_buddhist_radical_monks
 	}
 	
 	option = { #Thakin Than Tun
@@ -1289,6 +1300,8 @@ country_event = { #Nagani Book Clubs
 			BRM_Ba_Thein_Tin_sec_tot
 		}
 		load_focus_tree = rd_burma_than_tun_tree
+		complete_national_focus = BRM_thakin_than_tun_book_club_struggle
+
 	}
 }
 
@@ -1300,7 +1313,7 @@ country_event = { #Syndicalists
 	immediate = {
 		hidden_effect = {
 			load_focus_tree = rd_burma_syndie_tree
-			#add this when the focus is added complete_national_focus = 
+			complete_national_focus = BRM_thakin_syndies
 		}
 	}
 	#picture = 
