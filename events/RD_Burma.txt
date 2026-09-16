@@ -2597,7 +2597,7 @@ country_event = { #Subideology Picker For Ba Sein
 	}
 }
 
-country_event = { #
+country_event = { #Split Between the Nu and Lwin
 	id = rd_burma.55
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.55"}
 	title = rd_burma.55.title
@@ -2608,11 +2608,88 @@ country_event = { #
 	option = { #
 		name = rd_burma.55.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			has_country_leader = {
+				name "U Nu"
+				ruling_only = yes
+			}
+		}
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "U Nu"
+			picture = "gfx/leaders/BRM/Portrait_Burma_U_Nu.png"
+			expire = "1965.1.1"
+			ideology = radsoc_paternal_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_U_Nu_hog_rso
+			BRM_U_Mya_eco_sde
+			BRM_Kyaw_Zaw_for_rso
+			BRM_Ne_Win_sec_tot
+		}
+	}
+	
+	option = { #
+		name = rd_burma.55.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name "Ba Swe"
+				ruling_only = yes
+			}
+		}
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Ba Swe"
+			picture = "gfx/leaders/BRM/Portrait_Burma_Ba_Swe.png"
+			expire = "1965.1.1"
+			ideology = agrarian_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Ba_Swe_hog_rso
+			BRM_Thakin_Mya_eco_rso
+			BRM_Kyaw_Nein_for_rso
+			BRM_Thakin_Chit_Maung_sec_rso
+		}
+	}
+	
+	option = { #
+		name = rd_burma.55.c
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Lwin"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Lwin.png"
+			expire = "1965.1.1"
+			ideology = agrarian_syndicalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Lwin_hog_syn
+			BRM_Thakin_Chit_Maung_eco_syn
+			BRM_Thakin_Hla_Kyway_for_syn
+			BRM_Thakin_Ba_Win_sec_syn
+		}
+		load_focus_tree = rd_burma_thakin_lwin_tree
+		complete_national_focus = BRM_thakin_lwin_return_red_socialism
 	}
 }
 
-country_event = { #
+country_event = { #Suspcious Movements From Ne Win
 	id = rd_burma.56
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.56"}
 	title = rd_burma.56.title
@@ -2620,14 +2697,26 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Shu Maun Says Everything Is Fine
 		name = rd_burma.56.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+				id = rd_burma.58
+				days = 5
+			}
+	}
+	
+	option = { #We  Catch Shu Maung In tge Act
+		name = rd_burma.56.b
+		ai_chance = { base = 100 }
+		country_event = {
+				id = rd_burma.57
+				days = 5
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Shu Muang Arrested
 	id = rd_burma.57
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.57"}
 	title = rd_burma.57.title
@@ -2638,11 +2727,19 @@ country_event = { #
 	option = { #
 		name = rd_burma.57.a
 		ai_chance = { base = 100 }
-		
+		add_manpower = -10
+		add_stability = 0.1
+		add_war_support = -0.2
+		add_political_power = -50
+		add_popularity = {
+			ideology = totalist
+			popularity = -0.5
+		}
+		complete_national_focus = BRM_thakin_lwin_strike_against_thakins
 	}
 }
 
-country_event = { #
+country_event = { #A Purge of the Letyon Tat
 	id = rd_burma.58
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.58"}
 	title = rd_burma.58.title
@@ -2650,14 +2747,31 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Leave them be, we are in a crisis right now
 		name = rd_burma.58.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+				id = rd_burma.24
+				days = 5
+			}
+		set_country_flag = BRM_Shu_Muang_Coup
+	}
+	
+	option = { #Something is fishy....
+		name = rd_burma.58.b
+		ai_chance = { base = 100 }
+		country_event = {
+				id = rd_burma.57
+				days = 5
+			}
+		add_timed_idea = {
+			idea = BRM_purge_letyon_tat
+			days = 90
+		}
 	}
 }
 
-country_event = { #
+country_event = { #On the Question of Democratic Communism
 	id = rd_burma.59
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.59"}
 	title = rd_burma.59.title
@@ -2668,7 +2782,46 @@ country_event = { #
 	option = { #
 		name = rd_burma.59.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = syndicalist }
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Lwin"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Lwin.png"
+			expire = "1965.1.1"
+			ideology = agrarian_syndicalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Lwin_hog_syn
+			BRM_Thakin_Chit_Maung_eco_syn
+			BRM_Thakin_Hla_Kyway_for_syn
+			BRM_Thakin_Ba_Win_sec_syn
+		}
+	}
+	option = { #
+		name = rd_burma.59.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = syndicalist }
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.4
+		}
+		create_country_leader = {
+			name = "Thakin Chit Maung"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Thakin_Chit_Maung.png"
+			expire = "1965.1.1"
+			ideology = syn_popcom_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Chit_Maung_hog_syn
+			BRM_Thakin_Lwin_eco_syn
+			BRM_Thakin_Hla_Kyway_for_syn
+			BRM_Thakin_Ba_Win_sec_syn
+		}
 	}
 }
 
@@ -2683,7 +2836,38 @@ country_event = { #
 	option = { #
 		name = rd_burma.60.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			has_country_leader = {
+				name = "Thakin Lwin"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = centralized_syndicalism_subtype
+	}
+	
+	
+	
+	option = { #
+		name = rd_burma.60.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Thakin Chit Maung"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = syn_popcom_subtype
+	}
+	option = { #
+		name = rd_burma.60.c
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Thakin Chit Maung"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = syn_radical_progressivism_subtype
 	}
 }
 

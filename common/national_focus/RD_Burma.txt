@@ -2811,6 +2811,267 @@ focus_tree = {
 		}
 	}
 }
+
+focus_tree = {
+	id = rd_burma_thakin_lwin_tree
+	continuous_focus_position = { x = 0 y = 3000 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 0
+			tag = BRM
+		}
+	}
+	shared_focus = BRM_assessing_our_crisis
+	shared_focus = BRM_emergency_edicts
+	shared_focus = BRM_army_claws_on_land
+	shared_focus = BRM_navy_float_irrawaddy
+	shared_focus = BRM_airforce_bird_spreads_wings
+	shared_focus = BRM_socfp_feathers_across_continent
+
+	focus = {
+		id = BRM_thakin_lwin_return_red_socialism
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_assessing_our_crisis
+		x = 30
+		y = 0
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		available = {
+		always = no
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_strike_against_thakins
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		select_effect = {
+			country_event = {
+				id = rd_burma.56
+				days = 5
+			}
+		}
+		available = {
+			NOT = {
+				has_country_flag = BRM_Shu_Muang_Coup
+			}
+		}
+		prerequisite = { focus = BRM_thakin_lwin_return_red_socialism }
+		completion_reward = {
+			custom_effect_tooltip = unlock_focuses
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_affirm_anti_imperialism
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = -2
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_thakin_lwin_strike_against_thakins }
+		completion_reward = {
+			add_ideas = {
+				BRM_anti_colonial_committee
+			}
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_trials_of_widura
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = -2
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_thakin_lwin_affirm_anti_imperialism }
+		completion_reward = {
+			add_timed_idea = {
+				idea = BRM_suffering_we_must
+				days = 120
+			}
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_better_pyidawtha
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = -3
+		y = 4
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_thakin_lwin_trials_of_widura }
+		completion_reward = {
+			add_ideas = {
+				BRM_beyond_pyidawtha
+			}
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_burmese_identity
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = -1
+		y = 4
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_thakin_lwin_trials_of_widura }
+		completion_reward = {
+			if = {
+				limit = {
+					has_country_flag = BRM_burmanization_complete
+				}
+				add_ideas = {
+					BRM_burmese_identity_strengthened
+				}
+			}
+			else = {
+				set_country_flag = BRM_the_burmanization
+				set_variable = {
+					var = burmanization_program_burma
+					value = 0
+					tooltip = burmanization_program__or_die_tt
+				}
+			}
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_mass_moblization
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = 2
+		y = 2
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_thakin_lwin_strike_against_thakins }
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_walk_with_unions
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = 1
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_thakin_lwin_farmer_guidance }
+		prerequisite = { focus = BRM_thakin_lwin_mass_moblization }
+		completion_reward = {
+			add_ideas = {
+				BRM_burmese_workers_strengthened
+			}
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_farmer_guidance
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = 3
+		y = 3
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = BRM_thakin_lwin_walk_with_unions }
+		prerequisite = { focus = BRM_thakin_lwin_mass_moblization }
+		completion_reward = {
+			add_ideas = {
+				BRM_burmese_peasants_strengthened
+			}
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_democratic_communism
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = 2
+		y = 4
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_thakin_lwin_walk_with_unions focus = BRM_thakin_lwin_farmer_guidance }
+		completion_reward = {
+			country_event = rd_burma.59
+			add_political_power = 30
+			add_stability = 0.05
+		}
+	}
+	
+	focus = {
+		id = BRM_thakin_lwin_socialist_diamonds
+		icon = GFX_goal_QIO_revolution
+		relative_position_id = BRM_thakin_lwin_return_red_socialism
+		x = 0
+		y = 5
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = BRM_thakin_lwin_democratic_communism }
+		prerequisite = { focus = BRM_thakin_lwin_burmese_identity }
+		prerequisite = { focus = BRM_thakin_lwin_better_pyidawtha }
+		completion_reward = {
+			add_ideas = {
+				BRM_socialism_diamonds
+			}
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							has_country_leader = {
+								name = "Thakin Lwin"
+								ruling_only = yes
+							}
+								has_completed_focus = BRM_thakin_lwin_walk_with_unions
+						}
+						has_country_leader = {
+							name = "Thakin Chit Maung"
+							ruling_only = yes
+						}
+					}
+				}
+				country_event = rd_burma.60
+			}
+		}
+	}
+	
+}
 focus_tree = {
 	id = rd_Burma_U_Thwin_tree
 	continuous_focus_position = { x = 0 y = 3000 } 
@@ -6090,7 +6351,9 @@ focus_tree = {
 			FOCUS_FILTER_POLITICAL
 		}
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_socialist_fp_idea
+			}
 
 		}
 	}
