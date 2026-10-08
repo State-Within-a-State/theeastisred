@@ -28,7 +28,7 @@ country_event = { #Socialist Revolution in Tianjin Event
 	}
 }
 
-country_event = { #
+country_event = { #The Dockworkers Go On Strike
 	id = rd_tianjin.1
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.1"}
 	title = rd_tianjin.1.title
@@ -36,19 +36,36 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Support the Dockworkers
 		name = rd_tianjin.1.a
 		ai_chance = { base = 100 }
+		add_power_balance_value = {
+				id = tia_jap_ind_balance
+				value = -0.1
+				tooltip_side = tia_left_side
+			}
+		country_event = {
+				id = rd_tianjin.2
+				days = 14
+			}
 	}
 	
-	option = { #
+	option = { #Tell the Workers to Calmdown, we need to maintain a some local economy with the traders
 		name = rd_tianjin.1.b
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+			id = tia_jap_ind_balance
+			value = 0.1
+			tooltip_side = jap_right_side
+		}
+		country_event = {
+			id = rd_tianjin.2
+			days = 14
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Stand off With the Railway Workers
 	id = rd_tianjin.2
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.2"}
 	title = rd_tianjin.2.title
@@ -56,14 +73,35 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Side With the Workers
 		name = rd_tianjin.2.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+			id = tia_jap_ind_balance
+			value = -0.1
+			tooltip_side = tia_left_side
+		}
+		country_event = {
+			id = rd_tianjin.3
+			days = 14
+		}
+	}
+	option = { #We must keep the city going, disperse them
+		name = rd_tianjin.2.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+			id = tia_jap_ind_balance
+			value = 0.1
+			tooltip_side = jap_right_side
+		}
+		country_event = {
+			id = rd_tianjin.3
+			days = 14
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Guilds and Triads
 	id = rd_tianjin.3
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.3"}
 	title = rd_tianjin.3.title
@@ -71,13 +109,33 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must not support these reactionaries
 		name = rd_tianjin.3.a
-		
+		add_power_balance_value = {
+			id = tia_jap_ind_balance
+			value = -0.05
+			tooltip_side = tia_left_side
+		}
+		country_event = {
+			id = rd_tianjin.4
+			days = 14
+		}
+	}
+	option = { #We must unite to defeat our common enemies
+		name = rd_tianjin.3.b
+		add_power_balance_value = {
+			id = tia_jap_ind_balance
+			value = 0.05
+			tooltip_side = jap_right_side
+		}
+		country_event = {
+			id = rd_tianjin.4
+			days = 14
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Question of the Peasantry
 	id = rd_tianjin.4
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.4"}
 	title = rd_tianjin.4.title
@@ -85,14 +143,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must unite with our peasant comrades
 		name = rd_tianjin.4.a
 		ai_chance = { base = 100 }
-		
+		add_power_balance_value = {
+			id = tia_jap_ind_balance
+			value = -0.05
+			tooltip_side = tia_left_side
+		}
+	}
+	
+	option = { #Marx says the revolution must be from the workers not the peasants!
+		name = rd_tianjin.4.b
+		ai_chance = { base = 100 }
+		add_power_balance_value = {
+			id = tia_jap_ind_balance
+			value = 0.05
+			tooltip_side = jap_right_side
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Success of the Communist Revolution in Tianjin
 	id = rd_tianjin.5
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.5"}
 	title = rd_tianjin.5.title
@@ -103,11 +175,22 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.5.a
 		ai_chance = { base = 100 }
-		
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.2
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.2
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Japanese Intervention In Tianjin
 	id = rd_tianjin.6
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.6"}
 	title = rd_tianjin.6.title
@@ -118,11 +201,25 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.6.a
 		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = market_liberal
+		}
+		add_popularity = {
+			ideology = market_liberal
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Gao_Lingwei_hog_mli
+		TIA_Wang_Zhulin_eco_mli
+		TIA_Fang_Ruo_for_mli
+		TIA_Liu_Yushu_sec_pau
+		}
 		
 	}
 }
 
-country_event = { #
+country_event = { #Collapse of the Communists and Japanese influence - Pan yugui and Chang Yuqing come to power
 	id = rd_tianjin.7
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.7"}
 	title = rd_tianjin.7.title
@@ -133,7 +230,39 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.7.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = paternal_autocrat
+		}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Pan_Yugui_hog_pau
+		TIA_Niu_Chuanshan_eco_pau
+		TIA_Sun_Runyu_for_pau
+		TIA_Shen_Tongwu_sec_pau
+		}
+	}
+	
+	option = { #
+		name = rd_tianjin.7.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = national_populist
+		}
+		add_popularity = {
+			ideology = national_populist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Chang_Yuqing_hog_npo
+		TIA_Zhang_Dexin_eco_npo
+		TIA_Qian_Hongnian_for_npo
+		TIA_Zhang_Xiangyun_sec_npo
+		}
 	}
 }
 

@@ -38,85 +38,194 @@ political_actions = { #generic for now, idk what decision to put this into
 
 TIA_japan_ind_balance_category = {
 
-TIA_jap_ind_balance = {
-		name = TIA_jap_ind_balance_war
-		icon = revolt
-		priority = 1
-
-		allowed = {
-		is_power_balance_in_range = {
-				id = TIA_tia_jap_ind_balance
-				range > TIA_tia_left_side
-			}
+TIA_japanese_takeover_mission = {
+		activation = {
+			has_country_flag = TIA_independence_struggle
+		}
+		available = {
+			always = no
 			
 		}
-
-		available = {
-			is_power_balance_in_range = {
-				id = TIA_tia_jap_ind_balance
-				range < TIA_tia_left_side
-			}
+		cancel_trigger = {
+			
 		}
-
 		
-
-		days_mission_timeout = 30
+		icon = mission_icon     # For GFX_decision_mission_icon
 		is_good = no
-
-		timeout_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision timeout JAP_fading_sun_mission"
-				
-		country_event = {
-		id = tianjin.2
-		days = 1
-		}
-		complete_national_focus = TIA_a_state_of_independence
-		}
-
-		cancel_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision cancelled JAP_fading_sun_mission"
-			JAP = {
-			puppet = TIA
-			}
-			complete_national_focus = TIA_japanese_occupation
-		}
-	}
-
-CNH_destroy_the_league = {
-		icon = generic_ignite_civil_war
-		
-		available = {
-			is_neighbor_of = FROM
-		}
-		
-		visible = {
-			is_subject = no
-			can_declare_war_on = FROM
-			has_completed_focus = LEC_secure_the_foreign_quarters
-			has_completed_focus = LEC_secure_the_east
-		}
-		
-		
-
-		cost = 20
-		days_remove = 1
+	   
+		days_mission_timeout = 100
+		selectable_mission = no
 		fire_only_once = yes
-		cancel_if_not_visible = yes
-		war_with_target_on_remove = yes
-
 		complete_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			
-				
-				
-			
-		remove_effect = {
-			log = "[GetDateText]: [Root.GetName]: Decision remove CHI_dec_2nd_northern_expedition target: [From.GetName]"
-			
-			
+		
+		}
+		timeout_effect = {
+			if = {
+				limit = {
+					power_balance_value = {
+						id = tia_jap_ind_balance
+						value > 0.1
+					}
+				}
+				country_event = rd_tianjin.6
+			}
+			if = {
+				limit = {
+					power_balance_value = {
+						id = tia_jap_ind_balance
+						value < -0.1
+					}
+				}
+				country_event = rd_tianjin.5
+			}
+			if = {
+				limit = {
+					power_balance_value = {
+						id = tia_jap_ind_balance
+						value < 0.1
+					}
+					power_balance_value = {
+						id = tia_jap_ind_balance
+						value > -0.1
+					}
+				}
+				country_event = rd_tianjin.7
+			}
+		}
+	}
+	
+	TIA_arm_workers_militias = { #
+		icon = GFX_decision_generic_independence
+
+		available = {
+			has_country_flag = TIA_independence_struggle
+		}
+
+		visible = {
+		
+
 		}
 		
+
+		cost = 10
+		days_re_enable = 20
+		fire_only_once = no
+		days_remove = 5
+		modifier = {
+		consumer_goods_factor = -0.05
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
+			
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
+			
+			add_power_balance_value = {
+				id = tia_jap_ind_balance
+				value = -0.1
+				tooltip_side = tia_left_side
+			}
+			
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = -500
+				producer = TIA
+			}
+			add_political_power = 15
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
 	}
+	
+	TIA_reach_out_international_smuggling_networks = { #
+		icon = GFX_decision_generic_independence
+
+		available = {
+			has_country_flag = TIA_independence_struggle
+		}
+
+		visible = {
+		
+
+		}
+		
+
+		cost = 10
+		days_re_enable = 20
+		fire_only_once = no
+		days_remove = 5
+		modifier = {
+		consumer_goods_factor = -0.05
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
+			
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
+			
+			add_power_balance_value = {
+				id = tia_jap_ind_balance
+				value = 0.1
+				tooltip_side = jap_right_side
+			}
+			
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 400
+				producer = TIA
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	
+	TIA_pan_asian_promotion = { #
+		icon = GFX_decision_generic_independence
+
+		available = {
+			has_country_flag = TIA_independence_struggle
+		}
+
+		visible = {
+		
+
+		}
+		
+
+		cost = 10
+		days_re_enable = 20
+		fire_only_once = no
+		days_remove = 5
+		modifier = {
+		consumer_goods_factor = -0.05
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
+			
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
+			
+			add_power_balance_value = {
+				id = tia_jap_ind_balance
+				value = 0.1
+				tooltip_side = jap_right_side
+			}
+			
+			add_war_support = 0.1
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+
 }
 
 
