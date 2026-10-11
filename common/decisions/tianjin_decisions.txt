@@ -50,7 +50,7 @@ TIA_japanese_takeover_mission = {
 			
 		}
 		
-		icon = mission_icon     # For GFX_decision_mission_icon
+		icon = GFX_decision_japan_sun_decision_icon     # For GFX_decision_mission_icon
 		is_good = no
 	   
 		days_mission_timeout = 100
@@ -95,7 +95,7 @@ TIA_japanese_takeover_mission = {
 	}
 	
 	TIA_arm_workers_militias = { #
-		icon = GFX_decision_generic_independence
+		icon = GFX_decision_soldierly_discipline
 
 		available = {
 			has_country_flag = TIA_independence_struggle
@@ -112,7 +112,9 @@ TIA_japanese_takeover_mission = {
 		fire_only_once = no
 		days_remove = 5
 		modifier = {
-		consumer_goods_factor = -0.05
+		army_defence_against_major_factor = 0.05
+		army_core_defence_factor = 0.075
+		max_dig_in_factor = 0.05
 		}
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -141,7 +143,7 @@ TIA_japanese_takeover_mission = {
 	}
 	
 	TIA_reach_out_international_smuggling_networks = { #
-		icon = GFX_decision_generic_independence
+		icon = GFX_decision_global_trade
 
 		available = {
 			has_country_flag = TIA_independence_struggle
@@ -154,11 +156,11 @@ TIA_japanese_takeover_mission = {
 		
 
 		cost = 10
-		days_re_enable = 20
+		days_re_enable = 10
 		fire_only_once = no
-		days_remove = 5
+		days_remove = 20
 		modifier = {
-		consumer_goods_factor = -0.05
+		consumer_goods_factor = -0.1
 		}
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -178,6 +180,10 @@ TIA_japanese_takeover_mission = {
 				amount = 400
 				producer = TIA
 			}
+			add_popularity = {
+				ideology = paternal_autocrat
+				popularity = 0.025
+			}
 		}
 
 		ai_will_do = {
@@ -186,7 +192,7 @@ TIA_japanese_takeover_mission = {
 	}
 	
 	TIA_pan_asian_promotion = { #
-		icon = GFX_decision_generic_independence
+		icon = GFX_decision_decision_globe_asia
 
 		available = {
 			has_country_flag = TIA_independence_struggle
@@ -203,7 +209,7 @@ TIA_japanese_takeover_mission = {
 		fire_only_once = no
 		days_remove = 5
 		modifier = {
-		consumer_goods_factor = -0.05
+		
 		}
 		complete_effect = {
 			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
@@ -219,6 +225,55 @@ TIA_japanese_takeover_mission = {
 			}
 			
 			add_war_support = 0.1
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = authoritarian_democrat
+				popularity = 0.025
+			}
+		}
+
+		ai_will_do = {
+			factor = 50
+		}
+	}
+	
+	TIA_anti_concesionist_agitation = { #
+		icon = GFX_decision_category_export_revolution
+
+		available = {
+			has_country_flag = TIA_independence_struggle
+		}
+
+		visible = {
+		
+
+		}
+		
+
+		cost = 10
+		days_re_enable = 20
+		fire_only_once = no
+		days_remove = 15
+		modifier = {
+		
+		}
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision CAN_showcase_british_culture"
+			
+		}
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove CAN_showcase_british_culture"
+			
+			add_power_balance_value = {
+				id = tia_jap_ind_balance
+				value = -0.1
+				tooltip_side = tia_left_side_side
+			}
+			
+			add_stability = -0.05
 		}
 
 		ai_will_do = {
