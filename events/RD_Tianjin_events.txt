@@ -19,6 +19,7 @@ country_event = { #Socialist Revolution in Tianjin Event
 			set_nationality = TIA
 			}
 		}
+		load_oob = "Tianjin_Units"
 
 		}
 		country_event = {
@@ -187,6 +188,9 @@ country_event = { #Success of the Communist Revolution in Tianjin
 			ideology = radical_socialist
 			popularity = 0.2
 		}
+		remove_ideas = {
+		TIA_japanese_inflence
+		}
 	}
 }
 
@@ -214,6 +218,9 @@ country_event = { #Japanese Intervention In Tianjin - the old forces are more po
 		TIA_Wang_Zhulin_eco_mli
 		TIA_Fang_Ruo_for_mli
 		TIA_Liu_Yushu_sec_pau
+		}
+		remove_ideas = {
+		TIA_red_flag_over_tianjin
 		}
 		
 	}
@@ -313,7 +320,7 @@ country_event = { #Meeting of Committee
 	}
 }
 
-country_event = { #
+country_event = { #Tianjin Requests Rifles From Us
 	id = rd_tianjin.9
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.9"}
 	title = rd_tianjin.9.title
@@ -321,10 +328,30 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { # Send Obsolete Equipment
 		name = rd_tianjin.9.a
-		ai_chance = { base = 100 }
-		
+		TIA = {
+			country_event = {
+				id = fengtian.95
+				days = 1
+			}
+		}
+		ai_chance = {
+			factor = 60
+		}
+	}
+
+	option = { # Refuse to send anything
+		name = rd_tianjin.9.b
+		TIA = {
+			country_event = {
+				id = fengtian.971
+				days = 1
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
 	}
 }
 
@@ -339,7 +366,30 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.10.a
 		ai_chance = { base = 100 }
-		
+		TIA = {
+			country_event = {
+				id = fengtian.92
+				days = 1
+			}
+		}
+		JAP = {
+			add_equipment_to_stockpile = { # ~1939
+				type = artillery_equipment_1
+				amount = -200
+				producer = JAP
+			}
+		}
+	}
+	
+	option = { #
+		name = rd_tianjin.10.a
+		ai_chance = { base = 100 }
+		TIA = {
+			country_event = {
+				id = fengtian.971
+				days = 1
+			}
+		}
 	}
 }
 

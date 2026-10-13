@@ -285,10 +285,102 @@ TIA_japanese_takeover_mission = {
 
 
 
+TIA_request_arms_imports_category = {
+	TIA_Request_Japanese_Small_Arms = {
+		icon = GFX_decision_generic_industry
 
+		available = {
+			JAP = { has_tech = infantry_weapons1 }
+			NOT = { has_country_flag = japan_equipment_request_active }
+			
+		}
 
+		visible = {
+			has_country_flag = TIA_arms_imports_decisions_unlock
+		}
 
+		cost = 35
+		days_remove = 35
 
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				stockpile_ratio = {
+					archetype = infantry_equipment
+					ratio < 0.75
+				}
+			}
+			
+			modifier = {
+				factor = 0
+				has_political_power < 50
+			}
+		}
 
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision FNG_Request_Japanese_Small_Arms"
+			set_country_flag = japan_equipment_request_active
+		}
 
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove FNG_Request_Japanese_Small_Arms"
+			JAP = {
+				country_event = {
+					id = rd_tianjin.9
+				}
+			}
+			
+		}
+	}
+	TIA_Request_Japanese_Artillery = {
+		icon = GFX_decision_ger_military_buildup
+
+		available = {
+			JAP = { has_tech = artillery1 }
+			NOT = { has_country_flag = japan_equipment_request_active }
+			
+		}
+
+		visible = {
+			has_country_flag = TIA_arms_imports_decisions_unlock
+		}
+
+		cost = 45
+		days_remove = 35
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 100
+				stockpile_ratio = {
+					archetype = artillery_equipment
+					ratio < 0.75
+				}
+			}
+			
+			modifier = {
+				factor = 0
+				has_political_power < 60
+			}
+		}
+
+		complete_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision FNG_Request_Japanese_Artillery"
+			set_country_flag = japan_equipment_request_active
+		}
+
+		remove_effect = {
+			log = "[GetDateText]: [Root.GetName]: Decision remove FNG_Request_Japanese_Artillery"
+			JAP = {
+				country_event = {
+					id = rd_tianjin.10
+					days = 1
+				}
+			}
+			
+		}
+	}
+
+	
 }

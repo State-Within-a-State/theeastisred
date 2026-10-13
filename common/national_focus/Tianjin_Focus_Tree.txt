@@ -1050,12 +1050,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
-		available = {
-		always = no
-		}
+		
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-		custom_effect_tooltip = unlock_focuses
+			swap_ideas = {
+				remove_idea = TIA_isolated_city_state
+				add_idea = TIA_isolated_city_state_1
+			}
 		}
 	}
 	
@@ -1073,7 +1074,19 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_end_to_economic_isolation }
 		completion_reward = {
-		
+			609 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
@@ -1088,11 +1101,19 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = {
+			OR = {
+				has_completed_focus = TIA_japan_council_meeting
+				has_completed_focus = TIA_exhaulted_one
+			}
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_re_open_ports }
 		mutually_exclusive = { focus = TIA_seize_last_concessions }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_dock_yard_support
+			}
 		}
 	}
 	
@@ -1107,11 +1128,19 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = {
+			OR = {
+				has_completed_focus = TIA_red_sky_tianjin
+				has_completed_focus = TIA_exhaulted_one
+			}
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_re_open_ports }
 		mutually_exclusive = { focus = TIA_merchant_support }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_concessions_support
+			}
 		}
 	}
 	
@@ -1129,7 +1158,14 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_end_to_economic_isolation }
 		completion_reward = {
-		
+			609 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 	}
 	
@@ -1147,7 +1183,18 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_expand_railway_hub }
 		completion_reward = {
-		
+			609 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_timed_ideas = {
+				idea = TIA_textile_improvements
+				days = 120
+			}
 		}
 	}
 	
@@ -1166,7 +1213,29 @@ focus_tree = {
 		prerequisite = {focus = TIA_expand_railway_hub }
 		prerequisite = {focus = TIA_tunnel_warfare focus = TIA_great_power_study }
 		completion_reward = {
-		
+			609 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+				producer = TIA
+			}
+			add_equipment_to_stockpile = {
+				type = artillery_equipment
+				amount = 250
+				producer = TIA
+			}
+			add_equipment_to_stockpile = {
+				type = anti_tank_equipment
+				amount = 100
+				producer = TIA
+			}
 		}
 	}
 	
@@ -1186,7 +1255,10 @@ focus_tree = {
 		prerequisite = {focus = TIA_seize_last_concessions focus = TIA_merchant_support }
 		prerequisite = {focus = TIA_grow_textiles }
 		completion_reward = {
-		
+			swap_ideas = {
+				remove_idea = TIA_isolated_city_state_1
+				add_idea = TIA_isolated_city_state_2
+			}
 		}
 	}
 	
@@ -1202,12 +1274,14 @@ focus_tree = {
 			factor = 70
 		}
 		available = {
-		always = no
+			has_completed_focus = TIA_japan_council_meeting
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		mutually_exclusive = { focus = TIA_arming_locals }
 		completion_reward = {
-		custom_effect_tooltip = unlock_focuses
+			unlock_decision_category_tooltip = TIA_request_arms_imports_category
+			army_experience = 25
+			set_country_flag = TIA_arms_imports_decisions_unlock
 		}
 	}
 	
@@ -1300,7 +1374,20 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_tunnel_warfare focus = TIA_great_power_study }
 		completion_reward = {
-		
+			609 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 10068
+				}
+				add_building_construction = {
+					type = coastal_bunker
+					level = 3
+					instant_build = yes
+					province = 10068
+				}
+			}
 		}
 	}
 	
