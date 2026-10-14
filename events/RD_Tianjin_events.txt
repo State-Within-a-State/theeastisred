@@ -191,6 +191,7 @@ country_event = { #Success of the Communist Revolution in Tianjin
 		remove_ideas = {
 		TIA_japanese_inflence
 		}
+		complete_national_focus = TIA_red_sky_tianjin
 	}
 }
 
@@ -222,7 +223,7 @@ country_event = { #Japanese Intervention In Tianjin - the old forces are more po
 		remove_ideas = {
 		TIA_red_flag_over_tianjin
 		}
-		
+		set_country_flag = TIA_Japanese_Collab_Won
 	}
 }
 
@@ -252,6 +253,10 @@ country_event = { #the communists never consolidated, Japan can't get what they 
 		TIA_Zhang_Dexin_eco_npo
 		TIA_Qian_Hongnian_for_npo
 		TIA_Zhang_Xiangyun_sec_npo
+		}
+		remove_ideas = {
+		TIA_red_flag_over_tianjin
+		TIA_japanese_inflence
 		}
 	}
 }
@@ -393,7 +398,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Soviet Exiles
 	id = rd_tianjin.11
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.11"}
 	title = rd_tianjin.11.title
@@ -404,11 +409,23 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.11.a
 		ai_chance = { base = 100 }
+		create_corps_commander = {
+				name = "Vladimir Neumann"
+				portrait_path = "gfx/leaders/TIA/Portrait_TIA_Hong_Lingge.png"
+				traits = {
+				infantry_officer
+				}
+				skill = 2
+				attack_skill = 2
+				defense_skill = 3
+				planning_skill = 2
+				logistics_skill = 2
+			}
 		
 	}
 }
 
-country_event = { #
+country_event = { #Formation of the Communist Party of China
 	id = rd_tianjin.12
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.12"}
 	title = rd_tianjin.12.title
@@ -419,7 +436,15 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.12.a
 		ai_chance = { base = 100 }
-		
+		set_party_name = {
+			ideology = totalist
+			long_name = TIA_communist_party_long
+			name = TIA_communist_party
+		}
+		swap_ideas = {
+			remove_idea = TIA_red_flag_over_tianjin
+			add_idea = TIA_red_flag_over_tianjin_1
+		}
 	}
 }
 
