@@ -101,7 +101,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_revive_anti_imperialist_alliance }
 		prerequisite = {focus = TIA_exile_reachout }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_setting_alight_road_to_liberation
+			}
 		}
 	}
 	focus = {
@@ -118,7 +120,36 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_long_road_to_liberation }
 		completion_reward = {
-		
+			if = {
+				limit = {
+					MON = {
+						has_socialist_government = yes
+					}
+				}
+				add_opinion_modifier = {
+					target = MON
+					modifier = TIA_Mongolia_friendship
+				}
+				MON = {
+					add_opinion_modifier = {
+						target = TIA
+						modifier = TIA_Mongolia_friendship
+					}
+				}
+			}
+			else = {
+				add_opinion_modifier = {
+					target = MON
+					modifier = TIA_Mongolia_enemies
+				}
+				MON = {
+					add_opinion_modifier = {
+						target = TIA
+						modifier = TIA_Mongolia_enemies
+					}
+				}
+			}
+			
 		}
 	}
 	
