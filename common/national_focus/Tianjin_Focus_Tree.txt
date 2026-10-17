@@ -268,7 +268,24 @@ focus_tree = {
 		prerequisite = {focus = TIA_long_road_to_liberation }
 		mutually_exclusive = { focus = TIA_national_proletarian_theory }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_broad_socialist_revolution
+			}
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.075
+			}
+			
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.025
+			}
+			add_popularity = {
+				ideology = social_liberal
+				popularity = 0.025
+			}
+			add_socdem_to_coalition = yes
+			add_soclib_to_coalition = yes
 		}
 	}
 	
@@ -287,7 +304,13 @@ focus_tree = {
 		prerequisite = {focus = TIA_long_road_to_liberation }
 		mutually_exclusive = { focus = TIA_stages_revoltuion }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_the_workers_revolution
+			}
+			add_popularity = {
+				ideology = syndicalist
+				popularity = 0.075
+			}
 		}
 	}
 	
@@ -305,7 +328,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_stages_revoltuion focus = TIA_national_proletarian_theory }
 		completion_reward = {
-		
+			add_timed_idea = {
+				idea = TIA_the_thousnad_li
+				days = 120
+			}
 		}
 	}
 	
@@ -323,7 +349,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_thousand_li_in_a_day }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_the_youth_to_countryside
+			}
 		}
 	}
 	
@@ -341,7 +369,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_thousand_li_in_a_day }
 		completion_reward = {
-		
+			country_event = rd_tianjin.14
 		}
 	}
 	
@@ -356,12 +384,37 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = { 		
+		owns_state = 608
+		owns_state = 613
+		owns_state = 716
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_collecitve_spirit }
 		prerequisite = {focus = TIA_youth_intellectual_villages }
 		prerequisite = {focus = TIA_against_pan_asianism }
 		completion_reward = {
-		
+		custom_effect_tooltip = CHI_focus_tree_will_change_tt
+
+			hidden_effect = {
+			set_country_flag = has_united_china
+			set_global_flag = china_united
+			country_event = {
+					id = tibet_socialist.6 #capital
+					days = 1
+				}
+			add_timed_idea = {
+				idea = unite_china_justification_idea
+				days = 150
+			}
+				#news_event = {
+					#id = worldnews.413
+					#days = 5
+				#}
+
+			#load_focus_tree = 
+			#complete_national_focus = 
+			}
 		}
 	}
 	
