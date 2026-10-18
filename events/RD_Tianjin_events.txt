@@ -406,21 +406,34 @@ country_event = { #Soviet Exiles
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Welcome These Exiles With Open Arms
 		name = rd_tianjin.11.a
 		ai_chance = { base = 100 }
-		create_corps_commander = {
-				name = "Vladimir Neumann"
-				portrait_path = "gfx/leaders/TIA/Portrait_TIA_Hong_Lingge.png"
-				traits = {
-				infantry_officer
-				}
-				skill = 2
-				attack_skill = 2
-				defense_skill = 3
-				planning_skill = 2
-				logistics_skill = 2
-			}
+		
+		swap_ideas = {
+			remove_idea = TIA_Zhang_Ruoming_for_tot
+			add_idea = TIA_Grigori_Voitinsky_for_tot
+		}
+		add_ideas = {
+		TIA_advisory_sovet_1
+		}
+		create_operative_leader = {
+			name = "Vladimir Neumann"
+			GFX = GFX_portrait_jacques_duclos
+			traits = { operative_infiltrator operative_natural_orator }
+			bypass_recruitment = no
+			available_to_spy_master = yes
+			nationalities = { RUS }
+		}
+		
+	}
+	
+	option = { #We should hold off inetgrating them too much into our government
+		name = rd_tianjin.11.b
+		ai_chance = { base = 100 }
+		add_ideas = {
+		TIA_advisory_sovet
+		}
 		
 	}
 }
