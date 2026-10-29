@@ -451,10 +451,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = {
+		always = no
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_japan_council_meeting }
 		completion_reward = {
-		
+		custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -469,10 +472,19 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		bypass = {
+			QIE = {
+				has_completed_focus = QIE_wu_constitution
+			}
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_maintain_order }
 		completion_reward = {
-		
+		add_opinion_modifier = {
+				target = QIE
+				modifier = faction_traitor
+			}
+		country_event = rd_tianjin.15
 		}
 	}
 	
@@ -490,7 +502,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_maintain_order }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_tighten_rope
+			}
 		}
 	}
 	
@@ -508,7 +522,15 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_maintain_order }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_swarn_pan_asian_brotherhood
+			}
+			hidden_effect = {
+				country_event = {
+					id = rd_tianjin.16
+					days = 14
+				}
+			}
 		}
 	}
 	
@@ -528,7 +550,10 @@ focus_tree = {
 		prerequisite = {focus = TIA_tighten_workers_rope }
 		prerequisite = {focus = TIA_advances_from_zhili }
 		completion_reward = {
-		
+			add_timed_ideas = {
+				idea = TIA_taxation_revising
+				days = 120
+			}
 		}
 	}
 	
@@ -546,11 +571,13 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_revise_taxation }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_maintainence_committee
+			}
 		}
 	}
 	
-	focus = {
+	focus = { #Enact the Heping Yundong
 		id = TIA_sunify_five_provinces
 		icon = GFX_goal_LEC_reforged_enterprise
 		relative_position_id = TIA_maintain_order
@@ -564,7 +591,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_revise_taxation }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_peace_movement
+			}
 		}
 	}
 	
@@ -584,7 +613,14 @@ focus_tree = {
 		prerequisite = {focus = TIA_tighten_workers_rope }
 		prerequisite = {focus = TIA_advances_from_zhili }
 		completion_reward = {
-		
+			add_political_power = 50
+			add_marlib_to_coalition = yes
+			add_soccon_to_coalition = yes
+			add_authdem_to_coalition = yes
+			add_timed_ideas = {
+				idea = TIA_civilian_reproachment
+				days = 90
+			}
 		}
 	}
 	
@@ -602,7 +638,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_reproach_civilian_leaders }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_new_economic_ownership
+			}
 		}
 	}
 	
@@ -617,12 +655,37 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = { 		
+		owns_state = 608
+		owns_state = 613
+		owns_state = 716
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_meirt_economic_ownership }
 		prerequisite = {focus = TIA_security_maintainence_committee }
 		prerequisite = {focus = TIA_sunify_five_provinces }
 		completion_reward = {
-		
+		custom_effect_tooltip = CHI_focus_tree_will_change_tt
+
+			hidden_effect = {
+			set_country_flag = has_united_china
+			set_global_flag = china_united
+			country_event = {
+					id = tibet_socialist.6 #capital
+					days = 1
+				}
+			add_timed_idea = {
+				idea = unite_china_justification_idea
+				days = 150
+			}
+				#news_event = {
+					#id = worldnews.413
+					#days = 5
+				#}
+
+			#load_focus_tree = 
+			#complete_national_focus = 
+			}
 		}
 	}
 	
