@@ -622,9 +622,11 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_reproach_civilian_leaders }
 		completion_reward = {
-			add_ideas = {
-				TIA_new_economic_ownership
+			swap_ideas = {
+				remove_idea = TIA_japanese_inflence
+				add_idea = TIA_new_economic_ownership
 			}
+			
 		}
 	}
 	
@@ -668,10 +670,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = {
+			always = yes
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_japan_council_meeting }
 		completion_reward = {
-		
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -689,7 +694,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_lingyun_holds }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_buddhist_research_association_idea
+			}
 		}
 	}
 	
@@ -707,11 +714,21 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_whipster_cao_kun_ear }
 		completion_reward = {
-		
+			add_soccon_to_coalition = yes
+			add_popularity = {
+				ideology = social_conservative
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = market_liberal
+				popularity = 0.075
+			}
+			add_political_power = 50
+			add_stability = 0.05
 		}
 	}
 	
-	focus = {
+	focus = { #A Restoration of Tang Dynasty Buddhism
 		id = TIA_water_reserve_committee
 		icon = GFX_goal_LEC_reforged_enterprise
 		relative_position_id = TIA_lingyun_holds
@@ -725,11 +742,11 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_whipster_cao_kun_ear }
 		completion_reward = {
-		
+			add_research_slot = 1
 		}
 	}
 	
-	focus = {
+	focus = { #Creation of the Water Reservation Committee
 		id = TIA_buddhist_research_association
 		icon = GFX_goal_LEC_reforged_enterprise
 		relative_position_id = TIA_lingyun_holds
@@ -744,7 +761,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_water_reserve_committee }
 		prerequisite = {focus = TIA_party_progress_legacy }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_water_committee
+			}
 		}
 	}
 	
@@ -759,10 +778,13 @@ focus_tree = {
 		ai_will_do = {
 			factor = 70
 		}
+		available = {
+			always = no
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_japan_council_meeting }
 		completion_reward = {
-		
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -780,7 +802,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_power_to_anti_syndicalists }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_new_peoples_association_alliance
+			}
 		}
 	}
 	
@@ -798,7 +822,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_work_new_people_association }
 		completion_reward = {
-		
+			add_timed_ideas = {
+				idea = TIA_anti_syndie_zeal
+				days = 120
+			}
 		}
 	}
 	
@@ -816,7 +843,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_self_defence_against_socialism }
 		completion_reward = {
-		
+			add_research_slot = 1
 		}
 	}
 	
@@ -834,7 +861,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_self_defence_against_socialism }
 		completion_reward = {
-		
+			country_event = rd_tianjin.17
 		}
 	}
 	
@@ -852,7 +879,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_power_to_anti_syndicalists focus = TIA_lingyun_holds }
 		completion_reward = {
-		
+			swap_ideas = {
+				remove_idea = TIA_japanese_inflence
+				add_idea = TIA_japanese_inflence_1
+			}
 		}
 	}
 	
@@ -870,7 +900,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_north_east_committee }
 		completion_reward = {
-		
+			add_ideas = {
+				TIA_underground_economic_board
+			}
 		}
 	}
 	
@@ -888,7 +920,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_north_east_committee }
 		completion_reward = {
-		
+			add_timed_ideas = {
+				idea = TIA_new_bank_notes
+				days = 90
+			}
 		}
 	}
 	
@@ -907,7 +942,10 @@ focus_tree = {
 		prerequisite = {focus = TIA_bank_note_distribution }
 		prerequisite = {focus = TIA_board_from_below }
 		completion_reward = {
-		
+			swap_ideas = {
+				remove_idea = TIA_japanese_inflence_1
+				add_idea = TIA_japanese_inflence_2
+			}
 		}
 	}
 	
