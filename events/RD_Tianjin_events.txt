@@ -568,7 +568,7 @@ country_event = { #Four Resolutions, Four Points
 	}
 }
 
-country_event = { #
+country_event = { #The Hongyang Edges Closer To Collapse
 	id = rd_tianjin.18
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.18"}
 	title = rd_tianjin.18.title
@@ -579,11 +579,15 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.18.a
 		ai_chance = { base = 100 }
-		
+		add_war_support = 0.1
+		add_political_power = 50
+		add_ideas = {
+			TIA_the_collapse_of_the_heavan
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Shielded By Loyalty to the Faith - Choice Between Ma Shiwei or Chang Yuqing
 	id = rd_tianjin.19
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.19"}
 	title = rd_tianjin.19.title
@@ -591,11 +595,30 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { ##Keep Chang Yuqing
 		name = rd_tianjin.19.a
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #Go With Ma Shiwei
+		name = rd_tianjin.19.b
+		ai_chance = { base = 100 }
+		set_country_flag = TIA_choose_shiwei
+			create_country_leader = {
+				name = "Ma Shiwei"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Chang_Yuqing.png"
+				expire = "1.1.1"
+				ideology = occultism_subtype #Will Add proper-Subideology Later
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+			TIA_Ma_Shiwei_hog_npo
+			TIA_Shen_Guangyao_eco_npo
+			TIA_Zhu_Zhijing_for_npo
+			TIA_Niu_Baoshan_sec_npo
+			}
+	}
+	
 }
 
 country_event = { #
