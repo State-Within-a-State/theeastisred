@@ -1035,9 +1035,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_leader = {
+				name = "Thakine Soe"
+				ruling_only = yes
+			}
+		}
 		prerequisite = { focus = BRM_thakin_syndies }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_raising_socialism_globally
+			}
 		}
 	}
 	focus = {
@@ -1052,7 +1060,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_soe_global_rev_stage }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_attacking_paternal_inheretence
+			}
 		}
 	}
 	
@@ -1068,7 +1078,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_soe_attack_nuke_family }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = BRM_worker_democracy
+				days = 120
+			}
 		}
 	}
 	focus = {
@@ -1081,8 +1094,84 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			OR = {
+				owns_state = 701
+				owns_state = 72
+				owns_state = 790
+				ARK = {
+					is_subject_of = BRM
+				}
+				KAC = {
+					is_subject_of = BRM
+				}
+				SHA = {
+					is_subject_of = BRM
+				}
+			}
+		}
 		prerequisite = { focus = BRM_thakin_soe_attack_nuke_family }
 		completion_reward = {
+			if = { #Release Kachine
+				limit = {
+					owns_state = 701
+				}
+				country_event = rd_burma.61
+			}
+			else_if = {
+				limit = {
+					OR = {
+						NOT = {
+							owns_state = 701
+						}
+						KAC = {
+							is_subject_of = BRM
+						}
+					}
+				}
+				add_political_power = 20
+				add_stability = 0.025
+			}
+			if = { #Release Shan
+				limit = {
+					owns_state = 72
+				}
+				country_event = rd_burma.62
+			}
+			else_if = {
+				limit = {
+					OR = {
+						NOT = {
+							owns_state = 72
+						}
+						SHA = {
+							is_subject_of = BRM
+						}
+					}
+				}
+				add_political_power = 20
+				add_stability = 0.025
+			}
+			if = { #Release Rakhine
+				limit = {
+					owns_state = 790
+				}
+				country_event = rd_burma.63
+			}
+			else_if = {
+				limit = {
+					OR = {
+						NOT = {
+							owns_state = 790
+						}
+						ARK = {
+							is_subject_of = BRM
+						}
+					}
+				}
+				add_political_power = 20
+				add_stability = 0.025
+			}
 			
 		}
 	}
@@ -1096,9 +1185,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_leader = {
+				name = "Thakine Ba Cho"
+				ruling_only = yes
+			}
+		}
 		prerequisite = { focus = BRM_thakin_syndies }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_fabian_syndicalism
+			}
 		}
 	}
 	
@@ -1114,7 +1211,7 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_ba_cho_fabian_clubs }
 		completion_reward = {
-			
+			country_event = rd_burma.64
 		}
 	}
 	focus = {
@@ -1129,7 +1226,12 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_ba_cho_fabian_clubs }
 		completion_reward = {
-			
+			set_country_flag = BRM_the_burmanization
+				set_variable = {
+					var = burmanization_program_burma
+					value = 0
+					tooltip = burmanization_program__or_die_tt
+				}
 		}
 	}
 	
@@ -1146,7 +1248,10 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_ba_cho_fronteir_regions }
 		prerequisite = { focus = BRM_thakin_ba_cho_women_association }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = BRM_buddhist_integration
+				days = 120
+			}
 		}
 	}
 	
@@ -1160,9 +1265,17 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		available = {
+			has_country_leader = {
+				name = "Thakin Lay Maung"
+				ruling_only = yes
+			}
+		}
 		prerequisite = { focus = BRM_thakin_syndies }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_workers_run_economy
+			}
 		}
 	}
 	
@@ -1178,7 +1291,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_maung_oil_workers }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_marxist_analysis
+			}
 		}
 	}
 	
@@ -1194,7 +1309,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_maung_marxist_analysis }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_anti_colonial_committee
+			}
 		}
 	}
 	
@@ -1210,7 +1327,10 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_maung_marxist_analysis }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = BRM_crush_anti_marxists
+				days = 90
+			}
 		}
 	}
 	
@@ -1227,7 +1347,9 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_soe_global_rev_stage focus = BRM_thakin_ba_cho_fabian_clubs focus = BRM_thakin_maung_oil_workers }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_worker_peasant_unity
+			}
 		}
 	}
 	
@@ -1244,7 +1366,8 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_syndies_worker_peasant_alliance }
 		prerequisite = { focus = BRM_thakin_soe_minority_republics focus = BRM_thakin_soe_embrace_worker_democracy focus = BRM_thakin_ba_cho_buddhist_integration focus = BRM_thakin_maung_robbers_shall_run focus = BRM_thakin_maung_against_colonial_subserviance }
 		completion_reward = {
-			
+			custom_effect_tooltip = land_reform_burma_progress_100_tt
+			set_country_flag = BRM_land_reform
 		}
 	}
 	
@@ -1260,7 +1383,13 @@ focus_tree = {
 		}
 		prerequisite = { focus = BRM_thakin_soe_global_rev_stage focus = BRM_thakin_ba_cho_fabian_clubs focus = BRM_thakin_maung_oil_workers }
 		completion_reward = {
-			
+			add_popularity = {
+				ideology = syndicalist
+				popularity = 0.1
+			}
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_political_power = 25
 		}
 	}
 	
@@ -1277,7 +1406,9 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_syndies_unify_workers }
 		prerequisite = { focus = BRM_thakin_soe_minority_republics focus = BRM_thakin_soe_embrace_worker_democracy focus = BRM_thakin_ba_cho_buddhist_integration focus = BRM_thakin_maung_robbers_shall_run focus = BRM_thakin_maung_against_colonial_subserviance }
 		completion_reward = {
-			
+			add_ideas = {
+				BRM_blood_soil
+			}
 		}
 	}
 	
@@ -1291,9 +1422,19 @@ focus_tree = {
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
+		bypass = {
+			NOT = {
+				owns_state = 701
+				owns_state = 72
+				owns_state = 790
+			}
+		}
 		prerequisite = { focus = BRM_thakin_soe_minority_republics focus = BRM_thakin_soe_embrace_worker_democracy focus = BRM_thakin_ba_cho_buddhist_integration focus = BRM_thakin_maung_robbers_shall_run focus = BRM_thakin_maung_against_colonial_subserviance }
 		completion_reward = {
-			
+			custom_effect_tooltip = start_panalong_conf_tt
+			hidden_effect = {
+				country_event = rd_burma.44
+			}
 		}
 	}
 	focus = {
@@ -1310,7 +1451,46 @@ focus_tree = {
 		prerequisite = { focus = BRM_thakin_syndies_blood_soil }
 		prerequisite = { focus = BRM_thakin_syndies_reform_periphery }
 		completion_reward = {
+			if = {
+				limit = {
+					has_country_leader = {
+						name = "Thakin Soe"
+						ruling_only = yes
+					}
+				}
+				swap_ideas = {
+					remove_idea = BRM_raising_socialism_globally
+					add_idea = BRM_raising_socialism_globally_1
+				}
+			}
 			
+			if = {
+				limit = {
+					has_country_leader = {
+						name = "Thakin Ba Cho"
+						ruling_only = yes
+					}
+				}
+				swap_ideas = {
+					remove_idea = BRM_fabian_syndicalism
+					add_idea = BRM_fabian_syndicalism_1
+				}
+				country_event = rd_burma.66
+			}
+			
+			if = {
+				limit = {
+					has_country_leader = {
+						name = "Thakin Lay Maung"
+						ruling_only = yes
+					}
+				}
+				swap_ideas = {
+					remove_idea = BRM_workers_run_economy
+					add_idea = BRM_workers_run_economy_1
+				}
+				country_event = rd_burma.65
+			}
 		}
 	}
 	

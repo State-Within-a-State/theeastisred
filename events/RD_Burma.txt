@@ -2858,7 +2858,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Release Kachin Republic
 	id = rd_burma.61
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.61"}
 	title = rd_burma.61.title
@@ -2866,14 +2866,21 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Grant Them Independence
 		name = rd_burma.61.a
 		ai_chance = { base = 100 }
-		
+		release_puppet = KAC
+		custom_effect_tooltip = we_will_release_loyal_republic_tt
+	}
+	option = { #We Must Inetgrate Them
+		name = rd_burma.61.b
+		ai_chance = { base = 100 }
+		BRM_kachin_resistance_increase  = yes
+		custom_effect_tooltip = we_will_focus_on_integration_tt
 	}
 }
 
-country_event = { #
+country_event = { #Release Shan Republic
 	id = rd_burma.62
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.62"}
 	title = rd_burma.62.title
@@ -2881,10 +2888,17 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Grant Them Independence
 		name = rd_burma.62.a
 		ai_chance = { base = 100 }
-		
+		release_puppet = SHA
+		custom_effect_tooltip = we_will_release_loyal_republic_tt
+	}
+	option = { #We Must Inetgrate Them
+		name = rd_burma.61.b
+		ai_chance = { base = 100 }
+		BRM_shan_resistance_increase = yes
+		custom_effect_tooltip = we_will_focus_on_integration_tt
 	}
 }
 
@@ -2896,14 +2910,21 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Grant Them Independence
 		name = rd_burma.63.a
 		ai_chance = { base = 100 }
-		
+		release_puppet = ARK
+		custom_effect_tooltip = we_will_release_loyal_republic_tt
+	}
+	option = { #We Must Inetgrate Them
+		name = rd_burma.61.b
+		ai_chance = { base = 100 }
+		BRM_shan_resistance_increase = yes
+		custom_effect_tooltip = we_will_focus_on_integration_tt
 	}
 }
 
-country_event = { #
+country_event = { #Ba Cho's Women's Association
 	id = rd_burma.64
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.64"}
 	title = rd_burma.64.title
@@ -2911,14 +2932,23 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Yes Allow It
 		name = rd_burma.64.a
 		ai_chance = { base = 100 }
-		
+		add_ideas  = {
+			BRM_women_association
+		}
+		add_political_power = -25
+	}
+	option = { #No
+		name = rd_burma.64.b
+		ai_chance = { base = 100 }
+		add_political_power = 50
+		add_stability = -0.025
 	}
 }
 
-country_event = { #
+country_event = { #Worker Vent Between Thakin Po Hla Gyi and Thakin Lay Maung
 	id = rd_burma.65
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.65"}
 	title = rd_burma.65.title
@@ -2926,14 +2956,79 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Centralized Syndie Option - Thakin Lay Maung
 		name = rd_burma.65.a
 		ai_chance = { base = 100 }
-		
+		create_country_leader = {
+			name = "Thakin Lay Maung"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Lay_Maung.png"
+			expire = "1965.1.1"
+			ideology = centralized_syndicalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Lay_Maung_hog_syn
+			BRM_Thakin_Lwin_eco_syn
+			BRM_Banmaw_Tin_Aung_for_syn
+			BRM_Thakin_Po_Hla_Gyi_sec_syn
+		}
+	}
+	option = { #Left Nat - Thakin Lay Maung
+		name = rd_burma.65.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Thakin Lay Maung"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Lay_Maung.png"
+			expire = "1965.1.1"
+			ideology = syn_left_nationalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Lay_Maung_hog_syn
+			BRM_Thakin_Lwin_eco_syn
+			BRM_Banmaw_Tin_Aung_for_syn
+			BRM_Thakin_Po_Hla_Gyi_sec_syn
+		}
+	}
+	
+	option = { #Left Nat - Thakin Po Hla Gyi
+		name = rd_burma.65.c
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Thakin Po Hla Gyi"
+			picture = "gfx/leaders/BRM/BRM_po_hla_gyi.png"
+			expire = "1965.1.1"
+			ideology = syn_left_nationalism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Po_Hla_Gyi_hog_syn
+			BRM_Thakin_Lwin_eco_syn
+			BRM_Banmaw_Tin_Aung_for_syn
+			BRM_Thakin_Po_Hla_Gyi_sec_syn
+		}
+	}
+	
+	option = { #AnSyn - Thakin Po Hla Gyi
+		name = rd_burma.65.d
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "Thakin Po Hla Gyi"
+			picture = "gfx/leaders/BRM/BRM_po_hla_gyi.png"
+			expire = "1965.1.1"
+			ideology = anarcho_syndicalist_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Thakin_Po_Hla_Gyi_hog_syn
+			BRM_Thakin_Lwin_eco_syn
+			BRM_Banmaw_Tin_Aung_for_syn
+			BRM_Thakin_Po_Hla_Gyi_sec_syn
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Thakin Ba Cho Subideology Swapper
 	id = rd_burma.66
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.66"}
 	title = rd_burma.66.title
@@ -2941,10 +3036,15 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Laskian Syndicalism
 		name = rd_burma.66.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = laskian_syndicalism_subtype
+	}
+	option = { #Guild Socialism
+		name = rd_burma.66.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = syn_guild_socialism_subtype
 	}
 }
 
