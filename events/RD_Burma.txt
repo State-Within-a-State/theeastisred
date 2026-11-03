@@ -3048,7 +3048,7 @@ country_event = { #Thakin Ba Cho Subideology Swapper
 	}
 }
 
-country_event = { #
+country_event = { #A Question of the GBCA Monks
 	id = rd_burma.67
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.67"}
 	title = rd_burma.67.title
@@ -3056,14 +3056,33 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Denounce the Reactionary Monks
 		name = rd_burma.67.a
 		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.05
+		}
 		
+		add_timed_idea = {
+			idea = BRM_crush_anti_marxists
+			days = 90
+		}
+	}
+	option = { #Lets Welcome Them
+		name = rd_burma.67.b
+		ai_chance = { base = 100 }
+		add_socdem_to_coalition = yes
+		add_soclib_to_coalition = yes
+		set_country_flag = BRM_accept_GBCA
+		add_timed_idea = {
+			idea = BRM_welcoming_back_gbca
+			days = 90
+		}
 	}
 }
 
-country_event = { #
+country_event = { #A Struggle For Autonomy and Unity
 	id = rd_burma.68
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.68"}
 	title = rd_burma.68.title
@@ -3071,14 +3090,28 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We must welcome minority monks
 		name = rd_burma.68.a
 		ai_chance = { base = 100 }
-		
+		add_political_power = -50
+		BRM_rakhine_resistance_decrease = yes
+		BRM_shan_resistance_increase = yes
+		BRM_kachin_resistance_increase = yes
+		set_country_flag = BRM_integrate_monks
+	}
+	option = { #We must welcome minority monks
+		name = rd_burma.68.b
+		ai_chance = { base = 100 }
+		add_political_power = 50
+		BRM_rakhine_resistance_increase = yes
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.1
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Shin, Adicca Vamsa election event
 	id = rd_burma.69
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.69"}
 	title = rd_burma.69.title
@@ -3089,7 +3122,80 @@ country_event = { #
 	option = { #
 		name = rd_burma.69.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = radical_socialist }
+		create_country_leader = {
+			name = "Shin Ukkattha"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Shin_Ukkattha.png"
+			expire = "1965.1.1"
+			ideology = buddhist_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Shin_Ukkattha_hog_rso
+			BRM_Ba_Maw_eco_sde
+			BRM_Addica_Vamsa_for_sde
+			BRM_Sayadaw_U_Seinta_sec_rso
+		}
+	}
+	option = { #
+		name = rd_burma.69.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = {
+			name = "Adicca Vamsa"
+			picture = "gfx/leaders/BRM/Portrait_BRM_Adicca_Vamsa.png"
+			expire = "1965.1.1"
+			ideology = socdem_buddhist_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Addica_Vamsa_hog_sde
+			BRM_Ba_Maw_eco_sde
+			BRM_Addica_Vamsa_for_sde
+			BRM_Sayadaw_U_Seinta_sec_rso
+		}
+	}
+	option = { #U Ottama
+		name = rd_burma.69.c
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = BRM_accept_GBCA
+		}
+		set_politics = { ruling_party = social_democrat }
+		create_country_leader = {
+			name = "U Ottama"
+			picture = "gfx/leaders/BRM/Portrait_BRM_U_Ottama.png"
+			expire = "1965.1.1"
+			ideology = socdem_gandhism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_U_Ottama_hog_sli
+			BRM_Daw_Thein_Tin_eco_sli
+			BRM_U_Razak_for_sde
+			BRM_U_Rashid_sec_sde
+		}
+	}
+	option = { #
+		name = rd_burma.69.d
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = BRM_integrate_monks
+		}
+		set_politics = { ruling_party = radical_socialist }
+		create_country_leader = {
+			name = "Sayadaw U Seinta"
+			picture = "gfx/leaders/ARK/Portrait_ARK_Sayadaw_U_Seinta.png"
+			expire = "1965.1.1"
+			ideology = buddhist_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Shin_Ukkattha_hog_rso
+			BRM_Ba_Maw_eco_sde
+			BRM_Addica_Vamsa_for_sde
+			BRM_Sayadaw_U_Seinta_sec_rso
+		}
 	}
 }
 
