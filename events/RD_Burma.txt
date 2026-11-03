@@ -1276,6 +1276,16 @@ country_event = { #Nagani Book Clubs
 		}
 		load_focus_tree = rd_burma_buddhist_socialist_tree
 		complete_national_focus = BRM_thakin_buddhist_radical_monks
+		set_party_name = {
+			ideology = radical_socialist
+			long_name = BRM_buddhist_party_long
+			name = BRM_buddhist_party
+		}
+		set_party_name = {
+			ideology = social_democrat
+			long_name = BRM_buddhist_party_long
+			name = BRM_buddhist_party
+		}
 	}
 	
 	option = { #Thakin Than Tun
@@ -1340,6 +1350,12 @@ country_event = { #Syndicalists
 			BRM_U_Hla_Maung_for_sde
 			BRM_Thakin_Chit_Maung_sec_rso
 		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = BRM_fabian_party_long
+			name = BRM_fabian_party
+		}
+		
 	}
 	option = { #Thakin Soe shouldn't he be totalist?
 		name = rd_burma.29.b
@@ -1362,6 +1378,11 @@ country_event = { #Syndicalists
 			BRM_Banmaw_Tin_Aung_for_syn
 			BRM_Thakin_Po_Hla_Gyi_sec_syn
 		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = BRM_workers_union_party_long
+			name = BRM_workers_union_party
+		}
 	}
 	option = { #Thakin Lay Maung
 		name = rd_burma.29.c
@@ -1383,6 +1404,11 @@ country_event = { #Syndicalists
 			BRM_Thakin_Lwin_eco_syn
 			BRM_Banmaw_Tin_Aung_for_syn
 			BRM_Thakin_Po_Hla_Gyi_sec_syn
+		}
+		set_party_name = {
+			ideology = syndicalist
+			long_name = BRM_workers_union_party_long
+			name = BRM_workers_union_party
 		}
 	}
 }
@@ -3046,6 +3072,30 @@ country_event = { #Thakin Ba Cho Subideology Swapper
 		ai_chance = { base = 100 }
 		set_country_leader_ideology = syn_guild_socialism_subtype
 	}
+	option = { #Puralist Socialism
+		name = rd_burma.66.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = syn_puralist_socialism_subtype
+	}
+	option = { #Choose Ba Khine
+		name = rd_burma.66.d
+		ai_chance = { base = 100 }
+		create_country_leader = {
+			name = "U Ba Khine"
+			picture = "gfx/leaders/BRM/Portrait_BRM_U_Ba_Khine.png"
+			expire = "1965.1.1"
+			ideology = syn_puralist_socialism_subtype
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_U_Ba_Khine_hog_rso
+			BRM_Thakin_Lwin_eco_syn
+			BRM_U_Hla_Maung_for_sde
+			BRM_Thakin_Chit_Maung_sec_rso
+		}
+	}
+	
+	
 }
 
 country_event = { #A Question of the GBCA Monks
@@ -3191,7 +3241,7 @@ country_event = { #Shin, Adicca Vamsa election event
 		}
 		remove_all_ministers = yes
 		add_ideas = {
-			BRM_Shin_Ukkattha_hog_rso
+			BRM_Sayadaw_U_Seinta_hog_rso
 			BRM_Ba_Maw_eco_sde
 			BRM_Addica_Vamsa_for_sde
 			BRM_Sayadaw_U_Seinta_sec_rso
