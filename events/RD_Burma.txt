@@ -3257,7 +3257,7 @@ country_event = { #Shin, Adicca Vamsa election event
 	}
 }
 
-country_event = { #
+country_event = { #Influence From Furnival
 	id = rd_burma.70
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_burma.70"}
 	title = rd_burma.70.title
@@ -3265,10 +3265,29 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We should embrace him
 		name = rd_burma.70.a
 		ai_chance = { base = 100 }
-		
+		set_country_flag = BRM_accept_furnivall
+		add_ideas = {
+		BRM_furnival_socialism
+		}
+		set_party_name = {
+			ideology = radical_socialist
+			name = BRM_social_democrat_party
+			long_name = BRM_social_democrat_party_long
+		}
+	}
+	option = { #Keep Your Distance
+		name = rd_burma.70.b
+		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = social_democrat 
+			popularity = 0.05
+		}
+		add_ideas = {
+		BRM_furnival_socialism_limited
+		}
 	}
 }
 
@@ -3283,7 +3302,48 @@ country_event = { #
 	option = { #
 		name = rd_burma.71.a
 		ai_chance = { base = 100 }
-		
+		set_politics = { ruling_party = social_democrat }
+		add_popularity = {
+			ideology = social_democrat
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Ba_Maw_hog_sde
+			BRM_Ba_Maw_eco_sde
+			BRM_Ba_Han_for_sde
+			BRM_Yan_Naing_sec_rso
+		}
+		create_country_leader = {
+			name = "Ba Maw"
+			picture = "gfx/leaders/BRM/Portrait_Burma_Ba_Maw.png"
+			expire = "1965.1.1"
+			ideology = radsoc_poor_man_socialism_subtype
+		}
+		add_radsoc_to_coalition = yes
+	}
+	option = { #
+		name = rd_burma.71.b
+		ai_chance = { base = 100 }
+		set_politics = { ruling_party = radical_socialist }
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.4
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+			BRM_Ba_Maw_hog_sde
+			BRM_Ba_Maw_eco_sde
+			BRM_Ba_Han_for_sde
+			BRM_Yan_Naing_sec_rso
+		}
+		create_country_leader = {
+			name = "Ba Maw"
+			picture = "gfx/leaders/BRM/Portrait_Burma_Ba_Maw.png"
+			expire = "1965.1.1"
+			ideology = radsoc_poor_man_socialism_subtype
+		}
+		add_socdem_to_coalition = yes
 	}
 }
 
@@ -3295,10 +3355,63 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #We shall follow Poor Man's Socialism
 		name = rd_burma.72.a
 		ai_chance = { base = 100 }
-		
+		if = {
+			limit = {
+				has_government = radical_socialist
+			}
+			set_country_leader_ideology = radsoc_poor_man_socialism_subtype
+		}
+		else = {
+			set_country_leader_ideology = socdem_poor_man_socialism_subtype
+		}
+	}
+	option = { #We shall follow Puralist Socialism
+		name = rd_burma.72.b
+		ai_chance = { base = 100 }
+		if = {
+			limit = {
+				has_government = radical_socialist
+			}
+			set_country_leader_ideology = radsoc_puralist_socialism_subtype
+		}
+		else = {
+			set_country_leader_ideology = socdem_puralist_socialism_subtype
+		}
+	}
+	option = { #Furnivall shall be our HoG
+		name = rd_burma.72.c
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_flag = BRM_accept_furnivall
+		}
+		if = {
+			limit = {
+				has_government = radical_socialist
+			}
+			create_country_leader = {
+				name = "John Sydenham Furnivall"
+				picture = "gfx/leaders/BRM/Portrait_BRM_John_Sydenham_Furnivall.png"
+				expire = "1965.1.1"
+				ideology = radsoc_puralist_socialism_subtype
+			}
+			
+		}
+		else = {
+			create_country_leader = {
+				name = "John Sydenham Furnivall"
+				picture = "gfx/leaders/BRM/Portrait_BRM_John_Sydenham_Furnivall.png"
+				expire = "1965.1.1"
+				ideology = socdem_puralist_socialism_subtype
+			}
+			
+		}
+		swap_ideas = {
+			remove_idea = BRM_Ba_Maw_hog_sde
+			add_idea = BRM_John_Sydenham_Furnivall_hog_sde
+		}
 	}
 }
 

@@ -1180,6 +1180,7 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_land_nationalization
 				has_completed_focus = BRM_thakin_new_win_land_for_landless
+				has_completed_focus = BRM_thakin_ba_maw_poor_man_education
 			}
 		}
 		
@@ -1206,6 +1207,81 @@ BRM_build_dam_in_rangoon_decision = {
 			add_to_variable = {
 				var = land_reform_burma_progress
 				value = 7
+				tooltip = add_land_reform_burma_progress_tt
+			}
+		}
+	}
+	
+	BRM_seize_capital_land_owners_decision = {
+		icon = generic_agriculture
+		
+		available = {
+			has_completed_focus = BRM_thakin_ba_maw_poor_man_education
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 20
+		
+		days_remove = 60
+		days_re_enable = 5
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = 0.05
+				war_support_weekly = 0.025
+				stability_weekly = 0.01
+				social_democrat_drift = 0.025
+				production_speed_buildings_factor = 0.05
+				production_lack_of_resource_penalty_factor = -0.075
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			
+			add_to_variable = {
+				var = land_reform_burma_progress
+				value = 3
+				tooltip = add_land_reform_burma_progress_tt
+			}
+		}
+	}
+	
+	BRM_srent_reduction_campaign_decision = {
+		icon = generic_agriculture
+		
+		available = {
+			has_completed_focus = BRM_thakin_ba_maw_rural_rent
+		}
+		
+		visible = {
+			tag = BRM
+			
+		}
+		cost = 25
+		
+		days_remove = 60
+		days_re_enable = 5
+		fire_only_once = no
+			modifier = {
+				consumer_goods_factor = 0.025
+				production_factory_start_efficiency_factor = 0.024
+				production_speed_industrial_complex_factor = 0.026
+				supply_factor = 0.025
+				political_power_factor = -0.05
+			}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			
+			add_to_variable = {
+				var = land_reform_burma_progress
+				value = 3
 				tooltip = add_land_reform_burma_progress_tt
 			}
 		}
