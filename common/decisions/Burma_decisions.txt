@@ -991,12 +991,13 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_land_nationalization
 				has_completed_focus = BRM_thakin_new_win_land_for_landless
+				has_country_flag = BRM_land_reform
 			}
 		}
 		
 		visible = {
 			tag = BRM
-			
+			has_country_flag = BRM_land_reform
 		}
 		cost = 40
 		
@@ -1037,12 +1038,13 @@ BRM_build_dam_in_rangoon_decision = {
 			OR = {
 				has_completed_focus = BRM_thakin_nu_land_nationalization
 				has_completed_focus = BRM_thakin_new_win_land_for_landless
+				has_country_flag = BRM_land_reform
 			}
 		}
 		
 		visible = {
 			tag = BRM
-			
+			has_country_flag = BRM_land_reform
 		}
 		cost = 20
 		
@@ -1181,12 +1183,13 @@ BRM_build_dam_in_rangoon_decision = {
 				has_completed_focus = BRM_thakin_nu_land_nationalization
 				has_completed_focus = BRM_thakin_new_win_land_for_landless
 				has_completed_focus = BRM_thakin_ba_maw_poor_man_education
+				has_country_flag = BRM_land_reform
 			}
 		}
 		
 		visible = {
 			tag = BRM
-			
+			has_country_flag = BRM_land_reform
 		}
 		cost = 25
 		
@@ -1255,11 +1258,12 @@ BRM_build_dam_in_rangoon_decision = {
 		
 		available = {
 			has_completed_focus = BRM_thakin_ba_maw_rural_rent
+			has_country_flag = BRM_land_reform
 		}
 		
 		visible = {
 			tag = BRM
-			
+			has_country_flag = BRM_land_reform
 		}
 		cost = 25
 		
@@ -1307,6 +1311,7 @@ BRM_Shan_Rebellion_mission = {
 				var = shan_anger
 				value < 0.75
 			}
+			
 		}
 		visible = {
 			OR = {
@@ -1315,6 +1320,11 @@ BRM_Shan_Rebellion_mission = {
 				}
 				NOT = {
 				owns_state = 72
+				}
+				72 = {
+					NOT = {
+						is_core_of = BRM
+					}
 				}
 			}
 		}
@@ -1326,6 +1336,7 @@ BRM_Shan_Rebellion_mission = {
 		selectable_mission = no
 		fire_only_once = no
 		complete_effect = {
+		
 		}
 		timeout_effect = {
 		country_event = rd_burma.7
@@ -1351,10 +1362,15 @@ BRM_Kachin_Rebellion_mission = {
 		visible = {
 			OR = {
 				NOT = {
-					has_country_flag = BRM_integrated_shan
+					has_country_flag = BRM_integrated_kachin
 				}
 				NOT = {
 				owns_state = 701
+				}
+				701 = {
+					NOT = {
+						is_core_of = BRM
+					}
 				}
 			}
 		}
@@ -1391,10 +1407,15 @@ BRM_Rakhine_Rebellion_mission = {
 		visible = {
 			OR = {
 				NOT = {
-					has_country_flag = BRM_integrated_shan
+					has_country_flag = BRM_integrated_rakhine
 				}
 				NOT = {
 				owns_state = 790
+				}
+				790 = {
+					NOT = {
+						is_core_of = BRM
+					}
 				}
 			}
 		}
