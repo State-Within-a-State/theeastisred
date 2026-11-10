@@ -29,11 +29,32 @@ country_event = { #Tibetan Communists Elected
 			add_popularity = {
 				ideology = totalist
 				popularity = 0.3
+			}
 			complete_focus = TIB_socialist_flame_upon_frozen_mountain
+			set_party_name = {
+				ideology = totalist
+				long_name = TIB_communist_party_of_tibet_long
+				name = TIB_communist_party_of_tibet
+			}
+			set_party_name = {
+				ideology = syndicalist
+				long_name = TIB_communist_party_of_tibet_long
+				name = TIB_communist_party_of_tibet
+			}
+			set_party_name = {
+				ideology = radical_socialist
+				long_name = TIB_communist_party_of_tibet_long
+				name = TIB_communist_party_of_tibet
+			}
+			set_party_name = {
+				ideology = social_democrat
+				long_name = TIB_communist_party_of_tibet_long
+				name = TIB_communist_party_of_tibet
+			}
 	}
 }
 
-country_event = { 
+country_event = { #Question of the Monastries
 	id = rd_socialist_tibet_event.1
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_socialist_tibet_event.1"}
 	title = rd_socialist_tibet_event.1.title
@@ -41,15 +62,32 @@ country_event = {
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Attack the Monks
 		name = rd_socialist_tibet_event.1.a
 		ai_chance = { base = 100 }
+		add_timed_idea = {
+			idea = TIB_crush_monastries
+			days = 120
+		}
+		add_to_variable = {
+				var = TIB_land_reform_progress
+				value = 3
+				tooltip = add_TIB_land_reform_var_tt
+			}
 	}
 	
-	option = { #
+	option = { #No Kill Monks
 		name = rd_socialist_tibet_event.1.b
 		ai_chance = { base = 100 }
-		set_country_flag = KOR_support_integration
+		add_timed_idea = {
+			idea = TIB_crush_monastries_1
+			days = 120
+		}
+		add_to_variable = {
+				var = TIB_land_reform_progress
+				value = 5
+				tooltip = add_TIB_land_reform_var_tt
+			}
 	}
 }
 
@@ -61,14 +99,82 @@ country_event = { #Starting Lore Event | The Sun Rises - Stability At Last?
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Ngawang Kesang
 		name = rd_socialist_tibet_event.2.a
 		ai_chance = { base = 100 }
-		
+		create_country_leader = {
+				name = "Ngawang Kesang"
+				picture = "gfx/leaders/TIB/Portrait_TIB_Ngawang_Kesang.png"
+				expire = "1.1.1"
+				ideology = national_communism_subtype #Will Add proper-Subideology Later
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				TIB_Ngawang_Kesang_hog_tot
+				TIB_Kuncho_Tashi_eco_tot
+				TIB_Sherap_for_rso
+				TIB_Maja_Thundrup_sec_tot
+			}
+			set_politics = {
+				ruling_party = totalist
+			}
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.1
+			}
+	}
+	option = { #Ngawang Kesang
+		name = rd_socialist_tibet_event.2.b
+		ai_chance = { base = 100 }
+		create_country_leader = {
+				name = "Hai Zhengtao"
+				picture = "gfx/leaders/TIB/Portrait_TIB_Hai_Zhengtao.png"
+				expire = "1.1.1"
+				ideology = left_nationalism_subtype
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				TIB_Hai_Zhengtao_hog_rso
+				TIB_Yang_Haishan_eco_rso
+				TIB_Pangda_Topgye_for_sde
+				TIB_Dondrup_Namgyel_sec_sde
+			}
+			set_politics = {
+				ruling_party = radical_socialist
+			}
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.3
+			}
+	}
+	
+	option = { #Ngapoi Ngawang Jigme
+		name = rd_socialist_tibet_event.2.c
+		ai_chance = { base = 100 }
+		create_country_leader = {
+				name = "Ngapoi Ngawang Jigme"
+				picture = "gfx/leaders/TIB/Portrait_TIB_Ngapoi_Ngawang_Jigme.png"
+				expire = "1.1.1"
+				ideology = socdem_radical_progressivism_subtype
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				TIB_Ngapoi_Ngawang_Jigme_hog_sde
+				TIB_Surkhang_Wangchen_Tseten_eco_sde
+				TIB_Pangda_Topgye_for_sde
+				TIB_Jago_Topden_sec_sde
+			}
+			set_politics = {
+				ruling_party = social_democrat
+			}
+			add_popularity = {
+				ideology = social_democrat
+				popularity = 0.3
+			}
 	}
 }
 
-country_event = { #Black Monday Hits Korea
+country_event = { #Meeting With Chieftans
 	id = rd_socialist_tibet_event.3
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_socialist_tibet_event.3"}
 	title = rd_socialist_tibet_event.3.title
@@ -76,9 +182,35 @@ country_event = { #Black Monday Hits Korea
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #They Know Best - Maybe We Can Work With Them
 		name = rd_socialist_tibet_event.3.a
-		
+		add_to_variable = {
+				var = TIB_land_reform_progress
+				value = -10
+				tooltip = remove_TIB_land_reform_var_tt
+			}
+		add_political_power = 50
+		add_stability = 0.05
+		add_war_support = -0.05
+		add_pataut_to_coalition = yes
+		set_country_flag = TIB_monk_support
+	}
+	option = { #Remove these remnants of the old society
+		name = rd_socialist_tibet_event.3.b
+		add_to_variable = {
+				var = TIB_land_reform_progress
+				value = 7
+				tooltip = add_TIB_land_reform_var_tt
+			}
+		add_popularity = {
+			ideology = paternal_autocrat
+			popularity = -0.1
+		}
+		add_political_power = 25
+		add_timed_idea = {
+			idea = TIB_unrest_from_cheifs
+			days = 120
+		}
 	}
 }
 
@@ -93,7 +225,25 @@ country_event = { #
 	option = { #
 		name = rd_socialist_tibet_event.4.a
 		ai_chance = { base = 100 }
-		
+		country_event = rd_socialist_tibet_event.5
+	}
+	option = { #
+		name = rd_socialist_tibet_event.4.b
+		ai_chance = { base = 100 }
+		country_event = rd_socialist_tibet_event.5
+		create_country_leader = {
+				name = "Gara Lama"
+				picture = "gfx/leaders/TIB/Portrait_TIB_Gara_Lama.png"
+				expire = "1.1.1"
+				ideology = socdem_tribal_councilism_subtype
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				TIB_Gara_Lama_hog_sde
+				TIB_Pangda_Topgye_eco_sde
+				TIB_Dondrup_Namgyel_for_sde
+				TIB_Jago_Topden_sec_sde
+			}
 	}
 }
 
@@ -108,7 +258,29 @@ country_event = { #
 	option = { #
 		name = rd_socialist_tibet_event.5.a
 		ai_chance = { base = 100 }
-		
+		trigger = {
+			has_country_leader = {
+				name = "Ngapoi Ngawang Jigme"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology  = socdem_radical_progressivism_subtype
+	}
+	option = { #
+		name = rd_socialist_tibet_event.5.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Gara Lama"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology  = socdem_tribal_councilism_subtype
+	}
+	option = { #
+		name = rd_socialist_tibet_event.5.c
+		ai_chance = { base = 100 }
+		set_country_leader_ideology  = socdem_buddhist_socialism_subtype
 	}
 }
 
@@ -123,7 +295,25 @@ country_event = { #
 	option = { #
 		name = rd_socialist_tibet_event.6.a
 		ai_chance = { base = 100 }
-		
+		country_event = rd_socialist_tibet_event.7
+	}
+	option = { #
+		name = rd_socialist_tibet_event.6.b
+		ai_chance = { base = 100 }
+		country_event = rd_socialist_tibet_event.7
+		create_country_leader = {
+				name = "Phuntsok Wangyal"
+				picture = "gfx/leaders/TIB/Portrait_TIB_Phuntsok_Wangyal.png"
+				expire = "1.1.1"
+				ideology = national_communism_subtype
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				TIB_Phuntsok_Wangyal_hog_tot
+				TIB_Kuncho_Tashi_eco_tot
+				TIB_Ngawang_Kesang_for_tot
+				TIB_Sherap_sec_rso
+			}
 	}
 }
 
@@ -138,7 +328,12 @@ country_event = { #
 	option = { #
 		name = rd_socialist_tibet_event.7.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = national_communism_subtype
+	}
+	option = { #
+		name = rd_socialist_tibet_event.7.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = broad_communism_subtype
 	}
 }
 
@@ -153,7 +348,37 @@ country_event = { #
 	option = { #
 		name = rd_socialist_tibet_event.8.a
 		ai_chance = { base = 100 }
+		create_country_leader = {
+				name = "Hai Zhengtao"
+				picture = "gfx/leaders/TIB/Portrait_TIB_Hai_Zhengtao.png"
+				expire = "1.1.1"
+				ideology = left_nationalism_subtype
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				TIB_Hai_Zhengtao_hog_rso
+				TIB_Yang_Haishan_eco_rso
+				TIB_Pangda_Topgye_for_sde
+				TIB_Dondrup_Namgyel_sec_sde
+			}
+	}
+	option = { #
+		name = rd_socialist_tibet_event.8.b
+		ai_chance = { base = 100 }
 		
+		create_country_leader = {
+				name = "Keji"
+				picture = "gfx/leaders/TIB/Portrait_TIB_Hai_Zhengtao.png"
+				expire = "1.1.1"
+				ideology = left_nationalism_subtype
+			}
+			remove_all_ministers = yes
+			add_ideas = {
+				TIB_Hai_Zhengtao_hog_rso
+				TIB_Yang_Haishan_eco_rso
+				TIB_Pangda_Topgye_for_sde
+				TIB_Dondrup_Namgyel_sec_sde
+			}
 	}
 }
 

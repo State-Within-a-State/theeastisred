@@ -92,3 +92,202 @@ TIB_socialist_factionalism_decision_category = {
 	
 	
 }
+
+TIB_land_reform_movement_decision_category = {
+TIB_land_reform_mission = {
+		activation = {
+			has_country_flag = TIB_land_reform_flag
+		}
+		available = {
+			
+			
+			custom_trigger_tooltip = {
+				tooltip = land_reform_completed_tt		
+				check_variable = { TIB_land_reform_progress > 89 }
+			}
+			
+		}
+		cancel_trigger = {
+			
+		}
+		
+		icon = mission_icon     # For GFX_decision_mission_icon
+		is_good = no
+	   
+		days_mission_timeout = 730
+		selectable_mission = no
+		fire_only_once = yes
+		complete_effect = {
+		set_country_flag = TIB_socialist_land_reform_success
+		add_political_power = 50
+		add_stability = 0.25
+		add_war_support = 0.1
+		}
+		timeout_effect = {
+		set_country_flag = TIB_socialist_land_reform_failed
+		if = { limit = { is_ai = no } 
+		add_stability = -0.5
+		add_war_support = -0.25
+		add_political_power = -200
+		}
+		}
+	}
+	
+	
+	TIB_rural_restribution = {
+		icon = GFX_decision_generic_agriculture
+		
+		available = {
+			has_country_flag = TIB_land_reform_flag
+		}
+		
+		visible = {
+			tag = TIB
+			
+		}
+		cost = 10
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 50
+		days_re_enable = 5
+		fire_only_once = no
+		
+		complete_effect = {
+			random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = TIB_land_reform_progress
+				value = 5
+				tooltip = add_TIB_land_reform_var_tt
+			}
+		}
+	}
+	
+	TIB_rent_reduction_campaigns = {
+		icon = GFX_decision_generic_agriculture
+		
+		available = {
+			has_country_flag = TIB_land_reform_flag
+		}
+		
+		visible = {
+			tag = TIB
+			
+		}
+		cost = 10
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 25
+		days_re_enable = 5
+		fire_only_once = no
+		modifier = {
+		political_power_factor = 0.05
+		stability_weekly = 0.02
+		consumer_goods_factor = 0.01
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = TIB_land_reform_progress
+				value = 5
+				tooltip = add_TIB_land_reform_var_tt
+			}
+		}
+	}
+	
+	TIB_cooperative_pastures = {
+		icon = GFX_decision_generic_agriculture
+		
+		available = {
+			has_country_flag = TIB_land_reform_flag
+		}
+		
+		visible = {
+			tag = TIB
+			
+		}
+		cost = 10
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 60
+		days_re_enable = 15
+		fire_only_once = no
+		modifier = {
+		production_speed_buildings_factor = 0.025
+		production_speed_infrastructure_factor = 0.05
+		}
+		complete_effect = {
+			random_owned_controlled_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = TIB_land_reform_progress
+				value = 5
+				tooltip = add_TIB_land_reform_var_tt
+			}
+		}
+	}
+	
+	TIB_abolish_corvee_system = {
+		icon = GFX_decision_generic_agriculture
+		
+		available = {
+			has_country_flag = TIB_land_reform_flag
+			has_completed_focus = TIB_socialist_abolish_corvee
+		}
+		
+		visible = {
+			tag = TIB
+			
+		}
+		cost = 40
+		ai_will_do = {
+		base = 50
+		}
+		days_remove = 150
+		fire_only_once = yes
+		modifier = {
+		production_factory_efficiency_gain_factor = 0.02
+		production_lack_of_resource_penalty_factor = 0.01
+		production_speed_buildings_factor = 0.025
+		war_support_weekly = 0.025
+		conscription_factor = 0.01
+		weekly_manpower = 10
+		political_power_factor = 0.05
+		}
+		complete_effect = {
+			
+		}
+		remove_effect = {
+			
+			add_to_variable = {
+				var = TIB_land_reform_progress
+				value = 25
+				tooltip = add_TIB_land_reform_var_tt
+			}
+		}
+	}
+}
