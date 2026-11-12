@@ -1106,7 +1106,7 @@ country_event = { #Shuzhi Subideology Picker
 	}
 }
 
-country_event = { #
+country_event = { #datong formable
 	id = rd_tianjin.32
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.32"}
 	title = rd_tianjin.32.title
@@ -1114,14 +1114,30 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+
+	option = { #great unity for just east asia
 		name = rd_tianjin.32.a
 		ai_chance = { base = 100 }
+				add_stability = 0.10
 		
 	}
+
+
+	option = { #great unity for just asia
+		name = rd_tianjin.32.b
+		ai_chance = { base = 0 }
+		
+	}
+
+	option = { #great unity for the world
+		name = rd_tianjin.32.c
+		ai_chance = { base = 0 }
+		
+	}
+
 }
 
-country_event = { #
+country_event = { #dazhao formable
 	id = rd_tianjin.33
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.33"}
 	title = rd_tianjin.33.title
@@ -1129,14 +1145,21 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #china alone
 		name = rd_tianjin.33.a
 		ai_chance = { base = 100 }
+				add_stability = 0.10
 		
 	}
+	option = { #pan asia
+		name = rd_tianjin.33.b
+		ai_chance = { base = 0 }
+		
+	}
+
 }
 
-country_event = { #
+country_event = { #soviet formable
 	id = rd_tianjin.34
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.34"}
 	title = rd_tianjin.34.title
@@ -1144,11 +1167,27 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+
+	option = { #no just stay here
 		name = rd_tianjin.34.a
 		ai_chance = { base = 100 }
+		add_stability = 0.10
 		
 	}
+
+	option = { #liberate the red motherland
+		name = rd_tianjin.34.a
+		ai_chance = { base = 100 }
+			set_country_flag = TIA_soviet_formable
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = RUS.RUS_starting_states_array
+					add_claim_by = ROOT
+				}
+			}
+		
+	}
+
 }
 
 country_event = { #
