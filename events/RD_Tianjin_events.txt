@@ -629,10 +629,37 @@ country_event = { #
 	#picture = 
 	
 	is_triggered_only = yes
-	option = { #
+	option = { #Li Dazhao Leads China
 		name = rd_tianjin.20.a
 		ai_chance = { base = 100 }
+		complete_national_focus = TIA_new_course_nation
 		
+	}
+	option = { #
+		name = rd_tianjin.20.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Yao_Zuobin_hog_rso
+		TIA_Huang_Jiemin_eco_rso
+		TIA_Pak_Jin_Sun_for_rso
+		TIA_Zhang_Qingyu_sec_npo
+		}
+		complete_national_focus = TIA_datong_victory
+		
+	}
+	option = { #
+		name = rd_tianjin.20.c
+		ai_chance = { base = 100 }
+		country_event = rd_tianjin.21
+		complete_national_focus = TIA_international_labour
 	}
 }
 
@@ -647,8 +674,78 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.21.a
 		ai_chance = { base = 100 }
-		
+		set_politics = {
+			ruling_party = syndicalist
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Qu_Qiubai_hog_syn
+		TIA_Liu_Qingyang_eco_rso
+		TIA_Zhang_Ruoming_for_tot
+		TIA_Li_Zhenying_sec_syn
+		}
+		create_country_leader = {
+				name = "Qu Qiubai"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Qu_Qiubai.png"
+				expire = "1.1.1"
+				ideology = syn_hardliner_bolshevism_subtype
+			}
+		complete_national_focus = TIA_constructing_new_socialist_society
 	}
+	option = { #
+		name = rd_tianjin.21.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Liu_Renjing_hog_tot
+		TIA_Lu_Mengyi_eco_tot
+		TIA_Duan_Ziliang_for_tot
+		TIA_Song_Fengchun_sec_tot
+		}
+		create_country_leader = {
+				name = "Liu Renjing"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Liu_Renjing.png"
+				expire = "1.1.1"
+				ideology = internationalism_subtype
+			}
+	}
+	
+	option = { #
+		name = rd_tianjin.21.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = totalist
+		}
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Peng_Shuzhi_hog_tot
+		TIA_Li_Peiliang_eco_tot
+		TIA_Wang_Pinyi_for_tot
+		TIA_Zhang_Yintao_sec_tot
+		}
+		create_country_leader = {
+				name = "Peng Shuzhi"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Peng_Shuzhi_1.png"
+				expire = "1.1.1"
+				ideology = tot_developing_leftism_subtype
+			}
+	}
+	
 }
 
 country_event = { #
@@ -662,11 +759,27 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.22.a
 		ai_chance = { base = 100 }
-		
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Li_Yuzhi_hog_tot
+		TIA_Wang_Tianlin_eco_tot
+		TIA_Han_Lifu_for_tot
+		TIA_Zhang_Yintao_sec_tot
+		}
+		create_country_leader = {
+				name = "Li Yuzhi"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Li_Yuzhi_1.png"
+				expire = "1.1.1"
+				ideology = national_communism_subtype
+			}
+		swap_ideas = {
+			remove_idea = TIA_anti_imperialist_alliance
+			add_idea = TIA_anti_imperialist_alliance_1
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Li Yuzhi Subideology Swapper
 	id = rd_tianjin.23
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.23"}
 	title = rd_tianjin.23.title
@@ -677,11 +790,16 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.23.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = national_communism_subtype
+	}
+	option = { #
+		name = rd_tianjin.23.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = authcom_subtype
 	}
 }
 
-country_event = { #
+country_event = { #Leader Election Thing for Li Dazhao
 	id = rd_tianjin.24
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.24"}
 	title = rd_tianjin.24.title
@@ -692,7 +810,49 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.24.a
 		ai_chance = { base = 100 }
+		remove_all_ministers = yes
 		
+	}
+	option = { #
+		name = rd_tianjin.24.b
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Cai_Hesan_hog_syn
+		TIA_An_Ticheng_eco_syn
+		TIA_Chen_Xiaocen_for_tot
+		TIA_Yu_Shude_sec_syn
+		}
+		create_country_leader = {
+				name = "Cai Hesan"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Cai_Hesen.png"
+				expire = "1.1.1"
+				ideology = hardliner_bolshevism_subtype
+			}
+	}
+	option = { #
+		name = rd_tianjin.24.c
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_An_Xingsheng_hog_syn
+		TIA_Wang_Lihua_eco_syn
+		TIA_Chen_Xiaocen_for_tot
+		TIA_Chen_Jinghu_sec_syn
+		}
+		create_country_leader = {
+				name = "An Xingsheng"
+				picture = "gfx/leaders/TIA/Portrait_TIA_An_Xingsheng_1.png"
+				expire = "1.1.1"
+				ideology = syn_hardliner_bolshevism_subtype
+			}
+		set_politics = {
+			ruling_party = syndicalist
+		}
+		add_popularity = {
+			ideology = syndicalist
+			popularity = 0.3
+		}
 	}
 }
 
@@ -707,7 +867,46 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.25.a
 		ai_chance = { base = 100 }
-		
+		country_event = {
+			id = rd_tianjin.26
+			days = 2
+		}
+		create_country_leader = {
+				name = "Yao Zuobin"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Yao_Zuobin.png"
+				expire = "1.1.1"
+				ideology = radsoc_pan_asianism_subtype
+			}
+	}
+	
+	option = { #
+		name = rd_tianjin.25.b
+		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_tianjin.26
+			days = 2
+		}
+		create_country_leader = {
+				name = "Li Dong-Hwi"
+				picture = "gfx/leaders/TIA/Portrait_KOR_Lee_Donghwi.png"
+				expire = "1.1.1"
+				ideology = radsoc_pan_asianism_subtype
+			}
+	}
+	
+	option = { #
+		name = rd_tianjin.25.c
+		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_tianjin.26
+			days = 2
+		}
+		create_country_leader = {
+				name = "Ezio Kondo"
+				picture = "gfx/leaders/TIA/Portrait_JAP_Eizo_Kondo.png"
+				expire = "1.1.1"
+				ideology = radsoc_pan_asianism_subtype
+			}
 	}
 }
 
@@ -722,7 +921,40 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.26.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = radsoc_pan_asianism_subtype
+	}
+	option = { #
+		name = rd_tianjin.26.b
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Yao Zuobin"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = radsoc_datong_shu_subtype
+	}
+	option = { #
+		name = rd_tianjin.26.c
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Li Dong-Hwi"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = radsoc_communism_subtype
+	}
+	option = { #
+		name = rd_tianjin.26.d
+		ai_chance = { base = 100 }
+		trigger = {
+			has_country_leader = {
+				name = "Ezio Kondo"
+				ruling_only = yes
+			}
+		}
+		set_country_leader_ideology = anarcho_communism_subtype
 	}
 }
 
@@ -739,9 +971,57 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	option = { #
+		name = rd_tianjin.27.b
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Zhou_Zuoren_hog_rso
+		TIA_Wang_Tonghua_eco_rso
+		TIA_Liu_Qingyang_for_rso
+		TIA_Hu_Wexian_sec_rso
+		}
+		create_country_leader = {
+				name = "Zhou Zuoren"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Zhou_Zhouren.png"
+				expire = "1.1.1"
+				ideology = lu_xun_thought_subtype
+			}
+	}
+	option = { #
+		name = rd_tianjin.27.c
+		ai_chance = { base = 100 }
+		set_politics = {
+			ruling_party = radical_socialist
+		}
+		add_popularity = {
+			ideology = radical_socialist
+			popularity = 0.3
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Deng_Zhongxia_hog_rso
+		TIA_Li_Peiliang_eco_tot
+		TIA_Li_Xijiu_for_sde
+		TIA_Zhang_Tailei_sec_rso
+		}
+		create_country_leader = {
+				name = "Deng Zhongxia"
+				picture = "gfx/leaders/LEC/Portrait_LEC_Deng_Zhongxia.png"
+				expire = "1.1.1"
+				ideology = radsoc_communism_subtype
+			}
+	}
 }
 
-country_event = { #
+country_event = { #On Natural Submission of the peasant petty bourgeoisie - Critize Tao Xisheng
 	id = rd_tianjin.28
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.28"}
 	title = rd_tianjin.28.title
@@ -752,11 +1032,14 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.28.a
 		ai_chance = { base = 100 }
-		
+		add_timed_idea = {
+			idea = TIA_peasants_must_submit
+			days = 60
+		}
 	}
 }
 
-country_event = { #
+country_event = { #Laozi's Philosophy and Social Thought
 	id = rd_tianjin.29
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.29"}
 	title = rd_tianjin.29.title
@@ -767,7 +1050,11 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.29.a
 		ai_chance = { base = 100 }
-		
+		add_popularity = {
+			ideology = totalist
+			popularity = 0.1
+		}
+		add_political_power = 25
 	}
 }
 
@@ -782,11 +1069,28 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.30.a
 		ai_chance = { base = 100 }
-		
+		country_event = rd_tianjin.31
+	}
+	option = { #
+		name = rd_tianjin.30.b
+		ai_chance = { base = 100 }
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Peng_Shuzhi_hog_tot
+		TIA_Li_Peiliang_eco_tot
+		TIA_Wang_Pinyi_for_tot
+		TIA_Zhang_Yintao_sec_tot
+		}
+		create_country_leader = {
+				name = "Luo Zhanglong"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Luo_Zhanglong_1.png"
+				expire = "1.1.1"
+				ideology = tot_left_nationalism_subtype
+			}
 	}
 }
 
-country_event = { #
+country_event = { #Shuzhi Subideology Picker
 	id = rd_tianjin.31
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.31"}
 	title = rd_tianjin.31.title
@@ -797,7 +1101,12 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.31.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = tot_left_nationalism_subtype
+	}
+	option = { #
+		name = rd_tianjin.31.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = tot_developing_leftism_subtype
 	}
 }
 

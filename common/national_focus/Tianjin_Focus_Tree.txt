@@ -534,7 +534,7 @@ focus_tree = {
 		prerequisite = {focus = TIA_tighten_workers_rope }
 		prerequisite = {focus = TIA_advances_from_zhili }
 		completion_reward = {
-			add_timed_ideas = {
+			add_timed_idea = {
 				idea = TIA_taxation_revising
 				days = 120
 			}
@@ -601,7 +601,7 @@ focus_tree = {
 			add_marlib_to_coalition = yes
 			add_soccon_to_coalition = yes
 			add_authdem_to_coalition = yes
-			add_timed_ideas = {
+			add_timed_idea = {
 				idea = TIA_civilian_reproachment
 				days = 90
 			}
@@ -822,7 +822,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_work_new_people_association }
 		completion_reward = {
-			add_timed_ideas = {
+			add_timed_idea = {
 				idea = TIA_anti_syndie_zeal
 				days = 120
 			}
@@ -920,7 +920,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_north_east_committee }
 		completion_reward = {
-			add_timed_ideas = {
+			add_timed_idea = {
 				idea = TIA_new_bank_notes
 				days = 90
 			}
@@ -1104,7 +1104,7 @@ focus_tree = {
 		prerequisite = {focus = TIA_renounce_wealth }
 		prerequisite = {focus = TIA_salvation_for_all }
 		completion_reward = {
-			add_timed_ideas = {
+			add_timed_idea = {
 				idea = TIA_anti_syndie_zeal
 				days = 90
 			}
@@ -1408,7 +1408,7 @@ focus_tree = {
 					instant_build = yes
 				}
 			}
-			add_timed_ideas = {
+			add_timed_idea = {
 				idea = TIA_textile_improvements
 				days = 120
 			}
@@ -2270,14 +2270,12 @@ focus_tree = {
 		
 		x = 5
 		y = 0
-		cost = 5
+		cost = 2
 		available_if_capitulated = yes
-		available = {
-		always = no
-		}
+		
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
-		custom_effect_tooltip = unlock_focuses
+		country_event = rd_tianjin.20
 		}
 	}
 	
@@ -2292,9 +2290,12 @@ focus_tree = {
 		cost = 5
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+			always = no
+		}
 		prerequisite = {focus = TIA_china_new_path }
 		completion_reward = {
-			
+				custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -2309,7 +2310,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_new_course_nation }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_human_life_value
+			}
+			add_research_slot = 1
 		}
 	}
 	
@@ -2324,7 +2328,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_universal_law_human_life }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_asian_youth_arise
+			}
 		}
 	}
 	
@@ -2340,7 +2346,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_light_new_movement }
 		completion_reward = {
-			
+			country_event = rd_tianjin.22
 		}
 	}
 	
@@ -2356,7 +2362,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_light_new_movement }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_strengthening_national_core
+			}
 		}
 	}
 	
@@ -2374,7 +2382,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_new_course_nation }
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = TIA_setting_alight_road_to_liberation
+				add_idea = TIA_setting_alight_road_to_liberation_1
+			}
 		}
 	}
 	
@@ -2389,7 +2400,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_new_course_nation }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_socialized_exchange
+			}
 		}
 	}
 	
@@ -2405,7 +2418,10 @@ focus_tree = {
 		prerequisite = {focus = TIA_socializing_exchange }
 		prerequisite = {focus = TIA_break_shackles }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = TIA_new_redistribution
+				days = 120
+			}
 		}
 	}
 	
@@ -2421,7 +2437,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_socializing_exchange }
 		prerequisite = {focus = TIA_break_shackles }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_enrich_not_destroy
+			}
 		}
 	}
 	focus = {
@@ -2436,7 +2454,12 @@ focus_tree = {
 		prerequisite = {focus = TIA_enirch_not_destroy }
 		prerequisite = {focus = TIA_organizing_production_distribution }
 		completion_reward = {
-			
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.1
+			}
+			add_political_power = 25
+			add_stability = 0.1
 		}
 	}
 	
@@ -2452,7 +2475,16 @@ focus_tree = {
 		prerequisite = {focus = TIA_core_of_revolution focus = TIA_united_comradery }
 		prerequisite = { focus = TIA_not_treated_as_mules }
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = TIA_setting_alight_road_to_liberation_1
+				add_idea = TIA_setting_alight_road_to_liberation_2
+			}
+			if = {
+				limit = {
+					has_completed_focus = TIA_united_comradery
+				}
+				country_event = rd_tianjin.23
+			}
 		}
 	}
 	
@@ -2467,9 +2499,12 @@ focus_tree = {
 		cost = 5
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+		always = no
+		}
 		prerequisite = {focus = TIA_china_new_path }
 		completion_reward = {
-			
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -2484,7 +2519,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_datong_victory }
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = TIA_setting_alight_road_to_liberation
+				add_idea = TIA_setting_alight_road_to_liberation_3
+			}
 		}
 	}
 	focus = {
@@ -2498,7 +2536,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_datong_victory }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_three_equalities
+			}
 		}
 	}
 	
@@ -2514,7 +2554,10 @@ focus_tree = {
 		prerequisite = {focus = TIA_set_education_institutions }
 		prerequisite = {focus = TIA_three_equalities }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = TIA_morality_integrity
+				days = 120
+			}
 		}
 	}
 	
@@ -2530,7 +2573,7 @@ focus_tree = {
 		prerequisite = {focus = TIA_set_education_institutions }
 		prerequisite = {focus = TIA_three_equalities }
 		completion_reward = {
-			
+			add_research_slot = 1
 		}
 	}
 	
@@ -2547,7 +2590,11 @@ focus_tree = {
 		prerequisite = {focus = TIA_set_education_institutions }
 		prerequisite = {focus = TIA_three_equalities }
 		completion_reward = {
-			
+			add_synd_to_coalition = yes
+			add_timed_idea = {
+				idea = TIA_work_with_unions
+				days = 90
+			}
 		}
 	}
 	
@@ -2564,7 +2611,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_commoner_textbooks }
 		prerequisite = {focus = TIA_morality_and_integrity }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_converge_faiths
+			}
 		}
 	}
 	
@@ -2581,7 +2630,12 @@ focus_tree = {
 		prerequisite = {focus = TIA_commoner_textbooks }
 		prerequisite = {focus = TIA_morality_and_integrity }
 		completion_reward = {
-			
+			add_political_power = 25
+			add_stability = 0.05
+			add_popularity = {
+				ideology = radical_socialist
+				popularity = 0.05
+			}
 		}
 	}
 	focus = {
@@ -2596,7 +2650,11 @@ focus_tree = {
 		prerequisite = {focus = TIA_autonomous_assembly }
 		prerequisite = {focus = TIA_converge_all_faiths }
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = TIA_setting_alight_road_to_liberation_3
+				add_idea = TIA_setting_alight_road_to_liberation_4
+			}
+			country_event = rd_tianjin.25
 		}
 	}
 	
@@ -2607,12 +2665,15 @@ focus_tree = {
 		relative_position_id = TIA_china_new_path
 		x = 10
 		y = 1
-		cost = 5
+		cost = 2
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+		always = no
+		}
 		prerequisite = {focus = TIA_china_new_path }
 		completion_reward = {
-			
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -2625,9 +2686,12 @@ focus_tree = {
 		cost = 5
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+			always = no
+		}
 		prerequisite = {focus = TIA_international_labour }
 		completion_reward = {
-			
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	
@@ -2642,7 +2706,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_constructing_new_socialist_society }
 		completion_reward = {
-			
+			china_generic_land_reform_setup = yes
 		}
 	}
 	focus = {
@@ -2656,7 +2720,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_constructing_new_socialist_society }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_creative_energy_moblization
+			}
 		}
 	}
 	
@@ -2672,7 +2738,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_uplift_peasant_associations }
 		prerequisite = {focus = TIA_proletarian_creative_energy }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_human_life_value
+			}
 		}
 	}
 	
@@ -2688,7 +2756,7 @@ focus_tree = {
 		prerequisite = {focus = TIA_uplift_peasant_associations }
 		prerequisite = {focus = TIA_proletarian_creative_energy }
 		completion_reward = {
-			
+			add_research_slot = 1
 		}
 	}
 	
@@ -2705,7 +2773,10 @@ focus_tree = {
 		prerequisite = {focus = TIA_uplift_peasant_associations }
 		prerequisite = {focus = TIA_proletarian_creative_energy }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = TIA_anti_formalism
+				days = 90
+			}
 		}
 	}
 	
@@ -2722,7 +2793,10 @@ focus_tree = {
 		prerequisite = {focus = TIA_against_formalism }
 		prerequisite = {focus = TIA_promote_vernacularization }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = TIA_oppose_nat_bourg 
+				days = 90
+			}
 		}
 	}
 	
@@ -2739,7 +2813,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_against_formalism }
 		prerequisite = {focus = TIA_promote_vernacularization }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_family_ugliness
+			}
 		}
 	}
 	focus = {
@@ -2754,7 +2830,11 @@ focus_tree = {
 		prerequisite = {focus = TIA_oppose_nat_bourg }
 		prerequisite = {focus = TIA_family_ugliness }
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = TIA_setting_alight_road_to_liberation
+				add_idea = TIA_setting_alight_road_to_liberation_5
+			}
+			country_event = rd_tianjin.27
 		}
 	}
 	
@@ -2767,9 +2847,12 @@ focus_tree = {
 		cost = 5
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL }
+		available = {
+		always = no
+		}
 		prerequisite = {focus = TIA_international_labour }
 		completion_reward = {
-			
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	focus = {
@@ -2783,7 +2866,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_centralized_revolution }
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = TIA_setting_alight_road_to_liberation
+				add_idea = TIA_setting_alight_road_to_liberation_6
+			}
 		}
 	}
 	
@@ -2798,7 +2884,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_new_nation_new_patriotism }
 		completion_reward = {
-			
+			add_research_slot = 1
 		}
 	}
 	
@@ -2813,7 +2899,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_new_nation_new_patriotism }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = TIA_student_recitifcation
+				days = 90
+			}
 		}
 	}
 	
@@ -2829,7 +2918,7 @@ focus_tree = {
 		prerequisite = {focus = TIA_unite_red_intellectuals }
 		prerequisite = {focus = TIA_student_short_comings }
 		completion_reward = {
-			
+			country_event = rd_tianjin.28
 		}
 	}
 	
@@ -2845,7 +2934,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_unite_red_intellectuals }
 		prerequisite = {focus = TIA_student_short_comings }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_lumpen_prole
+			}
 		}
 	}
 	
@@ -2861,7 +2952,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_unite_red_intellectuals }
 		prerequisite = {focus = TIA_student_short_comings }
 		completion_reward = {
-			
+			add_ideas = {
+			TIA_new_pioneers
+			}
 		}
 	}
 	
@@ -2878,7 +2971,10 @@ focus_tree = {
 		prerequisite = {focus = TIA_vagrant_proletariat }
 		prerequisite = {focus = TIA_peasant_submission }
 		completion_reward = {
-			
+			swap_ideas = {
+				remove_idea = TIA_setting_alight_road_to_liberation_6
+				add_idea = TIA_setting_alight_road_to_liberation_7
+			}
 		}
 	}
 	
@@ -2891,9 +2987,12 @@ focus_tree = {
 		cost = 5
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL }
+		available =  {
+		always = no
+		}
 		prerequisite = {focus = TIA_international_labour }
 		completion_reward = {
-			
+			custom_effect_tooltip = unlock_focuses
 		}
 	}
 	focus = {
@@ -2907,7 +3006,9 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_new_era_china_workers }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_rural_economic_revival
+			}
 		}
 	}
 	focus = {
@@ -2921,7 +3022,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_new_era_china_workers }
 		completion_reward = {
-			
+			country_event = rd_tianjin.29
 		}
 	}
 	
@@ -2937,7 +3038,9 @@ focus_tree = {
 		prerequisite = {focus = TIA_revive_rural_economy }
 		prerequisite = {focus = TIA_lao_tzu_duality }
 		completion_reward = {
-			
+			add_ideas = {
+				TIA_workers_legacy
+			}
 		}
 	}
 	focus = {
@@ -2951,7 +3054,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_hankou_workers_legacy }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = TIA_wbuilding_off_corps
+				days = 120
+			}
 		}
 	}
 	
@@ -2967,7 +3073,7 @@ focus_tree = {
 		prerequisite = {focus = TIA_revive_rural_economy }
 		prerequisite = {focus = TIA_lao_tzu_duality }
 		completion_reward = {
-			
+			add_research_slot = 1
 		}
 	}
 	focus = {
@@ -2982,7 +3088,11 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_chinese_enlightenment }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = TIA_red_democracy
+				days = 90
+			}
+			set_country_flag= TIA_red_democracy
 		}
 	}
 	focus = {
@@ -2997,7 +3107,10 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_chinese_enlightenment }
 		completion_reward = {
-			
+			add_timed_idea = {
+				idea = TIA_attack_opposition
+				days = 90
+			}
 		}
 	}
 	
@@ -3014,7 +3127,12 @@ focus_tree = {
 		prerequisite = {focus = TIA_revive_rural_economy }
 		prerequisite = {focus = TIA_lao_tzu_duality }
 		completion_reward = {
-			
+			add_popularity = {
+				ideology = totalist
+				popularity = 0.1
+			}
+			add_political_power = 25
+			add_war_support = 0.1
 		}
 	}
 	
@@ -3029,7 +3147,7 @@ focus_tree = {
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_learn_from_lenin }
 		completion_reward = {
-			
+			china_generic_land_reform_setup = yes
 		}
 	}
 	
@@ -3046,7 +3164,20 @@ focus_tree = {
 		prerequisite = {focus = TIA_ghost_bourgoisie }
 		prerequisite = {focus = TIA_denounce_left_opposition focus = TIA_red_democracy }
 		completion_reward = {
+			if = {
+				limit = {
+					has_country_flag = TIA_red_democracy
+				}
+				country_event = rd_tianjin.30
+			}
+			else = {
+				country_event = rd_tianjin.31
+			}
 			
+			swap_ideas = {
+				remove_idea = TIA_setting_alight_road_to_liberation
+				add_idea = TIA_setting_alight_road_to_liberation_8
+			}
 		}
 	}
 }
