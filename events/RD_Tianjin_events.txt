@@ -1114,12 +1114,48 @@ country_event = { #datong formable
 	#picture = 
 	
 	is_triggered_only = yes
+	
+	immediate = {
+	hidden_effect = {
 
+		if = {
+		limit = {
+		JAP = { is_subject_of = TIA }
+		}
+		JAP = {
+		every_unit_leader = {
+		set_nationality = TIA
+		}
+		}
+		annex_country = {
+    		target = JAP
+    		transfer_troops = yes
+		}
+		}
+
+		if = {
+		limit = {
+		KOR = { is_subject_of = TIA }
+		}
+		KOR = {
+		every_unit_leader = {
+		set_nationality = TIA
+		}
+		}
+		annex_country = {
+    		target = KOR
+    		transfer_troops = yes
+		}
+		}
+
+	}
+	}
 	option = { #great unity for just east asia
 		name = rd_tianjin.32.a
 		ai_chance = { base = 100 }
 				add_stability = 0.10
-		
+
+
 	}
 
 
@@ -1127,12 +1163,42 @@ country_event = { #datong formable
 		name = rd_tianjin.32.b
 		ai_chance = { base = 0 }
 		
+		every_state = {
+		limit = {	
+		or = {
+		is_on_continent = asia
+		is_on_continent = india
+		}
+		}
+		add_core_of = TIA
+		if = {
+		limit = { owner = { NOT = { tag = TIA } NOT = { is_ally_with = TIA }  } }
+		create_wargoal = {
+    		type = annex_everything
+    		target = PREV
+		}
+
+		}
+		}
+
+
+		
 	}
 
 	option = { #great unity for the world
 		name = rd_tianjin.32.c
 		ai_chance = { base = 0 }
-		
+
+		every_state = {
+		add_core_of = TIA
+		}
+		every_country = {
+		limit = { NOT = { tag = TIA } NOT = { is_ally_with = TIA } }
+		create_wargoal = {
+    		type = annex_everything
+    		target = THIS
+		}
+		}
 	}
 
 }
@@ -1154,12 +1220,53 @@ country_event = { #dazhao formable
 	option = { #pan asia
 		name = rd_tianjin.33.b
 		ai_chance = { base = 0 }
+	hidden_effect = {
+
+		if = {
+		limit = {
+		JAP = { is_subject_of = TIA }
+		}
+		annex_country = {
+    		target = JAP
+    		transfer_troops = no
+		}
+		}
+
+		if = {
+		limit = {
+		KOR = { is_subject_of = TIA }
+		}
+		annex_country = {
+    		target = KOR
+    		transfer_troops = no
+		}
+		}
+
+	}
+
+	every_state = {
+		limit = {	
+		or = {
+		is_on_continent = asia
+		is_on_continent = india
+		}
+		}
+		add_core_of = TIA
+		if = {
+		limit = { owner = { NOT = { tag = TIA } NOT = { is_ally_with = TIA }  } }
+		create_wargoal = {
+    		type = annex_everything
+    		target = PREV
+		}
+
+		}
+		}
 		
 	}
 
 }
 
-country_event = { #soviet formable
+country_event = { #soviet formable given early, with a decision to unlock cores and stuff on eastern eruoep and shieeet
 	id = rd_tianjin.34
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.34"}
 	title = rd_tianjin.34.title
@@ -1176,7 +1283,7 @@ country_event = { #soviet formable
 	}
 
 	option = { #liberate the red motherland
-		name = rd_tianjin.34.a
+		name = rd_tianjin.34.a #i think ai can take this not that crazy
 		ai_chance = { base = 100 }
 			set_country_flag = TIA_soviet_formable
 			hidden_effect = {
@@ -1185,6 +1292,56 @@ country_event = { #soviet formable
 					add_claim_by = ROOT
 				}
 			}
+
+	hidden_effect = {
+
+		if = {
+		limit = {
+		TRM = { is_subject_of = TIA }
+		}
+		TRM = {
+		every_unit_leader = {
+		set_nationality = TIA
+		}
+		}
+		annex_country = {
+    		target = TRM
+    		transfer_troops = no
+		}
+		}
+
+		if = {
+		limit = {
+		YAK = { is_subject_of = TIA }
+		}
+		YAK = {
+		every_unit_leader = {
+		set_nationality = TIA
+		}
+		}
+		annex_country = {
+    		target = YAK
+    		transfer_troops = no
+		}
+		}
+
+		if = {
+		limit = {
+		RUS = { is_subject_of = TIA }
+		}
+		RUS = {
+		every_unit_leader = {
+		set_nationality = TIA
+		}
+		}
+		annex_country = {
+    		target = RUS
+    		transfer_troops = no
+		}
+		}
+
+	}
+
 		
 	}
 
