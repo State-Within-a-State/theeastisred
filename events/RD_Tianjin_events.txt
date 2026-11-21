@@ -1648,10 +1648,10 @@ country_event = { #Uprising Event for Hubei - Activated by Decision
 				logistics_skill = 2
 			}
 	}
-	}
+	
 }
 
-country_event = { #
+country_event = { #Ma Shiwei Peasant Cult World Conquest
 	id = rd_tianjin.40
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.40"}
 	title = rd_tianjin.40.title
@@ -1663,6 +1663,20 @@ country_event = { #
 		name = rd_tianjin.40.a
 		ai_chance = { base = 100 }
 		
+	}
+	option = { #
+		name = rd_tianjin.40.b
+		ai_chance = { base = 100 }
+		every_state = {
+		add_core_of = TIA
+		}
+		every_country = {
+		limit = { NOT = { tag = TIA } NOT = { is_ally_with = TIA } }
+		create_wargoal = {
+    		type = annex_everything
+    		target = THIS
+		}
+		}
 	}
 }
 
@@ -1677,7 +1691,20 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.41.a
 		ai_chance = { base = 100 }
-		
+		set_country_leader_ideology = natpop_neo_confucianism_subtype
+		country_event = rd_tianjin.42
+	}
+	option = { #
+		name = rd_tianjin.41.b
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = national_security_state_subtype
+		country_event = rd_tianjin.42
+	}
+	option = { #
+		name = rd_tianjin.41.a
+		ai_chance = { base = 100 }
+		set_country_leader_ideology = natpop_pan_asianism_subtype
+		country_event = rd_tianjin.42
 	}
 }
 
@@ -1692,6 +1719,52 @@ country_event = { #
 	option = { #
 		name = rd_tianjin.42.a
 		ai_chance = { base = 100 }
+		
+	}
+	option = { #pan asia
+		name = rd_tianjin.42.b
+		ai_chance = { base = 1000 }
+	hidden_effect = {
+
+		if = {
+		limit = {
+		JAP = { is_subject_of = TIA }
+		}
+		annex_country = {
+    		target = JAP
+    		transfer_troops = no
+		}
+		}
+
+		if = {
+		limit = {
+		KOR = { is_subject_of = TIA }
+		}
+		annex_country = {
+    		target = KOR
+    		transfer_troops = no
+		}
+		}
+
+	}
+
+	every_state = {
+		limit = {	
+		or = {
+		is_on_continent = asia
+		is_on_continent = india
+		}
+		}
+		add_core_of = TIA
+		if = {
+		limit = { owner = { NOT = { tag = TIA } NOT = { is_ally_with = TIA }  } }
+		create_wargoal = {
+    		type = annex_everything
+    		target = PREV
+		}
+
+		}
+		}
 		
 	}
 }
