@@ -648,12 +648,13 @@ focus_tree = {
 		prerequisite = {focus = TIA_security_maintainence_committee }
 		prerequisite = {focus = TIA_sunify_five_provinces }
 		completion_reward = {
+		country_event = rd_tianjin.43
 		custom_effect_tooltip = CHI_focus_tree_will_change_tt
 
 			hidden_effect = {
 
-			#load_focus_tree = 
-			#complete_national_focus = 
+			load_focus_tree = tianjin_react_post_uni
+			complete_national_focus =  TIA_national_re_org_committee
 			}
 		}
 	}
@@ -670,7 +671,7 @@ focus_tree = {
 			factor = 70
 		}
 		available = {
-			always = yes
+			always = no
 		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		prerequisite = {focus = TIA_japan_council_meeting }
@@ -948,24 +949,6 @@ focus_tree = {
 		}
 	}
 	
-	focus = {
-		id = TIA_Shenyang_leash
-		icon = GFX_goal_LEC_reforged_enterprise
-		relative_position_id = TIA_north_east_committee
-		x = -2
-		y = 3
-		cost = 5
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 70
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		prerequisite = {focus = TIA_east_asia_economy_association }
-		prerequisite = {focus = TIA_buddhist_research_association focus = TIA_jidong_education focus = TIA_four_points_and_resolutions }
-		completion_reward = {
-		
-		}
-	}
 	
 	focus = {
 		id = TIA_new_government_for_asia
@@ -982,28 +965,29 @@ focus_tree = {
 		prerequisite = {focus = TIA_east_asia_economy_association }
 		prerequisite = {focus = TIA_buddhist_research_association focus = TIA_jidong_education focus = TIA_four_points_and_resolutions }
 		completion_reward = {
-		
+		if = {
+			limit = {
+				has_country_leader = {
+					name = "Gao Lingwei"
+					ruling_only = yes
+				}
+			}
+			country_event = rd_tianjin.44
+		}
+		else = {
+			country_event = rd_tianjin.45
+		}
+		custom_effect_tooltip = CHI_focus_tree_will_change_tt
+
+			hidden_effect = {
+
+			load_focus_tree = tianjin_react_post_uni
+			complete_national_focus =  TIA_national_re_org_committee
+			}
 		}
 	}
 	
-	focus = {
-		id = TIA_smothered_by_tokyo
-		icon = GFX_goal_LEC_reforged_enterprise
-		relative_position_id = TIA_north_east_committee
-		x = 2
-		y = 3
-		cost = 5
-		available_if_capitulated = yes
-		ai_will_do = {
-			factor = 70
-		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		prerequisite = {focus = TIA_east_asia_economy_association }
-		prerequisite = {focus = TIA_buddhist_research_association focus = TIA_jidong_education focus = TIA_four_points_and_resolutions }
-		completion_reward = {
-		
-		}
-	}
+	
 	
 	###Yellow Sand Society###
 	

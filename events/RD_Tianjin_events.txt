@@ -210,6 +210,11 @@ country_event = { #Japanese Intervention In Tianjin - the old forces are more po
 	option = { #
 		name = rd_tianjin.6.a
 		ai_chance = { base = 100 }
+		country_event = {
+			id = rd_tianjin.7
+			days = 3
+		}
+		complete_national_focus = TIA_japan_council_meeting
 		set_politics = {
 			ruling_party = market_liberal
 		}
@@ -231,6 +236,9 @@ country_event = { #Japanese Intervention In Tianjin - the old forces are more po
 			id = tia_jap_ind_balance
 		}
 		set_country_flag = TIA_Japanese_Collab_Won
+		JAP = {
+			add_to_faction = TIA
+		}
 	}
 }
 
@@ -298,6 +306,7 @@ country_event = { #Meeting of Committee
 		TIA_Sun_Runyu_for_pau
 		TIA_Shen_Tongwu_sec_pau
 		}
+		complete_national_focus = TIA_maintain_order
 	}
 	option = { #
 		name = rd_tianjin.8.b
@@ -316,6 +325,7 @@ country_event = { #Meeting of Committee
 		TIA_Fang_Ruo_for_mli
 		TIA_Liu_Yushu_sec_pau
 		}
+		complete_national_focus = TIA_lingyun_holds
 	}
 	option = { #
 		name = rd_tianjin.8.c
@@ -334,6 +344,7 @@ country_event = { #Meeting of Committee
 		TIA_Chi_Zongmo_for_npo
 		TIA_Zhang_Qingyu_sec_npo
 		}
+		complete_national_focus = TIA_power_to_anti_syndicalists
 	}
 }
 
@@ -1769,7 +1780,7 @@ country_event = { #
 	}
 }
 
-country_event = { #
+country_event = { #Struggle of Two Collab Event
 	id = rd_tianjin.43
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.43"}
 	title = rd_tianjin.43.title
@@ -1782,9 +1793,34 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	
+	option = { #
+		name = rd_tianjin.43.b
+		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = market_liberal
+			popular = 0.3
+		}
+		set_politics = {
+			ruling_party = market_liberal
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Wen_Shizhen_hog_mli
+		TIA_Wang_Hefang_eco_mli
+		TIA_Zhang_Hu_for_mli
+		TIA_Xu_Shuqing_sec_pau
+		}
+		create_country_leader = {
+				name = "Wen Shizhen"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Wen_Shizhen_1.png"
+				expire = "1.1.1"
+				ideology = pan_asianism_subtype
+			}
+	}
 }
 
-country_event = { #
+country_event = { #event for Gao Lingyun
 	id = rd_tianjin.44
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.44"}
 	title = rd_tianjin.44.title
@@ -1797,9 +1833,34 @@ country_event = { #
 		ai_chance = { base = 100 }
 		
 	}
+	
+	option = { #
+		name = rd_tianjin.44.b
+		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popular = 0.3
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		TIA_Rong_Zhen_hog_pau
+		TIA_Wang_Zhulin_eco_mli
+		TIA_Fang_Ruo_for_mli
+		TIA_Liu_Yushu_sec_pau
+		}
+		create_country_leader = {
+				name = "Rong Zhen"
+				picture = "gfx/leaders/TIA/Portrait_TIA_Rong_Zhen_1.png"
+				expire = "1.1.1"
+				ideology = pataut_pan_asianism_subtype
+			}
+	}
 }
 
-country_event = { #
+country_event = { #Yin Rugeng event for swap with Kemin
 	id = rd_tianjin.45
 	immediate = {log = "[GetDateText]: [Root.GetName]: event rd_tianjin.45"}
 	title = rd_tianjin.45.title
@@ -1811,6 +1872,31 @@ country_event = { #
 		name = rd_tianjin.45.a
 		ai_chance = { base = 100 }
 		
+	}
+	
+	option = { #
+		name = rd_tianjin.45.b
+		ai_chance = { base = 100 }
+		add_popularity = {
+			ideology = paternal_autocrat
+			popular = 0.3
+		}
+		set_politics = {
+			ruling_party = paternal_autocrat
+		}
+		remove_all_ministers = yes
+		add_ideas = {
+		GXC_Wang_Kemin_hog_npo
+		TIA_Wang_Zhulin_eco_mli
+		TIA_Fang_Ruo_for_mli
+		TIA_Liu_Yushu_sec_pau
+		}
+		create_country_leader = {
+				name = "Wang Kemin"
+				picture = "gfx/leaders/GXC/Portrait_GXC_Wang_Kemin_Glasses.png"
+				expire = "1.1.1"
+				ideology = pataut_neo_citizenism_subtype
+			}
 	}
 }
 
